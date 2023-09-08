@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// vSphere VM mutations
     /// </summary>
     /// <description>
-    /// Invoke-RscMutateVsphereVm is a master cmdlet for VsphereVm work that can invoke any of the following subcommands: RecoverFiles, RecoverFilesNew, RegisterAgent, DownloadSnapshot, ExportSnapshot, ExportSnapshotV2, ExportSnapshotV3, BatchExport, BatchExportV3, InitiateInPlaceRecovery, ExportSnapshotWithDownloadFromCloud, BatchInPlaceRecovery, DeleteSnapshot, Update, InitiateInstantRecovery, InitiateInstantRecoveryV2, InitiateBatchInstantRecovery, InitiateDiskMount, InitiateLiveMount, InitiateLiveMountV2, BatchLiveMount, InitiateBatchLiveMountV2, PowerOnOffLiveMount, DeleteLiveMount, ListEsxiDatastores, MountRelocate, MountRelocateV2, ExcludeVmDisks, DownloadSnapshotFiles.
+    /// Invoke-RscMutateVsphereVm is a master cmdlet for VsphereVm work that can invoke any of the following subcommands: RecoverFiles, RecoverFilesNew, RegisterAgent, DownloadSnapshot, ExportSnapshotV2, ExportSnapshotV3, BatchExport, BatchExportV3, InitiateInPlaceRecovery, ExportSnapshotWithDownloadFromCloud, BatchInPlaceRecovery, DeleteSnapshot, InitiateInstantRecoveryV2, InitiateBatchInstantRecovery, InitiateDiskMount, InitiateLiveMountV2, InitiateBatchLiveMountV2, PowerOnOffLiveMount, ListEsxiDatastores, MountRelocate, MountRelocateV2, ExcludeVmDisks, DownloadSnapshotFiles, Update.
     /// </description>
     /// <example>
     /// <code>Invoke-RscMutateVsphereVm -RecoverFiles [-Arg ..] [-Field ..]</code>
@@ -35,9 +35,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     /// <example>
     /// <code>Invoke-RscMutateVsphereVm -DownloadSnapshot [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
-    /// <code>Invoke-RscMutateVsphereVm -ExportSnapshot [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
     /// <code>Invoke-RscMutateVsphereVm -ExportSnapshotV2 [-Arg ..] [-Field ..]</code>
@@ -64,12 +61,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <code>Invoke-RscMutateVsphereVm -DeleteSnapshot [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
-    /// <code>Invoke-RscMutateVsphereVm -Update [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
-    /// <code>Invoke-RscMutateVsphereVm -InitiateInstantRecovery [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
     /// <code>Invoke-RscMutateVsphereVm -InitiateInstantRecoveryV2 [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
@@ -79,22 +70,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <code>Invoke-RscMutateVsphereVm -InitiateDiskMount [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
-    /// <code>Invoke-RscMutateVsphereVm -InitiateLiveMount [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
     /// <code>Invoke-RscMutateVsphereVm -InitiateLiveMountV2 [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
-    /// <code>Invoke-RscMutateVsphereVm -BatchLiveMount [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
     /// <code>Invoke-RscMutateVsphereVm -InitiateBatchLiveMountV2 [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
     /// <code>Invoke-RscMutateVsphereVm -PowerOnOffLiveMount [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
-    /// <code>Invoke-RscMutateVsphereVm -DeleteLiveMount [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
     /// <code>Invoke-RscMutateVsphereVm -ListEsxiDatastores [-Arg ..] [-Field ..]</code>
@@ -110,6 +92,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     /// <example>
     /// <code>Invoke-RscMutateVsphereVm -DownloadSnapshotFiles [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>Invoke-RscMutateVsphereVm -Update [-Arg ..] [-Field ..]</code>
     /// </example>
     [Cmdlet(
         "Invoke",
@@ -195,24 +180,6 @@ Provides a method for retrieving a snapshot, that is not available locally, from
             Position = 0
         )]
         public SwitchParameter DownloadSnapshot { get; set; }
-
-        
-        /// <summary>
-        /// ExportSnapshot parameter set
-        ///
-        /// [GraphQL: vsphereVMExportSnapshot]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "ExportSnapshot",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-[GraphQL: vsphereVMExportSnapshot]",
-            Position = 0
-        )]
-        public SwitchParameter ExportSnapshot { get; set; }
 
         
         /// <summary>
@@ -363,42 +330,6 @@ Download a snapshot from an archival location and then export a virtual machine 
 
         
         /// <summary>
-        /// Update parameter set
-        ///
-        /// [GraphQL: vsphereVMUpdate]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "Update",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-[GraphQL: vsphereVMUpdate]",
-            Position = 0
-        )]
-        public SwitchParameter Update { get; set; }
-
-        
-        /// <summary>
-        /// InitiateInstantRecovery parameter set
-        ///
-        /// [GraphQL: vsphereVMInitiateInstantRecovery]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "InitiateInstantRecovery",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-[GraphQL: vsphereVMInitiateInstantRecovery]",
-            Position = 0
-        )]
-        public SwitchParameter InitiateInstantRecovery { get; set; }
-
-        
-        /// <summary>
         /// InitiateInstantRecoveryV2 parameter set
         ///
         /// [GraphQL: vsphereVmInitiateInstantRecoveryV2]
@@ -456,24 +387,6 @@ Requests a snapshot mount to attach disks to an existing virtual machine.
 
         
         /// <summary>
-        /// InitiateLiveMount parameter set
-        ///
-        /// [GraphQL: vsphereVMInitiateLiveMount]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "InitiateLiveMount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-[GraphQL: vsphereVMInitiateLiveMount]",
-            Position = 0
-        )]
-        public SwitchParameter InitiateLiveMount { get; set; }
-
-        
-        /// <summary>
         /// InitiateLiveMountV2 parameter set
         ///
         /// [GraphQL: vsphereVmInitiateLiveMountV2]
@@ -489,24 +402,6 @@ Requests a snapshot mount to attach disks to an existing virtual machine.
             Position = 0
         )]
         public SwitchParameter InitiateLiveMountV2 { get; set; }
-
-        
-        /// <summary>
-        /// BatchLiveMount parameter set
-        ///
-        /// [GraphQL: vSphereVMBatchLiveMount]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "BatchLiveMount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-[GraphQL: vSphereVMBatchLiveMount]",
-            Position = 0
-        )]
-        public SwitchParameter BatchLiveMount { get; set; }
 
         
         /// <summary>
@@ -546,24 +441,6 @@ Power a specified Live Mount virtual machine on or off. Pass **_true_** to power
             Position = 0
         )]
         public SwitchParameter PowerOnOffLiveMount { get; set; }
-
-        
-        /// <summary>
-        /// DeleteLiveMount parameter set
-        ///
-        /// [GraphQL: vsphereVMDeleteLiveMount]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "DeleteLiveMount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-[GraphQL: vsphereVMDeleteLiveMount]",
-            Position = 0
-        )]
-        public SwitchParameter DeleteLiveMount { get; set; }
 
         
         /// <summary>
@@ -661,6 +538,27 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
         )]
         public SwitchParameter DownloadSnapshotFiles { get; set; }
 
+        
+        /// <summary>
+        /// Update parameter set
+        ///
+        /// [GraphQL: updateVsphereVm]
+        /// </summary>
+        [Parameter(
+            ParameterSetName = "Update",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Update VM
+
+Supported in v5.0+
+Update a virtual machine with specified properties. Use the guestCredential field to update the guest credential for a specified virtual machine.
+[GraphQL: updateVsphereVm]",
+            Position = 0
+        )]
+        public SwitchParameter Update { get; set; }
+
 
 // ignore warning 'Missing XML comment'
 #pragma warning disable 1591
@@ -681,9 +579,6 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                         break;
                     case "DownloadSnapshot":
                         this.ProcessRecord_DownloadSnapshot();
-                        break;
-                    case "ExportSnapshot":
-                        this.ProcessRecord_ExportSnapshot();
                         break;
                     case "ExportSnapshotV2":
                         this.ProcessRecord_ExportSnapshotV2();
@@ -709,12 +604,6 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                     case "DeleteSnapshot":
                         this.ProcessRecord_DeleteSnapshot();
                         break;
-                    case "Update":
-                        this.ProcessRecord_Update();
-                        break;
-                    case "InitiateInstantRecovery":
-                        this.ProcessRecord_InitiateInstantRecovery();
-                        break;
                     case "InitiateInstantRecoveryV2":
                         this.ProcessRecord_InitiateInstantRecoveryV2();
                         break;
@@ -724,23 +613,14 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                     case "InitiateDiskMount":
                         this.ProcessRecord_InitiateDiskMount();
                         break;
-                    case "InitiateLiveMount":
-                        this.ProcessRecord_InitiateLiveMount();
-                        break;
                     case "InitiateLiveMountV2":
                         this.ProcessRecord_InitiateLiveMountV2();
-                        break;
-                    case "BatchLiveMount":
-                        this.ProcessRecord_BatchLiveMount();
                         break;
                     case "InitiateBatchLiveMountV2":
                         this.ProcessRecord_InitiateBatchLiveMountV2();
                         break;
                     case "PowerOnOffLiveMount":
                         this.ProcessRecord_PowerOnOffLiveMount();
-                        break;
-                    case "DeleteLiveMount":
-                        this.ProcessRecord_DeleteLiveMount();
                         break;
                     case "ListEsxiDatastores":
                         this.ProcessRecord_ListEsxiDatastores();
@@ -756,6 +636,9 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                         break;
                     case "DownloadSnapshotFiles":
                         this.ProcessRecord_DownloadSnapshotFiles();
+                        break;
+                    case "Update":
+                        this.ProcessRecord_Update();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -802,15 +685,6 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
             this._logger.name += " -DownloadSnapshot";
             // Invoke graphql operation vsphereVmDownloadSnapshot
             InvokeMutationVsphereVmDownloadSnapshot();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // vsphereVMExportSnapshot.
-        internal void ProcessRecord_ExportSnapshot()
-        {
-            this._logger.name += " -ExportSnapshot";
-            // Invoke graphql operation vsphereVMExportSnapshot
-            InvokeMutationVsphereVmExportSnapshot();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -886,24 +760,6 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
         }
 
         // This parameter set invokes a single graphql operation:
-        // vsphereVMUpdate.
-        internal void ProcessRecord_Update()
-        {
-            this._logger.name += " -Update";
-            // Invoke graphql operation vsphereVMUpdate
-            InvokeMutationVsphereVmUpdate();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // vsphereVMInitiateInstantRecovery.
-        internal void ProcessRecord_InitiateInstantRecovery()
-        {
-            this._logger.name += " -InitiateInstantRecovery";
-            // Invoke graphql operation vsphereVMInitiateInstantRecovery
-            InvokeMutationVsphereVmInitiateInstantRecovery();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // vsphereVmInitiateInstantRecoveryV2.
         internal void ProcessRecord_InitiateInstantRecoveryV2()
         {
@@ -931,30 +787,12 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
         }
 
         // This parameter set invokes a single graphql operation:
-        // vsphereVMInitiateLiveMount.
-        internal void ProcessRecord_InitiateLiveMount()
-        {
-            this._logger.name += " -InitiateLiveMount";
-            // Invoke graphql operation vsphereVMInitiateLiveMount
-            InvokeMutationVsphereVmInitiateLiveMount();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // vsphereVmInitiateLiveMountV2.
         internal void ProcessRecord_InitiateLiveMountV2()
         {
             this._logger.name += " -InitiateLiveMountV2";
             // Invoke graphql operation vsphereVmInitiateLiveMountV2
             InvokeMutationVsphereVmInitiateLiveMountV2();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // vSphereVMBatchLiveMount.
-        internal void ProcessRecord_BatchLiveMount()
-        {
-            this._logger.name += " -BatchLiveMount";
-            // Invoke graphql operation vSphereVMBatchLiveMount
-            InvokeMutationVsphereVmBatchLiveMount();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -973,15 +811,6 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
             this._logger.name += " -PowerOnOffLiveMount";
             // Invoke graphql operation vsphereVmPowerOnOffLiveMount
             InvokeMutationVsphereVmPowerOnOffLiveMount();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // vsphereVMDeleteLiveMount.
-        internal void ProcessRecord_DeleteLiveMount()
-        {
-            this._logger.name += " -DeleteLiveMount";
-            // Invoke graphql operation vsphereVMDeleteLiveMount
-            InvokeMutationVsphereVmDeleteLiveMount();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1027,6 +856,15 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
             this._logger.name += " -DownloadSnapshotFiles";
             // Invoke graphql operation vsphereVmDownloadSnapshotFiles
             InvokeMutationVsphereVmDownloadSnapshotFiles();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updateVsphereVm.
+        internal void ProcessRecord_Update()
+        {
+            this._logger.name += " -Update";
+            // Invoke graphql operation updateVsphereVm
+            InvokeMutationUpdateVsphereVm();
         }
 
 
@@ -1214,69 +1052,6 @@ $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
 }";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Mutation:
-        // vsphereVMExportSnapshot(
-        //     snapshotFid: UUID!
-        //     vmName: String
-        //     disableNetwork: Boolean
-        //     removeNetworkDevices: Boolean
-        //     powerOn: Boolean
-        //     keepMacAddresses: Boolean
-        //     hostID: String
-        //     datastoreId: UUID!
-        //     unregsiterVm: Boolean
-        //     shouldRecoverTags: Boolean
-        //   ): VsphereAsyncRequestStatus!
-        internal void InvokeMutationVsphereVmExportSnapshot()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("snapshotFid", "UUID!"),
-                Tuple.Create("vmName", "String"),
-                Tuple.Create("disableNetwork", "Boolean"),
-                Tuple.Create("removeNetworkDevices", "Boolean"),
-                Tuple.Create("powerOn", "Boolean"),
-                Tuple.Create("keepMacAddresses", "Boolean"),
-                Tuple.Create("hostID", "String"),
-                Tuple.Create("datastoreId", "UUID!"),
-                Tuple.Create("unregsiterVm", "Boolean"),
-                Tuple.Create("shouldRecoverTags", "Boolean"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationVsphereVmExportSnapshot",
-                "($snapshotFid: UUID!,$vmName: String,$disableNetwork: Boolean,$removeNetworkDevices: Boolean,$powerOn: Boolean,$keepMacAddresses: Boolean,$hostID: String,$datastoreId: UUID!,$unregsiterVm: Boolean,$shouldRecoverTags: Boolean)",
-                "VsphereAsyncRequestStatus"
-                );
-            VsphereAsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (VsphereAsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.VsphereVmExportSnapshot(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.snapshotFid = <System.String>
-# OPTIONAL
-$inputs.Var.vmName = <System.String>
-# OPTIONAL
-$inputs.Var.disableNetwork = <System.Boolean>
-# OPTIONAL
-$inputs.Var.removeNetworkDevices = <System.Boolean>
-# OPTIONAL
-$inputs.Var.powerOn = <System.Boolean>
-# OPTIONAL
-$inputs.Var.keepMacAddresses = <System.Boolean>
-# OPTIONAL
-$inputs.Var.hostID = <System.String>
-# REQUIRED
-$inputs.Var.datastoreId = <System.String>
-# OPTIONAL
-$inputs.Var.unregsiterVm = <System.Boolean>
-# OPTIONAL
-$inputs.Var.shouldRecoverTags = <System.Boolean>";
             BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
@@ -1892,137 +1667,6 @@ $inputs.Var.input = @{
         }
 
         // Invoke GraphQL Mutation:
-        // vsphereVMUpdate(
-        //     snappableFid: UUID!
-        //     snapshotConsistencyMandate: String
-        //     preBackupScript: PreBackupScriptInputType
-        //     postBackupScript: PostBackupScriptInputType
-        //     postSnapScript: PostSnapScriptInputType
-        //     isArrayIntegrationEnabled: Boolean
-        //   ): RequestSuccess!
-        internal void InvokeMutationVsphereVmUpdate()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("snappableFid", "UUID!"),
-                Tuple.Create("snapshotConsistencyMandate", "String"),
-                Tuple.Create("preBackupScript", "PreBackupScriptInputType"),
-                Tuple.Create("postBackupScript", "PostBackupScriptInputType"),
-                Tuple.Create("postSnapScript", "PostSnapScriptInputType"),
-                Tuple.Create("isArrayIntegrationEnabled", "Boolean"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationVsphereVmUpdate",
-                "($snappableFid: UUID!,$snapshotConsistencyMandate: String,$preBackupScript: PreBackupScriptInputType,$postBackupScript: PostBackupScriptInputType,$postSnapScript: PostSnapScriptInputType,$isArrayIntegrationEnabled: Boolean)",
-                "RequestSuccess"
-                );
-            RequestSuccess? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (RequestSuccess)this.Field;
-            }
-            string fieldSpecDoc = Mutation.VsphereVmUpdate(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.snappableFid = <System.String>
-# OPTIONAL
-$inputs.Var.snapshotConsistencyMandate = <System.String>
-# OPTIONAL
-$inputs.Var.preBackupScript = @{
-	# OPTIONAL
-	scriptPath = <System.String>
-	# OPTIONAL
-	timeoutInMs = <System.Int64>
-	# OPTIONAL
-	failureHandling = <System.String>
-}
-# OPTIONAL
-$inputs.Var.postBackupScript = @{
-	# OPTIONAL
-	scriptPath = <System.String>
-	# OPTIONAL
-	timeoutInMs = <System.Int64>
-	# OPTIONAL
-	failureHandling = <System.String>
-}
-# OPTIONAL
-$inputs.Var.postSnapScript = @{
-	# OPTIONAL
-	scriptPath = <System.String>
-	# OPTIONAL
-	timeoutInMs = <System.Int64>
-	# OPTIONAL
-	failureHandling = <System.String>
-}
-# OPTIONAL
-$inputs.Var.isArrayIntegrationEnabled = <System.Boolean>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Mutation:
-        // vsphereVMInitiateInstantRecovery(
-        //     snapshotFid: UUID!
-        //     vmName: String
-        //     disableNetwork: Boolean
-        //     removeNetworkDevices: Boolean
-        //     powerOn: Boolean
-        //     keepMacAddresses: Boolean
-        //     hostID: String
-        //     preserveMOID: Boolean
-        //     vlan: Int
-        //     shouldRecoverTags: Boolean
-        //   ): VsphereAsyncRequestStatus!
-        internal void InvokeMutationVsphereVmInitiateInstantRecovery()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("snapshotFid", "UUID!"),
-                Tuple.Create("vmName", "String"),
-                Tuple.Create("disableNetwork", "Boolean"),
-                Tuple.Create("removeNetworkDevices", "Boolean"),
-                Tuple.Create("powerOn", "Boolean"),
-                Tuple.Create("keepMacAddresses", "Boolean"),
-                Tuple.Create("hostID", "String"),
-                Tuple.Create("preserveMOID", "Boolean"),
-                Tuple.Create("vlan", "Int"),
-                Tuple.Create("shouldRecoverTags", "Boolean"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationVsphereVmInitiateInstantRecovery",
-                "($snapshotFid: UUID!,$vmName: String,$disableNetwork: Boolean,$removeNetworkDevices: Boolean,$powerOn: Boolean,$keepMacAddresses: Boolean,$hostID: String,$preserveMOID: Boolean,$vlan: Int,$shouldRecoverTags: Boolean)",
-                "VsphereAsyncRequestStatus"
-                );
-            VsphereAsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (VsphereAsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.VsphereVmInitiateInstantRecovery(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.snapshotFid = <System.String>
-# OPTIONAL
-$inputs.Var.vmName = <System.String>
-# OPTIONAL
-$inputs.Var.disableNetwork = <System.Boolean>
-# OPTIONAL
-$inputs.Var.removeNetworkDevices = <System.Boolean>
-# OPTIONAL
-$inputs.Var.powerOn = <System.Boolean>
-# OPTIONAL
-$inputs.Var.keepMacAddresses = <System.Boolean>
-# OPTIONAL
-$inputs.Var.hostID = <System.String>
-# OPTIONAL
-$inputs.Var.preserveMOID = <System.Boolean>
-# OPTIONAL
-$inputs.Var.vlan = <System.Int32>
-# OPTIONAL
-$inputs.Var.shouldRecoverTags = <System.Boolean>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Mutation:
         // vsphereVmInitiateInstantRecoveryV2(input: VsphereVmInitiateInstantRecoveryV2Input!): AsyncRequestStatus!
         internal void InvokeMutationVsphereVmInitiateInstantRecoveryV2()
         {
@@ -2304,73 +1948,6 @@ $inputs.Var.input = @{
         }
 
         // Invoke GraphQL Mutation:
-        // vsphereVMInitiateLiveMount(
-        //     snapshotFid: UUID!
-        //     vmName: String
-        //     disableNetwork: Boolean
-        //     removeNetworkDevices: Boolean
-        //     powerOn: Boolean
-        //     keepMacAddresses: Boolean
-        //     hostID: String
-        //     datastoreName: String
-        //     createDatastoreOnly: Boolean
-        //     vlan: Int
-        //     shouldRecoverTags: Boolean
-        //   ): VsphereAsyncRequestStatus!
-        internal void InvokeMutationVsphereVmInitiateLiveMount()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("snapshotFid", "UUID!"),
-                Tuple.Create("vmName", "String"),
-                Tuple.Create("disableNetwork", "Boolean"),
-                Tuple.Create("removeNetworkDevices", "Boolean"),
-                Tuple.Create("powerOn", "Boolean"),
-                Tuple.Create("keepMacAddresses", "Boolean"),
-                Tuple.Create("hostID", "String"),
-                Tuple.Create("datastoreName", "String"),
-                Tuple.Create("createDatastoreOnly", "Boolean"),
-                Tuple.Create("vlan", "Int"),
-                Tuple.Create("shouldRecoverTags", "Boolean"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationVsphereVmInitiateLiveMount",
-                "($snapshotFid: UUID!,$vmName: String,$disableNetwork: Boolean,$removeNetworkDevices: Boolean,$powerOn: Boolean,$keepMacAddresses: Boolean,$hostID: String,$datastoreName: String,$createDatastoreOnly: Boolean,$vlan: Int,$shouldRecoverTags: Boolean)",
-                "VsphereAsyncRequestStatus"
-                );
-            VsphereAsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (VsphereAsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.VsphereVmInitiateLiveMount(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.snapshotFid = <System.String>
-# OPTIONAL
-$inputs.Var.vmName = <System.String>
-# OPTIONAL
-$inputs.Var.disableNetwork = <System.Boolean>
-# OPTIONAL
-$inputs.Var.removeNetworkDevices = <System.Boolean>
-# OPTIONAL
-$inputs.Var.powerOn = <System.Boolean>
-# OPTIONAL
-$inputs.Var.keepMacAddresses = <System.Boolean>
-# OPTIONAL
-$inputs.Var.hostID = <System.String>
-# OPTIONAL
-$inputs.Var.datastoreName = <System.String>
-# OPTIONAL
-$inputs.Var.createDatastoreOnly = <System.Boolean>
-# OPTIONAL
-$inputs.Var.vlan = <System.Int32>
-# OPTIONAL
-$inputs.Var.shouldRecoverTags = <System.Boolean>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Mutation:
         // vsphereVmInitiateLiveMountV2(input: VsphereVmInitiateLiveMountV2Input!): AsyncRequestStatus!
         internal void InvokeMutationVsphereVmInitiateLiveMountV2()
         {
@@ -2482,74 +2059,6 @@ $inputs.Var.input = @{
 	}
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Mutation:
-        // vSphereVMBatchLiveMount(clusterUuid: UUID!, config: BatchMountSnapshotJobConfigInput!): BatchAsyncRequestStatus!
-        internal void InvokeMutationVsphereVmBatchLiveMount()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("clusterUuid", "UUID!"),
-                Tuple.Create("config", "BatchMountSnapshotJobConfigInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationVsphereVmBatchLiveMount",
-                "($clusterUuid: UUID!,$config: BatchMountSnapshotJobConfigInput!)",
-                "BatchAsyncRequestStatus"
-                );
-            BatchAsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (BatchAsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.VsphereVmBatchLiveMount(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.clusterUuid = <System.String>
-# REQUIRED
-$inputs.Var.config = @{
-	# REQUIRED
-	snapshots = @(
-		@{
-			# OPTIONAL
-			snapshotAfterDate = <DateTime>
-			# OPTIONAL
-			snapshotBeforeDate = <DateTime>
-			# OPTIONAL
-			snapshotId = <System.String>
-			# REQUIRED
-			config = @{
-				# OPTIONAL
-				createDatastoreOnly = <System.Boolean>
-				# OPTIONAL
-				dataStoreName = <System.String>
-				# OPTIONAL
-				hostId = <System.String>
-				# OPTIONAL
-				shouldRecoverTags = <System.Boolean>
-				# OPTIONAL
-				vlan = <System.Int32>
-				# OPTIONAL
-				mountExportSnapshotJobCommonOptions = @{
-					# OPTIONAL
-					disableNetwork = <System.Boolean>
-					# OPTIONAL
-					keepMacAddresses = <System.Boolean>
-					# OPTIONAL
-					powerOn = <System.Boolean>
-					# OPTIONAL
-					removeNetworkDevices = <System.Boolean>
-					# OPTIONAL
-					vmName = <System.String>
-				}
-			}
-			# REQUIRED
-			vmId = <System.String>
-		}
-	)
 }";
             BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
@@ -2721,34 +2230,6 @@ $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
 }";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Mutation:
-        // vsphereVMDeleteLiveMount(livemountId: UUID!, force: Boolean): VsphereAsyncRequestStatus!
-        internal void InvokeMutationVsphereVmDeleteLiveMount()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("livemountId", "UUID!"),
-                Tuple.Create("force", "Boolean"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationVsphereVmDeleteLiveMount",
-                "($livemountId: UUID!,$force: Boolean)",
-                "VsphereAsyncRequestStatus"
-                );
-            VsphereAsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (VsphereAsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.VsphereVmDeleteLiveMount(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.livemountId = <System.String>
-# OPTIONAL
-$inputs.Var.force = <System.Boolean>";
             BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
@@ -2949,6 +2430,102 @@ $inputs.Var.input = @{
 	isLegalHoldDownload = <System.Boolean>
 	# OPTIONAL
 	userNote = <System.String>
+}";
+            BuildInput(fieldSpecObj, inputExample);
+            BuildRequest(fieldSpecDoc);
+        }
+
+        // Invoke GraphQL Mutation:
+        // updateVsphereVm(input: UpdateVsphereVmInput!): RequestSuccess!
+        internal void InvokeMutationUpdateVsphereVm()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateVsphereVmInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateVsphereVm",
+                "($input: UpdateVsphereVmInput!)",
+                "RequestSuccess"
+                );
+            RequestSuccess? fieldSpecObj = null ;
+            if (this.Field != null) {
+                fieldSpecObj = (RequestSuccess)this.Field;
+            }
+            string fieldSpecDoc = Mutation.UpdateVsphereVm(ref fieldSpecObj);
+            string inputExample = @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+	# REQUIRED
+	vmUpdateProperties = @{
+		# OPTIONAL
+		guestCredential = @{
+			# REQUIRED
+			password = <System.String>
+			# REQUIRED
+			username = <System.String>
+		}
+		# OPTIONAL
+		shouldRefreshCacheAfterUpdate = <System.Boolean>
+		# OPTIONAL
+		guestCredentialId = <System.String>
+		# OPTIONAL
+		virtualMachineUpdate = @{
+			# OPTIONAL
+			cloudInstantiationSpec = @{
+				# REQUIRED
+				imageRetentionInSeconds = <System.Int64>
+			}
+			# OPTIONAL
+			configuredSlaDomainId = <System.String>
+			# OPTIONAL
+			isArrayIntegrationEnabled = <System.Boolean>
+			# OPTIONAL
+			isVmPaused = <System.Boolean>
+			# OPTIONAL
+			maxNestedVsphereSnapshots = <System.Int32>
+			# OPTIONAL
+			postBackupScript = @{
+				# REQUIRED
+				failureHandling = <VirtualMachineScriptDetailFailureHandling> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VirtualMachineScriptDetailFailureHandling]) for enum values.
+				# REQUIRED
+				scriptPath = <System.String>
+				# REQUIRED
+				timeoutMs = <System.Int64>
+			}
+			# OPTIONAL
+			postSnapScript = @{
+				# REQUIRED
+				failureHandling = <VirtualMachineScriptDetailFailureHandling> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VirtualMachineScriptDetailFailureHandling]) for enum values.
+				# REQUIRED
+				scriptPath = <System.String>
+				# REQUIRED
+				timeoutMs = <System.Int64>
+			}
+			# OPTIONAL
+			preBackupScript = @{
+				# REQUIRED
+				failureHandling = <VirtualMachineScriptDetailFailureHandling> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VirtualMachineScriptDetailFailureHandling]) for enum values.
+				# REQUIRED
+				scriptPath = <System.String>
+				# REQUIRED
+				timeoutMs = <System.Int64>
+			}
+			# OPTIONAL
+			throttlingSettings = @{
+				# OPTIONAL
+				cpuUtilizationThreshold = <System.Int32>
+				# OPTIONAL
+				datastoreIoLatencyThreshold = <System.Int32>
+				# OPTIONAL
+				ioLatencyThreshold = <System.Int32>
+			}
+			# OPTIONAL
+			snapshotConsistencyMandate = <VirtualMachineUpdateSnapshotConsistencyMandate> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VirtualMachineUpdateSnapshotConsistencyMandate]) for enum values.
+		}
+	}
 }";
             BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);

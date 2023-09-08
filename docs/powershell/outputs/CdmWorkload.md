@@ -19,9 +19,9 @@ Supported in v5.0+
 - retentionSlaDomainId: System.String
   - Supported in v5.2+
   The ID of the SLA Domain whose retention policy is in use.
-- effectiveSlaHolder: EffectiveSlaHolder
-  - 
 - slaAssignable: SlaAssignable
   - 
 - slaAssignment: SnappableSlaAssignment
+  - 
+- effectiveSlaHolder: EffectiveSlaHolder
   - 

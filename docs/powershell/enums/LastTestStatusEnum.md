@@ -1,4 +1,0 @@
-### LastTestStatusEnum
-- NotExist
-- Succeeded
-- Failed

@@ -12,8 +12,6 @@ Supported in v5.0+
   - Supported in v5.0+
   v5.0-v5.2: 
   v5.3+: IP address or hostname of the host.
-- nasBaseConfig: NasBaseConfig
-  - Supported in v5.0+
 - operatingSystem: System.String
   - Supported in v5.0+
   v5.0-v5.2: 
@@ -51,3 +49,5 @@ Supported in v5.0+
   - 
 - mssqlCbtEnabled: MssqlCbtStatusType
   - 
+- nasBaseConfig: NasBaseConfig
+  - Supported in v5.0+

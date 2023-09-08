@@ -5,8 +5,6 @@ Supported in v5.0+
   - Supported in v5.0+
 - datacenterId: System.String
   - Supported in v5.0+
-- datastores: list of DataStoreSummarys
-  - Supported in v5.0+
 - effectiveSlaDomainId: System.String
   - Supported in v5.0
 - effectiveSlaDomainName: System.String
@@ -25,11 +23,13 @@ Supported in v5.0+
   API Version of the ESXi Host.
 - isInVmc: System.Boolean
   - Supported in v5.3+
-- effectiveSlaHolder: EffectiveSlaHolder
-  - 
 - slaAssignable: SlaAssignable
   - 
 - ioFilterStatus: HostFilterStatus
   - 
 - ioFilterUiStatus: HostUiFilterStatus
+  - 
+- datastores: list of DataStoreSummarys
+  - Supported in v5.0+
+- effectiveSlaHolder: EffectiveSlaHolder
   - 

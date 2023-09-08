@@ -918,140 +918,6 @@ $inputs.Var.input = @{
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -CloudAccountValidate
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -CloudAccountValidate -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscMutateAws -CloudAccountValidate -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.awsCloudAccountValidateArg = @{
-	# REQUIRED
-	features = @(
-		<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-	)
-	# OPTIONAL
-	awsAdminAccount = @{
-		# OPTIONAL
-		id = <System.String>
-		# OPTIONAL
-		nativeId = <System.String>
-		# OPTIONAL
-		accountName = <System.String>
-		# OPTIONAL
-		seamlessFlowEnabled = <System.Boolean>
-		# OPTIONAL
-		cloudType = <AwsCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
-	}
-	# REQUIRED
-	awsChildAccounts = @(
-		@{
-			# OPTIONAL
-			id = <System.String>
-			# OPTIONAL
-			nativeId = <System.String>
-			# OPTIONAL
-			accountName = <System.String>
-			# OPTIONAL
-			seamlessFlowEnabled = <System.Boolean>
-			# OPTIONAL
-			cloudType = <AwsCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
-		}
-	)
-}
-"@
-    Write-Message "Invoke-RscMutateAws -CloudAccountValidate" @"
-    This endpoint is deprecated.
-"@ "[GraphQL: awsCloudAccountValidate]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscMutateAws -CloudAccountInitiate
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -CloudAccountInitiate -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscMutateAws -CloudAccountInitiate -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.awsCloudAccountInitiateArg = @{
-	# REQUIRED
-	action = <CloudAccountAction> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountAction]) for enum values.
-	# REQUIRED
-	features = @(
-		<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-	)
-	# OPTIONAL
-	awsAdminAccount = @{
-		# OPTIONAL
-		id = <System.String>
-		# OPTIONAL
-		nativeId = <System.String>
-		# OPTIONAL
-		accountName = <System.String>
-		# OPTIONAL
-		seamlessFlowEnabled = <System.Boolean>
-		# OPTIONAL
-		cloudType = <AwsCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
-	}
-	# REQUIRED
-	awsChildAccounts = @(
-		@{
-			# OPTIONAL
-			id = <System.String>
-			# OPTIONAL
-			nativeId = <System.String>
-			# OPTIONAL
-			accountName = <System.String>
-			# OPTIONAL
-			seamlessFlowEnabled = <System.Boolean>
-			# OPTIONAL
-			cloudType = <AwsCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
-		}
-	)
-}
-"@
-    Write-Message "Invoke-RscMutateAws -CloudAccountInitiate" @"
-    This endpoint is deprecated.
-"@ "[GraphQL: awsCloudAccountInitiate]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscMutateAws -NativeProtectionAccountAdd
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -NativeProtectionAccountAdd -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscMutateAws -NativeProtectionAccountAdd -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.awsNativeProtectionAccountAddArg = @{
-	# REQUIRED
-	accountId = <System.String>
-	# REQUIRED
-	name = <System.String>
-	# REQUIRED
-	regions = @(
-		<System.String>
-	)
-}
-"@
-    Write-Message "Invoke-RscMutateAws -NativeProtectionAccountAdd" @"
-    This endpoint is deprecated.
-"@ "[GraphQL: awsNativeProtectionAccountAdd]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
 # Invoke-RscMutateAws -ValidateAndCreateCloudAccount
 # -------------------------------------------------------------------
 
@@ -1334,29 +1200,6 @@ $inputs.Var.input = @{
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -CloudAccountUpdateFeature
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -CloudAccountUpdateFeature -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscMutateAws -CloudAccountUpdateFeature -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.cloudAccountUuid = <System.String>
-# REQUIRED
-$inputs.Var.features = @(
-	<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-)
-"@
-    Write-Message "Invoke-RscMutateAws -CloudAccountUpdateFeature" @"
-    This endpoint is deprecated.
-"@ "[GraphQL: awsCloudAccountUpdateFeature]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
 # Invoke-RscMutateAws -CreateExocomputeConfigs
 # -------------------------------------------------------------------
 
@@ -1536,54 +1379,6 @@ $inputs.Var.input = @{
     Write-Message "Invoke-RscMutateAws -AddIamUserBasedCloudAccount" @"
     Adds an IAM user-based AWS cloud account and enables the features specified in the input after successful validation of the request.
 "@ "[GraphQL: addAwsIamUserBasedCloudAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscMutateAws -DeleteIamUserBasedCloudAccount
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -DeleteIamUserBasedCloudAccount -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscMutateAws -DeleteIamUserBasedCloudAccount -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	awsCloudAccountId = <System.String>
-	# REQUIRED
-	feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-}
-"@
-    Write-Message "Invoke-RscMutateAws -DeleteIamUserBasedCloudAccount" @"
-    Deletes IAM user-based AWS cloud account.
-"@ "[GraphQL: deleteAwsIamUserBasedCloudAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscMutateAws -DeleteCloudAccountWithoutCft
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -DeleteCloudAccountWithoutCft -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscMutateAws -DeleteCloudAccountWithoutCft -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	awsCloudAccountId = <System.String>
-	# REQUIRED
-	feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-}
-"@
-    Write-Message "Invoke-RscMutateAws -DeleteCloudAccountWithoutCft" @"
-    Removes AWS cloud account without cleaning up the associated permissions from the AWS cloud account. Customer needs to clean up the permissions in the AWS account themselves. This mutation is supported only for IAM user-based and authentication server-based AWS cloud accounts.
-"@ "[GraphQL: deleteAwsCloudAccountWithoutCft]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
@@ -3405,6 +3200,17 @@ $inputs.Var.input = @{
 	features = @(
 		<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 	)
+	# OPTIONAL
+	featuresToUpgrade = @(
+		@{
+			# REQUIRED
+			featureType = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+			# REQUIRED
+			permissionsGroups = @(
+				<PermissionsGroup> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+			)
+		}
+	)
 	# REQUIRED
 	azureSubscriptionRubrikIds = @(
 		<System.String>
@@ -3657,6 +3463,15 @@ $inputs.Var.input = @{
 	cloudAccountId = <System.String>
 	# REQUIRED
 	feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	# OPTIONAL
+	featureToUpgrade = @{
+		# REQUIRED
+		featureType = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+		# REQUIRED
+		permissionsGroups = @(
+			<PermissionsGroup> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+		)
+	}
 }
 "@
     Write-Message "Invoke-RscMutateAzure -UpgradeCloudAccountPermissionsWithoutOauth" @"
@@ -3910,209 +3725,6 @@ $inputs.Var.input = @{
     Write-Message "Invoke-RscMutateAzure -DeleteCluster" @"
     Delete a Rubrik Cloud Cluster on Azure.
 "@ "[GraphQL: deleteAzureCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscMutateAzure -KickoffAdAppSetup
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -KickoffAdAppSetup -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscMutateAzure -KickoffAdAppSetup -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	domainName = <System.String>
-	# REQUIRED
-	region = <AzureAdRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdRegion]) for enum values.
-	# OPTIONAL
-	azureADApp = @{
-		# OPTIONAL
-		clientId = <System.String>
-		# OPTIONAL
-		clientSecret = <System.String>
-	}
-}
-"@
-    Write-Message "Invoke-RscMutateAzure -KickoffAdAppSetup" @"
-    Initiates the Azure AD app creation flow.
-"@ "[GraphQL: kickoffAzureAdAppSetup]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscMutateAzure -CompleteAdAppSetup
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -CompleteAdAppSetup -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscMutateAzure -CompleteAdAppSetup -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	domainName = <System.String>
-	# REQUIRED
-	stateToken = <System.String>
-	# OPTIONAL
-	kmsSpec = @{
-		# OPTIONAL
-		cloudType = <O365AzureCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365AzureCloudType]) for enum values.
-		# OPTIONAL
-		tenantId = <System.String>
-		# OPTIONAL
-		kmsId = <System.String>
-		# OPTIONAL
-		appId = <System.String>
-		# OPTIONAL
-		appSecret = <System.String>
-		# OPTIONAL
-		keyName = <System.String>
-		# OPTIONAL
-		kekNameColossus = <System.String>
-	}
-}
-"@
-    Write-Message "Invoke-RscMutateAzure -CompleteAdAppSetup" @"
-    Completes the creation flow for an Azure AD app.
-"@ "[GraphQL: completeAzureAdAppSetup]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscMutateAzure -DeleteAdDirectory
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -DeleteAdDirectory -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscMutateAzure -DeleteAdDirectory -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.workloadFid = <System.String>
-"@
-    Write-Message "Invoke-RscMutateAzure -DeleteAdDirectory" @"
-    Deletes an Azure AD directory.
-"@ "[GraphQL: deleteAzureAdDirectory]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscMutateAzure -BackupAdDirectory
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -BackupAdDirectory -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscMutateAzure -BackupAdDirectory -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	workloadFids = @(
-		<System.String>
-	)
-}
-"@
-    Write-Message "Invoke-RscMutateAzure -BackupAdDirectory" @"
-    Backs up the Azure AD directory.
-"@ "[GraphQL: backupAzureAdDirectory]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscMutateAzure -InitiateAdAppUpdate
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -InitiateAdAppUpdate -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscMutateAzure -InitiateAdAppUpdate -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	workloadFid = <System.String>
-	# OPTIONAL
-	azureADApp = @{
-		# OPTIONAL
-		clientId = <System.String>
-		# OPTIONAL
-		clientSecret = <System.String>
-	}
-}
-"@
-    Write-Message "Invoke-RscMutateAzure -InitiateAdAppUpdate" @"
-    Initiates an update to the Azure AD directory App.
-"@ "[GraphQL: initiateAzureAdAppUpdate]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscMutateAzure -CompleteAdAppUpdate
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -CompleteAdAppUpdate -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscMutateAzure -CompleteAdAppUpdate -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	workloadFid = <System.String>
-	# REQUIRED
-	stateToken = <System.String>
-}
-"@
-    Write-Message "Invoke-RscMutateAzure -CompleteAdAppUpdate" @"
-    Completes an update to the Azure AD directory App.
-"@ "[GraphQL: completeAzureAdAppUpdate]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscMutateAzure -RestoreAdObjectsWithPassword
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -RestoreAdObjectsWithPassword -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscMutateAzure -RestoreAdObjectsWithPassword -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	workloadFid = <System.String>
-	# REQUIRED
-	snapshotFid = <System.String>
-	# REQUIRED
-	password = <System.String>
-	# REQUIRED
-	objectTypeToIdMap = @(
-		@{
-			# REQUIRED
-			objectId = <System.String>
-			# REQUIRED
-			azureAdObjectType = <AzureAdObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
-		}
-	)
-}
-"@
-    Write-Message "Invoke-RscMutateAzure -RestoreAdObjectsWithPassword" @"
-    Restores the Azure AD directory.
-"@ "[GraphQL: restoreAzureAdObjectsWithPassword]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 
@@ -4723,105 +4335,6 @@ $inputs.Var.input = @{
 Supported in v5.3+
 Delete the provided failover clusters.
 "@ "[GraphQL: bulkDeleteFailoverCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscMutateCluster -AddK8s
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscMutateCluster -AddK8s -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscMutateCluster -AddK8s -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	clusterUuid = <System.String>
-	# REQUIRED
-	config = @{
-		# OPTIONAL
-		registry = <System.String>
-		# OPTIONAL
-		distribution = <System.String>
-		# OPTIONAL
-		k8SAwsConfig = @{
-			# REQUIRED
-			cloudAccountId = <System.String>
-			# REQUIRED
-			eksClusterArn = <System.String>
-		}
-		# OPTIONAL
-		region = <System.String>
-		# REQUIRED
-		kubeconfig = <System.String>
-		# REQUIRED
-		name = <System.String>
-	}
-}
-"@
-    Write-Message "Invoke-RscMutateCluster -AddK8s" @"
-    Add a Kubernetes cluster
-
-Supported in v9.0+
-Adds a Kubernetes cluster to the Rubrik cluster.
-"@ "[GraphQL: addK8sCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscMutateCluster -DeleteK8s
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscMutateCluster -DeleteK8s -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscMutateCluster -DeleteK8s -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.input = @{
-	# OPTIONAL
-	preserveSnapshots = <System.Boolean>
-	# REQUIRED
-	id = <System.String>
-}
-"@
-    Write-Message "Invoke-RscMutateCluster -DeleteK8s" @"
-    Delete a Kubernetes cluster
-
-Supported in v9.0+
-Deletes a Kubernetes cluster by specifying the cluster ID.
-"@ "[GraphQL: deleteK8sCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscMutateCluster -RefreshK8sV2
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscMutateCluster -RefreshK8sV2 -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscMutateCluster -RefreshK8sV2 -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	clusterUuid = <System.String>
-	# REQUIRED
-	id = <System.String>
-}
-"@
-    Write-Message "Invoke-RscMutateCluster -RefreshK8sV2" @"
-    Initiate an on-demand refresh for a Kubernetes cluster
-
-Supported in v9.0+
-Initiates an on-demand refresh request for the specified Kubernetes cluster.
-"@ "[GraphQL: refreshK8sV2Cluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
@@ -6542,6 +6055,10 @@ $inputs.Var.input = @{
 		targetDatabaseName = <System.String>
 		# OPTIONAL
 		versionTime = <DateTime>
+		# OPTIONAL
+		restoreThrottleInBytesPerSecond = <System.Int64>
+		# OPTIONAL
+		isRestoreWithIndex = <System.Boolean>
 		# REQUIRED
 		sourceMongoClusterId = <System.String>
 		# REQUIRED
@@ -6552,47 +6069,6 @@ $inputs.Var.input = @{
     Write-Message "Invoke-RscMutateMongo -RecoverSource" @"
     Recover a MongoDB source from Rubrik CDM cluster.
 "@ "[GraphQL: recoverMongoSource]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscMutateMongo -CreateOnDemandDatabaseBackup
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscMutateMongo -CreateOnDemandDatabaseBackup -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscMutateMongo -CreateOnDemandDatabaseBackup -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	config = @{
-		# REQUIRED
-		isFullbackup = <System.Boolean>
-		# REQUIRED
-		slaId = <System.String>
-	}
-	# REQUIRED
-	id = <System.String>
-}
-# REQUIRED
-$inputs.Var.attributes = @(
-	@{
-		# REQUIRED
-		value = <System.String>
-		# REQUIRED
-		attribute = <FlagAttribute> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FlagAttribute]) for enum values.
-}
-)
-"@
-    Write-Message "Invoke-RscMutateMongo -CreateOnDemandDatabaseBackup" @"
-    Take an on-demand snapshot for a MongoDB database
-
-Supported in v9.0+
-Initiates a job to take an on-demand, full or incremental snapshot of the specified MongoDB database.
-"@ "[GraphQL: createOnDemandMongoDatabaseBackup]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
@@ -9230,116 +8706,6 @@ $inputs.Var.input = @{
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -ExportTeamsFiles
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscMutateO365 -ExportTeamsFiles -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscMutateO365 -ExportTeamsFiles -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	filesToRestore = @(
-		@{
-			# REQUIRED
-			fileId = <System.String>
-			# REQUIRED
-			fileName = <System.String>
-			# REQUIRED
-			fileSnapshotsToRestore = @(
-				@{
-					# REQUIRED
-					snapshotId = <System.String>
-					# REQUIRED
-					snapshotNum = <System.Int32>
-					# REQUIRED
-					fileSize = <System.Int64>
-				}
-			)
-			# OPTIONAL
-			channelInfo = @{
-				# REQUIRED
-				TeamID = <System.String>
-				# OPTIONAL
-				ChannelID = <System.String>
-				# OPTIONAL
-				ChannelName = <System.String>
-				# OPTIONAL
-				ChannelFolderName = <System.String>
-				# OPTIONAL
-				ChannelNaturalId = <System.String>
-				# REQUIRED
-				channelMembershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
-			}
-		}
-	)
-	# REQUIRED
-	foldersToRestore = @(
-		@{
-			# REQUIRED
-			folderId = <System.String>
-			# REQUIRED
-			folderName = <System.String>
-			# REQUIRED
-			folderSize = <System.Int64>
-			# REQUIRED
-			snapshotId = <System.String>
-			# REQUIRED
-			snapshotNum = <System.Int32>
-			# OPTIONAL
-			channelInfo = @{
-				# REQUIRED
-				TeamID = <System.String>
-				# OPTIONAL
-				ChannelID = <System.String>
-				# OPTIONAL
-				ChannelName = <System.String>
-				# OPTIONAL
-				ChannelFolderName = <System.String>
-				# OPTIONAL
-				ChannelNaturalId = <System.String>
-				# REQUIRED
-				channelMembershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
-			}
-		}
-	)
-	# OPTIONAL
-	destTeamsChannelInfo = @{
-		# REQUIRED
-		TeamID = <System.String>
-		# OPTIONAL
-		ChannelID = <System.String>
-		# OPTIONAL
-		ChannelName = <System.String>
-		# OPTIONAL
-		ChannelFolderName = <System.String>
-		# OPTIONAL
-		ChannelNaturalId = <System.String>
-		# REQUIRED
-		channelMembershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
-	}
-	# REQUIRED
-	shouldCreateDestChannel = <System.Boolean>
-	# REQUIRED
-	actionType = <O365RestoreActionType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365RestoreActionType]) for enum values.
-	# REQUIRED
-	channelRecoveryType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
-	# REQUIRED
-	recoverWithLatestPermissions = <System.Boolean>
-	# REQUIRED
-	snapshotSequenceNum = <System.Int32>
-}
-"@
-    Write-Message "Invoke-RscMutateO365 -ExportTeamsFiles" @"
-    Export Team files.
-"@ "[GraphQL: exportO365TeamsFiles]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
 # Invoke-RscMutateO365 -RestoreTeamsConversations
 # -------------------------------------------------------------------
 
@@ -10015,581 +9381,6 @@ $inputs.Var.input = @{
     Write-Message "Invoke-RscMutateO365 -RestoreSnappable" @"
     Restores an O365 snappable.
 "@ "[GraphQL: restoreO365Snappable]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscMutateO365 -ExportWorkload
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscMutateO365 -ExportWorkload -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscMutateO365 -ExportWorkload -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	snappableType = <SnappableType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnappableType]) for enum values.
-	# REQUIRED
-	sourceSnappableUuid = <System.String>
-	# REQUIRED
-	destinationSnappableUuid = <System.String>
-	# REQUIRED
-	restoreConfig = @{
-		# OPTIONAL
-		SharePointDriveRestoreConfig = @{
-			# REQUIRED
-			driveRestoreConfig = @{
-				# REQUIRED
-				filesToRestore = @(
-					@{
-						# REQUIRED
-						fileId = <System.String>
-						# REQUIRED
-						fileName = <System.String>
-						# REQUIRED
-						fileSnapshotsToRestore = @(
-							@{
-								# REQUIRED
-								snapshotId = <System.String>
-								# REQUIRED
-								snapshotNum = <System.Int32>
-								# REQUIRED
-								fileSize = <System.Int64>
-							}
-						)
-						# OPTIONAL
-						channelInfo = @{
-							# REQUIRED
-							TeamID = <System.String>
-							# OPTIONAL
-							ChannelID = <System.String>
-							# OPTIONAL
-							ChannelName = <System.String>
-							# OPTIONAL
-							ChannelFolderName = <System.String>
-							# OPTIONAL
-							ChannelNaturalId = <System.String>
-							# REQUIRED
-							channelMembershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
-						}
-					}
-				)
-				# REQUIRED
-				foldersToRestore = @(
-					@{
-						# REQUIRED
-						folderId = <System.String>
-						# REQUIRED
-						folderName = <System.String>
-						# REQUIRED
-						folderSize = <System.Int64>
-						# REQUIRED
-						snapshotId = <System.String>
-						# REQUIRED
-						snapshotNum = <System.Int32>
-						# OPTIONAL
-						channelInfo = @{
-							# REQUIRED
-							TeamID = <System.String>
-							# OPTIONAL
-							ChannelID = <System.String>
-							# OPTIONAL
-							ChannelName = <System.String>
-							# OPTIONAL
-							ChannelFolderName = <System.String>
-							# OPTIONAL
-							ChannelNaturalId = <System.String>
-							# REQUIRED
-							channelMembershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
-						}
-					}
-				)
-				# REQUIRED
-				restoreFolderPath = <System.String>
-			}
-			# OPTIONAL
-			docLibName = <System.String>
-			# OPTIONAL
-			parentSiteUuid = <System.String>
-		}
-		# OPTIONAL
-		sharePointListRestoreConfig = @{
-			# REQUIRED
-			itemsToRestore = @(
-				@{
-					# REQUIRED
-					itemId = <System.String>
-					# REQUIRED
-					itemName = <System.String>
-					# REQUIRED
-					itemSnapshotsToRestore = @(
-						@{
-							# REQUIRED
-							snapshotId = <System.String>
-							# REQUIRED
-							snapshotNum = <System.Int32>
-						}
-					)
-				}
-			)
-			# REQUIRED
-			foldersToRestore = @(
-				@{
-					# REQUIRED
-					folderId = <System.String>
-					# REQUIRED
-					folderName = <System.String>
-					# REQUIRED
-					folderSize = <System.Int64>
-					# REQUIRED
-					snapshotId = <System.String>
-					# REQUIRED
-					snapshotNum = <System.Int32>
-					# OPTIONAL
-					channelInfo = @{
-						# REQUIRED
-						TeamID = <System.String>
-						# OPTIONAL
-						ChannelID = <System.String>
-						# OPTIONAL
-						ChannelName = <System.String>
-						# OPTIONAL
-						ChannelFolderName = <System.String>
-						# OPTIONAL
-						ChannelNaturalId = <System.String>
-						# REQUIRED
-						channelMembershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
-					}
-				}
-			)
-			# REQUIRED
-			restoreFolderPath = <System.String>
-			# OPTIONAL
-			listName = <System.String>
-			# OPTIONAL
-			parentSiteUuid = <System.String>
-		}
-		# OPTIONAL
-		sharePointFullRestoreConfig = @{
-			# OPTIONAL
-			spObjectToRestore = @{
-				# REQUIRED
-				objectSharepointId = <System.String>
-				# REQUIRED
-				objectName = <System.String>
-				# OPTIONAL
-				objectType = <SnappableType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnappableType]) for enum values.
-				# REQUIRED
-				snapshotId = <System.String>
-				# REQUIRED
-				snapshotNum = <System.Int32>
-			}
-			# OPTIONAL
-			spItemsToRestore = @{
-				# REQUIRED
-				sharepointId = <System.String>
-				# OPTIONAL
-				snappableType = <SnappableType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnappableType]) for enum values.
-				# REQUIRED
-				listItems = @(
-					@{
-						# REQUIRED
-						itemId = <System.String>
-						# REQUIRED
-						itemName = <System.String>
-						# REQUIRED
-						itemSnapshotsToRestore = @(
-							@{
-								# REQUIRED
-								snapshotId = <System.String>
-								# REQUIRED
-								snapshotNum = <System.Int32>
-							}
-						)
-					}
-				)
-				# REQUIRED
-				folderItems = @(
-					@{
-						# REQUIRED
-						folderId = <System.String>
-						# REQUIRED
-						folderName = <System.String>
-						# REQUIRED
-						folderSize = <System.Int64>
-						# REQUIRED
-						snapshotId = <System.String>
-						# REQUIRED
-						snapshotNum = <System.Int32>
-						# OPTIONAL
-						channelInfo = @{
-							# REQUIRED
-							TeamID = <System.String>
-							# OPTIONAL
-							ChannelID = <System.String>
-							# OPTIONAL
-							ChannelName = <System.String>
-							# OPTIONAL
-							ChannelFolderName = <System.String>
-							# OPTIONAL
-							ChannelNaturalId = <System.String>
-							# REQUIRED
-							channelMembershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
-						}
-					}
-				)
-				# REQUIRED
-				fileItems = @(
-					@{
-						# REQUIRED
-						fileId = <System.String>
-						# REQUIRED
-						fileName = <System.String>
-						# REQUIRED
-						fileSnapshotsToRestore = @(
-							@{
-								# REQUIRED
-								snapshotId = <System.String>
-								# REQUIRED
-								snapshotNum = <System.Int32>
-								# REQUIRED
-								fileSize = <System.Int64>
-							}
-						)
-						# OPTIONAL
-						channelInfo = @{
-							# REQUIRED
-							TeamID = <System.String>
-							# OPTIONAL
-							ChannelID = <System.String>
-							# OPTIONAL
-							ChannelName = <System.String>
-							# OPTIONAL
-							ChannelFolderName = <System.String>
-							# OPTIONAL
-							ChannelNaturalId = <System.String>
-							# REQUIRED
-							channelMembershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
-						}
-					}
-				)
-				# REQUIRED
-				arePageLibraryItems = <System.Boolean>
-			}
-			# OPTIONAL
-			targetObjectUuid = <System.String>
-			# OPTIONAL
-			targetObjectType = <SnappableType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnappableType]) for enum values.
-			# REQUIRED
-			shouldCreateNewObject = <System.Boolean>
-			# OPTIONAL
-			newObjectType = <SnappableType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnappableType]) for enum values.
-			# OPTIONAL
-			newObjectName = <System.String>
-		}
-		# OPTIONAL
-		OneDriveRestoreConfig = @{
-			# REQUIRED
-			filesToRestore = @(
-				@{
-					# REQUIRED
-					fileId = <System.String>
-					# REQUIRED
-					fileName = <System.String>
-					# REQUIRED
-					fileSnapshotsToRestore = @(
-						@{
-							# REQUIRED
-							snapshotId = <System.String>
-							# REQUIRED
-							snapshotNum = <System.Int32>
-							# REQUIRED
-							fileSize = <System.Int64>
-						}
-					)
-					# OPTIONAL
-					channelInfo = @{
-						# REQUIRED
-						TeamID = <System.String>
-						# OPTIONAL
-						ChannelID = <System.String>
-						# OPTIONAL
-						ChannelName = <System.String>
-						# OPTIONAL
-						ChannelFolderName = <System.String>
-						# OPTIONAL
-						ChannelNaturalId = <System.String>
-						# REQUIRED
-						channelMembershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
-					}
-				}
-			)
-			# REQUIRED
-			foldersToRestore = @(
-				@{
-					# REQUIRED
-					folderId = <System.String>
-					# REQUIRED
-					folderName = <System.String>
-					# REQUIRED
-					folderSize = <System.Int64>
-					# REQUIRED
-					snapshotId = <System.String>
-					# REQUIRED
-					snapshotNum = <System.Int32>
-					# OPTIONAL
-					channelInfo = @{
-						# REQUIRED
-						TeamID = <System.String>
-						# OPTIONAL
-						ChannelID = <System.String>
-						# OPTIONAL
-						ChannelName = <System.String>
-						# OPTIONAL
-						ChannelFolderName = <System.String>
-						# OPTIONAL
-						ChannelNaturalId = <System.String>
-						# REQUIRED
-						channelMembershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
-					}
-				}
-			)
-			# REQUIRED
-			restoreFolderPath = <System.String>
-		}
-		# OPTIONAL
-		TeamsRestoreConfig = @{
-			# OPTIONAL
-			filesRestoreConfig = @{
-				# REQUIRED
-				filesToRestore = @(
-					@{
-						# REQUIRED
-						fileId = <System.String>
-						# REQUIRED
-						fileName = <System.String>
-						# REQUIRED
-						fileSnapshotsToRestore = @(
-							@{
-								# REQUIRED
-								snapshotId = <System.String>
-								# REQUIRED
-								snapshotNum = <System.Int32>
-								# REQUIRED
-								fileSize = <System.Int64>
-							}
-						)
-						# OPTIONAL
-						channelInfo = @{
-							# REQUIRED
-							TeamID = <System.String>
-							# OPTIONAL
-							ChannelID = <System.String>
-							# OPTIONAL
-							ChannelName = <System.String>
-							# OPTIONAL
-							ChannelFolderName = <System.String>
-							# OPTIONAL
-							ChannelNaturalId = <System.String>
-							# REQUIRED
-							channelMembershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
-						}
-					}
-				)
-				# REQUIRED
-				foldersToRestore = @(
-					@{
-						# REQUIRED
-						folderId = <System.String>
-						# REQUIRED
-						folderName = <System.String>
-						# REQUIRED
-						folderSize = <System.Int64>
-						# REQUIRED
-						snapshotId = <System.String>
-						# REQUIRED
-						snapshotNum = <System.Int32>
-						# OPTIONAL
-						channelInfo = @{
-							# REQUIRED
-							TeamID = <System.String>
-							# OPTIONAL
-							ChannelID = <System.String>
-							# OPTIONAL
-							ChannelName = <System.String>
-							# OPTIONAL
-							ChannelFolderName = <System.String>
-							# OPTIONAL
-							ChannelNaturalId = <System.String>
-							# REQUIRED
-							channelMembershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
-						}
-					}
-				)
-				# REQUIRED
-				restoreFolderPath = <System.String>
-			}
-			# OPTIONAL
-			conversationsRestoreConfig = @{
-				# OPTIONAL
-				SearchFilter = @{
-					# OPTIONAL
-					PostedTime = @{
-						# OPTIONAL
-						FromTime = <System.Int64>
-						# OPTIONAL
-						UntilTime = <System.Int64>
-					}
-					# OPTIONAL
-					PostedBy = <System.String>
-					# OPTIONAL
-					SnapshotId = <System.String>
-				}
-				# OPTIONAL
-				ChannelInfoForFullRestore = @{
-					# REQUIRED
-					TeamID = <System.String>
-					# OPTIONAL
-					ChannelID = <System.String>
-					# OPTIONAL
-					ChannelName = <System.String>
-					# OPTIONAL
-					ChannelFolderName = <System.String>
-					# OPTIONAL
-					ChannelFolderId = <System.String>
-					# OPTIONAL
-					ChannelNaturalId = <System.String>
-				}
-				# REQUIRED
-				RefreshTokenEncrypted = <System.String>
-				# REQUIRED
-				O365AppID = <System.String>
-				# REQUIRED
-				ChannelsToRestore = @(
-					@{
-						# REQUIRED
-						TeamID = <System.String>
-						# OPTIONAL
-						ChannelID = <System.String>
-						# OPTIONAL
-						ChannelName = <System.String>
-						# OPTIONAL
-						ChannelFolderName = <System.String>
-						# OPTIONAL
-						ChannelFolderId = <System.String>
-						# OPTIONAL
-						ChannelNaturalId = <System.String>
-					}
-				)
-				# REQUIRED
-				ShouldRestoreFileAttachments = <System.Boolean>
-			}
-			# OPTIONAL
-			destChannelInfo = @{
-				# REQUIRED
-				TeamID = <System.String>
-				# OPTIONAL
-				ChannelID = <System.String>
-				# OPTIONAL
-				ChannelName = <System.String>
-				# OPTIONAL
-				ChannelFolderName = <System.String>
-				# OPTIONAL
-				ChannelNaturalId = <System.String>
-				# REQUIRED
-				channelMembershipType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
-			}
-			# REQUIRED
-			shouldCreateDestChannel = <System.Boolean>
-			# REQUIRED
-			channelType = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
-			# REQUIRED
-			restoreLatestPermissions = <System.Boolean>
-			# REQUIRED
-			snapshotSequenceNum = <System.Int32>
-		}
-		# OPTIONAL
-		MailboxRestoreConfig = @{
-			# OPTIONAL
-			SnapshotUUID = <System.String>
-			# REQUIRED
-			RestoreConfigs = @(
-				@{
-					# REQUIRED
-					SnapshotUUID = <System.String>
-					# OPTIONAL
-					EmailID = <System.String>
-					# OPTIONAL
-					FolderID = <System.String>
-				}
-			)
-		}
-		# OPTIONAL
-		calendarRestoreConfig = @{
-			# REQUIRED
-			eventsToRestore = @(
-				@{
-					# REQUIRED
-					eventId = <System.String>
-					# REQUIRED
-					snapshotId = <System.String>
-				}
-			)
-			# REQUIRED
-			calendarsToRestore = @(
-				@{
-					# REQUIRED
-					calendarId = <System.String>
-					# REQUIRED
-					snapshotId = <System.String>
-				}
-			)
-			# REQUIRED
-			calendarGroupsToRestore = @(
-				@{
-					# REQUIRED
-					calendarGroupId = <System.String>
-					# REQUIRED
-					snapshotId = <System.String>
-				}
-			)
-		}
-		# OPTIONAL
-		contactsRestoreConfig = @{
-			# REQUIRED
-			contactsToRestore = @(
-				@{
-					# REQUIRED
-					contactId = <System.String>
-					# REQUIRED
-					snapshotId = <System.String>
-					# REQUIRED
-					snapshotNum = <System.Int32>
-				}
-			)
-			# REQUIRED
-			contactFoldersToRestore = @(
-				@{
-					# REQUIRED
-					contactFolderId = <System.String>
-					# REQUIRED
-					snapshotId = <System.String>
-					# REQUIRED
-					snapshotNum = <System.Int32>
-				}
-			)
-		}
-	}
-	# REQUIRED
-	actionType = <O365RestoreActionType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365RestoreActionType]) for enum values.
-}
-"@
-    Write-Message "Invoke-RscMutateO365 -ExportWorkload" @"
-    Export an O365 workload.
-"@ "[GraphQL: exportO365Workload]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
@@ -12161,645 +10952,6 @@ $inputs.Var.input = @{
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateSla -EditGlobal
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscMutateSla -EditGlobal -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscMutateSla -EditGlobal -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.globalSlaEditRequest = @{
-	# OPTIONAL
-	id = <System.String>
-	# OPTIONAL
-	name = <System.String>
-	# OPTIONAL
-	description = <System.String>
-	# OPTIONAL
-	snapshotSchedule = @{
-		# OPTIONAL
-		minute = @{
-			# OPTIONAL
-			basicSchedule = @{
-				# OPTIONAL
-				frequency = <System.Int32>
-				# OPTIONAL
-				retention = <System.Int32>
-				# OPTIONAL
-				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-		}
-		# OPTIONAL
-		hourly = @{
-			# OPTIONAL
-			basicSchedule = @{
-				# OPTIONAL
-				frequency = <System.Int32>
-				# OPTIONAL
-				retention = <System.Int32>
-				# OPTIONAL
-				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-		}
-		# OPTIONAL
-		daily = @{
-			# OPTIONAL
-			basicSchedule = @{
-				# OPTIONAL
-				frequency = <System.Int32>
-				# OPTIONAL
-				retention = <System.Int32>
-				# OPTIONAL
-				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-		}
-		# OPTIONAL
-		weekly = @{
-			# OPTIONAL
-			basicSchedule = @{
-				# OPTIONAL
-				frequency = <System.Int32>
-				# OPTIONAL
-				retention = <System.Int32>
-				# OPTIONAL
-				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-			# OPTIONAL
-			dayOfWeek = <DayOfWeek> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
-		}
-		# OPTIONAL
-		monthly = @{
-			# OPTIONAL
-			basicSchedule = @{
-				# OPTIONAL
-				frequency = <System.Int32>
-				# OPTIONAL
-				retention = <System.Int32>
-				# OPTIONAL
-				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-			# OPTIONAL
-			dayOfMonth = <DayOfMonth> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfMonth]) for enum values.
-		}
-		# OPTIONAL
-		quarterly = @{
-			# OPTIONAL
-			basicSchedule = @{
-				# OPTIONAL
-				frequency = <System.Int32>
-				# OPTIONAL
-				retention = <System.Int32>
-				# OPTIONAL
-				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-			# OPTIONAL
-			dayOfQuarter = <DayOfQuarter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfQuarter]) for enum values.
-			# OPTIONAL
-			quarterStartMonth = <Month> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
-		}
-		# OPTIONAL
-		yearly = @{
-			# OPTIONAL
-			basicSchedule = @{
-				# OPTIONAL
-				frequency = <System.Int32>
-				# OPTIONAL
-				retention = <System.Int32>
-				# OPTIONAL
-				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-			# OPTIONAL
-			dayOfYear = <DayOfYear> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfYear]) for enum values.
-			# OPTIONAL
-			yearStartMonth = <Month> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
-		}
-	}
-	# OPTIONAL
-	archivalSpecInput = @{
-		# OPTIONAL
-		archivalGroupId = <System.String>
-		# OPTIONAL
-		threshold = <System.Int32>
-		# OPTIONAL
-		thresholdUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-		# OPTIONAL
-		archivalTieringSpecInput = @{
-			# OPTIONAL
-			isInstantTieringEnabled = <System.Boolean>
-			# OPTIONAL
-			minAccessibleDurationInSeconds = <System.Int64>
-			# OPTIONAL
-			coldStorageClass = <ColdStorageClass> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ColdStorageClass]) for enum values.
-			# OPTIONAL
-			shouldTierExistingSnapshots = <System.Boolean>
-		}
-		# OPTIONAL
-		frequencies = @(
-			<RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-		)
-		# OPTIONAL
-		archivalLocationToClusterMapping = @(
-			@{
-				# OPTIONAL
-				clusterUuid = <System.String>
-				# OPTIONAL
-				locationId = <System.String>
-			}
-		)
-	}
-	# OPTIONAL
-	stateVersion = <System.Int64>
-	# OPTIONAL
-	replicationSpecInput = @{
-		# OPTIONAL
-		replicationType = <ReplicationType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReplicationType]) for enum values.
-		# OPTIONAL
-		specificReplicationSpecInput = @{
-			# OPTIONAL
-			unidirectionalSpecInput = @{
-				# OPTIONAL
-				replicationTargetId = <System.String>
-				# OPTIONAL
-				retention = <System.Int32>
-				# OPTIONAL
-				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-			# OPTIONAL
-			bidirectionalSpecInput = @{
-				# OPTIONAL
-				replicationSpec1 = @{
-					# OPTIONAL
-					replicationTargetId = <System.String>
-					# OPTIONAL
-					retention = <System.Int32>
-					# OPTIONAL
-					retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-				}
-				# OPTIONAL
-				replicationSpec2 = @{
-					# OPTIONAL
-					replicationTargetId = <System.String>
-					# OPTIONAL
-					retention = <System.Int32>
-					# OPTIONAL
-					retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-				}
-			}
-			# OPTIONAL
-			cloudRegionSpecInput = @{
-				# OPTIONAL
-				replicationTargetRegion = <System.String>
-				# OPTIONAL
-				cloudProvider = <CloudProvider> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudProvider]) for enum values.
-				# OPTIONAL
-				retention = <System.Int32>
-				# OPTIONAL
-				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-			# OPTIONAL
-			cloudLocationSpecInput = @{
-				# OPTIONAL
-				replicationTargetId = <System.String>
-				# OPTIONAL
-				cloudProvider = <CloudProvider> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudProvider]) for enum values.
-				# OPTIONAL
-				retentionDuration = @{
-					# OPTIONAL
-					duration = <System.Int32>
-					# OPTIONAL
-					unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-				}
-			}
-		}
-	}
-	# OPTIONAL
-	localRetentionLimit = @{
-		# OPTIONAL
-		duration = <System.Int32>
-		# OPTIONAL
-		unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-	}
-	# OPTIONAL
-	firstFullBackupWindows = @(
-		@{
-			# OPTIONAL
-			durationInHours = <System.Int32>
-			# OPTIONAL
-			startTimeAttributes = @{
-				# OPTIONAL
-				dayOfWeek = @{
-					# OPTIONAL
-					day = <DayOfWeek> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
-				}
-				# OPTIONAL
-				hour = <System.Int32>
-				# OPTIONAL
-				minute = <System.Int32>
-			}
-		}
-	)
-	# OPTIONAL
-	backupWindows = @(
-		@{
-			# OPTIONAL
-			durationInHours = <System.Int32>
-			# OPTIONAL
-			startTimeAttributes = @{
-				# OPTIONAL
-				dayOfWeek = @{
-					# OPTIONAL
-					day = <DayOfWeek> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
-				}
-				# OPTIONAL
-				hour = <System.Int32>
-				# OPTIONAL
-				minute = <System.Int32>
-			}
-		}
-	)
-	# OPTIONAL
-	logConfig = @{
-		# OPTIONAL
-		slaLogFrequencyConfig = @{
-			# OPTIONAL
-			retention = @{
-				# OPTIONAL
-				duration = <System.Int32>
-				# OPTIONAL
-				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-		}
-	}
-	# OPTIONAL
-	objectSpecificConfigsInput = @{
-		# OPTIONAL
-		sapHanaConfigInput = @{
-			# OPTIONAL
-			incrementalFrequency = @{
-				# OPTIONAL
-				duration = <System.Int32>
-				# OPTIONAL
-				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-			# OPTIONAL
-			logRetention = @{
-				# OPTIONAL
-				duration = <System.Int32>
-				# OPTIONAL
-				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-			# OPTIONAL
-			differentialFrequency = @{
-				# OPTIONAL
-				duration = <System.Int32>
-				# OPTIONAL
-				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-		}
-		# OPTIONAL
-		awsRdsConfigInput = @{
-			# OPTIONAL
-			logRetention = @{
-				# OPTIONAL
-				duration = <System.Int32>
-				# OPTIONAL
-				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-		}
-		# OPTIONAL
-		vmwareVmConfigInput = @{
-			# OPTIONAL
-			logRetentionSeconds = <System.Int64>
-		}
-		# OPTIONAL
-		azureSqlDatabaseDbConfigInput = @{
-			# OPTIONAL
-			logRetentionInDays = <System.Int32>
-		}
-		# OPTIONAL
-		azureSqlManagedInstanceDbConfigInput = @{
-			# OPTIONAL
-			logRetentionInDays = <System.Int32>
-		}
-		# OPTIONAL
-		db2ConfigInput = @{
-			# OPTIONAL
-			incrementalFrequency = @{
-				# OPTIONAL
-				duration = <System.Int32>
-				# OPTIONAL
-				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-			# OPTIONAL
-			logRetention = @{
-				# OPTIONAL
-				duration = <System.Int32>
-				# OPTIONAL
-				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-			# OPTIONAL
-			differentialFrequency = @{
-				# OPTIONAL
-				duration = <System.Int32>
-				# OPTIONAL
-				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-		}
-		# OPTIONAL
-		mssqlConfigInput = @{
-			# OPTIONAL
-			frequency = @{
-				# OPTIONAL
-				duration = <System.Int32>
-				# OPTIONAL
-				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-			# OPTIONAL
-			logRetention = @{
-				# OPTIONAL
-				duration = <System.Int32>
-				# OPTIONAL
-				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-		}
-		# OPTIONAL
-		oracleConfigInput = @{
-			# OPTIONAL
-			frequency = @{
-				# OPTIONAL
-				duration = <System.Int32>
-				# OPTIONAL
-				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-			# OPTIONAL
-			logRetention = @{
-				# OPTIONAL
-				duration = <System.Int32>
-				# OPTIONAL
-				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-			# OPTIONAL
-			hostLogRetention = @{
-				# OPTIONAL
-				duration = <System.Int32>
-				# OPTIONAL
-				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-		}
-		# OPTIONAL
-		mongoConfigInput = @{
-			# OPTIONAL
-			logFrequency = @{
-				# OPTIONAL
-				duration = <System.Int32>
-				# OPTIONAL
-				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-			# OPTIONAL
-			logRetention = @{
-				# OPTIONAL
-				duration = <System.Int32>
-				# OPTIONAL
-				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-		}
-		# OPTIONAL
-		azureBlobConfigInput = @{
-			# OPTIONAL
-			continuousBackupRetentionInDays = <System.Int32>
-		}
-		# OPTIONAL
-		awsNativeS3SlaConfigInput = @{
-			# OPTIONAL
-			archivalLocationId = <System.String>
-			# OPTIONAL
-			continuousBackupRetentionInDays = <System.Int32>
-		}
-	}
-	# OPTIONAL
-	objectTypeList = @(
-		<SlaObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaObjectType]) for enum values.
-	)
-	# OPTIONAL
-	replicationSpecV2List = @(
-		@{
-			# OPTIONAL
-			clusterUuid = <System.String>
-			# OPTIONAL
-			storageSettingId = <System.String>
-			# OPTIONAL
-			retentionDuration = @{
-				# OPTIONAL
-				duration = <System.Int32>
-				# OPTIONAL
-				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-			# OPTIONAL
-			awsAccount = <System.String>
-			# OPTIONAL
-			azureSubscription = <System.String>
-			# OPTIONAL
-			replicationLocalRetentionDuration = @{
-				# OPTIONAL
-				duration = <System.Int32>
-				# OPTIONAL
-				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-			# OPTIONAL
-			cascadingArchivalSpecs = @(
-				@{
-					# OPTIONAL
-					archivalLocationId = <System.String>
-					# OPTIONAL
-					archivalThreshold = @{
-						# OPTIONAL
-						duration = <System.Int32>
-						# OPTIONAL
-						unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-					}
-					# OPTIONAL
-					archivalTieringSpecInput = @{
-						# OPTIONAL
-						isInstantTieringEnabled = <System.Boolean>
-						# OPTIONAL
-						minAccessibleDurationInSeconds = <System.Int64>
-						# OPTIONAL
-						coldStorageClass = <ColdStorageClass> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ColdStorageClass]) for enum values.
-						# OPTIONAL
-						shouldTierExistingSnapshots = <System.Boolean>
-					}
-					# OPTIONAL
-					frequency = @(
-						<RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-					)
-				}
-			)
-			# OPTIONAL
-			awsRegion = <AwsNativeRegionForReplication> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegionForReplication]) for enum values.
-			# OPTIONAL
-			azureRegion = <AzureNativeRegionForReplication> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegionForReplication]) for enum values.
-		}
-	)
-	# OPTIONAL
-	archivalSpecInputs = @(
-		@{
-			# OPTIONAL
-			archivalGroupId = <System.String>
-			# OPTIONAL
-			threshold = <System.Int32>
-			# OPTIONAL
-			thresholdUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			# OPTIONAL
-			archivalTieringSpecInput = @{
-				# OPTIONAL
-				isInstantTieringEnabled = <System.Boolean>
-				# OPTIONAL
-				minAccessibleDurationInSeconds = <System.Int64>
-				# OPTIONAL
-				coldStorageClass = <ColdStorageClass> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ColdStorageClass]) for enum values.
-				# OPTIONAL
-				shouldTierExistingSnapshots = <System.Boolean>
-			}
-			# OPTIONAL
-			frequencies = @(
-				<RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			)
-			# OPTIONAL
-			archivalLocationToClusterMapping = @(
-				@{
-					# OPTIONAL
-					clusterUuid = <System.String>
-					# OPTIONAL
-					locationId = <System.String>
-				}
-			)
-		}
-	)
-	# OPTIONAL
-	shouldApplyToExistingSnapshots = @{
-		# OPTIONAL
-		value = <System.Boolean>
-	}
-	# OPTIONAL
-	shouldApplyToNonPolicySnapshots = @{
-		# OPTIONAL
-		value = <System.Boolean>
-	}
-	# OPTIONAL
-	userNote = <System.String>
-	# OPTIONAL
-	archivalSpecs = @(
-		@{
-			# OPTIONAL
-			archivalGroupId = <System.String>
-			# OPTIONAL
-			threshold = <System.Int32>
-			# OPTIONAL
-			thresholdUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			# OPTIONAL
-			archivalTieringSpecInput = @{
-				# OPTIONAL
-				isInstantTieringEnabled = <System.Boolean>
-				# OPTIONAL
-				minAccessibleDurationInSeconds = <System.Int64>
-				# OPTIONAL
-				coldStorageClass = <ColdStorageClass> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ColdStorageClass]) for enum values.
-				# OPTIONAL
-				shouldTierExistingSnapshots = <System.Boolean>
-			}
-			# OPTIONAL
-			frequencies = @(
-				<RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			)
-			# OPTIONAL
-			archivalLocationToClusterMapping = @(
-				@{
-					# OPTIONAL
-					clusterUuid = <System.String>
-					# OPTIONAL
-					locationId = <System.String>
-				}
-			)
-		}
-	)
-	# OPTIONAL
-	replicationSpecsV2 = @(
-		@{
-			# OPTIONAL
-			clusterUuid = <System.String>
-			# OPTIONAL
-			storageSettingId = <System.String>
-			# OPTIONAL
-			retentionDuration = @{
-				# OPTIONAL
-				duration = <System.Int32>
-				# OPTIONAL
-				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-			# OPTIONAL
-			awsAccount = <System.String>
-			# OPTIONAL
-			azureSubscription = <System.String>
-			# OPTIONAL
-			replicationLocalRetentionDuration = @{
-				# OPTIONAL
-				duration = <System.Int32>
-				# OPTIONAL
-				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-			# OPTIONAL
-			cascadingArchivalSpecs = @(
-				@{
-					# OPTIONAL
-					archivalLocationId = <System.String>
-					# OPTIONAL
-					archivalThreshold = @{
-						# OPTIONAL
-						duration = <System.Int32>
-						# OPTIONAL
-						unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-					}
-					# OPTIONAL
-					archivalTieringSpecInput = @{
-						# OPTIONAL
-						isInstantTieringEnabled = <System.Boolean>
-						# OPTIONAL
-						minAccessibleDurationInSeconds = <System.Int64>
-						# OPTIONAL
-						coldStorageClass = <ColdStorageClass> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ColdStorageClass]) for enum values.
-						# OPTIONAL
-						shouldTierExistingSnapshots = <System.Boolean>
-					}
-					# OPTIONAL
-					frequency = @(
-						<RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-					)
-				}
-			)
-			# OPTIONAL
-			awsRegion = <AwsNativeRegionForReplication> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegionForReplication]) for enum values.
-			# OPTIONAL
-			azureRegion = <AzureNativeRegionForReplication> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegionForReplication]) for enum values.
-		}
-	)
-	# OPTIONAL
-	objectTypes = @(
-		<SlaObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaObjectType]) for enum values.
-	)
-	# OPTIONAL
-	isRetentionLockedSla = <System.Boolean>
-}
-"@
-    Write-Message "Invoke-RscMutateSla -EditGlobal" @"
-    
-"@ "[GraphQL: editGlobalSla]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
 # Invoke-RscMutateSla -UpdateGlobal
 # -------------------------------------------------------------------
 
@@ -13307,27 +11459,6 @@ $inputs.Var.input = @{
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateSla -DeleteGlobal
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscMutateSla -DeleteGlobal -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscMutateSla -DeleteGlobal -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.id = <System.String>
-# OPTIONAL
-$inputs.Var.userNote = <System.String>
-"@
-    Write-Message "Invoke-RscMutateSla -DeleteGlobal" @"
-    
-"@ "[GraphQL: deleteGlobalSla]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
 # Invoke-RscMutateSla -Assign
 # -------------------------------------------------------------------
 
@@ -13489,30 +11620,6 @@ $inputs.Var.input = @{
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateSla -Upgrades
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscMutateSla -Upgrades -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscMutateSla -Upgrades -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	slaIds = @(
-		<System.String>
-	)
-}
-"@
-    Write-Message "Invoke-RscMutateSla -Upgrades" @"
-    Upgrade SLA Domains from the Rubrik clusters.
-"@ "[GraphQL: upgradeSlas]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
 # Invoke-RscMutateSla -GetPendingAssignments
 # -------------------------------------------------------------------
 
@@ -13622,21 +11729,44 @@ if ($GetGqlRequest) {
     $argNames = $inputs.Arg.Keys
     Write-Message @"
     # REQUIRED
-$inputs.Var.clusterUuid = <System.String>
-# REQUIRED
-$inputs.Var.hostname = <System.String>
-# REQUIRED
-$inputs.Var.username = <System.String>
-# REQUIRED
-$inputs.Var.password = <System.String>
-# REQUIRED
-$inputs.Var.conflictResolutionAuthz = <ConflictResolutionAuthzEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ConflictResolutionAuthzEnum]) for enum values.
-# OPTIONAL
-$inputs.Var.caCert = <System.String>
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	vcenterDetail = @{
+		# OPTIONAL
+		caCerts = <System.String>
+		# OPTIONAL
+		computeVisibilityFilter = @(
+			@{
+				# OPTIONAL
+				isVmwareMetroStorageCluster = <System.Boolean>
+				# REQUIRED
+				hostGroupFilter = @(
+					<System.String>
+				)
+				# REQUIRED
+				id = <System.String>
+			}
+		)
+		# OPTIONAL
+		shouldEnableHotAddProxyForOnPrem = <System.Boolean>
+		# OPTIONAL
+		orgNetworkId = <System.String>
+		# OPTIONAL
+		conflictResolutionAuthz = <VcenterConfigV2ConflictResolutionAuthz> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigV2ConflictResolutionAuthz]) for enum values.
+		# REQUIRED
+		hostname = <System.String>
+		# REQUIRED
+		password = <System.String>
+		# REQUIRED
+		username = <System.String>
+	}
+}
 "@
     Write-Message "Invoke-RscMutateVcenter -Create" @"
-    
-"@ "[GraphQL: vsphereCreateVCenter]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
+    Add a vCenter server.
+"@ "[GraphQL: createVsphereVcenter]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
@@ -13665,35 +11795,6 @@ Initiates an asynchronous job to remove a vCenter Server object. The vCenter Ser
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVcenter -Edit
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscMutateVcenter -Edit -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscMutateVcenter -Edit -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.vcenterId = <System.String>
-# REQUIRED
-$inputs.Var.hostname = <System.String>
-# REQUIRED
-$inputs.Var.username = <System.String>
-# REQUIRED
-$inputs.Var.password = <System.String>
-# REQUIRED
-$inputs.Var.conflictResolutionAuthz = <ConflictResolutionAuthzEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ConflictResolutionAuthzEnum]) for enum values.
-# OPTIONAL
-$inputs.Var.caCert = <System.String>
-"@
-    Write-Message "Invoke-RscMutateVcenter -Edit" @"
-    
-"@ "[GraphQL: vsphereEditVCenter]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
 # Invoke-RscMutateVcenter -Refresh
 # -------------------------------------------------------------------
 
@@ -13705,11 +11806,19 @@ if ($GetGqlRequest) {
     $argNames = $inputs.Arg.Keys
     Write-Message @"
     # REQUIRED
-$inputs.Var.vcenterId = <System.String>
+$inputs.Var.input = @{
+	# REQUIRED
+	fid = <System.String>
+	# OPTIONAL
+	shouldDiagnose = <System.Boolean>
+}
 "@
     Write-Message "Invoke-RscMutateVcenter -Refresh" @"
-    
-"@ "[GraphQL: vsphereRefreshVCenter]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
+    Refresh vCenter Server metadata
+
+Supported in v5.0+
+Create a job to refresh the metadata for the specified vCenter Server.
+"@ "[GraphQL: refreshVsphereVcenter]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
@@ -13974,43 +12083,6 @@ $inputs.Var.input = @{
     Write-Message "Invoke-RscMutateVsphere -ExportSnapshotToStandaloneHostV2" @"
     Export snapshot of a virtual machine to standalone ESXi server.
 "@ "[GraphQL: vsphereExportSnapshotToStandaloneHostV2]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscMutateVsphere -ExportSnapshotToStandaloneHost
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscMutateVsphere -ExportSnapshotToStandaloneHost -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscMutateVsphere -ExportSnapshotToStandaloneHost -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.snapshotFid = <System.String>
-# OPTIONAL
-$inputs.Var.vmName = <System.String>
-# OPTIONAL
-$inputs.Var.disableNetwork = <System.Boolean>
-# OPTIONAL
-$inputs.Var.removeNetworkDevices = <System.Boolean>
-# OPTIONAL
-$inputs.Var.powerOn = <System.Boolean>
-# OPTIONAL
-$inputs.Var.keepMacAddresses = <System.Boolean>
-# REQUIRED
-$inputs.Var.hostIpAddress = <System.String>
-# REQUIRED
-$inputs.Var.datastoreName = <System.String>
-# REQUIRED
-$inputs.Var.hostUsername = <System.String>
-# REQUIRED
-$inputs.Var.hostPassword = <System.String>
-"@
-    Write-Message "Invoke-RscMutateVsphere -ExportSnapshotToStandaloneHost" @"
-    
-"@ "[GraphQL: vsphereExportSnapshotToStandaloneHost]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
@@ -14313,43 +12385,6 @@ $inputs.Var.input = @{
 Supported in v5.0+
 Provides a method for retrieving a snapshot, that is not available locally, from an archival location.
 "@ "[GraphQL: vsphereVmDownloadSnapshot]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -ExportSnapshot
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscMutateVsphereVm -ExportSnapshot -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscMutateVsphereVm -ExportSnapshot -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.snapshotFid = <System.String>
-# OPTIONAL
-$inputs.Var.vmName = <System.String>
-# OPTIONAL
-$inputs.Var.disableNetwork = <System.Boolean>
-# OPTIONAL
-$inputs.Var.removeNetworkDevices = <System.Boolean>
-# OPTIONAL
-$inputs.Var.powerOn = <System.Boolean>
-# OPTIONAL
-$inputs.Var.keepMacAddresses = <System.Boolean>
-# OPTIONAL
-$inputs.Var.hostID = <System.String>
-# REQUIRED
-$inputs.Var.datastoreId = <System.String>
-# OPTIONAL
-$inputs.Var.unregsiterVm = <System.Boolean>
-# OPTIONAL
-$inputs.Var.shouldRecoverTags = <System.Boolean>
-"@
-    Write-Message "Invoke-RscMutateVsphereVm -ExportSnapshot" @"
-    
-"@ "[GraphQL: vsphereVMExportSnapshot]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
@@ -14918,93 +12953,6 @@ $inputs.Var.input = @{
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -Update
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscMutateVsphereVm -Update -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscMutateVsphereVm -Update -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.snappableFid = <System.String>
-# OPTIONAL
-$inputs.Var.snapshotConsistencyMandate = <System.String>
-# OPTIONAL
-$inputs.Var.preBackupScript = @{
-	# OPTIONAL
-	scriptPath = <System.String>
-	# OPTIONAL
-	timeoutInMs = <System.Int64>
-	# OPTIONAL
-	failureHandling = <System.String>
-}
-# OPTIONAL
-$inputs.Var.postBackupScript = @{
-	# OPTIONAL
-	scriptPath = <System.String>
-	# OPTIONAL
-	timeoutInMs = <System.Int64>
-	# OPTIONAL
-	failureHandling = <System.String>
-}
-# OPTIONAL
-$inputs.Var.postSnapScript = @{
-	# OPTIONAL
-	scriptPath = <System.String>
-	# OPTIONAL
-	timeoutInMs = <System.Int64>
-	# OPTIONAL
-	failureHandling = <System.String>
-}
-# OPTIONAL
-$inputs.Var.isArrayIntegrationEnabled = <System.Boolean>
-"@
-    Write-Message "Invoke-RscMutateVsphereVm -Update" @"
-    
-"@ "[GraphQL: vsphereVMUpdate]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -InitiateInstantRecovery
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscMutateVsphereVm -InitiateInstantRecovery -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscMutateVsphereVm -InitiateInstantRecovery -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.snapshotFid = <System.String>
-# OPTIONAL
-$inputs.Var.vmName = <System.String>
-# OPTIONAL
-$inputs.Var.disableNetwork = <System.Boolean>
-# OPTIONAL
-$inputs.Var.removeNetworkDevices = <System.Boolean>
-# OPTIONAL
-$inputs.Var.powerOn = <System.Boolean>
-# OPTIONAL
-$inputs.Var.keepMacAddresses = <System.Boolean>
-# OPTIONAL
-$inputs.Var.hostID = <System.String>
-# OPTIONAL
-$inputs.Var.preserveMOID = <System.Boolean>
-# OPTIONAL
-$inputs.Var.vlan = <System.Int32>
-# OPTIONAL
-$inputs.Var.shouldRecoverTags = <System.Boolean>
-"@
-    Write-Message "Invoke-RscMutateVsphereVm -InitiateInstantRecovery" @"
-    
-"@ "[GraphQL: vsphereVMInitiateInstantRecovery]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
 # Invoke-RscMutateVsphereVm -InitiateInstantRecoveryV2
 # -------------------------------------------------------------------
 
@@ -15271,45 +13219,6 @@ Requests a snapshot mount to attach disks to an existing virtual machine.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -InitiateLiveMount
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscMutateVsphereVm -InitiateLiveMount -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscMutateVsphereVm -InitiateLiveMount -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.snapshotFid = <System.String>
-# OPTIONAL
-$inputs.Var.vmName = <System.String>
-# OPTIONAL
-$inputs.Var.disableNetwork = <System.Boolean>
-# OPTIONAL
-$inputs.Var.removeNetworkDevices = <System.Boolean>
-# OPTIONAL
-$inputs.Var.powerOn = <System.Boolean>
-# OPTIONAL
-$inputs.Var.keepMacAddresses = <System.Boolean>
-# OPTIONAL
-$inputs.Var.hostID = <System.String>
-# OPTIONAL
-$inputs.Var.datastoreName = <System.String>
-# OPTIONAL
-$inputs.Var.createDatastoreOnly = <System.Boolean>
-# OPTIONAL
-$inputs.Var.vlan = <System.Int32>
-# OPTIONAL
-$inputs.Var.shouldRecoverTags = <System.Boolean>
-"@
-    Write-Message "Invoke-RscMutateVsphereVm -InitiateLiveMount" @"
-    
-"@ "[GraphQL: vsphereVMInitiateLiveMount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
 # Invoke-RscMutateVsphereVm -InitiateLiveMountV2
 # -------------------------------------------------------------------
 
@@ -15418,67 +13327,6 @@ $inputs.Var.input = @{
     Write-Message "Invoke-RscMutateVsphereVm -InitiateLiveMountV2" @"
     Create a vSphere Live Mount from a snapshot or point-in-time.
 "@ "[GraphQL: vsphereVmInitiateLiveMountV2]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -BatchLiveMount
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscMutateVsphereVm -BatchLiveMount -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscMutateVsphereVm -BatchLiveMount -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.clusterUuid = <System.String>
-# REQUIRED
-$inputs.Var.config = @{
-	# REQUIRED
-	snapshots = @(
-		@{
-			# OPTIONAL
-			snapshotAfterDate = <DateTime>
-			# OPTIONAL
-			snapshotBeforeDate = <DateTime>
-			# OPTIONAL
-			snapshotId = <System.String>
-			# REQUIRED
-			config = @{
-				# OPTIONAL
-				createDatastoreOnly = <System.Boolean>
-				# OPTIONAL
-				dataStoreName = <System.String>
-				# OPTIONAL
-				hostId = <System.String>
-				# OPTIONAL
-				shouldRecoverTags = <System.Boolean>
-				# OPTIONAL
-				vlan = <System.Int32>
-				# OPTIONAL
-				mountExportSnapshotJobCommonOptions = @{
-					# OPTIONAL
-					disableNetwork = <System.Boolean>
-					# OPTIONAL
-					keepMacAddresses = <System.Boolean>
-					# OPTIONAL
-					powerOn = <System.Boolean>
-					# OPTIONAL
-					removeNetworkDevices = <System.Boolean>
-					# OPTIONAL
-					vmName = <System.String>
-				}
-			}
-			# REQUIRED
-			vmId = <System.String>
-		}
-	)
-}
-"@
-    Write-Message "Invoke-RscMutateVsphereVm -BatchLiveMount" @"
-    
-"@ "[GraphQL: vSphereVMBatchLiveMount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
@@ -15640,27 +13488,6 @@ $inputs.Var.input = @{
 Supported in v5.0+
 Power a specified Live Mount virtual machine on or off. Pass **_true_** to power the virtual machine on and pass **_false_** to power the virtual machine off.
 "@ "[GraphQL: vsphereVmPowerOnOffLiveMount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -DeleteLiveMount
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscMutateVsphereVm -DeleteLiveMount -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscMutateVsphereVm -DeleteLiveMount -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.livemountId = <System.String>
-# OPTIONAL
-$inputs.Var.force = <System.Boolean>
-"@
-    Write-Message "Invoke-RscMutateVsphereVm -DeleteLiveMount" @"
-    
-"@ "[GraphQL: vsphereVMDeleteLiveMount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
@@ -15838,6 +13665,99 @@ $inputs.Var.input = @{
     Write-Message "Invoke-RscMutateVsphereVm -DownloadSnapshotFiles" @"
     Download files from snapshot.
 "@ "[GraphQL: vsphereVmDownloadSnapshotFiles]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
+}
+
+# -------------------------------------------------------------------
+# Invoke-RscMutateVsphereVm -Update
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (Invoke-RscMutateVsphereVm -Update -GetGqlRequest).SaveQueryToFile()
+} else {
+    $inputs = Invoke-RscMutateVsphereVm -Update -GetInput
+    $fieldTypeName = $inputs.Field.GetType().Name
+    $argNames = $inputs.Arg.Keys
+    Write-Message @"
+    # REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	id = <System.String>
+	# REQUIRED
+	vmUpdateProperties = @{
+		# OPTIONAL
+		guestCredential = @{
+			# REQUIRED
+			password = <System.String>
+			# REQUIRED
+			username = <System.String>
+		}
+		# OPTIONAL
+		shouldRefreshCacheAfterUpdate = <System.Boolean>
+		# OPTIONAL
+		guestCredentialId = <System.String>
+		# OPTIONAL
+		virtualMachineUpdate = @{
+			# OPTIONAL
+			cloudInstantiationSpec = @{
+				# REQUIRED
+				imageRetentionInSeconds = <System.Int64>
+			}
+			# OPTIONAL
+			configuredSlaDomainId = <System.String>
+			# OPTIONAL
+			isArrayIntegrationEnabled = <System.Boolean>
+			# OPTIONAL
+			isVmPaused = <System.Boolean>
+			# OPTIONAL
+			maxNestedVsphereSnapshots = <System.Int32>
+			# OPTIONAL
+			postBackupScript = @{
+				# REQUIRED
+				failureHandling = <VirtualMachineScriptDetailFailureHandling> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VirtualMachineScriptDetailFailureHandling]) for enum values.
+				# REQUIRED
+				scriptPath = <System.String>
+				# REQUIRED
+				timeoutMs = <System.Int64>
+			}
+			# OPTIONAL
+			postSnapScript = @{
+				# REQUIRED
+				failureHandling = <VirtualMachineScriptDetailFailureHandling> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VirtualMachineScriptDetailFailureHandling]) for enum values.
+				# REQUIRED
+				scriptPath = <System.String>
+				# REQUIRED
+				timeoutMs = <System.Int64>
+			}
+			# OPTIONAL
+			preBackupScript = @{
+				# REQUIRED
+				failureHandling = <VirtualMachineScriptDetailFailureHandling> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VirtualMachineScriptDetailFailureHandling]) for enum values.
+				# REQUIRED
+				scriptPath = <System.String>
+				# REQUIRED
+				timeoutMs = <System.Int64>
+			}
+			# OPTIONAL
+			throttlingSettings = @{
+				# OPTIONAL
+				cpuUtilizationThreshold = <System.Int32>
+				# OPTIONAL
+				datastoreIoLatencyThreshold = <System.Int32>
+				# OPTIONAL
+				ioLatencyThreshold = <System.Int32>
+			}
+			# OPTIONAL
+			snapshotConsistencyMandate = <VirtualMachineUpdateSnapshotConsistencyMandate> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VirtualMachineUpdateSnapshotConsistencyMandate]) for enum values.
+		}
+	}
+}
+"@
+    Write-Message "Invoke-RscMutateVsphereVm -Update" @"
+    Update VM
+
+Supported in v5.0+
+Update a virtual machine with specified properties. Use the guestCredential field to update the guest credential for a specified virtual machine.
+"@ "[GraphQL: updateVsphereVm]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 
@@ -16056,83 +13976,6 @@ $inputs.Var.filters = @{
     Write-Message "Invoke-RscQueryActivitySeries -List" @"
     
 "@ "[GraphQL: activitySeriesConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscQueryActivitySeries -GroupByList
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscQueryActivitySeries -GroupByList -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscQueryActivitySeries -GroupByList -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # OPTIONAL
-$inputs.Var.first = <System.Int32>
-# OPTIONAL
-$inputs.Var.after = <System.String>
-# OPTIONAL
-$inputs.Var.last = <System.Int32>
-# OPTIONAL
-$inputs.Var.before = <System.String>
-# REQUIRED
-$inputs.Var.groupBy = <ActivitySeriesGroupByEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivitySeriesGroupByEnum]) for enum values.
-# OPTIONAL
-$inputs.Var.filters = @{
-	# OPTIONAL
-	lastActivityStatus = @(
-		<ActivityStatusEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivityStatusEnum]) for enum values.
-	)
-	# OPTIONAL
-	lastActivityType = @(
-		<ActivityTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivityTypeEnum]) for enum values.
-	)
-	# OPTIONAL
-	severity = @(
-		<ActivitySeverityEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivitySeverityEnum]) for enum values.
-	)
-	# OPTIONAL
-	objectName = <System.String>
-	# OPTIONAL
-	objectType = @(
-		<ActivityObjectTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivityObjectTypeEnum]) for enum values.
-	)
-	# OPTIONAL
-	startTimeGt = <DateTime>
-	# OPTIONAL
-	startTimeLt = <DateTime>
-	# OPTIONAL
-	lastUpdatedGt = <DateTime>
-	# OPTIONAL
-	lastUpdatedLt = <DateTime>
-	# OPTIONAL
-	cluster = @{
-		# OPTIONAL
-		id = @(
-			<System.String>
-		)
-		# OPTIONAL
-		type = @(
-			<ClusterTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterTypeEnum]) for enum values.
-		)
-	}
-	# OPTIONAL
-	objectFids = @(
-		<System.String>
-	)
-	# OPTIONAL
-	ancestorId = <System.String>
-	# OPTIONAL
-	searchTerm = <System.String>
-}
-# OPTIONAL
-$inputs.Var.timezoneOffset = <System.Single>
-"@
-    Write-Message "Invoke-RscQueryActivitySeries -GroupByList" @"
-    
-"@ "[GraphQL: activitySeriesGroupByConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 
@@ -17140,24 +14983,6 @@ $inputs.Var.input = @{
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -AllRdsAuroraInstanceClasses
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -AllRdsAuroraInstanceClasses -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscQueryAws -AllRdsAuroraInstanceClasses -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    
-"@
-    Write-Message "Invoke-RscQueryAws -AllRdsAuroraInstanceClasses" @"
-    List of all the database instance classes supported by AWS RDS Aurora databases.
-"@ "[GraphQL: allAwsRdsAuroraInstanceClasses]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
 # Invoke-RscQueryAws -AllSupportedRdsDatabaseInstanceClasses
 # -------------------------------------------------------------------
 
@@ -17264,36 +15089,6 @@ $inputs.Var.awsCloudAccountsArg = @{
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -AllCloudAccountsFeaturesWithExoConfigs
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -AllCloudAccountsFeaturesWithExoConfigs -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscQueryAws -AllCloudAccountsFeaturesWithExoConfigs -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.awsCloudAccountsArg = @{
-	# REQUIRED
-	feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-	# REQUIRED
-	statusFilters = @(
-		<CloudAccountStatus> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountStatus]) for enum values.
-	)
-	# OPTIONAL
-	awsAdminAccountFilter = <System.String>
-	# OPTIONAL
-	columnSearchFilter = <System.String>
-}
-"@
-    Write-Message "Invoke-RscQueryAws -AllCloudAccountsFeaturesWithExoConfigs" @"
-    List of active AWS cloud account features and the Exocompute mapping information for the accounts. A cloud account is an AWS account added to the Rubrik platform.
-"@ "[GraphQL: allAwsCloudAccountsFeaturesWithExoConfigs]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
 # Invoke-RscQueryAws -CloudAccountWithFeatures
 # -------------------------------------------------------------------
 
@@ -17390,29 +15185,6 @@ $inputs.Var.vpcID = <System.String>
     Write-Message "Invoke-RscQueryAws -CloudAccountListSecurityGroups" @"
     Retrieves a list of security groups in the specified cloud account and virtual private cloud (VPC).
 "@ "[GraphQL: awsCloudAccountListSecurityGroups]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscQueryAws -CloudAccountListKMSKeys
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -CloudAccountListKMSKeys -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscQueryAws -CloudAccountListKMSKeys -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.cloudAccountUuid = <System.String>
-# REQUIRED
-$inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-# REQUIRED
-$inputs.Var.region = <AwsRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
-"@
-    Write-Message "Invoke-RscQueryAws -CloudAccountListKMSKeys" @"
-    
-"@ "[GraphQL: AwsCloudAccountListKMSKeys]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
@@ -18819,48 +16591,6 @@ $inputs.Var.snapshotId = <System.String>
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -NativeLiveMountDisks
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -NativeLiveMountDisks -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscQueryAzure -NativeLiveMountDisks -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # OPTIONAL
-$inputs.Var.first = <System.Int32>
-# OPTIONAL
-$inputs.Var.after = <System.String>
-# OPTIONAL
-$inputs.Var.last = <System.Int32>
-# OPTIONAL
-$inputs.Var.before = <System.String>
-# REQUIRED
-$inputs.Var.cloudNativeObjectType = <CloudNativeObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeObjectType]) for enum values.
-# OPTIONAL
-$inputs.Var.liveMountFilters = @(
-	@{
-		# OPTIONAL
-		mountField = <LiveMountsFilterMountField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LiveMountsFilterMountField]) for enum values.
-		# OPTIONAL
-		texts = @(
-			<System.String>
-		)
-}
-)
-# OPTIONAL
-$inputs.Var.sortBy = <CloudNativeLiveMountSortByFields> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeLiveMountSortByFields]) for enum values.
-# OPTIONAL
-$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-"@
-    Write-Message "Invoke-RscQueryAzure -NativeLiveMountDisks" @"
-    List of mounted disks for Azure.
-"@ "[GraphQL: azureNativeLiveMountDisks]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
 # Invoke-RscQueryAzure -AllKeyVaultsByRegion
 # -------------------------------------------------------------------
 
@@ -18972,27 +16702,6 @@ $inputs.Var.subscriptionIdsFilter = @(
     Write-Message "Invoke-RscQueryAzure -CloudAccountTenantWithExoConfigs" @"
     Retrieves details about the Azure cloud account tenant including the Exocompute configurations for the tenant subscriptions, for a specified feature.
 "@ "[GraphQL: azureCloudAccountTenantWithExoConfigs]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscQueryAzure -AllCloudAccountTenantsWithExoConfigs
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -AllCloudAccountTenantsWithExoConfigs -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscQueryAzure -AllCloudAccountTenantsWithExoConfigs -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.features = @(
-	<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-)
-"@
-    Write-Message "Invoke-RscQueryAzure -AllCloudAccountTenantsWithExoConfigs" @"
-    Retrieves details about all the Azure cloud account tenants including the Exocompute configurations for the tenant subscriptions, for specified set of features.
-"@ "[GraphQL: allAzureCloudAccountTenantsWithExoConfigs]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
@@ -19208,71 +16917,6 @@ $inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecu
     Write-Message "Invoke-RscQueryAzure -CloudAccountPermissionConfig" @"
     Retrieves the configuration consisting of role permissions and feature policy version required for Azure subscription setup. Features refer to the Polaris features that the customer wants to be enabled on the cloud account.
 "@ "[GraphQL: azureCloudAccountPermissionConfig]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscQueryAzure -CloudAccountGrantedPermissionsGroups
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -CloudAccountGrantedPermissionsGroups -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscQueryAzure -CloudAccountGrantedPermissionsGroups -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.cloudAccountId = <System.String>
-# REQUIRED
-$inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-"@
-    Write-Message "Invoke-RscQueryAzure -CloudAccountGrantedPermissionsGroups" @"
-    Retrieves the permissions groups which have been granted for a specific feature.
-"@ "[GraphQL: azureCloudAccountGrantedPermissionsGroups]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscQueryAzure -CloudAccountGrantedPermissionsGroupsForRecovery
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -CloudAccountGrantedPermissionsGroupsForRecovery -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscQueryAzure -CloudAccountGrantedPermissionsGroupsForRecovery -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.cloudAccountId = <System.String>
-# REQUIRED
-$inputs.Var.azureNativeSubscriptionId = <System.String>
-# REQUIRED
-$inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-"@
-    Write-Message "Invoke-RscQueryAzure -CloudAccountGrantedPermissionsGroupsForRecovery" @"
-    Retrieves the permissions groups which have been granted for a specific feature.
-"@ "[GraphQL: azureCloudAccountGrantedPermissionsGroupsForRecovery]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscQueryAzure -CloudAccountCheckRefreshTokenExistsForRecovery
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -CloudAccountCheckRefreshTokenExistsForRecovery -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscQueryAzure -CloudAccountCheckRefreshTokenExistsForRecovery -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.cloudAccountId = <System.String>
-# REQUIRED
-$inputs.Var.azureNativeSubscriptionId = <System.String>
-"@
-    Write-Message "Invoke-RscQueryAzure -CloudAccountCheckRefreshTokenExistsForRecovery" @"
-    Check whether a refresh token exists for the current user.
-"@ "[GraphQL: azureCloudAccountCheckRefreshTokenExistsForRecovery]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
@@ -19737,158 +17381,6 @@ $inputs.Var.managedIdentitiesRequest = @{
     Write-Message "Invoke-RscQueryAzure -AllManagedIdentities" @"
     List all managed identities for Azure resources.
 "@ "[GraphQL: allAzureManagedIdentities]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscQueryAzure -AdDirectories
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -AdDirectories -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscQueryAzure -AdDirectories -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # OPTIONAL
-$inputs.Var.first = <System.Int32>
-# OPTIONAL
-$inputs.Var.after = <System.String>
-# OPTIONAL
-$inputs.Var.sortBy = <HierarchySortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
-# OPTIONAL
-$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$inputs.Var.filter = @(
-	@{
-		# OPTIONAL
-		field = <HierarchyFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
-		# OPTIONAL
-		texts = @(
-			<System.String>
-		)
-		# OPTIONAL
-		tagFilterParams = @(
-			@{
-				# OPTIONAL
-				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-				# OPTIONAL
-				tagKey = <System.String>
-				# OPTIONAL
-				tagValue = <System.String>
-			}
-		)
-		# OPTIONAL
-		objectTypeFilterParams = @(
-			<ManagedObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
-		)
-		# OPTIONAL
-		awsNativeProtectionFeatureNames = @(
-			<AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		isNegative = <System.Boolean>
-		# OPTIONAL
-		isSlowSearchEnabled = <System.Boolean>
-		# OPTIONAL
-		azureNativeProtectionFeatureNames = @(
-			<AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		unmanagedObjectAvailabilityFilter = @(
-			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
-		)
-}
-)
-"@
-    Write-Message "Invoke-RscQueryAzure -AdDirectories" @"
-    All Azure AD directories for the account.
-"@ "[GraphQL: azureAdDirectories]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscQueryAzure -AdDirectory
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -AdDirectory -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscQueryAzure -AdDirectory -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.workloadFid = <System.String>
-"@
-    Write-Message "Invoke-RscQueryAzure -AdDirectory" @"
-    Details of the Azure AD corresponds to the workload ID.
-"@ "[GraphQL: azureAdDirectory]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscQueryAzure -AdObjectsByType
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -AdObjectsByType -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscQueryAzure -AdObjectsByType -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # OPTIONAL
-$inputs.Var.first = <System.Int32>
-# OPTIONAL
-$inputs.Var.after = <System.String>
-# OPTIONAL
-$inputs.Var.sortByOption = @(
-	<AzureAdObjectSearchType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectSearchType]) for enum values.
-)
-# OPTIONAL
-$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	snapshotId = <System.String>
-	# REQUIRED
-	azureAdObjectType = <AzureAdObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
-}
-"@
-    Write-Message "Invoke-RscQueryAzure -AdObjectsByType" @"
-    Details of the Azure AD objects corresponding to the type.
-"@ "[GraphQL: azureAdObjectsByType]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscQueryAzure -SearchAdSnapshot
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -SearchAdSnapshot -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscQueryAzure -SearchAdSnapshot -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # OPTIONAL
-$inputs.Var.first = <System.Int32>
-# OPTIONAL
-$inputs.Var.after = <System.String>
-# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	snapshotId = <System.String>
-	# REQUIRED
-	azureAdSearchKeyword = <System.String>
-	# REQUIRED
-	azureAdObjectType = <AzureAdObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
-	# REQUIRED
-	azureAdSearchKeywordType = <AzureAdObjectSearchType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectSearchType]) for enum values.
-}
-"@
-    Write-Message "Invoke-RscQueryAzure -SearchAdSnapshot" @"
-    Search azureAdObjects within a snapshot.
-"@ "[GraphQL: searchAzureAdSnapshot]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 
@@ -20481,25 +17973,6 @@ $inputs.Var.fid = <System.String>
 "@ "[GraphQL: cassandraColumnFamily]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
-
-# -------------------------------------------------------------------
-# Invoke-RscQueryCluster -Cloud
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -Cloud -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscQueryCluster -Cloud -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.cloudVendorType = <CcpVendorType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CcpVendorType]) for enum values.
-"@
-    Write-Message "Invoke-RscQueryCluster -Cloud" @"
-    List of Cloud Clusters with cloud information.
-"@ "[GraphQL: allCloudClusters]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
 
 # -------------------------------------------------------------------
 # Invoke-RscQueryCluster -Nodes
@@ -21192,68 +18665,6 @@ $inputs.Var.timezoneOffset = <System.Single>
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -WithConfigProtectionInfo
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -WithConfigProtectionInfo -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscQueryCluster -WithConfigProtectionInfo -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # OPTIONAL
-$inputs.Var.first = <System.Int32>
-# OPTIONAL
-$inputs.Var.after = <System.String>
-# OPTIONAL
-$inputs.Var.last = <System.Int32>
-# OPTIONAL
-$inputs.Var.before = <System.String>
-# OPTIONAL
-$inputs.Var.configProtectionFilter = @{
-	# OPTIONAL
-	id = @(
-		<System.String>
-	)
-	# OPTIONAL
-	name = @(
-		<System.String>
-	)
-	# OPTIONAL
-	type = @(
-		<ClusterTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterTypeEnum]) for enum values.
-	)
-	# OPTIONAL
-	minSoftwareVersion = <System.String>
-	# OPTIONAL
-	clusterLocation = @(
-		<System.String>
-	)
-	# OPTIONAL
-	connectionState = @(
-		<ClusterStatus> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterStatus]) for enum values.
-	)
-	# OPTIONAL
-	productType = @(
-		<ClusterProductEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterProductEnum]) for enum values.
-	)
-	# OPTIONAL
-	configProtectionStatus = @(
-		<ConfigProtectionStatus> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ConfigProtectionStatus]) for enum values.
-	)
-}
-# OPTIONAL
-$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$inputs.Var.sortBy = <ConfigProtectionInfoSortBy> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ConfigProtectionInfoSortBy]) for enum values.
-"@
-    Write-Message "Invoke-RscQueryCluster -WithConfigProtectionInfo" @"
-    A cluster object with config protection information.
-"@ "[GraphQL: clusterWithConfigProtectionInfo]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
 # Invoke-RscQueryCluster -DatabaseLogReportingProperties
 # -------------------------------------------------------------------
 
@@ -21323,35 +18734,6 @@ v6.0+: Get the database log backup delay information.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -RcvLocations
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -RcvLocations -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscQueryCluster -RcvLocations -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # OPTIONAL
-$inputs.Var.first = <System.Int32>
-# OPTIONAL
-$inputs.Var.after = <System.String>
-# OPTIONAL
-$inputs.Var.last = <System.Int32>
-# OPTIONAL
-$inputs.Var.before = <System.String>
-# OPTIONAL
-$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# REQUIRED
-$inputs.Var.cdmClusterUUID = <System.String>
-"@
-    Write-Message "Invoke-RscQueryCluster -RcvLocations" @"
-    List Rubrik Cloud Vault locations of the cluster.
-"@ "[GraphQL: clusterRcvLocations]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
 # Invoke-RscQueryCluster -Connected
 # -------------------------------------------------------------------
 
@@ -21390,51 +18772,6 @@ $inputs.Var.clusterUuid = <System.String>
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -EncryptionInfo
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -EncryptionInfo -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscQueryCluster -EncryptionInfo -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # OPTIONAL
-$inputs.Var.first = <System.Int32>
-# OPTIONAL
-$inputs.Var.after = <System.String>
-# OPTIONAL
-$inputs.Var.last = <System.Int32>
-# OPTIONAL
-$inputs.Var.before = <System.String>
-# OPTIONAL
-$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$inputs.Var.clusterName = <System.String>
-# REQUIRED
-$inputs.Var.encryptionStatusFilter = @(
-	<ClusterEncryptionStatusFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterEncryptionStatusFilter]) for enum values.
-)
-# REQUIRED
-$inputs.Var.keyProtection = @(
-	<ClusterKeyProtection> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterKeyProtection]) for enum values.
-)
-# REQUIRED
-$inputs.Var.clusters = @(
-	<System.String>
-)
-# REQUIRED
-$inputs.Var.encryptionTypes = @(
-	<ClusterEncryptionType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterEncryptionType]) for enum values.
-)
-"@
-    Write-Message "Invoke-RscQueryCluster -EncryptionInfo" @"
-    Filter clusters by encryption information.
-"@ "[GraphQL: clusterEncryptionInfo]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
 # Invoke-RscQueryCluster -HostFailover
 # -------------------------------------------------------------------
 
@@ -21451,96 +18788,6 @@ $inputs.Var.fid = <System.String>
     Write-Message "Invoke-RscQueryCluster -HostFailover" @"
     Get details of the given host failover cluster.
 "@ "[GraphQL: hostFailoverCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscQueryCluster -GlobalFileSearchMultiple
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -GlobalFileSearchMultiple -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscQueryCluster -GlobalFileSearchMultiple -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.clusters = @(
-	<System.String>
-)
-# REQUIRED
-$inputs.Var.regex = <System.String>
-"@
-    Write-Message "Invoke-RscQueryCluster -GlobalFileSearchMultiple" @"
-    All files and folders matching input filters.
-"@ "[GraphQL: allGlobalFileSearchMultipleClusters]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscQueryCluster -Kubernetes
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -Kubernetes -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscQueryCluster -Kubernetes -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # OPTIONAL
-$inputs.Var.first = <System.Int32>
-# OPTIONAL
-$inputs.Var.after = <System.String>
-# OPTIONAL
-$inputs.Var.sortBy = <HierarchySortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
-# OPTIONAL
-$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$inputs.Var.filter = @(
-	@{
-		# OPTIONAL
-		field = <HierarchyFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
-		# OPTIONAL
-		texts = @(
-			<System.String>
-		)
-		# OPTIONAL
-		tagFilterParams = @(
-			@{
-				# OPTIONAL
-				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-				# OPTIONAL
-				tagKey = <System.String>
-				# OPTIONAL
-				tagValue = <System.String>
-			}
-		)
-		# OPTIONAL
-		objectTypeFilterParams = @(
-			<ManagedObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
-		)
-		# OPTIONAL
-		awsNativeProtectionFeatureNames = @(
-			<AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		isNegative = <System.Boolean>
-		# OPTIONAL
-		isSlowSearchEnabled = <System.Boolean>
-		# OPTIONAL
-		azureNativeProtectionFeatureNames = @(
-			<AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		unmanagedObjectAvailabilityFilter = @(
-			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
-		)
-}
-)
-"@
-    Write-Message "Invoke-RscQueryCluster -Kubernetes" @"
-    Summary of all Kubernetes Clusters.
-"@ "[GraphQL: kubernetesClusters]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
@@ -21728,31 +18975,6 @@ $inputs.Var.before = <System.String>
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -LaDomainFilterList
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -LaDomainFilterList -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscQueryCluster -LaDomainFilterList -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # OPTIONAL
-$inputs.Var.first = <System.Int32>
-# OPTIONAL
-$inputs.Var.after = <System.String>
-# OPTIONAL
-$inputs.Var.last = <System.Int32>
-# OPTIONAL
-$inputs.Var.before = <System.String>
-"@
-    Write-Message "Invoke-RscQueryCluster -LaDomainFilterList" @"
-    
-"@ "[GraphQL: clusterSlaDomainFilterConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
 # Invoke-RscQueryCluster -VerifySlaWithReplicationTo
 # -------------------------------------------------------------------
 
@@ -21808,36 +19030,6 @@ if ($GetGqlRequest) {
     Write-Message "Invoke-RscQueryCluster -RegistrationProductInfo" @"
     Info about the cluster product types the user is entitled to.
 "@ "[GraphQL: clusterRegistrationProductInfo]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscQueryCluster -Vcd
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -Vcd -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscQueryCluster -Vcd -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.input = @{
-	# OPTIONAL
-	name = <System.String>
-	# OPTIONAL
-	sortBy = <QueryVcdClusterRequestSortBy> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.QueryVcdClusterRequestSortBy]) for enum values.
-	# OPTIONAL
-	sortOrder = <QueryVcdClusterRequestSortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.QueryVcdClusterRequestSortOrder]) for enum values.
-	# OPTIONAL
-	status = <QueryVcdClusterRequestStatus> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.QueryVcdClusterRequestStatus]) for enum values.
-	# REQUIRED
-	clusterUuid = <System.String>
-}
-"@
-    Write-Message "Invoke-RscQueryCluster -Vcd" @"
-    List of vCloud Director clusters.
-"@ "[GraphQL: vcdClusters]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
@@ -24607,34 +21799,6 @@ $inputs.Var.input = @{
 "@ "[GraphQL: nutanixSnapshotDetail]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
-# -------------------------------------------------------------------
-# Invoke-RscQueryNutanix -PrismCentralAsyncRequestStatus
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscQueryNutanix -PrismCentralAsyncRequestStatus -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscQueryNutanix -PrismCentralAsyncRequestStatus -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	clusterUuid = <System.String>
-	# REQUIRED
-	id = <System.String>
-}
-"@
-    Write-Message "Invoke-RscQueryNutanix -PrismCentralAsyncRequestStatus" @"
-    Get Nutanix Prism Central async request status
-
-Supported in v9.0+
-v9.0: Get details about a Nutanix pc-related async request.
-v9.1: Retrieve the status for the Nutanix Prism Central async request.
-"@ "[GraphQL: nutanixPrismCentralAsyncRequestStatus]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
 
 # -------------------------------------------------------------------
 # Invoke-RscQueryO365 -Org
@@ -26505,44 +23669,6 @@ $inputs.Var.input = @{
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQuerySla -AllIofilterStatuses
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscQuerySla -AllIofilterStatuses -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscQuerySla -AllIofilterStatuses -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.fid = <System.String>
-"@
-    Write-Message "Invoke-RscQuerySla -AllIofilterStatuses" @"
-    The iofilter installation status of the compute clusters related to this SLA Domain.
-"@ "[GraphQL: allSlaIofilterStatuses]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscQuerySla -AllCdpVmNames
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscQuerySla -AllCdpVmNames -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscQuerySla -AllCdpVmNames -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.fid = <System.String>
-"@
-    Write-Message "Invoke-RscQuerySla -AllCdpVmNames" @"
-    Names of the virtual machines in compute cluster with Continuous Data Protection (CDP) SLA Domain.
-"@ "[GraphQL: allCdpSlaVmNames]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
 # Invoke-RscQuerySla -Domains
 # -------------------------------------------------------------------
 
@@ -26607,68 +23733,6 @@ $inputs.Var.shouldShowPausedClusters = <System.Boolean>
     Write-Message "Invoke-RscQuerySla -Domains" @"
     Retrieves a list of SLA Domains.
 "@ "[GraphQL: slaDomains]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscQuerySla -DomainWithWarningsList
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscQuerySla -DomainWithWarningsList -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscQuerySla -DomainWithWarningsList -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # OPTIONAL
-$inputs.Var.first = <System.Int32>
-# OPTIONAL
-$inputs.Var.after = <System.String>
-# OPTIONAL
-$inputs.Var.last = <System.Int32>
-# OPTIONAL
-$inputs.Var.before = <System.String>
-# OPTIONAL
-$inputs.Var.sortBy = <SlaQuerySortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaQuerySortByField]) for enum values.
-# OPTIONAL
-$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$inputs.Var.filter = @(
-	@{
-		# OPTIONAL
-		field = <GlobalSlaQueryFilterInputField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GlobalSlaQueryFilterInputField]) for enum values.
-		# OPTIONAL
-		text = <System.String>
-		# OPTIONAL
-		objectTypeList = @(
-			<SlaObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaObjectType]) for enum values.
-		)
-		# OPTIONAL
-		textList = @(
-			<System.String>
-		)
-}
-)
-# OPTIONAL
-$inputs.Var.contextFilter = <ContextFilterTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ContextFilterTypeEnum]) for enum values.
-# OPTIONAL
-$inputs.Var.objectIds = @(
-	<System.String>
-)
-# OPTIONAL
-$inputs.Var.applicableSnappableTypes = @(
-	<WorkloadLevelHierarchy> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
-)
-# OPTIONAL
-$inputs.Var.snapshotIds = @(
-	<System.String>
-)
-# OPTIONAL
-$inputs.Var.operation = <SlaWarningsOperation> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaWarningsOperation]) for enum values.
-"@
-    Write-Message "Invoke-RscQuerySla -DomainWithWarningsList" @"
-    Query sla list with warnings
-"@ "[GraphQL: slaDomainWithWarningsList]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
@@ -26761,171 +23825,6 @@ $inputs.Var.shouldShowPausedClusters = <System.Boolean>
     Write-Message "Invoke-RscQuerySla -Domain" @"
     Query that retrieves an SLA Domain.
 "@ "[GraphQL: slaDomain]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscQuerySla -DomainWithWarnings
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscQuerySla -DomainWithWarnings -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscQuerySla -DomainWithWarnings -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.id = <System.String>
-# REQUIRED
-$inputs.Var.objectIds = @(
-	<System.String>
-)
-# OPTIONAL
-$inputs.Var.applicableSnappableTypes = @(
-	<WorkloadLevelHierarchy> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
-)
-"@
-    Write-Message "Invoke-RscQuerySla -DomainWithWarnings" @"
-    
-"@ "[GraphQL: slaDomainWithWarnings]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscQuerySla -ArchivalValidationWarnings
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscQuerySla -ArchivalValidationWarnings -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscQuerySla -ArchivalValidationWarnings -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.input = @{
-	# OPTIONAL
-	snapshotSchedule = @{
-		# OPTIONAL
-		minute = @{
-			# OPTIONAL
-			basicSchedule = @{
-				# OPTIONAL
-				frequency = <System.Int32>
-				# OPTIONAL
-				retention = <System.Int32>
-				# OPTIONAL
-				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-		}
-		# OPTIONAL
-		hourly = @{
-			# OPTIONAL
-			basicSchedule = @{
-				# OPTIONAL
-				frequency = <System.Int32>
-				# OPTIONAL
-				retention = <System.Int32>
-				# OPTIONAL
-				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-		}
-		# OPTIONAL
-		daily = @{
-			# OPTIONAL
-			basicSchedule = @{
-				# OPTIONAL
-				frequency = <System.Int32>
-				# OPTIONAL
-				retention = <System.Int32>
-				# OPTIONAL
-				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-		}
-		# OPTIONAL
-		weekly = @{
-			# OPTIONAL
-			basicSchedule = @{
-				# OPTIONAL
-				frequency = <System.Int32>
-				# OPTIONAL
-				retention = <System.Int32>
-				# OPTIONAL
-				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-			# OPTIONAL
-			dayOfWeek = <DayOfWeek> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
-		}
-		# OPTIONAL
-		monthly = @{
-			# OPTIONAL
-			basicSchedule = @{
-				# OPTIONAL
-				frequency = <System.Int32>
-				# OPTIONAL
-				retention = <System.Int32>
-				# OPTIONAL
-				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-			# OPTIONAL
-			dayOfMonth = <DayOfMonth> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfMonth]) for enum values.
-		}
-		# OPTIONAL
-		quarterly = @{
-			# OPTIONAL
-			basicSchedule = @{
-				# OPTIONAL
-				frequency = <System.Int32>
-				# OPTIONAL
-				retention = <System.Int32>
-				# OPTIONAL
-				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-			# OPTIONAL
-			dayOfQuarter = <DayOfQuarter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfQuarter]) for enum values.
-			# OPTIONAL
-			quarterStartMonth = <Month> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
-		}
-		# OPTIONAL
-		yearly = @{
-			# OPTIONAL
-			basicSchedule = @{
-				# OPTIONAL
-				frequency = <System.Int32>
-				# OPTIONAL
-				retention = <System.Int32>
-				# OPTIONAL
-				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-			# OPTIONAL
-			dayOfYear = <DayOfYear> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfYear]) for enum values.
-			# OPTIONAL
-			yearStartMonth = <Month> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
-		}
-	}
-	# OPTIONAL
-	archivalThreshold = <System.Int32>
-	# OPTIONAL
-	archivalThresholdUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-	# OPTIONAL
-	archivalGroupId = <System.String>
-	# OPTIONAL
-	archivalLocationToClusterMapping = @(
-		@{
-			# OPTIONAL
-			clusterUuid = <System.String>
-			# OPTIONAL
-			locationId = <System.String>
-		}
-	)
-	# OPTIONAL
-	frequencies = @(
-		<RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-	)
-}
-"@
-    Write-Message "Invoke-RscQuerySla -ArchivalValidationWarnings" @"
-    SLA Domain warnings related to non-compliant archival retention duration in the archival policy.
-"@ "[GraphQL: slaArchivalValidationWarnings]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
@@ -27093,33 +23992,6 @@ $inputs.Var.SlaId = <System.String>
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQuerySla -ProtectedClustersForGlobal
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscQuerySla -ProtectedClustersForGlobal -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscQuerySla -ProtectedClustersForGlobal -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # OPTIONAL
-$inputs.Var.first = <System.Int32>
-# OPTIONAL
-$inputs.Var.after = <System.String>
-# OPTIONAL
-$inputs.Var.last = <System.Int32>
-# OPTIONAL
-$inputs.Var.before = <System.String>
-# REQUIRED
-$inputs.Var.slaId = <System.String>
-"@
-    Write-Message "Invoke-RscQuerySla -ProtectedClustersForGlobal" @"
-    Clusters that have object(s) protected by global SLA.
-"@ "[GraphQL: protectedClustersForGlobalSla]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
 # Invoke-RscQuerySla -ConflictObjects
 # -------------------------------------------------------------------
 
@@ -27136,7 +24008,7 @@ $inputs.Var.fids = @(
 )
 "@
     Write-Message "Invoke-RscQuerySla -ConflictObjects" @"
-    
+    Conflicting objects for an SLA Domain assignment.
 "@ "[GraphQL: slaConflictObjects]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
@@ -27252,31 +24124,6 @@ $inputs.Var.before = <System.String>
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQuerySla -ClusterDomainFilterList
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscQuerySla -ClusterDomainFilterList -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscQuerySla -ClusterDomainFilterList -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # OPTIONAL
-$inputs.Var.first = <System.Int32>
-# OPTIONAL
-$inputs.Var.after = <System.String>
-# OPTIONAL
-$inputs.Var.last = <System.Int32>
-# OPTIONAL
-$inputs.Var.before = <System.String>
-"@
-    Write-Message "Invoke-RscQuerySla -ClusterDomainFilterList" @"
-    
-"@ "[GraphQL: clusterSlaDomainFilterConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
 # Invoke-RscQuerySla -VerifyWithReplicationToCluster
 # -------------------------------------------------------------------
 
@@ -27295,27 +24142,6 @@ $inputs.Var.includeArchived = <System.Boolean>
     Write-Message "Invoke-RscQuerySla -VerifyWithReplicationToCluster" @"
     Verify for a Rubrik cluster if it is replication target in any SLA Domain.
 "@ "[GraphQL: verifySlaWithReplicationToCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscQuerySla -DownloadWithReplicationCsv
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscQuerySla -DownloadWithReplicationCsv -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscQuerySla -DownloadWithReplicationCsv -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.cdmClusterUUID = <System.String>
-# REQUIRED
-$inputs.Var.includeArchived = <System.Boolean>
-"@
-    Write-Message "Invoke-RscQuerySla -DownloadWithReplicationCsv" @"
-    Download list of Global SLA CSV that have Replication to the given Rubrik Cluster.
-"@ "[GraphQL: downloadSlaWithReplicationCsv]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
@@ -27443,65 +24269,6 @@ $inputs.Var.filter = @(
     Write-Message "Invoke-RscQueryVcenter -List" @"
     
 "@ "[GraphQL: vSphereVCenterConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscQueryVcenter -UniqueCount
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscQueryVcenter -UniqueCount -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscQueryVcenter -UniqueCount -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # OPTIONAL
-$inputs.Var.filter = @(
-	@{
-		# OPTIONAL
-		field = <HierarchyFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
-		# OPTIONAL
-		texts = @(
-			<System.String>
-		)
-		# OPTIONAL
-		tagFilterParams = @(
-			@{
-				# OPTIONAL
-				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-				# OPTIONAL
-				tagKey = <System.String>
-				# OPTIONAL
-				tagValue = <System.String>
-			}
-		)
-		# OPTIONAL
-		objectTypeFilterParams = @(
-			<ManagedObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
-		)
-		# OPTIONAL
-		awsNativeProtectionFeatureNames = @(
-			<AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		isNegative = <System.Boolean>
-		# OPTIONAL
-		isSlowSearchEnabled = <System.Boolean>
-		# OPTIONAL
-		azureNativeProtectionFeatureNames = @(
-			<AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		unmanagedObjectAvailabilityFilter = @(
-			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
-		)
-}
-)
-"@
-    Write-Message "Invoke-RscQueryVcenter -UniqueCount" @"
-    
-"@ "[GraphQL: uniqueVSphereVCenterCount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
@@ -27699,25 +24466,6 @@ Preview list of virtual machines of a proposed filter condition. The result migh
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphere -Blueprint
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscQueryVsphere -Blueprint -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscQueryVsphere -Blueprint -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.fid = <System.String>
-"@
-    Write-Message "Invoke-RscQueryVsphere -Blueprint" @"
-    
-"@ "[GraphQL: vSphereBlueprint]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
 # Invoke-RscQueryVsphere -Datacenter
 # -------------------------------------------------------------------
 
@@ -27791,25 +24539,6 @@ $inputs.Var.fid = <System.String>
     Write-Message "Invoke-RscQueryVsphere -Folder" @"
     
 "@ "[GraphQL: vSphereFolder]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscQueryVsphere -DatacenterFolder
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscQueryVsphere -DatacenterFolder -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscQueryVsphere -DatacenterFolder -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.fid = <System.String>
-"@
-    Write-Message "Invoke-RscQueryVsphere -DatacenterFolder" @"
-    Vsphere datacenter folder based on id passed in.
-"@ "[GraphQL: vSphereDatacenterFolder]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------

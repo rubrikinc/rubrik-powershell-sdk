@@ -1,6 +1,8 @@
 ### VsphereComputeCluster
 - ioFilterStatus: System.String
   - This vsphere computer cluster's IOFilter status can be Uninstalled or Installed.
+- drsStatus: System.Boolean
+  - Current Drs status of the cluster.
 - descendantConnection: VsphereComputeClusterDescendantTypeConnection
   - List of descendants.
 - physicalChildConnection: VsphereComputeClusterPhysicalChildTypeConnection

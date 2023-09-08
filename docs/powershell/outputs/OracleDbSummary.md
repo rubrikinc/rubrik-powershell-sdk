@@ -4,9 +4,6 @@ Supported in v5.0+
 - id: System.String
   - Required. Supported in v5.0+
   ID assigned to the Oracle database.
-- infraPath: list of ManagedHierarchyObjectAncestors
-  - Required. Supported in v5.0+
-  An array that contains information about the objects in the infrastructure path of a specified Oracle database.
 - instances: list of OracleInstancePropertiess
   - Supported in v5.0+
   Details of the instances of the Oracle database.
@@ -44,9 +41,6 @@ Supported in v5.0+
 - standaloneHostName: System.String
   - Supported in v5.0+
   Hostname of the standalone Oracle database host.
-- currentBackupTaskInfo: BackupTaskDiagnosticInfo
-  - Supported in v5.1+
-  Information about the current backup task.
 - includeBackupTaskInfo: System.Boolean
   - Supported in v5.1+
   True/false value indicating if backup task information is included in the response.
@@ -75,9 +69,6 @@ Supported in v5.0+
 - dataGuardGroupId: System.String
   - Supported in v6.0+
   Rubrik ID of the Data Guard group to which this database belongs.
-- dataGuardGroupMembers: list of DataGuardGroupMembers
-  - Supported in v6.0+
-  List of Data Guard group members.
 - dataGuardGroupName: System.String
   - Supported in v6.0+
   Name of the Data Guard group to which this database belongs.
@@ -94,3 +85,12 @@ Supported in v5.0+
   - 
 - dataGuardType: CdmDataGuardType
   - 
+- infraPath: list of ManagedHierarchyObjectAncestors
+  - Required. Supported in v5.0+
+  An array that contains information about the objects in the infrastructure path of a specified Oracle database.
+- currentBackupTaskInfo: BackupTaskDiagnosticInfo
+  - Supported in v5.1+
+  Information about the current backup task.
+- dataGuardGroupMembers: list of DataGuardGroupMembers
+  - Supported in v6.0+
+  List of Data Guard group members.

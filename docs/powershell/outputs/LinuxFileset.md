@@ -19,6 +19,8 @@ Linux fileset type.
   - Boolean variable denoting if hard link support is enabled.
 - host: PhysicalHost
   - Host of the linux fileset.
+- filesetTemplate: FilesetTemplate
+  - Fileset template of the Linux fileset.
 - failoverClusterApp: FailoverClusterApp
   - Failover cluster app.
 - cluster: Cluster

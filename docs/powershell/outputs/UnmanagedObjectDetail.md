@@ -6,6 +6,8 @@ UnmanagedObjectDetails.
 - hasSnapshotsWithPolicy: System.Boolean
   - Any of the snapshots are retained by a SLA.
 - id: System.String
+  - Object ID.
+- workloadId: System.String
   - Workload ID.
 - isRemote: System.Boolean
   - Whether the object is remote or local.

@@ -248,3 +248,5 @@
 - HAS_EXPIRED_INDEXED_SNAPSHOTS - Filter objects if they have snapshots that are expired and indexed.
 - MANAGED_VOLUME_EXPORT_MOUNT_TYPE - Filter according to the Managed Volume export mount type.
 - MIGRATED_HOST_SHARES_WITH_GHOST_OBJECTS - Filter to show all migrated host shares, including ghost objects.
+- RUBRIK_NATIVE_HAS_AT_LEAST_ONE_SNAPSHOT - Filter by objects with at least one snapshot.
+- K8S_CLUSTER_NAME - Filter based on Kubernetes cluster name.

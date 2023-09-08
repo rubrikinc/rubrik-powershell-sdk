@@ -156,6 +156,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("failoverClusterApp")]
         public FailoverClusterApp? FailoverClusterApp { get; set; }
 
+        //      C# -> FilesetTemplate? FilesetTemplate
+        // GraphQL -> filesetTemplate: FilesetTemplate (type)
+        [JsonProperty("filesetTemplate")]
+        public FilesetTemplate? FilesetTemplate { get; set; }
+
         //      C# -> PhysicalHost? Host
         // GraphQL -> host: PhysicalHost (type)
         [JsonProperty("host")]
@@ -273,6 +278,7 @@ namespace RubrikSecurityCloud.Types
         Cluster? Cluster = null,
         PathNode? EffectiveSlaSourceObject = null,
         FailoverClusterApp? FailoverClusterApp = null,
+        FilesetTemplate? FilesetTemplate = null,
         PhysicalHost? Host = null,
         LatestUserNote? LatestUserNote = null,
         List<PathNode>? LogicalPath = null,
@@ -371,6 +377,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( FailoverClusterApp != null ) {
             this.FailoverClusterApp = FailoverClusterApp;
+        }
+        if ( FilesetTemplate != null ) {
+            this.FilesetTemplate = FilesetTemplate;
         }
         if ( Host != null ) {
             this.Host = Host;
@@ -590,6 +599,14 @@ namespace RubrikSecurityCloud.Types
             var fspec = this.FailoverClusterApp.AsFieldSpec(indent+1);
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
                 s += ind + "failoverClusterApp {\n" + fspec + ind + "}\n" ;
+            }
+        }
+        //      C# -> FilesetTemplate? FilesetTemplate
+        // GraphQL -> filesetTemplate: FilesetTemplate (type)
+        if (this.FilesetTemplate != null) {
+            var fspec = this.FilesetTemplate.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "filesetTemplate {\n" + fspec + ind + "}\n" ;
             }
         }
         //      C# -> PhysicalHost? Host
@@ -901,6 +918,13 @@ namespace RubrikSecurityCloud.Types
         {
             this.FailoverClusterApp = new FailoverClusterApp();
             this.FailoverClusterApp.ApplyExploratoryFieldSpec(ec.NewChild("failoverClusterApp"));
+        }
+        //      C# -> FilesetTemplate? FilesetTemplate
+        // GraphQL -> filesetTemplate: FilesetTemplate (type)
+        if (this.FilesetTemplate == null && ec.Includes("filesetTemplate",false))
+        {
+            this.FilesetTemplate = new FilesetTemplate();
+            this.FilesetTemplate.ApplyExploratoryFieldSpec(ec.NewChild("filesetTemplate"));
         }
         //      C# -> PhysicalHost? Host
         // GraphQL -> host: PhysicalHost (type)

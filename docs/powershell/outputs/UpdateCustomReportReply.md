@@ -19,6 +19,8 @@ Metadata for rendering a custom report.
   - Time the report was last updated and saved.
 - viewedAt: DateTime
   - Time the report was last viewed or opened.
+- room: System.String
+  - Room of the report.
 - charts: list of ReportChartTypes
   - The list of charts in the custom report.
 - tables: list of ReportTableTypes

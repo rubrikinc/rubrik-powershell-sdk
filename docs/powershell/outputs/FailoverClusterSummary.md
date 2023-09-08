@@ -14,11 +14,11 @@ Supported in v5.2+
   - Required. Supported in v5.2+
 - effectiveSlaHolder: EffectiveSlaHolder
   - 
-- slaAssignable: SlaAssignable
-  - 
 - connectionStatus: FailoverClusterConnectionStatus
   - 
 - operatingSystemType: FailoverClusterOsType
   - 
 - slaAssignment: SlaAssignment
+  - 
+- slaAssignable: SlaAssignable
   - 

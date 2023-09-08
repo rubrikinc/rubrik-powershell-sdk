@@ -19,13 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? AccountId
-        // GraphQL -> accountId: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("accountId")]
-        public System.String? AccountId { get; set; }
-
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: UUID! (scalar)
         [Required]
@@ -41,7 +34,9 @@ namespace RubrikSecurityCloud.Types
         public System.String? TargetWorkloadId { get; set; }
 
         //      C# -> SnapshotType? SnapshotType
-        // GraphQL -> snapshotType: SnapshotType (enum)
+        // GraphQL -> snapshotType: SnapshotType! (enum)
+        [Required]
+        [JsonRequired]
         [JsonProperty("snapshotType")]
         public SnapshotType? SnapshotType { get; set; }
 
@@ -51,6 +46,13 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("mountDiskIds")]
         public List<System.String>? MountDiskIds { get; set; }
+
+        //      C# -> CloudNativeObjectType? WorkloadType
+        // GraphQL -> workloadType: CloudNativeObjectType! (enum)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("workloadType")]
+        public CloudNativeObjectType? WorkloadType { get; set; }
 
 
         #endregion

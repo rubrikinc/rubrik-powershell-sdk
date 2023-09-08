@@ -45,14 +45,6 @@ Create SLA Domain.
 
 - There is a single argument of type CreateGlobalSlaInput.
 - Returns GlobalSlaReply.
-### deleteglobal
-- There are 2 arguments.
-    - id - System.String: SLA Domain ID.
-    - userNote - System.String: Optional user note.
-- Returns SlaResult.
-### editglobal
-- There is a single argument of type GlobalSlaEditRequest.
-- Returns GlobalSlaReply.
 ### exportmanagedvolumesnapshot
 Create a request to export a snapshot and mount it on a host
 
@@ -79,8 +71,3 @@ Update SLA Domain.
 
 - There is a single argument of type UpdateGlobalSlaInput.
 - Returns GlobalSlaReply.
-### upgrades
-Upgrade SLA Domains from the Rubrik clusters.
-
-- There is a single argument of type UpgradeSlasInput.
-- Returns UpgradeSlasReply.

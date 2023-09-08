@@ -22,16 +22,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// vSphere vCenter queries
     /// </summary>
     /// <description>
-    /// Invoke-RscQueryVcenter is a master cmdlet for Vcenter work that can invoke any of the following subcommands: Vcenter, List, UniqueCount, PreAddInfo, Networks, HotAddNetwork, NumProxiesNeeded, HotAddProxy, HotAddBandwidth, AdvancedTagPreview.
+    /// Invoke-RscQueryVcenter is a master cmdlet for Vcenter work that can invoke any of the following subcommands: Vcenter, List, PreAddInfo, Networks, HotAddNetwork, NumProxiesNeeded, HotAddProxy, HotAddBandwidth, AdvancedTagPreview.
     /// </description>
     /// <example>
     /// <code>Invoke-RscQueryVcenter -Vcenter [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
     /// <code>Invoke-RscQueryVcenter -List [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
-    /// <code>Invoke-RscQueryVcenter -UniqueCount [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
     /// <code>Invoke-RscQueryVcenter -PreAddInfo [-Arg ..] [-Field ..]</code>
@@ -96,24 +93,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Position = 0
         )]
         public SwitchParameter List { get; set; }
-
-        
-        /// <summary>
-        /// UniqueCount parameter set
-        ///
-        /// [GraphQL: uniqueVSphereVCenterCount]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "UniqueCount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-[GraphQL: uniqueVSphereVCenterCount]",
-            Position = 0
-        )]
-        public SwitchParameter UniqueCount { get; set; }
 
         
         /// <summary>
@@ -274,9 +253,6 @@ Preview list of virtual machines of a proposed filter condition. The result migh
                     case "List":
                         this.ProcessRecord_List();
                         break;
-                    case "UniqueCount":
-                        this.ProcessRecord_UniqueCount();
-                        break;
                     case "PreAddInfo":
                         this.ProcessRecord_PreAddInfo();
                         break;
@@ -325,15 +301,6 @@ Preview list of virtual machines of a proposed filter condition. The result migh
             this._logger.name += " -List";
             // Invoke graphql operation vSphereVCenterConnection
             InvokeQueryVsphereVcenterConnection();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // uniqueVSphereVCenterCount.
-        internal void ProcessRecord_UniqueCount()
-        {
-            this._logger.name += " -UniqueCount";
-            // Invoke graphql operation uniqueVSphereVCenterCount
-            InvokeQueryUniqueVsphereVcenterCount();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -463,71 +430,6 @@ $inputs.Var.sortBy = <HierarchySortByField> # Call [Enum]::GetValues([RubrikSecu
 # OPTIONAL
 $inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
 # OPTIONAL
-$inputs.Var.filter = @(
-	@{
-		# OPTIONAL
-		field = <HierarchyFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
-		# OPTIONAL
-		texts = @(
-			<System.String>
-		)
-		# OPTIONAL
-		tagFilterParams = @(
-			@{
-				# OPTIONAL
-				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-				# OPTIONAL
-				tagKey = <System.String>
-				# OPTIONAL
-				tagValue = <System.String>
-			}
-		)
-		# OPTIONAL
-		objectTypeFilterParams = @(
-			<ManagedObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
-		)
-		# OPTIONAL
-		awsNativeProtectionFeatureNames = @(
-			<AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		isNegative = <System.Boolean>
-		# OPTIONAL
-		isSlowSearchEnabled = <System.Boolean>
-		# OPTIONAL
-		azureNativeProtectionFeatureNames = @(
-			<AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		unmanagedObjectAvailabilityFilter = @(
-			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
-		)
-}
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Query:
-        // uniqueVSphereVCenterCount(filter: [Filter!]): Int!
-        internal void InvokeQueryUniqueVsphereVcenterCount()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("filter", "[Filter!]"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryUniqueVsphereVcenterCount",
-                "($filter: [Filter!])",
-                "System.Int32"
-                );
-            System.Int32? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (System.Int32)this.Field;
-            }
-            string fieldSpecDoc = Query.UniqueVsphereVcenterCount(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
 $inputs.Var.filter = @(
 	@{
 		# OPTIONAL

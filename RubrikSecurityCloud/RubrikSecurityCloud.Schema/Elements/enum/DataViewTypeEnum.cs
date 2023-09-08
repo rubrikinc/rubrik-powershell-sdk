@@ -75,6 +75,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "OBJECT_PROTECTION_AUDIT_LIST")]
         OBJECT_PROTECTION_AUDIT_LIST,
 
+        [EnumMember(Value = "OBJECT_PROTECTION_AUDIT_LIST_EXPORT")]
+        OBJECT_PROTECTION_AUDIT_LIST_EXPORT,
+
         [EnumMember(Value = "PROTECTION_TASK_DETAILS")]
         PROTECTION_TASK_DETAILS,
 

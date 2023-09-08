@@ -91,7 +91,7 @@ namespace RubrikSecurityCloud.Types
         public System.String? FailureReason { get; set; }
 
         //      C# -> System.String? Fid
-        // GraphQL -> fid: UUID (scalar)
+        // GraphQL -> fid: UUID! (scalar)
         [JsonProperty("fid")]
         public System.String? Fid { get; set; }
 
@@ -401,7 +401,7 @@ namespace RubrikSecurityCloud.Types
             s += ind + "failureReason\n" ;
         }
         //      C# -> System.String? Fid
-        // GraphQL -> fid: UUID (scalar)
+        // GraphQL -> fid: UUID! (scalar)
         if (this.Fid != null) {
             s += ind + "fid\n" ;
         }
@@ -591,7 +591,7 @@ namespace RubrikSecurityCloud.Types
             this.FailureReason = "FETCH";
         }
         //      C# -> System.String? Fid
-        // GraphQL -> fid: UUID (scalar)
+        // GraphQL -> fid: UUID! (scalar)
         if (this.Fid == null && ec.Includes("fid",true))
         {
             this.Fid = "FETCH";

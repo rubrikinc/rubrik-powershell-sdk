@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ProductName
     {
+        [EnumMember(Value = "AAD")]
+        AAD,
+
         [EnumMember(Value = "APPFLOWS")]
         APPFLOWS,
 

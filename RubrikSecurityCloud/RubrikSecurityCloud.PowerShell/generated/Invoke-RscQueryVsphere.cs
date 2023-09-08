@@ -22,11 +22,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// vSphere queries
     /// </summary>
     /// <description>
-    /// Invoke-RscQueryVsphere is a master cmdlet for Vsphere work that can invoke any of the following subcommands: Blueprint, Datacenter, ComputeCluster, ResourcePool, Folder, DatacenterFolder, Host, DatastoreCluster, Datastore, HostsByFids, Tag, TagCategory, Network, TopLevelDescendantsList, RootRecoveryHierarchy, HostList, Folders, ComputeClusters, DatastoreList, DatastoreClusters, LiveMounts, MountList, Mount, HostDetails, VmwareCdpLiveInfo.
+    /// Invoke-RscQueryVsphere is a master cmdlet for Vsphere work that can invoke any of the following subcommands: Datacenter, ComputeCluster, ResourcePool, Folder, Host, DatastoreCluster, Datastore, HostsByFids, Tag, TagCategory, Network, TopLevelDescendantsList, RootRecoveryHierarchy, HostList, Folders, ComputeClusters, DatastoreList, DatastoreClusters, LiveMounts, MountList, Mount, HostDetails, VmwareCdpLiveInfo.
     /// </description>
-    /// <example>
-    /// <code>Invoke-RscQueryVsphere -Blueprint [-Arg ..] [-Field ..]</code>
-    /// </example>
     /// <example>
     /// <code>Invoke-RscQueryVsphere -Datacenter [-Arg ..] [-Field ..]</code>
     /// </example>
@@ -38,9 +35,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     /// <example>
     /// <code>Invoke-RscQueryVsphere -Folder [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
-    /// <code>Invoke-RscQueryVsphere -DatacenterFolder [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
     /// <code>Invoke-RscQueryVsphere -Host [-Arg ..] [-Field ..]</code>
@@ -106,24 +100,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ]
     public class Invoke_RscQueryVsphere : RscPSCmdlet
     {
-        
-        /// <summary>
-        /// Blueprint parameter set
-        ///
-        /// [GraphQL: vSphereBlueprint]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "Blueprint",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-[GraphQL: vSphereBlueprint]",
-            Position = 0
-        )]
-        public SwitchParameter Blueprint { get; set; }
-
         
         /// <summary>
         /// Datacenter parameter set
@@ -195,24 +171,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Position = 0
         )]
         public SwitchParameter Folder { get; set; }
-
-        
-        /// <summary>
-        /// DatacenterFolder parameter set
-        ///
-        /// [GraphQL: vSphereDatacenterFolder]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "DatacenterFolder",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Vsphere datacenter folder based on id passed in.
-[GraphQL: vSphereDatacenterFolder]",
-            Position = 0
-        )]
-        public SwitchParameter DatacenterFolder { get; set; }
 
         
         /// <summary>
@@ -568,9 +526,6 @@ Get details of a ESXi hypervisor.
             {
                 switch(Op)
                 {
-                    case "Blueprint":
-                        this.ProcessRecord_Blueprint();
-                        break;
                     case "Datacenter":
                         this.ProcessRecord_Datacenter();
                         break;
@@ -582,9 +537,6 @@ Get details of a ESXi hypervisor.
                         break;
                     case "Folder":
                         this.ProcessRecord_Folder();
-                        break;
-                    case "DatacenterFolder":
-                        this.ProcessRecord_DatacenterFolder();
                         break;
                     case "Host":
                         this.ProcessRecord_Host();
@@ -655,15 +607,6 @@ Get details of a ESXi hypervisor.
 #pragma warning restore 1591
 
         // This parameter set invokes a single graphql operation:
-        // vSphereBlueprint.
-        internal void ProcessRecord_Blueprint()
-        {
-            this._logger.name += " -Blueprint";
-            // Invoke graphql operation vSphereBlueprint
-            InvokeQueryVsphereBlueprint();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // vSphereDatacenter.
         internal void ProcessRecord_Datacenter()
         {
@@ -697,15 +640,6 @@ Get details of a ESXi hypervisor.
             this._logger.name += " -Folder";
             // Invoke graphql operation vSphereFolder
             InvokeQueryVsphereFolder();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // vSphereDatacenterFolder.
-        internal void ProcessRecord_DatacenterFolder()
-        {
-            this._logger.name += " -DatacenterFolder";
-            // Invoke graphql operation vSphereDatacenterFolder
-            InvokeQueryVsphereDatacenterFolder();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -881,31 +815,6 @@ Get details of a ESXi hypervisor.
 
 
         // Invoke GraphQL Query:
-        // vSphereBlueprint(fid: UUID!): VSphereBlueprint!
-        internal void InvokeQueryVsphereBlueprint()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("fid", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryVsphereBlueprint",
-                "($fid: UUID!)",
-                "VsphereBlueprint"
-                );
-            VsphereBlueprint? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (VsphereBlueprint)this.Field;
-            }
-            string fieldSpecDoc = Query.VsphereBlueprint(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Query:
         // vSphereDatacenter(fid: UUID!): VsphereDatacenter!
         internal void InvokeQueryVsphereDatacenter()
         {
@@ -999,31 +908,6 @@ $inputs.Var.fid = <System.String>";
                 fieldSpecObj = (VsphereFolder)this.Field;
             }
             string fieldSpecDoc = Query.VsphereFolder(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Query:
-        // vSphereDatacenterFolder(fid: UUID!): VsphereDatacenterFolder!
-        internal void InvokeQueryVsphereDatacenterFolder()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("fid", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryVsphereDatacenterFolder",
-                "($fid: UUID!)",
-                "VsphereDatacenterFolder"
-                );
-            VsphereDatacenterFolder? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (VsphereDatacenterFolder)this.Field;
-            }
-            string fieldSpecDoc = Query.VsphereDatacenterFolder(ref fieldSpecObj);
             string inputExample = @"# REQUIRED
 $inputs.Var.fid = <System.String>";
             BuildInput(fieldSpecObj, inputExample);

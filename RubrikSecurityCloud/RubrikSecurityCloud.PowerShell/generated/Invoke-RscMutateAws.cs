@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// AWS mutations
     /// </summary>
     /// <description>
-    /// Invoke-RscMutateAws is a master cmdlet for Aws work that can invoke any of the following subcommands: StartNativeEc2InstanceSnapshotsJob, StartRestoreNativeEc2InstanceSnapshotJob, StartRefreshNativeAccountsJob, StartCreateNativeEbsVolumeSnapshotsJob, StartNativeAccountDisableJob, StartExportNativeEbsVolumeSnapshotJob, ExcludeNativeEbsVolumesFromSnapshot, StartNativeRdsInstanceSnapshotsJob, CreateAccount, UpdateAccount, CreateAutomaticTargetMapping, CreateCloudNativeStorageSetting, UpdateAutomaticTargetMapping, UpdateCloudNativeStorageSetting, CreateTarget, UpdateTarget, CreateReaderTarget, CreateComputeSetting, UpdateComputeSetting, DeleteComputeSetting, CloudAccountValidate, CloudAccountInitiate, NativeProtectionAccountAdd, ValidateAndCreateCloudAccount, FinalizeCloudAccountProtection, PrepareCloudAccountDeletion, FinalizeCloudAccountDeletion, UpdateCloudAccountFeature, UpdateCloudAccount, PrepareFeatureUpdateForCloudAccount, CloudAccountUpdateFeature, CreateExocomputeConfigs, DeleteExocomputeConfigs, UpdateExocomputeConfigs, StartExocomputeDisableJob, AddIamUserBasedCloudAccount, DeleteIamUserBasedCloudAccount, DeleteCloudAccountWithoutCft, UpgradeIamUserBasedCloudAccountPermissions, UpgradeCloudAccountFeaturesWithoutCft, AddAuthenticationServerBasedCloudAccount, PatchAuthenticationServerBasedCloudAccount, PatchIamUserBasedCloudAccount, RegisterFeatureArtifacts, BulkDeleteCloudAccountWithoutCft, CreateCluster, DeleteCluster.
+    /// Invoke-RscMutateAws is a master cmdlet for Aws work that can invoke any of the following subcommands: StartNativeEc2InstanceSnapshotsJob, StartRestoreNativeEc2InstanceSnapshotJob, StartRefreshNativeAccountsJob, StartCreateNativeEbsVolumeSnapshotsJob, StartNativeAccountDisableJob, StartExportNativeEbsVolumeSnapshotJob, ExcludeNativeEbsVolumesFromSnapshot, StartNativeRdsInstanceSnapshotsJob, CreateAccount, UpdateAccount, CreateAutomaticTargetMapping, CreateCloudNativeStorageSetting, UpdateAutomaticTargetMapping, UpdateCloudNativeStorageSetting, CreateTarget, UpdateTarget, CreateReaderTarget, CreateComputeSetting, UpdateComputeSetting, DeleteComputeSetting, ValidateAndCreateCloudAccount, FinalizeCloudAccountProtection, PrepareCloudAccountDeletion, FinalizeCloudAccountDeletion, UpdateCloudAccountFeature, UpdateCloudAccount, PrepareFeatureUpdateForCloudAccount, CreateExocomputeConfigs, DeleteExocomputeConfigs, UpdateExocomputeConfigs, StartExocomputeDisableJob, AddIamUserBasedCloudAccount, UpgradeIamUserBasedCloudAccountPermissions, UpgradeCloudAccountFeaturesWithoutCft, AddAuthenticationServerBasedCloudAccount, PatchAuthenticationServerBasedCloudAccount, PatchIamUserBasedCloudAccount, RegisterFeatureArtifacts, BulkDeleteCloudAccountWithoutCft, CreateCluster, DeleteCluster.
     /// </description>
     /// <example>
     /// <code>Invoke-RscMutateAws -StartNativeEc2InstanceSnapshotsJob [-Arg ..] [-Field ..]</code>
@@ -85,15 +85,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <code>Invoke-RscMutateAws -DeleteComputeSetting [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
-    /// <code>Invoke-RscMutateAws -CloudAccountValidate [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
-    /// <code>Invoke-RscMutateAws -CloudAccountInitiate [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
-    /// <code>Invoke-RscMutateAws -NativeProtectionAccountAdd [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
     /// <code>Invoke-RscMutateAws -ValidateAndCreateCloudAccount [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
@@ -115,9 +106,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <code>Invoke-RscMutateAws -PrepareFeatureUpdateForCloudAccount [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
-    /// <code>Invoke-RscMutateAws -CloudAccountUpdateFeature [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
     /// <code>Invoke-RscMutateAws -CreateExocomputeConfigs [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
@@ -131,12 +119,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     /// <example>
     /// <code>Invoke-RscMutateAws -AddIamUserBasedCloudAccount [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
-    /// <code>Invoke-RscMutateAws -DeleteIamUserBasedCloudAccount [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
-    /// <code>Invoke-RscMutateAws -DeleteCloudAccountWithoutCft [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
     /// <code>Invoke-RscMutateAws -UpgradeIamUserBasedCloudAccountPermissions [-Arg ..] [-Field ..]</code>
@@ -534,60 +516,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         /// <summary>
-        /// CloudAccountValidate parameter set
-        ///
-        /// [GraphQL: awsCloudAccountValidate]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "CloudAccountValidate",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"This endpoint is deprecated.
-[GraphQL: awsCloudAccountValidate]",
-            Position = 0
-        )]
-        public SwitchParameter CloudAccountValidate { get; set; }
-
-        
-        /// <summary>
-        /// CloudAccountInitiate parameter set
-        ///
-        /// [GraphQL: awsCloudAccountInitiate]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "CloudAccountInitiate",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"This endpoint is deprecated.
-[GraphQL: awsCloudAccountInitiate]",
-            Position = 0
-        )]
-        public SwitchParameter CloudAccountInitiate { get; set; }
-
-        
-        /// <summary>
-        /// NativeProtectionAccountAdd parameter set
-        ///
-        /// [GraphQL: awsNativeProtectionAccountAdd]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "NativeProtectionAccountAdd",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"This endpoint is deprecated.
-[GraphQL: awsNativeProtectionAccountAdd]",
-            Position = 0
-        )]
-        public SwitchParameter NativeProtectionAccountAdd { get; set; }
-
-        
-        /// <summary>
         /// ValidateAndCreateCloudAccount parameter set
         ///
         /// [GraphQL: validateAndCreateAwsCloudAccount]
@@ -714,24 +642,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         /// <summary>
-        /// CloudAccountUpdateFeature parameter set
-        ///
-        /// [GraphQL: awsCloudAccountUpdateFeature]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "CloudAccountUpdateFeature",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"This endpoint is deprecated.
-[GraphQL: awsCloudAccountUpdateFeature]",
-            Position = 0
-        )]
-        public SwitchParameter CloudAccountUpdateFeature { get; set; }
-
-        
-        /// <summary>
         /// CreateExocomputeConfigs parameter set
         ///
         /// [GraphQL: createAwsExocomputeConfigs]
@@ -819,42 +729,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Position = 0
         )]
         public SwitchParameter AddIamUserBasedCloudAccount { get; set; }
-
-        
-        /// <summary>
-        /// DeleteIamUserBasedCloudAccount parameter set
-        ///
-        /// [GraphQL: deleteAwsIamUserBasedCloudAccount]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "DeleteIamUserBasedCloudAccount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Deletes IAM user-based AWS cloud account.
-[GraphQL: deleteAwsIamUserBasedCloudAccount]",
-            Position = 0
-        )]
-        public SwitchParameter DeleteIamUserBasedCloudAccount { get; set; }
-
-        
-        /// <summary>
-        /// DeleteCloudAccountWithoutCft parameter set
-        ///
-        /// [GraphQL: deleteAwsCloudAccountWithoutCft]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "DeleteCloudAccountWithoutCft",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Removes AWS cloud account without cleaning up the associated permissions from the AWS cloud account. Customer needs to clean up the permissions in the AWS account themselves. This mutation is supported only for IAM user-based and authentication server-based AWS cloud accounts.
-[GraphQL: deleteAwsCloudAccountWithoutCft]",
-            Position = 0
-        )]
-        public SwitchParameter DeleteCloudAccountWithoutCft { get; set; }
 
         
         /// <summary>
@@ -1087,15 +961,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "DeleteComputeSetting":
                         this.ProcessRecord_DeleteComputeSetting();
                         break;
-                    case "CloudAccountValidate":
-                        this.ProcessRecord_CloudAccountValidate();
-                        break;
-                    case "CloudAccountInitiate":
-                        this.ProcessRecord_CloudAccountInitiate();
-                        break;
-                    case "NativeProtectionAccountAdd":
-                        this.ProcessRecord_NativeProtectionAccountAdd();
-                        break;
                     case "ValidateAndCreateCloudAccount":
                         this.ProcessRecord_ValidateAndCreateCloudAccount();
                         break;
@@ -1117,9 +982,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "PrepareFeatureUpdateForCloudAccount":
                         this.ProcessRecord_PrepareFeatureUpdateForCloudAccount();
                         break;
-                    case "CloudAccountUpdateFeature":
-                        this.ProcessRecord_CloudAccountUpdateFeature();
-                        break;
                     case "CreateExocomputeConfigs":
                         this.ProcessRecord_CreateExocomputeConfigs();
                         break;
@@ -1134,12 +996,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "AddIamUserBasedCloudAccount":
                         this.ProcessRecord_AddIamUserBasedCloudAccount();
-                        break;
-                    case "DeleteIamUserBasedCloudAccount":
-                        this.ProcessRecord_DeleteIamUserBasedCloudAccount();
-                        break;
-                    case "DeleteCloudAccountWithoutCft":
-                        this.ProcessRecord_DeleteCloudAccountWithoutCft();
                         break;
                     case "UpgradeIamUserBasedCloudAccountPermissions":
                         this.ProcessRecord_UpgradeIamUserBasedCloudAccountPermissions();
@@ -1360,33 +1216,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // awsCloudAccountValidate.
-        internal void ProcessRecord_CloudAccountValidate()
-        {
-            this._logger.name += " -CloudAccountValidate";
-            // Invoke graphql operation awsCloudAccountValidate
-            InvokeMutationAwsCloudAccountValidate();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // awsCloudAccountInitiate.
-        internal void ProcessRecord_CloudAccountInitiate()
-        {
-            this._logger.name += " -CloudAccountInitiate";
-            // Invoke graphql operation awsCloudAccountInitiate
-            InvokeMutationAwsCloudAccountInitiate();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // awsNativeProtectionAccountAdd.
-        internal void ProcessRecord_NativeProtectionAccountAdd()
-        {
-            this._logger.name += " -NativeProtectionAccountAdd";
-            // Invoke graphql operation awsNativeProtectionAccountAdd
-            InvokeMutationAwsNativeProtectionAccountAdd();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // validateAndCreateAwsCloudAccount.
         internal void ProcessRecord_ValidateAndCreateCloudAccount()
         {
@@ -1450,15 +1279,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // awsCloudAccountUpdateFeature.
-        internal void ProcessRecord_CloudAccountUpdateFeature()
-        {
-            this._logger.name += " -CloudAccountUpdateFeature";
-            // Invoke graphql operation awsCloudAccountUpdateFeature
-            InvokeMutationAwsCloudAccountUpdateFeature();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // createAwsExocomputeConfigs.
         internal void ProcessRecord_CreateExocomputeConfigs()
         {
@@ -1501,24 +1321,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -AddIamUserBasedCloudAccount";
             // Invoke graphql operation addAwsIamUserBasedCloudAccount
             InvokeMutationAddAwsIamUserBasedCloudAccount();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // deleteAwsIamUserBasedCloudAccount.
-        internal void ProcessRecord_DeleteIamUserBasedCloudAccount()
-        {
-            this._logger.name += " -DeleteIamUserBasedCloudAccount";
-            // Invoke graphql operation deleteAwsIamUserBasedCloudAccount
-            InvokeMutationDeleteAwsIamUserBasedCloudAccount();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // deleteAwsCloudAccountWithoutCft.
-        internal void ProcessRecord_DeleteCloudAccountWithoutCft()
-        {
-            this._logger.name += " -DeleteCloudAccountWithoutCft";
-            // Invoke graphql operation deleteAwsCloudAccountWithoutCft
-            InvokeMutationDeleteAwsCloudAccountWithoutCft();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2597,158 +2399,6 @@ $inputs.Var.input = @{
         }
 
         // Invoke GraphQL Mutation:
-        // awsCloudAccountValidate(awsCloudAccountValidateArg: AwsCloudAccountValidateInput!): AwsCloudAccountValidateResponse!
-        internal void InvokeMutationAwsCloudAccountValidate()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("awsCloudAccountValidateArg", "AwsCloudAccountValidateInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationAwsCloudAccountValidate",
-                "($awsCloudAccountValidateArg: AwsCloudAccountValidateInput!)",
-                "AwsCloudAccountValidateResponse"
-                );
-            AwsCloudAccountValidateResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AwsCloudAccountValidateResponse)this.Field;
-            }
-            string fieldSpecDoc = Mutation.AwsCloudAccountValidate(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.awsCloudAccountValidateArg = @{
-	# REQUIRED
-	features = @(
-		<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-	)
-	# OPTIONAL
-	awsAdminAccount = @{
-		# OPTIONAL
-		id = <System.String>
-		# OPTIONAL
-		nativeId = <System.String>
-		# OPTIONAL
-		accountName = <System.String>
-		# OPTIONAL
-		seamlessFlowEnabled = <System.Boolean>
-		# OPTIONAL
-		cloudType = <AwsCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
-	}
-	# REQUIRED
-	awsChildAccounts = @(
-		@{
-			# OPTIONAL
-			id = <System.String>
-			# OPTIONAL
-			nativeId = <System.String>
-			# OPTIONAL
-			accountName = <System.String>
-			# OPTIONAL
-			seamlessFlowEnabled = <System.Boolean>
-			# OPTIONAL
-			cloudType = <AwsCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
-		}
-	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Mutation:
-        // awsCloudAccountInitiate(awsCloudAccountInitiateArg: AwsCloudAccountInitiateInput!): AwsCloudAccountCreateResponse!
-        internal void InvokeMutationAwsCloudAccountInitiate()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("awsCloudAccountInitiateArg", "AwsCloudAccountInitiateInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationAwsCloudAccountInitiate",
-                "($awsCloudAccountInitiateArg: AwsCloudAccountInitiateInput!)",
-                "AwsCloudAccountCreateResponse"
-                );
-            AwsCloudAccountCreateResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AwsCloudAccountCreateResponse)this.Field;
-            }
-            string fieldSpecDoc = Mutation.AwsCloudAccountInitiate(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.awsCloudAccountInitiateArg = @{
-	# REQUIRED
-	action = <CloudAccountAction> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountAction]) for enum values.
-	# REQUIRED
-	features = @(
-		<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-	)
-	# OPTIONAL
-	awsAdminAccount = @{
-		# OPTIONAL
-		id = <System.String>
-		# OPTIONAL
-		nativeId = <System.String>
-		# OPTIONAL
-		accountName = <System.String>
-		# OPTIONAL
-		seamlessFlowEnabled = <System.Boolean>
-		# OPTIONAL
-		cloudType = <AwsCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
-	}
-	# REQUIRED
-	awsChildAccounts = @(
-		@{
-			# OPTIONAL
-			id = <System.String>
-			# OPTIONAL
-			nativeId = <System.String>
-			# OPTIONAL
-			accountName = <System.String>
-			# OPTIONAL
-			seamlessFlowEnabled = <System.Boolean>
-			# OPTIONAL
-			cloudType = <AwsCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
-		}
-	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Mutation:
-        // awsNativeProtectionAccountAdd(awsNativeProtectionAccountAddArg: AwsNativeProtectionAccountAddRequest!): AwsNativeProtectionAccountAddResponse!
-        internal void InvokeMutationAwsNativeProtectionAccountAdd()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("awsNativeProtectionAccountAddArg", "AwsNativeProtectionAccountAddRequest!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationAwsNativeProtectionAccountAdd",
-                "($awsNativeProtectionAccountAddArg: AwsNativeProtectionAccountAddRequest!)",
-                "AwsNativeProtectionAccountAddResponse"
-                );
-            AwsNativeProtectionAccountAddResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AwsNativeProtectionAccountAddResponse)this.Field;
-            }
-            string fieldSpecDoc = Mutation.AwsNativeProtectionAccountAdd(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.awsNativeProtectionAccountAddArg = @{
-	# REQUIRED
-	accountId = <System.String>
-	# REQUIRED
-	name = <System.String>
-	# REQUIRED
-	regions = @(
-		<System.String>
-	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Mutation:
         // validateAndCreateAwsCloudAccount(input: ValidateAndCreateAwsCloudAccountInput!): ValidateAndCreateAwsCloudAccountReply!
         internal void InvokeMutationValidateAndCreateAwsCloudAccount()
         {
@@ -3073,36 +2723,6 @@ $inputs.Var.input = @{
         }
 
         // Invoke GraphQL Mutation:
-        // awsCloudAccountUpdateFeature(cloudAccountUuid: UUID!, features: [CloudAccountFeature!]!): AwsCloudAccountUpdateFeatureResponse!
-        internal void InvokeMutationAwsCloudAccountUpdateFeature()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("cloudAccountUuid", "UUID!"),
-                Tuple.Create("features", "[CloudAccountFeature!]!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationAwsCloudAccountUpdateFeature",
-                "($cloudAccountUuid: UUID!,$features: [CloudAccountFeature!]!)",
-                "AwsCloudAccountUpdateFeatureResponse"
-                );
-            AwsCloudAccountUpdateFeatureResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AwsCloudAccountUpdateFeatureResponse)this.Field;
-            }
-            string fieldSpecDoc = Mutation.AwsCloudAccountUpdateFeature(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.cloudAccountUuid = <System.String>
-# REQUIRED
-$inputs.Var.features = @(
-	<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Mutation:
         // createAwsExocomputeConfigs(input: CreateAwsExocomputeConfigsInput!): CreateAwsExocomputeConfigsReply!
         internal void InvokeMutationCreateAwsExocomputeConfigs()
         {
@@ -3309,66 +2929,6 @@ $inputs.Var.input = @{
 	)
 	# OPTIONAL
 	roleArn = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Mutation:
-        // deleteAwsIamUserBasedCloudAccount(input: DeleteAwsIamUserBasedCloudAccountInput!): DeleteAwsIamUserBasedCloudAccountReply!
-        internal void InvokeMutationDeleteAwsIamUserBasedCloudAccount()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "DeleteAwsIamUserBasedCloudAccountInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationDeleteAwsIamUserBasedCloudAccount",
-                "($input: DeleteAwsIamUserBasedCloudAccountInput!)",
-                "DeleteAwsIamUserBasedCloudAccountReply"
-                );
-            DeleteAwsIamUserBasedCloudAccountReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (DeleteAwsIamUserBasedCloudAccountReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DeleteAwsIamUserBasedCloudAccount(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	awsCloudAccountId = <System.String>
-	# REQUIRED
-	feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Mutation:
-        // deleteAwsCloudAccountWithoutCft(input: DeleteAwsCloudAccountWithoutCftInput!): DeleteAwsCloudAccountWithoutCftReply!
-        internal void InvokeMutationDeleteAwsCloudAccountWithoutCft()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "DeleteAwsCloudAccountWithoutCftInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationDeleteAwsCloudAccountWithoutCft",
-                "($input: DeleteAwsCloudAccountWithoutCftInput!)",
-                "DeleteAwsCloudAccountWithoutCftReply"
-                );
-            DeleteAwsCloudAccountWithoutCftReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (DeleteAwsCloudAccountWithoutCftReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DeleteAwsCloudAccountWithoutCft(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	awsCloudAccountId = <System.String>
-	# REQUIRED
-	feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 }";
             BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);

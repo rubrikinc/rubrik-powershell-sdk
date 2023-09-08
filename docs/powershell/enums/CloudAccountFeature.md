@@ -15,4 +15,5 @@ Cloud account features.
 - CLOUD_NATIVE_ARCHIVAL_ENCRYPTION - Cloud account feature is Cloud Native Archival Encryption.
 - CLOUD_NATIVE_S3_PROTECTION - Cloud account feature is Cloud Native S3 Protection.
 - CLOUD_NATIVE_BLOB_PROTECTION - Cloud account feature is Cloud Native Blob Protection.
+- KUBERNETES_PROTECTION - Cloud account feature is Kubernetes Protection.
 - ALL - All cloud account features.

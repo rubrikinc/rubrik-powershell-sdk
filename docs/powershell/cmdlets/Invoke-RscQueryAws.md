@@ -17,11 +17,6 @@ List of all AWS cloud account configurations with the given search query.
 
 - There is a single argument of type AwsCloudAccountConfigsInput.
 - Returns list of AwsFeatureConfigs.
-### allcloudaccountsfeatureswithexoconfigs
-List of active AWS cloud account features and the Exocompute mapping information for the accounts. A cloud account is an AWS account added to the Rubrik platform.
-
-- There is a single argument of type AwsCloudAccountsWithFeaturesInput.
-- Returns list of AwsCloudAccountFeaturesWithExoConfigss.
 ### allcloudaccountswithfeatures
 List of active AWS cloud accounts and the features for the accounts. A cloud account is an AWS account added to the Rubrik platform.
 
@@ -94,11 +89,6 @@ Retrieves the permissions policy for all the input features along with any AWS-m
 
 - There is a single argument of type AwsGetPermissionPoliciesInput.
 - Returns list of PermissionPolicys.
-### allrdsaurorainstanceclasses
-List of all the database instance classes supported by AWS RDS Aurora databases.
-
-- The allrdsaurorainstanceclasses subcommand takes no arguments.
-- Returns AwsNativeRdsAuroraInstanceClassesReply.
 ### allregions
 All valid AWS regions for this cloud account.
 
@@ -147,12 +137,6 @@ Retrieves the AWS artifacts that need to be deleted when an account is being del
 
 - There is a single argument of type AwsArtifactsToDeleteInput.
 - Returns AwsArtifactsToDelete.
-### cloudaccountlistkmskeys
-- There are 3 arguments.
-    - cloudAccountUuid - System.String: The ID of the cloud account.
-    - feature - CloudAccountFeature: A cloud account feature of Rubrik Security Cloud.
-    - region - AwsRegion: AWS region argument for archival use case.
-- Returns AwsCloudAccountListKMSKeysResponse.
 ### cloudaccountlistsecuritygroups
 Retrieves a list of security groups in the specified cloud account and virtual private cloud (VPC).
 

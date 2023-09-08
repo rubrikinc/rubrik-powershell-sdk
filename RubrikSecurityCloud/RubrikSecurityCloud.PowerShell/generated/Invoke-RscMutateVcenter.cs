@@ -22,16 +22,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// vSphere vCenter mutations
     /// </summary>
     /// <description>
-    /// Invoke-RscMutateVcenter is a master cmdlet for Vcenter work that can invoke any of the following subcommands: Create, Delete, Edit, Refresh, Update, UpdateHotAddNetwork, UpdateHotAddBandwidth.
+    /// Invoke-RscMutateVcenter is a master cmdlet for Vcenter work that can invoke any of the following subcommands: Create, Delete, Refresh, Update, UpdateHotAddNetwork, UpdateHotAddBandwidth.
     /// </description>
     /// <example>
     /// <code>Invoke-RscMutateVcenter -Create [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
     /// <code>Invoke-RscMutateVcenter -Delete [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
-    /// <code>Invoke-RscMutateVcenter -Edit [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
     /// <code>Invoke-RscMutateVcenter -Refresh [-Arg ..] [-Field ..]</code>
@@ -48,7 +45,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "Invoke",
         "RscMutateVcenter",
-        DefaultParameterSetName = "Edit")
+        DefaultParameterSetName = "Create")
     ]
     public class Invoke_RscMutateVcenter : RscPSCmdlet
     {
@@ -56,7 +53,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         /// <summary>
         /// Create parameter set
         ///
-        /// [GraphQL: vsphereCreateVCenter]
+        /// [GraphQL: createVsphereVcenter]
         /// </summary>
         [Parameter(
             ParameterSetName = "Create",
@@ -64,8 +61,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"
-[GraphQL: vsphereCreateVCenter]",
+@"Add a vCenter server.
+[GraphQL: createVsphereVcenter]",
             Position = 0
         )]
         public SwitchParameter Create { get; set; }
@@ -93,27 +90,9 @@ Initiates an asynchronous job to remove a vCenter Server object. The vCenter Ser
 
         
         /// <summary>
-        /// Edit parameter set
-        ///
-        /// [GraphQL: vsphereEditVCenter]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "Edit",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-[GraphQL: vsphereEditVCenter]",
-            Position = 0
-        )]
-        public SwitchParameter Edit { get; set; }
-
-        
-        /// <summary>
         /// Refresh parameter set
         ///
-        /// [GraphQL: vsphereRefreshVCenter]
+        /// [GraphQL: refreshVsphereVcenter]
         /// </summary>
         [Parameter(
             ParameterSetName = "Refresh",
@@ -121,8 +100,11 @@ Initiates an asynchronous job to remove a vCenter Server object. The vCenter Ser
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"
-[GraphQL: vsphereRefreshVCenter]",
+@"Refresh vCenter Server metadata
+
+Supported in v5.0+
+Create a job to refresh the metadata for the specified vCenter Server.
+[GraphQL: refreshVsphereVcenter]",
             Position = 0
         )]
         public SwitchParameter Refresh { get; set; }
@@ -205,9 +187,6 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
                     case "Delete":
                         this.ProcessRecord_Delete();
                         break;
-                    case "Edit":
-                        this.ProcessRecord_Edit();
-                        break;
                     case "Refresh":
                         this.ProcessRecord_Refresh();
                         break;
@@ -232,12 +211,12 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
 #pragma warning restore 1591
 
         // This parameter set invokes a single graphql operation:
-        // vsphereCreateVCenter.
+        // createVsphereVcenter.
         internal void ProcessRecord_Create()
         {
             this._logger.name += " -Create";
-            // Invoke graphql operation vsphereCreateVCenter
-            InvokeMutationVsphereCreateVcenter();
+            // Invoke graphql operation createVsphereVcenter
+            InvokeMutationCreateVsphereVcenter();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -250,21 +229,12 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
         }
 
         // This parameter set invokes a single graphql operation:
-        // vsphereEditVCenter.
-        internal void ProcessRecord_Edit()
-        {
-            this._logger.name += " -Edit";
-            // Invoke graphql operation vsphereEditVCenter
-            InvokeMutationVsphereEditVcenter();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // vsphereRefreshVCenter.
+        // refreshVsphereVcenter.
         internal void ProcessRecord_Refresh()
         {
             this._logger.name += " -Refresh";
-            // Invoke graphql operation vsphereRefreshVCenter
-            InvokeMutationVsphereRefreshVcenter();
+            // Invoke graphql operation refreshVsphereVcenter
+            InvokeMutationRefreshVsphereVcenter();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -296,48 +266,59 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
 
 
         // Invoke GraphQL Mutation:
-        // vsphereCreateVCenter(
-        //     clusterUuid: UUID!
-        //     hostname: String!
-        //     username: String!
-        //     password: String!
-        //     conflictResolutionAuthz: ConflictResolutionAuthzEnum!
-        //     caCert: String
-        //   ): VsphereAsyncRequestStatus!
-        internal void InvokeMutationVsphereCreateVcenter()
+        // createVsphereVcenter(input: CreateVsphereVcenterInput!): CreateVsphereVcenterReply!
+        internal void InvokeMutationCreateVsphereVcenter()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("clusterUuid", "UUID!"),
-                Tuple.Create("hostname", "String!"),
-                Tuple.Create("username", "String!"),
-                Tuple.Create("password", "String!"),
-                Tuple.Create("conflictResolutionAuthz", "ConflictResolutionAuthzEnum!"),
-                Tuple.Create("caCert", "String"),
+                Tuple.Create("input", "CreateVsphereVcenterInput!"),
             };
             Initialize(
                 argDefs,
                 "mutation",
-                "MutationVsphereCreateVcenter",
-                "($clusterUuid: UUID!,$hostname: String!,$username: String!,$password: String!,$conflictResolutionAuthz: ConflictResolutionAuthzEnum!,$caCert: String)",
-                "VsphereAsyncRequestStatus"
+                "MutationCreateVsphereVcenter",
+                "($input: CreateVsphereVcenterInput!)",
+                "CreateVsphereVcenterReply"
                 );
-            VsphereAsyncRequestStatus? fieldSpecObj = null ;
+            CreateVsphereVcenterReply? fieldSpecObj = null ;
             if (this.Field != null) {
-                fieldSpecObj = (VsphereAsyncRequestStatus)this.Field;
+                fieldSpecObj = (CreateVsphereVcenterReply)this.Field;
             }
-            string fieldSpecDoc = Mutation.VsphereCreateVcenter(ref fieldSpecObj);
+            string fieldSpecDoc = Mutation.CreateVsphereVcenter(ref fieldSpecObj);
             string inputExample = @"# REQUIRED
-$inputs.Var.clusterUuid = <System.String>
-# REQUIRED
-$inputs.Var.hostname = <System.String>
-# REQUIRED
-$inputs.Var.username = <System.String>
-# REQUIRED
-$inputs.Var.password = <System.String>
-# REQUIRED
-$inputs.Var.conflictResolutionAuthz = <ConflictResolutionAuthzEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ConflictResolutionAuthzEnum]) for enum values.
-# OPTIONAL
-$inputs.Var.caCert = <System.String>";
+$inputs.Var.input = @{
+	# REQUIRED
+	clusterUuid = <System.String>
+	# REQUIRED
+	vcenterDetail = @{
+		# OPTIONAL
+		caCerts = <System.String>
+		# OPTIONAL
+		computeVisibilityFilter = @(
+			@{
+				# OPTIONAL
+				isVmwareMetroStorageCluster = <System.Boolean>
+				# REQUIRED
+				hostGroupFilter = @(
+					<System.String>
+				)
+				# REQUIRED
+				id = <System.String>
+			}
+		)
+		# OPTIONAL
+		shouldEnableHotAddProxyForOnPrem = <System.Boolean>
+		# OPTIONAL
+		orgNetworkId = <System.String>
+		# OPTIONAL
+		conflictResolutionAuthz = <VcenterConfigV2ConflictResolutionAuthz> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigV2ConflictResolutionAuthz]) for enum values.
+		# REQUIRED
+		hostname = <System.String>
+		# REQUIRED
+		password = <System.String>
+		# REQUIRED
+		username = <System.String>
+	}
+}";
             BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
@@ -371,73 +352,31 @@ $inputs.Var.input = @{
         }
 
         // Invoke GraphQL Mutation:
-        // vsphereEditVCenter(
-        //     vcenterId: UUID!
-        //     hostname: String!
-        //     username: String!
-        //     password: String!
-        //     conflictResolutionAuthz: ConflictResolutionAuthzEnum!
-        //     caCert: String
-        //   ): RequestSuccess!
-        internal void InvokeMutationVsphereEditVcenter()
+        // refreshVsphereVcenter(input: RefreshVsphereVcenterInput!): AsyncRequestStatus!
+        internal void InvokeMutationRefreshVsphereVcenter()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("vcenterId", "UUID!"),
-                Tuple.Create("hostname", "String!"),
-                Tuple.Create("username", "String!"),
-                Tuple.Create("password", "String!"),
-                Tuple.Create("conflictResolutionAuthz", "ConflictResolutionAuthzEnum!"),
-                Tuple.Create("caCert", "String"),
+                Tuple.Create("input", "RefreshVsphereVcenterInput!"),
             };
             Initialize(
                 argDefs,
                 "mutation",
-                "MutationVsphereEditVcenter",
-                "($vcenterId: UUID!,$hostname: String!,$username: String!,$password: String!,$conflictResolutionAuthz: ConflictResolutionAuthzEnum!,$caCert: String)",
-                "RequestSuccess"
+                "MutationRefreshVsphereVcenter",
+                "($input: RefreshVsphereVcenterInput!)",
+                "AsyncRequestStatus"
                 );
-            RequestSuccess? fieldSpecObj = null ;
+            AsyncRequestStatus? fieldSpecObj = null ;
             if (this.Field != null) {
-                fieldSpecObj = (RequestSuccess)this.Field;
+                fieldSpecObj = (AsyncRequestStatus)this.Field;
             }
-            string fieldSpecDoc = Mutation.VsphereEditVcenter(ref fieldSpecObj);
+            string fieldSpecDoc = Mutation.RefreshVsphereVcenter(ref fieldSpecObj);
             string inputExample = @"# REQUIRED
-$inputs.Var.vcenterId = <System.String>
-# REQUIRED
-$inputs.Var.hostname = <System.String>
-# REQUIRED
-$inputs.Var.username = <System.String>
-# REQUIRED
-$inputs.Var.password = <System.String>
-# REQUIRED
-$inputs.Var.conflictResolutionAuthz = <ConflictResolutionAuthzEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ConflictResolutionAuthzEnum]) for enum values.
-# OPTIONAL
-$inputs.Var.caCert = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Mutation:
-        // vsphereRefreshVCenter(vcenterId: UUID!): VsphereAsyncRequestStatus!
-        internal void InvokeMutationVsphereRefreshVcenter()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("vcenterId", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationVsphereRefreshVcenter",
-                "($vcenterId: UUID!)",
-                "VsphereAsyncRequestStatus"
-                );
-            VsphereAsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (VsphereAsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.VsphereRefreshVcenter(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.vcenterId = <System.String>";
+$inputs.Var.input = @{
+	# REQUIRED
+	fid = <System.String>
+	# OPTIONAL
+	shouldDiagnose = <System.Boolean>
+}";
             BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }

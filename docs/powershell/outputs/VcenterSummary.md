@@ -23,9 +23,6 @@ Supported in v5.0+
 - isVmc: System.Boolean
   - Supported in v5.3+
   Indicates if the vCenter is a VMC instance.
-- computeVisibilityFilter: list of ClusterVisibilityInfos
-  - Supported in v6.0+
-  Compute clusters that are visible to this Rubrik Cluster. All other compute resources are hidden. If 'computeVisibilityFilter' is not specified, all resources are visible. If 'hostGroupFilter' is not specified for a compute cluster, all compute resources in the compute cluster are visible. If a 'hostGroupFilter' is specified for a compute cluster, only vms that currently reside on these hosts are visible.
 - isHotAddProxyEnabledForOnPremVcenter: System.Boolean
   - Supported in v7.0+
   An optional field that specifies whether HotAdd transport mode is enabled for On-Premise vCenter. When this value is `true`, HotAdd transport mode is enabled for this vCenter. When this value is `false`, HotAdd transport mode is disabled for this vCenter. When this value is not specified, it indicates that this is an VMC vCenter.
@@ -39,3 +36,6 @@ Supported in v5.0+
   - 
 - conflictResolutionAuthz: VcenterSummaryConflictResolutionAuthz
   - 
+- computeVisibilityFilter: list of ClusterVisibilityInfos
+  - Supported in v6.0+
+  Compute clusters that are visible to this Rubrik Cluster. All other compute resources are hidden. If 'computeVisibilityFilter' is not specified, all resources are visible. If 'hostGroupFilter' is not specified for a compute cluster, all compute resources in the compute cluster are visible. If a 'hostGroupFilter' is specified for a compute cluster, only vms that currently reside on these hosts are visible.

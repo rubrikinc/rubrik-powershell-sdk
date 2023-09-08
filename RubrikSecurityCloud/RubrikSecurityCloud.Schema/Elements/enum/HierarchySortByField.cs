@@ -249,6 +249,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ID")]
         ID,
 
+        [EnumMember(Value = "K8S_CLUSTER_NAME")]
+        K8S_CLUSTER_NAME,
+
         [EnumMember(Value = "MSSQL_AVAILABILITY_GROUP_COPY_ONLY")]
         MSSQL_AVAILABILITY_GROUP_COPY_ONLY,
 

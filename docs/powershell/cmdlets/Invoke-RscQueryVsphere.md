@@ -1,8 +1,5 @@
 # Invoke-RscQueryVsphere
 ## Subcommands
-### blueprint
-- There is a single argument of type System.String.
-- Returns VSphereBlueprint.
 ### computecluster
 - There is a single argument of type System.String.
 - Returns VsphereComputeCluster.
@@ -19,11 +16,6 @@ Query compute clusters
 ### datacenter
 - There is a single argument of type System.String.
 - Returns VsphereDatacenter.
-### datacenterfolder
-Vsphere datacenter folder based on id passed in.
-
-- There is a single argument of type System.String.
-- Returns VsphereDatacenterFolder.
 ### datastore
 Vsphere datastore based on id passed in.
 

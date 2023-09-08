@@ -61,9 +61,6 @@ Get preAddInfo for a vcenter.
 
 - There is a single argument of type PreAddVcenterInput.
 - Returns VcenterPreAddInfo.
-### uniquecount
-- There is a single argument of type list of Filters.
-- Returns System.Int32.
 ### vcenter
 - There is a single argument of type System.String.
 - Returns VsphereVcenter.

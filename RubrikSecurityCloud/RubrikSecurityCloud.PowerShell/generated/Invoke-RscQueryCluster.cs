@@ -22,11 +22,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Cluster queries
     /// </summary>
     /// <description>
-    /// Invoke-RscQueryCluster is a master cmdlet for Cluster work that can invoke any of the following subcommands: Cloud, Nodes, List, Cluster, WithUpgradesInfo, Dns, Proxy, NtpServers, NetworkInterfaces, FloatingIps, Vlans, DefaultGateway, WebSignedCertificate, Ipmi, Certificates, WebCertsAndIpmis, OperationJobProgress, Ipv6Mode, Csr, TypeList, GroupByList, WithConfigProtectionInfo, DatabaseLogReportingProperties, DatabaseLogReport, RcvLocations, Connected, ReplicationTargets, EncryptionInfo, HostFailover, GlobalFileSearchMultiple, Kubernetes, K8s, Windows, ReportMigrationStatus, ReportMigrationCount, ReportMigrationJobStatus, LaDomains, LaDomainFilterList, VerifySlaWithReplicationTo, GlobalSlas, RegistrationProductInfo, Vcd, IsTotpAckNecessary, TotpAckStatus.
+    /// Invoke-RscQueryCluster is a master cmdlet for Cluster work that can invoke any of the following subcommands: Nodes, List, Cluster, WithUpgradesInfo, Dns, Proxy, NtpServers, NetworkInterfaces, FloatingIps, Vlans, DefaultGateway, WebSignedCertificate, Ipmi, Certificates, WebCertsAndIpmis, OperationJobProgress, Ipv6Mode, Csr, TypeList, GroupByList, DatabaseLogReportingProperties, DatabaseLogReport, Connected, ReplicationTargets, HostFailover, K8s, Windows, ReportMigrationStatus, ReportMigrationCount, ReportMigrationJobStatus, LaDomains, VerifySlaWithReplicationTo, GlobalSlas, RegistrationProductInfo, IsTotpAckNecessary, TotpAckStatus.
     /// </description>
-    /// <example>
-    /// <code>Invoke-RscQueryCluster -Cloud [-Arg ..] [-Field ..]</code>
-    /// </example>
     /// <example>
     /// <code>Invoke-RscQueryCluster -Nodes [-Arg ..] [-Field ..]</code>
     /// </example>
@@ -88,16 +85,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <code>Invoke-RscQueryCluster -GroupByList [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
-    /// <code>Invoke-RscQueryCluster -WithConfigProtectionInfo [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
     /// <code>Invoke-RscQueryCluster -DatabaseLogReportingProperties [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
     /// <code>Invoke-RscQueryCluster -DatabaseLogReport [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
-    /// <code>Invoke-RscQueryCluster -RcvLocations [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
     /// <code>Invoke-RscQueryCluster -Connected [-Arg ..] [-Field ..]</code>
@@ -106,16 +97,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <code>Invoke-RscQueryCluster -ReplicationTargets [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
-    /// <code>Invoke-RscQueryCluster -EncryptionInfo [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
     /// <code>Invoke-RscQueryCluster -HostFailover [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
-    /// <code>Invoke-RscQueryCluster -GlobalFileSearchMultiple [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
-    /// <code>Invoke-RscQueryCluster -Kubernetes [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
     /// <code>Invoke-RscQueryCluster -K8s [-Arg ..] [-Field ..]</code>
@@ -136,9 +118,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <code>Invoke-RscQueryCluster -LaDomains [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
-    /// <code>Invoke-RscQueryCluster -LaDomainFilterList [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
     /// <code>Invoke-RscQueryCluster -VerifySlaWithReplicationTo [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
@@ -146,9 +125,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     /// <example>
     /// <code>Invoke-RscQueryCluster -RegistrationProductInfo [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
-    /// <code>Invoke-RscQueryCluster -Vcd [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
     /// <code>Invoke-RscQueryCluster -IsTotpAckNecessary [-Arg ..] [-Field ..]</code>
@@ -163,24 +139,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ]
     public class Invoke_RscQueryCluster : RscPSCmdlet
     {
-        
-        /// <summary>
-        /// Cloud parameter set
-        ///
-        /// [GraphQL: allCloudClusters]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "Cloud",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"List of Cloud Clusters with cloud information.
-[GraphQL: allCloudClusters]",
-            Position = 0
-        )]
-        public SwitchParameter Cloud { get; set; }
-
         
         /// <summary>
         /// Nodes parameter set
@@ -570,24 +528,6 @@ Returns the certificate signing request generated from the private key of the Ru
 
         
         /// <summary>
-        /// WithConfigProtectionInfo parameter set
-        ///
-        /// [GraphQL: clusterWithConfigProtectionInfo]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "WithConfigProtectionInfo",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"A cluster object with config protection information.
-[GraphQL: clusterWithConfigProtectionInfo]",
-            Position = 0
-        )]
-        public SwitchParameter WithConfigProtectionInfo { get; set; }
-
-        
-        /// <summary>
         /// DatabaseLogReportingProperties parameter set
         ///
         /// [GraphQL: databaseLogReportingPropertiesForCluster]
@@ -631,24 +571,6 @@ v6.0+: Get the database log backup delay information.
 
         
         /// <summary>
-        /// RcvLocations parameter set
-        ///
-        /// [GraphQL: clusterRcvLocations]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "RcvLocations",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"List Rubrik Cloud Vault locations of the cluster.
-[GraphQL: clusterRcvLocations]",
-            Position = 0
-        )]
-        public SwitchParameter RcvLocations { get; set; }
-
-        
-        /// <summary>
         /// Connected parameter set
         ///
         /// [GraphQL: allConnectedClusters]
@@ -685,24 +607,6 @@ v6.0+: Get the database log backup delay information.
 
         
         /// <summary>
-        /// EncryptionInfo parameter set
-        ///
-        /// [GraphQL: clusterEncryptionInfo]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "EncryptionInfo",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Filter clusters by encryption information.
-[GraphQL: clusterEncryptionInfo]",
-            Position = 0
-        )]
-        public SwitchParameter EncryptionInfo { get; set; }
-
-        
-        /// <summary>
         /// HostFailover parameter set
         ///
         /// [GraphQL: hostFailoverCluster]
@@ -718,42 +622,6 @@ v6.0+: Get the database log backup delay information.
             Position = 0
         )]
         public SwitchParameter HostFailover { get; set; }
-
-        
-        /// <summary>
-        /// GlobalFileSearchMultiple parameter set
-        ///
-        /// [GraphQL: allGlobalFileSearchMultipleClusters]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "GlobalFileSearchMultiple",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"All files and folders matching input filters.
-[GraphQL: allGlobalFileSearchMultipleClusters]",
-            Position = 0
-        )]
-        public SwitchParameter GlobalFileSearchMultiple { get; set; }
-
-        
-        /// <summary>
-        /// Kubernetes parameter set
-        ///
-        /// [GraphQL: kubernetesClusters]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "Kubernetes",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Summary of all Kubernetes Clusters.
-[GraphQL: kubernetesClusters]",
-            Position = 0
-        )]
-        public SwitchParameter Kubernetes { get; set; }
 
         
         /// <summary>
@@ -865,24 +733,6 @@ v6.0+: Get the database log backup delay information.
 
         
         /// <summary>
-        /// LaDomainFilterList parameter set
-        ///
-        /// [GraphQL: clusterSlaDomainFilterConnection]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "LaDomainFilterList",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-[GraphQL: clusterSlaDomainFilterConnection]",
-            Position = 0
-        )]
-        public SwitchParameter LaDomainFilterList { get; set; }
-
-        
-        /// <summary>
         /// VerifySlaWithReplicationTo parameter set
         ///
         /// [GraphQL: verifySlaWithReplicationToCluster]
@@ -937,24 +787,6 @@ v6.0+: Get the database log backup delay information.
 
         
         /// <summary>
-        /// Vcd parameter set
-        ///
-        /// [GraphQL: vcdClusters]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "Vcd",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"List of vCloud Director clusters.
-[GraphQL: vcdClusters]",
-            Position = 0
-        )]
-        public SwitchParameter Vcd { get; set; }
-
-        
-        /// <summary>
         /// IsTotpAckNecessary parameter set
         ///
         /// [GraphQL: isTotpAckNecessaryForCluster]
@@ -998,9 +830,6 @@ v6.0+: Get the database log backup delay information.
             {
                 switch(Op)
                 {
-                    case "Cloud":
-                        this.ProcessRecord_Cloud();
-                        break;
                     case "Nodes":
                         this.ProcessRecord_Nodes();
                         break;
@@ -1061,17 +890,11 @@ v6.0+: Get the database log backup delay information.
                     case "GroupByList":
                         this.ProcessRecord_GroupByList();
                         break;
-                    case "WithConfigProtectionInfo":
-                        this.ProcessRecord_WithConfigProtectionInfo();
-                        break;
                     case "DatabaseLogReportingProperties":
                         this.ProcessRecord_DatabaseLogReportingProperties();
                         break;
                     case "DatabaseLogReport":
                         this.ProcessRecord_DatabaseLogReport();
-                        break;
-                    case "RcvLocations":
-                        this.ProcessRecord_RcvLocations();
                         break;
                     case "Connected":
                         this.ProcessRecord_Connected();
@@ -1079,17 +902,8 @@ v6.0+: Get the database log backup delay information.
                     case "ReplicationTargets":
                         this.ProcessRecord_ReplicationTargets();
                         break;
-                    case "EncryptionInfo":
-                        this.ProcessRecord_EncryptionInfo();
-                        break;
                     case "HostFailover":
                         this.ProcessRecord_HostFailover();
-                        break;
-                    case "GlobalFileSearchMultiple":
-                        this.ProcessRecord_GlobalFileSearchMultiple();
-                        break;
-                    case "Kubernetes":
-                        this.ProcessRecord_Kubernetes();
                         break;
                     case "K8s":
                         this.ProcessRecord_K8s();
@@ -1109,9 +923,6 @@ v6.0+: Get the database log backup delay information.
                     case "LaDomains":
                         this.ProcessRecord_LaDomains();
                         break;
-                    case "LaDomainFilterList":
-                        this.ProcessRecord_LaDomainFilterList();
-                        break;
                     case "VerifySlaWithReplicationTo":
                         this.ProcessRecord_VerifySlaWithReplicationTo();
                         break;
@@ -1120,9 +931,6 @@ v6.0+: Get the database log backup delay information.
                         break;
                     case "RegistrationProductInfo":
                         this.ProcessRecord_RegistrationProductInfo();
-                        break;
-                    case "Vcd":
-                        this.ProcessRecord_Vcd();
                         break;
                     case "IsTotpAckNecessary":
                         this.ProcessRecord_IsTotpAckNecessary();
@@ -1140,15 +948,6 @@ v6.0+: Get the database log backup delay information.
            }
         }
 #pragma warning restore 1591
-
-        // This parameter set invokes a single graphql operation:
-        // allCloudClusters.
-        internal void ProcessRecord_Cloud()
-        {
-            this._logger.name += " -Cloud";
-            // Invoke graphql operation allCloudClusters
-            InvokeQueryAllCloudClusters();
-        }
 
         // This parameter set invokes a single graphql operation:
         // clusterNodes.
@@ -1331,15 +1130,6 @@ v6.0+: Get the database log backup delay information.
         }
 
         // This parameter set invokes a single graphql operation:
-        // clusterWithConfigProtectionInfo.
-        internal void ProcessRecord_WithConfigProtectionInfo()
-        {
-            this._logger.name += " -WithConfigProtectionInfo";
-            // Invoke graphql operation clusterWithConfigProtectionInfo
-            InvokeQueryClusterWithConfigProtectionInfo();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // databaseLogReportingPropertiesForCluster.
         internal void ProcessRecord_DatabaseLogReportingProperties()
         {
@@ -1355,15 +1145,6 @@ v6.0+: Get the database log backup delay information.
             this._logger.name += " -DatabaseLogReport";
             // Invoke graphql operation databaseLogReportForCluster
             InvokeQueryDatabaseLogReportForCluster();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // clusterRcvLocations.
-        internal void ProcessRecord_RcvLocations()
-        {
-            this._logger.name += " -RcvLocations";
-            // Invoke graphql operation clusterRcvLocations
-            InvokeQueryClusterRcvLocations();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1385,39 +1166,12 @@ v6.0+: Get the database log backup delay information.
         }
 
         // This parameter set invokes a single graphql operation:
-        // clusterEncryptionInfo.
-        internal void ProcessRecord_EncryptionInfo()
-        {
-            this._logger.name += " -EncryptionInfo";
-            // Invoke graphql operation clusterEncryptionInfo
-            InvokeQueryClusterEncryptionInfo();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // hostFailoverCluster.
         internal void ProcessRecord_HostFailover()
         {
             this._logger.name += " -HostFailover";
             // Invoke graphql operation hostFailoverCluster
             InvokeQueryHostFailoverCluster();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allGlobalFileSearchMultipleClusters.
-        internal void ProcessRecord_GlobalFileSearchMultiple()
-        {
-            this._logger.name += " -GlobalFileSearchMultiple";
-            // Invoke graphql operation allGlobalFileSearchMultipleClusters
-            InvokeQueryAllGlobalFileSearchMultipleClusters();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // kubernetesClusters.
-        internal void ProcessRecord_Kubernetes()
-        {
-            this._logger.name += " -Kubernetes";
-            // Invoke graphql operation kubernetesClusters
-            InvokeQueryKubernetesClusters();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1475,15 +1229,6 @@ v6.0+: Get the database log backup delay information.
         }
 
         // This parameter set invokes a single graphql operation:
-        // clusterSlaDomainFilterConnection.
-        internal void ProcessRecord_LaDomainFilterList()
-        {
-            this._logger.name += " -LaDomainFilterList";
-            // Invoke graphql operation clusterSlaDomainFilterConnection
-            InvokeQueryClusterSlaDomainFilterConnection();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // verifySlaWithReplicationToCluster.
         internal void ProcessRecord_VerifySlaWithReplicationTo()
         {
@@ -1511,15 +1256,6 @@ v6.0+: Get the database log backup delay information.
         }
 
         // This parameter set invokes a single graphql operation:
-        // vcdClusters.
-        internal void ProcessRecord_Vcd()
-        {
-            this._logger.name += " -Vcd";
-            // Invoke graphql operation vcdClusters
-            InvokeQueryVcdClusters();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // isTotpAckNecessaryForCluster.
         internal void ProcessRecord_IsTotpAckNecessary()
         {
@@ -1537,31 +1273,6 @@ v6.0+: Get the database log backup delay information.
             InvokeQueryAllClustersTotpAckStatus();
         }
 
-
-        // Invoke GraphQL Query:
-        // allCloudClusters(cloudVendorType: CcpVendorType!): [CcWithCloudInfo!]!
-        internal void InvokeQueryAllCloudClusters()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("cloudVendorType", "CcpVendorType!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAllCloudClusters",
-                "($cloudVendorType: CcpVendorType!)",
-                "List<CcWithCloudInfo>"
-                );
-            List<CcWithCloudInfo>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<CcWithCloudInfo>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllCloudClusters(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.cloudVendorType = <CcpVendorType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CcpVendorType]) for enum values.";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
 
         // Invoke GraphQL Query:
         // clusterNodes(input: GetNodesInput!): NodeStatusListResponse!
@@ -2388,88 +2099,6 @@ $inputs.Var.timezoneOffset = <System.Single>";
         }
 
         // Invoke GraphQL Query:
-        // clusterWithConfigProtectionInfo(
-        //     first: Int
-        //     after: String
-        //     last: Int
-        //     before: String
-        //     configProtectionFilter: ConfigProtectionInfoFilterInput
-        //     sortOrder: SortOrder = DESC
-        //     sortBy: ConfigProtectionInfoSortBy = CLUSTER_NAME
-        //   ): ClusterConnection!
-        internal void InvokeQueryClusterWithConfigProtectionInfo()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("last", "Int"),
-                Tuple.Create("before", "String"),
-                Tuple.Create("configProtectionFilter", "ConfigProtectionInfoFilterInput"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("sortBy", "ConfigProtectionInfoSortBy"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryClusterWithConfigProtectionInfo",
-                "($first: Int,$after: String,$last: Int,$before: String,$configProtectionFilter: ConfigProtectionInfoFilterInput,$sortOrder: SortOrder,$sortBy: ConfigProtectionInfoSortBy)",
-                "ClusterConnection"
-                );
-            ClusterConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (ClusterConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.ClusterWithConfigProtectionInfo(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
-$inputs.Var.first = <System.Int32>
-# OPTIONAL
-$inputs.Var.after = <System.String>
-# OPTIONAL
-$inputs.Var.last = <System.Int32>
-# OPTIONAL
-$inputs.Var.before = <System.String>
-# OPTIONAL
-$inputs.Var.configProtectionFilter = @{
-	# OPTIONAL
-	id = @(
-		<System.String>
-	)
-	# OPTIONAL
-	name = @(
-		<System.String>
-	)
-	# OPTIONAL
-	type = @(
-		<ClusterTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterTypeEnum]) for enum values.
-	)
-	# OPTIONAL
-	minSoftwareVersion = <System.String>
-	# OPTIONAL
-	clusterLocation = @(
-		<System.String>
-	)
-	# OPTIONAL
-	connectionState = @(
-		<ClusterStatus> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterStatus]) for enum values.
-	)
-	# OPTIONAL
-	productType = @(
-		<ClusterProductEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterProductEnum]) for enum values.
-	)
-	# OPTIONAL
-	configProtectionStatus = @(
-		<ConfigProtectionStatus> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ConfigProtectionStatus]) for enum values.
-	)
-}
-# OPTIONAL
-$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$inputs.Var.sortBy = <ConfigProtectionInfoSortBy> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ConfigProtectionInfoSortBy]) for enum values.";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Query:
         // databaseLogReportingPropertiesForCluster(input: QueryReportPropertiesInput!): DbLogReportProperties!
         internal void InvokeQueryDatabaseLogReportingPropertiesForCluster()
         {
@@ -2544,53 +2173,6 @@ $inputs.Var.input = @{
         }
 
         // Invoke GraphQL Query:
-        // clusterRcvLocations(
-        //     first: Int
-        //     after: String
-        //     last: Int
-        //     before: String
-        //     sortOrder: SortOrder
-        //     cdmClusterUUID: UUID!
-        //   ): RcvLocationBasicInfoConnection!
-        internal void InvokeQueryClusterRcvLocations()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("last", "Int"),
-                Tuple.Create("before", "String"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("cdmClusterUUID", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryClusterRcvLocations",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$cdmClusterUUID: UUID!)",
-                "RcvLocationBasicInfoConnection"
-                );
-            RcvLocationBasicInfoConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (RcvLocationBasicInfoConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.ClusterRcvLocations(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
-$inputs.Var.first = <System.Int32>
-# OPTIONAL
-$inputs.Var.after = <System.String>
-# OPTIONAL
-$inputs.Var.last = <System.Int32>
-# OPTIONAL
-$inputs.Var.before = <System.String>
-# OPTIONAL
-$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# REQUIRED
-$inputs.Var.cdmClusterUUID = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Query:
         // allConnectedClusters(clusterFilterArg: ClusterTypeEnum): [DataLocationSupportedCluster!]!
         internal void InvokeQueryAllConnectedClusters()
         {
@@ -2641,77 +2223,6 @@ $inputs.Var.clusterUuid = <System.String>";
         }
 
         // Invoke GraphQL Query:
-        // clusterEncryptionInfo(
-        //     first: Int
-        //     after: String
-        //     last: Int
-        //     before: String
-        //     sortOrder: SortOrder
-        //     clusterName: String
-        //     encryptionStatusFilter: [ClusterEncryptionStatusFilter!]! = []
-        //     keyProtection: [ClusterKeyProtection!]! = []
-        //     clusters: [UUID!]! = []
-        //     encryptionTypes: [ClusterEncryptionType!]! = []
-        //   ): ClusterEncryptionInfoConnection!
-        internal void InvokeQueryClusterEncryptionInfo()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("last", "Int"),
-                Tuple.Create("before", "String"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("clusterName", "String"),
-                Tuple.Create("encryptionStatusFilter", "[ClusterEncryptionStatusFilter!]!"),
-                Tuple.Create("keyProtection", "[ClusterKeyProtection!]!"),
-                Tuple.Create("clusters", "[UUID!]!"),
-                Tuple.Create("encryptionTypes", "[ClusterEncryptionType!]!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryClusterEncryptionInfo",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$clusterName: String,$encryptionStatusFilter: [ClusterEncryptionStatusFilter!]!,$keyProtection: [ClusterKeyProtection!]!,$clusters: [UUID!]!,$encryptionTypes: [ClusterEncryptionType!]!)",
-                "ClusterEncryptionInfoConnection"
-                );
-            ClusterEncryptionInfoConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (ClusterEncryptionInfoConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.ClusterEncryptionInfo(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
-$inputs.Var.first = <System.Int32>
-# OPTIONAL
-$inputs.Var.after = <System.String>
-# OPTIONAL
-$inputs.Var.last = <System.Int32>
-# OPTIONAL
-$inputs.Var.before = <System.String>
-# OPTIONAL
-$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$inputs.Var.clusterName = <System.String>
-# REQUIRED
-$inputs.Var.encryptionStatusFilter = @(
-	<ClusterEncryptionStatusFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterEncryptionStatusFilter]) for enum values.
-)
-# REQUIRED
-$inputs.Var.keyProtection = @(
-	<ClusterKeyProtection> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterKeyProtection]) for enum values.
-)
-# REQUIRED
-$inputs.Var.clusters = @(
-	<System.String>
-)
-# REQUIRED
-$inputs.Var.encryptionTypes = @(
-	<ClusterEncryptionType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterEncryptionType]) for enum values.
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Query:
         // hostFailoverCluster(fid: UUID!): HostFailoverCluster!
         internal void InvokeQueryHostFailoverCluster()
         {
@@ -2732,119 +2243,6 @@ $inputs.Var.encryptionTypes = @(
             string fieldSpecDoc = Query.HostFailoverCluster(ref fieldSpecObj);
             string inputExample = @"# REQUIRED
 $inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Query:
-        // allGlobalFileSearchMultipleClusters(clusters: [UUID!]! = [], regex: String!): GlobalFileSearchReplyType!
-        internal void InvokeQueryAllGlobalFileSearchMultipleClusters()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("clusters", "[UUID!]!"),
-                Tuple.Create("regex", "String!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAllGlobalFileSearchMultipleClusters",
-                "($clusters: [UUID!]!,$regex: String!)",
-                "GlobalFileSearchReplyType"
-                );
-            GlobalFileSearchReplyType? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (GlobalFileSearchReplyType)this.Field;
-            }
-            string fieldSpecDoc = Query.AllGlobalFileSearchMultipleClusters(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.clusters = @(
-	<System.String>
-)
-# REQUIRED
-$inputs.Var.regex = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Query:
-        // kubernetesClusters(
-        //     first: Int
-        //     after: String
-        //     sortBy: HierarchySortByField
-        //     sortOrder: SortOrder
-        //     filter: [Filter!]
-        //   ): KubernetesClusterConnection!
-        internal void InvokeQueryKubernetesClusters()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("sortBy", "HierarchySortByField"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("filter", "[Filter!]"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryKubernetesClusters",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                "KubernetesClusterConnection"
-                );
-            KubernetesClusterConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (KubernetesClusterConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.KubernetesClusters(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
-$inputs.Var.first = <System.Int32>
-# OPTIONAL
-$inputs.Var.after = <System.String>
-# OPTIONAL
-$inputs.Var.sortBy = <HierarchySortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
-# OPTIONAL
-$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$inputs.Var.filter = @(
-	@{
-		# OPTIONAL
-		field = <HierarchyFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
-		# OPTIONAL
-		texts = @(
-			<System.String>
-		)
-		# OPTIONAL
-		tagFilterParams = @(
-			@{
-				# OPTIONAL
-				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-				# OPTIONAL
-				tagKey = <System.String>
-				# OPTIONAL
-				tagValue = <System.String>
-			}
-		)
-		# OPTIONAL
-		objectTypeFilterParams = @(
-			<ManagedObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
-		)
-		# OPTIONAL
-		awsNativeProtectionFeatureNames = @(
-			<AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		isNegative = <System.Boolean>
-		# OPTIONAL
-		isSlowSearchEnabled = <System.Boolean>
-		# OPTIONAL
-		azureNativeProtectionFeatureNames = @(
-			<AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		unmanagedObjectAvailabilityFilter = @(
-			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
-		)
-}
-)";
             BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
@@ -3101,45 +2499,6 @@ $inputs.Var.before = <System.String>";
         }
 
         // Invoke GraphQL Query:
-        // clusterSlaDomainFilterConnection(
-        //     first: Int
-        //     after: String
-        //     last: Int
-        //     before: String
-        //   ): ClusterSlaDomainForFilterConnection!
-        internal void InvokeQueryClusterSlaDomainFilterConnection()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("last", "Int"),
-                Tuple.Create("before", "String"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryClusterSlaDomainFilterConnection",
-                "($first: Int,$after: String,$last: Int,$before: String)",
-                "ClusterSlaDomainForFilterConnection"
-                );
-            ClusterSlaDomainForFilterConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (ClusterSlaDomainForFilterConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.ClusterSlaDomainFilterConnection(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
-$inputs.Var.first = <System.Int32>
-# OPTIONAL
-$inputs.Var.after = <System.String>
-# OPTIONAL
-$inputs.Var.last = <System.Int32>
-# OPTIONAL
-$inputs.Var.before = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Query:
         // verifySlaWithReplicationToCluster(cdmClusterUUID: UUID!, includeArchived: Boolean!): VerifySlaWithReplicationToClusterResponse!
         internal void InvokeQueryVerifySlaWithReplicationToCluster()
         {
@@ -3211,42 +2570,6 @@ $inputs.Var.cdmClusterUUID = <System.String>";
             }
             string fieldSpecDoc = Query.ClusterRegistrationProductInfo(ref fieldSpecObj);
             string inputExample = @"";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Query:
-        // vcdClusters(input: QueryVcdClusterInput!): VcdClusterSummaryListResponse!
-        internal void InvokeQueryVcdClusters()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "QueryVcdClusterInput!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryVcdClusters",
-                "($input: QueryVcdClusterInput!)",
-                "VcdClusterSummaryListResponse"
-                );
-            VcdClusterSummaryListResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (VcdClusterSummaryListResponse)this.Field;
-            }
-            string fieldSpecDoc = Query.VcdClusters(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.input = @{
-	# OPTIONAL
-	name = <System.String>
-	# OPTIONAL
-	sortBy = <QueryVcdClusterRequestSortBy> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.QueryVcdClusterRequestSortBy]) for enum values.
-	# OPTIONAL
-	sortOrder = <QueryVcdClusterRequestSortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.QueryVcdClusterRequestSortOrder]) for enum values.
-	# OPTIONAL
-	status = <QueryVcdClusterRequestStatus> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.QueryVcdClusterRequestStatus]) for enum values.
-	# REQUIRED
-	clusterUuid = <System.String>
-}";
             BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }

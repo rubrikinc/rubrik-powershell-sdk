@@ -23,7 +23,7 @@ Supported in v5.0+
   - ID of the object from which the effective SLA domain is inherited
 - effectiveSlaSourceObjectName: System.String
   - Name of the object from which the effective SLA domain is inherited
-- slaAssignable: SlaAssignable
-  - 
 - ioFilterStatus: IoFilterStatus
+  - 
+- slaAssignable: SlaAssignable
   - 

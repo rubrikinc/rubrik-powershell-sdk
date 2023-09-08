@@ -19,26 +19,26 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? AccountId
-        // GraphQL -> accountId: String! (scalar)
+        //      C# -> System.Int64? LiveMountId
+        // GraphQL -> liveMountId: Long! (scalar)
         [Required]
         [JsonRequired]
-        [JsonProperty("accountId")]
-        public System.String? AccountId { get; set; }
+        [JsonProperty("liveMountId")]
+        public System.Int64? LiveMountId { get; set; }
 
-        //      C# -> System.String? MountId
-        // GraphQL -> mountId: UUID! (scalar)
+        //      C# -> List<System.Int64>? MountIds
+        // GraphQL -> mountIds: [Long!]! (scalar)
         [Required]
         [JsonRequired]
-        [JsonProperty("mountId")]
-        public System.String? MountId { get; set; }
+        [JsonProperty("mountIds")]
+        public List<System.Int64>? MountIds { get; set; }
 
-        //      C# -> List<System.String>? MountDiskIds
-        // GraphQL -> mountDiskIds: [UUID!]! (scalar)
+        //      C# -> System.String? TargetWorkloadId
+        // GraphQL -> targetWorkloadId: UUID! (scalar)
         [Required]
         [JsonRequired]
-        [JsonProperty("mountDiskIds")]
-        public List<System.String>? MountDiskIds { get; set; }
+        [JsonProperty("targetWorkloadId")]
+        public System.String? TargetWorkloadId { get; set; }
 
 
         #endregion

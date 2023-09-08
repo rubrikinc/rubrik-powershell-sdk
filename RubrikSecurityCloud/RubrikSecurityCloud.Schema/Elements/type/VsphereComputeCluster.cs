@@ -61,6 +61,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("replicatedObjects")]
         public List<CdmHierarchyObject>? ReplicatedObjects { get; set; }
 
+        //      C# -> System.Boolean? DrsStatus
+        // GraphQL -> drsStatus: Boolean! (scalar)
+        [JsonProperty("drsStatus")]
+        public System.Boolean? DrsStatus { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]
@@ -164,6 +169,7 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? EffectiveSlaDomain = null,
         SlaDomain? PendingSla = null,
         List<CdmHierarchyObject>? ReplicatedObjects = null,
+        System.Boolean? DrsStatus = null,
         System.String? Id = null,
         System.String? IoFilterStatus = null,
         System.String? Name = null,
@@ -206,6 +212,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ReplicatedObjects != null ) {
             this.ReplicatedObjects = ReplicatedObjects;
+        }
+        if ( DrsStatus != null ) {
+            this.DrsStatus = DrsStatus;
         }
         if ( Id != null ) {
             this.Id = Id;
@@ -322,6 +331,11 @@ namespace RubrikSecurityCloud.Types
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
                 s += ind + "replicatedObjects {\n" + fspec + ind + "}\n";
             }
+        }
+        //      C# -> System.Boolean? DrsStatus
+        // GraphQL -> drsStatus: Boolean! (scalar)
+        if (this.DrsStatus != null) {
+            s += ind + "drsStatus\n" ;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
@@ -504,6 +518,12 @@ namespace RubrikSecurityCloud.Types
         {
             this.ReplicatedObjects = new List<CdmHierarchyObject>();
             this.ReplicatedObjects.ApplyExploratoryFieldSpec(ec.NewChild("replicatedObjects"));
+        }
+        //      C# -> System.Boolean? DrsStatus
+        // GraphQL -> drsStatus: Boolean! (scalar)
+        if (this.DrsStatus == null && ec.Includes("drsStatus",true))
+        {
+            this.DrsStatus = true;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)

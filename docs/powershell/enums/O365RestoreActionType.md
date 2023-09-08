@@ -1,5 +1,6 @@
 ### O365RestoreActionType
-Recover task type i.e Restore/Export.
+Recover operation type, Restore/Export/Inplace.
 
-- RESTORE_SNAPPABLE - Used for restore task.
-- EXPORT_SNAPPABLE - Used for export task.
+- RESTORE_SNAPPABLE - Used for restore operation.
+- EXPORT_SNAPPABLE - Used for export operation.
+- INPLACE_RESTORE_SNAPPABLE - Used for in-place restore operation.

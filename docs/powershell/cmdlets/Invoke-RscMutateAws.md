@@ -15,23 +15,6 @@ Deletes specified AWS cloud accounts without using CloudFormation Template (CFT)
 
 - There is a single argument of type BulkDeleteAwsCloudAccountWithoutCftInput.
 - Returns BulkDeleteAwsCloudAccountWithoutCftReply.
-### cloudaccountinitiate
-This endpoint is deprecated.
-
-- There is a single argument of type AwsCloudAccountInitiateInput.
-- Returns AwsCloudAccountCreateResponse.
-### cloudaccountupdatefeature
-This endpoint is deprecated.
-
-- There are 2 arguments.
-    - cloudAccountUuid - System.String: The ID of the cloud account.
-    - features - list of CloudAccountFeatures: Cloud Account Features.
-- Returns AwsCloudAccountUpdateFeatureResponse.
-### cloudaccountvalidate
-This endpoint is deprecated.
-
-- There is a single argument of type AwsCloudAccountValidateInput.
-- Returns AwsCloudAccountValidateResponse.
 ### createaccount
 - There is a single argument of type CreateAwsAccountInput.
 - Returns CloudAccount.
@@ -62,11 +45,6 @@ Create a reader type for AWS archival location on a Rubrik cluster.
 ### createtarget
 - There is a single argument of type CreateAwsTargetInput.
 - Returns Target.
-### deletecloudaccountwithoutcft
-Removes AWS cloud account without cleaning up the associated permissions from the AWS cloud account. Customer needs to clean up the permissions in the AWS account themselves. This mutation is supported only for IAM user-based and authentication server-based AWS cloud accounts.
-
-- There is a single argument of type DeleteAwsCloudAccountWithoutCftInput.
-- Returns DeleteAwsCloudAccountWithoutCftReply.
 ### deletecluster
 Delete a Rubrik Cloud Cluster on AWS.
 
@@ -80,11 +58,6 @@ Deletes AWS Exocompute configs.
 
 - There is a single argument of type DeleteAwsExocomputeConfigsInput.
 - Returns DeleteAwsExocomputeConfigsReply.
-### deleteiamuserbasedcloudaccount
-Deletes IAM user-based AWS cloud account.
-
-- There is a single argument of type DeleteAwsIamUserBasedCloudAccountInput.
-- Returns DeleteAwsIamUserBasedCloudAccountReply.
 ### excludenativeebsvolumesfromsnapshot
 Mark AWS Native EBS Volumes to be excluded from EC2 Instance snapshot. By default, all EBS Volumes are marked as included.
 
@@ -100,11 +73,6 @@ Process cloud account. This is the second step after validate and create in addi
 
 - There is a single argument of type FinalizeAwsCloudAccountProtectionInput.
 - Returns FinalizeAwsCloudAccountProtectionReply.
-### nativeprotectionaccountadd
-This endpoint is deprecated.
-
-- There is a single argument of type AwsNativeProtectionAccountAddRequest.
-- Returns AwsNativeProtectionAccountAddResponse.
 ### patchauthenticationserverbasedcloudaccount
 Updates authentication server-based AWS cloud account. Use this mutation to update account details related to role name, certificates, features. The mutation can update one or more certificates associated to an account in a single request. All input fields except account identifier are optional so that any combination of account attributes can be updated in a single call. If none of the optional fields are provided in the input then no updates are performed, and the response does not contain any error message.
 

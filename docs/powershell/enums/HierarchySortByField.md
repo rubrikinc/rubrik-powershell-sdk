@@ -98,3 +98,4 @@
 - CDM_CLUSTER_NAME - Sort based on Rubrik cluster name.
 - VMWARE_VCENTER_NAME_AND_VM_NAME - Sort based on the combination of vCenter name and virtual machine name.
 - VMWARE_VM_AGENT_STATUS - Sort based on the VMware virtual machine agent status.
+- K8S_CLUSTER_NAME - Sort based on Kubernetes cluster name.

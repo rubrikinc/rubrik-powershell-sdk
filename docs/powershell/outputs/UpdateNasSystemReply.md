@@ -1,6 +1,6 @@
 ### UpdateNasSystemReply
 Supported in v7.0+
-  v7.0-v8.0: 
+  v7.0-v8.0:
   v8.1+: Basic information regarding a NAS system.
 
 - hostname: System.String

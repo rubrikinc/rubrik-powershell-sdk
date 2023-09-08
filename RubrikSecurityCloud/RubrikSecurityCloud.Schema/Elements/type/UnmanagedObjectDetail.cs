@@ -95,6 +95,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snapshotCount")]
         public System.Int64? SnapshotCount { get; set; }
 
+        //      C# -> System.String? WorkloadId
+        // GraphQL -> workloadId: String! (scalar)
+        [JsonProperty("workloadId")]
+        public System.String? WorkloadId { get; set; }
+
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
         [JsonProperty("cluster")]
@@ -135,6 +140,7 @@ namespace RubrikSecurityCloud.Types
         System.String? RetentionSlaDomainName = null,
         System.String? RetentionSlaDomainRscManagedId = null,
         System.Int64? SnapshotCount = null,
+        System.String? WorkloadId = null,
         Cluster? Cluster = null,
         List<LocationPathPoint>? PhysicalLocation = null,
         WorkloadRecoveryInfo? RecoveryInfo = null
@@ -184,6 +190,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SnapshotCount != null ) {
             this.SnapshotCount = SnapshotCount;
+        }
+        if ( WorkloadId != null ) {
+            this.WorkloadId = WorkloadId;
         }
         if ( Cluster != null ) {
             this.Cluster = Cluster;
@@ -284,6 +293,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> snapshotCount: Long! (scalar)
         if (this.SnapshotCount != null) {
             s += ind + "snapshotCount\n" ;
+        }
+        //      C# -> System.String? WorkloadId
+        // GraphQL -> workloadId: String! (scalar)
+        if (this.WorkloadId != null) {
+            s += ind + "workloadId\n" ;
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
@@ -409,6 +423,12 @@ namespace RubrikSecurityCloud.Types
         if (this.SnapshotCount == null && ec.Includes("snapshotCount",true))
         {
             this.SnapshotCount = new System.Int64();
+        }
+        //      C# -> System.String? WorkloadId
+        // GraphQL -> workloadId: String! (scalar)
+        if (this.WorkloadId == null && ec.Includes("workloadId",true))
+        {
+            this.WorkloadId = "FETCH";
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)

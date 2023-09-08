@@ -1,7 +1,0 @@
-### NetworkAdapterType
-- E1000
-- E1000E
-- PCNET32
-- VMXNET
-- VMXNET2
-- VMXNET3

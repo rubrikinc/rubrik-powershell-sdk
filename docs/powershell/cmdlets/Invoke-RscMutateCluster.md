@@ -1,13 +1,5 @@
 # Invoke-RscMutateCluster
 ## Subcommands
-### addk8s
-Add a Kubernetes cluster
-
-Supported in v9.0+
-Adds a Kubernetes cluster to the Rubrik cluster.
-
-- There is a single argument of type AddK8sClusterInput.
-- Returns K8sClusterSummary.
 ### addnodestocloud
 Add nodes to cloud cluster.
 
@@ -47,14 +39,6 @@ Delete a failover cluster.
 
 - There is a single argument of type DeleteFailoverClusterInput.
 - Returns ResponseSuccess.
-### deletek8s
-Delete a Kubernetes cluster
-
-Supported in v9.0+
-Deletes a Kubernetes cluster by specifying the cluster ID.
-
-- There is a single argument of type DeleteK8sClusterInput.
-- Returns AsyncRequestStatus.
 ### recovercloud
 Recover a Rubrik Cloud Cluster.
 
@@ -65,14 +49,6 @@ Refresh resources of a Kubernetes cluster.
 
 - There is a single argument of type RefreshK8sClusterInput.
 - Returns CreateOnDemandJobReply.
-### refreshk8sv2
-Initiate an on-demand refresh for a Kubernetes cluster
-
-Supported in v9.0+
-Initiates an on-demand refresh request for the specified Kubernetes cluster.
-
-- There is a single argument of type RefreshK8sV2ClusterInput.
-- Returns AsyncRequestStatus.
 ### registercloud
 Register a cloud cluster.
 

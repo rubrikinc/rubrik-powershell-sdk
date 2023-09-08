@@ -21,3 +21,4 @@ Name of product.
 - SONAR_NAS - Sensitive Data Discovery on NAS.
 - USER_ACCESS - User Access.
 - SONAR_O365 - Sensitive Data Discovery on Microsoft Office 365.
+- AAD - Azure Active Directory protection.

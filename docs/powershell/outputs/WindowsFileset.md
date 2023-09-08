@@ -19,6 +19,8 @@ Windows fileset.
   - Boolean variable denoting if hard link support is enabled.
 - host: PhysicalHost
   - Host of Windows fileset.
+- filesetTemplate: FilesetTemplate
+  - Fileset template of the Windows fileset.
 - failoverClusterApp: FailoverClusterApp
   - Failover Rubrik cluster app.
 - cluster: Cluster

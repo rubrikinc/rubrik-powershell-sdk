@@ -13,9 +13,9 @@ Supported in v6.0+
 - path: System.String
   - Required. Supported in v6.0+
   File path that matched the malware Indicator of Compromise.
-- requestedHashDetails: list of HashDetails
-  - Supported in v6.0+
-  Hash algorithm and hash values.
 - yaraMatchDetails: list of YARAMatchDetails
   - Required. Supported in v6.0+
   Details about the matching YARA rule(s).
+- requestedHashDetails: list of HashDetails
+  - Supported in v6.0+
+  Hash algorithm and hash values.

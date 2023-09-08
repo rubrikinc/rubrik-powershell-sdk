@@ -64,6 +64,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("versionTime")]
         public DateTime? VersionTime { get; set; }
 
+        //      C# -> System.Int64? RestoreThrottleInBytesPerSecond
+        // GraphQL -> restoreThrottleInBytesPerSecond: Long (scalar)
+        [JsonProperty("restoreThrottleInBytesPerSecond")]
+        public System.Int64? RestoreThrottleInBytesPerSecond { get; set; }
+
+        //      C# -> System.Boolean? IsRestoreWithIndex
+        // GraphQL -> isRestoreWithIndex: Boolean (scalar)
+        [JsonProperty("isRestoreWithIndex")]
+        public System.Boolean? IsRestoreWithIndex { get; set; }
+
         //      C# -> System.String? SourceMongoClusterId
         // GraphQL -> sourceMongoClusterId: String! (scalar)
         [Required]

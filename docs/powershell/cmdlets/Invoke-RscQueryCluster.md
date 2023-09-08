@@ -8,11 +8,6 @@ Get all certificates.
 
 - There is a single argument of type QueryCertificatesInput.
 - Returns CertificateSummaryListResponse.
-### cloud
-List of Cloud Clusters with cloud information.
-
-- There is a single argument of type CcpVendorType.
-- Returns list of CcWithCloudInfos.
 ### cluster
 A cluster object.
 
@@ -61,21 +56,6 @@ Rubrik cluster DNS information.
 
 - There is a single argument of type System.String.
 - Returns ClusterDnsReply.
-### encryptioninfo
-Filter clusters by encryption information.
-
-- There are 10 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - sortOrder - SortOrder: Sorting order for the results.
-    - clusterName - System.String: The prefix of the name of the Rubrik cluster.
-    - encryptionStatusFilter - list of ClusterEncryptionStatusFilters: The encryption status of the Rubrik cluster.
-    - keyProtection - list of ClusterKeyProtections: The key type used for the most recent key rotation.
-    - clusters - list of System.Strings: The IDs of the Rubrik clusters to select.
-    - encryptionTypes - list of ClusterEncryptionTypes: The types of encryption.
-- Returns ClusterEncryptionInfoConnection.
 ### floatingips
 Get a list of a cluster's always-available Ips
 
@@ -84,13 +64,6 @@ Get a list of a cluster's always-available Ips.
 
 - There is a single argument of type GetClusterIpsInput.
 - Returns InternalGetClusterIpsResponse.
-### globalfilesearchmultiple
-All files and folders matching input filters.
-
-- There are 2 arguments.
-    - clusters - list of System.Strings: List of Rubrik cluster UUID's. If no clusters are provided, the search is applied to all clusters that the user has access to.
-    - regex - System.String: The regular expression used to filter the files and folders.
-- Returns GlobalFileSearchReplyType.
 ### globalslas
 Global SLA Domains protecting at least one object on the specified Rubrik cluster.
 
@@ -137,23 +110,6 @@ Checks whether acknowledgement of the Time-based, One-Time Password (TOTP) manda
     - sortOrder - SortOrder: Sorting order for the results.
     - filter - list of Filters: The hierarchy object filter.
 - Returns K8sClusterConnection.
-### kubernetes
-Summary of all Kubernetes Clusters.
-
-- There are 5 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - sortBy - HierarchySortByField: Sort hierarchy objects by hierarchy field.
-    - sortOrder - SortOrder: Sorting order for the results.
-    - filter - list of Filters: The hierarchy object filter.
-- Returns KubernetesClusterConnection.
-### ladomainfilterlist
-- There are 4 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-- Returns ClusterSlaDomainForFilterConnection.
 ### ladomains
 Returns paginated list of SLA domains that were created on Rubrik CDM.
 
@@ -209,17 +165,6 @@ Rubrik cluster proxy information.
 
 - There is a single argument of type System.String.
 - Returns ClusterProxyReply.
-### rcvlocations
-List Rubrik Cloud Vault locations of the cluster.
-
-- There are 6 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - sortOrder - SortOrder: Sorting order for the results.
-    - cdmClusterUUID - System.String: UUID of the Rubrik cluster.
-- Returns RcvLocationBasicInfoConnection.
 ### registrationproductinfo
 Info about the cluster product types the user is entitled to.
 
@@ -261,11 +206,6 @@ Checks whether acknowledgement of the Time-based, One-Time Password (TOTP) manda
 ### typelist
 - The typelist subcommand takes no arguments.
 - Returns list of GroupCounts.
-### vcd
-List of vCloud Director clusters.
-
-- There is a single argument of type QueryVcdClusterInput.
-- Returns VcdClusterSummaryListResponse.
 ### verifyslawithreplicationto
 Verify for a Rubrik cluster if it is replication target in any SLA Domain.
 
@@ -296,18 +236,6 @@ A Windows Cluster.
 
 - There is a single argument of type System.String.
 - Returns WindowsCluster.
-### withconfigprotectioninfo
-A cluster object with config protection information.
-
-- There are 7 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - configProtectionFilter - ConfigProtectionInfoFilterInput: Filters for the Configuration Protection page.
-    - sortOrder - SortOrder: Cluster sort order.
-    - sortBy - ConfigProtectionInfoSortBy: Sort configuration protection information by field.
-- Returns ClusterConnection.
 ### withupgradesinfo
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.

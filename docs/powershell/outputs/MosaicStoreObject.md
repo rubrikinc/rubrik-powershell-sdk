@@ -5,9 +5,6 @@ Supported in m3.2.0-m4.2.0
 - id: System.String
   - Required. Supported in m3.2.0-m4.2.0
   UUID of the store.
-- storeMetadata: StoreMetadata
-  - Supported in m3.2.0-m4.2.0
-  Metadata information for store.
 - storeName: System.String
   - Required. Supported in m3.2.0-m4.2.0
   Name of the store.
@@ -19,3 +16,6 @@ Supported in m3.2.0-m4.2.0
   Url for nfs server.
 - storeType: MosaicStoreObjectStoreType
   - 
+- storeMetadata: StoreMetadata
+  - Supported in m3.2.0-m4.2.0
+  Metadata information for store.

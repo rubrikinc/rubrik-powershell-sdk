@@ -13,11 +13,11 @@ Supported in v5.2+
   - 
 - failoverClusterAppConfig: FailoverClusterAppConfig
   - 
-- slaAssignable: SlaAssignable
-  - 
 - connectionStatus: FailoverClusterAppConnectionStatus
   - 
 - operatingSystemType: FailoverClusterOsType
   - 
 - slaAssignment: SlaAssignment
+  - 
+- slaAssignable: SlaAssignable
   - 

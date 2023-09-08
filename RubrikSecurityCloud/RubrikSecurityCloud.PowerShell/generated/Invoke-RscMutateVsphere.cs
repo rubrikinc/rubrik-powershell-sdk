@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// vSphere mutations
     /// </summary>
     /// <description>
-    /// Invoke-RscMutateVsphere is a master cmdlet for Vsphere work that can invoke any of the following subcommands: OnDemandSnapshot, BulkOnDemandSnapshot, DeleteLiveMount, ExportSnapshotToStandaloneHostV2, ExportSnapshotToStandaloneHost, DownloadVirtualMachineFiles, CreateAdvancedTag, DeleteAdvancedTag, UpdateAdvancedTag.
+    /// Invoke-RscMutateVsphere is a master cmdlet for Vsphere work that can invoke any of the following subcommands: OnDemandSnapshot, BulkOnDemandSnapshot, DeleteLiveMount, ExportSnapshotToStandaloneHostV2, DownloadVirtualMachineFiles, CreateAdvancedTag, DeleteAdvancedTag, UpdateAdvancedTag.
     /// </description>
     /// <example>
     /// <code>Invoke-RscMutateVsphere -OnDemandSnapshot [-Arg ..] [-Field ..]</code>
@@ -35,9 +35,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     /// <example>
     /// <code>Invoke-RscMutateVsphere -ExportSnapshotToStandaloneHostV2 [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
-    /// <code>Invoke-RscMutateVsphere -ExportSnapshotToStandaloneHost [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
     /// <code>Invoke-RscMutateVsphere -DownloadVirtualMachineFiles [-Arg ..] [-Field ..]</code>
@@ -132,24 +129,6 @@ Create a request to delete a Live Mount virtual machine.
             Position = 0
         )]
         public SwitchParameter ExportSnapshotToStandaloneHostV2 { get; set; }
-
-        
-        /// <summary>
-        /// ExportSnapshotToStandaloneHost parameter set
-        ///
-        /// [GraphQL: vsphereExportSnapshotToStandaloneHost]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "ExportSnapshotToStandaloneHost",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-[GraphQL: vsphereExportSnapshotToStandaloneHost]",
-            Position = 0
-        )]
-        public SwitchParameter ExportSnapshotToStandaloneHost { get; set; }
 
         
         /// <summary>
@@ -256,9 +235,6 @@ Updates the name, condition, and description of the specified multi-tag filter.
                     case "ExportSnapshotToStandaloneHostV2":
                         this.ProcessRecord_ExportSnapshotToStandaloneHostV2();
                         break;
-                    case "ExportSnapshotToStandaloneHost":
-                        this.ProcessRecord_ExportSnapshotToStandaloneHost();
-                        break;
                     case "DownloadVirtualMachineFiles":
                         this.ProcessRecord_DownloadVirtualMachineFiles();
                         break;
@@ -316,15 +292,6 @@ Updates the name, condition, and description of the specified multi-tag filter.
             this._logger.name += " -ExportSnapshotToStandaloneHostV2";
             // Invoke graphql operation vsphereExportSnapshotToStandaloneHostV2
             InvokeMutationVsphereExportSnapshotToStandaloneHostV2();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // vsphereExportSnapshotToStandaloneHost.
-        internal void ProcessRecord_ExportSnapshotToStandaloneHost()
-        {
-            this._logger.name += " -ExportSnapshotToStandaloneHost";
-            // Invoke graphql operation vsphereExportSnapshotToStandaloneHost
-            InvokeMutationVsphereExportSnapshotToStandaloneHost();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -514,69 +481,6 @@ $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
 }";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Mutation:
-        // vsphereExportSnapshotToStandaloneHost(
-        //     snapshotFid: UUID!
-        //     vmName: String
-        //     disableNetwork: Boolean
-        //     removeNetworkDevices: Boolean
-        //     powerOn: Boolean
-        //     keepMacAddresses: Boolean
-        //     hostIpAddress: String!
-        //     datastoreName: String!
-        //     hostUsername: String!
-        //     hostPassword: String!
-        //   ): VsphereAsyncRequestStatus!
-        internal void InvokeMutationVsphereExportSnapshotToStandaloneHost()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("snapshotFid", "UUID!"),
-                Tuple.Create("vmName", "String"),
-                Tuple.Create("disableNetwork", "Boolean"),
-                Tuple.Create("removeNetworkDevices", "Boolean"),
-                Tuple.Create("powerOn", "Boolean"),
-                Tuple.Create("keepMacAddresses", "Boolean"),
-                Tuple.Create("hostIpAddress", "String!"),
-                Tuple.Create("datastoreName", "String!"),
-                Tuple.Create("hostUsername", "String!"),
-                Tuple.Create("hostPassword", "String!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationVsphereExportSnapshotToStandaloneHost",
-                "($snapshotFid: UUID!,$vmName: String,$disableNetwork: Boolean,$removeNetworkDevices: Boolean,$powerOn: Boolean,$keepMacAddresses: Boolean,$hostIpAddress: String!,$datastoreName: String!,$hostUsername: String!,$hostPassword: String!)",
-                "VsphereAsyncRequestStatus"
-                );
-            VsphereAsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (VsphereAsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.VsphereExportSnapshotToStandaloneHost(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.snapshotFid = <System.String>
-# OPTIONAL
-$inputs.Var.vmName = <System.String>
-# OPTIONAL
-$inputs.Var.disableNetwork = <System.Boolean>
-# OPTIONAL
-$inputs.Var.removeNetworkDevices = <System.Boolean>
-# OPTIONAL
-$inputs.Var.powerOn = <System.Boolean>
-# OPTIONAL
-$inputs.Var.keepMacAddresses = <System.Boolean>
-# REQUIRED
-$inputs.Var.hostIpAddress = <System.String>
-# REQUIRED
-$inputs.Var.datastoreName = <System.String>
-# REQUIRED
-$inputs.Var.hostUsername = <System.String>
-# REQUIRED
-$inputs.Var.hostPassword = <System.String>";
             BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }

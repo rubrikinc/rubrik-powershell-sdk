@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Mongo mutations
     /// </summary>
     /// <description>
-    /// Invoke-RscMutateMongo is a master cmdlet for Mongo work that can invoke any of the following subcommands: AddSource, DeleteSource, DiscoverSource, PatchSource, RetryAddSource, AssignSlaToDbCollection, RecoverSource, CreateOnDemandDatabaseBackup, CreatedbSource, UpdatedbSource, DeletedbSource, BulkDeletedbSources, RecoverdbSource.
+    /// Invoke-RscMutateMongo is a master cmdlet for Mongo work that can invoke any of the following subcommands: AddSource, DeleteSource, DiscoverSource, PatchSource, RetryAddSource, AssignSlaToDbCollection, RecoverSource, CreatedbSource, UpdatedbSource, DeletedbSource, BulkDeletedbSources, RecoverdbSource.
     /// </description>
     /// <example>
     /// <code>Invoke-RscMutateMongo -AddSource [-Arg ..] [-Field ..]</code>
@@ -44,9 +44,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     /// <example>
     /// <code>Invoke-RscMutateMongo -RecoverSource [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
-    /// <code>Invoke-RscMutateMongo -CreateOnDemandDatabaseBackup [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
     /// <code>Invoke-RscMutateMongo -CreatedbSource [-Arg ..] [-Field ..]</code>
@@ -216,27 +213,6 @@ Assigns SLA Domain to the given MongoDB collection objects.
 
         
         /// <summary>
-        /// CreateOnDemandDatabaseBackup parameter set
-        ///
-        /// [GraphQL: createOnDemandMongoDatabaseBackup]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "CreateOnDemandDatabaseBackup",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Take an on-demand snapshot for a MongoDB database
-
-Supported in v9.0+
-Initiates a job to take an on-demand, full or incremental snapshot of the specified MongoDB database.
-[GraphQL: createOnDemandMongoDatabaseBackup]",
-            Position = 0
-        )]
-        public SwitchParameter CreateOnDemandDatabaseBackup { get; set; }
-
-        
-        /// <summary>
         /// CreatedbSource parameter set
         ///
         /// [GraphQL: createMongodbSource]
@@ -359,9 +335,6 @@ Supported in m3.2.0-m4.2.0.
                     case "RecoverSource":
                         this.ProcessRecord_RecoverSource();
                         break;
-                    case "CreateOnDemandDatabaseBackup":
-                        this.ProcessRecord_CreateOnDemandDatabaseBackup();
-                        break;
                     case "CreatedbSource":
                         this.ProcessRecord_CreatedbSource();
                         break;
@@ -449,15 +422,6 @@ Supported in m3.2.0-m4.2.0.
             this._logger.name += " -RecoverSource";
             // Invoke graphql operation recoverMongoSource
             InvokeMutationRecoverMongoSource();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // createOnDemandMongoDatabaseBackup.
-        internal void ProcessRecord_CreateOnDemandDatabaseBackup()
-        {
-            this._logger.name += " -CreateOnDemandDatabaseBackup";
-            // Invoke graphql operation createOnDemandMongoDatabaseBackup
-            InvokeMutationCreateOnDemandMongoDatabaseBackup();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -809,57 +773,16 @@ $inputs.Var.input = @{
 		targetDatabaseName = <System.String>
 		# OPTIONAL
 		versionTime = <DateTime>
+		# OPTIONAL
+		restoreThrottleInBytesPerSecond = <System.Int64>
+		# OPTIONAL
+		isRestoreWithIndex = <System.Boolean>
 		# REQUIRED
 		sourceMongoClusterId = <System.String>
 		# REQUIRED
 		targetMongoClusterId = <System.String>
 	}
 }";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Mutation:
-        // createOnDemandMongoDatabaseBackup(input: CreateOnDemandMongoDatabaseSnapshotInput!, attributes: [FeatureFlagAttributeInput!]!): AsyncRequestStatus!
-        internal void InvokeMutationCreateOnDemandMongoDatabaseBackup()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "CreateOnDemandMongoDatabaseSnapshotInput!"),
-                Tuple.Create("attributes", "[FeatureFlagAttributeInput!]!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationCreateOnDemandMongoDatabaseBackup",
-                "($input: CreateOnDemandMongoDatabaseSnapshotInput!,$attributes: [FeatureFlagAttributeInput!]!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.CreateOnDemandMongoDatabaseBackup(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	config = @{
-		# REQUIRED
-		isFullbackup = <System.Boolean>
-		# REQUIRED
-		slaId = <System.String>
-	}
-	# REQUIRED
-	id = <System.String>
-}
-# REQUIRED
-$inputs.Var.attributes = @(
-	@{
-		# REQUIRED
-		value = <System.String>
-		# REQUIRED
-		attribute = <FlagAttribute> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FlagAttribute]) for enum values.
-}
-)";
             BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }

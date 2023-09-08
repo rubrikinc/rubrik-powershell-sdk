@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGE_PROTECTION")]
         MANAGE_PROTECTION,
 
+        [EnumMember(Value = "MOUNT")]
+        MOUNT,
+
         [EnumMember(Value = "RESTORE_TO_ORIGIN")]
         RESTORE_TO_ORIGIN,
 

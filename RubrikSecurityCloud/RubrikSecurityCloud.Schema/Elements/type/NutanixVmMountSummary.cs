@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mountRequestId")]
         public System.String? MountRequestId { get; set; }
 
+        //      C# -> System.String? MountStatus
+        // GraphQL -> mountStatus: String (scalar)
+        [JsonProperty("mountStatus")]
+        public System.String? MountStatus { get; set; }
+
         //      C# -> DateTime? MountedDate
         // GraphQL -> mountedDate: DateTime (scalar)
         [JsonProperty("mountedDate")]
@@ -114,6 +119,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsReady = null,
         System.String? MigrationStatus = null,
         System.String? MountRequestId = null,
+        System.String? MountStatus = null,
         DateTime? MountedDate = null,
         System.String? MountedVmId = null,
         System.String? MountedVmIpAddress = null,
@@ -139,6 +145,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( MountRequestId != null ) {
             this.MountRequestId = MountRequestId;
+        }
+        if ( MountStatus != null ) {
+            this.MountStatus = MountStatus;
         }
         if ( MountedDate != null ) {
             this.MountedDate = MountedDate;
@@ -205,6 +214,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> mountRequestId: String (scalar)
         if (this.MountRequestId != null) {
             s += ind + "mountRequestId\n" ;
+        }
+        //      C# -> System.String? MountStatus
+        // GraphQL -> mountStatus: String (scalar)
+        if (this.MountStatus != null) {
+            s += ind + "mountStatus\n" ;
         }
         //      C# -> DateTime? MountedDate
         // GraphQL -> mountedDate: DateTime (scalar)
@@ -296,6 +310,12 @@ namespace RubrikSecurityCloud.Types
         if (this.MountRequestId == null && ec.Includes("mountRequestId",true))
         {
             this.MountRequestId = "FETCH";
+        }
+        //      C# -> System.String? MountStatus
+        // GraphQL -> mountStatus: String (scalar)
+        if (this.MountStatus == null && ec.Includes("mountStatus",true))
+        {
+            this.MountStatus = "FETCH";
         }
         //      C# -> DateTime? MountedDate
         // GraphQL -> mountedDate: DateTime (scalar)

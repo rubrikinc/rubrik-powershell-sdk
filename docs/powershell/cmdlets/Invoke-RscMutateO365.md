@@ -77,16 +77,6 @@ Exports an Exchange mailbox.
 
 - There is a single argument of type ExportO365MailboxInput.
 - Returns CreateOnDemandJobReply.
-### exportteamsfiles
-Export Team files.
-
-- There is a single argument of type RestoreO365TeamsFilesInput.
-- Returns CreateOnDemandJobReply.
-### exportworkload
-Export an O365 workload.
-
-- There is a single argument of type RestoreO365SnappableInput.
-- Returns CreateOnDemandJobReply.
 ### insertcustomerapp
 Inserts a Customer-hosted O365 Azure AD App.
 

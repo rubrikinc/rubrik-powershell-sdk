@@ -1,2 +1,0 @@
-### FailoverStatus
-- enumValue: FailoverStatusEnum

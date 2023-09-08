@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Cluster mutations
     /// </summary>
     /// <description>
-    /// Invoke-RscMutateCluster is a master cmdlet for Cluster work that can invoke any of the following subcommands: AddNodesToCloud, RegisterCloud, UpdateDatabaseLogReportingProperties, CreateFailover, UpdateFailover, DeleteFailover, BulkDeleteFailover, AddK8s, DeleteK8s, RefreshK8sV2, CreateK8s, RefreshK8s, ArchiveK8s, RemoveCdm, RecoverCloud.
+    /// Invoke-RscMutateCluster is a master cmdlet for Cluster work that can invoke any of the following subcommands: AddNodesToCloud, RegisterCloud, UpdateDatabaseLogReportingProperties, CreateFailover, UpdateFailover, DeleteFailover, BulkDeleteFailover, CreateK8s, RefreshK8s, ArchiveK8s, RemoveCdm, RecoverCloud.
     /// </description>
     /// <example>
     /// <code>Invoke-RscMutateCluster -AddNodesToCloud [-Arg ..] [-Field ..]</code>
@@ -46,15 +46,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <code>Invoke-RscMutateCluster -BulkDeleteFailover [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
-    /// <code>Invoke-RscMutateCluster -AddK8s [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
-    /// <code>Invoke-RscMutateCluster -DeleteK8s [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
-    /// <code>Invoke-RscMutateCluster -RefreshK8sV2 [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
     /// <code>Invoke-RscMutateCluster -CreateK8s [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
@@ -72,7 +63,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "Invoke",
         "RscMutateCluster",
-        DefaultParameterSetName = "AddK8s")
+        DefaultParameterSetName = "CreateK8s")
     ]
     public class Invoke_RscMutateCluster : RscPSCmdlet
     {
@@ -219,69 +210,6 @@ Delete the provided failover clusters.
 
         
         /// <summary>
-        /// AddK8s parameter set
-        ///
-        /// [GraphQL: addK8sCluster]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "AddK8s",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Add a Kubernetes cluster
-
-Supported in v9.0+
-Adds a Kubernetes cluster to the Rubrik cluster.
-[GraphQL: addK8sCluster]",
-            Position = 0
-        )]
-        public SwitchParameter AddK8s { get; set; }
-
-        
-        /// <summary>
-        /// DeleteK8s parameter set
-        ///
-        /// [GraphQL: deleteK8sCluster]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "DeleteK8s",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Delete a Kubernetes cluster
-
-Supported in v9.0+
-Deletes a Kubernetes cluster by specifying the cluster ID.
-[GraphQL: deleteK8sCluster]",
-            Position = 0
-        )]
-        public SwitchParameter DeleteK8s { get; set; }
-
-        
-        /// <summary>
-        /// RefreshK8sV2 parameter set
-        ///
-        /// [GraphQL: refreshK8sV2Cluster]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "RefreshK8sV2",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Initiate an on-demand refresh for a Kubernetes cluster
-
-Supported in v9.0+
-Initiates an on-demand refresh request for the specified Kubernetes cluster.
-[GraphQL: refreshK8sV2Cluster]",
-            Position = 0
-        )]
-        public SwitchParameter RefreshK8sV2 { get; set; }
-
-        
-        /// <summary>
         /// CreateK8s parameter set
         ///
         /// [GraphQL: createK8sCluster]
@@ -400,15 +328,6 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
                     case "BulkDeleteFailover":
                         this.ProcessRecord_BulkDeleteFailover();
                         break;
-                    case "AddK8s":
-                        this.ProcessRecord_AddK8s();
-                        break;
-                    case "DeleteK8s":
-                        this.ProcessRecord_DeleteK8s();
-                        break;
-                    case "RefreshK8sV2":
-                        this.ProcessRecord_RefreshK8sV2();
-                        break;
                     case "CreateK8s":
                         this.ProcessRecord_CreateK8s();
                         break;
@@ -496,33 +415,6 @@ Initiates an on-demand refresh request for the specified Kubernetes cluster.
             this._logger.name += " -BulkDeleteFailover";
             // Invoke graphql operation bulkDeleteFailoverCluster
             InvokeMutationBulkDeleteFailoverCluster();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // addK8sCluster.
-        internal void ProcessRecord_AddK8s()
-        {
-            this._logger.name += " -AddK8s";
-            // Invoke graphql operation addK8sCluster
-            InvokeMutationAddK8sCluster();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // deleteK8sCluster.
-        internal void ProcessRecord_DeleteK8s()
-        {
-            this._logger.name += " -DeleteK8s";
-            // Invoke graphql operation deleteK8sCluster
-            InvokeMutationDeleteK8sCluster();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // refreshK8sV2Cluster.
-        internal void ProcessRecord_RefreshK8sV2()
-        {
-            this._logger.name += " -RefreshK8sV2";
-            // Invoke graphql operation refreshK8sV2Cluster
-            InvokeMutationRefreshK8sV2Cluster();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -807,114 +699,6 @@ $inputs.Var.input = @{
 	ids = @(
 		<System.String>
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Mutation:
-        // addK8sCluster(input: AddK8sClusterInput!): K8sClusterSummary!
-        internal void InvokeMutationAddK8sCluster()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "AddK8sClusterInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationAddK8sCluster",
-                "($input: AddK8sClusterInput!)",
-                "K8sClusterSummary"
-                );
-            K8sClusterSummary? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (K8sClusterSummary)this.Field;
-            }
-            string fieldSpecDoc = Mutation.AddK8sCluster(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	clusterUuid = <System.String>
-	# REQUIRED
-	config = @{
-		# OPTIONAL
-		registry = <System.String>
-		# OPTIONAL
-		distribution = <System.String>
-		# OPTIONAL
-		k8SAwsConfig = @{
-			# REQUIRED
-			cloudAccountId = <System.String>
-			# REQUIRED
-			eksClusterArn = <System.String>
-		}
-		# OPTIONAL
-		region = <System.String>
-		# REQUIRED
-		kubeconfig = <System.String>
-		# REQUIRED
-		name = <System.String>
-	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Mutation:
-        // deleteK8sCluster(input: DeleteK8sClusterInput!): AsyncRequestStatus!
-        internal void InvokeMutationDeleteK8sCluster()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "DeleteK8sClusterInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationDeleteK8sCluster",
-                "($input: DeleteK8sClusterInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DeleteK8sCluster(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.input = @{
-	# OPTIONAL
-	preserveSnapshots = <System.Boolean>
-	# REQUIRED
-	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Mutation:
-        // refreshK8sV2Cluster(input: RefreshK8sV2ClusterInput!): AsyncRequestStatus!
-        internal void InvokeMutationRefreshK8sV2Cluster()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "RefreshK8sV2ClusterInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationRefreshK8sV2Cluster",
-                "($input: RefreshK8sV2ClusterInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.RefreshK8sV2Cluster(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	clusterUuid = <System.String>
-	# REQUIRED
-	id = <System.String>
 }";
             BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);

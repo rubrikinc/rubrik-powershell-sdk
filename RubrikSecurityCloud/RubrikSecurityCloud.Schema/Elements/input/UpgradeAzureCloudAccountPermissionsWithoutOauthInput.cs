@@ -33,6 +33,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("feature")]
         public CloudAccountFeature? Feature { get; set; }
 
+        //      C# -> UpgradeAzureCloudAccountFeatureInput? FeatureToUpgrade
+        // GraphQL -> featureToUpgrade: UpgradeAzureCloudAccountFeatureInput (input)
+        [JsonProperty("featureToUpgrade")]
+        public UpgradeAzureCloudAccountFeatureInput? FeatureToUpgrade { get; set; }
+
 
         #endregion
 

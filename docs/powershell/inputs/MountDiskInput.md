@@ -1,8 +1,6 @@
 ### MountDiskInput
 Input required to mount disks.
 
-- accountId: System.String
-  - Customer account name.
 - snapshotId: System.String
   - Snapshot ID from which disk will be mounted.
 - targetWorkloadId: System.String
@@ -11,3 +9,5 @@ Input required to mount disks.
   - Snapshot types.
 - mountDiskIds: list of System.Strings
   - List of disk IDs that would be mounted.
+- workloadType: CloudNativeObjectType
+  - Workload type.

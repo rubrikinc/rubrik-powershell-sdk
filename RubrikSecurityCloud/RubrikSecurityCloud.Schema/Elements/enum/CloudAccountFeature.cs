@@ -54,6 +54,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GCP_SHARED_VPC_HOST")]
         GCP_SHARED_VPC_HOST,
 
+        [EnumMember(Value = "KUBERNETES_PROTECTION")]
+        KUBERNETES_PROTECTION,
+
         [EnumMember(Value = "RDS_PROTECTION")]
         RDS_PROTECTION,
 

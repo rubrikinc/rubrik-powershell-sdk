@@ -435,6 +435,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "JIRA_PROJECT_TYPE")]
         JIRA_PROJECT_TYPE,
 
+        [EnumMember(Value = "K8S_CLUSTER_NAME")]
+        K8S_CLUSTER_NAME,
+
         [EnumMember(Value = "KUPR_CDM_CLUSTER_ID")]
         KUPR_CDM_CLUSTER_ID,
 
@@ -593,6 +596,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "REGEX")]
         REGEX,
+
+        [EnumMember(Value = "RUBRIK_NATIVE_HAS_AT_LEAST_ONE_SNAPSHOT")]
+        RUBRIK_NATIVE_HAS_AT_LEAST_ONE_SNAPSHOT,
 
         [EnumMember(Value = "RUBRIK_NATIVE_HAS_UNINDEXED_OR_EXPIRED_SNAPSHOT")]
         RUBRIK_NATIVE_HAS_UNINDEXED_OR_EXPIRED_SNAPSHOT,

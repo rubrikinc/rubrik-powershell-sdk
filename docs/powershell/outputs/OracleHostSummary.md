@@ -4,9 +4,6 @@ Supported in v5.0+
 - id: System.String
   - Required. Supported in v5.0+
   ID assigned to the standalone Oracle host.
-- infraPath: list of ManagedHierarchyObjectAncestors
-  - Required. Supported in v5.0+
-  An array that contains information about the objects in the infrastructure path of a specified Oracle database.
 - name: System.String
   - Required. Supported in v5.0+
   Hostname of the standalone Oracle host.
@@ -26,3 +23,6 @@ Supported in v5.0+
   ID assigned to the host.
 - slaAssignable: SlaAssignable
   - 
+- infraPath: list of ManagedHierarchyObjectAncestors
+  - Required. Supported in v5.0+
+  An array that contains information about the objects in the infrastructure path of a specified Oracle database.

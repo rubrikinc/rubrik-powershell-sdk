@@ -4,9 +4,6 @@ Supported in v5.0+
 - endTime: DateTime
   - Supported in v5.0+
   The end time of the request.
-- error: RequestErrorInfo
-  - Supported in v5.0+
-  Any errors encountered.
 - id: System.String
   - Required. Supported in v5.0+
   v5.0: The ID of the request object. Use it to poll the status.
@@ -28,3 +25,6 @@ Supported in v5.0+
   - Required. Supported in v5.0+
   v5.0: Status of the id.
   v5.1+: Status of the ID.
+- error: RequestErrorInfo
+  - Supported in v5.0+
+  Any errors encountered.

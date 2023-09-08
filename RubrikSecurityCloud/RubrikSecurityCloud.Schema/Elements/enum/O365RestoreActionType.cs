@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "EXPORT_SNAPPABLE")]
         EXPORT_SNAPPABLE,
 
+        [EnumMember(Value = "INPLACE_RESTORE_SNAPPABLE")]
+        INPLACE_RESTORE_SNAPPABLE,
+
         [EnumMember(Value = "RESTORE_SNAPPABLE")]
         RESTORE_SNAPPABLE
 

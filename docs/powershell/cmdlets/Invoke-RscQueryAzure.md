@@ -1,30 +1,5 @@
 # Invoke-RscQueryAzure
 ## Subcommands
-### addirectories
-All Azure AD directories for the account.
-
-- There are 5 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - sortBy - HierarchySortByField: Sort hierarchy objects by hierarchy field.
-    - sortOrder - SortOrder: Sorting order for the results.
-    - filter - list of Filters: The hierarchy object filter.
-- Returns AzureAdDirectoryConnection.
-### addirectory
-Details of the Azure AD corresponds to the workload ID.
-
-- There is a single argument of type System.String.
-- Returns AzureAdDirectory.
-### adobjectsbytype
-Details of the Azure AD objects corresponding to the type.
-
-- There are 5 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - sortByOption - list of AzureAdObjectSearchTypes: Ordered list of sort by column names.
-    - sortOrder - SortOrder: Sorting order for the results.
-    - input - AzureAdObjectTypeInput: The input for azureAdObjectsByType API.
-- Returns AzureAdObjectConnection.
 ### allarmtemplatesbyfeature
 Retrieve ARM templates for role definition and role assignment.
 
@@ -65,11 +40,6 @@ Retrieves a list of all the Azure tenants and tenant subscriptions for features.
     - feature - CloudAccountFeature: A cloud account feature of Rubrik Security Cloud.
     - includeSubscriptionDetails - System.Boolean: Specifies whether the details about the subscriptions in the tenants are included in the response or not.
 - Returns list of AzureCloudAccountTenants.
-### allcloudaccounttenantswithexoconfigs
-Retrieves details about all the Azure cloud account tenants including the Exocompute configurations for the tenant subscriptions, for specified set of features.
-
-- There is a single argument of type list of CloudAccountFeatures.
-- Returns list of AzureCloudAccountTenantWithExoConfigss.
 ### alldiskencryptionsetsbyregion
 List of all Azure Disk Encryption Sets in a region.
 
@@ -225,28 +195,6 @@ Checks if we can unmap the archival location from the subscription.
     - feature - CloudAccountFeature: A cloud account feature of Rubrik Security Cloud.
     - unmappingValidationType - UnmappingValidationType: Unmapping validation type.
 - Returns CheckAzurePersistentStorageSubscriptionCanUnmapReply.
-### cloudaccountcheckrefreshtokenexistsforrecovery
-Check whether a refresh token exists for the current user.
-
-- There are 2 arguments.
-    - cloudAccountId - System.String: The Rubrik ID of the cloud account.
-    - azureNativeSubscriptionId - System.String: Azure native subscription ID.
-- Returns AzureCloudAccountCheckRefreshTokenExistsReply.
-### cloudaccountgrantedpermissionsgroups
-Retrieves the permissions groups which have been granted for a specific feature.
-
-- There are 2 arguments.
-    - cloudAccountId - System.String: The Rubrik ID of the cloud account.
-    - feature - CloudAccountFeature: A cloud account feature of Rubrik Security Cloud.
-- Returns AzureCloudAccountGrantedPermissionsGroupsReply.
-### cloudaccountgrantedpermissionsgroupsforrecovery
-Retrieves the permissions groups which have been granted for a specific feature.
-
-- There are 3 arguments.
-    - cloudAccountId - System.String: The Rubrik ID of the cloud account.
-    - azureNativeSubscriptionId - System.String: Azure native subscription ID.
-    - feature - CloudAccountFeature: A cloud account feature of Rubrik Security Cloud.
-- Returns AzureCloudAccountGrantedPermissionsGroupsReply.
 ### cloudaccountpermissionconfig
 Retrieves the configuration consisting of role permissions and feature policy version required for Azure subscription setup. Features refer to the Polaris features that the customer wants to be enabled on the cloud account.
 
@@ -305,19 +253,6 @@ Specifies whether the given storage account name is valid and available in Azure
     - azureSubscriptionRubrikId - System.String: Rubrik ID of the Azure Subscription.
     - storageAccountName - System.String: A unique name for the storage account. Storage account names must be between 3 and 24 characters in length and may contain numbers and lowercase letters only.
 - Returns System.Boolean.
-### nativelivemountdisks
-List of mounted disks for Azure.
-
-- There are 8 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-    - cloudNativeObjectType - CloudNativeObjectType: Cloud Native Object Type.
-    - liveMountFilters - list of CloudNativeLiveMountFilters: Fields and values according to which rules will be filtered.
-    - sortBy - CloudNativeLiveMountSortByFields: Fields and values according to which rules will be sorted.
-    - sortOrder - SortOrder: Sorting order for the results.
-- Returns LiveMountDetailsConnection.
 ### nativemanageddisk
 Retrieves an Azure Native Managed Disk that refers to the block storage designed to be used with Azure Virtual Machines. Some examples are: ultra disks, premium solid-state drives (SSD), standard SSDs, and standard hard disk drives (HDD). For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview.
 
@@ -411,14 +346,6 @@ Gets the Azure resource groups for the given subscription.
     - tenantId - System.String
     - subscriptionId - System.String
 - Returns ResourceGroupConnection.
-### searchadsnapshot
-Search azureAdObjects within a snapshot.
-
-- There are 3 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - input - SearchAzureAdSnapshotInput: The input for searchAzureAdSnapshot API
-- Returns AzureAdObjectConnection.
 ### sqldatabase
 Retrieves an Azure SQL Database. Refers to the fully managed SQL database built for the cloud. For more information, see https://azure.microsoft.com/en-us/products/azure-sql/database/.
 

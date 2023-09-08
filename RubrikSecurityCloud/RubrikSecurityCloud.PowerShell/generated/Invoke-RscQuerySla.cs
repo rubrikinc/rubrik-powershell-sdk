@@ -22,31 +22,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// SLA queries
     /// </summary>
     /// <description>
-    /// Invoke-RscQuerySla is a master cmdlet for Sla work that can invoke any of the following subcommands: AllIofilterStatuses, AllCdpVmNames, Domains, DomainWithWarningsList, GlobalFilterList, Domain, DomainWithWarnings, ArchivalValidationWarnings, CountOfObjectsProtected, AuditDetail, AllSummariesByIds, GlobalStatuses, ProtectedClustersForGlobal, ConflictObjects, ManagedVolumes, ManagedVolume, ClusterDomains, ClusterDomainFilterList, VerifyWithReplicationToCluster, DownloadWithReplicationCsv, AllClusterGlobals, AllNcdComplianceData.
+    /// Invoke-RscQuerySla is a master cmdlet for Sla work that can invoke any of the following subcommands: Domains, GlobalFilterList, Domain, CountOfObjectsProtected, AuditDetail, AllSummariesByIds, GlobalStatuses, ConflictObjects, ManagedVolumes, ManagedVolume, ClusterDomains, VerifyWithReplicationToCluster, AllClusterGlobals, AllNcdComplianceData.
     /// </description>
     /// <example>
-    /// <code>Invoke-RscQuerySla -AllIofilterStatuses [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
-    /// <code>Invoke-RscQuerySla -AllCdpVmNames [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
     /// <code>Invoke-RscQuerySla -Domains [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
-    /// <code>Invoke-RscQuerySla -DomainWithWarningsList [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
     /// <code>Invoke-RscQuerySla -GlobalFilterList [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
     /// <code>Invoke-RscQuerySla -Domain [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
-    /// <code>Invoke-RscQuerySla -DomainWithWarnings [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
-    /// <code>Invoke-RscQuerySla -ArchivalValidationWarnings [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
     /// <code>Invoke-RscQuerySla -CountOfObjectsProtected [-Arg ..] [-Field ..]</code>
@@ -61,9 +46,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <code>Invoke-RscQuerySla -GlobalStatuses [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
-    /// <code>Invoke-RscQuerySla -ProtectedClustersForGlobal [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
     /// <code>Invoke-RscQuerySla -ConflictObjects [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
@@ -76,13 +58,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <code>Invoke-RscQuerySla -ClusterDomains [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
-    /// <code>Invoke-RscQuerySla -ClusterDomainFilterList [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
     /// <code>Invoke-RscQuerySla -VerifyWithReplicationToCluster [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
-    /// <code>Invoke-RscQuerySla -DownloadWithReplicationCsv [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
     /// <code>Invoke-RscQuerySla -AllClusterGlobals [-Arg ..] [-Field ..]</code>
@@ -97,42 +73,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ]
     public class Invoke_RscQuerySla : RscPSCmdlet
     {
-        
-        /// <summary>
-        /// AllIofilterStatuses parameter set
-        ///
-        /// [GraphQL: allSlaIofilterStatuses]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "AllIofilterStatuses",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"The iofilter installation status of the compute clusters related to this SLA Domain.
-[GraphQL: allSlaIofilterStatuses]",
-            Position = 0
-        )]
-        public SwitchParameter AllIofilterStatuses { get; set; }
-
-        
-        /// <summary>
-        /// AllCdpVmNames parameter set
-        ///
-        /// [GraphQL: allCdpSlaVmNames]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "AllCdpVmNames",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Names of the virtual machines in compute cluster with Continuous Data Protection (CDP) SLA Domain.
-[GraphQL: allCdpSlaVmNames]",
-            Position = 0
-        )]
-        public SwitchParameter AllCdpVmNames { get; set; }
-
         
         /// <summary>
         /// Domains parameter set
@@ -150,24 +90,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Position = 0
         )]
         public SwitchParameter Domains { get; set; }
-
-        
-        /// <summary>
-        /// DomainWithWarningsList parameter set
-        ///
-        /// [GraphQL: slaDomainWithWarningsList]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "DomainWithWarningsList",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Query sla list with warnings
-[GraphQL: slaDomainWithWarningsList]",
-            Position = 0
-        )]
-        public SwitchParameter DomainWithWarningsList { get; set; }
 
         
         /// <summary>
@@ -204,42 +126,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Position = 0
         )]
         public SwitchParameter Domain { get; set; }
-
-        
-        /// <summary>
-        /// DomainWithWarnings parameter set
-        ///
-        /// [GraphQL: slaDomainWithWarnings]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "DomainWithWarnings",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-[GraphQL: slaDomainWithWarnings]",
-            Position = 0
-        )]
-        public SwitchParameter DomainWithWarnings { get; set; }
-
-        
-        /// <summary>
-        /// ArchivalValidationWarnings parameter set
-        ///
-        /// [GraphQL: slaArchivalValidationWarnings]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "ArchivalValidationWarnings",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"SLA Domain warnings related to non-compliant archival retention duration in the archival policy.
-[GraphQL: slaArchivalValidationWarnings]",
-            Position = 0
-        )]
-        public SwitchParameter ArchivalValidationWarnings { get; set; }
 
         
         /// <summary>
@@ -315,24 +201,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         /// <summary>
-        /// ProtectedClustersForGlobal parameter set
-        ///
-        /// [GraphQL: protectedClustersForGlobalSla]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "ProtectedClustersForGlobal",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Clusters that have object(s) protected by global SLA.
-[GraphQL: protectedClustersForGlobalSla]",
-            Position = 0
-        )]
-        public SwitchParameter ProtectedClustersForGlobal { get; set; }
-
-        
-        /// <summary>
         /// ConflictObjects parameter set
         ///
         /// [GraphQL: slaConflictObjects]
@@ -343,7 +211,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"
+@"Conflicting objects for an SLA Domain assignment.
 [GraphQL: slaConflictObjects]",
             Position = 0
         )]
@@ -405,24 +273,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         /// <summary>
-        /// ClusterDomainFilterList parameter set
-        ///
-        /// [GraphQL: clusterSlaDomainFilterConnection]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "ClusterDomainFilterList",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-[GraphQL: clusterSlaDomainFilterConnection]",
-            Position = 0
-        )]
-        public SwitchParameter ClusterDomainFilterList { get; set; }
-
-        
-        /// <summary>
         /// VerifyWithReplicationToCluster parameter set
         ///
         /// [GraphQL: verifySlaWithReplicationToCluster]
@@ -438,24 +288,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Position = 0
         )]
         public SwitchParameter VerifyWithReplicationToCluster { get; set; }
-
-        
-        /// <summary>
-        /// DownloadWithReplicationCsv parameter set
-        ///
-        /// [GraphQL: downloadSlaWithReplicationCsv]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "DownloadWithReplicationCsv",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Download list of Global SLA CSV that have Replication to the given Rubrik Cluster.
-[GraphQL: downloadSlaWithReplicationCsv]",
-            Position = 0
-        )]
-        public SwitchParameter DownloadWithReplicationCsv { get; set; }
 
         
         /// <summary>
@@ -502,29 +334,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(Op)
                 {
-                    case "AllIofilterStatuses":
-                        this.ProcessRecord_AllIofilterStatuses();
-                        break;
-                    case "AllCdpVmNames":
-                        this.ProcessRecord_AllCdpVmNames();
-                        break;
                     case "Domains":
                         this.ProcessRecord_Domains();
-                        break;
-                    case "DomainWithWarningsList":
-                        this.ProcessRecord_DomainWithWarningsList();
                         break;
                     case "GlobalFilterList":
                         this.ProcessRecord_GlobalFilterList();
                         break;
                     case "Domain":
                         this.ProcessRecord_Domain();
-                        break;
-                    case "DomainWithWarnings":
-                        this.ProcessRecord_DomainWithWarnings();
-                        break;
-                    case "ArchivalValidationWarnings":
-                        this.ProcessRecord_ArchivalValidationWarnings();
                         break;
                     case "CountOfObjectsProtected":
                         this.ProcessRecord_CountOfObjectsProtected();
@@ -538,9 +355,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "GlobalStatuses":
                         this.ProcessRecord_GlobalStatuses();
                         break;
-                    case "ProtectedClustersForGlobal":
-                        this.ProcessRecord_ProtectedClustersForGlobal();
-                        break;
                     case "ConflictObjects":
                         this.ProcessRecord_ConflictObjects();
                         break;
@@ -553,14 +367,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "ClusterDomains":
                         this.ProcessRecord_ClusterDomains();
                         break;
-                    case "ClusterDomainFilterList":
-                        this.ProcessRecord_ClusterDomainFilterList();
-                        break;
                     case "VerifyWithReplicationToCluster":
                         this.ProcessRecord_VerifyWithReplicationToCluster();
-                        break;
-                    case "DownloadWithReplicationCsv":
-                        this.ProcessRecord_DownloadWithReplicationCsv();
                         break;
                     case "AllClusterGlobals":
                         this.ProcessRecord_AllClusterGlobals();
@@ -580,39 +388,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 #pragma warning restore 1591
 
         // This parameter set invokes a single graphql operation:
-        // allSlaIofilterStatuses.
-        internal void ProcessRecord_AllIofilterStatuses()
-        {
-            this._logger.name += " -AllIofilterStatuses";
-            // Invoke graphql operation allSlaIofilterStatuses
-            InvokeQueryAllSlaIofilterStatuses();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allCdpSlaVmNames.
-        internal void ProcessRecord_AllCdpVmNames()
-        {
-            this._logger.name += " -AllCdpVmNames";
-            // Invoke graphql operation allCdpSlaVmNames
-            InvokeQueryAllCdpSlaVmNames();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // slaDomains.
         internal void ProcessRecord_Domains()
         {
             this._logger.name += " -Domains";
             // Invoke graphql operation slaDomains
             InvokeQuerySlaDomains();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // slaDomainWithWarningsList.
-        internal void ProcessRecord_DomainWithWarningsList()
-        {
-            this._logger.name += " -DomainWithWarningsList";
-            // Invoke graphql operation slaDomainWithWarningsList
-            InvokeQuerySlaDomainWithWarningsList();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -631,24 +412,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -Domain";
             // Invoke graphql operation slaDomain
             InvokeQuerySlaDomain();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // slaDomainWithWarnings.
-        internal void ProcessRecord_DomainWithWarnings()
-        {
-            this._logger.name += " -DomainWithWarnings";
-            // Invoke graphql operation slaDomainWithWarnings
-            InvokeQuerySlaDomainWithWarnings();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // slaArchivalValidationWarnings.
-        internal void ProcessRecord_ArchivalValidationWarnings()
-        {
-            this._logger.name += " -ArchivalValidationWarnings";
-            // Invoke graphql operation slaArchivalValidationWarnings
-            InvokeQuerySlaArchivalValidationWarnings();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -688,15 +451,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // protectedClustersForGlobalSla.
-        internal void ProcessRecord_ProtectedClustersForGlobal()
-        {
-            this._logger.name += " -ProtectedClustersForGlobal";
-            // Invoke graphql operation protectedClustersForGlobalSla
-            InvokeQueryProtectedClustersForGlobalSla();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // slaConflictObjects.
         internal void ProcessRecord_ConflictObjects()
         {
@@ -733,30 +487,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // clusterSlaDomainFilterConnection.
-        internal void ProcessRecord_ClusterDomainFilterList()
-        {
-            this._logger.name += " -ClusterDomainFilterList";
-            // Invoke graphql operation clusterSlaDomainFilterConnection
-            InvokeQueryClusterSlaDomainFilterConnection();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // verifySlaWithReplicationToCluster.
         internal void ProcessRecord_VerifyWithReplicationToCluster()
         {
             this._logger.name += " -VerifyWithReplicationToCluster";
             // Invoke graphql operation verifySlaWithReplicationToCluster
             InvokeQueryVerifySlaWithReplicationToCluster();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // downloadSlaWithReplicationCsv.
-        internal void ProcessRecord_DownloadWithReplicationCsv()
-        {
-            this._logger.name += " -DownloadWithReplicationCsv";
-            // Invoke graphql operation downloadSlaWithReplicationCsv
-            InvokeQueryDownloadSlaWithReplicationCsv();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -777,56 +513,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             InvokeQueryAllNcdSlaComplianceData();
         }
 
-
-        // Invoke GraphQL Query:
-        // allSlaIofilterStatuses(fid: UUID!): [ComputeClusterIofilterStatus!]!
-        internal void InvokeQueryAllSlaIofilterStatuses()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("fid", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAllSlaIofilterStatuses",
-                "($fid: UUID!)",
-                "List<ComputeClusterIofilterStatus>"
-                );
-            List<ComputeClusterIofilterStatus>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<ComputeClusterIofilterStatus>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllSlaIofilterStatuses(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Query:
-        // allCdpSlaVmNames(fid: UUID!): [String!]!
-        internal void InvokeQueryAllCdpSlaVmNames()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("fid", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAllCdpSlaVmNames",
-                "($fid: UUID!)",
-                "List<System.String>"
-                );
-            List<System.String>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<System.String>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllCdpSlaVmNames(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
 
         // Invoke GraphQL Query:
         // slaDomains(
@@ -925,98 +611,6 @@ $inputs.Var.shouldShowUpgradeInfo = <System.Boolean>
 $inputs.Var.showRemoteSlas = <System.Boolean>
 # OPTIONAL
 $inputs.Var.shouldShowPausedClusters = <System.Boolean>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Query:
-        // slaDomainWithWarningsList(
-        //     first: Int
-        //     after: String
-        //     last: Int
-        //     before: String
-        //     sortBy: SlaQuerySortByField
-        //     sortOrder: SortOrder
-        //     filter: [GlobalSlaFilterInput!]
-        //     contextFilter: ContextFilterTypeEnum
-        //     objectIds: [UUID!]
-        //     applicableSnappableTypes: [WorkloadLevelHierarchy!]
-        //     snapshotIds: [UUID!]
-        //     operation: SlaWarningsOperation
-        //   ): [SlaDomainWithWarnings!]!
-        internal void InvokeQuerySlaDomainWithWarningsList()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("last", "Int"),
-                Tuple.Create("before", "String"),
-                Tuple.Create("sortBy", "SlaQuerySortByField"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("filter", "[GlobalSlaFilterInput!]"),
-                Tuple.Create("contextFilter", "ContextFilterTypeEnum"),
-                Tuple.Create("objectIds", "[UUID!]"),
-                Tuple.Create("applicableSnappableTypes", "[WorkloadLevelHierarchy!]"),
-                Tuple.Create("snapshotIds", "[UUID!]"),
-                Tuple.Create("operation", "SlaWarningsOperation"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QuerySlaDomainWithWarningsList",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: SlaQuerySortByField,$sortOrder: SortOrder,$filter: [GlobalSlaFilterInput!],$contextFilter: ContextFilterTypeEnum,$objectIds: [UUID!],$applicableSnappableTypes: [WorkloadLevelHierarchy!],$snapshotIds: [UUID!],$operation: SlaWarningsOperation)",
-                "List<SlaDomainWithWarnings>"
-                );
-            List<SlaDomainWithWarnings>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<SlaDomainWithWarnings>)this.Field;
-            }
-            string fieldSpecDoc = Query.SlaDomainWithWarningsList(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
-$inputs.Var.first = <System.Int32>
-# OPTIONAL
-$inputs.Var.after = <System.String>
-# OPTIONAL
-$inputs.Var.last = <System.Int32>
-# OPTIONAL
-$inputs.Var.before = <System.String>
-# OPTIONAL
-$inputs.Var.sortBy = <SlaQuerySortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaQuerySortByField]) for enum values.
-# OPTIONAL
-$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$inputs.Var.filter = @(
-	@{
-		# OPTIONAL
-		field = <GlobalSlaQueryFilterInputField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GlobalSlaQueryFilterInputField]) for enum values.
-		# OPTIONAL
-		text = <System.String>
-		# OPTIONAL
-		objectTypeList = @(
-			<SlaObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaObjectType]) for enum values.
-		)
-		# OPTIONAL
-		textList = @(
-			<System.String>
-		)
-}
-)
-# OPTIONAL
-$inputs.Var.contextFilter = <ContextFilterTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ContextFilterTypeEnum]) for enum values.
-# OPTIONAL
-$inputs.Var.objectIds = @(
-	<System.String>
-)
-# OPTIONAL
-$inputs.Var.applicableSnappableTypes = @(
-	<WorkloadLevelHierarchy> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
-)
-# OPTIONAL
-$inputs.Var.snapshotIds = @(
-	<System.String>
-)
-# OPTIONAL
-$inputs.Var.operation = <SlaWarningsOperation> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaWarningsOperation]) for enum values.";
             BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
@@ -1157,185 +751,6 @@ $inputs.Var.shouldShowSyncStatus = <System.Boolean>
 $inputs.Var.shouldShowUpgradeInfo = <System.Boolean>
 # OPTIONAL
 $inputs.Var.shouldShowPausedClusters = <System.Boolean>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Query:
-        // slaDomainWithWarnings(id: UUID!, objectIds: [UUID!]!, applicableSnappableTypes: [WorkloadLevelHierarchy!]): SlaDomainWithWarnings!
-        internal void InvokeQuerySlaDomainWithWarnings()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("id", "UUID!"),
-                Tuple.Create("objectIds", "[UUID!]!"),
-                Tuple.Create("applicableSnappableTypes", "[WorkloadLevelHierarchy!]"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QuerySlaDomainWithWarnings",
-                "($id: UUID!,$objectIds: [UUID!]!,$applicableSnappableTypes: [WorkloadLevelHierarchy!])",
-                "SlaDomainWithWarnings"
-                );
-            SlaDomainWithWarnings? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (SlaDomainWithWarnings)this.Field;
-            }
-            string fieldSpecDoc = Query.SlaDomainWithWarnings(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.id = <System.String>
-# REQUIRED
-$inputs.Var.objectIds = @(
-	<System.String>
-)
-# OPTIONAL
-$inputs.Var.applicableSnappableTypes = @(
-	<WorkloadLevelHierarchy> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Query:
-        // slaArchivalValidationWarnings(input: SlaArchivalWarningsInput!): SlaArchivalValidationWithWarnings!
-        internal void InvokeQuerySlaArchivalValidationWarnings()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "SlaArchivalWarningsInput!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QuerySlaArchivalValidationWarnings",
-                "($input: SlaArchivalWarningsInput!)",
-                "SlaArchivalValidationWithWarnings"
-                );
-            SlaArchivalValidationWithWarnings? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (SlaArchivalValidationWithWarnings)this.Field;
-            }
-            string fieldSpecDoc = Query.SlaArchivalValidationWarnings(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.input = @{
-	# OPTIONAL
-	snapshotSchedule = @{
-		# OPTIONAL
-		minute = @{
-			# OPTIONAL
-			basicSchedule = @{
-				# OPTIONAL
-				frequency = <System.Int32>
-				# OPTIONAL
-				retention = <System.Int32>
-				# OPTIONAL
-				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-		}
-		# OPTIONAL
-		hourly = @{
-			# OPTIONAL
-			basicSchedule = @{
-				# OPTIONAL
-				frequency = <System.Int32>
-				# OPTIONAL
-				retention = <System.Int32>
-				# OPTIONAL
-				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-		}
-		# OPTIONAL
-		daily = @{
-			# OPTIONAL
-			basicSchedule = @{
-				# OPTIONAL
-				frequency = <System.Int32>
-				# OPTIONAL
-				retention = <System.Int32>
-				# OPTIONAL
-				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-		}
-		# OPTIONAL
-		weekly = @{
-			# OPTIONAL
-			basicSchedule = @{
-				# OPTIONAL
-				frequency = <System.Int32>
-				# OPTIONAL
-				retention = <System.Int32>
-				# OPTIONAL
-				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-			# OPTIONAL
-			dayOfWeek = <DayOfWeek> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
-		}
-		# OPTIONAL
-		monthly = @{
-			# OPTIONAL
-			basicSchedule = @{
-				# OPTIONAL
-				frequency = <System.Int32>
-				# OPTIONAL
-				retention = <System.Int32>
-				# OPTIONAL
-				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-			# OPTIONAL
-			dayOfMonth = <DayOfMonth> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfMonth]) for enum values.
-		}
-		# OPTIONAL
-		quarterly = @{
-			# OPTIONAL
-			basicSchedule = @{
-				# OPTIONAL
-				frequency = <System.Int32>
-				# OPTIONAL
-				retention = <System.Int32>
-				# OPTIONAL
-				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-			# OPTIONAL
-			dayOfQuarter = <DayOfQuarter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfQuarter]) for enum values.
-			# OPTIONAL
-			quarterStartMonth = <Month> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
-		}
-		# OPTIONAL
-		yearly = @{
-			# OPTIONAL
-			basicSchedule = @{
-				# OPTIONAL
-				frequency = <System.Int32>
-				# OPTIONAL
-				retention = <System.Int32>
-				# OPTIONAL
-				retentionUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-			}
-			# OPTIONAL
-			dayOfYear = <DayOfYear> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfYear]) for enum values.
-			# OPTIONAL
-			yearStartMonth = <Month> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
-		}
-	}
-	# OPTIONAL
-	archivalThreshold = <System.Int32>
-	# OPTIONAL
-	archivalThresholdUnit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-	# OPTIONAL
-	archivalGroupId = <System.String>
-	# OPTIONAL
-	archivalLocationToClusterMapping = @(
-		@{
-			# OPTIONAL
-			clusterUuid = <System.String>
-			# OPTIONAL
-			locationId = <System.String>
-		}
-	)
-	# OPTIONAL
-	frequencies = @(
-		<RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
-	)
-}";
             BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }
@@ -1563,49 +978,6 @@ $inputs.Var.SlaId = <System.String>";
         }
 
         // Invoke GraphQL Query:
-        // protectedClustersForGlobalSla(
-        //     first: Int
-        //     after: String
-        //     last: Int
-        //     before: String
-        //     slaId: UUID!
-        //   ): ClusterConnection!
-        internal void InvokeQueryProtectedClustersForGlobalSla()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("last", "Int"),
-                Tuple.Create("before", "String"),
-                Tuple.Create("slaId", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryProtectedClustersForGlobalSla",
-                "($first: Int,$after: String,$last: Int,$before: String,$slaId: UUID!)",
-                "ClusterConnection"
-                );
-            ClusterConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (ClusterConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.ProtectedClustersForGlobalSla(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
-$inputs.Var.first = <System.Int32>
-# OPTIONAL
-$inputs.Var.after = <System.String>
-# OPTIONAL
-$inputs.Var.last = <System.Int32>
-# OPTIONAL
-$inputs.Var.before = <System.String>
-# REQUIRED
-$inputs.Var.slaId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Query:
         // slaConflictObjects(fids: [UUID!]!): [HierarchyObject!]!
         internal void InvokeQuerySlaConflictObjects()
         {
@@ -1780,45 +1152,6 @@ $inputs.Var.before = <System.String>";
         }
 
         // Invoke GraphQL Query:
-        // clusterSlaDomainFilterConnection(
-        //     first: Int
-        //     after: String
-        //     last: Int
-        //     before: String
-        //   ): ClusterSlaDomainForFilterConnection!
-        internal void InvokeQueryClusterSlaDomainFilterConnection()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("last", "Int"),
-                Tuple.Create("before", "String"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryClusterSlaDomainFilterConnection",
-                "($first: Int,$after: String,$last: Int,$before: String)",
-                "ClusterSlaDomainForFilterConnection"
-                );
-            ClusterSlaDomainForFilterConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (ClusterSlaDomainForFilterConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.ClusterSlaDomainFilterConnection(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
-$inputs.Var.first = <System.Int32>
-# OPTIONAL
-$inputs.Var.after = <System.String>
-# OPTIONAL
-$inputs.Var.last = <System.Int32>
-# OPTIONAL
-$inputs.Var.before = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Query:
         // verifySlaWithReplicationToCluster(cdmClusterUUID: UUID!, includeArchived: Boolean!): VerifySlaWithReplicationToClusterResponse!
         internal void InvokeQueryVerifySlaWithReplicationToCluster()
         {
@@ -1838,34 +1171,6 @@ $inputs.Var.before = <System.String>";
                 fieldSpecObj = (VerifySlaWithReplicationToClusterResponse)this.Field;
             }
             string fieldSpecDoc = Query.VerifySlaWithReplicationToCluster(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.cdmClusterUUID = <System.String>
-# REQUIRED
-$inputs.Var.includeArchived = <System.Boolean>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Query:
-        // downloadSlaWithReplicationCsv(cdmClusterUUID: UUID!, includeArchived: Boolean!): DownloadSlaWithReplicationCsvReply!
-        internal void InvokeQueryDownloadSlaWithReplicationCsv()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("cdmClusterUUID", "UUID!"),
-                Tuple.Create("includeArchived", "Boolean!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryDownloadSlaWithReplicationCsv",
-                "($cdmClusterUUID: UUID!,$includeArchived: Boolean!)",
-                "DownloadSlaWithReplicationCsvReply"
-                );
-            DownloadSlaWithReplicationCsvReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (DownloadSlaWithReplicationCsvReply)this.Field;
-            }
-            string fieldSpecDoc = Query.DownloadSlaWithReplicationCsv(ref fieldSpecObj);
             string inputExample = @"# REQUIRED
 $inputs.Var.cdmClusterUUID = <System.String>
 # REQUIRED

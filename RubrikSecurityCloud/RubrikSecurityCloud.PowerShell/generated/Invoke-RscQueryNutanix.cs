@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Nutanix queries
     /// </summary>
     /// <description>
-    /// Invoke-RscQueryNutanix is a master cmdlet for Nutanix work that can invoke any of the following subcommands: TopLevelDescendants, Cluster, Clusters, PrismCentrals, PrismCentral, Category, CategoryValue, Vm, Vms, Mounts, ClusterContainers, ClusterNetworks, ClusterAsyncRequestStatus, VmAsyncRequestStatus, SearchVm, VmMissedSnapshots, BrowseSnapshot, SnapshotDetail, PrismCentralAsyncRequestStatus.
+    /// Invoke-RscQueryNutanix is a master cmdlet for Nutanix work that can invoke any of the following subcommands: TopLevelDescendants, Cluster, Clusters, PrismCentrals, PrismCentral, Category, CategoryValue, Vm, Vms, Mounts, ClusterContainers, ClusterNetworks, ClusterAsyncRequestStatus, VmAsyncRequestStatus, SearchVm, VmMissedSnapshots, BrowseSnapshot, SnapshotDetail.
     /// </description>
     /// <example>
     /// <code>Invoke-RscQueryNutanix -TopLevelDescendants [-Arg ..] [-Field ..]</code>
@@ -77,9 +77,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     /// <example>
     /// <code>Invoke-RscQueryNutanix -SnapshotDetail [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
-    /// <code>Invoke-RscQueryNutanix -PrismCentralAsyncRequestStatus [-Arg ..] [-Field ..]</code>
     /// </example>
     [Cmdlet(
         "Invoke",
@@ -440,28 +437,6 @@ Lists all files and directories in a given path.
         )]
         public SwitchParameter SnapshotDetail { get; set; }
 
-        
-        /// <summary>
-        /// PrismCentralAsyncRequestStatus parameter set
-        ///
-        /// [GraphQL: nutanixPrismCentralAsyncRequestStatus]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "PrismCentralAsyncRequestStatus",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Get Nutanix Prism Central async request status
-
-Supported in v9.0+
-v9.0: Get details about a Nutanix pc-related async request.
-v9.1: Retrieve the status for the Nutanix Prism Central async request.
-[GraphQL: nutanixPrismCentralAsyncRequestStatus]",
-            Position = 0
-        )]
-        public SwitchParameter PrismCentralAsyncRequestStatus { get; set; }
-
 
 // ignore warning 'Missing XML comment'
 #pragma warning disable 1591
@@ -524,9 +499,6 @@ v9.1: Retrieve the status for the Nutanix Prism Central async request.
                         break;
                     case "SnapshotDetail":
                         this.ProcessRecord_SnapshotDetail();
-                        break;
-                    case "PrismCentralAsyncRequestStatus":
-                        this.ProcessRecord_PrismCentralAsyncRequestStatus();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -699,15 +671,6 @@ v9.1: Retrieve the status for the Nutanix Prism Central async request.
             this._logger.name += " -SnapshotDetail";
             // Invoke graphql operation nutanixSnapshotDetail
             InvokeQueryNutanixSnapshotDetail();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // nutanixPrismCentralAsyncRequestStatus.
-        internal void ProcessRecord_PrismCentralAsyncRequestStatus()
-        {
-            this._logger.name += " -PrismCentralAsyncRequestStatus";
-            // Invoke graphql operation nutanixPrismCentralAsyncRequestStatus
-            InvokeQueryNutanixPrismCentralAsyncRequestStatus();
         }
 
 
@@ -1460,36 +1423,6 @@ $inputs.Var.input = @{
             string fieldSpecDoc = Query.NutanixSnapshotDetail(ref fieldSpecObj);
             string inputExample = @"# REQUIRED
 $inputs.Var.input = @{
-	# REQUIRED
-	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Query:
-        // nutanixPrismCentralAsyncRequestStatus(input: GetNutanixPrismCentralAsyncRequestStatusInput!): AsyncRequestStatus!
-        internal void InvokeQueryNutanixPrismCentralAsyncRequestStatus()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "GetNutanixPrismCentralAsyncRequestStatusInput!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryNutanixPrismCentralAsyncRequestStatus",
-                "($input: GetNutanixPrismCentralAsyncRequestStatusInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Query.NutanixPrismCentralAsyncRequestStatus(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	clusterUuid = <System.String>
 	# REQUIRED
 	id = <System.String>
 }";

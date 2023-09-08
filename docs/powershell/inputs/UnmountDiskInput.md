@@ -1,9 +1,9 @@
 ### UnmountDiskInput
 Input required to unmount disks.
 
-- accountId: System.String
-  - Customer account name.
-- mountId: System.String
-  - Mount ID for which disk must be unmounted.
-- mountDiskIds: list of System.Strings
-  - List of mounted disk IDs to be unmounted.
+- liveMountId: System.Int64
+  - Live Mount ID for which disk must be unmounted.
+- mountIds: list of System.Int64s
+  - List of Mount IDs to be unmounted.
+- targetWorkloadId: System.String
+  - Target Workload ID for which disk must be unmounted.

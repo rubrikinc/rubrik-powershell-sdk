@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// AWS queries
     /// </summary>
     /// <description>
-    /// Invoke-RscQueryAws is a master cmdlet for Aws work that can invoke any of the following subcommands: NativeRoot, NativeAccount, NativeEc2Instance, NativeEbsVolume, NativeS3Bucket, NativeAccounts, NativeEc2InstancesByName, NativeEc2Instances, NativeEbsVolumesByName, NativeEbsVolumes, AllVpcsByRegion, AllVpcs, IsNativeEbsVolumeSnapshotRestorable, AllAvailabilityZonesByRegion, AllKmsEncryptionKeysByRegion, IsS3BucketNameAvailable, AllS3Buckets, AllS3BucketsDetails, NativeRdsInstance, NativeRdsInstances, NativeRdsPointInTimeRestoreWindow, RdsInstanceDetails, IsNativeRdsInstanceLaunchConfigurationValid, AllOptionGroupsByRegion, AllDbParameterGroupsByRegion, AllDbSubnetGroupsByRegion, ValidateNativeRdsInstanceNameForExport, ValidateNativeRdsClusterNameForExport, NativeRdsExportDefaults, AllEc2KeyPairsByRegion, AmiTypeForNativeArchivedSnapshotExport, AllRdsAuroraInstanceClasses, AllSupportedRdsDatabaseInstanceClasses, ComputeSettings, AllComputeSettings, AllCloudAccountsWithFeatures, AllCloudAccountsFeaturesWithExoConfigs, CloudAccountWithFeatures, CloudAccountListVpcs, CloudAccountListSubnets, CloudAccountListSecurityGroups, CloudAccountListKMSKeys, AllExocomputeConfigs, AllCloudAccountConfigs, TrustPolicy, AllPermissionPolicies, ArtifactsToDelete, AllRegions, AllCdmVersions, AllInstanceProfileNames.
+    /// Invoke-RscQueryAws is a master cmdlet for Aws work that can invoke any of the following subcommands: NativeRoot, NativeAccount, NativeEc2Instance, NativeEbsVolume, NativeS3Bucket, NativeAccounts, NativeEc2InstancesByName, NativeEc2Instances, NativeEbsVolumesByName, NativeEbsVolumes, AllVpcsByRegion, AllVpcs, IsNativeEbsVolumeSnapshotRestorable, AllAvailabilityZonesByRegion, AllKmsEncryptionKeysByRegion, IsS3BucketNameAvailable, AllS3Buckets, AllS3BucketsDetails, NativeRdsInstance, NativeRdsInstances, NativeRdsPointInTimeRestoreWindow, RdsInstanceDetails, IsNativeRdsInstanceLaunchConfigurationValid, AllOptionGroupsByRegion, AllDbParameterGroupsByRegion, AllDbSubnetGroupsByRegion, ValidateNativeRdsInstanceNameForExport, ValidateNativeRdsClusterNameForExport, NativeRdsExportDefaults, AllEc2KeyPairsByRegion, AmiTypeForNativeArchivedSnapshotExport, AllSupportedRdsDatabaseInstanceClasses, ComputeSettings, AllComputeSettings, AllCloudAccountsWithFeatures, CloudAccountWithFeatures, CloudAccountListVpcs, CloudAccountListSubnets, CloudAccountListSecurityGroups, AllExocomputeConfigs, AllCloudAccountConfigs, TrustPolicy, AllPermissionPolicies, ArtifactsToDelete, AllRegions, AllCdmVersions, AllInstanceProfileNames.
     /// </description>
     /// <example>
     /// <code>Invoke-RscQueryAws -NativeRoot [-Arg ..] [-Field ..]</code>
@@ -118,9 +118,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <code>Invoke-RscQueryAws -AmiTypeForNativeArchivedSnapshotExport [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
-    /// <code>Invoke-RscQueryAws -AllRdsAuroraInstanceClasses [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
     /// <code>Invoke-RscQueryAws -AllSupportedRdsDatabaseInstanceClasses [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
@@ -133,9 +130,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <code>Invoke-RscQueryAws -AllCloudAccountsWithFeatures [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
-    /// <code>Invoke-RscQueryAws -AllCloudAccountsFeaturesWithExoConfigs [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
     /// <code>Invoke-RscQueryAws -CloudAccountWithFeatures [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
@@ -146,9 +140,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     /// <example>
     /// <code>Invoke-RscQueryAws -CloudAccountListSecurityGroups [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
-    /// <code>Invoke-RscQueryAws -CloudAccountListKMSKeys [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
     /// <code>Invoke-RscQueryAws -AllExocomputeConfigs [-Arg ..] [-Field ..]</code>
@@ -741,24 +732,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         /// <summary>
-        /// AllRdsAuroraInstanceClasses parameter set
-        ///
-        /// [GraphQL: allAwsRdsAuroraInstanceClasses]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "AllRdsAuroraInstanceClasses",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"List of all the database instance classes supported by AWS RDS Aurora databases.
-[GraphQL: allAwsRdsAuroraInstanceClasses]",
-            Position = 0
-        )]
-        public SwitchParameter AllRdsAuroraInstanceClasses { get; set; }
-
-        
-        /// <summary>
         /// AllSupportedRdsDatabaseInstanceClasses parameter set
         ///
         /// [GraphQL: allSupportedAwsRdsDatabaseInstanceClasses]
@@ -831,24 +804,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         /// <summary>
-        /// AllCloudAccountsFeaturesWithExoConfigs parameter set
-        ///
-        /// [GraphQL: allAwsCloudAccountsFeaturesWithExoConfigs]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "AllCloudAccountsFeaturesWithExoConfigs",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"List of active AWS cloud account features and the Exocompute mapping information for the accounts. A cloud account is an AWS account added to the Rubrik platform.
-[GraphQL: allAwsCloudAccountsFeaturesWithExoConfigs]",
-            Position = 0
-        )]
-        public SwitchParameter AllCloudAccountsFeaturesWithExoConfigs { get; set; }
-
-        
-        /// <summary>
         /// CloudAccountWithFeatures parameter set
         ///
         /// [GraphQL: awsCloudAccountWithFeatures]
@@ -918,24 +873,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Position = 0
         )]
         public SwitchParameter CloudAccountListSecurityGroups { get; set; }
-
-        
-        /// <summary>
-        /// CloudAccountListKMSKeys parameter set
-        ///
-        /// [GraphQL: AwsCloudAccountListKMSKeys]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "CloudAccountListKMSKeys",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-[GraphQL: AwsCloudAccountListKMSKeys]",
-            Position = 0
-        )]
-        public SwitchParameter CloudAccountListKMSKeys { get; set; }
 
         
         /// <summary>
@@ -1183,9 +1120,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "AmiTypeForNativeArchivedSnapshotExport":
                         this.ProcessRecord_AmiTypeForNativeArchivedSnapshotExport();
                         break;
-                    case "AllRdsAuroraInstanceClasses":
-                        this.ProcessRecord_AllRdsAuroraInstanceClasses();
-                        break;
                     case "AllSupportedRdsDatabaseInstanceClasses":
                         this.ProcessRecord_AllSupportedRdsDatabaseInstanceClasses();
                         break;
@@ -1198,9 +1132,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "AllCloudAccountsWithFeatures":
                         this.ProcessRecord_AllCloudAccountsWithFeatures();
                         break;
-                    case "AllCloudAccountsFeaturesWithExoConfigs":
-                        this.ProcessRecord_AllCloudAccountsFeaturesWithExoConfigs();
-                        break;
                     case "CloudAccountWithFeatures":
                         this.ProcessRecord_CloudAccountWithFeatures();
                         break;
@@ -1212,9 +1143,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "CloudAccountListSecurityGroups":
                         this.ProcessRecord_CloudAccountListSecurityGroups();
-                        break;
-                    case "CloudAccountListKMSKeys":
-                        this.ProcessRecord_CloudAccountListKMSKeys();
                         break;
                     case "AllExocomputeConfigs":
                         this.ProcessRecord_AllExocomputeConfigs();
@@ -1531,15 +1459,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // allAwsRdsAuroraInstanceClasses.
-        internal void ProcessRecord_AllRdsAuroraInstanceClasses()
-        {
-            this._logger.name += " -AllRdsAuroraInstanceClasses";
-            // Invoke graphql operation allAwsRdsAuroraInstanceClasses
-            InvokeQueryAllAwsRdsAuroraInstanceClasses();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // allSupportedAwsRdsDatabaseInstanceClasses.
         internal void ProcessRecord_AllSupportedRdsDatabaseInstanceClasses()
         {
@@ -1576,15 +1495,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // allAwsCloudAccountsFeaturesWithExoConfigs.
-        internal void ProcessRecord_AllCloudAccountsFeaturesWithExoConfigs()
-        {
-            this._logger.name += " -AllCloudAccountsFeaturesWithExoConfigs";
-            // Invoke graphql operation allAwsCloudAccountsFeaturesWithExoConfigs
-            InvokeQueryAllAwsCloudAccountsFeaturesWithExoConfigs();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // awsCloudAccountWithFeatures.
         internal void ProcessRecord_CloudAccountWithFeatures()
         {
@@ -1618,15 +1528,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -CloudAccountListSecurityGroups";
             // Invoke graphql operation awsCloudAccountListSecurityGroups
             InvokeQueryAwsCloudAccountListSecurityGroups();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // AwsCloudAccountListKMSKeys.
-        internal void ProcessRecord_CloudAccountListKMSKeys()
-        {
-            this._logger.name += " -CloudAccountListKMSKeys";
-            // Invoke graphql operation AwsCloudAccountListKMSKeys
-            InvokeQueryAwsCloudAccountListKmsKeys();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -3053,29 +2954,6 @@ $inputs.Var.input = @{
         }
 
         // Invoke GraphQL Query:
-        // allAwsRdsAuroraInstanceClasses: AwsNativeRdsAuroraInstanceClassesReply!
-        internal void InvokeQueryAllAwsRdsAuroraInstanceClasses()
-        {
-            Tuple<string, string>[] argDefs = {
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAllAwsRdsAuroraInstanceClasses",
-                "",
-                "AwsNativeRdsAuroraInstanceClassesReply"
-                );
-            AwsNativeRdsAuroraInstanceClassesReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AwsNativeRdsAuroraInstanceClassesReply)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAwsRdsAuroraInstanceClasses(ref fieldSpecObj);
-            string inputExample = @"";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Query:
         // allSupportedAwsRdsDatabaseInstanceClasses(
         //     awsAccountRubrikId: UUID!
         //     region: AwsNativeRegion!
@@ -3204,42 +3082,6 @@ $inputs.Var.contextFilter = <ContextFilterTypeEnum> # Call [Enum]::GetValues([Ru
                 fieldSpecObj = (List<AwsCloudAccountWithFeatures>)this.Field;
             }
             string fieldSpecDoc = Query.AllAwsCloudAccountsWithFeatures(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.awsCloudAccountsArg = @{
-	# REQUIRED
-	feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-	# REQUIRED
-	statusFilters = @(
-		<CloudAccountStatus> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountStatus]) for enum values.
-	)
-	# OPTIONAL
-	awsAdminAccountFilter = <System.String>
-	# OPTIONAL
-	columnSearchFilter = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Query:
-        // allAwsCloudAccountsFeaturesWithExoConfigs(awsCloudAccountsArg: AwsCloudAccountsWithFeaturesInput!): [AwsCloudAccountFeaturesWithExoConfigs!]!
-        internal void InvokeQueryAllAwsCloudAccountsFeaturesWithExoConfigs()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("awsCloudAccountsArg", "AwsCloudAccountsWithFeaturesInput!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAllAwsCloudAccountsFeaturesWithExoConfigs",
-                "($awsCloudAccountsArg: AwsCloudAccountsWithFeaturesInput!)",
-                "List<AwsCloudAccountFeaturesWithExoConfigs>"
-                );
-            List<AwsCloudAccountFeaturesWithExoConfigs>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<AwsCloudAccountFeaturesWithExoConfigs>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAwsCloudAccountsFeaturesWithExoConfigs(ref fieldSpecObj);
             string inputExample = @"# REQUIRED
 $inputs.Var.awsCloudAccountsArg = @{
 	# REQUIRED
@@ -3395,37 +3237,6 @@ $inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecu
 $inputs.Var.region = <AwsRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
 # REQUIRED
 $inputs.Var.vpcID = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Query:
-        // AwsCloudAccountListKMSKeys(cloudAccountUuid: UUID!, feature: CloudAccountFeature!, region: AwsRegion!): AwsCloudAccountListKMSKeysResponse!
-        internal void InvokeQueryAwsCloudAccountListKmsKeys()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("cloudAccountUuid", "UUID!"),
-                Tuple.Create("feature", "CloudAccountFeature!"),
-                Tuple.Create("region", "AwsRegion!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAwsCloudAccountListKmsKeys",
-                "($cloudAccountUuid: UUID!,$feature: CloudAccountFeature!,$region: AwsRegion!)",
-                "AwsCloudAccountListKmsKeysResponse"
-                );
-            AwsCloudAccountListKmsKeysResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AwsCloudAccountListKmsKeysResponse)this.Field;
-            }
-            string fieldSpecDoc = Query.AwsCloudAccountListKmsKeys(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.cloudAccountUuid = <System.String>
-# REQUIRED
-$inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-# REQUIRED
-$inputs.Var.region = <AwsRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.";
             BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }

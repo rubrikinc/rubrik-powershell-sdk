@@ -15,21 +15,6 @@ Add the Azure Subscription cloud account for the given feature without OAuth.
 
 - There is a single argument of type AddAzureCloudAccountWithoutOauthInput.
 - Returns AddAzureCloudAccountWithoutOauthReply.
-### backupaddirectory
-Backs up the Azure AD directory.
-
-- There is a single argument of type BackupAzureAdDirectoryInput.
-- Returns list of CreateOnDemandJobReplys.
-### completeadappsetup
-Completes the creation flow for an Azure AD app.
-
-- There is a single argument of type CompleteAzureAdAppSetupInput.
-- Returns CompleteAzureAdAppSetupReply.
-### completeadappupdate
-Completes an update to the Azure AD directory App.
-
-- There is a single argument of type CompleteAzureAdAppUpdateInput.
-- Returns System.String.
 ### completecloudaccountoauth
 Complete the Azure OAuth flow and pass the authorization code.
 
@@ -71,11 +56,6 @@ Creates an Azure archival target on the Rubrik cluster.
 
 - There is a single argument of type CreateAzureTargetInput.
 - Returns Target.
-### deleteaddirectory
-Deletes an Azure AD directory.
-
-- There is a single argument of type System.String.
-- Returns CreateOnDemandJobReply.
 ### deletecloudaccount
 Delete the Azure Subscriptions cloud account for the given feature.
 
@@ -101,16 +81,6 @@ Exclude the Managed Disks from snapshots, for the specified virtual machines.
 
 - There is a single argument of type ExcludeAzureNativeManagedDisksFromSnapshotInput.
 - Returns System.String.
-### initiateadappupdate
-Initiates an update to the Azure AD directory App.
-
-- There is a single argument of type InitiateAzureAdAppUpdateInput.
-- Returns InitiateAzureAdAppUpdateReply.
-### kickoffadappsetup
-Initiates the Azure AD app creation flow.
-
-- There is a single argument of type KickoffAzureAdAppSetupInput.
-- Returns KickoffAzureAdAppSetupReply.
 ### mapcloudaccountexocomputesubscription
 Map Azure cloud accounts to an Exocompute subscription.
 
@@ -131,11 +101,6 @@ Kicks off an OAuth consent flow for Azure resource access.
 
 - The oauthconsentkickoff subcommand takes no arguments.
 - Returns AzureOauthConsentKickoffReply.
-### restoreadobjectswithpassword
-Restores the Azure AD directory.
-
-- There is a single argument of type RestoreAzureAdObjectsWithPasswordInput.
-- Returns list of CreateOnDemandJobReplys.
 ### setcloudaccountcustomerappcredentials
 Set credentials for the customer application, for the tenant domain name.
 

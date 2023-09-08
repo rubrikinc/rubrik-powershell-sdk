@@ -60,6 +60,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("oldestSyncDate")]
         public DateTime? OldestSyncDate { get; set; }
 
+        //      C# -> System.String? Room
+        // GraphQL -> room: String (scalar)
+        [JsonProperty("room")]
+        public System.String? Room { get; set; }
+
         //      C# -> DateTime? UpdatedAt
         // GraphQL -> updatedAt: DateTime! (scalar)
         [JsonProperty("updatedAt")]
@@ -113,6 +118,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Name = null,
         DateTime? NewestSyncDate = null,
         DateTime? OldestSyncDate = null,
+        System.String? Room = null,
         DateTime? UpdatedAt = null,
         DateTime? ViewedAt = null,
         CustomReportFilters? Filters = null,
@@ -145,6 +151,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( OldestSyncDate != null ) {
             this.OldestSyncDate = OldestSyncDate;
+        }
+        if ( Room != null ) {
+            this.Room = Room;
         }
         if ( UpdatedAt != null ) {
             this.UpdatedAt = UpdatedAt;
@@ -216,6 +225,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> oldestSyncDate: DateTime (scalar)
         if (this.OldestSyncDate != null) {
             s += ind + "oldestSyncDate\n" ;
+        }
+        //      C# -> System.String? Room
+        // GraphQL -> room: String (scalar)
+        if (this.Room != null) {
+            s += ind + "room\n" ;
         }
         //      C# -> DateTime? UpdatedAt
         // GraphQL -> updatedAt: DateTime! (scalar)
@@ -321,6 +335,12 @@ namespace RubrikSecurityCloud.Types
         if (this.OldestSyncDate == null && ec.Includes("oldestSyncDate",true))
         {
             this.OldestSyncDate = new DateTime();
+        }
+        //      C# -> System.String? Room
+        // GraphQL -> room: String (scalar)
+        if (this.Room == null && ec.Includes("room",true))
+        {
+            this.Room = "FETCH";
         }
         //      C# -> DateTime? UpdatedAt
         // GraphQL -> updatedAt: DateTime! (scalar)

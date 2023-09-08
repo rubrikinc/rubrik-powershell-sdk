@@ -149,28 +149,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> BlueprintNew? CreateBlueprint
-        // GraphQL -> createBlueprint: BlueprintNew! (interface)
-        public static string CreateBlueprint(
-            ref BlueprintNew? fieldSpec
-        )
-        {
-            string args = "\n(\nname: $name\nchildren: $children\nsourceLocationId: $sourceLocationId\nsourceLocationType: $sourceLocationType\ntargetLocationType: $targetLocationType\ntargetLocationId: $targetLocationId\nstatus: $status\nenableHydration: $enableHydration\ntimeoutBetweenPriorityGroups: $timeoutBetweenPriorityGroups\nblueprintRecoveryType: $blueprintRecoveryType\nisBlueprintVisible: $isBlueprintVisible\n)";
-           if (fieldSpec == null)
-            {
-                var list = new List<BlueprintNew>();
-                list.ApplyExploratoryFieldSpec(new ExplorationContext());
-                fieldSpec = (BlueprintNew?)InterfaceHelper.MakeCompositeFromList(list);
-                if (fieldSpec == null)
-                {
-                    throw new InvalidOperationException("Could not create BlueprintNew? composite object");
-                }
-            }
-            return "createBlueprint" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> Target? CreateGcpReaderTarget
         // GraphQL -> createGcpReaderTarget: Target! (interface)
         public static string CreateGcpReaderTarget(
@@ -518,28 +496,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> BlueprintNew? UpdateBlueprint
-        // GraphQL -> updateBlueprint: BlueprintNew! (interface)
-        public static string UpdateBlueprint(
-            ref BlueprintNew? fieldSpec
-        )
-        {
-            string args = "\n(\nfid: $fid\nname: $name\nchildren: $children\nsourceLocationId: $sourceLocationId\nsourceLocationType: $sourceLocationType\ntargetLocationType: $targetLocationType\ntargetLocationId: $targetLocationId\nstatus: $status\nversion: $version\nenableHydration: $enableHydration\ntimeoutBetweenPriorityGroups: $timeoutBetweenPriorityGroups\nblueprintRecoveryType: $blueprintRecoveryType\nisBlueprintVisible: $isBlueprintVisible\n)";
-           if (fieldSpec == null)
-            {
-                var list = new List<BlueprintNew>();
-                list.ApplyExploratoryFieldSpec(new ExplorationContext());
-                fieldSpec = (BlueprintNew?)InterfaceHelper.MakeCompositeFromList(list);
-                if (fieldSpec == null)
-                {
-                    throw new InvalidOperationException("Could not create BlueprintNew? composite object");
-                }
-            }
-            return "updateBlueprint" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> Target? UpdateGcpTarget
         // GraphQL -> updateGcpTarget: Target! (interface)
         public static string UpdateGcpTarget(
@@ -672,21 +628,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> System.Int64? AddCertificate
-        // GraphQL -> addCertificate: Long! (scalar)
-        public static string AddCertificate(
-            ref System.Int64? fieldSpec
-        )
-        {
-            string args = "\n(\nname: $name\ndescription: $description\ncsrId: $csrId\nprivateKey: $privateKey\ncertificate: $certificate\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = new System.Int64() ;
-            }
-            return "addCertificate" + args + "\n";
-        }
-
         //      C# -> System.Boolean? AddInventoryWorkloads
         // GraphQL -> addInventoryWorkloads: Boolean! (scalar)
         public static string AddInventoryWorkloads(
@@ -732,36 +673,6 @@ namespace RubrikSecurityCloud.Types
             return "addRoleAssignments" + args + "\n";
         }
 
-        //      C# -> System.Boolean? AddSyslogConfiguration
-        // GraphQL -> addSyslogConfiguration: Boolean! (scalar)
-        public static string AddSyslogConfiguration(
-            ref System.Boolean? fieldSpec
-        )
-        {
-            string args = "\n(\nhostName: $hostName\nport: $port\nnetworkProtocolType: $networkProtocolType\nuseTLS: $useTLS\nsyslogFacility: $syslogFacility\nsyslogSeverity: $syslogSeverity\ntrustedCerts: $trustedCerts\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = true ;
-            }
-            return "addSyslogConfiguration" + args + "\n";
-        }
-
-        //      C# -> System.String? ApproveTprRequest
-        // GraphQL -> approveTprRequest: Void (scalar)
-        public static string ApproveTprRequest(
-            ref System.String? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = "FETCH" ;
-            }
-            return "approveTprRequest" + args + "\n";
-        }
-
         //      C# -> System.String? ArchiveCrawl
         // GraphQL -> archiveCrawl: String! (scalar)
         public static string ArchiveCrawl(
@@ -790,21 +701,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec = true ;
             }
             return "batchDeassignRoleFromUserGroups" + args + "\n";
-        }
-
-        //      C# -> System.String? BulkCancelFailovers
-        // GraphQL -> bulkCancelFailovers: Void (scalar)
-        public static string BulkCancelFailovers(
-            ref System.String? fieldSpec
-        )
-        {
-            string args = "\n(\ncancelFailoversConfig: $cancelFailoversConfig\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = "FETCH" ;
-            }
-            return "bulkCancelFailovers" + args + "\n";
         }
 
         //      C# -> System.Boolean? CancelActivitySeries
@@ -837,21 +733,6 @@ namespace RubrikSecurityCloud.Types
             return "cancelThreatHunt" + args + "\n";
         }
 
-        //      C# -> System.String? CancelTprRequest
-        // GraphQL -> cancelTprRequest: Void (scalar)
-        public static string CancelTprRequest(
-            ref System.String? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = "FETCH" ;
-            }
-            return "cancelTprRequest" + args + "\n";
-        }
-
         //      C# -> System.Boolean? ChangePassword
         // GraphQL -> changePassword: Boolean! (scalar)
         public static string ChangePassword(
@@ -867,96 +748,6 @@ namespace RubrikSecurityCloud.Types
             return "changePassword" + args + "\n";
         }
 
-        //      C# -> System.String? CompleteAzureAdAppUpdate
-        // GraphQL -> completeAzureAdAppUpdate: Void (scalar)
-        public static string CompleteAzureAdAppUpdate(
-            ref System.String? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = "FETCH" ;
-            }
-            return "completeAzureAdAppUpdate" + args + "\n";
-        }
-
-        //      C# -> System.String? CompleteTrialOnboarding
-        // GraphQL -> completeTrialOnboarding: Void (scalar)
-        public static string CompleteTrialOnboarding(
-            ref System.String? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = "FETCH" ;
-            }
-            return "completeTrialOnboarding" + args + "\n";
-        }
-
-        //      C# -> System.String? CompleteTrialTask
-        // GraphQL -> completeTrialTask: Void (scalar)
-        public static string CompleteTrialTask(
-            ref System.String? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = "FETCH" ;
-            }
-            return "completeTrialTask" + args + "\n";
-        }
-
-        //      C# -> System.Boolean? ConfigureDns
-        // GraphQL -> configureDns: Boolean! (scalar)
-        public static string ConfigureDns(
-            ref System.Boolean? fieldSpec
-        )
-        {
-            string args = "\n(\ndnsAddresses: $dnsAddresses\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = true ;
-            }
-            return "configureDns" + args + "\n";
-        }
-
-        //      C# -> System.Boolean? ConfigureNtp
-        // GraphQL -> configureNtp: Boolean! (scalar)
-        public static string ConfigureNtp(
-            ref System.Boolean? fieldSpec
-        )
-        {
-            string args = "\n(\nntpAddresses: $ntpAddresses\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = true ;
-            }
-            return "configureNtp" + args + "\n";
-        }
-
-        //      C# -> System.String? CreatePasskey
-        // GraphQL -> createPasskey: Void (scalar)
-        public static string CreatePasskey(
-            ref System.String? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = "FETCH" ;
-            }
-            return "createPasskey" + args + "\n";
-        }
-
         //      C# -> System.String? CreateReplicationPair
         // GraphQL -> createReplicationPair: Void (scalar)
         public static string CreateReplicationPair(
@@ -970,21 +761,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec = "FETCH" ;
             }
             return "createReplicationPair" + args + "\n";
-        }
-
-        //      C# -> System.Int32? CreateReport
-        // GraphQL -> createReport: Int! (scalar)
-        public static string CreateReport(
-            ref System.Int32? fieldSpec
-        )
-        {
-            string args = "\n(\nreportConfig: $reportConfig\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = Int32.MinValue ;
-            }
-            return "createReport" + args + "\n";
         }
 
         //      C# -> System.String? CreateRole
@@ -1062,21 +838,6 @@ namespace RubrikSecurityCloud.Types
             return "deactivatePolicy" + args + "\n";
         }
 
-        //      C# -> System.Boolean? DeleteAccountSettingValue
-        // GraphQL -> deleteAccountSettingValue: Boolean! (scalar)
-        public static string DeleteAccountSettingValue(
-            ref System.Boolean? fieldSpec
-        )
-        {
-            string args = "\n(\naspName: $aspName\naspComponent: $aspComponent\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = true ;
-            }
-            return "deleteAccountSettingValue" + args + "\n";
-        }
-
         //      C# -> System.String? DeleteAllOracleDatabaseSnapshots
         // GraphQL -> deleteAllOracleDatabaseSnapshots: Void (scalar)
         public static string DeleteAllOracleDatabaseSnapshots(
@@ -1105,36 +866,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec = "FETCH" ;
             }
             return "deleteAwsComputeSetting" + args + "\n";
-        }
-
-        //      C# -> System.Boolean? DeleteBlueprint
-        // GraphQL -> deleteBlueprint: Boolean! (scalar)
-        public static string DeleteBlueprint(
-            ref System.Boolean? fieldSpec
-        )
-        {
-            string args = "\n(\nfid: $fid\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = true ;
-            }
-            return "deleteBlueprint" + args + "\n";
-        }
-
-        //      C# -> System.Boolean? DeleteBlueprints
-        // GraphQL -> deleteBlueprints: Boolean! (scalar)
-        public static string DeleteBlueprints(
-            ref System.Boolean? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = true ;
-            }
-            return "deleteBlueprints" + args + "\n";
         }
 
         //      C# -> System.Boolean? DeleteCertificate
@@ -1317,36 +1048,6 @@ namespace RubrikSecurityCloud.Types
             return "deleteOrg" + args + "\n";
         }
 
-        //      C# -> System.String? DeleteOrgNetwork
-        // GraphQL -> deleteOrgNetwork: Void (scalar)
-        public static string DeleteOrgNetwork(
-            ref System.String? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = "FETCH" ;
-            }
-            return "deleteOrgNetwork" + args + "\n";
-        }
-
-        //      C# -> System.String? DeleteRecoverySchedule
-        // GraphQL -> deleteRecoverySchedule: Void (scalar)
-        public static string DeleteRecoverySchedule(
-            ref System.String? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = "FETCH" ;
-            }
-            return "deleteRecoverySchedule" + args + "\n";
-        }
-
         //      C# -> System.String? DeleteReplicationPair
         // GraphQL -> deleteReplicationPair: Void (scalar)
         public static string DeleteReplicationPair(
@@ -1360,21 +1061,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec = "FETCH" ;
             }
             return "deleteReplicationPair" + args + "\n";
-        }
-
-        //      C# -> System.Boolean? DeleteReport
-        // GraphQL -> deleteReport: Boolean! (scalar)
-        public static string DeleteReport(
-            ref System.Boolean? fieldSpec
-        )
-        {
-            string args = "\n(\nreportID: $reportID\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = true ;
-            }
-            return "deleteReport" + args + "\n";
         }
 
         //      C# -> System.Boolean? DeleteRole
@@ -1435,36 +1121,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec = "FETCH" ;
             }
             return "deleteSmbDomain" + args + "\n";
-        }
-
-        //      C# -> System.Boolean? DeleteSmtpConfiguration
-        // GraphQL -> deleteSmtpConfiguration: Boolean! (scalar)
-        public static string DeleteSmtpConfiguration(
-            ref System.Boolean? fieldSpec
-        )
-        {
-            string args = "";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = true ;
-            }
-            return "deleteSmtpConfiguration" + args + "\n";
-        }
-
-        //      C# -> System.Boolean? DeleteSyslogConfiguration
-        // GraphQL -> deleteSyslogConfiguration: Boolean! (scalar)
-        public static string DeleteSyslogConfiguration(
-            ref System.Boolean? fieldSpec
-        )
-        {
-            string args = "\n(\nids: $ids\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = true ;
-            }
-            return "deleteSyslogConfiguration" + args + "\n";
         }
 
         //      C# -> System.String? DeleteSyslogExportRule
@@ -1542,21 +1198,6 @@ namespace RubrikSecurityCloud.Types
             return "deleteTotpConfigs" + args + "\n";
         }
 
-        //      C# -> System.String? DeleteTprPolicy
-        // GraphQL -> deleteTprPolicy: Void (scalar)
-        public static string DeleteTprPolicy(
-            ref System.String? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = "FETCH" ;
-            }
-            return "deleteTprPolicy" + args + "\n";
-        }
-
         //      C# -> System.Boolean? DeleteUsersFromAccount
         // GraphQL -> deleteUsersFromAccount: Boolean! (scalar)
         public static string DeleteUsersFromAccount(
@@ -1587,21 +1228,6 @@ namespace RubrikSecurityCloud.Types
             return "deleteWebhook" + args + "\n";
         }
 
-        //      C# -> System.String? DenyTprRequests
-        // GraphQL -> denyTprRequests: Void (scalar)
-        public static string DenyTprRequests(
-            ref System.String? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = "FETCH" ;
-            }
-            return "denyTprRequests" + args + "\n";
-        }
-
         //      C# -> System.String? DisableSupportUserAccess
         // GraphQL -> disableSupportUserAccess: Void (scalar)
         public static string DisableSupportUserAccess(
@@ -1615,21 +1241,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec = "FETCH" ;
             }
             return "disableSupportUserAccess" + args + "\n";
-        }
-
-        //      C# -> System.String? DisableTprOrg
-        // GraphQL -> disableTprOrg: Void (scalar)
-        public static string DisableTprOrg(
-            ref System.String? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = "FETCH" ;
-            }
-            return "disableTprOrg" + args + "\n";
         }
 
         //      C# -> System.String? EnableSupportUserAccess
@@ -1660,21 +1271,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec = "FETCH" ;
             }
             return "enableThreatMonitoring" + args + "\n";
-        }
-
-        //      C# -> System.Boolean? EnableTprOrg
-        // GraphQL -> enableTprOrg: Boolean! (scalar)
-        public static string EnableTprOrg(
-            ref System.Boolean? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = true ;
-            }
-            return "enableTprOrg" + args + "\n";
         }
 
         //      C# -> System.String? ExcludeAwsNativeEbsVolumesFromSnapshot
@@ -1720,21 +1316,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec = "FETCH" ;
             }
             return "excludeSharepointObjectsFromProtection" + args + "\n";
-        }
-
-        //      C# -> System.String? ExecuteTprRequests
-        // GraphQL -> executeTprRequests: Void (scalar)
-        public static string ExecuteTprRequests(
-            ref System.String? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = "FETCH" ;
-            }
-            return "executeTprRequests" + args + "\n";
         }
 
         //      C# -> System.Boolean? GcpCloudAccountAddManualAuthProject
@@ -1797,21 +1378,6 @@ namespace RubrikSecurityCloud.Types
             return "hideRevealNasNamespaces" + args + "\n";
         }
 
-        //      C# -> System.String? IgnoreTrial
-        // GraphQL -> ignoreTrial: Void (scalar)
-        public static string IgnoreTrial(
-            ref System.String? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = "FETCH" ;
-            }
-            return "ignoreTrial" + args + "\n";
-        }
-
         //      C# -> System.Boolean? InviteSsoGroup
         // GraphQL -> inviteSsoGroup: Boolean! (scalar)
         public static string InviteSsoGroup(
@@ -1840,21 +1406,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec = "FETCH" ;
             }
             return "joinSmbDomain" + args + "\n";
-        }
-
-        //      C# -> System.Boolean? LockIsolatedRecovery
-        // GraphQL -> lockIsolatedRecovery: Boolean! (scalar)
-        public static string LockIsolatedRecovery(
-            ref System.Boolean? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = true ;
-            }
-            return "lockIsolatedRecovery" + args + "\n";
         }
 
         //      C# -> System.String? LockUsersByAdmin
@@ -1915,21 +1466,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec = true ;
             }
             return "patchAwsIamUserBasedCloudAccount" + args + "\n";
-        }
-
-        //      C# -> System.String? PauseClusterAlerts
-        // GraphQL -> pauseClusterAlerts: Void (scalar)
-        public static string PauseClusterAlerts(
-            ref System.String? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = "FETCH" ;
-            }
-            return "pauseClusterAlerts" + args + "\n";
         }
 
         //      C# -> System.String? PromoteReaderTarget
@@ -2037,19 +1573,19 @@ namespace RubrikSecurityCloud.Types
             return "removePrivateEndpointConnection" + args + "\n";
         }
 
-        //      C# -> System.String? ResetPasskeys
-        // GraphQL -> resetPasskeys: Void (scalar)
-        public static string ResetPasskeys(
+        //      C# -> System.String? ResetAllOrgUsersPasswords
+        // GraphQL -> resetAllOrgUsersPasswords: Void (scalar)
+        public static string ResetAllOrgUsersPasswords(
             ref System.String? fieldSpec
         )
         {
-            string args = "\n(\nuserId: $userId\n)";
+            string args = "";
             if ( fieldSpec == null ) {
                 // there is no field spec for scalar types, but we still
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = "FETCH" ;
             }
-            return "resetPasskeys" + args + "\n";
+            return "resetAllOrgUsersPasswords" + args + "\n";
         }
 
         //      C# -> System.String? ResetUsersPasswordsWithUserIds
@@ -2082,66 +1618,6 @@ namespace RubrikSecurityCloud.Types
             return "revokeAllOrgRoles" + args + "\n";
         }
 
-        //      C# -> System.String? SendPactsafeEvent
-        // GraphQL -> sendPactsafeEvent: Void (scalar)
-        public static string SendPactsafeEvent(
-            ref System.String? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = "FETCH" ;
-            }
-            return "sendPactsafeEvent" + args + "\n";
-        }
-
-        //      C# -> System.Boolean? SendScheduledReport
-        // GraphQL -> sendScheduledReport: Boolean! (scalar)
-        public static string SendScheduledReport(
-            ref System.Boolean? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = true ;
-            }
-            return "sendScheduledReport" + args + "\n";
-        }
-
-        //      C# -> System.Boolean? SendTestSmtpEmail
-        // GraphQL -> sendTestSmtpEmail: Boolean! (scalar)
-        public static string SendTestSmtpEmail(
-            ref System.Boolean? fieldSpec
-        )
-        {
-            string args = "\n(\nuseExisting: $useExisting\nrecipient: $recipient\nhostName: $hostName\nport: $port\nuserName: $userName\npassword: $password\ndefaultFromEmail: $defaultFromEmail\nsecurityType: $securityType\ntrustedCertId: $trustedCertId\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = true ;
-            }
-            return "sendTestSmtpEmail" + args + "\n";
-        }
-
-        //      C# -> System.Boolean? SendTestSyslog
-        // GraphQL -> sendTestSyslog: Boolean! (scalar)
-        public static string SendTestSyslog(
-            ref System.Boolean? fieldSpec
-        )
-        {
-            string args = "\n(\nconfig: $config\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = true ;
-            }
-            return "sendTestSyslog" + args + "\n";
-        }
-
         //      C# -> System.Boolean? SetAzureCloudAccountCustomerAppCredentials
         // GraphQL -> setAzureCloudAccountCustomerAppCredentials: Boolean! (scalar)
         public static string SetAzureCloudAccountCustomerAppCredentials(
@@ -2170,21 +1646,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec = "FETCH" ;
             }
             return "setCustomerTags" + args + "\n";
-        }
-
-        //      C# -> System.Boolean? SetFederatedLoginStatus
-        // GraphQL -> setFederatedLoginStatus: Boolean! (scalar)
-        public static string SetFederatedLoginStatus(
-            ref System.Boolean? fieldSpec
-        )
-        {
-            string args = "\n(\nfederatedLoginStatusArg: $federatedLoginStatusArg\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = true ;
-            }
-            return "setFederatedLoginStatus" + args + "\n";
         }
 
         //      C# -> System.Boolean? SetIpWhitelistEnabled
@@ -2247,36 +1708,6 @@ namespace RubrikSecurityCloud.Types
             return "setPasswordComplexityPolicy" + args + "\n";
         }
 
-        //      C# -> System.String? SetRansomwareInvestigationEnabled
-        // GraphQL -> setRansomwareInvestigationEnabled: Void (scalar)
-        public static string SetRansomwareInvestigationEnabled(
-            ref System.String? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = "FETCH" ;
-            }
-            return "setRansomwareInvestigationEnabled" + args + "\n";
-        }
-
-        //      C# -> System.Boolean? SetSmtpConfiguration
-        // GraphQL -> setSmtpConfiguration: Boolean! (scalar)
-        public static string SetSmtpConfiguration(
-            ref System.Boolean? fieldSpec
-        )
-        {
-            string args = "\n(\nhostName: $hostName\nport: $port\nuserName: $userName\npassword: $password\ndefaultFromEmail: $defaultFromEmail\nsecurityType: $securityType\ntrustedCertId: $trustedCertId\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = true ;
-            }
-            return "setSmtpConfiguration" + args + "\n";
-        }
-
         //      C# -> System.String? SetSsoCertificate
         // GraphQL -> setSsoCertificate: Void (scalar)
         public static string SetSsoCertificate(
@@ -2322,36 +1753,6 @@ namespace RubrikSecurityCloud.Types
             return "setUserLevelTotpEnforcement" + args + "\n";
         }
 
-        //      C# -> System.Boolean? SetWwwTlsCert
-        // GraphQL -> setWwwTlsCert: Boolean! (scalar)
-        public static string SetWwwTlsCert(
-            ref System.Boolean? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = true ;
-            }
-            return "setWwwTlsCert" + args + "\n";
-        }
-
-        //      C# -> System.String? SnoozeEula
-        // GraphQL -> snoozeEula: Void (scalar)
-        public static string SnoozeEula(
-            ref System.String? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = "FETCH" ;
-            }
-            return "snoozeEula" + args + "\n";
-        }
-
         //      C# -> System.String? StopJobInstanceFromEventSeries
         // GraphQL -> stopJobInstanceFromEventSeries: Void (scalar)
         public static string StopJobInstanceFromEventSeries(
@@ -2365,66 +1766,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec = "FETCH" ;
             }
             return "stopJobInstanceFromEventSeries" + args + "\n";
-        }
-
-        //      C# -> System.String? SubmitTprRequest
-        // GraphQL -> submitTprRequest: Void (scalar)
-        public static string SubmitTprRequest(
-            ref System.String? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = "FETCH" ;
-            }
-            return "submitTprRequest" + args + "\n";
-        }
-
-        //      C# -> System.String? SyncRotateClusterEncryptionKey
-        // GraphQL -> syncRotateClusterEncryptionKey: String! (scalar)
-        public static string SyncRotateClusterEncryptionKey(
-            ref System.String? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = "FETCH" ;
-            }
-            return "syncRotateClusterEncryptionKey" + args + "\n";
-        }
-
-        //      C# -> System.Boolean? ToggleFeatureEnabled
-        // GraphQL -> toggleFeatureEnabled: Boolean! (scalar)
-        public static string ToggleFeatureEnabled(
-            ref System.Boolean? fieldSpec
-        )
-        {
-            string args = "\n(\nfeatureName: $featureName\nenableFeature: $enableFeature\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = true ;
-            }
-            return "toggleFeatureEnabled" + args + "\n";
-        }
-
-        //      C# -> System.Boolean? ToggleVmwareManagementEnabled
-        // GraphQL -> toggleVMwareManagementEnabled: Boolean! (scalar)
-        public static string ToggleVmwareManagementEnabled(
-            ref System.Boolean? fieldSpec
-        )
-        {
-            string args = "\n(\nenableVmwareManagement: $enableVmwareManagement\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = true ;
-            }
-            return "toggleVMwareManagementEnabled" + args + "\n";
         }
 
         //      C# -> System.String? UnlockUsersByAdmin
@@ -2457,9 +1798,9 @@ namespace RubrikSecurityCloud.Types
             return "unmapAzurePersistentStorageSubscription" + args + "\n";
         }
 
-        //      C# -> System.String? UnpauseClusterAlerts
-        // GraphQL -> unpauseClusterAlerts: Void (scalar)
-        public static string UnpauseClusterAlerts(
+        //      C# -> System.String? UnmountDisk
+        // GraphQL -> unmountDisk: Void (scalar)
+        public static string UnmountDisk(
             ref System.String? fieldSpec
         )
         {
@@ -2469,7 +1810,7 @@ namespace RubrikSecurityCloud.Types
                 // populate the fieldSpec so that caller can see the type 
                 fieldSpec = "FETCH" ;
             }
-            return "unpauseClusterAlerts" + args + "\n";
+            return "unmountDisk" + args + "\n";
         }
 
         //      C# -> System.Boolean? UpdateAccountOwner
@@ -2532,66 +1873,6 @@ namespace RubrikSecurityCloud.Types
             return "updateCertificate" + args + "\n";
         }
 
-        //      C# -> System.Boolean? UpdateClassificationBannerEnabled
-        // GraphQL -> updateClassificationBannerEnabled: Boolean! (scalar)
-        public static string UpdateClassificationBannerEnabled(
-            ref System.Boolean? fieldSpec
-        )
-        {
-            string args = "";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = true ;
-            }
-            return "updateClassificationBannerEnabled" + args + "\n";
-        }
-
-        //      C# -> System.Boolean? UpdateClassificationBannerSettings
-        // GraphQL -> updateClassificationBannerSettings: Boolean! (scalar)
-        public static string UpdateClassificationBannerSettings(
-            ref System.Boolean? fieldSpec
-        )
-        {
-            string args = "\n(\nclassificationBannerSettingsArg: $classificationBannerSettingsArg\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = true ;
-            }
-            return "updateClassificationBannerSettings" + args + "\n";
-        }
-
-        //      C# -> System.Boolean? UpdateClassificationLoginEnabled
-        // GraphQL -> updateClassificationLoginEnabled: Boolean! (scalar)
-        public static string UpdateClassificationLoginEnabled(
-            ref System.Boolean? fieldSpec
-        )
-        {
-            string args = "";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = true ;
-            }
-            return "updateClassificationLoginEnabled" + args + "\n";
-        }
-
-        //      C# -> System.Boolean? UpdateClassificationLoginSettings
-        // GraphQL -> updateClassificationLoginSettings: Boolean! (scalar)
-        public static string UpdateClassificationLoginSettings(
-            ref System.Boolean? fieldSpec
-        )
-        {
-            string args = "\n(\nclassificationLoginSettingsArg: $classificationLoginSettingsArg\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = true ;
-            }
-            return "updateClassificationLoginSettings" + args + "\n";
-        }
-
         //      C# -> System.String? UpdateCloudNativeLabelRule
         // GraphQL -> updateCloudNativeLabelRule: Void (scalar)
         public static string UpdateCloudNativeLabelRule(
@@ -2650,21 +1931,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec = "FETCH" ;
             }
             return "updateCustomerAppPermissionForAzureSql" + args + "\n";
-        }
-
-        //      C# -> System.Boolean? UpdateEulaAccepted
-        // GraphQL -> updateEulaAccepted: Boolean! (scalar)
-        public static string UpdateEulaAccepted(
-            ref System.Boolean? fieldSpec
-        )
-        {
-            string args = "";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = true ;
-            }
-            return "updateEulaAccepted" + args + "\n";
         }
 
         //      C# -> System.String? UpdateIntegration
@@ -2772,21 +2038,6 @@ namespace RubrikSecurityCloud.Types
             return "updateO365AppPermissions" + args + "\n";
         }
 
-        //      C# -> System.String? UpdateOrgNetwork
-        // GraphQL -> updateOrgNetwork: Void (scalar)
-        public static string UpdateOrgNetwork(
-            ref System.String? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = "FETCH" ;
-            }
-            return "updateOrgNetwork" + args + "\n";
-        }
-
         //      C# -> System.String? UpdateOrgSecurityPolicy
         // GraphQL -> updateOrgSecurityPolicy: Void (scalar)
         public static string UpdateOrgSecurityPolicy(
@@ -2802,36 +2053,6 @@ namespace RubrikSecurityCloud.Types
             return "updateOrgSecurityPolicy" + args + "\n";
         }
 
-        //      C# -> System.String? UpdatePolarisReport
-        // GraphQL -> updatePolarisReport: Void (scalar)
-        public static string UpdatePolarisReport(
-            ref System.String? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = "FETCH" ;
-            }
-            return "updatePolarisReport" + args + "\n";
-        }
-
-        //      C# -> System.String? UpdateRecoverySchedule
-        // GraphQL -> updateRecoverySchedule: Void (scalar)
-        public static string UpdateRecoverySchedule(
-            ref System.String? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = "FETCH" ;
-            }
-            return "updateRecoverySchedule" + args + "\n";
-        }
-
         //      C# -> System.String? UpdateReplicationTarget
         // GraphQL -> updateReplicationTarget: Void (scalar)
         public static string UpdateReplicationTarget(
@@ -2845,21 +2066,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec = "FETCH" ;
             }
             return "updateReplicationTarget" + args + "\n";
-        }
-
-        //      C# -> System.Boolean? UpdateReport
-        // GraphQL -> updateReport: Boolean! (scalar)
-        public static string UpdateReport(
-            ref System.Boolean? fieldSpec
-        )
-        {
-            string args = "\n(\nreportID: $reportID\nreportConfig: $reportConfig\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = true ;
-            }
-            return "updateReport" + args + "\n";
         }
 
         //      C# -> System.Boolean? UpdateRole
@@ -2905,51 +2111,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec = "FETCH" ;
             }
             return "updateSupportUserAccess" + args + "\n";
-        }
-
-        //      C# -> System.String? UpdateTprConfiguration
-        // GraphQL -> updateTprConfiguration: Void (scalar)
-        public static string UpdateTprConfiguration(
-            ref System.String? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = "FETCH" ;
-            }
-            return "updateTprConfiguration" + args + "\n";
-        }
-
-        //      C# -> System.String? UpdateTprPolicy
-        // GraphQL -> updateTprPolicy: Void (scalar)
-        public static string UpdateTprPolicy(
-            ref System.String? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = "FETCH" ;
-            }
-            return "updateTprPolicy" + args + "\n";
-        }
-
-        //      C# -> System.String? UpdateVcdVapp
-        // GraphQL -> updateVcdVapp: Void (scalar)
-        public static string UpdateVcdVapp(
-            ref System.String? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = "FETCH" ;
-            }
-            return "updateVcdVapp" + args + "\n";
         }
 
         //      C# -> System.String? UpdateWhitelistedAnalyzers
@@ -3042,21 +2203,6 @@ namespace RubrikSecurityCloud.Types
             return "vsphereVmDeleteSnapshot" + args + "\n";
         }
 
-        //      C# -> System.Boolean? WarmCloudNativeIndexCache
-        // GraphQL -> warmCloudNativeIndexCache: Boolean! (scalar)
-        public static string WarmCloudNativeIndexCache(
-            ref System.Boolean? fieldSpec
-        )
-        {
-            string args = "\n(\nworkloadId: $workloadId\n)";
-            if ( fieldSpec == null ) {
-                // there is no field spec for scalar types, but we still
-                // populate the fieldSpec so that caller can see the type 
-                fieldSpec = true ;
-            }
-            return "warmCloudNativeIndexCache" + args + "\n";
-        }
-
         //      C# -> System.Boolean? WarmSearchCache
         // GraphQL -> warmSearchCache: Boolean! (scalar)
         public static string WarmSearchCache(
@@ -3070,23 +2216,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec = true ;
             }
             return "warmSearchCache" + args + "\n";
-        }
-
-        //      C# -> ActivateTrialAsyncReply? ActivateTrialAsync
-        // GraphQL -> activateTrialAsync: ActivateTrialAsyncReply! (type)
-        public static string ActivateTrialAsync(
-            ref ActivateTrialAsyncReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new ActivateTrialAsyncReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "activateTrialAsync" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
         }
 
         //      C# -> RequestStatus? AddAdGroupsToHierarchy
@@ -3293,57 +2422,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> AddGlobalCertificateReply? AddGlobalCertificate
-        // GraphQL -> addGlobalCertificate: AddGlobalCertificateReply! (type)
-        public static string AddGlobalCertificate(
-            ref AddGlobalCertificateReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new AddGlobalCertificateReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "addGlobalCertificate" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> K8sClusterSummary? AddK8sCluster
-        // GraphQL -> addK8sCluster: K8sClusterSummary! (type)
-        public static string AddK8sCluster(
-            ref K8sClusterSummary? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new K8sClusterSummary() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "addK8sCluster" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> K8sResourceSetSummary? AddK8sResourceSet
-        // GraphQL -> addK8sResourceSet: K8sResourceSetSummary! (type)
-        public static string AddK8sResourceSet(
-            ref K8sResourceSetSummary? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new K8sResourceSetSummary() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "addK8sResourceSet" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> AddManagedVolumeReply? AddManagedVolume
         // GraphQL -> addManagedVolume: AddManagedVolumeReply! (type)
         public static string AddManagedVolume(
@@ -3476,23 +2554,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
             return "addSyslogExportRule" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> AddVcdInstancesReply? AddVcdInstances
-        // GraphQL -> addVcdInstances: AddVcdInstancesReply! (type)
-        public static string AddVcdInstances(
-            ref AddVcdInstancesReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new AddVcdInstancesReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "addVcdInstances" + args + "{\n" +
                     fieldSpec.AsFieldSpec(1) +
                     "}\n";
         }
@@ -3684,74 +2745,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> AwsCloudAccountCreateResponse? AwsCloudAccountInitiate
-        // GraphQL -> awsCloudAccountInitiate: AwsCloudAccountCreateResponse! (type)
-        public static string AwsCloudAccountInitiate(
-            ref AwsCloudAccountCreateResponse? fieldSpec
-        )
-        {
-            string args = "\n(\nawsCloudAccountInitiateArg: $awsCloudAccountInitiateArg\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new AwsCloudAccountCreateResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "awsCloudAccountInitiate" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> AwsCloudAccountUpdateFeatureResponse? AwsCloudAccountUpdateFeature
-        // GraphQL -> awsCloudAccountUpdateFeature: AwsCloudAccountUpdateFeatureResponse! (type)
-        public static string AwsCloudAccountUpdateFeature(
-            ref AwsCloudAccountUpdateFeatureResponse? fieldSpec
-        )
-        {
-            string args = "\n(\ncloudAccountUuid: $cloudAccountUuid\nfeatures: $features\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new AwsCloudAccountUpdateFeatureResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "awsCloudAccountUpdateFeature" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> AwsCloudAccountValidateResponse? AwsCloudAccountValidate
-        // GraphQL -> awsCloudAccountValidate: AwsCloudAccountValidateResponse! (type)
-        public static string AwsCloudAccountValidate(
-            ref AwsCloudAccountValidateResponse? fieldSpec
-        )
-        {
-            string args = "\n(\nawsCloudAccountValidateArg: $awsCloudAccountValidateArg\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new AwsCloudAccountValidateResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "awsCloudAccountValidate" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> AwsNativeProtectionAccountAddResponse? AwsNativeProtectionAccountAdd
-        // GraphQL -> awsNativeProtectionAccountAdd: AwsNativeProtectionAccountAddResponse! (type)
-        public static string AwsNativeProtectionAccountAdd(
-            ref AwsNativeProtectionAccountAddResponse? fieldSpec
-        )
-        {
-            string args = "\n(\nawsNativeProtectionAccountAddArg: $awsNativeProtectionAccountAddArg\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new AwsNativeProtectionAccountAddResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "awsNativeProtectionAccountAdd" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> RequestStatus? AzureOauthConsentComplete
         // GraphQL -> azureOauthConsentComplete: RequestStatus! (type)
         public static string AzureOauthConsentComplete(
@@ -3782,23 +2775,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
             return "azureOauthConsentKickoff" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> List<CreateOnDemandJobReply>? BackupAzureAdDirectory
-        // GraphQL -> backupAzureAdDirectory: [CreateOnDemandJobReply!]! (type)
-        public static string BackupAzureAdDirectory(
-            ref List<CreateOnDemandJobReply>? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new List<CreateOnDemandJobReply>() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "backupAzureAdDirectory" + args + "{\n" +
                     fieldSpec.AsFieldSpec(1) +
                     "}\n";
         }
@@ -4126,23 +3102,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> CreateOnDemandJobReply? BlueprintFailoverReportGenerate
-        // GraphQL -> blueprintFailoverReportGenerate: CreateOnDemandJobReply! (type)
-        public static string BlueprintFailoverReportGenerate(
-            ref CreateOnDemandJobReply? fieldSpec
-        )
-        {
-            string args = "\n(\nfailoverReportGeneratorJobConfig: $failoverReportGeneratorJobConfig\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new CreateOnDemandJobReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "blueprintFailoverReportGenerate" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> BrowseMssqlDatabaseSnapshotReply? BrowseMssqlDatabaseSnapshot
         // GraphQL -> browseMssqlDatabaseSnapshot: BrowseMssqlDatabaseSnapshotReply! (type)
         public static string BrowseMssqlDatabaseSnapshot(
@@ -4156,23 +3115,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
             return "browseMssqlDatabaseSnapshot" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> BulkAddKmipServerReply? BulkAddKmipServer
-        // GraphQL -> bulkAddKmipServer: BulkAddKmipServerReply! (type)
-        public static string BulkAddKmipServer(
-            ref BulkAddKmipServerReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new BulkAddKmipServerReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "bulkAddKmipServer" + args + "{\n" +
                     fieldSpec.AsFieldSpec(1) +
                     "}\n";
         }
@@ -4449,23 +3391,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> BulkRotateClusterEncryptionKeyReply? BulkRotateClusterEncryptionKey
-        // GraphQL -> bulkRotateClusterEncryptionKey: BulkRotateClusterEncryptionKeyReply! (type)
-        public static string BulkRotateClusterEncryptionKey(
-            ref BulkRotateClusterEncryptionKeyReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new BulkRotateClusterEncryptionKeyReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "bulkRotateClusterEncryptionKey" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> AsyncRequestStatus? BulkTierExistingSnapshots
         // GraphQL -> bulkTierExistingSnapshots: AsyncRequestStatus! (type)
         public static string BulkTierExistingSnapshots(
@@ -4602,57 +3527,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> BulkUpdateSnapMirrorCloudReply? BulkUpdateSnapMirrorCloud
-        // GraphQL -> bulkUpdateSnapMirrorCloud: BulkUpdateSnapMirrorCloudReply! (type)
-        public static string BulkUpdateSnapMirrorCloud(
-            ref BulkUpdateSnapMirrorCloudReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new BulkUpdateSnapMirrorCloudReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "bulkUpdateSnapMirrorCloud" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> Result? CancelBlueprintFailover
-        // GraphQL -> cancelBlueprintFailover: Result! (type)
-        public static string CancelBlueprintFailover(
-            ref Result? fieldSpec
-        )
-        {
-            string args = "\n(\ntaskchainId: $taskchainId\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new Result() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "cancelBlueprintFailover" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> CancelBulkRecoveryReply? CancelBulkRecovery
-        // GraphQL -> cancelBulkRecovery: CancelBulkRecoveryReply! (type)
-        public static string CancelBulkRecovery(
-            ref CancelBulkRecoveryReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new CancelBulkRecoveryReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "cancelBulkRecovery" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> CancelJobReply? CancelDownloadPackage
         // GraphQL -> cancelDownloadPackage: CancelJobReply! (type)
         public static string CancelDownloadPackage(
@@ -4721,57 +3595,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> CreateOnDemandJobReply? CleanupBlueprintFailover
-        // GraphQL -> cleanupBlueprintFailover: CreateOnDemandJobReply! (type)
-        public static string CleanupBlueprintFailover(
-            ref CreateOnDemandJobReply? fieldSpec
-        )
-        {
-            string args = "\n(\ncleanupJobconfig: $cleanupJobconfig\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new CreateOnDemandJobReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "cleanupBlueprintFailover" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> List<CreateOnDemandJobReply>? CleanupIsolatedRecoveries
-        // GraphQL -> cleanupIsolatedRecoveries: [CreateOnDemandJobReply!]! (type)
-        public static string CleanupIsolatedRecoveries(
-            ref List<CreateOnDemandJobReply>? fieldSpec
-        )
-        {
-            string args = "\n(\ncleanupIsolatedRecoveriesJobInputConfig: $cleanupIsolatedRecoveriesJobInputConfig\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new List<CreateOnDemandJobReply>() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "cleanupIsolatedRecoveries" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> CreateOnDemandJobReply? CleanupIsolatedRecovery
-        // GraphQL -> cleanupIsolatedRecovery: CreateOnDemandJobReply! (type)
-        public static string CleanupIsolatedRecovery(
-            ref CreateOnDemandJobReply? fieldSpec
-        )
-        {
-            string args = "\n(\ncleanupIsolatedRecoveryJobconfig: $cleanupIsolatedRecoveryJobconfig\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new CreateOnDemandJobReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "cleanupIsolatedRecovery" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> ClearCloudNativeSqlServerBackupCredentialsReply? ClearCloudNativeSqlServerBackupCredentials
         // GraphQL -> clearCloudNativeSqlServerBackupCredentials: ClearCloudNativeSqlServerBackupCredentialsReply! (type)
         public static string ClearCloudNativeSqlServerBackupCredentials(
@@ -4823,40 +3646,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> CompleteAtlassianAuthConsentReply? CompleteAtlassianAuthConsent
-        // GraphQL -> completeAtlassianAuthConsent: CompleteAtlassianAuthConsentReply! (type)
-        public static string CompleteAtlassianAuthConsent(
-            ref CompleteAtlassianAuthConsentReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new CompleteAtlassianAuthConsentReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "completeAtlassianAuthConsent" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> CompleteAzureAdAppSetupReply? CompleteAzureAdAppSetup
-        // GraphQL -> completeAzureAdAppSetup: CompleteAzureAdAppSetupReply! (type)
-        public static string CompleteAzureAdAppSetup(
-            ref CompleteAzureAdAppSetupReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new CompleteAzureAdAppSetupReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "completeAzureAdAppSetup" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> CompleteAzureCloudAccountOauthReply? CompleteAzureCloudAccountOauth
         // GraphQL -> completeAzureCloudAccountOauth: CompleteAzureCloudAccountOauthReply! (type)
         public static string CompleteAzureCloudAccountOauth(
@@ -4874,40 +3663,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> ComputeBucketImmutabilityLockDurationReply? ComputeBucketImmutabilityLockDuration
-        // GraphQL -> computeBucketImmutabilityLockDuration: ComputeBucketImmutabilityLockDurationReply! (type)
-        public static string ComputeBucketImmutabilityLockDuration(
-            ref ComputeBucketImmutabilityLockDurationReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new ComputeBucketImmutabilityLockDurationReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "computeBucketImmutabilityLockDuration" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> AsyncRequestStatus? ConfigureLogExport
-        // GraphQL -> configureLogExport: AsyncRequestStatus! (type)
-        public static string ConfigureLogExport(
-            ref AsyncRequestStatus? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new AsyncRequestStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "configureLogExport" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> AsyncRequestStatus? ConfigureSapHanaRestore
         // GraphQL -> configureSapHanaRestore: AsyncRequestStatus! (type)
         public static string ConfigureSapHanaRestore(
@@ -4921,40 +3676,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
             return "configureSapHanaRestore" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> AsyncRequestStatus? CreateActiveDirectoryLiveMount
-        // GraphQL -> createActiveDirectoryLiveMount: AsyncRequestStatus! (type)
-        public static string CreateActiveDirectoryLiveMount(
-            ref AsyncRequestStatus? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new AsyncRequestStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "createActiveDirectoryLiveMount" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> AsyncRequestStatus? CreateActiveDirectoryUnmount
-        // GraphQL -> createActiveDirectoryUnmount: AsyncRequestStatus! (type)
-        public static string CreateActiveDirectoryUnmount(
-            ref AsyncRequestStatus? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new AsyncRequestStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "createActiveDirectoryUnmount" + args + "{\n" +
                     fieldSpec.AsFieldSpec(1) +
                     "}\n";
         }
@@ -5095,23 +3816,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> List<BlueprintRecoverySpec>? CreateBlueprintRecoverySpec
-        // GraphQL -> createBlueprintRecoverySpec: [BlueprintRecoverySpec!]! (type)
-        public static string CreateBlueprintRecoverySpec(
-            ref List<BlueprintRecoverySpec>? fieldSpec
-        )
-        {
-            string args = "\n(\nblueprintId: $blueprintId\nspecType: $specType\nrecoveryConfigs: $recoveryConfigs\nisDefaultRecoverySpec: $isDefaultRecoverySpec\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new List<BlueprintRecoverySpec>() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "createBlueprintRecoverySpec" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> MosaicAsyncResponse? CreateCassandraSource
         // GraphQL -> createCassandraSource: MosaicAsyncResponse! (type)
         public static string CreateCassandraSource(
@@ -5214,40 +3918,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> BatchAsyncJobStatus? CreateConfigProtectionBackup
-        // GraphQL -> createConfigProtectionBackup: BatchAsyncJobStatus! (type)
-        public static string CreateConfigProtectionBackup(
-            ref BatchAsyncJobStatus? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new BatchAsyncJobStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "createConfigProtectionBackup" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> AsyncJobStatus? CreateConfigProtectionSetup
-        // GraphQL -> createConfigProtectionSetup: AsyncJobStatus! (type)
-        public static string CreateConfigProtectionSetup(
-            ref AsyncJobStatus? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new AsyncJobStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "createConfigProtectionSetup" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> Analyzer? CreateCustomAnalyzer
         // GraphQL -> createCustomAnalyzer: Analyzer! (type)
         public static string CreateCustomAnalyzer(
@@ -5271,30 +3941,13 @@ namespace RubrikSecurityCloud.Types
             ref CreateCustomReportReply? fieldSpec
         )
         {
-            string args = "\n(\ninput: $input\n)";
+            string args = "\n(\ninput: $input\nreportRoom: $reportRoom\n)";
            if (fieldSpec == null)
             {
                 fieldSpec = new CreateCustomReportReply() ;
                 fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
             return "createCustomReport" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> AsyncRequestStatus? CreateDomainControllerSnapshot
-        // GraphQL -> createDomainControllerSnapshot: AsyncRequestStatus! (type)
-        public static string CreateDomainControllerSnapshot(
-            ref AsyncRequestStatus? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new AsyncRequestStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "createDomainControllerSnapshot" + args + "{\n" +
                     fieldSpec.AsFieldSpec(1) +
                     "}\n";
         }
@@ -5520,40 +4173,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> AsyncRequestStatus? CreateK8sResourceSetSnapshot
-        // GraphQL -> createK8sResourceSetSnapshot: AsyncRequestStatus! (type)
-        public static string CreateK8sResourceSetSnapshot(
-            ref AsyncRequestStatus? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new AsyncRequestStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "createK8sResourceSetSnapshot" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> CreateLegalHoldReply? CreateLegalHold
-        // GraphQL -> createLegalHold: CreateLegalHoldReply! (type)
-        public static string CreateLegalHold(
-            ref CreateLegalHoldReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new CreateLegalHoldReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "createLegalHold" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> TargetMapping? CreateManualTargetMapping
         // GraphQL -> createManualTargetMapping: TargetMapping! (type)
         public static string CreateManualTargetMapping(
@@ -5724,23 +4343,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> AsyncRequestStatus? CreateOnDemandMongoDatabaseBackup
-        // GraphQL -> createOnDemandMongoDatabaseBackup: AsyncRequestStatus! (type)
-        public static string CreateOnDemandMongoDatabaseBackup(
-            ref AsyncRequestStatus? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\nattributes: $attributes\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new AsyncRequestStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "createOnDemandMongoDatabaseBackup" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> AsyncRequestStatus? CreateOnDemandMssqlBackup
         // GraphQL -> createOnDemandMssqlBackup: AsyncRequestStatus! (type)
         public static string CreateOnDemandMssqlBackup(
@@ -5843,23 +4445,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> CreateOrgNetworkReply? CreateOrgNetwork
-        // GraphQL -> createOrgNetwork: CreateOrgNetworkReply! (type)
-        public static string CreateOrgNetwork(
-            ref CreateOrgNetworkReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new CreateOrgNetworkReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "createOrgNetwork" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> CreateOrgSwitchSessionReply? CreateOrgSwitchSession
         // GraphQL -> createOrgSwitchSession: CreateOrgSwitchSessionReply! (type)
         public static string CreateOrgSwitchSession(
@@ -5873,23 +4458,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
             return "createOrgSwitchSession" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> CreatePolarisReportReply? CreatePolarisReport
-        // GraphQL -> createPolarisReport: CreatePolarisReportReply! (type)
-        public static string CreatePolarisReport(
-            ref CreatePolarisReportReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new CreatePolarisReportReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "createPolarisReport" + args + "{\n" +
                     fieldSpec.AsFieldSpec(1) +
                     "}\n";
         }
@@ -5924,23 +4492,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
             return "createRcvPrivateEndpointApprovalRequest" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> CreateScheduleReply? CreateRecoverySchedule
-        // GraphQL -> createRecoverySchedule: CreateScheduleReply! (type)
-        public static string CreateRecoverySchedule(
-            ref CreateScheduleReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new CreateScheduleReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "createRecoverySchedule" + args + "{\n" +
                     fieldSpec.AsFieldSpec(1) +
                     "}\n";
         }
@@ -5992,159 +4543,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
             return "createServiceAccount" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> CreateSnapMirrorCloudReply? CreateSnapMirrorCloud
-        // GraphQL -> createSnapMirrorCloud: CreateSnapMirrorCloudReply! (type)
-        public static string CreateSnapMirrorCloud(
-            ref CreateSnapMirrorCloudReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new CreateSnapMirrorCloudReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "createSnapMirrorCloud" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> CreateSnapMirrorCloudRelationshipReply? CreateSnapMirrorCloudRelationship
-        // GraphQL -> createSnapMirrorCloudRelationship: CreateSnapMirrorCloudRelationshipReply! (type)
-        public static string CreateSnapMirrorCloudRelationship(
-            ref CreateSnapMirrorCloudRelationshipReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new CreateSnapMirrorCloudRelationshipReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "createSnapMirrorCloudRelationship" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> AsyncRequestStatus? CreateSnapMirrorCloudRestoreJob
-        // GraphQL -> createSnapMirrorCloudRestoreJob: AsyncRequestStatus! (type)
-        public static string CreateSnapMirrorCloudRestoreJob(
-            ref AsyncRequestStatus? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new AsyncRequestStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "createSnapMirrorCloudRestoreJob" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> AsyncRequestStatus? CreateSnapMirrorCloudSnapshot
-        // GraphQL -> createSnapMirrorCloudSnapshot: AsyncRequestStatus! (type)
-        public static string CreateSnapMirrorCloudSnapshot(
-            ref AsyncRequestStatus? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new AsyncRequestStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "createSnapMirrorCloudSnapshot" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> CreateSupportCaseReply? CreateSupportCase
-        // GraphQL -> createSupportCase: CreateSupportCaseReply! (type)
-        public static string CreateSupportCase(
-            ref CreateSupportCaseReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new CreateSupportCaseReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "createSupportCase" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> CreateTprPolicyReply? CreateTprPolicy
-        // GraphQL -> createTprPolicy: CreateTprPolicyReply! (type)
-        public static string CreateTprPolicy(
-            ref CreateTprPolicyReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new CreateTprPolicyReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "createTprPolicy" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> List<AsyncRequestStatus>? CreateVappExport
-        // GraphQL -> createVappExport: [AsyncRequestStatus!]! (type)
-        public static string CreateVappExport(
-            ref List<AsyncRequestStatus>? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new List<AsyncRequestStatus>() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "createVappExport" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> CreateVappSnapshotsReply? CreateVappSnapshots
-        // GraphQL -> createVappSnapshots: CreateVappSnapshotsReply! (type)
-        public static string CreateVappSnapshots(
-            ref CreateVappSnapshotsReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new CreateVappSnapshotsReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "createVappSnapshots" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> AsyncRequestStatus? CreateVappTemplateSnapshotExport
-        // GraphQL -> createVappTemplateSnapshotExport: AsyncRequestStatus! (type)
-        public static string CreateVappTemplateSnapshotExport(
-            ref AsyncRequestStatus? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new AsyncRequestStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "createVappTemplateSnapshotExport" + args + "{\n" +
                     fieldSpec.AsFieldSpec(1) +
                     "}\n";
         }
@@ -6234,40 +4632,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> ResponseSuccess? DeleteAllSnapMirrorCloudSnapshots
-        // GraphQL -> deleteAllSnapMirrorCloudSnapshots: ResponseSuccess! (type)
-        public static string DeleteAllSnapMirrorCloudSnapshots(
-            ref ResponseSuccess? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new ResponseSuccess() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "deleteAllSnapMirrorCloudSnapshots" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> DeleteAwsCloudAccountWithoutCftReply? DeleteAwsCloudAccountWithoutCft
-        // GraphQL -> deleteAwsCloudAccountWithoutCft: DeleteAwsCloudAccountWithoutCftReply! (type)
-        public static string DeleteAwsCloudAccountWithoutCft(
-            ref DeleteAwsCloudAccountWithoutCftReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new DeleteAwsCloudAccountWithoutCftReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "deleteAwsCloudAccountWithoutCft" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> CcProvisionJobReply? DeleteAwsCluster
         // GraphQL -> deleteAwsCluster: CcProvisionJobReply! (type)
         public static string DeleteAwsCluster(
@@ -6298,40 +4662,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
             return "deleteAwsExocomputeConfigs" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> DeleteAwsIamUserBasedCloudAccountReply? DeleteAwsIamUserBasedCloudAccount
-        // GraphQL -> deleteAwsIamUserBasedCloudAccount: DeleteAwsIamUserBasedCloudAccountReply! (type)
-        public static string DeleteAwsIamUserBasedCloudAccount(
-            ref DeleteAwsIamUserBasedCloudAccountReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new DeleteAwsIamUserBasedCloudAccountReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "deleteAwsIamUserBasedCloudAccount" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> CreateOnDemandJobReply? DeleteAzureAdDirectory
-        // GraphQL -> deleteAzureAdDirectory: CreateOnDemandJobReply! (type)
-        public static string DeleteAzureAdDirectory(
-            ref CreateOnDemandJobReply? fieldSpec
-        )
-        {
-            string args = "\n(\nworkloadFid: $workloadFid\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new CreateOnDemandJobReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "deleteAzureAdDirectory" + args + "{\n" +
                     fieldSpec.AsFieldSpec(1) +
                     "}\n";
         }
@@ -6472,23 +4802,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> DeleteFailedClusterOperationJobDataReply? DeleteFailedClusterOperationJobData
-        // GraphQL -> deleteFailedClusterOperationJobData: DeleteFailedClusterOperationJobDataReply! (type)
-        public static string DeleteFailedClusterOperationJobData(
-            ref DeleteFailedClusterOperationJobDataReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new DeleteFailedClusterOperationJobDataReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "deleteFailedClusterOperationJobData" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> ResponseSuccess? DeleteFailoverCluster
         // GraphQL -> deleteFailoverCluster: ResponseSuccess! (type)
         public static string DeleteFailoverCluster(
@@ -6540,40 +4853,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> DeleteGlobalCertificateReply? DeleteGlobalCertificate
-        // GraphQL -> deleteGlobalCertificate: DeleteGlobalCertificateReply! (type)
-        public static string DeleteGlobalCertificate(
-            ref DeleteGlobalCertificateReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new DeleteGlobalCertificateReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "deleteGlobalCertificate" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> SlaResult? DeleteGlobalSla
-        // GraphQL -> deleteGlobalSla: SlaResult! (type)
-        public static string DeleteGlobalSla(
-            ref SlaResult? fieldSpec
-        )
-        {
-            string args = "\n(\nid: $id\nuserNote: $userNote\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new SlaResult() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "deleteGlobalSla" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> RequestSuccess? DeleteHypervVirtualMachineSnapshot
         // GraphQL -> deleteHypervVirtualMachineSnapshot: RequestSuccess! (type)
         public static string DeleteHypervVirtualMachineSnapshot(
@@ -6604,74 +4883,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
             return "deleteHypervVirtualMachineSnapshotMount" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> IdentityProvider? DeleteIdentityProvider
-        // GraphQL -> deleteIdentityProvider: IdentityProvider! (type)
-        public static string DeleteIdentityProvider(
-            ref IdentityProvider? fieldSpec
-        )
-        {
-            string args = "";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new IdentityProvider() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "deleteIdentityProvider" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> AsyncRequestStatus? DeleteK8sCluster
-        // GraphQL -> deleteK8sCluster: AsyncRequestStatus! (type)
-        public static string DeleteK8sCluster(
-            ref AsyncRequestStatus? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new AsyncRequestStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "deleteK8sCluster" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> ResponseSuccess? DeleteK8sResourceSet
-        // GraphQL -> deleteK8sResourceSet: ResponseSuccess! (type)
-        public static string DeleteK8sResourceSet(
-            ref ResponseSuccess? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new ResponseSuccess() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "deleteK8sResourceSet" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> DeleteKmipServerReply? DeleteKmipServer
-        // GraphQL -> deleteKmipServer: DeleteKmipServerReply! (type)
-        public static string DeleteKmipServer(
-            ref DeleteKmipServerReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new DeleteKmipServerReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "deleteKmipServer" + args + "{\n" +
                     fieldSpec.AsFieldSpec(1) +
                     "}\n";
         }
@@ -6982,23 +5193,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> DeleteBlueprintRecoverySpecReply? DeleteRecoverySpec
-        // GraphQL -> deleteRecoverySpec: DeleteBlueprintRecoverySpecReply! (type)
-        public static string DeleteRecoverySpec(
-            ref DeleteBlueprintRecoverySpecReply? fieldSpec
-        )
-        {
-            string args = "\n(\nblueprintId: $blueprintId\nexcludePlanTypes: $excludePlanTypes\nfailoverId: $failoverId\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new DeleteBlueprintRecoverySpecReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "deleteRecoverySpec" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> ResponseSuccess? DeleteSapHanaDbSnapshot
         // GraphQL -> deleteSapHanaDbSnapshot: ResponseSuccess! (type)
         public static string DeleteSapHanaDbSnapshot(
@@ -7033,74 +5227,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> ResponseSuccess? DeleteSnapMirrorCloud
-        // GraphQL -> deleteSnapMirrorCloud: ResponseSuccess! (type)
-        public static string DeleteSnapMirrorCloud(
-            ref ResponseSuccess? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new ResponseSuccess() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "deleteSnapMirrorCloud" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> ResponseSuccess? DeleteSnapMirrorCloudRelationship
-        // GraphQL -> deleteSnapMirrorCloudRelationship: ResponseSuccess! (type)
-        public static string DeleteSnapMirrorCloudRelationship(
-            ref ResponseSuccess? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new ResponseSuccess() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "deleteSnapMirrorCloudRelationship" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> ResponseSuccess? DeleteSnapMirrorCloudSnapshot
-        // GraphQL -> deleteSnapMirrorCloudSnapshot: ResponseSuccess! (type)
-        public static string DeleteSnapMirrorCloudSnapshot(
-            ref ResponseSuccess? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new ResponseSuccess() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "deleteSnapMirrorCloudSnapshot" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> RequestSuccess? DeleteSnapshotsOfUnmanagedObjects
-        // GraphQL -> deleteSnapshotsOfUnmanagedObjects: RequestSuccess! (type)
-        public static string DeleteSnapshotsOfUnmanagedObjects(
-            ref RequestSuccess? fieldSpec
-        )
-        {
-            string args = "\n(\nobjectIds: $objectIds\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new RequestSuccess() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "deleteSnapshotsOfUnmanagedObjects" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> DeleteStorageArraysReply? DeleteStorageArrays
         // GraphQL -> deleteStorageArrays: DeleteStorageArraysReply! (type)
         public static string DeleteStorageArrays(
@@ -7114,57 +5240,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
             return "deleteStorageArrays" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> RequestSuccess? DeleteUnmanagedSnapshots
-        // GraphQL -> deleteUnmanagedSnapshots: RequestSuccess! (type)
-        public static string DeleteUnmanagedSnapshots(
-            ref RequestSuccess? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new RequestSuccess() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "deleteUnmanagedSnapshots" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> DeleteVappSnapshotsReply? DeleteVappSnapshots
-        // GraphQL -> deleteVappSnapshots: DeleteVappSnapshotsReply! (type)
-        public static string DeleteVappSnapshots(
-            ref DeleteVappSnapshotsReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new DeleteVappSnapshotsReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "deleteVappSnapshots" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> DeleteVcdInstancesReply? DeleteVcdInstances
-        // GraphQL -> deleteVcdInstances: DeleteVcdInstancesReply! (type)
-        public static string DeleteVcdInstances(
-            ref DeleteVcdInstancesReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new DeleteVcdInstancesReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "deleteVcdInstances" + args + "{\n" +
                     fieldSpec.AsFieldSpec(1) +
                     "}\n";
         }
@@ -7288,23 +5363,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> DissolveLegalHoldReply? DissolveLegalHold
-        // GraphQL -> dissolveLegalHold: DissolveLegalHoldReply! (type)
-        public static string DissolveLegalHold(
-            ref DissolveLegalHoldReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new DissolveLegalHoldReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "dissolveLegalHold" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> AsyncDownloadReply? DownloadAuditLogCsvAsync
         // GraphQL -> downloadAuditLogCsvAsync: AsyncDownloadReply! (type)
         public static string DownloadAuditLogCsvAsync(
@@ -7369,23 +5427,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
             return "downloadExchangeSnapshot" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> AsyncDownloadReply? DownloadFile
-        // GraphQL -> downloadFile: AsyncDownloadReply! (type)
-        public static string DownloadFile(
-            ref AsyncDownloadReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new AsyncDownloadReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "downloadFile" + args + "{\n" +
                     fieldSpec.AsFieldSpec(1) +
                     "}\n";
         }
@@ -7815,23 +5856,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> AsyncRequestStatus? DownloadVcdVappSnapshotFromLocation
-        // GraphQL -> downloadVcdVappSnapshotFromLocation: AsyncRequestStatus! (type)
-        public static string DownloadVcdVappSnapshotFromLocation(
-            ref AsyncRequestStatus? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new AsyncRequestStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "downloadVcdVappSnapshotFromLocation" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> AsyncRequestStatus? DownloadVolumeGroupSnapshotFiles
         // GraphQL -> downloadVolumeGroupSnapshotFiles: AsyncRequestStatus! (type)
         public static string DownloadVolumeGroupSnapshotFiles(
@@ -7883,23 +5907,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> GlobalSlaReply? EditGlobalSla
-        // GraphQL -> editGlobalSla: GlobalSlaReply! (type)
-        public static string EditGlobalSla(
-            ref GlobalSlaReply? fieldSpec
-        )
-        {
-            string args = "\n(\nglobalSlaEditRequest: $globalSlaEditRequest\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new GlobalSlaReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "editGlobalSla" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> EnableAutomaticFmdUploadReply? EnableAutomaticFmdUpload
         // GraphQL -> enableAutomaticFmdUpload: EnableAutomaticFmdUploadReply! (type)
         public static string EnableAutomaticFmdUpload(
@@ -7930,23 +5937,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
             return "enableDisableAppConsistency" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> EnableLambdaForSnappableReply? EnableLambdaForWorkload
-        // GraphQL -> enableLambdaForWorkload: EnableLambdaForSnappableReply! (type)
-        public static string EnableLambdaForWorkload(
-            ref EnableLambdaForSnappableReply? fieldSpec
-        )
-        {
-            string args = "\n(\nsnappableId: $snappableId\nenableDiffFmd: $enableDiffFmd\nenableFullFmd: $enableFullFmd\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new EnableLambdaForSnappableReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "enableLambdaForWorkload" + args + "{\n" +
                     fieldSpec.AsFieldSpec(1) +
                     "}\n";
         }
@@ -8121,23 +6111,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> AsyncRequestStatus? ExportK8sResourceSetSnapshot
-        // GraphQL -> exportK8sResourceSetSnapshot: AsyncRequestStatus! (type)
-        public static string ExportK8sResourceSetSnapshot(
-            ref AsyncRequestStatus? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new AsyncRequestStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "exportK8sResourceSetSnapshot" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> AsyncRequestStatus? ExportManagedVolumeSnapshot
         // GraphQL -> exportManagedVolumeSnapshot: AsyncRequestStatus! (type)
         public static string ExportManagedVolumeSnapshot(
@@ -8206,40 +6179,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> CreateOnDemandJobReply? ExportO365TeamsFiles
-        // GraphQL -> exportO365TeamsFiles: CreateOnDemandJobReply! (type)
-        public static string ExportO365TeamsFiles(
-            ref CreateOnDemandJobReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new CreateOnDemandJobReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "exportO365TeamsFiles" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> CreateOnDemandJobReply? ExportO365Workload
-        // GraphQL -> exportO365Workload: CreateOnDemandJobReply! (type)
-        public static string ExportO365Workload(
-            ref CreateOnDemandJobReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new CreateOnDemandJobReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "exportO365Workload" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> AsyncRequestStatus? ExportOracleDatabase
         // GraphQL -> exportOracleDatabase: AsyncRequestStatus! (type)
         public static string ExportOracleDatabase(
@@ -8287,23 +6226,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
             return "exportSlaManagedVolumeSnapshot" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> ExtendRscAutoUpgradeDateReply? ExtendRscAutoUpgradeDate
-        // GraphQL -> extendRscAutoUpgradeDate: ExtendRscAutoUpgradeDateReply! (type)
-        public static string ExtendRscAutoUpgradeDate(
-            ref ExtendRscAutoUpgradeDateReply? fieldSpec
-        )
-        {
-            string args = "";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new ExtendRscAutoUpgradeDateReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "extendRscAutoUpgradeDate" + args + "{\n" +
                     fieldSpec.AsFieldSpec(1) +
                     "}\n";
         }
@@ -8784,23 +6706,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> InitiateAzureAdAppUpdateReply? InitiateAzureAdAppUpdate
-        // GraphQL -> initiateAzureAdAppUpdate: InitiateAzureAdAppUpdateReply! (type)
-        public static string InitiateAzureAdAppUpdate(
-            ref InitiateAzureAdAppUpdateReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new InitiateAzureAdAppUpdateReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "initiateAzureAdAppUpdate" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> RequestStatus? InsertCustomerO365App
         // GraphQL -> insertCustomerO365App: RequestStatus! (type)
         public static string InsertCustomerO365App(
@@ -8869,40 +6774,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> InviteUsersToTrialReply? InviteUsersToTrial
-        // GraphQL -> inviteUsersToTrial: InviteUsersToTrialReply! (type)
-        public static string InviteUsersToTrial(
-            ref InviteUsersToTrialReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new InviteUsersToTrialReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "inviteUsersToTrial" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> KickoffAzureAdAppSetupReply? KickoffAzureAdAppSetup
-        // GraphQL -> kickoffAzureAdAppSetup: KickoffAzureAdAppSetupReply! (type)
-        public static string KickoffAzureAdAppSetup(
-            ref KickoffAzureAdAppSetupReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new KickoffAzureAdAppSetupReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "kickoffAzureAdAppSetup" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> ListCidrsForComputeSettingReply? ListCidrsForComputeSetting
         // GraphQL -> listCidrsForComputeSetting: ListCidrsForComputeSettingReply! (type)
         public static string ListCidrsForComputeSetting(
@@ -8916,23 +6787,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
             return "listCidrsForComputeSetting" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> RecentlyViewedItem? ListRecentlyViewed
-        // GraphQL -> listRecentlyViewed: RecentlyViewedItem! (type)
-        public static string ListRecentlyViewed(
-            ref RecentlyViewedItem? fieldSpec
-        )
-        {
-            string args = "\n(\nreferrer: $referrer\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new RecentlyViewedItem() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "listRecentlyViewed" + args + "{\n" +
                     fieldSpec.AsFieldSpec(1) +
                     "}\n";
         }
@@ -9005,40 +6859,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> MarkNotificationsAsReadReply? MarkNotificationsAsRead
-        // GraphQL -> markNotificationsAsRead: MarkNotificationsAsReadReply! (type)
-        public static string MarkNotificationsAsRead(
-            ref MarkNotificationsAsReadReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new MarkNotificationsAsReadReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "markNotificationsAsRead" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> MigrateLegacyNasHostFilesetsReply? MigrateLegacyNasHostFilesets
-        // GraphQL -> migrateLegacyNasHostFilesets: MigrateLegacyNasHostFilesetsReply! (type)
-        public static string MigrateLegacyNasHostFilesets(
-            ref MigrateLegacyNasHostFilesetsReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new MigrateLegacyNasHostFilesetsReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "migrateLegacyNasHostFilesets" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> AsyncRequestStatus? MigrateNutanixMountV1
         // GraphQL -> migrateNutanixMountV1: AsyncRequestStatus! (type)
         public static string MigrateNutanixMountV1(
@@ -9052,23 +6872,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
             return "migrateNutanixMountV1" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> AsyncRequestStatus? ModifyActiveDirectoryLiveMount
-        // GraphQL -> modifyActiveDirectoryLiveMount: AsyncRequestStatus! (type)
-        public static string ModifyActiveDirectoryLiveMount(
-            ref AsyncRequestStatus? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new AsyncRequestStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "modifyActiveDirectoryLiveMount" + args + "{\n" +
                     fieldSpec.AsFieldSpec(1) +
                     "}\n";
         }
@@ -9090,16 +6893,16 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> AsyncJobStatus? MountDisk
-        // GraphQL -> mountDisk: AsyncJobStatus! (type)
+        //      C# -> MountDiskReply? MountDisk
+        // GraphQL -> mountDisk: MountDiskReply! (type)
         public static string MountDisk(
-            ref AsyncJobStatus? fieldSpec
+            ref MountDiskReply? fieldSpec
         )
         {
             string args = "\n(\ninput: $input\n)";
            if (fieldSpec == null)
             {
-                fieldSpec = new AsyncJobStatus() ;
+                fieldSpec = new MountDiskReply() ;
                 fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
             return "mountDisk" + args + "{\n" +
@@ -9413,23 +7216,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> CreateOnDemandJobReply? PromoteRecovery
-        // GraphQL -> promoteRecovery: CreateOnDemandJobReply! (type)
-        public static string PromoteRecovery(
-            ref CreateOnDemandJobReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new CreateOnDemandJobReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "promoteRecovery" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> PutSmbConfigurationReply? PutSmbConfiguration
         // GraphQL -> putSmbConfiguration: PutSmbConfigurationReply! (type)
         public static string PutSmbConfiguration(
@@ -9443,23 +7229,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
             return "putSmbConfiguration" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> QuarantineThreatHuntMatchesReply? QuarantineThreatHuntMatches
-        // GraphQL -> quarantineThreatHuntMatches: QuarantineThreatHuntMatchesReply! (type)
-        public static string QuarantineThreatHuntMatches(
-            ref QuarantineThreatHuntMatchesReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new QuarantineThreatHuntMatchesReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "quarantineThreatHuntMatches" + args + "{\n" +
                     fieldSpec.AsFieldSpec(1) +
                     "}\n";
         }
@@ -9668,23 +7437,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> AsyncRequestStatus? RefreshK8sV2Cluster
-        // GraphQL -> refreshK8sV2Cluster: AsyncRequestStatus! (type)
-        public static string RefreshK8sV2Cluster(
-            ref AsyncRequestStatus? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new AsyncRequestStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "refreshK8sV2Cluster" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> RefreshNasSystemsReply? RefreshNasSystems
         // GraphQL -> refreshNasSystems: RefreshNasSystemsReply! (type)
         public static string RefreshNasSystems(
@@ -9783,23 +7535,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
             return "refreshStorageArrays" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> RefreshVcdInstancesReply? RefreshVcdInstances
-        // GraphQL -> refreshVcdInstances: RefreshVcdInstancesReply! (type)
-        public static string RefreshVcdInstances(
-            ref RefreshVcdInstancesReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new RefreshVcdInstancesReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "refreshVcdInstances" + args + "{\n" +
                     fieldSpec.AsFieldSpec(1) +
                     "}\n";
         }
@@ -9919,23 +7654,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
             return "registerNasSystem" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> ReleaseThreatHuntMatchesFromQuarantineReply? ReleaseThreatHuntMatchesFromQuarantine
-        // GraphQL -> releaseThreatHuntMatchesFromQuarantine: ReleaseThreatHuntMatchesFromQuarantineReply! (type)
-        public static string ReleaseThreatHuntMatchesFromQuarantine(
-            ref ReleaseThreatHuntMatchesFromQuarantineReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new ReleaseThreatHuntMatchesFromQuarantineReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "releaseThreatHuntMatchesFromQuarantine" + args + "{\n" +
                     fieldSpec.AsFieldSpec(1) +
                     "}\n";
         }
@@ -10123,57 +7841,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
             return "resolveVolumeGroupsConflict" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> List<CreateOnDemandJobReply>? RestoreAzureAdObjectsWithPassword
-        // GraphQL -> restoreAzureAdObjectsWithPassword: [CreateOnDemandJobReply!]! (type)
-        public static string RestoreAzureAdObjectsWithPassword(
-            ref List<CreateOnDemandJobReply>? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new List<CreateOnDemandJobReply>() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "restoreAzureAdObjectsWithPassword" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> AsyncJobStatus? RestoreConfigProtectionBackup
-        // GraphQL -> restoreConfigProtectionBackup: AsyncJobStatus! (type)
-        public static string RestoreConfigProtectionBackup(
-            ref AsyncJobStatus? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new AsyncJobStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "restoreConfigProtectionBackup" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> AsyncRequestStatus? RestoreDomainControllerSnapshot
-        // GraphQL -> restoreDomainControllerSnapshot: AsyncRequestStatus! (type)
-        public static string RestoreDomainControllerSnapshot(
-            ref AsyncRequestStatus? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new AsyncRequestStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "restoreDomainControllerSnapshot" + args + "{\n" +
                     fieldSpec.AsFieldSpec(1) +
                     "}\n";
         }
@@ -10450,23 +8117,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> BatchAsyncJobStatus? RunPrechecks
-        // GraphQL -> runPrechecks: BatchAsyncJobStatus! (type)
-        public static string RunPrechecks(
-            ref BatchAsyncJobStatus? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new BatchAsyncJobStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "runPrechecks" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> List<UpgradeJobReplyWithUuid>? ScheduleUpgradeBatchJob
         // GraphQL -> scheduleUpgradeBatchJob: [UpgradeJobReplyWithUuid!]! (type)
         public static string ScheduleUpgradeBatchJob(
@@ -10518,23 +8168,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> ReportGenerateReply? SendEmailNow
-        // GraphQL -> sendEmailNow: reportGenerateReply! (type)
-        public static string SendEmailNow(
-            ref ReportGenerateReply? fieldSpec
-        )
-        {
-            string args = "\n(\nreportID: $reportID\nreportConfig: $reportConfig\nrecipients: $recipients\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new ReportGenerateReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "sendEmailNow" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> SendPdfReportReply? SendPdfReport
         // GraphQL -> sendPdfReport: SendPdfReportReply! (type)
         public static string SendPdfReport(
@@ -10565,23 +8198,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
             return "sendScheduledReportAsync" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> AspValue? SetAccountSettingValue
-        // GraphQL -> setAccountSettingValue: ASPValue! (type)
-        public static string SetAccountSettingValue(
-            ref AspValue? fieldSpec
-        )
-        {
-            string args = "\n(\naspName: $aspName\naspComponent: $aspComponent\naspValue: $aspValue\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new AspValue() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "setAccountSettingValue" + args + "{\n" +
                     fieldSpec.AsFieldSpec(1) +
                     "}\n";
         }
@@ -10620,74 +8236,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> IdentityProvider? SetIdentityProvider
-        // GraphQL -> setIdentityProvider: IdentityProvider! (type)
-        public static string SetIdentityProvider(
-            ref IdentityProvider? fieldSpec
-        )
-        {
-            string args = "\n(\nentityId: $entityId\nsignInUrl: $signInUrl\nsigningCertificate: $signingCertificate\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new IdentityProvider() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "setIdentityProvider" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> AsyncRequestStatus? SetKmipClient
-        // GraphQL -> setKmipClient: AsyncRequestStatus! (type)
-        public static string SetKmipClient(
-            ref AsyncRequestStatus? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new AsyncRequestStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "setKmipClient" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> ResponseSuccess? SetLiveMountIps
-        // GraphQL -> setLiveMountIps: ResponseSuccess! (type)
-        public static string SetLiveMountIps(
-            ref ResponseSuccess? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new ResponseSuccess() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "setLiveMountIps" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> SetMigrationStatusReply? SetMigrationStatus
-        // GraphQL -> setMigrationStatus: SetMigrationStatusReply! (type)
-        public static string SetMigrationStatus(
-            ref SetMigrationStatusReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new SetMigrationStatusReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "setMigrationStatus" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> RequestStatus? SetO365ServiceAccount
         // GraphQL -> setO365ServiceAccount: RequestStatus! (type)
         public static string SetO365ServiceAccount(
@@ -10722,40 +8270,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> SetUserSessionManagementConfigReply? SetUserSessionManagementConfig
-        // GraphQL -> setUserSessionManagementConfig: SetUserSessionManagementConfigReply! (type)
-        public static string SetUserSessionManagementConfig(
-            ref SetUserSessionManagementConfigReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new SetUserSessionManagementConfigReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "setUserSessionManagementConfig" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> UserSetting? SetUserSetting
-        // GraphQL -> setUserSetting: UserSetting! (type)
-        public static string SetUserSetting(
-            ref UserSetting? fieldSpec
-        )
-        {
-            string args = "\n(\nuserSetting: $userSetting\nisOrgSpecificSetting: $isOrgSpecificSetting\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new UserSetting() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "setUserSetting" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> AsyncRequestStatus? SetWebSignedCertificate
         // GraphQL -> setWebSignedCertificate: AsyncRequestStatus! (type)
         public static string SetWebSignedCertificate(
@@ -10786,23 +8300,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
             return "setWorkloadAlertSetting" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> SetupAtlassianSiteReply? SetupAtlassianSite
-        // GraphQL -> setupAtlassianSite: SetupAtlassianSiteReply! (type)
-        public static string SetupAtlassianSite(
-            ref SetupAtlassianSiteReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new SetupAtlassianSiteReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "setupAtlassianSite" + args + "{\n" +
                     fieldSpec.AsFieldSpec(1) +
                     "}\n";
         }
@@ -10854,23 +8351,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
             return "setupDisk" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> StartAtlassianAuthConsentReply? StartAtlassianAuthConsent
-        // GraphQL -> startAtlassianAuthConsent: StartAtlassianAuthConsentReply! (type)
-        public static string StartAtlassianAuthConsent(
-            ref StartAtlassianAuthConsentReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new StartAtlassianAuthConsentReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "startAtlassianAuthConsent" + args + "{\n" +
                     fieldSpec.AsFieldSpec(1) +
                     "}\n";
         }
@@ -10956,57 +8436,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
             return "startAzureCloudAccountOauth" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> CreateOnDemandJobReply? StartBlueprintFailover
-        // GraphQL -> startBlueprintFailover: CreateOnDemandJobReply! (type)
-        public static string StartBlueprintFailover(
-            ref CreateOnDemandJobReply? fieldSpec
-        )
-        {
-            string args = "\n(\nfailoverJobConfig: $failoverJobConfig\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new CreateOnDemandJobReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "startBlueprintFailover" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> List<CreateOnDemandJobReply>? StartBlueprintsFailover
-        // GraphQL -> startBlueprintsFailover: [CreateOnDemandJobReply!]! (type)
-        public static string StartBlueprintsFailover(
-            ref List<CreateOnDemandJobReply>? fieldSpec
-        )
-        {
-            string args = "\n(\nfailoverJobConfigs: $failoverJobConfigs\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new List<CreateOnDemandJobReply>() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "startBlueprintsFailover" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> StartBulkRecoveryReply? StartBulkRecovery
-        // GraphQL -> startBulkRecovery: StartBulkRecoveryReply! (type)
-        public static string StartBulkRecovery(
-            ref StartBulkRecoveryReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new StartBulkRecoveryReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "startBulkRecovery" + args + "{\n" +
                     fieldSpec.AsFieldSpec(1) +
                     "}\n";
         }
@@ -11109,23 +8538,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
             return "startCreateAzureNativeVirtualMachineSnapshotsJob" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> CreateOnDemandJobReply? StartCyberRecovery
-        // GraphQL -> startCyberRecovery: CreateOnDemandJobReply! (type)
-        public static string StartCyberRecovery(
-            ref CreateOnDemandJobReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new CreateOnDemandJobReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "startCyberRecovery" + args + "{\n" +
                     fieldSpec.AsFieldSpec(1) +
                     "}\n";
         }
@@ -11296,23 +8708,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
             return "startExportRdsInstanceJob" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> AsyncRequestStatus? StartMalwareDetection
-        // GraphQL -> startMalwareDetection: AsyncRequestStatus! (type)
-        public static string StartMalwareDetection(
-            ref AsyncRequestStatus? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new AsyncRequestStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "startMalwareDetection" + args + "{\n" +
                     fieldSpec.AsFieldSpec(1) +
                     "}\n";
         }
@@ -11589,40 +8984,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> BatchAsyncJobStatus? TakeSaasOnDemandSnapshot
-        // GraphQL -> takeSaasOnDemandSnapshot: BatchAsyncJobStatus! (type)
-        public static string TakeSaasOnDemandSnapshot(
-            ref BatchAsyncJobStatus? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new BatchAsyncJobStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "takeSaasOnDemandSnapshot" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> ChatReply? TestChat
-        // GraphQL -> testChat: ChatReply! (type)
-        public static string TestChat(
-            ref ChatReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new ChatReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "testChat" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> TestExistingWebhookReply? TestExistingWebhook
         // GraphQL -> testExistingWebhook: TestExistingWebhookReply! (type)
         public static string TestExistingWebhook(
@@ -11789,40 +9150,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
             return "unmapCloudAccountExocomputeAccount" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> AsyncJobStatus? UnmountDisk
-        // GraphQL -> unmountDisk: AsyncJobStatus! (type)
-        public static string UnmountDisk(
-            ref AsyncJobStatus? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new AsyncJobStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "unmountDisk" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> AccountSetting? UpdateAccountSettings
-        // GraphQL -> updateAccountSettings: AccountSetting! (type)
-        public static string UpdateAccountSettings(
-            ref AccountSetting? fieldSpec
-        )
-        {
-            string args = "\n(\nisEulaAccepted: $isEulaAccepted\nisEmailNotificationEnabled: $isEmailNotificationEnabled\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new AccountSetting() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "updateAccountSettings" + args + "{\n" +
                     fieldSpec.AsFieldSpec(1) +
                     "}\n";
         }
@@ -12116,40 +9443,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> UpdateClusterPauseStatusReply? UpdateClusterPauseStatus
-        // GraphQL -> updateClusterPauseStatus: UpdateClusterPauseStatusReply! (type)
-        public static string UpdateClusterPauseStatus(
-            ref UpdateClusterPauseStatusReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new UpdateClusterPauseStatusReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "updateClusterPauseStatus" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> UpdateClusterRegisteredModeReply? UpdateClusterRegisteredMode
-        // GraphQL -> updateClusterRegisteredMode: UpdateClusterRegisteredModeReply! (type)
-        public static string UpdateClusterRegisteredMode(
-            ref UpdateClusterRegisteredModeReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new UpdateClusterRegisteredModeReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "updateClusterRegisteredMode" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> UpdateClusterSettingsReply? UpdateClusterSettings
         // GraphQL -> updateClusterSettings: UpdateClusterSettingsReply! (type)
         public static string UpdateClusterSettings(
@@ -12163,23 +9456,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
             return "updateClusterSettings" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> AsyncJobStatus? UpdateConfigProtectionSetup
-        // GraphQL -> updateConfigProtectionSetup: AsyncJobStatus! (type)
-        public static string UpdateConfigProtectionSetup(
-            ref AsyncJobStatus? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new AsyncJobStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "updateConfigProtectionSetup" + args + "{\n" +
                     fieldSpec.AsFieldSpec(1) +
                     "}\n";
         }
@@ -12320,23 +9596,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> UpdateGlobalCertificateReply? UpdateGlobalCertificate
-        // GraphQL -> updateGlobalCertificate: UpdateGlobalCertificateReply! (type)
-        public static string UpdateGlobalCertificate(
-            ref UpdateGlobalCertificateReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new UpdateGlobalCertificateReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "updateGlobalCertificate" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> GlobalSlaReply? UpdateGlobalSla
         // GraphQL -> updateGlobalSla: GlobalSlaReply! (type)
         public static string UpdateGlobalSla(
@@ -12422,23 +9681,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> UpdateIdentityProviderReply? UpdateIdentityProvider
-        // GraphQL -> updateIdentityProvider: UpdateIdentityProviderReply! (type)
-        public static string UpdateIdentityProvider(
-            ref UpdateIdentityProviderReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new UpdateIdentityProviderReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "updateIdentityProvider" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> UpdateInsightStateReply? UpdateInsightState
         // GraphQL -> updateInsightState: UpdateInsightStateReply! (type)
         public static string UpdateInsightState(
@@ -12452,23 +9694,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
             return "updateInsightState" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> UpdateKmipServerReply? UpdateKmipServer
-        // GraphQL -> updateKmipServer: UpdateKmipServerReply! (type)
-        public static string UpdateKmipServer(
-            ref UpdateKmipServerReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new UpdateKmipServerReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "updateKmipServer" + args + "{\n" +
                     fieldSpec.AsFieldSpec(1) +
                     "}\n";
         }
@@ -12745,40 +9970,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> UpdatePactsafeEulaAcceptedReply? UpdatePactsafeEulaAccepted
-        // GraphQL -> updatePactsafeEulaAccepted: UpdatePactsafeEulaAcceptedReply! (type)
-        public static string UpdatePactsafeEulaAccepted(
-            ref UpdatePactsafeEulaAcceptedReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new UpdatePactsafeEulaAcceptedReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "updatePactsafeEulaAccepted" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> UpdatePactsafeEulaSeenReply? UpdatePactsafeEulaSeen
-        // GraphQL -> updatePactsafeEulaSeen: UpdatePactsafeEulaSeenReply! (type)
-        public static string UpdatePactsafeEulaSeen(
-            ref UpdatePactsafeEulaSeenReply? fieldSpec
-        )
-        {
-            string args = "";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new UpdatePactsafeEulaSeenReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "updatePactsafeEulaSeen" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> ClassificationPolicyDetail? UpdatePolicy
         // GraphQL -> updatePolicy: ClassificationPolicyDetail! (type)
         public static string UpdatePolicy(
@@ -12881,23 +10072,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> UpdateSnapMirrorCloudReply? UpdateSnapMirrorCloud
-        // GraphQL -> updateSnapMirrorCloud: UpdateSnapMirrorCloudReply! (type)
-        public static string UpdateSnapMirrorCloud(
-            ref UpdateSnapMirrorCloudReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new UpdateSnapMirrorCloudReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "updateSnapMirrorCloud" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> UpdateSnmpConfigReply? UpdateSnmpConfig
         // GraphQL -> updateSnmpConfig: UpdateSnmpConfigReply! (type)
         public static string UpdateSnmpConfig(
@@ -12932,23 +10106,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> UpdateSupportCaseReply? UpdateSupportCase
-        // GraphQL -> updateSupportCase: UpdateSupportCaseReply! (type)
-        public static string UpdateSupportCase(
-            ref UpdateSupportCaseReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new UpdateSupportCaseReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "updateSupportCase" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> UpdateSyslogExportRuleReply? UpdateSyslogExportRule
         // GraphQL -> updateSyslogExportRule: UpdateSyslogExportRuleReply! (type)
         public static string UpdateSyslogExportRule(
@@ -12979,23 +10136,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
             return "updateTunnelStatus" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> UpdateVcdInstancesReply? UpdateVcdInstances
-        // GraphQL -> updateVcdInstances: UpdateVcdInstancesReply! (type)
-        public static string UpdateVcdInstances(
-            ref UpdateVcdInstancesReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new UpdateVcdInstancesReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "updateVcdInstances" + args + "{\n" +
                     fieldSpec.AsFieldSpec(1) +
                     "}\n";
         }
@@ -13187,23 +10327,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> UpgradeSlasReply? UpgradeSlas
-        // GraphQL -> upgradeSlas: UpgradeSlasReply! (type)
-        public static string UpgradeSlas(
-            ref UpgradeSlasReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new UpgradeSlasReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "upgradeSlas" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> AsyncJobStatus? UploadDatabaseSnapshotToBlobstore
         // GraphQL -> uploadDatabaseSnapshotToBlobstore: AsyncJobStatus! (type)
         public static string UploadDatabaseSnapshotToBlobstore(
@@ -13217,23 +10340,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
             return "uploadDatabaseSnapshotToBlobstore" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> BatchAsyncRequestStatus? VsphereVmBatchLiveMount
-        // GraphQL -> vSphereVMBatchLiveMount: BatchAsyncRequestStatus! (type)
-        public static string VsphereVmBatchLiveMount(
-            ref BatchAsyncRequestStatus? fieldSpec
-        )
-        {
-            string args = "\n(\nclusterUuid: $clusterUuid\nconfig: $config\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new BatchAsyncRequestStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "vSphereVMBatchLiveMount" + args + "{\n" +
                     fieldSpec.AsFieldSpec(1) +
                     "}\n";
         }
@@ -13268,57 +10374,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
             return "validateAndSaveCustomerKmsInfo" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> ValidateBlueprintReply? ValidateBlueprint
-        // GraphQL -> validateBlueprint: ValidateBlueprintReply! (type)
-        public static string ValidateBlueprint(
-            ref ValidateBlueprintReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new ValidateBlueprintReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "validateBlueprint" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> ValidateBlueprintRecoverySpecReply? ValidateBlueprintRecoverySpec
-        // GraphQL -> validateBlueprintRecoverySpec: ValidateBlueprintRecoverySpecReply! (type)
-        public static string ValidateBlueprintRecoverySpec(
-            ref ValidateBlueprintRecoverySpecReply? fieldSpec
-        )
-        {
-            string args = "\n(\nblueprintId: $blueprintId\nvalidateSnapshotRecoverySpec: $validateSnapshotRecoverySpec\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new ValidateBlueprintRecoverySpecReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "validateBlueprintRecoverySpec" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> ValidateBlueprintsReply? ValidateBlueprints
-        // GraphQL -> validateBlueprints: ValidateBlueprintsReply! (type)
-        public static string ValidateBlueprints(
-            ref ValidateBlueprintsReply? fieldSpec
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new ValidateBlueprintsReply() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "validateBlueprints" + args + "{\n" +
                     fieldSpec.AsFieldSpec(1) +
                     "}\n";
         }
@@ -13374,23 +10429,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> VsphereAsyncRequestStatus? VpshereVmRecoveryPointMount
-        // GraphQL -> vpshereVMRecoveryPointMount: VsphereAsyncRequestStatus! (type)
-        public static string VpshereVmRecoveryPointMount(
-            ref VsphereAsyncRequestStatus? fieldSpec
-        )
-        {
-            string args = "\n(\nsnapshotFid: $snapshotFid\nsnappableFid: $snappableFid\nvmName: $vmName\ndisableNetwork: $disableNetwork\nremoveNetworkDevices: $removeNetworkDevices\npowerOn: $powerOn\nkeepMacAddresses: $keepMacAddresses\nhostID: $hostID\ndatastoreName: $datastoreName\nvlan: $vlan\nunregsiterVm: $unregsiterVm\nshouldRecoverTags: $shouldRecoverTags\nrecoveryPoint: $recoveryPoint\ncreateDatastoreOnly: $createDatastoreOnly\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new VsphereAsyncRequestStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "vpshereVMRecoveryPointMount" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> BatchAsyncRequestStatus? VsphereBulkOnDemandSnapshot
         // GraphQL -> vsphereBulkOnDemandSnapshot: BatchAsyncRequestStatus! (type)
         public static string VsphereBulkOnDemandSnapshot(
@@ -13404,23 +10442,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
             return "vsphereBulkOnDemandSnapshot" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> VsphereAsyncRequestStatus? VsphereCreateVcenter
-        // GraphQL -> vsphereCreateVCenter: VsphereAsyncRequestStatus! (type)
-        public static string VsphereCreateVcenter(
-            ref VsphereAsyncRequestStatus? fieldSpec
-        )
-        {
-            string args = "\n(\nclusterUuid: $clusterUuid\nhostname: $hostname\nusername: $username\npassword: $password\nconflictResolutionAuthz: $conflictResolutionAuthz\ncaCert: $caCert\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new VsphereAsyncRequestStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "vsphereCreateVCenter" + args + "{\n" +
                     fieldSpec.AsFieldSpec(1) +
                     "}\n";
         }
@@ -13442,23 +10463,6 @@ namespace RubrikSecurityCloud.Types
                     "}\n";
         }
 
-        //      C# -> RequestSuccess? VsphereEditVcenter
-        // GraphQL -> vsphereEditVCenter: RequestSuccess! (type)
-        public static string VsphereEditVcenter(
-            ref RequestSuccess? fieldSpec
-        )
-        {
-            string args = "\n(\nvcenterId: $vcenterId\nhostname: $hostname\nusername: $username\npassword: $password\nconflictResolutionAuthz: $conflictResolutionAuthz\ncaCert: $caCert\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new RequestSuccess() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "vsphereEditVCenter" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
         //      C# -> RequestSuccess? VsphereExcludeVmDisks
         // GraphQL -> vsphereExcludeVmDisks: RequestSuccess! (type)
         public static string VsphereExcludeVmDisks(
@@ -13472,23 +10476,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
             return "vsphereExcludeVmDisks" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> VsphereAsyncRequestStatus? VsphereExportSnapshotToStandaloneHost
-        // GraphQL -> vsphereExportSnapshotToStandaloneHost: VsphereAsyncRequestStatus! (type)
-        public static string VsphereExportSnapshotToStandaloneHost(
-            ref VsphereAsyncRequestStatus? fieldSpec
-        )
-        {
-            string args = "\n(\nsnapshotFid: $snapshotFid\nvmName: $vmName\ndisableNetwork: $disableNetwork\nremoveNetworkDevices: $removeNetworkDevices\npowerOn: $powerOn\nkeepMacAddresses: $keepMacAddresses\nhostIpAddress: $hostIpAddress\ndatastoreName: $datastoreName\nhostUsername: $hostUsername\nhostPassword: $hostPassword\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new VsphereAsyncRequestStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "vsphereExportSnapshotToStandaloneHost" + args + "{\n" +
                     fieldSpec.AsFieldSpec(1) +
                     "}\n";
         }
@@ -13523,125 +10510,6 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
             }
             return "vsphereOnDemandSnapshot" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> VsphereAsyncRequestStatus? VsphereRefreshVcenter
-        // GraphQL -> vsphereRefreshVCenter: VsphereAsyncRequestStatus! (type)
-        public static string VsphereRefreshVcenter(
-            ref VsphereAsyncRequestStatus? fieldSpec
-        )
-        {
-            string args = "\n(\nvcenterId: $vcenterId\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new VsphereAsyncRequestStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "vsphereRefreshVCenter" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> VsphereAsyncRequestStatus? VsphereVmDeleteLiveMount
-        // GraphQL -> vsphereVMDeleteLiveMount: VsphereAsyncRequestStatus! (type)
-        public static string VsphereVmDeleteLiveMount(
-            ref VsphereAsyncRequestStatus? fieldSpec
-        )
-        {
-            string args = "\n(\nlivemountId: $livemountId\nforce: $force\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new VsphereAsyncRequestStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "vsphereVMDeleteLiveMount" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> VsphereAsyncRequestStatus? VsphereVmExportSnapshot
-        // GraphQL -> vsphereVMExportSnapshot: VsphereAsyncRequestStatus! (type)
-        public static string VsphereVmExportSnapshot(
-            ref VsphereAsyncRequestStatus? fieldSpec
-        )
-        {
-            string args = "\n(\nsnapshotFid: $snapshotFid\nvmName: $vmName\ndisableNetwork: $disableNetwork\nremoveNetworkDevices: $removeNetworkDevices\npowerOn: $powerOn\nkeepMacAddresses: $keepMacAddresses\nhostID: $hostID\ndatastoreId: $datastoreId\nunregsiterVm: $unregsiterVm\nshouldRecoverTags: $shouldRecoverTags\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new VsphereAsyncRequestStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "vsphereVMExportSnapshot" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> VsphereAsyncRequestStatus? VsphereVmInitiateInstantRecovery
-        // GraphQL -> vsphereVMInitiateInstantRecovery: VsphereAsyncRequestStatus! (type)
-        public static string VsphereVmInitiateInstantRecovery(
-            ref VsphereAsyncRequestStatus? fieldSpec
-        )
-        {
-            string args = "\n(\nsnapshotFid: $snapshotFid\nvmName: $vmName\ndisableNetwork: $disableNetwork\nremoveNetworkDevices: $removeNetworkDevices\npowerOn: $powerOn\nkeepMacAddresses: $keepMacAddresses\nhostID: $hostID\npreserveMOID: $preserveMOID\nvlan: $vlan\nshouldRecoverTags: $shouldRecoverTags\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new VsphereAsyncRequestStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "vsphereVMInitiateInstantRecovery" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> VsphereAsyncRequestStatus? VsphereVmInitiateLiveMount
-        // GraphQL -> vsphereVMInitiateLiveMount: VsphereAsyncRequestStatus! (type)
-        public static string VsphereVmInitiateLiveMount(
-            ref VsphereAsyncRequestStatus? fieldSpec
-        )
-        {
-            string args = "\n(\nsnapshotFid: $snapshotFid\nvmName: $vmName\ndisableNetwork: $disableNetwork\nremoveNetworkDevices: $removeNetworkDevices\npowerOn: $powerOn\nkeepMacAddresses: $keepMacAddresses\nhostID: $hostID\ndatastoreName: $datastoreName\ncreateDatastoreOnly: $createDatastoreOnly\nvlan: $vlan\nshouldRecoverTags: $shouldRecoverTags\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new VsphereAsyncRequestStatus() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "vsphereVMInitiateLiveMount" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> DatastoresListResponse? VsphereVmListEsXiDatastores
-        // GraphQL -> vsphereVMListESXiDatastores: DatastoresListResponse! (type)
-        public static string VsphereVmListEsXiDatastores(
-            ref DatastoresListResponse? fieldSpec
-        )
-        {
-            string args = "\n(\nclusterUuid: $clusterUuid\nipAddress: $ipAddress\nusername: $username\npassword: $password\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new DatastoresListResponse() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "vsphereVMListESXiDatastores" + args + "{\n" +
-                    fieldSpec.AsFieldSpec(1) +
-                    "}\n";
-        }
-
-        //      C# -> RequestSuccess? VsphereVmUpdate
-        // GraphQL -> vsphereVMUpdate: RequestSuccess! (type)
-        public static string VsphereVmUpdate(
-            ref RequestSuccess? fieldSpec
-        )
-        {
-            string args = "\n(\nsnappableFid: $snappableFid\nsnapshotConsistencyMandate: $snapshotConsistencyMandate\npreBackupScript: $preBackupScript\npostBackupScript: $postBackupScript\npostSnapScript: $postSnapScript\nisArrayIntegrationEnabled: $isArrayIntegrationEnabled\n)";
-           if (fieldSpec == null)
-            {
-                fieldSpec = new RequestSuccess() ;
-                fieldSpec.ApplyExploratoryFieldSpec(new ExplorationContext());
-            }
-            return "vsphereVMUpdate" + args + "{\n" +
                     fieldSpec.AsFieldSpec(1) +
                     "}\n";
         }

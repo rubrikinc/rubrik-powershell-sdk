@@ -15,6 +15,8 @@ A series of activities on either the RSC or a Rubrik cluster.
   - The severity of the most recent activity in the activity series.
 - objectId: System.String
   - The ID of the object associated with the activity series.
+- fid: System.String
+  - The forever ID of the object associated with the activity series.
 - objectName: System.String
   - The name of the object associated with the activity series.
 - objectType: ActivityObjectTypeEnum
@@ -43,8 +45,6 @@ A series of activities on either the RSC or a Rubrik cluster.
   - The data transferred associated with this event, in bytes.
 - logicalSize: System.Int64
   - Logical size (if applicable), in bytes.
-- fid: System.String
-  - The forever ID of the object associated with the activity series.
 - activitySeriesId: System.String
   - The ID of the activity series.
 - progress: System.String

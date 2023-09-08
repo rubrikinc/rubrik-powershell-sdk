@@ -70,11 +70,6 @@ Supported in v5.0+
 - pendingSlaDomain: ManagedObjectPendingSlaInfo
   - Supported in v5.3+
   Describes any pending SLA Domain assignment on this object.
-- slaManagedVolumeDetails: SlaManagedVolumeDetail
-  - Supported in v5.3+
-  The additional details specific to SLA Managed Volumes.
-- snappable: CdmWorkload
-  - The base workload object.
 - applicationTag: ManagedVolumeApplicationTag
   - Application whose data this Managed Volume will store. For example, Oracle, SAP HANA, MSSQL, etc.
 - mvType: CdmManagedVolumeType
@@ -87,3 +82,8 @@ Supported in v5.0+
   v6.0: Managed volume state like exported, resetting etc.,.
   v7.0: State of the Managed Volume. For example, exported, resetting etc.
   v8.0+: State of the Managed Volume. For example, exported, resetting etc.,.
+- slaManagedVolumeDetails: SlaManagedVolumeDetail
+  - Supported in v5.3+
+  The additional details specific to SLA Managed Volumes.
+- snappable: CdmWorkload
+  - The base workload object.

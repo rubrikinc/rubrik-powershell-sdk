@@ -76,8 +76,6 @@ Supported in v5.0+
 - hostLogRetention: System.Int32
   - Supported in v9.0+
   Specifies the interval, in seconds, the Rubrik cluster waits before the next log backup job deletes MSSQL log files whose 'nextTime' field specifies a time longer than this interval. To specify a wait interval, enter a positive integer. To immediately delete log files regardless of age, specify an interval of -1. To preserve all log files, specify an interval of -2.
-- snappable: CdmWorkload
-  - 
 - unprotectableReasonsV50: list of MssqlUnprotectableReasons
   - A list of reasons that a SQL Server database cannot be protected by Rubrik.
 - unprotectableReasonsV51: list of System.Strings
@@ -99,4 +97,6 @@ Supported in v5.0+
 - unprotectableReasonsV91: list of System.Strings
   - A list of reasons that a SQL Server database cannot be protected by the Rubrik CDM.
 - recoveryModel: MssqlDbSummaryRecoveryModel
+  - 
+- snappable: CdmWorkload
   - 

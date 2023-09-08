@@ -22,16 +22,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Activity series queries
     /// </summary>
     /// <description>
-    /// Invoke-RscQueryActivitySeries is a master cmdlet for ActivitySeries work that can invoke any of the following subcommands: ActivitySeries, List, GroupByList.
+    /// Invoke-RscQueryActivitySeries is a master cmdlet for ActivitySeries work that can invoke any of the following subcommands: ActivitySeries, List.
     /// </description>
     /// <example>
     /// <code>Invoke-RscQueryActivitySeries -ActivitySeries [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
     /// <code>Invoke-RscQueryActivitySeries -List [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
-    /// <code>Invoke-RscQueryActivitySeries -GroupByList [-Arg ..] [-Field ..]</code>
     /// </example>
     [Cmdlet(
         "Invoke",
@@ -76,24 +73,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         )]
         public SwitchParameter List { get; set; }
 
-        
-        /// <summary>
-        /// GroupByList parameter set
-        ///
-        /// [GraphQL: activitySeriesGroupByConnection]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "GroupByList",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-[GraphQL: activitySeriesGroupByConnection]",
-            Position = 0
-        )]
-        public SwitchParameter GroupByList { get; set; }
-
 
 // ignore warning 'Missing XML comment'
 #pragma warning disable 1591
@@ -108,9 +87,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "List":
                         this.ProcessRecord_List();
-                        break;
-                    case "GroupByList":
-                        this.ProcessRecord_GroupByList();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -139,15 +115,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -List";
             // Invoke graphql operation activitySeriesConnection
             InvokeQueryActivitySeriesConnection();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // activitySeriesGroupByConnection.
-        internal void ProcessRecord_GroupByList()
-        {
-            this._logger.name += " -GroupByList";
-            // Invoke graphql operation activitySeriesGroupByConnection
-            InvokeQueryActivitySeriesGroupByConnection();
         }
 
 
@@ -275,103 +242,6 @@ $inputs.Var.filters = @{
 		<System.String>
 	)
 }";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Query:
-        // activitySeriesGroupByConnection(
-        //     first: Int
-        //     after: String
-        //     last: Int
-        //     before: String
-        //     groupBy: ActivitySeriesGroupByEnum!
-        //     filters: ActivitySeriesFilterInput
-        //     timezoneOffset: Float = 0.0
-        //   ): ActivitySeriesGroupByConnection!
-        internal void InvokeQueryActivitySeriesGroupByConnection()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("last", "Int"),
-                Tuple.Create("before", "String"),
-                Tuple.Create("groupBy", "ActivitySeriesGroupByEnum!"),
-                Tuple.Create("filters", "ActivitySeriesFilterInput"),
-                Tuple.Create("timezoneOffset", "Float"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryActivitySeriesGroupByConnection",
-                "($first: Int,$after: String,$last: Int,$before: String,$groupBy: ActivitySeriesGroupByEnum!,$filters: ActivitySeriesFilterInput,$timezoneOffset: Float)",
-                "ActivitySeriesGroupByConnection"
-                );
-            ActivitySeriesGroupByConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (ActivitySeriesGroupByConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.ActivitySeriesGroupByConnection(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
-$inputs.Var.first = <System.Int32>
-# OPTIONAL
-$inputs.Var.after = <System.String>
-# OPTIONAL
-$inputs.Var.last = <System.Int32>
-# OPTIONAL
-$inputs.Var.before = <System.String>
-# REQUIRED
-$inputs.Var.groupBy = <ActivitySeriesGroupByEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivitySeriesGroupByEnum]) for enum values.
-# OPTIONAL
-$inputs.Var.filters = @{
-	# OPTIONAL
-	lastActivityStatus = @(
-		<ActivityStatusEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivityStatusEnum]) for enum values.
-	)
-	# OPTIONAL
-	lastActivityType = @(
-		<ActivityTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivityTypeEnum]) for enum values.
-	)
-	# OPTIONAL
-	severity = @(
-		<ActivitySeverityEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivitySeverityEnum]) for enum values.
-	)
-	# OPTIONAL
-	objectName = <System.String>
-	# OPTIONAL
-	objectType = @(
-		<ActivityObjectTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivityObjectTypeEnum]) for enum values.
-	)
-	# OPTIONAL
-	startTimeGt = <DateTime>
-	# OPTIONAL
-	startTimeLt = <DateTime>
-	# OPTIONAL
-	lastUpdatedGt = <DateTime>
-	# OPTIONAL
-	lastUpdatedLt = <DateTime>
-	# OPTIONAL
-	cluster = @{
-		# OPTIONAL
-		id = @(
-			<System.String>
-		)
-		# OPTIONAL
-		type = @(
-			<ClusterTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterTypeEnum]) for enum values.
-		)
-	}
-	# OPTIONAL
-	objectFids = @(
-		<System.String>
-	)
-	# OPTIONAL
-	ancestorId = <System.String>
-	# OPTIONAL
-	searchTerm = <System.String>
-}
-# OPTIONAL
-$inputs.Var.timezoneOffset = <System.Single>";
             BuildInput(fieldSpecObj, inputExample);
             BuildRequest(fieldSpecDoc);
         }

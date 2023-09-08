@@ -1,12 +1,6 @@
 ### VirtualMachineSummary
 Supported in v5.0+
 
-- agentStatus: CdmAgentStatus
-  - Supported in v5.0+
-  The status of the Rubrik Backup Service agent for virtual machines.
-- cloudInstantiationSpec: CloudInstantiationSpec
-  - Supported in v5.0+
-  Cloud instantiation specification for the selected virtual machine.
 - clusterName: System.String
   - Supported in v5.0+
 - folderPath: list of VmPathPoints
@@ -46,11 +40,17 @@ Supported in v5.0+
   - Supported in v5.0+
 - vmwareToolsInstalled: System.Boolean
   - Required. Supported in v5.0+
-- advancedSummary: AdvancedVirtualMachineSummary
-  - Supported in v7.0+
 - instanceUuid: System.String
   - Supported in v8.0+
 - snappable: CdmWorkload
   - 
 - snapshotConsistencyMandate: VirtualMachineSummarySnapshotConsistencyMandate
   - 
+- agentStatus: CdmAgentStatus
+  - Supported in v5.0+
+  The status of the Rubrik Backup Service agent for virtual machines.
+- cloudInstantiationSpec: CloudInstantiationSpec
+  - Supported in v5.0+
+  Cloud instantiation specification for the selected virtual machine.
+- advancedSummary: AdvancedVirtualMachineSummary
+  - Supported in v7.0+

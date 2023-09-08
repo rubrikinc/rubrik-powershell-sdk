@@ -1,2 +1,0 @@
-### TargetSite
-- stringValue: System.String

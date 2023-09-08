@@ -16,15 +16,9 @@ Supported in v5.0+
 - tablespaces: list of System.Strings
   - Required. Supported in v5.0+
   An array that contains tablespace names of the specified Oracle database.
-- hostsInfo: list of HostInfos
-  - Supported in v5.3+
-  An array that contains the host info for each instance.
 - lastValidationResult: OracleLastValidationResult
   - Supported in v5.3+
   General information about last validation job.
-- pendingSlaDomain: ManagedObjectPendingSlaInfo
-  - Supported in v5.3+
-  Describes any pending SLA Domain assignment on this object.
 - preferredDgMemberUniqueNames: list of System.Strings
   - Supported in v6.0+
   Ordered list of database unique names to use for backup in a Data Guard group.
@@ -80,3 +74,9 @@ Supported in v5.0+
   - The time stamp of the earliest recovery point for this database.
 - latestRecoveryPointV91: DateTime
   - The time stamp of the most recent recovery point for this database.
+- hostsInfo: list of HostInfos
+  - Supported in v5.3+
+  An array that contains the host info for each instance.
+- pendingSlaDomain: ManagedObjectPendingSlaInfo
+  - Supported in v5.3+
+  Describes any pending SLA Domain assignment on this object.
