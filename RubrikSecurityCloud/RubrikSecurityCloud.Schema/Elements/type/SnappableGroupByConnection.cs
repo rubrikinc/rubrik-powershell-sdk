@@ -181,7 +181,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<SnappableGroupByConnection> list)
+        public static void SelectForRetrieval(this List<SnappableGroupByConnection> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

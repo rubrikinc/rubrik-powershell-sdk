@@ -225,12 +225,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <example>
     /// <code>Invoke-RscQueryAzure -AllManagedIdentities [-Arg ..] [-Field ..]</code>
     /// </example>
+    [CmdletBinding()]
     [Cmdlet(
         "Invoke",
         "RscQueryAzure",
         DefaultParameterSetName = "VNets")
     ]
-    public class Invoke_RscQueryAzure : RscPSCmdlet
+    public class Invoke_RscQueryAzure : RscGqlPSCmdlet
     {
         
         /// <summary>
@@ -1443,6 +1444,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 #pragma warning disable 1591
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 switch(Op)
@@ -2274,16 +2276,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "query",
                 "QueryAzureNativeRoot",
                 "",
-                "AzureNativeRoot"
-                );
-            AzureNativeRoot? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AzureNativeRoot)this.Field;
-            }
-            string fieldSpecDoc = Query.AzureNativeRoot(ref fieldSpecObj);
-            string inputExample = @"";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "AzureNativeRoot",
+                Query.AzureNativeRoot_ObjectFieldSpec,
+                Query.AzureNativeRootFieldSpec,
+                @""
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2298,17 +2295,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "query",
                 "QueryAzureNativeSubscription",
                 "($azureSubscriptionRubrikId: UUID!)",
-                "AzureNativeSubscription"
-                );
-            AzureNativeSubscription? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AzureNativeSubscription)this.Field;
-            }
-            string fieldSpecDoc = Query.AzureNativeSubscription(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.azureSubscriptionRubrikId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "AzureNativeSubscription",
+                Query.AzureNativeSubscription_ObjectFieldSpec,
+                Query.AzureNativeSubscriptionFieldSpec,
+                @"# REQUIRED
+$inputs.Var.azureSubscriptionRubrikId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2343,14 +2335,10 @@ $inputs.Var.azureSubscriptionRubrikId = <System.String>";
                 "query",
                 "QueryAzureNativeSubscriptions",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureNativeSubscriptionSortFields,$sortOrder: SortOrder,$subscriptionFilters: AzureNativeSubscriptionFilters,$authorizedOperationFilter: Operation,$workloadHierarchy: WorkloadLevelHierarchy,$azureNativeProtectionFeature: AzureNativeProtectionFeature)",
-                "AzureNativeSubscriptionConnection"
-                );
-            AzureNativeSubscriptionConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AzureNativeSubscriptionConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.AzureNativeSubscriptions(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "AzureNativeSubscriptionConnection",
+                Query.AzureNativeSubscriptions_ObjectFieldSpec,
+                Query.AzureNativeSubscriptionsFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -2382,9 +2370,8 @@ $inputs.Var.authorizedOperationFilter = <Operation> # Call [Enum]::GetValues([Ru
 # OPTIONAL
 $inputs.Var.workloadHierarchy = <WorkloadLevelHierarchy> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
 # OPTIONAL
-$inputs.Var.azureNativeProtectionFeature = <AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.azureNativeProtectionFeature = <AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values."
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2399,17 +2386,12 @@ $inputs.Var.azureNativeProtectionFeature = <AzureNativeProtectionFeature> # Call
                 "query",
                 "QueryAzureNativeResourceGroup",
                 "($resourceGroupId: UUID!)",
-                "AzureNativeResourceGroup"
-                );
-            AzureNativeResourceGroup? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AzureNativeResourceGroup)this.Field;
-            }
-            string fieldSpecDoc = Query.AzureNativeResourceGroup(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.resourceGroupId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "AzureNativeResourceGroup",
+                Query.AzureNativeResourceGroup_ObjectFieldSpec,
+                Query.AzureNativeResourceGroupFieldSpec,
+                @"# REQUIRED
+$inputs.Var.resourceGroupId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2442,14 +2424,10 @@ $inputs.Var.resourceGroupId = <System.String>";
                 "query",
                 "QueryAzureNativeResourceGroups",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureNativeCommonResourceGroupSortFields,$sortOrder: SortOrder,$commonResourceGroupFilters: AzureNativeCommonResourceGroupFilters,$protectedObjectTypes: [WorkloadLevelHierarchy!],$azureNativeProtectionFeatures: [AzureNativeProtectionFeature!])",
-                "AzureNativeResourceGroupConnection"
-                );
-            AzureNativeResourceGroupConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AzureNativeResourceGroupConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.AzureNativeResourceGroups(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "AzureNativeResourceGroupConnection",
+                Query.AzureNativeResourceGroups_ObjectFieldSpec,
+                Query.AzureNativeResourceGroupsFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -2497,9 +2475,8 @@ $inputs.Var.protectedObjectTypes = @(
 # OPTIONAL
 $inputs.Var.azureNativeProtectionFeatures = @(
 	<AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2514,17 +2491,12 @@ $inputs.Var.azureNativeProtectionFeatures = @(
                 "query",
                 "QueryAzureNativeVirtualMachine",
                 "($azureVirtualMachineRubrikId: UUID!)",
-                "AzureNativeVirtualMachine"
-                );
-            AzureNativeVirtualMachine? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AzureNativeVirtualMachine)this.Field;
-            }
-            string fieldSpecDoc = Query.AzureNativeVirtualMachine(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.azureVirtualMachineRubrikId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "AzureNativeVirtualMachine",
+                Query.AzureNativeVirtualMachine_ObjectFieldSpec,
+                Query.AzureNativeVirtualMachineFieldSpec,
+                @"# REQUIRED
+$inputs.Var.azureVirtualMachineRubrikId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2555,14 +2527,10 @@ $inputs.Var.azureVirtualMachineRubrikId = <System.String>";
                 "query",
                 "QueryAzureNativeVirtualMachines",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureNativeVirtualMachineSortFields,$sortOrder: SortOrder,$descendantTypeFilter: [HierarchyObjectTypeEnum!],$virtualMachineFilters: AzureNativeVirtualMachineFilters)",
-                "AzureNativeVirtualMachineConnection"
-                );
-            AzureNativeVirtualMachineConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AzureNativeVirtualMachineConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.AzureNativeVirtualMachines(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "AzureNativeVirtualMachineConnection",
+                Query.AzureNativeVirtualMachines_ObjectFieldSpec,
+                Query.AzureNativeVirtualMachinesFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -2668,9 +2636,8 @@ $inputs.Var.virtualMachineFilters = @{
 		# REQUIRED
 		status = <CloudInstanceRbsConnectionStatus> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudInstanceRbsConnectionStatus]) for enum values.
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2685,17 +2652,12 @@ $inputs.Var.virtualMachineFilters = @{
                 "query",
                 "QueryAzureNativeManagedDisk",
                 "($azureManagedDiskRubrikId: UUID!)",
-                "AzureNativeManagedDisk"
-                );
-            AzureNativeManagedDisk? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AzureNativeManagedDisk)this.Field;
-            }
-            string fieldSpecDoc = Query.AzureNativeManagedDisk(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.azureManagedDiskRubrikId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "AzureNativeManagedDisk",
+                Query.AzureNativeManagedDisk_ObjectFieldSpec,
+                Query.AzureNativeManagedDiskFieldSpec,
+                @"# REQUIRED
+$inputs.Var.azureManagedDiskRubrikId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2724,14 +2686,10 @@ $inputs.Var.azureManagedDiskRubrikId = <System.String>";
                 "query",
                 "QueryAzureNativeManagedDisks",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureNativeDiskSortFields,$sortOrder: SortOrder,$diskFilters: AzureNativeDiskFilters)",
-                "AzureNativeManagedDiskConnection"
-                );
-            AzureNativeManagedDiskConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AzureNativeManagedDiskConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.AzureNativeManagedDisks(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "AzureNativeManagedDiskConnection",
+                Query.AzureNativeManagedDisks_ObjectFieldSpec,
+                Query.AzureNativeManagedDisksFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -2823,9 +2781,8 @@ $inputs.Var.diskFilters = @{
 			<AzureNativeFileIndexingStatus> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeFileIndexingStatus]) for enum values.
 		)
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2840,17 +2797,12 @@ $inputs.Var.diskFilters = @{
                 "query",
                 "QueryAllAzureNativeVirtualNetworks",
                 "($azureSubscriptionRubrikId: UUID)",
-                "List<AzureNativeVirtualNetwork>"
-                );
-            List<AzureNativeVirtualNetwork>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<AzureNativeVirtualNetwork>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAzureNativeVirtualNetworks(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
-$inputs.Var.azureSubscriptionRubrikId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "List<AzureNativeVirtualNetwork>",
+                Query.AllAzureNativeVirtualNetworks_ObjectFieldSpec,
+                Query.AllAzureNativeVirtualNetworksFieldSpec,
+                @"# OPTIONAL
+$inputs.Var.azureSubscriptionRubrikId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2866,19 +2818,14 @@ $inputs.Var.azureSubscriptionRubrikId = <System.String>";
                 "query",
                 "QueryAllAzureNativeSubnetsByRegionFromAzure",
                 "($azureSubscriptionRubrikId: UUID!,$region: AzureNativeRegion!)",
-                "List<AzureNativeSubnet>"
-                );
-            List<AzureNativeSubnet>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<AzureNativeSubnet>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAzureNativeSubnetsByRegionFromAzure(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<AzureNativeSubnet>",
+                Query.AllAzureNativeSubnetsByRegionFromAzure_ObjectFieldSpec,
+                Query.AllAzureNativeSubnetsByRegionFromAzureFieldSpec,
+                @"# REQUIRED
 $inputs.Var.azureSubscriptionRubrikId = <System.String>
 # REQUIRED
-$inputs.Var.region = <AzureNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.region = <AzureNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values."
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2894,19 +2841,14 @@ $inputs.Var.region = <AzureNativeRegion> # Call [Enum]::GetValues([RubrikSecurit
                 "query",
                 "QueryAllAzureNativeSecurityGroupsByRegionFromAzure",
                 "($azureSubscriptionRubrikId: UUID!,$region: AzureNativeRegion!)",
-                "List<AzureNativeSecurityGroup>"
-                );
-            List<AzureNativeSecurityGroup>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<AzureNativeSecurityGroup>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAzureNativeSecurityGroupsByRegionFromAzure(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<AzureNativeSecurityGroup>",
+                Query.AllAzureNativeSecurityGroupsByRegionFromAzure_ObjectFieldSpec,
+                Query.AllAzureNativeSecurityGroupsByRegionFromAzureFieldSpec,
+                @"# REQUIRED
 $inputs.Var.azureSubscriptionRubrikId = <System.String>
 # REQUIRED
-$inputs.Var.region = <AzureNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.region = <AzureNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values."
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2922,19 +2864,14 @@ $inputs.Var.region = <AzureNativeRegion> # Call [Enum]::GetValues([RubrikSecurit
                 "query",
                 "QueryAllAzureDiskEncryptionSetsByRegion",
                 "($azureSubscriptionRubrikId: UUID!,$region: AzureNativeRegion!)",
-                "List<AzureNativeDiskEncryptionSet>"
-                );
-            List<AzureNativeDiskEncryptionSet>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<AzureNativeDiskEncryptionSet>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAzureDiskEncryptionSetsByRegion(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<AzureNativeDiskEncryptionSet>",
+                Query.AllAzureDiskEncryptionSetsByRegion_ObjectFieldSpec,
+                Query.AllAzureDiskEncryptionSetsByRegionFieldSpec,
+                @"# REQUIRED
 $inputs.Var.azureSubscriptionRubrikId = <System.String>
 # REQUIRED
-$inputs.Var.region = <AzureNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.region = <AzureNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values."
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2951,21 +2888,16 @@ $inputs.Var.region = <AzureNativeRegion> # Call [Enum]::GetValues([RubrikSecurit
                 "query",
                 "QueryAllAzureNativeAvailabilitySetsByRegionFromAzure",
                 "($azureSubscriptionRubrikId: UUID!,$resourceGroupName: String!,$region: AzureNativeRegion!)",
-                "List<AzureNativeAvailabilitySet>"
-                );
-            List<AzureNativeAvailabilitySet>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<AzureNativeAvailabilitySet>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAzureNativeAvailabilitySetsByRegionFromAzure(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<AzureNativeAvailabilitySet>",
+                Query.AllAzureNativeAvailabilitySetsByRegionFromAzure_ObjectFieldSpec,
+                Query.AllAzureNativeAvailabilitySetsByRegionFromAzureFieldSpec,
+                @"# REQUIRED
 $inputs.Var.azureSubscriptionRubrikId = <System.String>
 # REQUIRED
 $inputs.Var.resourceGroupName = <System.String>
 # REQUIRED
-$inputs.Var.region = <AzureNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.region = <AzureNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values."
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2982,21 +2914,16 @@ $inputs.Var.region = <AzureNativeRegion> # Call [Enum]::GetValues([RubrikSecurit
                 "query",
                 "QueryAllAzureNativeExportCompatibleVmSizesByRegionFromAzure",
                 "($azureSubscriptionRubrikId: UUID!,$region: AzureNativeRegion!,$vmSnapshotId: UUID!)",
-                "List<AzureNativeExportCompatibleVmSizes>"
-                );
-            List<AzureNativeExportCompatibleVmSizes>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<AzureNativeExportCompatibleVmSizes>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAzureNativeExportCompatibleVmSizesByRegionFromAzure(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<AzureNativeExportCompatibleVmSizes>",
+                Query.AllAzureNativeExportCompatibleVmSizesByRegionFromAzure_ObjectFieldSpec,
+                Query.AllAzureNativeExportCompatibleVmSizesByRegionFromAzureFieldSpec,
+                @"# REQUIRED
 $inputs.Var.azureSubscriptionRubrikId = <System.String>
 # REQUIRED
 $inputs.Var.region = <AzureNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
 # REQUIRED
-$inputs.Var.vmSnapshotId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.vmSnapshotId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3012,19 +2939,14 @@ $inputs.Var.vmSnapshotId = <System.String>";
                 "query",
                 "QueryAllAzureNativeExportCompatibleDiskTypesByRegionFromAzure",
                 "($azureSubscriptionRubrikId: UUID!,$region: AzureNativeRegion!)",
-                "List<AzureNativeExportCompatibleDiskTypes>"
-                );
-            List<AzureNativeExportCompatibleDiskTypes>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<AzureNativeExportCompatibleDiskTypes>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAzureNativeExportCompatibleDiskTypesByRegionFromAzure(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<AzureNativeExportCompatibleDiskTypes>",
+                Query.AllAzureNativeExportCompatibleDiskTypesByRegionFromAzure_ObjectFieldSpec,
+                Query.AllAzureNativeExportCompatibleDiskTypesByRegionFromAzureFieldSpec,
+                @"# REQUIRED
 $inputs.Var.azureSubscriptionRubrikId = <System.String>
 # REQUIRED
-$inputs.Var.region = <AzureNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.region = <AzureNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values."
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3039,17 +2961,12 @@ $inputs.Var.region = <AzureNativeRegion> # Call [Enum]::GetValues([RubrikSecurit
                 "query",
                 "QueryAllAzureNativeVirtualMachineSizes",
                 "($azureSubscriptionRubrikId: UUID)",
-                "List<System.String>"
-                );
-            List<System.String>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<System.String>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAzureNativeVirtualMachineSizes(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
-$inputs.Var.azureSubscriptionRubrikId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "List<System.String>",
+                Query.AllAzureNativeVirtualMachineSizes_ObjectFieldSpec,
+                Query.AllAzureNativeVirtualMachineSizesFieldSpec,
+                @"# OPTIONAL
+$inputs.Var.azureSubscriptionRubrikId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3065,19 +2982,14 @@ $inputs.Var.azureSubscriptionRubrikId = <System.String>";
                 "query",
                 "QueryIsAzureNativeManagedDiskSnapshotRestorable",
                 "($azureSubscriptionRubrikId: UUID!,$diskSnapshotId: UUID!)",
-                "System.Boolean"
-                );
-            System.Boolean? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (System.Boolean)this.Field;
-            }
-            string fieldSpecDoc = Query.IsAzureNativeManagedDiskSnapshotRestorable(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "System.Boolean",
+                Query.IsAzureNativeManagedDiskSnapshotRestorable_ObjectFieldSpec,
+                Query.IsAzureNativeManagedDiskSnapshotRestorableFieldSpec,
+                @"# REQUIRED
 $inputs.Var.azureSubscriptionRubrikId = <System.String>
 # REQUIRED
-$inputs.Var.diskSnapshotId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.diskSnapshotId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3093,19 +3005,14 @@ $inputs.Var.diskSnapshotId = <System.String>";
                 "query",
                 "QueryIsAzureStorageAccountNameAvailable",
                 "($azureSubscriptionRubrikId: UUID!,$storageAccountName: String!)",
-                "System.Boolean"
-                );
-            System.Boolean? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (System.Boolean)this.Field;
-            }
-            string fieldSpecDoc = Query.IsAzureStorageAccountNameAvailable(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "System.Boolean",
+                Query.IsAzureStorageAccountNameAvailable_ObjectFieldSpec,
+                Query.IsAzureStorageAccountNameAvailableFieldSpec,
+                @"# REQUIRED
 $inputs.Var.azureSubscriptionRubrikId = <System.String>
 # REQUIRED
-$inputs.Var.storageAccountName = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.storageAccountName = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3120,17 +3027,12 @@ $inputs.Var.storageAccountName = <System.String>";
                 "query",
                 "QueryAllAzureNativeStorageAccountsFromAzure",
                 "($azureSubscriptionRubrikId: UUID!)",
-                "List<AzureNativeStorageAccount>"
-                );
-            List<AzureNativeStorageAccount>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<AzureNativeStorageAccount>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAzureNativeStorageAccountsFromAzure(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.azureSubscriptionRubrikId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "List<AzureNativeStorageAccount>",
+                Query.AllAzureNativeStorageAccountsFromAzure_ObjectFieldSpec,
+                Query.AllAzureNativeStorageAccountsFromAzureFieldSpec,
+                @"# REQUIRED
+$inputs.Var.azureSubscriptionRubrikId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3145,17 +3047,12 @@ $inputs.Var.azureSubscriptionRubrikId = <System.String>";
                 "query",
                 "QueryAzureSqlDatabase",
                 "($azureSqlDatabaseRubrikId: UUID!)",
-                "AzureSqlDatabaseDb"
-                );
-            AzureSqlDatabaseDb? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AzureSqlDatabaseDb)this.Field;
-            }
-            string fieldSpecDoc = Query.AzureSqlDatabase(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.azureSqlDatabaseRubrikId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "AzureSqlDatabaseDb",
+                Query.AzureSqlDatabase_ObjectFieldSpec,
+                Query.AzureSqlDatabaseFieldSpec,
+                @"# REQUIRED
+$inputs.Var.azureSqlDatabaseRubrikId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3184,14 +3081,10 @@ $inputs.Var.azureSqlDatabaseRubrikId = <System.String>";
                 "query",
                 "QueryAzureSqlDatabases",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureSqlDatabaseSortFields,$sortOrder: SortOrder,$azureSqlDatabaseFilters: AzureSqlDatabaseFilters)",
-                "AzureSqlDatabaseDbConnection"
-                );
-            AzureSqlDatabaseDbConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AzureSqlDatabaseDbConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.AzureSqlDatabases(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "AzureSqlDatabaseDbConnection",
+                Query.AzureSqlDatabases_ObjectFieldSpec,
+                Query.AzureSqlDatabasesFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -3264,9 +3157,8 @@ $inputs.Var.azureSqlDatabaseFilters = @{
 			<System.String>
 		)
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3281,17 +3173,12 @@ $inputs.Var.azureSqlDatabaseFilters = @{
                 "query",
                 "QueryAzureSqlDatabaseServer",
                 "($azureSqlDatabaseServerRubrikId: UUID!)",
-                "AzureSqlDatabaseServer"
-                );
-            AzureSqlDatabaseServer? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AzureSqlDatabaseServer)this.Field;
-            }
-            string fieldSpecDoc = Query.AzureSqlDatabaseServer(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.azureSqlDatabaseServerRubrikId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "AzureSqlDatabaseServer",
+                Query.AzureSqlDatabaseServer_ObjectFieldSpec,
+                Query.AzureSqlDatabaseServerFieldSpec,
+                @"# REQUIRED
+$inputs.Var.azureSqlDatabaseServerRubrikId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3320,14 +3207,10 @@ $inputs.Var.azureSqlDatabaseServerRubrikId = <System.String>";
                 "query",
                 "QueryAzureSqlDatabaseServers",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureSqlDatabaseServerSortFields,$sortOrder: SortOrder,$azureSqlDatabaseServerFilters: AzureSqlDatabaseServerFilters)",
-                "AzureSqlDatabaseServerConnection"
-                );
-            AzureSqlDatabaseServerConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AzureSqlDatabaseServerConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.AzureSqlDatabaseServers(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "AzureSqlDatabaseServerConnection",
+                Query.AzureSqlDatabaseServers_ObjectFieldSpec,
+                Query.AzureSqlDatabaseServersFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -3374,9 +3257,8 @@ $inputs.Var.azureSqlDatabaseServerFilters = @{
 			<AzureNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
 		)
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3391,17 +3273,12 @@ $inputs.Var.azureSqlDatabaseServerFilters = @{
                 "query",
                 "QueryAzureSqlManagedInstanceDatabase",
                 "($azureSqlManagedInstanceDatabaseRubrikId: UUID!)",
-                "AzureSqlManagedInstanceDatabase"
-                );
-            AzureSqlManagedInstanceDatabase? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AzureSqlManagedInstanceDatabase)this.Field;
-            }
-            string fieldSpecDoc = Query.AzureSqlManagedInstanceDatabase(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.azureSqlManagedInstanceDatabaseRubrikId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "AzureSqlManagedInstanceDatabase",
+                Query.AzureSqlManagedInstanceDatabase_ObjectFieldSpec,
+                Query.AzureSqlManagedInstanceDatabaseFieldSpec,
+                @"# REQUIRED
+$inputs.Var.azureSqlManagedInstanceDatabaseRubrikId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3430,14 +3307,10 @@ $inputs.Var.azureSqlManagedInstanceDatabaseRubrikId = <System.String>";
                 "query",
                 "QueryAzureSqlManagedInstanceDatabases",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureSqlManagedInstanceDatabaseSortFields,$sortOrder: SortOrder,$azureSqlManagedInstanceDatabaseFilters: AzureSqlManagedInstanceDatabaseFilters)",
-                "AzureSqlManagedInstanceDatabaseConnection"
-                );
-            AzureSqlManagedInstanceDatabaseConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AzureSqlManagedInstanceDatabaseConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.AzureSqlManagedInstanceDatabases(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "AzureSqlManagedInstanceDatabaseConnection",
+                Query.AzureSqlManagedInstanceDatabases_ObjectFieldSpec,
+                Query.AzureSqlManagedInstanceDatabasesFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -3496,9 +3369,8 @@ $inputs.Var.azureSqlManagedInstanceDatabaseFilters = @{
 			<System.String>
 		)
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3513,17 +3385,12 @@ $inputs.Var.azureSqlManagedInstanceDatabaseFilters = @{
                 "query",
                 "QueryAzureSqlManagedInstanceServer",
                 "($azureSqlManagedInstanceServerRubrikId: UUID!)",
-                "AzureSqlManagedInstanceServer"
-                );
-            AzureSqlManagedInstanceServer? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AzureSqlManagedInstanceServer)this.Field;
-            }
-            string fieldSpecDoc = Query.AzureSqlManagedInstanceServer(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.azureSqlManagedInstanceServerRubrikId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "AzureSqlManagedInstanceServer",
+                Query.AzureSqlManagedInstanceServer_ObjectFieldSpec,
+                Query.AzureSqlManagedInstanceServerFieldSpec,
+                @"# REQUIRED
+$inputs.Var.azureSqlManagedInstanceServerRubrikId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3552,14 +3419,10 @@ $inputs.Var.azureSqlManagedInstanceServerRubrikId = <System.String>";
                 "query",
                 "QueryAzureSqlManagedInstanceServers",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureSqlManagedInstanceServerSortFields,$sortOrder: SortOrder,$azureSqlManagedInstanceServerFilters: AzureSqlManagedInstanceServerFilters)",
-                "AzureSqlManagedInstanceServerConnection"
-                );
-            AzureSqlManagedInstanceServerConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AzureSqlManagedInstanceServerConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.AzureSqlManagedInstanceServers(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "AzureSqlManagedInstanceServerConnection",
+                Query.AzureSqlManagedInstanceServers_ObjectFieldSpec,
+                Query.AzureSqlManagedInstanceServersFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -3620,9 +3483,8 @@ $inputs.Var.azureSqlManagedInstanceServerFilters = @{
 			}
 		)
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3645,23 +3507,18 @@ $inputs.Var.azureSqlManagedInstanceServerFilters = @{
                 "query",
                 "QueryAzureSqlDatabaseDbPointInTimeRestoreWindowFromAzure",
                 "($subscriptionId: UUID!,$resourceGroupName: String!,$azureSqlDatabaseServerName: String!,$azureSqlDatabaseName: String!)",
-                "AzureNativeSqlDatabasePointInTimeRestoreWindow"
-                );
-            AzureNativeSqlDatabasePointInTimeRestoreWindow? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AzureNativeSqlDatabasePointInTimeRestoreWindow)this.Field;
-            }
-            string fieldSpecDoc = Query.AzureSqlDatabaseDbPointInTimeRestoreWindowFromAzure(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AzureNativeSqlDatabasePointInTimeRestoreWindow",
+                Query.AzureSqlDatabaseDbPointInTimeRestoreWindowFromAzure_ObjectFieldSpec,
+                Query.AzureSqlDatabaseDbPointInTimeRestoreWindowFromAzureFieldSpec,
+                @"# REQUIRED
 $inputs.Var.subscriptionId = <System.String>
 # REQUIRED
 $inputs.Var.resourceGroupName = <System.String>
 # REQUIRED
 $inputs.Var.azureSqlDatabaseServerName = <System.String>
 # REQUIRED
-$inputs.Var.azureSqlDatabaseName = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.azureSqlDatabaseName = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3684,23 +3541,18 @@ $inputs.Var.azureSqlDatabaseName = <System.String>";
                 "query",
                 "QueryAzureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure",
                 "($subscriptionId: UUID!,$resourceGroupName: String!,$azureSqlManagedInstanceName: String!,$azureSqlDatabaseName: String!)",
-                "AzureNativeSqlDatabasePointInTimeRestoreWindow"
-                );
-            AzureNativeSqlDatabasePointInTimeRestoreWindow? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AzureNativeSqlDatabasePointInTimeRestoreWindow)this.Field;
-            }
-            string fieldSpecDoc = Query.AzureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AzureNativeSqlDatabasePointInTimeRestoreWindow",
+                Query.AzureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure_ObjectFieldSpec,
+                Query.AzureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzureFieldSpec,
+                @"# REQUIRED
 $inputs.Var.subscriptionId = <System.String>
 # REQUIRED
 $inputs.Var.resourceGroupName = <System.String>
 # REQUIRED
 $inputs.Var.azureSqlManagedInstanceName = <System.String>
 # REQUIRED
-$inputs.Var.azureSqlDatabaseName = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.azureSqlDatabaseName = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3716,19 +3568,14 @@ $inputs.Var.azureSqlDatabaseName = <System.String>";
                 "query",
                 "QueryValidateAzureNativeSqlDatabaseDbNameForExport",
                 "($azureSqlDatabaseName: String!,$azureSqlDatabaseServerRubrikId: UUID!)",
-                "ValidateAzureNativeSqlDatabaseDbNameForExportReply"
-                );
-            ValidateAzureNativeSqlDatabaseDbNameForExportReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (ValidateAzureNativeSqlDatabaseDbNameForExportReply)this.Field;
-            }
-            string fieldSpecDoc = Query.ValidateAzureNativeSqlDatabaseDbNameForExport(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "ValidateAzureNativeSqlDatabaseDbNameForExportReply",
+                Query.ValidateAzureNativeSqlDatabaseDbNameForExport_ObjectFieldSpec,
+                Query.ValidateAzureNativeSqlDatabaseDbNameForExportFieldSpec,
+                @"# REQUIRED
 $inputs.Var.azureSqlDatabaseName = <System.String>
 # REQUIRED
-$inputs.Var.azureSqlDatabaseServerRubrikId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.azureSqlDatabaseServerRubrikId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3744,19 +3591,14 @@ $inputs.Var.azureSqlDatabaseServerRubrikId = <System.String>";
                 "query",
                 "QueryValidateAzureNativeSqlManagedInstanceDbNameForExport",
                 "($azureSqlDatabaseName: String!,$azureSqlManagedInstanceServerRubrikId: UUID!)",
-                "ValidateAzureNativeSqlManagedInstanceDbNameForExportReply"
-                );
-            ValidateAzureNativeSqlManagedInstanceDbNameForExportReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (ValidateAzureNativeSqlManagedInstanceDbNameForExportReply)this.Field;
-            }
-            string fieldSpecDoc = Query.ValidateAzureNativeSqlManagedInstanceDbNameForExport(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "ValidateAzureNativeSqlManagedInstanceDbNameForExportReply",
+                Query.ValidateAzureNativeSqlManagedInstanceDbNameForExport_ObjectFieldSpec,
+                Query.ValidateAzureNativeSqlManagedInstanceDbNameForExportFieldSpec,
+                @"# REQUIRED
 $inputs.Var.azureSqlDatabaseName = <System.String>
 # REQUIRED
-$inputs.Var.azureSqlManagedInstanceServerRubrikId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.azureSqlManagedInstanceServerRubrikId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3779,23 +3621,18 @@ $inputs.Var.azureSqlManagedInstanceServerRubrikId = <System.String>";
                 "query",
                 "QueryAllAzureSqlDatabaseServerElasticPools",
                 "($subscriptionId: UUID!,$resourceGroupName: String!,$azureSqlDatabaseServerName: String!,$azureSqlDatabaseServerRubrikId: UUID!)",
-                "List<AzureSqlDatabaseServerElasticPool>"
-                );
-            List<AzureSqlDatabaseServerElasticPool>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<AzureSqlDatabaseServerElasticPool>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAzureSqlDatabaseServerElasticPools(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<AzureSqlDatabaseServerElasticPool>",
+                Query.AllAzureSqlDatabaseServerElasticPools_ObjectFieldSpec,
+                Query.AllAzureSqlDatabaseServerElasticPoolsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.subscriptionId = <System.String>
 # REQUIRED
 $inputs.Var.resourceGroupName = <System.String>
 # REQUIRED
 $inputs.Var.azureSqlDatabaseServerName = <System.String>
 # REQUIRED
-$inputs.Var.azureSqlDatabaseServerRubrikId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.azureSqlDatabaseServerRubrikId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3810,17 +3647,12 @@ $inputs.Var.azureSqlDatabaseServerRubrikId = <System.String>";
                 "query",
                 "QueryIsAzureNativeSqlDatabaseSnapshotPersistent",
                 "($snapshotId: UUID!)",
-                "System.Boolean"
-                );
-            System.Boolean? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (System.Boolean)this.Field;
-            }
-            string fieldSpecDoc = Query.IsAzureNativeSqlDatabaseSnapshotPersistent(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.snapshotId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "System.Boolean",
+                Query.IsAzureNativeSqlDatabaseSnapshotPersistent_ObjectFieldSpec,
+                Query.IsAzureNativeSqlDatabaseSnapshotPersistentFieldSpec,
+                @"# REQUIRED
+$inputs.Var.snapshotId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3835,14 +3667,10 @@ $inputs.Var.snapshotId = <System.String>";
                 "query",
                 "QueryAllAzureKeyVaultsByRegion",
                 "($azureKeyVaultsInput: AzureKeyVaultsInput!)",
-                "List<AzureKeyVault>"
-                );
-            List<AzureKeyVault>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<AzureKeyVault>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAzureKeyVaultsByRegion(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<AzureKeyVault>",
+                Query.AllAzureKeyVaultsByRegion_ObjectFieldSpec,
+                Query.AllAzureKeyVaultsByRegionFieldSpec,
+                @"# REQUIRED
 $inputs.Var.azureKeyVaultsInput = @{
 	# REQUIRED
 	cloudAccountId = <System.String>
@@ -3850,9 +3678,8 @@ $inputs.Var.azureKeyVaultsInput = @{
 	region = <AzureRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureRegion]) for enum values.
 	# OPTIONAL
 	userAssignedManagedIdentityPrincipalId = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3867,14 +3694,10 @@ $inputs.Var.azureKeyVaultsInput = @{
                 "query",
                 "QueryAllAzureEncryptionKeys",
                 "($azureEncryptionKeysInput: AzureEncryptionKeysInput!)",
-                "List<AzureEncryptionKey>"
-                );
-            List<AzureEncryptionKey>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<AzureEncryptionKey>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAzureEncryptionKeys(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<AzureEncryptionKey>",
+                Query.AllAzureEncryptionKeys_ObjectFieldSpec,
+                Query.AllAzureEncryptionKeysFieldSpec,
+                @"# REQUIRED
 $inputs.Var.azureEncryptionKeysInput = @{
 	# REQUIRED
 	cloudAccountId = <System.String>
@@ -3882,9 +3705,8 @@ $inputs.Var.azureEncryptionKeysInput = @{
 	keyVaultName = <System.String>
 	# REQUIRED
 	resourceGroupName = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3909,14 +3731,10 @@ $inputs.Var.azureEncryptionKeysInput = @{
                 "query",
                 "QueryAzureCloudAccountTenant",
                 "($tenantId: UUID!,$feature: CloudAccountFeature!,$subscriptionStatusFilters: [CloudAccountStatus!]!,$subscriptionSearchText: String!,$subscriptionIdsFilter: [UUID!])",
-                "AzureCloudAccountTenant"
-                );
-            AzureCloudAccountTenant? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AzureCloudAccountTenant)this.Field;
-            }
-            string fieldSpecDoc = Query.AzureCloudAccountTenant(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AzureCloudAccountTenant",
+                Query.AzureCloudAccountTenant_ObjectFieldSpec,
+                Query.AzureCloudAccountTenantFieldSpec,
+                @"# REQUIRED
 $inputs.Var.tenantId = <System.String>
 # REQUIRED
 $inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
@@ -3929,9 +3747,8 @@ $inputs.Var.subscriptionSearchText = <System.String>
 # OPTIONAL
 $inputs.Var.subscriptionIdsFilter = @(
 	<System.String>
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3956,14 +3773,10 @@ $inputs.Var.subscriptionIdsFilter = @(
                 "query",
                 "QueryAzureCloudAccountTenantWithExoConfigs",
                 "($tenantId: UUID!,$feature: CloudAccountFeature!,$subscriptionStatusFilters: [CloudAccountStatus!]!,$subscriptionSearchText: String!,$subscriptionIdsFilter: [UUID!])",
-                "AzureCloudAccountTenantWithExoConfigs"
-                );
-            AzureCloudAccountTenantWithExoConfigs? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AzureCloudAccountTenantWithExoConfigs)this.Field;
-            }
-            string fieldSpecDoc = Query.AzureCloudAccountTenantWithExoConfigs(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AzureCloudAccountTenantWithExoConfigs",
+                Query.AzureCloudAccountTenantWithExoConfigs_ObjectFieldSpec,
+                Query.AzureCloudAccountTenantWithExoConfigsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.tenantId = <System.String>
 # REQUIRED
 $inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
@@ -3976,9 +3789,8 @@ $inputs.Var.subscriptionSearchText = <System.String>
 # OPTIONAL
 $inputs.Var.subscriptionIdsFilter = @(
 	<System.String>
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3995,23 +3807,18 @@ $inputs.Var.subscriptionIdsFilter = @(
                 "query",
                 "QueryAllAzureCloudAccountTenants",
                 "($features: [CloudAccountFeature!],$feature: CloudAccountFeature!,$includeSubscriptionDetails: Boolean!)",
-                "List<AzureCloudAccountTenant>"
-                );
-            List<AzureCloudAccountTenant>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<AzureCloudAccountTenant>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAzureCloudAccountTenants(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "List<AzureCloudAccountTenant>",
+                Query.AllAzureCloudAccountTenants_ObjectFieldSpec,
+                Query.AllAzureCloudAccountTenantsFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.features = @(
 	<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 )
 # REQUIRED
 $inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 # REQUIRED
-$inputs.Var.includeSubscriptionDetails = <System.Boolean>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.includeSubscriptionDetails = <System.Boolean>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -4026,17 +3833,12 @@ $inputs.Var.includeSubscriptionDetails = <System.Boolean>";
                 "query",
                 "QueryAzureCloudAccountSubscriptionWithFeatures",
                 "($cloudAccountId: UUID!)",
-                "AzureCloudAccountSubscriptionWithFeatures"
-                );
-            AzureCloudAccountSubscriptionWithFeatures? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AzureCloudAccountSubscriptionWithFeatures)this.Field;
-            }
-            string fieldSpecDoc = Query.AzureCloudAccountSubscriptionWithFeatures(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.cloudAccountId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "AzureCloudAccountSubscriptionWithFeatures",
+                Query.AzureCloudAccountSubscriptionWithFeatures_ObjectFieldSpec,
+                Query.AzureCloudAccountSubscriptionWithFeaturesFieldSpec,
+                @"# REQUIRED
+$inputs.Var.cloudAccountId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -4052,21 +3854,16 @@ $inputs.Var.cloudAccountId = <System.String>";
                 "query",
                 "QueryAllAzureCloudAccountSubscriptionsByFeature",
                 "($feature: CloudAccountFeature!,$subscriptionStatusFilters: [CloudAccountStatus!]!)",
-                "List<AzureSubscriptionWithFeaturesType>"
-                );
-            List<AzureSubscriptionWithFeaturesType>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<AzureSubscriptionWithFeaturesType>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAzureCloudAccountSubscriptionsByFeature(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<AzureSubscriptionWithFeaturesType>",
+                Query.AllAzureCloudAccountSubscriptionsByFeature_ObjectFieldSpec,
+                Query.AllAzureCloudAccountSubscriptionsByFeatureFieldSpec,
+                @"# REQUIRED
 $inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 # REQUIRED
 $inputs.Var.subscriptionStatusFilters = @(
 	<CloudAccountStatus> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountStatus]) for enum values.
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -4082,23 +3879,18 @@ $inputs.Var.subscriptionStatusFilters = @(
                 "query",
                 "QueryAllAzureSubscriptionWithExocomputeMappings",
                 "($features: [CloudAccountFeature!],$exocomputeSubscriptionIdsFilter: [UUID!])",
-                "List<AzureSubscriptionWithExocomputeMapping>"
-                );
-            List<AzureSubscriptionWithExocomputeMapping>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<AzureSubscriptionWithExocomputeMapping>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAzureSubscriptionWithExocomputeMappings(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "List<AzureSubscriptionWithExocomputeMapping>",
+                Query.AllAzureSubscriptionWithExocomputeMappings_ObjectFieldSpec,
+                Query.AllAzureSubscriptionWithExocomputeMappingsFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.features = @(
 	<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 )
 # OPTIONAL
 $inputs.Var.exocomputeSubscriptionIdsFilter = @(
 	<System.String>
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -4115,21 +3907,16 @@ $inputs.Var.exocomputeSubscriptionIdsFilter = @(
                 "query",
                 "QueryAllResourceGroupsFromAzure",
                 "($cloudAccountId: UUID!,$azureSubscriptionNativeId: UUID!,$feature: CloudAccountFeature!)",
-                "List<AzureResourceGroup>"
-                );
-            List<AzureResourceGroup>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<AzureResourceGroup>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllResourceGroupsFromAzure(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<AzureResourceGroup>",
+                Query.AllResourceGroupsFromAzure_ObjectFieldSpec,
+                Query.AllResourceGroupsFromAzureFieldSpec,
+                @"# REQUIRED
 $inputs.Var.cloudAccountId = <System.String>
 # REQUIRED
 $inputs.Var.azureSubscriptionNativeId = <System.String>
 # REQUIRED
-$inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values."
+            );
         }
 
         // Invoke GraphQL Query:
@@ -4152,23 +3939,18 @@ $inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecu
                 "query",
                 "QueryDoesAzureNativeResourceGroupExist",
                 "($cloudAccountId: UUID!,$azureSubscriptionNativeId: UUID!,$resourceGroupName: String!,$feature: CloudAccountFeature!)",
-                "System.Boolean"
-                );
-            System.Boolean? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (System.Boolean)this.Field;
-            }
-            string fieldSpecDoc = Query.DoesAzureNativeResourceGroupExist(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "System.Boolean",
+                Query.DoesAzureNativeResourceGroupExist_ObjectFieldSpec,
+                Query.DoesAzureNativeResourceGroupExistFieldSpec,
+                @"# REQUIRED
 $inputs.Var.cloudAccountId = <System.String>
 # REQUIRED
 $inputs.Var.azureSubscriptionNativeId = <System.String>
 # REQUIRED
 $inputs.Var.resourceGroupName = <System.String>
 # REQUIRED
-$inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values."
+            );
         }
 
         // Invoke GraphQL Query:
@@ -4183,14 +3965,10 @@ $inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecu
                 "query",
                 "QueryAllAzureNativeResourceGroupsInfoIfExist",
                 "($input: AzureGetResourceGroupsInfoIfExistInput!)",
-                "List<AzureResourceGroupInfo>"
-                );
-            List<AzureResourceGroupInfo>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<AzureResourceGroupInfo>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAzureNativeResourceGroupsInfoIfExist(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<AzureResourceGroupInfo>",
+                Query.AllAzureNativeResourceGroupsInfoIfExist_ObjectFieldSpec,
+                Query.AllAzureNativeResourceGroupsInfoIfExistFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	sessionId = <System.String>
@@ -4203,9 +3981,8 @@ $inputs.Var.input = @{
 			resourceGroupName = <System.String>
 		}
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -4222,23 +3999,18 @@ $inputs.Var.input = @{
                 "query",
                 "QueryAllAzureCloudAccountMissingPermissions",
                 "($sessionId: String!,$subscriptionIds: [UUID!]!,$cloudAccountAction: CloudAccountAction!)",
-                "List<AzureSubscriptionMissingPermissions>"
-                );
-            List<AzureSubscriptionMissingPermissions>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<AzureSubscriptionMissingPermissions>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAzureCloudAccountMissingPermissions(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<AzureSubscriptionMissingPermissions>",
+                Query.AllAzureCloudAccountMissingPermissions_ObjectFieldSpec,
+                Query.AllAzureCloudAccountMissingPermissionsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.sessionId = <System.String>
 # REQUIRED
 $inputs.Var.subscriptionIds = @(
 	<System.String>
 )
 # REQUIRED
-$inputs.Var.cloudAccountAction = <CloudAccountAction> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountAction]) for enum values.";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.cloudAccountAction = <CloudAccountAction> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountAction]) for enum values."
+            );
         }
 
         // Invoke GraphQL Query:
@@ -4253,17 +4025,12 @@ $inputs.Var.cloudAccountAction = <CloudAccountAction> # Call [Enum]::GetValues([
                 "query",
                 "QueryAzureCloudAccountPermissionConfig",
                 "($feature: CloudAccountFeature!)",
-                "AzureCloudAccountPermissionConfigResponse"
-                );
-            AzureCloudAccountPermissionConfigResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AzureCloudAccountPermissionConfigResponse)this.Field;
-            }
-            string fieldSpecDoc = Query.AzureCloudAccountPermissionConfig(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "AzureCloudAccountPermissionConfigResponse",
+                Query.AzureCloudAccountPermissionConfig_ObjectFieldSpec,
+                Query.AzureCloudAccountPermissionConfigFieldSpec,
+                @"# REQUIRED
+$inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values."
+            );
         }
 
         // Invoke GraphQL Query:
@@ -4279,21 +4046,16 @@ $inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecu
                 "query",
                 "QueryAllAzureExocomputeConfigsInAccount",
                 "($azureExocomputeSearchQuery: String,$cloudAccountIDs: [UUID!])",
-                "List<AzureExocomputeConfigsInAccount>"
-                );
-            List<AzureExocomputeConfigsInAccount>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<AzureExocomputeConfigsInAccount>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAzureExocomputeConfigsInAccount(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "List<AzureExocomputeConfigsInAccount>",
+                Query.AllAzureExocomputeConfigsInAccount_ObjectFieldSpec,
+                Query.AllAzureExocomputeConfigsInAccountFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.azureExocomputeSearchQuery = <System.String>
 # OPTIONAL
 $inputs.Var.cloudAccountIDs = @(
 	<System.String>
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -4309,19 +4071,14 @@ $inputs.Var.cloudAccountIDs = @(
                 "query",
                 "QueryAllAzureCloudAccountSubnetsByRegion",
                 "($cloudAccountId: UUID!,$region: AzureCloudAccountRegion!)",
-                "List<AzureNativeSubnet>"
-                );
-            List<AzureNativeSubnet>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<AzureNativeSubnet>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAzureCloudAccountSubnetsByRegion(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<AzureNativeSubnet>",
+                Query.AllAzureCloudAccountSubnetsByRegion_ObjectFieldSpec,
+                Query.AllAzureCloudAccountSubnetsByRegionFieldSpec,
+                @"# REQUIRED
 $inputs.Var.cloudAccountId = <System.String>
 # REQUIRED
-$inputs.Var.region = <AzureCloudAccountRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.region = <AzureCloudAccountRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values."
+            );
         }
 
         // Invoke GraphQL Query:
@@ -4336,14 +4093,10 @@ $inputs.Var.region = <AzureCloudAccountRegion> # Call [Enum]::GetValues([RubrikS
                 "query",
                 "QueryValidateAzureCloudAccountExocomputeConfigurations",
                 "($input: ValidateAzureCloudAccountExocomputeConfigurationsInput!)",
-                "ValidateAzureSubnetsForCloudAccountExocomputeReply"
-                );
-            ValidateAzureSubnetsForCloudAccountExocomputeReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (ValidateAzureSubnetsForCloudAccountExocomputeReply)this.Field;
-            }
-            string fieldSpecDoc = Query.ValidateAzureCloudAccountExocomputeConfigurations(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "ValidateAzureSubnetsForCloudAccountExocomputeReply",
+                Query.ValidateAzureCloudAccountExocomputeConfigurations_ObjectFieldSpec,
+                Query.ValidateAzureCloudAccountExocomputeConfigurationsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	cloudAccountId = <System.String>
@@ -4360,9 +4113,8 @@ $inputs.Var.input = @{
 			podSubnetNativeId = <System.String>
 		}
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -4377,14 +4129,10 @@ $inputs.Var.input = @{
                 "query",
                 "QueryAllAzureArmTemplatesByFeature",
                 "($input: AzureArmTemplatesByFeatureInput!)",
-                "List<AzureArmTemplateByFeature>"
-                );
-            List<AzureArmTemplateByFeature>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<AzureArmTemplateByFeature>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAzureArmTemplatesByFeature(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<AzureArmTemplateByFeature>",
+                Query.AllAzureArmTemplatesByFeature_ObjectFieldSpec,
+                Query.AllAzureArmTemplatesByFeatureFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	customerTenantDomainName = <System.String>
@@ -4396,9 +4144,19 @@ $inputs.Var.input = @{
 	operationType = <CloudAccountOperation> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountOperation]) for enum values.
 	# REQUIRED
 	cloudType = <AzureCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+	# OPTIONAL
+	featuresToInclude = @(
+		@{
+			# OPTIONAL
+			permissionsGroups = @(
+				<PermissionsGroup> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+			)
+			# REQUIRED
+			featureType = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+		}
+	)
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -4415,21 +4173,16 @@ $inputs.Var.input = @{
                 "query",
                 "QueryCheckAzurePersistentStorageSubscriptionCanUnmap",
                 "($cloudAccountId: UUID!,$feature: CloudAccountFeature!,$unmappingValidationType: UnmappingValidationType!)",
-                "CheckAzurePersistentStorageSubscriptionCanUnmapReply"
-                );
-            CheckAzurePersistentStorageSubscriptionCanUnmapReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CheckAzurePersistentStorageSubscriptionCanUnmapReply)this.Field;
-            }
-            string fieldSpecDoc = Query.CheckAzurePersistentStorageSubscriptionCanUnmap(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "CheckAzurePersistentStorageSubscriptionCanUnmapReply",
+                Query.CheckAzurePersistentStorageSubscriptionCanUnmap_ObjectFieldSpec,
+                Query.CheckAzurePersistentStorageSubscriptionCanUnmapFieldSpec,
+                @"# REQUIRED
 $inputs.Var.cloudAccountId = <System.String>
 # REQUIRED
 $inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 # REQUIRED
-$inputs.Var.unmappingValidationType = <UnmappingValidationType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmappingValidationType]) for enum values.";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.unmappingValidationType = <UnmappingValidationType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmappingValidationType]) for enum values."
+            );
         }
 
         // Invoke GraphQL Query:
@@ -4444,17 +4197,12 @@ $inputs.Var.unmappingValidationType = <UnmappingValidationType> # Call [Enum]::G
                 "query",
                 "QueryAzureSubscriptions",
                 "($tenantId: String!)",
-                "AzureSubscriptionConnection"
-                );
-            AzureSubscriptionConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AzureSubscriptionConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.AzureSubscriptions(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.tenantId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "AzureSubscriptionConnection",
+                Query.AzureSubscriptions_ObjectFieldSpec,
+                Query.AzureSubscriptionsFieldSpec,
+                @"# REQUIRED
+$inputs.Var.tenantId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -4470,19 +4218,14 @@ $inputs.Var.tenantId = <System.String>";
                 "query",
                 "QueryAzureRegions",
                 "($tenantId: String!,$subscriptionId: UUID!)",
-                "RegionConnection"
-                );
-            RegionConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (RegionConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.AzureRegions(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "RegionConnection",
+                Query.AzureRegions_ObjectFieldSpec,
+                Query.AzureRegionsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.tenantId = <System.String>
 # REQUIRED
-$inputs.Var.subscriptionId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.subscriptionId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -4498,19 +4241,14 @@ $inputs.Var.subscriptionId = <System.String>";
                 "query",
                 "QueryAzureResourceGroups",
                 "($tenantId: String!,$subscriptionId: UUID!)",
-                "ResourceGroupConnection"
-                );
-            ResourceGroupConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (ResourceGroupConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.AzureResourceGroups(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "ResourceGroupConnection",
+                Query.AzureResourceGroups_ObjectFieldSpec,
+                Query.AzureResourceGroupsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.tenantId = <System.String>
 # REQUIRED
-$inputs.Var.subscriptionId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.subscriptionId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -4527,21 +4265,16 @@ $inputs.Var.subscriptionId = <System.String>";
                 "query",
                 "QueryAzureVnets",
                 "($tenantId: String!,$subscriptionId: UUID!,$regionName: String!)",
-                "VnetConnection"
-                );
-            VnetConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (VnetConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.AzureVnets(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "VnetConnection",
+                Query.AzureVnets_ObjectFieldSpec,
+                Query.AzureVnetsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.tenantId = <System.String>
 # REQUIRED
 $inputs.Var.subscriptionId = <System.String>
 # REQUIRED
-$inputs.Var.regionName = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.regionName = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -4558,21 +4291,16 @@ $inputs.Var.regionName = <System.String>";
                 "query",
                 "QueryAzureSubnets",
                 "($tenantId: String!,$subscriptionId: UUID!,$vNetId: String!)",
-                "SubnetConnection"
-                );
-            SubnetConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (SubnetConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.AzureSubnets(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "SubnetConnection",
+                Query.AzureSubnets_ObjectFieldSpec,
+                Query.AzureSubnetsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.tenantId = <System.String>
 # REQUIRED
 $inputs.Var.subscriptionId = <System.String>
 # REQUIRED
-$inputs.Var.vNetId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.vNetId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -4589,21 +4317,16 @@ $inputs.Var.vNetId = <System.String>";
                 "query",
                 "QueryAzureStorageAccounts",
                 "($tenantId: String!,$subscriptionId: UUID!,$regionName: String!)",
-                "StorageAccountConnection"
-                );
-            StorageAccountConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (StorageAccountConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.AzureStorageAccounts(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "StorageAccountConnection",
+                Query.AzureStorageAccounts_ObjectFieldSpec,
+                Query.AzureStorageAccountsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.tenantId = <System.String>
 # REQUIRED
 $inputs.Var.subscriptionId = <System.String>
 # REQUIRED
-$inputs.Var.regionName = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.regionName = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -4617,16 +4340,11 @@ $inputs.Var.regionName = <System.String>";
                 "query",
                 "QueryAllHostedAzureRegions",
                 "",
-                "AzureRegionsResp"
-                );
-            AzureRegionsResp? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AzureRegionsResp)this.Field;
-            }
-            string fieldSpecDoc = Query.AllHostedAzureRegions(ref fieldSpecObj);
-            string inputExample = @"";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "AzureRegionsResp",
+                Query.AllHostedAzureRegions_ObjectFieldSpec,
+                Query.AllHostedAzureRegionsFieldSpec,
+                @""
+            );
         }
 
         // Invoke GraphQL Query:
@@ -4642,19 +4360,14 @@ $inputs.Var.regionName = <System.String>";
                 "query",
                 "QueryAllAzureResourceGroups",
                 "($cloudAccountId: String!,$azureRegion: String!)",
-                "List<System.String>"
-                );
-            List<System.String>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<System.String>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAzureResourceGroups(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<System.String>",
+                Query.AllAzureResourceGroups_ObjectFieldSpec,
+                Query.AllAzureResourceGroupsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.cloudAccountId = <System.String>
 # REQUIRED
-$inputs.Var.azureRegion = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.azureRegion = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -4669,22 +4382,17 @@ $inputs.Var.azureRegion = <System.String>";
                 "query",
                 "QueryAllAzureVnets",
                 "($vnetRequest: AzureVnetReq!)",
-                "List<System.String>"
-                );
-            List<System.String>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<System.String>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAzureVnets(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<System.String>",
+                Query.AllAzureVnets_ObjectFieldSpec,
+                Query.AllAzureVnetsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.vnetRequest = @{
 	# OPTIONAL
 	cloudAccountId = <System.String>
 	# OPTIONAL
 	resourceGroup = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -4699,14 +4407,10 @@ $inputs.Var.vnetRequest = @{
                 "query",
                 "QueryAllAzureSubnets",
                 "($subnetRequest: AzureSubnetReq!)",
-                "List<System.String>"
-                );
-            List<System.String>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<System.String>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAzureSubnets(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<System.String>",
+                Query.AllAzureSubnets_ObjectFieldSpec,
+                Query.AllAzureSubnetsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.subnetRequest = @{
 	# OPTIONAL
 	cloudAccountId = <System.String>
@@ -4714,9 +4418,8 @@ $inputs.Var.subnetRequest = @{
 	resourceGroup = <System.String>
 	# OPTIONAL
 	vnetName = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -4731,22 +4434,17 @@ $inputs.Var.subnetRequest = @{
                 "query",
                 "QueryAllAzureCdmVersions",
                 "($cdmVersionRequest: AzureCdmVersionReq!)",
-                "List<AzureCdmVersion>"
-                );
-            List<AzureCdmVersion>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<AzureCdmVersion>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAzureCdmVersions(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<AzureCdmVersion>",
+                Query.AllAzureCdmVersions_ObjectFieldSpec,
+                Query.AllAzureCdmVersionsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.cdmVersionRequest = @{
 	# OPTIONAL
 	cloudAccountId = <System.String>
 	# OPTIONAL
 	location = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -4761,17 +4459,12 @@ $inputs.Var.cdmVersionRequest = @{
                 "query",
                 "QueryAllAzureRegions",
                 "($cloudAccountId: String!)",
-                "List<AzureCloudAccountRegion>"
-                );
-            List<AzureCloudAccountRegion>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<AzureCloudAccountRegion>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAzureRegions(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.cloudAccountId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "List<AzureCloudAccountRegion>",
+                Query.AllAzureRegions_ObjectFieldSpec,
+                Query.AllAzureRegionsFieldSpec,
+                @"# REQUIRED
+$inputs.Var.cloudAccountId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -4786,22 +4479,17 @@ $inputs.Var.cloudAccountId = <System.String>";
                 "query",
                 "QueryAllAzureNsgs",
                 "($nsgRequest: AzureNsgRequest!)",
-                "List<System.String>"
-                );
-            List<System.String>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<System.String>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAzureNsgs(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<System.String>",
+                Query.AllAzureNsgs_ObjectFieldSpec,
+                Query.AllAzureNsgsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.nsgRequest = @{
 	# OPTIONAL
 	cloudAccountId = <System.String>
 	# OPTIONAL
 	resourceGroup = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -4816,22 +4504,17 @@ $inputs.Var.nsgRequest = @{
                 "query",
                 "QueryAllAzureStorageAccounts",
                 "($storageAccountsRequest: AzureStorageAccountsReq!)",
-                "List<System.String>"
-                );
-            List<System.String>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<System.String>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAzureStorageAccounts(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<System.String>",
+                Query.AllAzureStorageAccounts_ObjectFieldSpec,
+                Query.AllAzureStorageAccountsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.storageAccountsRequest = @{
 	# OPTIONAL
 	cloudAccountId = <System.String>
 	# OPTIONAL
 	resourceGroup = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -4846,20 +4529,15 @@ $inputs.Var.storageAccountsRequest = @{
                 "query",
                 "QueryAllAzureManagedIdentities",
                 "($managedIdentitiesRequest: AzureManagedIdentitiesRequest!)",
-                "List<AzureManagedIdentity>"
-                );
-            List<AzureManagedIdentity>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<AzureManagedIdentity>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAzureManagedIdentities(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<AzureManagedIdentity>",
+                Query.AllAzureManagedIdentities_ObjectFieldSpec,
+                Query.AllAzureManagedIdentitiesFieldSpec,
+                @"# REQUIRED
 $inputs.Var.managedIdentitiesRequest = @{
 	# REQUIRED
 	cloudAccountId = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
 

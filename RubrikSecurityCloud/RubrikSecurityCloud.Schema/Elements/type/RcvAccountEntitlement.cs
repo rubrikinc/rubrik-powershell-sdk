@@ -161,7 +161,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<RcvAccountEntitlement> list)
+        public static void SelectForRetrieval(this List<RcvAccountEntitlement> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

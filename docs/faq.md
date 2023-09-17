@@ -33,13 +33,13 @@ they are null. Why?
 For example, when running:
 
 ```powershell
-PS> Invoke-Rsc -Query "query GetVsphereVmList{vSphereVmNewConnection{nodes{id name}}}"
+PS> Invoke-Rsc -GqlQuery "query GetVsphereVmList{vSphereVmNewConnection{nodes{id name}}}"
 ```
 
 I only request `id` and `name`, but I get back a lot more fields:
 
 ```powershell
-PS> (Invoke-Rsc -Query "query GetVsphereVmList{vSphereVmNewConnection{nodes{id name}}}").Nodes[0]
+PS> (Invoke-Rsc -GqlQuery "query GetVsphereVmList{vSphereVmNewConnection{nodes{id name}}}").Nodes[0]
 
 Id             : 0024d4d1-631b-b47d-f610df4b052b
 Name           : rubrik-vmware-01
@@ -66,7 +66,7 @@ You can safely ignore the nulls in the response. If you want to
 remove them, you can use the `Remove-NullProperties` cmdlet:
 
 ```powershell
-PS> (Invoke-Rsc -Query "query GetVsphereVmList{vSphereVmNewConnection{nodes{id name}}}").Nodes[0] | Remove-NullProperties
+PS> (Invoke-Rsc -GqlQuery "query GetVsphereVmList{vSphereVmNewConnection{nodes{id name}}}").Nodes[0] | Remove-NullProperties
 
 Id             : 0024d4d1-631b-b47d-f610df4b052b
 Name           : rubrik-vmware-01
@@ -80,7 +80,7 @@ I requested. Why?
 Example:
 
 ```powershell
-Invoke-Rsc -Query "query {clusterConnection{nodes{name, defaultAddress}}}" | Select -ExpandProperty Nodes
+Invoke-Rsc -GqlQuery "query {clusterConnection{nodes{name, defaultAddress}}}" | Select -ExpandProperty Nodes
 
 Name : ABCDEFGHIJ
 DefaultAddress :

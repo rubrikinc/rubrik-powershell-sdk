@@ -189,7 +189,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<OracleNonSlaProperties> list)
+        public static void SelectForRetrieval(this List<OracleNonSlaProperties> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

@@ -133,7 +133,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<CassandraSourceEdge> list)
+        public static void SelectForRetrieval(this List<CassandraSourceEdge> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

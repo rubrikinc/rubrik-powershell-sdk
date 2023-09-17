@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<MongoCollectionSetDescendantType> list)
+        public static void SelectForRetrieval(this List<MongoCollectionSetDescendantType> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

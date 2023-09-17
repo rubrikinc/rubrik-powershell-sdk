@@ -72,12 +72,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <example>
     /// <code>Invoke-RscQueryOracle -RacLogBackupConfig [-Arg ..] [-Field ..]</code>
     /// </example>
+    [CmdletBinding()]
     [Cmdlet(
         "Invoke",
         "RscQueryOracle",
         DefaultParameterSetName = "Host")
     ]
-    public class Invoke_RscQueryOracle : RscPSCmdlet
+    public class Invoke_RscQueryOracle : RscGqlPSCmdlet
     {
         
         /// <summary>
@@ -390,6 +391,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
 #pragma warning disable 1591
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 switch(Op)
@@ -622,14 +624,10 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
                 "query",
                 "QueryOracleTopLevelDescendants",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!],$filter: [Filter!])",
-                "OracleTopLevelDescendantTypeConnection"
-                );
-            OracleTopLevelDescendantTypeConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (OracleTopLevelDescendantTypeConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.OracleTopLevelDescendants(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "OracleTopLevelDescendantTypeConnection",
+                Query.OracleTopLevelDescendants_ObjectFieldSpec,
+                Query.OracleTopLevelDescendantsFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -682,9 +680,8 @@ $inputs.Var.filter = @(
 			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
 		)
 }
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -709,14 +706,10 @@ $inputs.Var.filter = @(
                 "query",
                 "QueryOracleDatabases",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                "OracleDatabaseConnection"
-                );
-            OracleDatabaseConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (OracleDatabaseConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.OracleDatabases(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "OracleDatabaseConnection",
+                Query.OracleDatabases_ObjectFieldSpec,
+                Query.OracleDatabasesFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -765,9 +758,8 @@ $inputs.Var.filter = @(
 			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
 		)
 }
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -782,17 +774,12 @@ $inputs.Var.filter = @(
                 "query",
                 "QueryOracleHost",
                 "($fid: UUID!)",
-                "OracleHost"
-                );
-            OracleHost? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (OracleHost)this.Field;
-            }
-            string fieldSpecDoc = Query.OracleHost(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "OracleHost",
+                Query.OracleHost_ObjectFieldSpec,
+                Query.OracleHostFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -807,17 +794,12 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryOracleRac",
                 "($fid: UUID!)",
-                "OracleRac"
-                );
-            OracleRac? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (OracleRac)this.Field;
-            }
-            string fieldSpecDoc = Query.OracleRac(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "OracleRac",
+                Query.OracleRac_ObjectFieldSpec,
+                Query.OracleRacFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -832,17 +814,12 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryOracleDataGuardGroup",
                 "($fid: UUID!)",
-                "OracleDataGuardGroup"
-                );
-            OracleDataGuardGroup? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (OracleDataGuardGroup)this.Field;
-            }
-            string fieldSpecDoc = Query.OracleDataGuardGroup(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "OracleDataGuardGroup",
+                Query.OracleDataGuardGroup_ObjectFieldSpec,
+                Query.OracleDataGuardGroupFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -857,17 +834,12 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryOracleDatabase",
                 "($fid: UUID!)",
-                "OracleDatabase"
-                );
-            OracleDatabase? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (OracleDatabase)this.Field;
-            }
-            string fieldSpecDoc = Query.OracleDatabase(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "OracleDatabase",
+                Query.OracleDatabase_ObjectFieldSpec,
+                Query.OracleDatabaseFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -890,14 +862,10 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryOracleLiveMounts",
                 "($first: Int,$after: String,$filters: [OracleLiveMountFilterInput!],$sortBy: OracleLiveMountSortBy)",
-                "OracleLiveMountConnection"
-                );
-            OracleLiveMountConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (OracleLiveMountConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.OracleLiveMounts(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "OracleLiveMountConnection",
+                Query.OracleLiveMounts_ObjectFieldSpec,
+                Query.OracleLiveMountsFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -918,9 +886,8 @@ $inputs.Var.sortBy = @{
 	field = <OracleLiveMountSortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.OracleLiveMountSortByField]) for enum values.
 	# OPTIONAL
 	sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -935,22 +902,17 @@ $inputs.Var.sortBy = @{
                 "query",
                 "QueryOracleAcoParameters",
                 "($input: ClusterUuidWithDbIdInput!)",
-                "OracleAcoParameterList"
-                );
-            OracleAcoParameterList? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (OracleAcoParameterList)this.Field;
-            }
-            string fieldSpecDoc = Query.OracleAcoParameters(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "OracleAcoParameterList",
+                Query.OracleAcoParameters_ObjectFieldSpec,
+                Query.OracleAcoParametersFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	clusterUuid = <System.String>
 	# REQUIRED
 	dbId = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -965,14 +927,10 @@ $inputs.Var.input = @{
                 "query",
                 "QueryOracleRecoverableRanges",
                 "($input: GetOracleDbRecoverableRangesInput!)",
-                "OracleRecoverableRangeListResponse"
-                );
-            OracleRecoverableRangeListResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (OracleRecoverableRangeListResponse)this.Field;
-            }
-            string fieldSpecDoc = Query.OracleRecoverableRanges(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "OracleRecoverableRangeListResponse",
+                Query.OracleRecoverableRanges_ObjectFieldSpec,
+                Query.OracleRecoverableRangesFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	afterTime = <DateTime>
@@ -982,9 +940,8 @@ $inputs.Var.input = @{
 	shouldIncludeDbSnapshotSummaries = <System.Boolean>
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -999,14 +956,10 @@ $inputs.Var.input = @{
                 "query",
                 "QueryOracleMissedRecoverableRanges",
                 "($input: GetOracleDbMissedRecoverableRangesInput!)",
-                "OracleMissedRecoverableRangeListResponse"
-                );
-            OracleMissedRecoverableRangeListResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (OracleMissedRecoverableRangeListResponse)this.Field;
-            }
-            string fieldSpecDoc = Query.OracleMissedRecoverableRanges(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "OracleMissedRecoverableRangeListResponse",
+                Query.OracleMissedRecoverableRanges_ObjectFieldSpec,
+                Query.OracleMissedRecoverableRangesFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	afterTime = <DateTime>
@@ -1014,9 +967,8 @@ $inputs.Var.input = @{
 	beforeTime = <DateTime>
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1031,14 +983,10 @@ $inputs.Var.input = @{
                 "query",
                 "QueryOracleMissedSnapshots",
                 "($input: GetMissedOracleDbSnapshotsInput!)",
-                "MissedSnapshotListResponse"
-                );
-            MissedSnapshotListResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MissedSnapshotListResponse)this.Field;
-            }
-            string fieldSpecDoc = Query.OracleMissedSnapshots(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "MissedSnapshotListResponse",
+                Query.OracleMissedSnapshots_ObjectFieldSpec,
+                Query.OracleMissedSnapshotsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	afterTime = <DateTime>
@@ -1046,9 +994,8 @@ $inputs.Var.input = @{
 	beforeTime = <DateTime>
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1063,22 +1010,17 @@ $inputs.Var.input = @{
                 "query",
                 "QueryOracleAcoExampleDownloadLink",
                 "($input: ClusterUuidWithDbIdInput!)",
-                "OracleFileDownloadLink"
-                );
-            OracleFileDownloadLink? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (OracleFileDownloadLink)this.Field;
-            }
-            string fieldSpecDoc = Query.OracleAcoExampleDownloadLink(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "OracleFileDownloadLink",
+                Query.OracleAcoExampleDownloadLink_ObjectFieldSpec,
+                Query.OracleAcoExampleDownloadLinkFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	clusterUuid = <System.String>
 	# REQUIRED
 	dbId = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1093,14 +1035,10 @@ $inputs.Var.input = @{
                 "query",
                 "QueryOraclePdbDetails",
                 "($input: OraclePdbDetailsInput!)",
-                "OraclePdbDetails"
-                );
-            OraclePdbDetails? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (OraclePdbDetails)this.Field;
-            }
-            string fieldSpecDoc = Query.OraclePdbDetails(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "OraclePdbDetails",
+                Query.OraclePdbDetails_ObjectFieldSpec,
+                Query.OraclePdbDetailsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
@@ -1114,9 +1052,8 @@ $inputs.Var.input = @{
 			timestampMs = <System.Int64>
 		}
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1131,20 +1068,15 @@ $inputs.Var.input = @{
                 "query",
                 "QueryOracleHostLogBackupConfig",
                 "($input: OracleHostInput!)",
-                "OracleLogBackupConfig"
-                );
-            OracleLogBackupConfig? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (OracleLogBackupConfig)this.Field;
-            }
-            string fieldSpecDoc = Query.OracleHostLogBackupConfig(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "OracleLogBackupConfig",
+                Query.OracleHostLogBackupConfig_ObjectFieldSpec,
+                Query.OracleHostLogBackupConfigFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1159,20 +1091,15 @@ $inputs.Var.input = @{
                 "query",
                 "QueryOracleDatabaseLogBackupConfig",
                 "($input: OracleDbInput!)",
-                "OracleLogBackupConfig"
-                );
-            OracleLogBackupConfig? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (OracleLogBackupConfig)this.Field;
-            }
-            string fieldSpecDoc = Query.OracleDatabaseLogBackupConfig(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "OracleLogBackupConfig",
+                Query.OracleDatabaseLogBackupConfig_ObjectFieldSpec,
+                Query.OracleDatabaseLogBackupConfigFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1187,20 +1114,15 @@ $inputs.Var.input = @{
                 "query",
                 "QueryOracleRacLogBackupConfig",
                 "($input: OracleRacInput!)",
-                "OracleLogBackupConfig"
-                );
-            OracleLogBackupConfig? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (OracleLogBackupConfig)this.Field;
-            }
-            string fieldSpecDoc = Query.OracleRacLogBackupConfig(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "OracleLogBackupConfig",
+                Query.OracleRacLogBackupConfig_ObjectFieldSpec,
+                Query.OracleRacLogBackupConfigFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
 

@@ -109,7 +109,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<VsphereRequestErrorInfo> list)
+        public static void SelectForRetrieval(this List<VsphereRequestErrorInfo> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

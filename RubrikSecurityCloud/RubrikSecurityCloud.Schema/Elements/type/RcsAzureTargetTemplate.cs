@@ -174,7 +174,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<RcsAzureTargetTemplate> list)
+        public static void SelectForRetrieval(this List<RcsAzureTargetTemplate> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

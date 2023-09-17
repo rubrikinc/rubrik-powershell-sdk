@@ -95,8 +95,8 @@ Describe -Name 'Query for Snapshot' -Fixture {
       }"
     }
   ) {
-    Update-MockApiServerCache -Query $Query -Reply $ExpectedReply
-    Update-MockApiServerCache -Query $HierarchyObjectQuery -Reply $HierarchyObjectReply
+    Update-MockApiServerCache -GqlQuery $Query -Reply $ExpectedReply
+    Update-MockApiServerCache -GqlQuery $HierarchyObjectQuery -Reply $HierarchyObjectReply
 
     Connect-Rsc -ServiceAccountFile (Get-ServiceAccountFile)
     Get-RscSnapshot -SnappableId "76254be7-baa4-5145-a4b7-a7a7773ad97d"

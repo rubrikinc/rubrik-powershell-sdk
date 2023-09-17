@@ -766,7 +766,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<OracleHost> list)
+        public static void SelectForRetrieval(this List<OracleHost> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

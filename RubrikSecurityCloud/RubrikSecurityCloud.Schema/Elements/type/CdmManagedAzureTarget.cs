@@ -506,7 +506,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<CdmManagedAzureTarget> list)
+        public static void SelectForRetrieval(this List<CdmManagedAzureTarget> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

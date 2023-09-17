@@ -143,7 +143,7 @@ retrieve only the first cluster:
 
 ```powershell
 PS> $query = "query Clusters(`$first: Int){clusterConnection(first: `$first, sortBy:RegisteredAt){nodes{id}}}"
-PS> (Invoke-Rsc $query -Variables @{first=1}).Nodes.Id
+PS> (Invoke-Rsc $query -Var @{first=1}).Nodes.Id
 9b429c53-2afe-44b5-b4e4-e3a4308a69fb
 ```
 

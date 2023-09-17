@@ -369,7 +369,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<VmwareVmMountSummaryV1> list)
+        public static void SelectForRetrieval(this List<VmwareVmMountSummaryV1> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

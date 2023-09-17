@@ -16,7 +16,7 @@ namespace RubrikSecurityCloud.Types
         // IFieldSpec interface:
         public abstract string AsFieldSpec(int indent = 0);
         public abstract void ApplyExploratoryFieldSpec(ExplorationContext ec);
-        public void Fetch()
+        public void SelectForRetrieval()
         {
             this.ApplyExploratoryFieldSpec(new ExplorationContext());
         }
@@ -53,7 +53,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
 
-        public static void Fetch(this List<BaseType> list)
+        public static void SelectForRetrieval(this List<BaseType> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<VcdOrgVdcDescendantType> list)
+        public static void SelectForRetrieval(this List<VcdOrgVdcDescendantType> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

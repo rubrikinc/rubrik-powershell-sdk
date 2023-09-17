@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<VsphereTagDescendantType> list)
+        public static void SelectForRetrieval(this List<VsphereTagDescendantType> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<MssqlTopLevelDescendantType> list)
+        public static void SelectForRetrieval(this List<MssqlTopLevelDescendantType> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

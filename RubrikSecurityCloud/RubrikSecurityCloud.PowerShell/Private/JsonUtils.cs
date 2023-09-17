@@ -50,17 +50,21 @@ namespace RubrikSecurityCloud
             // Hashtable
             if (obj is Hashtable hashtable)
             {
-                var d = new Dictionary<string, object>();
-                foreach (DictionaryEntry entry in hashtable)
+                obj = new VarDict(hashtable);
+            }
+            if (obj is VarDict varDict)
+            {
+                var vd = new VarDict();
+                foreach (KeyValuePair<string, object> entry in varDict)
                 {
                     if (entry.Value != null)
                     {
-                        d.Add(
+                        vd.Add(
                             (string)entry.Key,
                             JsonUtils.JsonReady(entry.Value));
                     }
                 }
-                return d;
+                return vd;
             }
 
             // Enumerable (array, list, etc.)

@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<FilesetTemplateDescendantType> list)
+        public static void SelectForRetrieval(this List<FilesetTemplateDescendantType> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

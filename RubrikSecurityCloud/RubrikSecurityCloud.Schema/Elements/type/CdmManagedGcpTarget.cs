@@ -462,7 +462,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<CdmManagedGcpTarget> list)
+        public static void SelectForRetrieval(this List<CdmManagedGcpTarget> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

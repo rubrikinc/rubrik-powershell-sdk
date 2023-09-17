@@ -802,7 +802,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<NutanixPrismCentral> list)
+        public static void SelectForRetrieval(this List<NutanixPrismCentral> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

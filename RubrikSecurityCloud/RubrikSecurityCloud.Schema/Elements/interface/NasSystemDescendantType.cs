@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<NasSystemDescendantType> list)
+        public static void SelectForRetrieval(this List<NasSystemDescendantType> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

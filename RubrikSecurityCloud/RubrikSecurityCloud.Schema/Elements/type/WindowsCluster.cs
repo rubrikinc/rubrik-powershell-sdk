@@ -662,7 +662,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<WindowsCluster> list)
+        public static void SelectForRetrieval(this List<WindowsCluster> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

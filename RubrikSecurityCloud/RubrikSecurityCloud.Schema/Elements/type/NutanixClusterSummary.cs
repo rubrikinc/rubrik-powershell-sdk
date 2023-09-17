@@ -221,7 +221,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<NutanixClusterSummary> list)
+        public static void SelectForRetrieval(this List<NutanixClusterSummary> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

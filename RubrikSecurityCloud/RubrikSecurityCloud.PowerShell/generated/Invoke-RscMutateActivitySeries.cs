@@ -27,12 +27,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <example>
     /// <code>Invoke-RscMutateActivitySeries -Cancel [-Arg ..] [-Field ..]</code>
     /// </example>
+    [CmdletBinding()]
     [Cmdlet(
         "Invoke",
         "RscMutateActivitySeries",
         DefaultParameterSetName = "Cancel")
     ]
-    public class Invoke_RscMutateActivitySeries : RscPSCmdlet
+    public class Invoke_RscMutateActivitySeries : RscGqlPSCmdlet
     {
         
         /// <summary>
@@ -57,6 +58,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 #pragma warning disable 1591
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 switch(Op)
@@ -97,22 +99,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "mutation",
                 "MutationCancelActivitySeries",
                 "($input: CancelActivitySeriesInput!)",
-                "System.Boolean"
-                );
-            System.Boolean? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (System.Boolean)this.Field;
-            }
-            string fieldSpecDoc = Mutation.CancelActivitySeries(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "System.Boolean",
+                Mutation.CancelActivitySeries_ObjectFieldSpec,
+                Mutation.CancelActivitySeriesFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	activitySeriesId = <System.String>
 	# REQUIRED
 	clusterUuid = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
 

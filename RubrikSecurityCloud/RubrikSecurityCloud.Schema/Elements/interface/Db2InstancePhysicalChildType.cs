@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<Db2InstancePhysicalChildType> list)
+        public static void SelectForRetrieval(this List<Db2InstancePhysicalChildType> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

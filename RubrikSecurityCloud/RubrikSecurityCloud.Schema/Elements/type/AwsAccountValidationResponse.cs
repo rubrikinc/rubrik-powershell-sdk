@@ -189,7 +189,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<AwsAccountValidationResponse> list)
+        public static void SelectForRetrieval(this List<AwsAccountValidationResponse> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

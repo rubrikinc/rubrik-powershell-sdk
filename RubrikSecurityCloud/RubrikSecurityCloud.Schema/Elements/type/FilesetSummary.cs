@@ -605,7 +605,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<FilesetSummary> list)
+        public static void SelectForRetrieval(this List<FilesetSummary> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

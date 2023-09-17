@@ -1,10 +1,5 @@
 # Invoke-RscQuerySla
 ## Subcommands
-### allclusterglobals
-Global SLA Domains protecting at least one object on the specified Rubrik cluster.
-
-- There is a single argument of type System.String.
-- Returns list of SlaInfos.
 ### allncdcompliancedata
 NAS Cloud Direct SLA Domain compliance data for the requested clusters.
 
@@ -27,15 +22,6 @@ List of audit details for a given SLA Domain.
     - filter - list of SLAAuditDetailFilterInputs: Filter for SLA Domain Audit details.
     - timezone - System.String: Timezone.
 - Returns list of SlaAuditDetails.
-### clusterdomains
-Returns paginated list of SLA domains that were created on Rubrik CDM.
-
-- There are 4 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that come before the specified cursor.
-- Returns ClusterSlaDomainConnection.
 ### conflictobjects
 Conflicting objects for an SLA Domain assignment.
 
@@ -123,10 +109,3 @@ Paginated list of SLA Managed Volumes.
     - sortOrder - SortOrder: Sorting order for the results.
     - filter - list of Filters: The hierarchy object filter.
 - Returns ManagedVolumeConnection.
-### verifywithreplicationtocluster
-Verify for a Rubrik cluster if it is replication target in any SLA Domain.
-
-- There are 2 arguments.
-    - cdmClusterUUID - System.String: UUID of the Rubrik cluster.
-    - includeArchived - System.Boolean: Include Archived SLA.
-- Returns VerifySlaWithReplicationToClusterResponse.

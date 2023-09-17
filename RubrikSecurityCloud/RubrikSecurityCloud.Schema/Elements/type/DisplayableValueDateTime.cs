@@ -170,7 +170,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<DisplayableValueDateTime> list)
+        public static void SelectForRetrieval(this List<DisplayableValueDateTime> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

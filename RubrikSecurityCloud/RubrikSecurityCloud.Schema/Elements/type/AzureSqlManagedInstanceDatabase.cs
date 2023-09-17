@@ -785,7 +785,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<AzureSqlManagedInstanceDatabase> list)
+        public static void SelectForRetrieval(this List<AzureSqlManagedInstanceDatabase> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

@@ -91,7 +91,7 @@ namespace RubrikSecurityCloud.NetSDK.Client
             catch (Exception ex)
             {
                 string message = ex.Message;
-                if ( ex.InnerException != null )
+                if (ex.InnerException != null)
                 {
                     message += "\n" + ex.InnerException.Message;
                 }
@@ -123,7 +123,7 @@ namespace RubrikSecurityCloud.NetSDK.Client
                 queryDocument = GraphQLParser.Parser
                     .Parse(request.Query);
             }
-            catch( GraphQLParser.Exceptions.GraphQLSyntaxErrorException ex)
+            catch (GraphQLParser.Exceptions.GraphQLSyntaxErrorException ex)
             {
                 throw new FormatException(
                     $"Could not parse query:\n\n{request.Query}\n\n{ex}"
@@ -159,10 +159,14 @@ namespace RubrikSecurityCloud.NetSDK.Client
 
             request.Query = StringUtils.InsertTypeNamesInGqlQuery(
                 request.Query);
+
+            // Send query to server:
+
             JObject response =
                 await InvokeGraphQLQuery<JObject>(request, logger, metricsTags)
                 ?? throw new InvalidOperationException(
                     "server response is null");
+
             string returnAsJson;
             JObject parentSelectorObj = response[parentSelectorName] as JObject;
             if (parentSelectorObj == null)
@@ -181,7 +185,7 @@ namespace RubrikSecurityCloud.NetSDK.Client
                     Converters =
                     {
                         //new EnumJsonConverter(), //Might be needed in the future.
-                        new GraphQLInterfaceConverter()
+                        new GraphQLInterfaceConverter(typeof(T).FullName,logger)
                     },
                 }
             );
@@ -205,22 +209,29 @@ namespace RubrikSecurityCloud.NetSDK.Client
 
             Type queryType = null;
             queryStr = queryStr.Trim();
-            if (queryStr.StartsWith("query")) {
+            if (queryStr.StartsWith("query"))
+            {
                 queryType = typeof(RubrikSecurityCloud.Types.Query);
-            } else if (queryStr.StartsWith("mutation")) {
+            }
+            else if (queryStr.StartsWith("mutation"))
+            {
                 queryType = typeof(RubrikSecurityCloud.Types.Mutation);
 
-            } else {
+            }
+            else
+            {
                 throw new InvalidOperationException(
                     "query must start with 'query' or 'mutation'");
             }
 
             var queryName = "";
-            for (int i = queryStr.IndexOf('{') + 1; i < queryStr.Length; ++i) {
+            for (int i = queryStr.IndexOf('{') + 1; i < queryStr.Length; ++i)
+            {
                 if (
                     !Char.IsLetter(queryStr[i]) &&
                     !Char.IsWhiteSpace(queryStr[i])
-                ) {
+                )
+                {
                     break;
                 }
                 queryName += queryStr[i];
@@ -229,18 +240,22 @@ namespace RubrikSecurityCloud.NetSDK.Client
             // converting to pascal case
             queryName = StringUtils.StrictPascalCase(queryName);
 
-            MethodInfo methodInfo = queryType.GetMethod(queryName);
+            MethodInfo methodInfo = queryType.GetMethod(queryName+ "_TypedFieldSpec");
             ParameterInfo gqlReplyType = methodInfo.GetParameters()[0];
             var gqlReplyTypeStr = gqlReplyType.ParameterType.ToString();
 
             // removing the & at the end of the type
-            gqlReplyTypeStr = gqlReplyTypeStr.Remove(gqlReplyTypeStr.Length - 1);
+            if(gqlReplyTypeStr.EndsWith("&")|| gqlReplyTypeStr.EndsWith("?"))
+            {
+                gqlReplyTypeStr = gqlReplyTypeStr.Remove(gqlReplyTypeStr.Length - 1);
+            }
             if (!gqlReplyTypeStr.StartsWith("System"))
             {
                 gqlReplyTypeStr = gqlReplyTypeStr.Split('.').Last();
             }
 
-            var request = new GraphQLRequest {
+            var request = new GraphQLRequest
+            {
                 Query = queryStr,
                 Variables = SerializeVariables(variables)
             };

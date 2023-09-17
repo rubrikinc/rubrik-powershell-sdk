@@ -181,7 +181,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<CassandraColumnFamilyConnection> list)
+        public static void SelectForRetrieval(this List<CassandraColumnFamilyConnection> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

@@ -70,7 +70,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<MissedSnapshotGroupByInfo> list)
+        public static void SelectForRetrieval(this List<MissedSnapshotGroupByInfo> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

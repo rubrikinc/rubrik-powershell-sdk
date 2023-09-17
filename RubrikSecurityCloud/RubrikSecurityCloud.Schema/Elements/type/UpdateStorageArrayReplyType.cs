@@ -197,7 +197,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<UpdateStorageArrayReplyType> list)
+        public static void SelectForRetrieval(this List<UpdateStorageArrayReplyType> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

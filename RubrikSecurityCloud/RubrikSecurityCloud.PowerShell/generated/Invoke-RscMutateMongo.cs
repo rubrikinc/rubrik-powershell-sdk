@@ -60,12 +60,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <example>
     /// <code>Invoke-RscMutateMongo -RecoverdbSource [-Arg ..] [-Field ..]</code>
     /// </example>
+    [CmdletBinding()]
     [Cmdlet(
         "Invoke",
         "RscMutateMongo",
         DefaultParameterSetName = "AddSource")
     ]
-    public class Invoke_RscMutateMongo : RscPSCmdlet
+    public class Invoke_RscMutateMongo : RscGqlPSCmdlet
     {
         
         /// <summary>
@@ -310,6 +311,7 @@ Supported in m3.2.0-m4.2.0.
 #pragma warning disable 1591
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 switch(Op)
@@ -482,14 +484,10 @@ Supported in m3.2.0-m4.2.0.
                 "mutation",
                 "MutationAddMongoSource",
                 "($input: AddMongoSourceInput!)",
-                "AddMongoSourceReply"
-                );
-            AddMongoSourceReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AddMongoSourceReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.AddMongoSource(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AddMongoSourceReply",
+                Mutation.AddMongoSource_ObjectFieldSpec,
+                Mutation.AddMongoSourceFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	clusterUuid = <System.String>
@@ -525,9 +523,8 @@ $inputs.Var.input = @{
 		# REQUIRED
 		sourceName = <System.String>
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -542,20 +539,15 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationDeleteMongoSource",
                 "($input: DeleteMongoSourceInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DeleteMongoSource(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.DeleteMongoSource_ObjectFieldSpec,
+                Mutation.DeleteMongoSourceFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -570,20 +562,15 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationDiscoverMongoSource",
                 "($input: DiscoverMongoSourceInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DiscoverMongoSource(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.DiscoverMongoSource_ObjectFieldSpec,
+                Mutation.DiscoverMongoSourceFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -598,14 +585,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationPatchMongoSource",
                 "($input: PatchMongoSourceInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.PatchMongoSource(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.PatchMongoSource_ObjectFieldSpec,
+                Mutation.PatchMongoSourceFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
@@ -628,9 +611,8 @@ $inputs.Var.input = @{
 		# OPTIONAL
 		sslCertificateRequired = <MongoSslCertificateRequirement> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoSslCertificateRequirement]) for enum values.
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -645,14 +627,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationRetryAddMongoSource",
                 "($input: RetryAddMongoSourceInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.RetryAddMongoSource(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.RetryAddMongoSource_ObjectFieldSpec,
+                Mutation.RetryAddMongoSourceFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
@@ -688,9 +666,8 @@ $inputs.Var.input = @{
 		# REQUIRED
 		sourceName = <System.String>
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -705,14 +682,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationAssignSlaToMongoDbCollection",
                 "($input: AssignSlaToMongoDbCollectionInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.AssignSlaToMongoDbCollection(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.AssignSlaToMongoDbCollection_ObjectFieldSpec,
+                Mutation.AssignSlaToMongoDbCollectionFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	input = @{
@@ -723,9 +696,8 @@ $inputs.Var.input = @{
 		# REQUIRED
 		slaId = <System.String>
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -740,14 +712,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationRecoverMongoSource",
                 "($input: RecoverMongoSourceInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.RecoverMongoSource(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.RecoverMongoSource_ObjectFieldSpec,
+                Mutation.RecoverMongoSourceFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	input = @{
@@ -782,9 +750,8 @@ $inputs.Var.input = @{
 		# REQUIRED
 		targetMongoClusterId = <System.String>
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -799,14 +766,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationCreateMongodbSource",
                 "($input: AddMosaicSourceInput!)",
-                "MosaicAsyncResponse"
-                );
-            MosaicAsyncResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MosaicAsyncResponse)this.Field;
-            }
-            string fieldSpecDoc = Mutation.CreateMongodbSource(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "MosaicAsyncResponse",
+                Mutation.CreateMongodbSource_ObjectFieldSpec,
+                Mutation.CreateMongodbSourceFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	clusterUuid = <System.String>
@@ -875,9 +838,8 @@ $inputs.Var.input = @{
 		# REQUIRED
 		sourceName = <System.String>
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -892,14 +854,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationUpdateMongodbSource",
                 "($input: ModifyMosaicSourceInput!)",
-                "MosaicAsyncResponse"
-                );
-            MosaicAsyncResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MosaicAsyncResponse)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UpdateMongodbSource(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "MosaicAsyncResponse",
+                Mutation.UpdateMongodbSource_ObjectFieldSpec,
+                Mutation.UpdateMongodbSourceFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	clusterUuid = <System.String>
@@ -968,9 +926,8 @@ $inputs.Var.input = @{
 		# REQUIRED
 		sourceName = <System.String>
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -985,14 +942,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationDeleteMongodbSource",
                 "($input: DeleteMosaicSourceInput!)",
-                "MosaicAsyncResponse"
-                );
-            MosaicAsyncResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MosaicAsyncResponse)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DeleteMongodbSource(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "MosaicAsyncResponse",
+                Mutation.DeleteMongodbSource_ObjectFieldSpec,
+                Mutation.DeleteMongodbSourceFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	sourceType = <V2DeleteMosaicSourceRequestSourceType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V2DeleteMosaicSourceRequestSourceType]) for enum values.
@@ -1000,9 +953,8 @@ $inputs.Var.input = @{
 	clusterUuid = <System.String>
 	# REQUIRED
 	sourceName = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1017,14 +969,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationBulkDeleteMongodbSources",
                 "($input: BulkDeleteMosaicSourcesInput!)",
-                "MosaicAsyncResponse"
-                );
-            MosaicAsyncResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MosaicAsyncResponse)this.Field;
-            }
-            string fieldSpecDoc = Mutation.BulkDeleteMongodbSources(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "MosaicAsyncResponse",
+                Mutation.BulkDeleteMongodbSources_ObjectFieldSpec,
+                Mutation.BulkDeleteMongodbSourcesFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	sourceType = <V2BulkDeleteMosaicSourcesRequestSourceType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V2BulkDeleteMosaicSourcesRequestSourceType]) for enum values.
@@ -1039,9 +987,8 @@ $inputs.Var.input = @{
 			<System.String>
 		)
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1056,14 +1003,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationRecoverMongodbSource",
                 "($input: MosaicRestoreDataInput!)",
-                "MosaicAsyncResponse"
-                );
-            MosaicAsyncResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MosaicAsyncResponse)this.Field;
-            }
-            string fieldSpecDoc = Mutation.RecoverMongodbSource(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "MosaicAsyncResponse",
+                Mutation.RecoverMongodbSource_ObjectFieldSpec,
+                Mutation.RecoverMongodbSourceFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	clusterUuid = <System.String>
@@ -1124,9 +1067,8 @@ $inputs.Var.input = @{
 		# REQUIRED
 		versionTime = <System.Int32>
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
 

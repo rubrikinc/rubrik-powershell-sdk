@@ -213,7 +213,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<OracleDbSnapshotSummary> list)
+        public static void SelectForRetrieval(this List<OracleDbSnapshotSummary> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

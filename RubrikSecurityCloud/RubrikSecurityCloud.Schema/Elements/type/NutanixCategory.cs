@@ -702,7 +702,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<NutanixCategory> list)
+        public static void SelectForRetrieval(this List<NutanixCategory> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

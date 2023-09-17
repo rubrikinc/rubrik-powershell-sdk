@@ -135,12 +135,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <example>
     /// <code>Invoke-RscQueryO365 -ServiceStatus [-Arg ..] [-Field ..]</code>
     /// </example>
+    [CmdletBinding()]
     [Cmdlet(
         "Invoke",
         "RscQueryO365",
         DefaultParameterSetName = "Org")
     ]
-    public class Invoke_RscQueryO365 : RscPSCmdlet
+    public class Invoke_RscQueryO365 : RscGqlPSCmdlet
     {
         
         /// <summary>
@@ -813,6 +814,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 #pragma warning disable 1591
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 switch(Op)
@@ -1285,17 +1287,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "query",
                 "QueryO365Org",
                 "($fid: UUID!)",
-                "O365Org"
-                );
-            O365Org? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (O365Org)this.Field;
-            }
-            string fieldSpecDoc = Query.O365Org(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "O365Org",
+                Query.O365Org_ObjectFieldSpec,
+                Query.O365OrgFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1311,19 +1308,14 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryO365OrgAtSnappableLevel",
                 "($fid: UUID!,$snappableType: SnappableType!)",
-                "O365Org"
-                );
-            O365Org? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (O365Org)this.Field;
-            }
-            string fieldSpecDoc = Query.O365OrgAtSnappableLevel(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "O365Org",
+                Query.O365OrgAtSnappableLevel_ObjectFieldSpec,
+                Query.O365OrgAtSnappableLevelFieldSpec,
+                @"# REQUIRED
 $inputs.Var.fid = <System.String>
 # REQUIRED
-$inputs.Var.snappableType = <SnappableType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnappableType]) for enum values.";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.snappableType = <SnappableType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnappableType]) for enum values."
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1339,19 +1331,14 @@ $inputs.Var.snappableType = <SnappableType> # Call [Enum]::GetValues([RubrikSecu
                 "query",
                 "QueryAllO365AdGroups",
                 "($orgId: UUID!,$adGroupSearchFilter: String!)",
-                "List<AdGroup>"
-                );
-            List<AdGroup>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<AdGroup>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllO365AdGroups(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<AdGroup>",
+                Query.AllO365AdGroups_ObjectFieldSpec,
+                Query.AllO365AdGroupsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.orgId = <System.String>
 # REQUIRED
-$inputs.Var.adGroupSearchFilter = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.adGroupSearchFilter = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1366,17 +1353,12 @@ $inputs.Var.adGroupSearchFilter = <System.String>";
                 "query",
                 "QueryO365User",
                 "($fid: UUID!)",
-                "O365User"
-                );
-            O365User? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (O365User)this.Field;
-            }
-            string fieldSpecDoc = Query.O365User(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "O365User",
+                Query.O365User_ObjectFieldSpec,
+                Query.O365UserFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1391,17 +1373,12 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryO365Mailbox",
                 "($snappableFid: UUID!)",
-                "O365Mailbox"
-                );
-            O365Mailbox? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (O365Mailbox)this.Field;
-            }
-            string fieldSpecDoc = Query.O365Mailbox(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.snappableFid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "O365Mailbox",
+                Query.O365Mailbox_ObjectFieldSpec,
+                Query.O365MailboxFieldSpec,
+                @"# REQUIRED
+$inputs.Var.snappableFid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1430,14 +1407,10 @@ $inputs.Var.snappableFid = <System.String>";
                 "query",
                 "QueryO365Groups",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$o365OrgId: UUID!,$snappableType: SnappableType!)",
-                "O365GroupConnection"
-                );
-            O365GroupConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (O365GroupConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.O365Groups(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "O365GroupConnection",
+                Query.O365Groups_ObjectFieldSpec,
+                Query.O365GroupsFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -1490,9 +1463,8 @@ $inputs.Var.filter = @(
 # REQUIRED
 $inputs.Var.o365OrgId = <System.String>
 # REQUIRED
-$inputs.Var.snappableType = <SnappableType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnappableType]) for enum values.";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.snappableType = <SnappableType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnappableType]) for enum values."
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1519,14 +1491,10 @@ $inputs.Var.snappableType = <SnappableType> # Call [Enum]::GetValues([RubrikSecu
                 "query",
                 "QueryO365Mailboxes",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$o365OrgId: UUID!)",
-                "O365MailboxConnection"
-                );
-            O365MailboxConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (O365MailboxConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.O365Mailboxes(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "O365MailboxConnection",
+                Query.O365Mailboxes_ObjectFieldSpec,
+                Query.O365MailboxesFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -1577,9 +1545,8 @@ $inputs.Var.filter = @(
 }
 )
 # REQUIRED
-$inputs.Var.o365OrgId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.o365OrgId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1594,17 +1561,12 @@ $inputs.Var.o365OrgId = <System.String>";
                 "query",
                 "QueryO365Onedrive",
                 "($snappableFid: UUID!)",
-                "O365Onedrive"
-                );
-            O365Onedrive? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (O365Onedrive)this.Field;
-            }
-            string fieldSpecDoc = Query.O365Onedrive(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.snappableFid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "O365Onedrive",
+                Query.O365Onedrive_ObjectFieldSpec,
+                Query.O365OnedriveFieldSpec,
+                @"# REQUIRED
+$inputs.Var.snappableFid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1631,14 +1593,10 @@ $inputs.Var.snappableFid = <System.String>";
                 "query",
                 "QueryO365Onedrives",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$o365OrgId: UUID!)",
-                "O365OnedriveConnection"
-                );
-            O365OnedriveConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (O365OnedriveConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.O365Onedrives(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "O365OnedriveConnection",
+                Query.O365Onedrives_ObjectFieldSpec,
+                Query.O365OnedrivesFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -1689,9 +1647,8 @@ $inputs.Var.filter = @(
 }
 )
 # REQUIRED
-$inputs.Var.o365OrgId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.o365OrgId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1706,17 +1663,12 @@ $inputs.Var.o365OrgId = <System.String>";
                 "query",
                 "QueryO365Site",
                 "($snappableFid: UUID!)",
-                "O365Site"
-                );
-            O365Site? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (O365Site)this.Field;
-            }
-            string fieldSpecDoc = Query.O365Site(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.snappableFid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "O365Site",
+                Query.O365Site_ObjectFieldSpec,
+                Query.O365SiteFieldSpec,
+                @"# REQUIRED
+$inputs.Var.snappableFid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1745,14 +1697,10 @@ $inputs.Var.snappableFid = <System.String>";
                 "query",
                 "QueryO365Sites",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$o365OrgId: UUID!,$excludeChildSites: Boolean)",
-                "O365SiteConnection"
-                );
-            O365SiteConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (O365SiteConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.O365Sites(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "O365SiteConnection",
+                Query.O365Sites_ObjectFieldSpec,
+                Query.O365SitesFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -1805,9 +1753,8 @@ $inputs.Var.filter = @(
 # REQUIRED
 $inputs.Var.o365OrgId = <System.String>
 # OPTIONAL
-$inputs.Var.excludeChildSites = <System.Boolean>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.excludeChildSites = <System.Boolean>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1822,17 +1769,12 @@ $inputs.Var.excludeChildSites = <System.Boolean>";
                 "query",
                 "QueryO365SharepointDrive",
                 "($snappableFid: UUID!)",
-                "O365SharepointDrive"
-                );
-            O365SharepointDrive? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (O365SharepointDrive)this.Field;
-            }
-            string fieldSpecDoc = Query.O365SharepointDrive(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.snappableFid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "O365SharepointDrive",
+                Query.O365SharepointDrive_ObjectFieldSpec,
+                Query.O365SharepointDriveFieldSpec,
+                @"# REQUIRED
+$inputs.Var.snappableFid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1859,14 +1801,10 @@ $inputs.Var.snappableFid = <System.String>";
                 "query",
                 "QueryO365SharepointDrives",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$o365OrgId: UUID!)",
-                "O365SharepointDriveConnection"
-                );
-            O365SharepointDriveConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (O365SharepointDriveConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.O365SharepointDrives(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "O365SharepointDriveConnection",
+                Query.O365SharepointDrives_ObjectFieldSpec,
+                Query.O365SharepointDrivesFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -1917,9 +1855,8 @@ $inputs.Var.filter = @(
 }
 )
 # REQUIRED
-$inputs.Var.o365OrgId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.o365OrgId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1934,17 +1871,12 @@ $inputs.Var.o365OrgId = <System.String>";
                 "query",
                 "QueryO365SharepointList",
                 "($snappableFid: UUID!)",
-                "O365SharepointList"
-                );
-            O365SharepointList? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (O365SharepointList)this.Field;
-            }
-            string fieldSpecDoc = Query.O365SharepointList(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.snappableFid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "O365SharepointList",
+                Query.O365SharepointList_ObjectFieldSpec,
+                Query.O365SharepointListFieldSpec,
+                @"# REQUIRED
+$inputs.Var.snappableFid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1971,14 +1903,10 @@ $inputs.Var.snappableFid = <System.String>";
                 "query",
                 "QueryO365SharepointLists",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$o365OrgId: UUID!)",
-                "O365SharepointListConnection"
-                );
-            O365SharepointListConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (O365SharepointListConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.O365SharepointLists(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "O365SharepointListConnection",
+                Query.O365SharepointLists_ObjectFieldSpec,
+                Query.O365SharepointListsFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -2029,9 +1957,8 @@ $inputs.Var.filter = @(
 }
 )
 # REQUIRED
-$inputs.Var.o365OrgId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.o365OrgId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2046,17 +1973,12 @@ $inputs.Var.o365OrgId = <System.String>";
                 "query",
                 "QueryO365SharepointSite",
                 "($siteFid: UUID!)",
-                "O365Site"
-                );
-            O365Site? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (O365Site)this.Field;
-            }
-            string fieldSpecDoc = Query.O365SharepointSite(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.siteFid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "O365Site",
+                Query.O365SharepointSite_ObjectFieldSpec,
+                Query.O365SharepointSiteFieldSpec,
+                @"# REQUIRED
+$inputs.Var.siteFid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2083,14 +2005,10 @@ $inputs.Var.siteFid = <System.String>";
                 "query",
                 "QueryO365SharepointSites",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$o365OrgId: UUID!)",
-                "O365SiteConnection"
-                );
-            O365SiteConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (O365SiteConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.O365SharepointSites(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "O365SiteConnection",
+                Query.O365SharepointSites_ObjectFieldSpec,
+                Query.O365SharepointSitesFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -2141,9 +2059,8 @@ $inputs.Var.filter = @(
 }
 )
 # REQUIRED
-$inputs.Var.o365OrgId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.o365OrgId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2158,17 +2075,12 @@ $inputs.Var.o365OrgId = <System.String>";
                 "query",
                 "QueryO365Team",
                 "($snappableFid: UUID!)",
-                "O365Teams"
-                );
-            O365Teams? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (O365Teams)this.Field;
-            }
-            string fieldSpecDoc = Query.O365Team(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.snappableFid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "O365Teams",
+                Query.O365Team_ObjectFieldSpec,
+                Query.O365TeamFieldSpec,
+                @"# REQUIRED
+$inputs.Var.snappableFid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2195,14 +2107,10 @@ $inputs.Var.snappableFid = <System.String>";
                 "query",
                 "QueryO365Teams",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$o365OrgId: UUID!)",
-                "O365TeamsConnection"
-                );
-            O365TeamsConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (O365TeamsConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.O365Teams(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "O365TeamsConnection",
+                Query.O365Teams_ObjectFieldSpec,
+                Query.O365TeamsFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -2253,9 +2161,8 @@ $inputs.Var.filter = @(
 }
 )
 # REQUIRED
-$inputs.Var.o365OrgId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.o365OrgId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2282,14 +2189,10 @@ $inputs.Var.o365OrgId = <System.String>";
                 "query",
                 "QueryO365TeamChannels",
                 "($first: Int,$after: String,$snappableFid: UUID!,$excludeArchived: Boolean!,$channelMembershipTypeFilter: ChannelMembershipType!,$nameFilter: String)",
-                "O365TeamsChannelConnection"
-                );
-            O365TeamsChannelConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (O365TeamsChannelConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.O365TeamChannels(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "O365TeamsChannelConnection",
+                Query.O365TeamChannels_ObjectFieldSpec,
+                Query.O365TeamChannelsFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -2300,9 +2203,8 @@ $inputs.Var.excludeArchived = <System.Boolean>
 # REQUIRED
 $inputs.Var.channelMembershipTypeFilter = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
 # OPTIONAL
-$inputs.Var.nameFilter = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.nameFilter = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2319,21 +2221,16 @@ $inputs.Var.nameFilter = <System.String>";
                 "query",
                 "QueryO365TeamConversationsFolderId",
                 "($snappableFid: UUID!,$snapshotFid: UUID!,$o365OrgId: UUID!)",
-                "System.String"
-                );
-            System.String? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (System.String)this.Field;
-            }
-            string fieldSpecDoc = Query.O365TeamConversationsFolderId(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "System.String",
+                Query.O365TeamConversationsFolderId_ObjectFieldSpec,
+                Query.O365TeamConversationsFolderIdFieldSpec,
+                @"# REQUIRED
 $inputs.Var.snappableFid = <System.String>
 # REQUIRED
 $inputs.Var.snapshotFid = <System.String>
 # REQUIRED
-$inputs.Var.o365OrgId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.o365OrgId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2358,14 +2255,10 @@ $inputs.Var.o365OrgId = <System.String>";
                 "query",
                 "QueryO365TeamPostedBy",
                 "($first: Int,$after: String,$snappableFid: UUID!,$o365OrgId: UUID!,$nameFilter: String)",
-                "O365TeamConversationsSenderConnection"
-                );
-            O365TeamConversationsSenderConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (O365TeamConversationsSenderConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.O365TeamPostedBy(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "O365TeamConversationsSenderConnection",
+                Query.O365TeamPostedBy_ObjectFieldSpec,
+                Query.O365TeamPostedByFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -2374,9 +2267,8 @@ $inputs.Var.snappableFid = <System.String>
 # REQUIRED
 $inputs.Var.o365OrgId = <System.String>
 # OPTIONAL
-$inputs.Var.nameFilter = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.nameFilter = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2391,17 +2283,12 @@ $inputs.Var.nameFilter = <System.String>";
                 "query",
                 "QueryO365Calendar",
                 "($snappableFid: UUID!)",
-                "O365Calendar"
-                );
-            O365Calendar? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (O365Calendar)this.Field;
-            }
-            string fieldSpecDoc = Query.O365Calendar(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.snappableFid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "O365Calendar",
+                Query.O365Calendar_ObjectFieldSpec,
+                Query.O365CalendarFieldSpec,
+                @"# REQUIRED
+$inputs.Var.snappableFid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2428,14 +2315,10 @@ $inputs.Var.snappableFid = <System.String>";
                 "query",
                 "QueryO365Orgs",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$workloadHierarchy: WorkloadLevelHierarchy)",
-                "O365OrgConnection"
-                );
-            O365OrgConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (O365OrgConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.O365Orgs(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "O365OrgConnection",
+                Query.O365Orgs_ObjectFieldSpec,
+                Query.O365OrgsFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -2486,9 +2369,8 @@ $inputs.Var.filter = @(
 }
 )
 # OPTIONAL
-$inputs.Var.workloadHierarchy = <WorkloadLevelHierarchy> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.workloadHierarchy = <WorkloadLevelHierarchy> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values."
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2519,14 +2401,10 @@ $inputs.Var.workloadHierarchy = <WorkloadLevelHierarchy> # Call [Enum]::GetValue
                 "query",
                 "QueryO365SharepointObjectList",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$objectTypeFilter: [String!],$includeEntireHierarchy: Boolean!,$fid: UUID!)",
-                "O365SharepointObjectConnection"
-                );
-            O365SharepointObjectConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (O365SharepointObjectConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.O365SharepointObjectList(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "O365SharepointObjectConnection",
+                Query.O365SharepointObjectList_ObjectFieldSpec,
+                Query.O365SharepointObjectListFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -2583,9 +2461,8 @@ $inputs.Var.objectTypeFilter = @(
 # REQUIRED
 $inputs.Var.includeEntireHierarchy = <System.Boolean>
 # REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2612,14 +2489,10 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryO365SharepointObjects",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$fid: UUID!)",
-                "O365SharepointObjectConnection"
-                );
-            O365SharepointObjectConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (O365SharepointObjectConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.O365SharepointObjects(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "O365SharepointObjectConnection",
+                Query.O365SharepointObjects_ObjectFieldSpec,
+                Query.O365SharepointObjectsFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -2670,9 +2543,8 @@ $inputs.Var.filter = @(
 }
 )
 # REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2699,14 +2571,10 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryO365UserObjects",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$fid: UUID!)",
-                "O365UserDescendantMetadataConnection"
-                );
-            O365UserDescendantMetadataConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (O365UserDescendantMetadataConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.O365UserObjects(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "O365UserDescendantMetadataConnection",
+                Query.O365UserObjects_ObjectFieldSpec,
+                Query.O365UserObjectsFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -2757,9 +2625,8 @@ $inputs.Var.filter = @(
 }
 )
 # REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2773,16 +2640,11 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryO365OrgSummaries",
                 "",
-                "GetImplicitlyAuthorizedObjectSummariesResponse"
-                );
-            GetImplicitlyAuthorizedObjectSummariesResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (GetImplicitlyAuthorizedObjectSummariesResponse)this.Field;
-            }
-            string fieldSpecDoc = Query.O365OrgSummaries(ref fieldSpecObj);
-            string inputExample = @"";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "GetImplicitlyAuthorizedObjectSummariesResponse",
+                Query.O365OrgSummaries_ObjectFieldSpec,
+                Query.O365OrgSummariesFieldSpec,
+                @""
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2797,17 +2659,12 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryO365ObjectAncestors",
                 "($snappableFid: UUID!)",
-                "GetImplicitlyAuthorizedAncestorSummariesResponse"
-                );
-            GetImplicitlyAuthorizedAncestorSummariesResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (GetImplicitlyAuthorizedAncestorSummariesResponse)this.Field;
-            }
-            string fieldSpecDoc = Query.O365ObjectAncestors(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.snappableFid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "GetImplicitlyAuthorizedAncestorSummariesResponse",
+                Query.O365ObjectAncestors_ObjectFieldSpec,
+                Query.O365ObjectAncestorsFieldSpec,
+                @"# REQUIRED
+$inputs.Var.snappableFid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2838,14 +2695,10 @@ $inputs.Var.snappableFid = <System.String>";
                 "query",
                 "QueryBrowseO365TeamConvChannels",
                 "($first: Int,$after: String,$snappableFid: UUID!,$snapshotFidOpt: UUID,$excludeArchived: Boolean!,$orgId: UUID!,$channelMembershipTypeFilter: ChannelMembershipType!,$nameFilter: String)",
-                "O365TeamConvChannelConnection"
-                );
-            O365TeamConvChannelConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (O365TeamConvChannelConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.BrowseO365TeamConvChannels(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "O365TeamConvChannelConnection",
+                Query.BrowseO365TeamConvChannels_ObjectFieldSpec,
+                Query.BrowseO365TeamConvChannelsFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -2860,9 +2713,8 @@ $inputs.Var.orgId = <System.String>
 # REQUIRED
 $inputs.Var.channelMembershipTypeFilter = <ChannelMembershipType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ChannelMembershipType]) for enum values.
 # OPTIONAL
-$inputs.Var.nameFilter = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.nameFilter = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2877,17 +2729,12 @@ $inputs.Var.nameFilter = <System.String>";
                 "query",
                 "QueryO365ServiceAccount",
                 "($orgId: UUID!)",
-                "O365ServiceAccountStatusResp"
-                );
-            O365ServiceAccountStatusResp? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (O365ServiceAccountStatusResp)this.Field;
-            }
-            string fieldSpecDoc = Query.O365ServiceAccount(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.orgId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "O365ServiceAccountStatusResp",
+                Query.O365ServiceAccount_ObjectFieldSpec,
+                Query.O365ServiceAccountFieldSpec,
+                @"# REQUIRED
+$inputs.Var.orgId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2901,16 +2748,11 @@ $inputs.Var.orgId = <System.String>";
                 "query",
                 "QueryAllO365OrgStatuses",
                 "",
-                "List<O365OrgInfo>"
-                );
-            List<O365OrgInfo>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<O365OrgInfo>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllO365OrgStatuses(ref fieldSpecObj);
-            string inputExample = @"";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "List<O365OrgInfo>",
+                Query.AllO365OrgStatuses_ObjectFieldSpec,
+                Query.AllO365OrgStatusesFieldSpec,
+                @""
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2924,16 +2766,11 @@ $inputs.Var.orgId = <System.String>";
                 "query",
                 "QueryO365License",
                 "",
-                "O365License"
-                );
-            O365License? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (O365License)this.Field;
-            }
-            string fieldSpecDoc = Query.O365License(ref fieldSpecObj);
-            string inputExample = @"";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "O365License",
+                Query.O365License_ObjectFieldSpec,
+                Query.O365LicenseFieldSpec,
+                @""
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2956,14 +2793,10 @@ $inputs.Var.orgId = <System.String>";
                 "query",
                 "QueryListO365Apps",
                 "($first: Int,$after: String,$o365AppFilters: [AppFilter!]!,$o365AppSortByParam: AppSortByParam)",
-                "O365AppConnection"
-                );
-            O365AppConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (O365AppConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.ListO365Apps(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "O365AppConnection",
+                Query.ListO365Apps_ObjectFieldSpec,
+                Query.ListO365AppsFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -2984,9 +2817,8 @@ $inputs.Var.o365AppSortByParam = @{
 	field = <AppSortByParamField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AppSortByParamField]) for enum values.
 	# OPTIONAL
 	sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3000,16 +2832,11 @@ $inputs.Var.o365AppSortByParam = @{
                 "query",
                 "QueryAllO365SubscriptionsAppTypeCounts",
                 "",
-                "List<O365SubscriptionAppTypeCounts>"
-                );
-            List<O365SubscriptionAppTypeCounts>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<O365SubscriptionAppTypeCounts>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllO365SubscriptionsAppTypeCounts(ref fieldSpecObj);
-            string inputExample = @"";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "List<O365SubscriptionAppTypeCounts>",
+                Query.AllO365SubscriptionsAppTypeCounts_ObjectFieldSpec,
+                Query.AllO365SubscriptionsAppTypeCountsFieldSpec,
+                @""
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3024,17 +2851,12 @@ $inputs.Var.o365AppSortByParam = @{
                 "query",
                 "QueryO365StorageStats",
                 "($orgID: UUID)",
-                "GetO365StorageStatsResp"
-                );
-            GetO365StorageStatsResp? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (GetO365StorageStatsResp)this.Field;
-            }
-            string fieldSpecDoc = Query.O365StorageStats(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
-$inputs.Var.orgID = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "GetO365StorageStatsResp",
+                Query.O365StorageStats_ObjectFieldSpec,
+                Query.O365StorageStatsFieldSpec,
+                @"# OPTIONAL
+$inputs.Var.orgID = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3049,17 +2871,12 @@ $inputs.Var.orgID = <System.String>";
                 "query",
                 "QueryO365ServiceStatus",
                 "($orgID: UUID)",
-                "GetO365ServiceStatusResp"
-                );
-            GetO365ServiceStatusResp? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (GetO365ServiceStatusResp)this.Field;
-            }
-            string fieldSpecDoc = Query.O365ServiceStatus(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
-$inputs.Var.orgID = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "GetO365ServiceStatusResp",
+                Query.O365ServiceStatus_ObjectFieldSpec,
+                Query.O365ServiceStatusFieldSpec,
+                @"# OPTIONAL
+$inputs.Var.orgID = <System.String>"
+            );
         }
 
 

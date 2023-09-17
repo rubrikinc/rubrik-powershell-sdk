@@ -229,7 +229,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<SonarReportRow> list)
+        public static void SelectForRetrieval(this List<SonarReportRow> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

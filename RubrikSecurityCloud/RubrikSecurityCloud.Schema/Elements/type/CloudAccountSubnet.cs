@@ -193,7 +193,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<CloudAccountSubnet> list)
+        public static void SelectForRetrieval(this List<CloudAccountSubnet> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

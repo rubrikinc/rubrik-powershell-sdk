@@ -181,7 +181,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<FailoverClusterTopLevelDescendantTypeConnection> list)
+        public static void SelectForRetrieval(this List<FailoverClusterTopLevelDescendantTypeConnection> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

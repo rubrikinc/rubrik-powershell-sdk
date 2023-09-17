@@ -783,7 +783,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<RubrikManagedAzureTarget> list)
+        public static void SelectForRetrieval(this List<RubrikManagedAzureTarget> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

@@ -50,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("db2Config")]
         public Db2Config? Db2Config { get; set; }
 
+        //      C# -> ManagedVolumeSlaConfig? ManagedVolumeSlaConfig
+        // GraphQL -> managedVolumeSlaConfig: ManagedVolumeSlaConfig (type)
+        [JsonProperty("managedVolumeSlaConfig")]
+        public ManagedVolumeSlaConfig? ManagedVolumeSlaConfig { get; set; }
+
         //      C# -> MongoConfig? MongoConfig
         // GraphQL -> mongoConfig: MongoConfig (type)
         [JsonProperty("mongoConfig")]
@@ -91,6 +96,7 @@ namespace RubrikSecurityCloud.Types
         AzureSqlDatabaseDbConfig? AzureSqlDatabaseDbConfig = null,
         AzureSqlManagedInstanceDbConfig? AzureSqlManagedInstanceDbConfig = null,
         Db2Config? Db2Config = null,
+        ManagedVolumeSlaConfig? ManagedVolumeSlaConfig = null,
         MongoConfig? MongoConfig = null,
         MssqlConfig? MssqlConfig = null,
         OracleConfig? OracleConfig = null,
@@ -115,6 +121,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Db2Config != null ) {
             this.Db2Config = Db2Config;
+        }
+        if ( ManagedVolumeSlaConfig != null ) {
+            this.ManagedVolumeSlaConfig = ManagedVolumeSlaConfig;
         }
         if ( MongoConfig != null ) {
             this.MongoConfig = MongoConfig;
@@ -187,6 +196,14 @@ namespace RubrikSecurityCloud.Types
             var fspec = this.Db2Config.AsFieldSpec(indent+1);
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
                 s += ind + "db2Config {\n" + fspec + ind + "}\n" ;
+            }
+        }
+        //      C# -> ManagedVolumeSlaConfig? ManagedVolumeSlaConfig
+        // GraphQL -> managedVolumeSlaConfig: ManagedVolumeSlaConfig (type)
+        if (this.ManagedVolumeSlaConfig != null) {
+            var fspec = this.ManagedVolumeSlaConfig.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "managedVolumeSlaConfig {\n" + fspec + ind + "}\n" ;
             }
         }
         //      C# -> MongoConfig? MongoConfig
@@ -278,6 +295,13 @@ namespace RubrikSecurityCloud.Types
             this.Db2Config = new Db2Config();
             this.Db2Config.ApplyExploratoryFieldSpec(ec.NewChild("db2Config"));
         }
+        //      C# -> ManagedVolumeSlaConfig? ManagedVolumeSlaConfig
+        // GraphQL -> managedVolumeSlaConfig: ManagedVolumeSlaConfig (type)
+        if (this.ManagedVolumeSlaConfig == null && ec.Includes("managedVolumeSlaConfig",false))
+        {
+            this.ManagedVolumeSlaConfig = new ManagedVolumeSlaConfig();
+            this.ManagedVolumeSlaConfig.ApplyExploratoryFieldSpec(ec.NewChild("managedVolumeSlaConfig"));
+        }
         //      C# -> MongoConfig? MongoConfig
         // GraphQL -> mongoConfig: MongoConfig (type)
         if (this.MongoConfig == null && ec.Includes("mongoConfig",false))
@@ -353,7 +377,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<ObjectSpecificConfigs> list)
+        public static void SelectForRetrieval(this List<ObjectSpecificConfigs> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

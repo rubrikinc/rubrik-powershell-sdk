@@ -22,7 +22,7 @@ endpoint in the test server that shuts it down.
 
 In order to receive a response from the mock API-Server, the API-Server needs
 to be given the expected query and response. This can be done with the
-commandlet `Update-MockApiServerCache -Query $Query -Reply $ExpectedReply`.
+commandlet `Update-MockApiServerCache -GqlQuery $Query -Reply $ExpectedReply`.
 `Query` is a GraphQL query as a string and `ExpectedReply` is the reply that
 the mock API-Server should return when it receives a call with the query.
 `ExpectedReply` should be a JSON string.

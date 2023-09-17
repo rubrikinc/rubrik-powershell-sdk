@@ -605,7 +605,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<CassandraKeyspace> list)
+        public static void SelectForRetrieval(this List<CassandraKeyspace> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

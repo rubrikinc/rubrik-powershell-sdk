@@ -68,7 +68,7 @@ function Get-RscMssqlDatabaseFiles
 
   Process {
 
-    $inputs = Invoke-RscQueryMssql -Op $operation -InputProfile $inputProfile -GetInput
+    $inputs = Invoke-RscQueryMssql -Op $operation -FieldProfile $inputProfile -GetInput
 
     # -4- Customize inputs
     $inputValues = @{

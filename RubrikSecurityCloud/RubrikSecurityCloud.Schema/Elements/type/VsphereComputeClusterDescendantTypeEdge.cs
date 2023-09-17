@@ -134,7 +134,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<VsphereComputeClusterDescendantTypeEdge> list)
+        public static void SelectForRetrieval(this List<VsphereComputeClusterDescendantTypeEdge> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

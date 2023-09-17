@@ -181,7 +181,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<VsphereDatacenterPhysicalChildTypeConnection> list)
+        public static void SelectForRetrieval(this List<VsphereDatacenterPhysicalChildTypeConnection> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

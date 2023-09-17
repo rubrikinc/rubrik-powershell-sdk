@@ -134,7 +134,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<NutanixPrismCentralDescendantTypeEdge> list)
+        public static void SelectForRetrieval(this List<NutanixPrismCentralDescendantTypeEdge> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

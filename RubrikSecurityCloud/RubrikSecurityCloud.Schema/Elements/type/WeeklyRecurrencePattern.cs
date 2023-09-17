@@ -149,7 +149,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<WeeklyRecurrencePattern> list)
+        public static void SelectForRetrieval(this List<WeeklyRecurrencePattern> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

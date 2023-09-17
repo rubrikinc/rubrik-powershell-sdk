@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<VsphereDatacenterLogicalChildType> list)
+        public static void SelectForRetrieval(this List<VsphereDatacenterLogicalChildType> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

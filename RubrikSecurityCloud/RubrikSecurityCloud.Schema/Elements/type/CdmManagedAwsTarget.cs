@@ -506,7 +506,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<CdmManagedAwsTarget> list)
+        public static void SelectForRetrieval(this List<CdmManagedAwsTarget> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

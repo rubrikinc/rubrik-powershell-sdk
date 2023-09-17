@@ -48,12 +48,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <example>
     /// <code>Invoke-RscQueryDb2 -LogSnapshots [-Arg ..] [-Field ..]</code>
     /// </example>
+    [CmdletBinding()]
     [Cmdlet(
         "Invoke",
         "RscQueryDb2",
         DefaultParameterSetName = "Instances")
     ]
-    public class Invoke_RscQueryDb2 : RscPSCmdlet
+    public class Invoke_RscQueryDb2 : RscGqlPSCmdlet
     {
         
         /// <summary>
@@ -204,6 +205,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 #pragma warning disable 1591
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 switch(Op)
@@ -338,14 +340,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "query",
                 "QueryDb2Instances",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                "Db2InstanceConnection"
-                );
-            Db2InstanceConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (Db2InstanceConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.Db2Instances(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "Db2InstanceConnection",
+                Query.Db2Instances_ObjectFieldSpec,
+                Query.Db2InstancesFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -394,9 +392,8 @@ $inputs.Var.filter = @(
 			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
 		)
 }
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -411,17 +408,12 @@ $inputs.Var.filter = @(
                 "query",
                 "QueryDb2Instance",
                 "($id: UUID!)",
-                "Db2Instance"
-                );
-            Db2Instance? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (Db2Instance)this.Field;
-            }
-            string fieldSpecDoc = Query.Db2Instance(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.id = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "Db2Instance",
+                Query.Db2Instance_ObjectFieldSpec,
+                Query.Db2InstanceFieldSpec,
+                @"# REQUIRED
+$inputs.Var.id = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -436,17 +428,12 @@ $inputs.Var.id = <System.String>";
                 "query",
                 "QueryDb2Database",
                 "($fid: UUID!)",
-                "Db2Database"
-                );
-            Db2Database? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (Db2Database)this.Field;
-            }
-            string fieldSpecDoc = Query.Db2Database(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "Db2Database",
+                Query.Db2Database_ObjectFieldSpec,
+                Query.Db2DatabaseFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -471,14 +458,10 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryDb2Databases",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                "Db2DatabaseConnection"
-                );
-            Db2DatabaseConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (Db2DatabaseConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.Db2Databases(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "Db2DatabaseConnection",
+                Query.Db2Databases_ObjectFieldSpec,
+                Query.Db2DatabasesFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -527,9 +510,8 @@ $inputs.Var.filter = @(
 			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
 		)
 }
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -544,17 +526,12 @@ $inputs.Var.filter = @(
                 "query",
                 "QueryDb2RecoverableRange",
                 "($db2RecoverableRangeFid: UUID!)",
-                "Db2RecoverableRange"
-                );
-            Db2RecoverableRange? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (Db2RecoverableRange)this.Field;
-            }
-            string fieldSpecDoc = Query.Db2RecoverableRange(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.db2RecoverableRangeFid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "Db2RecoverableRange",
+                Query.Db2RecoverableRange_ObjectFieldSpec,
+                Query.Db2RecoverableRangeFieldSpec,
+                @"# REQUIRED
+$inputs.Var.db2RecoverableRangeFid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -583,14 +560,10 @@ $inputs.Var.db2RecoverableRangeFid = <System.String>";
                 "query",
                 "QueryDb2RecoverableRanges",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: Db2RecoverableRangeSortBy,$filter: Db2RecoverableRangeFilterInput)",
-                "Db2RecoverableRangeConnection"
-                );
-            Db2RecoverableRangeConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (Db2RecoverableRangeConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.Db2RecoverableRanges(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "Db2RecoverableRangeConnection",
+                Query.Db2RecoverableRanges_ObjectFieldSpec,
+                Query.Db2RecoverableRangesFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -618,9 +591,8 @@ $inputs.Var.filter = @{
 	toTime = <DateTime>
 	# OPTIONAL
 	isArchived = <System.Boolean>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -635,17 +607,12 @@ $inputs.Var.filter = @{
                 "query",
                 "QueryDb2LogSnapshot",
                 "($db2LogSnapshotFid: UUID!)",
-                "Db2LogSnapshot"
-                );
-            Db2LogSnapshot? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (Db2LogSnapshot)this.Field;
-            }
-            string fieldSpecDoc = Query.Db2LogSnapshot(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.db2LogSnapshotFid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "Db2LogSnapshot",
+                Query.Db2LogSnapshot_ObjectFieldSpec,
+                Query.Db2LogSnapshotFieldSpec,
+                @"# REQUIRED
+$inputs.Var.db2LogSnapshotFid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -674,14 +641,10 @@ $inputs.Var.db2LogSnapshotFid = <System.String>";
                 "query",
                 "QueryDb2LogSnapshots",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: Db2LogSnapshotSortBy,$filter: Db2LogSnapshotFilterInput)",
-                "Db2LogSnapshotConnection"
-                );
-            Db2LogSnapshotConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (Db2LogSnapshotConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.Db2LogSnapshots(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "Db2LogSnapshotConnection",
+                Query.Db2LogSnapshots_ObjectFieldSpec,
+                Query.Db2LogSnapshotsFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -709,9 +672,8 @@ $inputs.Var.filter = @{
 	toTime = <DateTime>
 	# OPTIONAL
 	isArchived = <System.Boolean>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
 

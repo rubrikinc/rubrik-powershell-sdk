@@ -153,7 +153,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<CreateGuestCredentialReply> list)
+        public static void SelectForRetrieval(this List<CreateGuestCredentialReply> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

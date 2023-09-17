@@ -213,7 +213,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<O365SnapshotItemInfo> list)
+        public static void SelectForRetrieval(this List<O365SnapshotItemInfo> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

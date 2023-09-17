@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<NasNamespaceLogicalChildType> list)
+        public static void SelectForRetrieval(this List<NasNamespaceLogicalChildType> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

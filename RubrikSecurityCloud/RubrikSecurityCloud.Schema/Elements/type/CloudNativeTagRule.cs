@@ -261,7 +261,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<CloudNativeTagRule> list)
+        public static void SelectForRetrieval(this List<CloudNativeTagRule> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

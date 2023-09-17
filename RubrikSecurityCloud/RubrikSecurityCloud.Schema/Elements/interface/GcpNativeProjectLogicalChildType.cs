@@ -151,7 +151,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<GcpNativeProjectLogicalChildType> list)
+        public static void SelectForRetrieval(this List<GcpNativeProjectLogicalChildType> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

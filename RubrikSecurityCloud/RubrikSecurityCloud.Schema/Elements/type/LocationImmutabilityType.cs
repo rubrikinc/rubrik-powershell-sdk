@@ -109,7 +109,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<LocationImmutabilityType> list)
+        public static void SelectForRetrieval(this List<LocationImmutabilityType> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

@@ -182,7 +182,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<CascadingArchivalSpec> list)
+        public static void SelectForRetrieval(this List<CascadingArchivalSpec> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

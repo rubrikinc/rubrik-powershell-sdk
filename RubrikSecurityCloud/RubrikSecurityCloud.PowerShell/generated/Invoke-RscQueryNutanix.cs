@@ -78,12 +78,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <example>
     /// <code>Invoke-RscQueryNutanix -SnapshotDetail [-Arg ..] [-Field ..]</code>
     /// </example>
+    [CmdletBinding()]
     [Cmdlet(
         "Invoke",
         "RscQueryNutanix",
         DefaultParameterSetName = "Cluster")
     ]
-    public class Invoke_RscQueryNutanix : RscPSCmdlet
+    public class Invoke_RscQueryNutanix : RscGqlPSCmdlet
     {
         
         /// <summary>
@@ -442,6 +443,7 @@ Lists all files and directories in a given path.
 #pragma warning disable 1591
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 switch(Op)
@@ -698,14 +700,10 @@ Lists all files and directories in a given path.
                 "query",
                 "QueryNutanixTopLevelDescendants",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!],$filter: [Filter!])",
-                "CdmHierarchyObjectConnection"
-                );
-            CdmHierarchyObjectConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CdmHierarchyObjectConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.NutanixTopLevelDescendants(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "CdmHierarchyObjectConnection",
+                Query.NutanixTopLevelDescendants_ObjectFieldSpec,
+                Query.NutanixTopLevelDescendantsFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -758,9 +756,8 @@ $inputs.Var.filter = @(
 			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
 		)
 }
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -775,17 +772,12 @@ $inputs.Var.filter = @(
                 "query",
                 "QueryNutanixCluster",
                 "($fid: UUID!)",
-                "NutanixCluster"
-                );
-            NutanixCluster? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (NutanixCluster)this.Field;
-            }
-            string fieldSpecDoc = Query.NutanixCluster(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "NutanixCluster",
+                Query.NutanixCluster_ObjectFieldSpec,
+                Query.NutanixClusterFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -810,14 +802,10 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryNutanixClusters",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                "NutanixClusterConnection"
-                );
-            NutanixClusterConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (NutanixClusterConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.NutanixClusters(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "NutanixClusterConnection",
+                Query.NutanixClusters_ObjectFieldSpec,
+                Query.NutanixClustersFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -866,9 +854,8 @@ $inputs.Var.filter = @(
 			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
 		)
 }
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -893,14 +880,10 @@ $inputs.Var.filter = @(
                 "query",
                 "QueryNutanixPrismCentrals",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                "NutanixPrismCentralConnection"
-                );
-            NutanixPrismCentralConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (NutanixPrismCentralConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.NutanixPrismCentrals(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "NutanixPrismCentralConnection",
+                Query.NutanixPrismCentrals_ObjectFieldSpec,
+                Query.NutanixPrismCentralsFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -949,9 +932,8 @@ $inputs.Var.filter = @(
 			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
 		)
 }
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -966,17 +948,12 @@ $inputs.Var.filter = @(
                 "query",
                 "QueryNutanixPrismCentral",
                 "($fid: UUID!)",
-                "NutanixPrismCentral"
-                );
-            NutanixPrismCentral? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (NutanixPrismCentral)this.Field;
-            }
-            string fieldSpecDoc = Query.NutanixPrismCentral(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "NutanixPrismCentral",
+                Query.NutanixPrismCentral_ObjectFieldSpec,
+                Query.NutanixPrismCentralFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -991,17 +968,12 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryNutanixCategory",
                 "($fid: UUID!)",
-                "NutanixCategory"
-                );
-            NutanixCategory? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (NutanixCategory)this.Field;
-            }
-            string fieldSpecDoc = Query.NutanixCategory(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "NutanixCategory",
+                Query.NutanixCategory_ObjectFieldSpec,
+                Query.NutanixCategoryFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1016,17 +988,12 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryNutanixCategoryValue",
                 "($fid: UUID!)",
-                "NutanixCategoryValue"
-                );
-            NutanixCategoryValue? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (NutanixCategoryValue)this.Field;
-            }
-            string fieldSpecDoc = Query.NutanixCategoryValue(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "NutanixCategoryValue",
+                Query.NutanixCategoryValue_ObjectFieldSpec,
+                Query.NutanixCategoryValueFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1041,17 +1008,12 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryNutanixVm",
                 "($fid: UUID!)",
-                "NutanixVm"
-                );
-            NutanixVm? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (NutanixVm)this.Field;
-            }
-            string fieldSpecDoc = Query.NutanixVm(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "NutanixVm",
+                Query.NutanixVm_ObjectFieldSpec,
+                Query.NutanixVmFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1076,14 +1038,10 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryNutanixVms",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                "NutanixVmConnection"
-                );
-            NutanixVmConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (NutanixVmConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.NutanixVms(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "NutanixVmConnection",
+                Query.NutanixVms_ObjectFieldSpec,
+                Query.NutanixVmsFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -1132,9 +1090,8 @@ $inputs.Var.filter = @(
 			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
 		)
 }
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1157,14 +1114,10 @@ $inputs.Var.filter = @(
                 "query",
                 "QueryNutanixMounts",
                 "($first: Int,$after: String,$filters: [NutanixLiveMountFilterInput!],$sortBy: NutanixLiveMountSortByInput)",
-                "NutanixLiveMountConnection"
-                );
-            NutanixLiveMountConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (NutanixLiveMountConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.NutanixMounts(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "NutanixLiveMountConnection",
+                Query.NutanixMounts_ObjectFieldSpec,
+                Query.NutanixMountsFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -1185,9 +1138,8 @@ $inputs.Var.sortBy = @{
 	field = <NutanixLiveMountSortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NutanixLiveMountSortByField]) for enum values.
 	# OPTIONAL
 	sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1202,20 +1154,15 @@ $inputs.Var.sortBy = @{
                 "query",
                 "QueryNutanixClusterContainers",
                 "($input: GetContainersInput!)",
-                "NutanixContainerListResponse"
-                );
-            NutanixContainerListResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (NutanixContainerListResponse)this.Field;
-            }
-            string fieldSpecDoc = Query.NutanixClusterContainers(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "NutanixContainerListResponse",
+                Query.NutanixClusterContainers_ObjectFieldSpec,
+                Query.NutanixClusterContainersFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1230,20 +1177,15 @@ $inputs.Var.input = @{
                 "query",
                 "QueryNutanixClusterNetworks",
                 "($input: GetNutanixNetworksInput!)",
-                "NutanixNetworkListResponse"
-                );
-            NutanixNetworkListResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (NutanixNetworkListResponse)this.Field;
-            }
-            string fieldSpecDoc = Query.NutanixClusterNetworks(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "NutanixNetworkListResponse",
+                Query.NutanixClusterNetworks_ObjectFieldSpec,
+                Query.NutanixClusterNetworksFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1258,22 +1200,17 @@ $inputs.Var.input = @{
                 "query",
                 "QueryNutanixClusterAsyncRequestStatus",
                 "($input: GetNutanixClusterAsyncRequestStatusInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Query.NutanixClusterAsyncRequestStatus(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Query.NutanixClusterAsyncRequestStatus_ObjectFieldSpec,
+                Query.NutanixClusterAsyncRequestStatusFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	clusterUuid = <System.String>
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1288,22 +1225,17 @@ $inputs.Var.input = @{
                 "query",
                 "QueryNutanixVmAsyncRequestStatus",
                 "($input: GetNutanixVmAsyncRequestStatusInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Query.NutanixVmAsyncRequestStatus(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Query.NutanixVmAsyncRequestStatus_ObjectFieldSpec,
+                Query.NutanixVmAsyncRequestStatusFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	clusterUuid = <System.String>
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1318,14 +1250,10 @@ $inputs.Var.input = @{
                 "query",
                 "QuerySearchNutanixVm",
                 "($input: SearchNutanixVmInput!)",
-                "SearchResponseListResponse"
-                );
-            SearchResponseListResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (SearchResponseListResponse)this.Field;
-            }
-            string fieldSpecDoc = Query.SearchNutanixVm(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "SearchResponseListResponse",
+                Query.SearchNutanixVm_ObjectFieldSpec,
+                Query.SearchNutanixVmFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	cursor = <System.String>
@@ -1335,9 +1263,8 @@ $inputs.Var.input = @{
 	id = <System.String>
 	# REQUIRED
 	path = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1352,20 +1279,15 @@ $inputs.Var.input = @{
                 "query",
                 "QueryNutanixVmMissedSnapshots",
                 "($input: NutanixMissedSnapshotsInput!)",
-                "MissedSnapshotListResponse"
-                );
-            MissedSnapshotListResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MissedSnapshotListResponse)this.Field;
-            }
-            string fieldSpecDoc = Query.NutanixVmMissedSnapshots(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "MissedSnapshotListResponse",
+                Query.NutanixVmMissedSnapshots_ObjectFieldSpec,
+                Query.NutanixVmMissedSnapshotsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1380,14 +1302,10 @@ $inputs.Var.input = @{
                 "query",
                 "QueryNutanixBrowseSnapshot",
                 "($input: BrowseNutanixSnapshotInput!)",
-                "BrowseResponseListResponse"
-                );
-            BrowseResponseListResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (BrowseResponseListResponse)this.Field;
-            }
-            string fieldSpecDoc = Query.NutanixBrowseSnapshot(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "BrowseResponseListResponse",
+                Query.NutanixBrowseSnapshot_ObjectFieldSpec,
+                Query.NutanixBrowseSnapshotFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	limit = <System.Int32>
@@ -1397,9 +1315,8 @@ $inputs.Var.input = @{
 	id = <System.String>
 	# REQUIRED
 	path = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1414,20 +1331,15 @@ $inputs.Var.input = @{
                 "query",
                 "QueryNutanixSnapshotDetail",
                 "($input: GetNutanixSnapshotDetailInput!)",
-                "NutanixVmSnapshotDetail"
-                );
-            NutanixVmSnapshotDetail? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (NutanixVmSnapshotDetail)this.Field;
-            }
-            string fieldSpecDoc = Query.NutanixSnapshotDetail(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "NutanixVmSnapshotDetail",
+                Query.NutanixSnapshotDetail_ObjectFieldSpec,
+                Query.NutanixSnapshotDetailFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
 

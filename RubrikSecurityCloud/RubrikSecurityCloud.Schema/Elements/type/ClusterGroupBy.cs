@@ -162,7 +162,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<ClusterGroupBy> list)
+        public static void SelectForRetrieval(this List<ClusterGroupBy> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

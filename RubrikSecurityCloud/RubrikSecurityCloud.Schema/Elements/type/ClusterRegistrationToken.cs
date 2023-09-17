@@ -149,7 +149,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<ClusterRegistrationToken> list)
+        public static void SelectForRetrieval(this List<ClusterRegistrationToken> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

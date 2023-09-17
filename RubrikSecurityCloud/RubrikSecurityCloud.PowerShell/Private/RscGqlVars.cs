@@ -14,7 +14,7 @@ using RubrikSecurityCloud.PowerShell.Private;
 // and is visible to the user
 namespace RubrikSecurityCloud
 {
-// ignore warning 'Missing XML comment'
+    // ignore warning 'Missing XML comment'
 #pragma warning disable 1591
     public delegate object GetOverrideValueForVarDelegate(string varName);
 #pragma warning restore 1591
@@ -22,14 +22,14 @@ namespace RubrikSecurityCloud
     /// <summary>
     /// Variables to be used in a GraphQL query.
     /// </summary>
-    public class RscGqlVars : Hashtable
+    public class RscGqlVars : VarDict
     {
         // variable definitions (comes from the GraphQL schema)
         // keys are variable names
         // values are variable types
         // example:
         // { "clusterId": "String!", "filter": "[ClusterFilterInput!]!" }
-        internal Hashtable _varDefs;
+        internal VarDict _varDefs;
 
         // an example of how the variables can
         // be initialized
@@ -39,9 +39,8 @@ namespace RubrikSecurityCloud
         /// Create a new RscGqlVars object.
         /// </summary>
         public RscGqlVars()
-            : base(StringComparer.OrdinalIgnoreCase)
         {
-            _varDefs = new Hashtable(StringComparer.OrdinalIgnoreCase);
+            _varDefs = new VarDict();
         }
 
         /// <summary>
@@ -55,12 +54,12 @@ namespace RubrikSecurityCloud
             string example = null)
                 : this()
         {
-            _example = example;
             Set(
                 obj,
                 varDefs,
                 getOverrideValueForVar,
-                ignoreRequired
+                ignoreRequired,
+                example
             );
         }
 
@@ -73,7 +72,8 @@ namespace RubrikSecurityCloud
         ///   then obj is assumed to be the value of that variable.
         /// - If obj is a string, it is assumed to be a
         ///   comma-separated list of key-value pairs.
-        /// - Otherwise obj must be a hashtable.
+        /// - Otherwise obj must be a hashtable
+        ///   (obj=null is treated as an empty hashtable).
         /// Values are converted to JSON-serializable types
         /// (RSC types are passed through as-is).
         /// </param>
@@ -94,75 +94,99 @@ namespace RubrikSecurityCloud
             System.Object obj,
             Tuple<String, String>[] varDefs = null,
             GetOverrideValueForVarDelegate getOverrideValueForVar = null,
-            bool ignoreRequired = false)
+            bool ignoreRequired = false,
+            string example = null)
         {
-            if (varDefs != null && varDefs.Length > 0)
+            if (RubrikSecurityCloud.Config.IgnoreMissingRequiredVariables)
             {
-                foreach (var varDef in varDefs)
-                {
-                    _varDefs.Add(varDef.Item1, varDef.Item2);
-                }
+                ignoreRequired = true;
             }
+
+            _example = example;
+            _varDefs.AddFromTuple(varDefs);
+
+            // if obj is null, treat it as an empty hashtable
             if (obj == null)
             {
-                return;
+                obj = new VarDict();
+            }
+            else if (obj is Hashtable objHash)
+            {
+                obj = new VarDict(objHash);
             }
 
-            // special case:
+            // special case #1:
             // if there is only one variable definition
             // and the object is not a hashtable,
+            // or is a hashtable without the variable name as a key,
             // then we can assume that the object is the value
-            if (_varDefs.Count == 1 && !(obj is Hashtable))
+            if (_varDefs.Count == 1)
             {
-                var key = _varDefs.Keys.Cast<object>().First();
-                obj = new Hashtable(StringComparer.OrdinalIgnoreCase) {
-                    { key, obj }
-                };
+                string key = _varDefs.Keys.Cast<object>().First().ToString();
+                if (obj is VarDict objVd)
+                {
+                    if (objVd.Count == 1 && objVd.ContainsKey(key))
+                    {
+                        // obj is good as-is
+                    }
+                    else
+                    {
+                        obj = new VarDict() {
+                            { key, obj }
+                        };
+                    }
+                }
+                else
+                {
+                    obj = new VarDict() {
+                        { key, obj }
+                    };
+                }
             }
 
+            // special case #2:
             // if the object is a string
             // then we can assume that it is a comma-separated list
             // of key-value pairs
-            if (obj is String)
+            if (obj is String sObj)
             {
-                Hashtable h = new Hashtable(StringComparer.OrdinalIgnoreCase);
-
-                // split the String into key-value pairs
-                // separated by commas: key1=value1,key2=value2
-                string[] pairs = ((string)obj).Split(',');
-                foreach (string pair in pairs)
-                {
-                    string[] kv = pair.Split('=');
-                    if (kv.Length != 2)
-                    {
-                        throw new ArgumentException(
-                            string.Format(
-                                "Invalid argument {0}. Expected key=value pairs separated by commas.", obj)
-                        );
-                    }
-                    h.Add(kv[0], kv[1]);
-                }
-                obj = h;
+                var vd = new VarDict();
+                vd.AddFromCskvString(sObj);
+                obj = vd;
             }
 
             // Passed argument must be a hashtable
-            if (!(obj is Hashtable))
+            if (obj is not VarDict)
             {
                 throw new ArgumentException($"Invalid argument {obj}. Expected a hashtable.");
             }
 
-            // convert obj to this case-insensitive hashtable,
-            // coalescing keys with the same name,
+            // start by populating with _varDefs with null values,
+            // so that if a variable is specified with a different
+            // case, it will coalesce with the correct case
+            // (the one from varDefs).
+            // (remaining null entries will be ignored).
+            foreach (string key in _varDefs.Keys)
+            {
+                this.Add(key, null);
+            }
+
+            // read obj, coalescing keys with the same name,
             // removing null values,
             // and converting values to JSON-serializable types
-            foreach (DictionaryEntry entry in (Hashtable)obj)
+            foreach (KeyValuePair<string, object> entry in (VarDict)obj)
             {
                 if (entry.Value != null)
                 {
-                    this.Add(
-                        (string)entry.Key,
-                        JsonUtils.JsonReady(entry.Value)
-                    );
+                    var v = JsonUtils.JsonReady(entry.Value);
+                    if (this.ContainsKey(entry.Key))
+                    {
+                        this[entry.Key] = v;
+                    }
+                    else
+                    {
+                        this.Add(entry.Key, v);
+                    }
                 }
             }
 
@@ -176,17 +200,24 @@ namespace RubrikSecurityCloud
         }
 
         /// <summary>
-        /// Return documentation links for the variables.
+        /// Return info about the variables:
+        /// - name
+        /// - type
+        /// - link to online documentation
         /// </summary>
-        public Hashtable Info()
+        public List<VarInfo> Info()
         {
-            var info = new Hashtable(StringComparer.OrdinalIgnoreCase);
-            foreach (DictionaryEntry varDef in _varDefs)
+            var info = new List<VarInfo>();
+            foreach (KeyValuePair<string, object> varDef in _varDefs)
             {
                 string varName = (string)varDef.Key;
-                string varType = (string)varDef.Value;
-                var v = StringUtils.DocLinkForGqlType(varType);
-                info.Add(varName, v);
+                string varGqlType = (string)varDef.Value;
+                string VarDescr = StringUtils.DocLinkForGqlType(varGqlType);
+                string varType = StringUtils.GqlTypeToType(varGqlType);
+                info.Add(new VarInfo(
+                    varName,
+                    varType,
+                    $"{varGqlType}: {VarDescr}"));
             }
             return info;
         }
@@ -210,12 +241,12 @@ namespace RubrikSecurityCloud
             bool ignoreRequired = false)
         {
 
-            foreach (DictionaryEntry varDef in _varDefs)
+            foreach (KeyValuePair<string, object> varDef in _varDefs)
             {
                 string varName = (string)varDef.Key;
-                string varType = (string)varDef.Value;
-                bool isRequired = varType[varType.Length - 1] == '!';
-                varType = varType.TrimEnd('!').ToLower();
+                string varTypeExpr = (string)varDef.Value;
+                bool isRequired = varTypeExpr[varTypeExpr.Length - 1] == '!';
+                string varType = varTypeExpr.TrimEnd('!').ToLower();
 
                 // Override if the cmdlet has a parameter with the same name
                 if (getOverrideValueForVar != null)
@@ -227,13 +258,24 @@ namespace RubrikSecurityCloud
                     }
                 }
 
+                // throw if required and missing
+                if (isRequired && !ignoreRequired &&
+                    (!this.ContainsKey(varName) || this[varName] == null))
+                {
+                    var t = varTypeExpr.TrimEnd('!');
+                    var ns = "RubrikSecurityCloud.Types.";
+                    // Try to get the type with the namespace prefix
+                    Type typeWithNamespace = Type.GetType(ns + t);
+
+                    // Use the namespace prefix only if the type exists in that namespace
+                    var typ = typeWithNamespace != null ? ns + t : t;
+                    throw new ArgumentException("Required variable '" +
+                        varName + "' of type [" + typ + "] is missing.");
+                }
+
                 if (this.ContainsKey(varName)) // case-insensitive
                 {
                     var varValue = this[varName];
-                    if (isRequired && varValue == null && !ignoreRequired)
-                    {
-                        throw new ArgumentException($"Required input {varName} of type {varType} is null.");
-                    }
 
                     // Basic type conversion:
                     if (varValue is String str)
@@ -258,23 +300,19 @@ namespace RubrikSecurityCloud
                     // variable specified in varDefs wasn't given
                     // we'll send it to the server as null
                     this.Add(varName, null);
-                    if (isRequired && !ignoreRequired)
-                    {
-                        throw new ArgumentException($"Required input {varName} of type {varType} is not provided.");
-                    }
                 }
             }
         }
 
         /// <summary>
-        /// Convert to a dictionary.
+        /// Finalize the variables for sending to the server.
         /// </summary>
-        public Dictionary<string, object> ToDict()
+        public VarDict Finalize()
         {
             // run again in case user has modified the hashtable
             // directly (with Add() for example) without calling Set()
             conformToVarDefs(null, true);
-            return JsonUtils.JsonReady(this) as Dictionary<string, object>;
+            return JsonUtils.JsonReady(this) as VarDict;
         }
 
         /// <summary>
@@ -283,27 +321,14 @@ namespace RubrikSecurityCloud
         public override string ToString()
         {
             List<string> vars = new();
-            foreach (DictionaryEntry entry in this)
+            foreach (KeyValuePair<string, object> entry in this)
             {
                 string key = (string)entry.Key;
                 if (_varDefs.ContainsKey(key))
                 {
-                    key += "[" + _varDefs[key] + "]";
+                    key += "[gql:" + _varDefs[key] + "]";
                 }
-                string valStr = "null";
-                object val = entry.Value;
-                if (val != null)
-                {
-                    if (val is Hashtable hashTable)
-                    {
-                        valStr = StringUtils.HashtableToString(hashTable);
-                    }
-                    else
-                    {
-                        valStr = val.ToString();
-                    }
-                    valStr += "<" + val.GetType().Name + ">";
-                }
+                string valStr = StringUtils.FormatObjectForLogging(entry.Value);
                 vars.Add(key + " = " + valStr);
             }
             return string.Join(",", vars);

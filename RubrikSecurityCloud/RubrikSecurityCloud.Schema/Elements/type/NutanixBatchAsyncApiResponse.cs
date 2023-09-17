@@ -137,7 +137,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<NutanixBatchAsyncApiResponse> list)
+        public static void SelectForRetrieval(this List<NutanixBatchAsyncApiResponse> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

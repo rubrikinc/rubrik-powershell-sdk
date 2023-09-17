@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<WindowsClusterDescendantType> list)
+        public static void SelectForRetrieval(this List<WindowsClusterDescendantType> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

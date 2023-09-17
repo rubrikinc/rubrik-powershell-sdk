@@ -74,6 +74,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("awsNativeS3SlaConfigInput")]
         public AwsNativeS3SlaConfigInput? AwsNativeS3SlaConfigInput { get; set; }
 
+        //      C# -> ManagedVolumeSlaConfigInput? ManagedVolumeSlaConfigInput
+        // GraphQL -> managedVolumeSlaConfigInput: ManagedVolumeSlaConfigInput (input)
+        [JsonProperty("managedVolumeSlaConfigInput")]
+        public ManagedVolumeSlaConfigInput? ManagedVolumeSlaConfigInput { get; set; }
+
 
         #endregion
 

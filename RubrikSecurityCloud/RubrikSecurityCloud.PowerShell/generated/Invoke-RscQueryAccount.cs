@@ -39,12 +39,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <example>
     /// <code>Invoke-RscQueryAccount -Owners [-Arg ..] [-Field ..]</code>
     /// </example>
+    [CmdletBinding()]
     [Cmdlet(
         "Invoke",
         "RscQueryAccount",
         DefaultParameterSetName = "Id")
     ]
-    public class Invoke_RscQueryAccount : RscPSCmdlet
+    public class Invoke_RscQueryAccount : RscGqlPSCmdlet
     {
         
         /// <summary>
@@ -141,6 +142,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 #pragma warning disable 1591
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 switch(Op)
@@ -228,16 +230,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "query",
                 "QueryAccountSettings",
                 "",
-                "AccountSetting"
-                );
-            AccountSetting? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AccountSetting)this.Field;
-            }
-            string fieldSpecDoc = Query.AccountSettings(ref fieldSpecObj);
-            string inputExample = @"";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "AccountSetting",
+                Query.AccountSettings_ObjectFieldSpec,
+                Query.AccountSettingsFieldSpec,
+                @""
+            );
         }
 
         // Invoke GraphQL Query:
@@ -254,14 +251,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "query",
                 "QueryAllAccountsWithExocomputeMappings",
                 "($cloudVendor: CloudVendor!,$features: [CloudAccountFeature!]!,$exocomputeAccountIdsFilter: [UUID!]!)",
-                "List<CloudAccountWithExocomputeMapping>"
-                );
-            List<CloudAccountWithExocomputeMapping>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<CloudAccountWithExocomputeMapping>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAccountsWithExocomputeMappings(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<CloudAccountWithExocomputeMapping>",
+                Query.AllAccountsWithExocomputeMappings_ObjectFieldSpec,
+                Query.AllAccountsWithExocomputeMappingsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.cloudVendor = <CloudVendor> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudVendor]) for enum values.
 # REQUIRED
 $inputs.Var.features = @(
@@ -270,9 +263,8 @@ $inputs.Var.features = @(
 # REQUIRED
 $inputs.Var.exocomputeAccountIdsFilter = @(
 	<System.String>
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -297,14 +289,10 @@ $inputs.Var.exocomputeAccountIdsFilter = @(
                 "query",
                 "QueryAllAccountProducts",
                 "($nameFilter: [ProductName!]!,$typeFilter: [ProductType!]!,$stateFilter: [ProductState!]!,$startDateArg: DateTime,$endDateArg: DateTime)",
-                "List<AccountProduct>"
-                );
-            List<AccountProduct>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<AccountProduct>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAccountProducts(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<AccountProduct>",
+                Query.AllAccountProducts_ObjectFieldSpec,
+                Query.AllAccountProductsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.nameFilter = @(
 	<ProductName> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ProductName]) for enum values.
 )
@@ -319,9 +307,8 @@ $inputs.Var.stateFilter = @(
 # OPTIONAL
 $inputs.Var.startDateArg = <DateTime>
 # OPTIONAL
-$inputs.Var.endDateArg = <DateTime>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.endDateArg = <DateTime>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -335,16 +322,11 @@ $inputs.Var.endDateArg = <DateTime>";
                 "query",
                 "QueryAccountId",
                 "",
-                "System.String"
-                );
-            System.String? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (System.String)this.Field;
-            }
-            string fieldSpecDoc = Query.AccountId(ref fieldSpecObj);
-            string inputExample = @"";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "System.String",
+                Query.AccountId_ObjectFieldSpec,
+                Query.AccountIdFieldSpec,
+                @""
+            );
         }
 
         // Invoke GraphQL Query:
@@ -358,16 +340,11 @@ $inputs.Var.endDateArg = <DateTime>";
                 "query",
                 "QueryAllAccountOwners",
                 "",
-                "List<User>"
-                );
-            List<User>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<User>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAccountOwners(ref fieldSpecObj);
-            string inputExample = @"";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "List<User>",
+                Query.AllAccountOwners_ObjectFieldSpec,
+                Query.AllAccountOwnersFieldSpec,
+                @""
+            );
         }
 
 

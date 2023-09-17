@@ -113,7 +113,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<DevicePathToVolumeSnapshotIdMap> list)
+        public static void SelectForRetrieval(this List<DevicePathToVolumeSnapshotIdMap> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

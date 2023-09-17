@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<OracleRacLogicalChildType> list)
+        public static void SelectForRetrieval(this List<OracleRacLogicalChildType> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

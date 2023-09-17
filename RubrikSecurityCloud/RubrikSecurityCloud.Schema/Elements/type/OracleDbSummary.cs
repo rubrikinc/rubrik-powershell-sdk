@@ -729,7 +729,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<OracleDbSummary> list)
+        public static void SelectForRetrieval(this List<OracleDbSummary> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

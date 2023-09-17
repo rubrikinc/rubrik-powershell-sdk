@@ -48,12 +48,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <example>
     /// <code>Invoke-RscQueryCassandra -ColumnFamily [-Arg ..] [-Field ..]</code>
     /// </example>
+    [CmdletBinding()]
     [Cmdlet(
         "Invoke",
         "RscQueryCassandra",
         DefaultParameterSetName = "Source")
     ]
-    public class Invoke_RscQueryCassandra : RscPSCmdlet
+    public class Invoke_RscQueryCassandra : RscGqlPSCmdlet
     {
         
         /// <summary>
@@ -204,6 +205,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 #pragma warning disable 1591
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 switch(Op)
@@ -338,14 +340,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "query",
                 "QueryCassandraSources",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                "CassandraSourceConnection"
-                );
-            CassandraSourceConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CassandraSourceConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.CassandraSources(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "CassandraSourceConnection",
+                Query.CassandraSources_ObjectFieldSpec,
+                Query.CassandraSourcesFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -394,9 +392,8 @@ $inputs.Var.filter = @(
 			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
 		)
 }
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -421,14 +418,10 @@ $inputs.Var.filter = @(
                 "query",
                 "QueryCassandraKeyspaces",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                "CassandraKeyspaceConnection"
-                );
-            CassandraKeyspaceConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CassandraKeyspaceConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.CassandraKeyspaces(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "CassandraKeyspaceConnection",
+                Query.CassandraKeyspaces_ObjectFieldSpec,
+                Query.CassandraKeyspacesFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -477,9 +470,8 @@ $inputs.Var.filter = @(
 			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
 		)
 }
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -504,14 +496,10 @@ $inputs.Var.filter = @(
                 "query",
                 "QueryCassandraColumnFamilies",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                "CassandraColumnFamilyConnection"
-                );
-            CassandraColumnFamilyConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CassandraColumnFamilyConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.CassandraColumnFamilies(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "CassandraColumnFamilyConnection",
+                Query.CassandraColumnFamilies_ObjectFieldSpec,
+                Query.CassandraColumnFamiliesFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -560,9 +548,8 @@ $inputs.Var.filter = @(
 			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
 		)
 }
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -577,14 +564,10 @@ $inputs.Var.filter = @(
                 "query",
                 "QueryCassandraColumnFamilyRecoverableRange",
                 "($input: GetMosaicRecoverableRangeInput!)",
-                "GetMosaicRecoverableRangeResponse"
-                );
-            GetMosaicRecoverableRangeResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (GetMosaicRecoverableRangeResponse)this.Field;
-            }
-            string fieldSpecDoc = Query.CassandraColumnFamilyRecoverableRange(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "GetMosaicRecoverableRangeResponse",
+                Query.CassandraColumnFamilyRecoverableRange_ObjectFieldSpec,
+                Query.CassandraColumnFamilyRecoverableRangeFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	clusterUuid = <System.String>
@@ -599,9 +582,8 @@ $inputs.Var.input = @{
 		# REQUIRED
 		tableName = <System.String>
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -616,14 +598,10 @@ $inputs.Var.input = @{
                 "query",
                 "QueryCassandraColumnFamilySchema",
                 "($input: GetMosaicTableSchemaInput!)",
-                "GetSchemaResponse"
-                );
-            GetSchemaResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (GetSchemaResponse)this.Field;
-            }
-            string fieldSpecDoc = Query.CassandraColumnFamilySchema(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "GetSchemaResponse",
+                Query.CassandraColumnFamilySchema_ObjectFieldSpec,
+                Query.CassandraColumnFamilySchemaFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	clusterUuid = <System.String>
@@ -638,9 +616,8 @@ $inputs.Var.input = @{
 		# REQUIRED
 		versionTimestamp = <System.String>
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -655,17 +632,12 @@ $inputs.Var.input = @{
                 "query",
                 "QueryCassandraSource",
                 "($fid: UUID!)",
-                "CassandraSource"
-                );
-            CassandraSource? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CassandraSource)this.Field;
-            }
-            string fieldSpecDoc = Query.CassandraSource(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "CassandraSource",
+                Query.CassandraSource_ObjectFieldSpec,
+                Query.CassandraSourceFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -680,17 +652,12 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryCassandraKeyspace",
                 "($fid: UUID!)",
-                "CassandraKeyspace"
-                );
-            CassandraKeyspace? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CassandraKeyspace)this.Field;
-            }
-            string fieldSpecDoc = Query.CassandraKeyspace(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "CassandraKeyspace",
+                Query.CassandraKeyspace_ObjectFieldSpec,
+                Query.CassandraKeyspaceFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -705,17 +672,12 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryCassandraColumnFamily",
                 "($fid: UUID!)",
-                "CassandraColumnFamily"
-                );
-            CassandraColumnFamily? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CassandraColumnFamily)this.Field;
-            }
-            string fieldSpecDoc = Query.CassandraColumnFamily(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "CassandraColumnFamily",
+                Query.CassandraColumnFamily_ObjectFieldSpec,
+                Query.CassandraColumnFamilyFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
 

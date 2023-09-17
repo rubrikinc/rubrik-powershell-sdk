@@ -132,7 +132,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                                     $"$sortOrder: SortOrder, " +
                                     $"$filter: [Filter!]" +
                                     $"){{\n" +
-                                    $"{Query.VsphereVmNewConnection(ref listFields)}" +
+                                    $"{Query.VsphereVmNewConnection(listFields)}" +
                                     $"\n}}";
 
                         if (string.IsNullOrEmpty(Name))
@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         if (Fields == null)
                         {
                             detailFields = new VsphereVm();
-                            detailFields.Fetch();
+                            detailFields.SelectForRetrieval();
                             detailFields.Cluster = new Cluster
                             {
                                 Id = "FETCH",
@@ -216,7 +216,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
                             string operationByIdString =
                                         $"query VsphereVmDetailQuery($fid: UUID!){{ " +
-                                        $"{Query.VsphereVmNew(ref detailFields)}" +
+                                        $"{Query.VsphereVmNew(detailFields)}" +
                                         $"}}";
 
                             //operationByIdString = operationByIdString.Replace(

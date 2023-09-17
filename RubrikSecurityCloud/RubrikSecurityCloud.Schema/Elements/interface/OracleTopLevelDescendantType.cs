@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<OracleTopLevelDescendantType> list)
+        public static void SelectForRetrieval(this List<OracleTopLevelDescendantType> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

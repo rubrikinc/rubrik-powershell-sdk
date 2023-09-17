@@ -213,7 +213,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<GetO365StorageStatsResp> list)
+        public static void SelectForRetrieval(this List<GetO365StorageStatsResp> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

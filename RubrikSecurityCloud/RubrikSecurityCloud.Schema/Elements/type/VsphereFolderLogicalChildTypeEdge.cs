@@ -134,7 +134,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<VsphereFolderLogicalChildTypeEdge> list)
+        public static void SelectForRetrieval(this List<VsphereFolderLogicalChildTypeEdge> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

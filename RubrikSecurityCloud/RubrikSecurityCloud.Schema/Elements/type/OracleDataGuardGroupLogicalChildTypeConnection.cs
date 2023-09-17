@@ -181,7 +181,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<OracleDataGuardGroupLogicalChildTypeConnection> list)
+        public static void SelectForRetrieval(this List<OracleDataGuardGroupLogicalChildTypeConnection> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

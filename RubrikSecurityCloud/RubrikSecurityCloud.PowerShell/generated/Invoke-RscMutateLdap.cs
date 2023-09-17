@@ -36,12 +36,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <example>
     /// <code>Invoke-RscMutateLdap -SetMfaSetting [-Arg ..] [-Field ..]</code>
     /// </example>
+    [CmdletBinding()]
     [Cmdlet(
         "Invoke",
         "RscMutateLdap",
         DefaultParameterSetName = "SetMfaSetting")
     ]
-    public class Invoke_RscMutateLdap : RscPSCmdlet
+    public class Invoke_RscMutateLdap : RscGqlPSCmdlet
     {
         
         /// <summary>
@@ -120,6 +121,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 #pragma warning disable 1591
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 switch(Op)
@@ -222,14 +224,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "mutation",
                 "MutationUpdateLdapIntegration",
                 "($id: UUID,$name: String!,$bindUserName: String!,$bindUserPassword: String!,$baseDn: String,$trustedCerts: String,$dynamicDnsName: String,$ldapServers: [LdapServerInput!],$userSearchFilter: String,$userNameAttr: String,$groupMembershipAttr: String,$groupSearchFilter: String,$groupMemberAttr: String)",
-                "System.String"
-                );
-            System.String? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (System.String)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UpdateLdapIntegration(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "System.String",
+                Mutation.UpdateLdapIntegration_ObjectFieldSpec,
+                Mutation.UpdateLdapIntegrationFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.id = <System.String>
 # REQUIRED
 $inputs.Var.name = <System.String>
@@ -263,9 +261,8 @@ $inputs.Var.groupMembershipAttr = <System.String>
 # OPTIONAL
 $inputs.Var.groupSearchFilter = <System.String>
 # OPTIONAL
-$inputs.Var.groupMemberAttr = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.groupMemberAttr = <System.String>"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -280,17 +277,12 @@ $inputs.Var.groupMemberAttr = <System.String>";
                 "mutation",
                 "MutationRemoveLdapIntegration",
                 "($id: UUID!)",
-                "System.Boolean"
-                );
-            System.Boolean? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (System.Boolean)this.Field;
-            }
-            string fieldSpecDoc = Mutation.RemoveLdapIntegration(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.id = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "System.Boolean",
+                Mutation.RemoveLdapIntegration_ObjectFieldSpec,
+                Mutation.RemoveLdapIntegrationFieldSpec,
+                @"# REQUIRED
+$inputs.Var.id = <System.String>"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -305,19 +297,14 @@ $inputs.Var.id = <System.String>";
                 "mutation",
                 "MutationDeleteLdapPrincipals",
                 "($principalIds: [String!]!)",
-                "System.Boolean"
-                );
-            System.Boolean? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (System.Boolean)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DeleteLdapPrincipals(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "System.Boolean",
+                Mutation.DeleteLdapPrincipals_ObjectFieldSpec,
+                Mutation.DeleteLdapPrincipalsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.principalIds = @(
 	<System.String>
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -332,22 +319,17 @@ $inputs.Var.principalIds = @(
                 "mutation",
                 "MutationSetLdapMfaSetting",
                 "($input: SetLdapMfaSettingInput!)",
-                "System.Boolean"
-                );
-            System.Boolean? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (System.Boolean)this.Field;
-            }
-            string fieldSpecDoc = Mutation.SetLdapMfaSetting(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "System.Boolean",
+                Mutation.SetLdapMfaSetting_ObjectFieldSpec,
+                Mutation.SetLdapMfaSettingFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	ldapId = <System.String>
 	# OPTIONAL
 	isTotpEnforced = <System.Boolean>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
 

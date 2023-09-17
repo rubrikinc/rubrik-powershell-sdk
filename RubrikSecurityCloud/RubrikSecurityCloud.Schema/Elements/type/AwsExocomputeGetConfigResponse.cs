@@ -301,7 +301,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<AwsExocomputeGetConfigResponse> list)
+        public static void SelectForRetrieval(this List<AwsExocomputeGetConfigResponse> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

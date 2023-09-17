@@ -84,6 +84,20 @@ namespace RubrikSecurityCloud.PowerShell.Private
             }
         }
 
+        public void Error(string message)
+        {
+            var m = ($"{name}: {message}");
+            if (_cmdlet != null)
+            {
+                this._logQueue.Enqueue("E" + m);
+                this.Flush();
+            }
+            else
+            {
+                Console.WriteLine($"ERROR: {m}");
+            }
+        }
+
         public void Flush()
         {
             if (_cmdlet == null)
@@ -113,16 +127,24 @@ namespace RubrikSecurityCloud.PowerShell.Private
                         case 'W':
                             _cmdlet.WriteWarning(message);
                             break;
+                        case 'E':
+                            _cmdlet.WriteError(
+                                new ErrorRecord(
+                                    new Exception(message),
+                                    "RscError",
+                                    ErrorCategory.NotSpecified,
+                                    null));
+                            break;
                         case 'I':
                             _cmdlet.WriteInformation(
-                                new InformationRecord(message,name));
+                                new InformationRecord(message, name));
                             break;
 
                         default:
                             break;
                     }
                 }
-                catch (Exception )
+                catch (Exception)
                 {
                     // However it may not be possible because
                     // the Write methods cannot be called from

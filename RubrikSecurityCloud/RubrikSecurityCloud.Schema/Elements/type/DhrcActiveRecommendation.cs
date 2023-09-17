@@ -233,7 +233,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<DhrcActiveRecommendation> list)
+        public static void SelectForRetrieval(this List<DhrcActiveRecommendation> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

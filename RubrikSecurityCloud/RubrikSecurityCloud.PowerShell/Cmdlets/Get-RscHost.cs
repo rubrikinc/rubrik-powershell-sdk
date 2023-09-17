@@ -170,7 +170,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                             $"$sortOrder: SortOrder, " +
                             $"$filter: [Filter!]" +
                             $"){{\n" +
-                            $"{Query.PhysicalHosts(ref hostListQuery)}" +
+                            $"{Query.PhysicalHosts(hostListQuery)}" +
                             $"\n}}";
 
                         string hostRoot = $"{OsType.ToUpper()}_HOST_ROOT";
@@ -250,7 +250,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         string hostQueryText = $"query PhysicalHostById(" +
                             $"$fid: UUID!)" +
                             $"{{\n" +
-                            $"{Query.PhysicalHost(ref nodeObj)}" +
+                            $"{Query.PhysicalHost(nodeObj)}" +
                             $"\n}}";
 
                         // Initialize the variableset

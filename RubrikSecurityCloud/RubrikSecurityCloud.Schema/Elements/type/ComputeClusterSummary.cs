@@ -337,7 +337,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<ComputeClusterSummary> list)
+        public static void SelectForRetrieval(this List<ComputeClusterSummary> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

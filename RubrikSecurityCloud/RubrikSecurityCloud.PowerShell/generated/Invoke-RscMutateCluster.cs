@@ -60,12 +60,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <example>
     /// <code>Invoke-RscMutateCluster -RecoverCloud [-Arg ..] [-Field ..]</code>
     /// </example>
+    [CmdletBinding()]
     [Cmdlet(
         "Invoke",
         "RscMutateCluster",
         DefaultParameterSetName = "CreateK8s")
     ]
-    public class Invoke_RscMutateCluster : RscPSCmdlet
+    public class Invoke_RscMutateCluster : RscGqlPSCmdlet
     {
         
         /// <summary>
@@ -303,6 +304,7 @@ Delete the provided failover clusters.
 #pragma warning disable 1591
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 switch(Op)
@@ -475,14 +477,10 @@ Delete the provided failover clusters.
                 "mutation",
                 "MutationAddNodesToCloudCluster",
                 "($input: AddNodesToCloudClusterInput!)",
-                "CcProvisionJobReply"
-                );
-            CcProvisionJobReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CcProvisionJobReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.AddNodesToCloudCluster(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "CcProvisionJobReply",
+                Mutation.AddNodesToCloudCluster_ObjectFieldSpec,
+                Mutation.AddNodesToCloudClusterFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	numberOfNodes = <System.Int32>
@@ -494,9 +492,8 @@ $inputs.Var.input = @{
 	vendor = <CcpVendorType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CcpVendorType]) for enum values.
 	# REQUIRED
 	clusterUuid = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -511,20 +508,15 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationRegisterCloudCluster",
                 "($input: RegisterCloudClusterInput!)",
-                "RegisterCloudClusterReply"
-                );
-            RegisterCloudClusterReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (RegisterCloudClusterReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.RegisterCloudCluster(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "RegisterCloudClusterReply",
+                Mutation.RegisterCloudCluster_ObjectFieldSpec,
+                Mutation.RegisterCloudClusterFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	clusterUuid = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -539,14 +531,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationUpdateDatabaseLogReportingPropertiesForCluster",
                 "($input: UpdateDatabaseLogReportingPropertiesForClusterInput!)",
-                "DbLogReportProperties"
-                );
-            DbLogReportProperties? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (DbLogReportProperties)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UpdateDatabaseLogReportingPropertiesForCluster(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "DbLogReportProperties",
+                Mutation.UpdateDatabaseLogReportingPropertiesForCluster_ObjectFieldSpec,
+                Mutation.UpdateDatabaseLogReportingPropertiesForClusterFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	clusterUuid = <System.String>
@@ -559,9 +547,8 @@ $inputs.Var.input = @{
 		# OPTIONAL
 		logDelayNotificationFrequencyInMin = <System.Int64>
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -576,14 +563,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationCreateFailoverCluster",
                 "($input: CreateFailoverClusterInput!)",
-                "CreateFailoverClusterReply"
-                );
-            CreateFailoverClusterReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CreateFailoverClusterReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.CreateFailoverCluster(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "CreateFailoverClusterReply",
+                Mutation.CreateFailoverCluster_ObjectFieldSpec,
+                Mutation.CreateFailoverClusterFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	clusterUuid = <System.String>
@@ -598,9 +581,8 @@ $inputs.Var.input = @{
 		# REQUIRED
 		name = <System.String>
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -615,14 +597,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationUpdateFailoverCluster",
                 "($input: UpdateFailoverClusterInput!)",
-                "UpdateFailoverClusterReply"
-                );
-            UpdateFailoverClusterReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (UpdateFailoverClusterReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UpdateFailoverCluster(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "UpdateFailoverClusterReply",
+                Mutation.UpdateFailoverCluster_ObjectFieldSpec,
+                Mutation.UpdateFailoverClusterFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
@@ -637,9 +615,8 @@ $inputs.Var.input = @{
 		# REQUIRED
 		name = <System.String>
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -654,22 +631,17 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationDeleteFailoverCluster",
                 "($input: DeleteFailoverClusterInput!)",
-                "ResponseSuccess"
-                );
-            ResponseSuccess? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (ResponseSuccess)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DeleteFailoverCluster(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "ResponseSuccess",
+                Mutation.DeleteFailoverCluster_ObjectFieldSpec,
+                Mutation.DeleteFailoverClusterFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	preserveSnapshots = <System.Boolean>
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -684,14 +656,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationBulkDeleteFailoverCluster",
                 "($input: BulkDeleteFailoverClusterInput!)",
-                "ResponseSuccess"
-                );
-            ResponseSuccess? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (ResponseSuccess)this.Field;
-            }
-            string fieldSpecDoc = Mutation.BulkDeleteFailoverCluster(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "ResponseSuccess",
+                Mutation.BulkDeleteFailoverCluster_ObjectFieldSpec,
+                Mutation.BulkDeleteFailoverClusterFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	preserveSnapshots = <System.Boolean>
@@ -699,9 +667,8 @@ $inputs.Var.input = @{
 	ids = @(
 		<System.String>
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -716,14 +683,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationCreateK8sCluster",
                 "($input: CreateK8sClusterInput!)",
-                "CreateK8sClusterReply"
-                );
-            CreateK8sClusterReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CreateK8sClusterReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.CreateK8sCluster(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "CreateK8sClusterReply",
+                Mutation.CreateK8sCluster_ObjectFieldSpec,
+                Mutation.CreateK8sClusterFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	cdmClusterId = <System.String>
@@ -757,9 +720,8 @@ $inputs.Var.input = @{
 	type = <K8sClusterProtoType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.K8sClusterProtoType]) for enum values.
 	# OPTIONAL
 	proxyUrl = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -774,20 +736,15 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationRefreshK8sCluster",
                 "($input: RefreshK8sClusterInput!)",
-                "CreateOnDemandJobReply"
-                );
-            CreateOnDemandJobReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CreateOnDemandJobReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.RefreshK8sCluster(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "CreateOnDemandJobReply",
+                Mutation.RefreshK8sCluster_ObjectFieldSpec,
+                Mutation.RefreshK8sClusterFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	k8sClusterId = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -802,20 +759,15 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationArchiveK8sCluster",
                 "($input: ArchiveK8sClusterInput!)",
-                "ArchiveK8sClusterReply"
-                );
-            ArchiveK8sClusterReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (ArchiveK8sClusterReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.ArchiveK8sCluster(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "ArchiveK8sClusterReply",
+                Mutation.ArchiveK8sCluster_ObjectFieldSpec,
+                Mutation.ArchiveK8sClusterFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	clusterId = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -832,21 +784,16 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationRemoveCdmCluster",
                 "($clusterUUID: UUID!,$isForce: Boolean!,$expireInDays: Long)",
-                "System.Boolean"
-                );
-            System.Boolean? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (System.Boolean)this.Field;
-            }
-            string fieldSpecDoc = Mutation.RemoveCdmCluster(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "System.Boolean",
+                Mutation.RemoveCdmCluster_ObjectFieldSpec,
+                Mutation.RemoveCdmClusterFieldSpec,
+                @"# REQUIRED
 $inputs.Var.clusterUUID = <System.String>
 # REQUIRED
 $inputs.Var.isForce = <System.Boolean>
 # OPTIONAL
-$inputs.Var.expireInDays = <System.Int64>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.expireInDays = <System.Int64>"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -861,14 +808,10 @@ $inputs.Var.expireInDays = <System.Int64>";
                 "mutation",
                 "MutationRecoverCloudCluster",
                 "($input: RecoverCloudClusterInput!)",
-                "CcProvisionJobReply"
-                );
-            CcProvisionJobReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CcProvisionJobReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.RecoverCloudCluster(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "CcProvisionJobReply",
+                Mutation.RecoverCloudCluster_ObjectFieldSpec,
+                Mutation.RecoverCloudClusterFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	adminPassword = <System.String>
@@ -948,9 +891,8 @@ $inputs.Var.input = @{
 	ntpServers = @(
 		<System.String>
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
 

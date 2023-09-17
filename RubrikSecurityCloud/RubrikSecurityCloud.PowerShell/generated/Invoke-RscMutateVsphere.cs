@@ -48,12 +48,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <example>
     /// <code>Invoke-RscMutateVsphere -UpdateAdvancedTag [-Arg ..] [-Field ..]</code>
     /// </example>
+    [CmdletBinding()]
     [Cmdlet(
         "Invoke",
         "RscMutateVsphere",
         DefaultParameterSetName = "DeleteLiveMount")
     ]
-    public class Invoke_RscMutateVsphere : RscPSCmdlet
+    public class Invoke_RscMutateVsphere : RscGqlPSCmdlet
     {
         
         /// <summary>
@@ -219,6 +220,7 @@ Updates the name, condition, and description of the specified multi-tag filter.
 #pragma warning disable 1591
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 switch(Op)
@@ -343,14 +345,10 @@ Updates the name, condition, and description of the specified multi-tag filter.
                 "mutation",
                 "MutationVsphereOnDemandSnapshot",
                 "($input: VsphereOnDemandSnapshotInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.VsphereOnDemandSnapshot(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.VsphereOnDemandSnapshot_ObjectFieldSpec,
+                Mutation.VsphereOnDemandSnapshotFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	config = @{
@@ -361,9 +359,8 @@ $inputs.Var.input = @{
 	id = <System.String>
 	# OPTIONAL
 	userNote = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -378,14 +375,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationVsphereBulkOnDemandSnapshot",
                 "($input: VsphereBulkOnDemandSnapshotInput!)",
-                "BatchAsyncRequestStatus"
-                );
-            BatchAsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (BatchAsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.VsphereBulkOnDemandSnapshot(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "BatchAsyncRequestStatus",
+                Mutation.VsphereBulkOnDemandSnapshot_ObjectFieldSpec,
+                Mutation.VsphereBulkOnDemandSnapshotFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	config = @{
@@ -398,9 +391,8 @@ $inputs.Var.input = @{
 	}
 	# OPTIONAL
 	userNote = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -415,22 +407,17 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationDeleteVsphereLiveMount",
                 "($input: DeleteVsphereLiveMountInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DeleteVsphereLiveMount(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.DeleteVsphereLiveMount_ObjectFieldSpec,
+                Mutation.DeleteVsphereLiveMountFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	force = <System.Boolean>
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -445,14 +432,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationVsphereExportSnapshotToStandaloneHostV2",
                 "($input: VsphereExportSnapshotToStandaloneHostV2Input!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.VsphereExportSnapshotToStandaloneHostV2(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.VsphereExportSnapshotToStandaloneHostV2_ObjectFieldSpec,
+                Mutation.VsphereExportSnapshotToStandaloneHostV2FieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	config = @{
@@ -480,9 +463,8 @@ $inputs.Var.input = @{
 	}
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -497,14 +479,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationDownloadVsphereVirtualMachineFiles",
                 "($input: DownloadVsphereVirtualMachineFilesInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DownloadVsphereVirtualMachineFiles(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.DownloadVsphereVirtualMachineFiles_ObjectFieldSpec,
+                Mutation.DownloadVsphereVirtualMachineFilesFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	config = @{
@@ -517,9 +495,8 @@ $inputs.Var.input = @{
 	}
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -534,14 +511,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationCreateVsphereAdvancedTag",
                 "($input: CreateVsphereAdvancedTagInput!)",
-                "CreateVsphereAdvancedTagReply"
-                );
-            CreateVsphereAdvancedTagReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CreateVsphereAdvancedTagReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.CreateVsphereAdvancedTag(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "CreateVsphereAdvancedTagReply",
+                Mutation.CreateVsphereAdvancedTag_ObjectFieldSpec,
+                Mutation.CreateVsphereAdvancedTagFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	filterInfo = @{
@@ -554,9 +527,8 @@ $inputs.Var.input = @{
 	}
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -571,22 +543,17 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationDeleteVsphereAdvancedTag",
                 "($input: DeleteVsphereAdvancedTagInput!)",
-                "RequestSuccess"
-                );
-            RequestSuccess? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (RequestSuccess)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DeleteVsphereAdvancedTag(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "RequestSuccess",
+                Mutation.DeleteVsphereAdvancedTag_ObjectFieldSpec,
+                Mutation.DeleteVsphereAdvancedTagFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	filterId = <System.String>
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -601,14 +568,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationUpdateVsphereAdvancedTag",
                 "($input: UpdateVsphereAdvancedTagInput!)",
-                "UpdateVsphereAdvancedTagReply"
-                );
-            UpdateVsphereAdvancedTagReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (UpdateVsphereAdvancedTagReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UpdateVsphereAdvancedTag(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "UpdateVsphereAdvancedTagReply",
+                Mutation.UpdateVsphereAdvancedTag_ObjectFieldSpec,
+                Mutation.UpdateVsphereAdvancedTagFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	filterId = <System.String>
@@ -623,9 +586,8 @@ $inputs.Var.input = @{
 	}
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
 

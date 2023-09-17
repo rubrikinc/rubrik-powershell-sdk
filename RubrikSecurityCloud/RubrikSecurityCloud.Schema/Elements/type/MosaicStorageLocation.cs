@@ -293,7 +293,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<MosaicStorageLocation> list)
+        public static void SelectForRetrieval(this List<MosaicStorageLocation> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

@@ -47,6 +47,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cloudType")]
         public AzureCloudType? CloudType { get; set; }
 
+        //      C# -> List<AzureRoleArmTemplateFeature>? FeaturesToInclude
+        // GraphQL -> featuresToInclude: [AzureRoleArmTemplateFeature!] (input)
+        [JsonProperty("featuresToInclude")]
+        public List<AzureRoleArmTemplateFeature>? FeaturesToInclude { get; set; }
+
 
         #endregion
 

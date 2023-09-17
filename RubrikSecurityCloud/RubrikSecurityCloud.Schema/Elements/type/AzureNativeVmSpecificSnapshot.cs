@@ -158,7 +158,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<AzureNativeVmSpecificSnapshot> list)
+        public static void SelectForRetrieval(this List<AzureNativeVmSpecificSnapshot> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

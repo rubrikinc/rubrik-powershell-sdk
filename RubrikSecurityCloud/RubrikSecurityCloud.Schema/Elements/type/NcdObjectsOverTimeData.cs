@@ -169,7 +169,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<NcdObjectsOverTimeData> list)
+        public static void SelectForRetrieval(this List<NcdObjectsOverTimeData> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

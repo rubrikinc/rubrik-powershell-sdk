@@ -147,12 +147,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <example>
     /// <code>Invoke-RscMutateAws -DeleteCluster [-Arg ..] [-Field ..]</code>
     /// </example>
+    [CmdletBinding()]
     [Cmdlet(
         "Invoke",
         "RscMutateAws",
         DefaultParameterSetName = "CreateTarget")
     ]
-    public class Invoke_RscMutateAws : RscPSCmdlet
+    public class Invoke_RscMutateAws : RscGqlPSCmdlet
     {
         
         /// <summary>
@@ -897,6 +898,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 #pragma warning disable 1591
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 switch(Op)
@@ -1417,14 +1419,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "mutation",
                 "MutationStartAwsNativeEc2InstanceSnapshotsJob",
                 "($input: StartAwsNativeEc2InstanceSnapshotsJobInput!)",
-                "BatchAsyncJobStatus"
-                );
-            BatchAsyncJobStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (BatchAsyncJobStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.StartAwsNativeEc2InstanceSnapshotsJob(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "BatchAsyncJobStatus",
+                Mutation.StartAwsNativeEc2InstanceSnapshotsJob_ObjectFieldSpec,
+                Mutation.StartAwsNativeEc2InstanceSnapshotsJobFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	ec2InstanceIds = @(
@@ -1432,9 +1430,8 @@ $inputs.Var.input = @{
 	)
 	# OPTIONAL
 	retentionSlaId = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1449,14 +1446,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationStartRestoreAwsNativeEc2InstanceSnapshotJob",
                 "($input: StartRestoreAwsNativeEc2InstanceSnapshotJobInput!)",
-                "AsyncJobStatus"
-                );
-            AsyncJobStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncJobStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.StartRestoreAwsNativeEc2InstanceSnapshotJob(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncJobStatus",
+                Mutation.StartRestoreAwsNativeEc2InstanceSnapshotJob_ObjectFieldSpec,
+                Mutation.StartRestoreAwsNativeEc2InstanceSnapshotJobFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	snapshotId = <System.String>
@@ -1466,9 +1459,8 @@ $inputs.Var.input = @{
 	shouldRestoreTags = <System.Boolean>
 	# OPTIONAL
 	snapshotTypeToUseIfSourceExpired = <SnapshotTypeToUseIfSourceExpired> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotTypeToUseIfSourceExpired]) for enum values.
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1483,14 +1475,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationStartRefreshAwsNativeAccountsJob",
                 "($input: StartRefreshAwsNativeAccountsJobInput!)",
-                "BatchAsyncJobStatus"
-                );
-            BatchAsyncJobStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (BatchAsyncJobStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.StartRefreshAwsNativeAccountsJob(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "BatchAsyncJobStatus",
+                Mutation.StartRefreshAwsNativeAccountsJob_ObjectFieldSpec,
+                Mutation.StartRefreshAwsNativeAccountsJobFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	awsAccountRubrikIds = @(
@@ -1500,9 +1488,8 @@ $inputs.Var.input = @{
 	awsNativeProtectionFeatures = @(
 		<AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1517,14 +1504,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationStartCreateAwsNativeEbsVolumeSnapshotsJob",
                 "($input: StartCreateAwsNativeEbsVolumeSnapshotsJobInput!)",
-                "BatchAsyncJobStatus"
-                );
-            BatchAsyncJobStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (BatchAsyncJobStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.StartCreateAwsNativeEbsVolumeSnapshotsJob(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "BatchAsyncJobStatus",
+                Mutation.StartCreateAwsNativeEbsVolumeSnapshotsJob_ObjectFieldSpec,
+                Mutation.StartCreateAwsNativeEbsVolumeSnapshotsJobFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	ebsVolumeIds = @(
@@ -1532,9 +1515,8 @@ $inputs.Var.input = @{
 	)
 	# OPTIONAL
 	retentionSlaId = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1549,14 +1531,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationStartAwsNativeAccountDisableJob",
                 "($input: StartAwsNativeAccountDisableJobInput!)",
-                "AsyncJobStatus"
-                );
-            AsyncJobStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncJobStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.StartAwsNativeAccountDisableJob(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncJobStatus",
+                Mutation.StartAwsNativeAccountDisableJob_ObjectFieldSpec,
+                Mutation.StartAwsNativeAccountDisableJobFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	awsAccountRubrikId = <System.String>
@@ -1564,9 +1542,8 @@ $inputs.Var.input = @{
 	shouldDeleteNativeSnapshots = <System.Boolean>
 	# REQUIRED
 	awsNativeProtectionFeature = <AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1581,14 +1558,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationStartExportAwsNativeEbsVolumeSnapshotJob",
                 "($input: StartExportAwsNativeEbsVolumeSnapshotJobInput!)",
-                "AsyncJobStatus"
-                );
-            AsyncJobStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncJobStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.StartExportAwsNativeEbsVolumeSnapshotJob(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncJobStatus",
+                Mutation.StartExportAwsNativeEbsVolumeSnapshotJob_ObjectFieldSpec,
+                Mutation.StartExportAwsNativeEbsVolumeSnapshotJobFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	snapshotId = <System.String>
@@ -1614,9 +1587,8 @@ $inputs.Var.input = @{
 	kmsKeyId = <System.String>
 	# OPTIONAL
 	snapshotType = <SnapshotType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotType]) for enum values.
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1631,14 +1603,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationExcludeAwsNativeEbsVolumesFromSnapshot",
                 "($input: ExcludeAwsNativeEbsVolumesFromSnapshotInput!)",
-                "System.String"
-                );
-            System.String? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (System.String)this.Field;
-            }
-            string fieldSpecDoc = Mutation.ExcludeAwsNativeEbsVolumesFromSnapshot(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "System.String",
+                Mutation.ExcludeAwsNativeEbsVolumesFromSnapshot_ObjectFieldSpec,
+                Mutation.ExcludeAwsNativeEbsVolumesFromSnapshotFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	awsNativeEc2InstanceId = <System.String>
@@ -1651,9 +1619,8 @@ $inputs.Var.input = @{
 			isExcluded = <System.Boolean>
 		}
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1668,14 +1635,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationStartAwsNativeRdsInstanceSnapshotsJob",
                 "($input: StartAwsNativeRdsInstanceSnapshotsJobInput!)",
-                "BatchAsyncJobStatus"
-                );
-            BatchAsyncJobStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (BatchAsyncJobStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.StartAwsNativeRdsInstanceSnapshotsJob(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "BatchAsyncJobStatus",
+                Mutation.StartAwsNativeRdsInstanceSnapshotsJob_ObjectFieldSpec,
+                Mutation.StartAwsNativeRdsInstanceSnapshotsJobFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	rdsInstanceIds = @(
@@ -1683,9 +1646,8 @@ $inputs.Var.input = @{
 	)
 	# OPTIONAL
 	retentionSlaId = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1700,14 +1662,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationCreateAwsAccount",
                 "($input: CreateAwsAccountInput!)",
-                "CloudAccount"
-                );
-            CloudAccount? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CloudAccount)this.Field;
-            }
-            string fieldSpecDoc = Mutation.CreateAwsAccount(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "CloudAccount",
+                Mutation.CreateAwsAccount_ObjectFieldSpec,
+                Mutation.CreateAwsAccountFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	name = <System.String>
@@ -1717,9 +1675,8 @@ $inputs.Var.input = @{
 	accessKey = <System.String>
 	# REQUIRED
 	secretKey = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1734,14 +1691,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationUpdateAwsAccount",
                 "($input: UpdateAwsAccountInput!)",
-                "CloudAccount"
-                );
-            CloudAccount? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CloudAccount)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UpdateAwsAccount(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "CloudAccount",
+                Mutation.UpdateAwsAccount_ObjectFieldSpec,
+                Mutation.UpdateAwsAccountFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
@@ -1753,9 +1706,8 @@ $inputs.Var.input = @{
 	accessKey = <System.String>
 	# REQUIRED
 	secretKey = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1770,14 +1722,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationCreateAutomaticAwsTargetMapping",
                 "($input: CreateAutomaticAwsTargetMappingInput!)",
-                "TargetMapping"
-                );
-            TargetMapping? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (TargetMapping)this.Field;
-            }
-            string fieldSpecDoc = Mutation.CreateAutomaticAwsTargetMapping(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "TargetMapping",
+                Mutation.CreateAutomaticAwsTargetMapping_ObjectFieldSpec,
+                Mutation.CreateAutomaticAwsTargetMappingFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	name = <System.String>
@@ -1814,9 +1762,8 @@ $inputs.Var.input = @{
 	)
 	# OPTIONAL
 	awsComputeSettingsId = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1831,14 +1778,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationCreateCloudNativeAwsStorageSetting",
                 "($input: CreateCloudNativeAwsStorageSettingInput!)",
-                "CreateCloudNativeAwsStorageSettingReply"
-                );
-            CreateCloudNativeAwsStorageSettingReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CreateCloudNativeAwsStorageSettingReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.CreateCloudNativeAwsStorageSetting(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "CreateCloudNativeAwsStorageSettingReply",
+                Mutation.CreateCloudNativeAwsStorageSetting_ObjectFieldSpec,
+                Mutation.CreateCloudNativeAwsStorageSettingFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	name = <System.String>
@@ -1866,9 +1809,8 @@ $inputs.Var.input = @{
 			}
 		)
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1883,14 +1825,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationUpdateAutomaticAwsTargetMapping",
                 "($input: UpdateAutomaticAwsTargetMappingInput!)",
-                "TargetMapping"
-                );
-            TargetMapping? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (TargetMapping)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UpdateAutomaticAwsTargetMapping(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "TargetMapping",
+                Mutation.UpdateAutomaticAwsTargetMapping_ObjectFieldSpec,
+                Mutation.UpdateAutomaticAwsTargetMappingFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
@@ -1921,9 +1859,8 @@ $inputs.Var.input = @{
 	)
 	# OPTIONAL
 	awsComputeSettingsId = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1938,14 +1875,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationUpdateCloudNativeAwsStorageSetting",
                 "($input: UpdateCloudNativeAwsStorageSettingInput!)",
-                "UpdateCloudNativeAwsStorageSettingReply"
-                );
-            UpdateCloudNativeAwsStorageSettingReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (UpdateCloudNativeAwsStorageSettingReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UpdateCloudNativeAwsStorageSetting(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "UpdateCloudNativeAwsStorageSettingReply",
+                Mutation.UpdateCloudNativeAwsStorageSetting_ObjectFieldSpec,
+                Mutation.UpdateCloudNativeAwsStorageSettingFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
@@ -1955,9 +1888,8 @@ $inputs.Var.input = @{
 	storageClass = <AwsStorageClass> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
 	# OPTIONAL
 	kmsMasterKeyId = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1972,14 +1904,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationCreateAwsTarget",
                 "($input: CreateAwsTargetInput!)",
-                "Target"
-                );
-            Target? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (Target)this.Field;
-            }
-            string fieldSpecDoc = Mutation.CreateAwsTarget(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "Target",
+                Mutation.CreateAwsTarget_ObjectFieldSpec,
+                Mutation.CreateAwsTargetFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	name = <System.String>
@@ -2064,9 +1992,8 @@ $inputs.Var.input = @{
 	kmsEndpoint = <System.String>
 	# REQUIRED
 	bypassProxy = <System.Boolean>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2081,14 +2008,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationUpdateAwsTarget",
                 "($input: UpdateAwsTargetInput!)",
-                "Target"
-                );
-            Target? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (Target)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UpdateAwsTarget(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "Target",
+                Mutation.UpdateAwsTarget_ObjectFieldSpec,
+                Mutation.UpdateAwsTargetFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
@@ -2163,9 +2086,8 @@ $inputs.Var.input = @{
 	kmsEndpoint = <System.String>
 	# OPTIONAL
 	bypassProxy = <System.Boolean>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2180,14 +2102,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationCreateAwsReaderTarget",
                 "($input: CreateAwsReaderTargetInput!)",
-                "Target"
-                );
-            Target? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (Target)this.Field;
-            }
-            string fieldSpecDoc = Mutation.CreateAwsReaderTarget(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "Target",
+                Mutation.CreateAwsReaderTarget_ObjectFieldSpec,
+                Mutation.CreateAwsReaderTargetFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	name = <System.String>
@@ -2269,9 +2187,8 @@ $inputs.Var.input = @{
 	}
 	# REQUIRED
 	bypassProxy = <System.Boolean>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2286,14 +2203,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationCreateAwsComputeSetting",
                 "($input: CreateAwsComputeSettingInput!)",
-                "AwsComputeSettings"
-                );
-            AwsComputeSettings? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AwsComputeSettings)this.Field;
-            }
-            string fieldSpecDoc = Mutation.CreateAwsComputeSetting(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AwsComputeSettings",
+                Mutation.CreateAwsComputeSetting_ObjectFieldSpec,
+                Mutation.CreateAwsComputeSettingFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	name = <System.String>
@@ -2329,9 +2242,8 @@ $inputs.Var.input = @{
 			)
 		}
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2346,14 +2258,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationUpdateAwsComputeSetting",
                 "($input: UpdateAwsComputeSettingInput!)",
-                "AwsComputeSettings"
-                );
-            AwsComputeSettings? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AwsComputeSettings)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UpdateAwsComputeSetting(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AwsComputeSettings",
+                Mutation.UpdateAwsComputeSetting_ObjectFieldSpec,
+                Mutation.UpdateAwsComputeSettingFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	id = <System.String>
@@ -2365,9 +2273,8 @@ $inputs.Var.input = @{
 	vpcId = <System.String>
 	# OPTIONAL
 	securityGroupId = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2382,20 +2289,15 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationDeleteAwsComputeSetting",
                 "($input: DeleteAwsComputeSettingInput!)",
-                "System.String"
-                );
-            System.String? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (System.String)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DeleteAwsComputeSetting(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "System.String",
+                Mutation.DeleteAwsComputeSetting_ObjectFieldSpec,
+                Mutation.DeleteAwsComputeSettingFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2410,14 +2312,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationValidateAndCreateAwsCloudAccount",
                 "($input: ValidateAndCreateAwsCloudAccountInput!)",
-                "ValidateAndCreateAwsCloudAccountReply"
-                );
-            ValidateAndCreateAwsCloudAccountReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (ValidateAndCreateAwsCloudAccountReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.ValidateAndCreateAwsCloudAccount(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "ValidateAndCreateAwsCloudAccountReply",
+                Mutation.ValidateAndCreateAwsCloudAccount_ObjectFieldSpec,
+                Mutation.ValidateAndCreateAwsCloudAccountFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	action = <CloudAccountAction> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountAction]) for enum values.
@@ -2474,9 +2372,8 @@ $inputs.Var.input = @{
 		# OPTIONAL
 		ec2RecoveryRolePath = <System.String>
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2491,14 +2388,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationFinalizeAwsCloudAccountProtection",
                 "($input: FinalizeAwsCloudAccountProtectionInput!)",
-                "FinalizeAwsCloudAccountProtectionReply"
-                );
-            FinalizeAwsCloudAccountProtectionReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (FinalizeAwsCloudAccountProtectionReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.FinalizeAwsCloudAccountProtection(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "FinalizeAwsCloudAccountProtectionReply",
+                Mutation.FinalizeAwsCloudAccountProtection_ObjectFieldSpec,
+                Mutation.FinalizeAwsCloudAccountProtectionFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	action = <CloudAccountAction> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountAction]) for enum values.
@@ -2553,9 +2446,8 @@ $inputs.Var.input = @{
 			version = <System.Int32>
 		}
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2570,22 +2462,17 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationPrepareAwsCloudAccountDeletion",
                 "($input: PrepareAwsCloudAccountDeletionInput!)",
-                "PrepareAwsCloudAccountDeletionReply"
-                );
-            PrepareAwsCloudAccountDeletionReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (PrepareAwsCloudAccountDeletionReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.PrepareAwsCloudAccountDeletion(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "PrepareAwsCloudAccountDeletionReply",
+                Mutation.PrepareAwsCloudAccountDeletion_ObjectFieldSpec,
+                Mutation.PrepareAwsCloudAccountDeletionFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	cloudAccountId = <System.String>
 	# REQUIRED
 	feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2600,22 +2487,17 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationFinalizeAwsCloudAccountDeletion",
                 "($input: FinalizeAwsCloudAccountDeletionInput!)",
-                "FinalizeAwsCloudAccountDeletionReply"
-                );
-            FinalizeAwsCloudAccountDeletionReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (FinalizeAwsCloudAccountDeletionReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.FinalizeAwsCloudAccountDeletion(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "FinalizeAwsCloudAccountDeletionReply",
+                Mutation.FinalizeAwsCloudAccountDeletion_ObjectFieldSpec,
+                Mutation.FinalizeAwsCloudAccountDeletionFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	cloudAccountId = <System.String>
 	# REQUIRED
 	feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2630,14 +2512,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationUpdateAwsCloudAccountFeature",
                 "($input: UpdateAwsCloudAccountFeatureInput!)",
-                "UpdateAwsCloudAccountFeatureReply"
-                );
-            UpdateAwsCloudAccountFeatureReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (UpdateAwsCloudAccountFeatureReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UpdateAwsCloudAccountFeature(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "UpdateAwsCloudAccountFeatureReply",
+                Mutation.UpdateAwsCloudAccountFeature_ObjectFieldSpec,
+                Mutation.UpdateAwsCloudAccountFeatureFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	cloudAccountId = <System.String>
@@ -2655,9 +2533,8 @@ $inputs.Var.input = @{
 	stackArn = <System.String>
 	# OPTIONAL
 	awsAccountName = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2672,22 +2549,17 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationUpdateAwsCloudAccount",
                 "($input: UpdateAwsCloudAccountInput!)",
-                "System.String"
-                );
-            System.String? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (System.String)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UpdateAwsCloudAccount(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "System.String",
+                Mutation.UpdateAwsCloudAccount_ObjectFieldSpec,
+                Mutation.UpdateAwsCloudAccountFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	cloudAccountId = <System.String>
 	# OPTIONAL
 	awsAccountName = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2702,14 +2574,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationPrepareFeatureUpdateForAwsCloudAccount",
                 "($input: PrepareFeatureUpdateForAwsCloudAccountInput!)",
-                "PrepareFeatureUpdateForAwsCloudAccountReply"
-                );
-            PrepareFeatureUpdateForAwsCloudAccountReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (PrepareFeatureUpdateForAwsCloudAccountReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.PrepareFeatureUpdateForAwsCloudAccount(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "PrepareFeatureUpdateForAwsCloudAccountReply",
+                Mutation.PrepareFeatureUpdateForAwsCloudAccount_ObjectFieldSpec,
+                Mutation.PrepareFeatureUpdateForAwsCloudAccountFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	cloudAccountId = <System.String>
@@ -2717,9 +2585,8 @@ $inputs.Var.input = @{
 	features = @(
 		<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2734,14 +2601,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationCreateAwsExocomputeConfigs",
                 "($input: CreateAwsExocomputeConfigsInput!)",
-                "CreateAwsExocomputeConfigsReply"
-                );
-            CreateAwsExocomputeConfigsReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CreateAwsExocomputeConfigsReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.CreateAwsExocomputeConfigs(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "CreateAwsExocomputeConfigsReply",
+                Mutation.CreateAwsExocomputeConfigs_ObjectFieldSpec,
+                Mutation.CreateAwsExocomputeConfigsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	cloudAccountId = <System.String>
@@ -2771,9 +2634,8 @@ $inputs.Var.input = @{
 	)
 	# OPTIONAL
 	triggerHealthCheck = <System.Boolean>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2788,22 +2650,17 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationDeleteAwsExocomputeConfigs",
                 "($input: DeleteAwsExocomputeConfigsInput!)",
-                "DeleteAwsExocomputeConfigsReply"
-                );
-            DeleteAwsExocomputeConfigsReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (DeleteAwsExocomputeConfigsReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DeleteAwsExocomputeConfigs(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "DeleteAwsExocomputeConfigsReply",
+                Mutation.DeleteAwsExocomputeConfigs_ObjectFieldSpec,
+                Mutation.DeleteAwsExocomputeConfigsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	configIdsToBeDeleted = @(
 		<System.String>
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2818,14 +2675,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationUpdateAwsExocomputeConfigs",
                 "($input: UpdateAwsExocomputeConfigsInput!)",
-                "UpdateAwsExocomputeConfigsReply"
-                );
-            UpdateAwsExocomputeConfigsReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (UpdateAwsExocomputeConfigsReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UpdateAwsExocomputeConfigs(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "UpdateAwsExocomputeConfigsReply",
+                Mutation.UpdateAwsExocomputeConfigs_ObjectFieldSpec,
+                Mutation.UpdateAwsExocomputeConfigsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	cloudAccountId = <System.String>
@@ -2855,9 +2708,8 @@ $inputs.Var.input = @{
 	)
 	# OPTIONAL
 	triggerHealthCheck = <System.Boolean>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2872,20 +2724,15 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationStartAwsExocomputeDisableJob",
                 "($input: StartAwsExocomputeDisableJobInput!)",
-                "AsyncJobStatus"
-                );
-            AsyncJobStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncJobStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.StartAwsExocomputeDisableJob(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncJobStatus",
+                Mutation.StartAwsExocomputeDisableJob_ObjectFieldSpec,
+                Mutation.StartAwsExocomputeDisableJobFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	cloudAccountId = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2900,14 +2747,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationAddAwsIamUserBasedCloudAccount",
                 "($input: AddAwsIamUserBasedCloudAccountInput!)",
-                "AddAwsIamUserBasedCloudAccountReply"
-                );
-            AddAwsIamUserBasedCloudAccountReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AddAwsIamUserBasedCloudAccountReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.AddAwsIamUserBasedCloudAccount(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AddAwsIamUserBasedCloudAccountReply",
+                Mutation.AddAwsIamUserBasedCloudAccount_ObjectFieldSpec,
+                Mutation.AddAwsIamUserBasedCloudAccountFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	features = @(
@@ -2929,9 +2772,8 @@ $inputs.Var.input = @{
 	)
 	# OPTIONAL
 	roleArn = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2946,14 +2788,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationUpgradeAwsIamUserBasedCloudAccountPermissions",
                 "($input: UpgradeAwsIamUserBasedCloudAccountPermissionsInput!)",
-                "System.Boolean"
-                );
-            System.Boolean? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (System.Boolean)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UpgradeAwsIamUserBasedCloudAccountPermissions(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "System.Boolean",
+                Mutation.UpgradeAwsIamUserBasedCloudAccountPermissions_ObjectFieldSpec,
+                Mutation.UpgradeAwsIamUserBasedCloudAccountPermissionsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	awsCloudAccountId = <System.String>
@@ -2961,9 +2799,8 @@ $inputs.Var.input = @{
 	features = @(
 		<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2978,14 +2815,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationUpgradeAwsCloudAccountFeaturesWithoutCft",
                 "($input: UpgradeAwsCloudAccountFeaturesWithoutCftInput!)",
-                "System.Boolean"
-                );
-            System.Boolean? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (System.Boolean)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UpgradeAwsCloudAccountFeaturesWithoutCft(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "System.Boolean",
+                Mutation.UpgradeAwsCloudAccountFeaturesWithoutCft_ObjectFieldSpec,
+                Mutation.UpgradeAwsCloudAccountFeaturesWithoutCftFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	awsCloudAccountId = <System.String>
@@ -2993,9 +2826,8 @@ $inputs.Var.input = @{
 	features = @(
 		<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -3010,14 +2842,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationAddAwsAuthenticationServerBasedCloudAccount",
                 "($input: AddAwsAuthenticationServerBasedCloudAccountInput!)",
-                "AddAwsAuthenticationServerBasedCloudAccountReply"
-                );
-            AddAwsAuthenticationServerBasedCloudAccountReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AddAwsAuthenticationServerBasedCloudAccountReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.AddAwsAuthenticationServerBasedCloudAccount(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AddAwsAuthenticationServerBasedCloudAccountReply",
+                Mutation.AddAwsAuthenticationServerBasedCloudAccount_ObjectFieldSpec,
+                Mutation.AddAwsAuthenticationServerBasedCloudAccountFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	cloudType = <AwsCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
@@ -3054,9 +2882,8 @@ $inputs.Var.input = @{
 		# REQUIRED
 		id = <System.Int64>
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -3071,14 +2898,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationPatchAwsAuthenticationServerBasedCloudAccount",
                 "($input: PatchAwsAuthenticationServerBasedCloudAccountInput!)",
-                "System.Boolean"
-                );
-            System.Boolean? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (System.Boolean)this.Field;
-            }
-            string fieldSpecDoc = Mutation.PatchAwsAuthenticationServerBasedCloudAccount(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "System.Boolean",
+                Mutation.PatchAwsAuthenticationServerBasedCloudAccount_ObjectFieldSpec,
+                Mutation.PatchAwsAuthenticationServerBasedCloudAccountFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	awsCloudAccountId = <System.String>
@@ -3106,9 +2929,8 @@ $inputs.Var.input = @{
 		# REQUIRED
 		id = <System.Int64>
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -3123,14 +2945,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationPatchAwsIamUserBasedCloudAccount",
                 "($input: PatchAwsIamUserBasedCloudAccountInput!)",
-                "System.Boolean"
-                );
-            System.Boolean? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (System.Boolean)this.Field;
-            }
-            string fieldSpecDoc = Mutation.PatchAwsIamUserBasedCloudAccount(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "System.Boolean",
+                Mutation.PatchAwsIamUserBasedCloudAccount_ObjectFieldSpec,
+                Mutation.PatchAwsIamUserBasedCloudAccountFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	awsCloudAccountId = <System.String>
@@ -3155,9 +2973,8 @@ $inputs.Var.input = @{
 		# REQUIRED
 		roleArn = <System.String>
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -3172,14 +2989,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationRegisterAwsFeatureArtifacts",
                 "($input: RegisterAwsFeatureArtifactsInput!)",
-                "RegisterAwsFeatureArtifactsReply"
-                );
-            RegisterAwsFeatureArtifactsReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (RegisterAwsFeatureArtifactsReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.RegisterAwsFeatureArtifacts(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "RegisterAwsFeatureArtifactsReply",
+                Mutation.RegisterAwsFeatureArtifacts_ObjectFieldSpec,
+                Mutation.RegisterAwsFeatureArtifactsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	awsArtifacts = @(
@@ -3203,9 +3016,8 @@ $inputs.Var.input = @{
 	)
 	# OPTIONAL
 	cloudType = <AwsCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -3220,14 +3032,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationBulkDeleteAwsCloudAccountWithoutCft",
                 "($input: BulkDeleteAwsCloudAccountWithoutCftInput!)",
-                "BulkDeleteAwsCloudAccountWithoutCftReply"
-                );
-            BulkDeleteAwsCloudAccountWithoutCftReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (BulkDeleteAwsCloudAccountWithoutCftReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.BulkDeleteAwsCloudAccountWithoutCft(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "BulkDeleteAwsCloudAccountWithoutCftReply",
+                Mutation.BulkDeleteAwsCloudAccountWithoutCft_ObjectFieldSpec,
+                Mutation.BulkDeleteAwsCloudAccountWithoutCftFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	awsNativeId = <System.String>
@@ -3235,9 +3043,8 @@ $inputs.Var.input = @{
 	features = @(
 		<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -3252,14 +3059,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationCreateAwsCluster",
                 "($input: CreateAwsClusterInput!)",
-                "CcProvisionJobReply"
-                );
-            CcProvisionJobReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CcProvisionJobReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.CreateAwsCluster(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "CcProvisionJobReply",
+                Mutation.CreateAwsCluster_ObjectFieldSpec,
+                Mutation.CreateAwsClusterFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	cloudAccountId = <System.String>
@@ -3345,9 +3148,8 @@ $inputs.Var.input = @{
 		# OPTIONAL
 		instanceType = <AwsInstanceType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsInstanceType]) for enum values.
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -3362,14 +3164,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationDeleteAwsCluster",
                 "($input: DeleteAwsClusterInput!)",
-                "CcProvisionJobReply"
-                );
-            CcProvisionJobReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CcProvisionJobReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DeleteAwsCluster(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "CcProvisionJobReply",
+                Mutation.DeleteAwsCluster_ObjectFieldSpec,
+                Mutation.DeleteAwsClusterFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	cloudAccountId = <System.String>
@@ -3387,9 +3185,8 @@ $inputs.Var.input = @{
 	clusterUuid = <System.String>
 	# OPTIONAL
 	region = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
 

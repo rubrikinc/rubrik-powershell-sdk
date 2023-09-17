@@ -133,7 +133,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<AddAzureCloudAccountReply> list)
+        public static void SelectForRetrieval(this List<AddAzureCloudAccountReply> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

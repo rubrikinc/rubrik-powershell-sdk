@@ -665,7 +665,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<AzureO365ExocomputeCluster> list)
+        public static void SelectForRetrieval(this List<AzureO365ExocomputeCluster> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

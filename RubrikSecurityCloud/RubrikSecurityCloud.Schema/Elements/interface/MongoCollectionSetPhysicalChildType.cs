@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<MongoCollectionSetPhysicalChildType> list)
+        public static void SelectForRetrieval(this List<MongoCollectionSetPhysicalChildType> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

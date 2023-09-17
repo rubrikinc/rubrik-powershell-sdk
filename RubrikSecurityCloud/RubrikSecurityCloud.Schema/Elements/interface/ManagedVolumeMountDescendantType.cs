@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<ManagedVolumeMountDescendantType> list)
+        public static void SelectForRetrieval(this List<ManagedVolumeMountDescendantType> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

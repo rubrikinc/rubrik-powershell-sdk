@@ -321,7 +321,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<OracleRacSummary> list)
+        public static void SelectForRetrieval(this List<OracleRacSummary> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

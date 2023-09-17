@@ -99,12 +99,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <example>
     /// <code>Invoke-RscMutateNutanix -BulkOnDemandSnapshotVm [-Arg ..] [-Field ..]</code>
     /// </example>
+    [CmdletBinding()]
     [Cmdlet(
         "Invoke",
         "RscMutateNutanix",
         DefaultParameterSetName = "UpdateVm")
     ]
-    public class Invoke_RscMutateNutanix : RscPSCmdlet
+    public class Invoke_RscMutateNutanix : RscGqlPSCmdlet
     {
         
         /// <summary>
@@ -652,6 +653,7 @@ Take bulk backups for multiple Nutanix virtual machines.
 #pragma warning disable 1591
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 switch(Op)
@@ -980,14 +982,10 @@ Take bulk backups for multiple Nutanix virtual machines.
                 "mutation",
                 "MutationCreateNutanixCluster",
                 "($input: CreateNutanixClusterInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.CreateNutanixCluster(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.CreateNutanixCluster_ObjectFieldSpec,
+                Mutation.CreateNutanixClusterFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	clusterUuid = <System.String>
@@ -1004,9 +1002,8 @@ $inputs.Var.input = @{
 		# REQUIRED
 		username = <System.String>
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1021,20 +1018,15 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationRefreshNutanixCluster",
                 "($input: RefreshNutanixClusterInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.RefreshNutanixCluster(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.RefreshNutanixCluster_ObjectFieldSpec,
+                Mutation.RefreshNutanixClusterFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1049,14 +1041,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationUpdateNutanixCluster",
                 "($input: UpdateNutanixClusterInput!)",
-                "UpdateNutanixClusterReply"
-                );
-            UpdateNutanixClusterReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (UpdateNutanixClusterReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UpdateNutanixCluster(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "UpdateNutanixClusterReply",
+                Mutation.UpdateNutanixCluster_ObjectFieldSpec,
+                Mutation.UpdateNutanixClusterFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
@@ -1073,9 +1061,8 @@ $inputs.Var.input = @{
 		# OPTIONAL
 		username = <System.String>
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1090,20 +1077,15 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationDeleteNutanixCluster",
                 "($input: DeleteNutanixClusterInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DeleteNutanixCluster(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.DeleteNutanixCluster_ObjectFieldSpec,
+                Mutation.DeleteNutanixClusterFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1118,20 +1100,15 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationRegisterAgentNutanixVm",
                 "($input: RegisterAgentNutanixVmInput!)",
-                "RequestSuccess"
-                );
-            RequestSuccess? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (RequestSuccess)this.Field;
-            }
-            string fieldSpecDoc = Mutation.RegisterAgentNutanixVm(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "RequestSuccess",
+                Mutation.RegisterAgentNutanixVm_ObjectFieldSpec,
+                Mutation.RegisterAgentNutanixVmFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1146,14 +1123,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationUpdateNutanixVm",
                 "($input: UpdateNutanixVmInput!)",
-                "System.String"
-                );
-            System.String? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (System.String)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UpdateNutanixVm(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "System.String",
+                Mutation.UpdateNutanixVm_ObjectFieldSpec,
+                Mutation.UpdateNutanixVmFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
@@ -1197,9 +1170,8 @@ $inputs.Var.input = @{
 		# OPTIONAL
 		snapshotConsistencyMandate = <CdmNutanixSnapshotConsistencyMandate> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmNutanixSnapshotConsistencyMandate]) for enum values.
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1214,14 +1186,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationCreateOnDemandNutanixBackup",
                 "($input: CreateOnDemandNutanixBackupInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.CreateOnDemandNutanixBackup(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.CreateOnDemandNutanixBackup_ObjectFieldSpec,
+                Mutation.CreateOnDemandNutanixBackupFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	config = @{
@@ -1232,9 +1200,8 @@ $inputs.Var.input = @{
 	id = <System.String>
 	# OPTIONAL
 	userNote = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1249,20 +1216,15 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationDeleteNutanixSnapshots",
                 "($input: DeleteNutanixSnapshotsInput!)",
-                "RequestSuccess"
-                );
-            RequestSuccess? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (RequestSuccess)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DeleteNutanixSnapshots(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "RequestSuccess",
+                Mutation.DeleteNutanixSnapshots_ObjectFieldSpec,
+                Mutation.DeleteNutanixSnapshotsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1277,14 +1239,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationMountNutanixSnapshotV1",
                 "($input: MountNutanixSnapshotV1Input!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.MountNutanixSnapshotV1(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.MountNutanixSnapshotV1_ObjectFieldSpec,
+                Mutation.MountNutanixSnapshotV1FieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	config = @{
@@ -1313,9 +1271,8 @@ $inputs.Var.input = @{
 	}
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1330,14 +1287,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationPatchNutanixMountV1",
                 "($input: PatchNutanixMountV1Input!)",
-                "PatchNutanixMountV1Reply"
-                );
-            PatchNutanixMountV1Reply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (PatchNutanixMountV1Reply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.PatchNutanixMountV1(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "PatchNutanixMountV1Reply",
+                Mutation.PatchNutanixMountV1_ObjectFieldSpec,
+                Mutation.PatchNutanixMountV1FieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	config = @{
@@ -1346,9 +1299,8 @@ $inputs.Var.input = @{
 	}
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1363,20 +1315,15 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationDeleteNutanixMountV1",
                 "($input: DeleteNutanixMountV1Input!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DeleteNutanixMountV1(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.DeleteNutanixMountV1_ObjectFieldSpec,
+                Mutation.DeleteNutanixMountV1FieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1391,20 +1338,15 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationMigrateNutanixMountV1",
                 "($input: MigrateNutanixMountV1Input!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.MigrateNutanixMountV1(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.MigrateNutanixMountV1_ObjectFieldSpec,
+                Mutation.MigrateNutanixMountV1FieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1419,22 +1361,17 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationDeleteNutanixSnapshot",
                 "($input: DeleteNutanixSnapshotInput!)",
-                "RequestSuccess"
-                );
-            RequestSuccess? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (RequestSuccess)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DeleteNutanixSnapshot(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "RequestSuccess",
+                Mutation.DeleteNutanixSnapshot_ObjectFieldSpec,
+                Mutation.DeleteNutanixSnapshotFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	location = <InternalDeleteNutanixSnapshotRequestLocation> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InternalDeleteNutanixSnapshotRequestLocation]) for enum values.
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1449,14 +1386,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationRestoreFilesNutanixSnapshot",
                 "($input: RestoreFilesNutanixSnapshotInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.RestoreFilesNutanixSnapshot(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.RestoreFilesNutanixSnapshot_ObjectFieldSpec,
+                Mutation.RestoreFilesNutanixSnapshotFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	config = @{
@@ -1474,9 +1407,8 @@ $inputs.Var.input = @{
 	}
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1491,14 +1423,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationDownloadFilesNutanixSnapshot",
                 "($input: DownloadFilesNutanixSnapshotInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DownloadFilesNutanixSnapshot(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.DownloadFilesNutanixSnapshot_ObjectFieldSpec,
+                Mutation.DownloadFilesNutanixSnapshotFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	config = @{
@@ -1516,9 +1444,8 @@ $inputs.Var.input = @{
 	id = <System.String>
 	# OPTIONAL
 	userNote = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1533,14 +1460,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationExportNutanixSnapshot",
                 "($input: ExportNutanixSnapshotInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.ExportNutanixSnapshot(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.ExportNutanixSnapshot_ObjectFieldSpec,
+                Mutation.ExportNutanixSnapshotFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	config = @{
@@ -1563,9 +1486,8 @@ $inputs.Var.input = @{
 	}
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1580,20 +1502,15 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationDownloadNutanixSnapshot",
                 "($input: DownloadNutanixSnapshotInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DownloadNutanixSnapshot(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.DownloadNutanixSnapshot_ObjectFieldSpec,
+                Mutation.DownloadNutanixSnapshotFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1608,14 +1525,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationBatchExportNutanixVm",
                 "($input: BatchExportNutanixVmInput!)",
-                "BatchExportNutanixVmReply"
-                );
-            BatchExportNutanixVmReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (BatchExportNutanixVmReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.BatchExportNutanixVm(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "BatchExportNutanixVmReply",
+                Mutation.BatchExportNutanixVm_ObjectFieldSpec,
+                Mutation.BatchExportNutanixVmFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	config = @{
@@ -1654,9 +1567,8 @@ $inputs.Var.input = @{
 			}
 		)
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1671,14 +1583,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationBatchMountNutanixVm",
                 "($input: BatchMountNutanixVmInput!)",
-                "BatchMountNutanixVmReply"
-                );
-            BatchMountNutanixVmReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (BatchMountNutanixVmReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.BatchMountNutanixVm(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "BatchMountNutanixVmReply",
+                Mutation.BatchMountNutanixVm_ObjectFieldSpec,
+                Mutation.BatchMountNutanixVmFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	config = @{
@@ -1723,9 +1631,8 @@ $inputs.Var.input = @{
 			}
 		)
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1740,14 +1647,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationDownloadNutanixVmFromLocation",
                 "($input: DownloadNutanixVmFromLocationInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DownloadNutanixVmFromLocation(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.DownloadNutanixVmFromLocation_ObjectFieldSpec,
+                Mutation.DownloadNutanixVmFromLocationFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	downloadConfig = @{
@@ -1758,9 +1661,8 @@ $inputs.Var.input = @{
 	locationId = <System.String>
 	# REQUIRED
 	snapshotId = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1775,14 +1677,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationCreateNutanixPrismCentral",
                 "($input: CreateNutanixPrismCentralInput!)",
-                "BatchAsyncRequestStatus"
-                );
-            BatchAsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (BatchAsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.CreateNutanixPrismCentral(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "BatchAsyncRequestStatus",
+                Mutation.CreateNutanixPrismCentral_ObjectFieldSpec,
+                Mutation.CreateNutanixPrismCentralFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	prismCentralConfig = @{
@@ -1804,9 +1702,8 @@ $inputs.Var.input = @{
 			cdmClusterId = <System.String>
 		}
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1821,14 +1718,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationUpdateNutanixPrismCentral",
                 "($input: UpdateNutanixPrismCentralInput!)",
-                "UpdateNutanixPrismCentralReply"
-                );
-            UpdateNutanixPrismCentralReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (UpdateNutanixPrismCentralReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UpdateNutanixPrismCentral(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "UpdateNutanixPrismCentralReply",
+                Mutation.UpdateNutanixPrismCentral_ObjectFieldSpec,
+                Mutation.UpdateNutanixPrismCentralFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
@@ -1845,9 +1738,8 @@ $inputs.Var.input = @{
 		# OPTIONAL
 		username = <System.String>
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1862,20 +1754,15 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationDeleteNutanixPrismCentral",
                 "($input: DeleteNutanixPrismCentralInput!)",
-                "BatchAsyncRequestStatus"
-                );
-            BatchAsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (BatchAsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DeleteNutanixPrismCentral(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "BatchAsyncRequestStatus",
+                Mutation.DeleteNutanixPrismCentral_ObjectFieldSpec,
+                Mutation.DeleteNutanixPrismCentralFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1890,20 +1777,15 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationRefreshNutanixPrismCentral",
                 "($input: RefreshNutanixPrismCentralInput!)",
-                "BatchAsyncRequestStatus"
-                );
-            BatchAsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (BatchAsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.RefreshNutanixPrismCentral(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "BatchAsyncRequestStatus",
+                Mutation.RefreshNutanixPrismCentral_ObjectFieldSpec,
+                Mutation.RefreshNutanixPrismCentralFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1918,14 +1800,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationBulkOnDemandSnapshotNutanixVm",
                 "($input: BulkOnDemandSnapshotNutanixVmInput!)",
-                "BulkOnDemandSnapshotNutanixVmReply"
-                );
-            BulkOnDemandSnapshotNutanixVmReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (BulkOnDemandSnapshotNutanixVmReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.BulkOnDemandSnapshotNutanixVm(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "BulkOnDemandSnapshotNutanixVmReply",
+                Mutation.BulkOnDemandSnapshotNutanixVm_ObjectFieldSpec,
+                Mutation.BulkOnDemandSnapshotNutanixVmFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	config = @{
@@ -1944,9 +1822,8 @@ $inputs.Var.input = @{
 	}
 	# OPTIONAL
 	userNote = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
 

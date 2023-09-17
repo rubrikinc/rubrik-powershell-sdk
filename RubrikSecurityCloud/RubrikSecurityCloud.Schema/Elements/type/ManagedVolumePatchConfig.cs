@@ -189,7 +189,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<ManagedVolumePatchConfig> list)
+        public static void SelectForRetrieval(this List<ManagedVolumePatchConfig> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

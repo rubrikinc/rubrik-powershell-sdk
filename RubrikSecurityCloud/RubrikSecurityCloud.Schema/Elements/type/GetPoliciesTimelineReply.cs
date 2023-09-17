@@ -545,7 +545,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<GetPoliciesTimelineReply> list)
+        public static void SelectForRetrieval(this List<GetPoliciesTimelineReply> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

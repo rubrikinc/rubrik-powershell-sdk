@@ -151,7 +151,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<K8sClusterDescendant> list)
+        public static void SelectForRetrieval(this List<K8sClusterDescendant> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

@@ -229,7 +229,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<MssqlBackup> list)
+        public static void SelectForRetrieval(this List<MssqlBackup> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

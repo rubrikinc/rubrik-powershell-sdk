@@ -209,7 +209,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<GetPipelineHealthReply> list)
+        public static void SelectForRetrieval(this List<GetPipelineHealthReply> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

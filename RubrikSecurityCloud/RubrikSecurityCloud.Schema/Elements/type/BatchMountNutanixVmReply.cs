@@ -113,7 +113,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<BatchMountNutanixVmReply> list)
+        public static void SelectForRetrieval(this List<BatchMountNutanixVmReply> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

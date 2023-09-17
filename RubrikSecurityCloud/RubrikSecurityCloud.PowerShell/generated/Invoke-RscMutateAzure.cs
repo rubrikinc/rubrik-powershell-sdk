@@ -156,12 +156,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <example>
     /// <code>Invoke-RscMutateAzure -DeleteCluster [-Arg ..] [-Field ..]</code>
     /// </example>
+    [CmdletBinding()]
     [Cmdlet(
         "Invoke",
         "RscMutateAzure",
         DefaultParameterSetName = "CreateTarget")
     ]
-    public class Invoke_RscMutateAzure : RscPSCmdlet
+    public class Invoke_RscMutateAzure : RscGqlPSCmdlet
     {
         
         /// <summary>
@@ -960,6 +961,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 #pragma warning disable 1591
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 switch(Op)
@@ -1516,22 +1518,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "mutation",
                 "MutationStartRefreshAzureNativeSubscriptionsJob",
                 "($input: StartRefreshAzureNativeSubscriptionsJobInput!)",
-                "BatchAsyncJobStatus"
-                );
-            BatchAsyncJobStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (BatchAsyncJobStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.StartRefreshAzureNativeSubscriptionsJob(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "BatchAsyncJobStatus",
+                Mutation.StartRefreshAzureNativeSubscriptionsJob_ObjectFieldSpec,
+                Mutation.StartRefreshAzureNativeSubscriptionsJobFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	azureSubscriptionRubrikIds = @(
 		<System.String>
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1546,14 +1543,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationStartRestoreAzureNativeVirtualMachineJob",
                 "($input: StartRestoreAzureNativeVirtualMachineJobInput!)",
-                "AsyncJobStatus"
-                );
-            AsyncJobStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncJobStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.StartRestoreAzureNativeVirtualMachineJob(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncJobStatus",
+                Mutation.StartRestoreAzureNativeVirtualMachineJob_ObjectFieldSpec,
+                Mutation.StartRestoreAzureNativeVirtualMachineJobFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	snapshotId = <System.String>
@@ -1567,9 +1560,8 @@ $inputs.Var.input = @{
 	recoveryDiskIds = @(
 		<System.String>
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1584,14 +1576,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationStartExportAzureNativeVirtualMachineJob",
                 "($input: StartExportAzureNativeVirtualMachineJobInput!)",
-                "AsyncJobStatus"
-                );
-            AsyncJobStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncJobStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.StartExportAzureNativeVirtualMachineJob(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncJobStatus",
+                Mutation.StartExportAzureNativeVirtualMachineJob_ObjectFieldSpec,
+                Mutation.StartExportAzureNativeVirtualMachineJobFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	snapshotId = <System.String>
@@ -1629,9 +1617,8 @@ $inputs.Var.input = @{
 	recoveryDiskIds = @(
 		<System.String>
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1646,14 +1633,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationExcludeAzureNativeManagedDisksFromSnapshot",
                 "($input: ExcludeAzureNativeManagedDisksFromSnapshotInput!)",
-                "System.String"
-                );
-            System.String? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (System.String)this.Field;
-            }
-            string fieldSpecDoc = Mutation.ExcludeAzureNativeManagedDisksFromSnapshot(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "System.String",
+                Mutation.ExcludeAzureNativeManagedDisksFromSnapshot_ObjectFieldSpec,
+                Mutation.ExcludeAzureNativeManagedDisksFromSnapshotFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	virtualMachineRubrikId = <System.String>
@@ -1666,9 +1649,8 @@ $inputs.Var.input = @{
 			isExcludedFromSnapshot = <System.Boolean>
 		}
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1683,14 +1665,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationStartCreateAzureNativeVirtualMachineSnapshotsJob",
                 "($input: StartCreateAzureNativeVirtualMachineSnapshotsJobInput!)",
-                "BatchAsyncJobStatus"
-                );
-            BatchAsyncJobStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (BatchAsyncJobStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.StartCreateAzureNativeVirtualMachineSnapshotsJob(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "BatchAsyncJobStatus",
+                Mutation.StartCreateAzureNativeVirtualMachineSnapshotsJob_ObjectFieldSpec,
+                Mutation.StartCreateAzureNativeVirtualMachineSnapshotsJobFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	virtualMachineRubrikIds = @(
@@ -1698,9 +1676,8 @@ $inputs.Var.input = @{
 	)
 	# OPTIONAL
 	retentionSlaId = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1715,14 +1692,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationStartDisableAzureNativeSubscriptionProtectionJob",
                 "($input: StartDisableAzureNativeSubscriptionProtectionJobInput!)",
-                "AsyncJobStatus"
-                );
-            AsyncJobStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncJobStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.StartDisableAzureNativeSubscriptionProtectionJob(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncJobStatus",
+                Mutation.StartDisableAzureNativeSubscriptionProtectionJob_ObjectFieldSpec,
+                Mutation.StartDisableAzureNativeSubscriptionProtectionJobFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	azureSubscriptionRubrikId = <System.String>
@@ -1730,9 +1703,8 @@ $inputs.Var.input = @{
 	shouldDeleteNativeSnapshots = <System.Boolean>
 	# REQUIRED
 	azureNativeProtectionFeature = <AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1747,14 +1719,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationStartCreateAzureNativeManagedDiskSnapshotsJob",
                 "($input: StartCreateAzureNativeManagedDiskSnapshotsJobInput!)",
-                "BatchAsyncJobStatus"
-                );
-            BatchAsyncJobStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (BatchAsyncJobStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.StartCreateAzureNativeManagedDiskSnapshotsJob(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "BatchAsyncJobStatus",
+                Mutation.StartCreateAzureNativeManagedDiskSnapshotsJob_ObjectFieldSpec,
+                Mutation.StartCreateAzureNativeManagedDiskSnapshotsJobFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	managedDiskRubrikIds = @(
@@ -1762,9 +1730,8 @@ $inputs.Var.input = @{
 	)
 	# OPTIONAL
 	retentionSlaId = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1779,14 +1746,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationStartExportAzureNativeManagedDiskJob",
                 "($input: StartExportAzureNativeManagedDiskJobInput!)",
-                "AsyncJobStatus"
-                );
-            AsyncJobStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncJobStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.StartExportAzureNativeManagedDiskJob(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncJobStatus",
+                Mutation.StartExportAzureNativeManagedDiskJob_ObjectFieldSpec,
+                Mutation.StartExportAzureNativeManagedDiskJobFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	snapshotId = <System.String>
@@ -1814,9 +1777,8 @@ $inputs.Var.input = @{
 	shouldUseReplica = <System.Boolean>
 	# OPTIONAL
 	snapshotType = <AzureSnapshotType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSnapshotType]) for enum values.
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1831,14 +1793,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationStartExportAzureSqlDatabaseDbJob",
                 "($input: StartExportAzureSqlDatabaseDbJobInput!)",
-                "AsyncJobStatus"
-                );
-            AsyncJobStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncJobStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.StartExportAzureSqlDatabaseDbJob(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncJobStatus",
+                Mutation.StartExportAzureSqlDatabaseDbJob_ObjectFieldSpec,
+                Mutation.StartExportAzureSqlDatabaseDbJobFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	sourceDatabaseRubrikId = <System.String>
@@ -1892,9 +1850,8 @@ $inputs.Var.input = @{
 	serviceTier = <System.String>
 	# OPTIONAL
 	serviceObjectiveName = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1909,14 +1866,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationStartExportAzureSqlManagedInstanceDbJob",
                 "($input: StartExportAzureSqlManagedInstanceDbJobInput!)",
-                "AsyncJobStatus"
-                );
-            AsyncJobStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncJobStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.StartExportAzureSqlManagedInstanceDbJob(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncJobStatus",
+                Mutation.StartExportAzureSqlManagedInstanceDbJob_ObjectFieldSpec,
+                Mutation.StartExportAzureSqlManagedInstanceDbJobFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	sourceManagedInstanceDatabaseRubrikId = <System.String>
@@ -1962,9 +1915,8 @@ $inputs.Var.input = @{
 	serviceTier = <System.String>
 	# OPTIONAL
 	serviceObjectiveName = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1979,14 +1931,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationCreateAzureAccount",
                 "($input: CreateAzureAccountInput!)",
-                "CloudAccount"
-                );
-            CloudAccount? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CloudAccount)this.Field;
-            }
-            string fieldSpecDoc = Mutation.CreateAzureAccount(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "CloudAccount",
+                Mutation.CreateAzureAccount_ObjectFieldSpec,
+                Mutation.CreateAzureAccountFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	name = <System.String>
@@ -1994,9 +1942,8 @@ $inputs.Var.input = @{
 	description = <System.String>
 	# REQUIRED
 	subscriptionId = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2011,14 +1958,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationUpdateAzureAccount",
                 "($input: UpdateAzureAccountInput!)",
-                "CloudAccount"
-                );
-            CloudAccount? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CloudAccount)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UpdateAzureAccount(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "CloudAccount",
+                Mutation.UpdateAzureAccount_ObjectFieldSpec,
+                Mutation.UpdateAzureAccountFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
@@ -2028,9 +1971,8 @@ $inputs.Var.input = @{
 	description = <System.String>
 	# OPTIONAL
 	subscriptionId = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2045,14 +1987,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationCreateAutomaticAzureTargetMapping",
                 "($input: CreateAutomaticAzureTargetMappingInput!)",
-                "TargetMapping"
-                );
-            TargetMapping? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (TargetMapping)this.Field;
-            }
-            string fieldSpecDoc = Mutation.CreateAutomaticAzureTargetMapping(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "TargetMapping",
+                Mutation.CreateAutomaticAzureTargetMapping_ObjectFieldSpec,
+                Mutation.CreateAutomaticAzureTargetMappingFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	name = <System.String>
@@ -2123,9 +2061,8 @@ $inputs.Var.input = @{
 	)
 	# REQUIRED
 	isConsolidationEnabled = <System.Boolean>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2140,14 +2077,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationCreateCloudNativeAzureStorageSetting",
                 "($input: CreateCloudNativeAzureStorageSettingInput!)",
-                "CreateCloudNativeAzureStorageSettingReply"
-                );
-            CreateCloudNativeAzureStorageSettingReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CreateCloudNativeAzureStorageSettingReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.CreateCloudNativeAzureStorageSetting(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "CreateCloudNativeAzureStorageSettingReply",
+                Mutation.CreateCloudNativeAzureStorageSetting_ObjectFieldSpec,
+                Mutation.CreateCloudNativeAzureStorageSettingFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	name = <System.String>
@@ -2192,9 +2125,8 @@ $inputs.Var.input = @{
 	)
 	# OPTIONAL
 	azureCloudType = <AzureCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2209,14 +2141,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationCreateCloudNativeRcvAzureStorageSetting",
                 "($input: CreateCloudNativeRcvAzureStorageSettingInput!)",
-                "CreateCloudNativeRcvAzureStorageSettingReply"
-                );
-            CreateCloudNativeRcvAzureStorageSettingReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CreateCloudNativeRcvAzureStorageSettingReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.CreateCloudNativeRcvAzureStorageSetting(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "CreateCloudNativeRcvAzureStorageSettingReply",
+                Mutation.CreateCloudNativeRcvAzureStorageSetting_ObjectFieldSpec,
+                Mutation.CreateCloudNativeRcvAzureStorageSettingFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	name = <System.String>
@@ -2224,9 +2152,8 @@ $inputs.Var.input = @{
 	region = <AzureRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureRegion]) for enum values.
 	# REQUIRED
 	cloudNativeLocTemplateType = <CloudNativeLocTemplateType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeLocTemplateType]) for enum values.
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2241,14 +2168,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationUpdateAutomaticAzureTargetMapping",
                 "($input: UpdateAutomaticAzureTargetMappingInput!)",
-                "TargetMapping"
-                );
-            TargetMapping? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (TargetMapping)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UpdateAutomaticAzureTargetMapping(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "TargetMapping",
+                Mutation.UpdateAutomaticAzureTargetMapping_ObjectFieldSpec,
+                Mutation.UpdateAutomaticAzureTargetMappingFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
@@ -2315,9 +2238,8 @@ $inputs.Var.input = @{
 	)
 	# OPTIONAL
 	isConsolidationEnabled = <System.Boolean>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2332,14 +2254,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationUpdateCloudNativeAzureStorageSetting",
                 "($input: UpdateCloudNativeAzureStorageSettingInput!)",
-                "UpdateCloudNativeAzureStorageSettingReply"
-                );
-            UpdateCloudNativeAzureStorageSettingReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (UpdateCloudNativeAzureStorageSettingReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UpdateCloudNativeAzureStorageSetting(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "UpdateCloudNativeAzureStorageSettingReply",
+                Mutation.UpdateCloudNativeAzureStorageSetting_ObjectFieldSpec,
+                Mutation.UpdateCloudNativeAzureStorageSettingFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
@@ -2370,9 +2288,8 @@ $inputs.Var.input = @{
 			region = <AzureRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureRegion]) for enum values.
 		}
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2387,22 +2304,17 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationUpdateCloudNativeRcvAzureStorageSetting",
                 "($input: UpdateCloudNativeRcvAzureStorageSettingInput!)",
-                "UpdateCloudNativeRcvAzureStorageSettingReply"
-                );
-            UpdateCloudNativeRcvAzureStorageSettingReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (UpdateCloudNativeRcvAzureStorageSettingReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UpdateCloudNativeRcvAzureStorageSetting(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "UpdateCloudNativeRcvAzureStorageSettingReply",
+                Mutation.UpdateCloudNativeRcvAzureStorageSetting_ObjectFieldSpec,
+                Mutation.UpdateCloudNativeRcvAzureStorageSettingFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
 	# REQUIRED
 	name = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2417,14 +2329,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationCreateAzureTarget",
                 "($input: CreateAzureTargetInput!)",
-                "Target"
-                );
-            Target? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (Target)this.Field;
-            }
-            string fieldSpecDoc = Mutation.CreateAzureTarget(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "Target",
+                Mutation.CreateAzureTarget_ObjectFieldSpec,
+                Mutation.CreateAzureTargetFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	clusterUuid = <System.String>
@@ -2502,9 +2410,8 @@ $inputs.Var.input = @{
 	retrievalTier = <AzureRetrievalTier> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureRetrievalTier]) for enum values.
 	# REQUIRED
 	bypassProxy = <System.Boolean>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2519,14 +2426,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationUpdateAzureTarget",
                 "($input: UpdateAzureTargetInput!)",
-                "Target"
-                );
-            Target? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (Target)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UpdateAzureTarget(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "Target",
+                Mutation.UpdateAzureTarget_ObjectFieldSpec,
+                Mutation.UpdateAzureTargetFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
@@ -2598,9 +2501,8 @@ $inputs.Var.input = @{
 	retrievalTier = <AzureRetrievalTier> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureRetrievalTier]) for enum values.
 	# REQUIRED
 	bypassProxy = <System.Boolean>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2615,14 +2517,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationCreateAzureReaderTarget",
                 "($input: CreateAzureReaderTargetInput!)",
-                "Target"
-                );
-            Target? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (Target)this.Field;
-            }
-            string fieldSpecDoc = Mutation.CreateAzureReaderTarget(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "Target",
+                Mutation.CreateAzureReaderTarget_ObjectFieldSpec,
+                Mutation.CreateAzureReaderTargetFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	name = <System.String>
@@ -2702,9 +2600,8 @@ $inputs.Var.input = @{
 	retrievalTier = <AzureRetrievalTier> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureRetrievalTier]) for enum values.
 	# REQUIRED
 	bypassProxy = <System.Boolean>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2719,22 +2616,17 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationStartAzureCloudAccountOauth",
                 "($input: StartAzureCloudAccountOauthInput!)",
-                "StartAzureCloudAccountOauthReply"
-                );
-            StartAzureCloudAccountOauthReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (StartAzureCloudAccountOauthReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.StartAzureCloudAccountOauth(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "StartAzureCloudAccountOauthReply",
+                Mutation.StartAzureCloudAccountOauth_ObjectFieldSpec,
+                Mutation.StartAzureCloudAccountOauthFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	tenantDomainName = <System.String>
 	# OPTIONAL
 	azureCloudType = <AzureCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2749,14 +2641,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationCompleteAzureCloudAccountOauth",
                 "($input: CompleteAzureCloudAccountOauthInput!)",
-                "CompleteAzureCloudAccountOauthReply"
-                );
-            CompleteAzureCloudAccountOauthReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CompleteAzureCloudAccountOauthReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.CompleteAzureCloudAccountOauth(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "CompleteAzureCloudAccountOauthReply",
+                Mutation.CompleteAzureCloudAccountOauth_ObjectFieldSpec,
+                Mutation.CompleteAzureCloudAccountOauthFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	sessionId = <System.String>
@@ -2784,9 +2672,8 @@ $inputs.Var.input = @{
 	performBasicOauth = <System.Boolean>
 	# OPTIONAL
 	shouldKeepRefreshToken = <System.Boolean>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2801,14 +2688,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationSetAzureCloudAccountCustomerAppCredentials",
                 "($input: SetAzureCloudAccountCustomerAppCredentialsInput!)",
-                "System.Boolean"
-                );
-            System.Boolean? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (System.Boolean)this.Field;
-            }
-            string fieldSpecDoc = Mutation.SetAzureCloudAccountCustomerAppCredentials(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "System.Boolean",
+                Mutation.SetAzureCloudAccountCustomerAppCredentials_ObjectFieldSpec,
+                Mutation.SetAzureCloudAccountCustomerAppCredentialsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	appId = <System.String>
@@ -2824,9 +2707,8 @@ $inputs.Var.input = @{
 	shouldReplace = <System.Boolean>
 	# REQUIRED
 	azureCloudType = <AzureCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2841,14 +2723,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationAddAzureCloudAccount",
                 "($input: AddAzureCloudAccountInput!)",
-                "AddAzureCloudAccountReply"
-                );
-            AddAzureCloudAccountReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AddAzureCloudAccountReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.AddAzureCloudAccount(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AddAzureCloudAccountReply",
+                Mutation.AddAzureCloudAccount_ObjectFieldSpec,
+                Mutation.AddAzureCloudAccountFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	sessionId = <System.String>
@@ -2900,9 +2778,8 @@ $inputs.Var.input = @{
 	regions = @(
 		<AzureCloudAccountRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2917,14 +2794,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationAddAzureCloudAccountWithoutOauth",
                 "($input: AddAzureCloudAccountWithoutOauthInput!)",
-                "AddAzureCloudAccountWithoutOauthReply"
-                );
-            AddAzureCloudAccountWithoutOauthReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AddAzureCloudAccountWithoutOauthReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.AddAzureCloudAccountWithoutOauth(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AddAzureCloudAccountWithoutOauthReply",
+                Mutation.AddAzureCloudAccountWithoutOauth_ObjectFieldSpec,
+                Mutation.AddAzureCloudAccountWithoutOauthFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	tenantDomainName = <System.String>
@@ -2992,9 +2865,8 @@ $inputs.Var.input = @{
 	)
 	# OPTIONAL
 	azureCloudType = <AzureCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -3009,14 +2881,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationDeleteAzureCloudAccount",
                 "($input: DeleteAzureCloudAccountInput!)",
-                "DeleteAzureCloudAccountReply"
-                );
-            DeleteAzureCloudAccountReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (DeleteAzureCloudAccountReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DeleteAzureCloudAccount(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "DeleteAzureCloudAccountReply",
+                Mutation.DeleteAzureCloudAccount_ObjectFieldSpec,
+                Mutation.DeleteAzureCloudAccountFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	sessionId = <System.String>
@@ -3028,9 +2896,8 @@ $inputs.Var.input = @{
 	azureSubscriptionRubrikIds = @(
 		<System.String>
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -3045,14 +2912,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationDeleteAzureCloudAccountWithoutOauth",
                 "($input: DeleteAzureCloudAccountWithoutOauthInput!)",
-                "DeleteAzureCloudAccountWithoutOauthReply"
-                );
-            DeleteAzureCloudAccountWithoutOauthReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (DeleteAzureCloudAccountWithoutOauthReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DeleteAzureCloudAccountWithoutOauth(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "DeleteAzureCloudAccountWithoutOauthReply",
+                Mutation.DeleteAzureCloudAccountWithoutOauth_ObjectFieldSpec,
+                Mutation.DeleteAzureCloudAccountWithoutOauthFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	features = @(
@@ -3062,9 +2925,8 @@ $inputs.Var.input = @{
 	azureSubscriptionRubrikIds = @(
 		<System.String>
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -3079,14 +2941,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationUpgradeAzureCloudAccount",
                 "($input: UpgradeAzureCloudAccountInput!)",
-                "UpgradeAzureCloudAccountReply"
-                );
-            UpgradeAzureCloudAccountReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (UpgradeAzureCloudAccountReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UpgradeAzureCloudAccount(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "UpgradeAzureCloudAccountReply",
+                Mutation.UpgradeAzureCloudAccount_ObjectFieldSpec,
+                Mutation.UpgradeAzureCloudAccountFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	sessionId = <System.String>
@@ -3109,9 +2967,8 @@ $inputs.Var.input = @{
 	azureSubscriptionRubrikIds = @(
 		<System.String>
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -3125,16 +2982,11 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationUpdateCustomerAppPermissionForAzureSql",
                 "",
-                "System.String"
-                );
-            System.String? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (System.String)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UpdateCustomerAppPermissionForAzureSql(ref fieldSpecObj);
-            string inputExample = @"";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "System.String",
+                Mutation.UpdateCustomerAppPermissionForAzureSql_ObjectFieldSpec,
+                Mutation.UpdateCustomerAppPermissionForAzureSqlFieldSpec,
+                @""
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -3149,14 +3001,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationStartDisableAzureCloudAccountJob",
                 "($input: StartDisableAzureCloudAccountJobInput!)",
-                "BatchAsyncJobStatus"
-                );
-            BatchAsyncJobStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (BatchAsyncJobStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.StartDisableAzureCloudAccountJob(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "BatchAsyncJobStatus",
+                Mutation.StartDisableAzureCloudAccountJob_ObjectFieldSpec,
+                Mutation.StartDisableAzureCloudAccountJobFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
@@ -3164,9 +3012,8 @@ $inputs.Var.input = @{
 	cloudAccountIds = @(
 		<System.String>
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -3181,14 +3028,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationUpdateAzureCloudAccount",
                 "($input: UpdateAzureCloudAccountInput!)",
-                "UpdateAzureCloudAccountReply"
-                );
-            UpdateAzureCloudAccountReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (UpdateAzureCloudAccountReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UpdateAzureCloudAccount(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "UpdateAzureCloudAccountReply",
+                Mutation.UpdateAzureCloudAccount_ObjectFieldSpec,
+                Mutation.UpdateAzureCloudAccountFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	subscriptions = @(
@@ -3211,9 +3054,8 @@ $inputs.Var.input = @{
 	regionsToRemove = @(
 		<AzureCloudAccountRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -3228,14 +3070,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationMapAzureCloudAccountToPersistentStorageLocation",
                 "($input: MapAzureCloudAccountToPersistentStorageLocationInput!)",
-                "MapAzureCloudAccountToPersistentStorageLocationReply"
-                );
-            MapAzureCloudAccountToPersistentStorageLocationReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MapAzureCloudAccountToPersistentStorageLocationReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.MapAzureCloudAccountToPersistentStorageLocation(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "MapAzureCloudAccountToPersistentStorageLocationReply",
+                Mutation.MapAzureCloudAccountToPersistentStorageLocation_ObjectFieldSpec,
+                Mutation.MapAzureCloudAccountToPersistentStorageLocationFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	cloudAccountIds = @(
@@ -3245,9 +3083,8 @@ $inputs.Var.input = @{
 	persistentStorageId = <System.String>
 	# REQUIRED
 	azureNativeProtectionFeature = <AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -3262,14 +3099,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationAddAzureCloudAccountExocomputeConfigurations",
                 "($input: AddAzureCloudAccountExocomputeConfigurationsInput!)",
-                "AddAzureCloudAccountExocomputeConfigurationsReply"
-                );
-            AddAzureCloudAccountExocomputeConfigurationsReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AddAzureCloudAccountExocomputeConfigurationsReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.AddAzureCloudAccountExocomputeConfigurations(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AddAzureCloudAccountExocomputeConfigurationsReply",
+                Mutation.AddAzureCloudAccountExocomputeConfigurations_ObjectFieldSpec,
+                Mutation.AddAzureCloudAccountExocomputeConfigurationsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	cloudAccountId = <System.String>
@@ -3288,9 +3121,8 @@ $inputs.Var.input = @{
 	)
 	# OPTIONAL
 	triggerHealthCheck = <System.Boolean>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -3305,22 +3137,17 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationDeleteAzureCloudAccountExocomputeConfigurations",
                 "($input: DeleteAzureCloudAccountExocomputeConfigurationsInput!)",
-                "DeleteAzureCloudAccountExocomputeConfigurationsReply"
-                );
-            DeleteAzureCloudAccountExocomputeConfigurationsReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (DeleteAzureCloudAccountExocomputeConfigurationsReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DeleteAzureCloudAccountExocomputeConfigurations(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "DeleteAzureCloudAccountExocomputeConfigurationsReply",
+                Mutation.DeleteAzureCloudAccountExocomputeConfigurations_ObjectFieldSpec,
+                Mutation.DeleteAzureCloudAccountExocomputeConfigurationsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	cloudAccountIds = @(
 		<System.String>
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -3335,14 +3162,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationMapAzureCloudAccountExocomputeSubscription",
                 "($input: MapAzureCloudAccountExocomputeSubscriptionInput!)",
-                "MapAzureCloudAccountExocomputeSubscriptionReply"
-                );
-            MapAzureCloudAccountExocomputeSubscriptionReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MapAzureCloudAccountExocomputeSubscriptionReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.MapAzureCloudAccountExocomputeSubscription(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "MapAzureCloudAccountExocomputeSubscriptionReply",
+                Mutation.MapAzureCloudAccountExocomputeSubscription_ObjectFieldSpec,
+                Mutation.MapAzureCloudAccountExocomputeSubscriptionFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	cloudAccountIds = @(
@@ -3350,9 +3173,8 @@ $inputs.Var.input = @{
 	)
 	# REQUIRED
 	exocomputeCloudAccountId = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -3367,22 +3189,17 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationUnmapAzureCloudAccountExocomputeSubscription",
                 "($input: UnmapAzureCloudAccountExocomputeSubscriptionInput!)",
-                "UnmapAzureCloudAccountExocomputeSubscriptionReply"
-                );
-            UnmapAzureCloudAccountExocomputeSubscriptionReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (UnmapAzureCloudAccountExocomputeSubscriptionReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UnmapAzureCloudAccountExocomputeSubscription(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "UnmapAzureCloudAccountExocomputeSubscriptionReply",
+                Mutation.UnmapAzureCloudAccountExocomputeSubscription_ObjectFieldSpec,
+                Mutation.UnmapAzureCloudAccountExocomputeSubscriptionFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	cloudAccountIds = @(
 		<System.String>
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -3397,14 +3214,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationUpgradeAzureCloudAccountPermissionsWithoutOauth",
                 "($input: UpgradeAzureCloudAccountPermissionsWithoutOauthInput!)",
-                "UpgradeAzureCloudAccountPermissionsWithoutOauthReply"
-                );
-            UpgradeAzureCloudAccountPermissionsWithoutOauthReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (UpgradeAzureCloudAccountPermissionsWithoutOauthReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UpgradeAzureCloudAccountPermissionsWithoutOauth(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "UpgradeAzureCloudAccountPermissionsWithoutOauthReply",
+                Mutation.UpgradeAzureCloudAccountPermissionsWithoutOauth_ObjectFieldSpec,
+                Mutation.UpgradeAzureCloudAccountPermissionsWithoutOauthFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	cloudAccountId = <System.String>
@@ -3419,9 +3232,8 @@ $inputs.Var.input = @{
 			<PermissionsGroup> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
 		)
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -3436,14 +3248,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationUnmapAzurePersistentStorageSubscription",
                 "($input: UnmapAzurePersistentStorageSubscriptionInput!)",
-                "System.String"
-                );
-            System.String? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (System.String)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UnmapAzurePersistentStorageSubscription(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "System.String",
+                Mutation.UnmapAzurePersistentStorageSubscription_ObjectFieldSpec,
+                Mutation.UnmapAzurePersistentStorageSubscriptionFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	applicationCloudAccountIds = @(
@@ -3453,9 +3261,8 @@ $inputs.Var.input = @{
 	feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 	# REQUIRED
 	unmappingValidationType = <UnmappingValidationType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmappingValidationType]) for enum values.
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -3469,16 +3276,11 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationAzureOauthConsentKickoff",
                 "",
-                "AzureOauthConsentKickoffReply"
-                );
-            AzureOauthConsentKickoffReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AzureOauthConsentKickoffReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.AzureOauthConsentKickoff(ref fieldSpecObj);
-            string inputExample = @"";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "AzureOauthConsentKickoffReply",
+                Mutation.AzureOauthConsentKickoff_ObjectFieldSpec,
+                Mutation.AzureOauthConsentKickoffFieldSpec,
+                @""
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -3493,14 +3295,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationAzureOauthConsentComplete",
                 "($input: AzureOauthConsentCompleteInput!)",
-                "RequestStatus"
-                );
-            RequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (RequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.AzureOauthConsentComplete(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "RequestStatus",
+                Mutation.AzureOauthConsentComplete_ObjectFieldSpec,
+                Mutation.AzureOauthConsentCompleteFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	tenantId = <System.String>
@@ -3516,9 +3314,8 @@ $inputs.Var.input = @{
 	azureAppSecret = <System.String>
 	# REQUIRED
 	azureCloudType = <O365AzureCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365AzureCloudType]) for enum values.
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -3532,16 +3329,11 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationCreateAzureSaasAppAad",
                 "",
-                "CreateAzureSaasAppAadReply"
-                );
-            CreateAzureSaasAppAadReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CreateAzureSaasAppAadReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.CreateAzureSaasAppAad(ref fieldSpecObj);
-            string inputExample = @"";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "CreateAzureSaasAppAadReply",
+                Mutation.CreateAzureSaasAppAad_ObjectFieldSpec,
+                Mutation.CreateAzureSaasAppAadFieldSpec,
+                @""
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -3556,14 +3348,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationCreateAzureCluster",
                 "($input: CreateAzureClusterInput!)",
-                "CcProvisionJobReply"
-                );
-            CcProvisionJobReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CcProvisionJobReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.CreateAzureCluster(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "CcProvisionJobReply",
+                Mutation.CreateAzureCluster_ObjectFieldSpec,
+                Mutation.CreateAzureClusterFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	cloudAccountId = <System.String>
@@ -3653,9 +3441,8 @@ $inputs.Var.input = @{
 		# OPTIONAL
 		instanceType = <AzureInstanceType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureInstanceType]) for enum values.
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -3670,14 +3457,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationDeleteAzureCluster",
                 "($input: DeleteAzureClusterInput!)",
-                "CcProvisionJobReply"
-                );
-            CcProvisionJobReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CcProvisionJobReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DeleteAzureCluster(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "CcProvisionJobReply",
+                Mutation.DeleteAzureCluster_ObjectFieldSpec,
+                Mutation.DeleteAzureClusterFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	cloudAccountId = <System.String>
@@ -3701,9 +3484,8 @@ $inputs.Var.input = @{
 	isNewContainer = <System.Boolean>
 	# OPTIONAL
 	clusterUuid = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
 

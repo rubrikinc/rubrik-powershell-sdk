@@ -153,7 +153,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<SyslogExportRuleSummaryListResponse> list)
+        public static void SelectForRetrieval(this List<SyslogExportRuleSummaryListResponse> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

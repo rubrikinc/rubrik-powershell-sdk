@@ -373,7 +373,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<DiffData> list)
+        public static void SelectForRetrieval(this List<DiffData> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

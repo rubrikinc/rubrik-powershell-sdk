@@ -390,7 +390,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<O365OnedriveFolder> list)
+        public static void SelectForRetrieval(this List<O365OnedriveFolder> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

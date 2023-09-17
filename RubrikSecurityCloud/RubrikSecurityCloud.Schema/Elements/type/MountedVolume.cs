@@ -209,7 +209,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<MountedVolume> list)
+        public static void SelectForRetrieval(this List<MountedVolume> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

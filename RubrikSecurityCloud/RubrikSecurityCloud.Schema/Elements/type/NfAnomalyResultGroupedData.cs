@@ -162,7 +162,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<NfAnomalyResultGroupedData> list)
+        public static void SelectForRetrieval(this List<NfAnomalyResultGroupedData> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

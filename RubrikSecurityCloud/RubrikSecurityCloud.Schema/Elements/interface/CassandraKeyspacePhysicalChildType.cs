@@ -151,7 +151,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<CassandraKeyspacePhysicalChildType> list)
+        public static void SelectForRetrieval(this List<CassandraKeyspacePhysicalChildType> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

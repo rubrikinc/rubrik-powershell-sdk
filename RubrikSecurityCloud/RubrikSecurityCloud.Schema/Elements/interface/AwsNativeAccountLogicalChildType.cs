@@ -151,7 +151,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<AwsNativeAccountLogicalChildType> list)
+        public static void SelectForRetrieval(this List<AwsNativeAccountLogicalChildType> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

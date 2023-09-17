@@ -101,7 +101,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<O365UserDescendantMetadata> list)
+        public static void SelectForRetrieval(this List<O365UserDescendantMetadata> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

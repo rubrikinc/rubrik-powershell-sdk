@@ -52,7 +52,7 @@ function ___VERB___-Rsc___NOUN___ {
         #
         # Retrieve input objects:
         #
-        # $in = (___INVOKE_CMDLET___ -InputProfile $inputProfile -GetInput)
+        # $in = (___INVOKE_CMDLET___ -FieldProfile $inputProfile -GetInput)
         #
         # Customize input:
         #

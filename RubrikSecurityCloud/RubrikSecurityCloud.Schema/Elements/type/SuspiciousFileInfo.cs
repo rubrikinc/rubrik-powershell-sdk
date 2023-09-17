@@ -149,7 +149,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<SuspiciousFileInfo> list)
+        public static void SelectForRetrieval(this List<SuspiciousFileInfo> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

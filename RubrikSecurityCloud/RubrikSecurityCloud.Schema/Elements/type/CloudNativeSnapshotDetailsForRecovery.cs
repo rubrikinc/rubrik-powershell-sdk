@@ -197,7 +197,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<CloudNativeSnapshotDetailsForRecovery> list)
+        public static void SelectForRetrieval(this List<CloudNativeSnapshotDetailsForRecovery> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

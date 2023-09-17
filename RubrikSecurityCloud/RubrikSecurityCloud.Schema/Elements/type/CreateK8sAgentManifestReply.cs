@@ -113,7 +113,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<CreateK8sAgentManifestReply> list)
+        public static void SelectForRetrieval(this List<CreateK8sAgentManifestReply> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

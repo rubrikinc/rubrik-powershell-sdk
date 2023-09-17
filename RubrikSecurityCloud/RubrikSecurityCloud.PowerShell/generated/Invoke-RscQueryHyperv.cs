@@ -66,12 +66,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <example>
     /// <code>Invoke-RscQueryHyperv -VirtualMachineAsyncRequestStatus [-Arg ..] [-Field ..]</code>
     /// </example>
+    [CmdletBinding()]
     [Cmdlet(
         "Invoke",
         "RscQueryHyperv",
         DefaultParameterSetName = "Cluster")
     ]
-    public class Invoke_RscQueryHyperv : RscPSCmdlet
+    public class Invoke_RscQueryHyperv : RscGqlPSCmdlet
     {
         
         /// <summary>
@@ -342,6 +343,7 @@ Get details about a Hyper-V vm related async request.
 #pragma warning disable 1591
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 switch(Op)
@@ -550,14 +552,10 @@ Get details about a Hyper-V vm related async request.
                 "query",
                 "QueryHypervTopLevelDescendants",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!],$filter: [Filter!])",
-                "HypervTopLevelDescendantTypeConnection"
-                );
-            HypervTopLevelDescendantTypeConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (HypervTopLevelDescendantTypeConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.HypervTopLevelDescendants(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "HypervTopLevelDescendantTypeConnection",
+                Query.HypervTopLevelDescendants_ObjectFieldSpec,
+                Query.HypervTopLevelDescendantsFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -610,9 +608,8 @@ $inputs.Var.filter = @(
 			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
 		)
 }
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -637,14 +634,10 @@ $inputs.Var.filter = @(
                 "query",
                 "QueryHypervVirtualMachines",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                "HyperVvirtualMachineConnection"
-                );
-            HyperVvirtualMachineConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (HyperVvirtualMachineConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.HypervVirtualMachines(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "HyperVvirtualMachineConnection",
+                Query.HypervVirtualMachines_ObjectFieldSpec,
+                Query.HypervVirtualMachinesFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -693,9 +686,8 @@ $inputs.Var.filter = @(
 			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
 		)
 }
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -710,17 +702,12 @@ $inputs.Var.filter = @(
                 "query",
                 "QueryHypervScvmm",
                 "($fid: UUID!)",
-                "HyperVscvmm"
-                );
-            HyperVscvmm? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (HyperVscvmm)this.Field;
-            }
-            string fieldSpecDoc = Query.HypervScvmm(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "HyperVscvmm",
+                Query.HypervScvmm_ObjectFieldSpec,
+                Query.HypervScvmmFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -735,17 +722,12 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryHypervCluster",
                 "($fid: UUID!)",
-                "HyperVcluster"
-                );
-            HyperVcluster? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (HyperVcluster)this.Field;
-            }
-            string fieldSpecDoc = Query.HypervCluster(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "HyperVcluster",
+                Query.HypervCluster_ObjectFieldSpec,
+                Query.HypervClusterFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -760,17 +742,12 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryHypervServer",
                 "($fid: UUID!)",
-                "HypervServer"
-                );
-            HypervServer? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (HypervServer)this.Field;
-            }
-            string fieldSpecDoc = Query.HypervServer(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "HypervServer",
+                Query.HypervServer_ObjectFieldSpec,
+                Query.HypervServerFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -785,17 +762,12 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryHypervVirtualMachine",
                 "($fid: UUID!)",
-                "HyperVvirtualMachine"
-                );
-            HyperVvirtualMachine? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (HyperVvirtualMachine)this.Field;
-            }
-            string fieldSpecDoc = Query.HypervVirtualMachine(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "HyperVvirtualMachine",
+                Query.HypervVirtualMachine_ObjectFieldSpec,
+                Query.HypervVirtualMachineFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -810,14 +782,10 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryUniqueHypervServersCount",
                 "($filter: [Filter!])",
-                "System.Int32"
-                );
-            System.Int32? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (System.Int32)this.Field;
-            }
-            string fieldSpecDoc = Query.UniqueHypervServersCount(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "System.Int32",
+                Query.UniqueHypervServersCount_ObjectFieldSpec,
+                Query.UniqueHypervServersCountFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.filter = @(
 	@{
 		# OPTIONAL
@@ -858,9 +826,8 @@ $inputs.Var.filter = @(
 			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
 		)
 }
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -885,14 +852,10 @@ $inputs.Var.filter = @(
                 "query",
                 "QueryHypervScvmms",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                "HyperVscvmmConnection"
-                );
-            HyperVscvmmConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (HyperVscvmmConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.HypervScvmms(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "HyperVscvmmConnection",
+                Query.HypervScvmms_ObjectFieldSpec,
+                Query.HypervScvmmsFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -941,9 +904,8 @@ $inputs.Var.filter = @(
 			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
 		)
 }
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -958,14 +920,10 @@ $inputs.Var.filter = @(
                 "query",
                 "QueryHypervServers",
                 "($input: QueryHypervHostInput!)",
-                "HypervHostSummaryListResponse"
-                );
-            HypervHostSummaryListResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (HypervHostSummaryListResponse)this.Field;
-            }
-            string fieldSpecDoc = Query.HypervServers(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "HypervHostSummaryListResponse",
+                Query.HypervServers_ObjectFieldSpec,
+                Query.HypervServersFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	effectiveSlaDomainId = <System.String>
@@ -985,9 +943,8 @@ $inputs.Var.input = @{
 	sortOrder = <InternalQueryHypervHostRequestSortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InternalQueryHypervHostRequestSortOrder]) for enum values.
 	# REQUIRED
 	clusterUuid = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1010,14 +967,10 @@ $inputs.Var.input = @{
                 "query",
                 "QueryHypervMounts",
                 "($first: Int,$after: String,$filters: [HypervLiveMountFilterInput!],$sortBy: HypervLiveMountSortByInput)",
-                "HyperVliveMountConnection"
-                );
-            HyperVliveMountConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (HyperVliveMountConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.HypervMounts(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "HyperVliveMountConnection",
+                Query.HypervMounts_ObjectFieldSpec,
+                Query.HypervMountsFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -1038,9 +991,8 @@ $inputs.Var.sortBy = @{
 	field = <HypervLiveMountSortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HypervLiveMountSortByField]) for enum values.
 	# OPTIONAL
 	sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1055,20 +1007,15 @@ $inputs.Var.sortBy = @{
                 "query",
                 "QueryHypervVmDetail",
                 "($input: GetHypervVirtualMachineInput!)",
-                "HypervVirtualMachineDetail"
-                );
-            HypervVirtualMachineDetail? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (HypervVirtualMachineDetail)this.Field;
-            }
-            string fieldSpecDoc = Query.HypervVmDetail(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "HypervVirtualMachineDetail",
+                Query.HypervVmDetail_ObjectFieldSpec,
+                Query.HypervVmDetailFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1083,22 +1030,17 @@ $inputs.Var.input = @{
                 "query",
                 "QueryHypervHostAsyncRequestStatus",
                 "($input: GetHypervHostAsyncRequestStatusInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Query.HypervHostAsyncRequestStatus(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Query.HypervHostAsyncRequestStatus_ObjectFieldSpec,
+                Query.HypervHostAsyncRequestStatusFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	clusterUuid = <System.String>
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1113,22 +1055,17 @@ $inputs.Var.input = @{
                 "query",
                 "QueryHypervScvmmAsyncRequestStatus",
                 "($input: GetHypervScvmmAsyncRequestStatusInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Query.HypervScvmmAsyncRequestStatus(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Query.HypervScvmmAsyncRequestStatus_ObjectFieldSpec,
+                Query.HypervScvmmAsyncRequestStatusFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	clusterUuid = <System.String>
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1143,22 +1080,17 @@ $inputs.Var.input = @{
                 "query",
                 "QueryHypervVirtualMachineAsyncRequestStatus",
                 "($input: GetHypervVirtualMachineAsyncRequestStatusInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Query.HypervVirtualMachineAsyncRequestStatus(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Query.HypervVirtualMachineAsyncRequestStatus_ObjectFieldSpec,
+                Query.HypervVirtualMachineAsyncRequestStatusFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	clusterUuid = <System.String>
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
 

@@ -181,7 +181,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<AzureNativeHierarchyObjectType> list)
+        public static void SelectForRetrieval(this List<AzureNativeHierarchyObjectType> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

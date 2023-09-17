@@ -133,7 +133,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<AuthorizedPrincipalEdge> list)
+        public static void SelectForRetrieval(this List<AuthorizedPrincipalEdge> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

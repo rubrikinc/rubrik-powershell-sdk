@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// SLA queries
     /// </summary>
     /// <description>
-    /// Invoke-RscQuerySla is a master cmdlet for Sla work that can invoke any of the following subcommands: Domains, GlobalFilterList, Domain, CountOfObjectsProtected, AuditDetail, AllSummariesByIds, GlobalStatuses, ConflictObjects, ManagedVolumes, ManagedVolume, ClusterDomains, VerifyWithReplicationToCluster, AllClusterGlobals, AllNcdComplianceData.
+    /// Invoke-RscQuerySla is a master cmdlet for Sla work that can invoke any of the following subcommands: Domains, GlobalFilterList, Domain, CountOfObjectsProtected, AuditDetail, AllSummariesByIds, GlobalStatuses, ConflictObjects, ManagedVolumes, ManagedVolume, AllNcdComplianceData.
     /// </description>
     /// <example>
     /// <code>Invoke-RscQuerySla -Domains [-Arg ..] [-Field ..]</code>
@@ -55,23 +55,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <code>Invoke-RscQuerySla -ManagedVolume [-Arg ..] [-Field ..]</code>
     /// </example>
     /// <example>
-    /// <code>Invoke-RscQuerySla -ClusterDomains [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
-    /// <code>Invoke-RscQuerySla -VerifyWithReplicationToCluster [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
-    /// <code>Invoke-RscQuerySla -AllClusterGlobals [-Arg ..] [-Field ..]</code>
-    /// </example>
-    /// <example>
     /// <code>Invoke-RscQuerySla -AllNcdComplianceData [-Arg ..] [-Field ..]</code>
     /// </example>
+    [CmdletBinding()]
     [Cmdlet(
         "Invoke",
         "RscQuerySla",
         DefaultParameterSetName = "Domain")
     ]
-    public class Invoke_RscQuerySla : RscPSCmdlet
+    public class Invoke_RscQuerySla : RscGqlPSCmdlet
     {
         
         /// <summary>
@@ -255,60 +247,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         /// <summary>
-        /// ClusterDomains parameter set
-        ///
-        /// [GraphQL: clusterSlaDomains]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "ClusterDomains",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Returns paginated list of SLA domains that were created on Rubrik CDM.
-[GraphQL: clusterSlaDomains]",
-            Position = 0
-        )]
-        public SwitchParameter ClusterDomains { get; set; }
-
-        
-        /// <summary>
-        /// VerifyWithReplicationToCluster parameter set
-        ///
-        /// [GraphQL: verifySlaWithReplicationToCluster]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "VerifyWithReplicationToCluster",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Verify for a Rubrik cluster if it is replication target in any SLA Domain.
-[GraphQL: verifySlaWithReplicationToCluster]",
-            Position = 0
-        )]
-        public SwitchParameter VerifyWithReplicationToCluster { get; set; }
-
-        
-        /// <summary>
-        /// AllClusterGlobals parameter set
-        ///
-        /// [GraphQL: allClusterGlobalSlas]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "AllClusterGlobals",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Global SLA Domains protecting at least one object on the specified Rubrik cluster.
-[GraphQL: allClusterGlobalSlas]",
-            Position = 0
-        )]
-        public SwitchParameter AllClusterGlobals { get; set; }
-
-        
-        /// <summary>
         /// AllNcdComplianceData parameter set
         ///
         /// [GraphQL: allNcdSlaComplianceData]
@@ -330,6 +268,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 #pragma warning disable 1591
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 switch(Op)
@@ -363,15 +302,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "ManagedVolume":
                         this.ProcessRecord_ManagedVolume();
-                        break;
-                    case "ClusterDomains":
-                        this.ProcessRecord_ClusterDomains();
-                        break;
-                    case "VerifyWithReplicationToCluster":
-                        this.ProcessRecord_VerifyWithReplicationToCluster();
-                        break;
-                    case "AllClusterGlobals":
-                        this.ProcessRecord_AllClusterGlobals();
                         break;
                     case "AllNcdComplianceData":
                         this.ProcessRecord_AllNcdComplianceData();
@@ -478,33 +408,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // clusterSlaDomains.
-        internal void ProcessRecord_ClusterDomains()
-        {
-            this._logger.name += " -ClusterDomains";
-            // Invoke graphql operation clusterSlaDomains
-            InvokeQueryClusterSlaDomains();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // verifySlaWithReplicationToCluster.
-        internal void ProcessRecord_VerifyWithReplicationToCluster()
-        {
-            this._logger.name += " -VerifyWithReplicationToCluster";
-            // Invoke graphql operation verifySlaWithReplicationToCluster
-            InvokeQueryVerifySlaWithReplicationToCluster();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // allClusterGlobalSlas.
-        internal void ProcessRecord_AllClusterGlobals()
-        {
-            this._logger.name += " -AllClusterGlobals";
-            // Invoke graphql operation allClusterGlobalSlas
-            InvokeQueryAllClusterGlobalSlas();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // allNcdSlaComplianceData.
         internal void ProcessRecord_AllNcdComplianceData()
         {
@@ -554,14 +457,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "query",
                 "QuerySlaDomains",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: SlaQuerySortByField,$sortOrder: SortOrder,$filter: [GlobalSlaFilterInput!],$contextFilter: ContextFilterTypeEnum,$contextFilterInput: [ContextFilterInputField!],$shouldShowSyncStatus: Boolean,$shouldShowProtectedObjectCount: Boolean,$shouldShowUpgradeInfo: Boolean,$showRemoteSlas: Boolean,$shouldShowPausedClusters: Boolean)",
-                "SlaDomainConnection"
-                );
-            SlaDomainConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (SlaDomainConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.SlaDomains(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "SlaDomainConnection",
+                Query.SlaDomains_ObjectFieldSpec,
+                Query.SlaDomainsFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -610,9 +509,8 @@ $inputs.Var.shouldShowUpgradeInfo = <System.Boolean>
 # OPTIONAL
 $inputs.Var.showRemoteSlas = <System.Boolean>
 # OPTIONAL
-$inputs.Var.shouldShowPausedClusters = <System.Boolean>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.shouldShowPausedClusters = <System.Boolean>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -655,14 +553,10 @@ $inputs.Var.shouldShowPausedClusters = <System.Boolean>";
                 "query",
                 "QueryGlobalSlaFilterConnection",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: SlaQuerySortByField,$sortOrder: SortOrder,$filter: [GlobalSlaFilterInput!],$contextFilter: ContextFilterTypeEnum,$contextFilterInput: [ContextFilterInputField!],$shouldShowSyncStatus: Boolean,$shouldShowProtectedObjectCount: Boolean,$shouldShowUpgradeInfo: Boolean,$showRemoteSlas: Boolean,$shouldShowPausedClusters: Boolean)",
-                "GlobalSlaForFilterConnection"
-                );
-            GlobalSlaForFilterConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (GlobalSlaForFilterConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.GlobalSlaFilterConnection(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "GlobalSlaForFilterConnection",
+                Query.GlobalSlaFilterConnection_ObjectFieldSpec,
+                Query.GlobalSlaFilterConnectionFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -711,9 +605,8 @@ $inputs.Var.shouldShowUpgradeInfo = <System.Boolean>
 # OPTIONAL
 $inputs.Var.showRemoteSlas = <System.Boolean>
 # OPTIONAL
-$inputs.Var.shouldShowPausedClusters = <System.Boolean>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.shouldShowPausedClusters = <System.Boolean>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -736,23 +629,18 @@ $inputs.Var.shouldShowPausedClusters = <System.Boolean>";
                 "query",
                 "QuerySlaDomain",
                 "($id: UUID!,$shouldShowSyncStatus: Boolean,$shouldShowUpgradeInfo: Boolean,$shouldShowPausedClusters: Boolean)",
-                "SlaDomain"
-                );
-            SlaDomain? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (SlaDomain)this.Field;
-            }
-            string fieldSpecDoc = Query.SlaDomain(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "SlaDomain",
+                Query.SlaDomain_ObjectFieldSpec,
+                Query.SlaDomainFieldSpec,
+                @"# REQUIRED
 $inputs.Var.id = <System.String>
 # OPTIONAL
 $inputs.Var.shouldShowSyncStatus = <System.Boolean>
 # OPTIONAL
 $inputs.Var.shouldShowUpgradeInfo = <System.Boolean>
 # OPTIONAL
-$inputs.Var.shouldShowPausedClusters = <System.Boolean>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.shouldShowPausedClusters = <System.Boolean>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -775,14 +663,10 @@ $inputs.Var.shouldShowPausedClusters = <System.Boolean>";
                 "query",
                 "QueryCountOfObjectsProtectedBySlas",
                 "($rootOptionalFid: UUID,$slaIds: [UUID!]!,$filter: [Filter!],$typeFilter: [HierarchyObjectTypeEnum!])",
-                "CountOfObjectsProtectedBySlAsResult"
-                );
-            CountOfObjectsProtectedBySlAsResult? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CountOfObjectsProtectedBySlAsResult)this.Field;
-            }
-            string fieldSpecDoc = Query.CountOfObjectsProtectedBySlas(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "CountOfObjectsProtectedBySlAsResult",
+                Query.CountOfObjectsProtectedBySlas_ObjectFieldSpec,
+                Query.CountOfObjectsProtectedBySlasFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.rootOptionalFid = <System.String>
 # REQUIRED
 $inputs.Var.slaIds = @(
@@ -833,9 +717,8 @@ $inputs.Var.filter = @(
 # OPTIONAL
 $inputs.Var.typeFilter = @(
 	<HierarchyObjectTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -864,14 +747,10 @@ $inputs.Var.typeFilter = @(
                 "query",
                 "QuerySlaAuditDetail",
                 "($first: Int,$after: String,$last: Int,$before: String,$SlaId: UUID!,$filter: [SLAAuditDetailFilterInput!],$timezone: String)",
-                "List<SlaAuditDetail>"
-                );
-            List<SlaAuditDetail>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<SlaAuditDetail>)this.Field;
-            }
-            string fieldSpecDoc = Query.SlaAuditDetail(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "List<SlaAuditDetail>",
+                Query.SlaAuditDetail_ObjectFieldSpec,
+                Query.SlaAuditDetailFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -891,9 +770,8 @@ $inputs.Var.filter = @(
 }
 )
 # OPTIONAL
-$inputs.Var.timezone = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.timezone = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -908,19 +786,14 @@ $inputs.Var.timezone = <System.String>";
                 "query",
                 "QueryAllSlaSummariesByIds",
                 "($slaIds: [UUID!]!)",
-                "List<SlaDomain>"
-                );
-            List<SlaDomain>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<SlaDomain>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllSlaSummariesByIds(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<SlaDomain>",
+                Query.AllSlaSummariesByIds_ObjectFieldSpec,
+                Query.AllSlaSummariesByIdsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.slaIds = @(
 	<System.String>
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -947,14 +820,10 @@ $inputs.Var.slaIds = @(
                 "query",
                 "QueryGlobalSlaStatuses",
                 "($first: Int,$after: String,$last: Int,$before: String,$filter: [SlaStatusFilterInput!],$SlaId: UUID!)",
-                "GlobalSlaStatusConnection"
-                );
-            GlobalSlaStatusConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (GlobalSlaStatusConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.GlobalSlaStatuses(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "GlobalSlaStatusConnection",
+                Query.GlobalSlaStatuses_ObjectFieldSpec,
+                Query.GlobalSlaStatusesFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -972,9 +841,8 @@ $inputs.Var.filter = @(
 }
 )
 # REQUIRED
-$inputs.Var.SlaId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.SlaId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -989,19 +857,14 @@ $inputs.Var.SlaId = <System.String>";
                 "query",
                 "QuerySlaConflictObjects",
                 "($fids: [UUID!]!)",
-                "List<HierarchyObject>"
-                );
-            List<HierarchyObject>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<HierarchyObject>)this.Field;
-            }
-            string fieldSpecDoc = Query.SlaConflictObjects(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<HierarchyObject>",
+                Query.SlaConflictObjects_ObjectFieldSpec,
+                Query.SlaConflictObjectsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.fids = @(
 	<System.String>
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1026,14 +889,10 @@ $inputs.Var.fids = @(
                 "query",
                 "QuerySlaManagedVolumes",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                "ManagedVolumeConnection"
-                );
-            ManagedVolumeConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (ManagedVolumeConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.SlaManagedVolumes(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "ManagedVolumeConnection",
+                Query.SlaManagedVolumes_ObjectFieldSpec,
+                Query.SlaManagedVolumesFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -1082,9 +941,8 @@ $inputs.Var.filter = @(
 			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
 		)
 }
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1099,109 +957,12 @@ $inputs.Var.filter = @(
                 "query",
                 "QuerySlaManagedVolume",
                 "($fid: UUID!)",
-                "ManagedVolume"
-                );
-            ManagedVolume? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (ManagedVolume)this.Field;
-            }
-            string fieldSpecDoc = Query.SlaManagedVolume(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Query:
-        // clusterSlaDomains(
-        //     first: Int
-        //     after: String
-        //     last: Int
-        //     before: String
-        //   ): ClusterSlaDomainConnection!
-        internal void InvokeQueryClusterSlaDomains()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("last", "Int"),
-                Tuple.Create("before", "String"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryClusterSlaDomains",
-                "($first: Int,$after: String,$last: Int,$before: String)",
-                "ClusterSlaDomainConnection"
-                );
-            ClusterSlaDomainConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (ClusterSlaDomainConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.ClusterSlaDomains(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
-$inputs.Var.first = <System.Int32>
-# OPTIONAL
-$inputs.Var.after = <System.String>
-# OPTIONAL
-$inputs.Var.last = <System.Int32>
-# OPTIONAL
-$inputs.Var.before = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Query:
-        // verifySlaWithReplicationToCluster(cdmClusterUUID: UUID!, includeArchived: Boolean!): VerifySlaWithReplicationToClusterResponse!
-        internal void InvokeQueryVerifySlaWithReplicationToCluster()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("cdmClusterUUID", "UUID!"),
-                Tuple.Create("includeArchived", "Boolean!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryVerifySlaWithReplicationToCluster",
-                "($cdmClusterUUID: UUID!,$includeArchived: Boolean!)",
-                "VerifySlaWithReplicationToClusterResponse"
-                );
-            VerifySlaWithReplicationToClusterResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (VerifySlaWithReplicationToClusterResponse)this.Field;
-            }
-            string fieldSpecDoc = Query.VerifySlaWithReplicationToCluster(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.cdmClusterUUID = <System.String>
-# REQUIRED
-$inputs.Var.includeArchived = <System.Boolean>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
-        }
-
-        // Invoke GraphQL Query:
-        // allClusterGlobalSlas(cdmClusterUUID: UUID!): [SlaInfo!]!
-        internal void InvokeQueryAllClusterGlobalSlas()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("cdmClusterUUID", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAllClusterGlobalSlas",
-                "($cdmClusterUUID: UUID!)",
-                "List<SlaInfo>"
-                );
-            List<SlaInfo>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<SlaInfo>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllClusterGlobalSlas(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.cdmClusterUUID = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "ManagedVolume",
+                Query.SlaManagedVolume_ObjectFieldSpec,
+                Query.SlaManagedVolumeFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1216,19 +977,14 @@ $inputs.Var.cdmClusterUUID = <System.String>";
                 "query",
                 "QueryAllNcdSlaComplianceData",
                 "($clusters: [UUID!]!)",
-                "List<NcdSlaComplianceData>"
-                );
-            List<NcdSlaComplianceData>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<NcdSlaComplianceData>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllNcdSlaComplianceData(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<NcdSlaComplianceData>",
+                Query.AllNcdSlaComplianceData_ObjectFieldSpec,
+                Query.AllNcdSlaComplianceDataFieldSpec,
+                @"# REQUIRED
 $inputs.Var.clusters = @(
 	<System.String>
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
 

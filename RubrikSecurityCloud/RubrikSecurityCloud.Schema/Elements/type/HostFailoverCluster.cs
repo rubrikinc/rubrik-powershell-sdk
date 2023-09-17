@@ -746,7 +746,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<HostFailoverCluster> list)
+        public static void SelectForRetrieval(this List<HostFailoverCluster> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

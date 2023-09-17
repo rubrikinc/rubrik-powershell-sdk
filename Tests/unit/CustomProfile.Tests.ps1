@@ -48,7 +48,7 @@ Describe -Name "Test custom input profile" -Fixture {
     It -Name 'AccountSettings custom operation' -Test {
         $gqlRequest = Invoke-RscQueryAccount -Settings -GetGqlRequest
         $gqlRequest.GetType().Name | Should -Be "RscGqlRequest"
-        $gqlRequest.DefaultQueryFileName | Should -Be $script:QueryAccountSettings_CustomFileName 
+        $gqlRequest.DefaultFileName() | Should -Be $script:QueryAccountSettings_CustomFileName 
 
         $script:QueryAccountSettings_CustomFileName | Should -Not -Exist
         $gqlRequest.SaveQueryToFile()
@@ -64,7 +64,7 @@ Describe -Name "Test custom input profile" -Fixture {
         $customQuery | Out-File $script:QueryAccountSettings_CustomFileName
 
         # Retrieve custom query
-        $customGqlRequest = Invoke-RscQueryAccount -Settings -GetGqlRequest -InputProfile CUSTOM
+        $customGqlRequest = Invoke-RscQueryAccount -Settings -GetGqlRequest -FieldProfile CUSTOM
         $retrievedCustomQuery = $customGqlRequest.Query -replace "\s+", " "
         $retrievedCustomQuery | Should -Be $customQuery
 
@@ -74,7 +74,7 @@ Describe -Name "Test custom input profile" -Fixture {
         $retrievedDefaultQuery | Should -Be $expectedQuery
 
         # Not the DETAIL query
-        $detailGqlRequest = Invoke-RscQueryAccount -Settings -GetGqlRequest -InputProfile DETAIL
+        $detailGqlRequest = Invoke-RscQueryAccount -Settings -GetGqlRequest -FieldProfile DETAIL
         $retrievedDetailQuery = $detailGqlRequest.Query -replace "\s+", " "
         $retrievedDetailQuery | Should -Be $expectedQuery
 

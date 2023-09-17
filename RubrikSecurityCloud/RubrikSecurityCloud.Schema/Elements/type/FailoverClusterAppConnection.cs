@@ -181,7 +181,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<FailoverClusterAppConnection> list)
+        public static void SelectForRetrieval(this List<FailoverClusterAppConnection> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

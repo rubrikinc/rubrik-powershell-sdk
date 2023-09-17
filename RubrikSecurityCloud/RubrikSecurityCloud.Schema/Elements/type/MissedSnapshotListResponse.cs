@@ -153,7 +153,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<MissedSnapshotListResponse> list)
+        public static void SelectForRetrieval(this List<MissedSnapshotListResponse> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

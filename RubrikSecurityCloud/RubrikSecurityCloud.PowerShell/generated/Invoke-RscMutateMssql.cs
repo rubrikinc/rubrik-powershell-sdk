@@ -75,12 +75,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <example>
     /// <code>Invoke-RscMutateMssql -AssignSlaDomainPropertiesAsync [-Arg ..] [-Field ..]</code>
     /// </example>
+    [CmdletBinding()]
     [Cmdlet(
         "Invoke",
         "RscMutateMssql",
         DefaultParameterSetName = "BulkUpdateDbs")
     ]
-    public class Invoke_RscMutateMssql : RscPSCmdlet
+    public class Invoke_RscMutateMssql : RscGqlPSCmdlet
     {
         
         /// <summary>
@@ -399,6 +400,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 #pragma warning disable 1591
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 switch(Op)
@@ -631,14 +633,10 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
                 "mutation",
                 "MutationBrowseMssqlDatabaseSnapshot",
                 "($input: BrowseMssqlDatabaseSnapshotInput!)",
-                "BrowseMssqlDatabaseSnapshotReply"
-                );
-            BrowseMssqlDatabaseSnapshotReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (BrowseMssqlDatabaseSnapshotReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.BrowseMssqlDatabaseSnapshot(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "BrowseMssqlDatabaseSnapshotReply",
+                Mutation.BrowseMssqlDatabaseSnapshot_ObjectFieldSpec,
+                Mutation.BrowseMssqlDatabaseSnapshotFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	config = @{
@@ -694,9 +692,8 @@ $inputs.Var.input = @{
 	}
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -711,14 +708,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationExportMssqlDatabase",
                 "($input: ExportMssqlDatabaseInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.ExportMssqlDatabase(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.ExportMssqlDatabase_ObjectFieldSpec,
+                Mutation.ExportMssqlDatabaseFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	config = @{
@@ -766,9 +759,8 @@ $inputs.Var.input = @{
 	}
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -783,14 +775,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationRestoreMssqlDatabase",
                 "($input: RestoreMssqlDatabaseInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.RestoreMssqlDatabase(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.RestoreMssqlDatabase_ObjectFieldSpec,
+                Mutation.RestoreMssqlDatabaseFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	config = @{
@@ -815,9 +803,8 @@ $inputs.Var.input = @{
 	}
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -832,14 +819,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationBulkUpdateMssqlDbs",
                 "($input: BulkUpdateMssqlDbsInput!)",
-                "BulkUpdateMssqlDbsReply"
-                );
-            BulkUpdateMssqlDbsReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (BulkUpdateMssqlDbsReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.BulkUpdateMssqlDbs(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "BulkUpdateMssqlDbsReply",
+                Mutation.BulkUpdateMssqlDbs_ObjectFieldSpec,
+                Mutation.BulkUpdateMssqlDbsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	clusterUuid = <System.String>
@@ -921,9 +904,8 @@ $inputs.Var.input = @{
 			}
 		}
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -938,20 +920,15 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationTakeMssqlLogBackup",
                 "($input: TakeMssqlLogBackupInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.TakeMssqlLogBackup(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.TakeMssqlLogBackup_ObjectFieldSpec,
+                Mutation.TakeMssqlLogBackupFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -966,14 +943,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationCreateOnDemandMssqlBackup",
                 "($input: CreateOnDemandMssqlBackupInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.CreateOnDemandMssqlBackup(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.CreateOnDemandMssqlBackup_ObjectFieldSpec,
+                Mutation.CreateOnDemandMssqlBackupFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	config = @{
@@ -989,9 +962,8 @@ $inputs.Var.input = @{
 	id = <System.String>
 	# OPTIONAL
 	userNote = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1006,20 +978,15 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationDeleteMssqlDbSnapshots",
                 "($input: DeleteMssqlDbSnapshotsInput!)",
-                "ResponseSuccess"
-                );
-            ResponseSuccess? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (ResponseSuccess)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DeleteMssqlDbSnapshots(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "ResponseSuccess",
+                Mutation.DeleteMssqlDbSnapshots_ObjectFieldSpec,
+                Mutation.DeleteMssqlDbSnapshotsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1034,22 +1001,17 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationDeleteMssqlLiveMount",
                 "($input: DeleteMssqlLiveMountInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DeleteMssqlLiveMount(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.DeleteMssqlLiveMount_ObjectFieldSpec,
+                Mutation.DeleteMssqlLiveMountFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	force = <System.Boolean>
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1064,14 +1026,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationBulkCreateOnDemandMssqlBackup",
                 "($input: BulkCreateOnDemandMssqlBackupInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.BulkCreateOnDemandMssqlBackup(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.BulkCreateOnDemandMssqlBackup_ObjectFieldSpec,
+                Mutation.BulkCreateOnDemandMssqlBackupFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	config = @{
@@ -1105,9 +1063,8 @@ $inputs.Var.input = @{
 	}
 	# OPTIONAL
 	userNote = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1122,14 +1079,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationCreateMssqlLiveMount",
                 "($input: CreateMssqlLiveMountInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.CreateMssqlLiveMount(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.CreateMssqlLiveMount_ObjectFieldSpec,
+                Mutation.CreateMssqlLiveMountFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	config = @{
@@ -1156,9 +1109,8 @@ $inputs.Var.input = @{
 	}
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1173,14 +1125,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationUpdateMssqlLogShippingConfiguration",
                 "($input: UpdateMssqlLogShippingConfigurationInput!)",
-                "UpdateMssqlLogShippingConfigurationReply"
-                );
-            UpdateMssqlLogShippingConfigurationReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (UpdateMssqlLogShippingConfigurationReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UpdateMssqlLogShippingConfiguration(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "UpdateMssqlLogShippingConfigurationReply",
+                Mutation.UpdateMssqlLogShippingConfiguration_ObjectFieldSpec,
+                Mutation.UpdateMssqlLogShippingConfigurationFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	clusterUuid = <System.String>
@@ -1191,9 +1139,8 @@ $inputs.Var.input = @{
 	}
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1208,14 +1155,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationDownloadMssqlDatabaseFilesFromArchivalLocation",
                 "($input: DownloadMssqlDatabaseFilesFromArchivalLocationInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DownloadMssqlDatabaseFilesFromArchivalLocation(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.DownloadMssqlDatabaseFilesFromArchivalLocation_ObjectFieldSpec,
+                Mutation.DownloadMssqlDatabaseFilesFromArchivalLocationFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	config = @{
@@ -1236,9 +1179,8 @@ $inputs.Var.input = @{
 	}
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1253,14 +1195,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationDownloadMssqlDatabaseBackupFiles",
                 "($input: DownloadMssqlDatabaseBackupFilesInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DownloadMssqlDatabaseBackupFiles(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.DownloadMssqlDatabaseBackupFiles_ObjectFieldSpec,
+                Mutation.DownloadMssqlDatabaseBackupFilesFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	config = @{
@@ -1278,9 +1216,8 @@ $inputs.Var.input = @{
 	id = <System.String>
 	# OPTIONAL
 	userNote = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1295,14 +1232,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationAssignMssqlSlaDomainProperties",
                 "($input: AssignMssqlSlaDomainPropertiesInput!)",
-                "ResponseSuccess"
-                );
-            ResponseSuccess? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (ResponseSuccess)this.Field;
-            }
-            string fieldSpecDoc = Mutation.AssignMssqlSlaDomainProperties(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "ResponseSuccess",
+                Mutation.AssignMssqlSlaDomainProperties_ObjectFieldSpec,
+                Mutation.AssignMssqlSlaDomainPropertiesFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	updateInfo = @{
@@ -1337,9 +1270,8 @@ $inputs.Var.input = @{
 			<System.String>
 		)
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1354,14 +1286,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationUpdateMssqlDefaultProperties",
                 "($input: UpdateMssqlDefaultPropertiesInput!)",
-                "UpdateMssqlDefaultPropertiesReply"
-                );
-            UpdateMssqlDefaultPropertiesReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (UpdateMssqlDefaultPropertiesReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UpdateMssqlDefaultProperties(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "UpdateMssqlDefaultPropertiesReply",
+                Mutation.UpdateMssqlDefaultProperties_ObjectFieldSpec,
+                Mutation.UpdateMssqlDefaultPropertiesFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	clusterUuid = <System.String>
@@ -1376,9 +1304,8 @@ $inputs.Var.input = @{
 		# OPTIONAL
 		shouldUseDefaultBackupLocation = <System.Boolean>
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1393,14 +1320,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationCreateMssqlLogShippingConfiguration",
                 "($input: CreateMssqlLogShippingConfigurationInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.CreateMssqlLogShippingConfiguration(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.CreateMssqlLogShippingConfiguration_ObjectFieldSpec,
+                Mutation.CreateMssqlLogShippingConfigurationFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	clusterUuid = <System.String>
@@ -1444,9 +1367,8 @@ $inputs.Var.input = @{
 	}
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1461,14 +1383,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationAssignMssqlSlaDomainPropertiesAsync",
                 "($input: AssignMssqlSlaDomainPropertiesAsyncInput!)",
-                "AssignMssqlSlaDomainPropertiesAsyncReply"
-                );
-            AssignMssqlSlaDomainPropertiesAsyncReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AssignMssqlSlaDomainPropertiesAsyncReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.AssignMssqlSlaDomainPropertiesAsync(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AssignMssqlSlaDomainPropertiesAsyncReply",
+                Mutation.AssignMssqlSlaDomainPropertiesAsync_ObjectFieldSpec,
+                Mutation.AssignMssqlSlaDomainPropertiesAsyncFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	updateInfo = @{
@@ -1505,9 +1423,8 @@ $inputs.Var.input = @{
 	}
 	# OPTIONAL
 	userNote = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
 

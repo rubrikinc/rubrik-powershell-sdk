@@ -49,7 +49,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
 			GraphQL.GraphQLRequest request = new GraphQL.GraphQLRequest
 			{
 				Query = $"query GetRscVersion{{\n" +
-				$"{Query.DeploymentVersion(ref queryParam)}\n}}",
+				$"{Query.DeploymentVersion(queryParam)}\n}}",
 				OperationName = "GetRscVersion"
 			};
 

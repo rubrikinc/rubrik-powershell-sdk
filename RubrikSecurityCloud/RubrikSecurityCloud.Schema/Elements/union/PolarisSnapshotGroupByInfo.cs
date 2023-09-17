@@ -70,7 +70,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<PolarisSnapshotGroupByInfo> list)
+        public static void SelectForRetrieval(this List<PolarisSnapshotGroupByInfo> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

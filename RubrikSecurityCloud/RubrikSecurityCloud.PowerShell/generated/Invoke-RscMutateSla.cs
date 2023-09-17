@@ -51,12 +51,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <example>
     /// <code>Invoke-RscMutateSla -ExportManagedVolumeSnapshot [-Arg ..] [-Field ..]</code>
     /// </example>
+    [CmdletBinding()]
     [Cmdlet(
         "Invoke",
         "RscMutateSla",
         DefaultParameterSetName = "Pause")
     ]
-    public class Invoke_RscMutateSla : RscPSCmdlet
+    public class Invoke_RscMutateSla : RscGqlPSCmdlet
     {
         
         /// <summary>
@@ -231,6 +232,7 @@ Export a managed volume snapshot as a share and mount it on a given host.
 #pragma warning disable 1591
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 switch(Op)
@@ -367,14 +369,10 @@ Export a managed volume snapshot as a share and mount it on a given host.
                 "mutation",
                 "MutationCreateGlobalSla",
                 "($input: CreateGlobalSlaInput!)",
-                "GlobalSlaReply"
-                );
-            GlobalSlaReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (GlobalSlaReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.CreateGlobalSla(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "GlobalSlaReply",
+                Mutation.CreateGlobalSla_ObjectFieldSpec,
+                Mutation.CreateGlobalSlaFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	name = <System.String>
@@ -745,6 +743,16 @@ $inputs.Var.input = @{
 			# OPTIONAL
 			continuousBackupRetentionInDays = <System.Int32>
 		}
+		# OPTIONAL
+		managedVolumeSlaConfigInput = @{
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
 	}
 	# OPTIONAL
 	archivalSpecs = @(
@@ -847,9 +855,8 @@ $inputs.Var.input = @{
 	)
 	# OPTIONAL
 	isRetentionLockedSla = <System.Boolean>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -864,14 +871,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationUpdateGlobalSla",
                 "($input: UpdateGlobalSlaInput!)",
-                "GlobalSlaReply"
-                );
-            GlobalSlaReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (GlobalSlaReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UpdateGlobalSla(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "GlobalSlaReply",
+                Mutation.UpdateGlobalSla_ObjectFieldSpec,
+                Mutation.UpdateGlobalSlaFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	id = <System.String>
@@ -1246,6 +1249,16 @@ $inputs.Var.input = @{
 			# OPTIONAL
 			continuousBackupRetentionInDays = <System.Int32>
 		}
+		# OPTIONAL
+		managedVolumeSlaConfigInput = @{
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
 	}
 	# OPTIONAL
 	shouldApplyToExistingSnapshots = @{
@@ -1360,9 +1373,8 @@ $inputs.Var.input = @{
 	)
 	# OPTIONAL
 	isRetentionLockedSla = <System.Boolean>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1377,14 +1389,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationAssignSla",
                 "($input: AssignSlaInput!)",
-                "SlaAssignResult"
-                );
-            SlaAssignResult? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (SlaAssignResult)this.Field;
-            }
-            string fieldSpecDoc = Mutation.AssignSla(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "SlaAssignResult",
+                Mutation.AssignSla_ObjectFieldSpec,
+                Mutation.AssignSlaFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	slaDomainAssignType = <SlaAssignTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaAssignTypeEnum]) for enum values.
@@ -1404,9 +1412,8 @@ $inputs.Var.input = @{
 	existingSnapshotRetention = <GlobalExistingSnapshotRetention> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GlobalExistingSnapshotRetention]) for enum values.
 	# OPTIONAL
 	userNote = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1437,14 +1444,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationAssignSlasForSnappableHierarchies",
                 "($globalSlaOptionalFid: UUID,$globalSlaAssignType: SlaAssignTypeEnum!,$objectIds: [UUID!]!,$applicableSnappableTypes: [WorkloadLevelHierarchy!],$shouldApplyToExistingSnapshots: Boolean,$shouldApplyToNonPolicySnapshots: Boolean,$globalExistingSnapshotRetention: GlobalExistingSnapshotRetention,$userNote: String)",
-                "List<SlaAssignResult>"
-                );
-            List<SlaAssignResult>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<SlaAssignResult>)this.Field;
-            }
-            string fieldSpecDoc = Mutation.AssignSlasForSnappableHierarchies(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "List<SlaAssignResult>",
+                Mutation.AssignSlasForSnappableHierarchies_ObjectFieldSpec,
+                Mutation.AssignSlasForSnappableHierarchiesFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.globalSlaOptionalFid = <System.String>
 # REQUIRED
 $inputs.Var.globalSlaAssignType = <SlaAssignTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaAssignTypeEnum]) for enum values.
@@ -1463,9 +1466,8 @@ $inputs.Var.shouldApplyToNonPolicySnapshots = <System.Boolean>
 # OPTIONAL
 $inputs.Var.globalExistingSnapshotRetention = <GlobalExistingSnapshotRetention> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GlobalExistingSnapshotRetention]) for enum values.
 # OPTIONAL
-$inputs.Var.userNote = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.userNote = <System.String>"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1492,14 +1494,10 @@ $inputs.Var.userNote = <System.String>";
                 "mutation",
                 "MutationAssignRetentionSlaToSnappables",
                 "($globalSlaOptionalFid: UUID,$globalSlaAssignType: SlaAssignTypeEnum!,$objectIds: [UUID!]!,$applicableSnappableType: WorkloadLevelHierarchy,$shouldApplyToNonPolicySnapshots: Boolean,$userNote: String)",
-                "SlaAssignResult"
-                );
-            SlaAssignResult? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (SlaAssignResult)this.Field;
-            }
-            string fieldSpecDoc = Mutation.AssignRetentionSlaToSnappables(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "SlaAssignResult",
+                Mutation.AssignRetentionSlaToSnappables_ObjectFieldSpec,
+                Mutation.AssignRetentionSlaToSnappablesFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.globalSlaOptionalFid = <System.String>
 # REQUIRED
 $inputs.Var.globalSlaAssignType = <SlaAssignTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaAssignTypeEnum]) for enum values.
@@ -1512,9 +1510,8 @@ $inputs.Var.applicableSnappableType = <WorkloadLevelHierarchy> # Call [Enum]::Ge
 # OPTIONAL
 $inputs.Var.shouldApplyToNonPolicySnapshots = <System.Boolean>
 # OPTIONAL
-$inputs.Var.userNote = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.userNote = <System.String>"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1537,14 +1534,10 @@ $inputs.Var.userNote = <System.String>";
                 "mutation",
                 "MutationAssignRetentionSlaToSnapshots",
                 "($globalSlaOptionalFid: UUID,$globalSlaAssignType: SlaAssignTypeEnum!,$snapshotFids: [UUID!]!,$userNote: String)",
-                "SlaAssignResult"
-                );
-            SlaAssignResult? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (SlaAssignResult)this.Field;
-            }
-            string fieldSpecDoc = Mutation.AssignRetentionSlaToSnapshots(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "SlaAssignResult",
+                Mutation.AssignRetentionSlaToSnapshots_ObjectFieldSpec,
+                Mutation.AssignRetentionSlaToSnapshotsFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.globalSlaOptionalFid = <System.String>
 # REQUIRED
 $inputs.Var.globalSlaAssignType = <SlaAssignTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaAssignTypeEnum]) for enum values.
@@ -1553,9 +1546,8 @@ $inputs.Var.snapshotFids = @(
 	<System.String>
 )
 # OPTIONAL
-$inputs.Var.userNote = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.userNote = <System.String>"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1570,14 +1562,10 @@ $inputs.Var.userNote = <System.String>";
                 "mutation",
                 "MutationPauseSla",
                 "($input: PauseSlaInput!)",
-                "PauseSlaReply"
-                );
-            PauseSlaReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (PauseSlaReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.PauseSla(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "PauseSlaReply",
+                Mutation.PauseSla_ObjectFieldSpec,
+                Mutation.PauseSlaFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	slaId = <System.String>
@@ -1587,9 +1575,8 @@ $inputs.Var.input = @{
 	)
 	# REQUIRED
 	pauseSla = <System.Boolean>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1604,14 +1591,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationGetPendingSlaAssignments",
                 "($input: GetPendingSlaAssignmentsInput!)",
-                "GetPendingSlaAssignmentsReply"
-                );
-            GetPendingSlaAssignmentsReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (GetPendingSlaAssignmentsReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.GetPendingSlaAssignments(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "GetPendingSlaAssignmentsReply",
+                Mutation.GetPendingSlaAssignments_ObjectFieldSpec,
+                Mutation.GetPendingSlaAssignmentsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	pendingAssignmentsRequest = @{
@@ -1620,9 +1603,8 @@ $inputs.Var.input = @{
 			<System.String>
 		)
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1637,14 +1619,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationExportSlaManagedVolumeSnapshot",
                 "($input: ExportSlaManagedVolumeSnapshotInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.ExportSlaManagedVolumeSnapshot(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.ExportSlaManagedVolumeSnapshot_ObjectFieldSpec,
+                Mutation.ExportSlaManagedVolumeSnapshotFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
@@ -1690,9 +1668,8 @@ $inputs.Var.input = @{
 			)
 		}
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
 

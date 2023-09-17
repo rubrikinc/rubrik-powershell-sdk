@@ -129,7 +129,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<MssqlUnprotectableReason> list)
+        public static void SelectForRetrieval(this List<MssqlUnprotectableReason> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

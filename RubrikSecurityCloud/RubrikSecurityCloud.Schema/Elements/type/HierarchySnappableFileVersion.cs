@@ -237,7 +237,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<HierarchySnappableFileVersion> list)
+        public static void SelectForRetrieval(this List<HierarchySnappableFileVersion> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

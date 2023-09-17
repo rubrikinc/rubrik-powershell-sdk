@@ -9,35 +9,49 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Send a custom GraphQL query to the Rubrik Security Cloud (RSC) API.
+    /// Send a query to the RSC API.
     /// </summary>
     /// <description>
-    /// The passed query is sent to the Rubrik Security Cloud API,
-    /// and the result is returned to the user.
+    /// There are 2 usages of this cmdlet:
+    /// - Send a query obtained from a `New-RscQuery*` cmdlet.
+    /// - Send a raw GraphQL query.
     /// </description>
     /// <example>
-    /// Read GraphQL query from txt file.
+    /// Send a query obtained from a `New-RscQuery*` cmdlet.
     /// <code>
-    /// Get-Content -Path /Samples/GetVsphereVmList.query.txt -Raw | Invoke-Rsc
+    /// New-RscQueryGetVsphereVmList -Name "my-vm" | Invoke-Rsc
     /// </code>
     /// </example>
     /// <example>
-    /// Read GraphQL query from parameter.
+    /// Read GraphQL query from gql file
     /// <code>
-    /// Invoke-Rsc -Query "mutation DeleteWebhookMutation(`$id: Int!) { deleteWebhook(input: {id: `$id}) }" -Variables @{id = 1}
+    /// Get-Content -Path ./Samples/queryAccountOwners -Raw | Invoke-Rsc
+    /// </code>
+    /// </example>
+    /// <example>
+    /// Pass GraphQL query as parameter.
+    /// <code>
+    /// Invoke-Rsc -GqlQuery "mutation DeleteWebhookMutation(`$id: Int!) { deleteWebhook(input: {id: `$id}) }" -Var @{id = 1}
     /// </code>
     /// </example>
     [Cmdlet(
         VerbsLifecycle.Invoke,
         "Rsc",
-        DefaultParameterSetName = "NativeGQL")]
-    public class Invoke_Rsc : RscPSCmdlet
+        DefaultParameterSetName = "Query")]
+    public class Invoke_Rsc : RscBasePSCmdlet
     {
-        // ----------------------------------------------------------
-        // - Parameter Set "NativeGQL"
-        // This paramset is used when the user writes their own GQL queries
+        [Parameter(
+            ParameterSetName = "Query",
+            Mandatory = true,
+            Position = 0,
+            ValueFromPipeline = true
+        )]
+        public object Query { get; set; }
+
+        // Parameter Set "NativeGQL"
+        // is used when the user writes their own GQL queries
         /// <summary>
-        /// The GQL query to send to the Rubrik Security Cloud API.
+        /// The GQL query to send to the RSC API.
         /// </summary>
         [Parameter(
             ParameterSetName = "NativeGQL",
@@ -45,11 +59,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Position = 0,
             ValueFromPipeline = true
         )]
-        public string Query { get; set; }
+        public string GqlQuery { get; set; }
 
-        // ----------------------------------------------------------
-        // - Parameter Set "NativeGQL"
-        // This paramset is used when the user writes their own GQL queries
         /// <summary>
         /// The variables to supply to the GraphQL query.
         /// </summary>
@@ -59,80 +70,68 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Position = 1,
             ValueFromPipeline = true
         )]
-        public Hashtable Variables { get; set; }
+        public Hashtable Var { get; set; }
 
-        // ----------------------------------------------------------
-        // -  Parameter Set "NativePowerShell"
-        // This paramset is used when using types to generate queries
-        // [Parameter(
-        //     ParameterSetName = "NativePowerShell",
-        //     Mandatory = false,
-        //     Position = 0,
-        //     ValueFromPipeline = true)]
-        // [ValidateNotNullOrEmpty]
-        // public string OutputType { get; set; }
-
-        // [Parameter(
-        //     ParameterSetName = "NativePowerShell",
-        //     Position = 1,
-        //     Mandatory = true)]
-        // public string Body { get; set; }
-
+        protected override void BeginProcessing()
+        {
+            base.BeginProcessing();
+            RetrieveConnection();
+        }
         protected override void ProcessRecord()
         {
-            switch (ParameterSetName)
+            try
             {
-                case "NativeGQL":
+                switch (ParameterSetName)
                 {
-                    try
-                    {
-                        object reply = _rbkClient.InvokeRawQuery(
-                            Query,
-                            Variables,
-                            _logger,
-                            GetMetricTags()
-                        );
-                        WriteObject(reply);
-                    }
-                    catch (Exception ex)
-                    {
-                        WriteError(
-                            new ErrorRecord(
-                                ex,
-                                "ClientError",
-                                ErrorCategory.OperationStopped,
-                                this)
-                        );
-                    }
-                    break;
+                    case "Query":
+                        ProcessRecord_Query();
+                        break;
+                    case "NativeGQL":
+                        ProcessRecord_NativeGQL();
+                        break;
                 }
-
-                // case "NativePowerShell":
-
-                //     Console.WriteLine(OutputType);
-                //     Type t = Invoke_Rsc.GetType(OutputType);
-                //     MethodInfo method = typeof(RscGraphQLClient).GetMethod("InvokeGenericCallAsync");
-                //     MethodInfo genericMethod = method.MakeGenericMethod(t);
-                //     object[] parameters = new object[] { /*AccountSettingQuery.Request(),*/ null };
-                //     var taskResult = genericMethod.Invoke(_rbkClient, parameters);
-                //     var result = ((dynamic)taskResult).GetAwaiter().GetResult();
-                //     WriteObject(result);
-
-                //     break;
-                //try
-                //{
-                //    Task<t> myTask =
-                //        _rbkClient.InvokeGenericCallAsync<t>(
-                //            AccountSettingQuery.Request());
-                //    myTask.Wait();
-                //    WriteObject(myTask.Result, true);
-                //}
-                //catch (Exception ex)
-                //{
-                //    WriteError(new ErrorRecord(ex, "ClientError", ErrorCategory.OperationStopped, this));
-
-                //}
             }
+            catch (Exception ex)
+            {
+                ThrowTerminatingException(ex);
+            }
+        }
+
+        internal void ProcessRecord_Query()
+        {
+            if (Query is PSObject pSObject)
+            {
+                Query = pSObject.BaseObject;
+            }
+            if (Query is string sQuery)
+            {
+                GqlQuery = sQuery;
+                ProcessRecord_NativeGQL();
+                return;
+            }
+            if (Query is RscQuery query)
+            {
+                this.SendGqlRequest(query.GqlRequest());
+                return;
+            }
+            throw new ArgumentException($"Invalid query type {Query.GetType().Name}");
+        }
+
+        internal void ProcessRecord_NativeGQL()
+        {
+            var (inlineVars, query) = StringUtils.ParseGqlAndVarString(GqlQuery);
+            if (!string.IsNullOrEmpty(inlineVars) && (
+                Var == null || Var.Count == 0 ))
+            {
+                Var = JsonConvert.DeserializeObject<Hashtable>(inlineVars);
+            }
+            object reply = _rbkClient.InvokeRawQuery(
+                query,
+                Var,
+                _logger,
+                GetMetricTags()
+            );
+            WriteObject(reply);
         }
 
         public static Type GetType(string typeName)

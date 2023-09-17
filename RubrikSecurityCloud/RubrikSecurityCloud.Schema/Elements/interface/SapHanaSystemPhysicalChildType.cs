@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<SapHanaSystemPhysicalChildType> list)
+        public static void SelectForRetrieval(this List<SapHanaSystemPhysicalChildType> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

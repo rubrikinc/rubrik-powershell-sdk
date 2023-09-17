@@ -126,7 +126,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<O365AppObject> list)
+        public static void SelectForRetrieval(this List<O365AppObject> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

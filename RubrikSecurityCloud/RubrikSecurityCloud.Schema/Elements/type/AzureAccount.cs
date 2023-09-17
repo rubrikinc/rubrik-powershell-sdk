@@ -230,7 +230,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<AzureAccount> list)
+        public static void SelectForRetrieval(this List<AzureAccount> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

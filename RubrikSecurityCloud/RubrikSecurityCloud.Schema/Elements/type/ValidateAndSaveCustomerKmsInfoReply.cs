@@ -129,7 +129,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<ValidateAndSaveCustomerKmsInfoReply> list)
+        public static void SelectForRetrieval(this List<ValidateAndSaveCustomerKmsInfoReply> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

@@ -778,7 +778,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<Db2Instance> list)
+        public static void SelectForRetrieval(this List<Db2Instance> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

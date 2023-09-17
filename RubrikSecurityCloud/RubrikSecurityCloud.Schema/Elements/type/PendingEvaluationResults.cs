@@ -309,7 +309,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<PendingEvaluationResults> list)
+        public static void SelectForRetrieval(this List<PendingEvaluationResults> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

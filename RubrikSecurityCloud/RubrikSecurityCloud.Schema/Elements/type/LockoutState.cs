@@ -189,7 +189,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<LockoutState> list)
+        public static void SelectForRetrieval(this List<LockoutState> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

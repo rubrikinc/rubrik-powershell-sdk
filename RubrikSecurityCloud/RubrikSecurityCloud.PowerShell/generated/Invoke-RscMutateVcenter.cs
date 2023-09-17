@@ -42,12 +42,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <example>
     /// <code>Invoke-RscMutateVcenter -UpdateHotAddBandwidth [-Arg ..] [-Field ..]</code>
     /// </example>
+    [CmdletBinding()]
     [Cmdlet(
         "Invoke",
         "RscMutateVcenter",
         DefaultParameterSetName = "Create")
     ]
-    public class Invoke_RscMutateVcenter : RscPSCmdlet
+    public class Invoke_RscMutateVcenter : RscGqlPSCmdlet
     {
         
         /// <summary>
@@ -177,6 +178,7 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
 #pragma warning disable 1591
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 switch(Op)
@@ -277,14 +279,10 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
                 "mutation",
                 "MutationCreateVsphereVcenter",
                 "($input: CreateVsphereVcenterInput!)",
-                "CreateVsphereVcenterReply"
-                );
-            CreateVsphereVcenterReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CreateVsphereVcenterReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.CreateVsphereVcenter(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "CreateVsphereVcenterReply",
+                Mutation.CreateVsphereVcenter_ObjectFieldSpec,
+                Mutation.CreateVsphereVcenterFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	clusterUuid = <System.String>
@@ -318,9 +316,8 @@ $inputs.Var.input = @{
 		# REQUIRED
 		username = <System.String>
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -335,20 +332,15 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationVsphereDeleteVcenter",
                 "($input: VsphereDeleteVcenterInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.VsphereDeleteVcenter(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.VsphereDeleteVcenter_ObjectFieldSpec,
+                Mutation.VsphereDeleteVcenterFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -363,22 +355,17 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationRefreshVsphereVcenter",
                 "($input: RefreshVsphereVcenterInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.RefreshVsphereVcenter(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.RefreshVsphereVcenter_ObjectFieldSpec,
+                Mutation.RefreshVsphereVcenterFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	fid = <System.String>
 	# OPTIONAL
 	shouldDiagnose = <System.Boolean>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -393,14 +380,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationUpdateVcenter",
                 "($input: UpdateVcenterInput!)",
-                "UpdateVcenterReply"
-                );
-            UpdateVcenterReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (UpdateVcenterReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UpdateVcenter(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "UpdateVcenterReply",
+                Mutation.UpdateVcenter_ObjectFieldSpec,
+                Mutation.UpdateVcenterFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
@@ -432,9 +415,8 @@ $inputs.Var.input = @{
 		# REQUIRED
 		username = <System.String>
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -449,14 +431,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationUpdateVcenterHotAddNetwork",
                 "($input: UpdateVcenterHotAddNetworkInput!)",
-                "RequestSuccess"
-                );
-            RequestSuccess? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (RequestSuccess)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UpdateVcenterHotAddNetwork(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "RequestSuccess",
+                Mutation.UpdateVcenterHotAddNetwork_ObjectFieldSpec,
+                Mutation.UpdateVcenterHotAddNetworkFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	hotAddNetworkInfo = @{
@@ -480,9 +458,8 @@ $inputs.Var.input = @{
 	}
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -497,14 +474,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationUpdateVcenterHotAddBandwidth",
                 "($input: UpdateVcenterHotAddBandwidthInput!)",
-                "RequestSuccess"
-                );
-            RequestSuccess? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (RequestSuccess)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UpdateVcenterHotAddBandwidth(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "RequestSuccess",
+                Mutation.UpdateVcenterHotAddBandwidth_ObjectFieldSpec,
+                Mutation.UpdateVcenterHotAddBandwidthFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	hotAddBandwidthInfo = @{
@@ -515,9 +488,8 @@ $inputs.Var.input = @{
 	}
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
 

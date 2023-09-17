@@ -1078,7 +1078,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<WindowsFileset> list)
+        public static void SelectForRetrieval(this List<WindowsFileset> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

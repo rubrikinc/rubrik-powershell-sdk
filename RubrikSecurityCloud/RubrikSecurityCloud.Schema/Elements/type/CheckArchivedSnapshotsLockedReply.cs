@@ -149,7 +149,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<CheckArchivedSnapshotsLockedReply> list)
+        public static void SelectForRetrieval(this List<CheckArchivedSnapshotsLockedReply> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

@@ -606,7 +606,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<RubrikManagedGcpTarget> list)
+        public static void SelectForRetrieval(this List<RubrikManagedGcpTarget> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

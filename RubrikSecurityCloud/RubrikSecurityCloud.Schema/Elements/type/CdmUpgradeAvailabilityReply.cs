@@ -133,7 +133,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<CdmUpgradeAvailabilityReply> list)
+        public static void SelectForRetrieval(this List<CdmUpgradeAvailabilityReply> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

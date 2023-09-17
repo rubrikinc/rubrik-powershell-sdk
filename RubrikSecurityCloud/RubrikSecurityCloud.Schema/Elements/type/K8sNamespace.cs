@@ -773,7 +773,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<K8sNamespace> list)
+        public static void SelectForRetrieval(this List<K8sNamespace> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

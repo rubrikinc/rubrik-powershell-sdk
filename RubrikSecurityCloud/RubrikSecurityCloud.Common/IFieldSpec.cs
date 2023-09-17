@@ -9,7 +9,7 @@ namespace RubrikSecurityCloud.Types
     public interface IFieldSpec
     {
         string AsFieldSpec(int indent = 0);
-        void Fetch();
+        void SelectForRetrieval();
         void ApplyExploratoryFieldSpec(ExplorationContext ec);
     }
 }

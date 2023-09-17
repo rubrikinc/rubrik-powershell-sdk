@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Types;
 
 namespace RubrikSecurityCloud
 {
@@ -16,25 +18,6 @@ namespace RubrikSecurityCloud
             }
 
             return char.ToUpper(input[0]) + input.Substring(1);
-        }
-
-        public static string HashtableToString(Hashtable input)
-        {
-            if (input == null)
-            {
-                return "null";
-            }
-
-            var sb = new StringBuilder();
-            sb.Append("{");
-            foreach (DictionaryEntry entry in input)
-            {
-                sb.Append(entry.Key).Append('=').Append(entry.Value)
-                    .Append(", ");
-            }
-
-            sb.Append("}");
-            return sb.ToString();
         }
 
         public static string StrictPascalCase(string s)
@@ -157,6 +140,16 @@ namespace RubrikSecurityCloud
             return result.ToString();
         }
 
+        public static string GqlTypeToType(string gqlType)
+        {
+            if (string.IsNullOrEmpty(gqlType))
+            {
+                return "";
+            }
+            var t = gqlType.Replace("!", "").Replace("[", "").Replace("]", "");
+            return t;
+        }
+
         /// <summary>
         /// Return documentation links for a GQL type name.
         /// </summary>
@@ -179,5 +172,116 @@ namespace RubrikSecurityCloud
             }
             return url + t + ".doc.html";
         }
+
+        /// <summary>
+        /// Return the type name for an object,
+        /// with generic type parameters.
+        /// </summary>
+        public static string GetGenericType(object obj)
+        {
+            if (obj == null)
+            {
+                return "";
+            }
+            var type = obj.GetType();
+            string typeName;
+            if (!type.IsGenericType)
+            {
+                typeName = type.ToString();
+            }
+            else
+            {
+                var genericArgs = type.GetGenericArguments();
+                typeName = $"{type.Name.Split('`')[0]}<{string.Join(", ", genericArgs.Select(t => t.Name))}>";
+            }
+            return typeName.Replace("System.", "").Replace("Collections.", "").Replace("Management.Automation.", "");
+        }
+
+        /// <summary>
+        /// Format an object for logging.
+        /// </summary>
+        public static string FormatObjectForLogging(object? obj, bool showType = true)
+        {
+            if (obj == null)
+            {
+                return "null";
+            }
+
+            string type = showType ? $"[{GetGenericType(obj)}]" : "";
+
+            // Check for string type first
+            if (obj is string str)
+            {
+                return $"\"{str}\"";
+            }
+            else if (obj is int iObj)
+            {
+                return $"{iObj}";
+            }
+            else if (obj is bool bObj)
+            {
+                return $"{bObj}";
+            }
+            else if (obj is IFieldSpec fsObj)
+            {
+                return fsObj.AsFieldSpec().Replace("\n", " ");
+            }
+            else if (obj is VarDict vdObj)
+            {
+                return vdObj.ToString();
+            }
+            else if (obj is Hashtable hObj)
+            {
+                var sb = new StringBuilder();
+                sb.Append(type + "@{");
+                foreach (DictionaryEntry entry in hObj)
+                {
+                    sb.Append(entry.Key).Append('=').Append(FormatObjectForLogging(entry.Value))
+                        .Append(", ");
+                }
+
+                sb.Append("}");
+                return sb.ToString();
+            }
+            else if (obj is IEnumerable collection)
+            {
+                try
+                {
+                    var col = collection.Cast<object>().Select<object, string>(item => FormatObjectForLogging(item));
+                    return type + "{" + string.Join(", ", col) + "}";
+                }
+                catch (Exception)
+                {
+                    return type + obj?.ToString();
+                }
+            }
+            else
+            {
+                return type + obj?.ToString();
+            }
+        }
+
+        public static (string, string) ParseGqlAndVarString(string query)
+        {
+            // Regular expression to match the /**/ block
+            var regex = new Regex(@"/\*(.*?)\*/", RegexOptions.Singleline);
+
+            var match = regex.Match(query);
+
+            if (match.Success)
+            {
+                string vars = match.Groups[1].Value.Trim();
+                vars = vars.Replace("Variables:","");
+                string q = query.Substring(match.Index + match.Length).Trim();
+                return (vars, q);
+            }
+            else
+            {
+                // If no match is found, return "" and the whole string
+                return ("", query);
+            }
+        }
+
+
     }
 }

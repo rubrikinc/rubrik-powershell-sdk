@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<NutanixPrismCentralLogicalChildType> list)
+        public static void SelectForRetrieval(this List<NutanixPrismCentralLogicalChildType> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

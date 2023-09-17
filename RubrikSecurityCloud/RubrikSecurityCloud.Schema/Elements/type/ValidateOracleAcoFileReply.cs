@@ -157,7 +157,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<ValidateOracleAcoFileReply> list)
+        public static void SelectForRetrieval(this List<ValidateOracleAcoFileReply> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

@@ -30,12 +30,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <example>
     /// <code>Invoke-RscQueryActivitySeries -List [-Arg ..] [-Field ..]</code>
     /// </example>
+    [CmdletBinding()]
     [Cmdlet(
         "Invoke",
         "RscQueryActivitySeries",
         DefaultParameterSetName = "ActivitySeries")
     ]
-    public class Invoke_RscQueryActivitySeries : RscPSCmdlet
+    public class Invoke_RscQueryActivitySeries : RscGqlPSCmdlet
     {
         
         /// <summary>
@@ -78,6 +79,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 #pragma warning disable 1591
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 switch(Op)
@@ -130,22 +132,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "query",
                 "QueryActivitySeries",
                 "($input: ActivitySeriesInput!)",
-                "ActivitySeries"
-                );
-            ActivitySeries? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (ActivitySeries)this.Field;
-            }
-            string fieldSpecDoc = Query.ActivitySeries(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "ActivitySeries",
+                Query.ActivitySeries_ObjectFieldSpec,
+                Query.ActivitySeriesFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	activitySeriesId = <System.String>
 	# OPTIONAL
 	clusterUuid = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -174,14 +171,10 @@ $inputs.Var.input = @{
                 "query",
                 "QueryActivitySeriesConnection",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: ActivitySeriesSortField,$filters: ActivitySeriesFilter)",
-                "ActivitySeriesConnection"
-                );
-            ActivitySeriesConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (ActivitySeriesConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.ActivitySeriesConnection(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "ActivitySeriesConnection",
+                Query.ActivitySeriesConnection_ObjectFieldSpec,
+                Query.ActivitySeriesConnectionFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -241,9 +234,8 @@ $inputs.Var.filters = @{
 	orgIds = @(
 		<System.String>
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
 

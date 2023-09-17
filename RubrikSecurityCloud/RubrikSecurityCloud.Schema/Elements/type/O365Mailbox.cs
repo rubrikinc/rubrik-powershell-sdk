@@ -673,7 +673,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<O365Mailbox> list)
+        public static void SelectForRetrieval(this List<O365Mailbox> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

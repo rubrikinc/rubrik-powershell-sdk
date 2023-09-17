@@ -42,12 +42,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <example>
     /// <code>Invoke-RscQueryVsphereVm -MissedRecoverableRange [-Arg ..] [-Field ..]</code>
     /// </example>
+    [CmdletBinding()]
     [Cmdlet(
         "Invoke",
         "RscQueryVsphereVm",
         DefaultParameterSetName = "New")
     ]
-    public class Invoke_RscQueryVsphereVm : RscPSCmdlet
+    public class Invoke_RscQueryVsphereVm : RscGqlPSCmdlet
     {
         
         /// <summary>
@@ -162,6 +163,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 #pragma warning disable 1591
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 switch(Op)
@@ -262,17 +264,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "query",
                 "QueryVsphereVmNew",
                 "($fid: UUID!)",
-                "VsphereVm"
-                );
-            VsphereVm? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (VsphereVm)this.Field;
-            }
-            string fieldSpecDoc = Query.VsphereVmNew(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "VsphereVm",
+                Query.VsphereVmNew_ObjectFieldSpec,
+                Query.VsphereVmNewFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -297,14 +294,10 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryVsphereVmNewConnection",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                "VsphereVmConnection"
-                );
-            VsphereVmConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (VsphereVmConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.VsphereVmNewConnection(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "VsphereVmConnection",
+                Query.VsphereVmNewConnection_ObjectFieldSpec,
+                Query.VsphereVmNewConnectionFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -353,9 +346,8 @@ $inputs.Var.filter = @(
 			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
 		)
 }
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -371,19 +363,14 @@ $inputs.Var.filter = @(
                 "query",
                 "QueryVsphereVmAsyncRequestStatus",
                 "($clusterUuid: UUID!,$id: String!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Query.VsphereVmAsyncRequestStatus(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Query.VsphereVmAsyncRequestStatus_ObjectFieldSpec,
+                Query.VsphereVmAsyncRequestStatusFieldSpec,
+                @"# REQUIRED
 $inputs.Var.clusterUuid = <System.String>
 # REQUIRED
-$inputs.Var.id = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.id = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -400,21 +387,16 @@ $inputs.Var.id = <System.String>";
                 "query",
                 "QueryVsphereVmRecoverableRange",
                 "($snappableFid: UUID!,$beforeTime: DateTime,$afterTime: DateTime)",
-                "RecoverableRangeResponse"
-                );
-            RecoverableRangeResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (RecoverableRangeResponse)this.Field;
-            }
-            string fieldSpecDoc = Query.VsphereVmRecoverableRange(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "RecoverableRangeResponse",
+                Query.VsphereVmRecoverableRange_ObjectFieldSpec,
+                Query.VsphereVmRecoverableRangeFieldSpec,
+                @"# REQUIRED
 $inputs.Var.snappableFid = <System.String>
 # OPTIONAL
 $inputs.Var.beforeTime = <DateTime>
 # OPTIONAL
-$inputs.Var.afterTime = <DateTime>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.afterTime = <DateTime>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -429,14 +411,10 @@ $inputs.Var.afterTime = <DateTime>";
                 "query",
                 "QueryVsphereVmRecoverableRangeInBatch",
                 "($requestInfo: BatchVmwareVmRecoverableRangesRequestInput!)",
-                "BatchVmwareVmRecoverableRanges"
-                );
-            BatchVmwareVmRecoverableRanges? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (BatchVmwareVmRecoverableRanges)this.Field;
-            }
-            string fieldSpecDoc = Query.VsphereVmRecoverableRangeInBatch(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "BatchVmwareVmRecoverableRanges",
+                Query.VsphereVmRecoverableRangeInBatch_ObjectFieldSpec,
+                Query.VsphereVmRecoverableRangeInBatchFieldSpec,
+                @"# REQUIRED
 $inputs.Var.requestInfo = @{
 	# OPTIONAL
 	afterTime = <DateTime>
@@ -446,9 +424,8 @@ $inputs.Var.requestInfo = @{
 	vmIds = @(
 		<System.String>
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -465,21 +442,16 @@ $inputs.Var.requestInfo = @{
                 "query",
                 "QueryVsphereVmMissedRecoverableRange",
                 "($snappableFid: UUID!,$beforeTime: DateTime,$afterTime: DateTime)",
-                "RecoverableRangeResponse"
-                );
-            RecoverableRangeResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (RecoverableRangeResponse)this.Field;
-            }
-            string fieldSpecDoc = Query.VsphereVmMissedRecoverableRange(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "RecoverableRangeResponse",
+                Query.VsphereVmMissedRecoverableRange_ObjectFieldSpec,
+                Query.VsphereVmMissedRecoverableRangeFieldSpec,
+                @"# REQUIRED
 $inputs.Var.snappableFid = <System.String>
 # OPTIONAL
 $inputs.Var.beforeTime = <DateTime>
 # OPTIONAL
-$inputs.Var.afterTime = <DateTime>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.afterTime = <DateTime>"
+            );
         }
 
 

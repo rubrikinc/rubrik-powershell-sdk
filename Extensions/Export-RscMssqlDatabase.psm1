@@ -99,7 +99,7 @@ function Export-RscMssqlDatabase
 
   Process {
 
-    $inputs = (Invoke-RscMutateMssql -Op $operation -InputProfile $inputProfile -GetInput)
+    $inputs = (Invoke-RscMutateMssql -Op $operation -FieldProfile $inputProfile -GetInput)
 
     # -4- Customize input objects:
         

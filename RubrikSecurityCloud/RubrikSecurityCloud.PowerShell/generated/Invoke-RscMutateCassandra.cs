@@ -39,12 +39,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <example>
     /// <code>Invoke-RscMutateCassandra -BulkDeleteSources [-Arg ..] [-Field ..]</code>
     /// </example>
+    [CmdletBinding()]
     [Cmdlet(
         "Invoke",
         "RscMutateCassandra",
         DefaultParameterSetName = "CreateSource")
     ]
-    public class Invoke_RscMutateCassandra : RscPSCmdlet
+    public class Invoke_RscMutateCassandra : RscGqlPSCmdlet
     {
         
         /// <summary>
@@ -141,6 +142,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 #pragma warning disable 1591
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 switch(Op)
@@ -229,14 +231,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "mutation",
                 "MutationRecoverCassandraSource",
                 "($input: MosaicRestoreDataInput!)",
-                "MosaicAsyncResponse"
-                );
-            MosaicAsyncResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MosaicAsyncResponse)this.Field;
-            }
-            string fieldSpecDoc = Mutation.RecoverCassandraSource(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "MosaicAsyncResponse",
+                Mutation.RecoverCassandraSource_ObjectFieldSpec,
+                Mutation.RecoverCassandraSourceFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	clusterUuid = <System.String>
@@ -297,9 +295,8 @@ $inputs.Var.input = @{
 		# REQUIRED
 		versionTime = <System.Int32>
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -314,14 +311,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationCreateCassandraSource",
                 "($input: AddMosaicSourceInput!)",
-                "MosaicAsyncResponse"
-                );
-            MosaicAsyncResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MosaicAsyncResponse)this.Field;
-            }
-            string fieldSpecDoc = Mutation.CreateCassandraSource(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "MosaicAsyncResponse",
+                Mutation.CreateCassandraSource_ObjectFieldSpec,
+                Mutation.CreateCassandraSourceFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	clusterUuid = <System.String>
@@ -390,9 +383,8 @@ $inputs.Var.input = @{
 		# REQUIRED
 		sourceName = <System.String>
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -407,14 +399,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationUpdateCassandraSource",
                 "($input: ModifyMosaicSourceInput!)",
-                "MosaicAsyncResponse"
-                );
-            MosaicAsyncResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MosaicAsyncResponse)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UpdateCassandraSource(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "MosaicAsyncResponse",
+                Mutation.UpdateCassandraSource_ObjectFieldSpec,
+                Mutation.UpdateCassandraSourceFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	clusterUuid = <System.String>
@@ -483,9 +471,8 @@ $inputs.Var.input = @{
 		# REQUIRED
 		sourceName = <System.String>
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -500,14 +487,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationDeleteCassandraSource",
                 "($input: DeleteMosaicSourceInput!)",
-                "MosaicAsyncResponse"
-                );
-            MosaicAsyncResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MosaicAsyncResponse)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DeleteCassandraSource(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "MosaicAsyncResponse",
+                Mutation.DeleteCassandraSource_ObjectFieldSpec,
+                Mutation.DeleteCassandraSourceFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	sourceType = <V2DeleteMosaicSourceRequestSourceType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V2DeleteMosaicSourceRequestSourceType]) for enum values.
@@ -515,9 +498,8 @@ $inputs.Var.input = @{
 	clusterUuid = <System.String>
 	# REQUIRED
 	sourceName = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -532,14 +514,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationBulkDeleteCassandraSources",
                 "($input: BulkDeleteMosaicSourcesInput!)",
-                "MosaicAsyncResponse"
-                );
-            MosaicAsyncResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MosaicAsyncResponse)this.Field;
-            }
-            string fieldSpecDoc = Mutation.BulkDeleteCassandraSources(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "MosaicAsyncResponse",
+                Mutation.BulkDeleteCassandraSources_ObjectFieldSpec,
+                Mutation.BulkDeleteCassandraSourcesFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	sourceType = <V2BulkDeleteMosaicSourcesRequestSourceType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V2BulkDeleteMosaicSourcesRequestSourceType]) for enum values.
@@ -554,9 +532,8 @@ $inputs.Var.input = @{
 			<System.String>
 		)
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
 

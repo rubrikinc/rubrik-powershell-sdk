@@ -181,7 +181,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<SapHanaRecoverableRangeConnection> list)
+        public static void SelectForRetrieval(this List<SapHanaRecoverableRangeConnection> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

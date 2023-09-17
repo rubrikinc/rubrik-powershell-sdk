@@ -194,7 +194,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<ClassificationPolicyWhitelistDetailedEntry> list)
+        public static void SelectForRetrieval(this List<ClassificationPolicyWhitelistDetailedEntry> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

@@ -107,7 +107,7 @@ Query-RscAccount -Setting -Field $accountSetting
 
 
 Write-Message @"
-8. All schema types have an Fetch() method.
+8. All schema types have an SelectForRetrieval() method.
    It sets *some* fields in the object to non-null values.
    It is meant to be used when you don't know which fields you want to fetch,
    and you want to see what the query would look like.
@@ -117,7 +117,7 @@ Write-Message @"
 "@
 $accountSetting = [RubrikSecurityCloud.Types.AccountSetting]@{}
 $accountSetting
-$accountSetting.Fetch()
+$accountSetting.SelectForRetrieval()
 $accountSetting
 Query-RscAccount -Setting -Field $accountSetting
 

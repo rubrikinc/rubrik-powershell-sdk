@@ -150,7 +150,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<AnomalyChart> list)
+        public static void SelectForRetrieval(this List<AnomalyChart> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

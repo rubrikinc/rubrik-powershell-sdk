@@ -70,7 +70,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<TaskDetailGroupByInfo> list)
+        public static void SelectForRetrieval(this List<TaskDetailGroupByInfo> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

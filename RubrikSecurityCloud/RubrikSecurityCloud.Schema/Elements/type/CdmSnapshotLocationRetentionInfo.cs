@@ -229,7 +229,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<CdmSnapshotLocationRetentionInfo> list)
+        public static void SelectForRetrieval(this List<CdmSnapshotLocationRetentionInfo> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

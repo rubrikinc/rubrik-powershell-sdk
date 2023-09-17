@@ -129,7 +129,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<CloudNativeAccountIdWithName> list)
+        public static void SelectForRetrieval(this List<CloudNativeAccountIdWithName> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

@@ -70,7 +70,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<CdmSnapshotGroupByInfo> list)
+        public static void SelectForRetrieval(this List<CdmSnapshotGroupByInfo> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

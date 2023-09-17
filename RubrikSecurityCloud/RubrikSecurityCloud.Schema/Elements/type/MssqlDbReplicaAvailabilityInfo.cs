@@ -109,7 +109,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<MssqlDbReplicaAvailabilityInfo> list)
+        public static void SelectForRetrieval(this List<MssqlDbReplicaAvailabilityInfo> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

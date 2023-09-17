@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<HostFailoverClusterPhysicalChildType> list)
+        public static void SelectForRetrieval(this List<HostFailoverClusterPhysicalChildType> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

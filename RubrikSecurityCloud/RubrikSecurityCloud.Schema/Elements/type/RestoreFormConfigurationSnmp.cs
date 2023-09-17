@@ -109,7 +109,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<RestoreFormConfigurationSnmp> list)
+        public static void SelectForRetrieval(this List<RestoreFormConfigurationSnmp> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

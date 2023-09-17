@@ -70,7 +70,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<MosaicSnapshotGroupByInfo> list)
+        public static void SelectForRetrieval(this List<MosaicSnapshotGroupByInfo> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

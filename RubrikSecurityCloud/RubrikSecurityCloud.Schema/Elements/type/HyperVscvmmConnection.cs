@@ -181,7 +181,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<HyperVscvmmConnection> list)
+        public static void SelectForRetrieval(this List<HyperVscvmmConnection> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

@@ -149,7 +149,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<KmsEncryptionKey> list)
+        public static void SelectForRetrieval(this List<KmsEncryptionKey> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

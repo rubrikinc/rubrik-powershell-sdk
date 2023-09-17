@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<HypervTopLevelDescendantType> list)
+        public static void SelectForRetrieval(this List<HypervTopLevelDescendantType> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

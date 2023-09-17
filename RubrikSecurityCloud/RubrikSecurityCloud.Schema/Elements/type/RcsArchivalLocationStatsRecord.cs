@@ -169,7 +169,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<RcsArchivalLocationStatsRecord> list)
+        public static void SelectForRetrieval(this List<RcsArchivalLocationStatsRecord> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

@@ -149,7 +149,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<AsyncDownloadReply> list)
+        public static void SelectForRetrieval(this List<AsyncDownloadReply> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

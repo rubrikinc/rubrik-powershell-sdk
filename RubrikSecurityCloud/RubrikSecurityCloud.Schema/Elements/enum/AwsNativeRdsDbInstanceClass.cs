@@ -291,6 +291,27 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DB_R5_XLARGE")]
         DB_R5_XLARGE,
 
+        [EnumMember(Value = "DB_R6GD_12XLARGE")]
+        DB_R6GD_12XLARGE,
+
+        [EnumMember(Value = "DB_R6GD_16XLARGE")]
+        DB_R6GD_16XLARGE,
+
+        [EnumMember(Value = "DB_R6GD_2XLARGE")]
+        DB_R6GD_2XLARGE,
+
+        [EnumMember(Value = "DB_R6GD_4XLARGE")]
+        DB_R6GD_4XLARGE,
+
+        [EnumMember(Value = "DB_R6GD_8XLARGE")]
+        DB_R6GD_8XLARGE,
+
+        [EnumMember(Value = "DB_R6GD_LARGE")]
+        DB_R6GD_LARGE,
+
+        [EnumMember(Value = "DB_R6GD_XLARGE")]
+        DB_R6GD_XLARGE,
+
         [EnumMember(Value = "DB_R6G_12XLARGE")]
         DB_R6G_12XLARGE,
 

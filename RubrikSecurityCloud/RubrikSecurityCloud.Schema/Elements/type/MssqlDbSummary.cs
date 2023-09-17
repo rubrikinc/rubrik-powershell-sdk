@@ -853,7 +853,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<MssqlDbSummary> list)
+        public static void SelectForRetrieval(this List<MssqlDbSummary> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

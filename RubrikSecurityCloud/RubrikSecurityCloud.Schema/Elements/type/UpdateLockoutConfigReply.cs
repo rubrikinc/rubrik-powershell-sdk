@@ -229,7 +229,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<UpdateLockoutConfigReply> list)
+        public static void SelectForRetrieval(this List<UpdateLockoutConfigReply> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

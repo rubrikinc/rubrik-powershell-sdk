@@ -51,12 +51,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <example>
     /// <code>Invoke-RscQueryVcenter -AdvancedTagPreview [-Arg ..] [-Field ..]</code>
     /// </example>
+    [CmdletBinding()]
     [Cmdlet(
         "Invoke",
         "RscQueryVcenter",
         DefaultParameterSetName = "Vcenter")
     ]
-    public class Invoke_RscQueryVcenter : RscPSCmdlet
+    public class Invoke_RscQueryVcenter : RscGqlPSCmdlet
     {
         
         /// <summary>
@@ -243,6 +244,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
 #pragma warning disable 1591
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 switch(Op)
@@ -379,17 +381,12 @@ Preview list of virtual machines of a proposed filter condition. The result migh
                 "query",
                 "QueryVsphereVcenter",
                 "($fid: UUID!)",
-                "VsphereVcenter"
-                );
-            VsphereVcenter? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (VsphereVcenter)this.Field;
-            }
-            string fieldSpecDoc = Query.VsphereVcenter(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "VsphereVcenter",
+                Query.VsphereVcenter_ObjectFieldSpec,
+                Query.VsphereVcenterFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -414,14 +411,10 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryVsphereVcenterConnection",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                "VsphereVcenterConnection"
-                );
-            VsphereVcenterConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (VsphereVcenterConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.VsphereVcenterConnection(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "VsphereVcenterConnection",
+                Query.VsphereVcenterConnection_ObjectFieldSpec,
+                Query.VsphereVcenterConnectionFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -470,9 +463,8 @@ $inputs.Var.filter = @(
 			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
 		)
 }
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -487,14 +479,10 @@ $inputs.Var.filter = @(
                 "query",
                 "QueryVcenterPreAddInfo",
                 "($input: PreAddVcenterInput!)",
-                "VcenterPreAddInfo"
-                );
-            VcenterPreAddInfo? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (VcenterPreAddInfo)this.Field;
-            }
-            string fieldSpecDoc = Query.VcenterPreAddInfo(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "VcenterPreAddInfo",
+                Query.VcenterPreAddInfo_ObjectFieldSpec,
+                Query.VcenterPreAddInfoFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	clusterUuid = <System.String>
@@ -514,9 +502,8 @@ $inputs.Var.input = @{
 		# OPTIONAL
 		id = <System.String>
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -531,20 +518,15 @@ $inputs.Var.input = @{
                 "query",
                 "QueryVcenterNetworks",
                 "($input: GetNetworksInput!)",
-                "NetworkInfoListResponse"
-                );
-            NetworkInfoListResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (NetworkInfoListResponse)this.Field;
-            }
-            string fieldSpecDoc = Query.VcenterNetworks(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "NetworkInfoListResponse",
+                Query.VcenterNetworks_ObjectFieldSpec,
+                Query.VcenterNetworksFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -559,20 +541,15 @@ $inputs.Var.input = @{
                 "query",
                 "QueryVcenterHotAddNetwork",
                 "($input: GetHotAddNetworkInput!)",
-                "HotAddNetworkConfigWithName"
-                );
-            HotAddNetworkConfigWithName? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (HotAddNetworkConfigWithName)this.Field;
-            }
-            string fieldSpecDoc = Query.VcenterHotAddNetwork(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "HotAddNetworkConfigWithName",
+                Query.VcenterHotAddNetwork_ObjectFieldSpec,
+                Query.VcenterHotAddNetworkFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -587,20 +564,15 @@ $inputs.Var.input = @{
                 "query",
                 "QueryVcenterNumProxiesNeeded",
                 "($input: GetNumProxiesNeededInput!)",
-                "System.Int32"
-                );
-            System.Int32? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (System.Int32)this.Field;
-            }
-            string fieldSpecDoc = Query.VcenterNumProxiesNeeded(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "System.Int32",
+                Query.VcenterNumProxiesNeeded_ObjectFieldSpec,
+                Query.VcenterNumProxiesNeededFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -615,19 +587,14 @@ $inputs.Var.input = @{
                 "query",
                 "QueryAllVcenterHotAddProxyVms",
                 "($clusterUuids: [UUID!]!)",
-                "List<VcenterHotAddProxyVmInfo>"
-                );
-            List<VcenterHotAddProxyVmInfo>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<VcenterHotAddProxyVmInfo>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllVcenterHotAddProxyVms(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<VcenterHotAddProxyVmInfo>",
+                Query.AllVcenterHotAddProxyVms_ObjectFieldSpec,
+                Query.AllVcenterHotAddProxyVmsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.clusterUuids = @(
 	<System.String>
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -642,20 +609,15 @@ $inputs.Var.clusterUuids = @(
                 "query",
                 "QueryVcenterHotAddBandwidth",
                 "($input: GetHotAddBandwidthInput!)",
-                "HotAddBandwidthInfo"
-                );
-            HotAddBandwidthInfo? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (HotAddBandwidthInfo)this.Field;
-            }
-            string fieldSpecDoc = Query.VcenterHotAddBandwidth(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "HotAddBandwidthInfo",
+                Query.VcenterHotAddBandwidth_ObjectFieldSpec,
+                Query.VcenterHotAddBandwidthFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -670,14 +632,10 @@ $inputs.Var.input = @{
                 "query",
                 "QueryVcenterAdvancedTagPreview",
                 "($input: PreviewFilterInput!)",
-                "VcenterAdvancedTagPreviewReply"
-                );
-            VcenterAdvancedTagPreviewReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (VcenterAdvancedTagPreviewReply)this.Field;
-            }
-            string fieldSpecDoc = Query.VcenterAdvancedTagPreview(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "VcenterAdvancedTagPreviewReply",
+                Query.VcenterAdvancedTagPreview_ObjectFieldSpec,
+                Query.VcenterAdvancedTagPreviewFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	limit = <System.Int32>
@@ -687,9 +645,8 @@ $inputs.Var.input = @{
 	filterCondition = <System.String>
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
 

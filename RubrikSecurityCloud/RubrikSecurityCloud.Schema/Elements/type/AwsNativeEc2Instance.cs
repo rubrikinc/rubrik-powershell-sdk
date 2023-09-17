@@ -1177,7 +1177,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<AwsNativeEc2Instance> list)
+        public static void SelectForRetrieval(this List<AwsNativeEc2Instance> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

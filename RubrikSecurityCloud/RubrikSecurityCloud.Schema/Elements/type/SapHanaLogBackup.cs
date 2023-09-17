@@ -213,7 +213,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<SapHanaLogBackup> list)
+        public static void SelectForRetrieval(this List<SapHanaLogBackup> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

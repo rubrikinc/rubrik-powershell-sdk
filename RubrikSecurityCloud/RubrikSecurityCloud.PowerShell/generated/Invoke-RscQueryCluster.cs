@@ -132,12 +132,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <example>
     /// <code>Invoke-RscQueryCluster -TotpAckStatus [-Arg ..] [-Field ..]</code>
     /// </example>
+    [CmdletBinding()]
     [Cmdlet(
         "Invoke",
         "RscQueryCluster",
         DefaultParameterSetName = "Cluster")
     ]
-    public class Invoke_RscQueryCluster : RscPSCmdlet
+    public class Invoke_RscQueryCluster : RscGqlPSCmdlet
     {
         
         /// <summary>
@@ -826,6 +827,7 @@ v6.0+: Get the database log backup delay information.
 #pragma warning disable 1591
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 switch(Op)
@@ -1286,20 +1288,15 @@ v6.0+: Get the database log backup delay information.
                 "query",
                 "QueryClusterNodes",
                 "($input: GetNodesInput!)",
-                "NodeStatusListResponse"
-                );
-            NodeStatusListResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (NodeStatusListResponse)this.Field;
-            }
-            string fieldSpecDoc = Query.ClusterNodes(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "NodeStatusListResponse",
+                Query.ClusterNodes_ObjectFieldSpec,
+                Query.ClusterNodesFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	clusterUuid = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1328,14 +1325,10 @@ $inputs.Var.input = @{
                 "query",
                 "QueryClusterConnection",
                 "($first: Int,$after: String,$last: Int,$before: String,$filter: ClusterFilterInput,$sortOrder: SortOrder,$sortBy: ClusterSortByEnum)",
-                "ClusterConnection"
-                );
-            ClusterConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (ClusterConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.ClusterConnection(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "ClusterConnection",
+                Query.ClusterConnection_ObjectFieldSpec,
+                Query.ClusterConnectionFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -1414,9 +1407,8 @@ $inputs.Var.filter = @{
 # OPTIONAL
 $inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
 # OPTIONAL
-$inputs.Var.sortBy = <ClusterSortByEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterSortByEnum]) for enum values.";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.sortBy = <ClusterSortByEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterSortByEnum]) for enum values."
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1431,17 +1423,12 @@ $inputs.Var.sortBy = <ClusterSortByEnum> # Call [Enum]::GetValues([RubrikSecurit
                 "query",
                 "QueryCluster",
                 "($clusterUuid: UUID!)",
-                "Cluster"
-                );
-            Cluster? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (Cluster)this.Field;
-            }
-            string fieldSpecDoc = Query.Cluster(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.clusterUuid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "Cluster",
+                Query.Cluster_ObjectFieldSpec,
+                Query.ClusterFieldSpec,
+                @"# REQUIRED
+$inputs.Var.clusterUuid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1470,14 +1457,10 @@ $inputs.Var.clusterUuid = <System.String>";
                 "query",
                 "QueryClusterWithUpgradesInfo",
                 "($first: Int,$after: String,$last: Int,$before: String,$upgradeFilter: CdmUpgradeInfoFilterInput,$sortOrder: SortOrder,$sortBy: UpgradeInfoSortByEnum)",
-                "ClusterConnection"
-                );
-            ClusterConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (ClusterConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.ClusterWithUpgradesInfo(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "ClusterConnection",
+                Query.ClusterWithUpgradesInfo_ObjectFieldSpec,
+                Query.ClusterWithUpgradesInfoFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -1543,9 +1526,8 @@ $inputs.Var.upgradeFilter = @{
 # OPTIONAL
 $inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
 # OPTIONAL
-$inputs.Var.sortBy = <UpgradeInfoSortByEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UpgradeInfoSortByEnum]) for enum values.";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.sortBy = <UpgradeInfoSortByEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UpgradeInfoSortByEnum]) for enum values."
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1560,17 +1542,12 @@ $inputs.Var.sortBy = <UpgradeInfoSortByEnum> # Call [Enum]::GetValues([RubrikSec
                 "query",
                 "QueryClusterDns",
                 "($clusterUuid: UUID!)",
-                "ClusterDnsReply"
-                );
-            ClusterDnsReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (ClusterDnsReply)this.Field;
-            }
-            string fieldSpecDoc = Query.ClusterDns(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.clusterUuid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "ClusterDnsReply",
+                Query.ClusterDns_ObjectFieldSpec,
+                Query.ClusterDnsFieldSpec,
+                @"# REQUIRED
+$inputs.Var.clusterUuid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1585,17 +1562,12 @@ $inputs.Var.clusterUuid = <System.String>";
                 "query",
                 "QueryClusterProxy",
                 "($clusterUuid: UUID!)",
-                "ClusterProxyReply"
-                );
-            ClusterProxyReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (ClusterProxyReply)this.Field;
-            }
-            string fieldSpecDoc = Query.ClusterProxy(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.clusterUuid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "ClusterProxyReply",
+                Query.ClusterProxy_ObjectFieldSpec,
+                Query.ClusterProxyFieldSpec,
+                @"# REQUIRED
+$inputs.Var.clusterUuid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1610,20 +1582,15 @@ $inputs.Var.clusterUuid = <System.String>";
                 "query",
                 "QueryClusterNtpServers",
                 "($input: GetClusterNtpServersInput!)",
-                "NtpServerConfigurationListResponse"
-                );
-            NtpServerConfigurationListResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (NtpServerConfigurationListResponse)this.Field;
-            }
-            string fieldSpecDoc = Query.ClusterNtpServers(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "NtpServerConfigurationListResponse",
+                Query.ClusterNtpServers_ObjectFieldSpec,
+                Query.ClusterNtpServersFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1638,22 +1605,17 @@ $inputs.Var.input = @{
                 "query",
                 "QueryClusterNetworkInterfaces",
                 "($input: GetNetworkInterfaceInput!)",
-                "NetworkInterfaceListResponse"
-                );
-            NetworkInterfaceListResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (NetworkInterfaceListResponse)this.Field;
-            }
-            string fieldSpecDoc = Query.ClusterNetworkInterfaces(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "NetworkInterfaceListResponse",
+                Query.ClusterNetworkInterfaces_ObjectFieldSpec,
+                Query.ClusterNetworkInterfacesFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	interface = <System.String>
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1668,20 +1630,15 @@ $inputs.Var.input = @{
                 "query",
                 "QueryClusterFloatingIps",
                 "($input: GetClusterIpsInput!)",
-                "InternalGetClusterIpsResponse"
-                );
-            InternalGetClusterIpsResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (InternalGetClusterIpsResponse)this.Field;
-            }
-            string fieldSpecDoc = Query.ClusterFloatingIps(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "InternalGetClusterIpsResponse",
+                Query.ClusterFloatingIps_ObjectFieldSpec,
+                Query.ClusterFloatingIpsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	clusterUuid = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1696,22 +1653,17 @@ $inputs.Var.input = @{
                 "query",
                 "QueryClusterVlans",
                 "($input: GetVlanInput!)",
-                "VlanConfigListResponse"
-                );
-            VlanConfigListResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (VlanConfigListResponse)this.Field;
-            }
-            string fieldSpecDoc = Query.ClusterVlans(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "VlanConfigListResponse",
+                Query.ClusterVlans_ObjectFieldSpec,
+                Query.ClusterVlansFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	vlan = <System.Int32>
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1726,20 +1678,15 @@ $inputs.Var.input = @{
                 "query",
                 "QueryClusterDefaultGateway",
                 "($input: GetDefaultGatewayInput!)",
-                "InternalGetDefaultGatewayResponse"
-                );
-            InternalGetDefaultGatewayResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (InternalGetDefaultGatewayResponse)this.Field;
-            }
-            string fieldSpecDoc = Query.ClusterDefaultGateway(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "InternalGetDefaultGatewayResponse",
+                Query.ClusterDefaultGateway_ObjectFieldSpec,
+                Query.ClusterDefaultGatewayFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	clusterUuid = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1754,20 +1701,15 @@ $inputs.Var.input = @{
                 "query",
                 "QueryClusterWebSignedCertificate",
                 "($input: ClusterWebSignedCertificateInput!)",
-                "ClusterWebSignedCertificateReply"
-                );
-            ClusterWebSignedCertificateReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (ClusterWebSignedCertificateReply)this.Field;
-            }
-            string fieldSpecDoc = Query.ClusterWebSignedCertificate(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "ClusterWebSignedCertificateReply",
+                Query.ClusterWebSignedCertificate_ObjectFieldSpec,
+                Query.ClusterWebSignedCertificateFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1782,20 +1724,15 @@ $inputs.Var.input = @{
                 "query",
                 "QueryClusterIpmi",
                 "($input: GetIpmiInput!)",
-                "ModifyIpmiReply"
-                );
-            ModifyIpmiReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (ModifyIpmiReply)this.Field;
-            }
-            string fieldSpecDoc = Query.ClusterIpmi(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "ModifyIpmiReply",
+                Query.ClusterIpmi_ObjectFieldSpec,
+                Query.ClusterIpmiFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1810,14 +1747,10 @@ $inputs.Var.input = @{
                 "query",
                 "QueryClusterCertificates",
                 "($input: QueryCertificatesInput!)",
-                "CertificateSummaryListResponse"
-                );
-            CertificateSummaryListResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CertificateSummaryListResponse)this.Field;
-            }
-            string fieldSpecDoc = Query.ClusterCertificates(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "CertificateSummaryListResponse",
+                Query.ClusterCertificates_ObjectFieldSpec,
+                Query.ClusterCertificatesFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	description = <System.String>
@@ -1837,9 +1770,8 @@ $inputs.Var.input = @{
 	sortOrder = <V1QueryCertificatesRequestSortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1QueryCertificatesRequestSortOrder]) for enum values.
 	# REQUIRED
 	clusterUuid = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1854,22 +1786,17 @@ $inputs.Var.input = @{
                 "query",
                 "QueryAllClusterWebCertsAndIpmis",
                 "($input: BulkClusterWebCertAndIpmiInput!)",
-                "List<ClusterWebCertAndIpmi>"
-                );
-            List<ClusterWebCertAndIpmi>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<ClusterWebCertAndIpmi>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllClusterWebCertsAndIpmis(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<ClusterWebCertAndIpmi>",
+                Query.AllClusterWebCertsAndIpmis_ObjectFieldSpec,
+                Query.AllClusterWebCertsAndIpmisFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	clusterUuids = @(
 		<System.String>
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1884,22 +1811,17 @@ $inputs.Var.input = @{
                 "query",
                 "QueryClusterOperationJobProgress",
                 "($input: ClusterOperationJobProgressInput!)",
-                "ClusterOperationJobProgress"
-                );
-            ClusterOperationJobProgress? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (ClusterOperationJobProgress)this.Field;
-            }
-            string fieldSpecDoc = Query.ClusterOperationJobProgress(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "ClusterOperationJobProgress",
+                Query.ClusterOperationJobProgress_ObjectFieldSpec,
+                Query.ClusterOperationJobProgressFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	clusterUuid = <System.String>
 	# REQUIRED
 	jobType = <CcpJobType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CcpJobType]) for enum values.
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1914,20 +1836,15 @@ $inputs.Var.input = @{
                 "query",
                 "QueryClusterIpv6Mode",
                 "($input: ClusterIpv6ModeInput!)",
-                "ClusterIpv6ModeReply"
-                );
-            ClusterIpv6ModeReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (ClusterIpv6ModeReply)this.Field;
-            }
-            string fieldSpecDoc = Query.ClusterIpv6Mode(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "ClusterIpv6ModeReply",
+                Query.ClusterIpv6Mode_ObjectFieldSpec,
+                Query.ClusterIpv6ModeFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	clusterUuid = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1942,20 +1859,15 @@ $inputs.Var.input = @{
                 "query",
                 "QueryClusterCsr",
                 "($input: GetClusterCsrInput!)",
-                "ClusterCsr"
-                );
-            ClusterCsr? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (ClusterCsr)this.Field;
-            }
-            string fieldSpecDoc = Query.ClusterCsr(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "ClusterCsr",
+                Query.ClusterCsr_ObjectFieldSpec,
+                Query.ClusterCsrFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1969,16 +1881,11 @@ $inputs.Var.input = @{
                 "query",
                 "QueryClusterTypeList",
                 "",
-                "List<GroupCount>"
-                );
-            List<GroupCount>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<GroupCount>)this.Field;
-            }
-            string fieldSpecDoc = Query.ClusterTypeList(ref fieldSpecObj);
-            string inputExample = @"";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "List<GroupCount>",
+                Query.ClusterTypeList_ObjectFieldSpec,
+                Query.ClusterTypeListFieldSpec,
+                @""
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2007,14 +1914,10 @@ $inputs.Var.input = @{
                 "query",
                 "QueryClusterGroupByConnection",
                 "($first: Int,$after: String,$last: Int,$before: String,$groupBy: ClusterGroupByEnum!,$filter: ClusterFilterInput,$timezoneOffset: Float)",
-                "ClusterGroupByConnection"
-                );
-            ClusterGroupByConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (ClusterGroupByConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.ClusterGroupByConnection(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "ClusterGroupByConnection",
+                Query.ClusterGroupByConnection_ObjectFieldSpec,
+                Query.ClusterGroupByConnectionFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -2093,9 +1996,8 @@ $inputs.Var.filter = @{
 	isInFatalOrDisconnectedState = <System.Boolean>
 }
 # OPTIONAL
-$inputs.Var.timezoneOffset = <System.Single>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.timezoneOffset = <System.Single>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2110,20 +2012,15 @@ $inputs.Var.timezoneOffset = <System.Single>";
                 "query",
                 "QueryDatabaseLogReportingPropertiesForCluster",
                 "($input: QueryReportPropertiesInput!)",
-                "DbLogReportProperties"
-                );
-            DbLogReportProperties? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (DbLogReportProperties)this.Field;
-            }
-            string fieldSpecDoc = Query.DatabaseLogReportingPropertiesForCluster(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "DbLogReportProperties",
+                Query.DatabaseLogReportingPropertiesForCluster_ObjectFieldSpec,
+                Query.DatabaseLogReportingPropertiesForClusterFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	clusterUuid = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2138,14 +2035,10 @@ $inputs.Var.input = @{
                 "query",
                 "QueryDatabaseLogReportForCluster",
                 "($input: QueryLogReportInput!)",
-                "DbLogReportSummaryListReply"
-                );
-            DbLogReportSummaryListReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (DbLogReportSummaryListReply)this.Field;
-            }
-            string fieldSpecDoc = Query.DatabaseLogReportForCluster(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "DbLogReportSummaryListReply",
+                Query.DatabaseLogReportForCluster_ObjectFieldSpec,
+                Query.DatabaseLogReportForClusterFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	name = <System.String>
@@ -2167,9 +2060,8 @@ $inputs.Var.input = @{
 	sortOrder = <V1QueryLogReportRequestSortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1QueryLogReportRequestSortOrder]) for enum values.
 	# REQUIRED
 	clusterUuid = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2184,17 +2076,12 @@ $inputs.Var.input = @{
                 "query",
                 "QueryAllConnectedClusters",
                 "($clusterFilterArg: ClusterTypeEnum)",
-                "List<DataLocationSupportedCluster>"
-                );
-            List<DataLocationSupportedCluster>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<DataLocationSupportedCluster>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllConnectedClusters(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
-$inputs.Var.clusterFilterArg = <ClusterTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterTypeEnum]) for enum values.";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "List<DataLocationSupportedCluster>",
+                Query.AllConnectedClusters_ObjectFieldSpec,
+                Query.AllConnectedClustersFieldSpec,
+                @"# OPTIONAL
+$inputs.Var.clusterFilterArg = <ClusterTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterTypeEnum]) for enum values."
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2209,17 +2096,12 @@ $inputs.Var.clusterFilterArg = <ClusterTypeEnum> # Call [Enum]::GetValues([Rubri
                 "query",
                 "QueryAllClusterReplicationTargets",
                 "($clusterUuid: UUID!)",
-                "List<ClusterReplicationTarget>"
-                );
-            List<ClusterReplicationTarget>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<ClusterReplicationTarget>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllClusterReplicationTargets(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.clusterUuid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "List<ClusterReplicationTarget>",
+                Query.AllClusterReplicationTargets_ObjectFieldSpec,
+                Query.AllClusterReplicationTargetsFieldSpec,
+                @"# REQUIRED
+$inputs.Var.clusterUuid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2234,17 +2116,12 @@ $inputs.Var.clusterUuid = <System.String>";
                 "query",
                 "QueryHostFailoverCluster",
                 "($fid: UUID!)",
-                "HostFailoverCluster"
-                );
-            HostFailoverCluster? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (HostFailoverCluster)this.Field;
-            }
-            string fieldSpecDoc = Query.HostFailoverCluster(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "HostFailoverCluster",
+                Query.HostFailoverCluster_ObjectFieldSpec,
+                Query.HostFailoverClusterFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2269,14 +2146,10 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryK8sClusters",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                "K8sClusterConnection"
-                );
-            K8sClusterConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (K8sClusterConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.K8sClusters(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "K8sClusterConnection",
+                Query.K8sClusters_ObjectFieldSpec,
+                Query.K8sClustersFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -2325,9 +2198,8 @@ $inputs.Var.filter = @(
 			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
 		)
 }
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2342,17 +2214,12 @@ $inputs.Var.filter = @(
                 "query",
                 "QueryWindowsCluster",
                 "($fid: UUID!)",
-                "WindowsCluster"
-                );
-            WindowsCluster? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (WindowsCluster)this.Field;
-            }
-            string fieldSpecDoc = Query.WindowsCluster(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "WindowsCluster",
+                Query.WindowsCluster_ObjectFieldSpec,
+                Query.WindowsClusterFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2379,14 +2246,10 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryClusterReportMigrationStatus",
                 "($clusterUuid: UUID,$status: [CdmReportMigrationStatus!]!,$first: Int,$after: String,$last: Int,$before: String)",
-                "ReportMigrationStatusConnection"
-                );
-            ReportMigrationStatusConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (ReportMigrationStatusConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.ClusterReportMigrationStatus(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "ReportMigrationStatusConnection",
+                Query.ClusterReportMigrationStatus_ObjectFieldSpec,
+                Query.ClusterReportMigrationStatusFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.clusterUuid = <System.String>
 # REQUIRED
 $inputs.Var.status = @(
@@ -2399,9 +2262,8 @@ $inputs.Var.after = <System.String>
 # OPTIONAL
 $inputs.Var.last = <System.Int32>
 # OPTIONAL
-$inputs.Var.before = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.before = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2417,21 +2279,16 @@ $inputs.Var.before = <System.String>";
                 "query",
                 "QueryClusterReportMigrationCount",
                 "($clusterUuid: UUID,$status: [CdmReportMigrationStatus!]!)",
-                "ReportsMigrationCount"
-                );
-            ReportsMigrationCount? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (ReportsMigrationCount)this.Field;
-            }
-            string fieldSpecDoc = Query.ClusterReportMigrationCount(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "ReportsMigrationCount",
+                Query.ClusterReportMigrationCount_ObjectFieldSpec,
+                Query.ClusterReportMigrationCountFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.clusterUuid = <System.String>
 # REQUIRED
 $inputs.Var.status = @(
 	<CdmReportMigrationStatus> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmReportMigrationStatus]) for enum values.
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2446,17 +2303,12 @@ $inputs.Var.status = @(
                 "query",
                 "QueryClusterReportMigrationJobStatus",
                 "($clusterUuid: UUID)",
-                "ClusterReportMigrationJobStatus"
-                );
-            ClusterReportMigrationJobStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (ClusterReportMigrationJobStatus)this.Field;
-            }
-            string fieldSpecDoc = Query.ClusterReportMigrationJobStatus(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
-$inputs.Var.clusterUuid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "ClusterReportMigrationJobStatus",
+                Query.ClusterReportMigrationJobStatus_ObjectFieldSpec,
+                Query.ClusterReportMigrationJobStatusFieldSpec,
+                @"# OPTIONAL
+$inputs.Var.clusterUuid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2479,23 +2331,18 @@ $inputs.Var.clusterUuid = <System.String>";
                 "query",
                 "QueryClusterSlaDomains",
                 "($first: Int,$after: String,$last: Int,$before: String)",
-                "ClusterSlaDomainConnection"
-                );
-            ClusterSlaDomainConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (ClusterSlaDomainConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.ClusterSlaDomains(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "ClusterSlaDomainConnection",
+                Query.ClusterSlaDomains_ObjectFieldSpec,
+                Query.ClusterSlaDomainsFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
 # OPTIONAL
 $inputs.Var.last = <System.Int32>
 # OPTIONAL
-$inputs.Var.before = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.before = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2511,19 +2358,14 @@ $inputs.Var.before = <System.String>";
                 "query",
                 "QueryVerifySlaWithReplicationToCluster",
                 "($cdmClusterUUID: UUID!,$includeArchived: Boolean!)",
-                "VerifySlaWithReplicationToClusterResponse"
-                );
-            VerifySlaWithReplicationToClusterResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (VerifySlaWithReplicationToClusterResponse)this.Field;
-            }
-            string fieldSpecDoc = Query.VerifySlaWithReplicationToCluster(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "VerifySlaWithReplicationToClusterResponse",
+                Query.VerifySlaWithReplicationToCluster_ObjectFieldSpec,
+                Query.VerifySlaWithReplicationToClusterFieldSpec,
+                @"# REQUIRED
 $inputs.Var.cdmClusterUUID = <System.String>
 # REQUIRED
-$inputs.Var.includeArchived = <System.Boolean>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.includeArchived = <System.Boolean>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2538,17 +2380,12 @@ $inputs.Var.includeArchived = <System.Boolean>";
                 "query",
                 "QueryAllClusterGlobalSlas",
                 "($cdmClusterUUID: UUID!)",
-                "List<SlaInfo>"
-                );
-            List<SlaInfo>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<SlaInfo>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllClusterGlobalSlas(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.cdmClusterUUID = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "List<SlaInfo>",
+                Query.AllClusterGlobalSlas_ObjectFieldSpec,
+                Query.AllClusterGlobalSlasFieldSpec,
+                @"# REQUIRED
+$inputs.Var.cdmClusterUUID = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2562,16 +2399,11 @@ $inputs.Var.cdmClusterUUID = <System.String>";
                 "query",
                 "QueryClusterRegistrationProductInfo",
                 "",
-                "ClusterRegistrationProductInfoType"
-                );
-            ClusterRegistrationProductInfoType? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (ClusterRegistrationProductInfoType)this.Field;
-            }
-            string fieldSpecDoc = Query.ClusterRegistrationProductInfo(ref fieldSpecObj);
-            string inputExample = @"";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "ClusterRegistrationProductInfoType",
+                Query.ClusterRegistrationProductInfo_ObjectFieldSpec,
+                Query.ClusterRegistrationProductInfoFieldSpec,
+                @""
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2586,17 +2418,12 @@ $inputs.Var.cdmClusterUUID = <System.String>";
                 "query",
                 "QueryIsTotpAckNecessaryForCluster",
                 "($clusterUuid: UUID!)",
-                "System.Boolean"
-                );
-            System.Boolean? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (System.Boolean)this.Field;
-            }
-            string fieldSpecDoc = Query.IsTotpAckNecessaryForCluster(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.clusterUuid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "System.Boolean",
+                Query.IsTotpAckNecessaryForCluster_ObjectFieldSpec,
+                Query.IsTotpAckNecessaryForClusterFieldSpec,
+                @"# REQUIRED
+$inputs.Var.clusterUuid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2611,19 +2438,14 @@ $inputs.Var.clusterUuid = <System.String>";
                 "query",
                 "QueryAllClustersTotpAckStatus",
                 "($listClusterUuid: [UUID!]!)",
-                "List<System.Boolean>"
-                );
-            List<System.Boolean>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<System.Boolean>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllClustersTotpAckStatus(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<System.Boolean>",
+                Query.AllClustersTotpAckStatus_ObjectFieldSpec,
+                Query.AllClustersTotpAckStatusFieldSpec,
+                @"# REQUIRED
 $inputs.Var.listClusterUuid = @(
 	<System.String>
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
 

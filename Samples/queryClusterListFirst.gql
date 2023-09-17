@@ -1,0 +1,39 @@
+/*
+Variables:
+{"first":1}
+*/
+query QueryClusterConnection($first: Int,$after: String,$last: Int,$before: String,$filter: ClusterFilterInput,$sortOrder: SortOrder,$sortBy: ClusterSortByEnum)
+{
+  clusterConnection
+  (
+  first: $first
+  after: $after
+  last: $last
+  before: $before
+  filter: $filter
+  sortOrder: $sortOrder
+  sortBy: $sortBy
+  )
+  {
+    count
+    nodes {
+      pauseStatus
+      status
+      subStatus
+      systemStatus
+      type
+      id
+      isHealthy
+      name
+      systemStatusMessage
+      version
+     __typename }
+    pageInfo {
+      endCursor
+      hasNextPage
+      hasPreviousPage
+      startCursor
+     __typename }
+   __typename }
+ __typename }
+

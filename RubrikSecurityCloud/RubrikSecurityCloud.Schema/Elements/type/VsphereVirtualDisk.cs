@@ -313,7 +313,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<VsphereVirtualDisk> list)
+        public static void SelectForRetrieval(this List<VsphereVirtualDisk> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

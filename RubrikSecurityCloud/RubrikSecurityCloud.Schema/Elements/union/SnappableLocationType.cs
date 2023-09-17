@@ -70,7 +70,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<SnappableLocationType> list)
+        public static void SelectForRetrieval(this List<SnappableLocationType> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

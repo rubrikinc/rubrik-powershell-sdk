@@ -151,7 +151,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<MongodbDatabasePhysicalChildType> list)
+        public static void SelectForRetrieval(this List<MongodbDatabasePhysicalChildType> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

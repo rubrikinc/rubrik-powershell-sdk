@@ -253,7 +253,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<VolumeGroupSummary> list)
+        public static void SelectForRetrieval(this List<VolumeGroupSummary> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

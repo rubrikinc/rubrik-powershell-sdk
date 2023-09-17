@@ -181,7 +181,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<NasNamespaceConnection> list)
+        public static void SelectForRetrieval(this List<NasNamespaceConnection> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

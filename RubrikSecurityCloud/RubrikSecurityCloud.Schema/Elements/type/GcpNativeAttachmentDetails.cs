@@ -269,7 +269,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<GcpNativeAttachmentDetails> list)
+        public static void SelectForRetrieval(this List<GcpNativeAttachmentDetails> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

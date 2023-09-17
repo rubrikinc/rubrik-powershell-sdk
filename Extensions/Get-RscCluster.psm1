@@ -126,7 +126,7 @@ function Get-RscCluster {
         else {
             $operation = "List"
         }
-        $in = (Invoke-RscQueryCluster -Op $operation -InputProfile $inputProfile -GetInput)
+        $in = (Invoke-RscQueryCluster -Op $operation -FieldProfile $inputProfile -GetInput)
 
         # -4- Customize input objects:
         if ( $Id ) {

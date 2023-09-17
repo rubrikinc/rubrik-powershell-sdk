@@ -181,7 +181,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<AzureSqlDatabaseDbConnection> list)
+        public static void SelectForRetrieval(this List<AzureSqlDatabaseDbConnection> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

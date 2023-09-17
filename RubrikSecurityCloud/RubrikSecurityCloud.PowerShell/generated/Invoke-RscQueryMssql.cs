@@ -72,12 +72,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <example>
     /// <code>Invoke-RscQueryMssql -LogShippingTargets [-Arg ..] [-Field ..]</code>
     /// </example>
+    [CmdletBinding()]
     [Cmdlet(
         "Invoke",
         "RscQueryMssql",
         DefaultParameterSetName = "Instance")
     ]
-    public class Invoke_RscQueryMssql : RscPSCmdlet
+    public class Invoke_RscQueryMssql : RscGqlPSCmdlet
     {
         
         /// <summary>
@@ -372,6 +373,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 #pragma warning disable 1591
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 switch(Op)
@@ -604,14 +606,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "query",
                 "QueryMssqlTopLevelDescendants",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!],$filter: [Filter!])",
-                "MssqlTopLevelDescendantTypeConnection"
-                );
-            MssqlTopLevelDescendantTypeConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MssqlTopLevelDescendantTypeConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.MssqlTopLevelDescendants(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "MssqlTopLevelDescendantTypeConnection",
+                Query.MssqlTopLevelDescendants_ObjectFieldSpec,
+                Query.MssqlTopLevelDescendantsFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -664,9 +662,8 @@ $inputs.Var.filter = @(
 			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
 		)
 }
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -691,14 +688,10 @@ $inputs.Var.filter = @(
                 "query",
                 "QueryMssqlDatabases",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                "MssqlDatabaseConnection"
-                );
-            MssqlDatabaseConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MssqlDatabaseConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.MssqlDatabases(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "MssqlDatabaseConnection",
+                Query.MssqlDatabases_ObjectFieldSpec,
+                Query.MssqlDatabasesFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -747,9 +740,8 @@ $inputs.Var.filter = @(
 			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
 		)
 }
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -764,17 +756,12 @@ $inputs.Var.filter = @(
                 "query",
                 "QueryMssqlAvailabilityGroup",
                 "($fid: UUID!)",
-                "MssqlAvailabilityGroup"
-                );
-            MssqlAvailabilityGroup? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MssqlAvailabilityGroup)this.Field;
-            }
-            string fieldSpecDoc = Query.MssqlAvailabilityGroup(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "MssqlAvailabilityGroup",
+                Query.MssqlAvailabilityGroup_ObjectFieldSpec,
+                Query.MssqlAvailabilityGroupFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -789,17 +776,12 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryMssqlInstance",
                 "($fid: UUID!)",
-                "MssqlInstance"
-                );
-            MssqlInstance? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MssqlInstance)this.Field;
-            }
-            string fieldSpecDoc = Query.MssqlInstance(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "MssqlInstance",
+                Query.MssqlInstance_ObjectFieldSpec,
+                Query.MssqlInstanceFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -814,17 +796,12 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryMssqlDatabase",
                 "($fid: UUID!)",
-                "MssqlDatabase"
-                );
-            MssqlDatabase? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MssqlDatabase)this.Field;
-            }
-            string fieldSpecDoc = Query.MssqlDatabase(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "MssqlDatabase",
+                Query.MssqlDatabase_ObjectFieldSpec,
+                Query.MssqlDatabaseFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -839,14 +816,10 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryMssqlRecoverableRanges",
                 "($input: GetMssqlDbRecoverableRangesInput!)",
-                "MssqlRecoverableRangeListResponse"
-                );
-            MssqlRecoverableRangeListResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MssqlRecoverableRangeListResponse)this.Field;
-            }
-            string fieldSpecDoc = Query.MssqlRecoverableRanges(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "MssqlRecoverableRangeListResponse",
+                Query.MssqlRecoverableRanges_ObjectFieldSpec,
+                Query.MssqlRecoverableRangesFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	afterTime = <DateTime>
@@ -854,9 +827,8 @@ $inputs.Var.input = @{
 	beforeTime = <DateTime>
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -871,14 +843,10 @@ $inputs.Var.input = @{
                 "query",
                 "QueryMssqlDatabaseMissedSnapshots",
                 "($input: GetMissedMssqlDbSnapshotsInput!)",
-                "MissedSnapshotListResponse"
-                );
-            MissedSnapshotListResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MissedSnapshotListResponse)this.Field;
-            }
-            string fieldSpecDoc = Query.MssqlDatabaseMissedSnapshots(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "MissedSnapshotListResponse",
+                Query.MssqlDatabaseMissedSnapshots_ObjectFieldSpec,
+                Query.MssqlDatabaseMissedSnapshotsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	afterTime = <DateTime>
@@ -886,9 +854,8 @@ $inputs.Var.input = @{
 	beforeTime = <DateTime>
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -903,14 +870,10 @@ $inputs.Var.input = @{
                 "query",
                 "QueryMssqlCompatibleInstances",
                 "($input: GetCompatibleMssqlInstancesV1Input!)",
-                "MssqlInstanceSummaryListResponse"
-                );
-            MssqlInstanceSummaryListResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MssqlInstanceSummaryListResponse)this.Field;
-            }
-            string fieldSpecDoc = Query.MssqlCompatibleInstances(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "MssqlInstanceSummaryListResponse",
+                Query.MssqlCompatibleInstances_ObjectFieldSpec,
+                Query.MssqlCompatibleInstancesFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	recoveryTime = <DateTime>
@@ -918,9 +881,8 @@ $inputs.Var.input = @{
 	recoveryType = <V1GetCompatibleMssqlInstancesV1RequestRecoveryType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1GetCompatibleMssqlInstancesV1RequestRecoveryType]) for enum values.
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -935,14 +897,10 @@ $inputs.Var.input = @{
                 "query",
                 "QueryMssqlDatabaseMissedRecoverableRanges",
                 "($input: GetMssqlDbMissedRecoverableRangesInput!)",
-                "MssqlMissedRecoverableRangeListResponse"
-                );
-            MssqlMissedRecoverableRangeListResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MssqlMissedRecoverableRangeListResponse)this.Field;
-            }
-            string fieldSpecDoc = Query.MssqlDatabaseMissedRecoverableRanges(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "MssqlMissedRecoverableRangeListResponse",
+                Query.MssqlDatabaseMissedRecoverableRanges_ObjectFieldSpec,
+                Query.MssqlDatabaseMissedRecoverableRangesFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	afterTime = <DateTime>
@@ -950,9 +908,8 @@ $inputs.Var.input = @{
 	beforeTime = <DateTime>
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -967,14 +924,10 @@ $inputs.Var.input = @{
                 "query",
                 "QueryAllMssqlDatabaseRestoreFiles",
                 "($input: MssqlGetRestoreFilesV1Input!)",
-                "V1MssqlGetRestoreFilesV1Response"
-                );
-            V1MssqlGetRestoreFilesV1Response? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (V1MssqlGetRestoreFilesV1Response)this.Field;
-            }
-            string fieldSpecDoc = Query.AllMssqlDatabaseRestoreFiles(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "V1MssqlGetRestoreFilesV1Response",
+                Query.AllMssqlDatabaseRestoreFiles_ObjectFieldSpec,
+                Query.AllMssqlDatabaseRestoreFilesFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	lsn = <System.String>
@@ -984,9 +937,8 @@ $inputs.Var.input = @{
 	time = <DateTime>
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1009,14 +961,10 @@ $inputs.Var.input = @{
                 "query",
                 "QueryMssqlDatabaseLiveMounts",
                 "($first: Int,$after: String,$sortBy: MssqlDatabaseLiveMountSortByInput,$filters: [MssqlDatabaseLiveMountFilterInput!])",
-                "MssqlDatabaseLiveMountConnection"
-                );
-            MssqlDatabaseLiveMountConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MssqlDatabaseLiveMountConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.MssqlDatabaseLiveMounts(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "MssqlDatabaseLiveMountConnection",
+                Query.MssqlDatabaseLiveMounts_ObjectFieldSpec,
+                Query.MssqlDatabaseLiveMountsFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -1037,9 +985,8 @@ $inputs.Var.filters = @(
 			<System.String>
 		)
 }
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1054,20 +1001,15 @@ $inputs.Var.filters = @(
                 "query",
                 "QueryMssqlDefaultProperties",
                 "($input: GetDefaultDbPropertiesV1Input!)",
-                "UpdateMssqlDefaultPropertiesReply"
-                );
-            UpdateMssqlDefaultPropertiesReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (UpdateMssqlDefaultPropertiesReply)this.Field;
-            }
-            string fieldSpecDoc = Query.MssqlDefaultProperties(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "UpdateMssqlDefaultPropertiesReply",
+                Query.MssqlDefaultProperties_ObjectFieldSpec,
+                Query.MssqlDefaultPropertiesFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	clusterUuid = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1082,14 +1024,10 @@ $inputs.Var.input = @{
                 "query",
                 "QueryMssqlDatabaseRestoreEstimate",
                 "($input: MssqlRestoreEstimateV1Input!)",
-                "MssqlRestoreEstimateResult"
-                );
-            MssqlRestoreEstimateResult? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MssqlRestoreEstimateResult)this.Field;
-            }
-            string fieldSpecDoc = Query.MssqlDatabaseRestoreEstimate(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "MssqlRestoreEstimateResult",
+                Query.MssqlDatabaseRestoreEstimate_ObjectFieldSpec,
+                Query.MssqlDatabaseRestoreEstimateFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	lsn = <System.String>
@@ -1099,9 +1037,8 @@ $inputs.Var.input = @{
 	time = <DateTime>
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1124,14 +1061,10 @@ $inputs.Var.input = @{
                 "query",
                 "QueryCdmMssqlLogShippingTargets",
                 "($first: Int,$after: String,$sortBy: MssqlLogShippingTargetSortByInput,$filters: [MssqlLogShippingTargetFilterInput!])",
-                "MssqlLogShippingTargetConnection"
-                );
-            MssqlLogShippingTargetConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MssqlLogShippingTargetConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.CdmMssqlLogShippingTargets(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "MssqlLogShippingTargetConnection",
+                Query.CdmMssqlLogShippingTargets_ObjectFieldSpec,
+                Query.CdmMssqlLogShippingTargetsFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -1152,9 +1085,8 @@ $inputs.Var.filters = @(
 			<System.String>
 		)
 }
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1169,17 +1101,12 @@ $inputs.Var.filters = @(
                 "query",
                 "QueryCdmMssqlLogShippingTarget",
                 "($fid: UUID!)",
-                "MssqlLogShippingTarget"
-                );
-            MssqlLogShippingTarget? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MssqlLogShippingTarget)this.Field;
-            }
-            string fieldSpecDoc = Query.CdmMssqlLogShippingTarget(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "MssqlLogShippingTarget",
+                Query.CdmMssqlLogShippingTarget_ObjectFieldSpec,
+                Query.CdmMssqlLogShippingTargetFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1194,14 +1121,10 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryMssqlLogShippingTargets",
                 "($input: QueryLogShippingConfigurationsV2Input!)",
-                "MssqlLogShippingSummaryV2ListResponse"
-                );
-            MssqlLogShippingSummaryV2ListResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MssqlLogShippingSummaryV2ListResponse)this.Field;
-            }
-            string fieldSpecDoc = Query.MssqlLogShippingTargets(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "MssqlLogShippingSummaryV2ListResponse",
+                Query.MssqlLogShippingTargets_ObjectFieldSpec,
+                Query.MssqlLogShippingTargetsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	limit = <System.Int32>
@@ -1223,9 +1146,8 @@ $inputs.Var.input = @{
 	status = <V2QueryLogShippingConfigurationsV2RequestStatus> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V2QueryLogShippingConfigurationsV2RequestStatus]) for enum values.
 	# REQUIRED
 	clusterUuid = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
 

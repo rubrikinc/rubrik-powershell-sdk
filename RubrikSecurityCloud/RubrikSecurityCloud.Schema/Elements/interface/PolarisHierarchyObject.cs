@@ -151,7 +151,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<PolarisHierarchyObject> list)
+        public static void SelectForRetrieval(this List<PolarisHierarchyObject> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

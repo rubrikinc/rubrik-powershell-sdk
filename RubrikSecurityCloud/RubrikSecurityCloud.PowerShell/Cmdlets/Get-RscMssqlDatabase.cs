@@ -90,7 +90,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     listFields = new MssqlDatabaseConnection();
                     listFields.Nodes = new List<MssqlDatabase>();
                     MssqlDatabase fieldsObject = new MssqlDatabase();
-                    fieldsObject.Fetch();
+                    fieldsObject.SelectForRetrieval();
                     listFields.Nodes.Add(fieldsObject);
                 }
 
@@ -106,7 +106,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                             $"$sortOrder: SortOrder, " +
                             $"$filter: [Filter!]" +
                             $"){{\n" +
-                            $"{Query.MssqlDatabases(ref listFields)}" +
+                            $"{Query.MssqlDatabases(listFields)}" +
                             $"\n}}";
 
                         if (string.IsNullOrEmpty(Name))
@@ -161,7 +161,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         if (Fields == null)
                         {
                             detailFields = new MssqlDatabase();
-                            detailFields.Fetch();
+                            detailFields.SelectForRetrieval();
                         }
                         else
                         {
@@ -172,7 +172,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                             $"query MssqlDatabaseByIdQuery(" +
                             $"$fid: UUID!, " +
                             $"){{\n" +
-                            $"{Query.MssqlDatabase(ref detailFields)}" +
+                            $"{Query.MssqlDatabase(detailFields)}" +
                             $"\n}}";
 
                         request.OperationName = "MssqlDatabaseByIdQuery";

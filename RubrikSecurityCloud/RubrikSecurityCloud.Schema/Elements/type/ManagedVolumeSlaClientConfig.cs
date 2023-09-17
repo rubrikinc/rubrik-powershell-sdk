@@ -265,7 +265,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<ManagedVolumeSlaClientConfig> list)
+        public static void SelectForRetrieval(this List<ManagedVolumeSlaClientConfig> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

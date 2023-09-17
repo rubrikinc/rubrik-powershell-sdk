@@ -129,7 +129,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<VcdOrgVdcStorageProfile> list)
+        public static void SelectForRetrieval(this List<VcdOrgVdcStorageProfile> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

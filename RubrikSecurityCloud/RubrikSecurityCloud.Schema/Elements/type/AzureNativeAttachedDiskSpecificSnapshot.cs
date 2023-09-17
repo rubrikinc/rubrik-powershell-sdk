@@ -229,7 +229,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<AzureNativeAttachedDiskSpecificSnapshot> list)
+        public static void SelectForRetrieval(this List<AzureNativeAttachedDiskSpecificSnapshot> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

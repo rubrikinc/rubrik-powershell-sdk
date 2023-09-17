@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<FailoverClusterAppDescendantType> list)
+        public static void SelectForRetrieval(this List<FailoverClusterAppDescendantType> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

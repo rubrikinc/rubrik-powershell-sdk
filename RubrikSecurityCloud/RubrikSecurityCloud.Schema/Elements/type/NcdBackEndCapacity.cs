@@ -109,7 +109,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<NcdBackEndCapacity> list)
+        public static void SelectForRetrieval(this List<NcdBackEndCapacity> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

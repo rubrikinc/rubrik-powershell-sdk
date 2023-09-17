@@ -70,7 +70,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<ReportTableType> list)
+        public static void SelectForRetrieval(this List<ReportTableType> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

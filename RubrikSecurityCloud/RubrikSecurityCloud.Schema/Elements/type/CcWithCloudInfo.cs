@@ -313,7 +313,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<CcWithCloudInfo> list)
+        public static void SelectForRetrieval(this List<CcWithCloudInfo> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

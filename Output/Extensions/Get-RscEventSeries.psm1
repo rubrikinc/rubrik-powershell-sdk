@@ -128,7 +128,7 @@ function Get-RscEventSeries {
       else {
           $operation = "List"
       }
-      $inputs = (Invoke-RscQueryActivitySeries -Op $operation -InputProfile $inputProfile -GetInput)
+      $inputs = (Invoke-RscQueryActivitySeries -Op $operation -FieldProfile $inputProfile -GetInput)
 
       # -4- Customize input objects:
       if ( $Id ) {

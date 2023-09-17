@@ -113,7 +113,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<AwsCloudAccountListVpcResponse> list)
+        public static void SelectForRetrieval(this List<AwsCloudAccountListVpcResponse> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

@@ -96,7 +96,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
             queryObj.InitializeToDefaultValues(0);
 
-            string queryFragment = Query.Snapshot(ref queryObj);
+            string queryFragment = Query.Snapshot(queryObj);
             string queryText = $"query GetSnapshotByIdQuery(" +
                 $"$snapshotFid: UUID!, " +
                 $"$clusterUuid: UUID" +
@@ -160,7 +160,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             queryObj.Nodes.Add(polarisSnapshot);
 
 
-            string queryFragment = Query.SnapshotOfAsnappableConnection(ref queryObj);
+            string queryFragment = Query.SnapshotOfAsnappableConnection(queryObj);
 
             // Build the query header
             string queryText = @"
@@ -205,7 +205,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
             dbQueryObject.CdmSnapshots.Nodes[0].InitializeToDefaultValues(0);
 
-            string queryFragment = Query.MssqlDatabase(ref dbQueryObject);
+            string queryFragment = Query.MssqlDatabase(dbQueryObject);
 
             // Build the query header
             string queryText = @"

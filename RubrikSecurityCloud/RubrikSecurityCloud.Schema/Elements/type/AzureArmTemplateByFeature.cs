@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> ArmTemplateDeploymentLevel? DeploymentLevel
+        // GraphQL -> deploymentLevel: ArmTemplateDeploymentLevel! (enum)
+        [JsonProperty("deploymentLevel")]
+        public ArmTemplateDeploymentLevel? DeploymentLevel { get; set; }
+
         //      C# -> CloudAccountFeature? Feature
         // GraphQL -> feature: CloudAccountFeature! (enum)
         [JsonProperty("feature")]
@@ -35,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("version")]
         public System.Int32? Version { get; set; }
 
+        //      C# -> List<PermissionsGroupWithVersion>? PermissionsGroupVersions
+        // GraphQL -> permissionsGroupVersions: [PermissionsGroupWithVersion!]! (type)
+        [JsonProperty("permissionsGroupVersions")]
+        public List<PermissionsGroupWithVersion>? PermissionsGroupVersions { get; set; }
+
 
         #endregion
 
@@ -45,11 +55,16 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AzureArmTemplateByFeature Set(
+        ArmTemplateDeploymentLevel? DeploymentLevel = null,
         CloudAccountFeature? Feature = null,
         System.String? RoleDefinitionAssignmentTemplate = null,
-        System.Int32? Version = null
+        System.Int32? Version = null,
+        List<PermissionsGroupWithVersion>? PermissionsGroupVersions = null
     ) 
     {
+        if ( DeploymentLevel != null ) {
+            this.DeploymentLevel = DeploymentLevel;
+        }
         if ( Feature != null ) {
             this.Feature = Feature;
         }
@@ -58,6 +73,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Version != null ) {
             this.Version = Version;
+        }
+        if ( PermissionsGroupVersions != null ) {
+            this.PermissionsGroupVersions = PermissionsGroupVersions;
         }
         return this;
     }
@@ -69,6 +87,11 @@ namespace RubrikSecurityCloud.Types
     {
         string ind = new string(' ', indent*2);
         string s = "";
+        //      C# -> ArmTemplateDeploymentLevel? DeploymentLevel
+        // GraphQL -> deploymentLevel: ArmTemplateDeploymentLevel! (enum)
+        if (this.DeploymentLevel != null) {
+            s += ind + "deploymentLevel\n" ;
+        }
         //      C# -> CloudAccountFeature? Feature
         // GraphQL -> feature: CloudAccountFeature! (enum)
         if (this.Feature != null) {
@@ -84,6 +107,14 @@ namespace RubrikSecurityCloud.Types
         if (this.Version != null) {
             s += ind + "version\n" ;
         }
+        //      C# -> List<PermissionsGroupWithVersion>? PermissionsGroupVersions
+        // GraphQL -> permissionsGroupVersions: [PermissionsGroupWithVersion!]! (type)
+        if (this.PermissionsGroupVersions != null) {
+            var fspec = this.PermissionsGroupVersions.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "permissionsGroupVersions {\n" + fspec + ind + "}\n" ;
+            }
+        }
         return s;
     }
 
@@ -91,6 +122,12 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> ArmTemplateDeploymentLevel? DeploymentLevel
+        // GraphQL -> deploymentLevel: ArmTemplateDeploymentLevel! (enum)
+        if (this.DeploymentLevel == null && ec.Includes("deploymentLevel",true))
+        {
+            this.DeploymentLevel = new ArmTemplateDeploymentLevel();
+        }
         //      C# -> CloudAccountFeature? Feature
         // GraphQL -> feature: CloudAccountFeature! (enum)
         if (this.Feature == null && ec.Includes("feature",true))
@@ -108,6 +145,13 @@ namespace RubrikSecurityCloud.Types
         if (this.Version == null && ec.Includes("version",true))
         {
             this.Version = Int32.MinValue;
+        }
+        //      C# -> List<PermissionsGroupWithVersion>? PermissionsGroupVersions
+        // GraphQL -> permissionsGroupVersions: [PermissionsGroupWithVersion!]! (type)
+        if (this.PermissionsGroupVersions == null && ec.Includes("permissionsGroupVersions",false))
+        {
+            this.PermissionsGroupVersions = new List<PermissionsGroupWithVersion>();
+            this.PermissionsGroupVersions.ApplyExploratoryFieldSpec(ec.NewChild("permissionsGroupVersions"));
         }
     }
 
@@ -149,7 +193,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<AzureArmTemplateByFeature> list)
+        public static void SelectForRetrieval(this List<AzureArmTemplateByFeature> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

@@ -39,6 +39,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "O365")]
         O365,
 
+        [EnumMember(Value = "ONPREM_AD")]
+        ONPREM_AD,
+
         [EnumMember(Value = "RADAR")]
         RADAR,
 

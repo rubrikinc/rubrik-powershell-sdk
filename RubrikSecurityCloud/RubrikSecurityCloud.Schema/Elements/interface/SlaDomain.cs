@@ -101,7 +101,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<SlaDomain> list)
+        public static void SelectForRetrieval(this List<SlaDomain> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

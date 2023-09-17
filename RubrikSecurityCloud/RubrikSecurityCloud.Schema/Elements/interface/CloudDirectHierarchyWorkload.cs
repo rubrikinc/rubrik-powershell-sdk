@@ -156,7 +156,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<CloudDirectHierarchyWorkload> list)
+        public static void SelectForRetrieval(this List<CloudDirectHierarchyWorkload> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

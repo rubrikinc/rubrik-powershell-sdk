@@ -678,7 +678,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<VsphereTagCategory> list)
+        public static void SelectForRetrieval(this List<VsphereTagCategory> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

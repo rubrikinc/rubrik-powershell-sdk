@@ -109,7 +109,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<DlpStatus> list)
+        public static void SelectForRetrieval(this List<DlpStatus> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

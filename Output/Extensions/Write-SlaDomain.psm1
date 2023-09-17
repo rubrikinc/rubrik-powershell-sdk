@@ -123,7 +123,7 @@ function Write-SlaDomain
   }
 
   Process {
-    $inputs = Invoke-RscMutateSla -Op $operation -InputProfile $inputProfile -GetInput
+    $inputs = Invoke-RscMutateSla -Op $operation -FieldProfile $inputProfile -GetInput
 
     # -4- Customize inputs
     $inputValues = @{

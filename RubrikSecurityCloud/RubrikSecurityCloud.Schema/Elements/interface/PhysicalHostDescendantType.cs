@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<PhysicalHostDescendantType> list)
+        public static void SelectForRetrieval(this List<PhysicalHostDescendantType> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

@@ -838,7 +838,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<MongoCollection> list)
+        public static void SelectForRetrieval(this List<MongoCollection> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

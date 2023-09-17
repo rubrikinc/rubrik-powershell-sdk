@@ -136,7 +136,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<GenericSnapshot> list)
+        public static void SelectForRetrieval(this List<GenericSnapshot> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

@@ -173,7 +173,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<VappAppMetadata> list)
+        public static void SelectForRetrieval(this List<VappAppMetadata> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

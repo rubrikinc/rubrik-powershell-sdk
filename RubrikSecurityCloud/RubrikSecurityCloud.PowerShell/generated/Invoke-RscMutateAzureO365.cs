@@ -27,12 +27,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <example>
     /// <code>Invoke-RscMutateAzureO365 -SetupExocompute [-Arg ..] [-Field ..]</code>
     /// </example>
+    [CmdletBinding()]
     [Cmdlet(
         "Invoke",
         "RscMutateAzureO365",
         DefaultParameterSetName = "SetupExocompute")
     ]
-    public class Invoke_RscMutateAzureO365 : RscPSCmdlet
+    public class Invoke_RscMutateAzureO365 : RscGqlPSCmdlet
     {
         
         /// <summary>
@@ -57,6 +58,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 #pragma warning disable 1591
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 switch(Op)
@@ -99,14 +101,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "mutation",
                 "MutationSetupAzureO365Exocompute",
                 "($tenantId: String!,$subscriptionId: UUID!,$exocomputeConfig: AzureO365ExocomputeConfig!)",
-                "SetupAzureO365ExocomputeResp"
-                );
-            SetupAzureO365ExocomputeResp? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (SetupAzureO365ExocomputeResp)this.Field;
-            }
-            string fieldSpecDoc = Mutation.SetupAzureO365Exocompute(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "SetupAzureO365ExocomputeResp",
+                Mutation.SetupAzureO365Exocompute_ObjectFieldSpec,
+                Mutation.SetupAzureO365ExocomputeFieldSpec,
+                @"# REQUIRED
 $inputs.Var.tenantId = <System.String>
 # REQUIRED
 $inputs.Var.subscriptionId = <System.String>
@@ -169,9 +167,8 @@ $inputs.Var.exocomputeConfig = @{
 		# OPTIONAL
 		id = <System.String>
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
 

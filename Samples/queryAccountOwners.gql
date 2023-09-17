@@ -1,0 +1,17 @@
+/*
+Variables:
+{}
+*/
+query QueryAllAccountOwners
+{
+  allAccountOwners
+  {
+    status
+    email
+    id
+    isAccountOwner
+    isHidden
+    username
+   __typename }
+ __typename }
+

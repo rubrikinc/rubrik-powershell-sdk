@@ -129,7 +129,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<AzureNativeExportCompatibleVmSizes> list)
+        public static void SelectForRetrieval(this List<AzureNativeExportCompatibleVmSizes> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

@@ -117,12 +117,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <example>
     /// <code>Invoke-RscMutateO365 -UpdateOrgCustomName [-Arg ..] [-Field ..]</code>
     /// </example>
+    [CmdletBinding()]
     [Cmdlet(
         "Invoke",
         "RscMutateO365",
         DefaultParameterSetName = "AddOrg")
     ]
-    public class Invoke_RscMutateO365 : RscPSCmdlet
+    public class Invoke_RscMutateO365 : RscGqlPSCmdlet
     {
         
         /// <summary>
@@ -687,6 +688,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 #pragma warning disable 1591
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 switch(Op)
@@ -1086,16 +1088,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "mutation",
                 "MutationO365SaaSsetupKickoff",
                 "",
-                "O365SaasSetupKickoffReply"
-                );
-            O365SaasSetupKickoffReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (O365SaasSetupKickoffReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.O365SaaSsetupKickoff(ref fieldSpecObj);
-            string inputExample = @"";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "O365SaasSetupKickoffReply",
+                Mutation.O365SaaSsetupKickoff_ObjectFieldSpec,
+                Mutation.O365SaaSsetupKickoffFieldSpec,
+                @""
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1110,14 +1107,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "mutation",
                 "MutationO365PdlGroups",
                 "($input: O365PdlGroupsInput!)",
-                "O365PdlGroupsReply"
-                );
-            O365PdlGroupsReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (O365PdlGroupsReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.O365PdlGroups(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "O365PdlGroupsReply",
+                Mutation.O365PdlGroups_ObjectFieldSpec,
+                Mutation.O365PdlGroupsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	orgId = <System.String>
@@ -1130,9 +1123,8 @@ $inputs.Var.input = @{
 			workload = <WorkloadLevelHierarchy> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
 		}
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1147,14 +1139,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationO365SaasSetupComplete",
                 "($input: O365SaasSetupCompleteInput!)",
-                "AddO365OrgResponse"
-                );
-            AddO365OrgResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AddO365OrgResponse)this.Field;
-            }
-            string fieldSpecDoc = Mutation.O365SaasSetupComplete(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AddO365OrgResponse",
+                Mutation.O365SaasSetupComplete_ObjectFieldSpec,
+                Mutation.O365SaasSetupCompleteFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	tenantId = <System.String>
@@ -1185,9 +1173,8 @@ $inputs.Var.input = @{
 	}
 	# REQUIRED
 	storeBackupInSameRegionAsData = <System.Boolean>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1201,16 +1188,11 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationO365SetupKickoff",
                 "",
-                "O365SetupKickoffResp"
-                );
-            O365SetupKickoffResp? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (O365SetupKickoffResp)this.Field;
-            }
-            string fieldSpecDoc = Mutation.O365SetupKickoff(ref fieldSpecObj);
-            string inputExample = @"";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "O365SetupKickoffResp",
+                Mutation.O365SetupKickoff_ObjectFieldSpec,
+                Mutation.O365SetupKickoffFieldSpec,
+                @""
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1225,14 +1207,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationAddO365Org",
                 "($input: AddO365OrgInput!)",
-                "AddO365OrgResponse"
-                );
-            AddO365OrgResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AddO365OrgResponse)this.Field;
-            }
-            string fieldSpecDoc = Mutation.AddO365Org(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AddO365OrgResponse",
+                Mutation.AddO365Org_ObjectFieldSpec,
+                Mutation.AddO365OrgFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	tenantId = <System.String>
@@ -1244,9 +1222,8 @@ $inputs.Var.input = @{
 	appTypes = @(
 		<System.String>
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1261,22 +1238,17 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationO365OauthConsentKickoff",
                 "($input: O365OauthConsentKickoffInput!)",
-                "O365OauthConsentKickoffReply"
-                );
-            O365OauthConsentKickoffReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (O365OauthConsentKickoffReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.O365OauthConsentKickoff(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "O365OauthConsentKickoffReply",
+                Mutation.O365OauthConsentKickoff_ObjectFieldSpec,
+                Mutation.O365OauthConsentKickoffFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	orgId = <System.String>
 	# REQUIRED
 	appType = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1291,14 +1263,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationO365OauthConsentComplete",
                 "($input: O365OauthConsentCompleteInput!)",
-                "O365OauthConsentCompleteReply"
-                );
-            O365OauthConsentCompleteReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (O365OauthConsentCompleteReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.O365OauthConsentComplete(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "O365OauthConsentCompleteReply",
+                Mutation.O365OauthConsentComplete_ObjectFieldSpec,
+                Mutation.O365OauthConsentCompleteFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	tenantId = <System.String>
@@ -1310,9 +1278,8 @@ $inputs.Var.input = @{
 	redirectUrl = <System.String>
 	# REQUIRED
 	resourceNaturalId = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1327,22 +1294,17 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationCreateO365AppKickoff",
                 "($input: CreateO365AppKickoffInput!)",
-                "CreateO365AppKickoffResp"
-                );
-            CreateO365AppKickoffResp? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CreateO365AppKickoffResp)this.Field;
-            }
-            string fieldSpecDoc = Mutation.CreateO365AppKickoff(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "CreateO365AppKickoffResp",
+                Mutation.CreateO365AppKickoff_ObjectFieldSpec,
+                Mutation.CreateO365AppKickoffFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	orgId = <System.String>
 	# REQUIRED
 	appType = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1357,14 +1319,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationCreateO365AppComplete",
                 "($input: CreateO365AppCompleteInput!)",
-                "RequestStatus"
-                );
-            RequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (RequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.CreateO365AppComplete(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "RequestStatus",
+                Mutation.CreateO365AppComplete_ObjectFieldSpec,
+                Mutation.CreateO365AppCompleteFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	appClientId = <System.String>
@@ -1372,9 +1330,8 @@ $inputs.Var.input = @{
 	stateToken = <System.String>
 	# REQUIRED
 	tenantId = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1389,14 +1346,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationInsertCustomerO365App",
                 "($input: InsertCustomerO365AppInput!)",
-                "RequestStatus"
-                );
-            RequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (RequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.InsertCustomerO365App(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "RequestStatus",
+                Mutation.InsertCustomerO365App_ObjectFieldSpec,
+                Mutation.InsertCustomerO365AppFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	appType = <System.String>
@@ -1410,9 +1363,8 @@ $inputs.Var.input = @{
 	base64AppCertificate = <System.String>
 	# OPTIONAL
 	base64AppPrivateKey = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1427,22 +1379,17 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationUpdateO365AppAuthStatus",
                 "($input: UpdateO365AppAuthStatusInput!)",
-                "UpdateO365AppAuthStatusReply"
-                );
-            UpdateO365AppAuthStatusReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (UpdateO365AppAuthStatusReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UpdateO365AppAuthStatus(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "UpdateO365AppAuthStatusReply",
+                Mutation.UpdateO365AppAuthStatus_ObjectFieldSpec,
+                Mutation.UpdateO365AppAuthStatusFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	o365OrgId = <System.String>
 	# REQUIRED
 	o365AppId = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1457,22 +1404,17 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationUpdateO365AppPermissions",
                 "($input: UpdateO365AppPermissionsInput!)",
-                "System.String"
-                );
-            System.String? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (System.String)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UpdateO365AppPermissions(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "System.String",
+                Mutation.UpdateO365AppPermissions_ObjectFieldSpec,
+                Mutation.UpdateO365AppPermissionsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	o365AppType = <O365AppType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365AppType]) for enum values.
 	# REQUIRED
 	o365AppId = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1488,19 +1430,14 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationDeleteO365AzureApp",
                 "($o365AppClientId: String!,$o365AppType: String!)",
-                "RequestStatus"
-                );
-            RequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (RequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DeleteO365AzureApp(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "RequestStatus",
+                Mutation.DeleteO365AzureApp_ObjectFieldSpec,
+                Mutation.DeleteO365AzureAppFieldSpec,
+                @"# REQUIRED
 $inputs.Var.o365AppClientId = <System.String>
 # REQUIRED
-$inputs.Var.o365AppType = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.o365AppType = <System.String>"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1515,19 +1452,14 @@ $inputs.Var.o365AppType = <System.String>";
                 "mutation",
                 "MutationBackupO365Mailbox",
                 "($mailboxIds: [UUID!]!)",
-                "BatchAsyncJobStatus"
-                );
-            BatchAsyncJobStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (BatchAsyncJobStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.BackupO365Mailbox(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "BatchAsyncJobStatus",
+                Mutation.BackupO365Mailbox_ObjectFieldSpec,
+                Mutation.BackupO365MailboxFieldSpec,
+                @"# REQUIRED
 $inputs.Var.mailboxIds = @(
 	<System.String>
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1542,22 +1474,17 @@ $inputs.Var.mailboxIds = @(
                 "mutation",
                 "MutationBackupO365Onedrive",
                 "($input: BackupO365OnedriveInput!)",
-                "BatchAsyncJobStatus"
-                );
-            BatchAsyncJobStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (BatchAsyncJobStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.BackupO365Onedrive(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "BatchAsyncJobStatus",
+                Mutation.BackupO365Onedrive_ObjectFieldSpec,
+                Mutation.BackupO365OnedriveFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	snappableUuids = @(
 		<System.String>
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1572,22 +1499,17 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationBackupO365SharepointDrive",
                 "($input: BackupO365SharepointDriveInput!)",
-                "BatchAsyncJobStatus"
-                );
-            BatchAsyncJobStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (BatchAsyncJobStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.BackupO365SharepointDrive(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "BatchAsyncJobStatus",
+                Mutation.BackupO365SharepointDrive_ObjectFieldSpec,
+                Mutation.BackupO365SharepointDriveFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	snappableUuids = @(
 		<System.String>
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1602,20 +1524,15 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationBackupO365SharepointList",
                 "($input: BackupO365SharePointListInput!)",
-                "CreateOnDemandJobReply"
-                );
-            CreateOnDemandJobReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CreateOnDemandJobReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.BackupO365SharepointList(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "CreateOnDemandJobReply",
+                Mutation.BackupO365SharepointList_ObjectFieldSpec,
+                Mutation.BackupO365SharepointListFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	snappableUuid = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1630,20 +1547,15 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationBackupO365SharePointSite",
                 "($input: BackupO365SharePointSiteInput!)",
-                "CreateOnDemandJobReply"
-                );
-            CreateOnDemandJobReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CreateOnDemandJobReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.BackupO365SharePointSite(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "CreateOnDemandJobReply",
+                Mutation.BackupO365SharePointSite_ObjectFieldSpec,
+                Mutation.BackupO365SharePointSiteFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	siteFid = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1658,22 +1570,17 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationBackupO365Team",
                 "($input: BackupO365TeamInput!)",
-                "BatchAsyncJobStatus"
-                );
-            BatchAsyncJobStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (BatchAsyncJobStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.BackupO365Team(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "BatchAsyncJobStatus",
+                Mutation.BackupO365Team_ObjectFieldSpec,
+                Mutation.BackupO365TeamFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	snappableUuids = @(
 		<System.String>
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1688,14 +1595,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationRestoreO365TeamsFiles",
                 "($input: RestoreO365TeamsFilesInput!)",
-                "CreateOnDemandJobReply"
-                );
-            CreateOnDemandJobReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CreateOnDemandJobReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.RestoreO365TeamsFiles(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "CreateOnDemandJobReply",
+                Mutation.RestoreO365TeamsFiles_ObjectFieldSpec,
+                Mutation.RestoreO365TeamsFilesFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	filesToRestore = @(
@@ -1787,9 +1690,8 @@ $inputs.Var.input = @{
 	recoverWithLatestPermissions = <System.Boolean>
 	# REQUIRED
 	snapshotSequenceNum = <System.Int32>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1804,14 +1706,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationRestoreO365TeamsConversations",
                 "($input: RestoreO365TeamsConversationsInput!)",
-                "CreateOnDemandJobReply"
-                );
-            CreateOnDemandJobReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CreateOnDemandJobReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.RestoreO365TeamsConversations(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "CreateOnDemandJobReply",
+                Mutation.RestoreO365TeamsConversations_ObjectFieldSpec,
+                Mutation.RestoreO365TeamsConversationsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	teamUuid = <System.String>
@@ -1896,9 +1794,8 @@ $inputs.Var.input = @{
 	recoverWithLatestPermissions = <System.Boolean>
 	# REQUIRED
 	snapshotSequenceNum = <System.Int32>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1913,14 +1810,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationRestoreO365Snappable",
                 "($input: RestoreO365SnappableInput!)",
-                "CreateOnDemandJobReply"
-                );
-            CreateOnDemandJobReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CreateOnDemandJobReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.RestoreO365Snappable(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "CreateOnDemandJobReply",
+                Mutation.RestoreO365Snappable_ObjectFieldSpec,
+                Mutation.RestoreO365SnappableFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	snappableType = <SnappableType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnappableType]) for enum values.
@@ -2477,9 +2370,8 @@ $inputs.Var.input = @{
 	}
 	# REQUIRED
 	actionType = <O365RestoreActionType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365RestoreActionType]) for enum values.
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2494,17 +2386,12 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationRefreshO365Org",
                 "($orgId: UUID!)",
-                "CreateOnDemandJobReply"
-                );
-            CreateOnDemandJobReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CreateOnDemandJobReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.RefreshO365Org(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.orgId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "CreateOnDemandJobReply",
+                Mutation.RefreshO365Org_ObjectFieldSpec,
+                Mutation.RefreshO365OrgFieldSpec,
+                @"# REQUIRED
+$inputs.Var.orgId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2519,17 +2406,12 @@ $inputs.Var.orgId = <System.String>";
                 "mutation",
                 "MutationDeleteO365Org",
                 "($orgId: UUID!)",
-                "CreateOnDemandJobReply"
-                );
-            CreateOnDemandJobReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CreateOnDemandJobReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DeleteO365Org(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.orgId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "CreateOnDemandJobReply",
+                Mutation.DeleteO365Org_ObjectFieldSpec,
+                Mutation.DeleteO365OrgFieldSpec,
+                @"# REQUIRED
+$inputs.Var.orgId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2544,14 +2426,10 @@ $inputs.Var.orgId = <System.String>";
                 "mutation",
                 "MutationRestoreO365Mailbox",
                 "($restoreConfig: RestoreO365MailboxInput!)",
-                "CreateOnDemandJobReply"
-                );
-            CreateOnDemandJobReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CreateOnDemandJobReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.RestoreO365Mailbox(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "CreateOnDemandJobReply",
+                Mutation.RestoreO365Mailbox_ObjectFieldSpec,
+                Mutation.RestoreO365MailboxFieldSpec,
+                @"# REQUIRED
 $inputs.Var.restoreConfig = @{
 	# OPTIONAL
 	orgUuid = <System.String>
@@ -2572,9 +2450,8 @@ $inputs.Var.restoreConfig = @{
 	)
 	# REQUIRED
 	actionType = <O365RestoreActionType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365RestoreActionType]) for enum values.
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2589,14 +2466,10 @@ $inputs.Var.restoreConfig = @{
                 "mutation",
                 "MutationExportO365Mailbox",
                 "($exportConfig: ExportO365MailboxInput!)",
-                "CreateOnDemandJobReply"
-                );
-            CreateOnDemandJobReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CreateOnDemandJobReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.ExportO365Mailbox(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "CreateOnDemandJobReply",
+                Mutation.ExportO365Mailbox_ObjectFieldSpec,
+                Mutation.ExportO365MailboxFieldSpec,
+                @"# REQUIRED
 $inputs.Var.exportConfig = @{
 	# OPTIONAL
 	orgUuid = <System.String>
@@ -2617,9 +2490,8 @@ $inputs.Var.exportConfig = @{
 			FolderID = <System.String>
 		}
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2636,21 +2508,16 @@ $inputs.Var.exportConfig = @{
                 "mutation",
                 "MutationSetO365ServiceAccount",
                 "($username: String!,$appPassword: String!,$orgId: UUID!)",
-                "RequestStatus"
-                );
-            RequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (RequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.SetO365ServiceAccount(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "RequestStatus",
+                Mutation.SetO365ServiceAccount_ObjectFieldSpec,
+                Mutation.SetO365ServiceAccountFieldSpec,
+                @"# REQUIRED
 $inputs.Var.username = <System.String>
 # REQUIRED
 $inputs.Var.appPassword = <System.String>
 # REQUIRED
-$inputs.Var.orgId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.orgId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2665,20 +2532,15 @@ $inputs.Var.orgId = <System.String>";
                 "mutation",
                 "MutationEnableO365SharePoint",
                 "($input: EnableO365SharePointInput!)",
-                "RequestStatus"
-                );
-            RequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (RequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.EnableO365SharePoint(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "RequestStatus",
+                Mutation.EnableO365SharePoint_ObjectFieldSpec,
+                Mutation.EnableO365SharePointFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	exocomputeClusterId = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2693,17 +2555,12 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationEnableO365Teams",
                 "($exocomputeClusterId: String!)",
-                "RequestStatus"
-                );
-            RequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (RequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.EnableO365Teams(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.exocomputeClusterId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "RequestStatus",
+                Mutation.EnableO365Teams_ObjectFieldSpec,
+                Mutation.EnableO365TeamsFieldSpec,
+                @"# REQUIRED
+$inputs.Var.exocomputeClusterId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2718,17 +2575,12 @@ $inputs.Var.exocomputeClusterId = <System.String>";
                 "mutation",
                 "MutationDeleteO365ServiceAccount",
                 "($orgId: UUID!)",
-                "RequestStatus"
-                );
-            RequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (RequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DeleteO365ServiceAccount(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.orgId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "RequestStatus",
+                Mutation.DeleteO365ServiceAccount_ObjectFieldSpec,
+                Mutation.DeleteO365ServiceAccountFieldSpec,
+                @"# REQUIRED
+$inputs.Var.orgId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -2743,22 +2595,17 @@ $inputs.Var.orgId = <System.String>";
                 "mutation",
                 "MutationUpdateO365OrgCustomName",
                 "($input: UpdateO365OrgCustomNameInput!)",
-                "UpdateO365OrgCustomNameReply"
-                );
-            UpdateO365OrgCustomNameReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (UpdateO365OrgCustomNameReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UpdateO365OrgCustomName(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "UpdateO365OrgCustomNameReply",
+                Mutation.UpdateO365OrgCustomName_ObjectFieldSpec,
+                Mutation.UpdateO365OrgCustomNameFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	orgUuid = <System.String>
 	# REQUIRED
 	customName = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
 

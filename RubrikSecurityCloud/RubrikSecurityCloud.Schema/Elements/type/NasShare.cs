@@ -886,7 +886,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<NasShare> list)
+        public static void SelectForRetrieval(this List<NasShare> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

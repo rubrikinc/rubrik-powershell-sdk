@@ -361,7 +361,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<MssqlDatabaseLiveMount> list)
+        public static void SelectForRetrieval(this List<MssqlDatabaseLiveMount> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

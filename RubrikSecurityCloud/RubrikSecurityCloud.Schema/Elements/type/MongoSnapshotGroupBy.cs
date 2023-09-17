@@ -162,7 +162,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<MongoSnapshotGroupBy> list)
+        public static void SelectForRetrieval(this List<MongoSnapshotGroupBy> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

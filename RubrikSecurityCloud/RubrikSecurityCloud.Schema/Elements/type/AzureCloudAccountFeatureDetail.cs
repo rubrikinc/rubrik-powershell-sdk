@@ -245,7 +245,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<AzureCloudAccountFeatureDetail> list)
+        public static void SelectForRetrieval(this List<AzureCloudAccountFeatureDetail> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

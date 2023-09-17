@@ -221,7 +221,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                             $"$sortOrder: SortOrder, " +
                             $"$filter: [Filter!]" +
                             $"){{\n" +
-                            $"{Query.PhysicalHost(ref nodeObj)}" +
+                            $"{Query.PhysicalHost(nodeObj)}" +
                             $"\n}}";
 
                         listQueryString = listQueryString.Replace("physicalChildConnection",

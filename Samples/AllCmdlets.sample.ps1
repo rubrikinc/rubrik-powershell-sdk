@@ -10842,6 +10842,16 @@ $inputs.Var.input = @{
 			# OPTIONAL
 			continuousBackupRetentionInDays = <System.Int32>
 		}
+		# OPTIONAL
+		managedVolumeSlaConfigInput = @{
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
 	}
 	# OPTIONAL
 	archivalSpecs = @(
@@ -11336,6 +11346,16 @@ $inputs.Var.input = @{
 			archivalLocationId = <System.String>
 			# OPTIONAL
 			continuousBackupRetentionInDays = <System.Int32>
+		}
+		# OPTIONAL
+		managedVolumeSlaConfigInput = @{
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = <System.Int32>
+				# OPTIONAL
+				unit = <RetentionUnit> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
 		}
 	}
 	# OPTIONAL
@@ -17021,6 +17041,17 @@ $inputs.Var.input = @{
 	operationType = <CloudAccountOperation> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountOperation]) for enum values.
 	# REQUIRED
 	cloudType = <AzureCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
+	# OPTIONAL
+	featuresToInclude = @(
+		@{
+			# OPTIONAL
+			permissionsGroups = @(
+				<PermissionsGroup> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+			)
+			# REQUIRED
+			featureType = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+		}
+	)
 }
 "@
     Write-Message "Invoke-RscQueryAzure -AllArmTemplatesByFeature" @"
@@ -24096,71 +24127,6 @@ $inputs.Var.fid = <System.String>
     Write-Message "Invoke-RscQuerySla -ManagedVolume" @"
     Details of a SLA Managed Volume object.
 "@ "[GraphQL: slaManagedVolume]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscQuerySla -ClusterDomains
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscQuerySla -ClusterDomains -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscQuerySla -ClusterDomains -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # OPTIONAL
-$inputs.Var.first = <System.Int32>
-# OPTIONAL
-$inputs.Var.after = <System.String>
-# OPTIONAL
-$inputs.Var.last = <System.Int32>
-# OPTIONAL
-$inputs.Var.before = <System.String>
-"@
-    Write-Message "Invoke-RscQuerySla -ClusterDomains" @"
-    Returns paginated list of SLA domains that were created on Rubrik CDM.
-"@ "[GraphQL: clusterSlaDomains]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscQuerySla -VerifyWithReplicationToCluster
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscQuerySla -VerifyWithReplicationToCluster -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscQuerySla -VerifyWithReplicationToCluster -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.cdmClusterUUID = <System.String>
-# REQUIRED
-$inputs.Var.includeArchived = <System.Boolean>
-"@
-    Write-Message "Invoke-RscQuerySla -VerifyWithReplicationToCluster" @"
-    Verify for a Rubrik cluster if it is replication target in any SLA Domain.
-"@ "[GraphQL: verifySlaWithReplicationToCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-}
-
-# -------------------------------------------------------------------
-# Invoke-RscQuerySla -AllClusterGlobals
-# -------------------------------------------------------------------
-
-if ($GetGqlRequest) {
-    (Invoke-RscQuerySla -AllClusterGlobals -GetGqlRequest).SaveQueryToFile()
-} else {
-    $inputs = Invoke-RscQuerySla -AllClusterGlobals -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
-    Write-Message @"
-    # REQUIRED
-$inputs.Var.cdmClusterUUID = <System.String>
-"@
-    Write-Message "Invoke-RscQuerySla -AllClusterGlobals" @"
-    Global SLA Domains protecting at least one object on the specified Rubrik cluster.
-"@ "[GraphQL: allClusterGlobalSlas]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------

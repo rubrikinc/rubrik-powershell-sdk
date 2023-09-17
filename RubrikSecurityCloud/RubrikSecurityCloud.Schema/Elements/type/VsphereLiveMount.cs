@@ -409,7 +409,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<VsphereLiveMount> list)
+        public static void SelectForRetrieval(this List<VsphereLiveMount> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

@@ -5,9 +5,11 @@ DB class of an RDS instance.
 - DB_M6G_12XLARGE - DB class is db.m6g.12xlarge.
 - DB_T3_MEDIUM - DB class is db.t3.medium.
 - DB_X2G_XLARGE - DB class is db.x2g.xlarge.
+- DB_R6GD_2XLARGE - DB class is db.r6gd.2xlarge.
 - DB_T4G_MICRO - DB class is db.t4g.micro.
 - DB_R5B_8XLARGE - DB class is db.r5b.8xlarge.
 - DB_M5D_12XLARGE - DB class is db.m5d.12xlarge.
+- DB_R6GD_LARGE - DB class is db.r6gd.large.
 - DB_R6G_12XLARGE - DB class is db.r6g.12xlarge.
 - DB_M5_LARGE - DB class is db.m5.large.
 - DB_R6G_4XLARGE - DB class is db.r6g.4xlarge.
@@ -31,6 +33,7 @@ DB class of an RDS instance.
 - DB_M6I_8XLARGE - DB class is db.m6i.8xlarge.
 - DB_M6G_4XLARGE - DB class is db.m6g.4xlarge.
 - DB_T3_SMALL - DB class is db.t3.small.
+- DB_R6GD_8XLARGE - DB class is db.r6gd.8xlarge.
 - DB_R6I_32XLARGE - DB class is db.r6i.32xlarge.
 - DB_M1_LARGE - DB class is db.m1.large.
 - DB_M4_2XLARGE - DB class is db.m4.2xlarge.
@@ -74,8 +77,10 @@ DB class of an RDS instance.
 - DB_T3_LARGE - DB class is db.t3.large.
 - DB_M6G_2XLARGE - DB class is db.m6g.2xlarge.
 - DB_M6I_LARGE - DB class is db.m6i.large.
+- DB_R6GD_XLARGE - DB class is db.r6gd.xlarge.
 - DB_R5D_XLARGE - DB class is db.r5d.xlarge.
 - DB_X1E_8XLARGE - DB class is db.x1e.8xlarge.
+- DB_R6GD_16XLARGE - DB class is db.r6gd.16xlarge.
 - DB_R6I_LARGE - DB class is db.r6i.large.
 - DB_R5D_24XLARGE - DB class is db.r5d.24xlarge.
 - DB_T4G_MEDIUM - DB class is db.t4g.medium.
@@ -94,9 +99,11 @@ DB class of an RDS instance.
 - DB_R6I_4XLARGE - DB class is db.r6i.4xlarge.
 - DB_R6I_12XLARGE - DB class is db.r6i.12xlarge.
 - DB_M2_XLARGE - DB class is db.m2.xlarge.
+- DB_R6GD_4XLARGE - DB class is db.r6gd.4xlarge.
 - DB_X2G_12XLARGE - DB class is db.x2g.12xlarge.
 - DB_Z1D_2XLARGE - DB class is db.z1d.2xlarge.
 - DB_R4_2XLARGE - DB class is db.r4.2xlarge.
+- DB_R6GD_12XLARGE - DB class is db.r6gd.12xlarge.
 - DB_M1_MEDIUM - DB class is db.m1.medium.
 - DB_M1_SMALL - DB class is db.m1.small.
 - DB_M5_XLARGE - DB class is db.m5.xlarge.

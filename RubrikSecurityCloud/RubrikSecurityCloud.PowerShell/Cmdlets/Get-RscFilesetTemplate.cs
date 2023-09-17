@@ -153,7 +153,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                             $"$sortOrder: SortOrder, " +
                             $"$filter: [Filter!]" +
                             $"){{\n" +
-                            $"{Query.FilesetTemplates(ref listQuery)}" +
+                            $"{Query.FilesetTemplates(listQuery)}" +
                             $"\n}}";
 
                         string hostRoot = $"{OsType.ToUpper()}_HOST_ROOT";
@@ -215,7 +215,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         string hostQueryText = $"query FilesetTemplateById(" +
                             $"$fid: UUID!)" +
                             $"{{\n" +
-                            $"{Query.FilesetTemplate(ref nodeObj)}" +
+                            $"{Query.FilesetTemplate(nodeObj)}" +
                             $"\n}}";
 
                         // Initialize the variableset

@@ -153,7 +153,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<CloudNativeRegion> list)
+        public static void SelectForRetrieval(this List<CloudNativeRegion> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

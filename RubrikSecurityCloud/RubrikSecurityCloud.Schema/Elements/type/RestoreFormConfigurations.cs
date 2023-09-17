@@ -473,7 +473,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<RestoreFormConfigurations> list)
+        public static void SelectForRetrieval(this List<RestoreFormConfigurations> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

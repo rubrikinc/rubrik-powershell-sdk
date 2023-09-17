@@ -381,7 +381,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<Webhook> list)
+        public static void SelectForRetrieval(this List<Webhook> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

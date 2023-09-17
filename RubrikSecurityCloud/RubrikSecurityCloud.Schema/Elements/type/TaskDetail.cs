@@ -849,7 +849,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<TaskDetail> list)
+        public static void SelectForRetrieval(this List<TaskDetail> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

@@ -193,7 +193,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<SnmpConfiguration> list)
+        public static void SelectForRetrieval(this List<SnmpConfiguration> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

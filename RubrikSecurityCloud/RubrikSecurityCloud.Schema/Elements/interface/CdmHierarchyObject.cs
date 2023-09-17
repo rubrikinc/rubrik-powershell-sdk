@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<CdmHierarchyObject> list)
+        public static void SelectForRetrieval(this List<CdmHierarchyObject> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

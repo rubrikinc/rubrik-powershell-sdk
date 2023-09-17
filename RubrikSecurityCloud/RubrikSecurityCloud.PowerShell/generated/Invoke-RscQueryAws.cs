@@ -165,12 +165,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <example>
     /// <code>Invoke-RscQueryAws -AllInstanceProfileNames [-Arg ..] [-Field ..]</code>
     /// </example>
+    [CmdletBinding()]
     [Cmdlet(
         "Invoke",
         "RscQueryAws",
         DefaultParameterSetName = "AllVpcs")
     ]
-    public class Invoke_RscQueryAws : RscPSCmdlet
+    public class Invoke_RscQueryAws : RscGqlPSCmdlet
     {
         
         /// <summary>
@@ -1023,6 +1024,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 #pragma warning disable 1591
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 switch(Op)
@@ -1614,16 +1616,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "query",
                 "QueryAwsNativeRoot",
                 "",
-                "AwsNativeRoot"
-                );
-            AwsNativeRoot? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AwsNativeRoot)this.Field;
-            }
-            string fieldSpecDoc = Query.AwsNativeRoot(ref fieldSpecObj);
-            string inputExample = @"";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "AwsNativeRoot",
+                Query.AwsNativeRoot_ObjectFieldSpec,
+                Query.AwsNativeRootFieldSpec,
+                @""
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1639,19 +1636,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "query",
                 "QueryAwsNativeAccount",
                 "($awsNativeAccountRubrikId: UUID!,$awsNativeProtectionFeature: AwsNativeProtectionFeature!)",
-                "AwsNativeAccount"
-                );
-            AwsNativeAccount? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AwsNativeAccount)this.Field;
-            }
-            string fieldSpecDoc = Query.AwsNativeAccount(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AwsNativeAccount",
+                Query.AwsNativeAccount_ObjectFieldSpec,
+                Query.AwsNativeAccountFieldSpec,
+                @"# REQUIRED
 $inputs.Var.awsNativeAccountRubrikId = <System.String>
 # REQUIRED
-$inputs.Var.awsNativeProtectionFeature = <AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.awsNativeProtectionFeature = <AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values."
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1666,17 +1658,12 @@ $inputs.Var.awsNativeProtectionFeature = <AwsNativeProtectionFeature> # Call [En
                 "query",
                 "QueryAwsNativeEc2Instance",
                 "($ec2InstanceRubrikId: UUID!)",
-                "AwsNativeEc2Instance"
-                );
-            AwsNativeEc2Instance? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AwsNativeEc2Instance)this.Field;
-            }
-            string fieldSpecDoc = Query.AwsNativeEc2Instance(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.ec2InstanceRubrikId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "AwsNativeEc2Instance",
+                Query.AwsNativeEc2Instance_ObjectFieldSpec,
+                Query.AwsNativeEc2InstanceFieldSpec,
+                @"# REQUIRED
+$inputs.Var.ec2InstanceRubrikId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1691,17 +1678,12 @@ $inputs.Var.ec2InstanceRubrikId = <System.String>";
                 "query",
                 "QueryAwsNativeEbsVolume",
                 "($ebsVolumeRubrikId: UUID!)",
-                "AwsNativeEbsVolume"
-                );
-            AwsNativeEbsVolume? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AwsNativeEbsVolume)this.Field;
-            }
-            string fieldSpecDoc = Query.AwsNativeEbsVolume(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.ebsVolumeRubrikId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "AwsNativeEbsVolume",
+                Query.AwsNativeEbsVolume_ObjectFieldSpec,
+                Query.AwsNativeEbsVolumeFieldSpec,
+                @"# REQUIRED
+$inputs.Var.ebsVolumeRubrikId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1716,17 +1698,12 @@ $inputs.Var.ebsVolumeRubrikId = <System.String>";
                 "query",
                 "QueryAwsNativeS3Bucket",
                 "($s3BucketRubrikId: UUID!)",
-                "AwsNativeS3Bucket"
-                );
-            AwsNativeS3Bucket? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AwsNativeS3Bucket)this.Field;
-            }
-            string fieldSpecDoc = Query.AwsNativeS3Bucket(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.s3BucketRubrikId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "AwsNativeS3Bucket",
+                Query.AwsNativeS3Bucket_ObjectFieldSpec,
+                Query.AwsNativeS3BucketFieldSpec,
+                @"# REQUIRED
+$inputs.Var.s3BucketRubrikId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1759,14 +1736,10 @@ $inputs.Var.s3BucketRubrikId = <System.String>";
                 "query",
                 "QueryAwsNativeAccounts",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeAccountSortFields,$sortOrder: SortOrder,$accountFilters: AwsNativeAccountFilters,$authorizedOperationFilter: Operation,$awsNativeProtectionFeature: AwsNativeProtectionFeature!)",
-                "AwsNativeAccountConnection"
-                );
-            AwsNativeAccountConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AwsNativeAccountConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.AwsNativeAccounts(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "AwsNativeAccountConnection",
+                Query.AwsNativeAccounts_ObjectFieldSpec,
+                Query.AwsNativeAccountsFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -1803,9 +1776,8 @@ $inputs.Var.accountFilters = @{
 # OPTIONAL
 $inputs.Var.authorizedOperationFilter = <Operation> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Operation]) for enum values.
 # REQUIRED
-$inputs.Var.awsNativeProtectionFeature = <AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.awsNativeProtectionFeature = <AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values."
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1834,14 +1806,10 @@ $inputs.Var.awsNativeProtectionFeature = <AwsNativeProtectionFeature> # Call [En
                 "query",
                 "QueryAwsNativeEc2InstancesByName",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeEc2InstanceSortFields,$sortOrder: SortOrder,$ec2InstanceName: String!)",
-                "AwsNativeEc2InstanceConnection"
-                );
-            AwsNativeEc2InstanceConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AwsNativeEc2InstanceConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.AwsNativeEc2InstancesByName(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "AwsNativeEc2InstanceConnection",
+                Query.AwsNativeEc2InstancesByName_ObjectFieldSpec,
+                Query.AwsNativeEc2InstancesByNameFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -1854,9 +1822,8 @@ $inputs.Var.sortBy = <AwsNativeEc2InstanceSortFields> # Call [Enum]::GetValues([
 # OPTIONAL
 $inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
 # REQUIRED
-$inputs.Var.ec2InstanceName = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.ec2InstanceName = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1887,14 +1854,10 @@ $inputs.Var.ec2InstanceName = <System.String>";
                 "query",
                 "QueryAwsNativeEc2Instances",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeEc2InstanceSortFields,$sortOrder: SortOrder,$descendantTypeFilter: [HierarchyObjectTypeEnum!],$ec2InstanceFilters: AwsNativeEc2InstanceFilters)",
-                "AwsNativeEc2InstanceConnection"
-                );
-            AwsNativeEc2InstanceConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AwsNativeEc2InstanceConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.AwsNativeEc2Instances(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "AwsNativeEc2InstanceConnection",
+                Query.AwsNativeEc2Instances_ObjectFieldSpec,
+                Query.AwsNativeEc2InstancesFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -1995,9 +1958,8 @@ $inputs.Var.ec2InstanceFilters = @{
 			<System.String>
 		)
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2026,14 +1988,10 @@ $inputs.Var.ec2InstanceFilters = @{
                 "query",
                 "QueryAwsNativeEbsVolumesByName",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeEbsVolumeSortFields,$sortOrder: SortOrder,$ebsVolumeName: String!)",
-                "AwsNativeEbsVolumeConnection"
-                );
-            AwsNativeEbsVolumeConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AwsNativeEbsVolumeConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.AwsNativeEbsVolumesByName(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "AwsNativeEbsVolumeConnection",
+                Query.AwsNativeEbsVolumesByName_ObjectFieldSpec,
+                Query.AwsNativeEbsVolumesByNameFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -2046,9 +2004,8 @@ $inputs.Var.sortBy = <AwsNativeEbsVolumeSortFields> # Call [Enum]::GetValues([Ru
 # OPTIONAL
 $inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
 # REQUIRED
-$inputs.Var.ebsVolumeName = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.ebsVolumeName = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2077,14 +2034,10 @@ $inputs.Var.ebsVolumeName = <System.String>";
                 "query",
                 "QueryAwsNativeEbsVolumes",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeEbsVolumeSortFields,$sortOrder: SortOrder,$ebsVolumeFilters: AwsNativeEbsVolumeFilters)",
-                "AwsNativeEbsVolumeConnection"
-                );
-            AwsNativeEbsVolumeConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AwsNativeEbsVolumeConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.AwsNativeEbsVolumes(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "AwsNativeEbsVolumeConnection",
+                Query.AwsNativeEbsVolumes_ObjectFieldSpec,
+                Query.AwsNativeEbsVolumesFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -2171,9 +2124,8 @@ $inputs.Var.ebsVolumeFilters = @{
 			<System.String>
 		)
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2189,19 +2141,14 @@ $inputs.Var.ebsVolumeFilters = @{
                 "query",
                 "QueryAllVpcsByRegionFromAws",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!)",
-                "List<AwsVpc>"
-                );
-            List<AwsVpc>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<AwsVpc>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllVpcsByRegionFromAws(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<AwsVpc>",
+                Query.AllVpcsByRegionFromAws_ObjectFieldSpec,
+                Query.AllVpcsByRegionFromAwsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.awsAccountRubrikId = <System.String>
 # REQUIRED
-$inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values."
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2216,17 +2163,12 @@ $inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityC
                 "query",
                 "QueryAllVpcsFromAws",
                 "($awsAccountRubrikId: UUID)",
-                "List<AwsVpc>"
-                );
-            List<AwsVpc>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<AwsVpc>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllVpcsFromAws(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
-$inputs.Var.awsAccountRubrikId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "List<AwsVpc>",
+                Query.AllVpcsFromAws_ObjectFieldSpec,
+                Query.AllVpcsFromAwsFieldSpec,
+                @"# OPTIONAL
+$inputs.Var.awsAccountRubrikId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2241,17 +2183,12 @@ $inputs.Var.awsAccountRubrikId = <System.String>";
                 "query",
                 "QueryIsAwsNativeEbsVolumeSnapshotRestorable",
                 "($snapshotId: String!)",
-                "IsVolumeSnapshotRestorableReply"
-                );
-            IsVolumeSnapshotRestorableReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (IsVolumeSnapshotRestorableReply)this.Field;
-            }
-            string fieldSpecDoc = Query.IsAwsNativeEbsVolumeSnapshotRestorable(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.snapshotId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "IsVolumeSnapshotRestorableReply",
+                Query.IsAwsNativeEbsVolumeSnapshotRestorable_ObjectFieldSpec,
+                Query.IsAwsNativeEbsVolumeSnapshotRestorableFieldSpec,
+                @"# REQUIRED
+$inputs.Var.snapshotId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2267,19 +2204,14 @@ $inputs.Var.snapshotId = <System.String>";
                 "query",
                 "QueryAllAvailabilityZonesByRegionFromAws",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!)",
-                "List<System.String>"
-                );
-            List<System.String>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<System.String>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAvailabilityZonesByRegionFromAws(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<System.String>",
+                Query.AllAvailabilityZonesByRegionFromAws_ObjectFieldSpec,
+                Query.AllAvailabilityZonesByRegionFromAwsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.awsAccountRubrikId = <System.String>
 # REQUIRED
-$inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values."
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2295,19 +2227,14 @@ $inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityC
                 "query",
                 "QueryAllKmsEncryptionKeysByRegionFromAws",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!)",
-                "List<KmsEncryptionKey>"
-                );
-            List<KmsEncryptionKey>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<KmsEncryptionKey>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllKmsEncryptionKeysByRegionFromAws(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<KmsEncryptionKey>",
+                Query.AllKmsEncryptionKeysByRegionFromAws_ObjectFieldSpec,
+                Query.AllKmsEncryptionKeysByRegionFromAwsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.awsAccountRubrikId = <System.String>
 # REQUIRED
-$inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values."
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2323,19 +2250,14 @@ $inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityC
                 "query",
                 "QueryIsAwsS3BucketNameAvailable",
                 "($bucketName: String!,$awsAccountRubrikId: UUID!)",
-                "System.Boolean"
-                );
-            System.Boolean? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (System.Boolean)this.Field;
-            }
-            string fieldSpecDoc = Query.IsAwsS3BucketNameAvailable(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "System.Boolean",
+                Query.IsAwsS3BucketNameAvailable_ObjectFieldSpec,
+                Query.IsAwsS3BucketNameAvailableFieldSpec,
+                @"# REQUIRED
 $inputs.Var.bucketName = <System.String>
 # REQUIRED
-$inputs.Var.awsAccountRubrikId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.awsAccountRubrikId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2350,17 +2272,12 @@ $inputs.Var.awsAccountRubrikId = <System.String>";
                 "query",
                 "QueryAllS3BucketsFromAws",
                 "($awsAccountRubrikId: UUID!)",
-                "List<System.String>"
-                );
-            List<System.String>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<System.String>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllS3BucketsFromAws(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.awsAccountRubrikId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "List<System.String>",
+                Query.AllS3BucketsFromAws_ObjectFieldSpec,
+                Query.AllS3BucketsFromAwsFieldSpec,
+                @"# REQUIRED
+$inputs.Var.awsAccountRubrikId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2376,19 +2293,14 @@ $inputs.Var.awsAccountRubrikId = <System.String>";
                 "query",
                 "QueryAllS3BucketsDetailsFromAws",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion)",
-                "List<S3BucketDetails>"
-                );
-            List<S3BucketDetails>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<S3BucketDetails>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllS3BucketsDetailsFromAws(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<S3BucketDetails>",
+                Query.AllS3BucketsDetailsFromAws_ObjectFieldSpec,
+                Query.AllS3BucketsDetailsFromAwsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.awsAccountRubrikId = <System.String>
 # OPTIONAL
-$inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values."
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2403,17 +2315,12 @@ $inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityC
                 "query",
                 "QueryAwsNativeRdsInstance",
                 "($rdsInstanceRubrikId: UUID!)",
-                "AwsNativeRdsInstance"
-                );
-            AwsNativeRdsInstance? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AwsNativeRdsInstance)this.Field;
-            }
-            string fieldSpecDoc = Query.AwsNativeRdsInstance(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.rdsInstanceRubrikId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "AwsNativeRdsInstance",
+                Query.AwsNativeRdsInstance_ObjectFieldSpec,
+                Query.AwsNativeRdsInstanceFieldSpec,
+                @"# REQUIRED
+$inputs.Var.rdsInstanceRubrikId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2442,14 +2349,10 @@ $inputs.Var.rdsInstanceRubrikId = <System.String>";
                 "query",
                 "QueryAwsNativeRdsInstances",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeRdsInstanceSortFields,$sortOrder: SortOrder,$rdsInstanceFilters: AwsNativeRdsInstanceFilters)",
-                "AwsNativeRdsInstanceConnection"
-                );
-            AwsNativeRdsInstanceConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AwsNativeRdsInstanceConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.AwsNativeRdsInstances(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "AwsNativeRdsInstanceConnection",
+                Query.AwsNativeRdsInstances_ObjectFieldSpec,
+                Query.AwsNativeRdsInstancesFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -2536,9 +2439,8 @@ $inputs.Var.rdsInstanceFilters = @{
 			<System.String>
 		)
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2561,23 +2463,18 @@ $inputs.Var.rdsInstanceFilters = @{
                 "query",
                 "QueryAwsNativeRdsPointInTimeRestoreWindow",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$rdsInstanceName: String!,$rdsDatabaseRubrikId: UUID)",
-                "AwsNativeRdsPointInTimeRestoreWindow"
-                );
-            AwsNativeRdsPointInTimeRestoreWindow? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AwsNativeRdsPointInTimeRestoreWindow)this.Field;
-            }
-            string fieldSpecDoc = Query.AwsNativeRdsPointInTimeRestoreWindow(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AwsNativeRdsPointInTimeRestoreWindow",
+                Query.AwsNativeRdsPointInTimeRestoreWindow_ObjectFieldSpec,
+                Query.AwsNativeRdsPointInTimeRestoreWindowFieldSpec,
+                @"# REQUIRED
 $inputs.Var.awsAccountRubrikId = <System.String>
 # REQUIRED
 $inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
 # REQUIRED
 $inputs.Var.rdsInstanceName = <System.String>
 # OPTIONAL
-$inputs.Var.rdsDatabaseRubrikId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.rdsDatabaseRubrikId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2600,23 +2497,18 @@ $inputs.Var.rdsDatabaseRubrikId = <System.String>";
                 "query",
                 "QueryRdsInstanceDetailsFromAws",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$rdsInstanceName: String!,$rdsDatabaseRubrikId: UUID)",
-                "RdsInstanceDetailsFromAws"
-                );
-            RdsInstanceDetailsFromAws? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (RdsInstanceDetailsFromAws)this.Field;
-            }
-            string fieldSpecDoc = Query.RdsInstanceDetailsFromAws(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "RdsInstanceDetailsFromAws",
+                Query.RdsInstanceDetailsFromAws_ObjectFieldSpec,
+                Query.RdsInstanceDetailsFromAwsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.awsAccountRubrikId = <System.String>
 # REQUIRED
 $inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
 # REQUIRED
 $inputs.Var.rdsInstanceName = <System.String>
 # OPTIONAL
-$inputs.Var.rdsDatabaseRubrikId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.rdsDatabaseRubrikId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2653,14 +2545,10 @@ $inputs.Var.rdsDatabaseRubrikId = <System.String>";
                 "query",
                 "QueryIsAwsNativeRdsInstanceLaunchConfigurationValid",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$dbEngine: AwsNativeRdsDbEngine!,$dbEngineVersion: String!,$dbClass: AwsNativeRdsDbInstanceClass!,$databaseInstanceClass: String,$primaryAz: String,$storageType: AwsNativeRdsStorageType,$isMultiAz: Boolean!,$kmsKeyId: String,$iops: Int)",
-                "System.Boolean"
-                );
-            System.Boolean? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (System.Boolean)this.Field;
-            }
-            string fieldSpecDoc = Query.IsAwsNativeRdsInstanceLaunchConfigurationValid(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "System.Boolean",
+                Query.IsAwsNativeRdsInstanceLaunchConfigurationValid_ObjectFieldSpec,
+                Query.IsAwsNativeRdsInstanceLaunchConfigurationValidFieldSpec,
+                @"# REQUIRED
 $inputs.Var.awsAccountRubrikId = <System.String>
 # REQUIRED
 $inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
@@ -2681,9 +2569,8 @@ $inputs.Var.isMultiAz = <System.Boolean>
 # OPTIONAL
 $inputs.Var.kmsKeyId = <System.String>
 # OPTIONAL
-$inputs.Var.iops = <System.Int32>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.iops = <System.Int32>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2708,14 +2595,10 @@ $inputs.Var.iops = <System.Int32>";
                 "query",
                 "QueryAllOptionGroupsByRegionFromAws",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$dbEngine: AwsNativeRdsDbEngine!,$dbEngineVersion: String!,$majorEngineVersion: String!)",
-                "List<OptionGroup>"
-                );
-            List<OptionGroup>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<OptionGroup>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllOptionGroupsByRegionFromAws(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<OptionGroup>",
+                Query.AllOptionGroupsByRegionFromAws_ObjectFieldSpec,
+                Query.AllOptionGroupsByRegionFromAwsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.awsAccountRubrikId = <System.String>
 # REQUIRED
 $inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
@@ -2724,9 +2607,8 @@ $inputs.Var.dbEngine = <AwsNativeRdsDbEngine> # Call [Enum]::GetValues([RubrikSe
 # REQUIRED
 $inputs.Var.dbEngineVersion = <System.String>
 # REQUIRED
-$inputs.Var.majorEngineVersion = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.majorEngineVersion = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2751,14 +2633,10 @@ $inputs.Var.majorEngineVersion = <System.String>";
                 "query",
                 "QueryAllDbParameterGroupsByRegionFromAws",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$dbEngine: AwsNativeRdsDbEngine!,$dbEngineVersion: String!,$rdsType: AwsNativeRdsType)",
-                "List<DbParameterGroup>"
-                );
-            List<DbParameterGroup>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<DbParameterGroup>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllDbParameterGroupsByRegionFromAws(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<DbParameterGroup>",
+                Query.AllDbParameterGroupsByRegionFromAws_ObjectFieldSpec,
+                Query.AllDbParameterGroupsByRegionFromAwsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.awsAccountRubrikId = <System.String>
 # REQUIRED
 $inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
@@ -2767,9 +2645,8 @@ $inputs.Var.dbEngine = <AwsNativeRdsDbEngine> # Call [Enum]::GetValues([RubrikSe
 # REQUIRED
 $inputs.Var.dbEngineVersion = <System.String>
 # OPTIONAL
-$inputs.Var.rdsType = <AwsNativeRdsType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsType]) for enum values.";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.rdsType = <AwsNativeRdsType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsType]) for enum values."
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2785,19 +2662,14 @@ $inputs.Var.rdsType = <AwsNativeRdsType> # Call [Enum]::GetValues([RubrikSecurit
                 "query",
                 "QueryAllDbSubnetGroupsByRegionFromAws",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!)",
-                "List<SubnetGroup>"
-                );
-            List<SubnetGroup>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<SubnetGroup>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllDbSubnetGroupsByRegionFromAws(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<SubnetGroup>",
+                Query.AllDbSubnetGroupsByRegionFromAws_ObjectFieldSpec,
+                Query.AllDbSubnetGroupsByRegionFromAwsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.awsAccountRubrikId = <System.String>
 # REQUIRED
-$inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values."
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2814,21 +2686,16 @@ $inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityC
                 "query",
                 "QueryValidateAwsNativeRdsInstanceNameForExport",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$rdsInstanceName: String!)",
-                "ValidateAwsNativeRdsInstanceNameForExportReply"
-                );
-            ValidateAwsNativeRdsInstanceNameForExportReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (ValidateAwsNativeRdsInstanceNameForExportReply)this.Field;
-            }
-            string fieldSpecDoc = Query.ValidateAwsNativeRdsInstanceNameForExport(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "ValidateAwsNativeRdsInstanceNameForExportReply",
+                Query.ValidateAwsNativeRdsInstanceNameForExport_ObjectFieldSpec,
+                Query.ValidateAwsNativeRdsInstanceNameForExportFieldSpec,
+                @"# REQUIRED
 $inputs.Var.awsAccountRubrikId = <System.String>
 # REQUIRED
 $inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
 # REQUIRED
-$inputs.Var.rdsInstanceName = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.rdsInstanceName = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2845,21 +2712,16 @@ $inputs.Var.rdsInstanceName = <System.String>";
                 "query",
                 "QueryValidateAwsNativeRdsClusterNameForExport",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$rdsClusterName: String!)",
-                "ValidateAwsNativeRdsClusterNameForExportReply"
-                );
-            ValidateAwsNativeRdsClusterNameForExportReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (ValidateAwsNativeRdsClusterNameForExportReply)this.Field;
-            }
-            string fieldSpecDoc = Query.ValidateAwsNativeRdsClusterNameForExport(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "ValidateAwsNativeRdsClusterNameForExportReply",
+                Query.ValidateAwsNativeRdsClusterNameForExport_ObjectFieldSpec,
+                Query.ValidateAwsNativeRdsClusterNameForExportFieldSpec,
+                @"# REQUIRED
 $inputs.Var.awsAccountRubrikId = <System.String>
 # REQUIRED
 $inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
 # REQUIRED
-$inputs.Var.rdsClusterName = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.rdsClusterName = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2876,21 +2738,16 @@ $inputs.Var.rdsClusterName = <System.String>";
                 "query",
                 "QueryAwsNativeRdsExportDefaults",
                 "($rdsInstanceRubrikId: UUID!,$snapshotId: String,$isPointInTime: Boolean!)",
-                "RdsInstanceExportDefaults"
-                );
-            RdsInstanceExportDefaults? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (RdsInstanceExportDefaults)this.Field;
-            }
-            string fieldSpecDoc = Query.AwsNativeRdsExportDefaults(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "RdsInstanceExportDefaults",
+                Query.AwsNativeRdsExportDefaults_ObjectFieldSpec,
+                Query.AwsNativeRdsExportDefaultsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.rdsInstanceRubrikId = <System.String>
 # OPTIONAL
 $inputs.Var.snapshotId = <System.String>
 # REQUIRED
-$inputs.Var.isPointInTime = <System.Boolean>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.isPointInTime = <System.Boolean>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2906,19 +2763,14 @@ $inputs.Var.isPointInTime = <System.Boolean>";
                 "query",
                 "QueryAllEc2KeyPairsByRegionFromAws",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!)",
-                "List<System.String>"
-                );
-            List<System.String>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<System.String>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllEc2KeyPairsByRegionFromAws(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<System.String>",
+                Query.AllEc2KeyPairsByRegionFromAws_ObjectFieldSpec,
+                Query.AllEc2KeyPairsByRegionFromAwsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.awsAccountRubrikId = <System.String>
 # REQUIRED
-$inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values."
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2933,14 +2785,10 @@ $inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityC
                 "query",
                 "QueryAmiTypeForAwsNativeArchivedSnapshotExport",
                 "($input: AmiTypeForAwsNativeArchivedSnapshotExportInput!)",
-                "AmiTypeForAwsNativeArchivedSnapshotExportReply"
-                );
-            AmiTypeForAwsNativeArchivedSnapshotExportReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AmiTypeForAwsNativeArchivedSnapshotExportReply)this.Field;
-            }
-            string fieldSpecDoc = Query.AmiTypeForAwsNativeArchivedSnapshotExport(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AmiTypeForAwsNativeArchivedSnapshotExportReply",
+                Query.AmiTypeForAwsNativeArchivedSnapshotExport_ObjectFieldSpec,
+                Query.AmiTypeForAwsNativeArchivedSnapshotExportFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	snapshotId = <System.String>
@@ -2948,9 +2796,8 @@ $inputs.Var.input = @{
 	destinationRegionId = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
 	# REQUIRED
 	destinationAwsAccountRubrikId = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -2973,23 +2820,18 @@ $inputs.Var.input = @{
                 "query",
                 "QueryAllSupportedAwsRdsDatabaseInstanceClasses",
                 "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$dbEngine: AwsNativeRdsDbEngine!,$dbEngineVersion: String)",
-                "List<System.String>"
-                );
-            List<System.String>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<System.String>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllSupportedAwsRdsDatabaseInstanceClasses(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<System.String>",
+                Query.AllSupportedAwsRdsDatabaseInstanceClasses_ObjectFieldSpec,
+                Query.AllSupportedAwsRdsDatabaseInstanceClassesFieldSpec,
+                @"# REQUIRED
 $inputs.Var.awsAccountRubrikId = <System.String>
 # REQUIRED
 $inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
 # REQUIRED
 $inputs.Var.dbEngine = <AwsNativeRdsDbEngine> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsDbEngine]) for enum values.
 # OPTIONAL
-$inputs.Var.dbEngineVersion = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.dbEngineVersion = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3004,17 +2846,12 @@ $inputs.Var.dbEngineVersion = <System.String>";
                 "query",
                 "QueryAwsComputeSettings",
                 "($computeSettingId: UUID!)",
-                "AwsComputeSettings"
-                );
-            AwsComputeSettings? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AwsComputeSettings)this.Field;
-            }
-            string fieldSpecDoc = Query.AwsComputeSettings(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.computeSettingId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "AwsComputeSettings",
+                Query.AwsComputeSettings_ObjectFieldSpec,
+                Query.AwsComputeSettingsFieldSpec,
+                @"# REQUIRED
+$inputs.Var.computeSettingId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3037,14 +2874,10 @@ $inputs.Var.computeSettingId = <System.String>";
                 "query",
                 "QueryAllAwsComputeSettings",
                 "($sortBy: AwsCloudComputeSettingQuerySortByField,$sortOrder: SortOrder,$filter: [AwsCloudComputeSettingFilterInput!],$contextFilter: ContextFilterTypeEnum)",
-                "List<AwsComputeSettings>"
-                );
-            List<AwsComputeSettings>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<AwsComputeSettings>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAwsComputeSettings(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "List<AwsComputeSettings>",
+                Query.AllAwsComputeSettings_ObjectFieldSpec,
+                Query.AllAwsComputeSettingsFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.sortBy = <AwsCloudComputeSettingQuerySortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudComputeSettingQuerySortByField]) for enum values.
 # OPTIONAL
 $inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
@@ -3058,9 +2891,8 @@ $inputs.Var.filter = @(
 }
 )
 # OPTIONAL
-$inputs.Var.contextFilter = <ContextFilterTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ContextFilterTypeEnum]) for enum values.";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.contextFilter = <ContextFilterTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ContextFilterTypeEnum]) for enum values."
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3075,14 +2907,10 @@ $inputs.Var.contextFilter = <ContextFilterTypeEnum> # Call [Enum]::GetValues([Ru
                 "query",
                 "QueryAllAwsCloudAccountsWithFeatures",
                 "($awsCloudAccountsArg: AwsCloudAccountsWithFeaturesInput!)",
-                "List<AwsCloudAccountWithFeatures>"
-                );
-            List<AwsCloudAccountWithFeatures>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<AwsCloudAccountWithFeatures>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAwsCloudAccountsWithFeatures(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<AwsCloudAccountWithFeatures>",
+                Query.AllAwsCloudAccountsWithFeatures_ObjectFieldSpec,
+                Query.AllAwsCloudAccountsWithFeaturesFieldSpec,
+                @"# REQUIRED
 $inputs.Var.awsCloudAccountsArg = @{
 	# REQUIRED
 	feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
@@ -3094,9 +2922,8 @@ $inputs.Var.awsCloudAccountsArg = @{
 	awsAdminAccountFilter = <System.String>
 	# OPTIONAL
 	columnSearchFilter = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3112,14 +2939,10 @@ $inputs.Var.awsCloudAccountsArg = @{
                 "query",
                 "QueryAwsCloudAccountWithFeatures",
                 "($cloudAccountId: UUID!,$awsCloudAccountArg: AwsCloudAccountWithFeaturesInput!)",
-                "AwsCloudAccountWithFeatures"
-                );
-            AwsCloudAccountWithFeatures? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AwsCloudAccountWithFeatures)this.Field;
-            }
-            string fieldSpecDoc = Query.AwsCloudAccountWithFeatures(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AwsCloudAccountWithFeatures",
+                Query.AwsCloudAccountWithFeatures_ObjectFieldSpec,
+                Query.AwsCloudAccountWithFeaturesFieldSpec,
+                @"# REQUIRED
 $inputs.Var.cloudAccountId = <System.String>
 # REQUIRED
 $inputs.Var.awsCloudAccountArg = @{
@@ -3127,9 +2950,8 @@ $inputs.Var.awsCloudAccountArg = @{
 	features = @(
 		<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3146,21 +2968,16 @@ $inputs.Var.awsCloudAccountArg = @{
                 "query",
                 "QueryAwsCloudAccountListVpcs",
                 "($cloudAccountUuid: UUID!,$feature: CloudAccountFeature!,$region: AwsRegion!)",
-                "AwsCloudAccountListVpcResponse"
-                );
-            AwsCloudAccountListVpcResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AwsCloudAccountListVpcResponse)this.Field;
-            }
-            string fieldSpecDoc = Query.AwsCloudAccountListVpcs(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AwsCloudAccountListVpcResponse",
+                Query.AwsCloudAccountListVpcs_ObjectFieldSpec,
+                Query.AwsCloudAccountListVpcsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.cloudAccountUuid = <System.String>
 # REQUIRED
 $inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 # REQUIRED
-$inputs.Var.region = <AwsRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.region = <AwsRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values."
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3183,23 +3000,18 @@ $inputs.Var.region = <AwsRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.T
                 "query",
                 "QueryAwsCloudAccountListSubnets",
                 "($cloudAccountUuid: UUID!,$feature: CloudAccountFeature!,$region: AwsRegion!,$vpcID: String!)",
-                "AwsCloudAccountListSubnetsResponse"
-                );
-            AwsCloudAccountListSubnetsResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AwsCloudAccountListSubnetsResponse)this.Field;
-            }
-            string fieldSpecDoc = Query.AwsCloudAccountListSubnets(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AwsCloudAccountListSubnetsResponse",
+                Query.AwsCloudAccountListSubnets_ObjectFieldSpec,
+                Query.AwsCloudAccountListSubnetsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.cloudAccountUuid = <System.String>
 # REQUIRED
 $inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 # REQUIRED
 $inputs.Var.region = <AwsRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
 # REQUIRED
-$inputs.Var.vpcID = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.vpcID = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3222,23 +3034,18 @@ $inputs.Var.vpcID = <System.String>";
                 "query",
                 "QueryAwsCloudAccountListSecurityGroups",
                 "($cloudAccountUuid: UUID!,$feature: CloudAccountFeature!,$region: AwsRegion!,$vpcID: String!)",
-                "AwsCloudAccountListSecurityGroupsResponse"
-                );
-            AwsCloudAccountListSecurityGroupsResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AwsCloudAccountListSecurityGroupsResponse)this.Field;
-            }
-            string fieldSpecDoc = Query.AwsCloudAccountListSecurityGroups(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AwsCloudAccountListSecurityGroupsResponse",
+                Query.AwsCloudAccountListSecurityGroups_ObjectFieldSpec,
+                Query.AwsCloudAccountListSecurityGroupsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.cloudAccountUuid = <System.String>
 # REQUIRED
 $inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 # REQUIRED
 $inputs.Var.region = <AwsRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
 # REQUIRED
-$inputs.Var.vpcID = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.vpcID = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3253,17 +3060,12 @@ $inputs.Var.vpcID = <System.String>";
                 "query",
                 "QueryAllAwsExocomputeConfigs",
                 "($awsNativeAccountIdOrNamePrefix: String!)",
-                "List<AwsExocomputeConfig>"
-                );
-            List<AwsExocomputeConfig>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<AwsExocomputeConfig>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAwsExocomputeConfigs(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.awsNativeAccountIdOrNamePrefix = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "List<AwsExocomputeConfig>",
+                Query.AllAwsExocomputeConfigs_ObjectFieldSpec,
+                Query.AllAwsExocomputeConfigsFieldSpec,
+                @"# REQUIRED
+$inputs.Var.awsNativeAccountIdOrNamePrefix = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3278,14 +3080,10 @@ $inputs.Var.awsNativeAccountIdOrNamePrefix = <System.String>";
                 "query",
                 "QueryAllAwsCloudAccountConfigs",
                 "($awsCloudAccountsArg: AwsCloudAccountConfigsInput!)",
-                "List<AwsFeatureConfig>"
-                );
-            List<AwsFeatureConfig>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<AwsFeatureConfig>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAwsCloudAccountConfigs(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<AwsFeatureConfig>",
+                Query.AllAwsCloudAccountConfigs_ObjectFieldSpec,
+                Query.AllAwsCloudAccountConfigsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.awsCloudAccountsArg = @{
 	# REQUIRED
 	feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
@@ -3297,9 +3095,8 @@ $inputs.Var.awsCloudAccountsArg = @{
 	awsAdminAccountFilter = <System.String>
 	# OPTIONAL
 	columnSearchFilter = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3314,14 +3111,10 @@ $inputs.Var.awsCloudAccountsArg = @{
                 "query",
                 "QueryAwsTrustPolicy",
                 "($input: AwsTrustPolicyInput!)",
-                "AwsTrustPolicy"
-                );
-            AwsTrustPolicy? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AwsTrustPolicy)this.Field;
-            }
-            string fieldSpecDoc = Query.AwsTrustPolicy(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AwsTrustPolicy",
+                Query.AwsTrustPolicy_ObjectFieldSpec,
+                Query.AwsTrustPolicyFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	cloudType = <AwsCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
@@ -3338,9 +3131,8 @@ $inputs.Var.input = @{
 			id = <System.String>
 		}
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3355,14 +3147,10 @@ $inputs.Var.input = @{
                 "query",
                 "QueryAllAwsPermissionPolicies",
                 "($input: AwsGetPermissionPoliciesInput!)",
-                "List<PermissionPolicy>"
-                );
-            List<PermissionPolicy>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<PermissionPolicy>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAwsPermissionPolicies(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<PermissionPolicy>",
+                Query.AllAwsPermissionPolicies_ObjectFieldSpec,
+                Query.AllAwsPermissionPoliciesFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	cloudType = <AwsCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
@@ -3375,9 +3163,8 @@ $inputs.Var.input = @{
 		# OPTIONAL
 		ec2RecoveryRolePath = <System.String>
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3392,14 +3179,10 @@ $inputs.Var.input = @{
                 "query",
                 "QueryAwsArtifactsToDelete",
                 "($input: AwsArtifactsToDeleteInput!)",
-                "AwsArtifactsToDelete"
-                );
-            AwsArtifactsToDelete? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AwsArtifactsToDelete)this.Field;
-            }
-            string fieldSpecDoc = Query.AwsArtifactsToDelete(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AwsArtifactsToDelete",
+                Query.AwsArtifactsToDelete_ObjectFieldSpec,
+                Query.AwsArtifactsToDeleteFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	awsNativeId = <System.String>
@@ -3407,9 +3190,8 @@ $inputs.Var.input = @{
 	features = @(
 		<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3424,17 +3206,12 @@ $inputs.Var.input = @{
                 "query",
                 "QueryAllAwsRegions",
                 "($cloudAccountId: String!)",
-                "List<AwsCloudAccountRegion>"
-                );
-            List<AwsCloudAccountRegion>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<AwsCloudAccountRegion>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAwsRegions(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.cloudAccountId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "List<AwsCloudAccountRegion>",
+                Query.AllAwsRegions_ObjectFieldSpec,
+                Query.AllAwsRegionsFieldSpec,
+                @"# REQUIRED
+$inputs.Var.cloudAccountId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3449,22 +3226,17 @@ $inputs.Var.cloudAccountId = <System.String>";
                 "query",
                 "QueryAllAwsCdmVersions",
                 "($input: AwsCdmVersionRequest!)",
-                "List<AwsCdmVersion>"
-                );
-            List<AwsCdmVersion>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<AwsCdmVersion>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAwsCdmVersions(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<AwsCdmVersion>",
+                Query.AllAwsCdmVersions_ObjectFieldSpec,
+                Query.AllAwsCdmVersionsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	cloudAccountId = <System.String>
 	# OPTIONAL
 	region = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -3480,19 +3252,14 @@ $inputs.Var.input = @{
                 "query",
                 "QueryAllAwsInstanceProfileNames",
                 "($cloudAccountId: String!,$region: String!)",
-                "List<System.String>"
-                );
-            List<System.String>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<System.String>)this.Field;
-            }
-            string fieldSpecDoc = Query.AllAwsInstanceProfileNames(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<System.String>",
+                Query.AllAwsInstanceProfileNames_ObjectFieldSpec,
+                Query.AllAwsInstanceProfileNamesFieldSpec,
+                @"# REQUIRED
 $inputs.Var.cloudAccountId = <System.String>
 # REQUIRED
-$inputs.Var.region = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.region = <System.String>"
+            );
         }
 
 

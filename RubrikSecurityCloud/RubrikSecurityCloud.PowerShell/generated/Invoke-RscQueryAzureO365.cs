@@ -57,12 +57,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <example>
     /// <code>Invoke-RscQueryAzureO365 -GetAzureHostType [-Arg ..] [-Field ..]</code>
     /// </example>
+    [CmdletBinding()]
     [Cmdlet(
         "Invoke",
         "RscQueryAzureO365",
         DefaultParameterSetName = "Exocompute")
     ]
-    public class Invoke_RscQueryAzureO365 : RscPSCmdlet
+    public class Invoke_RscQueryAzureO365 : RscGqlPSCmdlet
     {
         
         /// <summary>
@@ -267,6 +268,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 #pragma warning disable 1591
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 switch(Op)
@@ -428,19 +430,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "query",
                 "QueryAzureO365Exocompute",
                 "($orgId: UUID!,$exocomputeClusterId: String!)",
-                "GetAzureO365ExocomputeResp"
-                );
-            GetAzureO365ExocomputeResp? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (GetAzureO365ExocomputeResp)this.Field;
-            }
-            string fieldSpecDoc = Query.AzureO365Exocompute(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "GetAzureO365ExocomputeResp",
+                Query.AzureO365Exocompute_ObjectFieldSpec,
+                Query.AzureO365ExocomputeFieldSpec,
+                @"# REQUIRED
 $inputs.Var.orgId = <System.String>
 # REQUIRED
-$inputs.Var.exocomputeClusterId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.exocomputeClusterId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -457,21 +454,16 @@ $inputs.Var.exocomputeClusterId = <System.String>";
                 "query",
                 "QueryAzureO365CheckStorageAccountName",
                 "($tenantId: String!,$subscriptionId: UUID!,$storage_account_name: String!)",
-                "AzureResourceAvailabilityResp"
-                );
-            AzureResourceAvailabilityResp? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AzureResourceAvailabilityResp)this.Field;
-            }
-            string fieldSpecDoc = Query.AzureO365CheckStorageAccountName(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AzureResourceAvailabilityResp",
+                Query.AzureO365CheckStorageAccountName_ObjectFieldSpec,
+                Query.AzureO365CheckStorageAccountNameFieldSpec,
+                @"# REQUIRED
 $inputs.Var.tenantId = <System.String>
 # REQUIRED
 $inputs.Var.subscriptionId = <System.String>
 # REQUIRED
-$inputs.Var.storage_account_name = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.storage_account_name = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -494,23 +486,18 @@ $inputs.Var.storage_account_name = <System.String>";
                 "query",
                 "QueryAzureO365CheckStorageAccountAccessibility",
                 "($tenantId: String!,$subscriptionId: UUID!,$storage_account_name: String!,$groupName: String!)",
-                "AzureResourceAvailabilityResp"
-                );
-            AzureResourceAvailabilityResp? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AzureResourceAvailabilityResp)this.Field;
-            }
-            string fieldSpecDoc = Query.AzureO365CheckStorageAccountAccessibility(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AzureResourceAvailabilityResp",
+                Query.AzureO365CheckStorageAccountAccessibility_ObjectFieldSpec,
+                Query.AzureO365CheckStorageAccountAccessibilityFieldSpec,
+                @"# REQUIRED
 $inputs.Var.tenantId = <System.String>
 # REQUIRED
 $inputs.Var.subscriptionId = <System.String>
 # REQUIRED
 $inputs.Var.storage_account_name = <System.String>
 # REQUIRED
-$inputs.Var.groupName = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.groupName = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -527,21 +514,16 @@ $inputs.Var.groupName = <System.String>";
                 "query",
                 "QueryAzureO365CheckSubscriptionQuota",
                 "($tenantId: String!,$subscriptionId: UUID!,$regionName: String!)",
-                "AzureResourceAvailabilityResp"
-                );
-            AzureResourceAvailabilityResp? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AzureResourceAvailabilityResp)this.Field;
-            }
-            string fieldSpecDoc = Query.AzureO365CheckSubscriptionQuota(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AzureResourceAvailabilityResp",
+                Query.AzureO365CheckSubscriptionQuota_ObjectFieldSpec,
+                Query.AzureO365CheckSubscriptionQuotaFieldSpec,
+                @"# REQUIRED
 $inputs.Var.tenantId = <System.String>
 # REQUIRED
 $inputs.Var.subscriptionId = <System.String>
 # REQUIRED
-$inputs.Var.regionName = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.regionName = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -558,21 +540,16 @@ $inputs.Var.regionName = <System.String>";
                 "query",
                 "QueryAzureO365CheckResourceGroupName",
                 "($tenantId: String!,$subscriptionId: UUID!,$groupName: String!)",
-                "AzureResourceAvailabilityResp"
-                );
-            AzureResourceAvailabilityResp? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AzureResourceAvailabilityResp)this.Field;
-            }
-            string fieldSpecDoc = Query.AzureO365CheckResourceGroupName(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AzureResourceAvailabilityResp",
+                Query.AzureO365CheckResourceGroupName_ObjectFieldSpec,
+                Query.AzureO365CheckResourceGroupNameFieldSpec,
+                @"# REQUIRED
 $inputs.Var.tenantId = <System.String>
 # REQUIRED
 $inputs.Var.subscriptionId = <System.String>
 # REQUIRED
-$inputs.Var.groupName = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.groupName = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -595,23 +572,18 @@ $inputs.Var.groupName = <System.String>";
                 "query",
                 "QueryAzureO365CheckVirtualNetworkName",
                 "($tenantId: String!,$subscriptionId: UUID!,$groupName: String!,$vnet_name: String!)",
-                "AzureResourceAvailabilityResp"
-                );
-            AzureResourceAvailabilityResp? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AzureResourceAvailabilityResp)this.Field;
-            }
-            string fieldSpecDoc = Query.AzureO365CheckVirtualNetworkName(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AzureResourceAvailabilityResp",
+                Query.AzureO365CheckVirtualNetworkName_ObjectFieldSpec,
+                Query.AzureO365CheckVirtualNetworkNameFieldSpec,
+                @"# REQUIRED
 $inputs.Var.tenantId = <System.String>
 # REQUIRED
 $inputs.Var.subscriptionId = <System.String>
 # REQUIRED
 $inputs.Var.groupName = <System.String>
 # REQUIRED
-$inputs.Var.vnet_name = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.vnet_name = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -627,19 +599,14 @@ $inputs.Var.vnet_name = <System.String>";
                 "query",
                 "QueryAzureO365ValidateUserRoles",
                 "($tenantId: String!,$subscriptionId: UUID!)",
-                "AzureUserRoleResp"
-                );
-            AzureUserRoleResp? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AzureUserRoleResp)this.Field;
-            }
-            string fieldSpecDoc = Query.AzureO365ValidateUserRoles(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AzureUserRoleResp",
+                Query.AzureO365ValidateUserRoles_ObjectFieldSpec,
+                Query.AzureO365ValidateUserRolesFieldSpec,
+                @"# REQUIRED
 $inputs.Var.tenantId = <System.String>
 # REQUIRED
-$inputs.Var.subscriptionId = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.subscriptionId = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -664,14 +631,10 @@ $inputs.Var.subscriptionId = <System.String>";
                 "query",
                 "QueryAzureO365CheckNsgOutboundRules",
                 "($tenantId: String!,$subscriptionId: UUID!,$resourceGroupName: String!,$vnet_name: String!,$subnet_name: String!)",
-                "AzureNetworkSecurityGroupResp"
-                );
-            AzureNetworkSecurityGroupResp? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AzureNetworkSecurityGroupResp)this.Field;
-            }
-            string fieldSpecDoc = Query.AzureO365CheckNsgOutboundRules(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AzureNetworkSecurityGroupResp",
+                Query.AzureO365CheckNsgOutboundRules_ObjectFieldSpec,
+                Query.AzureO365CheckNsgOutboundRulesFieldSpec,
+                @"# REQUIRED
 $inputs.Var.tenantId = <System.String>
 # REQUIRED
 $inputs.Var.subscriptionId = <System.String>
@@ -680,9 +643,8 @@ $inputs.Var.resourceGroupName = <System.String>
 # REQUIRED
 $inputs.Var.vnet_name = <System.String>
 # REQUIRED
-$inputs.Var.subnet_name = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.subnet_name = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -709,14 +671,10 @@ $inputs.Var.subnet_name = <System.String>";
                 "query",
                 "QueryAzureO365CheckNetworkSubnet",
                 "($tenantId: String!,$subscriptionId: UUID!,$resourceGroupName: String!,$vnet_name: String!,$subnet_name: String!,$strict_addr_check: Boolean!)",
-                "AzureNetworkSubnetResp"
-                );
-            AzureNetworkSubnetResp? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AzureNetworkSubnetResp)this.Field;
-            }
-            string fieldSpecDoc = Query.AzureO365CheckNetworkSubnet(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AzureNetworkSubnetResp",
+                Query.AzureO365CheckNetworkSubnet_ObjectFieldSpec,
+                Query.AzureO365CheckNetworkSubnetFieldSpec,
+                @"# REQUIRED
 $inputs.Var.tenantId = <System.String>
 # REQUIRED
 $inputs.Var.subscriptionId = <System.String>
@@ -727,9 +685,8 @@ $inputs.Var.vnet_name = <System.String>
 # REQUIRED
 $inputs.Var.subnet_name = <System.String>
 # REQUIRED
-$inputs.Var.strict_addr_check = <System.Boolean>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.strict_addr_check = <System.Boolean>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -756,14 +713,10 @@ $inputs.Var.strict_addr_check = <System.Boolean>";
                 "query",
                 "QueryAzureO365GetNetworkSubnetUnusedAddr",
                 "($tenantId: String!,$subscriptionId: UUID!,$resourceGroupName: String!,$vnet_name: String!,$subnet_name: String!,$strict_addr_check: Boolean!)",
-                "AzureNetworkSubnetUnusedAddrResp"
-                );
-            AzureNetworkSubnetUnusedAddrResp? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AzureNetworkSubnetUnusedAddrResp)this.Field;
-            }
-            string fieldSpecDoc = Query.AzureO365GetNetworkSubnetUnusedAddr(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AzureNetworkSubnetUnusedAddrResp",
+                Query.AzureO365GetNetworkSubnetUnusedAddr_ObjectFieldSpec,
+                Query.AzureO365GetNetworkSubnetUnusedAddrFieldSpec,
+                @"# REQUIRED
 $inputs.Var.tenantId = <System.String>
 # REQUIRED
 $inputs.Var.subscriptionId = <System.String>
@@ -774,9 +727,8 @@ $inputs.Var.vnet_name = <System.String>
 # REQUIRED
 $inputs.Var.subnet_name = <System.String>
 # REQUIRED
-$inputs.Var.strict_addr_check = <System.Boolean>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.strict_addr_check = <System.Boolean>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -790,16 +742,11 @@ $inputs.Var.strict_addr_check = <System.Boolean>";
                 "query",
                 "QueryAzureO365GetAzureHostType",
                 "",
-                "GetAzureHostTypeResp"
-                );
-            GetAzureHostTypeResp? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (GetAzureHostTypeResp)this.Field;
-            }
-            string fieldSpecDoc = Query.AzureO365GetAzureHostType(ref fieldSpecObj);
-            string inputExample = @"";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "GetAzureHostTypeResp",
+                Query.AzureO365GetAzureHostType_ObjectFieldSpec,
+                Query.AzureO365GetAzureHostTypeFieldSpec,
+                @""
+            );
         }
 
 

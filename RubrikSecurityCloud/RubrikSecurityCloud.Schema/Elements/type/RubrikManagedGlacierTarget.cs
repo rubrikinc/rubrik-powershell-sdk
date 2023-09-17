@@ -587,7 +587,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<RubrikManagedGlacierTarget> list)
+        public static void SelectForRetrieval(this List<RubrikManagedGlacierTarget> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

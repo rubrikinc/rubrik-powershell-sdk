@@ -153,7 +153,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<OracleRecoverableRangeListResponse> list)
+        public static void SelectForRetrieval(this List<OracleRecoverableRangeListResponse> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

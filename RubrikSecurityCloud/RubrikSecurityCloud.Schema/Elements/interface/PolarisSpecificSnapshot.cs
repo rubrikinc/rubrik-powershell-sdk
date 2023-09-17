@@ -86,7 +86,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<PolarisSpecificSnapshot> list)
+        public static void SelectForRetrieval(this List<PolarisSpecificSnapshot> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

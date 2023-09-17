@@ -57,12 +57,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <example>
     /// <code>Invoke-RscMutateDb2 -DeleteDatabase [-Arg ..] [-Field ..]</code>
     /// </example>
+    [CmdletBinding()]
     [Cmdlet(
         "Invoke",
         "RscMutateDb2",
         DefaultParameterSetName = "AddInstance")
     ]
-    public class Invoke_RscMutateDb2 : RscPSCmdlet
+    public class Invoke_RscMutateDb2 : RscGqlPSCmdlet
     {
         
         /// <summary>
@@ -291,6 +292,7 @@ Deletes a Db2 database.
 #pragma warning disable 1591
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 switch(Op)
@@ -451,14 +453,10 @@ Deletes a Db2 database.
                 "mutation",
                 "MutationAddDb2Instance",
                 "($input: AddDb2InstanceInput!)",
-                "AddDb2InstanceReply"
-                );
-            AddDb2InstanceReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AddDb2InstanceReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.AddDb2Instance(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AddDb2InstanceReply",
+                Mutation.AddDb2Instance_ObjectFieldSpec,
+                Mutation.AddDb2InstanceFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	clusterUuid = <System.String>
@@ -475,9 +473,8 @@ $inputs.Var.input = @{
 		# REQUIRED
 		username = <System.String>
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -492,20 +489,15 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationDeleteDb2Instance",
                 "($input: DeleteDb2InstanceInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DeleteDb2Instance(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.DeleteDb2Instance_ObjectFieldSpec,
+                Mutation.DeleteDb2InstanceFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -520,20 +512,15 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationDiscoverDb2Instance",
                 "($input: DiscoverDb2InstanceInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DiscoverDb2Instance(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.DiscoverDb2Instance_ObjectFieldSpec,
+                Mutation.DiscoverDb2InstanceFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -548,14 +535,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationPatchDb2Instance",
                 "($input: PatchDb2InstanceInput!)",
-                "PatchDb2InstanceReply"
-                );
-            PatchDb2InstanceReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (PatchDb2InstanceReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.PatchDb2Instance(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "PatchDb2InstanceReply",
+                Mutation.PatchDb2Instance_ObjectFieldSpec,
+                Mutation.PatchDb2InstanceFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	db2InstanceRequestConfig = @{
@@ -572,9 +555,8 @@ $inputs.Var.input = @{
 	}
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -589,14 +571,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationCreateOnDemandDb2Backup",
                 "($input: CreateOnDemandDb2BackupInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.CreateOnDemandDb2Backup(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.CreateOnDemandDb2Backup_ObjectFieldSpec,
+                Mutation.CreateOnDemandDb2BackupFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	config = @{
@@ -605,9 +583,8 @@ $inputs.Var.input = @{
 	}
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -622,22 +599,17 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationDownloadDb2Snapshot",
                 "($input: DownloadDb2SnapshotInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DownloadDb2Snapshot(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.DownloadDb2Snapshot_ObjectFieldSpec,
+                Mutation.DownloadDb2SnapshotFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	locationId = <System.String>
 	# REQUIRED
 	snapshotId = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -652,14 +624,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationDownloadDb2SnapshotsForPointInTimeRecovery",
                 "($input: DownloadDb2SnapshotsForPointInTimeRecoveryInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DownloadDb2SnapshotsForPointInTimeRecovery(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.DownloadDb2SnapshotsForPointInTimeRecovery_ObjectFieldSpec,
+                Mutation.DownloadDb2SnapshotsForPointInTimeRecoveryFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	downloadConfig = @{
@@ -670,9 +638,8 @@ $inputs.Var.input = @{
 	}
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -687,14 +654,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationExpireDownloadedDb2Snapshots",
                 "($input: ExpireDownloadedDb2SnapshotsInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.ExpireDownloadedDb2Snapshots(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.ExpireDownloadedDb2Snapshots_ObjectFieldSpec,
+                Mutation.ExpireDownloadedDb2SnapshotsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	afterTime = <DateTime>
@@ -704,9 +667,8 @@ $inputs.Var.input = @{
 	shouldExpireLogsOnly = <System.Boolean>
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -721,14 +683,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationPatchDb2Database",
                 "($input: PatchDb2DatabaseInput!)",
-                "PatchDb2DatabaseReply"
-                );
-            PatchDb2DatabaseReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (PatchDb2DatabaseReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.PatchDb2Database(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "PatchDb2DatabaseReply",
+                Mutation.PatchDb2Database_ObjectFieldSpec,
+                Mutation.PatchDb2DatabaseFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	db2DatabaseConfig = @{
@@ -739,9 +697,8 @@ $inputs.Var.input = @{
 	}
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -756,20 +713,15 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationRefreshDb2Database",
                 "($input: RefreshDb2DatabaseInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.RefreshDb2Database(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.RefreshDb2Database_ObjectFieldSpec,
+                Mutation.RefreshDb2DatabaseFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -784,20 +736,15 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationDeleteDb2Database",
                 "($input: DeleteDb2DatabaseInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DeleteDb2Database(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.DeleteDb2Database_ObjectFieldSpec,
+                Mutation.DeleteDb2DatabaseFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
 

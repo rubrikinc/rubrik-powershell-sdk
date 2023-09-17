@@ -113,7 +113,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<SapHanaLogSnapshotAppMetadata> list)
+        public static void SelectForRetrieval(this List<SapHanaLogSnapshotAppMetadata> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

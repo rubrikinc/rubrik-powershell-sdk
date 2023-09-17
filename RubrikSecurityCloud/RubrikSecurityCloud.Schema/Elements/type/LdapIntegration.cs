@@ -353,7 +353,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<LdapIntegration> list)
+        public static void SelectForRetrieval(this List<LdapIntegration> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

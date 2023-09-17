@@ -33,12 +33,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <example>
     /// <code>Invoke-RscQueryLdap -AuthorizedPrincipalList [-Arg ..] [-Field ..]</code>
     /// </example>
+    [CmdletBinding()]
     [Cmdlet(
         "Invoke",
         "RscQueryLdap",
         DefaultParameterSetName = "PrincipalList")
     ]
-    public class Invoke_RscQueryLdap : RscPSCmdlet
+    public class Invoke_RscQueryLdap : RscGqlPSCmdlet
     {
         
         /// <summary>
@@ -99,6 +100,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 #pragma warning disable 1591
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 switch(Op)
@@ -175,14 +177,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "query",
                 "QueryLdapIntegrationConnection",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: LdapIntegrationFieldEnum)",
-                "LdapIntegrationConnection"
-                );
-            LdapIntegrationConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (LdapIntegrationConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.LdapIntegrationConnection(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "LdapIntegrationConnection",
+                Query.LdapIntegrationConnection_ObjectFieldSpec,
+                Query.LdapIntegrationConnectionFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -193,9 +191,8 @@ $inputs.Var.before = <System.String>
 # OPTIONAL
 $inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
 # OPTIONAL
-$inputs.Var.sortBy = <LdapIntegrationFieldEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LdapIntegrationFieldEnum]) for enum values.";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.sortBy = <LdapIntegrationFieldEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LdapIntegrationFieldEnum]) for enum values."
+            );
         }
 
         // Invoke GraphQL Query:
@@ -226,14 +223,10 @@ $inputs.Var.sortBy = <LdapIntegrationFieldEnum> # Call [Enum]::GetValues([Rubrik
                 "query",
                 "QueryLdapPrincipalConnection",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: LdapPrincipalFieldEnum,$id: UUID!,$searchText: String!)",
-                "PrincipalConnection"
-                );
-            PrincipalConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (PrincipalConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.LdapPrincipalConnection(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "PrincipalConnection",
+                Query.LdapPrincipalConnection_ObjectFieldSpec,
+                Query.LdapPrincipalConnectionFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -248,9 +241,8 @@ $inputs.Var.sortBy = <LdapPrincipalFieldEnum> # Call [Enum]::GetValues([RubrikSe
 # REQUIRED
 $inputs.Var.id = <System.String>
 # REQUIRED
-$inputs.Var.searchText = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.searchText = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -281,14 +273,10 @@ $inputs.Var.searchText = <System.String>";
                 "query",
                 "QueryLdapAuthorizedPrincipalConnection",
                 "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: LdapAuthorizedPrincipalFieldEnum,$searchText: String!,$roleIds: [UUID!])",
-                "AuthorizedPrincipalConnection"
-                );
-            AuthorizedPrincipalConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AuthorizedPrincipalConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.LdapAuthorizedPrincipalConnection(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "AuthorizedPrincipalConnection",
+                Query.LdapAuthorizedPrincipalConnection_ObjectFieldSpec,
+                Query.LdapAuthorizedPrincipalConnectionFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -305,9 +293,8 @@ $inputs.Var.searchText = <System.String>
 # OPTIONAL
 $inputs.Var.roleIds = @(
 	<System.String>
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
 

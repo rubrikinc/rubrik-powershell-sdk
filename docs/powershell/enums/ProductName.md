@@ -22,3 +22,4 @@ Name of product.
 - USER_ACCESS - User Access.
 - SONAR_O365 - Sensitive Data Discovery on Microsoft Office 365.
 - AAD - Azure Active Directory protection.
+- ONPREM_AD - On-premise Active Directory Protection.

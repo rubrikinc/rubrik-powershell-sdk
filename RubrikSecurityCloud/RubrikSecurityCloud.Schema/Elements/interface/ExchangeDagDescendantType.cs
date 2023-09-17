@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<ExchangeDagDescendantType> list)
+        public static void SelectForRetrieval(this List<ExchangeDagDescendantType> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

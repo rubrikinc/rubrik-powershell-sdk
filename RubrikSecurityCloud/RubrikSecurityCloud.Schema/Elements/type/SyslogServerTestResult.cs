@@ -109,7 +109,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<SyslogServerTestResult> list)
+        public static void SelectForRetrieval(this List<SyslogServerTestResult> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

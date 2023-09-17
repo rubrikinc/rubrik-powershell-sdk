@@ -981,7 +981,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<AwsNativeRdsInstance> list)
+        public static void SelectForRetrieval(this List<AwsNativeRdsInstance> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

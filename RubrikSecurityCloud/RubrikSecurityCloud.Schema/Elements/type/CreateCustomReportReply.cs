@@ -429,7 +429,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<CreateCustomReportReply> list)
+        public static void SelectForRetrieval(this List<CreateCustomReportReply> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

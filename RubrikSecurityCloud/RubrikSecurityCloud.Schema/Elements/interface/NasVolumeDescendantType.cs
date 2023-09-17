@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<NasVolumeDescendantType> list)
+        public static void SelectForRetrieval(this List<NasVolumeDescendantType> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

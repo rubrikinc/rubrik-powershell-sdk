@@ -70,7 +70,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<ReportChartType> list)
+        public static void SelectForRetrieval(this List<ReportChartType> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

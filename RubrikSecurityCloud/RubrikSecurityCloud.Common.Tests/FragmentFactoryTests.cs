@@ -93,7 +93,7 @@ namespace RubrikSecurityCloud.Tests
             var inputObjectProps = inputObject.GetType().GetProperties();
 
             // Act
-            inputObject.Fetch();
+            inputObject.SelectForRetrieval();
 
             // Assert
             Assert.IsNotNull(inputObject);
@@ -142,7 +142,7 @@ namespace RubrikSecurityCloud.Tests
             var expectedProps = expected.GetType().GetProperties();
 
             // Act
-            inputObject.Fetch();
+            inputObject.SelectForRetrieval();
 
             // Assert
             Assert.IsNotNull(inputObject);

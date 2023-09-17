@@ -2,16 +2,24 @@
 function Get-RscHelp {
     <#
     .SYNOPSIS
-    Retrieve subcommand help messages for a given cmdlet
+    Retrieve help around RSC cmdlets and the RSC schema.
     
     .DESCRIPTION
-    All info retrieved with this cmdlet is available with
-    Get-Help <cmdlet> -Detailed
-
+    This cmdlet is used to retrieve help around RSC cmdlets and the RSC schema.
+    It can be used to retrieve help for a specific cmdlet,
+    or to look up a schema element.
     but this cmdlet extracts just the subcommand help messages.
 
     .EXAMPLE
     Get-RscHelp -CommandName Invoke-RscQueryCluster
+
+    .EXAMPLE
+    Get-RscHelp -Locations
+
+    .EXAMPLE
+    Get-RscHelp -LookupSchema clusterconnection
+    Get-RscHelp -LookupSchema clustercon*
+    
     #>
     [CmdletBinding(
         DefaultParameterSetName = 'CommandName'
@@ -19,6 +27,9 @@ function Get-RscHelp {
     Param (
         [Parameter(
             ParameterSetName = 'CommandName',
+            HelpMessage = 'The name of the cmdlet to retrieve help for. ' +
+                'The output will be the help message for the cmdlet, ' +
+                'but this cmdlet extracts just the subcommand help messages.',
             Mandatory = $true)]
         [ValidateSet(
             'Invoke-RscMutateActivitySeries',
@@ -62,9 +73,18 @@ function Get-RscHelp {
         [string]$CommandName,
 
         [Parameter(
-            ParameterSetName = 'Locations'
+            ParameterSetName = 'Locations',
+            HelpMessage = 'Show File System locations the SDK uses.'
         )]
-        [Switch]$Locations
+        [Switch]$Locations,
+
+        [Parameter(
+            ParameterSetName = 'LookupSchema',
+            HelpMessage = 'The name of the element to look up in the schema. ' +
+                'If the name is not unique, all matching elements will be ' +
+                'returned. Regular expressions are supported.'
+        )]
+        [string]$LookupSchema
     )
     Begin {
         function GetCommandHelp {
@@ -97,12 +117,46 @@ function Get-RscHelp {
             Get-RscCmdlet -Locations
         }
 
+        function LookupSchema {
+            Param($name)
+            # Ensure the name is not 'Unknown'
+            if ($name -ieq "Unknown") {
+                Write-Output "Unknown"
+                return
+            }
+
+            # Get all the enums within the SchemaMeta class
+            $enums = [RubrikSecurityCloud.Types.SchemaMeta].GetNestedTypes() | Where-Object { $_.IsEnum -and $_.Name -ne 'GqlRootFieldName'}
+
+            # Iterate through each enum and check if it contains the lookup name
+            $found = 0
+            foreach ($enum in $enums) {
+                # Get all names in the current enum
+                $enumNames = [Enum]::GetNames($enum) | Where-Object { $_ -ine 'Unknown' }
+                # Check if any of the names match the provided pattern
+                foreach ($n in $enumNames) {
+                    if ($n -like $name) {
+                        # Extract the middle part of the enum name
+                        $enumName = $enum.Name -replace '^Gql', '' -replace 'Name$', ''
+                        Write-Output "${enumName}: $n"
+                        $found += 1
+                    }
+                }
+            }
+            if ($found -eq 0) {
+                Write-Output "No match found for '$name'."
+            } elseif ($found -gt 1) {
+                Write-Output "${found} matches found for '$name'."
+            }
+        }
+
     }
     
     Process {
         switch ($PSCmdlet.ParameterSetName) {
             'CommandName' { GetCommandHelp $CommandName }
             'Locations' { GetLocationHelp }
+            'LookupSchema' { LookupSchema $LookupSchema }
         }
     }
 }

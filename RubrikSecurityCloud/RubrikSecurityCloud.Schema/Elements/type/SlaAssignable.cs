@@ -249,7 +249,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<SlaAssignable> list)
+        public static void SelectForRetrieval(this List<SlaAssignable> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

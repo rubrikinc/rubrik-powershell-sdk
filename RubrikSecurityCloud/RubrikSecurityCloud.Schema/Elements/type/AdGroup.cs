@@ -129,7 +129,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<AdGroup> list)
+        public static void SelectForRetrieval(this List<AdGroup> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

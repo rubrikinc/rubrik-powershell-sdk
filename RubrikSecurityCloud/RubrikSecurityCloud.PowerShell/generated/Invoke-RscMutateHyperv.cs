@@ -93,12 +93,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <example>
     /// <code>Invoke-RscMutateHyperv -DownloadSnapshotFromLocation [-Arg ..] [-Field ..]</code>
     /// </example>
+    [CmdletBinding()]
     [Cmdlet(
         "Invoke",
         "RscMutateHyperv",
         DefaultParameterSetName = "ScvmmUpdate")
     ]
-    public class Invoke_RscMutateHyperv : RscPSCmdlet
+    public class Invoke_RscMutateHyperv : RscGqlPSCmdlet
     {
         
         /// <summary>
@@ -576,6 +577,7 @@ Initiates a job to download a snapshot from the specified location when the snap
 #pragma warning disable 1591
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 switch(Op)
@@ -880,14 +882,10 @@ Initiates a job to download a snapshot from the specified location when the snap
                 "mutation",
                 "MutationRegisterHypervScvmm",
                 "($input: RegisterHypervScvmmInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.RegisterHypervScvmm(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.RegisterHypervScvmm_ObjectFieldSpec,
+                Mutation.RegisterHypervScvmmFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	clusterUuid = <System.String>
@@ -900,9 +898,8 @@ $inputs.Var.input = @{
 		# REQUIRED
 		shouldDeployAgent = <System.Boolean>
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -917,14 +914,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationHypervScvmmUpdate",
                 "($input: HypervScvmmUpdateInput!)",
-                "HypervScvmmUpdateReply"
-                );
-            HypervScvmmUpdateReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (HypervScvmmUpdateReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.HypervScvmmUpdate(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "HypervScvmmUpdateReply",
+                Mutation.HypervScvmmUpdate_ObjectFieldSpec,
+                Mutation.HypervScvmmUpdateFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
@@ -939,9 +932,8 @@ $inputs.Var.input = @{
 		# OPTIONAL
 		shouldDeployAgent = <System.Boolean>
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -956,20 +948,15 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationHypervScvmmDelete",
                 "($input: HypervScvmmDeleteInput!)",
-                "ResponseSuccess"
-                );
-            ResponseSuccess? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (ResponseSuccess)this.Field;
-            }
-            string fieldSpecDoc = Mutation.HypervScvmmDelete(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "ResponseSuccess",
+                Mutation.HypervScvmmDelete_ObjectFieldSpec,
+                Mutation.HypervScvmmDeleteFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -984,20 +971,15 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationRefreshHypervScvmm",
                 "($input: RefreshHypervScvmmInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.RefreshHypervScvmm(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.RefreshHypervScvmm_ObjectFieldSpec,
+                Mutation.RefreshHypervScvmmFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1012,14 +994,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationHypervOnDemandSnapshot",
                 "($input: HypervOnDemandSnapshotInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.HypervOnDemandSnapshot(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.HypervOnDemandSnapshot_ObjectFieldSpec,
+                Mutation.HypervOnDemandSnapshotFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	config = @{
@@ -1030,9 +1008,8 @@ $inputs.Var.input = @{
 	id = <System.String>
 	# OPTIONAL
 	userNote = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1047,20 +1024,15 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationHypervDeleteAllSnapshots",
                 "($input: HypervDeleteAllSnapshotsInput!)",
-                "RequestSuccess"
-                );
-            RequestSuccess? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (RequestSuccess)this.Field;
-            }
-            string fieldSpecDoc = Mutation.HypervDeleteAllSnapshots(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "RequestSuccess",
+                Mutation.HypervDeleteAllSnapshots_ObjectFieldSpec,
+                Mutation.HypervDeleteAllSnapshotsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1075,14 +1047,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationExportHypervVirtualMachine",
                 "($input: ExportHypervVirtualMachineInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.ExportHypervVirtualMachine(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.ExportHypervVirtualMachine_ObjectFieldSpec,
+                Mutation.ExportHypervVirtualMachineFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	config = @{
@@ -1101,9 +1069,8 @@ $inputs.Var.input = @{
 	}
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1118,14 +1085,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationDownloadHypervVirtualMachineSnapshotFiles",
                 "($input: DownloadHypervVirtualMachineSnapshotFilesInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DownloadHypervVirtualMachineSnapshotFiles(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.DownloadHypervVirtualMachineSnapshotFiles_ObjectFieldSpec,
+                Mutation.DownloadHypervVirtualMachineSnapshotFilesFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	config = @{
@@ -1143,9 +1106,8 @@ $inputs.Var.input = @{
 	id = <System.String>
 	# OPTIONAL
 	userNote = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1160,14 +1122,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationInstantRecoverHypervVirtualMachineSnapshot",
                 "($input: InstantRecoverHypervVirtualMachineSnapshotInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.InstantRecoverHypervVirtualMachineSnapshot(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.InstantRecoverHypervVirtualMachineSnapshot_ObjectFieldSpec,
+                Mutation.InstantRecoverHypervVirtualMachineSnapshotFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	config = @{
@@ -1178,9 +1136,8 @@ $inputs.Var.input = @{
 	}
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1195,14 +1152,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationRestoreHypervVirtualMachineSnapshotFiles",
                 "($input: RestoreHypervVirtualMachineSnapshotFilesInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.RestoreHypervVirtualMachineSnapshotFiles(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.RestoreHypervVirtualMachineSnapshotFiles_ObjectFieldSpec,
+                Mutation.RestoreHypervVirtualMachineSnapshotFilesFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	config = @{
@@ -1220,9 +1173,8 @@ $inputs.Var.input = @{
 	}
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1237,20 +1189,15 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationRegisterAgentHypervVirtualMachine",
                 "($input: RegisterAgentHypervVirtualMachineInput!)",
-                "RequestSuccess"
-                );
-            RequestSuccess? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (RequestSuccess)this.Field;
-            }
-            string fieldSpecDoc = Mutation.RegisterAgentHypervVirtualMachine(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "RequestSuccess",
+                Mutation.RegisterAgentHypervVirtualMachine_ObjectFieldSpec,
+                Mutation.RegisterAgentHypervVirtualMachineFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1265,22 +1212,17 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationDeleteHypervVirtualMachineSnapshot",
                 "($input: DeleteHypervVirtualMachineSnapshotInput!)",
-                "RequestSuccess"
-                );
-            RequestSuccess? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (RequestSuccess)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DeleteHypervVirtualMachineSnapshot(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "RequestSuccess",
+                Mutation.DeleteHypervVirtualMachineSnapshot_ObjectFieldSpec,
+                Mutation.DeleteHypervVirtualMachineSnapshotFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	location = <InternalDeleteHypervVirtualMachineSnapshotRequestLocation> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InternalDeleteHypervVirtualMachineSnapshotRequestLocation]) for enum values.
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1295,20 +1237,15 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationDownloadHypervVirtualMachineSnapshot",
                 "($input: DownloadHypervVirtualMachineSnapshotInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DownloadHypervVirtualMachineSnapshot(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.DownloadHypervVirtualMachineSnapshot_ObjectFieldSpec,
+                Mutation.DownloadHypervVirtualMachineSnapshotFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1323,14 +1260,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationCreateHypervVirtualMachineSnapshotMount",
                 "($input: CreateHypervVirtualMachineSnapshotMountInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.CreateHypervVirtualMachineSnapshotMount(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.CreateHypervVirtualMachineSnapshotMount_ObjectFieldSpec,
+                Mutation.CreateHypervVirtualMachineSnapshotMountFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	config = @{
@@ -1347,9 +1280,8 @@ $inputs.Var.input = @{
 	}
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1364,14 +1296,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationUpdateHypervVirtualMachineSnapshotMount",
                 "($input: UpdateHypervVirtualMachineSnapshotMountInput!)",
-                "UpdateHypervVirtualMachineSnapshotMountReply"
-                );
-            UpdateHypervVirtualMachineSnapshotMountReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (UpdateHypervVirtualMachineSnapshotMountReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UpdateHypervVirtualMachineSnapshotMount(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "UpdateHypervVirtualMachineSnapshotMountReply",
+                Mutation.UpdateHypervVirtualMachineSnapshotMount_ObjectFieldSpec,
+                Mutation.UpdateHypervVirtualMachineSnapshotMountFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	config = @{
@@ -1380,9 +1308,8 @@ $inputs.Var.input = @{
 	}
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1397,22 +1324,17 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationDeleteHypervVirtualMachineSnapshotMount",
                 "($input: DeleteHypervVirtualMachineSnapshotMountInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DeleteHypervVirtualMachineSnapshotMount(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.DeleteHypervVirtualMachineSnapshotMount_ObjectFieldSpec,
+                Mutation.DeleteHypervVirtualMachineSnapshotMountFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	force = <System.Boolean>
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1427,20 +1349,15 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationRefreshHypervServer",
                 "($input: RefreshHypervServerInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.RefreshHypervServer(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.RefreshHypervServer_ObjectFieldSpec,
+                Mutation.RefreshHypervServerFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1455,14 +1372,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationBatchOnDemandBackupHypervVm",
                 "($input: BatchOnDemandBackupHypervVmInput!)",
-                "BatchOnDemandBackupHypervVmReply"
-                );
-            BatchOnDemandBackupHypervVmReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (BatchOnDemandBackupHypervVmReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.BatchOnDemandBackupHypervVm(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "BatchOnDemandBackupHypervVmReply",
+                Mutation.BatchOnDemandBackupHypervVm_ObjectFieldSpec,
+                Mutation.BatchOnDemandBackupHypervVmFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	userNote = <System.String>
@@ -1481,9 +1394,8 @@ $inputs.Var.input = @{
 			}
 		)
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1498,14 +1410,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationBatchExportHypervVm",
                 "($input: BatchExportHypervVmInput!)",
-                "BatchExportHypervVmReply"
-                );
-            BatchExportHypervVmReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (BatchExportHypervVmReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.BatchExportHypervVm(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "BatchExportHypervVmReply",
+                Mutation.BatchExportHypervVm_ObjectFieldSpec,
+                Mutation.BatchExportHypervVmFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	clusterUuid = <System.String>
@@ -1542,9 +1450,8 @@ $inputs.Var.input = @{
 			}
 		)
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1559,14 +1466,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationBatchMountHypervVm",
                 "($input: BatchMountHypervVmInput!)",
-                "BatchMountHypervVmReply"
-                );
-            BatchMountHypervVmReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (BatchMountHypervVmReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.BatchMountHypervVm(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "BatchMountHypervVmReply",
+                Mutation.BatchMountHypervVm_ObjectFieldSpec,
+                Mutation.BatchMountHypervVmFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	clusterUuid = <System.String>
@@ -1601,9 +1504,8 @@ $inputs.Var.input = @{
 			}
 		)
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1618,14 +1520,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationBatchInstantRecoverHypervVm",
                 "($input: BatchInstantRecoverHypervVmInput!)",
-                "BatchInstantRecoverHypervVmReply"
-                );
-            BatchInstantRecoverHypervVmReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (BatchInstantRecoverHypervVmReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.BatchInstantRecoverHypervVm(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "BatchInstantRecoverHypervVmReply",
+                Mutation.BatchInstantRecoverHypervVm_ObjectFieldSpec,
+                Mutation.BatchInstantRecoverHypervVmFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	clusterUuid = <System.String>
@@ -1652,9 +1550,8 @@ $inputs.Var.input = @{
 			}
 		)
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1669,14 +1566,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationUpdateHypervVirtualMachine",
                 "($input: UpdateHypervVirtualMachineInput!)",
-                "UpdateHypervVirtualMachineReply"
-                );
-            UpdateHypervVirtualMachineReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (UpdateHypervVirtualMachineReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UpdateHypervVirtualMachine(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "UpdateHypervVirtualMachineReply",
+                Mutation.UpdateHypervVirtualMachine_ObjectFieldSpec,
+                Mutation.UpdateHypervVirtualMachineFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
@@ -1694,9 +1587,8 @@ $inputs.Var.input = @{
 			<System.String>
 		)
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1711,14 +1603,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationDownloadHypervSnapshotFromLocation",
                 "($input: DownloadHypervSnapshotFromLocationInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DownloadHypervSnapshotFromLocation(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.DownloadHypervSnapshotFromLocation_ObjectFieldSpec,
+                Mutation.DownloadHypervSnapshotFromLocationFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	locationId = <System.String>
@@ -1729,9 +1617,8 @@ $inputs.Var.input = @{
 		# OPTIONAL
 		slaId = <System.String>
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
 

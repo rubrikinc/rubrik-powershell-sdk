@@ -93,12 +93,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <example>
     /// <code>Invoke-RscQueryVsphere -VmwareCdpLiveInfo [-Arg ..] [-Field ..]</code>
     /// </example>
+    [CmdletBinding()]
     [Cmdlet(
         "Invoke",
         "RscQueryVsphere",
         DefaultParameterSetName = "Host")
     ]
-    public class Invoke_RscQueryVsphere : RscPSCmdlet
+    public class Invoke_RscQueryVsphere : RscGqlPSCmdlet
     {
         
         /// <summary>
@@ -522,6 +523,7 @@ Get details of a ESXi hypervisor.
 #pragma warning disable 1591
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 switch(Op)
@@ -826,17 +828,12 @@ Get details of a ESXi hypervisor.
                 "query",
                 "QueryVsphereDatacenter",
                 "($fid: UUID!)",
-                "VsphereDatacenter"
-                );
-            VsphereDatacenter? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (VsphereDatacenter)this.Field;
-            }
-            string fieldSpecDoc = Query.VsphereDatacenter(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "VsphereDatacenter",
+                Query.VsphereDatacenter_ObjectFieldSpec,
+                Query.VsphereDatacenterFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -851,17 +848,12 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryVsphereComputeCluster",
                 "($fid: UUID!)",
-                "VsphereComputeCluster"
-                );
-            VsphereComputeCluster? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (VsphereComputeCluster)this.Field;
-            }
-            string fieldSpecDoc = Query.VsphereComputeCluster(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "VsphereComputeCluster",
+                Query.VsphereComputeCluster_ObjectFieldSpec,
+                Query.VsphereComputeClusterFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -876,17 +868,12 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryVsphereResourcePool",
                 "($fid: UUID!)",
-                "VsphereResourcePool"
-                );
-            VsphereResourcePool? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (VsphereResourcePool)this.Field;
-            }
-            string fieldSpecDoc = Query.VsphereResourcePool(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "VsphereResourcePool",
+                Query.VsphereResourcePool_ObjectFieldSpec,
+                Query.VsphereResourcePoolFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -901,17 +888,12 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryVsphereFolder",
                 "($fid: UUID!)",
-                "VsphereFolder"
-                );
-            VsphereFolder? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (VsphereFolder)this.Field;
-            }
-            string fieldSpecDoc = Query.VsphereFolder(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "VsphereFolder",
+                Query.VsphereFolder_ObjectFieldSpec,
+                Query.VsphereFolderFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -926,17 +908,12 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryVsphereHost",
                 "($fid: UUID!)",
-                "VsphereHost"
-                );
-            VsphereHost? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (VsphereHost)this.Field;
-            }
-            string fieldSpecDoc = Query.VsphereHost(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "VsphereHost",
+                Query.VsphereHost_ObjectFieldSpec,
+                Query.VsphereHostFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -951,17 +928,12 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryVsphereDatastoreCluster",
                 "($fid: UUID!)",
-                "VsphereDatastoreCluster"
-                );
-            VsphereDatastoreCluster? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (VsphereDatastoreCluster)this.Field;
-            }
-            string fieldSpecDoc = Query.VsphereDatastoreCluster(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "VsphereDatastoreCluster",
+                Query.VsphereDatastoreCluster_ObjectFieldSpec,
+                Query.VsphereDatastoreClusterFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -976,17 +948,12 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryVsphereDatastore",
                 "($fid: UUID!)",
-                "VsphereDatastore"
-                );
-            VsphereDatastore? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (VsphereDatastore)this.Field;
-            }
-            string fieldSpecDoc = Query.VsphereDatastore(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "VsphereDatastore",
+                Query.VsphereDatastore_ObjectFieldSpec,
+                Query.VsphereDatastoreFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1001,19 +968,14 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryVsphereHostsByFids",
                 "($fids: [UUID!]!)",
-                "List<VsphereHost>"
-                );
-            List<VsphereHost>? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (List<VsphereHost>)this.Field;
-            }
-            string fieldSpecDoc = Query.VsphereHostsByFids(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "List<VsphereHost>",
+                Query.VsphereHostsByFids_ObjectFieldSpec,
+                Query.VsphereHostsByFidsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.fids = @(
 	<System.String>
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1028,17 +990,12 @@ $inputs.Var.fids = @(
                 "query",
                 "QueryVsphereTag",
                 "($fid: UUID!)",
-                "VsphereTag"
-                );
-            VsphereTag? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (VsphereTag)this.Field;
-            }
-            string fieldSpecDoc = Query.VsphereTag(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "VsphereTag",
+                Query.VsphereTag_ObjectFieldSpec,
+                Query.VsphereTagFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1053,17 +1010,12 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryVsphereTagCategory",
                 "($fid: UUID!)",
-                "VsphereTagCategory"
-                );
-            VsphereTagCategory? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (VsphereTagCategory)this.Field;
-            }
-            string fieldSpecDoc = Query.VsphereTagCategory(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "VsphereTagCategory",
+                Query.VsphereTagCategory_ObjectFieldSpec,
+                Query.VsphereTagCategoryFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1078,17 +1030,12 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryVsphereNetwork",
                 "($fid: UUID!)",
-                "VsphereNetwork"
-                );
-            VsphereNetwork? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (VsphereNetwork)this.Field;
-            }
-            string fieldSpecDoc = Query.VsphereNetwork(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "VsphereNetwork",
+                Query.VsphereNetwork_ObjectFieldSpec,
+                Query.VsphereNetworkFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1115,14 +1062,10 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryVsphereTopLevelDescendantsConnection",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!],$filter: [Filter!])",
-                "CdmHierarchyObjectConnection"
-                );
-            CdmHierarchyObjectConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CdmHierarchyObjectConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.VsphereTopLevelDescendantsConnection(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "CdmHierarchyObjectConnection",
+                Query.VsphereTopLevelDescendantsConnection_ObjectFieldSpec,
+                Query.VsphereTopLevelDescendantsConnectionFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -1175,9 +1118,8 @@ $inputs.Var.filter = @(
 			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
 		)
 }
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1202,14 +1144,10 @@ $inputs.Var.filter = @(
                 "query",
                 "QueryVsphereRootRecoveryHierarchy",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                "CdmHierarchyObjectConnection"
-                );
-            CdmHierarchyObjectConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (CdmHierarchyObjectConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.VsphereRootRecoveryHierarchy(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "CdmHierarchyObjectConnection",
+                Query.VsphereRootRecoveryHierarchy_ObjectFieldSpec,
+                Query.VsphereRootRecoveryHierarchyFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -1258,9 +1196,8 @@ $inputs.Var.filter = @(
 			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
 		)
 }
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1285,14 +1222,10 @@ $inputs.Var.filter = @(
                 "query",
                 "QueryVsphereHostConnection",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                "VsphereHostConnection"
-                );
-            VsphereHostConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (VsphereHostConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.VsphereHostConnection(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "VsphereHostConnection",
+                Query.VsphereHostConnection_ObjectFieldSpec,
+                Query.VsphereHostConnectionFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -1341,9 +1274,8 @@ $inputs.Var.filter = @(
 			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
 		)
 }
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1368,14 +1300,10 @@ $inputs.Var.filter = @(
                 "query",
                 "QueryVsphereFolders",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                "VsphereFolderConnection"
-                );
-            VsphereFolderConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (VsphereFolderConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.VsphereFolders(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "VsphereFolderConnection",
+                Query.VsphereFolders_ObjectFieldSpec,
+                Query.VsphereFoldersFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -1424,9 +1352,8 @@ $inputs.Var.filter = @(
 			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
 		)
 }
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1451,14 +1378,10 @@ $inputs.Var.filter = @(
                 "query",
                 "QueryVsphereComputeClusters",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                "VsphereComputeClusterConnection"
-                );
-            VsphereComputeClusterConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (VsphereComputeClusterConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.VsphereComputeClusters(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "VsphereComputeClusterConnection",
+                Query.VsphereComputeClusters_ObjectFieldSpec,
+                Query.VsphereComputeClustersFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -1507,9 +1430,8 @@ $inputs.Var.filter = @(
 			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
 		)
 }
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1534,14 +1456,10 @@ $inputs.Var.filter = @(
                 "query",
                 "QueryVsphereDatastoreConnection",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                "VsphereDatastoreConnection"
-                );
-            VsphereDatastoreConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (VsphereDatastoreConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.VsphereDatastoreConnection(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "VsphereDatastoreConnection",
+                Query.VsphereDatastoreConnection_ObjectFieldSpec,
+                Query.VsphereDatastoreConnectionFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -1590,9 +1508,8 @@ $inputs.Var.filter = @(
 			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
 		)
 }
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1617,14 +1534,10 @@ $inputs.Var.filter = @(
                 "query",
                 "QueryVsphereDatastoreClusters",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                "VsphereDatastoreClusterConnection"
-                );
-            VsphereDatastoreClusterConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (VsphereDatastoreClusterConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.VsphereDatastoreClusters(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "VsphereDatastoreClusterConnection",
+                Query.VsphereDatastoreClusters_ObjectFieldSpec,
+                Query.VsphereDatastoreClustersFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -1673,9 +1586,8 @@ $inputs.Var.filter = @(
 			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
 		)
 }
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1698,14 +1610,10 @@ $inputs.Var.filter = @(
                 "query",
                 "QueryVsphereLiveMounts",
                 "($first: Int,$after: String,$filter: [VsphereLiveMountFilterInput!],$sortBy: VsphereLiveMountSortBy)",
-                "VsphereLiveMountConnection"
-                );
-            VsphereLiveMountConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (VsphereLiveMountConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.VsphereLiveMounts(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "VsphereLiveMountConnection",
+                Query.VsphereLiveMounts_ObjectFieldSpec,
+                Query.VsphereLiveMountsFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -1726,9 +1634,8 @@ $inputs.Var.sortBy = @{
 	field = <VsphereLiveMountSortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VsphereLiveMountSortByField]) for enum values.
 	# OPTIONAL
 	sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1753,14 +1660,10 @@ $inputs.Var.sortBy = @{
                 "query",
                 "QueryVsphereMountConnection",
                 "($first: Int,$after: String,$filter: VSphereMountFilter,$sortBy: VsphereMountSortBy,$sortOrder: SortOrder)",
-                "VsphereMountConnection"
-                );
-            VsphereMountConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (VsphereMountConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.VsphereMountConnection(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "VsphereMountConnection",
+                Query.VsphereMountConnection_ObjectFieldSpec,
+                Query.VsphereMountConnectionFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -1782,9 +1685,8 @@ $inputs.Var.filter = @{
 # OPTIONAL
 $inputs.Var.sortBy = <VsphereMountSortBy> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VsphereMountSortBy]) for enum values.
 # OPTIONAL
-$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values."
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1799,17 +1701,12 @@ $inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityClou
                 "query",
                 "QueryVsphereMount",
                 "($fid: UUID!)",
-                "VsphereMount"
-                );
-            VsphereMount? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (VsphereMount)this.Field;
-            }
-            string fieldSpecDoc = Query.VsphereMount(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "VsphereMount",
+                Query.VsphereMount_ObjectFieldSpec,
+                Query.VsphereMountFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1824,20 +1721,15 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryVsphereHostDetails",
                 "($input: GetVmwareHostInput!)",
-                "VmwareHostDetail"
-                );
-            VmwareHostDetail? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (VmwareHostDetail)this.Field;
-            }
-            string fieldSpecDoc = Query.VsphereHostDetails(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "VmwareHostDetail",
+                Query.VsphereHostDetails_ObjectFieldSpec,
+                Query.VsphereHostDetailsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1852,19 +1744,14 @@ $inputs.Var.input = @{
                 "query",
                 "QueryVsphereVmwareCdpLiveInfo",
                 "($ids: [String!]!)",
-                "BatchVmwareCdpLiveInfo"
-                );
-            BatchVmwareCdpLiveInfo? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (BatchVmwareCdpLiveInfo)this.Field;
-            }
-            string fieldSpecDoc = Query.VsphereVmwareCdpLiveInfo(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "BatchVmwareCdpLiveInfo",
+                Query.VsphereVmwareCdpLiveInfo_ObjectFieldSpec,
+                Query.VsphereVmwareCdpLiveInfoFieldSpec,
+                @"# REQUIRED
 $inputs.Var.ids = @(
 	<System.String>
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
 

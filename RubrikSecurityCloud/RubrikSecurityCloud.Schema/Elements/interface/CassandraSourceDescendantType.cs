@@ -151,7 +151,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<CassandraSourceDescendantType> list)
+        public static void SelectForRetrieval(this List<CassandraSourceDescendantType> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

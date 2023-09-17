@@ -113,7 +113,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<DeleteManagedVolumeReply> list)
+        public static void SelectForRetrieval(this List<DeleteManagedVolumeReply> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

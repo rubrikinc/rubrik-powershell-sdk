@@ -72,12 +72,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <example>
     /// <code>Invoke-RscQueryMongo -DbBulkRecoverableRange [-Arg ..] [-Field ..]</code>
     /// </example>
+    [CmdletBinding()]
     [Cmdlet(
         "Invoke",
         "RscQueryMongo",
         DefaultParameterSetName = "Source")
     ]
-    public class Invoke_RscQueryMongo : RscPSCmdlet
+    public class Invoke_RscQueryMongo : RscGqlPSCmdlet
     {
         
         /// <summary>
@@ -379,6 +380,7 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
 #pragma warning disable 1591
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 switch(Op)
@@ -609,14 +611,10 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
                 "query",
                 "QueryMongoSources",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                "MongoSourceConnection"
-                );
-            MongoSourceConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MongoSourceConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.MongoSources(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "MongoSourceConnection",
+                Query.MongoSources_ObjectFieldSpec,
+                Query.MongoSourcesFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -665,9 +663,8 @@ $inputs.Var.filter = @(
 			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
 		)
 }
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -692,14 +689,10 @@ $inputs.Var.filter = @(
                 "query",
                 "QueryMongoDatabases",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                "MongoDatabaseConnection"
-                );
-            MongoDatabaseConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MongoDatabaseConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.MongoDatabases(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "MongoDatabaseConnection",
+                Query.MongoDatabases_ObjectFieldSpec,
+                Query.MongoDatabasesFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -748,9 +741,8 @@ $inputs.Var.filter = @(
 			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
 		)
 }
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -775,14 +767,10 @@ $inputs.Var.filter = @(
                 "query",
                 "QueryMongoCollections",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                "MongoCollectionConnection"
-                );
-            MongoCollectionConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MongoCollectionConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.MongoCollections(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "MongoCollectionConnection",
+                Query.MongoCollections_ObjectFieldSpec,
+                Query.MongoCollectionsFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -831,9 +819,8 @@ $inputs.Var.filter = @(
 			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
 		)
 }
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -848,17 +835,12 @@ $inputs.Var.filter = @(
                 "query",
                 "QueryMongoSource",
                 "($fid: UUID!)",
-                "MongoSource"
-                );
-            MongoSource? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MongoSource)this.Field;
-            }
-            string fieldSpecDoc = Query.MongoSource(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "MongoSource",
+                Query.MongoSource_ObjectFieldSpec,
+                Query.MongoSourceFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -873,17 +855,12 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryMongoDatabase",
                 "($fid: UUID!)",
-                "MongoDatabase"
-                );
-            MongoDatabase? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MongoDatabase)this.Field;
-            }
-            string fieldSpecDoc = Query.MongoDatabase(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "MongoDatabase",
+                Query.MongoDatabase_ObjectFieldSpec,
+                Query.MongoDatabaseFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -898,17 +875,12 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryMongoCollection",
                 "($fid: UUID!)",
-                "MongoCollection"
-                );
-            MongoCollection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MongoCollection)this.Field;
-            }
-            string fieldSpecDoc = Query.MongoCollection(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "MongoCollection",
+                Query.MongoCollection_ObjectFieldSpec,
+                Query.MongoCollectionFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -923,14 +895,10 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryMongoRecoverableRanges",
                 "($input: RecoverableRangeInput!)",
-                "MongoRecoverableRanges"
-                );
-            MongoRecoverableRanges? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MongoRecoverableRanges)this.Field;
-            }
-            string fieldSpecDoc = Query.MongoRecoverableRanges(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "MongoRecoverableRanges",
+                Query.MongoRecoverableRanges_ObjectFieldSpec,
+                Query.MongoRecoverableRangesFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	source = <System.String>
@@ -942,9 +910,8 @@ $inputs.Var.input = @{
 	collections = @(
 		<System.String>
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -959,14 +926,10 @@ $inputs.Var.input = @{
                 "query",
                 "QueryMongoBulkRecoverableRanges",
                 "($input: RecoverableRangeInput!)",
-                "MongoRecoverableRanges"
-                );
-            MongoRecoverableRanges? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MongoRecoverableRanges)this.Field;
-            }
-            string fieldSpecDoc = Query.MongoBulkRecoverableRanges(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "MongoRecoverableRanges",
+                Query.MongoBulkRecoverableRanges_ObjectFieldSpec,
+                Query.MongoBulkRecoverableRangesFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	source = <System.String>
@@ -978,9 +941,8 @@ $inputs.Var.input = @{
 	collections = @(
 		<System.String>
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1005,14 +967,10 @@ $inputs.Var.input = @{
                 "query",
                 "QueryMongodbSources",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                "MongodbSourceConnection"
-                );
-            MongodbSourceConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MongodbSourceConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.MongodbSources(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "MongodbSourceConnection",
+                Query.MongodbSources_ObjectFieldSpec,
+                Query.MongodbSourcesFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -1061,9 +1019,8 @@ $inputs.Var.filter = @(
 			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
 		)
 }
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1088,14 +1045,10 @@ $inputs.Var.filter = @(
                 "query",
                 "QueryMongodbDatabases",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                "MongodbDatabaseConnection"
-                );
-            MongodbDatabaseConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MongodbDatabaseConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.MongodbDatabases(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "MongodbDatabaseConnection",
+                Query.MongodbDatabases_ObjectFieldSpec,
+                Query.MongodbDatabasesFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -1144,9 +1097,8 @@ $inputs.Var.filter = @(
 			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
 		)
 }
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1171,14 +1123,10 @@ $inputs.Var.filter = @(
                 "query",
                 "QueryMongodbCollections",
                 "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                "MongodbCollectionConnection"
-                );
-            MongodbCollectionConnection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MongodbCollectionConnection)this.Field;
-            }
-            string fieldSpecDoc = Query.MongodbCollections(ref fieldSpecObj);
-            string inputExample = @"# OPTIONAL
+                "MongodbCollectionConnection",
+                Query.MongodbCollections_ObjectFieldSpec,
+                Query.MongodbCollectionsFieldSpec,
+                @"# OPTIONAL
 $inputs.Var.first = <System.Int32>
 # OPTIONAL
 $inputs.Var.after = <System.String>
@@ -1227,9 +1175,8 @@ $inputs.Var.filter = @(
 			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
 		)
 }
-)";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+)"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1244,17 +1191,12 @@ $inputs.Var.filter = @(
                 "query",
                 "QueryMongodbSource",
                 "($fid: UUID!)",
-                "MongodbSource"
-                );
-            MongodbSource? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MongodbSource)this.Field;
-            }
-            string fieldSpecDoc = Query.MongodbSource(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "MongodbSource",
+                Query.MongodbSource_ObjectFieldSpec,
+                Query.MongodbSourceFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1269,17 +1211,12 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryMongodbDatabase",
                 "($fid: UUID!)",
-                "MongodbDatabase"
-                );
-            MongodbDatabase? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MongodbDatabase)this.Field;
-            }
-            string fieldSpecDoc = Query.MongodbDatabase(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "MongodbDatabase",
+                Query.MongodbDatabase_ObjectFieldSpec,
+                Query.MongodbDatabaseFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1294,17 +1231,12 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryMongodbCollection",
                 "($fid: UUID!)",
-                "MongodbCollection"
-                );
-            MongodbCollection? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MongodbCollection)this.Field;
-            }
-            string fieldSpecDoc = Query.MongodbCollection(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
-$inputs.Var.fid = <System.String>";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+                "MongodbCollection",
+                Query.MongodbCollection_ObjectFieldSpec,
+                Query.MongodbCollectionFieldSpec,
+                @"# REQUIRED
+$inputs.Var.fid = <System.String>"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1319,14 +1251,10 @@ $inputs.Var.fid = <System.String>";
                 "query",
                 "QueryMongodbCollectionRecoverableRange",
                 "($input: GetMosaicRecoverableRangeInput!)",
-                "GetMosaicRecoverableRangeResponse"
-                );
-            GetMosaicRecoverableRangeResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (GetMosaicRecoverableRangeResponse)this.Field;
-            }
-            string fieldSpecDoc = Query.MongodbCollectionRecoverableRange(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "GetMosaicRecoverableRangeResponse",
+                Query.MongodbCollectionRecoverableRange_ObjectFieldSpec,
+                Query.MongodbCollectionRecoverableRangeFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	clusterUuid = <System.String>
@@ -1341,9 +1269,8 @@ $inputs.Var.input = @{
 		# REQUIRED
 		tableName = <System.String>
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Query:
@@ -1358,14 +1285,10 @@ $inputs.Var.input = @{
                 "query",
                 "QueryMongodbBulkRecoverableRange",
                 "($input: MosaicBulkRecoveryRangeInput!)",
-                "MosaicRecoveryRangeResponse"
-                );
-            MosaicRecoveryRangeResponse? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (MosaicRecoveryRangeResponse)this.Field;
-            }
-            string fieldSpecDoc = Query.MongodbBulkRecoverableRange(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "MosaicRecoveryRangeResponse",
+                Query.MongodbBulkRecoverableRange_ObjectFieldSpec,
+                Query.MongodbBulkRecoverableRangeFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	clusterUuid = <System.String>
@@ -1390,9 +1313,8 @@ $inputs.Var.input = @{
 		# REQUIRED
 		sourceName = <System.String>
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
 

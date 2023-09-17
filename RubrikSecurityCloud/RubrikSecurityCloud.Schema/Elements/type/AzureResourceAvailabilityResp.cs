@@ -129,7 +129,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<AzureResourceAvailabilityResp> list)
+        public static void SelectForRetrieval(this List<AzureResourceAvailabilityResp> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

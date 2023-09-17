@@ -577,7 +577,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<VirtualMachineSummary> list)
+        public static void SelectForRetrieval(this List<VirtualMachineSummary> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

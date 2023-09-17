@@ -149,7 +149,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<UpgradeRecommendationInfo> list)
+        public static void SelectForRetrieval(this List<UpgradeRecommendationInfo> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

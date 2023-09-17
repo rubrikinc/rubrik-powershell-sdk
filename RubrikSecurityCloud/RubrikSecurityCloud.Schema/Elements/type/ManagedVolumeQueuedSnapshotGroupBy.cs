@@ -162,7 +162,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<ManagedVolumeQueuedSnapshotGroupBy> list)
+        public static void SelectForRetrieval(this List<ManagedVolumeQueuedSnapshotGroupBy> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

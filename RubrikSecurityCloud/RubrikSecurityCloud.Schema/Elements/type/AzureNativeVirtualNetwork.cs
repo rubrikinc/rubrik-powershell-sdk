@@ -129,7 +129,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<AzureNativeVirtualNetwork> list)
+        public static void SelectForRetrieval(this List<AzureNativeVirtualNetwork> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

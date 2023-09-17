@@ -841,7 +841,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<AwsNativeS3Bucket> list)
+        public static void SelectForRetrieval(this List<AwsNativeS3Bucket> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

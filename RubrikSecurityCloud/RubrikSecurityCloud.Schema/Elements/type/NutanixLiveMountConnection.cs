@@ -181,7 +181,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<NutanixLiveMountConnection> list)
+        public static void SelectForRetrieval(this List<NutanixLiveMountConnection> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<VsphereComputeClusterPhysicalChildType> list)
+        public static void SelectForRetrieval(this List<VsphereComputeClusterPhysicalChildType> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

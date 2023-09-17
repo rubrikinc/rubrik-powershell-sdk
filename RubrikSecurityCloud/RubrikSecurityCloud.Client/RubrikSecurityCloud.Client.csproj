@@ -15,6 +15,7 @@
     <PackageReference Include="GraphQL.Client.Serializer.Newtonsoft" Version="6.0.0" />
     <PackageReference Include="GraphQL.Query.Builder" Version="2.0.1" />
     <PackageReference Include="GraphQL-Parser" Version="8.1.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.0.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RubrikSecurityCloud.Schema\RubrikSecurityCloud.Schema.csproj" />

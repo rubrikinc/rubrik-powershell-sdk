@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<FilesetTemplatePhysicalChildType> list)
+        public static void SelectForRetrieval(this List<FilesetTemplatePhysicalChildType> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

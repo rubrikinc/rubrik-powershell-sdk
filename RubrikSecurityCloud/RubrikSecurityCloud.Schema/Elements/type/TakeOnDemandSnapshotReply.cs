@@ -137,7 +137,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<TakeOnDemandSnapshotReply> list)
+        public static void SelectForRetrieval(this List<TakeOnDemandSnapshotReply> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
@@ -49,6 +50,19 @@ namespace RubrikSecurityCloud
                     wantedFields.Add(p);
                 }
             }
+        }
+
+        public static List<string> BuildValidPatchStringsFor(
+            string gqlReturnTypeName,
+            int maxDepth = 10,
+            HashSet<string>? skip = null)
+        {
+            var patches = ReflectionUtils.FlattenField(gqlReturnTypeName, addClassNames: true, maxDepth: 5, skip: skip);
+            if (patches.Count > 0)
+            {
+                patches.AddRange(patches.Select(s => "-" + s).ToList());
+            }
+            return patches;
         }
     }
 }

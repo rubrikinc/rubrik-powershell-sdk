@@ -357,7 +357,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<HyperVliveMount> list)
+        public static void SelectForRetrieval(this List<HyperVliveMount> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

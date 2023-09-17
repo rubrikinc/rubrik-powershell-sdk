@@ -1434,6 +1434,45 @@ type Query {
     # Input to retrieve the AWS trust policy.
     input: AwsTrustPolicyInput!): AwsTrustPolicy!
 
+  # Lists all Azure AD directories for the account.
+  azureAdDirectories(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Sort hierarchy objects by hierarchy field.
+    sortBy: HierarchySortByField,
+
+    # Sorting order for the results.
+    sortOrder: SortOrder,
+
+    # The hierarchy object filter.
+    filter: [Filter!]): AzureAdDirectoryConnection!
+
+  # Details of the Azure AD corresponding to the workload ID.
+  azureAdDirectory(
+    # Workload FID.
+    workloadFid: UUID!): AzureAdDirectory!
+
+  # Details of the Azure AD objects corresponding to the type.
+  azureAdObjectsByType(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Ordered list sorted by column names.
+    sortByOption: [AzureAdObjectSearchType!],
+
+    # Sorting order for the results.
+    sortOrder: SortOrder,
+
+    # Input for the azureAdObjectsByType API.
+    input: AzureAdObjectTypeInput!): AzureAdObjectConnection!
+
   # Retrieves the configuration consisting of role permissions and feature policy version required for Azure subscription setup. Features refer to the Polaris features that the customer wants to be enabled on the cloud account.
   azureCloudAccountPermissionConfig(
     # A cloud account feature of Rubrik Security Cloud.
@@ -2231,8 +2270,13 @@ type Query {
 
   # Details of snapshot types available for recovery.
   cloudNativeSnapshotDetailsForRecovery(
-    # Snapshot UUID
+    # Snapshot UUID.
     snapshotId: UUID!): CloudNativeSnapshotDetailsForRecoveryReply!
+
+  # Details of the available snapshot types.
+  cloudNativeSnapshotTypeDetails(
+    # Snapshot UUID.
+    snapshotId: UUID!): CloudNativeSnapshotTypeDetailsReply!
 
   # List of all files and directories in a given path with the given prefix in name.
   cloudNativeSnapshots(
@@ -2276,7 +2320,7 @@ type Query {
     # Snappable ID.
     snappableId: UUID!,
 
-    # Name or Path prefix arg for searching for files within a snappable.
+    # Specify either the name or path prefix argument to search for files within a workload.
     searchQuery: String!): CloudNativeVersionedFileConnection!
 
   # A cluster object.
@@ -5681,6 +5725,17 @@ type Query {
     # Filter report schedules.
     filter: ScheduledReportFilterInput): ScheduledReportConnection!
 
+  # Search for azureAdObjects in a snapshot.
+  searchAzureAdSnapshot(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Input for searching for Azure AD objects in a snapshot.
+    input: SearchAzureAdSnapshotInput!): AzureAdObjectConnection!
+
   # Search file under given folder and with given prefix.
   searchFileByPrefix(
     # The Rubrik cluster ID.
@@ -7456,6 +7511,11 @@ type Mutation {
   # Kicks off an OAuth consent flow for Azure resource access.
   azureOauthConsentKickoff: AzureOauthConsentKickoffReply!
 
+  # Backs up the Azure AD directory.
+  backupAzureAdDirectory(
+    # Input for the BackupAzureAdDirectory API.
+    input: BackupAzureAdDirectoryInput!): [CreateOnDemandJobReply!]!
+
   # Backup mailbox workload.
   backupM365Mailbox(
     # The input for BackupM365Mailbox.
@@ -7779,6 +7839,16 @@ type Mutation {
   cloudNativeDownloadFiles(
     # Input required to download indexed cloud-native snapshot files.
     input: CloudNativeDownloadFilesInput!): DownloadFilesReply!
+
+  # Completes the creation flow for an Azure AD app.
+  completeAzureAdAppSetup(
+    # Input for the completeAzureAdAppSetup API.
+    input: CompleteAzureAdAppSetupInput!): CompleteAzureAdAppSetupReply!
+
+  # Completes an update to the Azure AD directory app.
+  completeAzureAdAppUpdate(
+    # Input for the CompleteAzureAdAppUpdate API.
+    input: CompleteAzureAdAppUpdateInput!): Void
 
   # Complete the Azure OAuth flow and pass the authorization code.
   completeAzureCloudAccountOauth(
@@ -8211,6 +8281,11 @@ type Mutation {
   deleteAwsExocomputeConfigs(
     # List of AWS exocompute configuration IDs.
     input: DeleteAwsExocomputeConfigsInput!): DeleteAwsExocomputeConfigsReply!
+
+  # Deletes an Azure AD directory.
+  deleteAzureAdDirectory(
+    # Input to delete the Azure AD directory.
+    input: DeleteAzureAdDirectoryInput!): CreateOnDemandJobReply!
 
   # Delete the Azure Subscriptions cloud account for the given feature.
   deleteAzureCloudAccount(
@@ -9656,6 +9731,11 @@ type Mutation {
     # Input for V1ResolveVolumeGroupsConflict.
     input: ResolveVolumeGroupsConflictInput!): RequestSuccess!
 
+  # Restores the Azure AD directory with multiple passwords.
+  restoreAzureAdObjectsWithPasswords(
+    # The input for restoring the Azure AD directory with multiple passwords.
+    input: RestoreAzureAdObjectsWithPasswordsInput!): RestoreAzureAdObjectsWithPasswordsReply!
+
   # Restore files
   # 
   # Supported in v5.0+
@@ -9895,6 +9975,16 @@ type Mutation {
   startAwsNativeRdsInstanceSnapshotsJob(
     # Input to trigger job to create AWS RDS Instance snapshots.
     input: StartAwsNativeRdsInstanceSnapshotsJobInput!): BatchAsyncJobStatus!
+
+  # Initiates the Azure AD app creation workflow.
+  startAzureAdAppSetup(
+    # Input for the startAzureAdAppSetup API.
+    input: StartAzureAdAppSetupInput!): StartAzureAdAppSetupReply!
+
+  # Initiates an update to the Azure AD directory app.
+  startAzureAdAppUpdate(
+    # Input for the StartAzureAdAppUpdate API.
+    input: StartAzureAdAppUpdateInput!): StartAzureAdAppUpdateReply!
 
   # Initiates a session before doing Azure OAuth flow. If a custom app is configured for the tenant, the client ID of the custom app is returned. Otherwise, the client ID of the default app is returned.
   startAzureCloudAccountOauth(
@@ -11128,6 +11218,34 @@ enum ActionType {
 
   # Upgrade start.
   START
+}
+# Active Directory workload related app metadata for a snapshot.
+type ActiveDirectoryAppMetadata {
+  # Count of different type of objects in the snapshot.
+  objectsCount: ActiveDirectoryObjectsCount
+}
+# Count of different type of Active Directory objects in the snapshot.
+type ActiveDirectoryObjectsCount {
+  # Count of users in the snapshot.
+  users: Long
+
+  # Count of groups in the snapshot.
+  groups: Long
+
+  # Count of contacts in the snapshot.
+  contacts: Long
+
+  # Count of computers in the snapshot.
+  computers: Long
+
+  # Count of organizational units in the snapshot.
+  organizationalUnits: Long
+
+  # Count of containers in the snapshot.
+  containers: Long
+
+  # Count of group policies in the snapshot.
+  gpos: Long
 }
 # An activity that occurred on RSC or a Rubrik cluster.
 type Activity {
@@ -18826,6 +18944,396 @@ type AzureAccount implements CloudAccount {
   # The connection status of this Cloud Account.
   connectionStatus: ConnectionStatusType!
 }
+# Details of the customer-owned Azure AD application to insert.
+input AzureAdApp {
+  # ID of the application.
+  clientId: String = ""
+
+  # Application secret.
+  clientSecret: String = ""
+}
+# Details of the Azure AD directory object.
+type AzureAdDirectory implements HierarchyObject , PolarisHierarchyObject , HierarchySnappable , PolarisHierarchySnappable {
+  # The natural ID of the Azure AD Directory.
+  directoryId: String!
+
+  # Name of the Azure AD Directory.
+  domainName: String!
+
+  # ID of the exocompute cluster.
+  exocomputeId: String!
+
+  # Specifies whether the object is a relic.
+  isRelic: Boolean!
+
+  # Region of the Azure AD Directory.
+  region: String!
+
+  # User count from the latest snapshot.
+  latestUserCount: Int!
+
+  # Group count from the latest snapshot.
+  latestGroupCount: Int!
+
+  # Specifies whether the infrastructure has been provisioned to enable protection for this Azure AD.
+  isProvisioned: Boolean!
+
+  # Time of the latest snapshot.
+  latestSnapshotTime: DateTime
+
+  # The authorized operations on the object.
+  authorizedOperations: [Operation!]!
+
+  # Object ID.
+  id: UUID!
+
+  # The name of the hierarchy object.
+  name: String!
+
+  # The type of this object.
+  objectType: HierarchyObjectTypeEnum!
+
+  # The SLA Domain assignment type for this object.
+  slaAssignment: SlaAssignmentTypeEnum!
+
+  # The effective SLA Domain of the hierarchy object.
+  effectiveSlaDomain: SlaDomain!
+
+  # The pause status of the effective SLA Domain of the hierarchy object.
+  slaPauseStatus: Boolean!
+
+  # The distribution of the snapshots of the hierarchy object.
+  snapshotDistribution: SnapshotDistribution!
+
+  # The effective retention of the SLA Domain of the hierarchy object.
+  effectiveRetentionSlaDomain: SlaDomain
+
+  # The SLA Domain configured for the hierarchy object.
+  configuredSlaDomain: SlaDomain!
+
+  # The path node of the effective SLA Domain source.
+  effectiveSlaSourceObject: PathNode
+
+  # A sequential list of this object's logical ancestors.
+  logicalPath: [PathNode!]!
+
+  # A sequential list of this object's physical ancestors.
+  physicalPath: [PathNode!]!
+
+  # The number of descendant workloads of this object.
+  numWorkloadDescendants: Int!
+
+  # The organizations to which this hierarchy object belongs.
+  allOrgs: [Org!]!
+
+  # The list of snapshots taken for this workload.
+  snapshotConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that come before the specified cursor.
+    before: String,
+
+    # Filter Rubrik Security Cloud snapshot connection.
+    filter: PolarisSnapshotFilterInput,
+
+    # Sort Rubrik Security Cloud snapshots by field.
+    sortBy: PolarisSnapshotSortByEnum = Date,
+
+    # Sorting order for the results.
+    sortOrder: SortOrder): PolarisSnapshotConnection
+
+  # The list of snapshots taken for this workload.
+  workloadSnapshotConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that come before the specified cursor.
+    before: String,
+
+    # The FID of the workload.
+    workloadId: String!,
+
+    # Filter for snapshot connection.
+    snapshotFilter: [SnapshotQueryFilterInput!],
+
+    # Sorting order for the results.
+    sortOrder: SortOrder,
+
+    # Sort snapshots by field.
+    sortBy: SnapshotQuerySortByField,
+
+    # Time range input.
+    timeRange: TimeRangeInput,
+
+    # Specifies whether to ignore the active workload check.
+    ignoreActiveWorkloadCheck: Boolean): GenericSnapshotConnection
+
+  # GroupBy connection for this workload's snapshots.
+  snapshotGroupByConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that come before the specified cursor.
+    before: String,
+
+    # Offset based on customer timezone.
+    timezoneOffset: Float = 0.0,
+
+    # Filter Rubrik Security Cloud snapshot connection.
+    filter: PolarisSnapshotFilterInput,
+
+    # Group Rubrik Security Cloud snapshots by field.
+    groupBy: PolarisSnapshotGroupByEnum!): PolarisSnapshotGroupByConnection
+
+  # GroupBy connection for this workload's snapshots.
+  snapshotGroupByNewConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that come before the specified cursor.
+    before: String,
+
+    # Offset based on customer timezone.
+    timezoneOffset: Float = 0.0,
+
+    # Filter Rubrik Security Cloud snapshot connection.
+    snapshotFilter: [PolarisSnapshotFilterNewInput!]!,
+
+    # Group Rubrik Security Cloud snapshots by field.
+    snapshotGroupBy: SnapshotGroupByTime!): PolarisSnapshotGroupByNewConnection
+
+  # The most recent snapshot of this workload.
+  newestSnapshot: PolarisSnapshot
+
+  # The oldest snapshot of this workload.
+  oldestSnapshot: PolarisSnapshot
+
+  # The number of on-demand snapshots.
+  onDemandSnapshotCount: Int!
+
+  # The newest snapshot that is indexed and unexpired, and therefore restorable.
+  newestIndexedSnapshot: PolarisSnapshot
+}
+# Paginated list of AzureAdDirectory objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
+type AzureAdDirectoryConnection {
+  # List of AzureAdDirectory objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
+  edges: [AzureAdDirectoryEdge!]!
+
+  # List of AzureAdDirectory objects.
+  nodes: [AzureAdDirectory!]!
+
+  # General information about this page of results.
+  pageInfo: PageInfo!
+
+  # Total number of AzureAdDirectory objects matching the request arguments.
+  count: Int!
+}
+# Wrapper around the AzureAdDirectory object. This wrapper is used for pagination.
+type AzureAdDirectoryEdge {
+  # String used to identify this edge.
+  cursor: String!
+
+  # The actual AzureAdDirectory object wrapped by this edge.
+  node: AzureAdDirectory!
+}
+# Azure AD group.
+type AzureAdGroup {
+  # Display name of the Azure AD group.
+  displayName: String!
+
+  # Group type of the Azure AD group.
+  groupType: String!
+}
+# Response to the azureAdObjectsByType API.
+type AzureAdObject {
+  # ID of the Azure AD object.
+  objectId: String!
+
+  # Populate either AzureAdUser or AzureAdGroup.
+  azureAdObjects: AzureAdObjects!
+
+  # Azure AD object type.
+  type: AzureAdObjectType!
+}
+# Paginated list of AzureAdObject objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
+type AzureAdObjectConnection {
+  # List of AzureAdObject objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
+  edges: [AzureAdObjectEdge!]!
+
+  # List of AzureAdObject objects.
+  nodes: [AzureAdObject!]!
+
+  # General information about this page of results.
+  pageInfo: PageInfo!
+
+  # Total number of AzureAdObject objects matching the request arguments.
+  count: Int!
+}
+# Wrapper around the AzureAdObject object. This wrapper is used for pagination.
+type AzureAdObjectEdge {
+  # String used to identify this edge.
+  cursor: String!
+
+  # The actual AzureAdObject object wrapped by this edge.
+  node: AzureAdObject!
+}
+# Azure AD object search keyword names.
+enum AzureAdObjectSearchType {
+  # Group name of the group.
+  GROUP_NAME
+
+  # Group type of the group.
+  GROUP_TYPE
+
+  # Principal user name of the user.
+  PRINCIPAL_USER_NAME
+
+  # User name of the user.
+  USER_NAME
+
+  # User type of the user.
+  USER_TYPE
+}
+# Azure AD object types.
+enum AzureAdObjectType {
+  # Azure AD object type is unknown.
+  AZURE_AD_OBJECT_TYPE_UNKNOWN
+
+  # Object type is Azure AD group.
+  GROUP
+
+  # Object type is Azure AD user.
+  USER
+}
+# Configuration to retrieve Azure AD objects by type.
+input AzureAdObjectTypeInput {
+  # Snapshot ID to retrieve Azure AD objects.
+  snapshotId: UUID!
+
+  # Azure AD object type.
+  azureAdObjectType: AzureAdObjectType!
+}
+# Azure AD object type.
+type AzureAdObjects {
+  # Azure AD user type.
+  azureAdUser: AzureAdUser
+
+  # Azure AD group type.
+  azureAdGroup: AzureAdGroup
+}
+# Represents regions for Azure AD.
+enum AzureAdRegion {
+  # Azure region is Australia East.
+  AUSTRALIAEAST
+
+  # Azure region is Brazil South.
+  BRAZILSOUTH
+
+  # Azure region is Canada Central.
+  CANADACENTRAL
+
+  # Azure region is Central India.
+  CENTRALINDIA
+
+  # Azure region is Central US.
+  CENTRALUS
+
+  # Azure region is East Asia.
+  EASTASIA
+
+  # Azure region is East US.
+  EASTUS
+
+  # Azure region is East US 2.
+  EASTUS2
+
+  # Azure region is France Central.
+  FRANCECENTRAL
+
+  # Azure region is Germany West Central.
+  GERMANYWESTCENTRAL
+
+  # Azure region is Japan East.
+  JAPANEAST
+
+  # Azure region is Korea Central.
+  KOREACENTRAL
+
+  # Azure region is North Europe.
+  NORTHEUROPE
+
+  # Azure region is Norway East.
+  NORWAYEAST
+
+  # Azure region is South Africa North.
+  SOUTHAFRICANORTH
+
+  # Azure region is South Central US.
+  SOUTHCENTRALUS
+
+  # Azure region is South East Asia.
+  SOUTHEASTASIA
+
+  # Azure region is Sweden Central.
+  SWEDENCENTRAL
+
+  # Azure region is Switzerland North.
+  SWITZERLANDNORTH
+
+  # Azure region is UK South.
+  UKSOUTH
+
+  # AzureAd region is Unknown.
+  UNKNOWN_AZURE_AD_REGION
+
+  # Azure region is US Gov Virginia.
+  USGOVVIRGINIA
+
+  # Azure region is West Europe.
+  WESTEUROPE
+
+  # Azure region is West US 2.
+  WESTUS2
+}
+# Azure AD user.
+type AzureAdUser {
+  # Display name of the Azure AD user.
+  displayName: String!
+
+  # Principal user name of the Azure AD user.
+  principalUserName: String!
+
+  # User type of the Azure AD user.
+  userType: String!
+
+  # Creation type of the Azure AD user.
+  creationType: String!
+}
 # Custom role ARM template corresponding to the feature.
 type AzureArmTemplateByFeature {
   # Cloud native protections features.
@@ -22179,6 +22687,9 @@ enum AzureSqlDbBackupSetupStatus {
 
   # The Azure database configuration is invalid due to the presence of multiple collations.
   UNSUPPORTED_COLLATION_CONFIG
+
+  # The Azure database configuration is invalid because of the presence of unsupported columns.
+  UNSUPPORTED_COLUMNS_EXIST
 }
 # Retrieves an Azure SQL Managed Instance Database. Refers to the database engine compatible with the latest SQL Server (Enterprise Edition) database engine. For more information, see https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview.
 type AzureSqlManagedInstanceDatabase implements PolarisHierarchyObject , PolarisHierarchySnappable , HierarchyObject {
@@ -23073,6 +23584,11 @@ input AzureVnetReq {
 
   # VNet resource group.
   resourceGroup: String = ""
+}
+# Configuration for Azure AD Directory backup.
+input BackupAzureAdDirectoryInput {
+  # Workload FIDs of the Azure AD directories to back up.
+  workloadFids: [UUID!]!
 }
 # Represents the status of the backup for a specific M365 snapshot.
 type BackupEventStatus {
@@ -26418,6 +26934,9 @@ type CdmSnapshot implements GenericSnapshot {
   # Managed Volume specific metadata for the snapshot. Null if snapshot is not of a managed volume.
   managedVolumeAppMetadata: ManagedVolumeAppMetadata
 
+  # Active Directory specific metadata for the snapshot. Null if snapshot is not of a domain controller.
+  activeDirectoryAppMetadata: ActiveDirectoryAppMetadata
+
   # Number of files in the snapshot.
   fileCount: Long!
 
@@ -26452,6 +26971,9 @@ type CdmSnapshot implements GenericSnapshot {
 
   # Cloud state of the snapshot.
   cloudState: SnapshotCloudState
+
+  # Snapshot of a Rubrik CDM workload.
+  cdmWorkloadSnapshot: CdmWorkloadSnapshot
 
   # Specifies whether or not the snapshot is expired.
   isExpired: Boolean!
@@ -28180,6 +28702,25 @@ type CloudNativeSnapshotInfo {
   # Specifies if the snapshot is on-demand.
   isOnDemandSnapshot: Boolean!
 }
+# Recovery details for different snapshot types.
+type CloudNativeSnapshotTypeDetails {
+  # Snapshot type required for different snapshot types.
+  snapshotType: SnapshotType!
+
+  # Cloud type required for different snapshot types.
+  cloudType: CloudProviderType!
+
+  # Snapshot region required for different snapshot types.
+  snapshotRegion: CloudNativeRegion!
+
+  # Cloud native account ID required for different snapshot types.
+  cloudNativeAccountId: CloudNativeAccountIdWithName
+}
+# Recovery details for different snapshot types.
+type CloudNativeSnapshotTypeDetailsReply {
+  # Details required for different snapshot types.
+  snapshotDetails: [CloudNativeSnapshotTypeDetails!]!
+}
 # Script to setup backups on a SQL Server database.
 type CloudNativeSqlServerSetupScript {
   # Contents of the script.
@@ -29597,6 +30138,9 @@ type ClusterSlaDomain implements SlaDomain {
 
   # Specifies the owner organization of the SLA Domain.
   ownerOrg: SlaAssociatedOrganization!
+
+  # Specifies the retention lock mode when enabled for the SLA Domain.
+  retentionLockMode: RetentionLockMode!
 }
 # Paginated list of ClusterSlaDomain objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
 type ClusterSlaDomainConnection {
@@ -30775,6 +31319,30 @@ input CommonClusterFilterInput {
   # Rubrik cluster type.
   type: [ClusterTypeEnum!]
 }
+# Configuration to complete the Azure AD application creation flow.
+input CompleteAzureAdAppSetupInput {
+  # Domain name of the MSFT tenant for which the application was created.
+  domainName: String!
+
+  # CSRF token from the setup flow.
+  stateToken: String!
+
+  # Azure KMS configuration.
+  kmsSpec: KmsSpecInput
+}
+# Response of the operation that onboards an Azure AD.
+type CompleteAzureAdAppSetupReply {
+  # Workload ID for the Azure AD.
+  workloadFid: UUID!
+}
+# Configuration to complete an update to the Azure AD directory App.
+input CompleteAzureAdAppUpdateInput {
+  # Workload FID of the Azure AD directory to update.
+  workloadFid: UUID!
+
+  # CSRF token from the initiate flow.
+  stateToken: String!
+}
 # Input for completing authentication of the Azure Cloud Accounts.
 input CompleteAzureCloudAccountOauthInput {
   # Session ID of the current OAuth session.
@@ -30820,6 +31388,29 @@ type CompleteAzureCloudAccountOauthReply {
 
   # Subscriptions for which the OAuth user has read permission on Azure.
   subscriptions: [AzureCloudAccountSubscription!]!
+}
+# All valid compliance ranges in the reporting table.
+enum ComplianceDuration {
+  # Filter for compliance range is unspecified.
+  COMPLIANCE_DURATION_UNSPECIFIED
+
+  # Filters data for the past 12 months.
+  LAST_12_MONTHS
+
+  # Filters data for the past 24 hours.
+  LAST_24_HOURS
+
+  # Filters data for the past 30 days.
+  LAST_30_DAYS
+
+  # Filters data for the past 7 days.
+  LAST_7_DAYS
+
+  # Filters data for the past 90 days.
+  LAST_90_DAYS
+
+  # Filters data from the start of object protection.
+  START_OF_PROTECTION
 }
 type ComplianceStatus {
   enumValue: ComplianceStatusEnum!
@@ -32099,6 +32690,9 @@ input CreateGlobalSlaInput {
 
   # Specifies if the SLA Domain to be created must be Retention Locked or not.
   isRetentionLockedSla: Boolean = false
+
+  # Specifies the retention lock mode for the intended SLA Domain creation.
+  retentionLockMode: RetentionLockMode = NO_MODE
 }
 input CreateGuestCredentialInput {
   # Required. UUID used to identify the cluster the request goes to.
@@ -33559,10 +34153,14 @@ type DataStoreSummary {
   # Supported in v5.0+
   name: String
 }
+# All data types in the reporting table.
 enum DataTypeEnum {
   BOOLEAN
   BYTE
   DATE_TIME
+
+  # Compliance range filter data type.
+  FILTER_COMPLIANCE_RANGE
   FILTER_DATE_RANGE
   FLOAT
   INTEGER
@@ -34983,6 +35581,11 @@ type DeleteAwsExocomputeConfigsReply {
   # Deletion status for exocompute configurations.
   deletionStatus: [AwsExocomputeConfigsDeletionStatusType!]!
 }
+# Configuration to delete AzureAdDirectory.
+input DeleteAzureAdDirectoryInput {
+  # Workload Fid of the Azure AD Directory to delete.
+  workloadFid: UUID!
+}
 # Input for deleting Exocompute configurations for an Azure Cloud Account.
 input DeleteAzureCloudAccountExocomputeConfigurationsInput {
   # Rubrik IDs of the cloud accounts to be deleted.
@@ -35089,10 +35692,10 @@ input DeleteCloudWorkloadSnapshotInput {
 # Input required for deleting a certificate signing request (CSR).
 input DeleteCsrInput {
   # IDs of the CSRs to delete.
-  csrIds: [Long!]!
+  csrIds: [Long!]
 
   # FIDs of the CSRs to delete.
-  csrFids: [UUID!]
+  csrFids: [UUID!]!
 }
 # Input for deleting a custom report.
 input DeleteCustomReportInput {
@@ -35954,6 +36557,20 @@ type DisplayableValueBoolean implements DisplayableValue {
   value: Boolean
   displayValue: String!
   serializedValue: String!
+  reportHeader: String!
+}
+# Compliance range display value.
+type DisplayableValueComplianceRange implements DisplayableValue {
+  # The compliance duration.
+  value: ComplianceDuration
+
+  # The compliance duration string displayed on the UI.
+  displayValue: String!
+
+  # The compliance duration serialized string.
+  serializedValue: String!
+
+  # The compliance duration string displayed in the report header.
   reportHeader: String!
 }
 type DisplayableValueDateRange implements DisplayableValue {
@@ -42952,10 +43569,10 @@ input GetContainersInput {
 # Input required for retrieving a specific Certificate Signing Request (CSR).
 input GetCsrInput {
   # ID of the CSR to retrieve.
-  csrId: Long!
+  csrId: Long
 
   # FID of the CSR to retrieve.
-  csrFid: UUID
+  csrFid: UUID!
 }
 type GetDashboardSummaryReply {
   analyzerResults: [AnalyzerResult!]!
@@ -43710,6 +44327,9 @@ type GlobalSlaReply implements SlaDomain {
 
   # Specifies if this SLA Domain is retention-locked or not.
   isRetentionLockedSla: Boolean!
+
+  # Specifies the retention lock mode when enabled for the SLA Domain.
+  retentionLockMode: RetentionLockMode!
 
   # This field is deprecated.
   allOrgsWithAccess: [Org!]! @deprecated(reason: "This field is deprecated and has been replaced by the allOrgsHavingAccess field, which must be used instead.")
@@ -54479,6 +55099,9 @@ type MongoDatabase implements HierarchyObject , CdmHierarchyObject , MongoSource
   # Parent source connection.
   source: MongoSource!
 
+  # Count of active collections for this MongoDB database.
+  activeCollectionCount: Int!
+
   # Count of protected collections for this MongoDB database.
   protectedCollectionCount: Int!
 
@@ -55034,6 +55657,9 @@ type MongoSource implements HierarchyObject , CdmHierarchyObject {
 
   # Information about CDM cluster for this MongoDB cluster.
   cluster: Cluster!
+
+  # Count of active collections for this MongoDB source.
+  activeCollectionCount: Int!
 
   # Count of protected collections for this MongoDB source.
   protectedCollectionCount: Int!
@@ -67392,6 +68018,14 @@ input ObjectIdsForHierarchyTypeInput {
   objectIds: [String!]!
   snappableType: WorkloadLevelHierarchy!
 }
+# Map of AzureAdObjectType to IDs.
+input ObjectInfoType {
+  # ID of the AzureAD object.
+  objectId: UUID!
+
+  # Azure AD object type.
+  azureAdObjectType: AzureAdObjectType!
+}
 enum ObjectPolicyStatus {
   STALE
   UNKNOWN
@@ -70507,6 +71141,14 @@ type PasskeyMetadata {
   # Metadata of the passkey credentials registered to a user.
   credentialsMetadata: [PasskeyCredentialMetadata!]!
 }
+# Map of user IDs to password.
+input PasswordByUserId {
+  # User ID of the user being restored.
+  userId: UUID!
+
+  # Password required to restore the user.
+  password: String!
+}
 # Represents the password complexity policy that applies when users in the organization set or update passwords.
 type PasswordComplexityPolicy {
   # Policy for the length of each password string.
@@ -70599,12 +71241,6 @@ enum PastDurationEnum {
 
   # Enum used to filter data in the past 7 days.
   PAST_7_DAYS
-
-  # Enum used to filter data in the past 90 days.
-  PAST_90_DAYS
-
-  # Enum used to filter data since object started being protected.
-  START_OF_PROTECTION
 }
 # Input to update authentication server-based AWS cloud account.
 input PatchAwsAuthenticationServerBasedCloudAccountInput {
@@ -74872,6 +75508,31 @@ type ResponseSuccess {
   # Indicates whether the request returned successfully.
   success: Boolean!
 }
+# Configuration to initiate recovery of AzureAdDirectory with multiple passwords.
+input RestoreAzureAdObjectsWithPasswordsInput {
+  # Workload Fid of the Azure AD Directory to recover.
+  workloadFid: UUID!
+
+  # Snapshot FID of the Azure AD directory snapshot from which to recover.
+  snapshotFid: UUID!
+
+  # Map of user IDs to password.
+  passwordByUserIdMap: [PasswordByUserId!]!
+
+  # Map of azureAdObjectType to object IDs.
+  objectTypeToIdMap: [ObjectInfoType!]!
+
+  # Specifies whether to enable MFA during the recovery of one or more users.
+  forceChangePasswordWithMfa: Boolean!
+}
+# Response of the Scheduled OnDemand Restore job.
+type RestoreAzureAdObjectsWithPasswordsReply {
+  # Job ID of the restore job.
+  jobId: Long!
+
+  # Taskchain ID of the restore job taskchain.
+  taskchainId: UUID!
+}
 input RestoreConfig {
   restoreFilesConfig: [RestoreFileConfig!] = []
   domainName: String = ""
@@ -75407,6 +76068,17 @@ type ResumeTargetReply {
 
   # Ownership status of the archival location.
   status: ArchivalLocationStatus!
+}
+# The retention lock mode of the SLA Domain.
+enum RetentionLockMode {
+  # Compliance mode retention lock SLA.
+  COMPLIANCE
+
+  # Governance mode retention lock SLA.
+  GOVERNANCE
+
+  # No mode, the mode for non retention-locked SLAs.
+  NO_MODE
 }
 # Unit of retention.
 enum RetentionUnit {
@@ -78064,6 +78736,20 @@ input SddlRequestFiltersInput {
   # Filter permissions for the security identifier.
   resultsForSid: String = ""
 }
+# Configuration for the searchAzureAdSnapshot API.
+input SearchAzureAdSnapshotInput {
+  # Snapshot ID to retrieve Azure AD objects.
+  snapshotId: UUID!
+
+  # Keyword used to search.
+  azureAdSearchKeyword: String!
+
+  # Azure AD object type.
+  azureAdObjectType: AzureAdObjectType!
+
+  # Type of the keyword.
+  azureAdSearchKeywordType: AzureAdObjectSearchType!
+}
 # Parameters for mail or folder search.
 input SearchFilter {
   searchKeywordFilter: SearchKeywordFilter
@@ -80676,6 +81362,9 @@ enum SnapshotServiceConsistencyLevel {
 type SnapshotSubObj {
   # A volume captured in a volume group snapshot.
   volumeGroupSubObj: VolumeGroupSubObject
+
+  # A virtual disk captured in a VMware virtual machine snapshot.
+  vmwareVmSubObj: VmwareVmSubObject
 }
 # The sub objects captured in a snapshot.
 type SnapshotSubObject {
@@ -81474,6 +82163,41 @@ input StartAwsNativeRdsInstanceSnapshotsJobInput {
 
   # ID of the SLA Domain to be used for retention of the snapshots that are created by the RDS instance snapshot job.
   retentionSlaId: String = ""
+}
+# Configuration to initiate Azure AD Application creation.
+input StartAzureAdAppSetupInput {
+  # Domain name of the MSFT tenant for which the application is being created.
+  domainName: String!
+
+  # Azure region name.
+  region: AzureAdRegion!
+
+  # Azure AD application details.
+  azureAdApp: AzureAdApp
+}
+# Response of the operation that initiates onboarding of Azure AD.
+type StartAzureAdAppSetupReply {
+  # State token to be used in CompleteAzureAdAppSetupReply.
+  csrfToken: String!
+
+  # ID of the created Azure AD app.
+  appId: String!
+}
+# Configuration to initiate an update to the Azure AD directory app.
+input StartAzureAdAppUpdateInput {
+  # Workload FID of the Azure AD directory to update.
+  workloadFid: UUID!
+
+  # Azure AD application details.
+  azureAdApp: AzureAdApp
+}
+# Response of the operation that updates an Azure AD directory app.
+type StartAzureAdAppUpdateReply {
+  # State token to be used in CompleteAzureAdAppUpdate.
+  csrfToken: String!
+
+  # ID of the updated Azure AD app.
+  appId: String!
 }
 # Input for initiating authentication of the Azure Cloud Accounts.
 input StartAzureCloudAccountOauthInput {
@@ -85173,6 +85897,9 @@ input UpdateGlobalSlaInput {
 
   # Specifies if the SLA Domain to be updated must be Retention Locked or not.
   isRetentionLockedSla: Boolean = false
+
+  # Specifies the retention lock mode for the intended SLA Domain update.
+  retentionLockMode: RetentionLockMode = NO_MODE
 }
 input UpdateGuestCredentialInput {
   # Required. UUID used to identify the cluster the request goes to.
@@ -90336,6 +91063,23 @@ type VmwareVmRecoverableRanges {
   # The ID of the virtual machine for which to retrieve recoverable ranges.
   vmId: String!
 }
+# A virtual disk captured in a VMware virtual machine snapshot.
+type VmwareVmSubObject {
+  # VMware virtual disk device key.
+  deviceKey: Int!
+
+  # Mount point for the volume.
+  filename: String!
+
+  # File size of the virtual disk in bytes.
+  fileSizeInBytes: Long!
+
+  # ID of the virtual disk.
+  virtualDiskId: UUID
+
+  # The datastore that holds the virtual disk.
+  currentDatastoreId: UUID
+}
 # Supported in v6.0+
 input VmwareVnicBindingInfoV2Input {
   # Required. Supported in v6.0+
@@ -91020,6 +91764,9 @@ type VsphereComputeClusterPhysicalChildTypeEdge {
   node: VsphereComputeClusterPhysicalChildType!
 }
 type VsphereDatacenter implements CdmHierarchyObject , HierarchyObject , VsphereVcenterLogicalChildType , VsphereVcenterPhysicalChildType , VsphereVcenterDescendantType , VsphereDatacenterFolderLogicalChildType , VsphereDatacenterFolderDescendantType {
+  # Vsphere Datacenter CDM ID.
+  cdmId: String!
+
   # List of descendants.
   descendantConnection(
     # Returns the first n elements from the list.
@@ -92335,6 +93082,8 @@ type VsphereFolderLogicalChildTypeEdge {
   node: VsphereFolderLogicalChildType!
 }
 type VsphereHost implements CdmHierarchyObject , HierarchyObject , VsphereVcenterDescendantType , VsphereVcenterPhysicalChildType , VsphereComputeClusterPhysicalChildType , VsphereComputeClusterDescendantType , VsphereDatacenterDescendantType , VsphereDatacenterPhysicalChildType {
+  # Vsphere ESXI Host CDM ID.
+  cdmId: String!
   isStandaloneHost: Boolean!
 
   # This vsphere host's IOFilter status can be Uninstalled or Installed.

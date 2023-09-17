@@ -138,7 +138,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<MetricTimeSeries> list)
+        public static void SelectForRetrieval(this List<MetricTimeSeries> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

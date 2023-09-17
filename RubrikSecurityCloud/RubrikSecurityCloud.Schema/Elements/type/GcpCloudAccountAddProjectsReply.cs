@@ -113,7 +113,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<GcpCloudAccountAddProjectsReply> list)
+        public static void SelectForRetrieval(this List<GcpCloudAccountAddProjectsReply> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

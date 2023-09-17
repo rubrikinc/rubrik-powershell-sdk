@@ -137,7 +137,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         private string _server;
         private string _clientId;
         private string _clientSecret;
-        private RscGraphQLClient _rbkClient;
         private bool _doConnect = true;
 
         protected override void BeginProcessing()
@@ -291,7 +290,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 var authStateBefore = this._rbkClient.AuthenticationState;
                 var psVarBefore = SessionState.PSVariable.Get("RscConnectionClient");
-                this.WriteDebug($"Before Auth: AuthState={authStateBefore}, PSVar={psVarBefore}");
+                this._logger?.Debug($"Before Auth: AuthState={authStateBefore}, PSVar={psVarBefore}");
                 Task authTask = this._rbkClient.AuthAsync();
                 authTask.Wait();
 

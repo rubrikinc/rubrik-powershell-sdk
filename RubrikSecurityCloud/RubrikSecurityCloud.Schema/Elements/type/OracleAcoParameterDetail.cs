@@ -129,7 +129,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<OracleAcoParameterDetail> list)
+        public static void SelectForRetrieval(this List<OracleAcoParameterDetail> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

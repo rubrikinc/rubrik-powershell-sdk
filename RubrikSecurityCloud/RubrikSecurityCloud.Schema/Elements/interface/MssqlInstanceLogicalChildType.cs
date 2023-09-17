@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<MssqlInstanceLogicalChildType> list)
+        public static void SelectForRetrieval(this List<MssqlInstanceLogicalChildType> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

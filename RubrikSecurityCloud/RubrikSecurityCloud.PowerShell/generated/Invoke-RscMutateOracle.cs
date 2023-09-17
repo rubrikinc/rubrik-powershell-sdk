@@ -78,12 +78,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <example>
     /// <code>Invoke-RscMutateOracle -RestoreLogs [-Arg ..] [-Field ..]</code>
     /// </example>
+    [CmdletBinding()]
     [Cmdlet(
         "Invoke",
         "RscMutateOracle",
         DefaultParameterSetName = "DeleteMount")
     ]
-    public class Invoke_RscMutateOracle : RscPSCmdlet
+    public class Invoke_RscMutateOracle : RscGqlPSCmdlet
     {
         
         /// <summary>
@@ -469,6 +470,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 #pragma warning disable 1591
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 switch(Op)
@@ -713,14 +715,10 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
                 "mutation",
                 "MutationBulkUpdateOracleHosts",
                 "($input: BulkUpdateOracleHostsInput!)",
-                "BulkUpdateOracleHostsReply"
-                );
-            BulkUpdateOracleHostsReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (BulkUpdateOracleHostsReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.BulkUpdateOracleHosts(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "BulkUpdateOracleHostsReply",
+                Mutation.BulkUpdateOracleHosts_ObjectFieldSpec,
+                Mutation.BulkUpdateOracleHostsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	bulkUpdateProperties = @{
@@ -778,9 +776,8 @@ $inputs.Var.input = @{
 			<System.String>
 		)
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -795,20 +792,15 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationRefreshOracleDatabase",
                 "($input: RefreshOracleDatabaseInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.RefreshOracleDatabase(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.RefreshOracleDatabase_ObjectFieldSpec,
+                Mutation.RefreshOracleDatabaseFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -823,14 +815,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationUpdateOracleDataGuardGroup",
                 "($input: UpdateOracleDataGuardGroupInput!)",
-                "OracleDbDetail"
-                );
-            OracleDbDetail? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (OracleDbDetail)this.Field;
-            }
-            string fieldSpecDoc = Mutation.UpdateOracleDataGuardGroup(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "OracleDbDetail",
+                Mutation.UpdateOracleDataGuardGroup_ObjectFieldSpec,
+                Mutation.UpdateOracleDataGuardGroupFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
@@ -864,9 +852,8 @@ $inputs.Var.input = @{
 			sectionSizeInGb = <System.Int32>
 		}
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -881,20 +868,15 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationDeleteAllOracleDatabaseSnapshots",
                 "($input: DeleteAllOracleDatabaseSnapshotsInput!)",
-                "System.String"
-                );
-            System.String? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (System.String)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DeleteAllOracleDatabaseSnapshots(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "System.String",
+                Mutation.DeleteAllOracleDatabaseSnapshots_ObjectFieldSpec,
+                Mutation.DeleteAllOracleDatabaseSnapshotsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -909,14 +891,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationTakeOnDemandOracleDatabaseSnapshot",
                 "($input: TakeOnDemandOracleDatabaseSnapshotInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.TakeOnDemandOracleDatabaseSnapshot(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.TakeOnDemandOracleDatabaseSnapshot_ObjectFieldSpec,
+                Mutation.TakeOnDemandOracleDatabaseSnapshotFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	config = @{
@@ -932,9 +910,8 @@ $inputs.Var.input = @{
 	id = <System.String>
 	# OPTIONAL
 	userNote = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -949,20 +926,15 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationTakeOnDemandOracleLogSnapshot",
                 "($input: TakeOnDemandOracleLogSnapshotInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.TakeOnDemandOracleLogSnapshot(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.TakeOnDemandOracleLogSnapshot_ObjectFieldSpec,
+                Mutation.TakeOnDemandOracleLogSnapshotFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -977,14 +949,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationBulkUpdateOracleRacs",
                 "($input: BulkUpdateOracleRacsInput!)",
-                "BulkUpdateOracleRacsReply"
-                );
-            BulkUpdateOracleRacsReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (BulkUpdateOracleRacsReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.BulkUpdateOracleRacs(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "BulkUpdateOracleRacsReply",
+                Mutation.BulkUpdateOracleRacs_ObjectFieldSpec,
+                Mutation.BulkUpdateOracleRacsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	bulkUpdateProperties = @{
@@ -1042,9 +1010,8 @@ $inputs.Var.input = @{
 			<System.String>
 		)
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1059,14 +1026,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationExportOracleTablespace",
                 "($input: ExportOracleTablespaceInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.ExportOracleTablespace(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.ExportOracleTablespace_ObjectFieldSpec,
+                Mutation.ExportOracleTablespaceFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	config = @{
@@ -1086,9 +1049,8 @@ $inputs.Var.input = @{
 	}
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1103,14 +1065,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationValidateOracleAcoFile",
                 "($input: ValidateOracleAcoFileInput!)",
-                "ValidateOracleAcoFileReply"
-                );
-            ValidateOracleAcoFileReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (ValidateOracleAcoFileReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.ValidateOracleAcoFile(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "ValidateOracleAcoFileReply",
+                Mutation.ValidateOracleAcoFile_ObjectFieldSpec,
+                Mutation.ValidateOracleAcoFileFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	acoContentsBase64 = <System.String>
@@ -1120,9 +1078,8 @@ $inputs.Var.input = @{
 	isLiveMount = <System.Boolean>
 	# REQUIRED
 	dbId = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1137,14 +1094,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationValidateOracleDatabaseBackups",
                 "($input: ValidateOracleDatabaseBackupsInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.ValidateOracleDatabaseBackups(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.ValidateOracleDatabaseBackups_ObjectFieldSpec,
+                Mutation.ValidateOracleDatabaseBackupsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	config = @{
@@ -1168,9 +1121,8 @@ $inputs.Var.input = @{
 	}
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1185,14 +1137,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationBulkUpdateOracleDatabases",
                 "($input: BulkUpdateOracleDatabasesInput!)",
-                "BulkUpdateOracleDatabasesReply"
-                );
-            BulkUpdateOracleDatabasesReply? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (BulkUpdateOracleDatabasesReply)this.Field;
-            }
-            string fieldSpecDoc = Mutation.BulkUpdateOracleDatabases(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "BulkUpdateOracleDatabasesReply",
+                Mutation.BulkUpdateOracleDatabases_ObjectFieldSpec,
+                Mutation.BulkUpdateOracleDatabasesFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	bulkUpdateProperties = @{
@@ -1250,9 +1198,8 @@ $inputs.Var.input = @{
 			<System.String>
 		)
 	}
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1267,14 +1214,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationInstantRecoverOracleSnapshot",
                 "($input: InstantRecoverOracleSnapshotInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.InstantRecoverOracleSnapshot(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.InstantRecoverOracleSnapshot_ObjectFieldSpec,
+                Mutation.InstantRecoverOracleSnapshotFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	config = @{
@@ -1290,9 +1233,8 @@ $inputs.Var.input = @{
 	}
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1307,14 +1249,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationMountOracleDatabase",
                 "($input: MountOracleDatabaseInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.MountOracleDatabase(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.MountOracleDatabase_ObjectFieldSpec,
+                Mutation.MountOracleDatabaseFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	request = @{
@@ -1372,9 +1310,8 @@ $inputs.Var.input = @{
 			value = <System.String>
 		}
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1389,14 +1326,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationExportOracleDatabase",
                 "($input: ExportOracleDatabaseInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.ExportOracleDatabase(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.ExportOracleDatabase_ObjectFieldSpec,
+                Mutation.ExportOracleDatabaseFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	request = @{
@@ -1454,9 +1387,8 @@ $inputs.Var.input = @{
 			value = <System.String>
 		}
 	)
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1471,14 +1403,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationCreateOraclePdbRestore",
                 "($input: CreateOraclePdbRestoreInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.CreateOraclePdbRestore(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.CreateOraclePdbRestore_ObjectFieldSpec,
+                Mutation.CreateOraclePdbRestoreFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	config = @{
@@ -1496,9 +1424,8 @@ $inputs.Var.input = @{
 	}
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1513,20 +1440,15 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationDownloadOracleDatabaseSnapshot",
                 "($input: DownloadOracleDatabaseSnapshotInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DownloadOracleDatabaseSnapshot(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.DownloadOracleDatabaseSnapshot_ObjectFieldSpec,
+                Mutation.DownloadOracleDatabaseSnapshotFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	snapshotId = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1541,22 +1463,17 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationDeleteOracleMount",
                 "($input: DeleteOracleMountInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.DeleteOracleMount(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.DeleteOracleMount_ObjectFieldSpec,
+                Mutation.DeleteOracleMountFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# OPTIONAL
 	force = <System.Boolean>
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
         // Invoke GraphQL Mutation:
@@ -1571,14 +1488,10 @@ $inputs.Var.input = @{
                 "mutation",
                 "MutationRestoreOracleLogs",
                 "($input: RestoreOracleLogsInput!)",
-                "AsyncRequestStatus"
-                );
-            AsyncRequestStatus? fieldSpecObj = null ;
-            if (this.Field != null) {
-                fieldSpecObj = (AsyncRequestStatus)this.Field;
-            }
-            string fieldSpecDoc = Mutation.RestoreOracleLogs(ref fieldSpecObj);
-            string inputExample = @"# REQUIRED
+                "AsyncRequestStatus",
+                Mutation.RestoreOracleLogs_ObjectFieldSpec,
+                Mutation.RestoreOracleLogsFieldSpec,
+                @"# REQUIRED
 $inputs.Var.input = @{
 	# REQUIRED
 	config = @{
@@ -1601,9 +1514,8 @@ $inputs.Var.input = @{
 	}
 	# REQUIRED
 	id = <System.String>
-}";
-            BuildInput(fieldSpecObj, inputExample);
-            BuildRequest(fieldSpecDoc);
+}"
+            );
         }
 
 

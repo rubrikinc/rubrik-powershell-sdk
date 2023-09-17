@@ -12,59 +12,73 @@ namespace RubrikSecurityCloud
 
     public class RscGqlRequest : GraphQL.GraphQLRequest
     {
-        /// <summary>
-        /// Default for when SaveQueryToFile() is called without a filename.
-        /// </summary>
-        public string DefaultQueryFileName { get; set; } = "query.gql";
-        
-// ignore warning 'Missing XML comment'
-#pragma warning disable 1591
-        public void Init(
-            string customOperationsDir,
-            string? operationName = null,
-            string? query = null,
-            string? variables = null)
+        public string ReturnTypeName { get; set; }
+
+        public string DefaultSaveDir { get; set; } = "";
+
+        public RscGqlRequest(
+            string operationName,
+            string variables,
+            string returnTypeName,
+            string query,
+            string defaultSaveDir = null
+            )
         {
-            if ( operationName != null )
+            Init(operationName, variables, returnTypeName, query,
+                defaultSaveDir);
+        }
+
+        /// <summary>
+        /// Initialize the RscGqlRequest object.
+        /// Nulls are ignored,
+        /// method can be called multiple times.
+        /// </summary>
+        public void Init(
+            string? operationName = null,
+            string? variables = null,
+            string? returnTypeName = null,
+            string? query = null,
+            string? defaultSaveDir = null
+            )
+        {
+            if (operationName != null)
             {
                 this.OperationName = operationName;
             }
-            
-            if ( string.IsNullOrEmpty(this.OperationName))
-            {
-                this.DefaultQueryFileName = "query.gql";
-            }
-            else 
-            {
-                this.DefaultQueryFileName = this.OperationName + ".gql" ;
-            }
-
-            if ( ! string.IsNullOrEmpty(customOperationsDir) )
-            {
-                this.DefaultQueryFileName = System.IO.Path.Combine(
-                    customOperationsDir, 
-                    this.DefaultQueryFileName);
-            }
-            if ( query != null )
-            {
-                this.Query = query;
-            }
-            if ( variables != null )
+            if (variables != null)
             {
                 this.Variables = variables;
             }
+            if (returnTypeName != null)
+            {
+                this.ReturnTypeName = returnTypeName;
+            }
+            if (query != null)
+            {
+                this.Query = query;
+            }
+            if (defaultSaveDir != null)
+            {
+                this.DefaultSaveDir = defaultSaveDir;
+            }
         }
-#pragma warning restore 1591
 
+        public string DefaultFileName()
+        {
+            var opName = string.IsNullOrEmpty(this.OperationName) ?
+                                "query" : this.OperationName;
+            return System.IO.Path.Combine(this.DefaultSaveDir, opName + ".gql");
+        }
+        
         /// <summary>
         /// Save the query (just the query, not the variables) to a file.
         /// If no filename is provided, DefaultQueryFileName is used.
         /// </summary>
-        public string SaveQueryToFile( string? filename = null )
+        public string SaveQueryToFile(string? filename = null)
         {
             if (filename == null)
             {
-                filename = this.DefaultQueryFileName;
+                filename = DefaultFileName();
             }
             Files.WriteFile(filename, this.Query, true);
             return filename;

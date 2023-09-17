@@ -1,0 +1,1256 @@
+GraphQLResponse<JObject>
+	Data:{
+  "mssqlTopLevelDescendants": {
+    "nodes": [
+      {
+        "objectType": "PhysicalHost",
+        "slaAssignment": "Unassigned",
+        "effectiveSlaDomain": {
+          "description": "",
+          "id": "UNPROTECTED",
+          "isArchived": false,
+          "isDefault": false,
+          "isRetentionLockedSla": false,
+          "name": "UNPROTECTED",
+          "stateVersion": 0,
+          "version": null,
+          "__typename": "GlobalSlaReply"
+        },
+        "cbtStatus": "",
+        "id": "01d7f2db-8ace-5e12-9701-3191453088ea",
+        "isArchived": false,
+        "isChangelistEnabled": false,
+        "isOracleHost": false,
+        "name": "app-chi101.lab.local",
+        "numWorkloadDescendants": 1,
+        "slaPauseStatus": false,
+        "vfdState": "Installed",
+        "physicalChildConnection": {
+          "nodes": [
+            {
+              "__typename": "VolumeGroup"
+            }
+          ],
+          "count": 1,
+          "pageInfo": {
+            "endCursor": "Y3Vyc29yOmludDow",
+            "hasNextPage": false,
+            "hasPreviousPage": false,
+            "startCursor": "Y3Vyc29yOmludDow",
+            "__typename": "PageInfo"
+          },
+          "__typename": "PhysicalHostPhysicalChildTypeConnection"
+        },
+        "__typename": "PhysicalHost"
+      },
+      {
+        "objectType": "PhysicalHost",
+        "slaAssignment": "Unassigned",
+        "effectiveSlaDomain": {
+          "description": "",
+          "id": "UNPROTECTED",
+          "isArchived": false,
+          "isDefault": false,
+          "isRetentionLockedSla": false,
+          "name": "UNPROTECTED",
+          "stateVersion": 0,
+          "version": null,
+          "__typename": "GlobalSlaReply"
+        },
+        "cbtStatus": "",
+        "id": "09600f3c-47f3-5f91-87d8-fde559fe6189",
+        "isArchived": false,
+        "isChangelistEnabled": false,
+        "isOracleHost": false,
+        "name": "larrivee.jorevall.se",
+        "numWorkloadDescendants": 13,
+        "slaPauseStatus": false,
+        "vfdState": "NotInstalled",
+        "physicalChildConnection": {
+          "nodes": [
+            {
+              "objectType": "MssqlInstance",
+              "slaAssignment": "Direct",
+              "effectiveSlaDomain": {
+                "id": "edcb265b-a23d-56dd-8270-53a2b135323d",
+                "isRetentionLockedSla": false,
+                "name": "MSSQL-DB-EveryTwoHour",
+                "version": null,
+                "__typename": "ClusterSlaDomain"
+              },
+              "hasLogConfigFromSla": true,
+              "id": "6c283859-9af3-59b0-9459-eb745afe8112",
+              "name": "SQLINSTANCE02",
+              "numWorkloadDescendants": 6,
+              "slaPauseStatus": false,
+              "__typename": "MssqlInstance"
+            },
+            {
+              "__typename": "VolumeGroup"
+            },
+            {
+              "objectType": "MssqlInstance",
+              "slaAssignment": "Direct",
+              "effectiveSlaDomain": {
+                "id": "edcb265b-a23d-56dd-8270-53a2b135323d",
+                "isRetentionLockedSla": false,
+                "name": "MSSQL-DB-EveryTwoHour",
+                "version": null,
+                "__typename": "ClusterSlaDomain"
+              },
+              "hasLogConfigFromSla": true,
+              "id": "fa5e41a2-9bcb-5ef0-88dd-f922ccdcdbdf",
+              "name": "MSSQLSERVER",
+              "numWorkloadDescendants": 6,
+              "slaPauseStatus": false,
+              "__typename": "MssqlInstance"
+            }
+          ],
+          "count": 3,
+          "pageInfo": {
+            "endCursor": "Y3Vyc29yOmludDoy",
+            "hasNextPage": false,
+            "hasPreviousPage": false,
+            "startCursor": "Y3Vyc29yOmludDow",
+            "__typename": "PageInfo"
+          },
+          "__typename": "PhysicalHostPhysicalChildTypeConnection"
+        },
+        "__typename": "PhysicalHost"
+      },
+      {
+        "objectType": "PhysicalHost",
+        "slaAssignment": "Unassigned",
+        "effectiveSlaDomain": {
+          "description": "",
+          "id": "UNPROTECTED",
+          "isArchived": false,
+          "isDefault": false,
+          "isRetentionLockedSla": false,
+          "name": "UNPROTECTED",
+          "stateVersion": 0,
+          "version": null,
+          "__typename": "GlobalSlaReply"
+        },
+        "cbtStatus": "",
+        "id": "125c4d50-c402-5303-b262-ea7bec20a086",
+        "isArchived": false,
+        "isChangelistEnabled": false,
+        "isOracleHost": false,
+        "name": "10.20.0.47",
+        "numWorkloadDescendants": 8,
+        "slaPauseStatus": false,
+        "vfdState": "Installed",
+        "physicalChildConnection": {
+          "nodes": [
+            {
+              "objectType": "MssqlInstance",
+              "slaAssignment": "Unassigned",
+              "effectiveSlaDomain": {
+                "description": "",
+                "id": "UNPROTECTED",
+                "isArchived": false,
+                "isDefault": false,
+                "isRetentionLockedSla": false,
+                "name": "UNPROTECTED",
+                "stateVersion": 0,
+                "version": null,
+                "__typename": "GlobalSlaReply"
+              },
+              "hasLogConfigFromSla": true,
+              "id": "8eadecfe-033a-5b0d-bb81-186987ddabed",
+              "name": "MSSQLSERVER",
+              "numWorkloadDescendants": 6,
+              "slaPauseStatus": false,
+              "__typename": "MssqlInstance"
+            },
+            {
+              "objectType": "WindowsFileset",
+              "slaAssignment": "Direct",
+              "effectiveSlaDomain": {
+                "description": "",
+                "id": "453f12cd-da87-438b-a1fb-cd53af83d666",
+                "isArchived": false,
+                "isDefault": false,
+                "isRetentionLockedSla": false,
+                "name": "SEB-DA",
+                "stateVersion": 1,
+                "version": "",
+                "__typename": "GlobalSlaReply"
+              },
+              "id": "9a1d328a-d9bf-5e49-8f01-33f04f038a3d",
+              "isPassThrough": true,
+              "isRelic": false,
+              "name": "seb-DAFS",
+              "numWorkloadDescendants": 0,
+              "slaPauseStatus": false,
+              "__typename": "WindowsFileset"
+            },
+            {
+              "__typename": "VolumeGroup"
+            }
+          ],
+          "count": 3,
+          "pageInfo": {
+            "endCursor": "Y3Vyc29yOmludDoy",
+            "hasNextPage": false,
+            "hasPreviousPage": false,
+            "startCursor": "Y3Vyc29yOmludDow",
+            "__typename": "PageInfo"
+          },
+          "__typename": "PhysicalHostPhysicalChildTypeConnection"
+        },
+        "__typename": "PhysicalHost"
+      },
+      {
+        "objectType": "PhysicalHost",
+        "slaAssignment": "Unassigned",
+        "effectiveSlaDomain": {
+          "description": "",
+          "id": "UNPROTECTED",
+          "isArchived": false,
+          "isDefault": false,
+          "isRetentionLockedSla": false,
+          "name": "UNPROTECTED",
+          "stateVersion": 0,
+          "version": null,
+          "__typename": "GlobalSlaReply"
+        },
+        "cbtStatus": "",
+        "id": "302cc93e-fc1f-590c-af54-5e0fb6571601",
+        "isArchived": false,
+        "isChangelistEnabled": false,
+        "isOracleHost": false,
+        "name": "leej-gibb-w1",
+        "numWorkloadDescendants": 34,
+        "slaPauseStatus": false,
+        "vfdState": "InstalledButTwoRestartsRequired",
+        "physicalChildConnection": {
+          "nodes": [
+            {
+              "objectType": "MssqlInstance",
+              "slaAssignment": "Direct",
+              "effectiveSlaDomain": {
+                "description": "",
+                "id": "70076216-6678-462d-b965-92b8f5fb05eb",
+                "isArchived": false,
+                "isDefault": false,
+                "isRetentionLockedSla": false,
+                "name": "Lee Jason - SQL Backup SLA",
+                "stateVersion": 1,
+                "version": "",
+                "__typename": "GlobalSlaReply"
+              },
+              "hasLogConfigFromSla": true,
+              "id": "53d5c5be-508f-512e-906c-1ca2ec632acf",
+              "name": "SQLEXPRESS",
+              "numWorkloadDescendants": 33,
+              "slaPauseStatus": false,
+              "__typename": "MssqlInstance"
+            },
+            {
+              "__typename": "VolumeGroup"
+            }
+          ],
+          "count": 2,
+          "pageInfo": {
+            "endCursor": "Y3Vyc29yOmludDox",
+            "hasNextPage": false,
+            "hasPreviousPage": false,
+            "startCursor": "Y3Vyc29yOmludDow",
+            "__typename": "PageInfo"
+          },
+          "__typename": "PhysicalHostPhysicalChildTypeConnection"
+        },
+        "__typename": "PhysicalHost"
+      },
+      {
+        "objectType": "PhysicalHost",
+        "slaAssignment": "Unassigned",
+        "effectiveSlaDomain": {
+          "description": "",
+          "id": "UNPROTECTED",
+          "isArchived": false,
+          "isDefault": false,
+          "isRetentionLockedSla": false,
+          "name": "UNPROTECTED",
+          "stateVersion": 0,
+          "version": null,
+          "__typename": "GlobalSlaReply"
+        },
+        "cbtStatus": "",
+        "id": "30b8e61a-b815-5580-b486-6a5d715fad0c",
+        "isArchived": true,
+        "isChangelistEnabled": false,
+        "isOracleHost": false,
+        "name": "10.20.1.34",
+        "numWorkloadDescendants": 0,
+        "slaPauseStatus": false,
+        "vfdState": "NotInstalled",
+        "physicalChildConnection": {
+          "nodes": [
+            {
+              "__typename": "VolumeGroup"
+            },
+            {
+              "objectType": "WindowsFileset",
+              "slaAssignment": "Direct",
+              "effectiveSlaDomain": {
+                "id": "843a1f92-15c5-5efd-aa1d-5be6e88074eb",
+                "isRetentionLockedSla": false,
+                "name": "Bronze",
+                "version": null,
+                "__typename": "ClusterSlaDomain"
+              },
+              "id": "3e11dd05-42cf-50dd-8941-2761b12c5da2",
+              "isPassThrough": false,
+              "isRelic": true,
+              "name": "derekCDrive",
+              "numWorkloadDescendants": 0,
+              "slaPauseStatus": false,
+              "__typename": "WindowsFileset"
+            }
+          ],
+          "count": 2,
+          "pageInfo": {
+            "endCursor": "Y3Vyc29yOmludDox",
+            "hasNextPage": false,
+            "hasPreviousPage": false,
+            "startCursor": "Y3Vyc29yOmludDow",
+            "__typename": "PageInfo"
+          },
+          "__typename": "PhysicalHostPhysicalChildTypeConnection"
+        },
+        "__typename": "PhysicalHost"
+      },
+      {
+        "objectType": "PhysicalHost",
+        "slaAssignment": "Unassigned",
+        "effectiveSlaDomain": {
+          "description": "",
+          "id": "UNPROTECTED",
+          "isArchived": false,
+          "isDefault": false,
+          "isRetentionLockedSla": false,
+          "name": "UNPROTECTED",
+          "stateVersion": 0,
+          "version": null,
+          "__typename": "GlobalSlaReply"
+        },
+        "cbtStatus": "",
+        "id": "33775db5-fe90-5973-9b01-bf382263e617",
+        "isArchived": false,
+        "isChangelistEnabled": false,
+        "isOracleHost": false,
+        "name": "heritage.jorevall.se",
+        "numWorkloadDescendants": 10,
+        "slaPauseStatus": false,
+        "vfdState": "NotInstalled",
+        "physicalChildConnection": {
+          "nodes": [
+            {
+              "objectType": "MssqlInstance",
+              "slaAssignment": "Direct",
+              "effectiveSlaDomain": {
+                "id": "d48dcfdf-0820-53b8-82bd-40b3f0f78034",
+                "isRetentionLockedSla": false,
+                "name": "Gold",
+                "version": null,
+                "__typename": "ClusterSlaDomain"
+              },
+              "hasLogConfigFromSla": true,
+              "id": "256d50b8-8683-5884-90d5-8b788fdafbb5",
+              "name": "MSSQLSERVER",
+              "numWorkloadDescendants": 6,
+              "slaPauseStatus": false,
+              "__typename": "MssqlInstance"
+            },
+            {
+              "objectType": "MssqlInstance",
+              "slaAssignment": "Derived",
+              "effectiveSlaDomain": {
+                "description": "",
+                "id": "DO_NOT_PROTECT",
+                "isArchived": false,
+                "isDefault": false,
+                "isRetentionLockedSla": false,
+                "name": "DO_NOT_PROTECT",
+                "stateVersion": 0,
+                "version": null,
+                "__typename": "GlobalSlaReply"
+              },
+              "hasLogConfigFromSla": false,
+              "id": "9e5763c5-5827-518b-83dd-db344d323635",
+              "name": "MORETHANONE",
+              "numWorkloadDescendants": 3,
+              "slaPauseStatus": false,
+              "__typename": "MssqlInstance"
+            },
+            {
+              "__typename": "VolumeGroup"
+            }
+          ],
+          "count": 3,
+          "pageInfo": {
+            "endCursor": "Y3Vyc29yOmludDoy",
+            "hasNextPage": false,
+            "hasPreviousPage": false,
+            "startCursor": "Y3Vyc29yOmludDow",
+            "__typename": "PageInfo"
+          },
+          "__typename": "PhysicalHostPhysicalChildTypeConnection"
+        },
+        "__typename": "PhysicalHost"
+      },
+      {
+        "objectType": "PhysicalHost",
+        "slaAssignment": "Unassigned",
+        "effectiveSlaDomain": {
+          "description": "",
+          "id": "UNPROTECTED",
+          "isArchived": false,
+          "isDefault": false,
+          "isRetentionLockedSla": false,
+          "name": "UNPROTECTED",
+          "stateVersion": 0,
+          "version": null,
+          "__typename": "GlobalSlaReply"
+        },
+        "cbtStatus": "",
+        "id": "3d041322-d4ec-5b5e-8f29-60cb37400388",
+        "isArchived": false,
+        "isChangelistEnabled": false,
+        "isOracleHost": false,
+        "name": "RSpies-SQL2.pso.rubrik.com",
+        "numWorkloadDescendants": 8,
+        "slaPauseStatus": false,
+        "vfdState": "NotInstalled",
+        "physicalChildConnection": {
+          "nodes": [
+            {
+              "objectType": "MssqlInstance",
+              "slaAssignment": "Unassigned",
+              "effectiveSlaDomain": {
+                "description": "",
+                "id": "UNPROTECTED",
+                "isArchived": false,
+                "isDefault": false,
+                "isRetentionLockedSla": false,
+                "name": "UNPROTECTED",
+                "stateVersion": 0,
+                "version": null,
+                "__typename": "GlobalSlaReply"
+              },
+              "hasLogConfigFromSla": false,
+              "id": "7e2a2279-fd9f-591f-9afd-065bbac00de3",
+              "name": "RSPIESSQL02EXP",
+              "numWorkloadDescendants": 7,
+              "slaPauseStatus": false,
+              "__typename": "MssqlInstance"
+            },
+            {
+              "__typename": "VolumeGroup"
+            }
+          ],
+          "count": 2,
+          "pageInfo": {
+            "endCursor": "Y3Vyc29yOmludDox",
+            "hasNextPage": false,
+            "hasPreviousPage": false,
+            "startCursor": "Y3Vyc29yOmludDow",
+            "__typename": "PageInfo"
+          },
+          "__typename": "PhysicalHostPhysicalChildTypeConnection"
+        },
+        "__typename": "PhysicalHost"
+      },
+      {
+        "objectType": "PhysicalHost",
+        "slaAssignment": "Unassigned",
+        "effectiveSlaDomain": {
+          "description": "",
+          "id": "UNPROTECTED",
+          "isArchived": false,
+          "isDefault": false,
+          "isRetentionLockedSla": false,
+          "name": "UNPROTECTED",
+          "stateVersion": 0,
+          "version": null,
+          "__typename": "GlobalSlaReply"
+        },
+        "cbtStatus": "",
+        "id": "4a68bb97-10d9-52e4-9894-e114328ca8f1",
+        "isArchived": false,
+        "isChangelistEnabled": false,
+        "isOracleHost": true,
+        "name": "sql-chi01.lab.local",
+        "numWorkloadDescendants": 8,
+        "slaPauseStatus": false,
+        "vfdState": "NotInstalled",
+        "physicalChildConnection": {
+          "nodes": [
+            {
+              "objectType": "MssqlInstance",
+              "slaAssignment": "Direct",
+              "effectiveSlaDomain": {
+                "description": "Every 6 hour, keep 1 day\nEvery 1 day, keep 14 day\nRepl to NYC; keep 7d local",
+                "id": "323c3f30-94cf-4168-bdc9-7cd2df3dd3cf",
+                "isArchived": false,
+                "isDefault": false,
+                "isRetentionLockedSla": false,
+                "name": "davi-osla-6h1k 1d14k REPL to N01",
+                "stateVersion": 11,
+                "version": "",
+                "__typename": "GlobalSlaReply"
+              },
+              "hasLogConfigFromSla": true,
+              "id": "6b114d2e-3b42-5449-b40c-2e18ab67359e",
+              "name": "SQLEXPRESS",
+              "numWorkloadDescendants": 8,
+              "slaPauseStatus": false,
+              "__typename": "MssqlInstance"
+            }
+          ],
+          "count": 1,
+          "pageInfo": {
+            "endCursor": "Y3Vyc29yOmludDow",
+            "hasNextPage": false,
+            "hasPreviousPage": false,
+            "startCursor": "Y3Vyc29yOmludDow",
+            "__typename": "PageInfo"
+          },
+          "__typename": "PhysicalHostPhysicalChildTypeConnection"
+        },
+        "__typename": "PhysicalHost"
+      },
+      {
+        "objectType": "PhysicalHost",
+        "slaAssignment": "Unassigned",
+        "effectiveSlaDomain": {
+          "description": "",
+          "id": "UNPROTECTED",
+          "isArchived": false,
+          "isDefault": false,
+          "isRetentionLockedSla": false,
+          "name": "UNPROTECTED",
+          "stateVersion": 0,
+          "version": null,
+          "__typename": "GlobalSlaReply"
+        },
+        "cbtStatus": "",
+        "id": "56455da2-4408-58b0-86cc-1bfd15fab9ab",
+        "isArchived": false,
+        "isChangelistEnabled": false,
+        "isOracleHost": false,
+        "name": "sqllab.griffin.local",
+        "numWorkloadDescendants": 5,
+        "slaPauseStatus": false,
+        "vfdState": "NotInstalled",
+        "physicalChildConnection": {
+          "nodes": [
+            {
+              "objectType": "MssqlInstance",
+              "slaAssignment": "Unassigned",
+              "effectiveSlaDomain": {
+                "description": "",
+                "id": "UNPROTECTED",
+                "isArchived": false,
+                "isDefault": false,
+                "isRetentionLockedSla": false,
+                "name": "UNPROTECTED",
+                "stateVersion": 0,
+                "version": null,
+                "__typename": "GlobalSlaReply"
+              },
+              "hasLogConfigFromSla": false,
+              "id": "0bddd224-6e89-5f35-ae17-be1457f89296",
+              "name": "MSSQLSERVER01",
+              "numWorkloadDescendants": 4,
+              "slaPauseStatus": false,
+              "__typename": "MssqlInstance"
+            },
+            {
+              "__typename": "VolumeGroup"
+            }
+          ],
+          "count": 2,
+          "pageInfo": {
+            "endCursor": "Y3Vyc29yOmludDox",
+            "hasNextPage": false,
+            "hasPreviousPage": false,
+            "startCursor": "Y3Vyc29yOmludDow",
+            "__typename": "PageInfo"
+          },
+          "__typename": "PhysicalHostPhysicalChildTypeConnection"
+        },
+        "__typename": "PhysicalHost"
+      },
+      {
+        "objectType": "PhysicalHost",
+        "slaAssignment": "Unassigned",
+        "effectiveSlaDomain": {
+          "description": "",
+          "id": "UNPROTECTED",
+          "isArchived": false,
+          "isDefault": false,
+          "isRetentionLockedSla": false,
+          "name": "UNPROTECTED",
+          "stateVersion": 0,
+          "version": null,
+          "__typename": "GlobalSlaReply"
+        },
+        "cbtStatus": "Enabled",
+        "id": "57e929df-9d32-5068-9822-c3a5232be1ef",
+        "isArchived": false,
+        "isChangelistEnabled": false,
+        "isOracleHost": false,
+        "name": "sql-aoag-2",
+        "numWorkloadDescendants": 6,
+        "slaPauseStatus": false,
+        "vfdState": "NotInstalled",
+        "physicalChildConnection": {
+          "nodes": [
+            {
+              "__typename": "VolumeGroup"
+            },
+            {
+              "objectType": "MssqlInstance",
+              "slaAssignment": "Unassigned",
+              "effectiveSlaDomain": {
+                "description": "",
+                "id": "UNPROTECTED",
+                "isArchived": false,
+                "isDefault": false,
+                "isRetentionLockedSla": false,
+                "name": "UNPROTECTED",
+                "stateVersion": 0,
+                "version": null,
+                "__typename": "GlobalSlaReply"
+              },
+              "hasLogConfigFromSla": false,
+              "id": "e83483f6-fe22-56c7-8a2f-971b3d033e43",
+              "name": "MSSQLSERVER",
+              "numWorkloadDescendants": 5,
+              "slaPauseStatus": false,
+              "__typename": "MssqlInstance"
+            }
+          ],
+          "count": 2,
+          "pageInfo": {
+            "endCursor": "Y3Vyc29yOmludDox",
+            "hasNextPage": false,
+            "hasPreviousPage": false,
+            "startCursor": "Y3Vyc29yOmludDow",
+            "__typename": "PageInfo"
+          },
+          "__typename": "PhysicalHostPhysicalChildTypeConnection"
+        },
+        "__typename": "PhysicalHost"
+      },
+      {
+        "objectType": "PhysicalHost",
+        "slaAssignment": "Unassigned",
+        "effectiveSlaDomain": {
+          "description": "",
+          "id": "UNPROTECTED",
+          "isArchived": false,
+          "isDefault": false,
+          "isRetentionLockedSla": false,
+          "name": "UNPROTECTED",
+          "stateVersion": 0,
+          "version": null,
+          "__typename": "GlobalSlaReply"
+        },
+        "cbtStatus": "",
+        "id": "5d996148-8763-5265-8f50-6e42cc01cf33",
+        "isArchived": false,
+        "isChangelistEnabled": false,
+        "isOracleHost": false,
+        "name": "fabi-bolt-w1",
+        "numWorkloadDescendants": 8,
+        "slaPauseStatus": false,
+        "vfdState": "NotInstalled",
+        "physicalChildConnection": {
+          "nodes": [
+            {
+              "objectType": "MssqlInstance",
+              "slaAssignment": "Unassigned",
+              "effectiveSlaDomain": {
+                "description": "",
+                "id": "UNPROTECTED",
+                "isArchived": false,
+                "isDefault": false,
+                "isRetentionLockedSla": false,
+                "name": "UNPROTECTED",
+                "stateVersion": 0,
+                "version": null,
+                "__typename": "GlobalSlaReply"
+              },
+              "hasLogConfigFromSla": false,
+              "id": "78da5705-6011-5af5-8ddf-55553df1cfe8",
+              "name": "MSSQLSERVER",
+              "numWorkloadDescendants": 7,
+              "slaPauseStatus": false,
+              "__typename": "MssqlInstance"
+            },
+            {
+              "__typename": "VolumeGroup"
+            }
+          ],
+          "count": 2,
+          "pageInfo": {
+            "endCursor": "Y3Vyc29yOmludDox",
+            "hasNextPage": false,
+            "hasPreviousPage": false,
+            "startCursor": "Y3Vyc29yOmludDow",
+            "__typename": "PageInfo"
+          },
+          "__typename": "PhysicalHostPhysicalChildTypeConnection"
+        },
+        "__typename": "PhysicalHost"
+      },
+      {
+        "objectType": "PhysicalHost",
+        "slaAssignment": "Unassigned",
+        "effectiveSlaDomain": {
+          "description": "",
+          "id": "UNPROTECTED",
+          "isArchived": false,
+          "isDefault": false,
+          "isRetentionLockedSla": false,
+          "name": "UNPROTECTED",
+          "stateVersion": 0,
+          "version": null,
+          "__typename": "GlobalSlaReply"
+        },
+        "cbtStatus": "Enabled",
+        "id": "6237a631-5eb7-545b-87e9-19028b6da952",
+        "isArchived": true,
+        "isChangelistEnabled": false,
+        "isOracleHost": false,
+        "name": "wesl-thom-sql1",
+        "numWorkloadDescendants": 0,
+        "slaPauseStatus": false,
+        "vfdState": "InstalledButTwoRestartsRequired",
+        "physicalChildConnection": {
+          "nodes": [],
+          "count": 0,
+          "pageInfo": {
+            "endCursor": "Y3Vyc29yOmludDotMQ==",
+            "hasNextPage": false,
+            "hasPreviousPage": false,
+            "startCursor": "Y3Vyc29yOmludDow",
+            "__typename": "PageInfo"
+          },
+          "__typename": "PhysicalHostPhysicalChildTypeConnection"
+        },
+        "__typename": "PhysicalHost"
+      },
+      {
+        "objectType": "PhysicalHost",
+        "slaAssignment": "Unassigned",
+        "effectiveSlaDomain": {
+          "description": "",
+          "id": "UNPROTECTED",
+          "isArchived": false,
+          "isDefault": false,
+          "isRetentionLockedSla": false,
+          "name": "UNPROTECTED",
+          "stateVersion": 0,
+          "version": null,
+          "__typename": "GlobalSlaReply"
+        },
+        "cbtStatus": "",
+        "id": "678c56ce-1584-5d0e-95bf-d27f6a26b1a5",
+        "isArchived": false,
+        "isChangelistEnabled": false,
+        "isOracleHost": false,
+        "name": "10.20.1.27",
+        "numWorkloadDescendants": 1,
+        "slaPauseStatus": false,
+        "vfdState": "NotInstalled",
+        "physicalChildConnection": {
+          "nodes": [
+            {
+              "__typename": "VolumeGroup"
+            }
+          ],
+          "count": 1,
+          "pageInfo": {
+            "endCursor": "Y3Vyc29yOmludDow",
+            "hasNextPage": false,
+            "hasPreviousPage": false,
+            "startCursor": "Y3Vyc29yOmludDow",
+            "__typename": "PageInfo"
+          },
+          "__typename": "PhysicalHostPhysicalChildTypeConnection"
+        },
+        "__typename": "PhysicalHost"
+      },
+      {
+        "objectType": "PhysicalHost",
+        "slaAssignment": "Unassigned",
+        "effectiveSlaDomain": {
+          "description": "",
+          "id": "UNPROTECTED",
+          "isArchived": false,
+          "isDefault": false,
+          "isRetentionLockedSla": false,
+          "name": "UNPROTECTED",
+          "stateVersion": 0,
+          "version": null,
+          "__typename": "GlobalSlaReply"
+        },
+        "cbtStatus": "Enabled",
+        "id": "760ee992-f74b-5268-96a9-ea0fcfd9db05",
+        "isArchived": false,
+        "isChangelistEnabled": false,
+        "isOracleHost": false,
+        "name": "sql-chi01.lab.local",
+        "numWorkloadDescendants": 10,
+        "slaPauseStatus": false,
+        "vfdState": "Installed",
+        "physicalChildConnection": {
+          "nodes": [
+            {
+              "objectType": "MssqlInstance",
+              "slaAssignment": "Direct",
+              "effectiveSlaDomain": {
+                "description": "Every 6 hour, keep 1 day\nEvery 1 day, keep 14 day\nRepl to NYC; keep 7d local",
+                "id": "323c3f30-94cf-4168-bdc9-7cd2df3dd3cf",
+                "isArchived": false,
+                "isDefault": false,
+                "isRetentionLockedSla": false,
+                "name": "davi-osla-6h1k 1d14k REPL to N01",
+                "stateVersion": 11,
+                "version": "",
+                "__typename": "GlobalSlaReply"
+              },
+              "hasLogConfigFromSla": true,
+              "id": "38e62360-0864-5108-8fd0-423f4b18f8a3",
+              "name": "SQLEXPRESS",
+              "numWorkloadDescendants": 9,
+              "slaPauseStatus": false,
+              "__typename": "MssqlInstance"
+            },
+            {
+              "__typename": "VolumeGroup"
+            }
+          ],
+          "count": 2,
+          "pageInfo": {
+            "endCursor": "Y3Vyc29yOmludDox",
+            "hasNextPage": false,
+            "hasPreviousPage": false,
+            "startCursor": "Y3Vyc29yOmludDow",
+            "__typename": "PageInfo"
+          },
+          "__typename": "PhysicalHostPhysicalChildTypeConnection"
+        },
+        "__typename": "PhysicalHost"
+      },
+      {
+        "objectType": "PhysicalHost",
+        "slaAssignment": "Unassigned",
+        "effectiveSlaDomain": {
+          "description": "",
+          "id": "UNPROTECTED",
+          "isArchived": false,
+          "isDefault": false,
+          "isRetentionLockedSla": false,
+          "name": "UNPROTECTED",
+          "stateVersion": 0,
+          "version": null,
+          "__typename": "GlobalSlaReply"
+        },
+        "cbtStatus": "",
+        "id": "9b0a4bcd-8fb1-5504-b8cd-2fb54fa231db",
+        "isArchived": false,
+        "isChangelistEnabled": false,
+        "isOracleHost": false,
+        "name": "RSpies-SQL1.pso.rubrik.com",
+        "numWorkloadDescendants": 7,
+        "slaPauseStatus": false,
+        "vfdState": "NotInstalled",
+        "physicalChildConnection": {
+          "nodes": [
+            {
+              "__typename": "VolumeGroup"
+            },
+            {
+              "objectType": "MssqlInstance",
+              "slaAssignment": "Unassigned",
+              "effectiveSlaDomain": {
+                "description": "",
+                "id": "UNPROTECTED",
+                "isArchived": false,
+                "isDefault": false,
+                "isRetentionLockedSla": false,
+                "name": "UNPROTECTED",
+                "stateVersion": 0,
+                "version": null,
+                "__typename": "GlobalSlaReply"
+              },
+              "hasLogConfigFromSla": false,
+              "id": "c95d0e05-901d-592b-b9ed-2e6969324953",
+              "name": "SQLEXPRESS",
+              "numWorkloadDescendants": 6,
+              "slaPauseStatus": false,
+              "__typename": "MssqlInstance"
+            }
+          ],
+          "count": 2,
+          "pageInfo": {
+            "endCursor": "Y3Vyc29yOmludDox",
+            "hasNextPage": false,
+            "hasPreviousPage": false,
+            "startCursor": "Y3Vyc29yOmludDow",
+            "__typename": "PageInfo"
+          },
+          "__typename": "PhysicalHostPhysicalChildTypeConnection"
+        },
+        "__typename": "PhysicalHost"
+      },
+      {
+        "objectType": "PhysicalHost",
+        "slaAssignment": "Unassigned",
+        "effectiveSlaDomain": {
+          "description": "",
+          "id": "UNPROTECTED",
+          "isArchived": false,
+          "isDefault": false,
+          "isRetentionLockedSla": false,
+          "name": "UNPROTECTED",
+          "stateVersion": 0,
+          "version": null,
+          "__typename": "GlobalSlaReply"
+        },
+        "cbtStatus": "",
+        "id": "a635eb80-f8e3-5681-84b3-b52b1aee8535",
+        "isArchived": false,
+        "isChangelistEnabled": false,
+        "isOracleHost": false,
+        "name": "testsql2014",
+        "numWorkloadDescendants": 8,
+        "slaPauseStatus": false,
+        "vfdState": "Installed",
+        "physicalChildConnection": {
+          "nodes": [
+            {
+              "objectType": "MssqlInstance",
+              "slaAssignment": "Direct",
+              "effectiveSlaDomain": {
+                "description": "",
+                "id": "c1b7353d-de43-4301-93be-96fa42529760",
+                "isArchived": false,
+                "isDefault": false,
+                "isRetentionLockedSla": false,
+                "name": "James SQL",
+                "stateVersion": 1,
+                "version": "",
+                "__typename": "GlobalSlaReply"
+              },
+              "hasLogConfigFromSla": true,
+              "id": "79c0bbeb-cf80-541a-919b-9bc14f2808b8",
+              "name": "MSSQLSERVER",
+              "numWorkloadDescendants": 7,
+              "slaPauseStatus": false,
+              "__typename": "MssqlInstance"
+            },
+            {
+              "__typename": "VolumeGroup"
+            }
+          ],
+          "count": 2,
+          "pageInfo": {
+            "endCursor": "Y3Vyc29yOmludDox",
+            "hasNextPage": false,
+            "hasPreviousPage": false,
+            "startCursor": "Y3Vyc29yOmludDow",
+            "__typename": "PageInfo"
+          },
+          "__typename": "PhysicalHostPhysicalChildTypeConnection"
+        },
+        "__typename": "PhysicalHost"
+      },
+      {
+        "objectType": "WindowsCluster",
+        "slaAssignment": "Unassigned",
+        "effectiveSlaDomain": {
+          "description": "",
+          "id": "UNPROTECTED",
+          "isArchived": false,
+          "isDefault": false,
+          "isRetentionLockedSla": false,
+          "name": "UNPROTECTED",
+          "stateVersion": 0,
+          "version": null,
+          "__typename": "GlobalSlaReply"
+        },
+        "id": "c5da0f74-6e28-5573-97a8-06fd93f30f80",
+        "name": "sql-aoag",
+        "numWorkloadDescendants": 0,
+        "slaPauseStatus": false,
+        "__typename": "WindowsCluster"
+      },
+      {
+        "objectType": "PhysicalHost",
+        "slaAssignment": "Unassigned",
+        "effectiveSlaDomain": {
+          "description": "",
+          "id": "UNPROTECTED",
+          "isArchived": false,
+          "isDefault": false,
+          "isRetentionLockedSla": false,
+          "name": "UNPROTECTED",
+          "stateVersion": 0,
+          "version": null,
+          "__typename": "GlobalSlaReply"
+        },
+        "cbtStatus": "",
+        "id": "cd2c18a6-9a56-5a0c-ac4e-fd0c2ac88823",
+        "isArchived": false,
+        "isChangelistEnabled": false,
+        "isOracleHost": false,
+        "name": "10.20.0.47",
+        "numWorkloadDescendants": 7,
+        "slaPauseStatus": false,
+        "vfdState": "Installed",
+        "physicalChildConnection": {
+          "nodes": [
+            {
+              "__typename": "VolumeGroup"
+            },
+            {
+              "objectType": "MssqlInstance",
+              "slaAssignment": "Unassigned",
+              "effectiveSlaDomain": {
+                "description": "",
+                "id": "UNPROTECTED",
+                "isArchived": false,
+                "isDefault": false,
+                "isRetentionLockedSla": false,
+                "name": "UNPROTECTED",
+                "stateVersion": 0,
+                "version": null,
+                "__typename": "GlobalSlaReply"
+              },
+              "hasLogConfigFromSla": false,
+              "id": "4b64cb9d-cedd-5e76-b30d-810ad1ecfaa0",
+              "name": "MSSQLSERVER",
+              "numWorkloadDescendants": 6,
+              "slaPauseStatus": false,
+              "__typename": "MssqlInstance"
+            }
+          ],
+          "count": 2,
+          "pageInfo": {
+            "endCursor": "Y3Vyc29yOmludDox",
+            "hasNextPage": false,
+            "hasPreviousPage": false,
+            "startCursor": "Y3Vyc29yOmludDow",
+            "__typename": "PageInfo"
+          },
+          "__typename": "PhysicalHostPhysicalChildTypeConnection"
+        },
+        "__typename": "PhysicalHost"
+      },
+      {
+        "objectType": "PhysicalHost",
+        "slaAssignment": "Unassigned",
+        "effectiveSlaDomain": {
+          "description": "",
+          "id": "UNPROTECTED",
+          "isArchived": false,
+          "isDefault": false,
+          "isRetentionLockedSla": false,
+          "name": "UNPROTECTED",
+          "stateVersion": 0,
+          "version": null,
+          "__typename": "GlobalSlaReply"
+        },
+        "cbtStatus": "",
+        "id": "edc68a38-d6d6-5039-9a46-9410ea08863d",
+        "isArchived": false,
+        "isChangelistEnabled": false,
+        "isOracleHost": false,
+        "name": "10.20.1.59",
+        "numWorkloadDescendants": 7,
+        "slaPauseStatus": false,
+        "vfdState": "InstalledButRestartRequired",
+        "physicalChildConnection": {
+          "nodes": [
+            {
+              "objectType": "MssqlInstance",
+              "slaAssignment": "Unassigned",
+              "effectiveSlaDomain": {
+                "description": "",
+                "id": "UNPROTECTED",
+                "isArchived": false,
+                "isDefault": false,
+                "isRetentionLockedSla": false,
+                "name": "UNPROTECTED",
+                "stateVersion": 0,
+                "version": null,
+                "__typename": "GlobalSlaReply"
+              },
+              "hasLogConfigFromSla": false,
+              "id": "4314c410-5be2-507f-a79e-11988fcbdd9a",
+              "name": "SQLEXPRESS",
+              "numWorkloadDescendants": 6,
+              "slaPauseStatus": false,
+              "__typename": "MssqlInstance"
+            },
+            {
+              "__typename": "VolumeGroup"
+            }
+          ],
+          "count": 2,
+          "pageInfo": {
+            "endCursor": "Y3Vyc29yOmludDox",
+            "hasNextPage": false,
+            "hasPreviousPage": false,
+            "startCursor": "Y3Vyc29yOmludDow",
+            "__typename": "PageInfo"
+          },
+          "__typename": "PhysicalHostPhysicalChildTypeConnection"
+        },
+        "__typename": "PhysicalHost"
+      },
+      {
+        "objectType": "PhysicalHost",
+        "slaAssignment": "Unassigned",
+        "effectiveSlaDomain": {
+          "description": "",
+          "id": "UNPROTECTED",
+          "isArchived": false,
+          "isDefault": false,
+          "isRetentionLockedSla": false,
+          "name": "UNPROTECTED",
+          "stateVersion": 0,
+          "version": null,
+          "__typename": "GlobalSlaReply"
+        },
+        "cbtStatus": "",
+        "id": "f15ee72d-876b-5338-b96b-eec76c311132",
+        "isArchived": false,
+        "isChangelistEnabled": false,
+        "isOracleHost": false,
+        "name": "sql-aoag-1",
+        "numWorkloadDescendants": 7,
+        "slaPauseStatus": false,
+        "vfdState": "NotInstalled",
+        "physicalChildConnection": {
+          "nodes": [
+            {
+              "__typename": "VolumeGroup"
+            },
+            {
+              "objectType": "MssqlInstance",
+              "slaAssignment": "Unassigned",
+              "effectiveSlaDomain": {
+                "description": "",
+                "id": "UNPROTECTED",
+                "isArchived": false,
+                "isDefault": false,
+                "isRetentionLockedSla": false,
+                "name": "UNPROTECTED",
+                "stateVersion": 0,
+                "version": null,
+                "__typename": "GlobalSlaReply"
+              },
+              "hasLogConfigFromSla": false,
+              "id": "d4d00ffb-b082-5767-8259-f75dee46acf9",
+              "name": "MSSQLSERVER",
+              "numWorkloadDescendants": 6,
+              "slaPauseStatus": false,
+              "__typename": "MssqlInstance"
+            }
+          ],
+          "count": 2,
+          "pageInfo": {
+            "endCursor": "Y3Vyc29yOmludDox",
+            "hasNextPage": false,
+            "hasPreviousPage": false,
+            "startCursor": "Y3Vyc29yOmludDow",
+            "__typename": "PageInfo"
+          },
+          "__typename": "PhysicalHostPhysicalChildTypeConnection"
+        },
+        "__typename": "PhysicalHost"
+      },
+      {
+        "objectType": "PhysicalHost",
+        "slaAssignment": "Unassigned",
+        "effectiveSlaDomain": {
+          "description": "",
+          "id": "UNPROTECTED",
+          "isArchived": false,
+          "isDefault": false,
+          "isRetentionLockedSla": false,
+          "name": "UNPROTECTED",
+          "stateVersion": 0,
+          "version": null,
+          "__typename": "GlobalSlaReply"
+        },
+        "cbtStatus": "",
+        "id": "f1fb7b45-15d5-589c-aea5-41c4462ae766",
+        "isArchived": false,
+        "isChangelistEnabled": false,
+        "isOracleHost": false,
+        "name": "dc01.lab.local",
+        "numWorkloadDescendants": 4,
+        "slaPauseStatus": false,
+        "vfdState": "NotInstalled",
+        "physicalChildConnection": {
+          "nodes": [
+            {
+              "objectType": "MssqlInstance",
+              "slaAssignment": "Direct",
+              "effectiveSlaDomain": {
+                "description": "",
+                "id": "2a456b72-9850-48b2-ab58-449b6e20bd25",
+                "isArchived": false,
+                "isDefault": false,
+                "isRetentionLockedSla": false,
+                "name": "PSO GH SQL Test SLA",
+                "stateVersion": 2,
+                "version": "",
+                "__typename": "GlobalSlaReply"
+              },
+              "hasLogConfigFromSla": true,
+              "id": "d35ce043-230e-50dd-aefa-8e64fa0b0c13",
+              "name": "SQLEXPRESS",
+              "numWorkloadDescendants": 3,
+              "slaPauseStatus": false,
+              "__typename": "MssqlInstance"
+            },
+            {
+              "__typename": "VolumeGroup"
+            }
+          ],
+          "count": 2,
+          "pageInfo": {
+            "endCursor": "Y3Vyc29yOmludDox",
+            "hasNextPage": false,
+            "hasPreviousPage": false,
+            "startCursor": "Y3Vyc29yOmludDow",
+            "__typename": "PageInfo"
+          },
+          "__typename": "PhysicalHostPhysicalChildTypeConnection"
+        },
+        "__typename": "PhysicalHost"
+      }
+    ],
+    "count": 21,
+    "pageInfo": {
+      "endCursor": "Y3Vyc29yOmludDoyMA==",
+      "hasNextPage": false,
+      "hasPreviousPage": false,
+      "startCursor": "Y3Vyc29yOmludDow",
+      "__typename": "PageInfo"
+    },
+    "__typename": "MssqlTopLevelDescendantTypeConnection"
+  },
+  "__typename": "Query"
+}

@@ -88,7 +88,7 @@ namespace RubrikSecurityCloud
         {
             return WantedFields.Count > 0 || UnwantedFields.Count > 0;
         }
-        
+
         public static void ReadPatchFromFile(string patchFile, bool missingOk = true)
         {
             if (File.Exists(patchFile))
@@ -195,10 +195,14 @@ namespace RubrikSecurityCloud
         {
             if (!isLeaf)
             {
-                if (lastNode == "nodes" || lastNode == "pageinfo")
+                foreach (var pattern in RubrikSecurityCloud.Config.DefaultProfileBranchPattern)
                 {
-                    return true;
+                    if (Regex.IsMatch(lastNode, pattern))
+                    {
+                        return true;
+                    }
                 }
+                
                 if (lastNode == "physicalchildconnection" ||
                     lastNode == "effectivesladomain")
                 {
@@ -215,34 +219,14 @@ namespace RubrikSecurityCloud
                 return false;
             }
 
-            if (lastNode == "id" ||
-                 lastNode == "name" ||
-                 lastNode == "description" ||
-                 lastNode == "version" ||
-                 lastNode == "email" ||
-                 lastNode == "username" ||
-                 lastNode == "type" ||
-                 lastNode == "objecttype" ||
-                 lastNode == "slaassignment" ||
-                 lastNode == "numworkloaddescendants" ||
-                 lastNode == "startcursor" ||
-                 lastNode == "endcursor" ||
-                 lastNode == "count")
+            foreach (var pattern in RubrikSecurityCloud.Config.DefaultProfileLeafPattern)
             {
-                return true;
+                if (Regex.IsMatch(lastNode, pattern))
+                {
+                    return true;
+                }
             }
-            // all `is-` and `has-` boolean fields
-            if (lastNode.StartsWith("is") ||
-                 lastNode.StartsWith("has"))
-            {
-                return true;
-            }
-            // all status and state fields
-            if (lastNode.Contains("status") ||
-                 lastNode.Contains("state"))
-            {
-                return true;
-            }
+
             return false;
         }
 

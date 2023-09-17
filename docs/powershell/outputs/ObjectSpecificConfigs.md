@@ -23,3 +23,5 @@ Object-specific configurations.
   - SLA Domain configuration for Azure Blob object.
 - awsNativeS3SlaConfig: AwsNativeS3SlaConfig
   - SLA Domain configuration for AWS S3 bucket.
+- managedVolumeSlaConfig: ManagedVolumeSlaConfig
+  - SLA Domain configuration for Managed Volume object.

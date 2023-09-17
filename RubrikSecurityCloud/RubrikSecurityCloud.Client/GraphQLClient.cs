@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using GraphQL;
@@ -46,6 +48,9 @@ namespace RubrikSecurityCloud.NetSDK.Client
         private readonly string _clientSecret;
         private readonly string _polarisBaseUrl;
         private readonly string _polarisUrlScheme;
+
+        private ulong _apiCallCount = 0;
+
         // Keep version number in sync with ModuleVersion in
         // RubrikSecurityCloud.psd1. Version number is represented
         // with underscores instead of dots, since operation names
@@ -178,6 +183,24 @@ namespace RubrikSecurityCloud.NetSDK.Client
             }
         }
 
+        public async Task RenewAuthAsyncIfNeeded()
+        {
+            JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
+            JwtSecurityToken jwtToken = tokenHandler.ReadJwtToken(_clientToken.AccessToken);
+            var expirationTime = jwtToken.ValidTo; // we assume UTC
+            DateTime currentTime = DateTime.UtcNow;
+
+            if (
+                expirationTime.Subtract(currentTime).TotalMinutes <=
+                    RubrikSecurityCloud.Config.TokenRefreshThresholdMinutes
+            ) {
+                Console.WriteLine("Client session is about to expire, attempting to renew...");
+                await Disconnect();
+                await AuthAsync();
+                Console.WriteLine("Client session renewed.");
+            }
+        }
+
         public async Task AuthAsync()
         {
             HttpClientHandler httpHandler = new HttpClientHandler();
@@ -254,7 +277,9 @@ namespace RubrikSecurityCloud.NetSDK.Client
             {
                 BaseAddress = new Uri($"{_polarisUrlScheme}://{_polarisBaseUrl}")
             };
-            apiClient.Timeout = TimeSpan.FromMinutes(6);
+            apiClient.Timeout = TimeSpan.FromMinutes(
+                RubrikSecurityCloud.Config.ApiClientTimeOutMinutes
+            );
             GraphQLHttpClientOptions myOptions = new GraphQLHttpClientOptions
             {
                 EndPoint = new Uri($"{_polarisUrlScheme}://{_polarisBaseUrl}/api/graphql"),
@@ -283,52 +308,58 @@ namespace RubrikSecurityCloud.NetSDK.Client
                 new NewtonsoftJsonSerializer(jsonSettings),
                 apiClient);
 
-            logger?.Debug(this.GraphQLRequestToString(Request));
-            GraphQLResponse<T> response;
+            // ----------------------------------------
+            // Send query to server:
+            // ----------------------------------------
+            _apiCallCount++;
+            logGraphQLRequest(Request, logger);
+            GraphQL.Client.Http.GraphQLHttpResponse<T> response = null;
+            string localError = null;
             try
             {
-                response = await graphQLClient.SendQueryAsync<T>(Request);
+                response = (GraphQL.Client.Http.GraphQLHttpResponse<T>) await graphQLClient.SendQueryAsync<T>(Request);
             }
             catch (Exception ex)
             {
-                //When a token has expired, set the authentication state to EXPIRED
+                // When a token has expired,
+                // set the authentication state to EXPIRED
                 if (ex.Message.Contains("TIME_CONSTRAINT_FAILURE"))
                 {
                     this.AuthenticationState = AuthenticationState.EXPIRED;
                 }
-                Console.WriteLine(
-                    $"ERROR: API Server responded: \"{ex.Message}\"" +
-                    this.GraphQLRequestToString(Request) +
-                    "\n" +
-                    loggingHandler.Message);
-                throw;
+                localError = ex.Message;
             }
-            logger?.Debug(this.GraphQLResponseToString<T>(response));
-            if (response.Errors != null)
+            logGraphQLResponse<T>(response, logger);
+            
+            if (response.Errors != null ||
+                response.StatusCode >= System.Net.HttpStatusCode.BadRequest ||
+                localError != null)
             {
-                // concatenate all errors in response.Errors
-                var errors = string.Join("\n", response.Errors.Select(e =>
-                    ((e.Extensions != null && e.Extensions.ContainsKey("code")) ?
-                        e.Extensions["code"] : "") + " " +
-                        e.Message + " " + (e.Path != null ? string.Join(".", e.Path) : "" ) ));
-
-                var httpResp = response as GraphQLHttpResponse<T>;
-                throw new Exception(
-                    $"API Server status: {httpResp.StatusCode}\n" +
-                    $"  Query: {Request.Query}\n" +
-                    $"  Variables: {Request.Variables}\n" +
-                    $"  Errors: {errors}\n\n" +
-                    loggingHandler.Message);
+                string msg = "The request generated an error.\n" +
+                    this.GraphQLRequestToString(Request) + "\n\n" +
+                    this.GraphQLResponseToString<T>(response) + "\n\n" +
+                    loggingHandler.Message;
+                if (localError != null)
+                {
+                    msg += "\n\n" + localError;
+                }
+                throw new System.Net.Http.HttpRequestException(msg);
             }
+
             return response.Data;
         }
 
         private string GraphQLRequestToString(GraphQLRequest request)
         {
+            if (request == null)
+            {
+                return "null";
+            }
+
             StringBuilder logContent = new StringBuilder();
-            logContent.Append("\n  Query: ");
-            logContent.Append(request.Query.Replace("\n", string.Empty).Replace("  ", " "));
-            logContent.Append("\n  Variables: ");
+            logContent.Append("\nQuery: ");
+            logContent.Append(request.Query);
+            logContent.Append("\nVariables: ");
 
             if (request.Variables == null)
             {
@@ -353,63 +384,97 @@ namespace RubrikSecurityCloud.NetSDK.Client
 
             if (!string.IsNullOrEmpty(request.OperationName))
             {
-                logContent.Append("  Operation Name: ").AppendLine(request.OperationName);
+                logContent.Append("Operation Name: ").AppendLine(request.OperationName);
             }
 
             return logContent.ToString();
         }
 
+        private void logGraphQLRequest(GraphQLRequest request, IRscLogger logger)
+        {
+            logger?.Debug("Sending to API Server:\n" + 
+                this.GraphQLRequestToString(request));
+            if (RubrikSecurityCloud.Config.SaveApiTrafficToFile)
+            {
+                // log request to file in cwd
+                string logFileName = Path.GetFullPath($"RscApiRequest_{_apiCallCount}_{DateTime.Now.ToString("yyyyMMdd_HHmmss")}.gql");
+                File.WriteAllText(logFileName, $"/*\nVariables:\n{request.Variables}\n*/\n{request.Query}\n");
+                logger?.Info($"API request saved to file: {logFileName}");
+            }
+        }
+
+        private void logGraphQLResponse<T>(GraphQLResponse<T> response, IRscLogger logger)
+        {
+            logger?.Debug("=========> Received from API Server:\n" + 
+                this.GraphQLResponseToString<T>(response));
+            if (RubrikSecurityCloud.Config.SaveApiTrafficToFile)
+            {
+                // log response to file in cwd
+                string logFileName = Path.GetFullPath($"RscApiResponse_{_apiCallCount}_{DateTime.Now.ToString("yyyyMMdd_HHmmss")}.json");
+                File.WriteAllText(logFileName, JsonConvert.SerializeObject(response, Formatting.Indented));
+                logger?.Info($"API response saved to file: {logFileName}");
+            }
+        }
 
         private string GraphQLResponseToString<T>(GraphQLResponse<T> response)
         {
             StringBuilder logContent = new StringBuilder();
-            logContent.Append($"GraphQLResponse<{typeof(T).Name}>\n\tData:");
+            logContent.Append($"GraphQLResponse<{typeof(T).Name}>:\n");
+            if(response==null)
+            {
+                logContent.Append("null");
+                return logContent.ToString();
+            }
 
+            logContent.Append("Data:");
             if (response.Data != null)
             {
                 var text = JsonConvert.SerializeObject(response.Data, Formatting.Indented);
-                logContent.AppendLine(text.Replace("\n", "\n\t"));
+                logContent.AppendLine("\n\n" + text + "\n");
             }
             else
             {
                 logContent.AppendLine(" null");
             }
 
+            logContent.Append("Errors:");
             if (response.Errors != null && response.Errors.Length > 0)
             {
-                logContent.AppendLine("Errors:");
-
-                foreach (var error in response.Errors)
+                logContent.AppendLine("\n");
+                foreach (var e in response.Errors)
                 {
-                    logContent.AppendLine("  " + error.Message);
-                    if (error.Locations != null)
+                    var errCode =(e.Extensions != null && e.Extensions.ContainsKey("code")) ?
+                        e.Extensions["code"] : "";
+                    logContent.AppendLine($"{errCode} {e.Message}");
+                    if (e.Locations != null)
                     {
                         logContent.AppendLine("  Locations:");
-                        foreach (var location in error.Locations)
+                        foreach (var location in e.Locations)
                         {
                             logContent.AppendLine($"    Line: {location.Line}, Column: {location.Column}");
                         }
                     }
 
-                    if (error.Path != null)
+                    if (e.Path != null)
                     {
-                        logContent.AppendLine("  Path: " + string.Join(".", error.Path));
+                        logContent.AppendLine("  Path: " + string.Join(".", e.Path));
                     }
 
-                    if (error.Extensions != null)
+                    if (e.Extensions != null)
                     {
                         logContent.AppendLine("  Extensions:");
-                        logContent.AppendLine(JsonConvert.SerializeObject(error.Extensions, Formatting.Indented));
+                        logContent.AppendLine(JsonConvert.SerializeObject(e.Extensions, Formatting.Indented));
                     }
                 }
+                logContent.AppendLine("\n");
+            } else {
+                logContent.AppendLine(" null");
             }
+
             if (response is GraphQLHttpResponse<T>)
             {
                 var r = response as GraphQLHttpResponse<T>;
-                if (r.StatusCode >= System.Net.HttpStatusCode.Ambiguous)
-                {
-                    logContent.AppendLine($" HTTP Status Code: {(int)r.StatusCode} {r.StatusCode}");
-                }
+                logContent.AppendLine($"HTTP Status Code: {(int)r.StatusCode} {r.StatusCode}");
             }
             return logContent.ToString();
         }

@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<HostShareDescendantType> list)
+        public static void SelectForRetrieval(this List<HostShareDescendantType> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

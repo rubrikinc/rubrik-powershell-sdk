@@ -113,7 +113,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<BatchVmwareVmRecoverableRanges> list)
+        public static void SelectForRetrieval(this List<BatchVmwareVmRecoverableRanges> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

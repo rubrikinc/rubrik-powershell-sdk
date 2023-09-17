@@ -80,7 +80,7 @@ function Backup-SlaDomain
   }
 
   Process {
-    $inputs = Invoke-RscMutateSla -Op $operation -InputProfile "Detail" -GetInput
+    $inputs = Invoke-RscMutateSla -Op $operation -FieldProfile "Detail" -GetInput
 
     # -3- Customize inputs
     $inputValues = @{

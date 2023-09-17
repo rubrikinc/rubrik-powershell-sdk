@@ -181,7 +181,7 @@ namespace RubrikSecurityCloud.Types
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void Fetch(this List<MissedSnapshotGroupByConnection> list)
+        public static void SelectForRetrieval(this List<MissedSnapshotGroupByConnection> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.Types
 
         }
 
-        public static void Fetch(this List<SapHanaSystemDescendantType> list)
+        public static void SelectForRetrieval(this List<SapHanaSystemDescendantType> list)
         {
             list.ApplyExploratoryFieldSpec(new ExplorationContext());
         }

@@ -22,6 +22,8 @@ namespace RubrikSecurityCloud.PowerShell.Private
     public class RscBasePSCmdlet : PSCmdlet
     {
         internal RscLogger _logger = null;
+        internal List<string> _switches = new List<string>();
+        internal RscGraphQLClient _rbkClient = null;
 
         /// <summary>
         /// Create a new RSC PowerShell cmdlet.
@@ -31,12 +33,94 @@ namespace RubrikSecurityCloud.PowerShell.Private
             this._logger = new RscLogger(this);
         }
 
-// ignore warning 'Missing XML comment'
+        protected Dictionary<string, string> GetMetricTags()
+        {
+            string version =
+                this
+                    .MyInvocation
+                    .MyCommand
+                    .Module
+                    .Version
+                    .ToString();
+            string clientName =
+                (this._rbkClient == null) ? "" : this._rbkClient.ClientName;
+            return new Dictionary<string, string>{
+                {"Sdk-Caller", clientName},
+                {"Sdk-Language", "PowerShell"},
+                {"Sdk-Rsc-Version", SchemaMeta.GraphqlSchemaVersion},
+                {"Sdk-Version", version}
+            };
+        }
+
+        internal object SendGqlRequest(
+            RscGqlRequest request,
+            bool writeObject = true)
+        {
+            _logger.Debug($"Sending request {request.OperationName}");
+            try
+            {
+                var result = this._rbkClient.Invoke(
+                    request, null, request.ReturnTypeName, this._logger,
+                    GetMetricTags());
+                if (writeObject) {
+                    WriteObject(result, true);
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                ThrowTerminatingException(ex);
+            }
+            return null; // never reached
+        }
+
+        protected void RetrieveConnection()
+        {
+            try
+            {
+                this._rbkClient = (RscGraphQLClient)SessionState.PSVariable.GetValue("RscConnectionClient");
+
+                //Check if the token has expired. If it has, attempt a new the session and return.
+                if (this._rbkClient != null && _rbkClient.AuthenticationState == AuthenticationState.EXPIRED)
+                {
+                    Console.WriteLine("Client session expired, attempting to renew...");
+                    Task AuthTask = _rbkClient.AuthAsync();
+                    AuthTask.Wait();
+                    if (this._rbkClient.AuthenticationState == AuthenticationState.AUTHORIZED)
+                    {
+                        Console.WriteLine("Client session renewed.");
+                        return;
+                    }
+                }
+
+                if (this._rbkClient == null || _rbkClient.AuthenticationState != AuthenticationState.AUTHORIZED)
+                {
+                    throw new Exception("No active session found. Use 'Connect-Rsc'. ");
+                }
+
+                Task RenewAuthTask = this._rbkClient.RenewAuthAsyncIfNeeded();
+                RenewAuthTask.Wait();
+            }
+            catch (Exception ex)
+            {
+                this._logger.Flush();
+                var error = new ErrorRecord(
+                    ex,
+                    "RscConnectionClient",
+                    ErrorCategory.ConnectionError,
+                    null);
+                ThrowTerminatingError(error);
+            }
+        }
+
+        // ignore warning 'Missing XML comment'
 #pragma warning disable 1591
         protected override void BeginProcessing()
         {
             base.BeginProcessing();
-            this._logger.Debug(CmdletParametersReport());
+            // build report and tally switches:
+            var report = BuildCmdletParametersReport();
+            this._logger.Debug(report);
         }
 
         protected override void EndProcessing()
@@ -51,7 +135,11 @@ namespace RubrikSecurityCloud.PowerShell.Private
             string message = ex.Message;
             if (ex.InnerException != null)
             {
-                message += $"\nInner exception:\n{ex.InnerException.Message}";
+                if (message == "Exception has been thrown by the target of an invocation.")
+                {
+                    message = "";
+                }
+                message += $"\n{ex.InnerException.Message}";
             }
             var error = new ErrorRecord(
                 new Exception(message),
@@ -84,11 +172,12 @@ namespace RubrikSecurityCloud.PowerShell.Private
         protected string GetCustomDir()
         {
             string customDir = this.GetEnvVar("RSC_CUSTOM_DIR");
-            if ( string.IsNullOrEmpty(customDir) || 
-                 !Directory.Exists(customDir) ) {
+            if (string.IsNullOrEmpty(customDir) ||
+                 !Directory.Exists(customDir))
+            {
                 customDir = this.GetSessionCWD();
             }
-            return customDir ;
+            return customDir;
         }
 
         /// <summary>
@@ -96,7 +185,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
         /// Typically "$(Split-Path $PROFILE -Parent)/rubrik-powershell-sdk"
         /// But resolves to the current directory if $PROFILE is not defined.
         /// </summary>
-        protected string GetProfileDir() 
+        protected string GetProfileDir()
         {
             string profPath = GetSessionVar("PROFILE");
             if (string.IsNullOrEmpty(profPath))
@@ -114,17 +203,20 @@ namespace RubrikSecurityCloud.PowerShell.Private
                 return this.GetSessionCWD();
             }
             // if it's a file, get its directory
-            if ( File.Exists(profPath) )
+            if (File.Exists(profPath))
             {
                 profPath = Path.GetDirectoryName(profPath);
-            } else if (!Directory.Exists(profPath)) {
+            }
+            else if (!Directory.Exists(profPath))
+            {
                 // see if parent directory exists
                 profPath = Path.GetDirectoryName(profPath);
-                if (!Directory.Exists(profPath)) {
-                        throw new DirectoryNotFoundException("Could not find: " + profPath);
+                if (!Directory.Exists(profPath))
+                {
+                    throw new DirectoryNotFoundException("Could not find: " + profPath);
                 }
             }
-            profPath= Path.Combine(profPath, "rubrik-powershell-sdk");
+            profPath = Path.Combine(profPath, "rubrik-powershell-sdk");
             // if it doesn't exist, create it
             if (!Directory.Exists(profPath))
             {
@@ -144,20 +236,20 @@ namespace RubrikSecurityCloud.PowerShell.Private
             if (propertyInfo == null)
             {
                 // _logger.Debug($"No public property with name {fieldName}");
-                return null ;
+                return null;
             }
             // there is a public field with the same name
             // but is it a parameter?
-            ParameterAttribute parameterAttribute = 
+            ParameterAttribute parameterAttribute =
                 propertyInfo.GetCustomAttributes(typeof(ParameterAttribute), true).FirstOrDefault() as ParameterAttribute;
 
-            if (parameterAttribute == null )
+            if (parameterAttribute == null)
             {
                 // _logger.Debug($"No parameter attribute for field {fieldName}");
-                return null ;
+                return null;
             }
             // but is it part of the current parameter set?
-            if ( parameterAttribute.ParameterSetName != this
+            if (parameterAttribute.ParameterSetName != this
                 .ParameterSetName)
             {
                 // _logger.Debug($"Parameter attribute for field {fieldName} is not in the current parameter set");
@@ -178,8 +270,9 @@ namespace RubrikSecurityCloud.PowerShell.Private
         // For debugging purposes,
         // Create a report of all inputs with their types and values,
         // using introspection to get the names of the parameters.
-        internal string CmdletParametersReport(int indent = 0)
+        internal string BuildCmdletParametersReport(int indent = 0)
         {
+            _switches.Clear();
             List<string> lines = new();
             var indentStr = new string(' ', indent);
             lines.Add($"{indentStr}Cmdlet Inputs:");
@@ -204,23 +297,19 @@ namespace RubrikSecurityCloud.PowerShell.Private
                     }
                     var propType = prop.PropertyType;
                     var propTypeName = propType.Name;
-                    var paramValueStr = propVal == null ? "null" : propVal.ToString();
 
-                    if (propTypeName == "SwitchParameter" && paramValueStr == "False")
+                    if (propTypeName == "SwitchParameter")
                     {
-                        continue; // skip false switch parameters
+                        if (propVal.ToString() == "False")
+                        {
+                            continue; // skip false switch parameters
+                        }
+                        if (prop.Name != "GetGqlRequest" && prop.Name != "GetInput")
+                        {
+                            _switches.Add(prop.Name);
+                        }
                     }
-
-                    if (propVal is Hashtable)
-                    {
-                        // If a Hashtable, print the keys and values
-                        paramValueStr = StringUtils.HashtableToString(
-                            (Hashtable)propVal);
-                    } else if (propVal is IFieldSpec) {
-                        // If a IFieldSpec, print the field spec
-                        paramValueStr = ((IFieldSpec)propVal).AsFieldSpec()
-                            .Replace("\n", " ");
-                    }
+                    var paramValueStr = StringUtils.FormatObjectForLogging(propVal);
 
                     // Display actual type for Object:
                     if (propType is System.Object && propVal != null)
@@ -228,7 +317,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
                         propTypeName = propVal.GetType().Name;
                     }
 
-                    lines.Add($"{indentStr}  {prop.Name} ({propTypeName}): {paramValueStr}");
+                    lines.Add($"{indentStr}  {prop.Name}: {paramValueStr}");
                 }
                 catch (Exception e)
                 {
