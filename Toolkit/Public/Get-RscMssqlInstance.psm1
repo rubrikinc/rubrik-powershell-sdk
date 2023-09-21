@@ -105,6 +105,10 @@ function Get-RscMssqlInstance {
                 $query = New-RscGqlQueryMssqlTopLevelDescendants
                 $query.Var.filter = @()
                 $query.Var.typeFilter = "PhysicalHost"
+                # $physicalHost = "PhysicalHost"
+                # $windowsCluster = [RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]::WINDOWS_CLUSTER
+                # $query.Var.typeFilter += $physicalHost
+                # $query.var.typeFilter += $windowsCluster
             }
             "Id"  {
                 $query = New-RscGqlQueryMssqlInstance -Patch PhysicalPath
