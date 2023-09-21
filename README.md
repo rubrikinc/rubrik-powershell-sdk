@@ -1,7 +1,5 @@
 # Rubrik Security Cloud SDK
 
-:warning: This is a **beta release** - use at your own risks! :warning:
-
 Thank you for using the Rubrik Security Cloud PowerShell SDK.
 
 We rely on
@@ -15,13 +13,18 @@ If you need to work with the CDM SDK, please see:
 
 ## :hammer: Installation
 
-### Powershell >= 6.0
+### Powershell >= 5.0
 
-This Beta release needs PowerShell 6.0 or later.
-Your default installation may be an older version,
+This release needs PowerShell 5.0 or later.
 
-see:
-[microsoft.com: Installing PowerShell](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7.3)
+#### Operating Systems that Support PowerShell 5.0
+
+1. Windows Server: PowerShell >=5.0 comes installed by default on
+   Windows Server 2016 and later
+2. Windows Client OS: PowerShell >=5.0 comes installed by default on
+   Windows 10 and later
+3. Linux and Mac: PowerShell >=5.0 is available for Linux and Mac OS X
+   via the [PowerShell Core](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-macos)
 
 ### Install from the PowerShell Gallery
 
