@@ -5,8 +5,7 @@ test: unit-test e2e-test
 SH_UNIT_TESTS = $(wildcard unit/*.sh)
 
 pwsh-unit-test:
-	@echo "[Core] Running PowerShell unit tests..."
-	pwsh -c 'Invoke-Pester -CI ./unit'
+	@pwsh -c '../Toolkit/Utils/Run-PesterTests.ps1 ./unit'
 
 sh-unit-test:
 	@echo "[Core] Running DOTNET unit tests..."
@@ -19,8 +18,7 @@ unit-test: pwsh-unit-test sh-unit-test
 	$(MAKE) -C ../Toolkit/Tests unit-test
 
 e2e-test:
-	@echo "[Core] Running e2e tests..."
-	pwsh -c 'Invoke-Pester -CI ./e2e'
+	@pwsh -c '../Toolkit/Utils/Run-PesterTests.ps1 ./e2e'
 	$(MAKE) -C ../Toolkit/Tests e2e-test
 
 clean:

@@ -3,12 +3,10 @@ default: test
 test: unit-test e2e-test
 
 unit-test:
-	@echo "[Toolkit] Running PowerShell unit tests..."
-	pwsh -c 'Invoke-Pester -CI ./unit'
+	@pwsh -c '../Utils/Run-PesterTests.ps1 ./unit'
 
 e2e-test:
-	@echo "[Toolkit] Running e2e tests..."
-	pwsh -c 'Invoke-Pester -CI ./e2e'
+	@pwsh -c '../Utils/Run-PesterTests.ps1 ./e2e'
 
 clean:
 	find . -iname testResults.xml | xargs rm -f
