@@ -34,7 +34,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
     [Cmdlet(VerbsCommon.Get, "RscFileset",
         DefaultParameterSetName = "Query")]
-    public class Get_RscFileset: RscPSCmdlet
+    public class Get_RscFileset: RscBasePSCmdlet
 	{
         /// <summary>
         /// The Id of the Physical Host to get filesets for
@@ -97,6 +97,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         [ValidateNotNullOrEmpty]
         public string FilesetId { get; set; }
 
+#pragma warning disable 1591 // ignore warning 'Missing XML comment'
+
+        public Get_RscFileset(): base(retrieveConnection: true)
+        {
+        }
 
         ///// <summary>
         ///// Activate selected fields based on not-null properties
@@ -167,6 +172,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 // Create a new GQL Request Object
@@ -369,12 +375,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             }
             catch (Exception ex)
             {
-                var error = new ErrorRecord(
-                    ex,
-                    "InvalidArgumentToCmdlet",
-                    ErrorCategory.InvalidArgument,
-                    null);
-                ThrowTerminatingError(error);
+                ThrowTerminatingException(ex);
             }
         }
     }

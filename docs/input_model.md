@@ -9,7 +9,7 @@ With `-Input` or with `-Patch`.
 - FieldProfile defaults to DEFAULT
 
 ```shell
-PS> (Invoke-RscQueryCluster -List -Var @{first=1}).Nodes[0]|Remove-NullProperties
+PS> (New-RscQueryCluster -List -Var @{first=1}).Invoke().Nodes[0]|Remove-NullProperties
 
 PauseStatus         : NOT_PAUSED
 Status              : CONNECTED
@@ -23,18 +23,17 @@ SystemStatusMessage : 1 Node Down.
 Version             : 8.0.2-p2-22661
 ```
 
-You want to see more fields. If you need help with the field names,
-you can work with the `-GetInput` parameter:
+If you need help with the field names and types:
 
 ```shell
-PS> (Invoke-RscQueryCluster -List -GetInput).FieldInfo()
+PS> (New-RscQueryCluster -List).Info()
 https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/clusterconnection.doc.html
 ```
 
 Say we want to see the snapshot count:
 
 ```shell
-PS /Users/guirava/sdk> (Invoke-RscQueryCluster -List -Var @{first=1} -Patch nodes.snapshotCount).Nodes[0]|Remove-NullProperties
+PS > (New-RscQueryCluster -List -Var @{first=1} -Patch nodes.snapshotCount).Invoke().Nodes[0]|Remove-NullProperties
 
 PauseStatus         : NOT_PAUSED
 Status              : DISCONNECTED
@@ -52,7 +51,7 @@ Version             : 8.0.2-p2-22662
 Say we want to see the CDM upgrade info:
 
 ```shell
-PS /Users/guirava/sdk> (Invoke-RscQueryCluster -List -Var @{first=1} -Patch nodes.cdmUpgradeInfo).Nodes[0].CdmUpgradeInfo|Remove-NullProperties
+PS > (New-RscQueryCluster -List -Var @{first=1} -Patch nodes.cdmUpgradeInfo).Invoke().Nodes[0].CdmUpgradeInfo|Remove-NullProperties
 
 ClusterJobStatus     : READY_FOR_DOWNLOAD
 VersionStatus        : UPGRADE_RECOMMENDED

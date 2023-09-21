@@ -1,5 +1,71 @@
 # Changelog
 
+## Version 0.14
+
+New Features:
+
+- Refactor!
+    - The 2-step operation of first asking for "inputs"
+        > `$inputs = Invoke-RscQuery<Domain> -<Operation> -GetInput`
+
+        and then executing with the inputs
+        > `Invoke-RscQuery<Domain> -<Operation> -Input $inputs`
+    - is now renamed to first creating a query
+        > `$query = New-RscQuery<Domain> -<Operation>`
+
+        then executing the query
+        > `$result = Invoke-Rsc $query`
+
+        or equivalently
+        > `$result = $query.Invoke()`
+- _SDK Extensions_ are renamed to _SDK Toolkit_,
+  and the layout under rubrik-security-cloud/Toolkit
+  was reworked.
+
+Fixes:
+
+Deprecations:
+
+Breaking Changes:
+
+- All cmdlets were renamed in the refactor.
+  For example, `Invoke-RscQueryCluster` is now `New-RscQueryCluster`.
+- Extensions directory was renamed to Toolkit.
+
+## Version 0.13-beta
+
+New Features:
+
+- Support for PowerShell 5.1
+- `Invoke-Rsc -Query` now accepts `RscQuery` objects for input.
+- `RscQuery` now have an `Invoke()` method that executes the query.
+- `-Patch` now has auto-completion.
+- `Invoke-Rsc` now supports GraphQL query strings with
+  inline variable definitions (see in its examples).
+- `Get-RscHelp -LookupSchema` is an introspection tool
+  to help you look up elements in the RSC GraphQL schema.
+
+Fixes:
+
+- Unknown elements in API server responses are now ignored
+  instead of causing an error. This is useful when a newer API server
+  returns new fields that are not yet in the SDK, or when
+  an older API server returns fields that are not in the SDK anymore.
+- Token auto-refreshes on cmdlet calls made within 5 minutes of
+  token expiration.
+- Fix for Invoke-RscQueryAzure commands that overlapped
+  (e.g. `(Invoke-RscQueryAzure -Subscriptions -GetGqlRequest)`
+  `.operationName --> QueryAzureSqlDatabase`)
+
+Deprecations:
+
+Breaking Changes:
+
+- `Invoke-Rsc -Query .. -Variables ..` is renamed to
+  `Invoke-Rsc -GqlQuery .. -Var ..`
+- `RscCmdletInput` is renamed to `RscQuery`
+- `Fetch()` is renamed `SelectForRetrieval()`
+
 ## Version 0.12-beta
 
 New Features:
@@ -12,7 +78,7 @@ Fixes:
 
 - Fix bug in API server error reporting
 - The term "Op" or "Operation" was used in the SDK where it was
-  really referring to a *GraphQL Root Field*. This has been fixed.
+  really referring to a _GraphQL Root Field_. This has been fixed.
 
 Deprecations:
 
@@ -42,7 +108,7 @@ New Features:
 - `Get-RscCmdlet -Locations` shows the various (FS) locations
   where the SDK looks for files.
 - `Samples/AllCmdlets.sample.ps1` now accepts a `-GetGqlRequest` that
-  will save the GraphQL query to file for *every* command in the SDK
+  will save the GraphQL query to file for _every_ command in the SDK
   into a local `./gql/` directory.
   CAUTION: This will writes hundreds of files to disk!
 - New doc files: docs/faq.md, docs/input_model.md
@@ -51,7 +117,7 @@ Fixes:
 
 - API server errors on query complexity are now bubbled up to the user
 - `Invoke-RscQueryCluster -List -InputProfile DETAIL`
-  and `Get-RscCluster -Detail` did not work because of *query complexity*.
+  and `Get-RscCluster -Detail` did not work because of _query complexity_.
   They were fixed by providing the override gql file
   `Operations/DETAIL/QueryClusterConnection.gql`
 - `Remove-NullProperties` now works with null input.

@@ -152,9 +152,9 @@ $c.id # list cluster ids
 To run raw GraphQL queries:
 
 ```powershell
-Invoke-Rsc -Query "query accountSettings{accountSettings{isEulaAccepted}}"
+Invoke-Rsc -GqlQuery "query accountSettings{accountSettings{isEulaAccepted}}"
 
-$vms=(Invoke-Rsc -Query 
+$vms=(Invoke-Rsc -GqlQuery 
   "query GetVsphereVmList{vSphereVmNewConnection{nodes{id name}}}").Nodes
 ```
 

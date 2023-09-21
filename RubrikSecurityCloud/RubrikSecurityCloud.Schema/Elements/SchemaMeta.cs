@@ -1455,8 +1455,8 @@ namespace RubrikSecurityCloud.Types
             O365SaasSetupKickoffReply,
             O365ServiceAccountStatusResp,
             O365SetupKickoffResp,
-            O365SharepointDrive,
             O365SharePointDrive,
+            O365SharepointDrive,
             O365SharepointDriveConnection,
             O365SharepointDriveEdge,
             O365SharepointList,
@@ -7948,7 +7948,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.accountId,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAccount",
+                        CmdletName = "New-RscQueryAccount",
                         CmdletSwitchName = "Id",
                         GqlRootFieldName = "accountId"
                     }
@@ -7956,7 +7956,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.accountSettings,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAccount",
+                        CmdletName = "New-RscQueryAccount",
                         CmdletSwitchName = "Settings",
                         GqlRootFieldName = "accountSettings"
                     }
@@ -7964,7 +7964,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.activitySeries,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryActivitySeries",
+                        CmdletName = "New-RscQueryActivitySeries",
                         CmdletSwitchName = "ActivitySeries",
                         GqlRootFieldName = "activitySeries"
                     }
@@ -7972,7 +7972,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.activitySeriesConnection,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryActivitySeries",
+                        CmdletName = "New-RscQueryActivitySeries",
                         CmdletSwitchName = "List",
                         GqlRootFieldName = "activitySeriesConnection"
                     }
@@ -7980,7 +7980,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.addAwsAuthenticationServerBasedCloudAccount,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletName = "New-RscMutationAws",
                         CmdletSwitchName = "AddAuthenticationServerBasedCloudAccount",
                         GqlRootFieldName = "addAwsAuthenticationServerBasedCloudAccount"
                     }
@@ -7988,7 +7988,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.addAwsIamUserBasedCloudAccount,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletName = "New-RscMutationAws",
                         CmdletSwitchName = "AddIamUserBasedCloudAccount",
                         GqlRootFieldName = "addAwsIamUserBasedCloudAccount"
                     }
@@ -7996,7 +7996,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.addAzureCloudAccount,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "AddCloudAccount",
                         GqlRootFieldName = "addAzureCloudAccount"
                     }
@@ -8004,7 +8004,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.addAzureCloudAccountExocomputeConfigurations,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "AddCloudAccountExocomputeConfigurations",
                         GqlRootFieldName = "addAzureCloudAccountExocomputeConfigurations"
                     }
@@ -8012,7 +8012,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.addAzureCloudAccountWithoutOauth,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "AddCloudAccountWithoutOauth",
                         GqlRootFieldName = "addAzureCloudAccountWithoutOauth"
                     }
@@ -8020,7 +8020,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.addDb2Instance,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateDb2",
+                        CmdletName = "New-RscMutationDb2",
                         CmdletSwitchName = "AddInstance",
                         GqlRootFieldName = "addDb2Instance"
                     }
@@ -8028,7 +8028,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.addMongoSource,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateMongo",
+                        CmdletName = "New-RscMutationMongo",
                         CmdletSwitchName = "AddSource",
                         GqlRootFieldName = "addMongoSource"
                     }
@@ -8036,7 +8036,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.addNodesToCloudCluster,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateCluster",
+                        CmdletName = "New-RscMutationCluster",
                         CmdletSwitchName = "AddNodesToCloud",
                         GqlRootFieldName = "addNodesToCloudCluster"
                     }
@@ -8044,7 +8044,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.addO365Org,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletName = "New-RscMutationO365",
                         CmdletSwitchName = "AddOrg",
                         GqlRootFieldName = "addO365Org"
                     }
@@ -8052,7 +8052,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allAccountOwners,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAccount",
+                        CmdletName = "New-RscQueryAccount",
                         CmdletSwitchName = "Owners",
                         GqlRootFieldName = "allAccountOwners"
                     }
@@ -8060,7 +8060,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allAccountProducts,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAccount",
+                        CmdletName = "New-RscQueryAccount",
                         CmdletSwitchName = "Products",
                         GqlRootFieldName = "allAccountProducts"
                     }
@@ -8068,7 +8068,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allAccountsWithExocomputeMappings,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAccount",
+                        CmdletName = "New-RscQueryAccount",
                         CmdletSwitchName = "SWithExocomputeMappings",
                         GqlRootFieldName = "allAccountsWithExocomputeMappings"
                     }
@@ -8076,7 +8076,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allAvailabilityZonesByRegionFromAws,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "AllAvailabilityZonesByRegion",
                         GqlRootFieldName = "allAvailabilityZonesByRegionFromAws"
                     }
@@ -8084,7 +8084,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allAwsCdmVersions,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "AllCdmVersions",
                         GqlRootFieldName = "allAwsCdmVersions"
                     }
@@ -8092,7 +8092,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allAwsCloudAccountConfigs,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "AllCloudAccountConfigs",
                         GqlRootFieldName = "allAwsCloudAccountConfigs"
                     }
@@ -8100,7 +8100,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allAwsCloudAccountsWithFeatures,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "AllCloudAccountsWithFeatures",
                         GqlRootFieldName = "allAwsCloudAccountsWithFeatures"
                     }
@@ -8108,7 +8108,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allAwsComputeSettings,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "AllComputeSettings",
                         GqlRootFieldName = "allAwsComputeSettings"
                     }
@@ -8116,7 +8116,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allAwsExocomputeConfigs,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "AllExocomputeConfigs",
                         GqlRootFieldName = "allAwsExocomputeConfigs"
                     }
@@ -8124,7 +8124,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allAwsInstanceProfileNames,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "AllInstanceProfileNames",
                         GqlRootFieldName = "allAwsInstanceProfileNames"
                     }
@@ -8132,7 +8132,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allAwsPermissionPolicies,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "AllPermissionPolicies",
                         GqlRootFieldName = "allAwsPermissionPolicies"
                     }
@@ -8140,7 +8140,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allAwsRegions,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "AllRegions",
                         GqlRootFieldName = "allAwsRegions"
                     }
@@ -8148,7 +8148,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allAzureArmTemplatesByFeature,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "AllArmTemplatesByFeature",
                         GqlRootFieldName = "allAzureArmTemplatesByFeature"
                     }
@@ -8156,7 +8156,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allAzureCdmVersions,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "AllCdmVersions",
                         GqlRootFieldName = "allAzureCdmVersions"
                     }
@@ -8164,7 +8164,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allAzureCloudAccountMissingPermissions,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "AllCloudAccountMissingPermissions",
                         GqlRootFieldName = "allAzureCloudAccountMissingPermissions"
                     }
@@ -8172,7 +8172,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allAzureCloudAccountSubnetsByRegion,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "AllCloudAccountSubnetsByRegion",
                         GqlRootFieldName = "allAzureCloudAccountSubnetsByRegion"
                     }
@@ -8180,7 +8180,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allAzureCloudAccountSubscriptionsByFeature,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "AllCloudAccountSubscriptionsByFeature",
                         GqlRootFieldName = "allAzureCloudAccountSubscriptionsByFeature"
                     }
@@ -8188,7 +8188,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allAzureCloudAccountTenants,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "AllCloudAccountTenants",
                         GqlRootFieldName = "allAzureCloudAccountTenants"
                     }
@@ -8196,7 +8196,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allAzureDiskEncryptionSetsByRegion,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "AllDiskEncryptionSetsByRegion",
                         GqlRootFieldName = "allAzureDiskEncryptionSetsByRegion"
                     }
@@ -8204,7 +8204,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allAzureEncryptionKeys,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "AllEncryptionKeys",
                         GqlRootFieldName = "allAzureEncryptionKeys"
                     }
@@ -8212,7 +8212,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allAzureExocomputeConfigsInAccount,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "AllExocomputeConfigsInAccount",
                         GqlRootFieldName = "allAzureExocomputeConfigsInAccount"
                     }
@@ -8220,7 +8220,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allAzureKeyVaultsByRegion,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "AllKeyVaultsByRegion",
                         GqlRootFieldName = "allAzureKeyVaultsByRegion"
                     }
@@ -8228,7 +8228,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allAzureManagedIdentities,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "AllManagedIdentities",
                         GqlRootFieldName = "allAzureManagedIdentities"
                     }
@@ -8236,7 +8236,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allAzureNativeAvailabilitySetsByRegionFromAzure,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "AllNativeAvailabilitySetsByRegionFromAzure",
                         GqlRootFieldName = "allAzureNativeAvailabilitySetsByRegionFromAzure"
                     }
@@ -8244,7 +8244,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allAzureNativeExportCompatibleDiskTypesByRegionFromAzure,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "AllNativeExportCompatibleDiskTypesByRegionFromAzure",
                         GqlRootFieldName = "allAzureNativeExportCompatibleDiskTypesByRegionFromAzure"
                     }
@@ -8252,7 +8252,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allAzureNativeExportCompatibleVmSizesByRegionFromAzure,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "AllNativeExportCompatibleVmSizesByRegionFromAzure",
                         GqlRootFieldName = "allAzureNativeExportCompatibleVmSizesByRegionFromAzure"
                     }
@@ -8260,7 +8260,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allAzureNativeResourceGroupsInfoIfExist,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "AllNativeResourceGroupsInfoIfExist",
                         GqlRootFieldName = "allAzureNativeResourceGroupsInfoIfExist"
                     }
@@ -8268,7 +8268,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allAzureNativeSecurityGroupsByRegionFromAzure,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "AllNativeSecurityGroupsByRegionFromAzure",
                         GqlRootFieldName = "allAzureNativeSecurityGroupsByRegionFromAzure"
                     }
@@ -8276,7 +8276,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allAzureNativeStorageAccountsFromAzure,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "AllNativeStorageAccountsFromAzure",
                         GqlRootFieldName = "allAzureNativeStorageAccountsFromAzure"
                     }
@@ -8284,7 +8284,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allAzureNativeSubnetsByRegionFromAzure,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "AllNativeSubnetsByRegionFromAzure",
                         GqlRootFieldName = "allAzureNativeSubnetsByRegionFromAzure"
                     }
@@ -8292,7 +8292,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allAzureNativeVirtualMachineSizes,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "AllNativeVirtualMachineSizes",
                         GqlRootFieldName = "allAzureNativeVirtualMachineSizes"
                     }
@@ -8300,7 +8300,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allAzureNativeVirtualNetworks,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "AllNativeVirtualNetworks",
                         GqlRootFieldName = "allAzureNativeVirtualNetworks"
                     }
@@ -8308,7 +8308,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allAzureNsgs,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "AllNsgs",
                         GqlRootFieldName = "allAzureNsgs"
                     }
@@ -8316,7 +8316,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allAzureRegions,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "AllRegions",
                         GqlRootFieldName = "allAzureRegions"
                     }
@@ -8324,7 +8324,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allAzureResourceGroups,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "AllResourceGroups",
                         GqlRootFieldName = "allAzureResourceGroups"
                     }
@@ -8332,7 +8332,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allAzureSqlDatabaseServerElasticPools,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "AllSqlDatabaseServerElasticPools",
                         GqlRootFieldName = "allAzureSqlDatabaseServerElasticPools"
                     }
@@ -8340,7 +8340,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allAzureStorageAccounts,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "AllStorageAccounts",
                         GqlRootFieldName = "allAzureStorageAccounts"
                     }
@@ -8348,7 +8348,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allAzureSubnets,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "AllSubnets",
                         GqlRootFieldName = "allAzureSubnets"
                     }
@@ -8356,7 +8356,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allAzureSubscriptionWithExocomputeMappings,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "AllSubscriptionWithExocomputeMappings",
                         GqlRootFieldName = "allAzureSubscriptionWithExocomputeMappings"
                     }
@@ -8364,7 +8364,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allAzureVnets,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "AllVnets",
                         GqlRootFieldName = "allAzureVnets"
                     }
@@ -8372,7 +8372,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allClusterGlobalSlas,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletName = "New-RscQueryCluster",
                         CmdletSwitchName = "GlobalSlas",
                         GqlRootFieldName = "allClusterGlobalSlas"
                     }
@@ -8380,7 +8380,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allClusterReplicationTargets,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletName = "New-RscQueryCluster",
                         CmdletSwitchName = "ReplicationTargets",
                         GqlRootFieldName = "allClusterReplicationTargets"
                     }
@@ -8388,7 +8388,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allClusterWebCertsAndIpmis,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletName = "New-RscQueryCluster",
                         CmdletSwitchName = "WebCertsAndIpmis",
                         GqlRootFieldName = "allClusterWebCertsAndIpmis"
                     }
@@ -8396,7 +8396,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allClustersTotpAckStatus,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletName = "New-RscQueryCluster",
                         CmdletSwitchName = "TotpAckStatus",
                         GqlRootFieldName = "allClustersTotpAckStatus"
                     }
@@ -8404,7 +8404,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allConnectedClusters,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletName = "New-RscQueryCluster",
                         CmdletSwitchName = "Connected",
                         GqlRootFieldName = "allConnectedClusters"
                     }
@@ -8412,7 +8412,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allDbParameterGroupsByRegionFromAws,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "AllDbParameterGroupsByRegion",
                         GqlRootFieldName = "allDbParameterGroupsByRegionFromAws"
                     }
@@ -8420,7 +8420,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allDbSubnetGroupsByRegionFromAws,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "AllDbSubnetGroupsByRegion",
                         GqlRootFieldName = "allDbSubnetGroupsByRegionFromAws"
                     }
@@ -8428,7 +8428,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allEc2KeyPairsByRegionFromAws,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "AllEc2KeyPairsByRegion",
                         GqlRootFieldName = "allEc2KeyPairsByRegionFromAws"
                     }
@@ -8436,7 +8436,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allHostedAzureRegions,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "AllHostedRegions",
                         GqlRootFieldName = "allHostedAzureRegions"
                     }
@@ -8444,7 +8444,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allKmsEncryptionKeysByRegionFromAws,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "AllKmsEncryptionKeysByRegion",
                         GqlRootFieldName = "allKmsEncryptionKeysByRegionFromAws"
                     }
@@ -8452,7 +8452,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allMssqlDatabaseRestoreFiles,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryMssql",
+                        CmdletName = "New-RscQueryMssql",
                         CmdletSwitchName = "AllDatabaseRestoreFiles",
                         GqlRootFieldName = "allMssqlDatabaseRestoreFiles"
                     }
@@ -8460,7 +8460,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allNcdSlaComplianceData,
                     new RscOp {
-                        CmdletName = "Invoke-RscQuerySla",
+                        CmdletName = "New-RscQuerySla",
                         CmdletSwitchName = "AllNcdComplianceData",
                         GqlRootFieldName = "allNcdSlaComplianceData"
                     }
@@ -8468,7 +8468,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allO365AdGroups,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletName = "New-RscQueryO365",
                         CmdletSwitchName = "AllAdGroups",
                         GqlRootFieldName = "allO365AdGroups"
                     }
@@ -8476,7 +8476,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allO365OrgStatuses,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletName = "New-RscQueryO365",
                         CmdletSwitchName = "AllOrgStatuses",
                         GqlRootFieldName = "allO365OrgStatuses"
                     }
@@ -8484,7 +8484,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allO365SubscriptionsAppTypeCounts,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletName = "New-RscQueryO365",
                         CmdletSwitchName = "AllSubscriptionsAppTypeCounts",
                         GqlRootFieldName = "allO365SubscriptionsAppTypeCounts"
                     }
@@ -8492,7 +8492,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allOptionGroupsByRegionFromAws,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "AllOptionGroupsByRegion",
                         GqlRootFieldName = "allOptionGroupsByRegionFromAws"
                     }
@@ -8500,7 +8500,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allResourceGroupsFromAzure,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "AllResourceGroupsFrom",
                         GqlRootFieldName = "allResourceGroupsFromAzure"
                     }
@@ -8508,7 +8508,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allS3BucketsDetailsFromAws,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "AllS3BucketsDetails",
                         GqlRootFieldName = "allS3BucketsDetailsFromAws"
                     }
@@ -8516,7 +8516,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allS3BucketsFromAws,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "AllS3Buckets",
                         GqlRootFieldName = "allS3BucketsFromAws"
                     }
@@ -8524,7 +8524,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allSlaSummariesByIds,
                     new RscOp {
-                        CmdletName = "Invoke-RscQuerySla",
+                        CmdletName = "New-RscQuerySla",
                         CmdletSwitchName = "AllSummariesByIds",
                         GqlRootFieldName = "allSlaSummariesByIds"
                     }
@@ -8532,7 +8532,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allSupportedAwsRdsDatabaseInstanceClasses,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "AllSupportedRdsDatabaseInstanceClasses",
                         GqlRootFieldName = "allSupportedAwsRdsDatabaseInstanceClasses"
                     }
@@ -8540,7 +8540,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allVcenterHotAddProxyVms,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryVcenter",
+                        CmdletName = "New-RscQueryVcenter",
                         CmdletSwitchName = "HotAddProxy",
                         GqlRootFieldName = "allVcenterHotAddProxyVms"
                     }
@@ -8548,7 +8548,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allVpcsByRegionFromAws,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "AllVpcsByRegion",
                         GqlRootFieldName = "allVpcsByRegionFromAws"
                     }
@@ -8556,7 +8556,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.allVpcsFromAws,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "AllVpcs",
                         GqlRootFieldName = "allVpcsFromAws"
                     }
@@ -8564,7 +8564,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.amiTypeForAwsNativeArchivedSnapshotExport,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "AmiTypeForNativeArchivedSnapshotExport",
                         GqlRootFieldName = "amiTypeForAwsNativeArchivedSnapshotExport"
                     }
@@ -8572,7 +8572,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.archiveK8sCluster,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateCluster",
+                        CmdletName = "New-RscMutationCluster",
                         CmdletSwitchName = "ArchiveK8s",
                         GqlRootFieldName = "archiveK8sCluster"
                     }
@@ -8580,7 +8580,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.assignMssqlSlaDomainProperties,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateMssql",
+                        CmdletName = "New-RscMutationMssql",
                         CmdletSwitchName = "AssignSlaDomainProperties",
                         GqlRootFieldName = "assignMssqlSlaDomainProperties"
                     }
@@ -8588,7 +8588,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.assignMssqlSlaDomainPropertiesAsync,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateMssql",
+                        CmdletName = "New-RscMutationMssql",
                         CmdletSwitchName = "AssignSlaDomainPropertiesAsync",
                         GqlRootFieldName = "assignMssqlSlaDomainPropertiesAsync"
                     }
@@ -8596,7 +8596,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.assignRetentionSLAToSnappables,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateSla",
+                        CmdletName = "New-RscMutationSla",
                         CmdletSwitchName = "AssignRetentionToSnappables",
                         GqlRootFieldName = "assignRetentionSLAToSnappables"
                     }
@@ -8604,7 +8604,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.assignRetentionSLAToSnapshots,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateSla",
+                        CmdletName = "New-RscMutationSla",
                         CmdletSwitchName = "AssignRetentionToSnapshots",
                         GqlRootFieldName = "assignRetentionSLAToSnapshots"
                     }
@@ -8612,7 +8612,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.assignSla,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateSla",
+                        CmdletName = "New-RscMutationSla",
                         CmdletSwitchName = "Assign",
                         GqlRootFieldName = "assignSla"
                     }
@@ -8620,7 +8620,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.assignSlaToMongoDbCollection,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateMongo",
+                        CmdletName = "New-RscMutationMongo",
                         CmdletSwitchName = "AssignSlaToDbCollection",
                         GqlRootFieldName = "assignSlaToMongoDbCollection"
                     }
@@ -8628,7 +8628,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.assignSlasForSnappableHierarchies,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateSla",
+                        CmdletName = "New-RscMutationSla",
                         CmdletSwitchName = "AssignsForSnappableHierarchies",
                         GqlRootFieldName = "assignSlasForSnappableHierarchies"
                     }
@@ -8636,7 +8636,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.awsArtifactsToDelete,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "ArtifactsToDelete",
                         GqlRootFieldName = "awsArtifactsToDelete"
                     }
@@ -8644,7 +8644,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.awsCloudAccountListSecurityGroups,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "CloudAccountListSecurityGroups",
                         GqlRootFieldName = "awsCloudAccountListSecurityGroups"
                     }
@@ -8652,7 +8652,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.awsCloudAccountListSubnets,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "CloudAccountListSubnets",
                         GqlRootFieldName = "awsCloudAccountListSubnets"
                     }
@@ -8660,7 +8660,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.awsCloudAccountListVpcs,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "CloudAccountListVpcs",
                         GqlRootFieldName = "awsCloudAccountListVpcs"
                     }
@@ -8668,7 +8668,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.awsCloudAccountWithFeatures,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "CloudAccountWithFeatures",
                         GqlRootFieldName = "awsCloudAccountWithFeatures"
                     }
@@ -8676,7 +8676,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.awsComputeSettings,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "ComputeSettings",
                         GqlRootFieldName = "awsComputeSettings"
                     }
@@ -8684,7 +8684,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.awsNativeAccount,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "NativeAccount",
                         GqlRootFieldName = "awsNativeAccount"
                     }
@@ -8692,7 +8692,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.awsNativeAccounts,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "NativeAccounts",
                         GqlRootFieldName = "awsNativeAccounts"
                     }
@@ -8700,7 +8700,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.awsNativeEbsVolume,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "NativeEbsVolume",
                         GqlRootFieldName = "awsNativeEbsVolume"
                     }
@@ -8708,7 +8708,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.awsNativeEbsVolumes,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "NativeEbsVolumes",
                         GqlRootFieldName = "awsNativeEbsVolumes"
                     }
@@ -8716,7 +8716,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.awsNativeEbsVolumesByName,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "NativeEbsVolumesByName",
                         GqlRootFieldName = "awsNativeEbsVolumesByName"
                     }
@@ -8724,7 +8724,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.awsNativeEc2Instance,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "NativeEc2Instance",
                         GqlRootFieldName = "awsNativeEc2Instance"
                     }
@@ -8732,7 +8732,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.awsNativeEc2Instances,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "NativeEc2Instances",
                         GqlRootFieldName = "awsNativeEc2Instances"
                     }
@@ -8740,7 +8740,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.awsNativeEc2InstancesByName,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "NativeEc2InstancesByName",
                         GqlRootFieldName = "awsNativeEc2InstancesByName"
                     }
@@ -8748,7 +8748,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.awsNativeRdsExportDefaults,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "NativeRdsExportDefaults",
                         GqlRootFieldName = "awsNativeRdsExportDefaults"
                     }
@@ -8756,7 +8756,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.awsNativeRdsInstance,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "NativeRdsInstance",
                         GqlRootFieldName = "awsNativeRdsInstance"
                     }
@@ -8764,7 +8764,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.awsNativeRdsInstances,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "NativeRdsInstances",
                         GqlRootFieldName = "awsNativeRdsInstances"
                     }
@@ -8772,7 +8772,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.awsNativeRdsPointInTimeRestoreWindow,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "NativeRdsPointInTimeRestoreWindow",
                         GqlRootFieldName = "awsNativeRdsPointInTimeRestoreWindow"
                     }
@@ -8780,7 +8780,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.awsNativeRoot,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "NativeRoot",
                         GqlRootFieldName = "awsNativeRoot"
                     }
@@ -8788,7 +8788,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.awsNativeS3Bucket,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "NativeS3Bucket",
                         GqlRootFieldName = "awsNativeS3Bucket"
                     }
@@ -8796,7 +8796,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.awsTrustPolicy,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "TrustPolicy",
                         GqlRootFieldName = "awsTrustPolicy"
                     }
@@ -8804,7 +8804,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureCloudAccountPermissionConfig,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "CloudAccountPermissionConfig",
                         GqlRootFieldName = "azureCloudAccountPermissionConfig"
                     }
@@ -8812,7 +8812,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureCloudAccountSubscriptionWithFeatures,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "CloudAccountSubscriptionWithFeatures",
                         GqlRootFieldName = "azureCloudAccountSubscriptionWithFeatures"
                     }
@@ -8820,7 +8820,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureCloudAccountTenant,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "CloudAccountTenant",
                         GqlRootFieldName = "azureCloudAccountTenant"
                     }
@@ -8828,7 +8828,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureCloudAccountTenantWithExoConfigs,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "CloudAccountTenantWithExoConfigs",
                         GqlRootFieldName = "azureCloudAccountTenantWithExoConfigs"
                     }
@@ -8836,7 +8836,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureNativeManagedDisk,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "NativeManagedDisk",
                         GqlRootFieldName = "azureNativeManagedDisk"
                     }
@@ -8844,7 +8844,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureNativeManagedDisks,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "NativeManagedDisks",
                         GqlRootFieldName = "azureNativeManagedDisks"
                     }
@@ -8852,7 +8852,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureNativeResourceGroup,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "NativeResourceGroup",
                         GqlRootFieldName = "azureNativeResourceGroup"
                     }
@@ -8860,7 +8860,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureNativeResourceGroups,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "NativeResourceGroups",
                         GqlRootFieldName = "azureNativeResourceGroups"
                     }
@@ -8868,7 +8868,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureNativeRoot,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "NativeRoot",
                         GqlRootFieldName = "azureNativeRoot"
                     }
@@ -8876,7 +8876,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureNativeSubscription,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "NativeSubscription",
                         GqlRootFieldName = "azureNativeSubscription"
                     }
@@ -8884,7 +8884,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureNativeSubscriptions,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "NativeSubscriptions",
                         GqlRootFieldName = "azureNativeSubscriptions"
                     }
@@ -8892,7 +8892,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureNativeVirtualMachine,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "NativeVirtualMachine",
                         GqlRootFieldName = "azureNativeVirtualMachine"
                     }
@@ -8900,7 +8900,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureNativeVirtualMachines,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "NativeVirtualMachines",
                         GqlRootFieldName = "azureNativeVirtualMachines"
                     }
@@ -8908,7 +8908,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureO365CheckNSGOutboundRules,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzureO365",
+                        CmdletName = "New-RscQueryAzureO365",
                         CmdletSwitchName = "CheckNSGOutboundRules",
                         GqlRootFieldName = "azureO365CheckNSGOutboundRules"
                     }
@@ -8916,7 +8916,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureO365CheckNetworkSubnet,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzureO365",
+                        CmdletName = "New-RscQueryAzureO365",
                         CmdletSwitchName = "CheckNetworkSubnet",
                         GqlRootFieldName = "azureO365CheckNetworkSubnet"
                     }
@@ -8924,7 +8924,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureO365CheckResourceGroupName,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzureO365",
+                        CmdletName = "New-RscQueryAzureO365",
                         CmdletSwitchName = "CheckResourceGroupName",
                         GqlRootFieldName = "azureO365CheckResourceGroupName"
                     }
@@ -8932,7 +8932,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureO365CheckStorageAccountAccessibility,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzureO365",
+                        CmdletName = "New-RscQueryAzureO365",
                         CmdletSwitchName = "CheckStorageAccountAccessibility",
                         GqlRootFieldName = "azureO365CheckStorageAccountAccessibility"
                     }
@@ -8940,7 +8940,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureO365CheckStorageAccountName,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzureO365",
+                        CmdletName = "New-RscQueryAzureO365",
                         CmdletSwitchName = "CheckStorageAccountName",
                         GqlRootFieldName = "azureO365CheckStorageAccountName"
                     }
@@ -8948,7 +8948,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureO365CheckSubscriptionQuota,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzureO365",
+                        CmdletName = "New-RscQueryAzureO365",
                         CmdletSwitchName = "CheckSubscriptionQuota",
                         GqlRootFieldName = "azureO365CheckSubscriptionQuota"
                     }
@@ -8956,7 +8956,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureO365CheckVirtualNetworkName,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzureO365",
+                        CmdletName = "New-RscQueryAzureO365",
                         CmdletSwitchName = "CheckVirtualNetworkName",
                         GqlRootFieldName = "azureO365CheckVirtualNetworkName"
                     }
@@ -8964,7 +8964,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureO365Exocompute,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzureO365",
+                        CmdletName = "New-RscQueryAzureO365",
                         CmdletSwitchName = "Exocompute",
                         GqlRootFieldName = "azureO365Exocompute"
                     }
@@ -8972,7 +8972,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureO365GetAzureHostType,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzureO365",
+                        CmdletName = "New-RscQueryAzureO365",
                         CmdletSwitchName = "GetAzureHostType",
                         GqlRootFieldName = "azureO365GetAzureHostType"
                     }
@@ -8980,7 +8980,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureO365GetNetworkSubnetUnusedAddr,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzureO365",
+                        CmdletName = "New-RscQueryAzureO365",
                         CmdletSwitchName = "GetNetworkSubnetUnusedAddr",
                         GqlRootFieldName = "azureO365GetNetworkSubnetUnusedAddr"
                     }
@@ -8988,7 +8988,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureO365ValidateUserRoles,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzureO365",
+                        CmdletName = "New-RscQueryAzureO365",
                         CmdletSwitchName = "ValidateUserRoles",
                         GqlRootFieldName = "azureO365ValidateUserRoles"
                     }
@@ -8996,7 +8996,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureOauthConsentComplete,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "OauthConsentComplete",
                         GqlRootFieldName = "azureOauthConsentComplete"
                     }
@@ -9004,7 +9004,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureOauthConsentKickoff,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "OauthConsentKickoff",
                         GqlRootFieldName = "azureOauthConsentKickoff"
                     }
@@ -9012,7 +9012,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureRegions,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "Regions",
                         GqlRootFieldName = "azureRegions"
                     }
@@ -9020,7 +9020,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureResourceGroups,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "ResourceGroups",
                         GqlRootFieldName = "azureResourceGroups"
                     }
@@ -9028,7 +9028,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureSqlDatabase,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "SqlDatabase",
                         GqlRootFieldName = "azureSqlDatabase"
                     }
@@ -9036,7 +9036,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureSqlDatabaseDbPointInTimeRestoreWindowFromAzure,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "SqlDatabaseDbPointInTimeRestoreWindowFromAzure",
                         GqlRootFieldName = "azureSqlDatabaseDbPointInTimeRestoreWindowFromAzure"
                     }
@@ -9044,7 +9044,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureSqlDatabaseServer,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "SqlDatabaseServer",
                         GqlRootFieldName = "azureSqlDatabaseServer"
                     }
@@ -9052,7 +9052,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureSqlDatabaseServers,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "SqlDatabaseServers",
                         GqlRootFieldName = "azureSqlDatabaseServers"
                     }
@@ -9060,7 +9060,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureSqlDatabases,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "SqlDatabases",
                         GqlRootFieldName = "azureSqlDatabases"
                     }
@@ -9068,7 +9068,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureSqlManagedInstanceDatabase,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "SqlManagedInstanceDatabase",
                         GqlRootFieldName = "azureSqlManagedInstanceDatabase"
                     }
@@ -9076,7 +9076,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureSqlManagedInstanceDatabases,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "SqlManagedInstanceDatabases",
                         GqlRootFieldName = "azureSqlManagedInstanceDatabases"
                     }
@@ -9084,7 +9084,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure",
                         GqlRootFieldName = "azureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure"
                     }
@@ -9092,7 +9092,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureSqlManagedInstanceServer,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "SqlManagedInstanceServer",
                         GqlRootFieldName = "azureSqlManagedInstanceServer"
                     }
@@ -9100,7 +9100,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureSqlManagedInstanceServers,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "SqlManagedInstanceServers",
                         GqlRootFieldName = "azureSqlManagedInstanceServers"
                     }
@@ -9108,7 +9108,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureStorageAccounts,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "StorageAccounts",
                         GqlRootFieldName = "azureStorageAccounts"
                     }
@@ -9116,7 +9116,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureSubnets,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "Subnets",
                         GqlRootFieldName = "azureSubnets"
                     }
@@ -9124,7 +9124,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureSubscriptions,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "Subscriptions",
                         GqlRootFieldName = "azureSubscriptions"
                     }
@@ -9132,7 +9132,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.azureVNets,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "VNets",
                         GqlRootFieldName = "azureVNets"
                     }
@@ -9140,7 +9140,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.backupO365Mailbox,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletName = "New-RscMutationO365",
                         CmdletSwitchName = "BackupMailbox",
                         GqlRootFieldName = "backupO365Mailbox"
                     }
@@ -9148,7 +9148,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.backupO365Onedrive,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletName = "New-RscMutationO365",
                         CmdletSwitchName = "BackupOnedrive",
                         GqlRootFieldName = "backupO365Onedrive"
                     }
@@ -9156,7 +9156,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.backupO365SharePointSite,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletName = "New-RscMutationO365",
                         CmdletSwitchName = "BackupSharePointSite",
                         GqlRootFieldName = "backupO365SharePointSite"
                     }
@@ -9164,7 +9164,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.backupO365SharepointDrive,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletName = "New-RscMutationO365",
                         CmdletSwitchName = "BackupSharepointDrive",
                         GqlRootFieldName = "backupO365SharepointDrive"
                     }
@@ -9172,7 +9172,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.backupO365SharepointList,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletName = "New-RscMutationO365",
                         CmdletSwitchName = "BackupSharepointList",
                         GqlRootFieldName = "backupO365SharepointList"
                     }
@@ -9180,7 +9180,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.backupO365Team,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletName = "New-RscMutationO365",
                         CmdletSwitchName = "BackupTeam",
                         GqlRootFieldName = "backupO365Team"
                     }
@@ -9188,7 +9188,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.batchExportHypervVm,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletName = "New-RscMutationHyperv",
                         CmdletSwitchName = "BatchExportVm",
                         GqlRootFieldName = "batchExportHypervVm"
                     }
@@ -9196,7 +9196,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.batchExportNutanixVm,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletName = "New-RscMutationNutanix",
                         CmdletSwitchName = "BatchExportVm",
                         GqlRootFieldName = "batchExportNutanixVm"
                     }
@@ -9204,7 +9204,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.batchInstantRecoverHypervVm,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletName = "New-RscMutationHyperv",
                         CmdletSwitchName = "BatchInstantRecoverVm",
                         GqlRootFieldName = "batchInstantRecoverHypervVm"
                     }
@@ -9212,7 +9212,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.batchMountHypervVm,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletName = "New-RscMutationHyperv",
                         CmdletSwitchName = "BatchMountVm",
                         GqlRootFieldName = "batchMountHypervVm"
                     }
@@ -9220,7 +9220,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.batchMountNutanixVm,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletName = "New-RscMutationNutanix",
                         CmdletSwitchName = "BatchMountVm",
                         GqlRootFieldName = "batchMountNutanixVm"
                     }
@@ -9228,7 +9228,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.batchOnDemandBackupHypervVm,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletName = "New-RscMutationHyperv",
                         CmdletSwitchName = "BatchOnDemandBackupVm",
                         GqlRootFieldName = "batchOnDemandBackupHypervVm"
                     }
@@ -9236,7 +9236,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.browseMssqlDatabaseSnapshot,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateMssql",
+                        CmdletName = "New-RscMutationMssql",
                         CmdletSwitchName = "BrowseDatabaseSnapshot",
                         GqlRootFieldName = "browseMssqlDatabaseSnapshot"
                     }
@@ -9244,7 +9244,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.browseO365TeamConvChannels,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletName = "New-RscQueryO365",
                         CmdletSwitchName = "BrowseTeamConvChannels",
                         GqlRootFieldName = "browseO365TeamConvChannels"
                     }
@@ -9252,7 +9252,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.bulkCreateOnDemandMssqlBackup,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateMssql",
+                        CmdletName = "New-RscMutationMssql",
                         CmdletSwitchName = "BulkCreateOnDemandBackup",
                         GqlRootFieldName = "bulkCreateOnDemandMssqlBackup"
                     }
@@ -9260,7 +9260,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.bulkDeleteAwsCloudAccountWithoutCft,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletName = "New-RscMutationAws",
                         CmdletSwitchName = "BulkDeleteCloudAccountWithoutCft",
                         GqlRootFieldName = "bulkDeleteAwsCloudAccountWithoutCft"
                     }
@@ -9268,7 +9268,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.bulkDeleteCassandraSources,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateCassandra",
+                        CmdletName = "New-RscMutationCassandra",
                         CmdletSwitchName = "BulkDeleteSources",
                         GqlRootFieldName = "bulkDeleteCassandraSources"
                     }
@@ -9276,7 +9276,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.bulkDeleteFailoverCluster,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateCluster",
+                        CmdletName = "New-RscMutationCluster",
                         CmdletSwitchName = "BulkDeleteFailover",
                         GqlRootFieldName = "bulkDeleteFailoverCluster"
                     }
@@ -9284,7 +9284,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.bulkDeleteMongodbSources,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateMongo",
+                        CmdletName = "New-RscMutationMongo",
                         CmdletSwitchName = "BulkDeletedbSources",
                         GqlRootFieldName = "bulkDeleteMongodbSources"
                     }
@@ -9292,7 +9292,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.bulkOnDemandSnapshotNutanixVm,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletName = "New-RscMutationNutanix",
                         CmdletSwitchName = "BulkOnDemandSnapshotVm",
                         GqlRootFieldName = "bulkOnDemandSnapshotNutanixVm"
                     }
@@ -9300,7 +9300,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.bulkUpdateMssqlDbs,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateMssql",
+                        CmdletName = "New-RscMutationMssql",
                         CmdletSwitchName = "BulkUpdateDbs",
                         GqlRootFieldName = "bulkUpdateMssqlDbs"
                     }
@@ -9308,7 +9308,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.bulkUpdateOracleDatabases,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateOracle",
+                        CmdletName = "New-RscMutationOracle",
                         CmdletSwitchName = "BulkUpdateDatabases",
                         GqlRootFieldName = "bulkUpdateOracleDatabases"
                     }
@@ -9316,7 +9316,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.bulkUpdateOracleHosts,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateOracle",
+                        CmdletName = "New-RscMutationOracle",
                         CmdletSwitchName = "BulkUpdateHosts",
                         GqlRootFieldName = "bulkUpdateOracleHosts"
                     }
@@ -9324,7 +9324,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.bulkUpdateOracleRacs,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateOracle",
+                        CmdletName = "New-RscMutationOracle",
                         CmdletSwitchName = "BulkUpdateRacs",
                         GqlRootFieldName = "bulkUpdateOracleRacs"
                     }
@@ -9332,7 +9332,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.cancelActivitySeries,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateActivitySeries",
+                        CmdletName = "New-RscMutationActivitySeries",
                         CmdletSwitchName = "Cancel",
                         GqlRootFieldName = "cancelActivitySeries"
                     }
@@ -9340,7 +9340,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.cassandraColumnFamilies,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCassandra",
+                        CmdletName = "New-RscQueryCassandra",
                         CmdletSwitchName = "ColumnFamilies",
                         GqlRootFieldName = "cassandraColumnFamilies"
                     }
@@ -9348,7 +9348,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.cassandraColumnFamily,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCassandra",
+                        CmdletName = "New-RscQueryCassandra",
                         CmdletSwitchName = "ColumnFamily",
                         GqlRootFieldName = "cassandraColumnFamily"
                     }
@@ -9356,7 +9356,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.cassandraColumnFamilyRecoverableRange,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCassandra",
+                        CmdletName = "New-RscQueryCassandra",
                         CmdletSwitchName = "ColumnFamilyRecoverableRange",
                         GqlRootFieldName = "cassandraColumnFamilyRecoverableRange"
                     }
@@ -9364,7 +9364,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.cassandraColumnFamilySchema,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCassandra",
+                        CmdletName = "New-RscQueryCassandra",
                         CmdletSwitchName = "ColumnFamilySchema",
                         GqlRootFieldName = "cassandraColumnFamilySchema"
                     }
@@ -9372,7 +9372,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.cassandraKeyspace,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCassandra",
+                        CmdletName = "New-RscQueryCassandra",
                         CmdletSwitchName = "Keyspace",
                         GqlRootFieldName = "cassandraKeyspace"
                     }
@@ -9380,7 +9380,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.cassandraKeyspaces,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCassandra",
+                        CmdletName = "New-RscQueryCassandra",
                         CmdletSwitchName = "Keyspaces",
                         GqlRootFieldName = "cassandraKeyspaces"
                     }
@@ -9388,7 +9388,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.cassandraSource,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCassandra",
+                        CmdletName = "New-RscQueryCassandra",
                         CmdletSwitchName = "Source",
                         GqlRootFieldName = "cassandraSource"
                     }
@@ -9396,7 +9396,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.cassandraSources,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCassandra",
+                        CmdletName = "New-RscQueryCassandra",
                         CmdletSwitchName = "Sources",
                         GqlRootFieldName = "cassandraSources"
                     }
@@ -9404,7 +9404,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.cdmMssqlLogShippingTarget,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryMssql",
+                        CmdletName = "New-RscQueryMssql",
                         CmdletSwitchName = "CdmLogShippingTarget",
                         GqlRootFieldName = "cdmMssqlLogShippingTarget"
                     }
@@ -9412,7 +9412,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.cdmMssqlLogShippingTargets,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryMssql",
+                        CmdletName = "New-RscQueryMssql",
                         CmdletSwitchName = "CdmLogShippingTargets",
                         GqlRootFieldName = "cdmMssqlLogShippingTargets"
                     }
@@ -9420,7 +9420,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.checkAzurePersistentStorageSubscriptionCanUnmap,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "CheckPersistentStorageSubscriptionCanUnmap",
                         GqlRootFieldName = "checkAzurePersistentStorageSubscriptionCanUnmap"
                     }
@@ -9428,7 +9428,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.cluster,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletName = "New-RscQueryCluster",
                         CmdletSwitchName = "Cluster",
                         GqlRootFieldName = "cluster"
                     }
@@ -9436,7 +9436,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.clusterCertificates,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletName = "New-RscQueryCluster",
                         CmdletSwitchName = "Certificates",
                         GqlRootFieldName = "clusterCertificates"
                     }
@@ -9444,7 +9444,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.clusterConnection,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletName = "New-RscQueryCluster",
                         CmdletSwitchName = "List",
                         GqlRootFieldName = "clusterConnection"
                     }
@@ -9452,7 +9452,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.clusterCsr,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletName = "New-RscQueryCluster",
                         CmdletSwitchName = "Csr",
                         GqlRootFieldName = "clusterCsr"
                     }
@@ -9460,7 +9460,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.clusterDefaultGateway,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletName = "New-RscQueryCluster",
                         CmdletSwitchName = "DefaultGateway",
                         GqlRootFieldName = "clusterDefaultGateway"
                     }
@@ -9468,7 +9468,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.clusterDns,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletName = "New-RscQueryCluster",
                         CmdletSwitchName = "Dns",
                         GqlRootFieldName = "clusterDns"
                     }
@@ -9476,7 +9476,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.clusterFloatingIps,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletName = "New-RscQueryCluster",
                         CmdletSwitchName = "FloatingIps",
                         GqlRootFieldName = "clusterFloatingIps"
                     }
@@ -9484,7 +9484,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.clusterGroupByConnection,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletName = "New-RscQueryCluster",
                         CmdletSwitchName = "GroupByList",
                         GqlRootFieldName = "clusterGroupByConnection"
                     }
@@ -9492,7 +9492,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.clusterIpmi,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletName = "New-RscQueryCluster",
                         CmdletSwitchName = "Ipmi",
                         GqlRootFieldName = "clusterIpmi"
                     }
@@ -9500,7 +9500,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.clusterIpv6Mode,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletName = "New-RscQueryCluster",
                         CmdletSwitchName = "Ipv6Mode",
                         GqlRootFieldName = "clusterIpv6Mode"
                     }
@@ -9508,7 +9508,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.clusterNetworkInterfaces,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletName = "New-RscQueryCluster",
                         CmdletSwitchName = "NetworkInterfaces",
                         GqlRootFieldName = "clusterNetworkInterfaces"
                     }
@@ -9516,7 +9516,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.clusterNodes,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletName = "New-RscQueryCluster",
                         CmdletSwitchName = "Nodes",
                         GqlRootFieldName = "clusterNodes"
                     }
@@ -9524,7 +9524,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.clusterNtpServers,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletName = "New-RscQueryCluster",
                         CmdletSwitchName = "NtpServers",
                         GqlRootFieldName = "clusterNtpServers"
                     }
@@ -9532,7 +9532,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.clusterOperationJobProgress,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletName = "New-RscQueryCluster",
                         CmdletSwitchName = "OperationJobProgress",
                         GqlRootFieldName = "clusterOperationJobProgress"
                     }
@@ -9540,7 +9540,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.clusterProxy,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletName = "New-RscQueryCluster",
                         CmdletSwitchName = "Proxy",
                         GqlRootFieldName = "clusterProxy"
                     }
@@ -9548,7 +9548,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.clusterRegistrationProductInfo,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletName = "New-RscQueryCluster",
                         CmdletSwitchName = "RegistrationProductInfo",
                         GqlRootFieldName = "clusterRegistrationProductInfo"
                     }
@@ -9556,7 +9556,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.clusterReportMigrationCount,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletName = "New-RscQueryCluster",
                         CmdletSwitchName = "ReportMigrationCount",
                         GqlRootFieldName = "clusterReportMigrationCount"
                     }
@@ -9564,7 +9564,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.clusterReportMigrationJobStatus,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletName = "New-RscQueryCluster",
                         CmdletSwitchName = "ReportMigrationJobStatus",
                         GqlRootFieldName = "clusterReportMigrationJobStatus"
                     }
@@ -9572,7 +9572,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.clusterReportMigrationStatus,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletName = "New-RscQueryCluster",
                         CmdletSwitchName = "ReportMigrationStatus",
                         GqlRootFieldName = "clusterReportMigrationStatus"
                     }
@@ -9580,15 +9580,15 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.clusterSlaDomains,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCluster",
-                        CmdletSwitchName = "LaDomains",
+                        CmdletName = "New-RscQueryCluster",
+                        CmdletSwitchName = "SlaDomains",
                         GqlRootFieldName = "clusterSlaDomains"
                     }
                 },
                 {
                     GqlRootFieldName.clusterTypeList,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletName = "New-RscQueryCluster",
                         CmdletSwitchName = "TypeList",
                         GqlRootFieldName = "clusterTypeList"
                     }
@@ -9596,7 +9596,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.clusterVlans,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletName = "New-RscQueryCluster",
                         CmdletSwitchName = "Vlans",
                         GqlRootFieldName = "clusterVlans"
                     }
@@ -9604,7 +9604,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.clusterWebSignedCertificate,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletName = "New-RscQueryCluster",
                         CmdletSwitchName = "WebSignedCertificate",
                         GqlRootFieldName = "clusterWebSignedCertificate"
                     }
@@ -9612,7 +9612,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.clusterWithUpgradesInfo,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletName = "New-RscQueryCluster",
                         CmdletSwitchName = "WithUpgradesInfo",
                         GqlRootFieldName = "clusterWithUpgradesInfo"
                     }
@@ -9620,7 +9620,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.completeAzureCloudAccountOauth,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "CompleteCloudAccountOauth",
                         GqlRootFieldName = "completeAzureCloudAccountOauth"
                     }
@@ -9628,7 +9628,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.countOfObjectsProtectedBySlas,
                     new RscOp {
-                        CmdletName = "Invoke-RscQuerySla",
+                        CmdletName = "New-RscQuerySla",
                         CmdletSwitchName = "CountOfObjectsProtected",
                         GqlRootFieldName = "countOfObjectsProtectedBySlas"
                     }
@@ -9636,7 +9636,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createAutomaticAwsTargetMapping,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletName = "New-RscMutationAws",
                         CmdletSwitchName = "CreateAutomaticTargetMapping",
                         GqlRootFieldName = "createAutomaticAwsTargetMapping"
                     }
@@ -9644,7 +9644,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createAutomaticAzureTargetMapping,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "CreateAutomaticTargetMapping",
                         GqlRootFieldName = "createAutomaticAzureTargetMapping"
                     }
@@ -9652,7 +9652,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createAwsAccount,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletName = "New-RscMutationAws",
                         CmdletSwitchName = "CreateAccount",
                         GqlRootFieldName = "createAwsAccount"
                     }
@@ -9660,7 +9660,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createAwsCluster,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletName = "New-RscMutationAws",
                         CmdletSwitchName = "CreateCluster",
                         GqlRootFieldName = "createAwsCluster"
                     }
@@ -9668,7 +9668,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createAwsComputeSetting,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletName = "New-RscMutationAws",
                         CmdletSwitchName = "CreateComputeSetting",
                         GqlRootFieldName = "createAwsComputeSetting"
                     }
@@ -9676,7 +9676,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createAwsExocomputeConfigs,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletName = "New-RscMutationAws",
                         CmdletSwitchName = "CreateExocomputeConfigs",
                         GqlRootFieldName = "createAwsExocomputeConfigs"
                     }
@@ -9684,7 +9684,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createAwsReaderTarget,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletName = "New-RscMutationAws",
                         CmdletSwitchName = "CreateReaderTarget",
                         GqlRootFieldName = "createAwsReaderTarget"
                     }
@@ -9692,7 +9692,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createAwsTarget,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletName = "New-RscMutationAws",
                         CmdletSwitchName = "CreateTarget",
                         GqlRootFieldName = "createAwsTarget"
                     }
@@ -9700,7 +9700,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createAzureAccount,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "CreateAccount",
                         GqlRootFieldName = "createAzureAccount"
                     }
@@ -9708,7 +9708,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createAzureCluster,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "CreateCluster",
                         GqlRootFieldName = "createAzureCluster"
                     }
@@ -9716,7 +9716,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createAzureReaderTarget,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "CreateReaderTarget",
                         GqlRootFieldName = "createAzureReaderTarget"
                     }
@@ -9724,7 +9724,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createAzureSaasAppAad,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "CreateSaasAppAad",
                         GqlRootFieldName = "createAzureSaasAppAad"
                     }
@@ -9732,7 +9732,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createAzureTarget,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "CreateTarget",
                         GqlRootFieldName = "createAzureTarget"
                     }
@@ -9740,7 +9740,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createCassandraSource,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateCassandra",
+                        CmdletName = "New-RscMutationCassandra",
                         CmdletSwitchName = "CreateSource",
                         GqlRootFieldName = "createCassandraSource"
                     }
@@ -9748,7 +9748,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createCloudNativeAwsStorageSetting,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletName = "New-RscMutationAws",
                         CmdletSwitchName = "CreateCloudNativeStorageSetting",
                         GqlRootFieldName = "createCloudNativeAwsStorageSetting"
                     }
@@ -9756,7 +9756,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createCloudNativeAzureStorageSetting,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "CreateCloudNativeStorageSetting",
                         GqlRootFieldName = "createCloudNativeAzureStorageSetting"
                     }
@@ -9764,7 +9764,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createCloudNativeRcvAzureStorageSetting,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "CreateCloudNativeRcvStorageSetting",
                         GqlRootFieldName = "createCloudNativeRcvAzureStorageSetting"
                     }
@@ -9772,7 +9772,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createFailoverCluster,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateCluster",
+                        CmdletName = "New-RscMutationCluster",
                         CmdletSwitchName = "CreateFailover",
                         GqlRootFieldName = "createFailoverCluster"
                     }
@@ -9780,7 +9780,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createGlobalSla,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateSla",
+                        CmdletName = "New-RscMutationSla",
                         CmdletSwitchName = "CreateGlobal",
                         GqlRootFieldName = "createGlobalSla"
                     }
@@ -9788,7 +9788,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createHypervVirtualMachineSnapshotMount,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletName = "New-RscMutationHyperv",
                         CmdletSwitchName = "CreateVirtualMachineSnapshotMount",
                         GqlRootFieldName = "createHypervVirtualMachineSnapshotMount"
                     }
@@ -9796,7 +9796,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createK8sCluster,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateCluster",
+                        CmdletName = "New-RscMutationCluster",
                         CmdletSwitchName = "CreateK8s",
                         GqlRootFieldName = "createK8sCluster"
                     }
@@ -9804,7 +9804,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createMongodbSource,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateMongo",
+                        CmdletName = "New-RscMutationMongo",
                         CmdletSwitchName = "CreatedbSource",
                         GqlRootFieldName = "createMongodbSource"
                     }
@@ -9812,7 +9812,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createMssqlLiveMount,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateMssql",
+                        CmdletName = "New-RscMutationMssql",
                         CmdletSwitchName = "CreateLiveMount",
                         GqlRootFieldName = "createMssqlLiveMount"
                     }
@@ -9820,7 +9820,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createMssqlLogShippingConfiguration,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateMssql",
+                        CmdletName = "New-RscMutationMssql",
                         CmdletSwitchName = "CreateLogShippingConfiguration",
                         GqlRootFieldName = "createMssqlLogShippingConfiguration"
                     }
@@ -9828,7 +9828,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createNutanixCluster,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletName = "New-RscMutationNutanix",
                         CmdletSwitchName = "CreateCluster",
                         GqlRootFieldName = "createNutanixCluster"
                     }
@@ -9836,7 +9836,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createNutanixPrismCentral,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletName = "New-RscMutationNutanix",
                         CmdletSwitchName = "CreatePrismCentral",
                         GqlRootFieldName = "createNutanixPrismCentral"
                     }
@@ -9844,7 +9844,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createO365AppComplete,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletName = "New-RscMutationO365",
                         CmdletSwitchName = "CreateAppComplete",
                         GqlRootFieldName = "createO365AppComplete"
                     }
@@ -9852,7 +9852,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createO365AppKickoff,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletName = "New-RscMutationO365",
                         CmdletSwitchName = "CreateAppKickoff",
                         GqlRootFieldName = "createO365AppKickoff"
                     }
@@ -9860,7 +9860,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createOnDemandDb2Backup,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateDb2",
+                        CmdletName = "New-RscMutationDb2",
                         CmdletSwitchName = "CreateOnDemandBackup",
                         GqlRootFieldName = "createOnDemandDb2Backup"
                     }
@@ -9868,7 +9868,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createOnDemandMssqlBackup,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateMssql",
+                        CmdletName = "New-RscMutationMssql",
                         CmdletSwitchName = "CreateOnDemandBackup",
                         GqlRootFieldName = "createOnDemandMssqlBackup"
                     }
@@ -9876,7 +9876,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createOnDemandNutanixBackup,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletName = "New-RscMutationNutanix",
                         CmdletSwitchName = "CreateOnDemandBackup",
                         GqlRootFieldName = "createOnDemandNutanixBackup"
                     }
@@ -9884,7 +9884,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createOraclePdbRestore,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateOracle",
+                        CmdletName = "New-RscMutationOracle",
                         CmdletSwitchName = "CreatePdbRestore",
                         GqlRootFieldName = "createOraclePdbRestore"
                     }
@@ -9892,7 +9892,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createVsphereAdvancedTag,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateVsphere",
+                        CmdletName = "New-RscMutationVsphere",
                         CmdletSwitchName = "CreateAdvancedTag",
                         GqlRootFieldName = "createVsphereAdvancedTag"
                     }
@@ -9900,7 +9900,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.createVsphereVcenter,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateVcenter",
+                        CmdletName = "New-RscMutationVcenter",
                         CmdletSwitchName = "Create",
                         GqlRootFieldName = "createVsphereVcenter"
                     }
@@ -9908,7 +9908,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.databaseLogReportForCluster,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletName = "New-RscQueryCluster",
                         CmdletSwitchName = "DatabaseLogReport",
                         GqlRootFieldName = "databaseLogReportForCluster"
                     }
@@ -9916,7 +9916,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.databaseLogReportingPropertiesForCluster,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletName = "New-RscQueryCluster",
                         CmdletSwitchName = "DatabaseLogReportingProperties",
                         GqlRootFieldName = "databaseLogReportingPropertiesForCluster"
                     }
@@ -9924,7 +9924,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.db2Database,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryDb2",
+                        CmdletName = "New-RscQueryDb2",
                         CmdletSwitchName = "Database",
                         GqlRootFieldName = "db2Database"
                     }
@@ -9932,7 +9932,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.db2Databases,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryDb2",
+                        CmdletName = "New-RscQueryDb2",
                         CmdletSwitchName = "Databases",
                         GqlRootFieldName = "db2Databases"
                     }
@@ -9940,7 +9940,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.db2Instance,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryDb2",
+                        CmdletName = "New-RscQueryDb2",
                         CmdletSwitchName = "Instance",
                         GqlRootFieldName = "db2Instance"
                     }
@@ -9948,7 +9948,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.db2Instances,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryDb2",
+                        CmdletName = "New-RscQueryDb2",
                         CmdletSwitchName = "Instances",
                         GqlRootFieldName = "db2Instances"
                     }
@@ -9956,7 +9956,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.db2LogSnapshot,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryDb2",
+                        CmdletName = "New-RscQueryDb2",
                         CmdletSwitchName = "LogSnapshot",
                         GqlRootFieldName = "db2LogSnapshot"
                     }
@@ -9964,7 +9964,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.db2LogSnapshots,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryDb2",
+                        CmdletName = "New-RscQueryDb2",
                         CmdletSwitchName = "LogSnapshots",
                         GqlRootFieldName = "db2LogSnapshots"
                     }
@@ -9972,7 +9972,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.db2RecoverableRange,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryDb2",
+                        CmdletName = "New-RscQueryDb2",
                         CmdletSwitchName = "RecoverableRange",
                         GqlRootFieldName = "db2RecoverableRange"
                     }
@@ -9980,7 +9980,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.db2RecoverableRanges,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryDb2",
+                        CmdletName = "New-RscQueryDb2",
                         CmdletSwitchName = "RecoverableRanges",
                         GqlRootFieldName = "db2RecoverableRanges"
                     }
@@ -9988,7 +9988,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.deleteAllOracleDatabaseSnapshots,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateOracle",
+                        CmdletName = "New-RscMutationOracle",
                         CmdletSwitchName = "DeleteAllDatabaseSnapshots",
                         GqlRootFieldName = "deleteAllOracleDatabaseSnapshots"
                     }
@@ -9996,7 +9996,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.deleteAwsCluster,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletName = "New-RscMutationAws",
                         CmdletSwitchName = "DeleteCluster",
                         GqlRootFieldName = "deleteAwsCluster"
                     }
@@ -10004,7 +10004,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.deleteAwsComputeSetting,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletName = "New-RscMutationAws",
                         CmdletSwitchName = "DeleteComputeSetting",
                         GqlRootFieldName = "deleteAwsComputeSetting"
                     }
@@ -10012,7 +10012,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.deleteAwsExocomputeConfigs,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletName = "New-RscMutationAws",
                         CmdletSwitchName = "DeleteExocomputeConfigs",
                         GqlRootFieldName = "deleteAwsExocomputeConfigs"
                     }
@@ -10020,7 +10020,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.deleteAzureCloudAccount,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "DeleteCloudAccount",
                         GqlRootFieldName = "deleteAzureCloudAccount"
                     }
@@ -10028,7 +10028,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.deleteAzureCloudAccountExocomputeConfigurations,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "DeleteCloudAccountExocomputeConfigurations",
                         GqlRootFieldName = "deleteAzureCloudAccountExocomputeConfigurations"
                     }
@@ -10036,7 +10036,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.deleteAzureCloudAccountWithoutOauth,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "DeleteCloudAccountWithoutOauth",
                         GqlRootFieldName = "deleteAzureCloudAccountWithoutOauth"
                     }
@@ -10044,7 +10044,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.deleteAzureCluster,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "DeleteCluster",
                         GqlRootFieldName = "deleteAzureCluster"
                     }
@@ -10052,7 +10052,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.deleteCassandraSource,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateCassandra",
+                        CmdletName = "New-RscMutationCassandra",
                         CmdletSwitchName = "DeleteSource",
                         GqlRootFieldName = "deleteCassandraSource"
                     }
@@ -10060,7 +10060,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.deleteDb2Database,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateDb2",
+                        CmdletName = "New-RscMutationDb2",
                         CmdletSwitchName = "DeleteDatabase",
                         GqlRootFieldName = "deleteDb2Database"
                     }
@@ -10068,7 +10068,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.deleteDb2Instance,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateDb2",
+                        CmdletName = "New-RscMutationDb2",
                         CmdletSwitchName = "DeleteInstance",
                         GqlRootFieldName = "deleteDb2Instance"
                     }
@@ -10076,7 +10076,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.deleteFailoverCluster,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateCluster",
+                        CmdletName = "New-RscMutationCluster",
                         CmdletSwitchName = "DeleteFailover",
                         GqlRootFieldName = "deleteFailoverCluster"
                     }
@@ -10084,7 +10084,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.deleteHypervVirtualMachineSnapshot,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletName = "New-RscMutationHyperv",
                         CmdletSwitchName = "DeleteVirtualMachineSnapshot",
                         GqlRootFieldName = "deleteHypervVirtualMachineSnapshot"
                     }
@@ -10092,7 +10092,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.deleteHypervVirtualMachineSnapshotMount,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletName = "New-RscMutationHyperv",
                         CmdletSwitchName = "DeleteVirtualMachineSnapshotMount",
                         GqlRootFieldName = "deleteHypervVirtualMachineSnapshotMount"
                     }
@@ -10100,7 +10100,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.deleteLdapPrincipals,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateLdap",
+                        CmdletName = "New-RscMutationLdap",
                         CmdletSwitchName = "DeletePrincipals",
                         GqlRootFieldName = "deleteLdapPrincipals"
                     }
@@ -10108,7 +10108,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.deleteMongoSource,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateMongo",
+                        CmdletName = "New-RscMutationMongo",
                         CmdletSwitchName = "DeleteSource",
                         GqlRootFieldName = "deleteMongoSource"
                     }
@@ -10116,7 +10116,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.deleteMongodbSource,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateMongo",
+                        CmdletName = "New-RscMutationMongo",
                         CmdletSwitchName = "DeletedbSource",
                         GqlRootFieldName = "deleteMongodbSource"
                     }
@@ -10124,7 +10124,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.deleteMssqlDbSnapshots,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateMssql",
+                        CmdletName = "New-RscMutationMssql",
                         CmdletSwitchName = "DeleteDbSnapshots",
                         GqlRootFieldName = "deleteMssqlDbSnapshots"
                     }
@@ -10132,7 +10132,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.deleteMssqlLiveMount,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateMssql",
+                        CmdletName = "New-RscMutationMssql",
                         CmdletSwitchName = "DeleteLiveMount",
                         GqlRootFieldName = "deleteMssqlLiveMount"
                     }
@@ -10140,7 +10140,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.deleteNutanixCluster,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletName = "New-RscMutationNutanix",
                         CmdletSwitchName = "DeleteCluster",
                         GqlRootFieldName = "deleteNutanixCluster"
                     }
@@ -10148,7 +10148,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.deleteNutanixMountV1,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletName = "New-RscMutationNutanix",
                         CmdletSwitchName = "DeleteMountV1",
                         GqlRootFieldName = "deleteNutanixMountV1"
                     }
@@ -10156,7 +10156,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.deleteNutanixPrismCentral,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletName = "New-RscMutationNutanix",
                         CmdletSwitchName = "DeletePrismCentral",
                         GqlRootFieldName = "deleteNutanixPrismCentral"
                     }
@@ -10164,7 +10164,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.deleteNutanixSnapshot,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletName = "New-RscMutationNutanix",
                         CmdletSwitchName = "DeleteSnapshot",
                         GqlRootFieldName = "deleteNutanixSnapshot"
                     }
@@ -10172,7 +10172,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.deleteNutanixSnapshots,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletName = "New-RscMutationNutanix",
                         CmdletSwitchName = "DeleteSnapshots",
                         GqlRootFieldName = "deleteNutanixSnapshots"
                     }
@@ -10180,7 +10180,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.deleteO365AzureApp,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletName = "New-RscMutationO365",
                         CmdletSwitchName = "DeleteAzureApp",
                         GqlRootFieldName = "deleteO365AzureApp"
                     }
@@ -10188,7 +10188,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.deleteO365Org,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletName = "New-RscMutationO365",
                         CmdletSwitchName = "DeleteOrg",
                         GqlRootFieldName = "deleteO365Org"
                     }
@@ -10196,7 +10196,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.deleteO365ServiceAccount,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletName = "New-RscMutationO365",
                         CmdletSwitchName = "DeleteServiceAccount",
                         GqlRootFieldName = "deleteO365ServiceAccount"
                     }
@@ -10204,7 +10204,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.deleteOracleMount,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateOracle",
+                        CmdletName = "New-RscMutationOracle",
                         CmdletSwitchName = "DeleteMount",
                         GqlRootFieldName = "deleteOracleMount"
                     }
@@ -10212,7 +10212,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.deleteVsphereAdvancedTag,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateVsphere",
+                        CmdletName = "New-RscMutationVsphere",
                         CmdletSwitchName = "DeleteAdvancedTag",
                         GqlRootFieldName = "deleteVsphereAdvancedTag"
                     }
@@ -10220,7 +10220,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.deleteVsphereLiveMount,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateVsphere",
+                        CmdletName = "New-RscMutationVsphere",
                         CmdletSwitchName = "DeleteLiveMount",
                         GqlRootFieldName = "deleteVsphereLiveMount"
                     }
@@ -10228,7 +10228,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.discoverDb2Instance,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateDb2",
+                        CmdletName = "New-RscMutationDb2",
                         CmdletSwitchName = "DiscoverInstance",
                         GqlRootFieldName = "discoverDb2Instance"
                     }
@@ -10236,7 +10236,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.discoverMongoSource,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateMongo",
+                        CmdletName = "New-RscMutationMongo",
                         CmdletSwitchName = "DiscoverSource",
                         GqlRootFieldName = "discoverMongoSource"
                     }
@@ -10244,7 +10244,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.doesAzureNativeResourceGroupExist,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "DoesNativeResourceGroupExist",
                         GqlRootFieldName = "doesAzureNativeResourceGroupExist"
                     }
@@ -10252,7 +10252,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.downloadDb2Snapshot,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateDb2",
+                        CmdletName = "New-RscMutationDb2",
                         CmdletSwitchName = "DownloadSnapshot",
                         GqlRootFieldName = "downloadDb2Snapshot"
                     }
@@ -10260,7 +10260,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.downloadDb2SnapshotsForPointInTimeRecovery,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateDb2",
+                        CmdletName = "New-RscMutationDb2",
                         CmdletSwitchName = "DownloadSnapshotsForPointInTimeRecovery",
                         GqlRootFieldName = "downloadDb2SnapshotsForPointInTimeRecovery"
                     }
@@ -10268,7 +10268,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.downloadFilesNutanixSnapshot,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletName = "New-RscMutationNutanix",
                         CmdletSwitchName = "DownloadFilesSnapshot",
                         GqlRootFieldName = "downloadFilesNutanixSnapshot"
                     }
@@ -10276,7 +10276,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.downloadHypervSnapshotFromLocation,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletName = "New-RscMutationHyperv",
                         CmdletSwitchName = "DownloadSnapshotFromLocation",
                         GqlRootFieldName = "downloadHypervSnapshotFromLocation"
                     }
@@ -10284,7 +10284,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.downloadHypervVirtualMachineSnapshot,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletName = "New-RscMutationHyperv",
                         CmdletSwitchName = "DownloadVirtualMachineSnapshot",
                         GqlRootFieldName = "downloadHypervVirtualMachineSnapshot"
                     }
@@ -10292,7 +10292,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.downloadHypervVirtualMachineSnapshotFiles,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletName = "New-RscMutationHyperv",
                         CmdletSwitchName = "DownloadVirtualMachineSnapshotFiles",
                         GqlRootFieldName = "downloadHypervVirtualMachineSnapshotFiles"
                     }
@@ -10300,7 +10300,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.downloadMssqlDatabaseBackupFiles,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateMssql",
+                        CmdletName = "New-RscMutationMssql",
                         CmdletSwitchName = "DownloadDatabaseBackupFiles",
                         GqlRootFieldName = "downloadMssqlDatabaseBackupFiles"
                     }
@@ -10308,7 +10308,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.downloadMssqlDatabaseFilesFromArchivalLocation,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateMssql",
+                        CmdletName = "New-RscMutationMssql",
                         CmdletSwitchName = "DownloadDatabaseFilesFromArchivalLocation",
                         GqlRootFieldName = "downloadMssqlDatabaseFilesFromArchivalLocation"
                     }
@@ -10316,7 +10316,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.downloadNutanixSnapshot,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletName = "New-RscMutationNutanix",
                         CmdletSwitchName = "DownloadSnapshot",
                         GqlRootFieldName = "downloadNutanixSnapshot"
                     }
@@ -10324,7 +10324,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.downloadNutanixVmFromLocation,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletName = "New-RscMutationNutanix",
                         CmdletSwitchName = "DownloadVmFromLocation",
                         GqlRootFieldName = "downloadNutanixVmFromLocation"
                     }
@@ -10332,7 +10332,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.downloadOracleDatabaseSnapshot,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateOracle",
+                        CmdletName = "New-RscMutationOracle",
                         CmdletSwitchName = "DownloadDatabaseSnapshot",
                         GqlRootFieldName = "downloadOracleDatabaseSnapshot"
                     }
@@ -10340,7 +10340,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.downloadVsphereVirtualMachineFiles,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateVsphere",
+                        CmdletName = "New-RscMutationVsphere",
                         CmdletSwitchName = "DownloadVirtualMachineFiles",
                         GqlRootFieldName = "downloadVsphereVirtualMachineFiles"
                     }
@@ -10348,7 +10348,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.enableO365SharePoint,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletName = "New-RscMutationO365",
                         CmdletSwitchName = "EnableSharePoint",
                         GqlRootFieldName = "enableO365SharePoint"
                     }
@@ -10356,7 +10356,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.enableO365Teams,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletName = "New-RscMutationO365",
                         CmdletSwitchName = "EnableTeams",
                         GqlRootFieldName = "enableO365Teams"
                     }
@@ -10364,7 +10364,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.excludeAwsNativeEbsVolumesFromSnapshot,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletName = "New-RscMutationAws",
                         CmdletSwitchName = "ExcludeNativeEbsVolumesFromSnapshot",
                         GqlRootFieldName = "excludeAwsNativeEbsVolumesFromSnapshot"
                     }
@@ -10372,7 +10372,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.excludeAzureNativeManagedDisksFromSnapshot,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "ExcludeNativeManagedDisksFromSnapshot",
                         GqlRootFieldName = "excludeAzureNativeManagedDisksFromSnapshot"
                     }
@@ -10380,7 +10380,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.expireDownloadedDb2Snapshots,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateDb2",
+                        CmdletName = "New-RscMutationDb2",
                         CmdletSwitchName = "ExpireDownloadedSnapshots",
                         GqlRootFieldName = "expireDownloadedDb2Snapshots"
                     }
@@ -10388,7 +10388,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.exportHypervVirtualMachine,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletName = "New-RscMutationHyperv",
                         CmdletSwitchName = "ExportVirtualMachine",
                         GqlRootFieldName = "exportHypervVirtualMachine"
                     }
@@ -10396,7 +10396,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.exportMssqlDatabase,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateMssql",
+                        CmdletName = "New-RscMutationMssql",
                         CmdletSwitchName = "ExportDatabase",
                         GqlRootFieldName = "exportMssqlDatabase"
                     }
@@ -10404,7 +10404,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.exportNutanixSnapshot,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletName = "New-RscMutationNutanix",
                         CmdletSwitchName = "ExportSnapshot",
                         GqlRootFieldName = "exportNutanixSnapshot"
                     }
@@ -10412,7 +10412,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.exportO365Mailbox,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletName = "New-RscMutationO365",
                         CmdletSwitchName = "ExportMailbox",
                         GqlRootFieldName = "exportO365Mailbox"
                     }
@@ -10420,7 +10420,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.exportOracleDatabase,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateOracle",
+                        CmdletName = "New-RscMutationOracle",
                         CmdletSwitchName = "ExportDatabase",
                         GqlRootFieldName = "exportOracleDatabase"
                     }
@@ -10428,7 +10428,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.exportOracleTablespace,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateOracle",
+                        CmdletName = "New-RscMutationOracle",
                         CmdletSwitchName = "ExportTablespace",
                         GqlRootFieldName = "exportOracleTablespace"
                     }
@@ -10436,7 +10436,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.exportSlaManagedVolumeSnapshot,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateSla",
+                        CmdletName = "New-RscMutationSla",
                         CmdletSwitchName = "ExportManagedVolumeSnapshot",
                         GqlRootFieldName = "exportSlaManagedVolumeSnapshot"
                     }
@@ -10444,7 +10444,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.finalizeAwsCloudAccountDeletion,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletName = "New-RscMutationAws",
                         CmdletSwitchName = "FinalizeCloudAccountDeletion",
                         GqlRootFieldName = "finalizeAwsCloudAccountDeletion"
                     }
@@ -10452,7 +10452,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.finalizeAwsCloudAccountProtection,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletName = "New-RscMutationAws",
                         CmdletSwitchName = "FinalizeCloudAccountProtection",
                         GqlRootFieldName = "finalizeAwsCloudAccountProtection"
                     }
@@ -10460,7 +10460,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.getPendingSlaAssignments,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateSla",
+                        CmdletName = "New-RscMutationSla",
                         CmdletSwitchName = "GetPendingAssignments",
                         GqlRootFieldName = "getPendingSlaAssignments"
                     }
@@ -10468,7 +10468,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.globalSlaFilterConnection,
                     new RscOp {
-                        CmdletName = "Invoke-RscQuerySla",
+                        CmdletName = "New-RscQuerySla",
                         CmdletSwitchName = "GlobalFilterList",
                         GqlRootFieldName = "globalSlaFilterConnection"
                     }
@@ -10476,7 +10476,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.globalSlaStatuses,
                     new RscOp {
-                        CmdletName = "Invoke-RscQuerySla",
+                        CmdletName = "New-RscQuerySla",
                         CmdletSwitchName = "GlobalStatuses",
                         GqlRootFieldName = "globalSlaStatuses"
                     }
@@ -10484,7 +10484,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.hostFailoverCluster,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletName = "New-RscQueryCluster",
                         CmdletSwitchName = "HostFailover",
                         GqlRootFieldName = "hostFailoverCluster"
                     }
@@ -10492,7 +10492,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.hypervCluster,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryHyperv",
+                        CmdletName = "New-RscQueryHyperv",
                         CmdletSwitchName = "Cluster",
                         GqlRootFieldName = "hypervCluster"
                     }
@@ -10500,7 +10500,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.hypervDeleteAllSnapshots,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletName = "New-RscMutationHyperv",
                         CmdletSwitchName = "DeleteAllSnapshots",
                         GqlRootFieldName = "hypervDeleteAllSnapshots"
                     }
@@ -10508,7 +10508,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.hypervHostAsyncRequestStatus,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryHyperv",
+                        CmdletName = "New-RscQueryHyperv",
                         CmdletSwitchName = "HostAsyncRequestStatus",
                         GqlRootFieldName = "hypervHostAsyncRequestStatus"
                     }
@@ -10516,7 +10516,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.hypervMounts,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryHyperv",
+                        CmdletName = "New-RscQueryHyperv",
                         CmdletSwitchName = "Mounts",
                         GqlRootFieldName = "hypervMounts"
                     }
@@ -10524,7 +10524,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.hypervOnDemandSnapshot,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletName = "New-RscMutationHyperv",
                         CmdletSwitchName = "OnDemandSnapshot",
                         GqlRootFieldName = "hypervOnDemandSnapshot"
                     }
@@ -10532,7 +10532,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.hypervScvmm,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryHyperv",
+                        CmdletName = "New-RscQueryHyperv",
                         CmdletSwitchName = "Scvmm",
                         GqlRootFieldName = "hypervScvmm"
                     }
@@ -10540,7 +10540,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.hypervScvmmAsyncRequestStatus,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryHyperv",
+                        CmdletName = "New-RscQueryHyperv",
                         CmdletSwitchName = "ScvmmAsyncRequestStatus",
                         GqlRootFieldName = "hypervScvmmAsyncRequestStatus"
                     }
@@ -10548,7 +10548,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.hypervScvmmDelete,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletName = "New-RscMutationHyperv",
                         CmdletSwitchName = "ScvmmDelete",
                         GqlRootFieldName = "hypervScvmmDelete"
                     }
@@ -10556,7 +10556,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.hypervScvmmUpdate,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletName = "New-RscMutationHyperv",
                         CmdletSwitchName = "ScvmmUpdate",
                         GqlRootFieldName = "hypervScvmmUpdate"
                     }
@@ -10564,7 +10564,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.hypervScvmms,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryHyperv",
+                        CmdletName = "New-RscQueryHyperv",
                         CmdletSwitchName = "Scvmms",
                         GqlRootFieldName = "hypervScvmms"
                     }
@@ -10572,7 +10572,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.hypervServer,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryHyperv",
+                        CmdletName = "New-RscQueryHyperv",
                         CmdletSwitchName = "Server",
                         GqlRootFieldName = "hypervServer"
                     }
@@ -10580,7 +10580,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.hypervServers,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryHyperv",
+                        CmdletName = "New-RscQueryHyperv",
                         CmdletSwitchName = "Servers",
                         GqlRootFieldName = "hypervServers"
                     }
@@ -10588,7 +10588,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.hypervTopLevelDescendants,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryHyperv",
+                        CmdletName = "New-RscQueryHyperv",
                         CmdletSwitchName = "TopLevelDescendants",
                         GqlRootFieldName = "hypervTopLevelDescendants"
                     }
@@ -10596,7 +10596,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.hypervVirtualMachine,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryHyperv",
+                        CmdletName = "New-RscQueryHyperv",
                         CmdletSwitchName = "VirtualMachine",
                         GqlRootFieldName = "hypervVirtualMachine"
                     }
@@ -10604,7 +10604,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.hypervVirtualMachineAsyncRequestStatus,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryHyperv",
+                        CmdletName = "New-RscQueryHyperv",
                         CmdletSwitchName = "VirtualMachineAsyncRequestStatus",
                         GqlRootFieldName = "hypervVirtualMachineAsyncRequestStatus"
                     }
@@ -10612,7 +10612,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.hypervVirtualMachines,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryHyperv",
+                        CmdletName = "New-RscQueryHyperv",
                         CmdletSwitchName = "VirtualMachines",
                         GqlRootFieldName = "hypervVirtualMachines"
                     }
@@ -10620,7 +10620,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.hypervVmDetail,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryHyperv",
+                        CmdletName = "New-RscQueryHyperv",
                         CmdletSwitchName = "VmDetail",
                         GqlRootFieldName = "hypervVmDetail"
                     }
@@ -10628,7 +10628,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.insertCustomerO365App,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletName = "New-RscMutationO365",
                         CmdletSwitchName = "InsertCustomerApp",
                         GqlRootFieldName = "insertCustomerO365App"
                     }
@@ -10636,7 +10636,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.instantRecoverHypervVirtualMachineSnapshot,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletName = "New-RscMutationHyperv",
                         CmdletSwitchName = "InstantRecoverVirtualMachineSnapshot",
                         GqlRootFieldName = "instantRecoverHypervVirtualMachineSnapshot"
                     }
@@ -10644,7 +10644,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.instantRecoverOracleSnapshot,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateOracle",
+                        CmdletName = "New-RscMutationOracle",
                         CmdletSwitchName = "InstantRecoverSnapshot",
                         GqlRootFieldName = "instantRecoverOracleSnapshot"
                     }
@@ -10652,7 +10652,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.isAwsNativeEbsVolumeSnapshotRestorable,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "IsNativeEbsVolumeSnapshotRestorable",
                         GqlRootFieldName = "isAwsNativeEbsVolumeSnapshotRestorable"
                     }
@@ -10660,7 +10660,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.isAwsNativeRdsInstanceLaunchConfigurationValid,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "IsNativeRdsInstanceLaunchConfigurationValid",
                         GqlRootFieldName = "isAwsNativeRdsInstanceLaunchConfigurationValid"
                     }
@@ -10668,7 +10668,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.isAwsS3BucketNameAvailable,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "IsS3BucketNameAvailable",
                         GqlRootFieldName = "isAwsS3BucketNameAvailable"
                     }
@@ -10676,7 +10676,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.isAzureNativeManagedDiskSnapshotRestorable,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "IsNativeManagedDiskSnapshotRestorable",
                         GqlRootFieldName = "isAzureNativeManagedDiskSnapshotRestorable"
                     }
@@ -10684,7 +10684,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.isAzureNativeSqlDatabaseSnapshotPersistent,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "IsNativeSqlDatabaseSnapshotPersistent",
                         GqlRootFieldName = "isAzureNativeSqlDatabaseSnapshotPersistent"
                     }
@@ -10692,7 +10692,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.isAzureStorageAccountNameAvailable,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "IsStorageAccountNameAvailable",
                         GqlRootFieldName = "isAzureStorageAccountNameAvailable"
                     }
@@ -10700,7 +10700,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.isTotpAckNecessaryForCluster,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletName = "New-RscQueryCluster",
                         CmdletSwitchName = "IsTotpAckNecessary",
                         GqlRootFieldName = "isTotpAckNecessaryForCluster"
                     }
@@ -10708,7 +10708,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.k8sClusters,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletName = "New-RscQueryCluster",
                         CmdletSwitchName = "K8s",
                         GqlRootFieldName = "k8sClusters"
                     }
@@ -10716,7 +10716,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.ldapAuthorizedPrincipalConnection,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryLdap",
+                        CmdletName = "New-RscQueryLdap",
                         CmdletSwitchName = "AuthorizedPrincipalList",
                         GqlRootFieldName = "ldapAuthorizedPrincipalConnection"
                     }
@@ -10724,7 +10724,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.ldapIntegrationConnection,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryLdap",
+                        CmdletName = "New-RscQueryLdap",
                         CmdletSwitchName = "IntegrationList",
                         GqlRootFieldName = "ldapIntegrationConnection"
                     }
@@ -10732,7 +10732,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.ldapPrincipalConnection,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryLdap",
+                        CmdletName = "New-RscQueryLdap",
                         CmdletSwitchName = "PrincipalList",
                         GqlRootFieldName = "ldapPrincipalConnection"
                     }
@@ -10740,7 +10740,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.listO365Apps,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletName = "New-RscQueryO365",
                         CmdletSwitchName = "ListApps",
                         GqlRootFieldName = "listO365Apps"
                     }
@@ -10748,7 +10748,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.mapAzureCloudAccountExocomputeSubscription,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "MapCloudAccountExocomputeSubscription",
                         GqlRootFieldName = "mapAzureCloudAccountExocomputeSubscription"
                     }
@@ -10756,7 +10756,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.mapAzureCloudAccountToPersistentStorageLocation,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "MapCloudAccountToPersistentStorageLocation",
                         GqlRootFieldName = "mapAzureCloudAccountToPersistentStorageLocation"
                     }
@@ -10764,7 +10764,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.migrateNutanixMountV1,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletName = "New-RscMutationNutanix",
                         CmdletSwitchName = "MigrateMountV1",
                         GqlRootFieldName = "migrateNutanixMountV1"
                     }
@@ -10772,7 +10772,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.mongoBulkRecoverableRanges,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryMongo",
+                        CmdletName = "New-RscQueryMongo",
                         CmdletSwitchName = "BulkRecoverableRanges",
                         GqlRootFieldName = "mongoBulkRecoverableRanges"
                     }
@@ -10780,7 +10780,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.mongoCollection,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryMongo",
+                        CmdletName = "New-RscQueryMongo",
                         CmdletSwitchName = "Collection",
                         GqlRootFieldName = "mongoCollection"
                     }
@@ -10788,7 +10788,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.mongoCollections,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryMongo",
+                        CmdletName = "New-RscQueryMongo",
                         CmdletSwitchName = "Collections",
                         GqlRootFieldName = "mongoCollections"
                     }
@@ -10796,7 +10796,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.mongoDatabase,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryMongo",
+                        CmdletName = "New-RscQueryMongo",
                         CmdletSwitchName = "Database",
                         GqlRootFieldName = "mongoDatabase"
                     }
@@ -10804,7 +10804,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.mongoDatabases,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryMongo",
+                        CmdletName = "New-RscQueryMongo",
                         CmdletSwitchName = "Databases",
                         GqlRootFieldName = "mongoDatabases"
                     }
@@ -10812,7 +10812,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.mongoRecoverableRanges,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryMongo",
+                        CmdletName = "New-RscQueryMongo",
                         CmdletSwitchName = "RecoverableRanges",
                         GqlRootFieldName = "mongoRecoverableRanges"
                     }
@@ -10820,7 +10820,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.mongoSource,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryMongo",
+                        CmdletName = "New-RscQueryMongo",
                         CmdletSwitchName = "Source",
                         GqlRootFieldName = "mongoSource"
                     }
@@ -10828,7 +10828,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.mongoSources,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryMongo",
+                        CmdletName = "New-RscQueryMongo",
                         CmdletSwitchName = "Sources",
                         GqlRootFieldName = "mongoSources"
                     }
@@ -10836,7 +10836,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.mongodbBulkRecoverableRange,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryMongo",
+                        CmdletName = "New-RscQueryMongo",
                         CmdletSwitchName = "DbBulkRecoverableRange",
                         GqlRootFieldName = "mongodbBulkRecoverableRange"
                     }
@@ -10844,7 +10844,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.mongodbCollection,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryMongo",
+                        CmdletName = "New-RscQueryMongo",
                         CmdletSwitchName = "DbCollection",
                         GqlRootFieldName = "mongodbCollection"
                     }
@@ -10852,7 +10852,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.mongodbCollectionRecoverableRange,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryMongo",
+                        CmdletName = "New-RscQueryMongo",
                         CmdletSwitchName = "DbCollectionRecoverableRange",
                         GqlRootFieldName = "mongodbCollectionRecoverableRange"
                     }
@@ -10860,7 +10860,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.mongodbCollections,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryMongo",
+                        CmdletName = "New-RscQueryMongo",
                         CmdletSwitchName = "DbCollections",
                         GqlRootFieldName = "mongodbCollections"
                     }
@@ -10868,7 +10868,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.mongodbDatabase,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryMongo",
+                        CmdletName = "New-RscQueryMongo",
                         CmdletSwitchName = "DbDatabase",
                         GqlRootFieldName = "mongodbDatabase"
                     }
@@ -10876,7 +10876,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.mongodbDatabases,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryMongo",
+                        CmdletName = "New-RscQueryMongo",
                         CmdletSwitchName = "DbDatabases",
                         GqlRootFieldName = "mongodbDatabases"
                     }
@@ -10884,7 +10884,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.mongodbSource,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryMongo",
+                        CmdletName = "New-RscQueryMongo",
                         CmdletSwitchName = "DbSource",
                         GqlRootFieldName = "mongodbSource"
                     }
@@ -10892,7 +10892,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.mongodbSources,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryMongo",
+                        CmdletName = "New-RscQueryMongo",
                         CmdletSwitchName = "DbSources",
                         GqlRootFieldName = "mongodbSources"
                     }
@@ -10900,7 +10900,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.mountNutanixSnapshotV1,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletName = "New-RscMutationNutanix",
                         CmdletSwitchName = "MountSnapshotV1",
                         GqlRootFieldName = "mountNutanixSnapshotV1"
                     }
@@ -10908,7 +10908,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.mountOracleDatabase,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateOracle",
+                        CmdletName = "New-RscMutationOracle",
                         CmdletSwitchName = "MountDatabase",
                         GqlRootFieldName = "mountOracleDatabase"
                     }
@@ -10916,7 +10916,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.mssqlAvailabilityGroup,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryMssql",
+                        CmdletName = "New-RscQueryMssql",
                         CmdletSwitchName = "AvailabilityGroup",
                         GqlRootFieldName = "mssqlAvailabilityGroup"
                     }
@@ -10924,7 +10924,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.mssqlCompatibleInstances,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryMssql",
+                        CmdletName = "New-RscQueryMssql",
                         CmdletSwitchName = "CompatibleInstances",
                         GqlRootFieldName = "mssqlCompatibleInstances"
                     }
@@ -10932,7 +10932,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.mssqlDatabase,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryMssql",
+                        CmdletName = "New-RscQueryMssql",
                         CmdletSwitchName = "Database",
                         GqlRootFieldName = "mssqlDatabase"
                     }
@@ -10940,7 +10940,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.mssqlDatabaseLiveMounts,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryMssql",
+                        CmdletName = "New-RscQueryMssql",
                         CmdletSwitchName = "DatabaseLiveMounts",
                         GqlRootFieldName = "mssqlDatabaseLiveMounts"
                     }
@@ -10948,7 +10948,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.mssqlDatabaseMissedRecoverableRanges,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryMssql",
+                        CmdletName = "New-RscQueryMssql",
                         CmdletSwitchName = "DatabaseMissedRecoverableRanges",
                         GqlRootFieldName = "mssqlDatabaseMissedRecoverableRanges"
                     }
@@ -10956,7 +10956,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.mssqlDatabaseMissedSnapshots,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryMssql",
+                        CmdletName = "New-RscQueryMssql",
                         CmdletSwitchName = "DatabaseMissedSnapshots",
                         GqlRootFieldName = "mssqlDatabaseMissedSnapshots"
                     }
@@ -10964,7 +10964,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.mssqlDatabaseRestoreEstimate,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryMssql",
+                        CmdletName = "New-RscQueryMssql",
                         CmdletSwitchName = "DatabaseRestoreEstimate",
                         GqlRootFieldName = "mssqlDatabaseRestoreEstimate"
                     }
@@ -10972,7 +10972,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.mssqlDatabases,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryMssql",
+                        CmdletName = "New-RscQueryMssql",
                         CmdletSwitchName = "Databases",
                         GqlRootFieldName = "mssqlDatabases"
                     }
@@ -10980,7 +10980,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.mssqlDefaultProperties,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryMssql",
+                        CmdletName = "New-RscQueryMssql",
                         CmdletSwitchName = "DefaultProperties",
                         GqlRootFieldName = "mssqlDefaultProperties"
                     }
@@ -10988,7 +10988,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.mssqlInstance,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryMssql",
+                        CmdletName = "New-RscQueryMssql",
                         CmdletSwitchName = "Instance",
                         GqlRootFieldName = "mssqlInstance"
                     }
@@ -10996,7 +10996,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.mssqlLogShippingTargets,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryMssql",
+                        CmdletName = "New-RscQueryMssql",
                         CmdletSwitchName = "LogShippingTargets",
                         GqlRootFieldName = "mssqlLogShippingTargets"
                     }
@@ -11004,7 +11004,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.mssqlRecoverableRanges,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryMssql",
+                        CmdletName = "New-RscQueryMssql",
                         CmdletSwitchName = "RecoverableRanges",
                         GqlRootFieldName = "mssqlRecoverableRanges"
                     }
@@ -11012,7 +11012,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.mssqlTopLevelDescendants,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryMssql",
+                        CmdletName = "New-RscQueryMssql",
                         CmdletSwitchName = "TopLevelDescendants",
                         GqlRootFieldName = "mssqlTopLevelDescendants"
                     }
@@ -11020,7 +11020,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.nutanixBrowseSnapshot,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryNutanix",
+                        CmdletName = "New-RscQueryNutanix",
                         CmdletSwitchName = "BrowseSnapshot",
                         GqlRootFieldName = "nutanixBrowseSnapshot"
                     }
@@ -11028,7 +11028,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.nutanixCategory,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryNutanix",
+                        CmdletName = "New-RscQueryNutanix",
                         CmdletSwitchName = "Category",
                         GqlRootFieldName = "nutanixCategory"
                     }
@@ -11036,7 +11036,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.nutanixCategoryValue,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryNutanix",
+                        CmdletName = "New-RscQueryNutanix",
                         CmdletSwitchName = "CategoryValue",
                         GqlRootFieldName = "nutanixCategoryValue"
                     }
@@ -11044,7 +11044,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.nutanixCluster,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryNutanix",
+                        CmdletName = "New-RscQueryNutanix",
                         CmdletSwitchName = "Cluster",
                         GqlRootFieldName = "nutanixCluster"
                     }
@@ -11052,7 +11052,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.nutanixClusterAsyncRequestStatus,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryNutanix",
+                        CmdletName = "New-RscQueryNutanix",
                         CmdletSwitchName = "ClusterAsyncRequestStatus",
                         GqlRootFieldName = "nutanixClusterAsyncRequestStatus"
                     }
@@ -11060,7 +11060,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.nutanixClusterContainers,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryNutanix",
+                        CmdletName = "New-RscQueryNutanix",
                         CmdletSwitchName = "ClusterContainers",
                         GqlRootFieldName = "nutanixClusterContainers"
                     }
@@ -11068,7 +11068,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.nutanixClusterNetworks,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryNutanix",
+                        CmdletName = "New-RscQueryNutanix",
                         CmdletSwitchName = "ClusterNetworks",
                         GqlRootFieldName = "nutanixClusterNetworks"
                     }
@@ -11076,7 +11076,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.nutanixClusters,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryNutanix",
+                        CmdletName = "New-RscQueryNutanix",
                         CmdletSwitchName = "Clusters",
                         GqlRootFieldName = "nutanixClusters"
                     }
@@ -11084,7 +11084,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.nutanixMounts,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryNutanix",
+                        CmdletName = "New-RscQueryNutanix",
                         CmdletSwitchName = "Mounts",
                         GqlRootFieldName = "nutanixMounts"
                     }
@@ -11092,7 +11092,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.nutanixPrismCentral,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryNutanix",
+                        CmdletName = "New-RscQueryNutanix",
                         CmdletSwitchName = "PrismCentral",
                         GqlRootFieldName = "nutanixPrismCentral"
                     }
@@ -11100,7 +11100,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.nutanixPrismCentrals,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryNutanix",
+                        CmdletName = "New-RscQueryNutanix",
                         CmdletSwitchName = "PrismCentrals",
                         GqlRootFieldName = "nutanixPrismCentrals"
                     }
@@ -11108,7 +11108,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.nutanixSnapshotDetail,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryNutanix",
+                        CmdletName = "New-RscQueryNutanix",
                         CmdletSwitchName = "SnapshotDetail",
                         GqlRootFieldName = "nutanixSnapshotDetail"
                     }
@@ -11116,7 +11116,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.nutanixTopLevelDescendants,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryNutanix",
+                        CmdletName = "New-RscQueryNutanix",
                         CmdletSwitchName = "TopLevelDescendants",
                         GqlRootFieldName = "nutanixTopLevelDescendants"
                     }
@@ -11124,7 +11124,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.nutanixVm,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryNutanix",
+                        CmdletName = "New-RscQueryNutanix",
                         CmdletSwitchName = "Vm",
                         GqlRootFieldName = "nutanixVm"
                     }
@@ -11132,7 +11132,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.nutanixVmAsyncRequestStatus,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryNutanix",
+                        CmdletName = "New-RscQueryNutanix",
                         CmdletSwitchName = "VmAsyncRequestStatus",
                         GqlRootFieldName = "nutanixVmAsyncRequestStatus"
                     }
@@ -11140,7 +11140,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.nutanixVmMissedSnapshots,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryNutanix",
+                        CmdletName = "New-RscQueryNutanix",
                         CmdletSwitchName = "VmMissedSnapshots",
                         GqlRootFieldName = "nutanixVmMissedSnapshots"
                     }
@@ -11148,7 +11148,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.nutanixVms,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryNutanix",
+                        CmdletName = "New-RscQueryNutanix",
                         CmdletSwitchName = "Vms",
                         GqlRootFieldName = "nutanixVms"
                     }
@@ -11156,7 +11156,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.o365Calendar,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletName = "New-RscQueryO365",
                         CmdletSwitchName = "Calendar",
                         GqlRootFieldName = "o365Calendar"
                     }
@@ -11164,7 +11164,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.o365Groups,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletName = "New-RscQueryO365",
                         CmdletSwitchName = "Groups",
                         GqlRootFieldName = "o365Groups"
                     }
@@ -11172,7 +11172,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.o365License,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletName = "New-RscQueryO365",
                         CmdletSwitchName = "License",
                         GqlRootFieldName = "o365License"
                     }
@@ -11180,7 +11180,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.o365Mailbox,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletName = "New-RscQueryO365",
                         CmdletSwitchName = "Mailbox",
                         GqlRootFieldName = "o365Mailbox"
                     }
@@ -11188,7 +11188,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.o365Mailboxes,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletName = "New-RscQueryO365",
                         CmdletSwitchName = "Mailboxes",
                         GqlRootFieldName = "o365Mailboxes"
                     }
@@ -11196,7 +11196,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.o365OauthConsentComplete,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletName = "New-RscMutationO365",
                         CmdletSwitchName = "OauthConsentComplete",
                         GqlRootFieldName = "o365OauthConsentComplete"
                     }
@@ -11204,7 +11204,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.o365OauthConsentKickoff,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletName = "New-RscMutationO365",
                         CmdletSwitchName = "OauthConsentKickoff",
                         GqlRootFieldName = "o365OauthConsentKickoff"
                     }
@@ -11212,7 +11212,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.o365ObjectAncestors,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletName = "New-RscQueryO365",
                         CmdletSwitchName = "ObjectAncestors",
                         GqlRootFieldName = "o365ObjectAncestors"
                     }
@@ -11220,7 +11220,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.o365Onedrive,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletName = "New-RscQueryO365",
                         CmdletSwitchName = "Onedrive",
                         GqlRootFieldName = "o365Onedrive"
                     }
@@ -11228,7 +11228,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.o365Onedrives,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletName = "New-RscQueryO365",
                         CmdletSwitchName = "Onedrives",
                         GqlRootFieldName = "o365Onedrives"
                     }
@@ -11236,7 +11236,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.o365Org,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletName = "New-RscQueryO365",
                         CmdletSwitchName = "Org",
                         GqlRootFieldName = "o365Org"
                     }
@@ -11244,7 +11244,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.o365OrgAtSnappableLevel,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletName = "New-RscQueryO365",
                         CmdletSwitchName = "OrgAtSnappableLevel",
                         GqlRootFieldName = "o365OrgAtSnappableLevel"
                     }
@@ -11252,7 +11252,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.o365OrgSummaries,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletName = "New-RscQueryO365",
                         CmdletSwitchName = "OrgSummaries",
                         GqlRootFieldName = "o365OrgSummaries"
                     }
@@ -11260,7 +11260,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.o365Orgs,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletName = "New-RscQueryO365",
                         CmdletSwitchName = "Orgs",
                         GqlRootFieldName = "o365Orgs"
                     }
@@ -11268,7 +11268,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.o365PdlGroups,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletName = "New-RscMutationO365",
                         CmdletSwitchName = "PdlGroups",
                         GqlRootFieldName = "o365PdlGroups"
                     }
@@ -11276,7 +11276,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.o365SaaSSetupKickoff,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletName = "New-RscMutationO365",
                         CmdletSwitchName = "SaaSSetupKickoff",
                         GqlRootFieldName = "o365SaaSSetupKickoff"
                     }
@@ -11284,7 +11284,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.o365SaasSetupComplete,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletName = "New-RscMutationO365",
                         CmdletSwitchName = "SaasSetupComplete",
                         GqlRootFieldName = "o365SaasSetupComplete"
                     }
@@ -11292,7 +11292,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.o365ServiceAccount,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletName = "New-RscQueryO365",
                         CmdletSwitchName = "ServiceAccount",
                         GqlRootFieldName = "o365ServiceAccount"
                     }
@@ -11300,7 +11300,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.o365ServiceStatus,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletName = "New-RscQueryO365",
                         CmdletSwitchName = "ServiceStatus",
                         GqlRootFieldName = "o365ServiceStatus"
                     }
@@ -11308,7 +11308,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.o365SetupKickoff,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletName = "New-RscMutationO365",
                         CmdletSwitchName = "SetupKickoff",
                         GqlRootFieldName = "o365SetupKickoff"
                     }
@@ -11316,7 +11316,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.o365SharepointDrive,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletName = "New-RscQueryO365",
                         CmdletSwitchName = "SharepointDrive",
                         GqlRootFieldName = "o365SharepointDrive"
                     }
@@ -11324,7 +11324,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.o365SharepointDrives,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletName = "New-RscQueryO365",
                         CmdletSwitchName = "SharepointDrives",
                         GqlRootFieldName = "o365SharepointDrives"
                     }
@@ -11332,7 +11332,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.o365SharepointList,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletName = "New-RscQueryO365",
                         CmdletSwitchName = "SharepointList",
                         GqlRootFieldName = "o365SharepointList"
                     }
@@ -11340,7 +11340,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.o365SharepointLists,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletName = "New-RscQueryO365",
                         CmdletSwitchName = "SharepointLists",
                         GqlRootFieldName = "o365SharepointLists"
                     }
@@ -11348,7 +11348,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.o365SharepointObjectList,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletName = "New-RscQueryO365",
                         CmdletSwitchName = "SharepointObjectList",
                         GqlRootFieldName = "o365SharepointObjectList"
                     }
@@ -11356,7 +11356,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.o365SharepointObjects,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletName = "New-RscQueryO365",
                         CmdletSwitchName = "SharepointObjects",
                         GqlRootFieldName = "o365SharepointObjects"
                     }
@@ -11364,7 +11364,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.o365SharepointSite,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletName = "New-RscQueryO365",
                         CmdletSwitchName = "SharepointSite",
                         GqlRootFieldName = "o365SharepointSite"
                     }
@@ -11372,7 +11372,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.o365SharepointSites,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletName = "New-RscQueryO365",
                         CmdletSwitchName = "SharepointSites",
                         GqlRootFieldName = "o365SharepointSites"
                     }
@@ -11380,7 +11380,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.o365Site,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletName = "New-RscQueryO365",
                         CmdletSwitchName = "Site",
                         GqlRootFieldName = "o365Site"
                     }
@@ -11388,7 +11388,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.o365Sites,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletName = "New-RscQueryO365",
                         CmdletSwitchName = "Sites",
                         GqlRootFieldName = "o365Sites"
                     }
@@ -11396,7 +11396,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.o365StorageStats,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletName = "New-RscQueryO365",
                         CmdletSwitchName = "StorageStats",
                         GqlRootFieldName = "o365StorageStats"
                     }
@@ -11404,7 +11404,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.o365Team,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletName = "New-RscQueryO365",
                         CmdletSwitchName = "Team",
                         GqlRootFieldName = "o365Team"
                     }
@@ -11412,7 +11412,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.o365TeamChannels,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletName = "New-RscQueryO365",
                         CmdletSwitchName = "TeamChannels",
                         GqlRootFieldName = "o365TeamChannels"
                     }
@@ -11420,7 +11420,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.o365TeamConversationsFolderID,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletName = "New-RscQueryO365",
                         CmdletSwitchName = "TeamConversationsFolderID",
                         GqlRootFieldName = "o365TeamConversationsFolderID"
                     }
@@ -11428,7 +11428,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.o365TeamPostedBy,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletName = "New-RscQueryO365",
                         CmdletSwitchName = "TeamPostedBy",
                         GqlRootFieldName = "o365TeamPostedBy"
                     }
@@ -11436,7 +11436,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.o365Teams,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletName = "New-RscQueryO365",
                         CmdletSwitchName = "Teams",
                         GqlRootFieldName = "o365Teams"
                     }
@@ -11444,7 +11444,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.o365User,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletName = "New-RscQueryO365",
                         CmdletSwitchName = "User",
                         GqlRootFieldName = "o365User"
                     }
@@ -11452,7 +11452,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.o365UserObjects,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryO365",
+                        CmdletName = "New-RscQueryO365",
                         CmdletSwitchName = "UserObjects",
                         GqlRootFieldName = "o365UserObjects"
                     }
@@ -11460,7 +11460,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.oracleAcoExampleDownloadLink,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryOracle",
+                        CmdletName = "New-RscQueryOracle",
                         CmdletSwitchName = "AcoExampleDownloadLink",
                         GqlRootFieldName = "oracleAcoExampleDownloadLink"
                     }
@@ -11468,7 +11468,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.oracleAcoParameters,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryOracle",
+                        CmdletName = "New-RscQueryOracle",
                         CmdletSwitchName = "AcoParameters",
                         GqlRootFieldName = "oracleAcoParameters"
                     }
@@ -11476,7 +11476,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.oracleDataGuardGroup,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryOracle",
+                        CmdletName = "New-RscQueryOracle",
                         CmdletSwitchName = "DataGuardGroup",
                         GqlRootFieldName = "oracleDataGuardGroup"
                     }
@@ -11484,7 +11484,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.oracleDatabase,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryOracle",
+                        CmdletName = "New-RscQueryOracle",
                         CmdletSwitchName = "Database",
                         GqlRootFieldName = "oracleDatabase"
                     }
@@ -11492,7 +11492,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.oracleDatabaseLogBackupConfig,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryOracle",
+                        CmdletName = "New-RscQueryOracle",
                         CmdletSwitchName = "DatabaseLogBackupConfig",
                         GqlRootFieldName = "oracleDatabaseLogBackupConfig"
                     }
@@ -11500,7 +11500,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.oracleDatabases,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryOracle",
+                        CmdletName = "New-RscQueryOracle",
                         CmdletSwitchName = "Databases",
                         GqlRootFieldName = "oracleDatabases"
                     }
@@ -11508,7 +11508,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.oracleHost,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryOracle",
+                        CmdletName = "New-RscQueryOracle",
                         CmdletSwitchName = "Host",
                         GqlRootFieldName = "oracleHost"
                     }
@@ -11516,7 +11516,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.oracleHostLogBackupConfig,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryOracle",
+                        CmdletName = "New-RscQueryOracle",
                         CmdletSwitchName = "HostLogBackupConfig",
                         GqlRootFieldName = "oracleHostLogBackupConfig"
                     }
@@ -11524,7 +11524,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.oracleLiveMounts,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryOracle",
+                        CmdletName = "New-RscQueryOracle",
                         CmdletSwitchName = "LiveMounts",
                         GqlRootFieldName = "oracleLiveMounts"
                     }
@@ -11532,7 +11532,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.oracleMissedRecoverableRanges,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryOracle",
+                        CmdletName = "New-RscQueryOracle",
                         CmdletSwitchName = "MissedRecoverableRanges",
                         GqlRootFieldName = "oracleMissedRecoverableRanges"
                     }
@@ -11540,7 +11540,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.oracleMissedSnapshots,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryOracle",
+                        CmdletName = "New-RscQueryOracle",
                         CmdletSwitchName = "MissedSnapshots",
                         GqlRootFieldName = "oracleMissedSnapshots"
                     }
@@ -11548,7 +11548,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.oraclePdbDetails,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryOracle",
+                        CmdletName = "New-RscQueryOracle",
                         CmdletSwitchName = "PdbDetails",
                         GqlRootFieldName = "oraclePdbDetails"
                     }
@@ -11556,7 +11556,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.oracleRac,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryOracle",
+                        CmdletName = "New-RscQueryOracle",
                         CmdletSwitchName = "Rac",
                         GqlRootFieldName = "oracleRac"
                     }
@@ -11564,7 +11564,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.oracleRacLogBackupConfig,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryOracle",
+                        CmdletName = "New-RscQueryOracle",
                         CmdletSwitchName = "RacLogBackupConfig",
                         GqlRootFieldName = "oracleRacLogBackupConfig"
                     }
@@ -11572,7 +11572,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.oracleRecoverableRanges,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryOracle",
+                        CmdletName = "New-RscQueryOracle",
                         CmdletSwitchName = "RecoverableRanges",
                         GqlRootFieldName = "oracleRecoverableRanges"
                     }
@@ -11580,7 +11580,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.oracleTopLevelDescendants,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryOracle",
+                        CmdletName = "New-RscQueryOracle",
                         CmdletSwitchName = "TopLevelDescendants",
                         GqlRootFieldName = "oracleTopLevelDescendants"
                     }
@@ -11588,7 +11588,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.patchAwsAuthenticationServerBasedCloudAccount,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletName = "New-RscMutationAws",
                         CmdletSwitchName = "PatchAuthenticationServerBasedCloudAccount",
                         GqlRootFieldName = "patchAwsAuthenticationServerBasedCloudAccount"
                     }
@@ -11596,7 +11596,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.patchAwsIamUserBasedCloudAccount,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletName = "New-RscMutationAws",
                         CmdletSwitchName = "PatchIamUserBasedCloudAccount",
                         GqlRootFieldName = "patchAwsIamUserBasedCloudAccount"
                     }
@@ -11604,7 +11604,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.patchDb2Database,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateDb2",
+                        CmdletName = "New-RscMutationDb2",
                         CmdletSwitchName = "PatchDatabase",
                         GqlRootFieldName = "patchDb2Database"
                     }
@@ -11612,7 +11612,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.patchDb2Instance,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateDb2",
+                        CmdletName = "New-RscMutationDb2",
                         CmdletSwitchName = "PatchInstance",
                         GqlRootFieldName = "patchDb2Instance"
                     }
@@ -11620,7 +11620,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.patchMongoSource,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateMongo",
+                        CmdletName = "New-RscMutationMongo",
                         CmdletSwitchName = "PatchSource",
                         GqlRootFieldName = "patchMongoSource"
                     }
@@ -11628,7 +11628,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.patchNutanixMountV1,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletName = "New-RscMutationNutanix",
                         CmdletSwitchName = "PatchMountV1",
                         GqlRootFieldName = "patchNutanixMountV1"
                     }
@@ -11636,7 +11636,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.pauseSla,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateSla",
+                        CmdletName = "New-RscMutationSla",
                         CmdletSwitchName = "Pause",
                         GqlRootFieldName = "pauseSla"
                     }
@@ -11644,7 +11644,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.prepareAwsCloudAccountDeletion,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletName = "New-RscMutationAws",
                         CmdletSwitchName = "PrepareCloudAccountDeletion",
                         GqlRootFieldName = "prepareAwsCloudAccountDeletion"
                     }
@@ -11652,7 +11652,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.prepareFeatureUpdateForAwsCloudAccount,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletName = "New-RscMutationAws",
                         CmdletSwitchName = "PrepareFeatureUpdateForCloudAccount",
                         GqlRootFieldName = "prepareFeatureUpdateForAwsCloudAccount"
                     }
@@ -11660,7 +11660,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.rdsInstanceDetailsFromAws,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "RdsInstanceDetails",
                         GqlRootFieldName = "rdsInstanceDetailsFromAws"
                     }
@@ -11668,7 +11668,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.recoverCassandraSource,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateCassandra",
+                        CmdletName = "New-RscMutationCassandra",
                         CmdletSwitchName = "RecoverSource",
                         GqlRootFieldName = "recoverCassandraSource"
                     }
@@ -11676,7 +11676,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.recoverCloudCluster,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateCluster",
+                        CmdletName = "New-RscMutationCluster",
                         CmdletSwitchName = "RecoverCloud",
                         GqlRootFieldName = "recoverCloudCluster"
                     }
@@ -11684,7 +11684,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.recoverMongoSource,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateMongo",
+                        CmdletName = "New-RscMutationMongo",
                         CmdletSwitchName = "RecoverSource",
                         GqlRootFieldName = "recoverMongoSource"
                     }
@@ -11692,7 +11692,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.recoverMongodbSource,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateMongo",
+                        CmdletName = "New-RscMutationMongo",
                         CmdletSwitchName = "RecoverdbSource",
                         GqlRootFieldName = "recoverMongodbSource"
                     }
@@ -11700,7 +11700,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.refreshDb2Database,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateDb2",
+                        CmdletName = "New-RscMutationDb2",
                         CmdletSwitchName = "RefreshDatabase",
                         GqlRootFieldName = "refreshDb2Database"
                     }
@@ -11708,7 +11708,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.refreshHypervScvmm,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletName = "New-RscMutationHyperv",
                         CmdletSwitchName = "RefreshScvmm",
                         GqlRootFieldName = "refreshHypervScvmm"
                     }
@@ -11716,7 +11716,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.refreshHypervServer,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletName = "New-RscMutationHyperv",
                         CmdletSwitchName = "RefreshServer",
                         GqlRootFieldName = "refreshHypervServer"
                     }
@@ -11724,7 +11724,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.refreshK8sCluster,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateCluster",
+                        CmdletName = "New-RscMutationCluster",
                         CmdletSwitchName = "RefreshK8s",
                         GqlRootFieldName = "refreshK8sCluster"
                     }
@@ -11732,7 +11732,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.refreshNutanixCluster,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletName = "New-RscMutationNutanix",
                         CmdletSwitchName = "RefreshCluster",
                         GqlRootFieldName = "refreshNutanixCluster"
                     }
@@ -11740,7 +11740,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.refreshNutanixPrismCentral,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletName = "New-RscMutationNutanix",
                         CmdletSwitchName = "RefreshPrismCentral",
                         GqlRootFieldName = "refreshNutanixPrismCentral"
                     }
@@ -11748,7 +11748,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.refreshO365Org,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletName = "New-RscMutationO365",
                         CmdletSwitchName = "RefreshOrg",
                         GqlRootFieldName = "refreshO365Org"
                     }
@@ -11756,7 +11756,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.refreshOracleDatabase,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateOracle",
+                        CmdletName = "New-RscMutationOracle",
                         CmdletSwitchName = "RefreshDatabase",
                         GqlRootFieldName = "refreshOracleDatabase"
                     }
@@ -11764,7 +11764,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.refreshVsphereVcenter,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateVcenter",
+                        CmdletName = "New-RscMutationVcenter",
                         CmdletSwitchName = "Refresh",
                         GqlRootFieldName = "refreshVsphereVcenter"
                     }
@@ -11772,7 +11772,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.registerAgentHypervVirtualMachine,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletName = "New-RscMutationHyperv",
                         CmdletSwitchName = "RegisterAgentVirtualMachine",
                         GqlRootFieldName = "registerAgentHypervVirtualMachine"
                     }
@@ -11780,7 +11780,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.registerAgentNutanixVm,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletName = "New-RscMutationNutanix",
                         CmdletSwitchName = "RegisterAgentVm",
                         GqlRootFieldName = "registerAgentNutanixVm"
                     }
@@ -11788,7 +11788,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.registerAwsFeatureArtifacts,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletName = "New-RscMutationAws",
                         CmdletSwitchName = "RegisterFeatureArtifacts",
                         GqlRootFieldName = "registerAwsFeatureArtifacts"
                     }
@@ -11796,7 +11796,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.registerCloudCluster,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateCluster",
+                        CmdletName = "New-RscMutationCluster",
                         CmdletSwitchName = "RegisterCloud",
                         GqlRootFieldName = "registerCloudCluster"
                     }
@@ -11804,7 +11804,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.registerHypervScvmm,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletName = "New-RscMutationHyperv",
                         CmdletSwitchName = "RegisterScvmm",
                         GqlRootFieldName = "registerHypervScvmm"
                     }
@@ -11812,7 +11812,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.removeCdmCluster,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateCluster",
+                        CmdletName = "New-RscMutationCluster",
                         CmdletSwitchName = "RemoveCdm",
                         GqlRootFieldName = "removeCdmCluster"
                     }
@@ -11820,7 +11820,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.removeLdapIntegration,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateLdap",
+                        CmdletName = "New-RscMutationLdap",
                         CmdletSwitchName = "RemoveIntegration",
                         GqlRootFieldName = "removeLdapIntegration"
                     }
@@ -11828,7 +11828,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.restoreFilesNutanixSnapshot,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletName = "New-RscMutationNutanix",
                         CmdletSwitchName = "RestoreFilesSnapshot",
                         GqlRootFieldName = "restoreFilesNutanixSnapshot"
                     }
@@ -11836,7 +11836,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.restoreHypervVirtualMachineSnapshotFiles,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletName = "New-RscMutationHyperv",
                         CmdletSwitchName = "RestoreVirtualMachineSnapshotFiles",
                         GqlRootFieldName = "restoreHypervVirtualMachineSnapshotFiles"
                     }
@@ -11844,7 +11844,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.restoreMssqlDatabase,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateMssql",
+                        CmdletName = "New-RscMutationMssql",
                         CmdletSwitchName = "RestoreDatabase",
                         GqlRootFieldName = "restoreMssqlDatabase"
                     }
@@ -11852,7 +11852,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.restoreO365Mailbox,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletName = "New-RscMutationO365",
                         CmdletSwitchName = "RestoreMailbox",
                         GqlRootFieldName = "restoreO365Mailbox"
                     }
@@ -11860,7 +11860,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.restoreO365Snappable,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletName = "New-RscMutationO365",
                         CmdletSwitchName = "RestoreSnappable",
                         GqlRootFieldName = "restoreO365Snappable"
                     }
@@ -11868,7 +11868,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.restoreO365TeamsConversations,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletName = "New-RscMutationO365",
                         CmdletSwitchName = "RestoreTeamsConversations",
                         GqlRootFieldName = "restoreO365TeamsConversations"
                     }
@@ -11876,7 +11876,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.restoreO365TeamsFiles,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletName = "New-RscMutationO365",
                         CmdletSwitchName = "RestoreTeamsFiles",
                         GqlRootFieldName = "restoreO365TeamsFiles"
                     }
@@ -11884,7 +11884,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.restoreOracleLogs,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateOracle",
+                        CmdletName = "New-RscMutationOracle",
                         CmdletSwitchName = "RestoreLogs",
                         GqlRootFieldName = "restoreOracleLogs"
                     }
@@ -11892,7 +11892,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.retryAddMongoSource,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateMongo",
+                        CmdletName = "New-RscMutationMongo",
                         CmdletSwitchName = "RetryAddSource",
                         GqlRootFieldName = "retryAddMongoSource"
                     }
@@ -11900,7 +11900,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.searchNutanixVm,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryNutanix",
+                        CmdletName = "New-RscQueryNutanix",
                         CmdletSwitchName = "SearchVm",
                         GqlRootFieldName = "searchNutanixVm"
                     }
@@ -11908,7 +11908,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.setAzureCloudAccountCustomerAppCredentials,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "SetCloudAccountCustomerAppCredentials",
                         GqlRootFieldName = "setAzureCloudAccountCustomerAppCredentials"
                     }
@@ -11916,7 +11916,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.setLdapMfaSetting,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateLdap",
+                        CmdletName = "New-RscMutationLdap",
                         CmdletSwitchName = "SetMfaSetting",
                         GqlRootFieldName = "setLdapMfaSetting"
                     }
@@ -11924,7 +11924,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.setO365ServiceAccount,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletName = "New-RscMutationO365",
                         CmdletSwitchName = "SetServiceAccount",
                         GqlRootFieldName = "setO365ServiceAccount"
                     }
@@ -11932,7 +11932,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.setupAzureO365Exocompute,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzureO365",
+                        CmdletName = "New-RscMutationAzureO365",
                         CmdletSwitchName = "SetupExocompute",
                         GqlRootFieldName = "setupAzureO365Exocompute"
                     }
@@ -11940,7 +11940,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.slaAuditDetail,
                     new RscOp {
-                        CmdletName = "Invoke-RscQuerySla",
+                        CmdletName = "New-RscQuerySla",
                         CmdletSwitchName = "AuditDetail",
                         GqlRootFieldName = "slaAuditDetail"
                     }
@@ -11948,7 +11948,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.slaConflictObjects,
                     new RscOp {
-                        CmdletName = "Invoke-RscQuerySla",
+                        CmdletName = "New-RscQuerySla",
                         CmdletSwitchName = "ConflictObjects",
                         GqlRootFieldName = "slaConflictObjects"
                     }
@@ -11956,7 +11956,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.slaDomain,
                     new RscOp {
-                        CmdletName = "Invoke-RscQuerySla",
+                        CmdletName = "New-RscQuerySla",
                         CmdletSwitchName = "Domain",
                         GqlRootFieldName = "slaDomain"
                     }
@@ -11964,7 +11964,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.slaDomains,
                     new RscOp {
-                        CmdletName = "Invoke-RscQuerySla",
+                        CmdletName = "New-RscQuerySla",
                         CmdletSwitchName = "Domains",
                         GqlRootFieldName = "slaDomains"
                     }
@@ -11972,7 +11972,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.slaManagedVolume,
                     new RscOp {
-                        CmdletName = "Invoke-RscQuerySla",
+                        CmdletName = "New-RscQuerySla",
                         CmdletSwitchName = "ManagedVolume",
                         GqlRootFieldName = "slaManagedVolume"
                     }
@@ -11980,7 +11980,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.slaManagedVolumes,
                     new RscOp {
-                        CmdletName = "Invoke-RscQuerySla",
+                        CmdletName = "New-RscQuerySla",
                         CmdletSwitchName = "ManagedVolumes",
                         GqlRootFieldName = "slaManagedVolumes"
                     }
@@ -11988,7 +11988,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.startAwsExocomputeDisableJob,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletName = "New-RscMutationAws",
                         CmdletSwitchName = "StartExocomputeDisableJob",
                         GqlRootFieldName = "startAwsExocomputeDisableJob"
                     }
@@ -11996,7 +11996,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.startAwsNativeAccountDisableJob,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletName = "New-RscMutationAws",
                         CmdletSwitchName = "StartNativeAccountDisableJob",
                         GqlRootFieldName = "startAwsNativeAccountDisableJob"
                     }
@@ -12004,7 +12004,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.startAwsNativeEc2InstanceSnapshotsJob,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletName = "New-RscMutationAws",
                         CmdletSwitchName = "StartNativeEc2InstanceSnapshotsJob",
                         GqlRootFieldName = "startAwsNativeEc2InstanceSnapshotsJob"
                     }
@@ -12012,7 +12012,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.startAwsNativeRdsInstanceSnapshotsJob,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletName = "New-RscMutationAws",
                         CmdletSwitchName = "StartNativeRdsInstanceSnapshotsJob",
                         GqlRootFieldName = "startAwsNativeRdsInstanceSnapshotsJob"
                     }
@@ -12020,7 +12020,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.startAzureCloudAccountOauth,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "StartCloudAccountOauth",
                         GqlRootFieldName = "startAzureCloudAccountOauth"
                     }
@@ -12028,7 +12028,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.startCreateAwsNativeEbsVolumeSnapshotsJob,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletName = "New-RscMutationAws",
                         CmdletSwitchName = "StartCreateNativeEbsVolumeSnapshotsJob",
                         GqlRootFieldName = "startCreateAwsNativeEbsVolumeSnapshotsJob"
                     }
@@ -12036,7 +12036,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.startCreateAzureNativeManagedDiskSnapshotsJob,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "StartCreateNativeManagedDiskSnapshotsJob",
                         GqlRootFieldName = "startCreateAzureNativeManagedDiskSnapshotsJob"
                     }
@@ -12044,7 +12044,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.startCreateAzureNativeVirtualMachineSnapshotsJob,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "StartCreateNativeVirtualMachineSnapshotsJob",
                         GqlRootFieldName = "startCreateAzureNativeVirtualMachineSnapshotsJob"
                     }
@@ -12052,7 +12052,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.startDisableAzureCloudAccountJob,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "StartDisableCloudAccountJob",
                         GqlRootFieldName = "startDisableAzureCloudAccountJob"
                     }
@@ -12060,7 +12060,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.startDisableAzureNativeSubscriptionProtectionJob,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "StartDisableNativeSubscriptionProtectionJob",
                         GqlRootFieldName = "startDisableAzureNativeSubscriptionProtectionJob"
                     }
@@ -12068,7 +12068,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.startExportAwsNativeEbsVolumeSnapshotJob,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletName = "New-RscMutationAws",
                         CmdletSwitchName = "StartExportNativeEbsVolumeSnapshotJob",
                         GqlRootFieldName = "startExportAwsNativeEbsVolumeSnapshotJob"
                     }
@@ -12076,7 +12076,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.startExportAzureNativeManagedDiskJob,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "StartExportNativeManagedDiskJob",
                         GqlRootFieldName = "startExportAzureNativeManagedDiskJob"
                     }
@@ -12084,7 +12084,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.startExportAzureNativeVirtualMachineJob,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "StartExportNativeVirtualMachineJob",
                         GqlRootFieldName = "startExportAzureNativeVirtualMachineJob"
                     }
@@ -12092,7 +12092,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.startExportAzureSqlDatabaseDbJob,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "StartExportSqlDatabaseDbJob",
                         GqlRootFieldName = "startExportAzureSqlDatabaseDbJob"
                     }
@@ -12100,7 +12100,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.startExportAzureSqlManagedInstanceDbJob,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "StartExportSqlManagedInstanceDbJob",
                         GqlRootFieldName = "startExportAzureSqlManagedInstanceDbJob"
                     }
@@ -12108,7 +12108,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.startRefreshAwsNativeAccountsJob,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletName = "New-RscMutationAws",
                         CmdletSwitchName = "StartRefreshNativeAccountsJob",
                         GqlRootFieldName = "startRefreshAwsNativeAccountsJob"
                     }
@@ -12116,7 +12116,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.startRefreshAzureNativeSubscriptionsJob,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "StartRefreshNativeSubscriptionsJob",
                         GqlRootFieldName = "startRefreshAzureNativeSubscriptionsJob"
                     }
@@ -12124,7 +12124,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.startRestoreAwsNativeEc2InstanceSnapshotJob,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletName = "New-RscMutationAws",
                         CmdletSwitchName = "StartRestoreNativeEc2InstanceSnapshotJob",
                         GqlRootFieldName = "startRestoreAwsNativeEc2InstanceSnapshotJob"
                     }
@@ -12132,7 +12132,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.startRestoreAzureNativeVirtualMachineJob,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "StartRestoreNativeVirtualMachineJob",
                         GqlRootFieldName = "startRestoreAzureNativeVirtualMachineJob"
                     }
@@ -12140,7 +12140,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.takeMssqlLogBackup,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateMssql",
+                        CmdletName = "New-RscMutationMssql",
                         CmdletSwitchName = "TakeLogBackup",
                         GqlRootFieldName = "takeMssqlLogBackup"
                     }
@@ -12148,7 +12148,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.takeOnDemandOracleDatabaseSnapshot,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateOracle",
+                        CmdletName = "New-RscMutationOracle",
                         CmdletSwitchName = "TakeOnDemandDatabaseSnapshot",
                         GqlRootFieldName = "takeOnDemandOracleDatabaseSnapshot"
                     }
@@ -12156,7 +12156,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.takeOnDemandOracleLogSnapshot,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateOracle",
+                        CmdletName = "New-RscMutationOracle",
                         CmdletSwitchName = "TakeOnDemandLogSnapshot",
                         GqlRootFieldName = "takeOnDemandOracleLogSnapshot"
                     }
@@ -12164,7 +12164,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.uniqueHypervServersCount,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryHyperv",
+                        CmdletName = "New-RscQueryHyperv",
                         CmdletSwitchName = "UniqueServersCount",
                         GqlRootFieldName = "uniqueHypervServersCount"
                     }
@@ -12172,7 +12172,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.unmapAzureCloudAccountExocomputeSubscription,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "UnmapCloudAccountExocomputeSubscription",
                         GqlRootFieldName = "unmapAzureCloudAccountExocomputeSubscription"
                     }
@@ -12180,7 +12180,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.unmapAzurePersistentStorageSubscription,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "UnmapPersistentStorageSubscription",
                         GqlRootFieldName = "unmapAzurePersistentStorageSubscription"
                     }
@@ -12188,7 +12188,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateAutomaticAwsTargetMapping,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletName = "New-RscMutationAws",
                         CmdletSwitchName = "UpdateAutomaticTargetMapping",
                         GqlRootFieldName = "updateAutomaticAwsTargetMapping"
                     }
@@ -12196,7 +12196,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateAutomaticAzureTargetMapping,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "UpdateAutomaticTargetMapping",
                         GqlRootFieldName = "updateAutomaticAzureTargetMapping"
                     }
@@ -12204,7 +12204,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateAwsAccount,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletName = "New-RscMutationAws",
                         CmdletSwitchName = "UpdateAccount",
                         GqlRootFieldName = "updateAwsAccount"
                     }
@@ -12212,7 +12212,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateAwsCloudAccount,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletName = "New-RscMutationAws",
                         CmdletSwitchName = "UpdateCloudAccount",
                         GqlRootFieldName = "updateAwsCloudAccount"
                     }
@@ -12220,7 +12220,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateAwsCloudAccountFeature,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletName = "New-RscMutationAws",
                         CmdletSwitchName = "UpdateCloudAccountFeature",
                         GqlRootFieldName = "updateAwsCloudAccountFeature"
                     }
@@ -12228,7 +12228,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateAwsComputeSetting,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletName = "New-RscMutationAws",
                         CmdletSwitchName = "UpdateComputeSetting",
                         GqlRootFieldName = "updateAwsComputeSetting"
                     }
@@ -12236,7 +12236,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateAwsExocomputeConfigs,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletName = "New-RscMutationAws",
                         CmdletSwitchName = "UpdateExocomputeConfigs",
                         GqlRootFieldName = "updateAwsExocomputeConfigs"
                     }
@@ -12244,7 +12244,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateAwsTarget,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletName = "New-RscMutationAws",
                         CmdletSwitchName = "UpdateTarget",
                         GqlRootFieldName = "updateAwsTarget"
                     }
@@ -12252,7 +12252,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateAzureAccount,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "UpdateAccount",
                         GqlRootFieldName = "updateAzureAccount"
                     }
@@ -12260,7 +12260,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateAzureCloudAccount,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "UpdateCloudAccount",
                         GqlRootFieldName = "updateAzureCloudAccount"
                     }
@@ -12268,7 +12268,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateAzureTarget,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "UpdateTarget",
                         GqlRootFieldName = "updateAzureTarget"
                     }
@@ -12276,7 +12276,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateCassandraSource,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateCassandra",
+                        CmdletName = "New-RscMutationCassandra",
                         CmdletSwitchName = "UpdateSource",
                         GqlRootFieldName = "updateCassandraSource"
                     }
@@ -12284,7 +12284,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateCloudNativeAwsStorageSetting,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletName = "New-RscMutationAws",
                         CmdletSwitchName = "UpdateCloudNativeStorageSetting",
                         GqlRootFieldName = "updateCloudNativeAwsStorageSetting"
                     }
@@ -12292,7 +12292,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateCloudNativeAzureStorageSetting,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "UpdateCloudNativeStorageSetting",
                         GqlRootFieldName = "updateCloudNativeAzureStorageSetting"
                     }
@@ -12300,7 +12300,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateCloudNativeRcvAzureStorageSetting,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "UpdateCloudNativeRcvStorageSetting",
                         GqlRootFieldName = "updateCloudNativeRcvAzureStorageSetting"
                     }
@@ -12308,7 +12308,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateCustomerAppPermissionForAzureSql,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "UpdateCustomerAppPermissionForSql",
                         GqlRootFieldName = "updateCustomerAppPermissionForAzureSql"
                     }
@@ -12316,7 +12316,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateDatabaseLogReportingPropertiesForCluster,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateCluster",
+                        CmdletName = "New-RscMutationCluster",
                         CmdletSwitchName = "UpdateDatabaseLogReportingProperties",
                         GqlRootFieldName = "updateDatabaseLogReportingPropertiesForCluster"
                     }
@@ -12324,7 +12324,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateFailoverCluster,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateCluster",
+                        CmdletName = "New-RscMutationCluster",
                         CmdletSwitchName = "UpdateFailover",
                         GqlRootFieldName = "updateFailoverCluster"
                     }
@@ -12332,7 +12332,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateGlobalSla,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateSla",
+                        CmdletName = "New-RscMutationSla",
                         CmdletSwitchName = "UpdateGlobal",
                         GqlRootFieldName = "updateGlobalSla"
                     }
@@ -12340,7 +12340,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateHypervVirtualMachine,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletName = "New-RscMutationHyperv",
                         CmdletSwitchName = "UpdateVirtualMachine",
                         GqlRootFieldName = "updateHypervVirtualMachine"
                     }
@@ -12348,7 +12348,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateHypervVirtualMachineSnapshotMount,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateHyperv",
+                        CmdletName = "New-RscMutationHyperv",
                         CmdletSwitchName = "UpdateVirtualMachineSnapshotMount",
                         GqlRootFieldName = "updateHypervVirtualMachineSnapshotMount"
                     }
@@ -12356,7 +12356,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateLdapIntegration,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateLdap",
+                        CmdletName = "New-RscMutationLdap",
                         CmdletSwitchName = "UpdateIntegration",
                         GqlRootFieldName = "updateLdapIntegration"
                     }
@@ -12364,7 +12364,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateMongodbSource,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateMongo",
+                        CmdletName = "New-RscMutationMongo",
                         CmdletSwitchName = "UpdatedbSource",
                         GqlRootFieldName = "updateMongodbSource"
                     }
@@ -12372,7 +12372,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateMssqlDefaultProperties,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateMssql",
+                        CmdletName = "New-RscMutationMssql",
                         CmdletSwitchName = "UpdateDefaultProperties",
                         GqlRootFieldName = "updateMssqlDefaultProperties"
                     }
@@ -12380,7 +12380,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateMssqlLogShippingConfiguration,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateMssql",
+                        CmdletName = "New-RscMutationMssql",
                         CmdletSwitchName = "UpdateLogShippingConfiguration",
                         GqlRootFieldName = "updateMssqlLogShippingConfiguration"
                     }
@@ -12388,7 +12388,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateNutanixCluster,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletName = "New-RscMutationNutanix",
                         CmdletSwitchName = "UpdateCluster",
                         GqlRootFieldName = "updateNutanixCluster"
                     }
@@ -12396,7 +12396,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateNutanixPrismCentral,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletName = "New-RscMutationNutanix",
                         CmdletSwitchName = "UpdatePrismCentral",
                         GqlRootFieldName = "updateNutanixPrismCentral"
                     }
@@ -12404,7 +12404,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateNutanixVm,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateNutanix",
+                        CmdletName = "New-RscMutationNutanix",
                         CmdletSwitchName = "UpdateVm",
                         GqlRootFieldName = "updateNutanixVm"
                     }
@@ -12412,7 +12412,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateO365AppAuthStatus,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletName = "New-RscMutationO365",
                         CmdletSwitchName = "UpdateAppAuthStatus",
                         GqlRootFieldName = "updateO365AppAuthStatus"
                     }
@@ -12420,7 +12420,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateO365AppPermissions,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletName = "New-RscMutationO365",
                         CmdletSwitchName = "UpdateAppPermissions",
                         GqlRootFieldName = "updateO365AppPermissions"
                     }
@@ -12428,7 +12428,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateO365OrgCustomName,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateO365",
+                        CmdletName = "New-RscMutationO365",
                         CmdletSwitchName = "UpdateOrgCustomName",
                         GqlRootFieldName = "updateO365OrgCustomName"
                     }
@@ -12436,7 +12436,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateOracleDataGuardGroup,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateOracle",
+                        CmdletName = "New-RscMutationOracle",
                         CmdletSwitchName = "UpdateDataGuardGroup",
                         GqlRootFieldName = "updateOracleDataGuardGroup"
                     }
@@ -12444,7 +12444,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateVcenter,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateVcenter",
+                        CmdletName = "New-RscMutationVcenter",
                         CmdletSwitchName = "Update",
                         GqlRootFieldName = "updateVcenter"
                     }
@@ -12452,7 +12452,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateVcenterHotAddBandwidth,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateVcenter",
+                        CmdletName = "New-RscMutationVcenter",
                         CmdletSwitchName = "UpdateHotAddBandwidth",
                         GqlRootFieldName = "updateVcenterHotAddBandwidth"
                     }
@@ -12460,7 +12460,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateVcenterHotAddNetwork,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateVcenter",
+                        CmdletName = "New-RscMutationVcenter",
                         CmdletSwitchName = "UpdateHotAddNetwork",
                         GqlRootFieldName = "updateVcenterHotAddNetwork"
                     }
@@ -12468,7 +12468,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateVsphereAdvancedTag,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateVsphere",
+                        CmdletName = "New-RscMutationVsphere",
                         CmdletSwitchName = "UpdateAdvancedTag",
                         GqlRootFieldName = "updateVsphereAdvancedTag"
                     }
@@ -12476,7 +12476,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.updateVsphereVm,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletName = "New-RscMutationVsphereVm",
                         CmdletSwitchName = "Update",
                         GqlRootFieldName = "updateVsphereVm"
                     }
@@ -12484,7 +12484,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.upgradeAwsCloudAccountFeaturesWithoutCft,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletName = "New-RscMutationAws",
                         CmdletSwitchName = "UpgradeCloudAccountFeaturesWithoutCft",
                         GqlRootFieldName = "upgradeAwsCloudAccountFeaturesWithoutCft"
                     }
@@ -12492,7 +12492,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.upgradeAwsIamUserBasedCloudAccountPermissions,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletName = "New-RscMutationAws",
                         CmdletSwitchName = "UpgradeIamUserBasedCloudAccountPermissions",
                         GqlRootFieldName = "upgradeAwsIamUserBasedCloudAccountPermissions"
                     }
@@ -12500,7 +12500,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.upgradeAzureCloudAccount,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "UpgradeCloudAccount",
                         GqlRootFieldName = "upgradeAzureCloudAccount"
                     }
@@ -12508,7 +12508,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.upgradeAzureCloudAccountPermissionsWithoutOauth,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAzure",
+                        CmdletName = "New-RscMutationAzure",
                         CmdletSwitchName = "UpgradeCloudAccountPermissionsWithoutOauth",
                         GqlRootFieldName = "upgradeAzureCloudAccountPermissionsWithoutOauth"
                     }
@@ -12516,7 +12516,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vCenterAdvancedTagPreview,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryVcenter",
+                        CmdletName = "New-RscQueryVcenter",
                         CmdletSwitchName = "AdvancedTagPreview",
                         GqlRootFieldName = "vCenterAdvancedTagPreview"
                     }
@@ -12524,7 +12524,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vCenterHotAddBandwidth,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryVcenter",
+                        CmdletName = "New-RscQueryVcenter",
                         CmdletSwitchName = "HotAddBandwidth",
                         GqlRootFieldName = "vCenterHotAddBandwidth"
                     }
@@ -12532,7 +12532,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vCenterHotAddNetwork,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryVcenter",
+                        CmdletName = "New-RscQueryVcenter",
                         CmdletSwitchName = "HotAddNetwork",
                         GqlRootFieldName = "vCenterHotAddNetwork"
                     }
@@ -12540,7 +12540,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vCenterNetworks,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryVcenter",
+                        CmdletName = "New-RscQueryVcenter",
                         CmdletSwitchName = "Networks",
                         GqlRootFieldName = "vCenterNetworks"
                     }
@@ -12548,7 +12548,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vCenterNumProxiesNeeded,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryVcenter",
+                        CmdletName = "New-RscQueryVcenter",
                         CmdletSwitchName = "NumProxiesNeeded",
                         GqlRootFieldName = "vCenterNumProxiesNeeded"
                     }
@@ -12556,7 +12556,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vCenterPreAddInfo,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryVcenter",
+                        CmdletName = "New-RscQueryVcenter",
                         CmdletSwitchName = "PreAddInfo",
                         GqlRootFieldName = "vCenterPreAddInfo"
                     }
@@ -12564,7 +12564,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vSphereComputeCluster,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletName = "New-RscQueryVsphere",
                         CmdletSwitchName = "ComputeCluster",
                         GqlRootFieldName = "vSphereComputeCluster"
                     }
@@ -12572,7 +12572,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vSphereComputeClusters,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletName = "New-RscQueryVsphere",
                         CmdletSwitchName = "ComputeClusters",
                         GqlRootFieldName = "vSphereComputeClusters"
                     }
@@ -12580,7 +12580,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vSphereDatacenter,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletName = "New-RscQueryVsphere",
                         CmdletSwitchName = "Datacenter",
                         GqlRootFieldName = "vSphereDatacenter"
                     }
@@ -12588,7 +12588,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vSphereDatastore,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletName = "New-RscQueryVsphere",
                         CmdletSwitchName = "Datastore",
                         GqlRootFieldName = "vSphereDatastore"
                     }
@@ -12596,7 +12596,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vSphereDatastoreCluster,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletName = "New-RscQueryVsphere",
                         CmdletSwitchName = "DatastoreCluster",
                         GqlRootFieldName = "vSphereDatastoreCluster"
                     }
@@ -12604,7 +12604,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vSphereDatastoreClusters,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletName = "New-RscQueryVsphere",
                         CmdletSwitchName = "DatastoreClusters",
                         GqlRootFieldName = "vSphereDatastoreClusters"
                     }
@@ -12612,7 +12612,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vSphereDatastoreConnection,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletName = "New-RscQueryVsphere",
                         CmdletSwitchName = "DatastoreList",
                         GqlRootFieldName = "vSphereDatastoreConnection"
                     }
@@ -12620,7 +12620,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vSphereFolder,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletName = "New-RscQueryVsphere",
                         CmdletSwitchName = "Folder",
                         GqlRootFieldName = "vSphereFolder"
                     }
@@ -12628,7 +12628,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vSphereFolders,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletName = "New-RscQueryVsphere",
                         CmdletSwitchName = "Folders",
                         GqlRootFieldName = "vSphereFolders"
                     }
@@ -12636,7 +12636,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vSphereHost,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletName = "New-RscQueryVsphere",
                         CmdletSwitchName = "Host",
                         GqlRootFieldName = "vSphereHost"
                     }
@@ -12644,7 +12644,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vSphereHostConnection,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletName = "New-RscQueryVsphere",
                         CmdletSwitchName = "HostList",
                         GqlRootFieldName = "vSphereHostConnection"
                     }
@@ -12652,7 +12652,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vSphereHostDetails,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletName = "New-RscQueryVsphere",
                         CmdletSwitchName = "HostDetails",
                         GqlRootFieldName = "vSphereHostDetails"
                     }
@@ -12660,7 +12660,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vSphereHostsByFids,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletName = "New-RscQueryVsphere",
                         CmdletSwitchName = "HostsByFids",
                         GqlRootFieldName = "vSphereHostsByFids"
                     }
@@ -12668,7 +12668,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vSphereLiveMounts,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletName = "New-RscQueryVsphere",
                         CmdletSwitchName = "LiveMounts",
                         GqlRootFieldName = "vSphereLiveMounts"
                     }
@@ -12676,7 +12676,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vSphereMount,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletName = "New-RscQueryVsphere",
                         CmdletSwitchName = "Mount",
                         GqlRootFieldName = "vSphereMount"
                     }
@@ -12684,7 +12684,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vSphereMountConnection,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletName = "New-RscQueryVsphere",
                         CmdletSwitchName = "MountList",
                         GqlRootFieldName = "vSphereMountConnection"
                     }
@@ -12692,7 +12692,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vSphereNetwork,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletName = "New-RscQueryVsphere",
                         CmdletSwitchName = "Network",
                         GqlRootFieldName = "vSphereNetwork"
                     }
@@ -12700,7 +12700,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vSphereResourcePool,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletName = "New-RscQueryVsphere",
                         CmdletSwitchName = "ResourcePool",
                         GqlRootFieldName = "vSphereResourcePool"
                     }
@@ -12708,7 +12708,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vSphereRootRecoveryHierarchy,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletName = "New-RscQueryVsphere",
                         CmdletSwitchName = "RootRecoveryHierarchy",
                         GqlRootFieldName = "vSphereRootRecoveryHierarchy"
                     }
@@ -12716,7 +12716,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vSphereTag,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletName = "New-RscQueryVsphere",
                         CmdletSwitchName = "Tag",
                         GqlRootFieldName = "vSphereTag"
                     }
@@ -12724,7 +12724,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vSphereTagCategory,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletName = "New-RscQueryVsphere",
                         CmdletSwitchName = "TagCategory",
                         GqlRootFieldName = "vSphereTagCategory"
                     }
@@ -12732,7 +12732,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vSphereTopLevelDescendantsConnection,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletName = "New-RscQueryVsphere",
                         CmdletSwitchName = "TopLevelDescendantsList",
                         GqlRootFieldName = "vSphereTopLevelDescendantsConnection"
                     }
@@ -12740,7 +12740,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vSphereVCenter,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryVcenter",
+                        CmdletName = "New-RscQueryVcenter",
                         CmdletSwitchName = "Vcenter",
                         GqlRootFieldName = "vSphereVCenter"
                     }
@@ -12748,7 +12748,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vSphereVCenterConnection,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryVcenter",
+                        CmdletName = "New-RscQueryVcenter",
                         CmdletSwitchName = "List",
                         GqlRootFieldName = "vSphereVCenterConnection"
                     }
@@ -12756,7 +12756,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vSphereVMAsyncRequestStatus,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryVsphereVm",
+                        CmdletName = "New-RscQueryVsphereVm",
                         CmdletSwitchName = "AsyncRequestStatus",
                         GqlRootFieldName = "vSphereVMAsyncRequestStatus"
                     }
@@ -12764,7 +12764,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vSphereVmNew,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryVsphereVm",
+                        CmdletName = "New-RscQueryVsphereVm",
                         CmdletSwitchName = "New",
                         GqlRootFieldName = "vSphereVmNew"
                     }
@@ -12772,7 +12772,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vSphereVmNewConnection,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryVsphereVm",
+                        CmdletName = "New-RscQueryVsphereVm",
                         CmdletSwitchName = "NewList",
                         GqlRootFieldName = "vSphereVmNewConnection"
                     }
@@ -12780,7 +12780,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.validateAndCreateAwsCloudAccount,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateAws",
+                        CmdletName = "New-RscMutationAws",
                         CmdletSwitchName = "ValidateAndCreateCloudAccount",
                         GqlRootFieldName = "validateAndCreateAwsCloudAccount"
                     }
@@ -12788,7 +12788,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.validateAwsNativeRdsClusterNameForExport,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "ValidateNativeRdsClusterNameForExport",
                         GqlRootFieldName = "validateAwsNativeRdsClusterNameForExport"
                     }
@@ -12796,7 +12796,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.validateAwsNativeRdsInstanceNameForExport,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAws",
+                        CmdletName = "New-RscQueryAws",
                         CmdletSwitchName = "ValidateNativeRdsInstanceNameForExport",
                         GqlRootFieldName = "validateAwsNativeRdsInstanceNameForExport"
                     }
@@ -12804,7 +12804,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.validateAzureCloudAccountExocomputeConfigurations,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "ValidateCloudAccountExocomputeConfigurations",
                         GqlRootFieldName = "validateAzureCloudAccountExocomputeConfigurations"
                     }
@@ -12812,7 +12812,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.validateAzureNativeSqlDatabaseDbNameForExport,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "ValidateNativeSqlDatabaseDbNameForExport",
                         GqlRootFieldName = "validateAzureNativeSqlDatabaseDbNameForExport"
                     }
@@ -12820,7 +12820,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.validateAzureNativeSqlManagedInstanceDbNameForExport,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryAzure",
+                        CmdletName = "New-RscQueryAzure",
                         CmdletSwitchName = "ValidateNativeSqlManagedInstanceDbNameForExport",
                         GqlRootFieldName = "validateAzureNativeSqlManagedInstanceDbNameForExport"
                     }
@@ -12828,7 +12828,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.validateOracleAcoFile,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateOracle",
+                        CmdletName = "New-RscMutationOracle",
                         CmdletSwitchName = "ValidateAcoFile",
                         GqlRootFieldName = "validateOracleAcoFile"
                     }
@@ -12836,7 +12836,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.validateOracleDatabaseBackups,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateOracle",
+                        CmdletName = "New-RscMutationOracle",
                         CmdletSwitchName = "ValidateDatabaseBackups",
                         GqlRootFieldName = "validateOracleDatabaseBackups"
                     }
@@ -12844,7 +12844,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.verifySlaWithReplicationToCluster,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletName = "New-RscQueryCluster",
                         CmdletSwitchName = "VerifySlaWithReplicationTo",
                         GqlRootFieldName = "verifySlaWithReplicationToCluster"
                     }
@@ -12852,7 +12852,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vsphereBulkOnDemandSnapshot,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateVsphere",
+                        CmdletName = "New-RscMutationVsphere",
                         CmdletSwitchName = "BulkOnDemandSnapshot",
                         GqlRootFieldName = "vsphereBulkOnDemandSnapshot"
                     }
@@ -12860,7 +12860,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vsphereDeleteVcenter,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateVcenter",
+                        CmdletName = "New-RscMutationVcenter",
                         CmdletSwitchName = "Delete",
                         GqlRootFieldName = "vsphereDeleteVcenter"
                     }
@@ -12868,7 +12868,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vsphereExcludeVmDisks,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletName = "New-RscMutationVsphereVm",
                         CmdletSwitchName = "ExcludeVmDisks",
                         GqlRootFieldName = "vsphereExcludeVmDisks"
                     }
@@ -12876,7 +12876,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vsphereExportSnapshotToStandaloneHostV2,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateVsphere",
+                        CmdletName = "New-RscMutationVsphere",
                         CmdletSwitchName = "ExportSnapshotToStandaloneHostV2",
                         GqlRootFieldName = "vsphereExportSnapshotToStandaloneHostV2"
                     }
@@ -12884,7 +12884,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vsphereOnDemandSnapshot,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateVsphere",
+                        CmdletName = "New-RscMutationVsphere",
                         CmdletSwitchName = "OnDemandSnapshot",
                         GqlRootFieldName = "vsphereOnDemandSnapshot"
                     }
@@ -12892,7 +12892,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vsphereVMMissedRecoverableRange,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryVsphereVm",
+                        CmdletName = "New-RscQueryVsphereVm",
                         CmdletSwitchName = "MissedRecoverableRange",
                         GqlRootFieldName = "vsphereVMMissedRecoverableRange"
                     }
@@ -12900,7 +12900,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vsphereVMRecoverableRange,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryVsphereVm",
+                        CmdletName = "New-RscQueryVsphereVm",
                         CmdletSwitchName = "RecoverableRange",
                         GqlRootFieldName = "vsphereVMRecoverableRange"
                     }
@@ -12908,7 +12908,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vsphereVMRecoverableRangeInBatch,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryVsphereVm",
+                        CmdletName = "New-RscQueryVsphereVm",
                         CmdletSwitchName = "RecoverableRangeInBatch",
                         GqlRootFieldName = "vsphereVMRecoverableRangeInBatch"
                     }
@@ -12916,7 +12916,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vsphereVmBatchExport,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletName = "New-RscMutationVsphereVm",
                         CmdletSwitchName = "BatchExport",
                         GqlRootFieldName = "vsphereVmBatchExport"
                     }
@@ -12924,7 +12924,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vsphereVmBatchExportV3,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletName = "New-RscMutationVsphereVm",
                         CmdletSwitchName = "BatchExportV3",
                         GqlRootFieldName = "vsphereVmBatchExportV3"
                     }
@@ -12932,7 +12932,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vsphereVmBatchInPlaceRecovery,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletName = "New-RscMutationVsphereVm",
                         CmdletSwitchName = "BatchInPlaceRecovery",
                         GqlRootFieldName = "vsphereVmBatchInPlaceRecovery"
                     }
@@ -12940,7 +12940,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vsphereVmDeleteSnapshot,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletName = "New-RscMutationVsphereVm",
                         CmdletSwitchName = "DeleteSnapshot",
                         GqlRootFieldName = "vsphereVmDeleteSnapshot"
                     }
@@ -12948,7 +12948,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vsphereVmDownloadSnapshot,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletName = "New-RscMutationVsphereVm",
                         CmdletSwitchName = "DownloadSnapshot",
                         GqlRootFieldName = "vsphereVmDownloadSnapshot"
                     }
@@ -12956,7 +12956,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vsphereVmDownloadSnapshotFiles,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletName = "New-RscMutationVsphereVm",
                         CmdletSwitchName = "DownloadSnapshotFiles",
                         GqlRootFieldName = "vsphereVmDownloadSnapshotFiles"
                     }
@@ -12964,7 +12964,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vsphereVmExportSnapshotV2,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletName = "New-RscMutationVsphereVm",
                         CmdletSwitchName = "ExportSnapshotV2",
                         GqlRootFieldName = "vsphereVmExportSnapshotV2"
                     }
@@ -12972,7 +12972,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vsphereVmExportSnapshotV3,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletName = "New-RscMutationVsphereVm",
                         CmdletSwitchName = "ExportSnapshotV3",
                         GqlRootFieldName = "vsphereVmExportSnapshotV3"
                     }
@@ -12980,7 +12980,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vsphereVmExportSnapshotWithDownloadFromCloud,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletName = "New-RscMutationVsphereVm",
                         CmdletSwitchName = "ExportSnapshotWithDownloadFromCloud",
                         GqlRootFieldName = "vsphereVmExportSnapshotWithDownloadFromCloud"
                     }
@@ -12988,7 +12988,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vsphereVmInitiateBatchInstantRecovery,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletName = "New-RscMutationVsphereVm",
                         CmdletSwitchName = "InitiateBatchInstantRecovery",
                         GqlRootFieldName = "vsphereVmInitiateBatchInstantRecovery"
                     }
@@ -12996,7 +12996,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vsphereVmInitiateBatchLiveMountV2,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletName = "New-RscMutationVsphereVm",
                         CmdletSwitchName = "InitiateBatchLiveMountV2",
                         GqlRootFieldName = "vsphereVmInitiateBatchLiveMountV2"
                     }
@@ -13004,7 +13004,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vsphereVmInitiateDiskMount,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletName = "New-RscMutationVsphereVm",
                         CmdletSwitchName = "InitiateDiskMount",
                         GqlRootFieldName = "vsphereVmInitiateDiskMount"
                     }
@@ -13012,7 +13012,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vsphereVmInitiateInPlaceRecovery,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletName = "New-RscMutationVsphereVm",
                         CmdletSwitchName = "InitiateInPlaceRecovery",
                         GqlRootFieldName = "vsphereVmInitiateInPlaceRecovery"
                     }
@@ -13020,7 +13020,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vsphereVmInitiateInstantRecoveryV2,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletName = "New-RscMutationVsphereVm",
                         CmdletSwitchName = "InitiateInstantRecoveryV2",
                         GqlRootFieldName = "vsphereVmInitiateInstantRecoveryV2"
                     }
@@ -13028,7 +13028,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vsphereVmInitiateLiveMountV2,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletName = "New-RscMutationVsphereVm",
                         CmdletSwitchName = "InitiateLiveMountV2",
                         GqlRootFieldName = "vsphereVmInitiateLiveMountV2"
                     }
@@ -13036,7 +13036,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vsphereVmListEsxiDatastores,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletName = "New-RscMutationVsphereVm",
                         CmdletSwitchName = "ListEsxiDatastores",
                         GqlRootFieldName = "vsphereVmListEsxiDatastores"
                     }
@@ -13044,7 +13044,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vsphereVmMountRelocate,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletName = "New-RscMutationVsphereVm",
                         CmdletSwitchName = "MountRelocate",
                         GqlRootFieldName = "vsphereVmMountRelocate"
                     }
@@ -13052,7 +13052,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vsphereVmMountRelocateV2,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletName = "New-RscMutationVsphereVm",
                         CmdletSwitchName = "MountRelocateV2",
                         GqlRootFieldName = "vsphereVmMountRelocateV2"
                     }
@@ -13060,7 +13060,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vsphereVmPowerOnOffLiveMount,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletName = "New-RscMutationVsphereVm",
                         CmdletSwitchName = "PowerOnOffLiveMount",
                         GqlRootFieldName = "vsphereVmPowerOnOffLiveMount"
                     }
@@ -13068,7 +13068,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vsphereVmRecoverFiles,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletName = "New-RscMutationVsphereVm",
                         CmdletSwitchName = "RecoverFiles",
                         GqlRootFieldName = "vsphereVmRecoverFiles"
                     }
@@ -13076,7 +13076,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vsphereVmRecoverFilesNew,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletName = "New-RscMutationVsphereVm",
                         CmdletSwitchName = "RecoverFilesNew",
                         GqlRootFieldName = "vsphereVmRecoverFilesNew"
                     }
@@ -13084,7 +13084,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vsphereVmRegisterAgent,
                     new RscOp {
-                        CmdletName = "Invoke-RscMutateVsphereVm",
+                        CmdletName = "New-RscMutationVsphereVm",
                         CmdletSwitchName = "RegisterAgent",
                         GqlRootFieldName = "vsphereVmRegisterAgent"
                     }
@@ -13092,7 +13092,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.vsphereVmwareCdpLiveInfo,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryVsphere",
+                        CmdletName = "New-RscQueryVsphere",
                         CmdletSwitchName = "VmwareCdpLiveInfo",
                         GqlRootFieldName = "vsphereVmwareCdpLiveInfo"
                     }
@@ -13100,7 +13100,7 @@ namespace RubrikSecurityCloud.Types
                 {
                     GqlRootFieldName.windowsCluster,
                     new RscOp {
-                        CmdletName = "Invoke-RscQueryCluster",
+                        CmdletName = "New-RscQueryCluster",
                         CmdletSwitchName = "Windows",
                         GqlRootFieldName = "windowsCluster"
                     }
@@ -13122,2587 +13122,2587 @@ namespace RubrikSecurityCloud.Types
         {
             var lookupDict = new Dictionary<string, GqlRootFieldName> {
                 {
-                    "Invoke-RscQueryAccount -Id",
+                    "New-RscQueryAccount -Id",
                     GqlRootFieldName.accountId
                 },
                 {
-                    "Invoke-RscQueryAccount -Settings",
+                    "New-RscQueryAccount -Settings",
                     GqlRootFieldName.accountSettings
                 },
                 {
-                    "Invoke-RscQueryActivitySeries -ActivitySeries",
+                    "New-RscQueryActivitySeries -ActivitySeries",
                     GqlRootFieldName.activitySeries
                 },
                 {
-                    "Invoke-RscQueryActivitySeries -List",
+                    "New-RscQueryActivitySeries -List",
                     GqlRootFieldName.activitySeriesConnection
                 },
                 {
-                    "Invoke-RscMutateAws -AddAuthenticationServerBasedCloudAccount",
+                    "New-RscMutationAws -AddAuthenticationServerBasedCloudAccount",
                     GqlRootFieldName.addAwsAuthenticationServerBasedCloudAccount
                 },
                 {
-                    "Invoke-RscMutateAws -AddIamUserBasedCloudAccount",
+                    "New-RscMutationAws -AddIamUserBasedCloudAccount",
                     GqlRootFieldName.addAwsIamUserBasedCloudAccount
                 },
                 {
-                    "Invoke-RscMutateAzure -AddCloudAccount",
+                    "New-RscMutationAzure -AddCloudAccount",
                     GqlRootFieldName.addAzureCloudAccount
                 },
                 {
-                    "Invoke-RscMutateAzure -AddCloudAccountExocomputeConfigurations",
+                    "New-RscMutationAzure -AddCloudAccountExocomputeConfigurations",
                     GqlRootFieldName.addAzureCloudAccountExocomputeConfigurations
                 },
                 {
-                    "Invoke-RscMutateAzure -AddCloudAccountWithoutOauth",
+                    "New-RscMutationAzure -AddCloudAccountWithoutOauth",
                     GqlRootFieldName.addAzureCloudAccountWithoutOauth
                 },
                 {
-                    "Invoke-RscMutateDb2 -AddInstance",
+                    "New-RscMutationDb2 -AddInstance",
                     GqlRootFieldName.addDb2Instance
                 },
                 {
-                    "Invoke-RscMutateMongo -AddSource",
+                    "New-RscMutationMongo -AddSource",
                     GqlRootFieldName.addMongoSource
                 },
                 {
-                    "Invoke-RscMutateCluster -AddNodesToCloud",
+                    "New-RscMutationCluster -AddNodesToCloud",
                     GqlRootFieldName.addNodesToCloudCluster
                 },
                 {
-                    "Invoke-RscMutateO365 -AddOrg",
+                    "New-RscMutationO365 -AddOrg",
                     GqlRootFieldName.addO365Org
                 },
                 {
-                    "Invoke-RscQueryAccount -Owners",
+                    "New-RscQueryAccount -Owners",
                     GqlRootFieldName.allAccountOwners
                 },
                 {
-                    "Invoke-RscQueryAccount -Products",
+                    "New-RscQueryAccount -Products",
                     GqlRootFieldName.allAccountProducts
                 },
                 {
-                    "Invoke-RscQueryAccount -SWithExocomputeMappings",
+                    "New-RscQueryAccount -SWithExocomputeMappings",
                     GqlRootFieldName.allAccountsWithExocomputeMappings
                 },
                 {
-                    "Invoke-RscQueryAws -AllAvailabilityZonesByRegion",
+                    "New-RscQueryAws -AllAvailabilityZonesByRegion",
                     GqlRootFieldName.allAvailabilityZonesByRegionFromAws
                 },
                 {
-                    "Invoke-RscQueryAws -AllCdmVersions",
+                    "New-RscQueryAws -AllCdmVersions",
                     GqlRootFieldName.allAwsCdmVersions
                 },
                 {
-                    "Invoke-RscQueryAws -AllCloudAccountConfigs",
+                    "New-RscQueryAws -AllCloudAccountConfigs",
                     GqlRootFieldName.allAwsCloudAccountConfigs
                 },
                 {
-                    "Invoke-RscQueryAws -AllCloudAccountsWithFeatures",
+                    "New-RscQueryAws -AllCloudAccountsWithFeatures",
                     GqlRootFieldName.allAwsCloudAccountsWithFeatures
                 },
                 {
-                    "Invoke-RscQueryAws -AllComputeSettings",
+                    "New-RscQueryAws -AllComputeSettings",
                     GqlRootFieldName.allAwsComputeSettings
                 },
                 {
-                    "Invoke-RscQueryAws -AllExocomputeConfigs",
+                    "New-RscQueryAws -AllExocomputeConfigs",
                     GqlRootFieldName.allAwsExocomputeConfigs
                 },
                 {
-                    "Invoke-RscQueryAws -AllInstanceProfileNames",
+                    "New-RscQueryAws -AllInstanceProfileNames",
                     GqlRootFieldName.allAwsInstanceProfileNames
                 },
                 {
-                    "Invoke-RscQueryAws -AllPermissionPolicies",
+                    "New-RscQueryAws -AllPermissionPolicies",
                     GqlRootFieldName.allAwsPermissionPolicies
                 },
                 {
-                    "Invoke-RscQueryAws -AllRegions",
+                    "New-RscQueryAws -AllRegions",
                     GqlRootFieldName.allAwsRegions
                 },
                 {
-                    "Invoke-RscQueryAzure -AllArmTemplatesByFeature",
+                    "New-RscQueryAzure -AllArmTemplatesByFeature",
                     GqlRootFieldName.allAzureArmTemplatesByFeature
                 },
                 {
-                    "Invoke-RscQueryAzure -AllCdmVersions",
+                    "New-RscQueryAzure -AllCdmVersions",
                     GqlRootFieldName.allAzureCdmVersions
                 },
                 {
-                    "Invoke-RscQueryAzure -AllCloudAccountMissingPermissions",
+                    "New-RscQueryAzure -AllCloudAccountMissingPermissions",
                     GqlRootFieldName.allAzureCloudAccountMissingPermissions
                 },
                 {
-                    "Invoke-RscQueryAzure -AllCloudAccountSubnetsByRegion",
+                    "New-RscQueryAzure -AllCloudAccountSubnetsByRegion",
                     GqlRootFieldName.allAzureCloudAccountSubnetsByRegion
                 },
                 {
-                    "Invoke-RscQueryAzure -AllCloudAccountSubscriptionsByFeature",
+                    "New-RscQueryAzure -AllCloudAccountSubscriptionsByFeature",
                     GqlRootFieldName.allAzureCloudAccountSubscriptionsByFeature
                 },
                 {
-                    "Invoke-RscQueryAzure -AllCloudAccountTenants",
+                    "New-RscQueryAzure -AllCloudAccountTenants",
                     GqlRootFieldName.allAzureCloudAccountTenants
                 },
                 {
-                    "Invoke-RscQueryAzure -AllDiskEncryptionSetsByRegion",
+                    "New-RscQueryAzure -AllDiskEncryptionSetsByRegion",
                     GqlRootFieldName.allAzureDiskEncryptionSetsByRegion
                 },
                 {
-                    "Invoke-RscQueryAzure -AllEncryptionKeys",
+                    "New-RscQueryAzure -AllEncryptionKeys",
                     GqlRootFieldName.allAzureEncryptionKeys
                 },
                 {
-                    "Invoke-RscQueryAzure -AllExocomputeConfigsInAccount",
+                    "New-RscQueryAzure -AllExocomputeConfigsInAccount",
                     GqlRootFieldName.allAzureExocomputeConfigsInAccount
                 },
                 {
-                    "Invoke-RscQueryAzure -AllKeyVaultsByRegion",
+                    "New-RscQueryAzure -AllKeyVaultsByRegion",
                     GqlRootFieldName.allAzureKeyVaultsByRegion
                 },
                 {
-                    "Invoke-RscQueryAzure -AllManagedIdentities",
+                    "New-RscQueryAzure -AllManagedIdentities",
                     GqlRootFieldName.allAzureManagedIdentities
                 },
                 {
-                    "Invoke-RscQueryAzure -AllNativeAvailabilitySetsByRegionFromAzure",
+                    "New-RscQueryAzure -AllNativeAvailabilitySetsByRegionFromAzure",
                     GqlRootFieldName.allAzureNativeAvailabilitySetsByRegionFromAzure
                 },
                 {
-                    "Invoke-RscQueryAzure -AllNativeExportCompatibleDiskTypesByRegionFromAzure",
+                    "New-RscQueryAzure -AllNativeExportCompatibleDiskTypesByRegionFromAzure",
                     GqlRootFieldName.allAzureNativeExportCompatibleDiskTypesByRegionFromAzure
                 },
                 {
-                    "Invoke-RscQueryAzure -AllNativeExportCompatibleVmSizesByRegionFromAzure",
+                    "New-RscQueryAzure -AllNativeExportCompatibleVmSizesByRegionFromAzure",
                     GqlRootFieldName.allAzureNativeExportCompatibleVmSizesByRegionFromAzure
                 },
                 {
-                    "Invoke-RscQueryAzure -AllNativeResourceGroupsInfoIfExist",
+                    "New-RscQueryAzure -AllNativeResourceGroupsInfoIfExist",
                     GqlRootFieldName.allAzureNativeResourceGroupsInfoIfExist
                 },
                 {
-                    "Invoke-RscQueryAzure -AllNativeSecurityGroupsByRegionFromAzure",
+                    "New-RscQueryAzure -AllNativeSecurityGroupsByRegionFromAzure",
                     GqlRootFieldName.allAzureNativeSecurityGroupsByRegionFromAzure
                 },
                 {
-                    "Invoke-RscQueryAzure -AllNativeStorageAccountsFromAzure",
+                    "New-RscQueryAzure -AllNativeStorageAccountsFromAzure",
                     GqlRootFieldName.allAzureNativeStorageAccountsFromAzure
                 },
                 {
-                    "Invoke-RscQueryAzure -AllNativeSubnetsByRegionFromAzure",
+                    "New-RscQueryAzure -AllNativeSubnetsByRegionFromAzure",
                     GqlRootFieldName.allAzureNativeSubnetsByRegionFromAzure
                 },
                 {
-                    "Invoke-RscQueryAzure -AllNativeVirtualMachineSizes",
+                    "New-RscQueryAzure -AllNativeVirtualMachineSizes",
                     GqlRootFieldName.allAzureNativeVirtualMachineSizes
                 },
                 {
-                    "Invoke-RscQueryAzure -AllNativeVirtualNetworks",
+                    "New-RscQueryAzure -AllNativeVirtualNetworks",
                     GqlRootFieldName.allAzureNativeVirtualNetworks
                 },
                 {
-                    "Invoke-RscQueryAzure -AllNsgs",
+                    "New-RscQueryAzure -AllNsgs",
                     GqlRootFieldName.allAzureNsgs
                 },
                 {
-                    "Invoke-RscQueryAzure -AllRegions",
+                    "New-RscQueryAzure -AllRegions",
                     GqlRootFieldName.allAzureRegions
                 },
                 {
-                    "Invoke-RscQueryAzure -AllResourceGroups",
+                    "New-RscQueryAzure -AllResourceGroups",
                     GqlRootFieldName.allAzureResourceGroups
                 },
                 {
-                    "Invoke-RscQueryAzure -AllSqlDatabaseServerElasticPools",
+                    "New-RscQueryAzure -AllSqlDatabaseServerElasticPools",
                     GqlRootFieldName.allAzureSqlDatabaseServerElasticPools
                 },
                 {
-                    "Invoke-RscQueryAzure -AllStorageAccounts",
+                    "New-RscQueryAzure -AllStorageAccounts",
                     GqlRootFieldName.allAzureStorageAccounts
                 },
                 {
-                    "Invoke-RscQueryAzure -AllSubnets",
+                    "New-RscQueryAzure -AllSubnets",
                     GqlRootFieldName.allAzureSubnets
                 },
                 {
-                    "Invoke-RscQueryAzure -AllSubscriptionWithExocomputeMappings",
+                    "New-RscQueryAzure -AllSubscriptionWithExocomputeMappings",
                     GqlRootFieldName.allAzureSubscriptionWithExocomputeMappings
                 },
                 {
-                    "Invoke-RscQueryAzure -AllVnets",
+                    "New-RscQueryAzure -AllVnets",
                     GqlRootFieldName.allAzureVnets
                 },
                 {
-                    "Invoke-RscQueryCluster -GlobalSlas",
+                    "New-RscQueryCluster -GlobalSlas",
                     GqlRootFieldName.allClusterGlobalSlas
                 },
                 {
-                    "Invoke-RscQueryCluster -ReplicationTargets",
+                    "New-RscQueryCluster -ReplicationTargets",
                     GqlRootFieldName.allClusterReplicationTargets
                 },
                 {
-                    "Invoke-RscQueryCluster -WebCertsAndIpmis",
+                    "New-RscQueryCluster -WebCertsAndIpmis",
                     GqlRootFieldName.allClusterWebCertsAndIpmis
                 },
                 {
-                    "Invoke-RscQueryCluster -TotpAckStatus",
+                    "New-RscQueryCluster -TotpAckStatus",
                     GqlRootFieldName.allClustersTotpAckStatus
                 },
                 {
-                    "Invoke-RscQueryCluster -Connected",
+                    "New-RscQueryCluster -Connected",
                     GqlRootFieldName.allConnectedClusters
                 },
                 {
-                    "Invoke-RscQueryAws -AllDbParameterGroupsByRegion",
+                    "New-RscQueryAws -AllDbParameterGroupsByRegion",
                     GqlRootFieldName.allDbParameterGroupsByRegionFromAws
                 },
                 {
-                    "Invoke-RscQueryAws -AllDbSubnetGroupsByRegion",
+                    "New-RscQueryAws -AllDbSubnetGroupsByRegion",
                     GqlRootFieldName.allDbSubnetGroupsByRegionFromAws
                 },
                 {
-                    "Invoke-RscQueryAws -AllEc2KeyPairsByRegion",
+                    "New-RscQueryAws -AllEc2KeyPairsByRegion",
                     GqlRootFieldName.allEc2KeyPairsByRegionFromAws
                 },
                 {
-                    "Invoke-RscQueryAzure -AllHostedRegions",
+                    "New-RscQueryAzure -AllHostedRegions",
                     GqlRootFieldName.allHostedAzureRegions
                 },
                 {
-                    "Invoke-RscQueryAws -AllKmsEncryptionKeysByRegion",
+                    "New-RscQueryAws -AllKmsEncryptionKeysByRegion",
                     GqlRootFieldName.allKmsEncryptionKeysByRegionFromAws
                 },
                 {
-                    "Invoke-RscQueryMssql -AllDatabaseRestoreFiles",
+                    "New-RscQueryMssql -AllDatabaseRestoreFiles",
                     GqlRootFieldName.allMssqlDatabaseRestoreFiles
                 },
                 {
-                    "Invoke-RscQuerySla -AllNcdComplianceData",
+                    "New-RscQuerySla -AllNcdComplianceData",
                     GqlRootFieldName.allNcdSlaComplianceData
                 },
                 {
-                    "Invoke-RscQueryO365 -AllAdGroups",
+                    "New-RscQueryO365 -AllAdGroups",
                     GqlRootFieldName.allO365AdGroups
                 },
                 {
-                    "Invoke-RscQueryO365 -AllOrgStatuses",
+                    "New-RscQueryO365 -AllOrgStatuses",
                     GqlRootFieldName.allO365OrgStatuses
                 },
                 {
-                    "Invoke-RscQueryO365 -AllSubscriptionsAppTypeCounts",
+                    "New-RscQueryO365 -AllSubscriptionsAppTypeCounts",
                     GqlRootFieldName.allO365SubscriptionsAppTypeCounts
                 },
                 {
-                    "Invoke-RscQueryAws -AllOptionGroupsByRegion",
+                    "New-RscQueryAws -AllOptionGroupsByRegion",
                     GqlRootFieldName.allOptionGroupsByRegionFromAws
                 },
                 {
-                    "Invoke-RscQueryAzure -AllResourceGroupsFrom",
+                    "New-RscQueryAzure -AllResourceGroupsFrom",
                     GqlRootFieldName.allResourceGroupsFromAzure
                 },
                 {
-                    "Invoke-RscQueryAws -AllS3BucketsDetails",
+                    "New-RscQueryAws -AllS3BucketsDetails",
                     GqlRootFieldName.allS3BucketsDetailsFromAws
                 },
                 {
-                    "Invoke-RscQueryAws -AllS3Buckets",
+                    "New-RscQueryAws -AllS3Buckets",
                     GqlRootFieldName.allS3BucketsFromAws
                 },
                 {
-                    "Invoke-RscQuerySla -AllSummariesByIds",
+                    "New-RscQuerySla -AllSummariesByIds",
                     GqlRootFieldName.allSlaSummariesByIds
                 },
                 {
-                    "Invoke-RscQueryAws -AllSupportedRdsDatabaseInstanceClasses",
+                    "New-RscQueryAws -AllSupportedRdsDatabaseInstanceClasses",
                     GqlRootFieldName.allSupportedAwsRdsDatabaseInstanceClasses
                 },
                 {
-                    "Invoke-RscQueryVcenter -HotAddProxy",
+                    "New-RscQueryVcenter -HotAddProxy",
                     GqlRootFieldName.allVcenterHotAddProxyVms
                 },
                 {
-                    "Invoke-RscQueryAws -AllVpcsByRegion",
+                    "New-RscQueryAws -AllVpcsByRegion",
                     GqlRootFieldName.allVpcsByRegionFromAws
                 },
                 {
-                    "Invoke-RscQueryAws -AllVpcs",
+                    "New-RscQueryAws -AllVpcs",
                     GqlRootFieldName.allVpcsFromAws
                 },
                 {
-                    "Invoke-RscQueryAws -AmiTypeForNativeArchivedSnapshotExport",
+                    "New-RscQueryAws -AmiTypeForNativeArchivedSnapshotExport",
                     GqlRootFieldName.amiTypeForAwsNativeArchivedSnapshotExport
                 },
                 {
-                    "Invoke-RscMutateCluster -ArchiveK8s",
+                    "New-RscMutationCluster -ArchiveK8s",
                     GqlRootFieldName.archiveK8sCluster
                 },
                 {
-                    "Invoke-RscMutateMssql -AssignSlaDomainProperties",
+                    "New-RscMutationMssql -AssignSlaDomainProperties",
                     GqlRootFieldName.assignMssqlSlaDomainProperties
                 },
                 {
-                    "Invoke-RscMutateMssql -AssignSlaDomainPropertiesAsync",
+                    "New-RscMutationMssql -AssignSlaDomainPropertiesAsync",
                     GqlRootFieldName.assignMssqlSlaDomainPropertiesAsync
                 },
                 {
-                    "Invoke-RscMutateSla -AssignRetentionToSnappables",
+                    "New-RscMutationSla -AssignRetentionToSnappables",
                     GqlRootFieldName.assignRetentionSLAToSnappables
                 },
                 {
-                    "Invoke-RscMutateSla -AssignRetentionToSnapshots",
+                    "New-RscMutationSla -AssignRetentionToSnapshots",
                     GqlRootFieldName.assignRetentionSLAToSnapshots
                 },
                 {
-                    "Invoke-RscMutateSla -Assign",
+                    "New-RscMutationSla -Assign",
                     GqlRootFieldName.assignSla
                 },
                 {
-                    "Invoke-RscMutateMongo -AssignSlaToDbCollection",
+                    "New-RscMutationMongo -AssignSlaToDbCollection",
                     GqlRootFieldName.assignSlaToMongoDbCollection
                 },
                 {
-                    "Invoke-RscMutateSla -AssignsForSnappableHierarchies",
+                    "New-RscMutationSla -AssignsForSnappableHierarchies",
                     GqlRootFieldName.assignSlasForSnappableHierarchies
                 },
                 {
-                    "Invoke-RscQueryAws -ArtifactsToDelete",
+                    "New-RscQueryAws -ArtifactsToDelete",
                     GqlRootFieldName.awsArtifactsToDelete
                 },
                 {
-                    "Invoke-RscQueryAws -CloudAccountListSecurityGroups",
+                    "New-RscQueryAws -CloudAccountListSecurityGroups",
                     GqlRootFieldName.awsCloudAccountListSecurityGroups
                 },
                 {
-                    "Invoke-RscQueryAws -CloudAccountListSubnets",
+                    "New-RscQueryAws -CloudAccountListSubnets",
                     GqlRootFieldName.awsCloudAccountListSubnets
                 },
                 {
-                    "Invoke-RscQueryAws -CloudAccountListVpcs",
+                    "New-RscQueryAws -CloudAccountListVpcs",
                     GqlRootFieldName.awsCloudAccountListVpcs
                 },
                 {
-                    "Invoke-RscQueryAws -CloudAccountWithFeatures",
+                    "New-RscQueryAws -CloudAccountWithFeatures",
                     GqlRootFieldName.awsCloudAccountWithFeatures
                 },
                 {
-                    "Invoke-RscQueryAws -ComputeSettings",
+                    "New-RscQueryAws -ComputeSettings",
                     GqlRootFieldName.awsComputeSettings
                 },
                 {
-                    "Invoke-RscQueryAws -NativeAccount",
+                    "New-RscQueryAws -NativeAccount",
                     GqlRootFieldName.awsNativeAccount
                 },
                 {
-                    "Invoke-RscQueryAws -NativeAccounts",
+                    "New-RscQueryAws -NativeAccounts",
                     GqlRootFieldName.awsNativeAccounts
                 },
                 {
-                    "Invoke-RscQueryAws -NativeEbsVolume",
+                    "New-RscQueryAws -NativeEbsVolume",
                     GqlRootFieldName.awsNativeEbsVolume
                 },
                 {
-                    "Invoke-RscQueryAws -NativeEbsVolumes",
+                    "New-RscQueryAws -NativeEbsVolumes",
                     GqlRootFieldName.awsNativeEbsVolumes
                 },
                 {
-                    "Invoke-RscQueryAws -NativeEbsVolumesByName",
+                    "New-RscQueryAws -NativeEbsVolumesByName",
                     GqlRootFieldName.awsNativeEbsVolumesByName
                 },
                 {
-                    "Invoke-RscQueryAws -NativeEc2Instance",
+                    "New-RscQueryAws -NativeEc2Instance",
                     GqlRootFieldName.awsNativeEc2Instance
                 },
                 {
-                    "Invoke-RscQueryAws -NativeEc2Instances",
+                    "New-RscQueryAws -NativeEc2Instances",
                     GqlRootFieldName.awsNativeEc2Instances
                 },
                 {
-                    "Invoke-RscQueryAws -NativeEc2InstancesByName",
+                    "New-RscQueryAws -NativeEc2InstancesByName",
                     GqlRootFieldName.awsNativeEc2InstancesByName
                 },
                 {
-                    "Invoke-RscQueryAws -NativeRdsExportDefaults",
+                    "New-RscQueryAws -NativeRdsExportDefaults",
                     GqlRootFieldName.awsNativeRdsExportDefaults
                 },
                 {
-                    "Invoke-RscQueryAws -NativeRdsInstance",
+                    "New-RscQueryAws -NativeRdsInstance",
                     GqlRootFieldName.awsNativeRdsInstance
                 },
                 {
-                    "Invoke-RscQueryAws -NativeRdsInstances",
+                    "New-RscQueryAws -NativeRdsInstances",
                     GqlRootFieldName.awsNativeRdsInstances
                 },
                 {
-                    "Invoke-RscQueryAws -NativeRdsPointInTimeRestoreWindow",
+                    "New-RscQueryAws -NativeRdsPointInTimeRestoreWindow",
                     GqlRootFieldName.awsNativeRdsPointInTimeRestoreWindow
                 },
                 {
-                    "Invoke-RscQueryAws -NativeRoot",
+                    "New-RscQueryAws -NativeRoot",
                     GqlRootFieldName.awsNativeRoot
                 },
                 {
-                    "Invoke-RscQueryAws -NativeS3Bucket",
+                    "New-RscQueryAws -NativeS3Bucket",
                     GqlRootFieldName.awsNativeS3Bucket
                 },
                 {
-                    "Invoke-RscQueryAws -TrustPolicy",
+                    "New-RscQueryAws -TrustPolicy",
                     GqlRootFieldName.awsTrustPolicy
                 },
                 {
-                    "Invoke-RscQueryAzure -CloudAccountPermissionConfig",
+                    "New-RscQueryAzure -CloudAccountPermissionConfig",
                     GqlRootFieldName.azureCloudAccountPermissionConfig
                 },
                 {
-                    "Invoke-RscQueryAzure -CloudAccountSubscriptionWithFeatures",
+                    "New-RscQueryAzure -CloudAccountSubscriptionWithFeatures",
                     GqlRootFieldName.azureCloudAccountSubscriptionWithFeatures
                 },
                 {
-                    "Invoke-RscQueryAzure -CloudAccountTenant",
+                    "New-RscQueryAzure -CloudAccountTenant",
                     GqlRootFieldName.azureCloudAccountTenant
                 },
                 {
-                    "Invoke-RscQueryAzure -CloudAccountTenantWithExoConfigs",
+                    "New-RscQueryAzure -CloudAccountTenantWithExoConfigs",
                     GqlRootFieldName.azureCloudAccountTenantWithExoConfigs
                 },
                 {
-                    "Invoke-RscQueryAzure -NativeManagedDisk",
+                    "New-RscQueryAzure -NativeManagedDisk",
                     GqlRootFieldName.azureNativeManagedDisk
                 },
                 {
-                    "Invoke-RscQueryAzure -NativeManagedDisks",
+                    "New-RscQueryAzure -NativeManagedDisks",
                     GqlRootFieldName.azureNativeManagedDisks
                 },
                 {
-                    "Invoke-RscQueryAzure -NativeResourceGroup",
+                    "New-RscQueryAzure -NativeResourceGroup",
                     GqlRootFieldName.azureNativeResourceGroup
                 },
                 {
-                    "Invoke-RscQueryAzure -NativeResourceGroups",
+                    "New-RscQueryAzure -NativeResourceGroups",
                     GqlRootFieldName.azureNativeResourceGroups
                 },
                 {
-                    "Invoke-RscQueryAzure -NativeRoot",
+                    "New-RscQueryAzure -NativeRoot",
                     GqlRootFieldName.azureNativeRoot
                 },
                 {
-                    "Invoke-RscQueryAzure -NativeSubscription",
+                    "New-RscQueryAzure -NativeSubscription",
                     GqlRootFieldName.azureNativeSubscription
                 },
                 {
-                    "Invoke-RscQueryAzure -NativeSubscriptions",
+                    "New-RscQueryAzure -NativeSubscriptions",
                     GqlRootFieldName.azureNativeSubscriptions
                 },
                 {
-                    "Invoke-RscQueryAzure -NativeVirtualMachine",
+                    "New-RscQueryAzure -NativeVirtualMachine",
                     GqlRootFieldName.azureNativeVirtualMachine
                 },
                 {
-                    "Invoke-RscQueryAzure -NativeVirtualMachines",
+                    "New-RscQueryAzure -NativeVirtualMachines",
                     GqlRootFieldName.azureNativeVirtualMachines
                 },
                 {
-                    "Invoke-RscQueryAzureO365 -CheckNSGOutboundRules",
+                    "New-RscQueryAzureO365 -CheckNSGOutboundRules",
                     GqlRootFieldName.azureO365CheckNSGOutboundRules
                 },
                 {
-                    "Invoke-RscQueryAzureO365 -CheckNetworkSubnet",
+                    "New-RscQueryAzureO365 -CheckNetworkSubnet",
                     GqlRootFieldName.azureO365CheckNetworkSubnet
                 },
                 {
-                    "Invoke-RscQueryAzureO365 -CheckResourceGroupName",
+                    "New-RscQueryAzureO365 -CheckResourceGroupName",
                     GqlRootFieldName.azureO365CheckResourceGroupName
                 },
                 {
-                    "Invoke-RscQueryAzureO365 -CheckStorageAccountAccessibility",
+                    "New-RscQueryAzureO365 -CheckStorageAccountAccessibility",
                     GqlRootFieldName.azureO365CheckStorageAccountAccessibility
                 },
                 {
-                    "Invoke-RscQueryAzureO365 -CheckStorageAccountName",
+                    "New-RscQueryAzureO365 -CheckStorageAccountName",
                     GqlRootFieldName.azureO365CheckStorageAccountName
                 },
                 {
-                    "Invoke-RscQueryAzureO365 -CheckSubscriptionQuota",
+                    "New-RscQueryAzureO365 -CheckSubscriptionQuota",
                     GqlRootFieldName.azureO365CheckSubscriptionQuota
                 },
                 {
-                    "Invoke-RscQueryAzureO365 -CheckVirtualNetworkName",
+                    "New-RscQueryAzureO365 -CheckVirtualNetworkName",
                     GqlRootFieldName.azureO365CheckVirtualNetworkName
                 },
                 {
-                    "Invoke-RscQueryAzureO365 -Exocompute",
+                    "New-RscQueryAzureO365 -Exocompute",
                     GqlRootFieldName.azureO365Exocompute
                 },
                 {
-                    "Invoke-RscQueryAzureO365 -GetAzureHostType",
+                    "New-RscQueryAzureO365 -GetAzureHostType",
                     GqlRootFieldName.azureO365GetAzureHostType
                 },
                 {
-                    "Invoke-RscQueryAzureO365 -GetNetworkSubnetUnusedAddr",
+                    "New-RscQueryAzureO365 -GetNetworkSubnetUnusedAddr",
                     GqlRootFieldName.azureO365GetNetworkSubnetUnusedAddr
                 },
                 {
-                    "Invoke-RscQueryAzureO365 -ValidateUserRoles",
+                    "New-RscQueryAzureO365 -ValidateUserRoles",
                     GqlRootFieldName.azureO365ValidateUserRoles
                 },
                 {
-                    "Invoke-RscMutateAzure -OauthConsentComplete",
+                    "New-RscMutationAzure -OauthConsentComplete",
                     GqlRootFieldName.azureOauthConsentComplete
                 },
                 {
-                    "Invoke-RscMutateAzure -OauthConsentKickoff",
+                    "New-RscMutationAzure -OauthConsentKickoff",
                     GqlRootFieldName.azureOauthConsentKickoff
                 },
                 {
-                    "Invoke-RscQueryAzure -Regions",
+                    "New-RscQueryAzure -Regions",
                     GqlRootFieldName.azureRegions
                 },
                 {
-                    "Invoke-RscQueryAzure -ResourceGroups",
+                    "New-RscQueryAzure -ResourceGroups",
                     GqlRootFieldName.azureResourceGroups
                 },
                 {
-                    "Invoke-RscQueryAzure -SqlDatabase",
+                    "New-RscQueryAzure -SqlDatabase",
                     GqlRootFieldName.azureSqlDatabase
                 },
                 {
-                    "Invoke-RscQueryAzure -SqlDatabaseDbPointInTimeRestoreWindowFromAzure",
+                    "New-RscQueryAzure -SqlDatabaseDbPointInTimeRestoreWindowFromAzure",
                     GqlRootFieldName.azureSqlDatabaseDbPointInTimeRestoreWindowFromAzure
                 },
                 {
-                    "Invoke-RscQueryAzure -SqlDatabaseServer",
+                    "New-RscQueryAzure -SqlDatabaseServer",
                     GqlRootFieldName.azureSqlDatabaseServer
                 },
                 {
-                    "Invoke-RscQueryAzure -SqlDatabaseServers",
+                    "New-RscQueryAzure -SqlDatabaseServers",
                     GqlRootFieldName.azureSqlDatabaseServers
                 },
                 {
-                    "Invoke-RscQueryAzure -SqlDatabases",
+                    "New-RscQueryAzure -SqlDatabases",
                     GqlRootFieldName.azureSqlDatabases
                 },
                 {
-                    "Invoke-RscQueryAzure -SqlManagedInstanceDatabase",
+                    "New-RscQueryAzure -SqlManagedInstanceDatabase",
                     GqlRootFieldName.azureSqlManagedInstanceDatabase
                 },
                 {
-                    "Invoke-RscQueryAzure -SqlManagedInstanceDatabases",
+                    "New-RscQueryAzure -SqlManagedInstanceDatabases",
                     GqlRootFieldName.azureSqlManagedInstanceDatabases
                 },
                 {
-                    "Invoke-RscQueryAzure -SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure",
+                    "New-RscQueryAzure -SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure",
                     GqlRootFieldName.azureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure
                 },
                 {
-                    "Invoke-RscQueryAzure -SqlManagedInstanceServer",
+                    "New-RscQueryAzure -SqlManagedInstanceServer",
                     GqlRootFieldName.azureSqlManagedInstanceServer
                 },
                 {
-                    "Invoke-RscQueryAzure -SqlManagedInstanceServers",
+                    "New-RscQueryAzure -SqlManagedInstanceServers",
                     GqlRootFieldName.azureSqlManagedInstanceServers
                 },
                 {
-                    "Invoke-RscQueryAzure -StorageAccounts",
+                    "New-RscQueryAzure -StorageAccounts",
                     GqlRootFieldName.azureStorageAccounts
                 },
                 {
-                    "Invoke-RscQueryAzure -Subnets",
+                    "New-RscQueryAzure -Subnets",
                     GqlRootFieldName.azureSubnets
                 },
                 {
-                    "Invoke-RscQueryAzure -Subscriptions",
+                    "New-RscQueryAzure -Subscriptions",
                     GqlRootFieldName.azureSubscriptions
                 },
                 {
-                    "Invoke-RscQueryAzure -VNets",
+                    "New-RscQueryAzure -VNets",
                     GqlRootFieldName.azureVNets
                 },
                 {
-                    "Invoke-RscMutateO365 -BackupMailbox",
+                    "New-RscMutationO365 -BackupMailbox",
                     GqlRootFieldName.backupO365Mailbox
                 },
                 {
-                    "Invoke-RscMutateO365 -BackupOnedrive",
+                    "New-RscMutationO365 -BackupOnedrive",
                     GqlRootFieldName.backupO365Onedrive
                 },
                 {
-                    "Invoke-RscMutateO365 -BackupSharePointSite",
+                    "New-RscMutationO365 -BackupSharePointSite",
                     GqlRootFieldName.backupO365SharePointSite
                 },
                 {
-                    "Invoke-RscMutateO365 -BackupSharepointDrive",
+                    "New-RscMutationO365 -BackupSharepointDrive",
                     GqlRootFieldName.backupO365SharepointDrive
                 },
                 {
-                    "Invoke-RscMutateO365 -BackupSharepointList",
+                    "New-RscMutationO365 -BackupSharepointList",
                     GqlRootFieldName.backupO365SharepointList
                 },
                 {
-                    "Invoke-RscMutateO365 -BackupTeam",
+                    "New-RscMutationO365 -BackupTeam",
                     GqlRootFieldName.backupO365Team
                 },
                 {
-                    "Invoke-RscMutateHyperv -BatchExportVm",
+                    "New-RscMutationHyperv -BatchExportVm",
                     GqlRootFieldName.batchExportHypervVm
                 },
                 {
-                    "Invoke-RscMutateNutanix -BatchExportVm",
+                    "New-RscMutationNutanix -BatchExportVm",
                     GqlRootFieldName.batchExportNutanixVm
                 },
                 {
-                    "Invoke-RscMutateHyperv -BatchInstantRecoverVm",
+                    "New-RscMutationHyperv -BatchInstantRecoverVm",
                     GqlRootFieldName.batchInstantRecoverHypervVm
                 },
                 {
-                    "Invoke-RscMutateHyperv -BatchMountVm",
+                    "New-RscMutationHyperv -BatchMountVm",
                     GqlRootFieldName.batchMountHypervVm
                 },
                 {
-                    "Invoke-RscMutateNutanix -BatchMountVm",
+                    "New-RscMutationNutanix -BatchMountVm",
                     GqlRootFieldName.batchMountNutanixVm
                 },
                 {
-                    "Invoke-RscMutateHyperv -BatchOnDemandBackupVm",
+                    "New-RscMutationHyperv -BatchOnDemandBackupVm",
                     GqlRootFieldName.batchOnDemandBackupHypervVm
                 },
                 {
-                    "Invoke-RscMutateMssql -BrowseDatabaseSnapshot",
+                    "New-RscMutationMssql -BrowseDatabaseSnapshot",
                     GqlRootFieldName.browseMssqlDatabaseSnapshot
                 },
                 {
-                    "Invoke-RscQueryO365 -BrowseTeamConvChannels",
+                    "New-RscQueryO365 -BrowseTeamConvChannels",
                     GqlRootFieldName.browseO365TeamConvChannels
                 },
                 {
-                    "Invoke-RscMutateMssql -BulkCreateOnDemandBackup",
+                    "New-RscMutationMssql -BulkCreateOnDemandBackup",
                     GqlRootFieldName.bulkCreateOnDemandMssqlBackup
                 },
                 {
-                    "Invoke-RscMutateAws -BulkDeleteCloudAccountWithoutCft",
+                    "New-RscMutationAws -BulkDeleteCloudAccountWithoutCft",
                     GqlRootFieldName.bulkDeleteAwsCloudAccountWithoutCft
                 },
                 {
-                    "Invoke-RscMutateCassandra -BulkDeleteSources",
+                    "New-RscMutationCassandra -BulkDeleteSources",
                     GqlRootFieldName.bulkDeleteCassandraSources
                 },
                 {
-                    "Invoke-RscMutateCluster -BulkDeleteFailover",
+                    "New-RscMutationCluster -BulkDeleteFailover",
                     GqlRootFieldName.bulkDeleteFailoverCluster
                 },
                 {
-                    "Invoke-RscMutateMongo -BulkDeletedbSources",
+                    "New-RscMutationMongo -BulkDeletedbSources",
                     GqlRootFieldName.bulkDeleteMongodbSources
                 },
                 {
-                    "Invoke-RscMutateNutanix -BulkOnDemandSnapshotVm",
+                    "New-RscMutationNutanix -BulkOnDemandSnapshotVm",
                     GqlRootFieldName.bulkOnDemandSnapshotNutanixVm
                 },
                 {
-                    "Invoke-RscMutateMssql -BulkUpdateDbs",
+                    "New-RscMutationMssql -BulkUpdateDbs",
                     GqlRootFieldName.bulkUpdateMssqlDbs
                 },
                 {
-                    "Invoke-RscMutateOracle -BulkUpdateDatabases",
+                    "New-RscMutationOracle -BulkUpdateDatabases",
                     GqlRootFieldName.bulkUpdateOracleDatabases
                 },
                 {
-                    "Invoke-RscMutateOracle -BulkUpdateHosts",
+                    "New-RscMutationOracle -BulkUpdateHosts",
                     GqlRootFieldName.bulkUpdateOracleHosts
                 },
                 {
-                    "Invoke-RscMutateOracle -BulkUpdateRacs",
+                    "New-RscMutationOracle -BulkUpdateRacs",
                     GqlRootFieldName.bulkUpdateOracleRacs
                 },
                 {
-                    "Invoke-RscMutateActivitySeries -Cancel",
+                    "New-RscMutationActivitySeries -Cancel",
                     GqlRootFieldName.cancelActivitySeries
                 },
                 {
-                    "Invoke-RscQueryCassandra -ColumnFamilies",
+                    "New-RscQueryCassandra -ColumnFamilies",
                     GqlRootFieldName.cassandraColumnFamilies
                 },
                 {
-                    "Invoke-RscQueryCassandra -ColumnFamily",
+                    "New-RscQueryCassandra -ColumnFamily",
                     GqlRootFieldName.cassandraColumnFamily
                 },
                 {
-                    "Invoke-RscQueryCassandra -ColumnFamilyRecoverableRange",
+                    "New-RscQueryCassandra -ColumnFamilyRecoverableRange",
                     GqlRootFieldName.cassandraColumnFamilyRecoverableRange
                 },
                 {
-                    "Invoke-RscQueryCassandra -ColumnFamilySchema",
+                    "New-RscQueryCassandra -ColumnFamilySchema",
                     GqlRootFieldName.cassandraColumnFamilySchema
                 },
                 {
-                    "Invoke-RscQueryCassandra -Keyspace",
+                    "New-RscQueryCassandra -Keyspace",
                     GqlRootFieldName.cassandraKeyspace
                 },
                 {
-                    "Invoke-RscQueryCassandra -Keyspaces",
+                    "New-RscQueryCassandra -Keyspaces",
                     GqlRootFieldName.cassandraKeyspaces
                 },
                 {
-                    "Invoke-RscQueryCassandra -Source",
+                    "New-RscQueryCassandra -Source",
                     GqlRootFieldName.cassandraSource
                 },
                 {
-                    "Invoke-RscQueryCassandra -Sources",
+                    "New-RscQueryCassandra -Sources",
                     GqlRootFieldName.cassandraSources
                 },
                 {
-                    "Invoke-RscQueryMssql -CdmLogShippingTarget",
+                    "New-RscQueryMssql -CdmLogShippingTarget",
                     GqlRootFieldName.cdmMssqlLogShippingTarget
                 },
                 {
-                    "Invoke-RscQueryMssql -CdmLogShippingTargets",
+                    "New-RscQueryMssql -CdmLogShippingTargets",
                     GqlRootFieldName.cdmMssqlLogShippingTargets
                 },
                 {
-                    "Invoke-RscQueryAzure -CheckPersistentStorageSubscriptionCanUnmap",
+                    "New-RscQueryAzure -CheckPersistentStorageSubscriptionCanUnmap",
                     GqlRootFieldName.checkAzurePersistentStorageSubscriptionCanUnmap
                 },
                 {
-                    "Invoke-RscQueryCluster -Cluster",
+                    "New-RscQueryCluster -Cluster",
                     GqlRootFieldName.cluster
                 },
                 {
-                    "Invoke-RscQueryCluster -Certificates",
+                    "New-RscQueryCluster -Certificates",
                     GqlRootFieldName.clusterCertificates
                 },
                 {
-                    "Invoke-RscQueryCluster -List",
+                    "New-RscQueryCluster -List",
                     GqlRootFieldName.clusterConnection
                 },
                 {
-                    "Invoke-RscQueryCluster -Csr",
+                    "New-RscQueryCluster -Csr",
                     GqlRootFieldName.clusterCsr
                 },
                 {
-                    "Invoke-RscQueryCluster -DefaultGateway",
+                    "New-RscQueryCluster -DefaultGateway",
                     GqlRootFieldName.clusterDefaultGateway
                 },
                 {
-                    "Invoke-RscQueryCluster -Dns",
+                    "New-RscQueryCluster -Dns",
                     GqlRootFieldName.clusterDns
                 },
                 {
-                    "Invoke-RscQueryCluster -FloatingIps",
+                    "New-RscQueryCluster -FloatingIps",
                     GqlRootFieldName.clusterFloatingIps
                 },
                 {
-                    "Invoke-RscQueryCluster -GroupByList",
+                    "New-RscQueryCluster -GroupByList",
                     GqlRootFieldName.clusterGroupByConnection
                 },
                 {
-                    "Invoke-RscQueryCluster -Ipmi",
+                    "New-RscQueryCluster -Ipmi",
                     GqlRootFieldName.clusterIpmi
                 },
                 {
-                    "Invoke-RscQueryCluster -Ipv6Mode",
+                    "New-RscQueryCluster -Ipv6Mode",
                     GqlRootFieldName.clusterIpv6Mode
                 },
                 {
-                    "Invoke-RscQueryCluster -NetworkInterfaces",
+                    "New-RscQueryCluster -NetworkInterfaces",
                     GqlRootFieldName.clusterNetworkInterfaces
                 },
                 {
-                    "Invoke-RscQueryCluster -Nodes",
+                    "New-RscQueryCluster -Nodes",
                     GqlRootFieldName.clusterNodes
                 },
                 {
-                    "Invoke-RscQueryCluster -NtpServers",
+                    "New-RscQueryCluster -NtpServers",
                     GqlRootFieldName.clusterNtpServers
                 },
                 {
-                    "Invoke-RscQueryCluster -OperationJobProgress",
+                    "New-RscQueryCluster -OperationJobProgress",
                     GqlRootFieldName.clusterOperationJobProgress
                 },
                 {
-                    "Invoke-RscQueryCluster -Proxy",
+                    "New-RscQueryCluster -Proxy",
                     GqlRootFieldName.clusterProxy
                 },
                 {
-                    "Invoke-RscQueryCluster -RegistrationProductInfo",
+                    "New-RscQueryCluster -RegistrationProductInfo",
                     GqlRootFieldName.clusterRegistrationProductInfo
                 },
                 {
-                    "Invoke-RscQueryCluster -ReportMigrationCount",
+                    "New-RscQueryCluster -ReportMigrationCount",
                     GqlRootFieldName.clusterReportMigrationCount
                 },
                 {
-                    "Invoke-RscQueryCluster -ReportMigrationJobStatus",
+                    "New-RscQueryCluster -ReportMigrationJobStatus",
                     GqlRootFieldName.clusterReportMigrationJobStatus
                 },
                 {
-                    "Invoke-RscQueryCluster -ReportMigrationStatus",
+                    "New-RscQueryCluster -ReportMigrationStatus",
                     GqlRootFieldName.clusterReportMigrationStatus
                 },
                 {
-                    "Invoke-RscQueryCluster -LaDomains",
+                    "New-RscQueryCluster -SlaDomains",
                     GqlRootFieldName.clusterSlaDomains
                 },
                 {
-                    "Invoke-RscQueryCluster -TypeList",
+                    "New-RscQueryCluster -TypeList",
                     GqlRootFieldName.clusterTypeList
                 },
                 {
-                    "Invoke-RscQueryCluster -Vlans",
+                    "New-RscQueryCluster -Vlans",
                     GqlRootFieldName.clusterVlans
                 },
                 {
-                    "Invoke-RscQueryCluster -WebSignedCertificate",
+                    "New-RscQueryCluster -WebSignedCertificate",
                     GqlRootFieldName.clusterWebSignedCertificate
                 },
                 {
-                    "Invoke-RscQueryCluster -WithUpgradesInfo",
+                    "New-RscQueryCluster -WithUpgradesInfo",
                     GqlRootFieldName.clusterWithUpgradesInfo
                 },
                 {
-                    "Invoke-RscMutateAzure -CompleteCloudAccountOauth",
+                    "New-RscMutationAzure -CompleteCloudAccountOauth",
                     GqlRootFieldName.completeAzureCloudAccountOauth
                 },
                 {
-                    "Invoke-RscQuerySla -CountOfObjectsProtected",
+                    "New-RscQuerySla -CountOfObjectsProtected",
                     GqlRootFieldName.countOfObjectsProtectedBySlas
                 },
                 {
-                    "Invoke-RscMutateAws -CreateAutomaticTargetMapping",
+                    "New-RscMutationAws -CreateAutomaticTargetMapping",
                     GqlRootFieldName.createAutomaticAwsTargetMapping
                 },
                 {
-                    "Invoke-RscMutateAzure -CreateAutomaticTargetMapping",
+                    "New-RscMutationAzure -CreateAutomaticTargetMapping",
                     GqlRootFieldName.createAutomaticAzureTargetMapping
                 },
                 {
-                    "Invoke-RscMutateAws -CreateAccount",
+                    "New-RscMutationAws -CreateAccount",
                     GqlRootFieldName.createAwsAccount
                 },
                 {
-                    "Invoke-RscMutateAws -CreateCluster",
+                    "New-RscMutationAws -CreateCluster",
                     GqlRootFieldName.createAwsCluster
                 },
                 {
-                    "Invoke-RscMutateAws -CreateComputeSetting",
+                    "New-RscMutationAws -CreateComputeSetting",
                     GqlRootFieldName.createAwsComputeSetting
                 },
                 {
-                    "Invoke-RscMutateAws -CreateExocomputeConfigs",
+                    "New-RscMutationAws -CreateExocomputeConfigs",
                     GqlRootFieldName.createAwsExocomputeConfigs
                 },
                 {
-                    "Invoke-RscMutateAws -CreateReaderTarget",
+                    "New-RscMutationAws -CreateReaderTarget",
                     GqlRootFieldName.createAwsReaderTarget
                 },
                 {
-                    "Invoke-RscMutateAws -CreateTarget",
+                    "New-RscMutationAws -CreateTarget",
                     GqlRootFieldName.createAwsTarget
                 },
                 {
-                    "Invoke-RscMutateAzure -CreateAccount",
+                    "New-RscMutationAzure -CreateAccount",
                     GqlRootFieldName.createAzureAccount
                 },
                 {
-                    "Invoke-RscMutateAzure -CreateCluster",
+                    "New-RscMutationAzure -CreateCluster",
                     GqlRootFieldName.createAzureCluster
                 },
                 {
-                    "Invoke-RscMutateAzure -CreateReaderTarget",
+                    "New-RscMutationAzure -CreateReaderTarget",
                     GqlRootFieldName.createAzureReaderTarget
                 },
                 {
-                    "Invoke-RscMutateAzure -CreateSaasAppAad",
+                    "New-RscMutationAzure -CreateSaasAppAad",
                     GqlRootFieldName.createAzureSaasAppAad
                 },
                 {
-                    "Invoke-RscMutateAzure -CreateTarget",
+                    "New-RscMutationAzure -CreateTarget",
                     GqlRootFieldName.createAzureTarget
                 },
                 {
-                    "Invoke-RscMutateCassandra -CreateSource",
+                    "New-RscMutationCassandra -CreateSource",
                     GqlRootFieldName.createCassandraSource
                 },
                 {
-                    "Invoke-RscMutateAws -CreateCloudNativeStorageSetting",
+                    "New-RscMutationAws -CreateCloudNativeStorageSetting",
                     GqlRootFieldName.createCloudNativeAwsStorageSetting
                 },
                 {
-                    "Invoke-RscMutateAzure -CreateCloudNativeStorageSetting",
+                    "New-RscMutationAzure -CreateCloudNativeStorageSetting",
                     GqlRootFieldName.createCloudNativeAzureStorageSetting
                 },
                 {
-                    "Invoke-RscMutateAzure -CreateCloudNativeRcvStorageSetting",
+                    "New-RscMutationAzure -CreateCloudNativeRcvStorageSetting",
                     GqlRootFieldName.createCloudNativeRcvAzureStorageSetting
                 },
                 {
-                    "Invoke-RscMutateCluster -CreateFailover",
+                    "New-RscMutationCluster -CreateFailover",
                     GqlRootFieldName.createFailoverCluster
                 },
                 {
-                    "Invoke-RscMutateSla -CreateGlobal",
+                    "New-RscMutationSla -CreateGlobal",
                     GqlRootFieldName.createGlobalSla
                 },
                 {
-                    "Invoke-RscMutateHyperv -CreateVirtualMachineSnapshotMount",
+                    "New-RscMutationHyperv -CreateVirtualMachineSnapshotMount",
                     GqlRootFieldName.createHypervVirtualMachineSnapshotMount
                 },
                 {
-                    "Invoke-RscMutateCluster -CreateK8s",
+                    "New-RscMutationCluster -CreateK8s",
                     GqlRootFieldName.createK8sCluster
                 },
                 {
-                    "Invoke-RscMutateMongo -CreatedbSource",
+                    "New-RscMutationMongo -CreatedbSource",
                     GqlRootFieldName.createMongodbSource
                 },
                 {
-                    "Invoke-RscMutateMssql -CreateLiveMount",
+                    "New-RscMutationMssql -CreateLiveMount",
                     GqlRootFieldName.createMssqlLiveMount
                 },
                 {
-                    "Invoke-RscMutateMssql -CreateLogShippingConfiguration",
+                    "New-RscMutationMssql -CreateLogShippingConfiguration",
                     GqlRootFieldName.createMssqlLogShippingConfiguration
                 },
                 {
-                    "Invoke-RscMutateNutanix -CreateCluster",
+                    "New-RscMutationNutanix -CreateCluster",
                     GqlRootFieldName.createNutanixCluster
                 },
                 {
-                    "Invoke-RscMutateNutanix -CreatePrismCentral",
+                    "New-RscMutationNutanix -CreatePrismCentral",
                     GqlRootFieldName.createNutanixPrismCentral
                 },
                 {
-                    "Invoke-RscMutateO365 -CreateAppComplete",
+                    "New-RscMutationO365 -CreateAppComplete",
                     GqlRootFieldName.createO365AppComplete
                 },
                 {
-                    "Invoke-RscMutateO365 -CreateAppKickoff",
+                    "New-RscMutationO365 -CreateAppKickoff",
                     GqlRootFieldName.createO365AppKickoff
                 },
                 {
-                    "Invoke-RscMutateDb2 -CreateOnDemandBackup",
+                    "New-RscMutationDb2 -CreateOnDemandBackup",
                     GqlRootFieldName.createOnDemandDb2Backup
                 },
                 {
-                    "Invoke-RscMutateMssql -CreateOnDemandBackup",
+                    "New-RscMutationMssql -CreateOnDemandBackup",
                     GqlRootFieldName.createOnDemandMssqlBackup
                 },
                 {
-                    "Invoke-RscMutateNutanix -CreateOnDemandBackup",
+                    "New-RscMutationNutanix -CreateOnDemandBackup",
                     GqlRootFieldName.createOnDemandNutanixBackup
                 },
                 {
-                    "Invoke-RscMutateOracle -CreatePdbRestore",
+                    "New-RscMutationOracle -CreatePdbRestore",
                     GqlRootFieldName.createOraclePdbRestore
                 },
                 {
-                    "Invoke-RscMutateVsphere -CreateAdvancedTag",
+                    "New-RscMutationVsphere -CreateAdvancedTag",
                     GqlRootFieldName.createVsphereAdvancedTag
                 },
                 {
-                    "Invoke-RscMutateVcenter -Create",
+                    "New-RscMutationVcenter -Create",
                     GqlRootFieldName.createVsphereVcenter
                 },
                 {
-                    "Invoke-RscQueryCluster -DatabaseLogReport",
+                    "New-RscQueryCluster -DatabaseLogReport",
                     GqlRootFieldName.databaseLogReportForCluster
                 },
                 {
-                    "Invoke-RscQueryCluster -DatabaseLogReportingProperties",
+                    "New-RscQueryCluster -DatabaseLogReportingProperties",
                     GqlRootFieldName.databaseLogReportingPropertiesForCluster
                 },
                 {
-                    "Invoke-RscQueryDb2 -Database",
+                    "New-RscQueryDb2 -Database",
                     GqlRootFieldName.db2Database
                 },
                 {
-                    "Invoke-RscQueryDb2 -Databases",
+                    "New-RscQueryDb2 -Databases",
                     GqlRootFieldName.db2Databases
                 },
                 {
-                    "Invoke-RscQueryDb2 -Instance",
+                    "New-RscQueryDb2 -Instance",
                     GqlRootFieldName.db2Instance
                 },
                 {
-                    "Invoke-RscQueryDb2 -Instances",
+                    "New-RscQueryDb2 -Instances",
                     GqlRootFieldName.db2Instances
                 },
                 {
-                    "Invoke-RscQueryDb2 -LogSnapshot",
+                    "New-RscQueryDb2 -LogSnapshot",
                     GqlRootFieldName.db2LogSnapshot
                 },
                 {
-                    "Invoke-RscQueryDb2 -LogSnapshots",
+                    "New-RscQueryDb2 -LogSnapshots",
                     GqlRootFieldName.db2LogSnapshots
                 },
                 {
-                    "Invoke-RscQueryDb2 -RecoverableRange",
+                    "New-RscQueryDb2 -RecoverableRange",
                     GqlRootFieldName.db2RecoverableRange
                 },
                 {
-                    "Invoke-RscQueryDb2 -RecoverableRanges",
+                    "New-RscQueryDb2 -RecoverableRanges",
                     GqlRootFieldName.db2RecoverableRanges
                 },
                 {
-                    "Invoke-RscMutateOracle -DeleteAllDatabaseSnapshots",
+                    "New-RscMutationOracle -DeleteAllDatabaseSnapshots",
                     GqlRootFieldName.deleteAllOracleDatabaseSnapshots
                 },
                 {
-                    "Invoke-RscMutateAws -DeleteCluster",
+                    "New-RscMutationAws -DeleteCluster",
                     GqlRootFieldName.deleteAwsCluster
                 },
                 {
-                    "Invoke-RscMutateAws -DeleteComputeSetting",
+                    "New-RscMutationAws -DeleteComputeSetting",
                     GqlRootFieldName.deleteAwsComputeSetting
                 },
                 {
-                    "Invoke-RscMutateAws -DeleteExocomputeConfigs",
+                    "New-RscMutationAws -DeleteExocomputeConfigs",
                     GqlRootFieldName.deleteAwsExocomputeConfigs
                 },
                 {
-                    "Invoke-RscMutateAzure -DeleteCloudAccount",
+                    "New-RscMutationAzure -DeleteCloudAccount",
                     GqlRootFieldName.deleteAzureCloudAccount
                 },
                 {
-                    "Invoke-RscMutateAzure -DeleteCloudAccountExocomputeConfigurations",
+                    "New-RscMutationAzure -DeleteCloudAccountExocomputeConfigurations",
                     GqlRootFieldName.deleteAzureCloudAccountExocomputeConfigurations
                 },
                 {
-                    "Invoke-RscMutateAzure -DeleteCloudAccountWithoutOauth",
+                    "New-RscMutationAzure -DeleteCloudAccountWithoutOauth",
                     GqlRootFieldName.deleteAzureCloudAccountWithoutOauth
                 },
                 {
-                    "Invoke-RscMutateAzure -DeleteCluster",
+                    "New-RscMutationAzure -DeleteCluster",
                     GqlRootFieldName.deleteAzureCluster
                 },
                 {
-                    "Invoke-RscMutateCassandra -DeleteSource",
+                    "New-RscMutationCassandra -DeleteSource",
                     GqlRootFieldName.deleteCassandraSource
                 },
                 {
-                    "Invoke-RscMutateDb2 -DeleteDatabase",
+                    "New-RscMutationDb2 -DeleteDatabase",
                     GqlRootFieldName.deleteDb2Database
                 },
                 {
-                    "Invoke-RscMutateDb2 -DeleteInstance",
+                    "New-RscMutationDb2 -DeleteInstance",
                     GqlRootFieldName.deleteDb2Instance
                 },
                 {
-                    "Invoke-RscMutateCluster -DeleteFailover",
+                    "New-RscMutationCluster -DeleteFailover",
                     GqlRootFieldName.deleteFailoverCluster
                 },
                 {
-                    "Invoke-RscMutateHyperv -DeleteVirtualMachineSnapshot",
+                    "New-RscMutationHyperv -DeleteVirtualMachineSnapshot",
                     GqlRootFieldName.deleteHypervVirtualMachineSnapshot
                 },
                 {
-                    "Invoke-RscMutateHyperv -DeleteVirtualMachineSnapshotMount",
+                    "New-RscMutationHyperv -DeleteVirtualMachineSnapshotMount",
                     GqlRootFieldName.deleteHypervVirtualMachineSnapshotMount
                 },
                 {
-                    "Invoke-RscMutateLdap -DeletePrincipals",
+                    "New-RscMutationLdap -DeletePrincipals",
                     GqlRootFieldName.deleteLdapPrincipals
                 },
                 {
-                    "Invoke-RscMutateMongo -DeleteSource",
+                    "New-RscMutationMongo -DeleteSource",
                     GqlRootFieldName.deleteMongoSource
                 },
                 {
-                    "Invoke-RscMutateMongo -DeletedbSource",
+                    "New-RscMutationMongo -DeletedbSource",
                     GqlRootFieldName.deleteMongodbSource
                 },
                 {
-                    "Invoke-RscMutateMssql -DeleteDbSnapshots",
+                    "New-RscMutationMssql -DeleteDbSnapshots",
                     GqlRootFieldName.deleteMssqlDbSnapshots
                 },
                 {
-                    "Invoke-RscMutateMssql -DeleteLiveMount",
+                    "New-RscMutationMssql -DeleteLiveMount",
                     GqlRootFieldName.deleteMssqlLiveMount
                 },
                 {
-                    "Invoke-RscMutateNutanix -DeleteCluster",
+                    "New-RscMutationNutanix -DeleteCluster",
                     GqlRootFieldName.deleteNutanixCluster
                 },
                 {
-                    "Invoke-RscMutateNutanix -DeleteMountV1",
+                    "New-RscMutationNutanix -DeleteMountV1",
                     GqlRootFieldName.deleteNutanixMountV1
                 },
                 {
-                    "Invoke-RscMutateNutanix -DeletePrismCentral",
+                    "New-RscMutationNutanix -DeletePrismCentral",
                     GqlRootFieldName.deleteNutanixPrismCentral
                 },
                 {
-                    "Invoke-RscMutateNutanix -DeleteSnapshot",
+                    "New-RscMutationNutanix -DeleteSnapshot",
                     GqlRootFieldName.deleteNutanixSnapshot
                 },
                 {
-                    "Invoke-RscMutateNutanix -DeleteSnapshots",
+                    "New-RscMutationNutanix -DeleteSnapshots",
                     GqlRootFieldName.deleteNutanixSnapshots
                 },
                 {
-                    "Invoke-RscMutateO365 -DeleteAzureApp",
+                    "New-RscMutationO365 -DeleteAzureApp",
                     GqlRootFieldName.deleteO365AzureApp
                 },
                 {
-                    "Invoke-RscMutateO365 -DeleteOrg",
+                    "New-RscMutationO365 -DeleteOrg",
                     GqlRootFieldName.deleteO365Org
                 },
                 {
-                    "Invoke-RscMutateO365 -DeleteServiceAccount",
+                    "New-RscMutationO365 -DeleteServiceAccount",
                     GqlRootFieldName.deleteO365ServiceAccount
                 },
                 {
-                    "Invoke-RscMutateOracle -DeleteMount",
+                    "New-RscMutationOracle -DeleteMount",
                     GqlRootFieldName.deleteOracleMount
                 },
                 {
-                    "Invoke-RscMutateVsphere -DeleteAdvancedTag",
+                    "New-RscMutationVsphere -DeleteAdvancedTag",
                     GqlRootFieldName.deleteVsphereAdvancedTag
                 },
                 {
-                    "Invoke-RscMutateVsphere -DeleteLiveMount",
+                    "New-RscMutationVsphere -DeleteLiveMount",
                     GqlRootFieldName.deleteVsphereLiveMount
                 },
                 {
-                    "Invoke-RscMutateDb2 -DiscoverInstance",
+                    "New-RscMutationDb2 -DiscoverInstance",
                     GqlRootFieldName.discoverDb2Instance
                 },
                 {
-                    "Invoke-RscMutateMongo -DiscoverSource",
+                    "New-RscMutationMongo -DiscoverSource",
                     GqlRootFieldName.discoverMongoSource
                 },
                 {
-                    "Invoke-RscQueryAzure -DoesNativeResourceGroupExist",
+                    "New-RscQueryAzure -DoesNativeResourceGroupExist",
                     GqlRootFieldName.doesAzureNativeResourceGroupExist
                 },
                 {
-                    "Invoke-RscMutateDb2 -DownloadSnapshot",
+                    "New-RscMutationDb2 -DownloadSnapshot",
                     GqlRootFieldName.downloadDb2Snapshot
                 },
                 {
-                    "Invoke-RscMutateDb2 -DownloadSnapshotsForPointInTimeRecovery",
+                    "New-RscMutationDb2 -DownloadSnapshotsForPointInTimeRecovery",
                     GqlRootFieldName.downloadDb2SnapshotsForPointInTimeRecovery
                 },
                 {
-                    "Invoke-RscMutateNutanix -DownloadFilesSnapshot",
+                    "New-RscMutationNutanix -DownloadFilesSnapshot",
                     GqlRootFieldName.downloadFilesNutanixSnapshot
                 },
                 {
-                    "Invoke-RscMutateHyperv -DownloadSnapshotFromLocation",
+                    "New-RscMutationHyperv -DownloadSnapshotFromLocation",
                     GqlRootFieldName.downloadHypervSnapshotFromLocation
                 },
                 {
-                    "Invoke-RscMutateHyperv -DownloadVirtualMachineSnapshot",
+                    "New-RscMutationHyperv -DownloadVirtualMachineSnapshot",
                     GqlRootFieldName.downloadHypervVirtualMachineSnapshot
                 },
                 {
-                    "Invoke-RscMutateHyperv -DownloadVirtualMachineSnapshotFiles",
+                    "New-RscMutationHyperv -DownloadVirtualMachineSnapshotFiles",
                     GqlRootFieldName.downloadHypervVirtualMachineSnapshotFiles
                 },
                 {
-                    "Invoke-RscMutateMssql -DownloadDatabaseBackupFiles",
+                    "New-RscMutationMssql -DownloadDatabaseBackupFiles",
                     GqlRootFieldName.downloadMssqlDatabaseBackupFiles
                 },
                 {
-                    "Invoke-RscMutateMssql -DownloadDatabaseFilesFromArchivalLocation",
+                    "New-RscMutationMssql -DownloadDatabaseFilesFromArchivalLocation",
                     GqlRootFieldName.downloadMssqlDatabaseFilesFromArchivalLocation
                 },
                 {
-                    "Invoke-RscMutateNutanix -DownloadSnapshot",
+                    "New-RscMutationNutanix -DownloadSnapshot",
                     GqlRootFieldName.downloadNutanixSnapshot
                 },
                 {
-                    "Invoke-RscMutateNutanix -DownloadVmFromLocation",
+                    "New-RscMutationNutanix -DownloadVmFromLocation",
                     GqlRootFieldName.downloadNutanixVmFromLocation
                 },
                 {
-                    "Invoke-RscMutateOracle -DownloadDatabaseSnapshot",
+                    "New-RscMutationOracle -DownloadDatabaseSnapshot",
                     GqlRootFieldName.downloadOracleDatabaseSnapshot
                 },
                 {
-                    "Invoke-RscMutateVsphere -DownloadVirtualMachineFiles",
+                    "New-RscMutationVsphere -DownloadVirtualMachineFiles",
                     GqlRootFieldName.downloadVsphereVirtualMachineFiles
                 },
                 {
-                    "Invoke-RscMutateO365 -EnableSharePoint",
+                    "New-RscMutationO365 -EnableSharePoint",
                     GqlRootFieldName.enableO365SharePoint
                 },
                 {
-                    "Invoke-RscMutateO365 -EnableTeams",
+                    "New-RscMutationO365 -EnableTeams",
                     GqlRootFieldName.enableO365Teams
                 },
                 {
-                    "Invoke-RscMutateAws -ExcludeNativeEbsVolumesFromSnapshot",
+                    "New-RscMutationAws -ExcludeNativeEbsVolumesFromSnapshot",
                     GqlRootFieldName.excludeAwsNativeEbsVolumesFromSnapshot
                 },
                 {
-                    "Invoke-RscMutateAzure -ExcludeNativeManagedDisksFromSnapshot",
+                    "New-RscMutationAzure -ExcludeNativeManagedDisksFromSnapshot",
                     GqlRootFieldName.excludeAzureNativeManagedDisksFromSnapshot
                 },
                 {
-                    "Invoke-RscMutateDb2 -ExpireDownloadedSnapshots",
+                    "New-RscMutationDb2 -ExpireDownloadedSnapshots",
                     GqlRootFieldName.expireDownloadedDb2Snapshots
                 },
                 {
-                    "Invoke-RscMutateHyperv -ExportVirtualMachine",
+                    "New-RscMutationHyperv -ExportVirtualMachine",
                     GqlRootFieldName.exportHypervVirtualMachine
                 },
                 {
-                    "Invoke-RscMutateMssql -ExportDatabase",
+                    "New-RscMutationMssql -ExportDatabase",
                     GqlRootFieldName.exportMssqlDatabase
                 },
                 {
-                    "Invoke-RscMutateNutanix -ExportSnapshot",
+                    "New-RscMutationNutanix -ExportSnapshot",
                     GqlRootFieldName.exportNutanixSnapshot
                 },
                 {
-                    "Invoke-RscMutateO365 -ExportMailbox",
+                    "New-RscMutationO365 -ExportMailbox",
                     GqlRootFieldName.exportO365Mailbox
                 },
                 {
-                    "Invoke-RscMutateOracle -ExportDatabase",
+                    "New-RscMutationOracle -ExportDatabase",
                     GqlRootFieldName.exportOracleDatabase
                 },
                 {
-                    "Invoke-RscMutateOracle -ExportTablespace",
+                    "New-RscMutationOracle -ExportTablespace",
                     GqlRootFieldName.exportOracleTablespace
                 },
                 {
-                    "Invoke-RscMutateSla -ExportManagedVolumeSnapshot",
+                    "New-RscMutationSla -ExportManagedVolumeSnapshot",
                     GqlRootFieldName.exportSlaManagedVolumeSnapshot
                 },
                 {
-                    "Invoke-RscMutateAws -FinalizeCloudAccountDeletion",
+                    "New-RscMutationAws -FinalizeCloudAccountDeletion",
                     GqlRootFieldName.finalizeAwsCloudAccountDeletion
                 },
                 {
-                    "Invoke-RscMutateAws -FinalizeCloudAccountProtection",
+                    "New-RscMutationAws -FinalizeCloudAccountProtection",
                     GqlRootFieldName.finalizeAwsCloudAccountProtection
                 },
                 {
-                    "Invoke-RscMutateSla -GetPendingAssignments",
+                    "New-RscMutationSla -GetPendingAssignments",
                     GqlRootFieldName.getPendingSlaAssignments
                 },
                 {
-                    "Invoke-RscQuerySla -GlobalFilterList",
+                    "New-RscQuerySla -GlobalFilterList",
                     GqlRootFieldName.globalSlaFilterConnection
                 },
                 {
-                    "Invoke-RscQuerySla -GlobalStatuses",
+                    "New-RscQuerySla -GlobalStatuses",
                     GqlRootFieldName.globalSlaStatuses
                 },
                 {
-                    "Invoke-RscQueryCluster -HostFailover",
+                    "New-RscQueryCluster -HostFailover",
                     GqlRootFieldName.hostFailoverCluster
                 },
                 {
-                    "Invoke-RscQueryHyperv -Cluster",
+                    "New-RscQueryHyperv -Cluster",
                     GqlRootFieldName.hypervCluster
                 },
                 {
-                    "Invoke-RscMutateHyperv -DeleteAllSnapshots",
+                    "New-RscMutationHyperv -DeleteAllSnapshots",
                     GqlRootFieldName.hypervDeleteAllSnapshots
                 },
                 {
-                    "Invoke-RscQueryHyperv -HostAsyncRequestStatus",
+                    "New-RscQueryHyperv -HostAsyncRequestStatus",
                     GqlRootFieldName.hypervHostAsyncRequestStatus
                 },
                 {
-                    "Invoke-RscQueryHyperv -Mounts",
+                    "New-RscQueryHyperv -Mounts",
                     GqlRootFieldName.hypervMounts
                 },
                 {
-                    "Invoke-RscMutateHyperv -OnDemandSnapshot",
+                    "New-RscMutationHyperv -OnDemandSnapshot",
                     GqlRootFieldName.hypervOnDemandSnapshot
                 },
                 {
-                    "Invoke-RscQueryHyperv -Scvmm",
+                    "New-RscQueryHyperv -Scvmm",
                     GqlRootFieldName.hypervScvmm
                 },
                 {
-                    "Invoke-RscQueryHyperv -ScvmmAsyncRequestStatus",
+                    "New-RscQueryHyperv -ScvmmAsyncRequestStatus",
                     GqlRootFieldName.hypervScvmmAsyncRequestStatus
                 },
                 {
-                    "Invoke-RscMutateHyperv -ScvmmDelete",
+                    "New-RscMutationHyperv -ScvmmDelete",
                     GqlRootFieldName.hypervScvmmDelete
                 },
                 {
-                    "Invoke-RscMutateHyperv -ScvmmUpdate",
+                    "New-RscMutationHyperv -ScvmmUpdate",
                     GqlRootFieldName.hypervScvmmUpdate
                 },
                 {
-                    "Invoke-RscQueryHyperv -Scvmms",
+                    "New-RscQueryHyperv -Scvmms",
                     GqlRootFieldName.hypervScvmms
                 },
                 {
-                    "Invoke-RscQueryHyperv -Server",
+                    "New-RscQueryHyperv -Server",
                     GqlRootFieldName.hypervServer
                 },
                 {
-                    "Invoke-RscQueryHyperv -Servers",
+                    "New-RscQueryHyperv -Servers",
                     GqlRootFieldName.hypervServers
                 },
                 {
-                    "Invoke-RscQueryHyperv -TopLevelDescendants",
+                    "New-RscQueryHyperv -TopLevelDescendants",
                     GqlRootFieldName.hypervTopLevelDescendants
                 },
                 {
-                    "Invoke-RscQueryHyperv -VirtualMachine",
+                    "New-RscQueryHyperv -VirtualMachine",
                     GqlRootFieldName.hypervVirtualMachine
                 },
                 {
-                    "Invoke-RscQueryHyperv -VirtualMachineAsyncRequestStatus",
+                    "New-RscQueryHyperv -VirtualMachineAsyncRequestStatus",
                     GqlRootFieldName.hypervVirtualMachineAsyncRequestStatus
                 },
                 {
-                    "Invoke-RscQueryHyperv -VirtualMachines",
+                    "New-RscQueryHyperv -VirtualMachines",
                     GqlRootFieldName.hypervVirtualMachines
                 },
                 {
-                    "Invoke-RscQueryHyperv -VmDetail",
+                    "New-RscQueryHyperv -VmDetail",
                     GqlRootFieldName.hypervVmDetail
                 },
                 {
-                    "Invoke-RscMutateO365 -InsertCustomerApp",
+                    "New-RscMutationO365 -InsertCustomerApp",
                     GqlRootFieldName.insertCustomerO365App
                 },
                 {
-                    "Invoke-RscMutateHyperv -InstantRecoverVirtualMachineSnapshot",
+                    "New-RscMutationHyperv -InstantRecoverVirtualMachineSnapshot",
                     GqlRootFieldName.instantRecoverHypervVirtualMachineSnapshot
                 },
                 {
-                    "Invoke-RscMutateOracle -InstantRecoverSnapshot",
+                    "New-RscMutationOracle -InstantRecoverSnapshot",
                     GqlRootFieldName.instantRecoverOracleSnapshot
                 },
                 {
-                    "Invoke-RscQueryAws -IsNativeEbsVolumeSnapshotRestorable",
+                    "New-RscQueryAws -IsNativeEbsVolumeSnapshotRestorable",
                     GqlRootFieldName.isAwsNativeEbsVolumeSnapshotRestorable
                 },
                 {
-                    "Invoke-RscQueryAws -IsNativeRdsInstanceLaunchConfigurationValid",
+                    "New-RscQueryAws -IsNativeRdsInstanceLaunchConfigurationValid",
                     GqlRootFieldName.isAwsNativeRdsInstanceLaunchConfigurationValid
                 },
                 {
-                    "Invoke-RscQueryAws -IsS3BucketNameAvailable",
+                    "New-RscQueryAws -IsS3BucketNameAvailable",
                     GqlRootFieldName.isAwsS3BucketNameAvailable
                 },
                 {
-                    "Invoke-RscQueryAzure -IsNativeManagedDiskSnapshotRestorable",
+                    "New-RscQueryAzure -IsNativeManagedDiskSnapshotRestorable",
                     GqlRootFieldName.isAzureNativeManagedDiskSnapshotRestorable
                 },
                 {
-                    "Invoke-RscQueryAzure -IsNativeSqlDatabaseSnapshotPersistent",
+                    "New-RscQueryAzure -IsNativeSqlDatabaseSnapshotPersistent",
                     GqlRootFieldName.isAzureNativeSqlDatabaseSnapshotPersistent
                 },
                 {
-                    "Invoke-RscQueryAzure -IsStorageAccountNameAvailable",
+                    "New-RscQueryAzure -IsStorageAccountNameAvailable",
                     GqlRootFieldName.isAzureStorageAccountNameAvailable
                 },
                 {
-                    "Invoke-RscQueryCluster -IsTotpAckNecessary",
+                    "New-RscQueryCluster -IsTotpAckNecessary",
                     GqlRootFieldName.isTotpAckNecessaryForCluster
                 },
                 {
-                    "Invoke-RscQueryCluster -K8s",
+                    "New-RscQueryCluster -K8s",
                     GqlRootFieldName.k8sClusters
                 },
                 {
-                    "Invoke-RscQueryLdap -AuthorizedPrincipalList",
+                    "New-RscQueryLdap -AuthorizedPrincipalList",
                     GqlRootFieldName.ldapAuthorizedPrincipalConnection
                 },
                 {
-                    "Invoke-RscQueryLdap -IntegrationList",
+                    "New-RscQueryLdap -IntegrationList",
                     GqlRootFieldName.ldapIntegrationConnection
                 },
                 {
-                    "Invoke-RscQueryLdap -PrincipalList",
+                    "New-RscQueryLdap -PrincipalList",
                     GqlRootFieldName.ldapPrincipalConnection
                 },
                 {
-                    "Invoke-RscQueryO365 -ListApps",
+                    "New-RscQueryO365 -ListApps",
                     GqlRootFieldName.listO365Apps
                 },
                 {
-                    "Invoke-RscMutateAzure -MapCloudAccountExocomputeSubscription",
+                    "New-RscMutationAzure -MapCloudAccountExocomputeSubscription",
                     GqlRootFieldName.mapAzureCloudAccountExocomputeSubscription
                 },
                 {
-                    "Invoke-RscMutateAzure -MapCloudAccountToPersistentStorageLocation",
+                    "New-RscMutationAzure -MapCloudAccountToPersistentStorageLocation",
                     GqlRootFieldName.mapAzureCloudAccountToPersistentStorageLocation
                 },
                 {
-                    "Invoke-RscMutateNutanix -MigrateMountV1",
+                    "New-RscMutationNutanix -MigrateMountV1",
                     GqlRootFieldName.migrateNutanixMountV1
                 },
                 {
-                    "Invoke-RscQueryMongo -BulkRecoverableRanges",
+                    "New-RscQueryMongo -BulkRecoverableRanges",
                     GqlRootFieldName.mongoBulkRecoverableRanges
                 },
                 {
-                    "Invoke-RscQueryMongo -Collection",
+                    "New-RscQueryMongo -Collection",
                     GqlRootFieldName.mongoCollection
                 },
                 {
-                    "Invoke-RscQueryMongo -Collections",
+                    "New-RscQueryMongo -Collections",
                     GqlRootFieldName.mongoCollections
                 },
                 {
-                    "Invoke-RscQueryMongo -Database",
+                    "New-RscQueryMongo -Database",
                     GqlRootFieldName.mongoDatabase
                 },
                 {
-                    "Invoke-RscQueryMongo -Databases",
+                    "New-RscQueryMongo -Databases",
                     GqlRootFieldName.mongoDatabases
                 },
                 {
-                    "Invoke-RscQueryMongo -RecoverableRanges",
+                    "New-RscQueryMongo -RecoverableRanges",
                     GqlRootFieldName.mongoRecoverableRanges
                 },
                 {
-                    "Invoke-RscQueryMongo -Source",
+                    "New-RscQueryMongo -Source",
                     GqlRootFieldName.mongoSource
                 },
                 {
-                    "Invoke-RscQueryMongo -Sources",
+                    "New-RscQueryMongo -Sources",
                     GqlRootFieldName.mongoSources
                 },
                 {
-                    "Invoke-RscQueryMongo -DbBulkRecoverableRange",
+                    "New-RscQueryMongo -DbBulkRecoverableRange",
                     GqlRootFieldName.mongodbBulkRecoverableRange
                 },
                 {
-                    "Invoke-RscQueryMongo -DbCollection",
+                    "New-RscQueryMongo -DbCollection",
                     GqlRootFieldName.mongodbCollection
                 },
                 {
-                    "Invoke-RscQueryMongo -DbCollectionRecoverableRange",
+                    "New-RscQueryMongo -DbCollectionRecoverableRange",
                     GqlRootFieldName.mongodbCollectionRecoverableRange
                 },
                 {
-                    "Invoke-RscQueryMongo -DbCollections",
+                    "New-RscQueryMongo -DbCollections",
                     GqlRootFieldName.mongodbCollections
                 },
                 {
-                    "Invoke-RscQueryMongo -DbDatabase",
+                    "New-RscQueryMongo -DbDatabase",
                     GqlRootFieldName.mongodbDatabase
                 },
                 {
-                    "Invoke-RscQueryMongo -DbDatabases",
+                    "New-RscQueryMongo -DbDatabases",
                     GqlRootFieldName.mongodbDatabases
                 },
                 {
-                    "Invoke-RscQueryMongo -DbSource",
+                    "New-RscQueryMongo -DbSource",
                     GqlRootFieldName.mongodbSource
                 },
                 {
-                    "Invoke-RscQueryMongo -DbSources",
+                    "New-RscQueryMongo -DbSources",
                     GqlRootFieldName.mongodbSources
                 },
                 {
-                    "Invoke-RscMutateNutanix -MountSnapshotV1",
+                    "New-RscMutationNutanix -MountSnapshotV1",
                     GqlRootFieldName.mountNutanixSnapshotV1
                 },
                 {
-                    "Invoke-RscMutateOracle -MountDatabase",
+                    "New-RscMutationOracle -MountDatabase",
                     GqlRootFieldName.mountOracleDatabase
                 },
                 {
-                    "Invoke-RscQueryMssql -AvailabilityGroup",
+                    "New-RscQueryMssql -AvailabilityGroup",
                     GqlRootFieldName.mssqlAvailabilityGroup
                 },
                 {
-                    "Invoke-RscQueryMssql -CompatibleInstances",
+                    "New-RscQueryMssql -CompatibleInstances",
                     GqlRootFieldName.mssqlCompatibleInstances
                 },
                 {
-                    "Invoke-RscQueryMssql -Database",
+                    "New-RscQueryMssql -Database",
                     GqlRootFieldName.mssqlDatabase
                 },
                 {
-                    "Invoke-RscQueryMssql -DatabaseLiveMounts",
+                    "New-RscQueryMssql -DatabaseLiveMounts",
                     GqlRootFieldName.mssqlDatabaseLiveMounts
                 },
                 {
-                    "Invoke-RscQueryMssql -DatabaseMissedRecoverableRanges",
+                    "New-RscQueryMssql -DatabaseMissedRecoverableRanges",
                     GqlRootFieldName.mssqlDatabaseMissedRecoverableRanges
                 },
                 {
-                    "Invoke-RscQueryMssql -DatabaseMissedSnapshots",
+                    "New-RscQueryMssql -DatabaseMissedSnapshots",
                     GqlRootFieldName.mssqlDatabaseMissedSnapshots
                 },
                 {
-                    "Invoke-RscQueryMssql -DatabaseRestoreEstimate",
+                    "New-RscQueryMssql -DatabaseRestoreEstimate",
                     GqlRootFieldName.mssqlDatabaseRestoreEstimate
                 },
                 {
-                    "Invoke-RscQueryMssql -Databases",
+                    "New-RscQueryMssql -Databases",
                     GqlRootFieldName.mssqlDatabases
                 },
                 {
-                    "Invoke-RscQueryMssql -DefaultProperties",
+                    "New-RscQueryMssql -DefaultProperties",
                     GqlRootFieldName.mssqlDefaultProperties
                 },
                 {
-                    "Invoke-RscQueryMssql -Instance",
+                    "New-RscQueryMssql -Instance",
                     GqlRootFieldName.mssqlInstance
                 },
                 {
-                    "Invoke-RscQueryMssql -LogShippingTargets",
+                    "New-RscQueryMssql -LogShippingTargets",
                     GqlRootFieldName.mssqlLogShippingTargets
                 },
                 {
-                    "Invoke-RscQueryMssql -RecoverableRanges",
+                    "New-RscQueryMssql -RecoverableRanges",
                     GqlRootFieldName.mssqlRecoverableRanges
                 },
                 {
-                    "Invoke-RscQueryMssql -TopLevelDescendants",
+                    "New-RscQueryMssql -TopLevelDescendants",
                     GqlRootFieldName.mssqlTopLevelDescendants
                 },
                 {
-                    "Invoke-RscQueryNutanix -BrowseSnapshot",
+                    "New-RscQueryNutanix -BrowseSnapshot",
                     GqlRootFieldName.nutanixBrowseSnapshot
                 },
                 {
-                    "Invoke-RscQueryNutanix -Category",
+                    "New-RscQueryNutanix -Category",
                     GqlRootFieldName.nutanixCategory
                 },
                 {
-                    "Invoke-RscQueryNutanix -CategoryValue",
+                    "New-RscQueryNutanix -CategoryValue",
                     GqlRootFieldName.nutanixCategoryValue
                 },
                 {
-                    "Invoke-RscQueryNutanix -Cluster",
+                    "New-RscQueryNutanix -Cluster",
                     GqlRootFieldName.nutanixCluster
                 },
                 {
-                    "Invoke-RscQueryNutanix -ClusterAsyncRequestStatus",
+                    "New-RscQueryNutanix -ClusterAsyncRequestStatus",
                     GqlRootFieldName.nutanixClusterAsyncRequestStatus
                 },
                 {
-                    "Invoke-RscQueryNutanix -ClusterContainers",
+                    "New-RscQueryNutanix -ClusterContainers",
                     GqlRootFieldName.nutanixClusterContainers
                 },
                 {
-                    "Invoke-RscQueryNutanix -ClusterNetworks",
+                    "New-RscQueryNutanix -ClusterNetworks",
                     GqlRootFieldName.nutanixClusterNetworks
                 },
                 {
-                    "Invoke-RscQueryNutanix -Clusters",
+                    "New-RscQueryNutanix -Clusters",
                     GqlRootFieldName.nutanixClusters
                 },
                 {
-                    "Invoke-RscQueryNutanix -Mounts",
+                    "New-RscQueryNutanix -Mounts",
                     GqlRootFieldName.nutanixMounts
                 },
                 {
-                    "Invoke-RscQueryNutanix -PrismCentral",
+                    "New-RscQueryNutanix -PrismCentral",
                     GqlRootFieldName.nutanixPrismCentral
                 },
                 {
-                    "Invoke-RscQueryNutanix -PrismCentrals",
+                    "New-RscQueryNutanix -PrismCentrals",
                     GqlRootFieldName.nutanixPrismCentrals
                 },
                 {
-                    "Invoke-RscQueryNutanix -SnapshotDetail",
+                    "New-RscQueryNutanix -SnapshotDetail",
                     GqlRootFieldName.nutanixSnapshotDetail
                 },
                 {
-                    "Invoke-RscQueryNutanix -TopLevelDescendants",
+                    "New-RscQueryNutanix -TopLevelDescendants",
                     GqlRootFieldName.nutanixTopLevelDescendants
                 },
                 {
-                    "Invoke-RscQueryNutanix -Vm",
+                    "New-RscQueryNutanix -Vm",
                     GqlRootFieldName.nutanixVm
                 },
                 {
-                    "Invoke-RscQueryNutanix -VmAsyncRequestStatus",
+                    "New-RscQueryNutanix -VmAsyncRequestStatus",
                     GqlRootFieldName.nutanixVmAsyncRequestStatus
                 },
                 {
-                    "Invoke-RscQueryNutanix -VmMissedSnapshots",
+                    "New-RscQueryNutanix -VmMissedSnapshots",
                     GqlRootFieldName.nutanixVmMissedSnapshots
                 },
                 {
-                    "Invoke-RscQueryNutanix -Vms",
+                    "New-RscQueryNutanix -Vms",
                     GqlRootFieldName.nutanixVms
                 },
                 {
-                    "Invoke-RscQueryO365 -Calendar",
+                    "New-RscQueryO365 -Calendar",
                     GqlRootFieldName.o365Calendar
                 },
                 {
-                    "Invoke-RscQueryO365 -Groups",
+                    "New-RscQueryO365 -Groups",
                     GqlRootFieldName.o365Groups
                 },
                 {
-                    "Invoke-RscQueryO365 -License",
+                    "New-RscQueryO365 -License",
                     GqlRootFieldName.o365License
                 },
                 {
-                    "Invoke-RscQueryO365 -Mailbox",
+                    "New-RscQueryO365 -Mailbox",
                     GqlRootFieldName.o365Mailbox
                 },
                 {
-                    "Invoke-RscQueryO365 -Mailboxes",
+                    "New-RscQueryO365 -Mailboxes",
                     GqlRootFieldName.o365Mailboxes
                 },
                 {
-                    "Invoke-RscMutateO365 -OauthConsentComplete",
+                    "New-RscMutationO365 -OauthConsentComplete",
                     GqlRootFieldName.o365OauthConsentComplete
                 },
                 {
-                    "Invoke-RscMutateO365 -OauthConsentKickoff",
+                    "New-RscMutationO365 -OauthConsentKickoff",
                     GqlRootFieldName.o365OauthConsentKickoff
                 },
                 {
-                    "Invoke-RscQueryO365 -ObjectAncestors",
+                    "New-RscQueryO365 -ObjectAncestors",
                     GqlRootFieldName.o365ObjectAncestors
                 },
                 {
-                    "Invoke-RscQueryO365 -Onedrive",
+                    "New-RscQueryO365 -Onedrive",
                     GqlRootFieldName.o365Onedrive
                 },
                 {
-                    "Invoke-RscQueryO365 -Onedrives",
+                    "New-RscQueryO365 -Onedrives",
                     GqlRootFieldName.o365Onedrives
                 },
                 {
-                    "Invoke-RscQueryO365 -Org",
+                    "New-RscQueryO365 -Org",
                     GqlRootFieldName.o365Org
                 },
                 {
-                    "Invoke-RscQueryO365 -OrgAtSnappableLevel",
+                    "New-RscQueryO365 -OrgAtSnappableLevel",
                     GqlRootFieldName.o365OrgAtSnappableLevel
                 },
                 {
-                    "Invoke-RscQueryO365 -OrgSummaries",
+                    "New-RscQueryO365 -OrgSummaries",
                     GqlRootFieldName.o365OrgSummaries
                 },
                 {
-                    "Invoke-RscQueryO365 -Orgs",
+                    "New-RscQueryO365 -Orgs",
                     GqlRootFieldName.o365Orgs
                 },
                 {
-                    "Invoke-RscMutateO365 -PdlGroups",
+                    "New-RscMutationO365 -PdlGroups",
                     GqlRootFieldName.o365PdlGroups
                 },
                 {
-                    "Invoke-RscMutateO365 -SaaSSetupKickoff",
+                    "New-RscMutationO365 -SaaSSetupKickoff",
                     GqlRootFieldName.o365SaaSSetupKickoff
                 },
                 {
-                    "Invoke-RscMutateO365 -SaasSetupComplete",
+                    "New-RscMutationO365 -SaasSetupComplete",
                     GqlRootFieldName.o365SaasSetupComplete
                 },
                 {
-                    "Invoke-RscQueryO365 -ServiceAccount",
+                    "New-RscQueryO365 -ServiceAccount",
                     GqlRootFieldName.o365ServiceAccount
                 },
                 {
-                    "Invoke-RscQueryO365 -ServiceStatus",
+                    "New-RscQueryO365 -ServiceStatus",
                     GqlRootFieldName.o365ServiceStatus
                 },
                 {
-                    "Invoke-RscMutateO365 -SetupKickoff",
+                    "New-RscMutationO365 -SetupKickoff",
                     GqlRootFieldName.o365SetupKickoff
                 },
                 {
-                    "Invoke-RscQueryO365 -SharepointDrive",
+                    "New-RscQueryO365 -SharepointDrive",
                     GqlRootFieldName.o365SharepointDrive
                 },
                 {
-                    "Invoke-RscQueryO365 -SharepointDrives",
+                    "New-RscQueryO365 -SharepointDrives",
                     GqlRootFieldName.o365SharepointDrives
                 },
                 {
-                    "Invoke-RscQueryO365 -SharepointList",
+                    "New-RscQueryO365 -SharepointList",
                     GqlRootFieldName.o365SharepointList
                 },
                 {
-                    "Invoke-RscQueryO365 -SharepointLists",
+                    "New-RscQueryO365 -SharepointLists",
                     GqlRootFieldName.o365SharepointLists
                 },
                 {
-                    "Invoke-RscQueryO365 -SharepointObjectList",
+                    "New-RscQueryO365 -SharepointObjectList",
                     GqlRootFieldName.o365SharepointObjectList
                 },
                 {
-                    "Invoke-RscQueryO365 -SharepointObjects",
+                    "New-RscQueryO365 -SharepointObjects",
                     GqlRootFieldName.o365SharepointObjects
                 },
                 {
-                    "Invoke-RscQueryO365 -SharepointSite",
+                    "New-RscQueryO365 -SharepointSite",
                     GqlRootFieldName.o365SharepointSite
                 },
                 {
-                    "Invoke-RscQueryO365 -SharepointSites",
+                    "New-RscQueryO365 -SharepointSites",
                     GqlRootFieldName.o365SharepointSites
                 },
                 {
-                    "Invoke-RscQueryO365 -Site",
+                    "New-RscQueryO365 -Site",
                     GqlRootFieldName.o365Site
                 },
                 {
-                    "Invoke-RscQueryO365 -Sites",
+                    "New-RscQueryO365 -Sites",
                     GqlRootFieldName.o365Sites
                 },
                 {
-                    "Invoke-RscQueryO365 -StorageStats",
+                    "New-RscQueryO365 -StorageStats",
                     GqlRootFieldName.o365StorageStats
                 },
                 {
-                    "Invoke-RscQueryO365 -Team",
+                    "New-RscQueryO365 -Team",
                     GqlRootFieldName.o365Team
                 },
                 {
-                    "Invoke-RscQueryO365 -TeamChannels",
+                    "New-RscQueryO365 -TeamChannels",
                     GqlRootFieldName.o365TeamChannels
                 },
                 {
-                    "Invoke-RscQueryO365 -TeamConversationsFolderID",
+                    "New-RscQueryO365 -TeamConversationsFolderID",
                     GqlRootFieldName.o365TeamConversationsFolderID
                 },
                 {
-                    "Invoke-RscQueryO365 -TeamPostedBy",
+                    "New-RscQueryO365 -TeamPostedBy",
                     GqlRootFieldName.o365TeamPostedBy
                 },
                 {
-                    "Invoke-RscQueryO365 -Teams",
+                    "New-RscQueryO365 -Teams",
                     GqlRootFieldName.o365Teams
                 },
                 {
-                    "Invoke-RscQueryO365 -User",
+                    "New-RscQueryO365 -User",
                     GqlRootFieldName.o365User
                 },
                 {
-                    "Invoke-RscQueryO365 -UserObjects",
+                    "New-RscQueryO365 -UserObjects",
                     GqlRootFieldName.o365UserObjects
                 },
                 {
-                    "Invoke-RscQueryOracle -AcoExampleDownloadLink",
+                    "New-RscQueryOracle -AcoExampleDownloadLink",
                     GqlRootFieldName.oracleAcoExampleDownloadLink
                 },
                 {
-                    "Invoke-RscQueryOracle -AcoParameters",
+                    "New-RscQueryOracle -AcoParameters",
                     GqlRootFieldName.oracleAcoParameters
                 },
                 {
-                    "Invoke-RscQueryOracle -DataGuardGroup",
+                    "New-RscQueryOracle -DataGuardGroup",
                     GqlRootFieldName.oracleDataGuardGroup
                 },
                 {
-                    "Invoke-RscQueryOracle -Database",
+                    "New-RscQueryOracle -Database",
                     GqlRootFieldName.oracleDatabase
                 },
                 {
-                    "Invoke-RscQueryOracle -DatabaseLogBackupConfig",
+                    "New-RscQueryOracle -DatabaseLogBackupConfig",
                     GqlRootFieldName.oracleDatabaseLogBackupConfig
                 },
                 {
-                    "Invoke-RscQueryOracle -Databases",
+                    "New-RscQueryOracle -Databases",
                     GqlRootFieldName.oracleDatabases
                 },
                 {
-                    "Invoke-RscQueryOracle -Host",
+                    "New-RscQueryOracle -Host",
                     GqlRootFieldName.oracleHost
                 },
                 {
-                    "Invoke-RscQueryOracle -HostLogBackupConfig",
+                    "New-RscQueryOracle -HostLogBackupConfig",
                     GqlRootFieldName.oracleHostLogBackupConfig
                 },
                 {
-                    "Invoke-RscQueryOracle -LiveMounts",
+                    "New-RscQueryOracle -LiveMounts",
                     GqlRootFieldName.oracleLiveMounts
                 },
                 {
-                    "Invoke-RscQueryOracle -MissedRecoverableRanges",
+                    "New-RscQueryOracle -MissedRecoverableRanges",
                     GqlRootFieldName.oracleMissedRecoverableRanges
                 },
                 {
-                    "Invoke-RscQueryOracle -MissedSnapshots",
+                    "New-RscQueryOracle -MissedSnapshots",
                     GqlRootFieldName.oracleMissedSnapshots
                 },
                 {
-                    "Invoke-RscQueryOracle -PdbDetails",
+                    "New-RscQueryOracle -PdbDetails",
                     GqlRootFieldName.oraclePdbDetails
                 },
                 {
-                    "Invoke-RscQueryOracle -Rac",
+                    "New-RscQueryOracle -Rac",
                     GqlRootFieldName.oracleRac
                 },
                 {
-                    "Invoke-RscQueryOracle -RacLogBackupConfig",
+                    "New-RscQueryOracle -RacLogBackupConfig",
                     GqlRootFieldName.oracleRacLogBackupConfig
                 },
                 {
-                    "Invoke-RscQueryOracle -RecoverableRanges",
+                    "New-RscQueryOracle -RecoverableRanges",
                     GqlRootFieldName.oracleRecoverableRanges
                 },
                 {
-                    "Invoke-RscQueryOracle -TopLevelDescendants",
+                    "New-RscQueryOracle -TopLevelDescendants",
                     GqlRootFieldName.oracleTopLevelDescendants
                 },
                 {
-                    "Invoke-RscMutateAws -PatchAuthenticationServerBasedCloudAccount",
+                    "New-RscMutationAws -PatchAuthenticationServerBasedCloudAccount",
                     GqlRootFieldName.patchAwsAuthenticationServerBasedCloudAccount
                 },
                 {
-                    "Invoke-RscMutateAws -PatchIamUserBasedCloudAccount",
+                    "New-RscMutationAws -PatchIamUserBasedCloudAccount",
                     GqlRootFieldName.patchAwsIamUserBasedCloudAccount
                 },
                 {
-                    "Invoke-RscMutateDb2 -PatchDatabase",
+                    "New-RscMutationDb2 -PatchDatabase",
                     GqlRootFieldName.patchDb2Database
                 },
                 {
-                    "Invoke-RscMutateDb2 -PatchInstance",
+                    "New-RscMutationDb2 -PatchInstance",
                     GqlRootFieldName.patchDb2Instance
                 },
                 {
-                    "Invoke-RscMutateMongo -PatchSource",
+                    "New-RscMutationMongo -PatchSource",
                     GqlRootFieldName.patchMongoSource
                 },
                 {
-                    "Invoke-RscMutateNutanix -PatchMountV1",
+                    "New-RscMutationNutanix -PatchMountV1",
                     GqlRootFieldName.patchNutanixMountV1
                 },
                 {
-                    "Invoke-RscMutateSla -Pause",
+                    "New-RscMutationSla -Pause",
                     GqlRootFieldName.pauseSla
                 },
                 {
-                    "Invoke-RscMutateAws -PrepareCloudAccountDeletion",
+                    "New-RscMutationAws -PrepareCloudAccountDeletion",
                     GqlRootFieldName.prepareAwsCloudAccountDeletion
                 },
                 {
-                    "Invoke-RscMutateAws -PrepareFeatureUpdateForCloudAccount",
+                    "New-RscMutationAws -PrepareFeatureUpdateForCloudAccount",
                     GqlRootFieldName.prepareFeatureUpdateForAwsCloudAccount
                 },
                 {
-                    "Invoke-RscQueryAws -RdsInstanceDetails",
+                    "New-RscQueryAws -RdsInstanceDetails",
                     GqlRootFieldName.rdsInstanceDetailsFromAws
                 },
                 {
-                    "Invoke-RscMutateCassandra -RecoverSource",
+                    "New-RscMutationCassandra -RecoverSource",
                     GqlRootFieldName.recoverCassandraSource
                 },
                 {
-                    "Invoke-RscMutateCluster -RecoverCloud",
+                    "New-RscMutationCluster -RecoverCloud",
                     GqlRootFieldName.recoverCloudCluster
                 },
                 {
-                    "Invoke-RscMutateMongo -RecoverSource",
+                    "New-RscMutationMongo -RecoverSource",
                     GqlRootFieldName.recoverMongoSource
                 },
                 {
-                    "Invoke-RscMutateMongo -RecoverdbSource",
+                    "New-RscMutationMongo -RecoverdbSource",
                     GqlRootFieldName.recoverMongodbSource
                 },
                 {
-                    "Invoke-RscMutateDb2 -RefreshDatabase",
+                    "New-RscMutationDb2 -RefreshDatabase",
                     GqlRootFieldName.refreshDb2Database
                 },
                 {
-                    "Invoke-RscMutateHyperv -RefreshScvmm",
+                    "New-RscMutationHyperv -RefreshScvmm",
                     GqlRootFieldName.refreshHypervScvmm
                 },
                 {
-                    "Invoke-RscMutateHyperv -RefreshServer",
+                    "New-RscMutationHyperv -RefreshServer",
                     GqlRootFieldName.refreshHypervServer
                 },
                 {
-                    "Invoke-RscMutateCluster -RefreshK8s",
+                    "New-RscMutationCluster -RefreshK8s",
                     GqlRootFieldName.refreshK8sCluster
                 },
                 {
-                    "Invoke-RscMutateNutanix -RefreshCluster",
+                    "New-RscMutationNutanix -RefreshCluster",
                     GqlRootFieldName.refreshNutanixCluster
                 },
                 {
-                    "Invoke-RscMutateNutanix -RefreshPrismCentral",
+                    "New-RscMutationNutanix -RefreshPrismCentral",
                     GqlRootFieldName.refreshNutanixPrismCentral
                 },
                 {
-                    "Invoke-RscMutateO365 -RefreshOrg",
+                    "New-RscMutationO365 -RefreshOrg",
                     GqlRootFieldName.refreshO365Org
                 },
                 {
-                    "Invoke-RscMutateOracle -RefreshDatabase",
+                    "New-RscMutationOracle -RefreshDatabase",
                     GqlRootFieldName.refreshOracleDatabase
                 },
                 {
-                    "Invoke-RscMutateVcenter -Refresh",
+                    "New-RscMutationVcenter -Refresh",
                     GqlRootFieldName.refreshVsphereVcenter
                 },
                 {
-                    "Invoke-RscMutateHyperv -RegisterAgentVirtualMachine",
+                    "New-RscMutationHyperv -RegisterAgentVirtualMachine",
                     GqlRootFieldName.registerAgentHypervVirtualMachine
                 },
                 {
-                    "Invoke-RscMutateNutanix -RegisterAgentVm",
+                    "New-RscMutationNutanix -RegisterAgentVm",
                     GqlRootFieldName.registerAgentNutanixVm
                 },
                 {
-                    "Invoke-RscMutateAws -RegisterFeatureArtifacts",
+                    "New-RscMutationAws -RegisterFeatureArtifacts",
                     GqlRootFieldName.registerAwsFeatureArtifacts
                 },
                 {
-                    "Invoke-RscMutateCluster -RegisterCloud",
+                    "New-RscMutationCluster -RegisterCloud",
                     GqlRootFieldName.registerCloudCluster
                 },
                 {
-                    "Invoke-RscMutateHyperv -RegisterScvmm",
+                    "New-RscMutationHyperv -RegisterScvmm",
                     GqlRootFieldName.registerHypervScvmm
                 },
                 {
-                    "Invoke-RscMutateCluster -RemoveCdm",
+                    "New-RscMutationCluster -RemoveCdm",
                     GqlRootFieldName.removeCdmCluster
                 },
                 {
-                    "Invoke-RscMutateLdap -RemoveIntegration",
+                    "New-RscMutationLdap -RemoveIntegration",
                     GqlRootFieldName.removeLdapIntegration
                 },
                 {
-                    "Invoke-RscMutateNutanix -RestoreFilesSnapshot",
+                    "New-RscMutationNutanix -RestoreFilesSnapshot",
                     GqlRootFieldName.restoreFilesNutanixSnapshot
                 },
                 {
-                    "Invoke-RscMutateHyperv -RestoreVirtualMachineSnapshotFiles",
+                    "New-RscMutationHyperv -RestoreVirtualMachineSnapshotFiles",
                     GqlRootFieldName.restoreHypervVirtualMachineSnapshotFiles
                 },
                 {
-                    "Invoke-RscMutateMssql -RestoreDatabase",
+                    "New-RscMutationMssql -RestoreDatabase",
                     GqlRootFieldName.restoreMssqlDatabase
                 },
                 {
-                    "Invoke-RscMutateO365 -RestoreMailbox",
+                    "New-RscMutationO365 -RestoreMailbox",
                     GqlRootFieldName.restoreO365Mailbox
                 },
                 {
-                    "Invoke-RscMutateO365 -RestoreSnappable",
+                    "New-RscMutationO365 -RestoreSnappable",
                     GqlRootFieldName.restoreO365Snappable
                 },
                 {
-                    "Invoke-RscMutateO365 -RestoreTeamsConversations",
+                    "New-RscMutationO365 -RestoreTeamsConversations",
                     GqlRootFieldName.restoreO365TeamsConversations
                 },
                 {
-                    "Invoke-RscMutateO365 -RestoreTeamsFiles",
+                    "New-RscMutationO365 -RestoreTeamsFiles",
                     GqlRootFieldName.restoreO365TeamsFiles
                 },
                 {
-                    "Invoke-RscMutateOracle -RestoreLogs",
+                    "New-RscMutationOracle -RestoreLogs",
                     GqlRootFieldName.restoreOracleLogs
                 },
                 {
-                    "Invoke-RscMutateMongo -RetryAddSource",
+                    "New-RscMutationMongo -RetryAddSource",
                     GqlRootFieldName.retryAddMongoSource
                 },
                 {
-                    "Invoke-RscQueryNutanix -SearchVm",
+                    "New-RscQueryNutanix -SearchVm",
                     GqlRootFieldName.searchNutanixVm
                 },
                 {
-                    "Invoke-RscMutateAzure -SetCloudAccountCustomerAppCredentials",
+                    "New-RscMutationAzure -SetCloudAccountCustomerAppCredentials",
                     GqlRootFieldName.setAzureCloudAccountCustomerAppCredentials
                 },
                 {
-                    "Invoke-RscMutateLdap -SetMfaSetting",
+                    "New-RscMutationLdap -SetMfaSetting",
                     GqlRootFieldName.setLdapMfaSetting
                 },
                 {
-                    "Invoke-RscMutateO365 -SetServiceAccount",
+                    "New-RscMutationO365 -SetServiceAccount",
                     GqlRootFieldName.setO365ServiceAccount
                 },
                 {
-                    "Invoke-RscMutateAzureO365 -SetupExocompute",
+                    "New-RscMutationAzureO365 -SetupExocompute",
                     GqlRootFieldName.setupAzureO365Exocompute
                 },
                 {
-                    "Invoke-RscQuerySla -AuditDetail",
+                    "New-RscQuerySla -AuditDetail",
                     GqlRootFieldName.slaAuditDetail
                 },
                 {
-                    "Invoke-RscQuerySla -ConflictObjects",
+                    "New-RscQuerySla -ConflictObjects",
                     GqlRootFieldName.slaConflictObjects
                 },
                 {
-                    "Invoke-RscQuerySla -Domain",
+                    "New-RscQuerySla -Domain",
                     GqlRootFieldName.slaDomain
                 },
                 {
-                    "Invoke-RscQuerySla -Domains",
+                    "New-RscQuerySla -Domains",
                     GqlRootFieldName.slaDomains
                 },
                 {
-                    "Invoke-RscQuerySla -ManagedVolume",
+                    "New-RscQuerySla -ManagedVolume",
                     GqlRootFieldName.slaManagedVolume
                 },
                 {
-                    "Invoke-RscQuerySla -ManagedVolumes",
+                    "New-RscQuerySla -ManagedVolumes",
                     GqlRootFieldName.slaManagedVolumes
                 },
                 {
-                    "Invoke-RscMutateAws -StartExocomputeDisableJob",
+                    "New-RscMutationAws -StartExocomputeDisableJob",
                     GqlRootFieldName.startAwsExocomputeDisableJob
                 },
                 {
-                    "Invoke-RscMutateAws -StartNativeAccountDisableJob",
+                    "New-RscMutationAws -StartNativeAccountDisableJob",
                     GqlRootFieldName.startAwsNativeAccountDisableJob
                 },
                 {
-                    "Invoke-RscMutateAws -StartNativeEc2InstanceSnapshotsJob",
+                    "New-RscMutationAws -StartNativeEc2InstanceSnapshotsJob",
                     GqlRootFieldName.startAwsNativeEc2InstanceSnapshotsJob
                 },
                 {
-                    "Invoke-RscMutateAws -StartNativeRdsInstanceSnapshotsJob",
+                    "New-RscMutationAws -StartNativeRdsInstanceSnapshotsJob",
                     GqlRootFieldName.startAwsNativeRdsInstanceSnapshotsJob
                 },
                 {
-                    "Invoke-RscMutateAzure -StartCloudAccountOauth",
+                    "New-RscMutationAzure -StartCloudAccountOauth",
                     GqlRootFieldName.startAzureCloudAccountOauth
                 },
                 {
-                    "Invoke-RscMutateAws -StartCreateNativeEbsVolumeSnapshotsJob",
+                    "New-RscMutationAws -StartCreateNativeEbsVolumeSnapshotsJob",
                     GqlRootFieldName.startCreateAwsNativeEbsVolumeSnapshotsJob
                 },
                 {
-                    "Invoke-RscMutateAzure -StartCreateNativeManagedDiskSnapshotsJob",
+                    "New-RscMutationAzure -StartCreateNativeManagedDiskSnapshotsJob",
                     GqlRootFieldName.startCreateAzureNativeManagedDiskSnapshotsJob
                 },
                 {
-                    "Invoke-RscMutateAzure -StartCreateNativeVirtualMachineSnapshotsJob",
+                    "New-RscMutationAzure -StartCreateNativeVirtualMachineSnapshotsJob",
                     GqlRootFieldName.startCreateAzureNativeVirtualMachineSnapshotsJob
                 },
                 {
-                    "Invoke-RscMutateAzure -StartDisableCloudAccountJob",
+                    "New-RscMutationAzure -StartDisableCloudAccountJob",
                     GqlRootFieldName.startDisableAzureCloudAccountJob
                 },
                 {
-                    "Invoke-RscMutateAzure -StartDisableNativeSubscriptionProtectionJob",
+                    "New-RscMutationAzure -StartDisableNativeSubscriptionProtectionJob",
                     GqlRootFieldName.startDisableAzureNativeSubscriptionProtectionJob
                 },
                 {
-                    "Invoke-RscMutateAws -StartExportNativeEbsVolumeSnapshotJob",
+                    "New-RscMutationAws -StartExportNativeEbsVolumeSnapshotJob",
                     GqlRootFieldName.startExportAwsNativeEbsVolumeSnapshotJob
                 },
                 {
-                    "Invoke-RscMutateAzure -StartExportNativeManagedDiskJob",
+                    "New-RscMutationAzure -StartExportNativeManagedDiskJob",
                     GqlRootFieldName.startExportAzureNativeManagedDiskJob
                 },
                 {
-                    "Invoke-RscMutateAzure -StartExportNativeVirtualMachineJob",
+                    "New-RscMutationAzure -StartExportNativeVirtualMachineJob",
                     GqlRootFieldName.startExportAzureNativeVirtualMachineJob
                 },
                 {
-                    "Invoke-RscMutateAzure -StartExportSqlDatabaseDbJob",
+                    "New-RscMutationAzure -StartExportSqlDatabaseDbJob",
                     GqlRootFieldName.startExportAzureSqlDatabaseDbJob
                 },
                 {
-                    "Invoke-RscMutateAzure -StartExportSqlManagedInstanceDbJob",
+                    "New-RscMutationAzure -StartExportSqlManagedInstanceDbJob",
                     GqlRootFieldName.startExportAzureSqlManagedInstanceDbJob
                 },
                 {
-                    "Invoke-RscMutateAws -StartRefreshNativeAccountsJob",
+                    "New-RscMutationAws -StartRefreshNativeAccountsJob",
                     GqlRootFieldName.startRefreshAwsNativeAccountsJob
                 },
                 {
-                    "Invoke-RscMutateAzure -StartRefreshNativeSubscriptionsJob",
+                    "New-RscMutationAzure -StartRefreshNativeSubscriptionsJob",
                     GqlRootFieldName.startRefreshAzureNativeSubscriptionsJob
                 },
                 {
-                    "Invoke-RscMutateAws -StartRestoreNativeEc2InstanceSnapshotJob",
+                    "New-RscMutationAws -StartRestoreNativeEc2InstanceSnapshotJob",
                     GqlRootFieldName.startRestoreAwsNativeEc2InstanceSnapshotJob
                 },
                 {
-                    "Invoke-RscMutateAzure -StartRestoreNativeVirtualMachineJob",
+                    "New-RscMutationAzure -StartRestoreNativeVirtualMachineJob",
                     GqlRootFieldName.startRestoreAzureNativeVirtualMachineJob
                 },
                 {
-                    "Invoke-RscMutateMssql -TakeLogBackup",
+                    "New-RscMutationMssql -TakeLogBackup",
                     GqlRootFieldName.takeMssqlLogBackup
                 },
                 {
-                    "Invoke-RscMutateOracle -TakeOnDemandDatabaseSnapshot",
+                    "New-RscMutationOracle -TakeOnDemandDatabaseSnapshot",
                     GqlRootFieldName.takeOnDemandOracleDatabaseSnapshot
                 },
                 {
-                    "Invoke-RscMutateOracle -TakeOnDemandLogSnapshot",
+                    "New-RscMutationOracle -TakeOnDemandLogSnapshot",
                     GqlRootFieldName.takeOnDemandOracleLogSnapshot
                 },
                 {
-                    "Invoke-RscQueryHyperv -UniqueServersCount",
+                    "New-RscQueryHyperv -UniqueServersCount",
                     GqlRootFieldName.uniqueHypervServersCount
                 },
                 {
-                    "Invoke-RscMutateAzure -UnmapCloudAccountExocomputeSubscription",
+                    "New-RscMutationAzure -UnmapCloudAccountExocomputeSubscription",
                     GqlRootFieldName.unmapAzureCloudAccountExocomputeSubscription
                 },
                 {
-                    "Invoke-RscMutateAzure -UnmapPersistentStorageSubscription",
+                    "New-RscMutationAzure -UnmapPersistentStorageSubscription",
                     GqlRootFieldName.unmapAzurePersistentStorageSubscription
                 },
                 {
-                    "Invoke-RscMutateAws -UpdateAutomaticTargetMapping",
+                    "New-RscMutationAws -UpdateAutomaticTargetMapping",
                     GqlRootFieldName.updateAutomaticAwsTargetMapping
                 },
                 {
-                    "Invoke-RscMutateAzure -UpdateAutomaticTargetMapping",
+                    "New-RscMutationAzure -UpdateAutomaticTargetMapping",
                     GqlRootFieldName.updateAutomaticAzureTargetMapping
                 },
                 {
-                    "Invoke-RscMutateAws -UpdateAccount",
+                    "New-RscMutationAws -UpdateAccount",
                     GqlRootFieldName.updateAwsAccount
                 },
                 {
-                    "Invoke-RscMutateAws -UpdateCloudAccount",
+                    "New-RscMutationAws -UpdateCloudAccount",
                     GqlRootFieldName.updateAwsCloudAccount
                 },
                 {
-                    "Invoke-RscMutateAws -UpdateCloudAccountFeature",
+                    "New-RscMutationAws -UpdateCloudAccountFeature",
                     GqlRootFieldName.updateAwsCloudAccountFeature
                 },
                 {
-                    "Invoke-RscMutateAws -UpdateComputeSetting",
+                    "New-RscMutationAws -UpdateComputeSetting",
                     GqlRootFieldName.updateAwsComputeSetting
                 },
                 {
-                    "Invoke-RscMutateAws -UpdateExocomputeConfigs",
+                    "New-RscMutationAws -UpdateExocomputeConfigs",
                     GqlRootFieldName.updateAwsExocomputeConfigs
                 },
                 {
-                    "Invoke-RscMutateAws -UpdateTarget",
+                    "New-RscMutationAws -UpdateTarget",
                     GqlRootFieldName.updateAwsTarget
                 },
                 {
-                    "Invoke-RscMutateAzure -UpdateAccount",
+                    "New-RscMutationAzure -UpdateAccount",
                     GqlRootFieldName.updateAzureAccount
                 },
                 {
-                    "Invoke-RscMutateAzure -UpdateCloudAccount",
+                    "New-RscMutationAzure -UpdateCloudAccount",
                     GqlRootFieldName.updateAzureCloudAccount
                 },
                 {
-                    "Invoke-RscMutateAzure -UpdateTarget",
+                    "New-RscMutationAzure -UpdateTarget",
                     GqlRootFieldName.updateAzureTarget
                 },
                 {
-                    "Invoke-RscMutateCassandra -UpdateSource",
+                    "New-RscMutationCassandra -UpdateSource",
                     GqlRootFieldName.updateCassandraSource
                 },
                 {
-                    "Invoke-RscMutateAws -UpdateCloudNativeStorageSetting",
+                    "New-RscMutationAws -UpdateCloudNativeStorageSetting",
                     GqlRootFieldName.updateCloudNativeAwsStorageSetting
                 },
                 {
-                    "Invoke-RscMutateAzure -UpdateCloudNativeStorageSetting",
+                    "New-RscMutationAzure -UpdateCloudNativeStorageSetting",
                     GqlRootFieldName.updateCloudNativeAzureStorageSetting
                 },
                 {
-                    "Invoke-RscMutateAzure -UpdateCloudNativeRcvStorageSetting",
+                    "New-RscMutationAzure -UpdateCloudNativeRcvStorageSetting",
                     GqlRootFieldName.updateCloudNativeRcvAzureStorageSetting
                 },
                 {
-                    "Invoke-RscMutateAzure -UpdateCustomerAppPermissionForSql",
+                    "New-RscMutationAzure -UpdateCustomerAppPermissionForSql",
                     GqlRootFieldName.updateCustomerAppPermissionForAzureSql
                 },
                 {
-                    "Invoke-RscMutateCluster -UpdateDatabaseLogReportingProperties",
+                    "New-RscMutationCluster -UpdateDatabaseLogReportingProperties",
                     GqlRootFieldName.updateDatabaseLogReportingPropertiesForCluster
                 },
                 {
-                    "Invoke-RscMutateCluster -UpdateFailover",
+                    "New-RscMutationCluster -UpdateFailover",
                     GqlRootFieldName.updateFailoverCluster
                 },
                 {
-                    "Invoke-RscMutateSla -UpdateGlobal",
+                    "New-RscMutationSla -UpdateGlobal",
                     GqlRootFieldName.updateGlobalSla
                 },
                 {
-                    "Invoke-RscMutateHyperv -UpdateVirtualMachine",
+                    "New-RscMutationHyperv -UpdateVirtualMachine",
                     GqlRootFieldName.updateHypervVirtualMachine
                 },
                 {
-                    "Invoke-RscMutateHyperv -UpdateVirtualMachineSnapshotMount",
+                    "New-RscMutationHyperv -UpdateVirtualMachineSnapshotMount",
                     GqlRootFieldName.updateHypervVirtualMachineSnapshotMount
                 },
                 {
-                    "Invoke-RscMutateLdap -UpdateIntegration",
+                    "New-RscMutationLdap -UpdateIntegration",
                     GqlRootFieldName.updateLdapIntegration
                 },
                 {
-                    "Invoke-RscMutateMongo -UpdatedbSource",
+                    "New-RscMutationMongo -UpdatedbSource",
                     GqlRootFieldName.updateMongodbSource
                 },
                 {
-                    "Invoke-RscMutateMssql -UpdateDefaultProperties",
+                    "New-RscMutationMssql -UpdateDefaultProperties",
                     GqlRootFieldName.updateMssqlDefaultProperties
                 },
                 {
-                    "Invoke-RscMutateMssql -UpdateLogShippingConfiguration",
+                    "New-RscMutationMssql -UpdateLogShippingConfiguration",
                     GqlRootFieldName.updateMssqlLogShippingConfiguration
                 },
                 {
-                    "Invoke-RscMutateNutanix -UpdateCluster",
+                    "New-RscMutationNutanix -UpdateCluster",
                     GqlRootFieldName.updateNutanixCluster
                 },
                 {
-                    "Invoke-RscMutateNutanix -UpdatePrismCentral",
+                    "New-RscMutationNutanix -UpdatePrismCentral",
                     GqlRootFieldName.updateNutanixPrismCentral
                 },
                 {
-                    "Invoke-RscMutateNutanix -UpdateVm",
+                    "New-RscMutationNutanix -UpdateVm",
                     GqlRootFieldName.updateNutanixVm
                 },
                 {
-                    "Invoke-RscMutateO365 -UpdateAppAuthStatus",
+                    "New-RscMutationO365 -UpdateAppAuthStatus",
                     GqlRootFieldName.updateO365AppAuthStatus
                 },
                 {
-                    "Invoke-RscMutateO365 -UpdateAppPermissions",
+                    "New-RscMutationO365 -UpdateAppPermissions",
                     GqlRootFieldName.updateO365AppPermissions
                 },
                 {
-                    "Invoke-RscMutateO365 -UpdateOrgCustomName",
+                    "New-RscMutationO365 -UpdateOrgCustomName",
                     GqlRootFieldName.updateO365OrgCustomName
                 },
                 {
-                    "Invoke-RscMutateOracle -UpdateDataGuardGroup",
+                    "New-RscMutationOracle -UpdateDataGuardGroup",
                     GqlRootFieldName.updateOracleDataGuardGroup
                 },
                 {
-                    "Invoke-RscMutateVcenter -Update",
+                    "New-RscMutationVcenter -Update",
                     GqlRootFieldName.updateVcenter
                 },
                 {
-                    "Invoke-RscMutateVcenter -UpdateHotAddBandwidth",
+                    "New-RscMutationVcenter -UpdateHotAddBandwidth",
                     GqlRootFieldName.updateVcenterHotAddBandwidth
                 },
                 {
-                    "Invoke-RscMutateVcenter -UpdateHotAddNetwork",
+                    "New-RscMutationVcenter -UpdateHotAddNetwork",
                     GqlRootFieldName.updateVcenterHotAddNetwork
                 },
                 {
-                    "Invoke-RscMutateVsphere -UpdateAdvancedTag",
+                    "New-RscMutationVsphere -UpdateAdvancedTag",
                     GqlRootFieldName.updateVsphereAdvancedTag
                 },
                 {
-                    "Invoke-RscMutateVsphereVm -Update",
+                    "New-RscMutationVsphereVm -Update",
                     GqlRootFieldName.updateVsphereVm
                 },
                 {
-                    "Invoke-RscMutateAws -UpgradeCloudAccountFeaturesWithoutCft",
+                    "New-RscMutationAws -UpgradeCloudAccountFeaturesWithoutCft",
                     GqlRootFieldName.upgradeAwsCloudAccountFeaturesWithoutCft
                 },
                 {
-                    "Invoke-RscMutateAws -UpgradeIamUserBasedCloudAccountPermissions",
+                    "New-RscMutationAws -UpgradeIamUserBasedCloudAccountPermissions",
                     GqlRootFieldName.upgradeAwsIamUserBasedCloudAccountPermissions
                 },
                 {
-                    "Invoke-RscMutateAzure -UpgradeCloudAccount",
+                    "New-RscMutationAzure -UpgradeCloudAccount",
                     GqlRootFieldName.upgradeAzureCloudAccount
                 },
                 {
-                    "Invoke-RscMutateAzure -UpgradeCloudAccountPermissionsWithoutOauth",
+                    "New-RscMutationAzure -UpgradeCloudAccountPermissionsWithoutOauth",
                     GqlRootFieldName.upgradeAzureCloudAccountPermissionsWithoutOauth
                 },
                 {
-                    "Invoke-RscQueryVcenter -AdvancedTagPreview",
+                    "New-RscQueryVcenter -AdvancedTagPreview",
                     GqlRootFieldName.vCenterAdvancedTagPreview
                 },
                 {
-                    "Invoke-RscQueryVcenter -HotAddBandwidth",
+                    "New-RscQueryVcenter -HotAddBandwidth",
                     GqlRootFieldName.vCenterHotAddBandwidth
                 },
                 {
-                    "Invoke-RscQueryVcenter -HotAddNetwork",
+                    "New-RscQueryVcenter -HotAddNetwork",
                     GqlRootFieldName.vCenterHotAddNetwork
                 },
                 {
-                    "Invoke-RscQueryVcenter -Networks",
+                    "New-RscQueryVcenter -Networks",
                     GqlRootFieldName.vCenterNetworks
                 },
                 {
-                    "Invoke-RscQueryVcenter -NumProxiesNeeded",
+                    "New-RscQueryVcenter -NumProxiesNeeded",
                     GqlRootFieldName.vCenterNumProxiesNeeded
                 },
                 {
-                    "Invoke-RscQueryVcenter -PreAddInfo",
+                    "New-RscQueryVcenter -PreAddInfo",
                     GqlRootFieldName.vCenterPreAddInfo
                 },
                 {
-                    "Invoke-RscQueryVsphere -ComputeCluster",
+                    "New-RscQueryVsphere -ComputeCluster",
                     GqlRootFieldName.vSphereComputeCluster
                 },
                 {
-                    "Invoke-RscQueryVsphere -ComputeClusters",
+                    "New-RscQueryVsphere -ComputeClusters",
                     GqlRootFieldName.vSphereComputeClusters
                 },
                 {
-                    "Invoke-RscQueryVsphere -Datacenter",
+                    "New-RscQueryVsphere -Datacenter",
                     GqlRootFieldName.vSphereDatacenter
                 },
                 {
-                    "Invoke-RscQueryVsphere -Datastore",
+                    "New-RscQueryVsphere -Datastore",
                     GqlRootFieldName.vSphereDatastore
                 },
                 {
-                    "Invoke-RscQueryVsphere -DatastoreCluster",
+                    "New-RscQueryVsphere -DatastoreCluster",
                     GqlRootFieldName.vSphereDatastoreCluster
                 },
                 {
-                    "Invoke-RscQueryVsphere -DatastoreClusters",
+                    "New-RscQueryVsphere -DatastoreClusters",
                     GqlRootFieldName.vSphereDatastoreClusters
                 },
                 {
-                    "Invoke-RscQueryVsphere -DatastoreList",
+                    "New-RscQueryVsphere -DatastoreList",
                     GqlRootFieldName.vSphereDatastoreConnection
                 },
                 {
-                    "Invoke-RscQueryVsphere -Folder",
+                    "New-RscQueryVsphere -Folder",
                     GqlRootFieldName.vSphereFolder
                 },
                 {
-                    "Invoke-RscQueryVsphere -Folders",
+                    "New-RscQueryVsphere -Folders",
                     GqlRootFieldName.vSphereFolders
                 },
                 {
-                    "Invoke-RscQueryVsphere -Host",
+                    "New-RscQueryVsphere -Host",
                     GqlRootFieldName.vSphereHost
                 },
                 {
-                    "Invoke-RscQueryVsphere -HostList",
+                    "New-RscQueryVsphere -HostList",
                     GqlRootFieldName.vSphereHostConnection
                 },
                 {
-                    "Invoke-RscQueryVsphere -HostDetails",
+                    "New-RscQueryVsphere -HostDetails",
                     GqlRootFieldName.vSphereHostDetails
                 },
                 {
-                    "Invoke-RscQueryVsphere -HostsByFids",
+                    "New-RscQueryVsphere -HostsByFids",
                     GqlRootFieldName.vSphereHostsByFids
                 },
                 {
-                    "Invoke-RscQueryVsphere -LiveMounts",
+                    "New-RscQueryVsphere -LiveMounts",
                     GqlRootFieldName.vSphereLiveMounts
                 },
                 {
-                    "Invoke-RscQueryVsphere -Mount",
+                    "New-RscQueryVsphere -Mount",
                     GqlRootFieldName.vSphereMount
                 },
                 {
-                    "Invoke-RscQueryVsphere -MountList",
+                    "New-RscQueryVsphere -MountList",
                     GqlRootFieldName.vSphereMountConnection
                 },
                 {
-                    "Invoke-RscQueryVsphere -Network",
+                    "New-RscQueryVsphere -Network",
                     GqlRootFieldName.vSphereNetwork
                 },
                 {
-                    "Invoke-RscQueryVsphere -ResourcePool",
+                    "New-RscQueryVsphere -ResourcePool",
                     GqlRootFieldName.vSphereResourcePool
                 },
                 {
-                    "Invoke-RscQueryVsphere -RootRecoveryHierarchy",
+                    "New-RscQueryVsphere -RootRecoveryHierarchy",
                     GqlRootFieldName.vSphereRootRecoveryHierarchy
                 },
                 {
-                    "Invoke-RscQueryVsphere -Tag",
+                    "New-RscQueryVsphere -Tag",
                     GqlRootFieldName.vSphereTag
                 },
                 {
-                    "Invoke-RscQueryVsphere -TagCategory",
+                    "New-RscQueryVsphere -TagCategory",
                     GqlRootFieldName.vSphereTagCategory
                 },
                 {
-                    "Invoke-RscQueryVsphere -TopLevelDescendantsList",
+                    "New-RscQueryVsphere -TopLevelDescendantsList",
                     GqlRootFieldName.vSphereTopLevelDescendantsConnection
                 },
                 {
-                    "Invoke-RscQueryVcenter -Vcenter",
+                    "New-RscQueryVcenter -Vcenter",
                     GqlRootFieldName.vSphereVCenter
                 },
                 {
-                    "Invoke-RscQueryVcenter -List",
+                    "New-RscQueryVcenter -List",
                     GqlRootFieldName.vSphereVCenterConnection
                 },
                 {
-                    "Invoke-RscQueryVsphereVm -AsyncRequestStatus",
+                    "New-RscQueryVsphereVm -AsyncRequestStatus",
                     GqlRootFieldName.vSphereVMAsyncRequestStatus
                 },
                 {
-                    "Invoke-RscQueryVsphereVm -New",
+                    "New-RscQueryVsphereVm -New",
                     GqlRootFieldName.vSphereVmNew
                 },
                 {
-                    "Invoke-RscQueryVsphereVm -NewList",
+                    "New-RscQueryVsphereVm -NewList",
                     GqlRootFieldName.vSphereVmNewConnection
                 },
                 {
-                    "Invoke-RscMutateAws -ValidateAndCreateCloudAccount",
+                    "New-RscMutationAws -ValidateAndCreateCloudAccount",
                     GqlRootFieldName.validateAndCreateAwsCloudAccount
                 },
                 {
-                    "Invoke-RscQueryAws -ValidateNativeRdsClusterNameForExport",
+                    "New-RscQueryAws -ValidateNativeRdsClusterNameForExport",
                     GqlRootFieldName.validateAwsNativeRdsClusterNameForExport
                 },
                 {
-                    "Invoke-RscQueryAws -ValidateNativeRdsInstanceNameForExport",
+                    "New-RscQueryAws -ValidateNativeRdsInstanceNameForExport",
                     GqlRootFieldName.validateAwsNativeRdsInstanceNameForExport
                 },
                 {
-                    "Invoke-RscQueryAzure -ValidateCloudAccountExocomputeConfigurations",
+                    "New-RscQueryAzure -ValidateCloudAccountExocomputeConfigurations",
                     GqlRootFieldName.validateAzureCloudAccountExocomputeConfigurations
                 },
                 {
-                    "Invoke-RscQueryAzure -ValidateNativeSqlDatabaseDbNameForExport",
+                    "New-RscQueryAzure -ValidateNativeSqlDatabaseDbNameForExport",
                     GqlRootFieldName.validateAzureNativeSqlDatabaseDbNameForExport
                 },
                 {
-                    "Invoke-RscQueryAzure -ValidateNativeSqlManagedInstanceDbNameForExport",
+                    "New-RscQueryAzure -ValidateNativeSqlManagedInstanceDbNameForExport",
                     GqlRootFieldName.validateAzureNativeSqlManagedInstanceDbNameForExport
                 },
                 {
-                    "Invoke-RscMutateOracle -ValidateAcoFile",
+                    "New-RscMutationOracle -ValidateAcoFile",
                     GqlRootFieldName.validateOracleAcoFile
                 },
                 {
-                    "Invoke-RscMutateOracle -ValidateDatabaseBackups",
+                    "New-RscMutationOracle -ValidateDatabaseBackups",
                     GqlRootFieldName.validateOracleDatabaseBackups
                 },
                 {
-                    "Invoke-RscQueryCluster -VerifySlaWithReplicationTo",
+                    "New-RscQueryCluster -VerifySlaWithReplicationTo",
                     GqlRootFieldName.verifySlaWithReplicationToCluster
                 },
                 {
-                    "Invoke-RscMutateVsphere -BulkOnDemandSnapshot",
+                    "New-RscMutationVsphere -BulkOnDemandSnapshot",
                     GqlRootFieldName.vsphereBulkOnDemandSnapshot
                 },
                 {
-                    "Invoke-RscMutateVcenter -Delete",
+                    "New-RscMutationVcenter -Delete",
                     GqlRootFieldName.vsphereDeleteVcenter
                 },
                 {
-                    "Invoke-RscMutateVsphereVm -ExcludeVmDisks",
+                    "New-RscMutationVsphereVm -ExcludeVmDisks",
                     GqlRootFieldName.vsphereExcludeVmDisks
                 },
                 {
-                    "Invoke-RscMutateVsphere -ExportSnapshotToStandaloneHostV2",
+                    "New-RscMutationVsphere -ExportSnapshotToStandaloneHostV2",
                     GqlRootFieldName.vsphereExportSnapshotToStandaloneHostV2
                 },
                 {
-                    "Invoke-RscMutateVsphere -OnDemandSnapshot",
+                    "New-RscMutationVsphere -OnDemandSnapshot",
                     GqlRootFieldName.vsphereOnDemandSnapshot
                 },
                 {
-                    "Invoke-RscQueryVsphereVm -MissedRecoverableRange",
+                    "New-RscQueryVsphereVm -MissedRecoverableRange",
                     GqlRootFieldName.vsphereVMMissedRecoverableRange
                 },
                 {
-                    "Invoke-RscQueryVsphereVm -RecoverableRange",
+                    "New-RscQueryVsphereVm -RecoverableRange",
                     GqlRootFieldName.vsphereVMRecoverableRange
                 },
                 {
-                    "Invoke-RscQueryVsphereVm -RecoverableRangeInBatch",
+                    "New-RscQueryVsphereVm -RecoverableRangeInBatch",
                     GqlRootFieldName.vsphereVMRecoverableRangeInBatch
                 },
                 {
-                    "Invoke-RscMutateVsphereVm -BatchExport",
+                    "New-RscMutationVsphereVm -BatchExport",
                     GqlRootFieldName.vsphereVmBatchExport
                 },
                 {
-                    "Invoke-RscMutateVsphereVm -BatchExportV3",
+                    "New-RscMutationVsphereVm -BatchExportV3",
                     GqlRootFieldName.vsphereVmBatchExportV3
                 },
                 {
-                    "Invoke-RscMutateVsphereVm -BatchInPlaceRecovery",
+                    "New-RscMutationVsphereVm -BatchInPlaceRecovery",
                     GqlRootFieldName.vsphereVmBatchInPlaceRecovery
                 },
                 {
-                    "Invoke-RscMutateVsphereVm -DeleteSnapshot",
+                    "New-RscMutationVsphereVm -DeleteSnapshot",
                     GqlRootFieldName.vsphereVmDeleteSnapshot
                 },
                 {
-                    "Invoke-RscMutateVsphereVm -DownloadSnapshot",
+                    "New-RscMutationVsphereVm -DownloadSnapshot",
                     GqlRootFieldName.vsphereVmDownloadSnapshot
                 },
                 {
-                    "Invoke-RscMutateVsphereVm -DownloadSnapshotFiles",
+                    "New-RscMutationVsphereVm -DownloadSnapshotFiles",
                     GqlRootFieldName.vsphereVmDownloadSnapshotFiles
                 },
                 {
-                    "Invoke-RscMutateVsphereVm -ExportSnapshotV2",
+                    "New-RscMutationVsphereVm -ExportSnapshotV2",
                     GqlRootFieldName.vsphereVmExportSnapshotV2
                 },
                 {
-                    "Invoke-RscMutateVsphereVm -ExportSnapshotV3",
+                    "New-RscMutationVsphereVm -ExportSnapshotV3",
                     GqlRootFieldName.vsphereVmExportSnapshotV3
                 },
                 {
-                    "Invoke-RscMutateVsphereVm -ExportSnapshotWithDownloadFromCloud",
+                    "New-RscMutationVsphereVm -ExportSnapshotWithDownloadFromCloud",
                     GqlRootFieldName.vsphereVmExportSnapshotWithDownloadFromCloud
                 },
                 {
-                    "Invoke-RscMutateVsphereVm -InitiateBatchInstantRecovery",
+                    "New-RscMutationVsphereVm -InitiateBatchInstantRecovery",
                     GqlRootFieldName.vsphereVmInitiateBatchInstantRecovery
                 },
                 {
-                    "Invoke-RscMutateVsphereVm -InitiateBatchLiveMountV2",
+                    "New-RscMutationVsphereVm -InitiateBatchLiveMountV2",
                     GqlRootFieldName.vsphereVmInitiateBatchLiveMountV2
                 },
                 {
-                    "Invoke-RscMutateVsphereVm -InitiateDiskMount",
+                    "New-RscMutationVsphereVm -InitiateDiskMount",
                     GqlRootFieldName.vsphereVmInitiateDiskMount
                 },
                 {
-                    "Invoke-RscMutateVsphereVm -InitiateInPlaceRecovery",
+                    "New-RscMutationVsphereVm -InitiateInPlaceRecovery",
                     GqlRootFieldName.vsphereVmInitiateInPlaceRecovery
                 },
                 {
-                    "Invoke-RscMutateVsphereVm -InitiateInstantRecoveryV2",
+                    "New-RscMutationVsphereVm -InitiateInstantRecoveryV2",
                     GqlRootFieldName.vsphereVmInitiateInstantRecoveryV2
                 },
                 {
-                    "Invoke-RscMutateVsphereVm -InitiateLiveMountV2",
+                    "New-RscMutationVsphereVm -InitiateLiveMountV2",
                     GqlRootFieldName.vsphereVmInitiateLiveMountV2
                 },
                 {
-                    "Invoke-RscMutateVsphereVm -ListEsxiDatastores",
+                    "New-RscMutationVsphereVm -ListEsxiDatastores",
                     GqlRootFieldName.vsphereVmListEsxiDatastores
                 },
                 {
-                    "Invoke-RscMutateVsphereVm -MountRelocate",
+                    "New-RscMutationVsphereVm -MountRelocate",
                     GqlRootFieldName.vsphereVmMountRelocate
                 },
                 {
-                    "Invoke-RscMutateVsphereVm -MountRelocateV2",
+                    "New-RscMutationVsphereVm -MountRelocateV2",
                     GqlRootFieldName.vsphereVmMountRelocateV2
                 },
                 {
-                    "Invoke-RscMutateVsphereVm -PowerOnOffLiveMount",
+                    "New-RscMutationVsphereVm -PowerOnOffLiveMount",
                     GqlRootFieldName.vsphereVmPowerOnOffLiveMount
                 },
                 {
-                    "Invoke-RscMutateVsphereVm -RecoverFiles",
+                    "New-RscMutationVsphereVm -RecoverFiles",
                     GqlRootFieldName.vsphereVmRecoverFiles
                 },
                 {
-                    "Invoke-RscMutateVsphereVm -RecoverFilesNew",
+                    "New-RscMutationVsphereVm -RecoverFilesNew",
                     GqlRootFieldName.vsphereVmRecoverFilesNew
                 },
                 {
-                    "Invoke-RscMutateVsphereVm -RegisterAgent",
+                    "New-RscMutationVsphereVm -RegisterAgent",
                     GqlRootFieldName.vsphereVmRegisterAgent
                 },
                 {
-                    "Invoke-RscQueryVsphere -VmwareCdpLiveInfo",
+                    "New-RscQueryVsphere -VmwareCdpLiveInfo",
                     GqlRootFieldName.vsphereVmwareCdpLiveInfo
                 },
                 {
-                    "Invoke-RscQueryCluster -Windows",
+                    "New-RscQueryCluster -Windows",
                     GqlRootFieldName.windowsCluster
                 },
             };
-            string key = rscOp.InvokeInfo();
+            string key = rscOp.Syntax();
             if (lookupDict.TryGetValue(key, out var gqlRootFieldName)) {
                 return gqlRootFieldName;
             }

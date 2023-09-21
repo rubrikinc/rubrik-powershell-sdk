@@ -62,7 +62,7 @@ public class GraphQLInterfaceConverter : JsonConverter
             }
             else
             {
-                if(RubrikSecurityCloud.Config.MuteSchemaWarnings)
+                if (RubrikSecurityCloud.Config.MuteSchemaWarnings)
                 {
                     _logger?.Info(msg);
                 }
@@ -97,7 +97,14 @@ public class GraphQLInterfaceConverter : JsonConverter
             }
             else
             {
-                _logger?.Warning(msg);
+                if (RubrikSecurityCloud.Config.MuteSchemaWarnings)
+                {
+                    _logger?.Info(msg);
+                }
+                else
+                {
+                    _logger?.Warning(msg);
+                }
                 return null;
             }
         }

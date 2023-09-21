@@ -44,9 +44,8 @@ AfterAll {
 
 Describe -Name "Test custom input profile" -Fixture {
 
-
     It -Name 'AccountSettings custom operation' -Test {
-        $gqlRequest = Invoke-RscQueryAccount -Settings -GetGqlRequest
+        $gqlRequest = (New-RscQueryAccount -Settings).GqlRequest()
         $gqlRequest.GetType().Name | Should -Be "RscGqlRequest"
         $gqlRequest.DefaultFileName() | Should -Be $script:QueryAccountSettings_CustomFileName 
 
@@ -64,23 +63,23 @@ Describe -Name "Test custom input profile" -Fixture {
         $customQuery | Out-File $script:QueryAccountSettings_CustomFileName
 
         # Retrieve custom query
-        $customGqlRequest = Invoke-RscQueryAccount -Settings -GetGqlRequest -FieldProfile CUSTOM
+        $customGqlRequest = (New-RscQueryAccount -Settings -FieldProfile CUSTOM).GqlRequest() 
         $retrievedCustomQuery = $customGqlRequest.Query -replace "\s+", " "
         $retrievedCustomQuery | Should -Be $customQuery
 
         # But it doesn't affect the DEFAULT query
-        $defaultGqlRequest = Invoke-RscQueryAccount -Settings -GetGqlRequest
+        $defaultGqlRequest = (New-RscQueryAccount -Settings).GqlRequest()
         $retrievedDefaultQuery = $defaultGqlRequest.Query -replace "\s+", " "
         $retrievedDefaultQuery | Should -Be $expectedQuery
 
         # Not the DETAIL query
-        $detailGqlRequest = Invoke-RscQueryAccount -Settings -GetGqlRequest -FieldProfile DETAIL
+        $detailGqlRequest = (New-RscQueryAccount -Settings ).GqlRequest()
         $retrievedDetailQuery = $detailGqlRequest.Query -replace "\s+", " "
         $retrievedDetailQuery | Should -Be $expectedQuery
 
         # However, if we copy the custom file to the SDK dir
         Copy-Item $script:QueryAccountSettings_CustomFileName $script:QueryAccountSettings_SdkFileName
-        $defaultGqlRequest2 = Invoke-RscQueryAccount -Settings -GetGqlRequest
+        $defaultGqlRequest2 = (New-RscQueryAccount -Settings).GqlRequest()
         $retrievedDefaultQuery2 = $defaultGqlRequest2.Query -replace "\s+", " "
         $retrievedDefaultQuery2 | Should -Be $customQuery
     }

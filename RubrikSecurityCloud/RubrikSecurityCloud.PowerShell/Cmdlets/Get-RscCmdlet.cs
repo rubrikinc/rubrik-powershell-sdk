@@ -67,9 +67,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ParameterSetName = "Locations")]
         public SwitchParameter Locations { get; set; }
 
+    #pragma warning disable 1591 // ignore warning 'Missing XML comment'
+
+        public Get_RscCmdlet() : base(retrieveConnection: false)
+        {
+        }
 
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 switch (ParameterSetName)
@@ -87,12 +93,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             }
             catch (Exception ex)
             {
-                var error = new ErrorRecord(
-                    ex,
-                    "InvalidArgumentToCmdlet",
-                    ErrorCategory.InvalidArgument,
-                    null);
-                ThrowTerminatingError(error);
+                ThrowTerminatingException(ex);
             }
         }
 

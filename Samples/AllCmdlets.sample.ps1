@@ -20,15 +20,15 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateActivitySeries -Cancel
+# New-RscMutationActivitySeries -Cancel
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateActivitySeries -Cancel -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationActivitySeries -Cancel).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateActivitySeries -Cancel -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationActivitySeries -Cancel
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -38,22 +38,22 @@ $inputs.Var.input = @{
 	clusterUuid = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateActivitySeries -Cancel" @"
+    Write-Message "New-RscMutationActivitySeries -Cancel" @"
     Cancel an activity series.
 "@ "[GraphQL: cancelActivitySeries]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -StartNativeEc2InstanceSnapshotsJob
+# New-RscMutationAws -StartNativeEc2InstanceSnapshotsJob
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -StartNativeEc2InstanceSnapshotsJob -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAws -StartNativeEc2InstanceSnapshotsJob).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAws -StartNativeEc2InstanceSnapshotsJob -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAws -StartNativeEc2InstanceSnapshotsJob
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -65,21 +65,21 @@ $inputs.Var.input = @{
 	retentionSlaId = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateAws -StartNativeEc2InstanceSnapshotsJob" @"
+    Write-Message "New-RscMutationAws -StartNativeEc2InstanceSnapshotsJob" @"
     Start an on demand create snapshot job for AWS EC2 Instances.When completed, this will start taking an on-demand snapshot of the selected EC2 Instances  as per the SLA Policy assigned to the respective instances.
 "@ "[GraphQL: startAwsNativeEc2InstanceSnapshotsJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -StartRestoreNativeEc2InstanceSnapshotJob
+# New-RscMutationAws -StartRestoreNativeEc2InstanceSnapshotJob
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -StartRestoreNativeEc2InstanceSnapshotJob -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAws -StartRestoreNativeEc2InstanceSnapshotJob).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAws -StartRestoreNativeEc2InstanceSnapshotJob -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAws -StartRestoreNativeEc2InstanceSnapshotJob
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -93,21 +93,21 @@ $inputs.Var.input = @{
 	snapshotTypeToUseIfSourceExpired = <SnapshotTypeToUseIfSourceExpired> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotTypeToUseIfSourceExpired]) for enum values.
 }
 "@
-    Write-Message "Invoke-RscMutateAws -StartRestoreNativeEc2InstanceSnapshotJob" @"
+    Write-Message "New-RscMutationAws -StartRestoreNativeEc2InstanceSnapshotJob" @"
     Start an on demand restore snapshot job for AWS EC2 Instance. When completed, this will replace the original EC2 Instance with the selected snapshot.
 "@ "[GraphQL: startRestoreAwsNativeEc2InstanceSnapshotJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -StartRefreshNativeAccountsJob
+# New-RscMutationAws -StartRefreshNativeAccountsJob
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -StartRefreshNativeAccountsJob -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAws -StartRefreshNativeAccountsJob).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAws -StartRefreshNativeAccountsJob -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAws -StartRefreshNativeAccountsJob
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -121,21 +121,21 @@ $inputs.Var.input = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscMutateAws -StartRefreshNativeAccountsJob" @"
+    Write-Message "New-RscMutationAws -StartRefreshNativeAccountsJob" @"
     Start an on demand job to refresh AWS accounts. The job updates the Rubrik platform with changes to the AWS Native accounts.
 "@ "[GraphQL: startRefreshAwsNativeAccountsJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -StartCreateNativeEbsVolumeSnapshotsJob
+# New-RscMutationAws -StartCreateNativeEbsVolumeSnapshotsJob
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -StartCreateNativeEbsVolumeSnapshotsJob -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAws -StartCreateNativeEbsVolumeSnapshotsJob).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAws -StartCreateNativeEbsVolumeSnapshotsJob -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAws -StartCreateNativeEbsVolumeSnapshotsJob
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -147,21 +147,21 @@ $inputs.Var.input = @{
 	retentionSlaId = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateAws -StartCreateNativeEbsVolumeSnapshotsJob" @"
+    Write-Message "New-RscMutationAws -StartCreateNativeEbsVolumeSnapshotsJob" @"
     Start job to create snapshots of EBS Volumes with given IDs. When completed, this will start taking an on-demand snapshot of the selected EBS Volumes  as per the SLA Policy assigned to the respective volumes.
 "@ "[GraphQL: startCreateAwsNativeEbsVolumeSnapshotsJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -StartNativeAccountDisableJob
+# New-RscMutationAws -StartNativeAccountDisableJob
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -StartNativeAccountDisableJob -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAws -StartNativeAccountDisableJob).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAws -StartNativeAccountDisableJob -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAws -StartNativeAccountDisableJob
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -173,21 +173,21 @@ $inputs.Var.input = @{
 	awsNativeProtectionFeature = <AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
 }
 "@
-    Write-Message "Invoke-RscMutateAws -StartNativeAccountDisableJob" @"
+    Write-Message "New-RscMutationAws -StartNativeAccountDisableJob" @"
     Starts a job to disable a specific AWS Native account. When complete, the job will disable protection for the specified AWS Native account.
 "@ "[GraphQL: startAwsNativeAccountDisableJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -StartExportNativeEbsVolumeSnapshotJob
+# New-RscMutationAws -StartExportNativeEbsVolumeSnapshotJob
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -StartExportNativeEbsVolumeSnapshotJob -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAws -StartExportNativeEbsVolumeSnapshotJob).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAws -StartExportNativeEbsVolumeSnapshotJob -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAws -StartExportNativeEbsVolumeSnapshotJob
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -217,21 +217,21 @@ $inputs.Var.input = @{
 	snapshotType = <SnapshotType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotType]) for enum values.
 }
 "@
-    Write-Message "Invoke-RscMutateAws -StartExportNativeEbsVolumeSnapshotJob" @"
+    Write-Message "New-RscMutationAws -StartExportNativeEbsVolumeSnapshotJob" @"
     Start a job to export EBS Volume. The job creates a new EBS Volume with the same properties as that of the snapshot that is exported.
 "@ "[GraphQL: startExportAwsNativeEbsVolumeSnapshotJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -ExcludeNativeEbsVolumesFromSnapshot
+# New-RscMutationAws -ExcludeNativeEbsVolumesFromSnapshot
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -ExcludeNativeEbsVolumesFromSnapshot -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAws -ExcludeNativeEbsVolumesFromSnapshot).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAws -ExcludeNativeEbsVolumesFromSnapshot -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAws -ExcludeNativeEbsVolumesFromSnapshot
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -248,21 +248,21 @@ $inputs.Var.input = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscMutateAws -ExcludeNativeEbsVolumesFromSnapshot" @"
+    Write-Message "New-RscMutationAws -ExcludeNativeEbsVolumesFromSnapshot" @"
     Mark AWS Native EBS Volumes to be excluded from EC2 Instance snapshot. By default, all EBS Volumes are marked as included.
 "@ "[GraphQL: excludeAwsNativeEbsVolumesFromSnapshot]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -StartNativeRdsInstanceSnapshotsJob
+# New-RscMutationAws -StartNativeRdsInstanceSnapshotsJob
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -StartNativeRdsInstanceSnapshotsJob -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAws -StartNativeRdsInstanceSnapshotsJob).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAws -StartNativeRdsInstanceSnapshotsJob -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAws -StartNativeRdsInstanceSnapshotsJob
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -274,21 +274,21 @@ $inputs.Var.input = @{
 	retentionSlaId = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateAws -StartNativeRdsInstanceSnapshotsJob" @"
+    Write-Message "New-RscMutationAws -StartNativeRdsInstanceSnapshotsJob" @"
     Start job to create snapshots of RDS Instance with given IDs. When completed, this will start taking an on-demand snapshot of the selected RDS Instances  as per the SLA Policy assigned to the respective instances.
 "@ "[GraphQL: startAwsNativeRdsInstanceSnapshotsJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -CreateAccount
+# New-RscMutationAws -CreateAccount
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -CreateAccount -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAws -CreateAccount).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAws -CreateAccount -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAws -CreateAccount
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -302,21 +302,21 @@ $inputs.Var.input = @{
 	secretKey = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateAws -CreateAccount" @"
+    Write-Message "New-RscMutationAws -CreateAccount" @"
     
 "@ "[GraphQL: createAwsAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -UpdateAccount
+# New-RscMutationAws -UpdateAccount
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -UpdateAccount -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAws -UpdateAccount).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAws -UpdateAccount -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAws -UpdateAccount
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -332,21 +332,21 @@ $inputs.Var.input = @{
 	secretKey = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateAws -UpdateAccount" @"
+    Write-Message "New-RscMutationAws -UpdateAccount" @"
     
 "@ "[GraphQL: updateAwsAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -CreateAutomaticTargetMapping
+# New-RscMutationAws -CreateAutomaticTargetMapping
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -CreateAutomaticTargetMapping -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAws -CreateAutomaticTargetMapping).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAws -CreateAutomaticTargetMapping -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAws -CreateAutomaticTargetMapping
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -387,21 +387,21 @@ $inputs.Var.input = @{
 	awsComputeSettingsId = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateAws -CreateAutomaticTargetMapping" @"
+    Write-Message "New-RscMutationAws -CreateAutomaticTargetMapping" @"
     
 "@ "[GraphQL: createAutomaticAwsTargetMapping]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -CreateCloudNativeStorageSetting
+# New-RscMutationAws -CreateCloudNativeStorageSetting
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -CreateCloudNativeStorageSetting -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAws -CreateCloudNativeStorageSetting).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAws -CreateCloudNativeStorageSetting -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAws -CreateCloudNativeStorageSetting
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -433,21 +433,21 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateAws -CreateCloudNativeStorageSetting" @"
+    Write-Message "New-RscMutationAws -CreateCloudNativeStorageSetting" @"
     
 "@ "[GraphQL: createCloudNativeAwsStorageSetting]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -UpdateAutomaticTargetMapping
+# New-RscMutationAws -UpdateAutomaticTargetMapping
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -UpdateAutomaticTargetMapping -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAws -UpdateAutomaticTargetMapping).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAws -UpdateAutomaticTargetMapping -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAws -UpdateAutomaticTargetMapping
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -482,21 +482,21 @@ $inputs.Var.input = @{
 	awsComputeSettingsId = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateAws -UpdateAutomaticTargetMapping" @"
+    Write-Message "New-RscMutationAws -UpdateAutomaticTargetMapping" @"
     
 "@ "[GraphQL: updateAutomaticAwsTargetMapping]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -UpdateCloudNativeStorageSetting
+# New-RscMutationAws -UpdateCloudNativeStorageSetting
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -UpdateCloudNativeStorageSetting -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAws -UpdateCloudNativeStorageSetting).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAws -UpdateCloudNativeStorageSetting -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAws -UpdateCloudNativeStorageSetting
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -510,21 +510,21 @@ $inputs.Var.input = @{
 	kmsMasterKeyId = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateAws -UpdateCloudNativeStorageSetting" @"
+    Write-Message "New-RscMutationAws -UpdateCloudNativeStorageSetting" @"
     
 "@ "[GraphQL: updateCloudNativeAwsStorageSetting]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -CreateTarget
+# New-RscMutationAws -CreateTarget
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -CreateTarget -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAws -CreateTarget).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAws -CreateTarget -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAws -CreateTarget
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -613,21 +613,21 @@ $inputs.Var.input = @{
 	bypassProxy = <System.Boolean>
 }
 "@
-    Write-Message "Invoke-RscMutateAws -CreateTarget" @"
+    Write-Message "New-RscMutationAws -CreateTarget" @"
     
 "@ "[GraphQL: createAwsTarget]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -UpdateTarget
+# New-RscMutationAws -UpdateTarget
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -UpdateTarget -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAws -UpdateTarget).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAws -UpdateTarget -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAws -UpdateTarget
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -706,21 +706,21 @@ $inputs.Var.input = @{
 	bypassProxy = <System.Boolean>
 }
 "@
-    Write-Message "Invoke-RscMutateAws -UpdateTarget" @"
+    Write-Message "New-RscMutationAws -UpdateTarget" @"
     
 "@ "[GraphQL: updateAwsTarget]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -CreateReaderTarget
+# New-RscMutationAws -CreateReaderTarget
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -CreateReaderTarget -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAws -CreateReaderTarget).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAws -CreateReaderTarget -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAws -CreateReaderTarget
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -806,21 +806,21 @@ $inputs.Var.input = @{
 	bypassProxy = <System.Boolean>
 }
 "@
-    Write-Message "Invoke-RscMutateAws -CreateReaderTarget" @"
+    Write-Message "New-RscMutationAws -CreateReaderTarget" @"
     Create a reader type for AWS archival location on a Rubrik cluster.
 "@ "[GraphQL: createAwsReaderTarget]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -CreateComputeSetting
+# New-RscMutationAws -CreateComputeSetting
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -CreateComputeSetting -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAws -CreateComputeSetting).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAws -CreateComputeSetting -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAws -CreateComputeSetting
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -860,21 +860,21 @@ $inputs.Var.input = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscMutateAws -CreateComputeSetting" @"
+    Write-Message "New-RscMutationAws -CreateComputeSetting" @"
     
 "@ "[GraphQL: createAwsComputeSetting]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -UpdateComputeSetting
+# New-RscMutationAws -UpdateComputeSetting
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -UpdateComputeSetting -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAws -UpdateComputeSetting).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAws -UpdateComputeSetting -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAws -UpdateComputeSetting
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -890,21 +890,21 @@ $inputs.Var.input = @{
 	securityGroupId = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateAws -UpdateComputeSetting" @"
+    Write-Message "New-RscMutationAws -UpdateComputeSetting" @"
     
 "@ "[GraphQL: updateAwsComputeSetting]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -DeleteComputeSetting
+# New-RscMutationAws -DeleteComputeSetting
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -DeleteComputeSetting -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAws -DeleteComputeSetting).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAws -DeleteComputeSetting -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAws -DeleteComputeSetting
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -912,21 +912,21 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateAws -DeleteComputeSetting" @"
+    Write-Message "New-RscMutationAws -DeleteComputeSetting" @"
     
 "@ "[GraphQL: deleteAwsComputeSetting]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -ValidateAndCreateCloudAccount
+# New-RscMutationAws -ValidateAndCreateCloudAccount
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -ValidateAndCreateCloudAccount -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAws -ValidateAndCreateCloudAccount).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAws -ValidateAndCreateCloudAccount -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAws -ValidateAndCreateCloudAccount
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -987,21 +987,21 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateAws -ValidateAndCreateCloudAccount" @"
+    Write-Message "New-RscMutationAws -ValidateAndCreateCloudAccount" @"
     Validate and create AWS cloud account. If validation fails, no error is returned and the cause is present in the ""message"" field of return object or within admin/child accounts of return object. In case validation succeeds, it initiates creation of AWS cloud account. This is the first step to set up native protection.
 "@ "[GraphQL: validateAndCreateAwsCloudAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -FinalizeCloudAccountProtection
+# New-RscMutationAws -FinalizeCloudAccountProtection
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -FinalizeCloudAccountProtection -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAws -FinalizeCloudAccountProtection).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAws -FinalizeCloudAccountProtection -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAws -FinalizeCloudAccountProtection
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -1060,21 +1060,21 @@ $inputs.Var.input = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscMutateAws -FinalizeCloudAccountProtection" @"
+    Write-Message "New-RscMutationAws -FinalizeCloudAccountProtection" @"
     Process cloud account. This is the second step after validate and create in addition of a feature for cloud account.The CloudFormation stack should be created after this step using the CloudFormation URL provided in the first step.
 "@ "[GraphQL: finalizeAwsCloudAccountProtection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -PrepareCloudAccountDeletion
+# New-RscMutationAws -PrepareCloudAccountDeletion
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -PrepareCloudAccountDeletion -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAws -PrepareCloudAccountDeletion).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAws -PrepareCloudAccountDeletion -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAws -PrepareCloudAccountDeletion
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -1084,21 +1084,21 @@ $inputs.Var.input = @{
 	feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 }
 "@
-    Write-Message "Invoke-RscMutateAws -PrepareCloudAccountDeletion" @"
+    Write-Message "New-RscMutationAws -PrepareCloudAccountDeletion" @"
     Prepare deletion of cloud account. This is the first step to delete AWS cloud account. It generated template for deletion of cloud account and does not change any state of account.
 "@ "[GraphQL: prepareAwsCloudAccountDeletion]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -FinalizeCloudAccountDeletion
+# New-RscMutationAws -FinalizeCloudAccountDeletion
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -FinalizeCloudAccountDeletion -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAws -FinalizeCloudAccountDeletion).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAws -FinalizeCloudAccountDeletion -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAws -FinalizeCloudAccountDeletion
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -1108,21 +1108,21 @@ $inputs.Var.input = @{
 	feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 }
 "@
-    Write-Message "Invoke-RscMutateAws -FinalizeCloudAccountDeletion" @"
+    Write-Message "New-RscMutationAws -FinalizeCloudAccountDeletion" @"
     Process and finalize deletion of cloud account is the last step in deletion of a feature from cloud account. This endpoint is a MUST for deletion of disconnected features.
 "@ "[GraphQL: finalizeAwsCloudAccountDeletion]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -UpdateCloudAccountFeature
+# New-RscMutationAws -UpdateCloudAccountFeature
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -UpdateCloudAccountFeature -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAws -UpdateCloudAccountFeature).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAws -UpdateCloudAccountFeature -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAws -UpdateCloudAccountFeature
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -1144,21 +1144,21 @@ $inputs.Var.input = @{
 	awsAccountName = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateAws -UpdateCloudAccountFeature" @"
+    Write-Message "New-RscMutationAws -UpdateCloudAccountFeature" @"
     Updates regions, stack ARN, and role ARN for a feature for a given cloud account.
 "@ "[GraphQL: updateAwsCloudAccountFeature]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -UpdateCloudAccount
+# New-RscMutationAws -UpdateCloudAccount
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -UpdateCloudAccount -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAws -UpdateCloudAccount).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAws -UpdateCloudAccount -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAws -UpdateCloudAccount
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -1168,21 +1168,21 @@ $inputs.Var.input = @{
 	awsAccountName = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateAws -UpdateCloudAccount" @"
+    Write-Message "New-RscMutationAws -UpdateCloudAccount" @"
     Update properties for a given AWS cloud account.
 "@ "[GraphQL: updateAwsCloudAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -PrepareFeatureUpdateForCloudAccount
+# New-RscMutationAws -PrepareFeatureUpdateForCloudAccount
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -PrepareFeatureUpdateForCloudAccount -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAws -PrepareFeatureUpdateForCloudAccount).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAws -PrepareFeatureUpdateForCloudAccount -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAws -PrepareFeatureUpdateForCloudAccount
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -1194,21 +1194,21 @@ $inputs.Var.input = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscMutateAws -PrepareFeatureUpdateForCloudAccount" @"
+    Write-Message "New-RscMutationAws -PrepareFeatureUpdateForCloudAccount" @"
     Prepare manual update features to latest version.
 "@ "[GraphQL: prepareFeatureUpdateForAwsCloudAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -CreateExocomputeConfigs
+# New-RscMutationAws -CreateExocomputeConfigs
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -CreateExocomputeConfigs -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAws -CreateExocomputeConfigs).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAws -CreateExocomputeConfigs -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAws -CreateExocomputeConfigs
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -1242,21 +1242,21 @@ $inputs.Var.input = @{
 	triggerHealthCheck = <System.Boolean>
 }
 "@
-    Write-Message "Invoke-RscMutateAws -CreateExocomputeConfigs" @"
+    Write-Message "New-RscMutationAws -CreateExocomputeConfigs" @"
     Create AWS Exocompute configs.
 "@ "[GraphQL: createAwsExocomputeConfigs]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -DeleteExocomputeConfigs
+# New-RscMutationAws -DeleteExocomputeConfigs
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -DeleteExocomputeConfigs -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAws -DeleteExocomputeConfigs).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAws -DeleteExocomputeConfigs -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAws -DeleteExocomputeConfigs
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -1266,21 +1266,21 @@ $inputs.Var.input = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscMutateAws -DeleteExocomputeConfigs" @"
+    Write-Message "New-RscMutationAws -DeleteExocomputeConfigs" @"
     Deletes AWS Exocompute configs.
 "@ "[GraphQL: deleteAwsExocomputeConfigs]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -UpdateExocomputeConfigs
+# New-RscMutationAws -UpdateExocomputeConfigs
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -UpdateExocomputeConfigs -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAws -UpdateExocomputeConfigs).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAws -UpdateExocomputeConfigs -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAws -UpdateExocomputeConfigs
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -1314,21 +1314,21 @@ $inputs.Var.input = @{
 	triggerHealthCheck = <System.Boolean>
 }
 "@
-    Write-Message "Invoke-RscMutateAws -UpdateExocomputeConfigs" @"
+    Write-Message "New-RscMutationAws -UpdateExocomputeConfigs" @"
     Update AWS Exocompute configs.
 "@ "[GraphQL: updateAwsExocomputeConfigs]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -StartExocomputeDisableJob
+# New-RscMutationAws -StartExocomputeDisableJob
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -StartExocomputeDisableJob -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAws -StartExocomputeDisableJob).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAws -StartExocomputeDisableJob -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAws -StartExocomputeDisableJob
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -1336,21 +1336,21 @@ $inputs.Var.input = @{
 	cloudAccountId = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateAws -StartExocomputeDisableJob" @"
+    Write-Message "New-RscMutationAws -StartExocomputeDisableJob" @"
     Starts a job to disable AWS Exocompute feature. When complete, the job will disable exocompute feature for the specified AWS Native account.
 "@ "[GraphQL: startAwsExocomputeDisableJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -AddIamUserBasedCloudAccount
+# New-RscMutationAws -AddIamUserBasedCloudAccount
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -AddIamUserBasedCloudAccount -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAws -AddIamUserBasedCloudAccount).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAws -AddIamUserBasedCloudAccount -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAws -AddIamUserBasedCloudAccount
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -1376,21 +1376,21 @@ $inputs.Var.input = @{
 	roleArn = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateAws -AddIamUserBasedCloudAccount" @"
+    Write-Message "New-RscMutationAws -AddIamUserBasedCloudAccount" @"
     Adds an IAM user-based AWS cloud account and enables the features specified in the input after successful validation of the request.
 "@ "[GraphQL: addAwsIamUserBasedCloudAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -UpgradeIamUserBasedCloudAccountPermissions
+# New-RscMutationAws -UpgradeIamUserBasedCloudAccountPermissions
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -UpgradeIamUserBasedCloudAccountPermissions -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAws -UpgradeIamUserBasedCloudAccountPermissions).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAws -UpgradeIamUserBasedCloudAccountPermissions -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAws -UpgradeIamUserBasedCloudAccountPermissions
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -1402,21 +1402,21 @@ $inputs.Var.input = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscMutateAws -UpgradeIamUserBasedCloudAccountPermissions" @"
+    Write-Message "New-RscMutationAws -UpgradeIamUserBasedCloudAccountPermissions" @"
     Set IAM user-based AWS account features status to Connected from Update Permissions state. It should be used by caution from cloud accounts only after latest required permissions are granted to authorized IAM user.
 "@ "[GraphQL: upgradeAwsIamUserBasedCloudAccountPermissions]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -UpgradeCloudAccountFeaturesWithoutCft
+# New-RscMutationAws -UpgradeCloudAccountFeaturesWithoutCft
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -UpgradeCloudAccountFeaturesWithoutCft -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAws -UpgradeCloudAccountFeaturesWithoutCft).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAws -UpgradeCloudAccountFeaturesWithoutCft -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAws -UpgradeCloudAccountFeaturesWithoutCft
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -1428,21 +1428,21 @@ $inputs.Var.input = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscMutateAws -UpgradeCloudAccountFeaturesWithoutCft" @"
+    Write-Message "New-RscMutationAws -UpgradeCloudAccountFeaturesWithoutCft" @"
     Updates status of AWS cloud account features to connected if they are in update permissions state. This mutation should be used with caution. It should be invoked only after the latest required permissions are granted to the AWS cloud account user used by Rubrik. This mutation does not verify if the required permissions are actually granted to the user or not. Its usage is restricted to only IAM user-based and authentication server-based AWS cloud accounts.
 "@ "[GraphQL: upgradeAwsCloudAccountFeaturesWithoutCft]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -AddAuthenticationServerBasedCloudAccount
+# New-RscMutationAws -AddAuthenticationServerBasedCloudAccount
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -AddAuthenticationServerBasedCloudAccount -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAws -AddAuthenticationServerBasedCloudAccount).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAws -AddAuthenticationServerBasedCloudAccount -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAws -AddAuthenticationServerBasedCloudAccount
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -1483,21 +1483,21 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateAws -AddAuthenticationServerBasedCloudAccount" @"
+    Write-Message "New-RscMutationAws -AddAuthenticationServerBasedCloudAccount" @"
     Validates and adds an authentication server-based AWS cloud account. When validation succeeds, the AWS cloud account is added and the features specified in the request are enabled. When validation fails, an error is not returned, but the cause of the failure is specified in the ""message"" field of the response object.
 "@ "[GraphQL: addAwsAuthenticationServerBasedCloudAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -PatchAuthenticationServerBasedCloudAccount
+# New-RscMutationAws -PatchAuthenticationServerBasedCloudAccount
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -PatchAuthenticationServerBasedCloudAccount -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAws -PatchAuthenticationServerBasedCloudAccount).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAws -PatchAuthenticationServerBasedCloudAccount -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAws -PatchAuthenticationServerBasedCloudAccount
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -1529,21 +1529,21 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateAws -PatchAuthenticationServerBasedCloudAccount" @"
+    Write-Message "New-RscMutationAws -PatchAuthenticationServerBasedCloudAccount" @"
     Updates authentication server-based AWS cloud account. Use this mutation to update account details related to role name, certificates, features. The mutation can update one or more certificates associated to an account in a single request. All input fields except account identifier are optional so that any combination of account attributes can be updated in a single call. If none of the optional fields are provided in the input then no updates are performed, and the response does not contain any error message.
 "@ "[GraphQL: patchAwsAuthenticationServerBasedCloudAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -PatchIamUserBasedCloudAccount
+# New-RscMutationAws -PatchIamUserBasedCloudAccount
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -PatchIamUserBasedCloudAccount -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAws -PatchIamUserBasedCloudAccount).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAws -PatchIamUserBasedCloudAccount -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAws -PatchIamUserBasedCloudAccount
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -1572,21 +1572,21 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateAws -PatchIamUserBasedCloudAccount" @"
+    Write-Message "New-RscMutationAws -PatchIamUserBasedCloudAccount" @"
     Updates IAM user-based AWS cloud account. Use this mutation to update account details access/secret keys, role ARN and regions. All input fields except account ID are optional so that any combination of account attributes can be updated in a single call. If none of the optional fields are provided in the input then no updates are performed, and the response does not contain any error message.
 "@ "[GraphQL: patchAwsIamUserBasedCloudAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -RegisterFeatureArtifacts
+# New-RscMutationAws -RegisterFeatureArtifacts
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -RegisterFeatureArtifacts -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAws -RegisterFeatureArtifacts).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAws -RegisterFeatureArtifacts -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAws -RegisterFeatureArtifacts
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -1614,21 +1614,21 @@ $inputs.Var.input = @{
 	cloudType = <AwsCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
 }
 "@
-    Write-Message "Invoke-RscMutateAws -RegisterFeatureArtifacts" @"
+    Write-Message "New-RscMutationAws -RegisterFeatureArtifacts" @"
     Registers the AWS account artifacts such as roles in RSC backend while onboarding AWS account in manual flow.
 "@ "[GraphQL: registerAwsFeatureArtifacts]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -BulkDeleteCloudAccountWithoutCft
+# New-RscMutationAws -BulkDeleteCloudAccountWithoutCft
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -BulkDeleteCloudAccountWithoutCft -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAws -BulkDeleteCloudAccountWithoutCft).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAws -BulkDeleteCloudAccountWithoutCft -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAws -BulkDeleteCloudAccountWithoutCft
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -1640,21 +1640,21 @@ $inputs.Var.input = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscMutateAws -BulkDeleteCloudAccountWithoutCft" @"
+    Write-Message "New-RscMutationAws -BulkDeleteCloudAccountWithoutCft" @"
     Deletes specified AWS cloud accounts without using CloudFormation Template (CFT).
 "@ "[GraphQL: bulkDeleteAwsCloudAccountWithoutCft]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -CreateCluster
+# New-RscMutationAws -CreateCluster
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -CreateCluster -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAws -CreateCluster).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAws -CreateCluster -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAws -CreateCluster
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -1744,21 +1744,21 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateAws -CreateCluster" @"
+    Write-Message "New-RscMutationAws -CreateCluster" @"
     Create a Rubrik Cloud Cluster on AWS.
 "@ "[GraphQL: createAwsCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -DeleteCluster
+# New-RscMutationAws -DeleteCluster
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAws -DeleteCluster -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAws -DeleteCluster).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAws -DeleteCluster -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAws -DeleteCluster
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -1780,22 +1780,22 @@ $inputs.Var.input = @{
 	region = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateAws -DeleteCluster" @"
+    Write-Message "New-RscMutationAws -DeleteCluster" @"
     Delete a Rubrik Cloud Cluster on AWS.
 "@ "[GraphQL: deleteAwsCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -StartRefreshNativeSubscriptionsJob
+# New-RscMutationAzure -StartRefreshNativeSubscriptionsJob
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -StartRefreshNativeSubscriptionsJob -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -StartRefreshNativeSubscriptionsJob).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -StartRefreshNativeSubscriptionsJob -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -StartRefreshNativeSubscriptionsJob
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -1805,21 +1805,21 @@ $inputs.Var.input = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscMutateAzure -StartRefreshNativeSubscriptionsJob" @"
+    Write-Message "New-RscMutationAzure -StartRefreshNativeSubscriptionsJob" @"
     Start a job to refresh Azure Native subscription for the given subscription IDs. When started, this job will update the Rubrik platform with any changes that have been done on Azure for the respective subscription.
 "@ "[GraphQL: startRefreshAzureNativeSubscriptionsJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -StartRestoreNativeVirtualMachineJob
+# New-RscMutationAzure -StartRestoreNativeVirtualMachineJob
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -StartRestoreNativeVirtualMachineJob -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -StartRestoreNativeVirtualMachineJob).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -StartRestoreNativeVirtualMachineJob -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -StartRestoreNativeVirtualMachineJob
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -1837,21 +1837,21 @@ $inputs.Var.input = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscMutateAzure -StartRestoreNativeVirtualMachineJob" @"
+    Write-Message "New-RscMutationAzure -StartRestoreNativeVirtualMachineJob" @"
     Start a job to restore Azure Native virtual machine with the selected snapshot. When started, this will replace the original VM with the selected snapshot.
 "@ "[GraphQL: startRestoreAzureNativeVirtualMachineJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -StartExportNativeVirtualMachineJob
+# New-RscMutationAzure -StartExportNativeVirtualMachineJob
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -StartExportNativeVirtualMachineJob -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -StartExportNativeVirtualMachineJob).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -StartExportNativeVirtualMachineJob -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -StartExportNativeVirtualMachineJob
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -1893,21 +1893,21 @@ $inputs.Var.input = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscMutateAzure -StartExportNativeVirtualMachineJob" @"
+    Write-Message "New-RscMutationAzure -StartExportNativeVirtualMachineJob" @"
     Start a job to export the Azure native virtual machine for a specified snapshot to a specified destination.
 "@ "[GraphQL: startExportAzureNativeVirtualMachineJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -ExcludeNativeManagedDisksFromSnapshot
+# New-RscMutationAzure -ExcludeNativeManagedDisksFromSnapshot
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -ExcludeNativeManagedDisksFromSnapshot -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -ExcludeNativeManagedDisksFromSnapshot).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -ExcludeNativeManagedDisksFromSnapshot -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -ExcludeNativeManagedDisksFromSnapshot
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -1924,21 +1924,21 @@ $inputs.Var.input = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscMutateAzure -ExcludeNativeManagedDisksFromSnapshot" @"
+    Write-Message "New-RscMutationAzure -ExcludeNativeManagedDisksFromSnapshot" @"
     Exclude the Managed Disks from snapshots, for the specified virtual machines.
 "@ "[GraphQL: excludeAzureNativeManagedDisksFromSnapshot]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -StartCreateNativeVirtualMachineSnapshotsJob
+# New-RscMutationAzure -StartCreateNativeVirtualMachineSnapshotsJob
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -StartCreateNativeVirtualMachineSnapshotsJob -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -StartCreateNativeVirtualMachineSnapshotsJob).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -StartCreateNativeVirtualMachineSnapshotsJob -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -StartCreateNativeVirtualMachineSnapshotsJob
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -1950,21 +1950,21 @@ $inputs.Var.input = @{
 	retentionSlaId = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateAzure -StartCreateNativeVirtualMachineSnapshotsJob" @"
+    Write-Message "New-RscMutationAzure -StartCreateNativeVirtualMachineSnapshotsJob" @"
     Start a job to create a snapshot for the Azure Native virtual machine identified by the IDs. When started, this will start taking an on-demand snapshot of the selected VMs as per the SLA Policy assigned to the respective VMs.
 "@ "[GraphQL: startCreateAzureNativeVirtualMachineSnapshotsJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -StartDisableNativeSubscriptionProtectionJob
+# New-RscMutationAzure -StartDisableNativeSubscriptionProtectionJob
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -StartDisableNativeSubscriptionProtectionJob -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -StartDisableNativeSubscriptionProtectionJob).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -StartDisableNativeSubscriptionProtectionJob -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -StartDisableNativeSubscriptionProtectionJob
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -1976,21 +1976,21 @@ $inputs.Var.input = @{
 	azureNativeProtectionFeature = <AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
 }
 "@
-    Write-Message "Invoke-RscMutateAzure -StartDisableNativeSubscriptionProtectionJob" @"
+    Write-Message "New-RscMutationAzure -StartDisableNativeSubscriptionProtectionJob" @"
     Start a job to disable protection for a specified Azure subscription.
 "@ "[GraphQL: startDisableAzureNativeSubscriptionProtectionJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -StartCreateNativeManagedDiskSnapshotsJob
+# New-RscMutationAzure -StartCreateNativeManagedDiskSnapshotsJob
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -StartCreateNativeManagedDiskSnapshotsJob -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -StartCreateNativeManagedDiskSnapshotsJob).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -StartCreateNativeManagedDiskSnapshotsJob -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -StartCreateNativeManagedDiskSnapshotsJob
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -2002,21 +2002,21 @@ $inputs.Var.input = @{
 	retentionSlaId = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateAzure -StartCreateNativeManagedDiskSnapshotsJob" @"
+    Write-Message "New-RscMutationAzure -StartCreateNativeManagedDiskSnapshotsJob" @"
     Start a job to create snapshots of the Azure Native Managed Disks identified by the given IDs. When started, this will start taking an on-demand snapshot of the selected disks as per the SLA Policy assigned to the respective disks.
 "@ "[GraphQL: startCreateAzureNativeManagedDiskSnapshotsJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -StartExportNativeManagedDiskJob
+# New-RscMutationAzure -StartExportNativeManagedDiskJob
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -StartExportNativeManagedDiskJob -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -StartExportNativeManagedDiskJob).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -StartExportNativeManagedDiskJob -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -StartExportNativeManagedDiskJob
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -2048,21 +2048,21 @@ $inputs.Var.input = @{
 	snapshotType = <AzureSnapshotType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSnapshotType]) for enum values.
 }
 "@
-    Write-Message "Invoke-RscMutateAzure -StartExportNativeManagedDiskJob" @"
+    Write-Message "New-RscMutationAzure -StartExportNativeManagedDiskJob" @"
     Start a job to export the specified Azure Native Managed Disks to the desired destination.
 "@ "[GraphQL: startExportAzureNativeManagedDiskJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -StartExportSqlDatabaseDbJob
+# New-RscMutationAzure -StartExportSqlDatabaseDbJob
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -StartExportSqlDatabaseDbJob -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -StartExportSqlDatabaseDbJob).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -StartExportSqlDatabaseDbJob -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -StartExportSqlDatabaseDbJob
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -2120,21 +2120,21 @@ $inputs.Var.input = @{
 	serviceObjectiveName = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateAzure -StartExportSqlDatabaseDbJob" @"
+    Write-Message "New-RscMutationAzure -StartExportSqlDatabaseDbJob" @"
     Start a job to export Azure SQL Database. The job creates a new Azure SQL Database with the same properties as that of the instance that is exported.
 "@ "[GraphQL: startExportAzureSqlDatabaseDbJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -StartExportSqlManagedInstanceDbJob
+# New-RscMutationAzure -StartExportSqlManagedInstanceDbJob
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -StartExportSqlManagedInstanceDbJob -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -StartExportSqlManagedInstanceDbJob).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -StartExportSqlManagedInstanceDbJob -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -StartExportSqlManagedInstanceDbJob
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -2184,21 +2184,21 @@ $inputs.Var.input = @{
 	serviceObjectiveName = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateAzure -StartExportSqlManagedInstanceDbJob" @"
+    Write-Message "New-RscMutationAzure -StartExportSqlManagedInstanceDbJob" @"
     Start a job to export Azure SQL Managed Instance database. The job creates a new Azure SQL Managed Instance database with the same properties as that of the instance that is exported.
 "@ "[GraphQL: startExportAzureSqlManagedInstanceDbJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -CreateAccount
+# New-RscMutationAzure -CreateAccount
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -CreateAccount -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -CreateAccount).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -CreateAccount -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -CreateAccount
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -2210,21 +2210,21 @@ $inputs.Var.input = @{
 	subscriptionId = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateAzure -CreateAccount" @"
+    Write-Message "New-RscMutationAzure -CreateAccount" @"
     
 "@ "[GraphQL: createAzureAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -UpdateAccount
+# New-RscMutationAzure -UpdateAccount
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -UpdateAccount -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -UpdateAccount).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -UpdateAccount -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -UpdateAccount
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -2238,21 +2238,21 @@ $inputs.Var.input = @{
 	subscriptionId = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateAzure -UpdateAccount" @"
+    Write-Message "New-RscMutationAzure -UpdateAccount" @"
     
 "@ "[GraphQL: updateAzureAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -CreateAutomaticTargetMapping
+# New-RscMutationAzure -CreateAutomaticTargetMapping
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -CreateAutomaticTargetMapping -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -CreateAutomaticTargetMapping).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -CreateAutomaticTargetMapping -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -CreateAutomaticTargetMapping
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -2327,21 +2327,21 @@ $inputs.Var.input = @{
 	isConsolidationEnabled = <System.Boolean>
 }
 "@
-    Write-Message "Invoke-RscMutateAzure -CreateAutomaticTargetMapping" @"
+    Write-Message "New-RscMutationAzure -CreateAutomaticTargetMapping" @"
     
 "@ "[GraphQL: createAutomaticAzureTargetMapping]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -CreateCloudNativeStorageSetting
+# New-RscMutationAzure -CreateCloudNativeStorageSetting
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -CreateCloudNativeStorageSetting -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -CreateCloudNativeStorageSetting).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -CreateCloudNativeStorageSetting -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -CreateCloudNativeStorageSetting
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -2390,21 +2390,21 @@ $inputs.Var.input = @{
 	azureCloudType = <AzureCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
 }
 "@
-    Write-Message "Invoke-RscMutateAzure -CreateCloudNativeStorageSetting" @"
+    Write-Message "New-RscMutationAzure -CreateCloudNativeStorageSetting" @"
     Creates Storage Settings for the archival of azure cloud native protected objects
 "@ "[GraphQL: createCloudNativeAzureStorageSetting]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -CreateCloudNativeRcvStorageSetting
+# New-RscMutationAzure -CreateCloudNativeRcvStorageSetting
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -CreateCloudNativeRcvStorageSetting -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -CreateCloudNativeRcvStorageSetting).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -CreateCloudNativeRcvStorageSetting -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -CreateCloudNativeRcvStorageSetting
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -2416,21 +2416,21 @@ $inputs.Var.input = @{
 	cloudNativeLocTemplateType = <CloudNativeLocTemplateType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeLocTemplateType]) for enum values.
 }
 "@
-    Write-Message "Invoke-RscMutateAzure -CreateCloudNativeRcvStorageSetting" @"
+    Write-Message "New-RscMutationAzure -CreateCloudNativeRcvStorageSetting" @"
     Create Rubrik Cloud Vault storage settings for archiving azure cloud native protected objects.
 "@ "[GraphQL: createCloudNativeRcvAzureStorageSetting]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -UpdateAutomaticTargetMapping
+# New-RscMutationAzure -UpdateAutomaticTargetMapping
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -UpdateAutomaticTargetMapping -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -UpdateAutomaticTargetMapping).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -UpdateAutomaticTargetMapping -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -UpdateAutomaticTargetMapping
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -2501,21 +2501,21 @@ $inputs.Var.input = @{
 	isConsolidationEnabled = <System.Boolean>
 }
 "@
-    Write-Message "Invoke-RscMutateAzure -UpdateAutomaticTargetMapping" @"
+    Write-Message "New-RscMutationAzure -UpdateAutomaticTargetMapping" @"
     
 "@ "[GraphQL: updateAutomaticAzureTargetMapping]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -UpdateCloudNativeStorageSetting
+# New-RscMutationAzure -UpdateCloudNativeStorageSetting
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -UpdateCloudNativeStorageSetting -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -UpdateCloudNativeStorageSetting).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -UpdateCloudNativeStorageSetting -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -UpdateCloudNativeStorageSetting
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -2550,21 +2550,21 @@ $inputs.Var.input = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscMutateAzure -UpdateCloudNativeStorageSetting" @"
+    Write-Message "New-RscMutationAzure -UpdateCloudNativeStorageSetting" @"
     
 "@ "[GraphQL: updateCloudNativeAzureStorageSetting]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -UpdateCloudNativeRcvStorageSetting
+# New-RscMutationAzure -UpdateCloudNativeRcvStorageSetting
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -UpdateCloudNativeRcvStorageSetting -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -UpdateCloudNativeRcvStorageSetting).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -UpdateCloudNativeRcvStorageSetting -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -UpdateCloudNativeRcvStorageSetting
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -2574,21 +2574,21 @@ $inputs.Var.input = @{
 	name = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateAzure -UpdateCloudNativeRcvStorageSetting" @"
+    Write-Message "New-RscMutationAzure -UpdateCloudNativeRcvStorageSetting" @"
     Updates an existing Rubrik Cloud Vault Storage Settings for the archival of azure cloud native protected objects.
 "@ "[GraphQL: updateCloudNativeRcvAzureStorageSetting]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -CreateTarget
+# New-RscMutationAzure -CreateTarget
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -CreateTarget -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -CreateTarget).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -CreateTarget -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -CreateTarget
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -2670,21 +2670,21 @@ $inputs.Var.input = @{
 	bypassProxy = <System.Boolean>
 }
 "@
-    Write-Message "Invoke-RscMutateAzure -CreateTarget" @"
+    Write-Message "New-RscMutationAzure -CreateTarget" @"
     Creates an Azure archival target on the Rubrik cluster.
 "@ "[GraphQL: createAzureTarget]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -UpdateTarget
+# New-RscMutationAzure -UpdateTarget
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -UpdateTarget -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -UpdateTarget).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -UpdateTarget -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -UpdateTarget
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -2760,21 +2760,21 @@ $inputs.Var.input = @{
 	bypassProxy = <System.Boolean>
 }
 "@
-    Write-Message "Invoke-RscMutateAzure -UpdateTarget" @"
+    Write-Message "New-RscMutationAzure -UpdateTarget" @"
     
 "@ "[GraphQL: updateAzureTarget]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -CreateReaderTarget
+# New-RscMutationAzure -CreateReaderTarget
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -CreateReaderTarget -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -CreateReaderTarget).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -CreateReaderTarget -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -CreateReaderTarget
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -2858,21 +2858,21 @@ $inputs.Var.input = @{
 	bypassProxy = <System.Boolean>
 }
 "@
-    Write-Message "Invoke-RscMutateAzure -CreateReaderTarget" @"
+    Write-Message "New-RscMutationAzure -CreateReaderTarget" @"
     Creates reader type for Azure archival location on a CDM cluster.
 "@ "[GraphQL: createAzureReaderTarget]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -StartCloudAccountOauth
+# New-RscMutationAzure -StartCloudAccountOauth
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -StartCloudAccountOauth -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -StartCloudAccountOauth).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -StartCloudAccountOauth -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -StartCloudAccountOauth
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -2882,21 +2882,21 @@ $inputs.Var.input = @{
 	azureCloudType = <AzureCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
 }
 "@
-    Write-Message "Invoke-RscMutateAzure -StartCloudAccountOauth" @"
+    Write-Message "New-RscMutationAzure -StartCloudAccountOauth" @"
     Initiates a session before doing Azure OAuth flow. If a custom app is configured for the tenant, the client ID of the custom app is returned. Otherwise, the client ID of the default app is returned.
 "@ "[GraphQL: startAzureCloudAccountOauth]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -CompleteCloudAccountOauth
+# New-RscMutationAzure -CompleteCloudAccountOauth
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -CompleteCloudAccountOauth -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -CompleteCloudAccountOauth).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -CompleteCloudAccountOauth -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -CompleteCloudAccountOauth
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -2928,21 +2928,21 @@ $inputs.Var.input = @{
 	shouldKeepRefreshToken = <System.Boolean>
 }
 "@
-    Write-Message "Invoke-RscMutateAzure -CompleteCloudAccountOauth" @"
+    Write-Message "New-RscMutationAzure -CompleteCloudAccountOauth" @"
     Complete the Azure OAuth flow and pass the authorization code.
 "@ "[GraphQL: completeAzureCloudAccountOauth]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -SetCloudAccountCustomerAppCredentials
+# New-RscMutationAzure -SetCloudAccountCustomerAppCredentials
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -SetCloudAccountCustomerAppCredentials -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -SetCloudAccountCustomerAppCredentials).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -SetCloudAccountCustomerAppCredentials -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -SetCloudAccountCustomerAppCredentials
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -2962,21 +2962,21 @@ $inputs.Var.input = @{
 	azureCloudType = <AzureCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
 }
 "@
-    Write-Message "Invoke-RscMutateAzure -SetCloudAccountCustomerAppCredentials" @"
+    Write-Message "New-RscMutationAzure -SetCloudAccountCustomerAppCredentials" @"
     Set credentials for the customer application, for the tenant domain name.
 "@ "[GraphQL: setAzureCloudAccountCustomerAppCredentials]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -AddCloudAccount
+# New-RscMutationAzure -AddCloudAccount
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -AddCloudAccount -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -AddCloudAccount).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -AddCloudAccount -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -AddCloudAccount
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -3032,21 +3032,21 @@ $inputs.Var.input = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscMutateAzure -AddCloudAccount" @"
+    Write-Message "New-RscMutationAzure -AddCloudAccount" @"
     Add the Azure Subscriptions cloud account for the given feature.
 "@ "[GraphQL: addAzureCloudAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -AddCloudAccountWithoutOauth
+# New-RscMutationAzure -AddCloudAccountWithoutOauth
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -AddCloudAccountWithoutOauth -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -AddCloudAccountWithoutOauth).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -AddCloudAccountWithoutOauth -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -AddCloudAccountWithoutOauth
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -3118,21 +3118,21 @@ $inputs.Var.input = @{
 	azureCloudType = <AzureCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
 }
 "@
-    Write-Message "Invoke-RscMutateAzure -AddCloudAccountWithoutOauth" @"
+    Write-Message "New-RscMutationAzure -AddCloudAccountWithoutOauth" @"
     Add the Azure Subscription cloud account for the given feature without OAuth.
 "@ "[GraphQL: addAzureCloudAccountWithoutOauth]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -DeleteCloudAccount
+# New-RscMutationAzure -DeleteCloudAccount
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -DeleteCloudAccount -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -DeleteCloudAccount).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -DeleteCloudAccount -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -DeleteCloudAccount
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -3148,21 +3148,21 @@ $inputs.Var.input = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscMutateAzure -DeleteCloudAccount" @"
+    Write-Message "New-RscMutationAzure -DeleteCloudAccount" @"
     Delete the Azure Subscriptions cloud account for the given feature.
 "@ "[GraphQL: deleteAzureCloudAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -DeleteCloudAccountWithoutOauth
+# New-RscMutationAzure -DeleteCloudAccountWithoutOauth
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -DeleteCloudAccountWithoutOauth -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -DeleteCloudAccountWithoutOauth).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -DeleteCloudAccountWithoutOauth -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -DeleteCloudAccountWithoutOauth
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -3176,21 +3176,21 @@ $inputs.Var.input = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscMutateAzure -DeleteCloudAccountWithoutOauth" @"
+    Write-Message "New-RscMutationAzure -DeleteCloudAccountWithoutOauth" @"
     Delete the Azure Subscriptions cloud account for the given feature without OAuth.
 "@ "[GraphQL: deleteAzureCloudAccountWithoutOauth]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -UpgradeCloudAccount
+# New-RscMutationAzure -UpgradeCloudAccount
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -UpgradeCloudAccount -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -UpgradeCloudAccount).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -UpgradeCloudAccount -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -UpgradeCloudAccount
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -3217,39 +3217,39 @@ $inputs.Var.input = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscMutateAzure -UpgradeCloudAccount" @"
+    Write-Message "New-RscMutationAzure -UpgradeCloudAccount" @"
     Update permissions of the Azure Subscriptions cloud account for given feature.
 "@ "[GraphQL: upgradeAzureCloudAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -UpdateCustomerAppPermissionForSql
+# New-RscMutationAzure -UpdateCustomerAppPermissionForSql
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -UpdateCustomerAppPermissionForSql -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -UpdateCustomerAppPermissionForSql).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -UpdateCustomerAppPermissionForSql -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -UpdateCustomerAppPermissionForSql
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     
 "@
-    Write-Message "Invoke-RscMutateAzure -UpdateCustomerAppPermissionForSql" @"
+    Write-Message "New-RscMutationAzure -UpdateCustomerAppPermissionForSql" @"
     Updates the Azure app for the specified account in an idempotent manner to support Azure SQL Database and  Managed Instance Database authentication.
 "@ "[GraphQL: updateCustomerAppPermissionForAzureSql]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -StartDisableCloudAccountJob
+# New-RscMutationAzure -StartDisableCloudAccountJob
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -StartDisableCloudAccountJob -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -StartDisableCloudAccountJob).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -StartDisableCloudAccountJob -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -StartDisableCloudAccountJob
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -3261,21 +3261,21 @@ $inputs.Var.input = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscMutateAzure -StartDisableCloudAccountJob" @"
+    Write-Message "New-RscMutationAzure -StartDisableCloudAccountJob" @"
     Start on-demand jobs to disable the feature for the given Azure Cloud Accounts. When completed, the status of cloud account feature will change to Disabled and the feature will become eligible to be deleted.
 "@ "[GraphQL: startDisableAzureCloudAccountJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -UpdateCloudAccount
+# New-RscMutationAzure -UpdateCloudAccount
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -UpdateCloudAccount -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -UpdateCloudAccount).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -UpdateCloudAccount -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -UpdateCloudAccount
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -3302,21 +3302,21 @@ $inputs.Var.input = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscMutateAzure -UpdateCloudAccount" @"
+    Write-Message "New-RscMutationAzure -UpdateCloudAccount" @"
     Update names of the Azure Subscriptions cloud account and regions for the given feature.
 "@ "[GraphQL: updateAzureCloudAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -MapCloudAccountToPersistentStorageLocation
+# New-RscMutationAzure -MapCloudAccountToPersistentStorageLocation
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -MapCloudAccountToPersistentStorageLocation -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -MapCloudAccountToPersistentStorageLocation).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -MapCloudAccountToPersistentStorageLocation -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -MapCloudAccountToPersistentStorageLocation
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -3330,21 +3330,21 @@ $inputs.Var.input = @{
 	azureNativeProtectionFeature = <AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
 }
 "@
-    Write-Message "Invoke-RscMutateAzure -MapCloudAccountToPersistentStorageLocation" @"
+    Write-Message "New-RscMutationAzure -MapCloudAccountToPersistentStorageLocation" @"
     Map Azure cloud accounts to a persistent storage location.
 "@ "[GraphQL: mapAzureCloudAccountToPersistentStorageLocation]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -AddCloudAccountExocomputeConfigurations
+# New-RscMutationAzure -AddCloudAccountExocomputeConfigurations
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -AddCloudAccountExocomputeConfigurations -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -AddCloudAccountExocomputeConfigurations).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -AddCloudAccountExocomputeConfigurations -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -AddCloudAccountExocomputeConfigurations
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -3367,21 +3367,21 @@ $inputs.Var.input = @{
 	triggerHealthCheck = <System.Boolean>
 }
 "@
-    Write-Message "Invoke-RscMutateAzure -AddCloudAccountExocomputeConfigurations" @"
+    Write-Message "New-RscMutationAzure -AddCloudAccountExocomputeConfigurations" @"
     Add Exocompute configurations for an Azure Cloud Account.
 "@ "[GraphQL: addAzureCloudAccountExocomputeConfigurations]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -DeleteCloudAccountExocomputeConfigurations
+# New-RscMutationAzure -DeleteCloudAccountExocomputeConfigurations
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -DeleteCloudAccountExocomputeConfigurations -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -DeleteCloudAccountExocomputeConfigurations).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -DeleteCloudAccountExocomputeConfigurations -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -DeleteCloudAccountExocomputeConfigurations
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -3391,21 +3391,21 @@ $inputs.Var.input = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscMutateAzure -DeleteCloudAccountExocomputeConfigurations" @"
+    Write-Message "New-RscMutationAzure -DeleteCloudAccountExocomputeConfigurations" @"
     Delete Exocompute configurations for an Azure Cloud Account.
 "@ "[GraphQL: deleteAzureCloudAccountExocomputeConfigurations]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -MapCloudAccountExocomputeSubscription
+# New-RscMutationAzure -MapCloudAccountExocomputeSubscription
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -MapCloudAccountExocomputeSubscription -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -MapCloudAccountExocomputeSubscription).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -MapCloudAccountExocomputeSubscription -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -MapCloudAccountExocomputeSubscription
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -3417,21 +3417,21 @@ $inputs.Var.input = @{
 	exocomputeCloudAccountId = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateAzure -MapCloudAccountExocomputeSubscription" @"
+    Write-Message "New-RscMutationAzure -MapCloudAccountExocomputeSubscription" @"
     Map Azure cloud accounts to an Exocompute subscription.
 "@ "[GraphQL: mapAzureCloudAccountExocomputeSubscription]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -UnmapCloudAccountExocomputeSubscription
+# New-RscMutationAzure -UnmapCloudAccountExocomputeSubscription
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -UnmapCloudAccountExocomputeSubscription -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -UnmapCloudAccountExocomputeSubscription).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -UnmapCloudAccountExocomputeSubscription -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -UnmapCloudAccountExocomputeSubscription
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -3441,21 +3441,21 @@ $inputs.Var.input = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscMutateAzure -UnmapCloudAccountExocomputeSubscription" @"
+    Write-Message "New-RscMutationAzure -UnmapCloudAccountExocomputeSubscription" @"
     Unmap Azure cloud accounts from the mapped Exocompute subscription.
 "@ "[GraphQL: unmapAzureCloudAccountExocomputeSubscription]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -UpgradeCloudAccountPermissionsWithoutOauth
+# New-RscMutationAzure -UpgradeCloudAccountPermissionsWithoutOauth
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -UpgradeCloudAccountPermissionsWithoutOauth -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -UpgradeCloudAccountPermissionsWithoutOauth).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -UpgradeCloudAccountPermissionsWithoutOauth -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -UpgradeCloudAccountPermissionsWithoutOauth
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -3474,21 +3474,21 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateAzure -UpgradeCloudAccountPermissionsWithoutOauth" @"
+    Write-Message "New-RscMutationAzure -UpgradeCloudAccountPermissionsWithoutOauth" @"
     Set Azure Cloud Account feature status to Connected from Update Permissions state without any permission validation. It should be used by caution from cloud accounts which have been set up without using OAuth, only after adding the latest permissions that are required.
 "@ "[GraphQL: upgradeAzureCloudAccountPermissionsWithoutOauth]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -UnmapPersistentStorageSubscription
+# New-RscMutationAzure -UnmapPersistentStorageSubscription
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -UnmapPersistentStorageSubscription -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -UnmapPersistentStorageSubscription).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -UnmapPersistentStorageSubscription -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -UnmapPersistentStorageSubscription
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -3502,39 +3502,39 @@ $inputs.Var.input = @{
 	unmappingValidationType = <UnmappingValidationType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmappingValidationType]) for enum values.
 }
 "@
-    Write-Message "Invoke-RscMutateAzure -UnmapPersistentStorageSubscription" @"
+    Write-Message "New-RscMutationAzure -UnmapPersistentStorageSubscription" @"
     Unmaps the archival location from the subscription.
 "@ "[GraphQL: unmapAzurePersistentStorageSubscription]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -OauthConsentKickoff
+# New-RscMutationAzure -OauthConsentKickoff
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -OauthConsentKickoff -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -OauthConsentKickoff).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -OauthConsentKickoff -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -OauthConsentKickoff
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     
 "@
-    Write-Message "Invoke-RscMutateAzure -OauthConsentKickoff" @"
+    Write-Message "New-RscMutationAzure -OauthConsentKickoff" @"
     Kicks off an OAuth consent flow for Azure resource access.
 "@ "[GraphQL: azureOauthConsentKickoff]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -OauthConsentComplete
+# New-RscMutationAzure -OauthConsentComplete
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -OauthConsentComplete -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -OauthConsentComplete).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -OauthConsentComplete -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -OauthConsentComplete
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -3554,39 +3554,39 @@ $inputs.Var.input = @{
 	azureCloudType = <O365AzureCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365AzureCloudType]) for enum values.
 }
 "@
-    Write-Message "Invoke-RscMutateAzure -OauthConsentComplete" @"
+    Write-Message "New-RscMutationAzure -OauthConsentComplete" @"
     Completes an OAuth consent flow for Azure resource access.
 "@ "[GraphQL: azureOauthConsentComplete]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -CreateSaasAppAad
+# New-RscMutationAzure -CreateSaasAppAad
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -CreateSaasAppAad -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -CreateSaasAppAad).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -CreateSaasAppAad -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -CreateSaasAppAad
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     
 "@
-    Write-Message "Invoke-RscMutateAzure -CreateSaasAppAad" @"
+    Write-Message "New-RscMutationAzure -CreateSaasAppAad" @"
     Create or get an Azure AAD application.
 "@ "[GraphQL: createAzureSaasAppAad]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -CreateCluster
+# New-RscMutationAzure -CreateCluster
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -CreateCluster -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -CreateCluster).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -CreateCluster -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -CreateCluster
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -3680,21 +3680,21 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateAzure -CreateCluster" @"
+    Write-Message "New-RscMutationAzure -CreateCluster" @"
     Create a Rubrik Cloud Cluster on Azure.
 "@ "[GraphQL: createAzureCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -DeleteCluster
+# New-RscMutationAzure -DeleteCluster
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzure -DeleteCluster -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzure -DeleteCluster).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzure -DeleteCluster -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzure -DeleteCluster
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -3722,22 +3722,22 @@ $inputs.Var.input = @{
 	clusterUuid = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateAzure -DeleteCluster" @"
+    Write-Message "New-RscMutationAzure -DeleteCluster" @"
     Delete a Rubrik Cloud Cluster on Azure.
 "@ "[GraphQL: deleteAzureCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzureO365 -SetupExocompute
+# New-RscMutationAzureO365 -SetupExocompute
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateAzureO365 -SetupExocompute -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationAzureO365 -SetupExocompute).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateAzureO365 -SetupExocompute -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationAzureO365 -SetupExocompute
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.tenantId = <System.String>
@@ -3804,22 +3804,22 @@ $inputs.Var.exocomputeConfig = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateAzureO365 -SetupExocompute" @"
+    Write-Message "New-RscMutationAzureO365 -SetupExocompute" @"
     Sets up Exocompute for an O365 subscription.
 "@ "[GraphQL: setupAzureO365Exocompute]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateCassandra -RecoverSource
+# New-RscMutationCassandra -RecoverSource
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateCassandra -RecoverSource -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationCassandra -RecoverSource).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateCassandra -RecoverSource -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationCassandra -RecoverSource
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -3884,21 +3884,21 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateCassandra -RecoverSource" @"
+    Write-Message "New-RscMutationCassandra -RecoverSource" @"
     Recover a cassandra source.
 "@ "[GraphQL: recoverCassandraSource]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateCassandra -CreateSource
+# New-RscMutationCassandra -CreateSource
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateCassandra -CreateSource -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationCassandra -CreateSource).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateCassandra -CreateSource -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationCassandra -CreateSource
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -3971,21 +3971,21 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateCassandra -CreateSource" @"
+    Write-Message "New-RscMutationCassandra -CreateSource" @"
     Create a cassandra source.
 "@ "[GraphQL: createCassandraSource]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateCassandra -UpdateSource
+# New-RscMutationCassandra -UpdateSource
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateCassandra -UpdateSource -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationCassandra -UpdateSource).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateCassandra -UpdateSource -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationCassandra -UpdateSource
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -4058,21 +4058,21 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateCassandra -UpdateSource" @"
+    Write-Message "New-RscMutationCassandra -UpdateSource" @"
     Update a cassandra source.
 "@ "[GraphQL: updateCassandraSource]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateCassandra -DeleteSource
+# New-RscMutationCassandra -DeleteSource
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateCassandra -DeleteSource -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationCassandra -DeleteSource).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateCassandra -DeleteSource -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationCassandra -DeleteSource
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -4084,21 +4084,21 @@ $inputs.Var.input = @{
 	sourceName = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateCassandra -DeleteSource" @"
+    Write-Message "New-RscMutationCassandra -DeleteSource" @"
     Delete a cassandra source.
 "@ "[GraphQL: deleteCassandraSource]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateCassandra -BulkDeleteSources
+# New-RscMutationCassandra -BulkDeleteSources
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateCassandra -BulkDeleteSources -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationCassandra -BulkDeleteSources).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateCassandra -BulkDeleteSources -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationCassandra -BulkDeleteSources
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -4117,22 +4117,22 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateCassandra -BulkDeleteSources" @"
+    Write-Message "New-RscMutationCassandra -BulkDeleteSources" @"
     Bulk Delete cassandra sources.
 "@ "[GraphQL: bulkDeleteCassandraSources]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateCluster -AddNodesToCloud
+# New-RscMutationCluster -AddNodesToCloud
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateCluster -AddNodesToCloud -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationCluster -AddNodesToCloud).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateCluster -AddNodesToCloud -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationCluster -AddNodesToCloud
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -4148,21 +4148,21 @@ $inputs.Var.input = @{
 	clusterUuid = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateCluster -AddNodesToCloud" @"
+    Write-Message "New-RscMutationCluster -AddNodesToCloud" @"
     Add nodes to cloud cluster.
 "@ "[GraphQL: addNodesToCloudCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateCluster -RegisterCloud
+# New-RscMutationCluster -RegisterCloud
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateCluster -RegisterCloud -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationCluster -RegisterCloud).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateCluster -RegisterCloud -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationCluster -RegisterCloud
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -4170,21 +4170,21 @@ $inputs.Var.input = @{
 	clusterUuid = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateCluster -RegisterCloud" @"
+    Write-Message "New-RscMutationCluster -RegisterCloud" @"
     Register a cloud cluster.
 "@ "[GraphQL: registerCloudCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateCluster -UpdateDatabaseLogReportingProperties
+# New-RscMutationCluster -UpdateDatabaseLogReportingProperties
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateCluster -UpdateDatabaseLogReportingProperties -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationCluster -UpdateDatabaseLogReportingProperties).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateCluster -UpdateDatabaseLogReportingProperties -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationCluster -UpdateDatabaseLogReportingProperties
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -4201,7 +4201,7 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateCluster -UpdateDatabaseLogReportingProperties" @"
+    Write-Message "New-RscMutationCluster -UpdateDatabaseLogReportingProperties" @"
     Update the database log backup report properties
 
 Supported in v5.3+
@@ -4210,15 +4210,15 @@ Update the properties for the database (SQL and Oracle) log backup delay email n
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateCluster -CreateFailover
+# New-RscMutationCluster -CreateFailover
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateCluster -CreateFailover -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationCluster -CreateFailover).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateCluster -CreateFailover -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationCluster -CreateFailover
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -4237,7 +4237,7 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateCluster -CreateFailover" @"
+    Write-Message "New-RscMutationCluster -CreateFailover" @"
     Create a failover cluster
 
 Supported in v5.2+
@@ -4246,15 +4246,15 @@ Create a failover cluster.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateCluster -UpdateFailover
+# New-RscMutationCluster -UpdateFailover
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateCluster -UpdateFailover -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationCluster -UpdateFailover).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateCluster -UpdateFailover -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationCluster -UpdateFailover
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -4273,7 +4273,7 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateCluster -UpdateFailover" @"
+    Write-Message "New-RscMutationCluster -UpdateFailover" @"
     Update a failover cluster
 
 Supported in v5.2+
@@ -4282,15 +4282,15 @@ Update failover cluster with specified properties.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateCluster -DeleteFailover
+# New-RscMutationCluster -DeleteFailover
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateCluster -DeleteFailover -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationCluster -DeleteFailover).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateCluster -DeleteFailover -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationCluster -DeleteFailover
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -4300,7 +4300,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateCluster -DeleteFailover" @"
+    Write-Message "New-RscMutationCluster -DeleteFailover" @"
     Delete a failover cluster
 
 Supported in v5.2+
@@ -4309,15 +4309,15 @@ Delete a failover cluster.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateCluster -BulkDeleteFailover
+# New-RscMutationCluster -BulkDeleteFailover
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateCluster -BulkDeleteFailover -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationCluster -BulkDeleteFailover).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateCluster -BulkDeleteFailover -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationCluster -BulkDeleteFailover
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -4329,7 +4329,7 @@ $inputs.Var.input = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscMutateCluster -BulkDeleteFailover" @"
+    Write-Message "New-RscMutationCluster -BulkDeleteFailover" @"
     Delete the provided failover clusters
 
 Supported in v5.3+
@@ -4338,15 +4338,15 @@ Delete the provided failover clusters.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateCluster -CreateK8s
+# New-RscMutationCluster -CreateK8s
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateCluster -CreateK8s -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationCluster -CreateK8s).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateCluster -CreateK8s -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationCluster -CreateK8s
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -4384,21 +4384,21 @@ $inputs.Var.input = @{
 	proxyUrl = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateCluster -CreateK8s" @"
+    Write-Message "New-RscMutationCluster -CreateK8s" @"
     Add a Kubernetes cluster.
 "@ "[GraphQL: createK8sCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateCluster -RefreshK8s
+# New-RscMutationCluster -RefreshK8s
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateCluster -RefreshK8s -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationCluster -RefreshK8s).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateCluster -RefreshK8s -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationCluster -RefreshK8s
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -4406,21 +4406,21 @@ $inputs.Var.input = @{
 	k8sClusterId = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateCluster -RefreshK8s" @"
+    Write-Message "New-RscMutationCluster -RefreshK8s" @"
     Refresh resources of a Kubernetes cluster.
 "@ "[GraphQL: refreshK8sCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateCluster -ArchiveK8s
+# New-RscMutationCluster -ArchiveK8s
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateCluster -ArchiveK8s -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationCluster -ArchiveK8s).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateCluster -ArchiveK8s -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationCluster -ArchiveK8s
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -4428,21 +4428,21 @@ $inputs.Var.input = @{
 	clusterId = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateCluster -ArchiveK8s" @"
+    Write-Message "New-RscMutationCluster -ArchiveK8s" @"
     Archive a Kubernetes cluster.
 "@ "[GraphQL: archiveK8sCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateCluster -RemoveCdm
+# New-RscMutationCluster -RemoveCdm
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateCluster -RemoveCdm -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationCluster -RemoveCdm).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateCluster -RemoveCdm -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationCluster -RemoveCdm
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.clusterUUID = <System.String>
@@ -4451,21 +4451,21 @@ $inputs.Var.isForce = <System.Boolean>
 # OPTIONAL
 $inputs.Var.expireInDays = <System.Int64>
 "@
-    Write-Message "Invoke-RscMutateCluster -RemoveCdm" @"
+    Write-Message "New-RscMutationCluster -RemoveCdm" @"
     
 "@ "[GraphQL: removeCdmCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateCluster -RecoverCloud
+# New-RscMutationCluster -RecoverCloud
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateCluster -RecoverCloud -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationCluster -RecoverCloud).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateCluster -RecoverCloud -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationCluster -RecoverCloud
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -4549,22 +4549,22 @@ $inputs.Var.input = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscMutateCluster -RecoverCloud" @"
+    Write-Message "New-RscMutationCluster -RecoverCloud" @"
     Recover a Rubrik Cloud Cluster.
 "@ "[GraphQL: recoverCloudCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateDb2 -AddInstance
+# New-RscMutationDb2 -AddInstance
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateDb2 -AddInstance -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationDb2 -AddInstance).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateDb2 -AddInstance -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationDb2 -AddInstance
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -4585,21 +4585,21 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateDb2 -AddInstance" @"
+    Write-Message "New-RscMutationDb2 -AddInstance" @"
     Mutation to add a new Db2 instance.
 "@ "[GraphQL: addDb2Instance]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateDb2 -DeleteInstance
+# New-RscMutationDb2 -DeleteInstance
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateDb2 -DeleteInstance -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationDb2 -DeleteInstance).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateDb2 -DeleteInstance -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationDb2 -DeleteInstance
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -4607,21 +4607,21 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateDb2 -DeleteInstance" @"
+    Write-Message "New-RscMutationDb2 -DeleteInstance" @"
     Mutation to delete existing Db2 instance.
 "@ "[GraphQL: deleteDb2Instance]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateDb2 -DiscoverInstance
+# New-RscMutationDb2 -DiscoverInstance
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateDb2 -DiscoverInstance -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationDb2 -DiscoverInstance).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateDb2 -DiscoverInstance -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationDb2 -DiscoverInstance
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -4629,7 +4629,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateDb2 -DiscoverInstance" @"
+    Write-Message "New-RscMutationDb2 -DiscoverInstance" @"
     On-demand discovery of a Db2 instance
 
 Supported in v7.0+
@@ -4638,15 +4638,15 @@ Initiates an on-demand job to discover a Db2 instance.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateDb2 -PatchInstance
+# New-RscMutationDb2 -PatchInstance
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateDb2 -PatchInstance -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationDb2 -PatchInstance).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateDb2 -PatchInstance -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationDb2 -PatchInstance
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -4667,21 +4667,21 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateDb2 -PatchInstance" @"
+    Write-Message "New-RscMutationDb2 -PatchInstance" @"
     Mutation to update an existing Db2 instance.
 "@ "[GraphQL: patchDb2Instance]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateDb2 -CreateOnDemandBackup
+# New-RscMutationDb2 -CreateOnDemandBackup
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateDb2 -CreateOnDemandBackup -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationDb2 -CreateOnDemandBackup).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateDb2 -CreateOnDemandBackup -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationDb2 -CreateOnDemandBackup
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -4694,7 +4694,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateDb2 -CreateOnDemandBackup" @"
+    Write-Message "New-RscMutationDb2 -CreateOnDemandBackup" @"
     Create on demand database snapshot
 
 Supported in v8.0+
@@ -4703,15 +4703,15 @@ Initiates a job to take an on demand, full snapshot of a specified Db2 database 
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateDb2 -DownloadSnapshot
+# New-RscMutationDb2 -DownloadSnapshot
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateDb2 -DownloadSnapshot -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationDb2 -DownloadSnapshot).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateDb2 -DownloadSnapshot -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationDb2 -DownloadSnapshot
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -4721,7 +4721,7 @@ $inputs.Var.input = @{
 	snapshotId = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateDb2 -DownloadSnapshot" @"
+    Write-Message "New-RscMutationDb2 -DownloadSnapshot" @"
     Download Db2 database snapshot from archive
 
 Supported in v8.0+
@@ -4730,15 +4730,15 @@ Downloads a specific Db2 database snapshot from the specified archival location.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateDb2 -DownloadSnapshotsForPointInTimeRecovery
+# New-RscMutationDb2 -DownloadSnapshotsForPointInTimeRecovery
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateDb2 -DownloadSnapshotsForPointInTimeRecovery -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationDb2 -DownloadSnapshotsForPointInTimeRecovery).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateDb2 -DownloadSnapshotsForPointInTimeRecovery -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationDb2 -DownloadSnapshotsForPointInTimeRecovery
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -4753,7 +4753,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateDb2 -DownloadSnapshotsForPointInTimeRecovery" @"
+    Write-Message "New-RscMutationDb2 -DownloadSnapshotsForPointInTimeRecovery" @"
     Download Db2 database snapshots from archive for a point in time recovery
 
 Supported in v8.0+
@@ -4762,15 +4762,15 @@ Downloads the most recent full snapshot and the log snapshots taken after the fu
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateDb2 -ExpireDownloadedSnapshots
+# New-RscMutationDb2 -ExpireDownloadedSnapshots
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateDb2 -ExpireDownloadedSnapshots -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationDb2 -ExpireDownloadedSnapshots).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateDb2 -ExpireDownloadedSnapshots -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationDb2 -ExpireDownloadedSnapshots
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -4784,7 +4784,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateDb2 -ExpireDownloadedSnapshots" @"
+    Write-Message "New-RscMutationDb2 -ExpireDownloadedSnapshots" @"
     Expire downloaded snapshots of a Db2 database
 
 Supported in v8.0+
@@ -4793,15 +4793,15 @@ Requests an asynchronous job to expire all downloaded data and log snapshots. Yo
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateDb2 -PatchDatabase
+# New-RscMutationDb2 -PatchDatabase
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateDb2 -PatchDatabase -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationDb2 -PatchDatabase).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateDb2 -PatchDatabase -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationDb2 -PatchDatabase
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -4816,7 +4816,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateDb2 -PatchDatabase" @"
+    Write-Message "New-RscMutationDb2 -PatchDatabase" @"
     Update a Db2 database
 
 Supported in v9.0+
@@ -4825,15 +4825,15 @@ Updating a Db2 database involves modifying the metadata associated with the Db2 
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateDb2 -RefreshDatabase
+# New-RscMutationDb2 -RefreshDatabase
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateDb2 -RefreshDatabase -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationDb2 -RefreshDatabase).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateDb2 -RefreshDatabase -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationDb2 -RefreshDatabase
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -4841,7 +4841,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateDb2 -RefreshDatabase" @"
+    Write-Message "New-RscMutationDb2 -RefreshDatabase" @"
     On-demand refresh of a Db2 database
 
 Supported in v8.1+
@@ -4850,15 +4850,15 @@ Initiates an on-demand job to refresh a Db2 database. Currently, this is allowed
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateDb2 -DeleteDatabase
+# New-RscMutationDb2 -DeleteDatabase
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateDb2 -DeleteDatabase -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationDb2 -DeleteDatabase).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateDb2 -DeleteDatabase -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationDb2 -DeleteDatabase
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -4866,7 +4866,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateDb2 -DeleteDatabase" @"
+    Write-Message "New-RscMutationDb2 -DeleteDatabase" @"
     Delete Db2 database
 
 Supported in v8.1+
@@ -4876,15 +4876,15 @@ Deletes a Db2 database.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -RegisterScvmm
+# New-RscMutationHyperv -RegisterScvmm
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateHyperv -RegisterScvmm -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationHyperv -RegisterScvmm).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateHyperv -RegisterScvmm -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationHyperv -RegisterScvmm
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -4901,21 +4901,21 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateHyperv -RegisterScvmm" @"
+    Write-Message "New-RscMutationHyperv -RegisterScvmm" @"
     Register HyperV SCVMM to Rubrik Cluster.
 "@ "[GraphQL: registerHypervScvmm]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -ScvmmUpdate
+# New-RscMutationHyperv -ScvmmUpdate
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateHyperv -ScvmmUpdate -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationHyperv -ScvmmUpdate).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateHyperv -ScvmmUpdate -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationHyperv -ScvmmUpdate
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -4934,21 +4934,21 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateHyperv -ScvmmUpdate" @"
+    Write-Message "New-RscMutationHyperv -ScvmmUpdate" @"
     Update properties for a given HyperV SCVMM.
 "@ "[GraphQL: hypervScvmmUpdate]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -ScvmmDelete
+# New-RscMutationHyperv -ScvmmDelete
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateHyperv -ScvmmDelete -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationHyperv -ScvmmDelete).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateHyperv -ScvmmDelete -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationHyperv -ScvmmDelete
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -4956,21 +4956,21 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateHyperv -ScvmmDelete" @"
+    Write-Message "New-RscMutationHyperv -ScvmmDelete" @"
     Delete a given HyperV SCVMM.
 "@ "[GraphQL: hypervScvmmDelete]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -RefreshScvmm
+# New-RscMutationHyperv -RefreshScvmm
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateHyperv -RefreshScvmm -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationHyperv -RefreshScvmm).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateHyperv -RefreshScvmm -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationHyperv -RefreshScvmm
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -4978,21 +4978,21 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateHyperv -RefreshScvmm" @"
+    Write-Message "New-RscMutationHyperv -RefreshScvmm" @"
     Refresh a given HyperV SCVMM.
 "@ "[GraphQL: refreshHypervScvmm]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -OnDemandSnapshot
+# New-RscMutationHyperv -OnDemandSnapshot
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateHyperv -OnDemandSnapshot -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationHyperv -OnDemandSnapshot).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateHyperv -OnDemandSnapshot -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationHyperv -OnDemandSnapshot
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -5007,7 +5007,7 @@ $inputs.Var.input = @{
 	userNote = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateHyperv -OnDemandSnapshot" @"
+    Write-Message "New-RscMutationHyperv -OnDemandSnapshot" @"
     Create on-demand VM snapshot
 
 Supported in v5.0+
@@ -5016,15 +5016,15 @@ Create an on-demand snapshot for the given VM ID.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -DeleteAllSnapshots
+# New-RscMutationHyperv -DeleteAllSnapshots
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateHyperv -DeleteAllSnapshots -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationHyperv -DeleteAllSnapshots).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateHyperv -DeleteAllSnapshots -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationHyperv -DeleteAllSnapshots
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -5032,7 +5032,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateHyperv -DeleteAllSnapshots" @"
+    Write-Message "New-RscMutationHyperv -DeleteAllSnapshots" @"
     Delete all snapshots of VM
 
 Supported in v5.0+
@@ -5041,15 +5041,15 @@ Delete all snapshots of a virtual machine.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -ExportVirtualMachine
+# New-RscMutationHyperv -ExportVirtualMachine
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateHyperv -ExportVirtualMachine -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationHyperv -ExportVirtualMachine).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateHyperv -ExportVirtualMachine -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationHyperv -ExportVirtualMachine
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -5072,7 +5072,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateHyperv -ExportVirtualMachine" @"
+    Write-Message "New-RscMutationHyperv -ExportVirtualMachine" @"
     Export VM snapshot
 
 Supported in v5.0+
@@ -5081,15 +5081,15 @@ Export snapshot of a vm.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -DownloadVirtualMachineSnapshotFiles
+# New-RscMutationHyperv -DownloadVirtualMachineSnapshotFiles
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateHyperv -DownloadVirtualMachineSnapshotFiles -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationHyperv -DownloadVirtualMachineSnapshotFiles).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateHyperv -DownloadVirtualMachineSnapshotFiles -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationHyperv -DownloadVirtualMachineSnapshotFiles
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -5111,7 +5111,7 @@ $inputs.Var.input = @{
 	userNote = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateHyperv -DownloadVirtualMachineSnapshotFiles" @"
+    Write-Message "New-RscMutationHyperv -DownloadVirtualMachineSnapshotFiles" @"
     Download files from a Hyper-V VM backup
 
 Supported in v5.0+
@@ -5120,15 +5120,15 @@ Start an asynchronous job to download multiple files and folders from a specifie
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -InstantRecoverVirtualMachineSnapshot
+# New-RscMutationHyperv -InstantRecoverVirtualMachineSnapshot
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateHyperv -InstantRecoverVirtualMachineSnapshot -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationHyperv -InstantRecoverVirtualMachineSnapshot).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateHyperv -InstantRecoverVirtualMachineSnapshot -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationHyperv -InstantRecoverVirtualMachineSnapshot
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -5143,7 +5143,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateHyperv -InstantRecoverVirtualMachineSnapshot" @"
+    Write-Message "New-RscMutationHyperv -InstantRecoverVirtualMachineSnapshot" @"
     Creates an instant recover request that restores a target VM from the given Rubrik-hosted-snapshot
 
 Supported in v5.0+
@@ -5152,15 +5152,15 @@ The VM will be started with networking enabled. If the VM does not exist anymore
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -RestoreVirtualMachineSnapshotFiles
+# New-RscMutationHyperv -RestoreVirtualMachineSnapshotFiles
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateHyperv -RestoreVirtualMachineSnapshotFiles -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationHyperv -RestoreVirtualMachineSnapshotFiles).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateHyperv -RestoreVirtualMachineSnapshotFiles -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationHyperv -RestoreVirtualMachineSnapshotFiles
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -5182,7 +5182,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateHyperv -RestoreVirtualMachineSnapshotFiles" @"
+    Write-Message "New-RscMutationHyperv -RestoreVirtualMachineSnapshotFiles" @"
     Restore files from snapshot
 
 Supported in v5.0+
@@ -5191,15 +5191,15 @@ Restore files from a snapshot to the original source location.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -RegisterAgentVirtualMachine
+# New-RscMutationHyperv -RegisterAgentVirtualMachine
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateHyperv -RegisterAgentVirtualMachine -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationHyperv -RegisterAgentVirtualMachine).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateHyperv -RegisterAgentVirtualMachine -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationHyperv -RegisterAgentVirtualMachine
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -5207,7 +5207,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateHyperv -RegisterAgentVirtualMachine" @"
+    Write-Message "New-RscMutationHyperv -RegisterAgentVirtualMachine" @"
     Register the agent installed in VM
 
 Supported in v5.0+
@@ -5216,15 +5216,15 @@ Register the agent that installed in VM.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -DeleteVirtualMachineSnapshot
+# New-RscMutationHyperv -DeleteVirtualMachineSnapshot
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateHyperv -DeleteVirtualMachineSnapshot -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationHyperv -DeleteVirtualMachineSnapshot).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateHyperv -DeleteVirtualMachineSnapshot -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationHyperv -DeleteVirtualMachineSnapshot
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -5234,7 +5234,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateHyperv -DeleteVirtualMachineSnapshot" @"
+    Write-Message "New-RscMutationHyperv -DeleteVirtualMachineSnapshot" @"
     Delete VM snapshot
 
 Supported in v5.0+
@@ -5243,15 +5243,15 @@ Delete a snapshot by expiring it. Snapshot is expired only if it is a manual sna
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -DownloadVirtualMachineSnapshot
+# New-RscMutationHyperv -DownloadVirtualMachineSnapshot
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateHyperv -DownloadVirtualMachineSnapshot -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationHyperv -DownloadVirtualMachineSnapshot).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateHyperv -DownloadVirtualMachineSnapshot -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationHyperv -DownloadVirtualMachineSnapshot
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -5259,7 +5259,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateHyperv -DownloadVirtualMachineSnapshot" @"
+    Write-Message "New-RscMutationHyperv -DownloadVirtualMachineSnapshot" @"
     Creates a download from archival request
 
 Supported in v5.0+
@@ -5268,15 +5268,15 @@ Download a snapshot from archival.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -CreateVirtualMachineSnapshotMount
+# New-RscMutationHyperv -CreateVirtualMachineSnapshotMount
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateHyperv -CreateVirtualMachineSnapshotMount -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationHyperv -CreateVirtualMachineSnapshotMount).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateHyperv -CreateVirtualMachineSnapshotMount -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationHyperv -CreateVirtualMachineSnapshotMount
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -5297,7 +5297,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateHyperv -CreateVirtualMachineSnapshotMount" @"
+    Write-Message "New-RscMutationHyperv -CreateVirtualMachineSnapshotMount" @"
     Create a live mount request
 
 Supported in v5.0+
@@ -5306,15 +5306,15 @@ Create a live mount request with given configuration.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -UpdateVirtualMachineSnapshotMount
+# New-RscMutationHyperv -UpdateVirtualMachineSnapshotMount
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateHyperv -UpdateVirtualMachineSnapshotMount -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationHyperv -UpdateVirtualMachineSnapshotMount).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateHyperv -UpdateVirtualMachineSnapshotMount -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationHyperv -UpdateVirtualMachineSnapshotMount
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -5327,7 +5327,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateHyperv -UpdateVirtualMachineSnapshotMount" @"
+    Write-Message "New-RscMutationHyperv -UpdateVirtualMachineSnapshotMount" @"
     Power a Live Mount on and off
 
 Supported in v5.0+
@@ -5336,15 +5336,15 @@ Power a specified Live Mount virtual machine on or off. Pass **_true_** to power
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -DeleteVirtualMachineSnapshotMount
+# New-RscMutationHyperv -DeleteVirtualMachineSnapshotMount
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateHyperv -DeleteVirtualMachineSnapshotMount -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationHyperv -DeleteVirtualMachineSnapshotMount).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateHyperv -DeleteVirtualMachineSnapshotMount -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationHyperv -DeleteVirtualMachineSnapshotMount
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -5354,7 +5354,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateHyperv -DeleteVirtualMachineSnapshotMount" @"
+    Write-Message "New-RscMutationHyperv -DeleteVirtualMachineSnapshotMount" @"
     Requst to delete a live mount
 
 Supported in v5.0+
@@ -5363,15 +5363,15 @@ Create a request to delete a live mount.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -RefreshServer
+# New-RscMutationHyperv -RefreshServer
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateHyperv -RefreshServer -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationHyperv -RefreshServer).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateHyperv -RefreshServer -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationHyperv -RefreshServer
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -5379,7 +5379,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateHyperv -RefreshServer" @"
+    Write-Message "New-RscMutationHyperv -RefreshServer" @"
     Refresh Hyper-V host metadata
 
 Supported in v5.0+
@@ -5388,15 +5388,15 @@ Create a job to refresh the metadata for the specified Hyper-V host.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -BatchOnDemandBackupVm
+# New-RscMutationHyperv -BatchOnDemandBackupVm
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateHyperv -BatchOnDemandBackupVm -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationHyperv -BatchOnDemandBackupVm).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateHyperv -BatchOnDemandBackupVm -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationHyperv -BatchOnDemandBackupVm
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -5419,7 +5419,7 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateHyperv -BatchOnDemandBackupVm" @"
+    Write-Message "New-RscMutationHyperv -BatchOnDemandBackupVm" @"
     Takes bulk on-demand backup of Hyper-V virtual machines
 
 Supported in v9.0+
@@ -5428,15 +5428,15 @@ Takes on-demand backup of multiple specified Hyper-V virtual machines.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -BatchExportVm
+# New-RscMutationHyperv -BatchExportVm
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateHyperv -BatchExportVm -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationHyperv -BatchExportVm).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateHyperv -BatchExportVm -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationHyperv -BatchExportVm
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -5477,7 +5477,7 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateHyperv -BatchExportVm" @"
+    Write-Message "New-RscMutationHyperv -BatchExportVm" @"
     Exports a snapshot from each member of a set of virtual machines
 
 Supported in v7.0+
@@ -5486,15 +5486,15 @@ Export a snapshot from each member of a set of virtual machines.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -BatchMountVm
+# New-RscMutationHyperv -BatchMountVm
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateHyperv -BatchMountVm -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationHyperv -BatchMountVm).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateHyperv -BatchMountVm -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationHyperv -BatchMountVm
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -5533,7 +5533,7 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateHyperv -BatchMountVm" @"
+    Write-Message "New-RscMutationHyperv -BatchMountVm" @"
     Mount snapshots from multiple virtual machines
 
 Supported in v7.0+
@@ -5542,15 +5542,15 @@ Mounts a batch of snapshots from a group of specified virtual machines.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -BatchInstantRecoverVm
+# New-RscMutationHyperv -BatchInstantRecoverVm
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateHyperv -BatchInstantRecoverVm -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationHyperv -BatchInstantRecoverVm).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateHyperv -BatchInstantRecoverVm -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationHyperv -BatchInstantRecoverVm
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -5581,7 +5581,7 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateHyperv -BatchInstantRecoverVm" @"
+    Write-Message "New-RscMutationHyperv -BatchInstantRecoverVm" @"
     Instantly recovers snapshots from multiple virtual machines
 
 Supported in v7.0+
@@ -5590,15 +5590,15 @@ Instantly recovers a batch of snapshots from a group of specified virtual machin
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -UpdateVirtualMachine
+# New-RscMutationHyperv -UpdateVirtualMachine
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateHyperv -UpdateVirtualMachine -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationHyperv -UpdateVirtualMachine).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateHyperv -UpdateVirtualMachine -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationHyperv -UpdateVirtualMachine
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -5620,7 +5620,7 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateHyperv -UpdateVirtualMachine" @"
+    Write-Message "New-RscMutationHyperv -UpdateVirtualMachine" @"
     Update VM
 
 Supported in v5.0+
@@ -5629,15 +5629,15 @@ Update VM with specified properties.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -DownloadSnapshotFromLocation
+# New-RscMutationHyperv -DownloadSnapshotFromLocation
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateHyperv -DownloadSnapshotFromLocation -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationHyperv -DownloadSnapshotFromLocation).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateHyperv -DownloadSnapshotFromLocation -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationHyperv -DownloadSnapshotFromLocation
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -5652,7 +5652,7 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateHyperv -DownloadSnapshotFromLocation" @"
+    Write-Message "New-RscMutationHyperv -DownloadSnapshotFromLocation" @"
     Download a snapshot from a replication target
 
 Supported in v7.0+
@@ -5662,15 +5662,15 @@ Initiates a job to download a snapshot from the specified location when the snap
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateLdap -UpdateIntegration
+# New-RscMutationLdap -UpdateIntegration
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateLdap -UpdateIntegration -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationLdap -UpdateIntegration).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateLdap -UpdateIntegration -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationLdap -UpdateIntegration
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.id = <System.String>
@@ -5708,61 +5708,61 @@ $inputs.Var.groupSearchFilter = <System.String>
 # OPTIONAL
 $inputs.Var.groupMemberAttr = <System.String>
 "@
-    Write-Message "Invoke-RscMutateLdap -UpdateIntegration" @"
+    Write-Message "New-RscMutationLdap -UpdateIntegration" @"
     Mutate LDAP integration.
 "@ "[GraphQL: updateLdapIntegration]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateLdap -RemoveIntegration
+# New-RscMutationLdap -RemoveIntegration
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateLdap -RemoveIntegration -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationLdap -RemoveIntegration).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateLdap -RemoveIntegration -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationLdap -RemoveIntegration
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.id = <System.String>
 "@
-    Write-Message "Invoke-RscMutateLdap -RemoveIntegration" @"
+    Write-Message "New-RscMutationLdap -RemoveIntegration" @"
     Remove LDAP integration.
 "@ "[GraphQL: removeLdapIntegration]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateLdap -DeletePrincipals
+# New-RscMutationLdap -DeletePrincipals
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateLdap -DeletePrincipals -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationLdap -DeletePrincipals).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateLdap -DeletePrincipals -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationLdap -DeletePrincipals
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.principalIds = @(
 	<System.String>
 )
 "@
-    Write-Message "Invoke-RscMutateLdap -DeletePrincipals" @"
+    Write-Message "New-RscMutationLdap -DeletePrincipals" @"
     
 "@ "[GraphQL: deleteLdapPrincipals]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateLdap -SetMfaSetting
+# New-RscMutationLdap -SetMfaSetting
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateLdap -SetMfaSetting -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationLdap -SetMfaSetting).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateLdap -SetMfaSetting -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationLdap -SetMfaSetting
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -5772,22 +5772,22 @@ $inputs.Var.input = @{
 	isTotpEnforced = <System.Boolean>
 }
 "@
-    Write-Message "Invoke-RscMutateLdap -SetMfaSetting" @"
+    Write-Message "New-RscMutationLdap -SetMfaSetting" @"
     Update the MFA settings for the given LDAP integration. Return true when the operation succeeds.
 "@ "[GraphQL: setLdapMfaSetting]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMongo -AddSource
+# New-RscMutationMongo -AddSource
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateMongo -AddSource -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationMongo -AddSource).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateMongo -AddSource -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationMongo -AddSource
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -5827,7 +5827,7 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateMongo -AddSource" @"
+    Write-Message "New-RscMutationMongo -AddSource" @"
     Add a new MongoDB source
 
 Supported in v8.1+
@@ -5836,15 +5836,15 @@ Adds a new MongoDB source to the Rubrik Cluster.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMongo -DeleteSource
+# New-RscMutationMongo -DeleteSource
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateMongo -DeleteSource -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationMongo -DeleteSource).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateMongo -DeleteSource -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationMongo -DeleteSource
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -5852,7 +5852,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateMongo -DeleteSource" @"
+    Write-Message "New-RscMutationMongo -DeleteSource" @"
     Delete a MongoDB source
 
 Supported in v8.1+
@@ -5861,15 +5861,15 @@ Deletes a specific MongoDB source.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMongo -DiscoverSource
+# New-RscMutationMongo -DiscoverSource
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateMongo -DiscoverSource -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationMongo -DiscoverSource).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateMongo -DiscoverSource -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationMongo -DiscoverSource
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -5877,7 +5877,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateMongo -DiscoverSource" @"
+    Write-Message "New-RscMutationMongo -DiscoverSource" @"
     Discover a MongoDB source on-demand
 
 Supported in v8.1+
@@ -5886,15 +5886,15 @@ Initiates an on-demand job to discover a MongoDB source.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMongo -PatchSource
+# New-RscMutationMongo -PatchSource
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateMongo -PatchSource -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationMongo -PatchSource).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateMongo -PatchSource -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationMongo -PatchSource
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -5921,7 +5921,7 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateMongo -PatchSource" @"
+    Write-Message "New-RscMutationMongo -PatchSource" @"
     Edit a MongoDB source
 
 Supported in v8.1+
@@ -5930,15 +5930,15 @@ Edits the properties of a MongoDB source. Hosts, name, and type of MongoDB canno
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMongo -RetryAddSource
+# New-RscMutationMongo -RetryAddSource
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateMongo -RetryAddSource -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationMongo -RetryAddSource).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateMongo -RetryAddSource -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationMongo -RetryAddSource
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -5978,7 +5978,7 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateMongo -RetryAddSource" @"
+    Write-Message "New-RscMutationMongo -RetryAddSource" @"
     Update a MongoDB source
 
 Supported in v8.1+
@@ -5987,15 +5987,15 @@ Updates a MongoDB source details. You can use this endpoint for updating MongoDB
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMongo -AssignSlaToDbCollection
+# New-RscMutationMongo -AssignSlaToDbCollection
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateMongo -AssignSlaToDbCollection -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationMongo -AssignSlaToDbCollection).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateMongo -AssignSlaToDbCollection -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationMongo -AssignSlaToDbCollection
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -6010,7 +6010,7 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateMongo -AssignSlaToDbCollection" @"
+    Write-Message "New-RscMutationMongo -AssignSlaToDbCollection" @"
     Assign SLA Domain to MongoDB collection objects
 
 Supported in v8.1+
@@ -6019,15 +6019,15 @@ Assigns SLA Domain to the given MongoDB collection objects.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMongo -RecoverSource
+# New-RscMutationMongo -RecoverSource
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateMongo -RecoverSource -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationMongo -RecoverSource).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateMongo -RecoverSource -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationMongo -RecoverSource
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -6066,21 +6066,21 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateMongo -RecoverSource" @"
+    Write-Message "New-RscMutationMongo -RecoverSource" @"
     Recover a MongoDB source from Rubrik CDM cluster.
 "@ "[GraphQL: recoverMongoSource]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMongo -CreatedbSource
+# New-RscMutationMongo -CreatedbSource
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateMongo -CreatedbSource -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationMongo -CreatedbSource).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateMongo -CreatedbSource -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationMongo -CreatedbSource
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -6153,7 +6153,7 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateMongo -CreatedbSource" @"
+    Write-Message "New-RscMutationMongo -CreatedbSource" @"
     Register a new MongoDB source to NoSQL cluster. 
 For MongoDB, the term ""source"" is usually used for either a replica set or a sharded cluster.
 For more info on MongoDB cluster, refer to: https://docs.mongodb.com/manual/introduction/.
@@ -6161,15 +6161,15 @@ For more info on MongoDB cluster, refer to: https://docs.mongodb.com/manual/intr
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMongo -UpdatedbSource
+# New-RscMutationMongo -UpdatedbSource
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateMongo -UpdatedbSource -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationMongo -UpdatedbSource).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateMongo -UpdatedbSource -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationMongo -UpdatedbSource
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -6242,21 +6242,21 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateMongo -UpdatedbSource" @"
+    Write-Message "New-RscMutationMongo -UpdatedbSource" @"
     Modifies configuration for a registered MongoDB source in NoSQL cluster.
 "@ "[GraphQL: updateMongodbSource]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMongo -DeletedbSource
+# New-RscMutationMongo -DeletedbSource
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateMongo -DeletedbSource -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationMongo -DeletedbSource).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateMongo -DeletedbSource -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationMongo -DeletedbSource
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -6268,21 +6268,21 @@ $inputs.Var.input = @{
 	sourceName = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateMongo -DeletedbSource" @"
+    Write-Message "New-RscMutationMongo -DeletedbSource" @"
     Remove a registered MongoDB source from NoSQL cluster.
 "@ "[GraphQL: deleteMongodbSource]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMongo -BulkDeletedbSources
+# New-RscMutationMongo -BulkDeletedbSources
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateMongo -BulkDeletedbSources -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationMongo -BulkDeletedbSources).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateMongo -BulkDeletedbSources -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationMongo -BulkDeletedbSources
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -6301,7 +6301,7 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateMongo -BulkDeletedbSources" @"
+    Write-Message "New-RscMutationMongo -BulkDeletedbSources" @"
     Bulk Delete Sources
 
 Supported in m3.2.0-m4.2.0.
@@ -6309,15 +6309,15 @@ Supported in m3.2.0-m4.2.0.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMongo -RecoverdbSource
+# New-RscMutationMongo -RecoverdbSource
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateMongo -RecoverdbSource -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationMongo -RecoverdbSource).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateMongo -RecoverdbSource -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationMongo -RecoverdbSource
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -6382,22 +6382,22 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateMongo -RecoverdbSource" @"
+    Write-Message "New-RscMutationMongo -RecoverdbSource" @"
     Recover a MongoDB source from NoSQL cluster.
 "@ "[GraphQL: recoverMongodbSource]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMssql -BrowseDatabaseSnapshot
+# New-RscMutationMssql -BrowseDatabaseSnapshot
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateMssql -BrowseDatabaseSnapshot -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationMssql -BrowseDatabaseSnapshot).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateMssql -BrowseDatabaseSnapshot -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationMssql -BrowseDatabaseSnapshot
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -6457,21 +6457,21 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateMssql -BrowseDatabaseSnapshot" @"
+    Write-Message "New-RscMutationMssql -BrowseDatabaseSnapshot" @"
     List snapshots and logs from a Mssql Database. This endpoint is only used to fetch data, but uses a mutation instead of a query due to limitations with the CDM API.
 "@ "[GraphQL: browseMssqlDatabaseSnapshot]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMssql -ExportDatabase
+# New-RscMutationMssql -ExportDatabase
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateMssql -ExportDatabase -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationMssql -ExportDatabase).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateMssql -ExportDatabase -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationMssql -ExportDatabase
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -6523,21 +6523,21 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateMssql -ExportDatabase" @"
+    Write-Message "New-RscMutationMssql -ExportDatabase" @"
     Create a request to export a Microsoft SQL database.
 "@ "[GraphQL: exportMssqlDatabase]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMssql -RestoreDatabase
+# New-RscMutationMssql -RestoreDatabase
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateMssql -RestoreDatabase -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationMssql -RestoreDatabase).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateMssql -RestoreDatabase -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationMssql -RestoreDatabase
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -6566,21 +6566,21 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateMssql -RestoreDatabase" @"
+    Write-Message "New-RscMutationMssql -RestoreDatabase" @"
     Create a request to restore a Microsoft SQL database.
 "@ "[GraphQL: restoreMssqlDatabase]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMssql -BulkUpdateDbs
+# New-RscMutationMssql -BulkUpdateDbs
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateMssql -BulkUpdateDbs -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationMssql -BulkUpdateDbs).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateMssql -BulkUpdateDbs -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationMssql -BulkUpdateDbs
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -6666,21 +6666,21 @@ $inputs.Var.input = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscMutateMssql -BulkUpdateDbs" @"
+    Write-Message "New-RscMutationMssql -BulkUpdateDbs" @"
     Update multiple Microsoft SQL databases with the specified properties.
 "@ "[GraphQL: bulkUpdateMssqlDbs]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMssql -TakeLogBackup
+# New-RscMutationMssql -TakeLogBackup
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateMssql -TakeLogBackup -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationMssql -TakeLogBackup).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateMssql -TakeLogBackup -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationMssql -TakeLogBackup
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -6688,21 +6688,21 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateMssql -TakeLogBackup" @"
+    Write-Message "New-RscMutationMssql -TakeLogBackup" @"
     Take an on-demand log backup for a Microsoft SQL database.
 "@ "[GraphQL: takeMssqlLogBackup]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMssql -CreateOnDemandBackup
+# New-RscMutationMssql -CreateOnDemandBackup
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateMssql -CreateOnDemandBackup -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationMssql -CreateOnDemandBackup).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateMssql -CreateOnDemandBackup -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationMssql -CreateOnDemandBackup
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -6722,21 +6722,21 @@ $inputs.Var.input = @{
 	userNote = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateMssql -CreateOnDemandBackup" @"
+    Write-Message "New-RscMutationMssql -CreateOnDemandBackup" @"
     Take an on-demand backup of a Microsoft SQL Database
 "@ "[GraphQL: createOnDemandMssqlBackup]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMssql -DeleteDbSnapshots
+# New-RscMutationMssql -DeleteDbSnapshots
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateMssql -DeleteDbSnapshots -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationMssql -DeleteDbSnapshots).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateMssql -DeleteDbSnapshots -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationMssql -DeleteDbSnapshots
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -6744,21 +6744,21 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateMssql -DeleteDbSnapshots" @"
+    Write-Message "New-RscMutationMssql -DeleteDbSnapshots" @"
     Delete snapshots of a Microsoft SQL Database.
 "@ "[GraphQL: deleteMssqlDbSnapshots]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMssql -DeleteLiveMount
+# New-RscMutationMssql -DeleteLiveMount
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateMssql -DeleteLiveMount -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationMssql -DeleteLiveMount).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateMssql -DeleteLiveMount -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationMssql -DeleteLiveMount
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -6768,7 +6768,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateMssql -DeleteLiveMount" @"
+    Write-Message "New-RscMutationMssql -DeleteLiveMount" @"
     Delete a Live Mount of a SQL Server database
 
 Supported in v5.0+
@@ -6777,15 +6777,15 @@ Create an async request to delete a Live Mount of a SQL Server database. Poll th
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMssql -BulkCreateOnDemandBackup
+# New-RscMutationMssql -BulkCreateOnDemandBackup
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateMssql -BulkCreateOnDemandBackup -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationMssql -BulkCreateOnDemandBackup).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateMssql -BulkCreateOnDemandBackup -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationMssql -BulkCreateOnDemandBackup
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -6823,21 +6823,21 @@ $inputs.Var.input = @{
 	userNote = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateMssql -BulkCreateOnDemandBackup" @"
+    Write-Message "New-RscMutationMssql -BulkCreateOnDemandBackup" @"
     Take a bulk on-demand backup of a Microsoft SQL Database.
 "@ "[GraphQL: bulkCreateOnDemandMssqlBackup]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMssql -CreateLiveMount
+# New-RscMutationMssql -CreateLiveMount
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateMssql -CreateLiveMount -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationMssql -CreateLiveMount).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateMssql -CreateLiveMount -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationMssql -CreateLiveMount
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -6868,21 +6868,21 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateMssql -CreateLiveMount" @"
+    Write-Message "New-RscMutationMssql -CreateLiveMount" @"
     Create live mount of a Microsoft SQL Database.
 "@ "[GraphQL: createMssqlLiveMount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMssql -UpdateLogShippingConfiguration
+# New-RscMutationMssql -UpdateLogShippingConfiguration
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateMssql -UpdateLogShippingConfiguration -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationMssql -UpdateLogShippingConfiguration).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateMssql -UpdateLogShippingConfiguration -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationMssql -UpdateLogShippingConfiguration
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -6897,21 +6897,21 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateMssql -UpdateLogShippingConfiguration" @"
+    Write-Message "New-RscMutationMssql -UpdateLogShippingConfiguration" @"
     Update log shipping configuration of a Microsoft SQL Database.
 "@ "[GraphQL: updateMssqlLogShippingConfiguration]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMssql -DownloadDatabaseFilesFromArchivalLocation
+# New-RscMutationMssql -DownloadDatabaseFilesFromArchivalLocation
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateMssql -DownloadDatabaseFilesFromArchivalLocation -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationMssql -DownloadDatabaseFilesFromArchivalLocation).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateMssql -DownloadDatabaseFilesFromArchivalLocation -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationMssql -DownloadDatabaseFilesFromArchivalLocation
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -6936,21 +6936,21 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateMssql -DownloadDatabaseFilesFromArchivalLocation" @"
+    Write-Message "New-RscMutationMssql -DownloadDatabaseFilesFromArchivalLocation" @"
     Download Microsoft SQL Database backup files from archival location.
 "@ "[GraphQL: downloadMssqlDatabaseFilesFromArchivalLocation]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMssql -DownloadDatabaseBackupFiles
+# New-RscMutationMssql -DownloadDatabaseBackupFiles
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateMssql -DownloadDatabaseBackupFiles -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationMssql -DownloadDatabaseBackupFiles).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateMssql -DownloadDatabaseBackupFiles -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationMssql -DownloadDatabaseBackupFiles
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -6972,7 +6972,7 @@ $inputs.Var.input = @{
 	userNote = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateMssql -DownloadDatabaseBackupFiles" @"
+    Write-Message "New-RscMutationMssql -DownloadDatabaseBackupFiles" @"
     Downloads a list of snapshot and log backups from a Microsoft SQL database
 
 Supported in v5.2+
@@ -6981,15 +6981,15 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMssql -AssignSlaDomainProperties
+# New-RscMutationMssql -AssignSlaDomainProperties
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateMssql -AssignSlaDomainProperties -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationMssql -AssignSlaDomainProperties).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateMssql -AssignSlaDomainProperties -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationMssql -AssignSlaDomainProperties
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -7028,21 +7028,21 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateMssql -AssignSlaDomainProperties" @"
+    Write-Message "New-RscMutationMssql -AssignSlaDomainProperties" @"
     Assign SLA domain properties to Mssql objects.
 "@ "[GraphQL: assignMssqlSlaDomainProperties]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMssql -UpdateDefaultProperties
+# New-RscMutationMssql -UpdateDefaultProperties
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateMssql -UpdateDefaultProperties -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationMssql -UpdateDefaultProperties).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateMssql -UpdateDefaultProperties -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationMssql -UpdateDefaultProperties
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -7061,21 +7061,21 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateMssql -UpdateDefaultProperties" @"
+    Write-Message "New-RscMutationMssql -UpdateDefaultProperties" @"
     Update the default properties for Microsoft SQL databases.
 "@ "[GraphQL: updateMssqlDefaultProperties]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMssql -CreateLogShippingConfiguration
+# New-RscMutationMssql -CreateLogShippingConfiguration
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateMssql -CreateLogShippingConfiguration -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationMssql -CreateLogShippingConfiguration).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateMssql -CreateLogShippingConfiguration -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationMssql -CreateLogShippingConfiguration
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -7123,21 +7123,21 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateMssql -CreateLogShippingConfiguration" @"
+    Write-Message "New-RscMutationMssql -CreateLogShippingConfiguration" @"
     Create log shipping configuration of a Microsoft SQL Database.
 "@ "[GraphQL: createMssqlLogShippingConfiguration]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMssql -AssignSlaDomainPropertiesAsync
+# New-RscMutationMssql -AssignSlaDomainPropertiesAsync
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateMssql -AssignSlaDomainPropertiesAsync -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationMssql -AssignSlaDomainPropertiesAsync).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateMssql -AssignSlaDomainPropertiesAsync -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationMssql -AssignSlaDomainPropertiesAsync
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -7178,22 +7178,22 @@ $inputs.Var.input = @{
 	userNote = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateMssql -AssignSlaDomainPropertiesAsync" @"
+    Write-Message "New-RscMutationMssql -AssignSlaDomainPropertiesAsync" @"
     Assign SLA domain properties to Mssql objects.
 "@ "[GraphQL: assignMssqlSlaDomainPropertiesAsync]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -CreateCluster
+# New-RscMutationNutanix -CreateCluster
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateNutanix -CreateCluster -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationNutanix -CreateCluster).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateNutanix -CreateCluster -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationNutanix -CreateCluster
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -7214,7 +7214,7 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateNutanix -CreateCluster" @"
+    Write-Message "New-RscMutationNutanix -CreateCluster" @"
     Add Nutanix cluster
 
 Supported in v5.0+
@@ -7223,15 +7223,15 @@ Create a Nutanix cluster object by providing an address and account credentials 
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -RefreshCluster
+# New-RscMutationNutanix -RefreshCluster
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateNutanix -RefreshCluster -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationNutanix -RefreshCluster).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateNutanix -RefreshCluster -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationNutanix -RefreshCluster
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -7239,7 +7239,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateNutanix -RefreshCluster" @"
+    Write-Message "New-RscMutationNutanix -RefreshCluster" @"
     Refresh Nutanix cluster metadata
 
 Supported in v5.0+
@@ -7248,15 +7248,15 @@ Create a job to refresh the metadata for the specified Nutanix cluster.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -UpdateCluster
+# New-RscMutationNutanix -UpdateCluster
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateNutanix -UpdateCluster -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationNutanix -UpdateCluster).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateNutanix -UpdateCluster -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationNutanix -UpdateCluster
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -7277,7 +7277,7 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateNutanix -UpdateCluster" @"
+    Write-Message "New-RscMutationNutanix -UpdateCluster" @"
     Patch Nutanix cluster
 
 Supported in v5.0+
@@ -7286,15 +7286,15 @@ Patch the host, credentials, and/or CA certs of the specified Nutanix cluster ob
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -DeleteCluster
+# New-RscMutationNutanix -DeleteCluster
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateNutanix -DeleteCluster -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationNutanix -DeleteCluster).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateNutanix -DeleteCluster -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationNutanix -DeleteCluster
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -7302,7 +7302,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateNutanix -DeleteCluster" @"
+    Write-Message "New-RscMutationNutanix -DeleteCluster" @"
     Remove Nutanix cluster
 
 Supported in v5.0+
@@ -7311,15 +7311,15 @@ Initiates an asynchronous job to remove a Nutanix cluster object. The Nutanix cl
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -RegisterAgentVm
+# New-RscMutationNutanix -RegisterAgentVm
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateNutanix -RegisterAgentVm -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationNutanix -RegisterAgentVm).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateNutanix -RegisterAgentVm -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationNutanix -RegisterAgentVm
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -7327,7 +7327,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateNutanix -RegisterAgentVm" @"
+    Write-Message "New-RscMutationNutanix -RegisterAgentVm" @"
     v5.0-v8.0: Register the agent installed on the Nutanix VM
 v8.1+: Register the agent installed on the Nutanix virtual machine
 
@@ -7339,15 +7339,15 @@ v8.1+: Register the agent installed on the Nutanix virtual machine.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -UpdateVm
+# New-RscMutationNutanix -UpdateVm
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateNutanix -UpdateVm -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationNutanix -UpdateVm).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateNutanix -UpdateVm -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationNutanix -UpdateVm
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -7395,7 +7395,7 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateNutanix -UpdateVm" @"
+    Write-Message "New-RscMutationNutanix -UpdateVm" @"
     v5.0-v8.0: Patch VM
 v8.1+: Patch virtual machine
 
@@ -7407,15 +7407,15 @@ v8.1+: Patch virtual machine with specified properties.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -CreateOnDemandBackup
+# New-RscMutationNutanix -CreateOnDemandBackup
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateNutanix -CreateOnDemandBackup -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationNutanix -CreateOnDemandBackup).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateNutanix -CreateOnDemandBackup -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationNutanix -CreateOnDemandBackup
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -7430,7 +7430,7 @@ $inputs.Var.input = @{
 	userNote = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateNutanix -CreateOnDemandBackup" @"
+    Write-Message "New-RscMutationNutanix -CreateOnDemandBackup" @"
     v5.0-v8.0: Create on-demand VM snapshot
 v8.1+: Create on-demand virtual machine snapshot
 
@@ -7442,15 +7442,15 @@ v8.1+: Create an on-demand snapshot for the given virtual machine ID.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -DeleteSnapshots
+# New-RscMutationNutanix -DeleteSnapshots
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateNutanix -DeleteSnapshots -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationNutanix -DeleteSnapshots).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateNutanix -DeleteSnapshots -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationNutanix -DeleteSnapshots
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -7458,7 +7458,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateNutanix -DeleteSnapshots" @"
+    Write-Message "New-RscMutationNutanix -DeleteSnapshots" @"
     v5.0-v8.0: Delete all snapshots of VM
 v8.1+: Delete all snapshots of virtual machine
 
@@ -7468,15 +7468,15 @@ Delete all snapshots of a virtual machine.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -MountSnapshotV1
+# New-RscMutationNutanix -MountSnapshotV1
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateNutanix -MountSnapshotV1 -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationNutanix -MountSnapshotV1).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateNutanix -MountSnapshotV1 -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationNutanix -MountSnapshotV1
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -7509,7 +7509,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateNutanix -MountSnapshotV1" @"
+    Write-Message "New-RscMutationNutanix -MountSnapshotV1" @"
     Initiate a Live Mount of a Nutanix virtual machine snapshot
 
 Supported in v6.0+
@@ -7518,15 +7518,15 @@ Initiates a request to perform a Live Mount of a Nutanix virtual machine snapsho
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -PatchMountV1
+# New-RscMutationNutanix -PatchMountV1
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateNutanix -PatchMountV1 -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationNutanix -PatchMountV1).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateNutanix -PatchMountV1 -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationNutanix -PatchMountV1
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -7539,7 +7539,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateNutanix -PatchMountV1" @"
+    Write-Message "New-RscMutationNutanix -PatchMountV1" @"
     Change Nutanix Live Mount power status
 
 Supported in v6.0+
@@ -7548,15 +7548,15 @@ Changes the power status of a mounted Nutanix virtual machine.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -DeleteMountV1
+# New-RscMutationNutanix -DeleteMountV1
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateNutanix -DeleteMountV1 -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationNutanix -DeleteMountV1).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateNutanix -DeleteMountV1 -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationNutanix -DeleteMountV1
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -7564,7 +7564,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateNutanix -DeleteMountV1" @"
+    Write-Message "New-RscMutationNutanix -DeleteMountV1" @"
     Remove a Live Mount of a Nutanix virtual machine snapshot
 
 Supported in v6.0+
@@ -7573,15 +7573,15 @@ Initiates a request to remove a Live Mount of a Nutanix virtual machine snapshot
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -MigrateMountV1
+# New-RscMutationNutanix -MigrateMountV1
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateNutanix -MigrateMountV1 -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationNutanix -MigrateMountV1).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateNutanix -MigrateMountV1 -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationNutanix -MigrateMountV1
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -7589,7 +7589,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateNutanix -MigrateMountV1" @"
+    Write-Message "New-RscMutationNutanix -MigrateMountV1" @"
     Relocate a Nutanix virtual machine to another storage container
 
 Supported in v6.0+
@@ -7598,15 +7598,15 @@ Initiate a request to migrate the virtual disks of a specified Nutanix Live Moun
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -DeleteSnapshot
+# New-RscMutationNutanix -DeleteSnapshot
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateNutanix -DeleteSnapshot -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationNutanix -DeleteSnapshot).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateNutanix -DeleteSnapshot -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationNutanix -DeleteSnapshot
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -7616,7 +7616,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateNutanix -DeleteSnapshot" @"
+    Write-Message "New-RscMutationNutanix -DeleteSnapshot" @"
     v5.0-v8.0: Delete VM snapshot
 v8.1+: Delete virtual machine snapshot
 
@@ -7627,15 +7627,15 @@ v8.1+: Delete a snapshot by expiring it. Snapshot is expired only if it is a man
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -RestoreFilesSnapshot
+# New-RscMutationNutanix -RestoreFilesSnapshot
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateNutanix -RestoreFilesSnapshot -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationNutanix -RestoreFilesSnapshot).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateNutanix -RestoreFilesSnapshot -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationNutanix -RestoreFilesSnapshot
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -7657,7 +7657,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateNutanix -RestoreFilesSnapshot" @"
+    Write-Message "New-RscMutationNutanix -RestoreFilesSnapshot" @"
     Restore files
 
 Supported in v5.0+
@@ -7666,15 +7666,15 @@ Restore files from a snapshot to the source Nutanix virtual machine.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -DownloadFilesSnapshot
+# New-RscMutationNutanix -DownloadFilesSnapshot
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateNutanix -DownloadFilesSnapshot -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationNutanix -DownloadFilesSnapshot).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateNutanix -DownloadFilesSnapshot -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationNutanix -DownloadFilesSnapshot
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -7696,7 +7696,7 @@ $inputs.Var.input = @{
 	userNote = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateNutanix -DownloadFilesSnapshot" @"
+    Write-Message "New-RscMutationNutanix -DownloadFilesSnapshot" @"
     v5.0-v8.0: Download files from a Nutanix VM backup
 v8.1+: Download files from a Nutanix virtual machine backup
 
@@ -7707,15 +7707,15 @@ v8.1+: Start an asynchronous job to download multiple files and folders from a s
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -ExportSnapshot
+# New-RscMutationNutanix -ExportSnapshot
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateNutanix -ExportSnapshot -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationNutanix -ExportSnapshot).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateNutanix -ExportSnapshot -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationNutanix -ExportSnapshot
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -7742,7 +7742,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateNutanix -ExportSnapshot" @"
+    Write-Message "New-RscMutationNutanix -ExportSnapshot" @"
     v5.0-v8.0: Export VM snapshot
 v8.1+: Export virtual machine snapshot
 
@@ -7753,15 +7753,15 @@ v8.1+: Export snapshot of a virtual machine.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -DownloadSnapshot
+# New-RscMutationNutanix -DownloadSnapshot
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateNutanix -DownloadSnapshot -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationNutanix -DownloadSnapshot).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateNutanix -DownloadSnapshot -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationNutanix -DownloadSnapshot
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -7769,7 +7769,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateNutanix -DownloadSnapshot" @"
+    Write-Message "New-RscMutationNutanix -DownloadSnapshot" @"
     Creates a download from archival request
 
 Supported in v5.0+
@@ -7778,15 +7778,15 @@ Download a snapshot from archival.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -BatchExportVm
+# New-RscMutationNutanix -BatchExportVm
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateNutanix -BatchExportVm -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationNutanix -BatchExportVm).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateNutanix -BatchExportVm -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationNutanix -BatchExportVm
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -7829,7 +7829,7 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateNutanix -BatchExportVm" @"
+    Write-Message "New-RscMutationNutanix -BatchExportVm" @"
     Exports a snapshot from each member of a set of virtual machines
 
 Supported in v7.0+
@@ -7838,15 +7838,15 @@ Export a snapshot from each member of a set of virtual machines.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -BatchMountVm
+# New-RscMutationNutanix -BatchMountVm
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateNutanix -BatchMountVm -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationNutanix -BatchMountVm).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateNutanix -BatchMountVm -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationNutanix -BatchMountVm
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -7895,7 +7895,7 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateNutanix -BatchMountVm" @"
+    Write-Message "New-RscMutationNutanix -BatchMountVm" @"
     Mount snapshots from multiple virtual machines
 
 Supported in v7.0+
@@ -7904,15 +7904,15 @@ Mounts a batch of snapshots from a group of specified virtual machines.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -DownloadVmFromLocation
+# New-RscMutationNutanix -DownloadVmFromLocation
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateNutanix -DownloadVmFromLocation -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationNutanix -DownloadVmFromLocation).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateNutanix -DownloadVmFromLocation -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationNutanix -DownloadVmFromLocation
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -7927,7 +7927,7 @@ $inputs.Var.input = @{
 	snapshotId = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateNutanix -DownloadVmFromLocation" @"
+    Write-Message "New-RscMutationNutanix -DownloadVmFromLocation" @"
     Download a snapshot from a replication target
 
 Supported in v7.0+
@@ -7936,15 +7936,15 @@ Initiates a job to download a snapshot from the specified location when the snap
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -CreatePrismCentral
+# New-RscMutationNutanix -CreatePrismCentral
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateNutanix -CreatePrismCentral -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationNutanix -CreatePrismCentral).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateNutanix -CreatePrismCentral -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationNutanix -CreatePrismCentral
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -7970,7 +7970,7 @@ $inputs.Var.input = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscMutateNutanix -CreatePrismCentral" @"
+    Write-Message "New-RscMutationNutanix -CreatePrismCentral" @"
     Add Nutanix Prism Central and it's corresponding Prism Elements
 
 Supported in v9.0+
@@ -7979,15 +7979,15 @@ Create a Nutanix Prism Central object and refresh the Prism Elements present in 
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -UpdatePrismCentral
+# New-RscMutationNutanix -UpdatePrismCentral
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateNutanix -UpdatePrismCentral -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationNutanix -UpdatePrismCentral).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateNutanix -UpdatePrismCentral -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationNutanix -UpdatePrismCentral
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -8008,7 +8008,7 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateNutanix -UpdatePrismCentral" @"
+    Write-Message "New-RscMutationNutanix -UpdatePrismCentral" @"
     Patch Nutanix Prism Central
 
 Supported in v9.0+
@@ -8017,15 +8017,15 @@ Patch the host and credentials of Nutanix Prism Central.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -DeletePrismCentral
+# New-RscMutationNutanix -DeletePrismCentral
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateNutanix -DeletePrismCentral -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationNutanix -DeletePrismCentral).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateNutanix -DeletePrismCentral -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationNutanix -DeletePrismCentral
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -8033,7 +8033,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateNutanix -DeletePrismCentral" @"
+    Write-Message "New-RscMutationNutanix -DeletePrismCentral" @"
     Remove Nutanix Prism Central
 
 Supported in v9.0+
@@ -8042,15 +8042,15 @@ Initiates an asynchronous job to remove a Nutanix Prism Central object. The Nuta
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -RefreshPrismCentral
+# New-RscMutationNutanix -RefreshPrismCentral
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateNutanix -RefreshPrismCentral -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationNutanix -RefreshPrismCentral).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateNutanix -RefreshPrismCentral -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationNutanix -RefreshPrismCentral
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -8058,7 +8058,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateNutanix -RefreshPrismCentral" @"
+    Write-Message "New-RscMutationNutanix -RefreshPrismCentral" @"
     Refresh Nutanix Prism Central metadata
 
 Supported in v9.0+
@@ -8067,15 +8067,15 @@ Initiates a job to refresh the metadata for the specified Nutanix Prism Central 
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -BulkOnDemandSnapshotVm
+# New-RscMutationNutanix -BulkOnDemandSnapshotVm
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateNutanix -BulkOnDemandSnapshotVm -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationNutanix -BulkOnDemandSnapshotVm).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateNutanix -BulkOnDemandSnapshotVm -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationNutanix -BulkOnDemandSnapshotVm
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -8098,7 +8098,7 @@ $inputs.Var.input = @{
 	userNote = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateNutanix -BulkOnDemandSnapshotVm" @"
+    Write-Message "New-RscMutationNutanix -BulkOnDemandSnapshotVm" @"
     Take an on-demand snapshot for selected Nutanix virtual machines
 
 Supported in v9.0+
@@ -8108,33 +8108,33 @@ Take bulk backups for multiple Nutanix virtual machines.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -SaaSSetupKickoff
+# New-RscMutationO365 -SaaSSetupKickoff
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateO365 -SaaSSetupKickoff -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationO365 -SaaSSetupKickoff).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateO365 -SaaSSetupKickoff -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationO365 -SaaSSetupKickoff
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     
 "@
-    Write-Message "Invoke-RscMutateO365 -SaaSSetupKickoff" @"
+    Write-Message "New-RscMutationO365 -SaaSSetupKickoff" @"
     
 "@ "[GraphQL: o365SaaSSetupKickoff]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -PdlGroups
+# New-RscMutationO365 -PdlGroups
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateO365 -PdlGroups -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationO365 -PdlGroups).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateO365 -PdlGroups -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationO365 -PdlGroups
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -8151,21 +8151,21 @@ $inputs.Var.input = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscMutateO365 -PdlGroups" @"
+    Write-Message "New-RscMutationO365 -PdlGroups" @"
     Retrieve or create the groups corresponding to the preferred data location and workload pairings for use in role creation.
 "@ "[GraphQL: o365PdlGroups]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -SaasSetupComplete
+# New-RscMutationO365 -SaasSetupComplete
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateO365 -SaasSetupComplete -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationO365 -SaasSetupComplete).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateO365 -SaasSetupComplete -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationO365 -SaasSetupComplete
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -8200,39 +8200,39 @@ $inputs.Var.input = @{
 	storeBackupInSameRegionAsData = <System.Boolean>
 }
 "@
-    Write-Message "Invoke-RscMutateO365 -SaasSetupComplete" @"
+    Write-Message "New-RscMutationO365 -SaasSetupComplete" @"
     Completes a Rubrik-Hosted setup flow.
 "@ "[GraphQL: o365SaasSetupComplete]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -SetupKickoff
+# New-RscMutationO365 -SetupKickoff
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateO365 -SetupKickoff -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationO365 -SetupKickoff).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateO365 -SetupKickoff -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationO365 -SetupKickoff
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     
 "@
-    Write-Message "Invoke-RscMutateO365 -SetupKickoff" @"
+    Write-Message "New-RscMutationO365 -SetupKickoff" @"
     Kicks off an O365 subscription setup flow.
 "@ "[GraphQL: o365SetupKickoff]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -AddOrg
+# New-RscMutationO365 -AddOrg
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateO365 -AddOrg -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationO365 -AddOrg).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateO365 -AddOrg -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationO365 -AddOrg
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -8248,21 +8248,21 @@ $inputs.Var.input = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscMutateO365 -AddOrg" @"
+    Write-Message "New-RscMutationO365 -AddOrg" @"
     Adds an O365 org to the account.
 "@ "[GraphQL: addO365Org]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -OauthConsentKickoff
+# New-RscMutationO365 -OauthConsentKickoff
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateO365 -OauthConsentKickoff -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationO365 -OauthConsentKickoff).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateO365 -OauthConsentKickoff -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationO365 -OauthConsentKickoff
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -8272,21 +8272,21 @@ $inputs.Var.input = @{
 	appType = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateO365 -OauthConsentKickoff" @"
+    Write-Message "New-RscMutationO365 -OauthConsentKickoff" @"
     Kicks off the OAuth consent flow for an O365 Azure AD App.
 "@ "[GraphQL: o365OauthConsentKickoff]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -OauthConsentComplete
+# New-RscMutationO365 -OauthConsentComplete
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateO365 -OauthConsentComplete -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationO365 -OauthConsentComplete).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateO365 -OauthConsentComplete -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationO365 -OauthConsentComplete
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -8302,21 +8302,21 @@ $inputs.Var.input = @{
 	resourceNaturalId = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateO365 -OauthConsentComplete" @"
+    Write-Message "New-RscMutationO365 -OauthConsentComplete" @"
     Completes the OAuth consent flow for an O365 Azure AD App.
 "@ "[GraphQL: o365OauthConsentComplete]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -CreateAppKickoff
+# New-RscMutationO365 -CreateAppKickoff
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateO365 -CreateAppKickoff -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationO365 -CreateAppKickoff).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateO365 -CreateAppKickoff -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationO365 -CreateAppKickoff
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -8326,21 +8326,21 @@ $inputs.Var.input = @{
 	appType = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateO365 -CreateAppKickoff" @"
+    Write-Message "New-RscMutationO365 -CreateAppKickoff" @"
     Kicks off the creation flow for an O365 Azure AD App.
 "@ "[GraphQL: createO365AppKickoff]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -CreateAppComplete
+# New-RscMutationO365 -CreateAppComplete
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateO365 -CreateAppComplete -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationO365 -CreateAppComplete).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateO365 -CreateAppComplete -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationO365 -CreateAppComplete
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -8352,21 +8352,21 @@ $inputs.Var.input = @{
 	tenantId = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateO365 -CreateAppComplete" @"
+    Write-Message "New-RscMutationO365 -CreateAppComplete" @"
     Completes the creation flow for an O365 Azure AD App.
 "@ "[GraphQL: createO365AppComplete]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -InsertCustomerApp
+# New-RscMutationO365 -InsertCustomerApp
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateO365 -InsertCustomerApp -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationO365 -InsertCustomerApp).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateO365 -InsertCustomerApp -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationO365 -InsertCustomerApp
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -8384,21 +8384,21 @@ $inputs.Var.input = @{
 	base64AppPrivateKey = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateO365 -InsertCustomerApp" @"
+    Write-Message "New-RscMutationO365 -InsertCustomerApp" @"
     Inserts a Customer-hosted O365 Azure AD App.
 "@ "[GraphQL: insertCustomerO365App]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -UpdateAppAuthStatus
+# New-RscMutationO365 -UpdateAppAuthStatus
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateO365 -UpdateAppAuthStatus -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationO365 -UpdateAppAuthStatus).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateO365 -UpdateAppAuthStatus -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationO365 -UpdateAppAuthStatus
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -8408,21 +8408,21 @@ $inputs.Var.input = @{
 	o365AppId = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateO365 -UpdateAppAuthStatus" @"
+    Write-Message "New-RscMutationO365 -UpdateAppAuthStatus" @"
     Update O365 App authentication status to applicable app version.
 "@ "[GraphQL: updateO365AppAuthStatus]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -UpdateAppPermissions
+# New-RscMutationO365 -UpdateAppPermissions
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateO365 -UpdateAppPermissions -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationO365 -UpdateAppPermissions).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateO365 -UpdateAppPermissions -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationO365 -UpdateAppPermissions
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -8432,63 +8432,63 @@ $inputs.Var.input = @{
 	o365AppId = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateO365 -UpdateAppPermissions" @"
+    Write-Message "New-RscMutationO365 -UpdateAppPermissions" @"
     Update O365 Azure app permission in Azure AD portal.
 "@ "[GraphQL: updateO365AppPermissions]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -DeleteAzureApp
+# New-RscMutationO365 -DeleteAzureApp
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateO365 -DeleteAzureApp -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationO365 -DeleteAzureApp).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateO365 -DeleteAzureApp -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationO365 -DeleteAzureApp
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.o365AppClientId = <System.String>
 # REQUIRED
 $inputs.Var.o365AppType = <System.String>
 "@
-    Write-Message "Invoke-RscMutateO365 -DeleteAzureApp" @"
+    Write-Message "New-RscMutationO365 -DeleteAzureApp" @"
     Deletes an O365 Azure AD App from the account.
 "@ "[GraphQL: deleteO365AzureApp]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -BackupMailbox
+# New-RscMutationO365 -BackupMailbox
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateO365 -BackupMailbox -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationO365 -BackupMailbox).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateO365 -BackupMailbox -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationO365 -BackupMailbox
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.mailboxIds = @(
 	<System.String>
 )
 "@
-    Write-Message "Invoke-RscMutateO365 -BackupMailbox" @"
+    Write-Message "New-RscMutationO365 -BackupMailbox" @"
     Backup mailbox workload.
 "@ "[GraphQL: backupO365Mailbox]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -BackupOnedrive
+# New-RscMutationO365 -BackupOnedrive
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateO365 -BackupOnedrive -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationO365 -BackupOnedrive).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateO365 -BackupOnedrive -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationO365 -BackupOnedrive
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -8498,21 +8498,21 @@ $inputs.Var.input = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscMutateO365 -BackupOnedrive" @"
+    Write-Message "New-RscMutationO365 -BackupOnedrive" @"
     Take on-demand snapshot for Onedrive.
 "@ "[GraphQL: backupO365Onedrive]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -BackupSharepointDrive
+# New-RscMutationO365 -BackupSharepointDrive
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateO365 -BackupSharepointDrive -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationO365 -BackupSharepointDrive).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateO365 -BackupSharepointDrive -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationO365 -BackupSharepointDrive
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -8522,21 +8522,21 @@ $inputs.Var.input = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscMutateO365 -BackupSharepointDrive" @"
+    Write-Message "New-RscMutationO365 -BackupSharepointDrive" @"
     Take on-demand snapshot for Sharepoint drive.
 "@ "[GraphQL: backupO365SharepointDrive]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -BackupSharepointList
+# New-RscMutationO365 -BackupSharepointList
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateO365 -BackupSharepointList -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationO365 -BackupSharepointList).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateO365 -BackupSharepointList -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationO365 -BackupSharepointList
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -8544,21 +8544,21 @@ $inputs.Var.input = @{
 	snappableUuid = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateO365 -BackupSharepointList" @"
+    Write-Message "New-RscMutationO365 -BackupSharepointList" @"
     Take on-demand snapshot for SharePoint list.
 "@ "[GraphQL: backupO365SharepointList]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -BackupSharePointSite
+# New-RscMutationO365 -BackupSharePointSite
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateO365 -BackupSharePointSite -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationO365 -BackupSharePointSite).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateO365 -BackupSharePointSite -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationO365 -BackupSharePointSite
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -8566,21 +8566,21 @@ $inputs.Var.input = @{
 	siteFid = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateO365 -BackupSharePointSite" @"
+    Write-Message "New-RscMutationO365 -BackupSharePointSite" @"
     Take on-demand snapshot for a SharePoint site.
 "@ "[GraphQL: backupO365SharePointSite]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -BackupTeam
+# New-RscMutationO365 -BackupTeam
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateO365 -BackupTeam -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationO365 -BackupTeam).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateO365 -BackupTeam -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationO365 -BackupTeam
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -8590,21 +8590,21 @@ $inputs.Var.input = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscMutateO365 -BackupTeam" @"
+    Write-Message "New-RscMutationO365 -BackupTeam" @"
     Take on-demand snapshot for Teams.
 "@ "[GraphQL: backupO365Team]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -RestoreTeamsFiles
+# New-RscMutationO365 -RestoreTeamsFiles
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateO365 -RestoreTeamsFiles -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationO365 -RestoreTeamsFiles).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateO365 -RestoreTeamsFiles -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationO365 -RestoreTeamsFiles
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -8700,21 +8700,21 @@ $inputs.Var.input = @{
 	snapshotSequenceNum = <System.Int32>
 }
 "@
-    Write-Message "Invoke-RscMutateO365 -RestoreTeamsFiles" @"
+    Write-Message "New-RscMutationO365 -RestoreTeamsFiles" @"
     Restore Team files.
 "@ "[GraphQL: restoreO365TeamsFiles]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -RestoreTeamsConversations
+# New-RscMutationO365 -RestoreTeamsConversations
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateO365 -RestoreTeamsConversations -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationO365 -RestoreTeamsConversations).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateO365 -RestoreTeamsConversations -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationO365 -RestoreTeamsConversations
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -8803,21 +8803,21 @@ $inputs.Var.input = @{
 	snapshotSequenceNum = <System.Int32>
 }
 "@
-    Write-Message "Invoke-RscMutateO365 -RestoreTeamsConversations" @"
+    Write-Message "New-RscMutationO365 -RestoreTeamsConversations" @"
     Restore Team conversations.
 "@ "[GraphQL: restoreO365TeamsConversations]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -RestoreSnappable
+# New-RscMutationO365 -RestoreSnappable
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateO365 -RestoreSnappable -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationO365 -RestoreSnappable).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateO365 -RestoreSnappable -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationO365 -RestoreSnappable
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -9378,59 +9378,59 @@ $inputs.Var.input = @{
 	actionType = <O365RestoreActionType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365RestoreActionType]) for enum values.
 }
 "@
-    Write-Message "Invoke-RscMutateO365 -RestoreSnappable" @"
+    Write-Message "New-RscMutationO365 -RestoreSnappable" @"
     Restores an O365 snappable.
 "@ "[GraphQL: restoreO365Snappable]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -RefreshOrg
+# New-RscMutationO365 -RefreshOrg
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateO365 -RefreshOrg -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationO365 -RefreshOrg).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateO365 -RefreshOrg -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationO365 -RefreshOrg
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.orgId = <System.String>
 "@
-    Write-Message "Invoke-RscMutateO365 -RefreshOrg" @"
+    Write-Message "New-RscMutationO365 -RefreshOrg" @"
     Refreshes an O365 org.
 "@ "[GraphQL: refreshO365Org]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -DeleteOrg
+# New-RscMutationO365 -DeleteOrg
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateO365 -DeleteOrg -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationO365 -DeleteOrg).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateO365 -DeleteOrg -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationO365 -DeleteOrg
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.orgId = <System.String>
 "@
-    Write-Message "Invoke-RscMutateO365 -DeleteOrg" @"
+    Write-Message "New-RscMutationO365 -DeleteOrg" @"
     Deletes an O365 org from the account.
 "@ "[GraphQL: deleteO365Org]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -RestoreMailbox
+# New-RscMutationO365 -RestoreMailbox
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateO365 -RestoreMailbox -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationO365 -RestoreMailbox).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateO365 -RestoreMailbox -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationO365 -RestoreMailbox
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.restoreConfig = @{
@@ -9455,21 +9455,21 @@ $inputs.Var.restoreConfig = @{
 	actionType = <O365RestoreActionType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365RestoreActionType]) for enum values.
 }
 "@
-    Write-Message "Invoke-RscMutateO365 -RestoreMailbox" @"
+    Write-Message "New-RscMutationO365 -RestoreMailbox" @"
     Restores an Exchange mailbox.
 "@ "[GraphQL: restoreO365Mailbox]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -ExportMailbox
+# New-RscMutationO365 -ExportMailbox
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateO365 -ExportMailbox -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationO365 -ExportMailbox).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateO365 -ExportMailbox -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationO365 -ExportMailbox
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.exportConfig = @{
@@ -9494,21 +9494,21 @@ $inputs.Var.exportConfig = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscMutateO365 -ExportMailbox" @"
+    Write-Message "New-RscMutationO365 -ExportMailbox" @"
     Exports an Exchange mailbox.
 "@ "[GraphQL: exportO365Mailbox]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -SetServiceAccount
+# New-RscMutationO365 -SetServiceAccount
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateO365 -SetServiceAccount -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationO365 -SetServiceAccount).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateO365 -SetServiceAccount -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationO365 -SetServiceAccount
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.username = <System.String>
@@ -9517,21 +9517,21 @@ $inputs.Var.appPassword = <System.String>
 # REQUIRED
 $inputs.Var.orgId = <System.String>
 "@
-    Write-Message "Invoke-RscMutateO365 -SetServiceAccount" @"
+    Write-Message "New-RscMutationO365 -SetServiceAccount" @"
     Sets the service account for the org.
 "@ "[GraphQL: setO365ServiceAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -EnableSharePoint
+# New-RscMutationO365 -EnableSharePoint
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateO365 -EnableSharePoint -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationO365 -EnableSharePoint).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateO365 -EnableSharePoint -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationO365 -EnableSharePoint
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -9539,59 +9539,59 @@ $inputs.Var.input = @{
 	exocomputeClusterId = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateO365 -EnableSharePoint" @"
+    Write-Message "New-RscMutationO365 -EnableSharePoint" @"
     Enables SharePoint protection in the exocompute cluster.
 "@ "[GraphQL: enableO365SharePoint]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -EnableTeams
+# New-RscMutationO365 -EnableTeams
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateO365 -EnableTeams -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationO365 -EnableTeams).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateO365 -EnableTeams -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationO365 -EnableTeams
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.exocomputeClusterId = <System.String>
 "@
-    Write-Message "Invoke-RscMutateO365 -EnableTeams" @"
+    Write-Message "New-RscMutationO365 -EnableTeams" @"
     Enables Teams protection in the exocompute cluster.
 "@ "[GraphQL: enableO365Teams]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -DeleteServiceAccount
+# New-RscMutationO365 -DeleteServiceAccount
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateO365 -DeleteServiceAccount -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationO365 -DeleteServiceAccount).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateO365 -DeleteServiceAccount -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationO365 -DeleteServiceAccount
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.orgId = <System.String>
 "@
-    Write-Message "Invoke-RscMutateO365 -DeleteServiceAccount" @"
+    Write-Message "New-RscMutationO365 -DeleteServiceAccount" @"
     Deletes the service account for an org.
 "@ "[GraphQL: deleteO365ServiceAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -UpdateOrgCustomName
+# New-RscMutationO365 -UpdateOrgCustomName
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateO365 -UpdateOrgCustomName -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationO365 -UpdateOrgCustomName).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateO365 -UpdateOrgCustomName -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationO365 -UpdateOrgCustomName
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -9601,22 +9601,22 @@ $inputs.Var.input = @{
 	customName = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateO365 -UpdateOrgCustomName" @"
+    Write-Message "New-RscMutationO365 -UpdateOrgCustomName" @"
     Update the custom name for an O365 Organization.
 "@ "[GraphQL: updateO365OrgCustomName]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateOracle -BulkUpdateHosts
+# New-RscMutationOracle -BulkUpdateHosts
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateOracle -BulkUpdateHosts -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationOracle -BulkUpdateHosts).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateOracle -BulkUpdateHosts -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationOracle -BulkUpdateHosts
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -9678,7 +9678,7 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateOracle -BulkUpdateHosts" @"
+    Write-Message "New-RscMutationOracle -BulkUpdateHosts" @"
     Update Oracle Hosts
 
 Supported in v5.2+
@@ -9687,15 +9687,15 @@ Update properties to Oracle Host objects.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateOracle -RefreshDatabase
+# New-RscMutationOracle -RefreshDatabase
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateOracle -RefreshDatabase -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationOracle -RefreshDatabase).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateOracle -RefreshDatabase -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationOracle -RefreshDatabase
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -9703,7 +9703,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateOracle -RefreshDatabase" @"
+    Write-Message "New-RscMutationOracle -RefreshDatabase" @"
     Refresh an Oracle database
 
 Supported in v6.0+
@@ -9712,15 +9712,15 @@ Starts an asynchronous job to refresh the Oracle database metadata by querying t
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateOracle -UpdateDataGuardGroup
+# New-RscMutationOracle -UpdateDataGuardGroup
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateOracle -UpdateDataGuardGroup -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationOracle -UpdateDataGuardGroup).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateOracle -UpdateDataGuardGroup -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationOracle -UpdateDataGuardGroup
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -9758,7 +9758,7 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateOracle -UpdateDataGuardGroup" @"
+    Write-Message "New-RscMutationOracle -UpdateDataGuardGroup" @"
     Update an Oracle Data Guard group
 
 Supported in v6.0+
@@ -9767,15 +9767,15 @@ Update properties of an Oracle Data Guard group object.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateOracle -DeleteAllDatabaseSnapshots
+# New-RscMutationOracle -DeleteAllDatabaseSnapshots
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateOracle -DeleteAllDatabaseSnapshots -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationOracle -DeleteAllDatabaseSnapshots).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateOracle -DeleteAllDatabaseSnapshots -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationOracle -DeleteAllDatabaseSnapshots
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -9783,7 +9783,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateOracle -DeleteAllDatabaseSnapshots" @"
+    Write-Message "New-RscMutationOracle -DeleteAllDatabaseSnapshots" @"
     Delete Oracle database snapshots
 
 Supported in v5.0+
@@ -9792,15 +9792,15 @@ Delete all snapshots for a specified Oracle database object. For the operation t
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateOracle -TakeOnDemandDatabaseSnapshot
+# New-RscMutationOracle -TakeOnDemandDatabaseSnapshot
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateOracle -TakeOnDemandDatabaseSnapshot -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationOracle -TakeOnDemandDatabaseSnapshot).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateOracle -TakeOnDemandDatabaseSnapshot -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationOracle -TakeOnDemandDatabaseSnapshot
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -9820,7 +9820,7 @@ $inputs.Var.input = @{
 	userNote = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateOracle -TakeOnDemandDatabaseSnapshot" @"
+    Write-Message "New-RscMutationOracle -TakeOnDemandDatabaseSnapshot" @"
     On-demand backup of an Oracle database
 
 Supported in v5.0+
@@ -9829,15 +9829,15 @@ Create an asynchronous job for an on-demand snapshot of an Oracle database. The 
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateOracle -TakeOnDemandLogSnapshot
+# New-RscMutationOracle -TakeOnDemandLogSnapshot
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateOracle -TakeOnDemandLogSnapshot -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationOracle -TakeOnDemandLogSnapshot).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateOracle -TakeOnDemandLogSnapshot -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationOracle -TakeOnDemandLogSnapshot
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -9845,7 +9845,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateOracle -TakeOnDemandLogSnapshot" @"
+    Write-Message "New-RscMutationOracle -TakeOnDemandLogSnapshot" @"
     On-demand log backup for an Oracle database log
 
 Supported in v5.0+
@@ -9854,15 +9854,15 @@ Create an asynchronous job for an on-demand backup of an Oracle database log. Th
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateOracle -BulkUpdateRacs
+# New-RscMutationOracle -BulkUpdateRacs
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateOracle -BulkUpdateRacs -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationOracle -BulkUpdateRacs).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateOracle -BulkUpdateRacs -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationOracle -BulkUpdateRacs
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -9924,7 +9924,7 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateOracle -BulkUpdateRacs" @"
+    Write-Message "New-RscMutationOracle -BulkUpdateRacs" @"
     Update Oracle RACs
 
 Supported in v5.2+
@@ -9933,15 +9933,15 @@ Update the properties of the objects that represent the specified Oracle RAC.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateOracle -ExportTablespace
+# New-RscMutationOracle -ExportTablespace
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateOracle -ExportTablespace -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationOracle -ExportTablespace).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateOracle -ExportTablespace -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationOracle -ExportTablespace
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -9965,7 +9965,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateOracle -ExportTablespace" @"
+    Write-Message "New-RscMutationOracle -ExportTablespace" @"
     Export an Oracle tablespace
 
 Supported in v5.0+
@@ -9974,15 +9974,15 @@ Request an asynchronous job to export an Oracle tablespace from a specified snap
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateOracle -ValidateAcoFile
+# New-RscMutationOracle -ValidateAcoFile
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateOracle -ValidateAcoFile -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationOracle -ValidateAcoFile).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateOracle -ValidateAcoFile -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationOracle -ValidateAcoFile
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -9996,7 +9996,7 @@ $inputs.Var.input = @{
 	dbId = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateOracle -ValidateAcoFile" @"
+    Write-Message "New-RscMutationOracle -ValidateAcoFile" @"
     Validate Oracle ACO file
 
 Supported in v6.0+
@@ -10005,15 +10005,15 @@ Validate the provided Oracle ACO (Advanced Cloning Options) file.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateOracle -ValidateDatabaseBackups
+# New-RscMutationOracle -ValidateDatabaseBackups
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateOracle -ValidateDatabaseBackups -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationOracle -ValidateDatabaseBackups).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateOracle -ValidateDatabaseBackups -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationOracle -ValidateDatabaseBackups
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -10041,7 +10041,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateOracle -ValidateDatabaseBackups" @"
+    Write-Message "New-RscMutationOracle -ValidateDatabaseBackups" @"
     Validate Oracle database backups
 
 Supported in v5.3+
@@ -10050,15 +10050,15 @@ Queue a job to validate Oracle backups for a database snapshot or a specified ti
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateOracle -BulkUpdateDatabases
+# New-RscMutationOracle -BulkUpdateDatabases
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateOracle -BulkUpdateDatabases -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationOracle -BulkUpdateDatabases).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateOracle -BulkUpdateDatabases -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationOracle -BulkUpdateDatabases
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -10120,7 +10120,7 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateOracle -BulkUpdateDatabases" @"
+    Write-Message "New-RscMutationOracle -BulkUpdateDatabases" @"
     Update Oracle Databases
 
 Supported in v5.2+
@@ -10129,15 +10129,15 @@ Update the properties of the objects that represent the specified Oracle Databas
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateOracle -InstantRecoverSnapshot
+# New-RscMutationOracle -InstantRecoverSnapshot
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateOracle -InstantRecoverSnapshot -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationOracle -InstantRecoverSnapshot).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateOracle -InstantRecoverSnapshot -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationOracle -InstantRecoverSnapshot
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -10157,7 +10157,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateOracle -InstantRecoverSnapshot" @"
+    Write-Message "New-RscMutationOracle -InstantRecoverSnapshot" @"
     Instant recovery of a database
 
 Supported in v5.0+
@@ -10166,15 +10166,15 @@ Creates an instant recover request that restores a target database from the give
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateOracle -MountDatabase
+# New-RscMutationOracle -MountDatabase
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateOracle -MountDatabase -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationOracle -MountDatabase).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateOracle -MountDatabase -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationOracle -MountDatabase
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -10236,7 +10236,7 @@ $inputs.Var.input = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscMutateOracle -MountDatabase" @"
+    Write-Message "New-RscMutationOracle -MountDatabase" @"
     Live Mount an Oracle database snapshot
 
 Supported in v5.0+
@@ -10245,15 +10245,15 @@ Create an asynchronous job to Live Mount an Oracle database from a snapshot.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateOracle -ExportDatabase
+# New-RscMutationOracle -ExportDatabase
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateOracle -ExportDatabase -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationOracle -ExportDatabase).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateOracle -ExportDatabase -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationOracle -ExportDatabase
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -10315,7 +10315,7 @@ $inputs.Var.input = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscMutateOracle -ExportDatabase" @"
+    Write-Message "New-RscMutationOracle -ExportDatabase" @"
     Export an Oracle database
 
 Supported in v5.0+
@@ -10324,15 +10324,15 @@ Request an asynchronous job to export an Oracle database from a specified snapsh
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateOracle -CreatePdbRestore
+# New-RscMutationOracle -CreatePdbRestore
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateOracle -CreatePdbRestore -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationOracle -CreatePdbRestore).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateOracle -CreatePdbRestore -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationOracle -CreatePdbRestore
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -10354,7 +10354,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateOracle -CreatePdbRestore" @"
+    Write-Message "New-RscMutationOracle -CreatePdbRestore" @"
     Restore PDBs on an Oracle database
 
 Supported in v8.0+
@@ -10363,15 +10363,15 @@ Initiates an asynchronous request to restore PDBs on an Oracle database from a s
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateOracle -DownloadDatabaseSnapshot
+# New-RscMutationOracle -DownloadDatabaseSnapshot
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateOracle -DownloadDatabaseSnapshot -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationOracle -DownloadDatabaseSnapshot).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateOracle -DownloadDatabaseSnapshot -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationOracle -DownloadDatabaseSnapshot
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -10379,7 +10379,7 @@ $inputs.Var.input = @{
 	snapshotId = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateOracle -DownloadDatabaseSnapshot" @"
+    Write-Message "New-RscMutationOracle -DownloadDatabaseSnapshot" @"
     Download Oracle snapshot from cloud
 
 Supported in v5.0+
@@ -10388,15 +10388,15 @@ Create an asynchronous job to download an Oracle database snapshot and associate
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateOracle -DeleteMount
+# New-RscMutationOracle -DeleteMount
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateOracle -DeleteMount -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationOracle -DeleteMount).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateOracle -DeleteMount -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationOracle -DeleteMount
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -10406,7 +10406,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateOracle -DeleteMount" @"
+    Write-Message "New-RscMutationOracle -DeleteMount" @"
     Delete an Oracle database Live Mount
 
 Supported in v5.0+
@@ -10415,15 +10415,15 @@ Request an asynchronous job to delete a specified Live Mount of an Oracle databa
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateOracle -RestoreLogs
+# New-RscMutationOracle -RestoreLogs
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateOracle -RestoreLogs -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationOracle -RestoreLogs).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateOracle -RestoreLogs -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationOracle -RestoreLogs
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -10450,7 +10450,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateOracle -RestoreLogs" @"
+    Write-Message "New-RscMutationOracle -RestoreLogs" @"
     Restore archive logs of an Oracle database
 
 Supported in v6.0+
@@ -10461,15 +10461,15 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateSla -CreateGlobal
+# New-RscMutationSla -CreateGlobal
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateSla -CreateGlobal -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationSla -CreateGlobal).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateSla -CreateGlobal -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationSla -CreateGlobal
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -10956,21 +10956,21 @@ $inputs.Var.input = @{
 	isRetentionLockedSla = <System.Boolean>
 }
 "@
-    Write-Message "Invoke-RscMutateSla -CreateGlobal" @"
+    Write-Message "New-RscMutationSla -CreateGlobal" @"
     Create SLA Domain.
 "@ "[GraphQL: createGlobalSla]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateSla -UpdateGlobal
+# New-RscMutationSla -UpdateGlobal
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateSla -UpdateGlobal -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationSla -UpdateGlobal).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateSla -UpdateGlobal -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationSla -UpdateGlobal
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -11473,21 +11473,21 @@ $inputs.Var.input = @{
 	isRetentionLockedSla = <System.Boolean>
 }
 "@
-    Write-Message "Invoke-RscMutateSla -UpdateGlobal" @"
+    Write-Message "New-RscMutationSla -UpdateGlobal" @"
     Update SLA Domain.
 "@ "[GraphQL: updateGlobalSla]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateSla -Assign
+# New-RscMutationSla -Assign
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateSla -Assign -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationSla -Assign).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateSla -Assign -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationSla -Assign
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -11511,21 +11511,21 @@ $inputs.Var.input = @{
 	userNote = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateSla -Assign" @"
+    Write-Message "New-RscMutationSla -Assign" @"
     Endpoint to assign SLA Domain.
 "@ "[GraphQL: assignSla]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateSla -AssignsForSnappableHierarchies
+# New-RscMutationSla -AssignsForSnappableHierarchies
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateSla -AssignsForSnappableHierarchies -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationSla -AssignsForSnappableHierarchies).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateSla -AssignsForSnappableHierarchies -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationSla -AssignsForSnappableHierarchies
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.globalSlaOptionalFid = <System.String>
@@ -11548,21 +11548,21 @@ $inputs.Var.globalExistingSnapshotRetention = <GlobalExistingSnapshotRetention> 
 # OPTIONAL
 $inputs.Var.userNote = <System.String>
 "@
-    Write-Message "Invoke-RscMutateSla -AssignsForSnappableHierarchies" @"
+    Write-Message "New-RscMutationSla -AssignsForSnappableHierarchies" @"
     Assign SLA Domain to workloads with multiple hierarchies.
 "@ "[GraphQL: assignSlasForSnappableHierarchies]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateSla -AssignRetentionToSnappables
+# New-RscMutationSla -AssignRetentionToSnappables
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateSla -AssignRetentionToSnappables -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationSla -AssignRetentionToSnappables).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateSla -AssignRetentionToSnappables -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationSla -AssignRetentionToSnappables
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.globalSlaOptionalFid = <System.String>
@@ -11579,21 +11579,21 @@ $inputs.Var.shouldApplyToNonPolicySnapshots = <System.Boolean>
 # OPTIONAL
 $inputs.Var.userNote = <System.String>
 "@
-    Write-Message "Invoke-RscMutateSla -AssignRetentionToSnappables" @"
+    Write-Message "New-RscMutationSla -AssignRetentionToSnappables" @"
     Endpoint to assign retention SLA Domain to workloads.
 "@ "[GraphQL: assignRetentionSLAToSnappables]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateSla -AssignRetentionToSnapshots
+# New-RscMutationSla -AssignRetentionToSnapshots
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateSla -AssignRetentionToSnapshots -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationSla -AssignRetentionToSnapshots).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateSla -AssignRetentionToSnapshots -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationSla -AssignRetentionToSnapshots
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.globalSlaOptionalFid = <System.String>
@@ -11606,21 +11606,21 @@ $inputs.Var.snapshotFids = @(
 # OPTIONAL
 $inputs.Var.userNote = <System.String>
 "@
-    Write-Message "Invoke-RscMutateSla -AssignRetentionToSnapshots" @"
+    Write-Message "New-RscMutationSla -AssignRetentionToSnapshots" @"
     Endpoint to assign retention SLA Domain to snapshots.
 "@ "[GraphQL: assignRetentionSLAToSnapshots]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateSla -Pause
+# New-RscMutationSla -Pause
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateSla -Pause -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationSla -Pause).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateSla -Pause -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationSla -Pause
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -11634,21 +11634,21 @@ $inputs.Var.input = @{
 	pauseSla = <System.Boolean>
 }
 "@
-    Write-Message "Invoke-RscMutateSla -Pause" @"
+    Write-Message "New-RscMutationSla -Pause" @"
     Pause or resume SLA Domain on the given Rubrik clusters.
 "@ "[GraphQL: pauseSla]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateSla -GetPendingAssignments
+# New-RscMutationSla -GetPendingAssignments
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateSla -GetPendingAssignments -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationSla -GetPendingAssignments).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateSla -GetPendingAssignments -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationSla -GetPendingAssignments
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -11661,7 +11661,7 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateSla -GetPendingAssignments" @"
+    Write-Message "New-RscMutationSla -GetPendingAssignments" @"
     Get pending SLA Domain assignments on selected managed objects
 
 Supported in v5.2+
@@ -11670,15 +11670,15 @@ Retrieve the details of pending SLA Domain assignments on the given managed obje
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateSla -ExportManagedVolumeSnapshot
+# New-RscMutationSla -ExportManagedVolumeSnapshot
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateSla -ExportManagedVolumeSnapshot -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationSla -ExportManagedVolumeSnapshot).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateSla -ExportManagedVolumeSnapshot -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationSla -ExportManagedVolumeSnapshot
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -11728,7 +11728,7 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateSla -ExportManagedVolumeSnapshot" @"
+    Write-Message "New-RscMutationSla -ExportManagedVolumeSnapshot" @"
     Create a request to export a snapshot and mount it on a host
 
 Supported in v5.3+
@@ -11738,15 +11738,15 @@ Export a managed volume snapshot as a share and mount it on a given host.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVcenter -Create
+# New-RscMutationVcenter -Create
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateVcenter -Create -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationVcenter -Create).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateVcenter -Create -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationVcenter -Create
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -11784,21 +11784,21 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateVcenter -Create" @"
+    Write-Message "New-RscMutationVcenter -Create" @"
     Add a vCenter server.
 "@ "[GraphQL: createVsphereVcenter]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVcenter -Delete
+# New-RscMutationVcenter -Delete
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateVcenter -Delete -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationVcenter -Delete).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateVcenter -Delete -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationVcenter -Delete
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -11806,7 +11806,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateVcenter -Delete" @"
+    Write-Message "New-RscMutationVcenter -Delete" @"
     Remove vCenter Server
 
 Supported in v5.0+
@@ -11815,15 +11815,15 @@ Initiates an asynchronous job to remove a vCenter Server object. The vCenter Ser
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVcenter -Refresh
+# New-RscMutationVcenter -Refresh
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateVcenter -Refresh -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationVcenter -Refresh).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateVcenter -Refresh -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationVcenter -Refresh
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -11833,7 +11833,7 @@ $inputs.Var.input = @{
 	shouldDiagnose = <System.Boolean>
 }
 "@
-    Write-Message "Invoke-RscMutateVcenter -Refresh" @"
+    Write-Message "New-RscMutationVcenter -Refresh" @"
     Refresh vCenter Server metadata
 
 Supported in v5.0+
@@ -11842,15 +11842,15 @@ Create a job to refresh the metadata for the specified vCenter Server.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVcenter -Update
+# New-RscMutationVcenter -Update
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateVcenter -Update -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationVcenter -Update).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateVcenter -Update -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationVcenter -Update
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -11886,7 +11886,7 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateVcenter -Update" @"
+    Write-Message "New-RscMutationVcenter -Update" @"
     Update vCenter Server
 
 Supported in v5.0+
@@ -11895,15 +11895,15 @@ Update the address, username and password of the specified vCenter Server object
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVcenter -UpdateHotAddNetwork
+# New-RscMutationVcenter -UpdateHotAddNetwork
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateVcenter -UpdateHotAddNetwork -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationVcenter -UpdateHotAddNetwork).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateVcenter -UpdateHotAddNetwork -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationVcenter -UpdateHotAddNetwork
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -11931,7 +11931,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateVcenter -UpdateHotAddNetwork" @"
+    Write-Message "New-RscMutationVcenter -UpdateHotAddNetwork" @"
     Set the user-configured network for HotAdd backup and recovery
 
 Supported in v5.3+
@@ -11940,15 +11940,15 @@ Set the user-configured network for HotAdd backup and recovery operations on VMw
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVcenter -UpdateHotAddBandwidth
+# New-RscMutationVcenter -UpdateHotAddBandwidth
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateVcenter -UpdateHotAddBandwidth -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationVcenter -UpdateHotAddBandwidth).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateVcenter -UpdateHotAddBandwidth -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationVcenter -UpdateHotAddBandwidth
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -11963,7 +11963,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateVcenter -UpdateHotAddBandwidth" @"
+    Write-Message "New-RscMutationVcenter -UpdateHotAddBandwidth" @"
     Set the ingest and export bandwidth limits for HotAdd with the vCenter
 
 Supported in v5.3+
@@ -11973,15 +11973,15 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphere -OnDemandSnapshot
+# New-RscMutationVsphere -OnDemandSnapshot
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateVsphere -OnDemandSnapshot -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationVsphere -OnDemandSnapshot).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateVsphere -OnDemandSnapshot -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationVsphere -OnDemandSnapshot
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -11996,21 +11996,21 @@ $inputs.Var.input = @{
 	userNote = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateVsphere -OnDemandSnapshot" @"
+    Write-Message "New-RscMutationVsphere -OnDemandSnapshot" @"
     
 "@ "[GraphQL: vsphereOnDemandSnapshot]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphere -BulkOnDemandSnapshot
+# New-RscMutationVsphere -BulkOnDemandSnapshot
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateVsphere -BulkOnDemandSnapshot -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationVsphere -BulkOnDemandSnapshot).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateVsphere -BulkOnDemandSnapshot -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationVsphere -BulkOnDemandSnapshot
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -12027,21 +12027,21 @@ $inputs.Var.input = @{
 	userNote = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateVsphere -BulkOnDemandSnapshot" @"
+    Write-Message "New-RscMutationVsphere -BulkOnDemandSnapshot" @"
     Trigger a bulk on demand snapshot.
 "@ "[GraphQL: vsphereBulkOnDemandSnapshot]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphere -DeleteLiveMount
+# New-RscMutationVsphere -DeleteLiveMount
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateVsphere -DeleteLiveMount -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationVsphere -DeleteLiveMount).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateVsphere -DeleteLiveMount -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationVsphere -DeleteLiveMount
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -12051,7 +12051,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateVsphere -DeleteLiveMount" @"
+    Write-Message "New-RscMutationVsphere -DeleteLiveMount" @"
     Delete a Live Mount VM
 
 Supported in v5.0+
@@ -12060,15 +12060,15 @@ Create a request to delete a Live Mount virtual machine.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphere -ExportSnapshotToStandaloneHostV2
+# New-RscMutationVsphere -ExportSnapshotToStandaloneHostV2
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateVsphere -ExportSnapshotToStandaloneHostV2 -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationVsphere -ExportSnapshotToStandaloneHostV2).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateVsphere -ExportSnapshotToStandaloneHostV2 -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationVsphere -ExportSnapshotToStandaloneHostV2
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -12100,21 +12100,21 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateVsphere -ExportSnapshotToStandaloneHostV2" @"
+    Write-Message "New-RscMutationVsphere -ExportSnapshotToStandaloneHostV2" @"
     Export snapshot of a virtual machine to standalone ESXi server.
 "@ "[GraphQL: vsphereExportSnapshotToStandaloneHostV2]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphere -DownloadVirtualMachineFiles
+# New-RscMutationVsphere -DownloadVirtualMachineFiles
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateVsphere -DownloadVirtualMachineFiles -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationVsphere -DownloadVirtualMachineFiles).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateVsphere -DownloadVirtualMachineFiles -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationVsphere -DownloadVirtualMachineFiles
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -12131,7 +12131,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateVsphere -DownloadVirtualMachineFiles" @"
+    Write-Message "New-RscMutationVsphere -DownloadVirtualMachineFiles" @"
     Download Virtual Machine files from a snapshot
 
 Supported in v9.0+
@@ -12140,15 +12140,15 @@ Start an asynchronous job to download multiple Virtual Machine files, such as .v
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphere -CreateAdvancedTag
+# New-RscMutationVsphere -CreateAdvancedTag
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateVsphere -CreateAdvancedTag -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationVsphere -CreateAdvancedTag).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateVsphere -CreateAdvancedTag -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationVsphere -CreateAdvancedTag
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -12165,7 +12165,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateVsphere -CreateAdvancedTag" @"
+    Write-Message "New-RscMutationVsphere -CreateAdvancedTag" @"
     Create a multi-tag filter for vSphere tags
 
 Supported in v7.0+
@@ -12174,15 +12174,15 @@ Create a filter consisting of vSphere tags joined with logical operators.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphere -DeleteAdvancedTag
+# New-RscMutationVsphere -DeleteAdvancedTag
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateVsphere -DeleteAdvancedTag -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationVsphere -DeleteAdvancedTag).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateVsphere -DeleteAdvancedTag -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationVsphere -DeleteAdvancedTag
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -12192,7 +12192,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateVsphere -DeleteAdvancedTag" @"
+    Write-Message "New-RscMutationVsphere -DeleteAdvancedTag" @"
     Remove the multi-tag filter
 
 Supported in v7.0+
@@ -12201,15 +12201,15 @@ Remove the multi-tag filter.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphere -UpdateAdvancedTag
+# New-RscMutationVsphere -UpdateAdvancedTag
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateVsphere -UpdateAdvancedTag -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationVsphere -UpdateAdvancedTag).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateVsphere -UpdateAdvancedTag -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationVsphere -UpdateAdvancedTag
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -12228,7 +12228,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateVsphere -UpdateAdvancedTag" @"
+    Write-Message "New-RscMutationVsphere -UpdateAdvancedTag" @"
     Update the multi-tag filter
 
 Supported in v7.0+
@@ -12238,15 +12238,15 @@ Updates the name, condition, and description of the specified multi-tag filter.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -RecoverFiles
+# New-RscMutationVsphereVm -RecoverFiles
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateVsphereVm -RecoverFiles -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationVsphereVm -RecoverFiles).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateVsphereVm -RecoverFiles -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationVsphereVm -RecoverFiles
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -12286,21 +12286,21 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateVsphereVm -RecoverFiles" @"
+    Write-Message "New-RscMutationVsphereVm -RecoverFiles" @"
     Restores multiple files/directories from snapshot.
 "@ "[GraphQL: vsphereVmRecoverFiles]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -RecoverFilesNew
+# New-RscMutationVsphereVm -RecoverFilesNew
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateVsphereVm -RecoverFilesNew -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationVsphereVm -RecoverFilesNew).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateVsphereVm -RecoverFilesNew -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationVsphereVm -RecoverFilesNew
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -12352,21 +12352,21 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateVsphereVm -RecoverFilesNew" @"
+    Write-Message "New-RscMutationVsphereVm -RecoverFilesNew" @"
     Restores multiple files/directories from snapshot.
 "@ "[GraphQL: vsphereVmRecoverFilesNew]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -RegisterAgent
+# New-RscMutationVsphereVm -RegisterAgent
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateVsphereVm -RegisterAgent -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationVsphereVm -RegisterAgent).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateVsphereVm -RegisterAgent -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationVsphereVm -RegisterAgent
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -12374,7 +12374,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateVsphereVm -RegisterAgent" @"
+    Write-Message "New-RscMutationVsphereVm -RegisterAgent" @"
     Register Rubrik Backup Service
 
 Supported in v5.0+
@@ -12383,15 +12383,15 @@ Register the Rubrik Backup Service that is running on a specified host with the 
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -DownloadSnapshot
+# New-RscMutationVsphereVm -DownloadSnapshot
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateVsphereVm -DownloadSnapshot -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationVsphereVm -DownloadSnapshot).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateVsphereVm -DownloadSnapshot -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationVsphereVm -DownloadSnapshot
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -12399,7 +12399,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateVsphereVm -DownloadSnapshot" @"
+    Write-Message "New-RscMutationVsphereVm -DownloadSnapshot" @"
     Download snapshot from archive
 
 Supported in v5.0+
@@ -12408,15 +12408,15 @@ Provides a method for retrieving a snapshot, that is not available locally, from
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -ExportSnapshotV2
+# New-RscMutationVsphereVm -ExportSnapshotV2
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateVsphereVm -ExportSnapshotV2 -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationVsphereVm -ExportSnapshotV2).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateVsphereVm -ExportSnapshotV2 -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationVsphereVm -ExportSnapshotV2
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -12482,21 +12482,21 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateVsphereVm -ExportSnapshotV2" @"
+    Write-Message "New-RscMutationVsphereVm -ExportSnapshotV2" @"
     Create a vSphere Export from a snapshot or a point-in-time.
 "@ "[GraphQL: vsphereVmExportSnapshotV2]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -ExportSnapshotV3
+# New-RscMutationVsphereVm -ExportSnapshotV3
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateVsphereVm -ExportSnapshotV3 -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationVsphereVm -ExportSnapshotV3).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateVsphereVm -ExportSnapshotV3 -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationVsphereVm -ExportSnapshotV3
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -12571,21 +12571,21 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateVsphereVm -ExportSnapshotV3" @"
+    Write-Message "New-RscMutationVsphereVm -ExportSnapshotV3" @"
     Create a vSphere Export from a snapshot or a point-in-time with datastore cluster and virtual disk mapping support.
 "@ "[GraphQL: vsphereVmExportSnapshotV3]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -BatchExport
+# New-RscMutationVsphereVm -BatchExport
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateVsphereVm -BatchExport -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationVsphereVm -BatchExport).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateVsphereVm -BatchExport -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationVsphereVm -BatchExport
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -12669,21 +12669,21 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateVsphereVm -BatchExport" @"
+    Write-Message "New-RscMutationVsphereVm -BatchExport" @"
     Create a mass export for a group of virtual machines.
 "@ "[GraphQL: vsphereVmBatchExport]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -BatchExportV3
+# New-RscMutationVsphereVm -BatchExportV3
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateVsphereVm -BatchExportV3 -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationVsphereVm -BatchExportV3).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateVsphereVm -BatchExportV3 -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationVsphereVm -BatchExportV3
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -12776,21 +12776,21 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateVsphereVm -BatchExportV3" @"
+    Write-Message "New-RscMutationVsphereVm -BatchExportV3" @"
     Create a batch export for a group of virtual machines with datastore cluster support.
 "@ "[GraphQL: vsphereVmBatchExportV3]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -InitiateInPlaceRecovery
+# New-RscMutationVsphereVm -InitiateInPlaceRecovery
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateVsphereVm -InitiateInPlaceRecovery -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationVsphereVm -InitiateInPlaceRecovery).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateVsphereVm -InitiateInPlaceRecovery -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationVsphereVm -InitiateInPlaceRecovery
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -12810,21 +12810,21 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateVsphereVm -InitiateInPlaceRecovery" @"
+    Write-Message "New-RscMutationVsphereVm -InitiateInPlaceRecovery" @"
     Trigger an in-place recovery from a snapshot or point-in-time.
 "@ "[GraphQL: vsphereVmInitiateInPlaceRecovery]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -ExportSnapshotWithDownloadFromCloud
+# New-RscMutationVsphereVm -ExportSnapshotWithDownloadFromCloud
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateVsphereVm -ExportSnapshotWithDownloadFromCloud -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationVsphereVm -ExportSnapshotWithDownloadFromCloud).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateVsphereVm -ExportSnapshotWithDownloadFromCloud -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationVsphereVm -ExportSnapshotWithDownloadFromCloud
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -12890,7 +12890,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateVsphereVm -ExportSnapshotWithDownloadFromCloud" @"
+    Write-Message "New-RscMutationVsphereVm -ExportSnapshotWithDownloadFromCloud" @"
     Download a snapshot from an archival location, then export a virtual machine using the downloaded snapshot
 
 Supported in v5.3+
@@ -12899,15 +12899,15 @@ Download a snapshot from an archival location and then export a virtual machine 
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -BatchInPlaceRecovery
+# New-RscMutationVsphereVm -BatchInPlaceRecovery
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateVsphereVm -BatchInPlaceRecovery -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationVsphereVm -BatchInPlaceRecovery).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateVsphereVm -BatchInPlaceRecovery -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationVsphereVm -BatchInPlaceRecovery
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -12943,21 +12943,21 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateVsphereVm -BatchInPlaceRecovery" @"
+    Write-Message "New-RscMutationVsphereVm -BatchInPlaceRecovery" @"
     Supported in v6.0+. Export a snapshot each from a set of virtual machines.
 "@ "[GraphQL: vsphereVmBatchInPlaceRecovery]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -DeleteSnapshot
+# New-RscMutationVsphereVm -DeleteSnapshot
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateVsphereVm -DeleteSnapshot -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationVsphereVm -DeleteSnapshot).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateVsphereVm -DeleteSnapshot -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationVsphereVm -DeleteSnapshot
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -12967,21 +12967,21 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateVsphereVm -DeleteSnapshot" @"
+    Write-Message "New-RscMutationVsphereVm -DeleteSnapshot" @"
     Designate a snapshot as expired and available for garbage collection. The snapshot must be an on-demand snapshot or a snapshot from a virtual machine that is not assigned to an SLA Domain.
 "@ "[GraphQL: vsphereVmDeleteSnapshot]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -InitiateInstantRecoveryV2
+# New-RscMutationVsphereVm -InitiateInstantRecoveryV2
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateVsphereVm -InitiateInstantRecoveryV2 -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationVsphereVm -InitiateInstantRecoveryV2).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateVsphereVm -InitiateInstantRecoveryV2 -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationVsphereVm -InitiateInstantRecoveryV2
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -13074,21 +13074,21 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateVsphereVm -InitiateInstantRecoveryV2" @"
+    Write-Message "New-RscMutationVsphereVm -InitiateInstantRecoveryV2" @"
     Instantly recover a vSphere virtual machine from a snapshot or point-in-time.
 "@ "[GraphQL: vsphereVmInitiateInstantRecoveryV2]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -InitiateBatchInstantRecovery
+# New-RscMutationVsphereVm -InitiateBatchInstantRecovery
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateVsphereVm -InitiateBatchInstantRecovery -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationVsphereVm -InitiateBatchInstantRecovery).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateVsphereVm -InitiateBatchInstantRecovery -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationVsphereVm -InitiateBatchInstantRecovery
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -13197,21 +13197,21 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateVsphereVm -InitiateBatchInstantRecovery" @"
+    Write-Message "New-RscMutationVsphereVm -InitiateBatchInstantRecovery" @"
     Initiate a mass instant recovery for a group of VMs.
 "@ "[GraphQL: vsphereVmInitiateBatchInstantRecovery]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -InitiateDiskMount
+# New-RscMutationVsphereVm -InitiateDiskMount
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateVsphereVm -InitiateDiskMount -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationVsphereVm -InitiateDiskMount).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateVsphereVm -InitiateDiskMount -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationVsphereVm -InitiateDiskMount
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -13230,7 +13230,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateVsphereVm -InitiateDiskMount" @"
+    Write-Message "New-RscMutationVsphereVm -InitiateDiskMount" @"
     Attaching disks from a snapshot to an existing virtual machine
 
 Supported in v5.0+
@@ -13239,15 +13239,15 @@ Requests a snapshot mount to attach disks to an existing virtual machine.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -InitiateLiveMountV2
+# New-RscMutationVsphereVm -InitiateLiveMountV2
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateVsphereVm -InitiateLiveMountV2 -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationVsphereVm -InitiateLiveMountV2).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateVsphereVm -InitiateLiveMountV2 -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationVsphereVm -InitiateLiveMountV2
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -13344,21 +13344,21 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateVsphereVm -InitiateLiveMountV2" @"
+    Write-Message "New-RscMutationVsphereVm -InitiateLiveMountV2" @"
     Create a vSphere Live Mount from a snapshot or point-in-time.
 "@ "[GraphQL: vsphereVmInitiateLiveMountV2]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -InitiateBatchLiveMountV2
+# New-RscMutationVsphereVm -InitiateBatchLiveMountV2
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateVsphereVm -InitiateBatchLiveMountV2 -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationVsphereVm -InitiateBatchLiveMountV2).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateVsphereVm -InitiateBatchLiveMountV2 -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationVsphereVm -InitiateBatchLiveMountV2
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -13473,21 +13473,21 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateVsphereVm -InitiateBatchLiveMountV2" @"
+    Write-Message "New-RscMutationVsphereVm -InitiateBatchLiveMountV2" @"
     Initiate a mass live mount for a group of VMs.
 "@ "[GraphQL: vsphereVmInitiateBatchLiveMountV2]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -PowerOnOffLiveMount
+# New-RscMutationVsphereVm -PowerOnOffLiveMount
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateVsphereVm -PowerOnOffLiveMount -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationVsphereVm -PowerOnOffLiveMount).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateVsphereVm -PowerOnOffLiveMount -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationVsphereVm -PowerOnOffLiveMount
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -13502,7 +13502,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateVsphereVm -PowerOnOffLiveMount" @"
+    Write-Message "New-RscMutationVsphereVm -PowerOnOffLiveMount" @"
     Power a Live Mount on and off
 
 Supported in v5.0+
@@ -13511,15 +13511,15 @@ Power a specified Live Mount virtual machine on or off. Pass **_true_** to power
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -ListEsxiDatastores
+# New-RscMutationVsphereVm -ListEsxiDatastores
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateVsphereVm -ListEsxiDatastores -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationVsphereVm -ListEsxiDatastores).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateVsphereVm -ListEsxiDatastores -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationVsphereVm -ListEsxiDatastores
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -13536,7 +13536,7 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateVsphereVm -ListEsxiDatastores" @"
+    Write-Message "New-RscMutationVsphereVm -ListEsxiDatastores" @"
     List ESXi datastores
 
 Supported in v5.0+
@@ -13545,15 +13545,15 @@ Retrieve a list of the datastores for a specified ESXi host.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -MountRelocate
+# New-RscMutationVsphereVm -MountRelocate
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateVsphereVm -MountRelocate -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationVsphereVm -MountRelocate).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateVsphereVm -MountRelocate -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationVsphereVm -MountRelocate
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -13566,7 +13566,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateVsphereVm -MountRelocate" @"
+    Write-Message "New-RscMutationVsphereVm -MountRelocate" @"
     Relocate a virtual machine to another datastore
 
 Supported in v5.0+
@@ -13575,15 +13575,15 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -MountRelocateV2
+# New-RscMutationVsphereVm -MountRelocateV2
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateVsphereVm -MountRelocateV2 -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationVsphereVm -MountRelocateV2).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateVsphereVm -MountRelocateV2 -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationVsphereVm -MountRelocateV2
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -13620,21 +13620,21 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateVsphereVm -MountRelocateV2" @"
+    Write-Message "New-RscMutationVsphereVm -MountRelocateV2" @"
     Create a Live Mount migration to a datastore or datastore cluster with virtual disk mapping support.
 "@ "[GraphQL: vsphereVmMountRelocateV2]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -ExcludeVmDisks
+# New-RscMutationVsphereVm -ExcludeVmDisks
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateVsphereVm -ExcludeVmDisks -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationVsphereVm -ExcludeVmDisks).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateVsphereVm -ExcludeVmDisks -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationVsphereVm -ExcludeVmDisks
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @(
@@ -13646,21 +13646,21 @@ $inputs.Var.input = @(
 }
 )
 "@
-    Write-Message "Invoke-RscMutateVsphereVm -ExcludeVmDisks" @"
+    Write-Message "New-RscMutationVsphereVm -ExcludeVmDisks" @"
     Exclude or include virtual disks during snapshot.
 "@ "[GraphQL: vsphereExcludeVmDisks]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -DownloadSnapshotFiles
+# New-RscMutationVsphereVm -DownloadSnapshotFiles
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateVsphereVm -DownloadSnapshotFiles -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationVsphereVm -DownloadSnapshotFiles).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateVsphereVm -DownloadSnapshotFiles -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationVsphereVm -DownloadSnapshotFiles
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -13682,21 +13682,21 @@ $inputs.Var.input = @{
 	userNote = <System.String>
 }
 "@
-    Write-Message "Invoke-RscMutateVsphereVm -DownloadSnapshotFiles" @"
+    Write-Message "New-RscMutationVsphereVm -DownloadSnapshotFiles" @"
     Download files from snapshot.
 "@ "[GraphQL: vsphereVmDownloadSnapshotFiles]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -Update
+# New-RscMutationVsphereVm -Update
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscMutateVsphereVm -Update -GetGqlRequest).SaveQueryToFile()
+    (New-RscMutationVsphereVm -Update).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscMutateVsphereVm -Update -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscMutationVsphereVm -Update
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -13772,7 +13772,7 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscMutateVsphereVm -Update" @"
+    Write-Message "New-RscMutationVsphereVm -Update" @"
     Update VM
 
 Supported in v5.0+
@@ -13782,33 +13782,33 @@ Update a virtual machine with specified properties. Use the guestCredential fiel
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAccount -Settings
+# New-RscQueryAccount -Settings
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAccount -Settings -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAccount -Settings).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAccount -Settings -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAccount -Settings
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     
 "@
-    Write-Message "Invoke-RscQueryAccount -Settings" @"
+    Write-Message "New-RscQueryAccount -Settings" @"
     This endpoint is deprecated.
 "@ "[GraphQL: accountSettings]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAccount -SWithExocomputeMappings
+# New-RscQueryAccount -SWithExocomputeMappings
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAccount -SWithExocomputeMappings -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAccount -SWithExocomputeMappings).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAccount -SWithExocomputeMappings -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAccount -SWithExocomputeMappings
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.cloudVendor = <CloudVendor> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudVendor]) for enum values.
@@ -13821,21 +13821,21 @@ $inputs.Var.exocomputeAccountIdsFilter = @(
 	<System.String>
 )
 "@
-    Write-Message "Invoke-RscQueryAccount -SWithExocomputeMappings" @"
+    Write-Message "New-RscQueryAccount -SWithExocomputeMappings" @"
     Retrieves the list of all accounts with their Exocompute account mapping, if exists.
 "@ "[GraphQL: allAccountsWithExocomputeMappings]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAccount -Products
+# New-RscQueryAccount -Products
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAccount -Products -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAccount -Products).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAccount -Products -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAccount -Products
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.nameFilter = @(
@@ -13854,58 +13854,58 @@ $inputs.Var.startDateArg = <DateTime>
 # OPTIONAL
 $inputs.Var.endDateArg = <DateTime>
 "@
-    Write-Message "Invoke-RscQueryAccount -Products" @"
+    Write-Message "New-RscQueryAccount -Products" @"
     
 "@ "[GraphQL: allAccountProducts]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAccount -Id
+# New-RscQueryAccount -Id
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAccount -Id -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAccount -Id).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAccount -Id -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAccount -Id
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     
 "@
-    Write-Message "Invoke-RscQueryAccount -Id" @"
+    Write-Message "New-RscQueryAccount -Id" @"
     Account ID.
 "@ "[GraphQL: accountId]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAccount -Owners
+# New-RscQueryAccount -Owners
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAccount -Owners -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAccount -Owners).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAccount -Owners -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAccount -Owners
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     
 "@
-    Write-Message "Invoke-RscQueryAccount -Owners" @"
+    Write-Message "New-RscQueryAccount -Owners" @"
     List of account owners.
 "@ "[GraphQL: allAccountOwners]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryActivitySeries -ActivitySeries
+# New-RscQueryActivitySeries -ActivitySeries
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryActivitySeries -ActivitySeries -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryActivitySeries -ActivitySeries).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryActivitySeries -ActivitySeries -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryActivitySeries -ActivitySeries
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -13915,21 +13915,21 @@ $inputs.Var.input = @{
 	clusterUuid = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryActivitySeries -ActivitySeries" @"
+    Write-Message "New-RscQueryActivitySeries -ActivitySeries" @"
     Retrieve an activity series.
 "@ "[GraphQL: activitySeries]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryActivitySeries -List
+# New-RscQueryActivitySeries -List
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryActivitySeries -List -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryActivitySeries -List).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryActivitySeries -List -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryActivitySeries -List
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -13993,118 +13993,118 @@ $inputs.Var.filters = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscQueryActivitySeries -List" @"
+    Write-Message "New-RscQueryActivitySeries -List" @"
     
 "@ "[GraphQL: activitySeriesConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -NativeRoot
+# New-RscQueryAws -NativeRoot
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -NativeRoot -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -NativeRoot).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -NativeRoot -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -NativeRoot
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     
 "@
-    Write-Message "Invoke-RscQueryAws -NativeRoot" @"
+    Write-Message "New-RscQueryAws -NativeRoot" @"
     Root of AWS native hierarchy.
 "@ "[GraphQL: awsNativeRoot]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -NativeAccount
+# New-RscQueryAws -NativeAccount
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -NativeAccount -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -NativeAccount).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -NativeAccount -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -NativeAccount
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.awsNativeAccountRubrikId = <System.String>
 # REQUIRED
 $inputs.Var.awsNativeProtectionFeature = <AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
 "@
-    Write-Message "Invoke-RscQueryAws -NativeAccount" @"
+    Write-Message "New-RscQueryAws -NativeAccount" @"
     Refers to the AWS Native account that serves as a container for all your AWS resources. The AWS Native account contains information about the metadata related to the AWS Native resources.
 "@ "[GraphQL: awsNativeAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -NativeEc2Instance
+# New-RscQueryAws -NativeEc2Instance
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -NativeEc2Instance -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -NativeEc2Instance).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -NativeEc2Instance -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -NativeEc2Instance
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.ec2InstanceRubrikId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAws -NativeEc2Instance" @"
+    Write-Message "New-RscQueryAws -NativeEc2Instance" @"
     Refers to Amazon Elastic Compute Cloud (EC2) Instance represented by a specific ID. For more information, see https://aws.amazon.com/ec2/.
 "@ "[GraphQL: awsNativeEc2Instance]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -NativeEbsVolume
+# New-RscQueryAws -NativeEbsVolume
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -NativeEbsVolume -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -NativeEbsVolume).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -NativeEbsVolume -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -NativeEbsVolume
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.ebsVolumeRubrikId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAws -NativeEbsVolume" @"
+    Write-Message "New-RscQueryAws -NativeEbsVolume" @"
     Refers to the Amazon Elastic Block Store (EBS) Volume represented by a specific ID. For more information, see https://aws.amazon.com/ebs/.
 "@ "[GraphQL: awsNativeEbsVolume]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -NativeS3Bucket
+# New-RscQueryAws -NativeS3Bucket
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -NativeS3Bucket -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -NativeS3Bucket).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -NativeS3Bucket -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -NativeS3Bucket
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.s3BucketRubrikId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAws -NativeS3Bucket" @"
+    Write-Message "New-RscQueryAws -NativeS3Bucket" @"
     Represents the Amazon S3 Bucket with a specific ID. For more information, see https://aws.amazon.com/s3/.
 "@ "[GraphQL: awsNativeS3Bucket]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -NativeAccounts
+# New-RscQueryAws -NativeAccounts
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -NativeAccounts -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -NativeAccounts).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -NativeAccounts -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -NativeAccounts
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -14145,21 +14145,21 @@ $inputs.Var.authorizedOperationFilter = <Operation> # Call [Enum]::GetValues([Ru
 # REQUIRED
 $inputs.Var.awsNativeProtectionFeature = <AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
 "@
-    Write-Message "Invoke-RscQueryAws -NativeAccounts" @"
+    Write-Message "New-RscQueryAws -NativeAccounts" @"
     Paginated list of all AWS Native accounts.
 "@ "[GraphQL: awsNativeAccounts]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -NativeEc2InstancesByName
+# New-RscQueryAws -NativeEc2InstancesByName
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -NativeEc2InstancesByName -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -NativeEc2InstancesByName).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -NativeEc2InstancesByName -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -NativeEc2InstancesByName
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -14176,21 +14176,21 @@ $inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityClou
 # REQUIRED
 $inputs.Var.ec2InstanceName = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAws -NativeEc2InstancesByName" @"
+    Write-Message "New-RscQueryAws -NativeEc2InstancesByName" @"
     Paginated list of all AWS EC2 Instances by name or substring of name.
 "@ "[GraphQL: awsNativeEc2InstancesByName]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -NativeEc2Instances
+# New-RscQueryAws -NativeEc2Instances
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -NativeEc2Instances -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -NativeEc2Instances).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -NativeEc2Instances -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -NativeEc2Instances
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -14295,21 +14295,21 @@ $inputs.Var.ec2InstanceFilters = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscQueryAws -NativeEc2Instances" @"
+    Write-Message "New-RscQueryAws -NativeEc2Instances" @"
     Paginated list of all AWS EC2 Instances.
 "@ "[GraphQL: awsNativeEc2Instances]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -NativeEbsVolumesByName
+# New-RscQueryAws -NativeEbsVolumesByName
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -NativeEbsVolumesByName -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -NativeEbsVolumesByName).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -NativeEbsVolumesByName -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -NativeEbsVolumesByName
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -14326,21 +14326,21 @@ $inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityClou
 # REQUIRED
 $inputs.Var.ebsVolumeName = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAws -NativeEbsVolumesByName" @"
+    Write-Message "New-RscQueryAws -NativeEbsVolumesByName" @"
     Paginated list of all AWS EBS Volumes by name or substring of name.
 "@ "[GraphQL: awsNativeEbsVolumesByName]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -NativeEbsVolumes
+# New-RscQueryAws -NativeEbsVolumes
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -NativeEbsVolumes -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -NativeEbsVolumes).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -NativeEbsVolumes -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -NativeEbsVolumes
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -14431,202 +14431,202 @@ $inputs.Var.ebsVolumeFilters = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscQueryAws -NativeEbsVolumes" @"
+    Write-Message "New-RscQueryAws -NativeEbsVolumes" @"
     Paginated list of all AWS EBS Volumes.
 "@ "[GraphQL: awsNativeEbsVolumes]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -AllVpcsByRegion
+# New-RscQueryAws -AllVpcsByRegion
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -AllVpcsByRegion -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -AllVpcsByRegion).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -AllVpcsByRegion -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -AllVpcsByRegion
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.awsAccountRubrikId = <System.String>
 # REQUIRED
 $inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
 "@
-    Write-Message "Invoke-RscQueryAws -AllVpcsByRegion" @"
+    Write-Message "New-RscQueryAws -AllVpcsByRegion" @"
     List of all Virtual Private Clouds (VPCs) in the AWS Native account, classified by region.
 "@ "[GraphQL: allVpcsByRegionFromAws]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -AllVpcs
+# New-RscQueryAws -AllVpcs
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -AllVpcs -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -AllVpcs).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -AllVpcs -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -AllVpcs
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.awsAccountRubrikId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAws -AllVpcs" @"
+    Write-Message "New-RscQueryAws -AllVpcs" @"
     List of all Virtual Private Clouds (VPCs) in the AWS Native account.
 "@ "[GraphQL: allVpcsFromAws]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -IsNativeEbsVolumeSnapshotRestorable
+# New-RscQueryAws -IsNativeEbsVolumeSnapshotRestorable
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -IsNativeEbsVolumeSnapshotRestorable -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -IsNativeEbsVolumeSnapshotRestorable).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -IsNativeEbsVolumeSnapshotRestorable -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -IsNativeEbsVolumeSnapshotRestorable
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.snapshotId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAws -IsNativeEbsVolumeSnapshotRestorable" @"
+    Write-Message "New-RscQueryAws -IsNativeEbsVolumeSnapshotRestorable" @"
     Specified whether an EBS volume is restorable. For an EBS Volume to be restorable, the volume should be able to replace where attached.
 "@ "[GraphQL: isAwsNativeEbsVolumeSnapshotRestorable]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -AllAvailabilityZonesByRegion
+# New-RscQueryAws -AllAvailabilityZonesByRegion
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -AllAvailabilityZonesByRegion -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -AllAvailabilityZonesByRegion).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -AllAvailabilityZonesByRegion -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -AllAvailabilityZonesByRegion
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.awsAccountRubrikId = <System.String>
 # REQUIRED
 $inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
 "@
-    Write-Message "Invoke-RscQueryAws -AllAvailabilityZonesByRegion" @"
+    Write-Message "New-RscQueryAws -AllAvailabilityZonesByRegion" @"
     List of Availability Zones (AZs) in the specified region on the specified AWS Native account.
 "@ "[GraphQL: allAvailabilityZonesByRegionFromAws]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -AllKmsEncryptionKeysByRegion
+# New-RscQueryAws -AllKmsEncryptionKeysByRegion
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -AllKmsEncryptionKeysByRegion -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -AllKmsEncryptionKeysByRegion).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -AllKmsEncryptionKeysByRegion -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -AllKmsEncryptionKeysByRegion
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.awsAccountRubrikId = <System.String>
 # REQUIRED
 $inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
 "@
-    Write-Message "Invoke-RscQueryAws -AllKmsEncryptionKeysByRegion" @"
+    Write-Message "New-RscQueryAws -AllKmsEncryptionKeysByRegion" @"
     List of encryption keys in the specified region on the specified AWS Native account. All the encrytion keys listed are managed by AWS Key Management System (KMS). For more information, see https://aws.amazon.com/kms/.
 "@ "[GraphQL: allKmsEncryptionKeysByRegionFromAws]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -IsS3BucketNameAvailable
+# New-RscQueryAws -IsS3BucketNameAvailable
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -IsS3BucketNameAvailable -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -IsS3BucketNameAvailable).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -IsS3BucketNameAvailable -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -IsS3BucketNameAvailable
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.bucketName = <System.String>
 # REQUIRED
 $inputs.Var.awsAccountRubrikId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAws -IsS3BucketNameAvailable" @"
+    Write-Message "New-RscQueryAws -IsS3BucketNameAvailable" @"
     Specifies whether an S3 bucket name is available for use in AWS or not. When true, the bucket name is available for use.
 "@ "[GraphQL: isAwsS3BucketNameAvailable]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -AllS3Buckets
+# New-RscQueryAws -AllS3Buckets
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -AllS3Buckets -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -AllS3Buckets).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -AllS3Buckets -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -AllS3Buckets
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.awsAccountRubrikId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAws -AllS3Buckets" @"
+    Write-Message "New-RscQueryAws -AllS3Buckets" @"
     List of all S3 bucket names across regions for the AWS Native account.
 "@ "[GraphQL: allS3BucketsFromAws]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -AllS3BucketsDetails
+# New-RscQueryAws -AllS3BucketsDetails
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -AllS3BucketsDetails -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -AllS3BucketsDetails).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -AllS3BucketsDetails -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -AllS3BucketsDetails
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.awsAccountRubrikId = <System.String>
 # OPTIONAL
 $inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
 "@
-    Write-Message "Invoke-RscQueryAws -AllS3BucketsDetails" @"
+    Write-Message "New-RscQueryAws -AllS3BucketsDetails" @"
     List of all S3 bucket details across regions for the AWS Native account.
 "@ "[GraphQL: allS3BucketsDetailsFromAws]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -NativeRdsInstance
+# New-RscQueryAws -NativeRdsInstance
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -NativeRdsInstance -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -NativeRdsInstance).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -NativeRdsInstance -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -NativeRdsInstance
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.rdsInstanceRubrikId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAws -NativeRdsInstance" @"
+    Write-Message "New-RscQueryAws -NativeRdsInstance" @"
     Refers to AWS Relational Database Service (RDS) represented by a specific ID. For more information, see https://aws.amazon.com/rds/.
 "@ "[GraphQL: awsNativeRdsInstance]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -NativeRdsInstances
+# New-RscQueryAws -NativeRdsInstances
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -NativeRdsInstances -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -NativeRdsInstances).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -NativeRdsInstances -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -NativeRdsInstances
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -14717,21 +14717,21 @@ $inputs.Var.rdsInstanceFilters = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscQueryAws -NativeRdsInstances" @"
+    Write-Message "New-RscQueryAws -NativeRdsInstances" @"
     Paginated list of AWS RDS Instances on AWS Native account.
 "@ "[GraphQL: awsNativeRdsInstances]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -NativeRdsPointInTimeRestoreWindow
+# New-RscQueryAws -NativeRdsPointInTimeRestoreWindow
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -NativeRdsPointInTimeRestoreWindow -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -NativeRdsPointInTimeRestoreWindow).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -NativeRdsPointInTimeRestoreWindow -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -NativeRdsPointInTimeRestoreWindow
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.awsAccountRubrikId = <System.String>
@@ -14742,21 +14742,21 @@ $inputs.Var.rdsInstanceName = <System.String>
 # OPTIONAL
 $inputs.Var.rdsDatabaseRubrikId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAws -NativeRdsPointInTimeRestoreWindow" @"
+    Write-Message "New-RscQueryAws -NativeRdsPointInTimeRestoreWindow" @"
     Point-in-Time (PiT) restore window of the RDS Instance in the AWS Native account. Refers to the range of time within which the database is available to be restored to a particular point in time. For more information,see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIT.html.
 "@ "[GraphQL: awsNativeRdsPointInTimeRestoreWindow]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -RdsInstanceDetails
+# New-RscQueryAws -RdsInstanceDetails
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -RdsInstanceDetails -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -RdsInstanceDetails).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -RdsInstanceDetails -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -RdsInstanceDetails
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.awsAccountRubrikId = <System.String>
@@ -14767,21 +14767,21 @@ $inputs.Var.rdsInstanceName = <System.String>
 # OPTIONAL
 $inputs.Var.rdsDatabaseRubrikId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAws -RdsInstanceDetails" @"
+    Write-Message "New-RscQueryAws -RdsInstanceDetails" @"
     Details of the RDS Instance in the AWS Native account.
 "@ "[GraphQL: rdsInstanceDetailsFromAws]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -IsNativeRdsInstanceLaunchConfigurationValid
+# New-RscQueryAws -IsNativeRdsInstanceLaunchConfigurationValid
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -IsNativeRdsInstanceLaunchConfigurationValid -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -IsNativeRdsInstanceLaunchConfigurationValid).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -IsNativeRdsInstanceLaunchConfigurationValid -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -IsNativeRdsInstanceLaunchConfigurationValid
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.awsAccountRubrikId = <System.String>
@@ -14806,21 +14806,21 @@ $inputs.Var.kmsKeyId = <System.String>
 # OPTIONAL
 $inputs.Var.iops = <System.Int32>
 "@
-    Write-Message "Invoke-RscQueryAws -IsNativeRdsInstanceLaunchConfigurationValid" @"
+    Write-Message "New-RscQueryAws -IsNativeRdsInstanceLaunchConfigurationValid" @"
     Specifies whether the given DbInstance class, storage type, multi-az capability, encryption capability, iops value are supported for the given dbEngine, dbEngineVersion in the specified availability zone. When true, the specification is valid for a RDS Instance and can be used to create a new Instance.
 "@ "[GraphQL: isAwsNativeRdsInstanceLaunchConfigurationValid]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -AllOptionGroupsByRegion
+# New-RscQueryAws -AllOptionGroupsByRegion
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -AllOptionGroupsByRegion -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -AllOptionGroupsByRegion).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -AllOptionGroupsByRegion -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -AllOptionGroupsByRegion
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.awsAccountRubrikId = <System.String>
@@ -14833,21 +14833,21 @@ $inputs.Var.dbEngineVersion = <System.String>
 # REQUIRED
 $inputs.Var.majorEngineVersion = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAws -AllOptionGroupsByRegion" @"
+    Write-Message "New-RscQueryAws -AllOptionGroupsByRegion" @"
     List of all RDS option groups in a given region. Refers to settings of how a particular option works for an RDS Instance. For more information, see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithOptionGroups.html.
 "@ "[GraphQL: allOptionGroupsByRegionFromAws]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -AllDbParameterGroupsByRegion
+# New-RscQueryAws -AllDbParameterGroupsByRegion
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -AllDbParameterGroupsByRegion -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -AllDbParameterGroupsByRegion).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -AllDbParameterGroupsByRegion -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -AllDbParameterGroupsByRegion
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.awsAccountRubrikId = <System.String>
@@ -14860,42 +14860,42 @@ $inputs.Var.dbEngineVersion = <System.String>
 # OPTIONAL
 $inputs.Var.rdsType = <AwsNativeRdsType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsType]) for enum values.
 "@
-    Write-Message "Invoke-RscQueryAws -AllDbParameterGroupsByRegion" @"
+    Write-Message "New-RscQueryAws -AllDbParameterGroupsByRegion" @"
     List of all DB parameter groups in a given region. Refers to container for engine configuration that applies to one or more DB Instances. For more information, see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithOptionGroups.html.
 "@ "[GraphQL: allDbParameterGroupsByRegionFromAws]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -AllDbSubnetGroupsByRegion
+# New-RscQueryAws -AllDbSubnetGroupsByRegion
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -AllDbSubnetGroupsByRegion -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -AllDbSubnetGroupsByRegion).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -AllDbSubnetGroupsByRegion -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -AllDbSubnetGroupsByRegion
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.awsAccountRubrikId = <System.String>
 # REQUIRED
 $inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
 "@
-    Write-Message "Invoke-RscQueryAws -AllDbSubnetGroupsByRegion" @"
+    Write-Message "New-RscQueryAws -AllDbSubnetGroupsByRegion" @"
     All DB subnet groups in a given region. Refers to logical isolation of RDS on a network. For more information, see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html.
 "@ "[GraphQL: allDbSubnetGroupsByRegionFromAws]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -ValidateNativeRdsInstanceNameForExport
+# New-RscQueryAws -ValidateNativeRdsInstanceNameForExport
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -ValidateNativeRdsInstanceNameForExport -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -ValidateNativeRdsInstanceNameForExport).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -ValidateNativeRdsInstanceNameForExport -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -ValidateNativeRdsInstanceNameForExport
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.awsAccountRubrikId = <System.String>
@@ -14904,21 +14904,21 @@ $inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityC
 # REQUIRED
 $inputs.Var.rdsInstanceName = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAws -ValidateNativeRdsInstanceNameForExport" @"
+    Write-Message "New-RscQueryAws -ValidateNativeRdsInstanceNameForExport" @"
     Validates the name used for an RDS Instance during an export operation. Returns true if the RDS Instance name is valid. Returns false, with an error message, if the RDS Instance name validation fails. Returns false, without an error message for all other failures.
 "@ "[GraphQL: validateAwsNativeRdsInstanceNameForExport]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -ValidateNativeRdsClusterNameForExport
+# New-RscQueryAws -ValidateNativeRdsClusterNameForExport
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -ValidateNativeRdsClusterNameForExport -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -ValidateNativeRdsClusterNameForExport).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -ValidateNativeRdsClusterNameForExport -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -ValidateNativeRdsClusterNameForExport
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.awsAccountRubrikId = <System.String>
@@ -14927,21 +14927,21 @@ $inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityC
 # REQUIRED
 $inputs.Var.rdsClusterName = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAws -ValidateNativeRdsClusterNameForExport" @"
+    Write-Message "New-RscQueryAws -ValidateNativeRdsClusterNameForExport" @"
     Validates the name used for an RDS cluster during an export operation. Returns true if the RDS cluster name is valid. Returns false, with an error message, if the RDS cluster name validation fails. Returns false, without an error message for all other failures.
 "@ "[GraphQL: validateAwsNativeRdsClusterNameForExport]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -NativeRdsExportDefaults
+# New-RscQueryAws -NativeRdsExportDefaults
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -NativeRdsExportDefaults -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -NativeRdsExportDefaults).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -NativeRdsExportDefaults -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -NativeRdsExportDefaults
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.rdsInstanceRubrikId = <System.String>
@@ -14950,42 +14950,42 @@ $inputs.Var.snapshotId = <System.String>
 # REQUIRED
 $inputs.Var.isPointInTime = <System.Boolean>
 "@
-    Write-Message "Invoke-RscQueryAws -NativeRdsExportDefaults" @"
+    Write-Message "New-RscQueryAws -NativeRdsExportDefaults" @"
     Refers to the default values for the export operation of the RDS DB Instance in the AWS Native account.
 "@ "[GraphQL: awsNativeRdsExportDefaults]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -AllEc2KeyPairsByRegion
+# New-RscQueryAws -AllEc2KeyPairsByRegion
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -AllEc2KeyPairsByRegion -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -AllEc2KeyPairsByRegion).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -AllEc2KeyPairsByRegion -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -AllEc2KeyPairsByRegion
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.awsAccountRubrikId = <System.String>
 # REQUIRED
 $inputs.Var.region = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
 "@
-    Write-Message "Invoke-RscQueryAws -AllEc2KeyPairsByRegion" @"
+    Write-Message "New-RscQueryAws -AllEc2KeyPairsByRegion" @"
     List of all key pairs for a given region. A key pair, consisting of a public key and a private key, is a set of security credentials that you use to prove your identity when connecting to an EC2 instance. For more information, see https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html.
 "@ "[GraphQL: allEc2KeyPairsByRegionFromAws]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -AmiTypeForNativeArchivedSnapshotExport
+# New-RscQueryAws -AmiTypeForNativeArchivedSnapshotExport
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -AmiTypeForNativeArchivedSnapshotExport -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -AmiTypeForNativeArchivedSnapshotExport).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -AmiTypeForNativeArchivedSnapshotExport -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -AmiTypeForNativeArchivedSnapshotExport
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -14997,21 +14997,21 @@ $inputs.Var.input = @{
 	destinationAwsAccountRubrikId = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryAws -AmiTypeForNativeArchivedSnapshotExport" @"
+    Write-Message "New-RscQueryAws -AmiTypeForNativeArchivedSnapshotExport" @"
     Amazon Machine Image (AMI) type for export of an archived EC2 Instance snapshot. For more information, see https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instances-and-amis.html.
 "@ "[GraphQL: amiTypeForAwsNativeArchivedSnapshotExport]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -AllSupportedRdsDatabaseInstanceClasses
+# New-RscQueryAws -AllSupportedRdsDatabaseInstanceClasses
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -AllSupportedRdsDatabaseInstanceClasses -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -AllSupportedRdsDatabaseInstanceClasses).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -AllSupportedRdsDatabaseInstanceClasses -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -AllSupportedRdsDatabaseInstanceClasses
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.awsAccountRubrikId = <System.String>
@@ -15022,40 +15022,40 @@ $inputs.Var.dbEngine = <AwsNativeRdsDbEngine> # Call [Enum]::GetValues([RubrikSe
 # OPTIONAL
 $inputs.Var.dbEngineVersion = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAws -AllSupportedRdsDatabaseInstanceClasses" @"
+    Write-Message "New-RscQueryAws -AllSupportedRdsDatabaseInstanceClasses" @"
     List of all the database instance classes supported by AWS RDS database for the provided DB engine and engine version. DB engine version is a optional argument, it can be ignored if we want to retrieve all the supported instance class for a DB engine irrespective of DB engine version.
 "@ "[GraphQL: allSupportedAwsRdsDatabaseInstanceClasses]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -ComputeSettings
+# New-RscQueryAws -ComputeSettings
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -ComputeSettings -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -ComputeSettings).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -ComputeSettings -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -ComputeSettings
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.computeSettingId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAws -ComputeSettings" @"
+    Write-Message "New-RscQueryAws -ComputeSettings" @"
     Retrieve aws compute settings.
 "@ "[GraphQL: awsComputeSettings]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -AllComputeSettings
+# New-RscQueryAws -AllComputeSettings
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -AllComputeSettings -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -AllComputeSettings).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -AllComputeSettings -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -AllComputeSettings
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.sortBy = <AwsCloudComputeSettingQuerySortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudComputeSettingQuerySortByField]) for enum values.
@@ -15073,21 +15073,21 @@ $inputs.Var.filter = @(
 # OPTIONAL
 $inputs.Var.contextFilter = <ContextFilterTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ContextFilterTypeEnum]) for enum values.
 "@
-    Write-Message "Invoke-RscQueryAws -AllComputeSettings" @"
+    Write-Message "New-RscQueryAws -AllComputeSettings" @"
     List all aws compute settings.
 "@ "[GraphQL: allAwsComputeSettings]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -AllCloudAccountsWithFeatures
+# New-RscQueryAws -AllCloudAccountsWithFeatures
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -AllCloudAccountsWithFeatures -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -AllCloudAccountsWithFeatures).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -AllCloudAccountsWithFeatures -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -AllCloudAccountsWithFeatures
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.awsCloudAccountsArg = @{
@@ -15103,21 +15103,21 @@ $inputs.Var.awsCloudAccountsArg = @{
 	columnSearchFilter = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryAws -AllCloudAccountsWithFeatures" @"
+    Write-Message "New-RscQueryAws -AllCloudAccountsWithFeatures" @"
     List of active AWS cloud accounts and the features for the accounts. A cloud account is an AWS account added to the Rubrik platform.
 "@ "[GraphQL: allAwsCloudAccountsWithFeatures]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -CloudAccountWithFeatures
+# New-RscQueryAws -CloudAccountWithFeatures
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -CloudAccountWithFeatures -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -CloudAccountWithFeatures).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -CloudAccountWithFeatures -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -CloudAccountWithFeatures
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.cloudAccountId = <System.String>
@@ -15129,21 +15129,21 @@ $inputs.Var.awsCloudAccountArg = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscQueryAws -CloudAccountWithFeatures" @"
+    Write-Message "New-RscQueryAws -CloudAccountWithFeatures" @"
     List of AWS cloud accounts and the features for each account, classified by ID.
 "@ "[GraphQL: awsCloudAccountWithFeatures]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -CloudAccountListVpcs
+# New-RscQueryAws -CloudAccountListVpcs
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -CloudAccountListVpcs -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -CloudAccountListVpcs).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -CloudAccountListVpcs -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -CloudAccountListVpcs
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.cloudAccountUuid = <System.String>
@@ -15152,21 +15152,21 @@ $inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecu
 # REQUIRED
 $inputs.Var.region = <AwsRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
 "@
-    Write-Message "Invoke-RscQueryAws -CloudAccountListVpcs" @"
+    Write-Message "New-RscQueryAws -CloudAccountListVpcs" @"
     Retrieves a list of virtual private clouds (VPCs) in the specific cloud account.
 "@ "[GraphQL: awsCloudAccountListVpcs]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -CloudAccountListSubnets
+# New-RscQueryAws -CloudAccountListSubnets
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -CloudAccountListSubnets -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -CloudAccountListSubnets).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -CloudAccountListSubnets -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -CloudAccountListSubnets
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.cloudAccountUuid = <System.String>
@@ -15177,21 +15177,21 @@ $inputs.Var.region = <AwsRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.T
 # REQUIRED
 $inputs.Var.vpcID = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAws -CloudAccountListSubnets" @"
+    Write-Message "New-RscQueryAws -CloudAccountListSubnets" @"
     Retrieves a list of subnets in the specified cloud account and virtual private cloud (VPC).
 "@ "[GraphQL: awsCloudAccountListSubnets]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -CloudAccountListSecurityGroups
+# New-RscQueryAws -CloudAccountListSecurityGroups
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -CloudAccountListSecurityGroups -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -CloudAccountListSecurityGroups).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -CloudAccountListSecurityGroups -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -CloudAccountListSecurityGroups
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.cloudAccountUuid = <System.String>
@@ -15202,40 +15202,40 @@ $inputs.Var.region = <AwsRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.T
 # REQUIRED
 $inputs.Var.vpcID = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAws -CloudAccountListSecurityGroups" @"
+    Write-Message "New-RscQueryAws -CloudAccountListSecurityGroups" @"
     Retrieves a list of security groups in the specified cloud account and virtual private cloud (VPC).
 "@ "[GraphQL: awsCloudAccountListSecurityGroups]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -AllExocomputeConfigs
+# New-RscQueryAws -AllExocomputeConfigs
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -AllExocomputeConfigs -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -AllExocomputeConfigs).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -AllExocomputeConfigs -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -AllExocomputeConfigs
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.awsNativeAccountIdOrNamePrefix = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAws -AllExocomputeConfigs" @"
+    Write-Message "New-RscQueryAws -AllExocomputeConfigs" @"
     List of all AWS exocompute configurations filtered by a cloud account ID or a cloud account name prefix.
 "@ "[GraphQL: allAwsExocomputeConfigs]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -AllCloudAccountConfigs
+# New-RscQueryAws -AllCloudAccountConfigs
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -AllCloudAccountConfigs -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -AllCloudAccountConfigs).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -AllCloudAccountConfigs -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -AllCloudAccountConfigs
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.awsCloudAccountsArg = @{
@@ -15251,21 +15251,21 @@ $inputs.Var.awsCloudAccountsArg = @{
 	columnSearchFilter = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryAws -AllCloudAccountConfigs" @"
+    Write-Message "New-RscQueryAws -AllCloudAccountConfigs" @"
     List of all AWS cloud account configurations with the given search query.
 "@ "[GraphQL: allAwsCloudAccountConfigs]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -TrustPolicy
+# New-RscQueryAws -TrustPolicy
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -TrustPolicy -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -TrustPolicy).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -TrustPolicy -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -TrustPolicy
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -15286,21 +15286,21 @@ $inputs.Var.input = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscQueryAws -TrustPolicy" @"
+    Write-Message "New-RscQueryAws -TrustPolicy" @"
     Retrieves the AWS trust policy that will be attached with each role (cross-account, exocompute, etc.) in the customer's environment.
 "@ "[GraphQL: awsTrustPolicy]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -AllPermissionPolicies
+# New-RscQueryAws -AllPermissionPolicies
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -AllPermissionPolicies -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -AllPermissionPolicies).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -AllPermissionPolicies -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -AllPermissionPolicies
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -15317,21 +15317,21 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscQueryAws -AllPermissionPolicies" @"
+    Write-Message "New-RscQueryAws -AllPermissionPolicies" @"
     Retrieves the permissions policy for all the input features along with any AWS-managed policy ARNs which need to be attached to the roles. Each policy document can be used to create an AWS-managed policy which then needs to be attached to corresponding role.
 "@ "[GraphQL: allAwsPermissionPolicies]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -ArtifactsToDelete
+# New-RscQueryAws -ArtifactsToDelete
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -ArtifactsToDelete -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -ArtifactsToDelete).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -ArtifactsToDelete -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -ArtifactsToDelete
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -15343,40 +15343,40 @@ $inputs.Var.input = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscQueryAws -ArtifactsToDelete" @"
+    Write-Message "New-RscQueryAws -ArtifactsToDelete" @"
     Retrieves the AWS artifacts that need to be deleted when an account is being deleted.
 "@ "[GraphQL: awsArtifactsToDelete]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -AllRegions
+# New-RscQueryAws -AllRegions
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -AllRegions -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -AllRegions).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -AllRegions -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -AllRegions
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.cloudAccountId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAws -AllRegions" @"
+    Write-Message "New-RscQueryAws -AllRegions" @"
     All valid AWS regions for this cloud account.
 "@ "[GraphQL: allAwsRegions]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -AllCdmVersions
+# New-RscQueryAws -AllCdmVersions
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -AllCdmVersions -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -AllCdmVersions).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -AllCdmVersions -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -AllCdmVersions
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -15386,80 +15386,80 @@ $inputs.Var.input = @{
 	region = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryAws -AllCdmVersions" @"
+    Write-Message "New-RscQueryAws -AllCdmVersions" @"
     Get all Rubrik CDM versions in the AWS marketplace.
 "@ "[GraphQL: allAwsCdmVersions]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -AllInstanceProfileNames
+# New-RscQueryAws -AllInstanceProfileNames
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAws -AllInstanceProfileNames -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAws -AllInstanceProfileNames).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAws -AllInstanceProfileNames -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAws -AllInstanceProfileNames
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.cloudAccountId = <System.String>
 # REQUIRED
 $inputs.Var.region = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAws -AllInstanceProfileNames" @"
+    Write-Message "New-RscQueryAws -AllInstanceProfileNames" @"
     All Rubrik CC-ES instance profiles in the AWS account.
 "@ "[GraphQL: allAwsInstanceProfileNames]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -NativeRoot
+# New-RscQueryAzure -NativeRoot
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -NativeRoot -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -NativeRoot).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -NativeRoot -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -NativeRoot
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     
 "@
-    Write-Message "Invoke-RscQueryAzure -NativeRoot" @"
+    Write-Message "New-RscQueryAzure -NativeRoot" @"
     Root of Azure native hierarchy.
 "@ "[GraphQL: azureNativeRoot]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -NativeSubscription
+# New-RscQueryAzure -NativeSubscription
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -NativeSubscription -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -NativeSubscription).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -NativeSubscription -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -NativeSubscription
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.azureSubscriptionRubrikId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAzure -NativeSubscription" @"
+    Write-Message "New-RscQueryAzure -NativeSubscription" @"
     Retrieves an Azure Native Subscription. Refers to the logical entity that provides entitlement to deploy and consume Azure resources.
 "@ "[GraphQL: azureNativeSubscription]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -NativeSubscriptions
+# New-RscQueryAzure -NativeSubscriptions
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -NativeSubscriptions -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -NativeSubscriptions).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -NativeSubscriptions -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -NativeSubscriptions
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -15495,40 +15495,40 @@ $inputs.Var.workloadHierarchy = <WorkloadLevelHierarchy> # Call [Enum]::GetValue
 # OPTIONAL
 $inputs.Var.azureNativeProtectionFeature = <AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
 "@
-    Write-Message "Invoke-RscQueryAzure -NativeSubscriptions" @"
+    Write-Message "New-RscQueryAzure -NativeSubscriptions" @"
     Retrieves a paginated list of all Azure Native Subscriptions.
 "@ "[GraphQL: azureNativeSubscriptions]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -NativeResourceGroup
+# New-RscQueryAzure -NativeResourceGroup
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -NativeResourceGroup -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -NativeResourceGroup).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -NativeResourceGroup -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -NativeResourceGroup
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.resourceGroupId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAzure -NativeResourceGroup" @"
+    Write-Message "New-RscQueryAzure -NativeResourceGroup" @"
     Retrieves an Azure Native Resource Group. Refers to a collection of resources in which multiple Azure services can reside.
 "@ "[GraphQL: azureNativeResourceGroup]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -NativeResourceGroups
+# New-RscQueryAzure -NativeResourceGroups
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -NativeResourceGroups -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -NativeResourceGroups).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -NativeResourceGroups -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -NativeResourceGroups
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -15580,40 +15580,40 @@ $inputs.Var.azureNativeProtectionFeatures = @(
 	<AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
 )
 "@
-    Write-Message "Invoke-RscQueryAzure -NativeResourceGroups" @"
+    Write-Message "New-RscQueryAzure -NativeResourceGroups" @"
     Retrieves a paginated list of all Azure Native Resource Groups.
 "@ "[GraphQL: azureNativeResourceGroups]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -NativeVirtualMachine
+# New-RscQueryAzure -NativeVirtualMachine
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -NativeVirtualMachine -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -NativeVirtualMachine).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -NativeVirtualMachine -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -NativeVirtualMachine
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.azureVirtualMachineRubrikId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAzure -NativeVirtualMachine" @"
+    Write-Message "New-RscQueryAzure -NativeVirtualMachine" @"
     Retrieves an Azure Virtual Machine that refers to the Azure infrastructure as a service (IaaS) used to deploy persistent VMs. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/.
 "@ "[GraphQL: azureNativeVirtualMachine]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -NativeVirtualMachines
+# New-RscQueryAzure -NativeVirtualMachines
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -NativeVirtualMachines -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -NativeVirtualMachines).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -NativeVirtualMachines -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -NativeVirtualMachines
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -15723,40 +15723,40 @@ $inputs.Var.virtualMachineFilters = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscQueryAzure -NativeVirtualMachines" @"
+    Write-Message "New-RscQueryAzure -NativeVirtualMachines" @"
     Retrieves a paginated list of all Azure Virtual Machines (VMs).
 "@ "[GraphQL: azureNativeVirtualMachines]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -NativeManagedDisk
+# New-RscQueryAzure -NativeManagedDisk
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -NativeManagedDisk -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -NativeManagedDisk).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -NativeManagedDisk -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -NativeManagedDisk
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.azureManagedDiskRubrikId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAzure -NativeManagedDisk" @"
+    Write-Message "New-RscQueryAzure -NativeManagedDisk" @"
     Retrieves an Azure Native Managed Disk that refers to the block storage designed to be used with Azure Virtual Machines. Some examples are: ultra disks, premium solid-state drives (SSD), standard SSDs, and standard hard disk drives (HDD). For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview.
 "@ "[GraphQL: azureNativeManagedDisk]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -NativeManagedDisks
+# New-RscQueryAzure -NativeManagedDisks
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -NativeManagedDisks -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -NativeManagedDisks).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -NativeManagedDisks -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -NativeManagedDisks
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -15852,103 +15852,103 @@ $inputs.Var.diskFilters = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscQueryAzure -NativeManagedDisks" @"
+    Write-Message "New-RscQueryAzure -NativeManagedDisks" @"
     Retrieves a paginated list of all Azure Native Managed Disks.
 "@ "[GraphQL: azureNativeManagedDisks]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -AllNativeVirtualNetworks
+# New-RscQueryAzure -AllNativeVirtualNetworks
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -AllNativeVirtualNetworks -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -AllNativeVirtualNetworks).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -AllNativeVirtualNetworks -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -AllNativeVirtualNetworks
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.azureSubscriptionRubrikId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAzure -AllNativeVirtualNetworks" @"
+    Write-Message "New-RscQueryAzure -AllNativeVirtualNetworks" @"
     Retrieves all virtual networks (VNets) in the protected subscriptions. VNet enables secure communication with other VNets, the internet, and on-premise networks. For more information, see https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview.
 "@ "[GraphQL: allAzureNativeVirtualNetworks]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -AllNativeSubnetsByRegionFromAzure
+# New-RscQueryAzure -AllNativeSubnetsByRegionFromAzure
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -AllNativeSubnetsByRegionFromAzure -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -AllNativeSubnetsByRegionFromAzure).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -AllNativeSubnetsByRegionFromAzure -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -AllNativeSubnetsByRegionFromAzure
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.azureSubscriptionRubrikId = <System.String>
 # REQUIRED
 $inputs.Var.region = <AzureNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
 "@
-    Write-Message "Invoke-RscQueryAzure -AllNativeSubnetsByRegionFromAzure" @"
+    Write-Message "New-RscQueryAzure -AllNativeSubnetsByRegionFromAzure" @"
     Retrieves all subnets in the specified region and subscription. Subnets allow you to choose IP address range of your choice. For more information, see https://docs.microsoft.com/en-us/azure/virtual-network/network-overview#virtual-network-and-subnets.
 "@ "[GraphQL: allAzureNativeSubnetsByRegionFromAzure]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -AllNativeSecurityGroupsByRegionFromAzure
+# New-RscQueryAzure -AllNativeSecurityGroupsByRegionFromAzure
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -AllNativeSecurityGroupsByRegionFromAzure -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -AllNativeSecurityGroupsByRegionFromAzure).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -AllNativeSecurityGroupsByRegionFromAzure -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -AllNativeSecurityGroupsByRegionFromAzure
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.azureSubscriptionRubrikId = <System.String>
 # REQUIRED
 $inputs.Var.region = <AzureNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
 "@
-    Write-Message "Invoke-RscQueryAzure -AllNativeSecurityGroupsByRegionFromAzure" @"
+    Write-Message "New-RscQueryAzure -AllNativeSecurityGroupsByRegionFromAzure" @"
     Retrieves all security groups in the specified region and subscription. Security groups enable you to configure network security as a natural extension of an application's structure, allowing you to group virtual machines and define network security policies based on those groups. For more information, see https://docs.microsoft.com/en-us/azure/virtual-network/application-security-groups.
 "@ "[GraphQL: allAzureNativeSecurityGroupsByRegionFromAzure]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -AllDiskEncryptionSetsByRegion
+# New-RscQueryAzure -AllDiskEncryptionSetsByRegion
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -AllDiskEncryptionSetsByRegion -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -AllDiskEncryptionSetsByRegion).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -AllDiskEncryptionSetsByRegion -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -AllDiskEncryptionSetsByRegion
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.azureSubscriptionRubrikId = <System.String>
 # REQUIRED
 $inputs.Var.region = <AzureNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
 "@
-    Write-Message "Invoke-RscQueryAzure -AllDiskEncryptionSetsByRegion" @"
+    Write-Message "New-RscQueryAzure -AllDiskEncryptionSetsByRegion" @"
     List of all Azure Disk Encryption Sets in a region.
 "@ "[GraphQL: allAzureDiskEncryptionSetsByRegion]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -AllNativeAvailabilitySetsByRegionFromAzure
+# New-RscQueryAzure -AllNativeAvailabilitySetsByRegionFromAzure
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -AllNativeAvailabilitySetsByRegionFromAzure -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -AllNativeAvailabilitySetsByRegionFromAzure).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -AllNativeAvailabilitySetsByRegionFromAzure -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -AllNativeAvailabilitySetsByRegionFromAzure
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.azureSubscriptionRubrikId = <System.String>
@@ -15957,21 +15957,21 @@ $inputs.Var.resourceGroupName = <System.String>
 # REQUIRED
 $inputs.Var.region = <AzureNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
 "@
-    Write-Message "Invoke-RscQueryAzure -AllNativeAvailabilitySetsByRegionFromAzure" @"
+    Write-Message "New-RscQueryAzure -AllNativeAvailabilitySetsByRegionFromAzure" @"
     Retrieves all availability sets in the specified region, resource group, and subscription. An availability set is a logical grouping of VMs to facilitate redundancy and availability. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/availability-set-overview.
 "@ "[GraphQL: allAzureNativeAvailabilitySetsByRegionFromAzure]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -AllNativeExportCompatibleVmSizesByRegionFromAzure
+# New-RscQueryAzure -AllNativeExportCompatibleVmSizesByRegionFromAzure
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -AllNativeExportCompatibleVmSizesByRegionFromAzure -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -AllNativeExportCompatibleVmSizesByRegionFromAzure).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -AllNativeExportCompatibleVmSizesByRegionFromAzure -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -AllNativeExportCompatibleVmSizesByRegionFromAzure
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.azureSubscriptionRubrikId = <System.String>
@@ -15980,141 +15980,141 @@ $inputs.Var.region = <AzureNativeRegion> # Call [Enum]::GetValues([RubrikSecurit
 # REQUIRED
 $inputs.Var.vmSnapshotId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAzure -AllNativeExportCompatibleVmSizesByRegionFromAzure" @"
+    Write-Message "New-RscQueryAzure -AllNativeExportCompatibleVmSizesByRegionFromAzure" @"
     Retrieves all supported virtual machine (VM) sizes when exporting a particular snapshot. Not all VM sizes are supported in all the regions. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/sizes.
 "@ "[GraphQL: allAzureNativeExportCompatibleVmSizesByRegionFromAzure]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -AllNativeExportCompatibleDiskTypesByRegionFromAzure
+# New-RscQueryAzure -AllNativeExportCompatibleDiskTypesByRegionFromAzure
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -AllNativeExportCompatibleDiskTypesByRegionFromAzure -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -AllNativeExportCompatibleDiskTypesByRegionFromAzure).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -AllNativeExportCompatibleDiskTypesByRegionFromAzure -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -AllNativeExportCompatibleDiskTypesByRegionFromAzure
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.azureSubscriptionRubrikId = <System.String>
 # REQUIRED
 $inputs.Var.region = <AzureNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
 "@
-    Write-Message "Invoke-RscQueryAzure -AllNativeExportCompatibleDiskTypesByRegionFromAzure" @"
+    Write-Message "New-RscQueryAzure -AllNativeExportCompatibleDiskTypesByRegionFromAzure" @"
     Retrieves all supported disk types when exporting a specific snapshot. Not all disk types are supported in all the regions. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/disks-types.
 "@ "[GraphQL: allAzureNativeExportCompatibleDiskTypesByRegionFromAzure]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -AllNativeVirtualMachineSizes
+# New-RscQueryAzure -AllNativeVirtualMachineSizes
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -AllNativeVirtualMachineSizes -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -AllNativeVirtualMachineSizes).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -AllNativeVirtualMachineSizes -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -AllNativeVirtualMachineSizes
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.azureSubscriptionRubrikId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAzure -AllNativeVirtualMachineSizes" @"
+    Write-Message "New-RscQueryAzure -AllNativeVirtualMachineSizes" @"
     Retrieves all virtual machine (VM) sizes in the subscriptions protected by Rubrik that have been configured for protection. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/sizes.
 "@ "[GraphQL: allAzureNativeVirtualMachineSizes]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -IsNativeManagedDiskSnapshotRestorable
+# New-RscQueryAzure -IsNativeManagedDiskSnapshotRestorable
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -IsNativeManagedDiskSnapshotRestorable -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -IsNativeManagedDiskSnapshotRestorable).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -IsNativeManagedDiskSnapshotRestorable -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -IsNativeManagedDiskSnapshotRestorable
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.azureSubscriptionRubrikId = <System.String>
 # REQUIRED
 $inputs.Var.diskSnapshotId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAzure -IsNativeManagedDiskSnapshotRestorable" @"
+    Write-Message "New-RscQueryAzure -IsNativeManagedDiskSnapshotRestorable" @"
     Specifies whether the Managed Disk snapshot is restorable or not. A managed disk is restorable when the restore settings of the Managed Disk are configured on the Azure portal and on the Rubrik platform. When the value is true, the managed disk snapshot is restorable.
 "@ "[GraphQL: isAzureNativeManagedDiskSnapshotRestorable]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -IsStorageAccountNameAvailable
+# New-RscQueryAzure -IsStorageAccountNameAvailable
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -IsStorageAccountNameAvailable -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -IsStorageAccountNameAvailable).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -IsStorageAccountNameAvailable -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -IsStorageAccountNameAvailable
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.azureSubscriptionRubrikId = <System.String>
 # REQUIRED
 $inputs.Var.storageAccountName = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAzure -IsStorageAccountNameAvailable" @"
+    Write-Message "New-RscQueryAzure -IsStorageAccountNameAvailable" @"
     Specifies whether the given storage account name is valid and available in Azure to be assigned to a new storage account. When the value is true, the specified account name is available in Azure.
 "@ "[GraphQL: isAzureStorageAccountNameAvailable]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -AllNativeStorageAccountsFromAzure
+# New-RscQueryAzure -AllNativeStorageAccountsFromAzure
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -AllNativeStorageAccountsFromAzure -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -AllNativeStorageAccountsFromAzure).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -AllNativeStorageAccountsFromAzure -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -AllNativeStorageAccountsFromAzure
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.azureSubscriptionRubrikId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAzure -AllNativeStorageAccountsFromAzure" @"
+    Write-Message "New-RscQueryAzure -AllNativeStorageAccountsFromAzure" @"
     Retrieves list of all storage Accounts in a subscription.
 "@ "[GraphQL: allAzureNativeStorageAccountsFromAzure]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -SqlDatabase
+# New-RscQueryAzure -SqlDatabase
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -SqlDatabase -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -SqlDatabase).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -SqlDatabase -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -SqlDatabase
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.azureSqlDatabaseRubrikId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAzure -SqlDatabase" @"
+    Write-Message "New-RscQueryAzure -SqlDatabase" @"
     Retrieves an Azure SQL Database. Refers to the fully managed SQL database built for the cloud. For more information, see https://azure.microsoft.com/en-us/products/azure-sql/database/.
 "@ "[GraphQL: azureSqlDatabase]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -SqlDatabases
+# New-RscQueryAzure -SqlDatabases
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -SqlDatabases -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -SqlDatabases).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -SqlDatabases -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -SqlDatabases
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -16191,40 +16191,40 @@ $inputs.Var.azureSqlDatabaseFilters = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscQueryAzure -SqlDatabases" @"
+    Write-Message "New-RscQueryAzure -SqlDatabases" @"
     Retrieves a paginated list of all Azure SQL Databases.
 "@ "[GraphQL: azureSqlDatabases]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -SqlDatabaseServer
+# New-RscQueryAzure -SqlDatabaseServer
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -SqlDatabaseServer -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -SqlDatabaseServer).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -SqlDatabaseServer -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -SqlDatabaseServer
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.azureSqlDatabaseServerRubrikId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAzure -SqlDatabaseServer" @"
+    Write-Message "New-RscQueryAzure -SqlDatabaseServer" @"
     Retrieves an Azure SQL Database Server. Refers to the server that contains the Azure SQL Databases. For more information, see https://docs.microsoft.com/en-us/azure/azure-sql/database/logical-servers.
 "@ "[GraphQL: azureSqlDatabaseServer]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -SqlDatabaseServers
+# New-RscQueryAzure -SqlDatabaseServers
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -SqlDatabaseServers -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -SqlDatabaseServers).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -SqlDatabaseServers -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -SqlDatabaseServers
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -16275,40 +16275,40 @@ $inputs.Var.azureSqlDatabaseServerFilters = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscQueryAzure -SqlDatabaseServers" @"
+    Write-Message "New-RscQueryAzure -SqlDatabaseServers" @"
     Retrieves a paginated list of all Azure SQL Database Servers.
 "@ "[GraphQL: azureSqlDatabaseServers]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -SqlManagedInstanceDatabase
+# New-RscQueryAzure -SqlManagedInstanceDatabase
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -SqlManagedInstanceDatabase -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -SqlManagedInstanceDatabase).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -SqlManagedInstanceDatabase -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -SqlManagedInstanceDatabase
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.azureSqlManagedInstanceDatabaseRubrikId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAzure -SqlManagedInstanceDatabase" @"
+    Write-Message "New-RscQueryAzure -SqlManagedInstanceDatabase" @"
     Retrieves an Azure SQL Managed Instance Database. Refers to the database engine compatible with the latest SQL Server (Enterprise Edition) database engine. For more information, see https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview.
 "@ "[GraphQL: azureSqlManagedInstanceDatabase]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -SqlManagedInstanceDatabases
+# New-RscQueryAzure -SqlManagedInstanceDatabases
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -SqlManagedInstanceDatabases -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -SqlManagedInstanceDatabases).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -SqlManagedInstanceDatabases -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -SqlManagedInstanceDatabases
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -16371,40 +16371,40 @@ $inputs.Var.azureSqlManagedInstanceDatabaseFilters = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscQueryAzure -SqlManagedInstanceDatabases" @"
+    Write-Message "New-RscQueryAzure -SqlManagedInstanceDatabases" @"
     Retrieves a paginated list of all Azure SQL Managed Instance Databases.
 "@ "[GraphQL: azureSqlManagedInstanceDatabases]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -SqlManagedInstanceServer
+# New-RscQueryAzure -SqlManagedInstanceServer
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -SqlManagedInstanceServer -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -SqlManagedInstanceServer).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -SqlManagedInstanceServer -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -SqlManagedInstanceServer
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.azureSqlManagedInstanceServerRubrikId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAzure -SqlManagedInstanceServer" @"
+    Write-Message "New-RscQueryAzure -SqlManagedInstanceServer" @"
     Retrieves an Azure SQL Managed Instance Server. Refers to the server the Azure SQL Managed Instance Database is a part of.
 "@ "[GraphQL: azureSqlManagedInstanceServer]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -SqlManagedInstanceServers
+# New-RscQueryAzure -SqlManagedInstanceServers
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -SqlManagedInstanceServers -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -SqlManagedInstanceServers).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -SqlManagedInstanceServers -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -SqlManagedInstanceServers
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -16469,21 +16469,21 @@ $inputs.Var.azureSqlManagedInstanceServerFilters = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscQueryAzure -SqlManagedInstanceServers" @"
+    Write-Message "New-RscQueryAzure -SqlManagedInstanceServers" @"
     Retrieves a paginated list of all Azure SQL Managed Instance Servers.
 "@ "[GraphQL: azureSqlManagedInstanceServers]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -SqlDatabaseDbPointInTimeRestoreWindowFromAzure
+# New-RscQueryAzure -SqlDatabaseDbPointInTimeRestoreWindowFromAzure
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -SqlDatabaseDbPointInTimeRestoreWindowFromAzure -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -SqlDatabaseDbPointInTimeRestoreWindowFromAzure).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -SqlDatabaseDbPointInTimeRestoreWindowFromAzure -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -SqlDatabaseDbPointInTimeRestoreWindowFromAzure
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.subscriptionId = <System.String>
@@ -16494,21 +16494,21 @@ $inputs.Var.azureSqlDatabaseServerName = <System.String>
 # REQUIRED
 $inputs.Var.azureSqlDatabaseName = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAzure -SqlDatabaseDbPointInTimeRestoreWindowFromAzure" @"
+    Write-Message "New-RscQueryAzure -SqlDatabaseDbPointInTimeRestoreWindowFromAzure" @"
     Point-in-Time (PiT) restore window of the Azure SQL Database instance in the Azure native account. Refers to the range of time within which the database is available to be restored to a particular point in time. For more information, see https://azure.microsoft.com/en-in/blog/azure-sql-database-point-in-time-restore/.
 "@ "[GraphQL: azureSqlDatabaseDbPointInTimeRestoreWindowFromAzure]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure
+# New-RscQueryAzure -SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.subscriptionId = <System.String>
@@ -16519,63 +16519,63 @@ $inputs.Var.azureSqlManagedInstanceName = <System.String>
 # REQUIRED
 $inputs.Var.azureSqlDatabaseName = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAzure -SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure" @"
+    Write-Message "New-RscQueryAzure -SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure" @"
     Point-in-Time (PiT) restore window of the Azure SQL Managed Instance database in the Azure native account. Refers to the range of time within which the database is available to be restored to a particular point in time. For more information, see https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/point-in-time-restore?tabs=azure-portal.
 "@ "[GraphQL: azureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -ValidateNativeSqlDatabaseDbNameForExport
+# New-RscQueryAzure -ValidateNativeSqlDatabaseDbNameForExport
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -ValidateNativeSqlDatabaseDbNameForExport -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -ValidateNativeSqlDatabaseDbNameForExport).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -ValidateNativeSqlDatabaseDbNameForExport -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -ValidateNativeSqlDatabaseDbNameForExport
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.azureSqlDatabaseName = <System.String>
 # REQUIRED
 $inputs.Var.azureSqlDatabaseServerRubrikId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAzure -ValidateNativeSqlDatabaseDbNameForExport" @"
+    Write-Message "New-RscQueryAzure -ValidateNativeSqlDatabaseDbNameForExport" @"
     Validates the name used for an Sql Database during an export operation. Returns true if the database name is valid. Returns false, with an error message, if the database name validation fails. Returns false, without an error message for all other failures.
 "@ "[GraphQL: validateAzureNativeSqlDatabaseDbNameForExport]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -ValidateNativeSqlManagedInstanceDbNameForExport
+# New-RscQueryAzure -ValidateNativeSqlManagedInstanceDbNameForExport
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -ValidateNativeSqlManagedInstanceDbNameForExport -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -ValidateNativeSqlManagedInstanceDbNameForExport).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -ValidateNativeSqlManagedInstanceDbNameForExport -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -ValidateNativeSqlManagedInstanceDbNameForExport
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.azureSqlDatabaseName = <System.String>
 # REQUIRED
 $inputs.Var.azureSqlManagedInstanceServerRubrikId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAzure -ValidateNativeSqlManagedInstanceDbNameForExport" @"
+    Write-Message "New-RscQueryAzure -ValidateNativeSqlManagedInstanceDbNameForExport" @"
     Validates the name used for an Managed Instance Database during an export operation. Returns true if the database name is valid. Returns false, with an error message, if the database name validation fails. Returns false, without an error message for all other failures.
 "@ "[GraphQL: validateAzureNativeSqlManagedInstanceDbNameForExport]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -AllSqlDatabaseServerElasticPools
+# New-RscQueryAzure -AllSqlDatabaseServerElasticPools
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -AllSqlDatabaseServerElasticPools -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -AllSqlDatabaseServerElasticPools).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -AllSqlDatabaseServerElasticPools -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -AllSqlDatabaseServerElasticPools
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.subscriptionId = <System.String>
@@ -16586,40 +16586,40 @@ $inputs.Var.azureSqlDatabaseServerName = <System.String>
 # REQUIRED
 $inputs.Var.azureSqlDatabaseServerRubrikId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAzure -AllSqlDatabaseServerElasticPools" @"
+    Write-Message "New-RscQueryAzure -AllSqlDatabaseServerElasticPools" @"
     Retrieves the list of elastic pools available for a SQL Database Server.For more information, see https://docs.microsoft.com/en-us/azure/azure-sql/database/elastic-pool-overview.
 "@ "[GraphQL: allAzureSqlDatabaseServerElasticPools]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -IsNativeSqlDatabaseSnapshotPersistent
+# New-RscQueryAzure -IsNativeSqlDatabaseSnapshotPersistent
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -IsNativeSqlDatabaseSnapshotPersistent -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -IsNativeSqlDatabaseSnapshotPersistent).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -IsNativeSqlDatabaseSnapshotPersistent -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -IsNativeSqlDatabaseSnapshotPersistent
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.snapshotId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAzure -IsNativeSqlDatabaseSnapshotPersistent" @"
+    Write-Message "New-RscQueryAzure -IsNativeSqlDatabaseSnapshotPersistent" @"
     Checks if an Azure SQL Database Snapshot or an Azure SQL Managed Instance Database Snapshot is a persistent snapshot.
 "@ "[GraphQL: isAzureNativeSqlDatabaseSnapshotPersistent]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -AllKeyVaultsByRegion
+# New-RscQueryAzure -AllKeyVaultsByRegion
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -AllKeyVaultsByRegion -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -AllKeyVaultsByRegion).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -AllKeyVaultsByRegion -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -AllKeyVaultsByRegion
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.azureKeyVaultsInput = @{
@@ -16631,21 +16631,21 @@ $inputs.Var.azureKeyVaultsInput = @{
 	userAssignedManagedIdentityPrincipalId = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryAzure -AllKeyVaultsByRegion" @"
+    Write-Message "New-RscQueryAzure -AllKeyVaultsByRegion" @"
     List of all Azure Key Vaults in a region.
 "@ "[GraphQL: allAzureKeyVaultsByRegion]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -AllEncryptionKeys
+# New-RscQueryAzure -AllEncryptionKeys
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -AllEncryptionKeys -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -AllEncryptionKeys).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -AllEncryptionKeys -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -AllEncryptionKeys
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.azureEncryptionKeysInput = @{
@@ -16657,21 +16657,21 @@ $inputs.Var.azureEncryptionKeysInput = @{
 	resourceGroupName = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryAzure -AllEncryptionKeys" @"
+    Write-Message "New-RscQueryAzure -AllEncryptionKeys" @"
     List of all Encryption Keys in an Azure Key Vault.
 "@ "[GraphQL: allAzureEncryptionKeys]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -CloudAccountTenant
+# New-RscQueryAzure -CloudAccountTenant
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -CloudAccountTenant -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -CloudAccountTenant).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -CloudAccountTenant -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -CloudAccountTenant
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.tenantId = <System.String>
@@ -16688,21 +16688,21 @@ $inputs.Var.subscriptionIdsFilter = @(
 	<System.String>
 )
 "@
-    Write-Message "Invoke-RscQueryAzure -CloudAccountTenant" @"
+    Write-Message "New-RscQueryAzure -CloudAccountTenant" @"
     Retrieves the details of the Azure tenant and all the subscriptions of the tenant, for a feature.
 "@ "[GraphQL: azureCloudAccountTenant]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -CloudAccountTenantWithExoConfigs
+# New-RscQueryAzure -CloudAccountTenantWithExoConfigs
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -CloudAccountTenantWithExoConfigs -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -CloudAccountTenantWithExoConfigs).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -CloudAccountTenantWithExoConfigs -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -CloudAccountTenantWithExoConfigs
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.tenantId = <System.String>
@@ -16719,21 +16719,21 @@ $inputs.Var.subscriptionIdsFilter = @(
 	<System.String>
 )
 "@
-    Write-Message "Invoke-RscQueryAzure -CloudAccountTenantWithExoConfigs" @"
+    Write-Message "New-RscQueryAzure -CloudAccountTenantWithExoConfigs" @"
     Retrieves details about the Azure cloud account tenant including the Exocompute configurations for the tenant subscriptions, for a specified feature.
 "@ "[GraphQL: azureCloudAccountTenantWithExoConfigs]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -AllCloudAccountTenants
+# New-RscQueryAzure -AllCloudAccountTenants
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -AllCloudAccountTenants -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -AllCloudAccountTenants).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -AllCloudAccountTenants -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -AllCloudAccountTenants
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.features = @(
@@ -16744,40 +16744,40 @@ $inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecu
 # REQUIRED
 $inputs.Var.includeSubscriptionDetails = <System.Boolean>
 "@
-    Write-Message "Invoke-RscQueryAzure -AllCloudAccountTenants" @"
+    Write-Message "New-RscQueryAzure -AllCloudAccountTenants" @"
     Retrieves a list of all the Azure tenants and tenant subscriptions for features. The list can be filtered by feature status, subscription native ID, and subscription name.
 "@ "[GraphQL: allAzureCloudAccountTenants]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -CloudAccountSubscriptionWithFeatures
+# New-RscQueryAzure -CloudAccountSubscriptionWithFeatures
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -CloudAccountSubscriptionWithFeatures -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -CloudAccountSubscriptionWithFeatures).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -CloudAccountSubscriptionWithFeatures -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -CloudAccountSubscriptionWithFeatures
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.cloudAccountId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAzure -CloudAccountSubscriptionWithFeatures" @"
+    Write-Message "New-RscQueryAzure -CloudAccountSubscriptionWithFeatures" @"
     Retrieves the details of the Azure cloud account.
 "@ "[GraphQL: azureCloudAccountSubscriptionWithFeatures]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -AllCloudAccountSubscriptionsByFeature
+# New-RscQueryAzure -AllCloudAccountSubscriptionsByFeature
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -AllCloudAccountSubscriptionsByFeature -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -AllCloudAccountSubscriptionsByFeature).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -AllCloudAccountSubscriptionsByFeature -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -AllCloudAccountSubscriptionsByFeature
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
@@ -16786,21 +16786,21 @@ $inputs.Var.subscriptionStatusFilters = @(
 	<CloudAccountStatus> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountStatus]) for enum values.
 )
 "@
-    Write-Message "Invoke-RscQueryAzure -AllCloudAccountSubscriptionsByFeature" @"
+    Write-Message "New-RscQueryAzure -AllCloudAccountSubscriptionsByFeature" @"
     Retrieves a list of all Azure Subscriptions with feature details such as feature, status, and regions.
 "@ "[GraphQL: allAzureCloudAccountSubscriptionsByFeature]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -AllSubscriptionWithExocomputeMappings
+# New-RscQueryAzure -AllSubscriptionWithExocomputeMappings
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -AllSubscriptionWithExocomputeMappings -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -AllSubscriptionWithExocomputeMappings).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -AllSubscriptionWithExocomputeMappings -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -AllSubscriptionWithExocomputeMappings
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.features = @(
@@ -16811,21 +16811,21 @@ $inputs.Var.exocomputeSubscriptionIdsFilter = @(
 	<System.String>
 )
 "@
-    Write-Message "Invoke-RscQueryAzure -AllSubscriptionWithExocomputeMappings" @"
+    Write-Message "New-RscQueryAzure -AllSubscriptionWithExocomputeMappings" @"
     Retrieves a list of all Azure subscriptions with Exocompute subscription mapping.
 "@ "[GraphQL: allAzureSubscriptionWithExocomputeMappings]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -AllResourceGroupsFrom
+# New-RscQueryAzure -AllResourceGroupsFrom
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -AllResourceGroupsFrom -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -AllResourceGroupsFrom).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -AllResourceGroupsFrom -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -AllResourceGroupsFrom
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.cloudAccountId = <System.String>
@@ -16834,21 +16834,21 @@ $inputs.Var.azureSubscriptionNativeId = <System.String>
 # REQUIRED
 $inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 "@
-    Write-Message "Invoke-RscQueryAzure -AllResourceGroupsFrom" @"
+    Write-Message "New-RscQueryAzure -AllResourceGroupsFrom" @"
     Retrieves a list og all resource groups in the specified account.
 "@ "[GraphQL: allResourceGroupsFromAzure]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -DoesNativeResourceGroupExist
+# New-RscQueryAzure -DoesNativeResourceGroupExist
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -DoesNativeResourceGroupExist -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -DoesNativeResourceGroupExist).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -DoesNativeResourceGroupExist -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -DoesNativeResourceGroupExist
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.cloudAccountId = <System.String>
@@ -16859,21 +16859,21 @@ $inputs.Var.resourceGroupName = <System.String>
 # REQUIRED
 $inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 "@
-    Write-Message "Invoke-RscQueryAzure -DoesNativeResourceGroupExist" @"
+    Write-Message "New-RscQueryAzure -DoesNativeResourceGroupExist" @"
     Checks if a resource group with the specified name exists in the specified account.
 "@ "[GraphQL: doesAzureNativeResourceGroupExist]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -AllNativeResourceGroupsInfoIfExist
+# New-RscQueryAzure -AllNativeResourceGroupsInfoIfExist
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -AllNativeResourceGroupsInfoIfExist -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -AllNativeResourceGroupsInfoIfExist).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -AllNativeResourceGroupsInfoIfExist -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -AllNativeResourceGroupsInfoIfExist
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -16890,21 +16890,21 @@ $inputs.Var.input = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscQueryAzure -AllNativeResourceGroupsInfoIfExist" @"
+    Write-Message "New-RscQueryAzure -AllNativeResourceGroupsInfoIfExist" @"
     Retrieves a list of resource groups with the specified names which exist in the specified account.
 "@ "[GraphQL: allAzureNativeResourceGroupsInfoIfExist]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -AllCloudAccountMissingPermissions
+# New-RscQueryAzure -AllCloudAccountMissingPermissions
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -AllCloudAccountMissingPermissions -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -AllCloudAccountMissingPermissions).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -AllCloudAccountMissingPermissions -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -AllCloudAccountMissingPermissions
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.sessionId = <System.String>
@@ -16915,40 +16915,40 @@ $inputs.Var.subscriptionIds = @(
 # REQUIRED
 $inputs.Var.cloudAccountAction = <CloudAccountAction> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountAction]) for enum values.
 "@
-    Write-Message "Invoke-RscQueryAzure -AllCloudAccountMissingPermissions" @"
+    Write-Message "New-RscQueryAzure -AllCloudAccountMissingPermissions" @"
     Retrieves a list of all the missing permissions on Azure subscriptions that are a part of the Azure Cloud Account.
 "@ "[GraphQL: allAzureCloudAccountMissingPermissions]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -CloudAccountPermissionConfig
+# New-RscQueryAzure -CloudAccountPermissionConfig
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -CloudAccountPermissionConfig -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -CloudAccountPermissionConfig).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -CloudAccountPermissionConfig -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -CloudAccountPermissionConfig
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 "@
-    Write-Message "Invoke-RscQueryAzure -CloudAccountPermissionConfig" @"
+    Write-Message "New-RscQueryAzure -CloudAccountPermissionConfig" @"
     Retrieves the configuration consisting of role permissions and feature policy version required for Azure subscription setup. Features refer to the Polaris features that the customer wants to be enabled on the cloud account.
 "@ "[GraphQL: azureCloudAccountPermissionConfig]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -AllExocomputeConfigsInAccount
+# New-RscQueryAzure -AllExocomputeConfigsInAccount
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -AllExocomputeConfigsInAccount -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -AllExocomputeConfigsInAccount).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -AllExocomputeConfigsInAccount -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -AllExocomputeConfigsInAccount
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.azureExocomputeSearchQuery = <System.String>
@@ -16957,42 +16957,42 @@ $inputs.Var.cloudAccountIDs = @(
 	<System.String>
 )
 "@
-    Write-Message "Invoke-RscQueryAzure -AllExocomputeConfigsInAccount" @"
+    Write-Message "New-RscQueryAzure -AllExocomputeConfigsInAccount" @"
     Retrieves a list of Azure Exocompute configurations filtered by a cloud account ID or a search query.
 "@ "[GraphQL: allAzureExocomputeConfigsInAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -AllCloudAccountSubnetsByRegion
+# New-RscQueryAzure -AllCloudAccountSubnetsByRegion
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -AllCloudAccountSubnetsByRegion -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -AllCloudAccountSubnetsByRegion).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -AllCloudAccountSubnetsByRegion -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -AllCloudAccountSubnetsByRegion
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.cloudAccountId = <System.String>
 # REQUIRED
 $inputs.Var.region = <AzureCloudAccountRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
 "@
-    Write-Message "Invoke-RscQueryAzure -AllCloudAccountSubnetsByRegion" @"
+    Write-Message "New-RscQueryAzure -AllCloudAccountSubnetsByRegion" @"
     Retrieves all subnets in the specified region and subscription. Subnets allow you to choose IP address range of your choice. For more information, see https://docs.microsoft.com/en-us/azure/virtual-network/network-overview#virtual-network-and-subnets.
 "@ "[GraphQL: allAzureCloudAccountSubnetsByRegion]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -ValidateCloudAccountExocomputeConfigurations
+# New-RscQueryAzure -ValidateCloudAccountExocomputeConfigurations
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -ValidateCloudAccountExocomputeConfigurations -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -ValidateCloudAccountExocomputeConfigurations).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -ValidateCloudAccountExocomputeConfigurations -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -ValidateCloudAccountExocomputeConfigurations
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -17013,21 +17013,21 @@ $inputs.Var.input = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscQueryAzure -ValidateCloudAccountExocomputeConfigurations" @"
+    Write-Message "New-RscQueryAzure -ValidateCloudAccountExocomputeConfigurations" @"
     Validates if Azure subnets are correctly configured for running Azure Kubernetes Service (AKS) Clusters. When correctly configured, the Azure subnets allow the required region-specific outbound connectivity and do not overlap with Azure restricted IP Address Space.
 "@ "[GraphQL: validateAzureCloudAccountExocomputeConfigurations]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -AllArmTemplatesByFeature
+# New-RscQueryAzure -AllArmTemplatesByFeature
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -AllArmTemplatesByFeature -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -AllArmTemplatesByFeature).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -AllArmTemplatesByFeature -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -AllArmTemplatesByFeature
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -17054,21 +17054,21 @@ $inputs.Var.input = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscQueryAzure -AllArmTemplatesByFeature" @"
+    Write-Message "New-RscQueryAzure -AllArmTemplatesByFeature" @"
     Retrieve ARM templates for role definition and role assignment.
 "@ "[GraphQL: allAzureArmTemplatesByFeature]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -CheckPersistentStorageSubscriptionCanUnmap
+# New-RscQueryAzure -CheckPersistentStorageSubscriptionCanUnmap
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -CheckPersistentStorageSubscriptionCanUnmap -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -CheckPersistentStorageSubscriptionCanUnmap).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -CheckPersistentStorageSubscriptionCanUnmap -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -CheckPersistentStorageSubscriptionCanUnmap
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.cloudAccountId = <System.String>
@@ -17077,82 +17077,82 @@ $inputs.Var.feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecu
 # REQUIRED
 $inputs.Var.unmappingValidationType = <UnmappingValidationType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmappingValidationType]) for enum values.
 "@
-    Write-Message "Invoke-RscQueryAzure -CheckPersistentStorageSubscriptionCanUnmap" @"
+    Write-Message "New-RscQueryAzure -CheckPersistentStorageSubscriptionCanUnmap" @"
     Checks if we can unmap the archival location from the subscription.
 "@ "[GraphQL: checkAzurePersistentStorageSubscriptionCanUnmap]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Subscriptions
+# New-RscQueryAzure -Subscriptions
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -Subscriptions -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -Subscriptions).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -Subscriptions -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -Subscriptions
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.tenantId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAzure -Subscriptions" @"
+    Write-Message "New-RscQueryAzure -Subscriptions" @"
     Gets the subscriptions for the given Azure tenant.
 "@ "[GraphQL: azureSubscriptions]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Regions
+# New-RscQueryAzure -Regions
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -Regions -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -Regions).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -Regions -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -Regions
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.tenantId = <System.String>
 # REQUIRED
 $inputs.Var.subscriptionId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAzure -Regions" @"
+    Write-Message "New-RscQueryAzure -Regions" @"
     Gets the Azure regions for the given subscription.
 "@ "[GraphQL: azureRegions]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -ResourceGroups
+# New-RscQueryAzure -ResourceGroups
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -ResourceGroups -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -ResourceGroups).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -ResourceGroups -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -ResourceGroups
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.tenantId = <System.String>
 # REQUIRED
 $inputs.Var.subscriptionId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAzure -ResourceGroups" @"
+    Write-Message "New-RscQueryAzure -ResourceGroups" @"
     Gets the Azure resource groups for the given subscription.
 "@ "[GraphQL: azureResourceGroups]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -VNets
+# New-RscQueryAzure -VNets
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -VNets -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -VNets).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -VNets -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -VNets
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.tenantId = <System.String>
@@ -17161,21 +17161,21 @@ $inputs.Var.subscriptionId = <System.String>
 # REQUIRED
 $inputs.Var.regionName = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAzure -VNets" @"
+    Write-Message "New-RscQueryAzure -VNets" @"
     Gets the VNets for the given subscription.
 "@ "[GraphQL: azureVNets]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Subnets
+# New-RscQueryAzure -Subnets
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -Subnets -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -Subnets).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -Subnets -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -Subnets
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.tenantId = <System.String>
@@ -17184,21 +17184,21 @@ $inputs.Var.subscriptionId = <System.String>
 # REQUIRED
 $inputs.Var.vNetId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAzure -Subnets" @"
+    Write-Message "New-RscQueryAzure -Subnets" @"
     Gets the subnets for the given subscription.
 "@ "[GraphQL: azureSubnets]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -StorageAccounts
+# New-RscQueryAzure -StorageAccounts
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -StorageAccounts -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -StorageAccounts).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -StorageAccounts -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -StorageAccounts
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.tenantId = <System.String>
@@ -17207,60 +17207,60 @@ $inputs.Var.subscriptionId = <System.String>
 # REQUIRED
 $inputs.Var.regionName = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAzure -StorageAccounts" @"
+    Write-Message "New-RscQueryAzure -StorageAccounts" @"
     Gets the storage accounts for the given subscription.
 "@ "[GraphQL: azureStorageAccounts]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -AllHostedRegions
+# New-RscQueryAzure -AllHostedRegions
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -AllHostedRegions -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -AllHostedRegions).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -AllHostedRegions -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -AllHostedRegions
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     
 "@
-    Write-Message "Invoke-RscQueryAzure -AllHostedRegions" @"
+    Write-Message "New-RscQueryAzure -AllHostedRegions" @"
     Lists all Azure regions supported by the Rubrik-Hosted SaaS protection.
 "@ "[GraphQL: allHostedAzureRegions]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -AllResourceGroups
+# New-RscQueryAzure -AllResourceGroups
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -AllResourceGroups -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -AllResourceGroups).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -AllResourceGroups -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -AllResourceGroups
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.cloudAccountId = <System.String>
 # REQUIRED
 $inputs.Var.azureRegion = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAzure -AllResourceGroups" @"
+    Write-Message "New-RscQueryAzure -AllResourceGroups" @"
     Get resource groups for a service principal in Azure.
 "@ "[GraphQL: allAzureResourceGroups]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -AllVnets
+# New-RscQueryAzure -AllVnets
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -AllVnets -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -AllVnets).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -AllVnets -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -AllVnets
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.vnetRequest = @{
@@ -17270,21 +17270,21 @@ $inputs.Var.vnetRequest = @{
 	resourceGroup = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryAzure -AllVnets" @"
+    Write-Message "New-RscQueryAzure -AllVnets" @"
     Get VNets for a given account in Azure.
 "@ "[GraphQL: allAzureVnets]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -AllSubnets
+# New-RscQueryAzure -AllSubnets
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -AllSubnets -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -AllSubnets).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -AllSubnets -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -AllSubnets
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.subnetRequest = @{
@@ -17296,21 +17296,21 @@ $inputs.Var.subnetRequest = @{
 	vnetName = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryAzure -AllSubnets" @"
+    Write-Message "New-RscQueryAzure -AllSubnets" @"
     Get subnets for a given account in Azure.
 "@ "[GraphQL: allAzureSubnets]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -AllCdmVersions
+# New-RscQueryAzure -AllCdmVersions
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -AllCdmVersions -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -AllCdmVersions).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -AllCdmVersions -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -AllCdmVersions
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.cdmVersionRequest = @{
@@ -17320,40 +17320,40 @@ $inputs.Var.cdmVersionRequest = @{
 	location = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryAzure -AllCdmVersions" @"
+    Write-Message "New-RscQueryAzure -AllCdmVersions" @"
     Get all Rubrik CDM versions in the Azure marketplace.
 "@ "[GraphQL: allAzureCdmVersions]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -AllRegions
+# New-RscQueryAzure -AllRegions
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -AllRegions -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -AllRegions).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -AllRegions -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -AllRegions
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.cloudAccountId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAzure -AllRegions" @"
+    Write-Message "New-RscQueryAzure -AllRegions" @"
     Get all available regions for Azure.
 "@ "[GraphQL: allAzureRegions]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -AllNsgs
+# New-RscQueryAzure -AllNsgs
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -AllNsgs -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -AllNsgs).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -AllNsgs -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -AllNsgs
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.nsgRequest = @{
@@ -17363,21 +17363,21 @@ $inputs.Var.nsgRequest = @{
 	resourceGroup = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryAzure -AllNsgs" @"
+    Write-Message "New-RscQueryAzure -AllNsgs" @"
     Get all available network security groups for Azure.
 "@ "[GraphQL: allAzureNsgs]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -AllStorageAccounts
+# New-RscQueryAzure -AllStorageAccounts
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -AllStorageAccounts -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -AllStorageAccounts).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -AllStorageAccounts -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -AllStorageAccounts
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.storageAccountsRequest = @{
@@ -17387,21 +17387,21 @@ $inputs.Var.storageAccountsRequest = @{
 	resourceGroup = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryAzure -AllStorageAccounts" @"
+    Write-Message "New-RscQueryAzure -AllStorageAccounts" @"
     List all storage accounts from Azure.
 "@ "[GraphQL: allAzureStorageAccounts]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -AllManagedIdentities
+# New-RscQueryAzure -AllManagedIdentities
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzure -AllManagedIdentities -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzure -AllManagedIdentities).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzure -AllManagedIdentities -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzure -AllManagedIdentities
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.managedIdentitiesRequest = @{
@@ -17409,43 +17409,43 @@ $inputs.Var.managedIdentitiesRequest = @{
 	cloudAccountId = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryAzure -AllManagedIdentities" @"
+    Write-Message "New-RscQueryAzure -AllManagedIdentities" @"
     List all managed identities for Azure resources.
 "@ "[GraphQL: allAzureManagedIdentities]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzureO365 -Exocompute
+# New-RscQueryAzureO365 -Exocompute
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzureO365 -Exocompute -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzureO365 -Exocompute).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzureO365 -Exocompute -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzureO365 -Exocompute
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.orgId = <System.String>
 # REQUIRED
 $inputs.Var.exocomputeClusterId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAzureO365 -Exocompute" @"
+    Write-Message "New-RscQueryAzureO365 -Exocompute" @"
     Gets the exocompute details of the given cluster.
 "@ "[GraphQL: azureO365Exocompute]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzureO365 -CheckStorageAccountName
+# New-RscQueryAzureO365 -CheckStorageAccountName
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzureO365 -CheckStorageAccountName -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzureO365 -CheckStorageAccountName).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzureO365 -CheckStorageAccountName -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzureO365 -CheckStorageAccountName
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.tenantId = <System.String>
@@ -17454,21 +17454,21 @@ $inputs.Var.subscriptionId = <System.String>
 # REQUIRED
 $inputs.Var.storage_account_name = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAzureO365 -CheckStorageAccountName" @"
+    Write-Message "New-RscQueryAzureO365 -CheckStorageAccountName" @"
     Checks the storage account name.
 "@ "[GraphQL: azureO365CheckStorageAccountName]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzureO365 -CheckStorageAccountAccessibility
+# New-RscQueryAzureO365 -CheckStorageAccountAccessibility
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzureO365 -CheckStorageAccountAccessibility -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzureO365 -CheckStorageAccountAccessibility).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzureO365 -CheckStorageAccountAccessibility -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzureO365 -CheckStorageAccountAccessibility
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.tenantId = <System.String>
@@ -17479,21 +17479,21 @@ $inputs.Var.storage_account_name = <System.String>
 # REQUIRED
 $inputs.Var.groupName = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAzureO365 -CheckStorageAccountAccessibility" @"
+    Write-Message "New-RscQueryAzureO365 -CheckStorageAccountAccessibility" @"
     Checks the accessibility of the storage account.
 "@ "[GraphQL: azureO365CheckStorageAccountAccessibility]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzureO365 -CheckSubscriptionQuota
+# New-RscQueryAzureO365 -CheckSubscriptionQuota
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzureO365 -CheckSubscriptionQuota -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzureO365 -CheckSubscriptionQuota).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzureO365 -CheckSubscriptionQuota -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzureO365 -CheckSubscriptionQuota
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.tenantId = <System.String>
@@ -17502,21 +17502,21 @@ $inputs.Var.subscriptionId = <System.String>
 # REQUIRED
 $inputs.Var.regionName = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAzureO365 -CheckSubscriptionQuota" @"
+    Write-Message "New-RscQueryAzureO365 -CheckSubscriptionQuota" @"
     Checks the Azure subscription quota.
 "@ "[GraphQL: azureO365CheckSubscriptionQuota]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzureO365 -CheckResourceGroupName
+# New-RscQueryAzureO365 -CheckResourceGroupName
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzureO365 -CheckResourceGroupName -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzureO365 -CheckResourceGroupName).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzureO365 -CheckResourceGroupName -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzureO365 -CheckResourceGroupName
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.tenantId = <System.String>
@@ -17525,21 +17525,21 @@ $inputs.Var.subscriptionId = <System.String>
 # REQUIRED
 $inputs.Var.groupName = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAzureO365 -CheckResourceGroupName" @"
+    Write-Message "New-RscQueryAzureO365 -CheckResourceGroupName" @"
     Checks the resource group name.
 "@ "[GraphQL: azureO365CheckResourceGroupName]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzureO365 -CheckVirtualNetworkName
+# New-RscQueryAzureO365 -CheckVirtualNetworkName
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzureO365 -CheckVirtualNetworkName -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzureO365 -CheckVirtualNetworkName).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzureO365 -CheckVirtualNetworkName -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzureO365 -CheckVirtualNetworkName
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.tenantId = <System.String>
@@ -17550,42 +17550,42 @@ $inputs.Var.groupName = <System.String>
 # REQUIRED
 $inputs.Var.vnet_name = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAzureO365 -CheckVirtualNetworkName" @"
+    Write-Message "New-RscQueryAzureO365 -CheckVirtualNetworkName" @"
     Checks the virtual network name.
 "@ "[GraphQL: azureO365CheckVirtualNetworkName]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzureO365 -ValidateUserRoles
+# New-RscQueryAzureO365 -ValidateUserRoles
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzureO365 -ValidateUserRoles -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzureO365 -ValidateUserRoles).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzureO365 -ValidateUserRoles -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzureO365 -ValidateUserRoles
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.tenantId = <System.String>
 # REQUIRED
 $inputs.Var.subscriptionId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAzureO365 -ValidateUserRoles" @"
+    Write-Message "New-RscQueryAzureO365 -ValidateUserRoles" @"
     Validates the user roles in the subscription.
 "@ "[GraphQL: azureO365ValidateUserRoles]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzureO365 -CheckNSGOutboundRules
+# New-RscQueryAzureO365 -CheckNSGOutboundRules
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzureO365 -CheckNSGOutboundRules -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzureO365 -CheckNSGOutboundRules).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzureO365 -CheckNSGOutboundRules -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzureO365 -CheckNSGOutboundRules
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.tenantId = <System.String>
@@ -17598,21 +17598,21 @@ $inputs.Var.vnet_name = <System.String>
 # REQUIRED
 $inputs.Var.subnet_name = <System.String>
 "@
-    Write-Message "Invoke-RscQueryAzureO365 -CheckNSGOutboundRules" @"
+    Write-Message "New-RscQueryAzureO365 -CheckNSGOutboundRules" @"
     Checks the NSG Outbound rules of the Azure resources.
 "@ "[GraphQL: azureO365CheckNSGOutboundRules]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzureO365 -CheckNetworkSubnet
+# New-RscQueryAzureO365 -CheckNetworkSubnet
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzureO365 -CheckNetworkSubnet -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzureO365 -CheckNetworkSubnet).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzureO365 -CheckNetworkSubnet -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzureO365 -CheckNetworkSubnet
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.tenantId = <System.String>
@@ -17627,21 +17627,21 @@ $inputs.Var.subnet_name = <System.String>
 # REQUIRED
 $inputs.Var.strict_addr_check = <System.Boolean>
 "@
-    Write-Message "Invoke-RscQueryAzureO365 -CheckNetworkSubnet" @"
+    Write-Message "New-RscQueryAzureO365 -CheckNetworkSubnet" @"
     Checks the network subnet of the Azure resources.
 "@ "[GraphQL: azureO365CheckNetworkSubnet]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzureO365 -GetNetworkSubnetUnusedAddr
+# New-RscQueryAzureO365 -GetNetworkSubnetUnusedAddr
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzureO365 -GetNetworkSubnetUnusedAddr -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzureO365 -GetNetworkSubnetUnusedAddr).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzureO365 -GetNetworkSubnetUnusedAddr -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzureO365 -GetNetworkSubnetUnusedAddr
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.tenantId = <System.String>
@@ -17656,40 +17656,40 @@ $inputs.Var.subnet_name = <System.String>
 # REQUIRED
 $inputs.Var.strict_addr_check = <System.Boolean>
 "@
-    Write-Message "Invoke-RscQueryAzureO365 -GetNetworkSubnetUnusedAddr" @"
+    Write-Message "New-RscQueryAzureO365 -GetNetworkSubnetUnusedAddr" @"
     Retrieves the unused addresses available in a subnet.
 "@ "[GraphQL: azureO365GetNetworkSubnetUnusedAddr]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzureO365 -GetAzureHostType
+# New-RscQueryAzureO365 -GetAzureHostType
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryAzureO365 -GetAzureHostType -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryAzureO365 -GetAzureHostType).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryAzureO365 -GetAzureHostType -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryAzureO365 -GetAzureHostType
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     
 "@
-    Write-Message "Invoke-RscQueryAzureO365 -GetAzureHostType" @"
+    Write-Message "New-RscQueryAzureO365 -GetAzureHostType" @"
     Retrieves the AzureHostType of the account.
 "@ "[GraphQL: azureO365GetAzureHostType]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCassandra -Sources
+# New-RscQueryCassandra -Sources
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCassandra -Sources -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCassandra -Sources).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCassandra -Sources -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCassandra -Sources
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -17742,21 +17742,21 @@ $inputs.Var.filter = @(
 }
 )
 "@
-    Write-Message "Invoke-RscQueryCassandra -Sources" @"
+    Write-Message "New-RscQueryCassandra -Sources" @"
     Paginated list of cassandra sources.
 "@ "[GraphQL: cassandraSources]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCassandra -Keyspaces
+# New-RscQueryCassandra -Keyspaces
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCassandra -Keyspaces -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCassandra -Keyspaces).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCassandra -Keyspaces -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCassandra -Keyspaces
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -17809,21 +17809,21 @@ $inputs.Var.filter = @(
 }
 )
 "@
-    Write-Message "Invoke-RscQueryCassandra -Keyspaces" @"
+    Write-Message "New-RscQueryCassandra -Keyspaces" @"
     Paginated list of cassandra keyspaces.
 "@ "[GraphQL: cassandraKeyspaces]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCassandra -ColumnFamilies
+# New-RscQueryCassandra -ColumnFamilies
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCassandra -ColumnFamilies -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCassandra -ColumnFamilies).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCassandra -ColumnFamilies -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCassandra -ColumnFamilies
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -17876,21 +17876,21 @@ $inputs.Var.filter = @(
 }
 )
 "@
-    Write-Message "Invoke-RscQueryCassandra -ColumnFamilies" @"
+    Write-Message "New-RscQueryCassandra -ColumnFamilies" @"
     Paginated list of cassandra column families.
 "@ "[GraphQL: cassandraColumnFamilies]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCassandra -ColumnFamilyRecoverableRange
+# New-RscQueryCassandra -ColumnFamilyRecoverableRange
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCassandra -ColumnFamilyRecoverableRange -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCassandra -ColumnFamilyRecoverableRange).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCassandra -ColumnFamilyRecoverableRange -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCassandra -ColumnFamilyRecoverableRange
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -17909,21 +17909,21 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscQueryCassandra -ColumnFamilyRecoverableRange" @"
+    Write-Message "New-RscQueryCassandra -ColumnFamilyRecoverableRange" @"
     Get Recoverable Range of a Cassandra Column Family.
 "@ "[GraphQL: cassandraColumnFamilyRecoverableRange]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCassandra -ColumnFamilySchema
+# New-RscQueryCassandra -ColumnFamilySchema
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCassandra -ColumnFamilySchema -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCassandra -ColumnFamilySchema).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCassandra -ColumnFamilySchema -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCassandra -ColumnFamilySchema
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -17942,79 +17942,79 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscQueryCassandra -ColumnFamilySchema" @"
+    Write-Message "New-RscQueryCassandra -ColumnFamilySchema" @"
     Get Schema of a Cassandra Column Family.
 "@ "[GraphQL: cassandraColumnFamilySchema]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCassandra -Source
+# New-RscQueryCassandra -Source
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCassandra -Source -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCassandra -Source).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCassandra -Source -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCassandra -Source
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryCassandra -Source" @"
+    Write-Message "New-RscQueryCassandra -Source" @"
     Details of a cassandra source.
 "@ "[GraphQL: cassandraSource]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCassandra -Keyspace
+# New-RscQueryCassandra -Keyspace
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCassandra -Keyspace -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCassandra -Keyspace).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCassandra -Keyspace -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCassandra -Keyspace
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryCassandra -Keyspace" @"
+    Write-Message "New-RscQueryCassandra -Keyspace" @"
     Details of a cassandra keyspace.
 "@ "[GraphQL: cassandraKeyspace]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCassandra -ColumnFamily
+# New-RscQueryCassandra -ColumnFamily
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCassandra -ColumnFamily -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCassandra -ColumnFamily).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCassandra -ColumnFamily -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCassandra -ColumnFamily
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryCassandra -ColumnFamily" @"
+    Write-Message "New-RscQueryCassandra -ColumnFamily" @"
     Details of a cassandra column family.
 "@ "[GraphQL: cassandraColumnFamily]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -Nodes
+# New-RscQueryCluster -Nodes
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -Nodes -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCluster -Nodes).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCluster -Nodes -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCluster -Nodes
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -18022,7 +18022,7 @@ $inputs.Var.input = @{
 	clusterUuid = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryCluster -Nodes" @"
+    Write-Message "New-RscQueryCluster -Nodes" @"
     Get list of nodes in this Rubrik cluster
 
 Supported in v5.0+
@@ -18031,15 +18031,15 @@ Returns the list of all Rubrik nodes.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -List
+# New-RscQueryCluster -List
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -List -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCluster -List).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCluster -List -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCluster -List
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -18122,40 +18122,40 @@ $inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityClou
 # OPTIONAL
 $inputs.Var.sortBy = <ClusterSortByEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterSortByEnum]) for enum values.
 "@
-    Write-Message "Invoke-RscQueryCluster -List" @"
+    Write-Message "New-RscQueryCluster -List" @"
     List of the available cluster objects.
 "@ "[GraphQL: clusterConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -Cluster
+# New-RscQueryCluster -Cluster
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -Cluster -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCluster -Cluster).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCluster -Cluster -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCluster -Cluster
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.clusterUuid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryCluster -Cluster" @"
+    Write-Message "New-RscQueryCluster -Cluster" @"
     A cluster object.
 "@ "[GraphQL: cluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -WithUpgradesInfo
+# New-RscQueryCluster -WithUpgradesInfo
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -WithUpgradesInfo -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCluster -WithUpgradesInfo).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCluster -WithUpgradesInfo -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCluster -WithUpgradesInfo
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -18225,59 +18225,59 @@ $inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityClou
 # OPTIONAL
 $inputs.Var.sortBy = <UpgradeInfoSortByEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UpgradeInfoSortByEnum]) for enum values.
 "@
-    Write-Message "Invoke-RscQueryCluster -WithUpgradesInfo" @"
+    Write-Message "New-RscQueryCluster -WithUpgradesInfo" @"
     
 "@ "[GraphQL: clusterWithUpgradesInfo]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -Dns
+# New-RscQueryCluster -Dns
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -Dns -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCluster -Dns).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCluster -Dns -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCluster -Dns
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.clusterUuid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryCluster -Dns" @"
+    Write-Message "New-RscQueryCluster -Dns" @"
     Rubrik cluster DNS information.
 "@ "[GraphQL: clusterDns]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -Proxy
+# New-RscQueryCluster -Proxy
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -Proxy -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCluster -Proxy).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCluster -Proxy -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCluster -Proxy
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.clusterUuid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryCluster -Proxy" @"
+    Write-Message "New-RscQueryCluster -Proxy" @"
     Rubrik cluster proxy information.
 "@ "[GraphQL: clusterProxy]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -NtpServers
+# New-RscQueryCluster -NtpServers
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -NtpServers -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCluster -NtpServers).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCluster -NtpServers -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCluster -NtpServers
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -18285,7 +18285,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryCluster -NtpServers" @"
+    Write-Message "New-RscQueryCluster -NtpServers" @"
     Get NTP Servers
 
 Supported in v5.0+
@@ -18294,15 +18294,15 @@ Retrieve a list of the NTP servers assigned to the Rubrik cluster. Encryption ke
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -NetworkInterfaces
+# New-RscQueryCluster -NetworkInterfaces
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -NetworkInterfaces -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCluster -NetworkInterfaces).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCluster -NetworkInterfaces -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCluster -NetworkInterfaces
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -18312,7 +18312,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryCluster -NetworkInterfaces" @"
+    Write-Message "New-RscQueryCluster -NetworkInterfaces" @"
     Get network interfaces for a Rubrik Cluster cluster
 
 Supported in v5.0+
@@ -18321,15 +18321,15 @@ Retrieves network interfaces(including VLANs) on bond0/bond1.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -FloatingIps
+# New-RscQueryCluster -FloatingIps
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -FloatingIps -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCluster -FloatingIps).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCluster -FloatingIps -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCluster -FloatingIps
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -18337,7 +18337,7 @@ $inputs.Var.input = @{
 	clusterUuid = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryCluster -FloatingIps" @"
+    Write-Message "New-RscQueryCluster -FloatingIps" @"
     Get a list of a cluster's always-available Ips
 
 Supported in v5.0+
@@ -18346,15 +18346,15 @@ Get a list of a cluster's always-available Ips.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -Vlans
+# New-RscQueryCluster -Vlans
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -Vlans -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCluster -Vlans).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCluster -Vlans -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCluster -Vlans
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -18364,21 +18364,21 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryCluster -Vlans" @"
+    Write-Message "New-RscQueryCluster -Vlans" @"
     Rubrik cluster VLAN information.
 "@ "[GraphQL: clusterVlans]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -DefaultGateway
+# New-RscQueryCluster -DefaultGateway
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -DefaultGateway -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCluster -DefaultGateway).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCluster -DefaultGateway -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCluster -DefaultGateway
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -18386,7 +18386,7 @@ $inputs.Var.input = @{
 	clusterUuid = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryCluster -DefaultGateway" @"
+    Write-Message "New-RscQueryCluster -DefaultGateway" @"
     Get current default gateway
 
 Supported in v5.0+
@@ -18395,15 +18395,15 @@ Get current default gateway.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -WebSignedCertificate
+# New-RscQueryCluster -WebSignedCertificate
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -WebSignedCertificate -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCluster -WebSignedCertificate).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCluster -WebSignedCertificate -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCluster -WebSignedCertificate
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -18411,7 +18411,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryCluster -WebSignedCertificate" @"
+    Write-Message "New-RscQueryCluster -WebSignedCertificate" @"
     Get the signed certificate for Web server
 
 Supported in v5.2+
@@ -18420,15 +18420,15 @@ If the web server uses a signed certificate, fetch it.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -Ipmi
+# New-RscQueryCluster -Ipmi
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -Ipmi -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCluster -Ipmi).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCluster -Ipmi -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCluster -Ipmi
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -18436,7 +18436,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryCluster -Ipmi" @"
+    Write-Message "New-RscQueryCluster -Ipmi" @"
     Get IPMI details
 
 Supported in v5.0+
@@ -18445,15 +18445,15 @@ get IPMI details of availability and enabled access in the cluster.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -Certificates
+# New-RscQueryCluster -Certificates
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -Certificates -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCluster -Certificates).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCluster -Certificates -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCluster -Certificates
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -18477,7 +18477,7 @@ $inputs.Var.input = @{
 	clusterUuid = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryCluster -Certificates" @"
+    Write-Message "New-RscQueryCluster -Certificates" @"
     Get all certificates
 
 Supported in v5.1+
@@ -18486,15 +18486,15 @@ Get all certificates.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -WebCertsAndIpmis
+# New-RscQueryCluster -WebCertsAndIpmis
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -WebCertsAndIpmis -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCluster -WebCertsAndIpmis).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCluster -WebCertsAndIpmis -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCluster -WebCertsAndIpmis
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -18504,21 +18504,21 @@ $inputs.Var.input = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscQueryCluster -WebCertsAndIpmis" @"
+    Write-Message "New-RscQueryCluster -WebCertsAndIpmis" @"
     Get web server certificate and IPMI details for multiple clusters.
 "@ "[GraphQL: allClusterWebCertsAndIpmis]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -OperationJobProgress
+# New-RscQueryCluster -OperationJobProgress
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -OperationJobProgress -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCluster -OperationJobProgress).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCluster -OperationJobProgress -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCluster -OperationJobProgress
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -18528,21 +18528,21 @@ $inputs.Var.input = @{
 	jobType = <CcpJobType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CcpJobType]) for enum values.
 }
 "@
-    Write-Message "Invoke-RscQueryCluster -OperationJobProgress" @"
+    Write-Message "New-RscQueryCluster -OperationJobProgress" @"
     Get updates on the job progress of the Rubrik cluster operation.
 "@ "[GraphQL: clusterOperationJobProgress]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -Ipv6Mode
+# New-RscQueryCluster -Ipv6Mode
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -Ipv6Mode -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCluster -Ipv6Mode).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCluster -Ipv6Mode -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCluster -Ipv6Mode
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -18550,21 +18550,21 @@ $inputs.Var.input = @{
 	clusterUuid = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryCluster -Ipv6Mode" @"
+    Write-Message "New-RscQueryCluster -Ipv6Mode" @"
     Rubrik cluster IPv6 mode.
 "@ "[GraphQL: clusterIpv6Mode]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -Csr
+# New-RscQueryCluster -Csr
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -Csr -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCluster -Csr).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCluster -Csr -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCluster -Csr
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -18572,7 +18572,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryCluster -Csr" @"
+    Write-Message "New-RscQueryCluster -Csr" @"
     Get the cluster certificate signing request
 
 Supported in v7.0+
@@ -18581,33 +18581,33 @@ Returns the certificate signing request generated from the private key of the Ru
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -TypeList
+# New-RscQueryCluster -TypeList
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -TypeList -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCluster -TypeList).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCluster -TypeList -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCluster -TypeList
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     
 "@
-    Write-Message "Invoke-RscQueryCluster -TypeList" @"
+    Write-Message "New-RscQueryCluster -TypeList" @"
     
 "@ "[GraphQL: clusterTypeList]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -GroupByList
+# New-RscQueryCluster -GroupByList
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -GroupByList -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCluster -GroupByList).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCluster -GroupByList -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCluster -GroupByList
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -18690,21 +18690,21 @@ $inputs.Var.filter = @{
 # OPTIONAL
 $inputs.Var.timezoneOffset = <System.Single>
 "@
-    Write-Message "Invoke-RscQueryCluster -GroupByList" @"
+    Write-Message "New-RscQueryCluster -GroupByList" @"
     
 "@ "[GraphQL: clusterGroupByConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -DatabaseLogReportingProperties
+# New-RscQueryCluster -DatabaseLogReportingProperties
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -DatabaseLogReportingProperties -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCluster -DatabaseLogReportingProperties).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCluster -DatabaseLogReportingProperties -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCluster -DatabaseLogReportingProperties
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -18712,7 +18712,7 @@ $inputs.Var.input = @{
 	clusterUuid = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryCluster -DatabaseLogReportingProperties" @"
+    Write-Message "New-RscQueryCluster -DatabaseLogReportingProperties" @"
     Get the database log backup report properties
 
 Supported in v5.3+
@@ -18721,15 +18721,15 @@ Get the properties for the database (SQL and Oracle) log backup delay email noti
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -DatabaseLogReport
+# New-RscQueryCluster -DatabaseLogReport
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -DatabaseLogReport -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCluster -DatabaseLogReport).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCluster -DatabaseLogReport -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCluster -DatabaseLogReport
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -18755,7 +18755,7 @@ $inputs.Var.input = @{
 	clusterUuid = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryCluster -DatabaseLogReport" @"
+    Write-Message "New-RscQueryCluster -DatabaseLogReport" @"
     Get the database log backup delay information
 
 Supported in v5.3+
@@ -18765,72 +18765,72 @@ v6.0+: Get the database log backup delay information.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -Connected
+# New-RscQueryCluster -Connected
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -Connected -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCluster -Connected).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCluster -Connected -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCluster -Connected
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.clusterFilterArg = <ClusterTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterTypeEnum]) for enum values.
 "@
-    Write-Message "Invoke-RscQueryCluster -Connected" @"
+    Write-Message "New-RscQueryCluster -Connected" @"
     List all connected clusters.
 "@ "[GraphQL: allConnectedClusters]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -ReplicationTargets
+# New-RscQueryCluster -ReplicationTargets
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -ReplicationTargets -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCluster -ReplicationTargets).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCluster -ReplicationTargets -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCluster -ReplicationTargets
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.clusterUuid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryCluster -ReplicationTargets" @"
+    Write-Message "New-RscQueryCluster -ReplicationTargets" @"
     All replication targets for a cluster.
 "@ "[GraphQL: allClusterReplicationTargets]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -HostFailover
+# New-RscQueryCluster -HostFailover
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -HostFailover -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCluster -HostFailover).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCluster -HostFailover -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCluster -HostFailover
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryCluster -HostFailover" @"
+    Write-Message "New-RscQueryCluster -HostFailover" @"
     Get details of the given host failover cluster.
 "@ "[GraphQL: hostFailoverCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -K8s
+# New-RscQueryCluster -K8s
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -K8s -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCluster -K8s).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCluster -K8s -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCluster -K8s
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -18883,40 +18883,40 @@ $inputs.Var.filter = @(
 }
 )
 "@
-    Write-Message "Invoke-RscQueryCluster -K8s" @"
+    Write-Message "New-RscQueryCluster -K8s" @"
     
 "@ "[GraphQL: k8sClusters]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -Windows
+# New-RscQueryCluster -Windows
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -Windows -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCluster -Windows).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCluster -Windows -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCluster -Windows
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryCluster -Windows" @"
+    Write-Message "New-RscQueryCluster -Windows" @"
     A Windows Cluster.
 "@ "[GraphQL: windowsCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -ReportMigrationStatus
+# New-RscQueryCluster -ReportMigrationStatus
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -ReportMigrationStatus -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCluster -ReportMigrationStatus).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCluster -ReportMigrationStatus -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCluster -ReportMigrationStatus
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.clusterUuid = <System.String>
@@ -18933,21 +18933,21 @@ $inputs.Var.last = <System.Int32>
 # OPTIONAL
 $inputs.Var.before = <System.String>
 "@
-    Write-Message "Invoke-RscQueryCluster -ReportMigrationStatus" @"
+    Write-Message "New-RscQueryCluster -ReportMigrationStatus" @"
     Retrieve details of the Rubrik clusters' reports migration.
 "@ "[GraphQL: clusterReportMigrationStatus]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -ReportMigrationCount
+# New-RscQueryCluster -ReportMigrationCount
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -ReportMigrationCount -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCluster -ReportMigrationCount).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCluster -ReportMigrationCount -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCluster -ReportMigrationCount
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.clusterUuid = <System.String>
@@ -18956,40 +18956,40 @@ $inputs.Var.status = @(
 	<CdmReportMigrationStatus> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmReportMigrationStatus]) for enum values.
 )
 "@
-    Write-Message "Invoke-RscQueryCluster -ReportMigrationCount" @"
+    Write-Message "New-RscQueryCluster -ReportMigrationCount" @"
     Retrieve the counts of the Rubrik cluster reports migration.
 "@ "[GraphQL: clusterReportMigrationCount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -ReportMigrationJobStatus
+# New-RscQueryCluster -ReportMigrationJobStatus
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -ReportMigrationJobStatus -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCluster -ReportMigrationJobStatus).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCluster -ReportMigrationJobStatus -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCluster -ReportMigrationJobStatus
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.clusterUuid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryCluster -ReportMigrationJobStatus" @"
+    Write-Message "New-RscQueryCluster -ReportMigrationJobStatus" @"
     Retrieve the status of the cluster report migration job.
 "@ "[GraphQL: clusterReportMigrationJobStatus]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -LaDomains
+# New-RscQueryCluster -SlaDomains
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -LaDomains -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCluster -SlaDomains).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCluster -LaDomains -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCluster -SlaDomains
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -19000,120 +19000,120 @@ $inputs.Var.last = <System.Int32>
 # OPTIONAL
 $inputs.Var.before = <System.String>
 "@
-    Write-Message "Invoke-RscQueryCluster -LaDomains" @"
+    Write-Message "New-RscQueryCluster -SlaDomains" @"
     Returns paginated list of SLA domains that were created on Rubrik CDM.
 "@ "[GraphQL: clusterSlaDomains]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -VerifySlaWithReplicationTo
+# New-RscQueryCluster -VerifySlaWithReplicationTo
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -VerifySlaWithReplicationTo -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCluster -VerifySlaWithReplicationTo).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCluster -VerifySlaWithReplicationTo -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCluster -VerifySlaWithReplicationTo
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.cdmClusterUUID = <System.String>
 # REQUIRED
 $inputs.Var.includeArchived = <System.Boolean>
 "@
-    Write-Message "Invoke-RscQueryCluster -VerifySlaWithReplicationTo" @"
+    Write-Message "New-RscQueryCluster -VerifySlaWithReplicationTo" @"
     Verify for a Rubrik cluster if it is replication target in any SLA Domain.
 "@ "[GraphQL: verifySlaWithReplicationToCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -GlobalSlas
+# New-RscQueryCluster -GlobalSlas
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -GlobalSlas -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCluster -GlobalSlas).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCluster -GlobalSlas -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCluster -GlobalSlas
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.cdmClusterUUID = <System.String>
 "@
-    Write-Message "Invoke-RscQueryCluster -GlobalSlas" @"
+    Write-Message "New-RscQueryCluster -GlobalSlas" @"
     Global SLA Domains protecting at least one object on the specified Rubrik cluster.
 "@ "[GraphQL: allClusterGlobalSlas]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -RegistrationProductInfo
+# New-RscQueryCluster -RegistrationProductInfo
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -RegistrationProductInfo -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCluster -RegistrationProductInfo).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCluster -RegistrationProductInfo -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCluster -RegistrationProductInfo
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     
 "@
-    Write-Message "Invoke-RscQueryCluster -RegistrationProductInfo" @"
+    Write-Message "New-RscQueryCluster -RegistrationProductInfo" @"
     Info about the cluster product types the user is entitled to.
 "@ "[GraphQL: clusterRegistrationProductInfo]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -IsTotpAckNecessary
+# New-RscQueryCluster -IsTotpAckNecessary
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -IsTotpAckNecessary -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCluster -IsTotpAckNecessary).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCluster -IsTotpAckNecessary -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCluster -IsTotpAckNecessary
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.clusterUuid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryCluster -IsTotpAckNecessary" @"
+    Write-Message "New-RscQueryCluster -IsTotpAckNecessary" @"
     Checks whether acknowledgement of the Time-based, One-Time Password (TOTP) mandate is required for upgrading the Rubrik cluster version.
 "@ "[GraphQL: isTotpAckNecessaryForCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -TotpAckStatus
+# New-RscQueryCluster -TotpAckStatus
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryCluster -TotpAckStatus -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryCluster -TotpAckStatus).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryCluster -TotpAckStatus -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryCluster -TotpAckStatus
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.listClusterUuid = @(
 	<System.String>
 )
 "@
-    Write-Message "Invoke-RscQueryCluster -TotpAckStatus" @"
+    Write-Message "New-RscQueryCluster -TotpAckStatus" @"
     Checks whether acknowledgement of the Time-based, One-Time Password (TOTP) mandate is required for upgrading the Rubrik cluster version.
 "@ "[GraphQL: allClustersTotpAckStatus]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryDb2 -Instances
+# New-RscQueryDb2 -Instances
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryDb2 -Instances -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryDb2 -Instances).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryDb2 -Instances -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryDb2 -Instances
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -19166,59 +19166,59 @@ $inputs.Var.filter = @(
 }
 )
 "@
-    Write-Message "Invoke-RscQueryDb2 -Instances" @"
+    Write-Message "New-RscQueryDb2 -Instances" @"
     Connection of filtered db2 instances based on specific filters.
 "@ "[GraphQL: db2Instances]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryDb2 -Instance
+# New-RscQueryDb2 -Instance
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryDb2 -Instance -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryDb2 -Instance).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryDb2 -Instance -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryDb2 -Instance
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.id = <System.String>
 "@
-    Write-Message "Invoke-RscQueryDb2 -Instance" @"
+    Write-Message "New-RscQueryDb2 -Instance" @"
     Details of a db2 instance for a given fid.
 "@ "[GraphQL: db2Instance]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryDb2 -Database
+# New-RscQueryDb2 -Database
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryDb2 -Database -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryDb2 -Database).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryDb2 -Database -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryDb2 -Database
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryDb2 -Database" @"
+    Write-Message "New-RscQueryDb2 -Database" @"
     Details of a db2 database for a given fid.
 "@ "[GraphQL: db2Database]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryDb2 -Databases
+# New-RscQueryDb2 -Databases
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryDb2 -Databases -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryDb2 -Databases).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryDb2 -Databases -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryDb2 -Databases
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -19271,40 +19271,40 @@ $inputs.Var.filter = @(
 }
 )
 "@
-    Write-Message "Invoke-RscQueryDb2 -Databases" @"
+    Write-Message "New-RscQueryDb2 -Databases" @"
     Connection of filtered db2 databases based on specific filters.
 "@ "[GraphQL: db2Databases]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryDb2 -RecoverableRange
+# New-RscQueryDb2 -RecoverableRange
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryDb2 -RecoverableRange -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryDb2 -RecoverableRange).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryDb2 -RecoverableRange -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryDb2 -RecoverableRange
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.db2RecoverableRangeFid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryDb2 -RecoverableRange" @"
+    Write-Message "New-RscQueryDb2 -RecoverableRange" @"
     Details of a Db2 recoverable range for a given fid.
 "@ "[GraphQL: db2RecoverableRange]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryDb2 -RecoverableRanges
+# New-RscQueryDb2 -RecoverableRanges
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryDb2 -RecoverableRanges -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryDb2 -RecoverableRanges).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryDb2 -RecoverableRanges -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryDb2 -RecoverableRanges
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -19336,40 +19336,40 @@ $inputs.Var.filter = @{
 	isArchived = <System.Boolean>
 }
 "@
-    Write-Message "Invoke-RscQueryDb2 -RecoverableRanges" @"
+    Write-Message "New-RscQueryDb2 -RecoverableRanges" @"
     Connection of all recoverable ranges for Db2.
 "@ "[GraphQL: db2RecoverableRanges]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryDb2 -LogSnapshot
+# New-RscQueryDb2 -LogSnapshot
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryDb2 -LogSnapshot -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryDb2 -LogSnapshot).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryDb2 -LogSnapshot -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryDb2 -LogSnapshot
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.db2LogSnapshotFid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryDb2 -LogSnapshot" @"
+    Write-Message "New-RscQueryDb2 -LogSnapshot" @"
     Details of a Db2 log snapshot for a given fid.
 "@ "[GraphQL: db2LogSnapshot]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryDb2 -LogSnapshots
+# New-RscQueryDb2 -LogSnapshots
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryDb2 -LogSnapshots -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryDb2 -LogSnapshots).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryDb2 -LogSnapshots -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryDb2 -LogSnapshots
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -19401,22 +19401,22 @@ $inputs.Var.filter = @{
 	isArchived = <System.Boolean>
 }
 "@
-    Write-Message "Invoke-RscQueryDb2 -LogSnapshots" @"
+    Write-Message "New-RscQueryDb2 -LogSnapshots" @"
     Connection of all log snapshots for Db2.
 "@ "[GraphQL: db2LogSnapshots]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryHyperv -TopLevelDescendants
+# New-RscQueryHyperv -TopLevelDescendants
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryHyperv -TopLevelDescendants -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryHyperv -TopLevelDescendants).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryHyperv -TopLevelDescendants -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryHyperv -TopLevelDescendants
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -19473,21 +19473,21 @@ $inputs.Var.filter = @(
 }
 )
 "@
-    Write-Message "Invoke-RscQueryHyperv -TopLevelDescendants" @"
+    Write-Message "New-RscQueryHyperv -TopLevelDescendants" @"
     Paginated list of the highest-level HyperV Objects accessible by the current user.
 "@ "[GraphQL: hypervTopLevelDescendants]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryHyperv -VirtualMachines
+# New-RscQueryHyperv -VirtualMachines
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryHyperv -VirtualMachines -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryHyperv -VirtualMachines).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryHyperv -VirtualMachines -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryHyperv -VirtualMachines
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -19540,97 +19540,97 @@ $inputs.Var.filter = @(
 }
 )
 "@
-    Write-Message "Invoke-RscQueryHyperv -VirtualMachines" @"
+    Write-Message "New-RscQueryHyperv -VirtualMachines" @"
     Paginated list of HyperV Virtual Machines.
 "@ "[GraphQL: hypervVirtualMachines]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryHyperv -Scvmm
+# New-RscQueryHyperv -Scvmm
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryHyperv -Scvmm -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryHyperv -Scvmm).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryHyperv -Scvmm -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryHyperv -Scvmm
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryHyperv -Scvmm" @"
+    Write-Message "New-RscQueryHyperv -Scvmm" @"
     Details of the given Hyper-V SCVMM.
 "@ "[GraphQL: hypervScvmm]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryHyperv -Cluster
+# New-RscQueryHyperv -Cluster
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryHyperv -Cluster -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryHyperv -Cluster).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryHyperv -Cluster -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryHyperv -Cluster
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryHyperv -Cluster" @"
+    Write-Message "New-RscQueryHyperv -Cluster" @"
     Details of the given Hyper-V Cluster.
 "@ "[GraphQL: hypervCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryHyperv -Server
+# New-RscQueryHyperv -Server
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryHyperv -Server -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryHyperv -Server).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryHyperv -Server -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryHyperv -Server
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryHyperv -Server" @"
+    Write-Message "New-RscQueryHyperv -Server" @"
     Details of the given Hyper-V Server.
 "@ "[GraphQL: hypervServer]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryHyperv -VirtualMachine
+# New-RscQueryHyperv -VirtualMachine
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryHyperv -VirtualMachine -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryHyperv -VirtualMachine).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryHyperv -VirtualMachine -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryHyperv -VirtualMachine
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryHyperv -VirtualMachine" @"
+    Write-Message "New-RscQueryHyperv -VirtualMachine" @"
     Details of the given Hyper-V Virtual Machine.
 "@ "[GraphQL: hypervVirtualMachine]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryHyperv -UniqueServersCount
+# New-RscQueryHyperv -UniqueServersCount
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryHyperv -UniqueServersCount -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryHyperv -UniqueServersCount).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryHyperv -UniqueServersCount -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryHyperv -UniqueServersCount
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.filter = @(
@@ -19675,21 +19675,21 @@ $inputs.Var.filter = @(
 }
 )
 "@
-    Write-Message "Invoke-RscQueryHyperv -UniqueServersCount" @"
+    Write-Message "New-RscQueryHyperv -UniqueServersCount" @"
     Count of unique HyperV Servers.
 "@ "[GraphQL: uniqueHypervServersCount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryHyperv -Scvmms
+# New-RscQueryHyperv -Scvmms
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryHyperv -Scvmms -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryHyperv -Scvmms).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryHyperv -Scvmms -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryHyperv -Scvmms
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -19742,21 +19742,21 @@ $inputs.Var.filter = @(
 }
 )
 "@
-    Write-Message "Invoke-RscQueryHyperv -Scvmms" @"
+    Write-Message "New-RscQueryHyperv -Scvmms" @"
     Paginated list of HyperV SCVMMs.
 "@ "[GraphQL: hypervScvmms]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryHyperv -Servers
+# New-RscQueryHyperv -Servers
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryHyperv -Servers -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryHyperv -Servers).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryHyperv -Servers -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryHyperv -Servers
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -19780,7 +19780,7 @@ $inputs.Var.input = @{
 	clusterUuid = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryHyperv -Servers" @"
+    Write-Message "New-RscQueryHyperv -Servers" @"
     Get summary of all the Hyper-V hosts
 
 Supported in v5.0+
@@ -19789,15 +19789,15 @@ Get summary of all the Hyper-V hosts.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryHyperv -Mounts
+# New-RscQueryHyperv -Mounts
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryHyperv -Mounts -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryHyperv -Mounts).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryHyperv -Mounts -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryHyperv -Mounts
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -19822,21 +19822,21 @@ $inputs.Var.sortBy = @{
 	sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
 }
 "@
-    Write-Message "Invoke-RscQueryHyperv -Mounts" @"
+    Write-Message "New-RscQueryHyperv -Mounts" @"
     HyperV Live Mount Connection.
 "@ "[GraphQL: hypervMounts]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryHyperv -VmDetail
+# New-RscQueryHyperv -VmDetail
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryHyperv -VmDetail -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryHyperv -VmDetail).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryHyperv -VmDetail -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryHyperv -VmDetail
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -19844,21 +19844,21 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryHyperv -VmDetail" @"
+    Write-Message "New-RscQueryHyperv -VmDetail" @"
     HyperV Virtual Machine detail from CDM.
 "@ "[GraphQL: hypervVmDetail]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryHyperv -HostAsyncRequestStatus
+# New-RscQueryHyperv -HostAsyncRequestStatus
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryHyperv -HostAsyncRequestStatus -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryHyperv -HostAsyncRequestStatus).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryHyperv -HostAsyncRequestStatus -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryHyperv -HostAsyncRequestStatus
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -19868,7 +19868,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryHyperv -HostAsyncRequestStatus" @"
+    Write-Message "New-RscQueryHyperv -HostAsyncRequestStatus" @"
     Get Hyper-V host async request
 
 Supported in v5.0+
@@ -19877,15 +19877,15 @@ Get details about a Hyper-V host related async request.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryHyperv -ScvmmAsyncRequestStatus
+# New-RscQueryHyperv -ScvmmAsyncRequestStatus
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryHyperv -ScvmmAsyncRequestStatus -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryHyperv -ScvmmAsyncRequestStatus).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryHyperv -ScvmmAsyncRequestStatus -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryHyperv -ScvmmAsyncRequestStatus
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -19895,7 +19895,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryHyperv -ScvmmAsyncRequestStatus" @"
+    Write-Message "New-RscQueryHyperv -ScvmmAsyncRequestStatus" @"
     Get Hyper-V SCVMM async request
 
 Supported in v5.0+
@@ -19904,15 +19904,15 @@ Get details about a Hyper-V SCVMM related async request.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryHyperv -VirtualMachineAsyncRequestStatus
+# New-RscQueryHyperv -VirtualMachineAsyncRequestStatus
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryHyperv -VirtualMachineAsyncRequestStatus -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryHyperv -VirtualMachineAsyncRequestStatus).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryHyperv -VirtualMachineAsyncRequestStatus -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryHyperv -VirtualMachineAsyncRequestStatus
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -19922,7 +19922,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryHyperv -VirtualMachineAsyncRequestStatus" @"
+    Write-Message "New-RscQueryHyperv -VirtualMachineAsyncRequestStatus" @"
     Get VM async request details
 
 Supported in v5.0+
@@ -19932,15 +19932,15 @@ Get details about a Hyper-V vm related async request.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryLdap -IntegrationList
+# New-RscQueryLdap -IntegrationList
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryLdap -IntegrationList -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryLdap -IntegrationList).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryLdap -IntegrationList -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryLdap -IntegrationList
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -19955,21 +19955,21 @@ $inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityClou
 # OPTIONAL
 $inputs.Var.sortBy = <LdapIntegrationFieldEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LdapIntegrationFieldEnum]) for enum values.
 "@
-    Write-Message "Invoke-RscQueryLdap -IntegrationList" @"
+    Write-Message "New-RscQueryLdap -IntegrationList" @"
     Browse LDAP integrations.
 "@ "[GraphQL: ldapIntegrationConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryLdap -PrincipalList
+# New-RscQueryLdap -PrincipalList
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryLdap -PrincipalList -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryLdap -PrincipalList).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryLdap -PrincipalList -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryLdap -PrincipalList
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -19988,21 +19988,21 @@ $inputs.Var.id = <System.String>
 # REQUIRED
 $inputs.Var.searchText = <System.String>
 "@
-    Write-Message "Invoke-RscQueryLdap -PrincipalList" @"
+    Write-Message "New-RscQueryLdap -PrincipalList" @"
     Search LDAP Principals.
 "@ "[GraphQL: ldapPrincipalConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryLdap -AuthorizedPrincipalList
+# New-RscQueryLdap -AuthorizedPrincipalList
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryLdap -AuthorizedPrincipalList -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryLdap -AuthorizedPrincipalList).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryLdap -AuthorizedPrincipalList -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryLdap -AuthorizedPrincipalList
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -20023,22 +20023,22 @@ $inputs.Var.roleIds = @(
 	<System.String>
 )
 "@
-    Write-Message "Invoke-RscQueryLdap -AuthorizedPrincipalList" @"
+    Write-Message "New-RscQueryLdap -AuthorizedPrincipalList" @"
     Browse LDAP-authorized principals.
 "@ "[GraphQL: ldapAuthorizedPrincipalConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMongo -Sources
+# New-RscQueryMongo -Sources
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryMongo -Sources -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryMongo -Sources).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryMongo -Sources -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryMongo -Sources
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -20091,21 +20091,21 @@ $inputs.Var.filter = @(
 }
 )
 "@
-    Write-Message "Invoke-RscQueryMongo -Sources" @"
+    Write-Message "New-RscQueryMongo -Sources" @"
     Paginated list of MongoDB sources.
 "@ "[GraphQL: mongoSources]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMongo -Databases
+# New-RscQueryMongo -Databases
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryMongo -Databases -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryMongo -Databases).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryMongo -Databases -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryMongo -Databases
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -20158,21 +20158,21 @@ $inputs.Var.filter = @(
 }
 )
 "@
-    Write-Message "Invoke-RscQueryMongo -Databases" @"
+    Write-Message "New-RscQueryMongo -Databases" @"
     Paginated list of MongoDB databases.
 "@ "[GraphQL: mongoDatabases]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMongo -Collections
+# New-RscQueryMongo -Collections
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryMongo -Collections -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryMongo -Collections).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryMongo -Collections -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryMongo -Collections
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -20225,78 +20225,78 @@ $inputs.Var.filter = @(
 }
 )
 "@
-    Write-Message "Invoke-RscQueryMongo -Collections" @"
+    Write-Message "New-RscQueryMongo -Collections" @"
     Paginated list of MongoDB collections.
 "@ "[GraphQL: mongoCollections]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMongo -Source
+# New-RscQueryMongo -Source
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryMongo -Source -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryMongo -Source).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryMongo -Source -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryMongo -Source
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryMongo -Source" @"
+    Write-Message "New-RscQueryMongo -Source" @"
     Provides details for the MongoDB source cluster identified by the fid.
 "@ "[GraphQL: mongoSource]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMongo -Database
+# New-RscQueryMongo -Database
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryMongo -Database -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryMongo -Database).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryMongo -Database -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryMongo -Database
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryMongo -Database" @"
+    Write-Message "New-RscQueryMongo -Database" @"
     Provides details for a MongoDB database identified by the fid.
 "@ "[GraphQL: mongoDatabase]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMongo -Collection
+# New-RscQueryMongo -Collection
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryMongo -Collection -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryMongo -Collection).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryMongo -Collection -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryMongo -Collection
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryMongo -Collection" @"
+    Write-Message "New-RscQueryMongo -Collection" @"
     Provides details for a MongoDB collection identified by the fid.
 "@ "[GraphQL: mongoCollection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMongo -RecoverableRanges
+# New-RscQueryMongo -RecoverableRanges
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryMongo -RecoverableRanges -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryMongo -RecoverableRanges).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryMongo -RecoverableRanges -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryMongo -RecoverableRanges
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -20312,21 +20312,21 @@ $inputs.Var.input = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscQueryMongo -RecoverableRanges" @"
+    Write-Message "New-RscQueryMongo -RecoverableRanges" @"
     Provides the point in time range for MongoDB object recovery.
 "@ "[GraphQL: mongoRecoverableRanges]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMongo -BulkRecoverableRanges
+# New-RscQueryMongo -BulkRecoverableRanges
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryMongo -BulkRecoverableRanges -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryMongo -BulkRecoverableRanges).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryMongo -BulkRecoverableRanges -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryMongo -BulkRecoverableRanges
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -20342,21 +20342,21 @@ $inputs.Var.input = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscQueryMongo -BulkRecoverableRanges" @"
+    Write-Message "New-RscQueryMongo -BulkRecoverableRanges" @"
     Provides the bulk recoverable range for MongoDB object recovery, including data and log snapshots.
 "@ "[GraphQL: mongoBulkRecoverableRanges]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMongo -DbSources
+# New-RscQueryMongo -DbSources
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryMongo -DbSources -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryMongo -DbSources).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryMongo -DbSources -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryMongo -DbSources
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -20409,21 +20409,21 @@ $inputs.Var.filter = @(
 }
 )
 "@
-    Write-Message "Invoke-RscQueryMongo -DbSources" @"
+    Write-Message "New-RscQueryMongo -DbSources" @"
     Paginated list of MongoDB sources on NoSQL cluster.
 "@ "[GraphQL: mongodbSources]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMongo -DbDatabases
+# New-RscQueryMongo -DbDatabases
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryMongo -DbDatabases -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryMongo -DbDatabases).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryMongo -DbDatabases -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryMongo -DbDatabases
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -20476,21 +20476,21 @@ $inputs.Var.filter = @(
 }
 )
 "@
-    Write-Message "Invoke-RscQueryMongo -DbDatabases" @"
+    Write-Message "New-RscQueryMongo -DbDatabases" @"
     Paginated list of MongoDB databases on NoSQL cluster.
 "@ "[GraphQL: mongodbDatabases]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMongo -DbCollections
+# New-RscQueryMongo -DbCollections
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryMongo -DbCollections -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryMongo -DbCollections).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryMongo -DbCollections -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryMongo -DbCollections
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -20543,26 +20543,26 @@ $inputs.Var.filter = @(
 }
 )
 "@
-    Write-Message "Invoke-RscQueryMongo -DbCollections" @"
+    Write-Message "New-RscQueryMongo -DbCollections" @"
     Paginated list of MongoDB collections on NoSQL cluster.
 "@ "[GraphQL: mongodbCollections]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMongo -DbSource
+# New-RscQueryMongo -DbSource
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryMongo -DbSource -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryMongo -DbSource).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryMongo -DbSource -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryMongo -DbSource
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryMongo -DbSource" @"
+    Write-Message "New-RscQueryMongo -DbSource" @"
     MongoDB source cluster identified by FID on NoSQL cluster. 
 For MongoDB, the term ""source"" is usually used for either a replica set or a sharded cluster. 
 For more info on MongoDB cluster refer to : https://docs.mongodb.com/manual/introduction/
@@ -20570,20 +20570,20 @@ For more info on MongoDB cluster refer to : https://docs.mongodb.com/manual/intr
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMongo -DbDatabase
+# New-RscQueryMongo -DbDatabase
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryMongo -DbDatabase -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryMongo -DbDatabase).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryMongo -DbDatabase -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryMongo -DbDatabase
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryMongo -DbDatabase" @"
+    Write-Message "New-RscQueryMongo -DbDatabase" @"
     MongoDB database identified by FID on NoSQL cluster. 
 MongoDB stores data records as documents which are gathered together in collections. 
 A database stores one or more collections of documents. 
@@ -20592,20 +20592,20 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMongo -DbCollection
+# New-RscQueryMongo -DbCollection
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryMongo -DbCollection -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryMongo -DbCollection).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryMongo -DbCollection -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryMongo -DbCollection
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryMongo -DbCollection" @"
+    Write-Message "New-RscQueryMongo -DbCollection" @"
     MongoDB collection identified by FID on NoSQL cluster. 
 MongoDB stores data records as documents which are gathered together in collections. 
 For more info refer to : https://docs.mongodb.com/manual/core/databases-and-collections
@@ -20613,15 +20613,15 @@ For more info refer to : https://docs.mongodb.com/manual/core/databases-and-coll
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMongo -DbCollectionRecoverableRange
+# New-RscQueryMongo -DbCollectionRecoverableRange
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryMongo -DbCollectionRecoverableRange -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryMongo -DbCollectionRecoverableRange).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryMongo -DbCollectionRecoverableRange -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryMongo -DbCollectionRecoverableRange
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -20640,21 +20640,21 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscQueryMongo -DbCollectionRecoverableRange" @"
+    Write-Message "New-RscQueryMongo -DbCollectionRecoverableRange" @"
     Recoverable Range of a MongoDB collection on NoSQL cluster.
 "@ "[GraphQL: mongodbCollectionRecoverableRange]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMongo -DbBulkRecoverableRange
+# New-RscQueryMongo -DbBulkRecoverableRange
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryMongo -DbBulkRecoverableRange -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryMongo -DbBulkRecoverableRange).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryMongo -DbBulkRecoverableRange -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryMongo -DbBulkRecoverableRange
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -20683,22 +20683,22 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscQueryMongo -DbBulkRecoverableRange" @"
+    Write-Message "New-RscQueryMongo -DbBulkRecoverableRange" @"
     Recoverable range for multiple Management Objects on NoSQL cluster.
 "@ "[GraphQL: mongodbBulkRecoverableRange]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMssql -TopLevelDescendants
+# New-RscQueryMssql -TopLevelDescendants
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryMssql -TopLevelDescendants -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryMssql -TopLevelDescendants).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryMssql -TopLevelDescendants -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryMssql -TopLevelDescendants
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -20755,21 +20755,21 @@ $inputs.Var.filter = @(
 }
 )
 "@
-    Write-Message "Invoke-RscQueryMssql -TopLevelDescendants" @"
+    Write-Message "New-RscQueryMssql -TopLevelDescendants" @"
     Paginated list of the highest-level Microsoft SQL Objects accessible by the current user.
 "@ "[GraphQL: mssqlTopLevelDescendants]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMssql -Databases
+# New-RscQueryMssql -Databases
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryMssql -Databases -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryMssql -Databases).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryMssql -Databases -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryMssql -Databases
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -20822,78 +20822,78 @@ $inputs.Var.filter = @(
 }
 )
 "@
-    Write-Message "Invoke-RscQueryMssql -Databases" @"
+    Write-Message "New-RscQueryMssql -Databases" @"
     Paginated list of Microsoft SQL Databases.
 "@ "[GraphQL: mssqlDatabases]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMssql -AvailabilityGroup
+# New-RscQueryMssql -AvailabilityGroup
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryMssql -AvailabilityGroup -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryMssql -AvailabilityGroup).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryMssql -AvailabilityGroup -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryMssql -AvailabilityGroup
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryMssql -AvailabilityGroup" @"
+    Write-Message "New-RscQueryMssql -AvailabilityGroup" @"
     A Microsoft SQL Availability Group.
 "@ "[GraphQL: mssqlAvailabilityGroup]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMssql -Instance
+# New-RscQueryMssql -Instance
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryMssql -Instance -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryMssql -Instance).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryMssql -Instance -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryMssql -Instance
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryMssql -Instance" @"
+    Write-Message "New-RscQueryMssql -Instance" @"
     A Microsoft SQL Instance.
 "@ "[GraphQL: mssqlInstance]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMssql -Database
+# New-RscQueryMssql -Database
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryMssql -Database -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryMssql -Database).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryMssql -Database -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryMssql -Database
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryMssql -Database" @"
+    Write-Message "New-RscQueryMssql -Database" @"
     A Microsoft SQL Database.
 "@ "[GraphQL: mssqlDatabase]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMssql -RecoverableRanges
+# New-RscQueryMssql -RecoverableRanges
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryMssql -RecoverableRanges -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryMssql -RecoverableRanges).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryMssql -RecoverableRanges -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryMssql -RecoverableRanges
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -20905,21 +20905,21 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryMssql -RecoverableRanges" @"
+    Write-Message "New-RscQueryMssql -RecoverableRanges" @"
     List of recoverable ranges for a Microsoft SQL Database.
 "@ "[GraphQL: mssqlRecoverableRanges]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMssql -DatabaseMissedSnapshots
+# New-RscQueryMssql -DatabaseMissedSnapshots
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryMssql -DatabaseMissedSnapshots -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryMssql -DatabaseMissedSnapshots).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryMssql -DatabaseMissedSnapshots -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryMssql -DatabaseMissedSnapshots
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -20931,21 +20931,21 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryMssql -DatabaseMissedSnapshots" @"
+    Write-Message "New-RscQueryMssql -DatabaseMissedSnapshots" @"
     List of missed snapshots for a Microsoft SQL Database.
 "@ "[GraphQL: mssqlDatabaseMissedSnapshots]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMssql -CompatibleInstances
+# New-RscQueryMssql -CompatibleInstances
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryMssql -CompatibleInstances -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryMssql -CompatibleInstances).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryMssql -CompatibleInstances -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryMssql -CompatibleInstances
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -20957,21 +20957,21 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryMssql -CompatibleInstances" @"
+    Write-Message "New-RscQueryMssql -CompatibleInstances" @"
     Returns all compatible instances for export for the specified recovery time.
 "@ "[GraphQL: mssqlCompatibleInstances]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMssql -DatabaseMissedRecoverableRanges
+# New-RscQueryMssql -DatabaseMissedRecoverableRanges
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryMssql -DatabaseMissedRecoverableRanges -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryMssql -DatabaseMissedRecoverableRanges).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryMssql -DatabaseMissedRecoverableRanges -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryMssql -DatabaseMissedRecoverableRanges
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -20983,21 +20983,21 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryMssql -DatabaseMissedRecoverableRanges" @"
+    Write-Message "New-RscQueryMssql -DatabaseMissedRecoverableRanges" @"
     List of missed recoverable ranges for a Microsoft SQL Database.
 "@ "[GraphQL: mssqlDatabaseMissedRecoverableRanges]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMssql -AllDatabaseRestoreFiles
+# New-RscQueryMssql -AllDatabaseRestoreFiles
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryMssql -AllDatabaseRestoreFiles -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryMssql -AllDatabaseRestoreFiles).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryMssql -AllDatabaseRestoreFiles -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryMssql -AllDatabaseRestoreFiles
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -21011,21 +21011,21 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryMssql -AllDatabaseRestoreFiles" @"
+    Write-Message "New-RscQueryMssql -AllDatabaseRestoreFiles" @"
     Provides a list of database files to be restored for the specified restore or export operation.
 "@ "[GraphQL: allMssqlDatabaseRestoreFiles]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMssql -DatabaseLiveMounts
+# New-RscQueryMssql -DatabaseLiveMounts
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryMssql -DatabaseLiveMounts -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryMssql -DatabaseLiveMounts).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryMssql -DatabaseLiveMounts -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryMssql -DatabaseLiveMounts
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -21050,21 +21050,21 @@ $inputs.Var.filters = @(
 }
 )
 "@
-    Write-Message "Invoke-RscQueryMssql -DatabaseLiveMounts" @"
+    Write-Message "New-RscQueryMssql -DatabaseLiveMounts" @"
     Paginated list of Microsoft SQL Database live mounts.
 "@ "[GraphQL: mssqlDatabaseLiveMounts]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMssql -DefaultProperties
+# New-RscQueryMssql -DefaultProperties
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryMssql -DefaultProperties -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryMssql -DefaultProperties).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryMssql -DefaultProperties -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryMssql -DefaultProperties
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -21072,21 +21072,21 @@ $inputs.Var.input = @{
 	clusterUuid = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryMssql -DefaultProperties" @"
+    Write-Message "New-RscQueryMssql -DefaultProperties" @"
     The current default properties for Microsoft SQL databases.
 "@ "[GraphQL: mssqlDefaultProperties]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMssql -DatabaseRestoreEstimate
+# New-RscQueryMssql -DatabaseRestoreEstimate
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryMssql -DatabaseRestoreEstimate -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryMssql -DatabaseRestoreEstimate).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryMssql -DatabaseRestoreEstimate -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryMssql -DatabaseRestoreEstimate
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -21100,21 +21100,21 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryMssql -DatabaseRestoreEstimate" @"
+    Write-Message "New-RscQueryMssql -DatabaseRestoreEstimate" @"
     Returns a size estimate for a restore, export, or mount.
 "@ "[GraphQL: mssqlDatabaseRestoreEstimate]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMssql -CdmLogShippingTargets
+# New-RscQueryMssql -CdmLogShippingTargets
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryMssql -CdmLogShippingTargets -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryMssql -CdmLogShippingTargets).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryMssql -CdmLogShippingTargets -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryMssql -CdmLogShippingTargets
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -21139,40 +21139,40 @@ $inputs.Var.filters = @(
 }
 )
 "@
-    Write-Message "Invoke-RscQueryMssql -CdmLogShippingTargets" @"
+    Write-Message "New-RscQueryMssql -CdmLogShippingTargets" @"
     Paginated list of Microsoft SQL log shipping target.
 "@ "[GraphQL: cdmMssqlLogShippingTargets]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMssql -CdmLogShippingTarget
+# New-RscQueryMssql -CdmLogShippingTarget
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryMssql -CdmLogShippingTarget -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryMssql -CdmLogShippingTarget).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryMssql -CdmLogShippingTarget -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryMssql -CdmLogShippingTarget
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryMssql -CdmLogShippingTarget" @"
+    Write-Message "New-RscQueryMssql -CdmLogShippingTarget" @"
     A single Microsoft SQL log shipping target.
 "@ "[GraphQL: cdmMssqlLogShippingTarget]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMssql -LogShippingTargets
+# New-RscQueryMssql -LogShippingTargets
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryMssql -LogShippingTargets -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryMssql -LogShippingTargets).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryMssql -LogShippingTargets -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryMssql -LogShippingTargets
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -21198,22 +21198,22 @@ $inputs.Var.input = @{
 	clusterUuid = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryMssql -LogShippingTargets" @"
+    Write-Message "New-RscQueryMssql -LogShippingTargets" @"
     List of filtered Microsoft SQL log shipping targets.
 "@ "[GraphQL: mssqlLogShippingTargets]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryNutanix -TopLevelDescendants
+# New-RscQueryNutanix -TopLevelDescendants
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryNutanix -TopLevelDescendants -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryNutanix -TopLevelDescendants).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryNutanix -TopLevelDescendants -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryNutanix -TopLevelDescendants
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -21270,40 +21270,40 @@ $inputs.Var.filter = @(
 }
 )
 "@
-    Write-Message "Invoke-RscQueryNutanix -TopLevelDescendants" @"
+    Write-Message "New-RscQueryNutanix -TopLevelDescendants" @"
     Paginated list of the highest-level Nutanix Objects accessible by the current user.
 "@ "[GraphQL: nutanixTopLevelDescendants]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryNutanix -Cluster
+# New-RscQueryNutanix -Cluster
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryNutanix -Cluster -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryNutanix -Cluster).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryNutanix -Cluster -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryNutanix -Cluster
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryNutanix -Cluster" @"
+    Write-Message "New-RscQueryNutanix -Cluster" @"
     A Nutanix Cluster.
 "@ "[GraphQL: nutanixCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryNutanix -Clusters
+# New-RscQueryNutanix -Clusters
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryNutanix -Clusters -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryNutanix -Clusters).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryNutanix -Clusters -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryNutanix -Clusters
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -21356,21 +21356,21 @@ $inputs.Var.filter = @(
 }
 )
 "@
-    Write-Message "Invoke-RscQueryNutanix -Clusters" @"
+    Write-Message "New-RscQueryNutanix -Clusters" @"
     Paginated list of Nutanix Clusters.
 "@ "[GraphQL: nutanixClusters]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryNutanix -PrismCentrals
+# New-RscQueryNutanix -PrismCentrals
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryNutanix -PrismCentrals -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryNutanix -PrismCentrals).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryNutanix -PrismCentrals -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryNutanix -PrismCentrals
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -21423,97 +21423,97 @@ $inputs.Var.filter = @(
 }
 )
 "@
-    Write-Message "Invoke-RscQueryNutanix -PrismCentrals" @"
+    Write-Message "New-RscQueryNutanix -PrismCentrals" @"
     Paginated list of Nutanix Prism Central objects.
 "@ "[GraphQL: nutanixPrismCentrals]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryNutanix -PrismCentral
+# New-RscQueryNutanix -PrismCentral
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryNutanix -PrismCentral -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryNutanix -PrismCentral).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryNutanix -PrismCentral -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryNutanix -PrismCentral
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryNutanix -PrismCentral" @"
+    Write-Message "New-RscQueryNutanix -PrismCentral" @"
     Details of the given Prism Central.
 "@ "[GraphQL: nutanixPrismCentral]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryNutanix -Category
+# New-RscQueryNutanix -Category
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryNutanix -Category -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryNutanix -Category).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryNutanix -Category -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryNutanix -Category
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryNutanix -Category" @"
+    Write-Message "New-RscQueryNutanix -Category" @"
     Details of the given category.
 "@ "[GraphQL: nutanixCategory]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryNutanix -CategoryValue
+# New-RscQueryNutanix -CategoryValue
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryNutanix -CategoryValue -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryNutanix -CategoryValue).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryNutanix -CategoryValue -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryNutanix -CategoryValue
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryNutanix -CategoryValue" @"
+    Write-Message "New-RscQueryNutanix -CategoryValue" @"
     Details of the given category value.
 "@ "[GraphQL: nutanixCategoryValue]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryNutanix -Vm
+# New-RscQueryNutanix -Vm
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryNutanix -Vm -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryNutanix -Vm).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryNutanix -Vm -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryNutanix -Vm
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryNutanix -Vm" @"
+    Write-Message "New-RscQueryNutanix -Vm" @"
     A Nutanix Virtual Machine.
 "@ "[GraphQL: nutanixVm]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryNutanix -Vms
+# New-RscQueryNutanix -Vms
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryNutanix -Vms -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryNutanix -Vms).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryNutanix -Vms -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryNutanix -Vms
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -21566,21 +21566,21 @@ $inputs.Var.filter = @(
 }
 )
 "@
-    Write-Message "Invoke-RscQueryNutanix -Vms" @"
+    Write-Message "New-RscQueryNutanix -Vms" @"
     Paginated list of Nutanix Virtual Machines.
 "@ "[GraphQL: nutanixVms]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryNutanix -Mounts
+# New-RscQueryNutanix -Mounts
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryNutanix -Mounts -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryNutanix -Mounts).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryNutanix -Mounts -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryNutanix -Mounts
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -21605,21 +21605,21 @@ $inputs.Var.sortBy = @{
 	sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
 }
 "@
-    Write-Message "Invoke-RscQueryNutanix -Mounts" @"
+    Write-Message "New-RscQueryNutanix -Mounts" @"
     Nutanix Live Mount Connection.
 "@ "[GraphQL: nutanixMounts]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryNutanix -ClusterContainers
+# New-RscQueryNutanix -ClusterContainers
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryNutanix -ClusterContainers -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryNutanix -ClusterContainers).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryNutanix -ClusterContainers -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryNutanix -ClusterContainers
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -21627,7 +21627,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryNutanix -ClusterContainers" @"
+    Write-Message "New-RscQueryNutanix -ClusterContainers" @"
     Get list of containers on this cluster
 
 Supported in v5.0+
@@ -21636,15 +21636,15 @@ Query the nutanix cluster to get the list of containers, used for export purpose
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryNutanix -ClusterNetworks
+# New-RscQueryNutanix -ClusterNetworks
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryNutanix -ClusterNetworks -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryNutanix -ClusterNetworks).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryNutanix -ClusterNetworks -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryNutanix -ClusterNetworks
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -21652,7 +21652,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryNutanix -ClusterNetworks" @"
+    Write-Message "New-RscQueryNutanix -ClusterNetworks" @"
     Get list of networks on this cluster
 
 Supported in v8.1+
@@ -21661,15 +21661,15 @@ Retrieves the list of networks by querying the Nutanix cluster. The list of netw
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryNutanix -ClusterAsyncRequestStatus
+# New-RscQueryNutanix -ClusterAsyncRequestStatus
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryNutanix -ClusterAsyncRequestStatus -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryNutanix -ClusterAsyncRequestStatus).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryNutanix -ClusterAsyncRequestStatus -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryNutanix -ClusterAsyncRequestStatus
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -21679,7 +21679,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryNutanix -ClusterAsyncRequestStatus" @"
+    Write-Message "New-RscQueryNutanix -ClusterAsyncRequestStatus" @"
     Get Nutanix cluster async request
 
 Supported in v5.0+
@@ -21688,15 +21688,15 @@ Get details about a Nutanix cluster-related async request.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryNutanix -VmAsyncRequestStatus
+# New-RscQueryNutanix -VmAsyncRequestStatus
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryNutanix -VmAsyncRequestStatus -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryNutanix -VmAsyncRequestStatus).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryNutanix -VmAsyncRequestStatus -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryNutanix -VmAsyncRequestStatus
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -21706,7 +21706,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryNutanix -VmAsyncRequestStatus" @"
+    Write-Message "New-RscQueryNutanix -VmAsyncRequestStatus" @"
     v5.0-v8.0: Get VM async request details
 v8.1+: Get virtual machine async request details
 
@@ -21717,15 +21717,15 @@ v8.1+: Get details about a Nutanix virtual machine-related async request.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryNutanix -SearchVm
+# New-RscQueryNutanix -SearchVm
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryNutanix -SearchVm -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryNutanix -SearchVm).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryNutanix -SearchVm -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryNutanix -SearchVm
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -21739,7 +21739,7 @@ $inputs.Var.input = @{
 	path = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryNutanix -SearchVm" @"
+    Write-Message "New-RscQueryNutanix -SearchVm" @"
     v5.0-v8.0: Search for file in Nutanix VM
 v8.1+: Search for file in Nutanix virtual machine
 
@@ -21749,15 +21749,15 @@ Search for a file within the Nutanix Virtual Machine. Search via full path prefi
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryNutanix -VmMissedSnapshots
+# New-RscQueryNutanix -VmMissedSnapshots
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryNutanix -VmMissedSnapshots -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryNutanix -VmMissedSnapshots).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryNutanix -VmMissedSnapshots -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryNutanix -VmMissedSnapshots
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -21765,7 +21765,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryNutanix -VmMissedSnapshots" @"
+    Write-Message "New-RscQueryNutanix -VmMissedSnapshots" @"
     v5.0-v8.0: Get details about missed snapshots for a VM
 v8.1+: Get details about missed snapshots for a virtual machine
 
@@ -21776,15 +21776,15 @@ v8.1+: Retrieve the time of the day when the snapshots were missed specific to a
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryNutanix -BrowseSnapshot
+# New-RscQueryNutanix -BrowseSnapshot
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryNutanix -BrowseSnapshot -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryNutanix -BrowseSnapshot).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryNutanix -BrowseSnapshot -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryNutanix -BrowseSnapshot
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -21798,7 +21798,7 @@ $inputs.Var.input = @{
 	path = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryNutanix -BrowseSnapshot" @"
+    Write-Message "New-RscQueryNutanix -BrowseSnapshot" @"
     v5.0-v8.0: Lists all files in VM snapshot
 v8.1+: Lists all files in virtual machine snapshot
 
@@ -21808,15 +21808,15 @@ Lists all files and directories in a given path.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryNutanix -SnapshotDetail
+# New-RscQueryNutanix -SnapshotDetail
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryNutanix -SnapshotDetail -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryNutanix -SnapshotDetail).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryNutanix -SnapshotDetail -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryNutanix -SnapshotDetail
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -21824,7 +21824,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryNutanix -SnapshotDetail" @"
+    Write-Message "New-RscQueryNutanix -SnapshotDetail" @"
     Supported in v5.0+. Get Nutanix virtual machine snapshot details.
  Retrieve detailed information about a snapshot.
 "@ "[GraphQL: nutanixSnapshotDetail]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -21832,114 +21832,114 @@ $inputs.Var.input = @{
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -Org
+# New-RscQueryO365 -Org
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryO365 -Org -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryO365 -Org).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryO365 -Org -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryO365 -Org
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryO365 -Org" @"
+    Write-Message "New-RscQueryO365 -Org" @"
     Details of the O365Org.
 "@ "[GraphQL: o365Org]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -OrgAtSnappableLevel
+# New-RscQueryO365 -OrgAtSnappableLevel
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryO365 -OrgAtSnappableLevel -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryO365 -OrgAtSnappableLevel).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryO365 -OrgAtSnappableLevel -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryO365 -OrgAtSnappableLevel
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 # REQUIRED
 $inputs.Var.snappableType = <SnappableType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnappableType]) for enum values.
 "@
-    Write-Message "Invoke-RscQueryO365 -OrgAtSnappableLevel" @"
+    Write-Message "New-RscQueryO365 -OrgAtSnappableLevel" @"
     Details of the O365Org at snappable level, given the snappable type.
 "@ "[GraphQL: o365OrgAtSnappableLevel]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -AllAdGroups
+# New-RscQueryO365 -AllAdGroups
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryO365 -AllAdGroups -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryO365 -AllAdGroups).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryO365 -AllAdGroups -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryO365 -AllAdGroups
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.orgId = <System.String>
 # REQUIRED
 $inputs.Var.adGroupSearchFilter = <System.String>
 "@
-    Write-Message "Invoke-RscQueryO365 -AllAdGroups" @"
+    Write-Message "New-RscQueryO365 -AllAdGroups" @"
     All AD Groups belonging to the O365 organization.
 "@ "[GraphQL: allO365AdGroups]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -User
+# New-RscQueryO365 -User
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryO365 -User -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryO365 -User).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryO365 -User -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryO365 -User
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryO365 -User" @"
+    Write-Message "New-RscQueryO365 -User" @"
     Details for the O365 user corresponding to the ID.
 "@ "[GraphQL: o365User]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -Mailbox
+# New-RscQueryO365 -Mailbox
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryO365 -Mailbox -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryO365 -Mailbox).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryO365 -Mailbox -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryO365 -Mailbox
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.snappableFid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryO365 -Mailbox" @"
+    Write-Message "New-RscQueryO365 -Mailbox" @"
     Details for the Exchange mailbox corresponding to the snappable ID.
 "@ "[GraphQL: o365Mailbox]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -Groups
+# New-RscQueryO365 -Groups
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryO365 -Groups -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryO365 -Groups).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryO365 -Groups -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryO365 -Groups
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -21996,21 +21996,21 @@ $inputs.Var.o365OrgId = <System.String>
 # REQUIRED
 $inputs.Var.snappableType = <SnappableType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnappableType]) for enum values.
 "@
-    Write-Message "Invoke-RscQueryO365 -Groups" @"
+    Write-Message "New-RscQueryO365 -Groups" @"
     List of O365 Groups in the O365Org.
 "@ "[GraphQL: o365Groups]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -Mailboxes
+# New-RscQueryO365 -Mailboxes
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryO365 -Mailboxes -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryO365 -Mailboxes).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryO365 -Mailboxes -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryO365 -Mailboxes
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -22065,40 +22065,40 @@ $inputs.Var.filter = @(
 # REQUIRED
 $inputs.Var.o365OrgId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryO365 -Mailboxes" @"
+    Write-Message "New-RscQueryO365 -Mailboxes" @"
     List of Mailboxes in the O365Org.
 "@ "[GraphQL: o365Mailboxes]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -Onedrive
+# New-RscQueryO365 -Onedrive
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryO365 -Onedrive -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryO365 -Onedrive).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryO365 -Onedrive -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryO365 -Onedrive
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.snappableFid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryO365 -Onedrive" @"
+    Write-Message "New-RscQueryO365 -Onedrive" @"
     Details for the OneDrive corresponding to the snappable ID.
 "@ "[GraphQL: o365Onedrive]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -Onedrives
+# New-RscQueryO365 -Onedrives
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryO365 -Onedrives -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryO365 -Onedrives).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryO365 -Onedrives -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryO365 -Onedrives
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -22153,40 +22153,40 @@ $inputs.Var.filter = @(
 # REQUIRED
 $inputs.Var.o365OrgId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryO365 -Onedrives" @"
+    Write-Message "New-RscQueryO365 -Onedrives" @"
     List of Onedrives in the O365Org.
 "@ "[GraphQL: o365Onedrives]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -Site
+# New-RscQueryO365 -Site
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryO365 -Site -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryO365 -Site).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryO365 -Site -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryO365 -Site
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.snappableFid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryO365 -Site" @"
+    Write-Message "New-RscQueryO365 -Site" @"
     Details for the SharePoint site corresponding to the snappable ID.
 "@ "[GraphQL: o365Site]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -Sites
+# New-RscQueryO365 -Sites
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryO365 -Sites -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryO365 -Sites).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryO365 -Sites -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryO365 -Sites
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -22243,40 +22243,40 @@ $inputs.Var.o365OrgId = <System.String>
 # OPTIONAL
 $inputs.Var.excludeChildSites = <System.Boolean>
 "@
-    Write-Message "Invoke-RscQueryO365 -Sites" @"
+    Write-Message "New-RscQueryO365 -Sites" @"
     List of sites in the O365Org.
 "@ "[GraphQL: o365Sites]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -SharepointDrive
+# New-RscQueryO365 -SharepointDrive
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryO365 -SharepointDrive -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryO365 -SharepointDrive).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryO365 -SharepointDrive -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryO365 -SharepointDrive
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.snappableFid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryO365 -SharepointDrive" @"
+    Write-Message "New-RscQueryO365 -SharepointDrive" @"
     Details for the SharePoint drive corresponding to the snappable ID.
 "@ "[GraphQL: o365SharepointDrive]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -SharepointDrives
+# New-RscQueryO365 -SharepointDrives
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryO365 -SharepointDrives -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryO365 -SharepointDrives).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryO365 -SharepointDrives -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryO365 -SharepointDrives
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -22331,40 +22331,40 @@ $inputs.Var.filter = @(
 # REQUIRED
 $inputs.Var.o365OrgId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryO365 -SharepointDrives" @"
+    Write-Message "New-RscQueryO365 -SharepointDrives" @"
     List of sharepoint drives (document libraries) in the O365Org.
 "@ "[GraphQL: o365SharepointDrives]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -SharepointList
+# New-RscQueryO365 -SharepointList
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryO365 -SharepointList -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryO365 -SharepointList).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryO365 -SharepointList -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryO365 -SharepointList
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.snappableFid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryO365 -SharepointList" @"
+    Write-Message "New-RscQueryO365 -SharepointList" @"
     Details for the SharePoint list corresponding to the snappable ID.
 "@ "[GraphQL: o365SharepointList]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -SharepointLists
+# New-RscQueryO365 -SharepointLists
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryO365 -SharepointLists -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryO365 -SharepointLists).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryO365 -SharepointLists -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryO365 -SharepointLists
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -22419,40 +22419,40 @@ $inputs.Var.filter = @(
 # REQUIRED
 $inputs.Var.o365OrgId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryO365 -SharepointLists" @"
+    Write-Message "New-RscQueryO365 -SharepointLists" @"
     Paginated list of sharepoint lists in the O365Org.
 "@ "[GraphQL: o365SharepointLists]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -SharepointSite
+# New-RscQueryO365 -SharepointSite
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryO365 -SharepointSite -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryO365 -SharepointSite).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryO365 -SharepointSite -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryO365 -SharepointSite
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.siteFid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryO365 -SharepointSite" @"
+    Write-Message "New-RscQueryO365 -SharepointSite" @"
     Details for the SharePoint site corresponding to the site ID.
 "@ "[GraphQL: o365SharepointSite]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -SharepointSites
+# New-RscQueryO365 -SharepointSites
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryO365 -SharepointSites -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryO365 -SharepointSites).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryO365 -SharepointSites -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryO365 -SharepointSites
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -22507,40 +22507,40 @@ $inputs.Var.filter = @(
 # REQUIRED
 $inputs.Var.o365OrgId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryO365 -SharepointSites" @"
+    Write-Message "New-RscQueryO365 -SharepointSites" @"
     Paginated list of sharepoint sites in the O365Org.
 "@ "[GraphQL: o365SharepointSites]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -Team
+# New-RscQueryO365 -Team
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryO365 -Team -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryO365 -Team).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryO365 -Team -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryO365 -Team
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.snappableFid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryO365 -Team" @"
+    Write-Message "New-RscQueryO365 -Team" @"
     Details for the team corresponding to the snappable ID.
 "@ "[GraphQL: o365Team]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -Teams
+# New-RscQueryO365 -Teams
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryO365 -Teams -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryO365 -Teams).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryO365 -Teams -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryO365 -Teams
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -22595,21 +22595,21 @@ $inputs.Var.filter = @(
 # REQUIRED
 $inputs.Var.o365OrgId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryO365 -Teams" @"
+    Write-Message "New-RscQueryO365 -Teams" @"
     List of O365 Teams in the O365Org.
 "@ "[GraphQL: o365Teams]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -TeamChannels
+# New-RscQueryO365 -TeamChannels
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryO365 -TeamChannels -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryO365 -TeamChannels).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryO365 -TeamChannels -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryO365 -TeamChannels
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -22624,21 +22624,21 @@ $inputs.Var.channelMembershipTypeFilter = <ChannelMembershipType> # Call [Enum]:
 # OPTIONAL
 $inputs.Var.nameFilter = <System.String>
 "@
-    Write-Message "Invoke-RscQueryO365 -TeamChannels" @"
+    Write-Message "New-RscQueryO365 -TeamChannels" @"
     List of Channels for the O365Team.
 "@ "[GraphQL: o365TeamChannels]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -TeamConversationsFolderID
+# New-RscQueryO365 -TeamConversationsFolderID
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryO365 -TeamConversationsFolderID -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryO365 -TeamConversationsFolderID).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryO365 -TeamConversationsFolderID -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryO365 -TeamConversationsFolderID
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.snappableFid = <System.String>
@@ -22647,21 +22647,21 @@ $inputs.Var.snapshotFid = <System.String>
 # REQUIRED
 $inputs.Var.o365OrgId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryO365 -TeamConversationsFolderID" @"
+    Write-Message "New-RscQueryO365 -TeamConversationsFolderID" @"
     ID for the conversations folder in the Team's Group Mailbox.
 "@ "[GraphQL: o365TeamConversationsFolderID]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -TeamPostedBy
+# New-RscQueryO365 -TeamPostedBy
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryO365 -TeamPostedBy -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryO365 -TeamPostedBy).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryO365 -TeamPostedBy -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryO365 -TeamPostedBy
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -22674,40 +22674,40 @@ $inputs.Var.o365OrgId = <System.String>
 # OPTIONAL
 $inputs.Var.nameFilter = <System.String>
 "@
-    Write-Message "Invoke-RscQueryO365 -TeamPostedBy" @"
+    Write-Message "New-RscQueryO365 -TeamPostedBy" @"
     Users who have posted in a team.
 "@ "[GraphQL: o365TeamPostedBy]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -Calendar
+# New-RscQueryO365 -Calendar
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryO365 -Calendar -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryO365 -Calendar).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryO365 -Calendar -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryO365 -Calendar
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.snappableFid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryO365 -Calendar" @"
+    Write-Message "New-RscQueryO365 -Calendar" @"
     Details of the Exchange calendar pertaining to the snappable ID.
 "@ "[GraphQL: o365Calendar]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -Orgs
+# New-RscQueryO365 -Orgs
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryO365 -Orgs -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryO365 -Orgs).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryO365 -Orgs -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryO365 -Orgs
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -22762,21 +22762,21 @@ $inputs.Var.filter = @(
 # OPTIONAL
 $inputs.Var.workloadHierarchy = <WorkloadLevelHierarchy> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
 "@
-    Write-Message "Invoke-RscQueryO365 -Orgs" @"
+    Write-Message "New-RscQueryO365 -Orgs" @"
     All O365 orgs for the account.
 "@ "[GraphQL: o365Orgs]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -SharepointObjectList
+# New-RscQueryO365 -SharepointObjectList
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryO365 -SharepointObjectList -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryO365 -SharepointObjectList).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryO365 -SharepointObjectList -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryO365 -SharepointObjectList
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -22837,21 +22837,21 @@ $inputs.Var.includeEntireHierarchy = <System.Boolean>
 # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryO365 -SharepointObjectList" @"
+    Write-Message "New-RscQueryO365 -SharepointObjectList" @"
     Returns the sharepoint objects after filtering on the object types and includeEntireHierarchy.
 "@ "[GraphQL: o365SharepointObjectList]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -SharepointObjects
+# New-RscQueryO365 -SharepointObjects
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryO365 -SharepointObjects -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryO365 -SharepointObjects).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryO365 -SharepointObjects -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryO365 -SharepointObjects
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -22906,21 +22906,21 @@ $inputs.Var.filter = @(
 # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryO365 -SharepointObjects" @"
+    Write-Message "New-RscQueryO365 -SharepointObjects" @"
     
 "@ "[GraphQL: o365SharepointObjects]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -UserObjects
+# New-RscQueryO365 -UserObjects
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryO365 -UserObjects -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryO365 -UserObjects).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryO365 -UserObjects -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryO365 -UserObjects
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -22975,58 +22975,58 @@ $inputs.Var.filter = @(
 # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryO365 -UserObjects" @"
+    Write-Message "New-RscQueryO365 -UserObjects" @"
     Name, id, object type, and mail address of user descendant object.
 "@ "[GraphQL: o365UserObjects]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -OrgSummaries
+# New-RscQueryO365 -OrgSummaries
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryO365 -OrgSummaries -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryO365 -OrgSummaries).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryO365 -OrgSummaries -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryO365 -OrgSummaries
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     
 "@
-    Write-Message "Invoke-RscQueryO365 -OrgSummaries" @"
+    Write-Message "New-RscQueryO365 -OrgSummaries" @"
     
 "@ "[GraphQL: o365OrgSummaries]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -ObjectAncestors
+# New-RscQueryO365 -ObjectAncestors
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryO365 -ObjectAncestors -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryO365 -ObjectAncestors).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryO365 -ObjectAncestors -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryO365 -ObjectAncestors
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.snappableFid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryO365 -ObjectAncestors" @"
+    Write-Message "New-RscQueryO365 -ObjectAncestors" @"
     
 "@ "[GraphQL: o365ObjectAncestors]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -BrowseTeamConvChannels
+# New-RscQueryO365 -BrowseTeamConvChannels
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryO365 -BrowseTeamConvChannels -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryO365 -BrowseTeamConvChannels).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryO365 -BrowseTeamConvChannels -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryO365 -BrowseTeamConvChannels
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -23045,76 +23045,76 @@ $inputs.Var.channelMembershipTypeFilter = <ChannelMembershipType> # Call [Enum]:
 # OPTIONAL
 $inputs.Var.nameFilter = <System.String>
 "@
-    Write-Message "Invoke-RscQueryO365 -BrowseTeamConvChannels" @"
+    Write-Message "New-RscQueryO365 -BrowseTeamConvChannels" @"
     Browse channels in a Teams conversations snapshot.
 "@ "[GraphQL: browseO365TeamConvChannels]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -ServiceAccount
+# New-RscQueryO365 -ServiceAccount
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryO365 -ServiceAccount -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryO365 -ServiceAccount).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryO365 -ServiceAccount -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryO365 -ServiceAccount
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.orgId = <System.String>
 "@
-    Write-Message "Invoke-RscQueryO365 -ServiceAccount" @"
+    Write-Message "New-RscQueryO365 -ServiceAccount" @"
     Gets the service account for the given org.
 "@ "[GraphQL: o365ServiceAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -AllOrgStatuses
+# New-RscQueryO365 -AllOrgStatuses
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryO365 -AllOrgStatuses -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryO365 -AllOrgStatuses).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryO365 -AllOrgStatuses -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryO365 -AllOrgStatuses
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     
 "@
-    Write-Message "Invoke-RscQueryO365 -AllOrgStatuses" @"
+    Write-Message "New-RscQueryO365 -AllOrgStatuses" @"
     Gets the status of each org in the account.
 "@ "[GraphQL: allO365OrgStatuses]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -License
+# New-RscQueryO365 -License
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryO365 -License -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryO365 -License).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryO365 -License -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryO365 -License
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     
 "@
-    Write-Message "Invoke-RscQueryO365 -License" @"
+    Write-Message "New-RscQueryO365 -License" @"
     Retrieve o365 licence details.
 "@ "[GraphQL: o365License]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -ListApps
+# New-RscQueryO365 -ListApps
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryO365 -ListApps -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryO365 -ListApps).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryO365 -ListApps -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryO365 -ListApps
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -23139,78 +23139,78 @@ $inputs.Var.o365AppSortByParam = @{
 	sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
 }
 "@
-    Write-Message "Invoke-RscQueryO365 -ListApps" @"
+    Write-Message "New-RscQueryO365 -ListApps" @"
     Lists the O365 apps.
 "@ "[GraphQL: listO365Apps]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -AllSubscriptionsAppTypeCounts
+# New-RscQueryO365 -AllSubscriptionsAppTypeCounts
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryO365 -AllSubscriptionsAppTypeCounts -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryO365 -AllSubscriptionsAppTypeCounts).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryO365 -AllSubscriptionsAppTypeCounts -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryO365 -AllSubscriptionsAppTypeCounts
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     
 "@
-    Write-Message "Invoke-RscQueryO365 -AllSubscriptionsAppTypeCounts" @"
+    Write-Message "New-RscQueryO365 -AllSubscriptionsAppTypeCounts" @"
     Returns the total number of apps of each type, for each O365 org.
 "@ "[GraphQL: allO365SubscriptionsAppTypeCounts]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -StorageStats
+# New-RscQueryO365 -StorageStats
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryO365 -StorageStats -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryO365 -StorageStats).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryO365 -StorageStats -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryO365 -StorageStats
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.orgID = <System.String>
 "@
-    Write-Message "Invoke-RscQueryO365 -StorageStats" @"
+    Write-Message "New-RscQueryO365 -StorageStats" @"
     Returns the storage stats of an O365 org.
 "@ "[GraphQL: o365StorageStats]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -ServiceStatus
+# New-RscQueryO365 -ServiceStatus
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryO365 -ServiceStatus -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryO365 -ServiceStatus).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryO365 -ServiceStatus -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryO365 -ServiceStatus
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.orgID = <System.String>
 "@
-    Write-Message "Invoke-RscQueryO365 -ServiceStatus" @"
+    Write-Message "New-RscQueryO365 -ServiceStatus" @"
     Returns the service status of the O365 service running on MSFT server.
 "@ "[GraphQL: o365ServiceStatus]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryOracle -TopLevelDescendants
+# New-RscQueryOracle -TopLevelDescendants
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryOracle -TopLevelDescendants -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryOracle -TopLevelDescendants).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryOracle -TopLevelDescendants -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryOracle -TopLevelDescendants
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -23267,21 +23267,21 @@ $inputs.Var.filter = @(
 }
 )
 "@
-    Write-Message "Invoke-RscQueryOracle -TopLevelDescendants" @"
+    Write-Message "New-RscQueryOracle -TopLevelDescendants" @"
     Paginated list of the highest-level Oracle Objects accessible by the current user.
 "@ "[GraphQL: oracleTopLevelDescendants]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryOracle -Databases
+# New-RscQueryOracle -Databases
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryOracle -Databases -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryOracle -Databases).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryOracle -Databases -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryOracle -Databases
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -23334,97 +23334,97 @@ $inputs.Var.filter = @(
 }
 )
 "@
-    Write-Message "Invoke-RscQueryOracle -Databases" @"
+    Write-Message "New-RscQueryOracle -Databases" @"
     Paginated list of Oracle Databases.
 "@ "[GraphQL: oracleDatabases]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryOracle -Host
+# New-RscQueryOracle -Host
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryOracle -Host -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryOracle -Host).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryOracle -Host -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryOracle -Host
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryOracle -Host" @"
+    Write-Message "New-RscQueryOracle -Host" @"
     An Oracle Host.
 "@ "[GraphQL: oracleHost]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryOracle -Rac
+# New-RscQueryOracle -Rac
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryOracle -Rac -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryOracle -Rac).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryOracle -Rac -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryOracle -Rac
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryOracle -Rac" @"
+    Write-Message "New-RscQueryOracle -Rac" @"
     An Oracle Real Application Cluster.
 "@ "[GraphQL: oracleRac]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryOracle -DataGuardGroup
+# New-RscQueryOracle -DataGuardGroup
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryOracle -DataGuardGroup -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryOracle -DataGuardGroup).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryOracle -DataGuardGroup -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryOracle -DataGuardGroup
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryOracle -DataGuardGroup" @"
+    Write-Message "New-RscQueryOracle -DataGuardGroup" @"
     An Oracle Data Guard Group.
 "@ "[GraphQL: oracleDataGuardGroup]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryOracle -Database
+# New-RscQueryOracle -Database
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryOracle -Database -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryOracle -Database).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryOracle -Database -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryOracle -Database
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryOracle -Database" @"
+    Write-Message "New-RscQueryOracle -Database" @"
     An Oracle Database.
 "@ "[GraphQL: oracleDatabase]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryOracle -LiveMounts
+# New-RscQueryOracle -LiveMounts
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryOracle -LiveMounts -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryOracle -LiveMounts).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryOracle -LiveMounts -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryOracle -LiveMounts
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -23449,21 +23449,21 @@ $inputs.Var.sortBy = @{
 	sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
 }
 "@
-    Write-Message "Invoke-RscQueryOracle -LiveMounts" @"
+    Write-Message "New-RscQueryOracle -LiveMounts" @"
     Paginated list of Oracle Live Mounts.
 "@ "[GraphQL: oracleLiveMounts]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryOracle -AcoParameters
+# New-RscQueryOracle -AcoParameters
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryOracle -AcoParameters -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryOracle -AcoParameters).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryOracle -AcoParameters -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryOracle -AcoParameters
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -23473,7 +23473,7 @@ $inputs.Var.input = @{
 	dbId = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryOracle -AcoParameters" @"
+    Write-Message "New-RscQueryOracle -AcoParameters" @"
     List of supported Advanced Cloning Options
 
 Supported in v6.0+
@@ -23482,15 +23482,15 @@ Get the list of supported Advanced Cloning Options (ACO) parameters.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryOracle -RecoverableRanges
+# New-RscQueryOracle -RecoverableRanges
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryOracle -RecoverableRanges -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryOracle -RecoverableRanges).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryOracle -RecoverableRanges -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryOracle -RecoverableRanges
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -23504,7 +23504,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryOracle -RecoverableRanges" @"
+    Write-Message "New-RscQueryOracle -RecoverableRanges" @"
     Get recoverable ranges of a Oracle database
 
 Supported in v5.0+
@@ -23513,15 +23513,15 @@ Retrieve the recoverable ranges for a specified Oracle database. A begin and/or 
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryOracle -MissedRecoverableRanges
+# New-RscQueryOracle -MissedRecoverableRanges
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryOracle -MissedRecoverableRanges -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryOracle -MissedRecoverableRanges).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryOracle -MissedRecoverableRanges -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryOracle -MissedRecoverableRanges
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -23533,7 +23533,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryOracle -MissedRecoverableRanges" @"
+    Write-Message "New-RscQueryOracle -MissedRecoverableRanges" @"
     Get missed recoverable ranges of a Oracle database
 
 Supported in v5.0+
@@ -23542,15 +23542,15 @@ Retrieve a list of missed recoverable ranges for a Oracle database. For each run
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryOracle -MissedSnapshots
+# New-RscQueryOracle -MissedSnapshots
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryOracle -MissedSnapshots -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryOracle -MissedSnapshots).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryOracle -MissedSnapshots -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryOracle -MissedSnapshots
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -23562,7 +23562,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryOracle -MissedSnapshots" @"
+    Write-Message "New-RscQueryOracle -MissedSnapshots" @"
     Get missed snapshots for an Oracle database
 
 Supported in v5.0+
@@ -23571,15 +23571,15 @@ Retrieve summary information about the missed snapshots of an Oracle database.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryOracle -AcoExampleDownloadLink
+# New-RscQueryOracle -AcoExampleDownloadLink
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryOracle -AcoExampleDownloadLink -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryOracle -AcoExampleDownloadLink).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryOracle -AcoExampleDownloadLink -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryOracle -AcoExampleDownloadLink
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -23589,7 +23589,7 @@ $inputs.Var.input = @{
 	dbId = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryOracle -AcoExampleDownloadLink" @"
+    Write-Message "New-RscQueryOracle -AcoExampleDownloadLink" @"
     Link to download the Advanced Recovery Options example file
 
 Supported in v5.3+
@@ -23598,15 +23598,15 @@ Link to download the Advanced Recovery Options example file which can be used to
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryOracle -PdbDetails
+# New-RscQueryOracle -PdbDetails
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryOracle -PdbDetails -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryOracle -PdbDetails).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryOracle -PdbDetails -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryOracle -PdbDetails
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -23624,7 +23624,7 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscQueryOracle -PdbDetails" @"
+    Write-Message "New-RscQueryOracle -PdbDetails" @"
     Get PDB details
 
 Supported in v8.0+
@@ -23633,15 +23633,15 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryOracle -HostLogBackupConfig
+# New-RscQueryOracle -HostLogBackupConfig
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryOracle -HostLogBackupConfig -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryOracle -HostLogBackupConfig).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryOracle -HostLogBackupConfig -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryOracle -HostLogBackupConfig
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -23649,21 +23649,21 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryOracle -HostLogBackupConfig" @"
+    Write-Message "New-RscQueryOracle -HostLogBackupConfig" @"
     Oracle Log backup configuration for Oracle Host.
 "@ "[GraphQL: oracleHostLogBackupConfig]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryOracle -DatabaseLogBackupConfig
+# New-RscQueryOracle -DatabaseLogBackupConfig
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryOracle -DatabaseLogBackupConfig -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryOracle -DatabaseLogBackupConfig).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryOracle -DatabaseLogBackupConfig -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryOracle -DatabaseLogBackupConfig
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -23671,21 +23671,21 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryOracle -DatabaseLogBackupConfig" @"
+    Write-Message "New-RscQueryOracle -DatabaseLogBackupConfig" @"
     Oracle log backup configuration for an Oracle Database.
 "@ "[GraphQL: oracleDatabaseLogBackupConfig]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryOracle -RacLogBackupConfig
+# New-RscQueryOracle -RacLogBackupConfig
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryOracle -RacLogBackupConfig -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryOracle -RacLogBackupConfig).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryOracle -RacLogBackupConfig -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryOracle -RacLogBackupConfig
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -23693,22 +23693,22 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryOracle -RacLogBackupConfig" @"
+    Write-Message "New-RscQueryOracle -RacLogBackupConfig" @"
     Oracle log backup configuration for an Oracle RAC.
 "@ "[GraphQL: oracleRacLogBackupConfig]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQuerySla -Domains
+# New-RscQuerySla -Domains
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQuerySla -Domains -GetGqlRequest).SaveQueryToFile()
+    (New-RscQuerySla -Domains).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQuerySla -Domains -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQuerySla -Domains
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -23761,21 +23761,21 @@ $inputs.Var.showRemoteSlas = <System.Boolean>
 # OPTIONAL
 $inputs.Var.shouldShowPausedClusters = <System.Boolean>
 "@
-    Write-Message "Invoke-RscQuerySla -Domains" @"
+    Write-Message "New-RscQuerySla -Domains" @"
     Retrieves a list of SLA Domains.
 "@ "[GraphQL: slaDomains]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQuerySla -GlobalFilterList
+# New-RscQuerySla -GlobalFilterList
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQuerySla -GlobalFilterList -GetGqlRequest).SaveQueryToFile()
+    (New-RscQuerySla -GlobalFilterList).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQuerySla -GlobalFilterList -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQuerySla -GlobalFilterList
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -23828,21 +23828,21 @@ $inputs.Var.showRemoteSlas = <System.Boolean>
 # OPTIONAL
 $inputs.Var.shouldShowPausedClusters = <System.Boolean>
 "@
-    Write-Message "Invoke-RscQuerySla -GlobalFilterList" @"
+    Write-Message "New-RscQuerySla -GlobalFilterList" @"
     Retrieves a list of SLA Domains.
 "@ "[GraphQL: globalSlaFilterConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQuerySla -Domain
+# New-RscQuerySla -Domain
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQuerySla -Domain -GetGqlRequest).SaveQueryToFile()
+    (New-RscQuerySla -Domain).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQuerySla -Domain -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQuerySla -Domain
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.id = <System.String>
@@ -23853,21 +23853,21 @@ $inputs.Var.shouldShowUpgradeInfo = <System.Boolean>
 # OPTIONAL
 $inputs.Var.shouldShowPausedClusters = <System.Boolean>
 "@
-    Write-Message "Invoke-RscQuerySla -Domain" @"
+    Write-Message "New-RscQuerySla -Domain" @"
     Query that retrieves an SLA Domain.
 "@ "[GraphQL: slaDomain]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQuerySla -CountOfObjectsProtected
+# New-RscQuerySla -CountOfObjectsProtected
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQuerySla -CountOfObjectsProtected -GetGqlRequest).SaveQueryToFile()
+    (New-RscQuerySla -CountOfObjectsProtected).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQuerySla -CountOfObjectsProtected -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQuerySla -CountOfObjectsProtected
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.rootOptionalFid = <System.String>
@@ -23922,21 +23922,21 @@ $inputs.Var.typeFilter = @(
 	<HierarchyObjectTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
 )
 "@
-    Write-Message "Invoke-RscQuerySla -CountOfObjectsProtected" @"
+    Write-Message "New-RscQuerySla -CountOfObjectsProtected" @"
     The number of objects protected by the SLA Domains.
 "@ "[GraphQL: countOfObjectsProtectedBySlas]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQuerySla -AuditDetail
+# New-RscQuerySla -AuditDetail
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQuerySla -AuditDetail -GetGqlRequest).SaveQueryToFile()
+    (New-RscQuerySla -AuditDetail).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQuerySla -AuditDetail -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQuerySla -AuditDetail
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -23960,42 +23960,42 @@ $inputs.Var.filter = @(
 # OPTIONAL
 $inputs.Var.timezone = <System.String>
 "@
-    Write-Message "Invoke-RscQuerySla -AuditDetail" @"
+    Write-Message "New-RscQuerySla -AuditDetail" @"
     List of audit details for a given SLA Domain.
 "@ "[GraphQL: slaAuditDetail]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQuerySla -AllSummariesByIds
+# New-RscQuerySla -AllSummariesByIds
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQuerySla -AllSummariesByIds -GetGqlRequest).SaveQueryToFile()
+    (New-RscQuerySla -AllSummariesByIds).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQuerySla -AllSummariesByIds -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQuerySla -AllSummariesByIds
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.slaIds = @(
 	<System.String>
 )
 "@
-    Write-Message "Invoke-RscQuerySla -AllSummariesByIds" @"
+    Write-Message "New-RscQuerySla -AllSummariesByIds" @"
     List of SLA Domain summaries for the given IDs.
 "@ "[GraphQL: allSlaSummariesByIds]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQuerySla -GlobalStatuses
+# New-RscQuerySla -GlobalStatuses
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQuerySla -GlobalStatuses -GetGqlRequest).SaveQueryToFile()
+    (New-RscQuerySla -GlobalStatuses).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQuerySla -GlobalStatuses -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQuerySla -GlobalStatuses
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -24017,42 +24017,42 @@ $inputs.Var.filter = @(
 # REQUIRED
 $inputs.Var.SlaId = <System.String>
 "@
-    Write-Message "Invoke-RscQuerySla -GlobalStatuses" @"
+    Write-Message "New-RscQuerySla -GlobalStatuses" @"
     Status on the clusters where global SLA is synced.
 "@ "[GraphQL: globalSlaStatuses]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQuerySla -ConflictObjects
+# New-RscQuerySla -ConflictObjects
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQuerySla -ConflictObjects -GetGqlRequest).SaveQueryToFile()
+    (New-RscQuerySla -ConflictObjects).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQuerySla -ConflictObjects -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQuerySla -ConflictObjects
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fids = @(
 	<System.String>
 )
 "@
-    Write-Message "Invoke-RscQuerySla -ConflictObjects" @"
+    Write-Message "New-RscQuerySla -ConflictObjects" @"
     Conflicting objects for an SLA Domain assignment.
 "@ "[GraphQL: slaConflictObjects]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQuerySla -ManagedVolumes
+# New-RscQuerySla -ManagedVolumes
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQuerySla -ManagedVolumes -GetGqlRequest).SaveQueryToFile()
+    (New-RscQuerySla -ManagedVolumes).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQuerySla -ManagedVolumes -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQuerySla -ManagedVolumes
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -24105,81 +24105,81 @@ $inputs.Var.filter = @(
 }
 )
 "@
-    Write-Message "Invoke-RscQuerySla -ManagedVolumes" @"
+    Write-Message "New-RscQuerySla -ManagedVolumes" @"
     Paginated list of SLA Managed Volumes.
 "@ "[GraphQL: slaManagedVolumes]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQuerySla -ManagedVolume
+# New-RscQuerySla -ManagedVolume
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQuerySla -ManagedVolume -GetGqlRequest).SaveQueryToFile()
+    (New-RscQuerySla -ManagedVolume).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQuerySla -ManagedVolume -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQuerySla -ManagedVolume
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQuerySla -ManagedVolume" @"
+    Write-Message "New-RscQuerySla -ManagedVolume" @"
     Details of a SLA Managed Volume object.
 "@ "[GraphQL: slaManagedVolume]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQuerySla -AllNcdComplianceData
+# New-RscQuerySla -AllNcdComplianceData
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQuerySla -AllNcdComplianceData -GetGqlRequest).SaveQueryToFile()
+    (New-RscQuerySla -AllNcdComplianceData).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQuerySla -AllNcdComplianceData -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQuerySla -AllNcdComplianceData
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.clusters = @(
 	<System.String>
 )
 "@
-    Write-Message "Invoke-RscQuerySla -AllNcdComplianceData" @"
+    Write-Message "New-RscQuerySla -AllNcdComplianceData" @"
     NAS Cloud Direct SLA Domain compliance data for the requested clusters.
 "@ "[GraphQL: allNcdSlaComplianceData]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVcenter -Vcenter
+# New-RscQueryVcenter -Vcenter
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryVcenter -Vcenter -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryVcenter -Vcenter).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryVcenter -Vcenter -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryVcenter -Vcenter
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryVcenter -Vcenter" @"
+    Write-Message "New-RscQueryVcenter -Vcenter" @"
     
 "@ "[GraphQL: vSphereVCenter]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVcenter -List
+# New-RscQueryVcenter -List
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryVcenter -List -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryVcenter -List).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryVcenter -List -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryVcenter -List
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -24232,21 +24232,21 @@ $inputs.Var.filter = @(
 }
 )
 "@
-    Write-Message "Invoke-RscQueryVcenter -List" @"
+    Write-Message "New-RscQueryVcenter -List" @"
     
 "@ "[GraphQL: vSphereVCenterConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVcenter -PreAddInfo
+# New-RscQueryVcenter -PreAddInfo
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryVcenter -PreAddInfo -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryVcenter -PreAddInfo).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryVcenter -PreAddInfo -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryVcenter -PreAddInfo
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -24270,21 +24270,21 @@ $inputs.Var.input = @{
 	}
 }
 "@
-    Write-Message "Invoke-RscQueryVcenter -PreAddInfo" @"
+    Write-Message "New-RscQueryVcenter -PreAddInfo" @"
     Get preAddInfo for a vcenter.
 "@ "[GraphQL: vCenterPreAddInfo]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVcenter -Networks
+# New-RscQueryVcenter -Networks
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryVcenter -Networks -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryVcenter -Networks).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryVcenter -Networks -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryVcenter -Networks
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -24292,7 +24292,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryVcenter -Networks" @"
+    Write-Message "New-RscQueryVcenter -Networks" @"
     Get the user-configured networks in the vCenter
 
 Supported in v5.3+
@@ -24301,15 +24301,15 @@ Get the names and IDs of the user configured networks in the vCenter. This infor
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVcenter -HotAddNetwork
+# New-RscQueryVcenter -HotAddNetwork
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryVcenter -HotAddNetwork -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryVcenter -HotAddNetwork).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryVcenter -HotAddNetwork -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryVcenter -HotAddNetwork
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -24317,7 +24317,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryVcenter -HotAddNetwork" @"
+    Write-Message "New-RscQueryVcenter -HotAddNetwork" @"
     Retrieve the user-configured network for HotAdd operations
 
 Supported in v5.3+
@@ -24326,15 +24326,15 @@ Retrieve the user-configured network for HotAdd backup and recovery operations o
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVcenter -NumProxiesNeeded
+# New-RscQueryVcenter -NumProxiesNeeded
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryVcenter -NumProxiesNeeded -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryVcenter -NumProxiesNeeded).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryVcenter -NumProxiesNeeded -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryVcenter -NumProxiesNeeded
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -24342,7 +24342,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryVcenter -NumProxiesNeeded" @"
+    Write-Message "New-RscQueryVcenter -NumProxiesNeeded" @"
     Get the number of HotAdd proxies needed for the vCenter
 
 Supported in v5.3+
@@ -24351,22 +24351,22 @@ Get the number of HotAdd proxies that need to be deployed to the vCenter to supp
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVcenter -HotAddProxy
+# New-RscQueryVcenter -HotAddProxy
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryVcenter -HotAddProxy -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryVcenter -HotAddProxy).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryVcenter -HotAddProxy -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryVcenter -HotAddProxy
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.clusterUuids = @(
 	<System.String>
 )
 "@
-    Write-Message "Invoke-RscQueryVcenter -HotAddProxy" @"
+    Write-Message "New-RscQueryVcenter -HotAddProxy" @"
     Get a list of HotAdd proxy virtual machines
 
 Supported in v5.3+
@@ -24375,15 +24375,15 @@ Retrieve summary information for all HotAdd proxy virtual machines.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVcenter -HotAddBandwidth
+# New-RscQueryVcenter -HotAddBandwidth
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryVcenter -HotAddBandwidth -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryVcenter -HotAddBandwidth).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryVcenter -HotAddBandwidth -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryVcenter -HotAddBandwidth
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -24391,7 +24391,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryVcenter -HotAddBandwidth" @"
+    Write-Message "New-RscQueryVcenter -HotAddBandwidth" @"
     Get the ingest and export bandwidth limits for HotAdd with the vCenter
 
 Supported in v5.3+
@@ -24400,15 +24400,15 @@ Get the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVcenter -AdvancedTagPreview
+# New-RscQueryVcenter -AdvancedTagPreview
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryVcenter -AdvancedTagPreview -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryVcenter -AdvancedTagPreview).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryVcenter -AdvancedTagPreview -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryVcenter -AdvancedTagPreview
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -24422,7 +24422,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryVcenter -AdvancedTagPreview" @"
+    Write-Message "New-RscQueryVcenter -AdvancedTagPreview" @"
     Preview list of virtual machines of a proposed filter condition
 
 Supported in v7.0+
@@ -24432,226 +24432,226 @@ Preview list of virtual machines of a proposed filter condition. The result migh
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphere -Datacenter
+# New-RscQueryVsphere -Datacenter
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryVsphere -Datacenter -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryVsphere -Datacenter).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryVsphere -Datacenter -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryVsphere -Datacenter
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryVsphere -Datacenter" @"
+    Write-Message "New-RscQueryVsphere -Datacenter" @"
     
 "@ "[GraphQL: vSphereDatacenter]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphere -ComputeCluster
+# New-RscQueryVsphere -ComputeCluster
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryVsphere -ComputeCluster -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryVsphere -ComputeCluster).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryVsphere -ComputeCluster -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryVsphere -ComputeCluster
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryVsphere -ComputeCluster" @"
+    Write-Message "New-RscQueryVsphere -ComputeCluster" @"
     
 "@ "[GraphQL: vSphereComputeCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphere -ResourcePool
+# New-RscQueryVsphere -ResourcePool
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryVsphere -ResourcePool -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryVsphere -ResourcePool).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryVsphere -ResourcePool -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryVsphere -ResourcePool
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryVsphere -ResourcePool" @"
+    Write-Message "New-RscQueryVsphere -ResourcePool" @"
     
 "@ "[GraphQL: vSphereResourcePool]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphere -Folder
+# New-RscQueryVsphere -Folder
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryVsphere -Folder -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryVsphere -Folder).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryVsphere -Folder -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryVsphere -Folder
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryVsphere -Folder" @"
+    Write-Message "New-RscQueryVsphere -Folder" @"
     
 "@ "[GraphQL: vSphereFolder]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphere -Host
+# New-RscQueryVsphere -Host
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryVsphere -Host -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryVsphere -Host).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryVsphere -Host -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryVsphere -Host
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryVsphere -Host" @"
+    Write-Message "New-RscQueryVsphere -Host" @"
     
 "@ "[GraphQL: vSphereHost]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphere -DatastoreCluster
+# New-RscQueryVsphere -DatastoreCluster
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryVsphere -DatastoreCluster -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryVsphere -DatastoreCluster).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryVsphere -DatastoreCluster -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryVsphere -DatastoreCluster
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryVsphere -DatastoreCluster" @"
+    Write-Message "New-RscQueryVsphere -DatastoreCluster" @"
     Vsphere datastore cluster based on id passed in.
 "@ "[GraphQL: vSphereDatastoreCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphere -Datastore
+# New-RscQueryVsphere -Datastore
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryVsphere -Datastore -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryVsphere -Datastore).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryVsphere -Datastore -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryVsphere -Datastore
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryVsphere -Datastore" @"
+    Write-Message "New-RscQueryVsphere -Datastore" @"
     Vsphere datastore based on id passed in.
 "@ "[GraphQL: vSphereDatastore]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphere -HostsByFids
+# New-RscQueryVsphere -HostsByFids
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryVsphere -HostsByFids -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryVsphere -HostsByFids).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryVsphere -HostsByFids -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryVsphere -HostsByFids
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fids = @(
 	<System.String>
 )
 "@
-    Write-Message "Invoke-RscQueryVsphere -HostsByFids" @"
+    Write-Message "New-RscQueryVsphere -HostsByFids" @"
     All of the VSphere hosts based on fids passed in.
 "@ "[GraphQL: vSphereHostsByFids]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphere -Tag
+# New-RscQueryVsphere -Tag
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryVsphere -Tag -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryVsphere -Tag).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryVsphere -Tag -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryVsphere -Tag
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryVsphere -Tag" @"
+    Write-Message "New-RscQueryVsphere -Tag" @"
     
 "@ "[GraphQL: vSphereTag]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphere -TagCategory
+# New-RscQueryVsphere -TagCategory
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryVsphere -TagCategory -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryVsphere -TagCategory).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryVsphere -TagCategory -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryVsphere -TagCategory
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryVsphere -TagCategory" @"
+    Write-Message "New-RscQueryVsphere -TagCategory" @"
     
 "@ "[GraphQL: vSphereTagCategory]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphere -Network
+# New-RscQueryVsphere -Network
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryVsphere -Network -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryVsphere -Network).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryVsphere -Network -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryVsphere -Network
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryVsphere -Network" @"
+    Write-Message "New-RscQueryVsphere -Network" @"
     
 "@ "[GraphQL: vSphereNetwork]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphere -TopLevelDescendantsList
+# New-RscQueryVsphere -TopLevelDescendantsList
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryVsphere -TopLevelDescendantsList -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryVsphere -TopLevelDescendantsList).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryVsphere -TopLevelDescendantsList -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryVsphere -TopLevelDescendantsList
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -24708,21 +24708,21 @@ $inputs.Var.filter = @(
 }
 )
 "@
-    Write-Message "Invoke-RscQueryVsphere -TopLevelDescendantsList" @"
+    Write-Message "New-RscQueryVsphere -TopLevelDescendantsList" @"
     
 "@ "[GraphQL: vSphereTopLevelDescendantsConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphere -RootRecoveryHierarchy
+# New-RscQueryVsphere -RootRecoveryHierarchy
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryVsphere -RootRecoveryHierarchy -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryVsphere -RootRecoveryHierarchy).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryVsphere -RootRecoveryHierarchy -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryVsphere -RootRecoveryHierarchy
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -24775,21 +24775,21 @@ $inputs.Var.filter = @(
 }
 )
 "@
-    Write-Message "Invoke-RscQueryVsphere -RootRecoveryHierarchy" @"
+    Write-Message "New-RscQueryVsphere -RootRecoveryHierarchy" @"
     The root hierarchy for VMware export, which includes VMware compute clusters and standalone hosts.
 "@ "[GraphQL: vSphereRootRecoveryHierarchy]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphere -HostList
+# New-RscQueryVsphere -HostList
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryVsphere -HostList -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryVsphere -HostList).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryVsphere -HostList -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryVsphere -HostList
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -24842,21 +24842,21 @@ $inputs.Var.filter = @(
 }
 )
 "@
-    Write-Message "Invoke-RscQueryVsphere -HostList" @"
+    Write-Message "New-RscQueryVsphere -HostList" @"
     
 "@ "[GraphQL: vSphereHostConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphere -Folders
+# New-RscQueryVsphere -Folders
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryVsphere -Folders -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryVsphere -Folders).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryVsphere -Folders -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryVsphere -Folders
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -24909,21 +24909,21 @@ $inputs.Var.filter = @(
 }
 )
 "@
-    Write-Message "Invoke-RscQueryVsphere -Folders" @"
+    Write-Message "New-RscQueryVsphere -Folders" @"
     Get all the vSphere folders.
 "@ "[GraphQL: vSphereFolders]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphere -ComputeClusters
+# New-RscQueryVsphere -ComputeClusters
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryVsphere -ComputeClusters -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryVsphere -ComputeClusters).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryVsphere -ComputeClusters -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryVsphere -ComputeClusters
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -24976,21 +24976,21 @@ $inputs.Var.filter = @(
 }
 )
 "@
-    Write-Message "Invoke-RscQueryVsphere -ComputeClusters" @"
+    Write-Message "New-RscQueryVsphere -ComputeClusters" @"
     Query compute clusters
 "@ "[GraphQL: vSphereComputeClusters]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphere -DatastoreList
+# New-RscQueryVsphere -DatastoreList
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryVsphere -DatastoreList -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryVsphere -DatastoreList).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryVsphere -DatastoreList -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryVsphere -DatastoreList
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -25043,21 +25043,21 @@ $inputs.Var.filter = @(
 }
 )
 "@
-    Write-Message "Invoke-RscQueryVsphere -DatastoreList" @"
+    Write-Message "New-RscQueryVsphere -DatastoreList" @"
     
 "@ "[GraphQL: vSphereDatastoreConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphere -DatastoreClusters
+# New-RscQueryVsphere -DatastoreClusters
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryVsphere -DatastoreClusters -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryVsphere -DatastoreClusters).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryVsphere -DatastoreClusters -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryVsphere -DatastoreClusters
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -25110,21 +25110,21 @@ $inputs.Var.filter = @(
 }
 )
 "@
-    Write-Message "Invoke-RscQueryVsphere -DatastoreClusters" @"
+    Write-Message "New-RscQueryVsphere -DatastoreClusters" @"
     Query vSphere datastore clusters.
 "@ "[GraphQL: vSphereDatastoreClusters]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphere -LiveMounts
+# New-RscQueryVsphere -LiveMounts
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryVsphere -LiveMounts -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryVsphere -LiveMounts).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryVsphere -LiveMounts -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryVsphere -LiveMounts
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -25149,21 +25149,21 @@ $inputs.Var.sortBy = @{
 	sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
 }
 "@
-    Write-Message "Invoke-RscQueryVsphere -LiveMounts" @"
+    Write-Message "New-RscQueryVsphere -LiveMounts" @"
     List of vSphere Live Mounts.
 "@ "[GraphQL: vSphereLiveMounts]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphere -MountList
+# New-RscQueryVsphere -MountList
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryVsphere -MountList -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryVsphere -MountList).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryVsphere -MountList -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryVsphere -MountList
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -25189,40 +25189,40 @@ $inputs.Var.sortBy = <VsphereMountSortBy> # Call [Enum]::GetValues([RubrikSecuri
 # OPTIONAL
 $inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
 "@
-    Write-Message "Invoke-RscQueryVsphere -MountList" @"
+    Write-Message "New-RscQueryVsphere -MountList" @"
     vSphere Live Mount Connection
 "@ "[GraphQL: vSphereMountConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphere -Mount
+# New-RscQueryVsphere -Mount
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryVsphere -Mount -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryVsphere -Mount).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryVsphere -Mount -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryVsphere -Mount
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryVsphere -Mount" @"
+    Write-Message "New-RscQueryVsphere -Mount" @"
     Get a vSphere Live Mount by id
 "@ "[GraphQL: vSphereMount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphere -HostDetails
+# New-RscQueryVsphere -HostDetails
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryVsphere -HostDetails -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryVsphere -HostDetails).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryVsphere -HostDetails -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryVsphere -HostDetails
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.input = @{
@@ -25230,7 +25230,7 @@ $inputs.Var.input = @{
 	id = <System.String>
 }
 "@
-    Write-Message "Invoke-RscQueryVsphere -HostDetails" @"
+    Write-Message "New-RscQueryVsphere -HostDetails" @"
     Get details of a ESXi hypervisor
 
 Supported in v5.0+
@@ -25239,56 +25239,56 @@ Get details of a ESXi hypervisor.
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphere -VmwareCdpLiveInfo
+# New-RscQueryVsphere -VmwareCdpLiveInfo
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryVsphere -VmwareCdpLiveInfo -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryVsphere -VmwareCdpLiveInfo).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryVsphere -VmwareCdpLiveInfo -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryVsphere -VmwareCdpLiveInfo
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.ids = @(
 	<System.String>
 )
 "@
-    Write-Message "Invoke-RscQueryVsphere -VmwareCdpLiveInfo" @"
+    Write-Message "New-RscQueryVsphere -VmwareCdpLiveInfo" @"
     
 "@ "[GraphQL: vsphereVmwareCdpLiveInfo]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphereVm -New
+# New-RscQueryVsphereVm -New
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryVsphereVm -New -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryVsphereVm -New).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryVsphereVm -New -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryVsphereVm -New
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.fid = <System.String>
 "@
-    Write-Message "Invoke-RscQueryVsphereVm -New" @"
+    Write-Message "New-RscQueryVsphereVm -New" @"
     
 "@ "[GraphQL: vSphereVmNew]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphereVm -NewList
+# New-RscQueryVsphereVm -NewList
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryVsphereVm -NewList -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryVsphereVm -NewList).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryVsphereVm -NewList -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryVsphereVm -NewList
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # OPTIONAL
 $inputs.Var.first = <System.Int32>
@@ -25341,42 +25341,42 @@ $inputs.Var.filter = @(
 }
 )
 "@
-    Write-Message "Invoke-RscQueryVsphereVm -NewList" @"
+    Write-Message "New-RscQueryVsphereVm -NewList" @"
     
 "@ "[GraphQL: vSphereVmNewConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphereVm -AsyncRequestStatus
+# New-RscQueryVsphereVm -AsyncRequestStatus
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryVsphereVm -AsyncRequestStatus -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryVsphereVm -AsyncRequestStatus).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryVsphereVm -AsyncRequestStatus -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryVsphereVm -AsyncRequestStatus
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.clusterUuid = <System.String>
 # REQUIRED
 $inputs.Var.id = <System.String>
 "@
-    Write-Message "Invoke-RscQueryVsphereVm -AsyncRequestStatus" @"
+    Write-Message "New-RscQueryVsphereVm -AsyncRequestStatus" @"
     
 "@ "[GraphQL: vSphereVMAsyncRequestStatus]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphereVm -RecoverableRange
+# New-RscQueryVsphereVm -RecoverableRange
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryVsphereVm -RecoverableRange -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryVsphereVm -RecoverableRange).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryVsphereVm -RecoverableRange -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryVsphereVm -RecoverableRange
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.snappableFid = <System.String>
@@ -25385,21 +25385,21 @@ $inputs.Var.beforeTime = <DateTime>
 # OPTIONAL
 $inputs.Var.afterTime = <DateTime>
 "@
-    Write-Message "Invoke-RscQueryVsphereVm -RecoverableRange" @"
+    Write-Message "New-RscQueryVsphereVm -RecoverableRange" @"
     
 "@ "[GraphQL: vsphereVMRecoverableRange]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphereVm -RecoverableRangeInBatch
+# New-RscQueryVsphereVm -RecoverableRangeInBatch
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryVsphereVm -RecoverableRangeInBatch -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryVsphereVm -RecoverableRangeInBatch).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryVsphereVm -RecoverableRangeInBatch -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryVsphereVm -RecoverableRangeInBatch
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.requestInfo = @{
@@ -25413,21 +25413,21 @@ $inputs.Var.requestInfo = @{
 	)
 }
 "@
-    Write-Message "Invoke-RscQueryVsphereVm -RecoverableRangeInBatch" @"
+    Write-Message "New-RscQueryVsphereVm -RecoverableRangeInBatch" @"
     
 "@ "[GraphQL: vsphereVMRecoverableRangeInBatch]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphereVm -MissedRecoverableRange
+# New-RscQueryVsphereVm -MissedRecoverableRange
 # -------------------------------------------------------------------
 
 if ($GetGqlRequest) {
-    (Invoke-RscQueryVsphereVm -MissedRecoverableRange -GetGqlRequest).SaveQueryToFile()
+    (New-RscQueryVsphereVm -MissedRecoverableRange).GqlRequest().SaveQueryToFile()
 } else {
-    $inputs = Invoke-RscQueryVsphereVm -MissedRecoverableRange -GetInput
-    $fieldTypeName = $inputs.Field.GetType().Name
-    $argNames = $inputs.Arg.Keys
+    $query = New-RscQueryVsphereVm -MissedRecoverableRange
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
     Write-Message @"
     # REQUIRED
 $inputs.Var.snappableFid = <System.String>
@@ -25436,7 +25436,7 @@ $inputs.Var.beforeTime = <DateTime>
 # OPTIONAL
 $inputs.Var.afterTime = <DateTime>
 "@
-    Write-Message "Invoke-RscQueryVsphereVm -MissedRecoverableRange" @"
+    Write-Message "New-RscQueryVsphereVm -MissedRecoverableRange" @"
     
 "@ "[GraphQL: vsphereVMMissedRecoverableRange]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }

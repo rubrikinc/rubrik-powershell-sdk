@@ -79,7 +79,7 @@ PS> [RubrikSecurityCloud.Types.SchemaMeta]::RscOpLookupByGqlRootField("clusterCo
 
 CmdletName             CmdletSwitchName GqlRootFieldName
 ----------             ---------------- ----------------
-Invoke-RscQueryCluster List             clusterConnection
+New-RscQueryCluster List             clusterConnection
 ```
 
 ### Root field lookup by return type

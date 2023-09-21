@@ -11,9 +11,9 @@ Describe -Name 'Cluster' -Fixture {
         Get-RscCluster | Should -Not -BeNullOrEmpty
     }
 
-    Context -Name 'Invoke-RscQueryCluster' {
+    Context -Name 'New-RscQueryCluster' {
         It -Name '-List' -Test {
-            $count = (Invoke-RscQueryCluster -List).Count
+            $count = (New-RscQueryCluster -List).Count
             if ($count -eq 0) {
                 Set-ItResult -Skipped -Because "No clusters found"
                 return
@@ -22,17 +22,17 @@ Describe -Name 'Cluster' -Fixture {
 
             # Retrieve the first cluster
             # (and testing variable passing while we're at it)
-            (Invoke-RscQueryCluster -List -Var @{first = 1 }).Nodes.Count | Should -Be 1
-            (Invoke-RscQueryCluster -List -Var first=1).Nodes.Count | Should -Be 1
-            (Invoke-RscQueryCluster -List -Var @{First = 1 }).Nodes.Count | Should -Be 1
-            (Invoke-RscQueryCluster -List -Var First=1).Nodes.Count | Should -Be 1
+            (New-RscQueryCluster -List -Var @{first = 1 }).Invoke().Nodes.Count | Should -Be 1
+            (New-RscQueryCluster -List -Var first=1).Invoke().Nodes.Count | Should -Be 1
+            (New-RscQueryCluster -List -Var @{First = 1 }).Invoke().Nodes.Count | Should -Be 1
+            (New-RscQueryCluster -List -Var First=1).Invoke().Nodes.Count | Should -Be 1
 
             if ($count -gt 1) {
-                (Invoke-RscQueryCluster -List -Var @{first = 2 }).Nodes.Count | Should -Be 2
+                (New-RscQueryCluster -List -Var @{first = 2 }).Invoke().Nodes.Count | Should -Be 2
             }
 
             # Gql cmdlet:
-            (Invoke-RscGqlQueryClusterConnection -Var @{first=1}).Nodes.Count | Should -Be 1
+            (New-RscGqlQueryClusterConnection -Var @{first=1}).Invoke().Nodes.Count | Should -Be 1
 
         } 
     }

@@ -1,27 +1,27 @@
 BeforeAll {
     & "$PSScriptRoot\..\..\Utils\import.ps1"
 }
-Describe -Name 'Invoke-RscQueryMssql -TopLevelDescendant' -Fixture {
+Describe -Name 'New-RscQueryMssql -TopLevelDescendant' -Fixture {
     It -Name 'PhysicalHost' -Test {
-        $inputs=(Invoke-RscQueryMssql -Topleveldescendant -GetInput)
+        $query=(New-RscQueryMssql -Topleveldescendant)
 
         # Field is a MssqlTopLevelDescendantTypeConnection
-        $inputs.Field.GetType().Name | Should -Be 'MssqlTopLevelDescendantTypeConnection'
+        $query.Field.GetType().Name | Should -Be 'MssqlTopLevelDescendantTypeConnection'
 
         # which has a Nodes field,
-        $inputs.Field.Nodes.GetType().Name | Should -Be 'List`1'
+        $query.Field.Nodes.GetType().Name | Should -Be 'List`1'
 
         # which is a list of interfaces of type MssqlTopLevelDescendantType
         # https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/mssqltopleveldescendanttype.doc.html
-        $inputs.Field.Nodes.GetType().GenericTypeArguments[0].Name | Should -Be 'MssqlTopLevelDescendantType'
+        $query.Field.Nodes.GetType().GenericTypeArguments[0].Name | Should -Be 'MssqlTopLevelDescendantType'
 
         # Auto exploration fills this list with all the possible implementations of MssqlTopLevelDescendantType
-        $nodeTypeNames=$inputs.Field.Nodes| ForEach-Object { $_.GetType().Name} | Sort-Object
+        $nodeTypeNames=$query.Field.Nodes| ForEach-Object { $_.GetType().Name} | Sort-Object
         $impls=@(Get-RscType -Interface MssqlTopLevelDescendantType).Name| Sort-Object
         $nodeTypeNames | Should -Be $impls
         
         # Let's select the node in the list that is a PhysicalHost
-        $node=($inputs.Field.Nodes | Where-Object { $_.GetType().Name -eq 'PhysicalHost' })
+        $node=($query.Field.Nodes | Where-Object { $_.GetType().Name -eq 'PhysicalHost' })
 
         # Verify that exploration set ObjectType for retrieval
         $node.ObjectType | Should -Not -BeNullOrEmpty

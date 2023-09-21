@@ -72,13 +72,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         )]
         public Hashtable Var { get; set; }
 
-        protected override void BeginProcessing()
+    #pragma warning disable 1591 // ignore warning 'Missing XML comment'
+    
+        public Invoke_Rsc(): base(retrieveConnection: true)
         {
-            base.BeginProcessing();
-            RetrieveConnection();
         }
+    
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 switch (ParameterSetName)
@@ -111,6 +113,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             }
             if (Query is RscQuery query)
             {
+                query.Var.Finalize();
                 this.SendGqlRequest(query.GqlRequest());
                 return;
             }

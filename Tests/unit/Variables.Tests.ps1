@@ -7,9 +7,9 @@ BeforeAll {
 }
 
 Describe -Name "Test variables" -Fixture {
-    It -Name "With Invoke-RscQueryMssql -RecoverableRanges" -Test {
+    It -Name "With New-RscQueryMssql -RecoverableRanges" -Test {
         # Make sure the schema hasn't changed:
-        $varInfo = (Invoke-RscQueryMssql -RecoverableRanges -GetInput).Var.Info()
+        $varInfo = (New-RscQueryMssql -RecoverableRanges).Var.Info()
         $varInfo.Count | Should -Be 1
         $varInfo[0].Name | Should -Be "input"
         $varInfo[0].Type | Should -Be "GetMssqlDbRecoverableRangesInput"
@@ -19,21 +19,21 @@ Describe -Name "Test variables" -Fixture {
 
         # No variables
         $vars = @{}
-        $serialized = (Invoke-RscQueryMssql -RecoverableRanges -Var $vars -GetGqlRequest).Variables
+        $serialized = (New-RscQueryMssql -RecoverableRanges -Var $vars).GqlRequest().Variables
         $serialized | Should -Be '{"input":{}}'
 
         # Empty input:
         $vars = @{
             "input" = @{}
         }
-        $serialized = (Invoke-RscQueryMssql -RecoverableRanges -Var $vars -GetGqlRequest).Variables
+        $serialized = (New-RscQueryMssql -RecoverableRanges -Var $vars).GqlRequest().Variables
         $serialized | Should -Be '{"input":{}}'
 
         # One variable
         $vars = @{
             "id" = "123"
         }
-        $serialized = (Invoke-RscQueryMssql -RecoverableRanges -Var $vars -GetGqlRequest).Variables
+        $serialized = (New-RscQueryMssql -RecoverableRanges -Var $vars).GqlRequest().Variables
         $serialized | Should -Be '{"input":{"id":"123"}}'
 
         # Two variables
@@ -41,7 +41,7 @@ Describe -Name "Test variables" -Fixture {
             "id"         = "123"
             "beforeTime" = "2020-01-01T00:00:00Z"
         }
-        $serialized = (Invoke-RscQueryMssql -RecoverableRanges -Var $vars -GetGqlRequest).Variables
+        $serialized = (New-RscQueryMssql -RecoverableRanges -Var $vars).GqlRequest().Variables
         $isFirstOrder = $serialized -eq '{"input":{"beforeTime":"2020-01-01T00:00:00Z","id":"123"}}'
         $isSecondOrder = $serialized -eq '{"input":{"id":"123","beforeTime":"2020-01-01T00:00:00Z"}}'
 
@@ -50,13 +50,13 @@ Describe -Name "Test variables" -Fixture {
         # Lower-case 'id'
         $vars = Get-RscType -Name GetMssqlDbRecoverableRangesInput
         $vars.id = "123"
-        $serialized = (Invoke-RscQueryMssql -RecoverableRanges -Var $vars -GetGqlRequest).Variables
+        $serialized = (New-RscQueryMssql -RecoverableRanges -Var $vars).GqlRequest().Variables
         $serialized | Should -Be '{"input":{"id":"123"}}'
 
         # Upper-case 'Id'
         $vars = Get-RscType -Name GetMssqlDbRecoverableRangesInput
         $vars.Id = "123"
-        $serialized = (Invoke-RscQueryMssql -RecoverableRanges -Var $vars -GetGqlRequest).Variables
+        $serialized = (New-RscQueryMssql -RecoverableRanges -Var $vars).GqlRequest().Variables
         $serialized | Should -Be '{"input":{"id":"123"}}'
     }
 }

@@ -10,7 +10,6 @@ using Newtonsoft.Json.Linq;
 using RubrikSecurityCloud.Types;
 using RubrikSecurityCloud.PowerShell.Private;
 using GraphQL;
-using System.Management.Automation;
 using System.Management.Automation.Runspaces;
 
 // namespace is RubrikSecurityCloud (and not private)

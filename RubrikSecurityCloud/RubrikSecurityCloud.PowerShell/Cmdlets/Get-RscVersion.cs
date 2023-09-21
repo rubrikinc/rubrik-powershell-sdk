@@ -16,10 +16,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// values should match for maximum SDK compatibility. 
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "RscVersion")]
-    public class Get_RscVersion: RscPSCmdlet
+    public class Get_RscVersion : RscBasePSCmdlet
     {
+
+#pragma warning disable 1591 // ignore warning 'Missing XML comment'
+
+        public Get_RscVersion(): base(retrieveConnection: true)
+        {
+        }
+
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
+
             try
             {
                 RscSessionInfo sessionInfo =
@@ -28,12 +37,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             }
             catch (Exception ex)
             {
-                var error = new ErrorRecord(
-                    ex,
-                    "InvalidArgumentToCmdlet",
-                    ErrorCategory.InvalidArgument,
-                    null);
-                ThrowTerminatingError(error);
+                ThrowTerminatingException(ex);
             }
         }
     }

@@ -25,23 +25,23 @@ BeforeAll {
     }
 }
 Describe -Name "Test patching" -Fixture {
-    It -Name "With Invoke-RscQueryCluster -List" -Test {
+    It -Name "With New-RscQueryCluster -List" -Test {
         # Make sure the schema hasn't changed:
-        $fieldSpec = FieldSpec(Invoke-RscQueryCluster -List -GetInput)
+        $fieldSpec = FieldSpec(New-RscQueryCluster -List)
         $fieldSpec | Should -Be "count nodes { pauseStatus status subStatus systemStatus type id isHealthy name systemStatusMessage version } pageInfo { endCursor hasNextPage hasPreviousPage startCursor }"
 
         # Add a scalar
-        $fieldSpec = FieldSpec(Invoke-RscQueryCluster -List -Patch nodes.snapshotcount -GetInput)
+        $fieldSpec = FieldSpec(New-RscQueryCluster -List -Patch nodes.snapshotcount)
         $fieldSpec | Should -Be "count nodes { pauseStatus status subStatus systemStatus type id isHealthy name snapshotcount systemStatusMessage version } pageInfo { endCursor hasNextPage hasPreviousPage startCursor }"
         # Add an object
-        $fieldSpec = FieldSpec(Invoke-RscQueryCluster -List -Patch nodes.cdmupgradeinfo -GetInput)
+        $fieldSpec = FieldSpec(New-RscQueryCluster -List -Patch nodes.cdmupgradeinfo)
         $fieldSpec | Should -Be "count nodes { pauseStatus status subStatus systemStatus type id isHealthy name systemStatusMessage version cdmUpgradeInfo { clusterJobStatus versionStatus clusterUuid currentStateProgress downloadedVersion fastUpgradePreferred finishedStates overallProgress pendingStates previousVersion scheduleUpgradeAction scheduleUpgradeAt scheduleUpgradeMode stateMachineStatus stateMachineStatusAt upgradeEndAt upgradeEventSeriesId upgradeStartAt version } } pageInfo { endCursor hasNextPage hasPreviousPage startCursor }"
         # Take out a scalar
-        $fieldSpec = FieldSpec(Invoke-RscQueryCluster -List -Patch '-nodes.name' -GetInput)
+        $fieldSpec = FieldSpec(New-RscQueryCluster -List -Patch '-nodes.name')
         $fieldSpec | Should -Be "count nodes { pauseStatus status subStatus systemStatus type id isHealthy systemStatusMessage version } pageInfo { endCursor hasNextPage hasPreviousPage startCursor }"
 
         # Take out an object
-        $fieldSpec = FieldSpec(Invoke-RscQueryCluster -List -Patch '-nodes' -GetInput)
+        $fieldSpec = FieldSpec(New-RscQueryCluster -List -Patch '-nodes')
         $fieldSpec | Should -Be "count pageInfo { endCursor hasNextPage hasPreviousPage startCursor }"
     }
 }

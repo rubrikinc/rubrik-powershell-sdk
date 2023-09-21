@@ -1,37 +1,29 @@
-.PHONY: default test unit-test mock-test e2e-test 
+.PHONY: default test pwsh-unit-test sh-unit-test unit-test e2e-test clean
 default: test
+test: unit-test e2e-test
 
 SH_UNIT_TESTS = $(wildcard unit/*.sh)
 
 pwsh-unit-test:
-	@echo "Running PowerShell unit tests..."
+	@echo "[Core] Running PowerShell unit tests..."
 	pwsh -c 'Invoke-Pester -CI ./unit'
 
 sh-unit-test:
-	@echo "Running DOTNET unit tests..."
+	@echo "[Core] Running DOTNET unit tests..."
 	@for file in $(SH_UNIT_TESTS); do \
 		echo "----> Running $$file"; \
 		bash $$file; \
 	done
 
 unit-test: pwsh-unit-test sh-unit-test
+	$(MAKE) -C ../Toolkit/Tests unit-test
 
-mock-test:
-	@echo "Mock tests: BYPASSED"
-
-# e2e-test: run e2e tests.
 e2e-test:
-	@echo "Running e2e tests..."
+	@echo "[Core] Running e2e tests..."
 	pwsh -c 'Invoke-Pester -CI ./e2e'
-
-
-# test: run unit tests and mock tests.
-test: unit-test mock-test
-	# If the env var RSC_SERVICE_ACCOUNT_FILE is not empty, run e2e tests.
-	@if [ -n "$(RSC_SERVICE_ACCOUNT_FILE)" ]; then \
-		make e2e-test; \
-	fi
+	$(MAKE) -C ../Toolkit/Tests e2e-test
 
 clean:
+	$(MAKE) -C ../Toolkit/Tests clean
 	rm -rf testResults.xml
 	if [ -d mock_api_server ]; then $(MAKE) -C mock_api_server clean ; fi

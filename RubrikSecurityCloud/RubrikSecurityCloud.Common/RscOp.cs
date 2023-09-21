@@ -48,7 +48,7 @@ namespace RubrikSecurityCloud
                 !string.IsNullOrEmpty(this.GqlReturnTypeName);
         }
 
-        public string InvokeInfo()
+        public string Syntax()
         {
             if (string.IsNullOrEmpty(this.CmdletName))
             {
@@ -63,7 +63,7 @@ namespace RubrikSecurityCloud
 
         public override string ToString()
         {
-            var s = this.InvokeInfo() + "# Gql: ";
+            var s = this.Syntax() + "# Gql: ";
             if (string.IsNullOrEmpty(this.GqlRootFieldName) ||
                 this.GqlRootFieldName.ToLower() == "unknown")
             {

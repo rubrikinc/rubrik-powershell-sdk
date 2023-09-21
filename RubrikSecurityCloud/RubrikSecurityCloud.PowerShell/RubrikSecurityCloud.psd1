@@ -8,7 +8,7 @@
 # RootModule = 'RubrikSecurityCloud.PowerShell.dll'
 
 # Version number of this module.
-ModuleVersion = '0.13.0'
+ModuleVersion = '0.14.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -57,7 +57,10 @@ PowerShellVersion = '5.0.0'
 # ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-TypesToProcess = @('Types.ps1xml')
+# Filled in by UpdatePsd1.ps1
+TypesToProcess = @(
+  "Toolkit/Format/MssqlDatabase.Format.ps1xml",
+  "Toolkit/Format/VsphereVm.Format.ps1xml")
 
 # Format files (.ps1xml) to be loaded when importing this module
 # FormatsToProcess = @()
@@ -108,7 +111,7 @@ PrivateData = @{
         # ReleaseNotes = ''
 
         # Prerelease string of this module
-        Prerelease = 'Beta'
+        # Prerelease = 'Beta'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         RequireLicenseAcceptance = $false
