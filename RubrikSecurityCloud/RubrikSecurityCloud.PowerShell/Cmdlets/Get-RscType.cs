@@ -78,7 +78,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
 
     [Cmdlet(VerbsCommon.Get, "RscType", DefaultParameterSetName = "GetTypeList")]
-    public class Get_RscType : PSCmdlet
+    public class Get_RscType : RscBasePSCmdlet
     {
         /// <summary>
         /// The name of the Rsc Type to return
@@ -153,9 +153,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         [ValidateNotNullOrEmpty]
         public string Interface { get; set; }
 
-        //cmdlet code
+    #pragma warning disable 1591 // ignore warning 'Missing XML comment'
+
+        public Get_RscType() : base(retrieveConnection: false)
+        {
+        }
+    
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 switch (ParameterSetName)
@@ -216,12 +222,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             }
             catch (Exception ex)
             {
-                var error = new ErrorRecord(
-                    ex,
-                    "InvalidArgumentToCmdlet",
-                    ErrorCategory.InvalidArgument,
-                    null);
-                ThrowTerminatingError(error);
+                ThrowTerminatingException(ex);
             }
         }
 

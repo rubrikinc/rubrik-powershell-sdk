@@ -139,8 +139,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         private string _clientSecret;
         private bool _doConnect = true;
 
+#pragma warning disable 1591 // ignore warning 'Missing XML comment'
+
+        public Connect_Rsc(): base(retrieveConnection: false)
+        {
+        }
+
         protected override void BeginProcessing()
         {
+            base.BeginProcessing();
             switch (this.ParameterSetName)
             {
                 case "IfNeeded":
@@ -247,12 +254,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                             }
                             else
                             {
-                                var error = new ErrorRecord(
+                                ThrowTerminatingException(
                                         ex,
                                         "CannotOpenOrParseServiceAccountFile",
                                         ErrorCategory.InvalidData,
                                         ServiceAccountFile);
-                                ThrowTerminatingError(error);
                             }
 
                         }
@@ -278,6 +284,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             if (this._doConnect)
             {
                 this._Connect();

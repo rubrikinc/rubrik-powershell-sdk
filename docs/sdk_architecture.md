@@ -15,7 +15,7 @@ The SDK is internally composed of two layers:
 Note that distinction is not visible to the user,
 cmdlets and types from both layers are exposed
 in the same module. For example, both
-`Get-RscAccount` and `Invoke-RscQueryAccount` are
+`Get-RscAccount` and `New-RscQueryAccount` are
 available to the user, but the latter is
 part of the GQL-SDK layer, and the former
 is part of the SDK-Extensions layer.
@@ -61,8 +61,8 @@ Example: Query-RscCluster command
 
 ## SDK-Extensions
 
-- Handwritten PowerShell scripts that wrap calls around `Query-Rsc*`
-  and `Mutate-Rsc*` calls
+- Handwritten PowerShell scripts that wrap calls around `New-RscQuery*`
+  and `New-RscMutation*` calls
 - A few are provided by Rubrik Engineering
 - Community is encouraged to contribute
 
@@ -71,7 +71,7 @@ Example: Query-RscCluster command
 - Connect to RSC if needed
 - Get inputs using -GetInput
 - Modify inputs as required
-- Call the appropriate `Query-Rsc*` or `Mutate-Rsc*` cmdlet
+- Call the appropriate `New-RscQuery*` or `New-RscMutation*` cmdlet
 
 ### Example: Get-RscCluster.ps1
 

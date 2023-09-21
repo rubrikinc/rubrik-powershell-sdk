@@ -305,13 +305,18 @@ namespace RubrikSecurityCloud
         }
 
         /// <summary>
-        /// Finalize the variables for sending to the server.
+        /// Finalize the variables for sending to the server:
+        /// - perform basic conversions to match var definitions
+        ///   (e.g.: a value of "3" is converted to 3
+        ///          where the var def says int)
+        /// - check for missing required variables
+        /// - make sure all variables are JSON-serializable.
         /// </summary>
         public VarDict Finalize()
         {
             // run again in case user has modified the hashtable
             // directly (with Add() for example) without calling Set()
-            conformToVarDefs(null, true);
+            conformToVarDefs();
             return JsonUtils.JsonReady(this) as VarDict;
         }
 

@@ -56,7 +56,7 @@ namespace RubrikSecurityCloud.Types
     //             var results = powerShell.Invoke();
 
     //             string output = string.Join(", ", results);
-    //             // example: "Invoke-RscQueryCluster -List"
+    //             // example: "New-RscQueryCluster -List"
     //             return output;
     //         }
     //     }

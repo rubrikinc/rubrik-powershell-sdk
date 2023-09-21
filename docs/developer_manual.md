@@ -66,7 +66,7 @@ them in a PowerShell array.
 With the SDK, you can do the same thing with a single cmdlet:
 
 ```powershell
-PS> (Invoke-RscQueryCluster -List ).Nodes.Id
+PS> (New-RscQueryCluster -List ).Nodes.Id
 9b429c53-2afe-44b5-b4e4-e3a4308a69fb
 fd326eaa-534d-4f2a-861e-250d192fbaae
 ```
@@ -92,7 +92,7 @@ The answer is that the SDK is built with a 2-layer command/subcommand
 structure: Each cmdlet regroups a set of related queries, and each
 subcommand corresponds to a specific query.
 
-For example here, `Invoke-RscQueryCluster` is the cmdlet that regroups
+For example here, `New-RscQueryCluster` is the cmdlet that regroups
 all the queries related to clusters, and `-List` is the subcommand that
 corresponds to the query we want to run.
 
@@ -101,7 +101,7 @@ You can see the list of all the cmdlets and their subcommands in
 
 Now, about the `().Nodes.Id`:
 
-`Invoke-RscQueryCluster -List` returns a
+`New-RscQueryCluster -List` returns a
 [ClusterConnection object](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/clusterconnection.doc.html)
 which contains a `Nodes` property, which is an array of `Cluster` objects,
 which in turn have an `Id` property.
@@ -153,7 +153,7 @@ The SDK cmdlets can be divided into 3 categories:
 
 - The core cmdlets: `Connect-Rsc`, `Disconnect-Rsc`, `Invoke-Rsc`,
   `Get-RscType`, `Get-RscCmdlet` and `Set-RscServiceAccountFile`.
-- The operation cmdlets: `Invoke-RscQuery*` and `Invoke-RscMutate*` .
+- The operation cmdlets: `New-RscQuery*` and `New-RscMutation*` .
   These cmdlets are generated from the RSC GraphQL schema, and
   allow you to run any query or mutation.
 - The wrapper cmdlets: all the rest that isn't a core cmdlet, and
@@ -172,11 +172,11 @@ core cmdlet, as we saw before, you would do:
 (Invoke-Rsc  "query {clusterConnection(sortBy:RegisteredAt){nodes{id}}}").Nodes.Id
 ```
 
-We also saw that with the `Invoke-RscQueryCluster` operation cmdlet,
+We also saw that with the `New-RscQueryCluster` operation cmdlet,
 you would do:
 
 ```powershell
-(Invoke-RscQueryCluster -List ).Nodes.Id
+(New-RscQueryCluster -List ).Nodes.Id
 ```
 
 And finally, there is also a `Get-RscCluster` wrapper cmdlet:
@@ -214,41 +214,41 @@ $coreCmdlets = @('Set-RscServiceAccountFile', 'Connect-Rsc', 'Disconnect-Rsc', '
 
 | Cmdlet | Description |
 | --- | --- |
-| `Invoke-RscMutateActivitySeries` | Run an Activity Series related GraphQL mutation |
-| `Invoke-RscMutateAws` | Run an AWS-related GraphQL mutation |
-| `Invoke-RscMutateAzure` | Run an Azure-related GraphQL mutation |
-| `Invoke-RscMutateCassandra` | Run a Cassandra-related GraphQL mutation|
-| `Invoke-RscMutateCluster` | Run a Cluster-related GraphQL mutation|
-| `Invoke-RscMutateDb2` | Run a DB2-related GraphQL mutation|
-| `Invoke-RscMutateHyperv` | Run a HyperV-related GraphQL mutation|
-| `Invoke-RscMutateLdap` | Run an LDAP-related GraphQL mutation|
-| `Invoke-RscMutateMongo` | Run a Mongo-related GraphQL mutation|
-| `Invoke-RscMutateMssql` | Run a MSSQL-related GraphQL mutation|
-| `Invoke-RscMutateNutanix` | Run a Nutanix-related GraphQL mutation |
-| `Invoke-RscMutateO365` | Run an Office365-related GraphQL mutation |
-| `Invoke-RscMutateOracle` | Run an Oracle-related GraphQL mutation |
-| `Invoke-RscMutateSla` | Run an SLA-related GraphQL mutation |
-| `Invoke-RscMutateVcenter` | Run a VCenter-related GraphQL mutation |
-| `Invoke-RscMutateVsphere` | Run a VSphere-related GraphQL mutation |
-| `Invoke-RscMutateVsphereVm` | Run a VSphere VM-related GraphQL mutation |
-| `Invoke-RscQueryAccount` | Run an Account-related GraphQL query |
-| `Invoke-RscQueryActivitySeries` | Run an Activity Series-related GraphQL query |
-| `Invoke-RscQueryAws` | Run an AWS-related GraphQL query |
-| `Invoke-RscQueryAzure` | Run an Azure-related GraphQL query |
-| `Invoke-RscQueryCassandra` | Run a Cassandra-related GraphQL query |
-| `Invoke-RscQueryCluster` | Run a  Cluster-related GraphQL query |
-| `Invoke-RscQueryDb2` | Run a DB2-related GraphQL query |
-| `Invoke-RscQueryHyperv` | Run an HyperV-related GraphQL query |
-| `Invoke-RscQueryLdap` | Run an LDAP-related GraphQL query |
-| `Invoke-RscQueryMongo` | Run a Mongo-related GraphQL query |
-| `Invoke-RscQueryMssql` | Run a MSSQL-related GraphQL query |
-| `Invoke-RscQueryNutanix` | Run a Nutanix-related GraphQL query |
-| `Invoke-RscQueryO365` | Run an Office365-related GraphQL query |
-| `Invoke-RscQueryOracle` | Run an Oracle-related GraphQL query |
-| `Invoke-RscQuerySla` | Run an SLA-related GraphQL query |
-| `Invoke-RscQueryVcenter` | Run a VCenter-related GraphQL query |
-| `Invoke-RscQueryVsphere` | Run a VSphere-related GraphQL query |
-| `Invoke-RscQueryVsphereVm` | Run a VSphere VM-related GraphQL query |
+| `New-RscMutationActivitySeries` | Run an Activity Series related GraphQL mutation |
+| `New-RscMutationAws` | Run an AWS-related GraphQL mutation |
+| `New-RscMutationAzure` | Run an Azure-related GraphQL mutation |
+| `New-RscMutationCassandra` | Run a Cassandra-related GraphQL mutation|
+| `New-RscMutationCluster` | Run a Cluster-related GraphQL mutation|
+| `New-RscMutationDb2` | Run a DB2-related GraphQL mutation|
+| `New-RscMutationHyperv` | Run a HyperV-related GraphQL mutation|
+| `New-RscMutationLdap` | Run an LDAP-related GraphQL mutation|
+| `New-RscMutationMongo` | Run a Mongo-related GraphQL mutation|
+| `New-RscMutationMssql` | Run a MSSQL-related GraphQL mutation|
+| `New-RscMutationNutanix` | Run a Nutanix-related GraphQL mutation |
+| `New-RscMutationO365` | Run an Office365-related GraphQL mutation |
+| `New-RscMutationOracle` | Run an Oracle-related GraphQL mutation |
+| `New-RscMutationSla` | Run an SLA-related GraphQL mutation |
+| `New-RscMutationVcenter` | Run a VCenter-related GraphQL mutation |
+| `New-RscMutationVsphere` | Run a VSphere-related GraphQL mutation |
+| `New-RscMutationVsphereVm` | Run a VSphere VM-related GraphQL mutation |
+| `New-RscQueryAccount` | Run an Account-related GraphQL query |
+| `New-RscQueryActivitySeries` | Run an Activity Series-related GraphQL query |
+| `New-RscQueryAws` | Run an AWS-related GraphQL query |
+| `New-RscQueryAzure` | Run an Azure-related GraphQL query |
+| `New-RscQueryCassandra` | Run a Cassandra-related GraphQL query |
+| `New-RscQueryCluster` | Run a  Cluster-related GraphQL query |
+| `New-RscQueryDb2` | Run a DB2-related GraphQL query |
+| `New-RscQueryHyperv` | Run an HyperV-related GraphQL query |
+| `New-RscQueryLdap` | Run an LDAP-related GraphQL query |
+| `New-RscQueryMongo` | Run a Mongo-related GraphQL query |
+| `New-RscQueryMssql` | Run a MSSQL-related GraphQL query |
+| `New-RscQueryNutanix` | Run a Nutanix-related GraphQL query |
+| `New-RscQueryO365` | Run an Office365-related GraphQL query |
+| `New-RscQueryOracle` | Run an Oracle-related GraphQL query |
+| `New-RscQuerySla` | Run an SLA-related GraphQL query |
+| `New-RscQueryVcenter` | Run a VCenter-related GraphQL query |
+| `New-RscQueryVsphere` | Run a VSphere-related GraphQL query |
+| `New-RscQueryVsphereVm` | Run a VSphere VM-related GraphQL query |
 
 To obtain this list programmatically, you can do:
 
@@ -298,7 +298,7 @@ scenarios:
 
 Say you know you need to run the `clusterConnection()` query, as we
 saw before, you can always call `Invoke-Rsc` but there's a cmdlet
-that's a better fit: `Invoke-RscQueryCluster`. How do you find it?
+that's a better fit: `New-RscQueryCluster`. How do you find it?
 
 The SDK has a special cmdlet that helps you find cmdlets by GraphQL
 operation name: `Get-RscCmdlet`. You can use it like this:
@@ -308,37 +308,37 @@ PS> Get-RscCmdlet clusterConnection
 
 GqlOperation      InvokeCommand
 ------------      -------------
-clusterConnection Invoke-RscQueryCluster -List
+clusterConnection New-RscQueryCluster -List
 ```
 
-Note that the output says `Invoke-RscQueryCluster -List` and not
-just `Invoke-RscQueryCluster`.
+Note that the output says `New-RscQueryCluster -List` and not
+just `New-RscQueryCluster`.
 
 ### Finding a cmdlet by command and subcommand
 
 Now say you know you want to send a query within the _cluster_ area, PowerShell
-auto-completion is your friend, start by typing `Invoke-RscQuery` and then
+auto-completion is your friend, start by typing `New-RscQuery` and then
 pressing `Tab` twice:
 
 ```powershell
-PS /Users/guirava/sdk> Invoke-RscQuery
-Invoke-RscQueryAccount         Invoke-RscQueryMongo
-Invoke-RscQueryActivitySeries  Invoke-RscQueryMssql
-Invoke-RscQueryAws             Invoke-RscQueryNutanix
-Invoke-RscQueryAzure           Invoke-RscQueryO365
-Invoke-RscQueryAzureO365       Invoke-RscQueryOracle
-Invoke-RscQueryCassandra       Invoke-RscQuerySla
-Invoke-RscQueryCluster         Invoke-RscQueryVcenter
-Invoke-RscQueryHyperv          Invoke-RscQueryVsphere
-Invoke-RscQueryLdap            Invoke-RscQueryVsphereVm
+PS /Users/guirava/sdk> New-RscQuery
+New-RscQueryAccount         New-RscQueryMongo
+New-RscQueryActivitySeries  New-RscQueryMssql
+New-RscQueryAws             New-RscQueryNutanix
+New-RscQueryAzure           New-RscQueryO365
+New-RscQueryAzureO365       New-RscQueryOracle
+New-RscQueryCassandra       New-RscQuerySla
+New-RscQueryCluster         New-RscQueryVcenter
+New-RscQueryHyperv          New-RscQueryVsphere
+New-RscQueryLdap            New-RscQueryVsphereVm
 ```
 
-Now you can see `Invoke-RscQueryCluster` is one of the options.
+Now you can see `New-RscQueryCluster` is one of the options.
 
-Let's see what subcommands are available for `Invoke-RscQueryCluster`:
+Let's see what subcommands are available for `New-RscQueryCluster`:
 
 ```powershell
-PS> Get-RscHelp Invoke-RscQueryCluster
+PS> Get-RscHelp New-RscQueryCluster
 
 Name             Description
 ----             -----------
@@ -391,10 +391,10 @@ context of the SDK, we call the arguments `Var` and the field specification
 `Field` (because PowerShell has the convention to use singular nouns).
 
 You can see the arguments and fields for a given cmdlet by using the
-`-GetInput` parameter to `Invoke-RscQueryCluster`:
+`-GetInput` parameter to `New-RscQueryCluster`:
 
 ```powershell
-PS> Invoke-RscQueryCluster -List -GetInput
+PS> New-RscQueryCluster -List -GetInput
 
 Op   Var                                             Field
 --   ---                                             -----
@@ -409,7 +409,7 @@ required by the GraphQL operation. For example, the `List` operation
 does not require any arguments, so you can call it like this:
 
 ```powershell
-PS> Invoke-RscQueryCluster -List
+PS> New-RscQueryCluster -List
 ```
 
 and the SDK automatically fills in the field specification.
@@ -418,9 +418,9 @@ Now let's say you only want to retrieve the first 3 clusters, you can
 pass the `first` argument like this:
 
 ```powershell
-$inputs=(Invoke-RscQueryCluster -List -GetInput)
-$inputs.Var["first"]=3
-Invoke-RscQueryCluster -List -Var $inputs.Var
+$query=(New-RscQueryCluster -List -GetInput)
+$query.Var["first"]=3
+New-RscQueryCluster -List -Var $query.Var
 ```
 
 If the field specification is not given, the SDK fills it in automatically
@@ -429,7 +429,7 @@ with sensible defaults, but you can also specify it yourself:
 Let's look at what the default field spec looks like for the `Nodes` field:
 
 ```powershell
-PS> (Invoke-RscQueryCluster -List -Var $inputs.Var).Nodes[0]
+PS> (New-RscQueryCluster -List -Var $query.Var).Nodes[0]
 
 PauseStatus                     : NOT_PAUSED
 Status                          : DISCONNECTED
@@ -455,7 +455,7 @@ Version                         :
 Note how the `Version` field is not automatically retrieved by the SDK:
 
 ```powershell
-PS> $inputs.Field.Nodes[0].Version -eq $null
+PS> $query.Field.Nodes[0].Version -eq $null
 True
 ```
 
@@ -465,7 +465,7 @@ it doesn't matter what, as long as it's not null.
 Let's add it to the field spec:
 
 ```powershell
-$inputs.Field.Nodes[0].Version="fetch"
+$query.Field.Nodes[0].Version="fetch"
 ```
 
 Here we set it to `"fetch"` but anything would work.
@@ -473,7 +473,7 @@ Here we set it to `"fetch"` but anything would work.
 Now let's run the command again, with the new field spec:
 
 ```powershell
-PS> (Invoke-RscQueryCluster -List -Var $inputs.Var -Field $inputs.Field).Nodes[0]
+PS> (New-RscQueryCluster -List -Var $query.Var -Field $query.Field).Nodes[0]
 
 PauseStatus                     : NOT_PAUSED
 Status                          : DISCONNECTED

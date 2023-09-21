@@ -623,7 +623,7 @@ type Query {
     # Session ID of the current OAuth session.
     sessionId: String!,
 
-    # Cloud Account Features.
+    # Cloud account features.
     features: [CloudAccountFeature!]!,
 
     # Specfies whether to check permission of projects required for addition.
@@ -725,8 +725,11 @@ type Query {
     # List of Rubrik IDs of the cloud accounts.
     cloudAccountIds: [UUID!]!,
 
-    # Cloud Account Features.
-    features: [CloudAccountFeature!]!): [CloudAccountFeaturePermission!]!
+    # Cloud account features.
+    features: [CloudAccountFeature!]!,
+
+    # Cloud account features with specific permissions groups.
+    featuresWithPermissionsGroups: [FeatureWithPermissionsGroups!]! = []): [CloudAccountFeaturePermission!]!
 
   # Information about the licenses at the product level.
   allLicensedProducts: GetLicensedProductsInfoReply!
@@ -3357,6 +3360,11 @@ type Query {
     # Filter for help content snippets.
     filter: HelpContentSnippetsFilterInput!): HelpContentSnippetConnection!
   hierarchyObject(
+    # The Rubrik UUID for the object.
+    fid: UUID!): HierarchyObject!
+
+  # Returns a single hierarchy object to be used as a recovery target. Permission checks are performed against the ProvisionOnInfrastructure operation, not the ViewInventory operation.
+  hierarchyObjectRecoveryTarget(
     # The Rubrik UUID for the object.
     fid: UUID!): HierarchyObject!
   hierarchyObjects(
@@ -14331,6 +14339,9 @@ enum AuditObjectType {
 
   # O365 Team.
   O365_TEAM
+
+  # OAuth token.
+  OAUTH_TOKEN
 
   # Oracle database object.
   ORACLE_DB
@@ -40395,11 +40406,22 @@ type FeaturePermission {
 
   # Feature permission version.
   version: Int!
+
+  # Permissions group versions.
+  permissionsGroupVersions: [PermissionsGroupWithVersion!]!
 }
 # Optional additional information needed to retrieve the policy for a feature.
 input FeatureSpecificDetailsInput {
   # Rubrik can assign roles using this role path to a recovered EC2 instance.
   ec2RecoveryRolePath: String = ""
+}
+# Cloud account feature with specific permissions groups.
+input FeatureWithPermissionsGroups {
+  # The cloud account feature.
+  featureType: CloudAccountFeature = ARCHIVAL
+
+  # The permissions groups to include for the feature. If the list is empty, all permissions groups will be included.
+  permissionsGroups: [PermissionsGroup!] = []
 }
 # Status of the Federated Access feature for the specified account.
 type FederatedLoginStatus {
@@ -49530,6 +49552,11 @@ enum InodeType {
   DIRECTORY
   FILE
   UNKNOWN_INODE
+}
+# Represents the in-place restore configurations.
+input InplaceRestoreConfig {
+  # Name collision resolution rule.
+  nameCollisionRule: NameCollisionRule!
 }
 # Details of the customer-owned O365 app to insert.
 input InsertCustomerO365AppInput {
@@ -60142,6 +60169,14 @@ type MssqlUnprotectableReason {
 enum MssqlUnprotectableType {
   MSSQL_UNPROTECTABLE_TYPE_INSUFFICIENT_PERMISSIONS
 }
+# Name collision resolution rule.
+enum NameCollisionRule {
+  # Append suffix to the item name in case of name collision.
+  APPEND
+
+  # Overwrite existing item in case of name collision.
+  OVERWRITE
+}
 # Filter to return objects with a given substring in their name.
 input NameSubstringFilter {
   nameSubstring: String!
@@ -68364,6 +68399,9 @@ enum Operation {
 
   # Edit cluster settings.
   MANAGE_CLUSTER_SETTINGS
+
+  # Manage CORS settings.
+  MANAGE_CORS_SETTINGS
   MANAGE_DATA_SOURCE
 
   # Manage GPS to RSC upgrade.
@@ -74028,6 +74066,9 @@ enum RcsRegionEnumType {
 
   # Australia East or New South Wales.
   AUSTRALIA_EAST
+
+  # Australia Southeast or Victoria.
+  AUSTRALIA_SOUTHEAST
 
   # Canada East or Quebec City.
   CANADA_EAST
@@ -80740,6 +80781,9 @@ input SnappableRestoreConfig {
 
   # Restore configuration for Contacts jobs.
   contactsRestoreConfig: ContactsRestoreConfig
+
+  # In-place restore configuration for restore jobs.
+  inplaceRestoreConfig: InplaceRestoreConfig
 }
 enum SnappableSlaAssignment {
   SNAPPABLE_SLA_ASSIGNMENT_DERIVED
@@ -82127,6 +82171,9 @@ type SsoGroup {
 
   # ID of the SSO Group.
   id: String!
+
+  # Name of the SSO Group.
+  name: String!
 }
 enum StalenessType {
   IS_STALE
@@ -87622,6 +87669,9 @@ enum UserAuditObjectTypeEnum {
   # Office 365 SharePoint Site type.
   O365_SHAREPOINT_SITE
 
+  # OAuth token.
+  OAUTH_TOKEN
+
   # Oracle Mount type.
   ORACLE_MOUNT
 
@@ -91497,6 +91547,32 @@ type VsphereComputeCluster implements CdmHierarchyObject , HierarchyObject , Vsp
     # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
     workloadHierarchy: WorkloadLevelHierarchy): VsphereComputeClusterPhysicalChildTypeConnection!
 
+  # List of recoveryTarget children.
+  recoveryTargetChildConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Sort hierarchy objects by hierarchy field.
+    sortBy: HierarchySortByField,
+
+    # Sorting order for the results.
+    sortOrder: SortOrder,
+
+    # Types of objects to include.
+    typeFilter: [HierarchyObjectTypeEnum!],
+
+    # The hierarchy object filter.
+    filter: [Filter!],
+
+    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    workloadHierarchy: WorkloadLevelHierarchy): VsphereComputeClusterPhysicalChildTypeConnection!
+
+  # This field is true if this object has one or more vSphere datastore descendants available for use as a recovery target and false otherwise.
+  hasDatastoresForRecovery: Boolean!
+
   # Rubrik cluster where this object originated.
   cluster: Cluster!
 
@@ -93135,6 +93211,32 @@ type VsphereHost implements CdmHierarchyObject , HierarchyObject , VsphereVcente
     # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
     workloadHierarchy: WorkloadLevelHierarchy): VsphereHostPhysicalChildTypeConnection!
 
+  # List of recoveryTarget children.
+  recoveryTargetChildConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Sort hierarchy objects by hierarchy field.
+    sortBy: HierarchySortByField,
+
+    # Sorting order for the results.
+    sortOrder: SortOrder,
+
+    # Types of objects to include.
+    typeFilter: [HierarchyObjectTypeEnum!],
+
+    # The hierarchy object filter.
+    filter: [Filter!],
+
+    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    workloadHierarchy: WorkloadLevelHierarchy): VsphereHostPhysicalChildTypeConnection!
+
+  # This field is true if this object has one or more vSphere datastore descendants available for use as a recovery target and false otherwise.
+  hasDatastoresForRecovery: Boolean!
+
   # Rubrik cluster where this object originated.
   cluster: Cluster!
 
@@ -93770,6 +93872,32 @@ type VsphereResourcePool implements CdmHierarchyObject , HierarchyObject , Vsphe
 
     # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
     workloadHierarchy: WorkloadLevelHierarchy): VsphereResourcePoolPhysicalChildTypeConnection!
+
+  # List of recoveryTarget children.
+  recoveryTargetChildConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Sort hierarchy objects by hierarchy field.
+    sortBy: HierarchySortByField,
+
+    # Sorting order for the results.
+    sortOrder: SortOrder,
+
+    # Types of objects to include.
+    typeFilter: [HierarchyObjectTypeEnum!],
+
+    # The hierarchy object filter.
+    filter: [Filter!],
+
+    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    workloadHierarchy: WorkloadLevelHierarchy): VsphereResourcePoolPhysicalChildTypeConnection!
+
+  # This field is true if this object has one or more vSphere datastore descendants available for use as a recovery target and false otherwise.
+  hasDatastoresForRecovery: Boolean!
 
   # Rubrik cluster where this object originated.
   cluster: Cluster!

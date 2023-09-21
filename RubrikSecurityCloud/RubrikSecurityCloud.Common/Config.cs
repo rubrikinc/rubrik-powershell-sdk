@@ -71,6 +71,7 @@ namespace RubrikSecurityCloud
         /// </summary>
         public static System.Collections.Generic.HashSet<string> DefaultProfileBranchPattern = new System.Collections.Generic.HashSet<string> {
             "^data$",
+            "^items$",
             "^nodes$",
             "^pageinfo$"
         };

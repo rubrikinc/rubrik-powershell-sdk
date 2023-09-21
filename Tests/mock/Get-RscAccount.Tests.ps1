@@ -32,7 +32,7 @@ Describe -Name 'Connect to API' -Fixture {
         }
     ) {
         Connect-Rsc -ServiceAccountFile (Get-ServiceAccountFile)
-        $accountSetting = Invoke-RscQueryAccount -Setting -Debug
+        $accountSetting = New-RscQueryAccount -Setting -Debug
         $accountSetting | Should -Not -BeNullOrEmpty
 
         $accountSetting.IsEmailNotificationEnabled | Should -Be $true

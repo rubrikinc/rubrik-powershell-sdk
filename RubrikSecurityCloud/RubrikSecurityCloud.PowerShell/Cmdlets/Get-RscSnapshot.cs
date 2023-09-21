@@ -7,9 +7,16 @@ using System.Threading.Tasks;
 using RubrikSecurityCloud;
 using RubrikSecurityCloud.Types;
 using RubrikSecurityCloud.PowerShell.Private;
+using Newtonsoft.Json;
 
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
+    public class GqlTypeName
+    {
+        [JsonProperty("__typename")]
+        public string TypeName { get; set; }
+    }
+
     /// <summary>
     /// Retrieves all of the snapshots (backups) for any given object
     /// </summary>
@@ -30,7 +37,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </code>
     /// </example>
     [Cmdlet(VerbsCommon.Get, "RscSnapshot", DefaultParameterSetName = "Summary")]
-    public class Get_RscSnapshot : RscPSCmdlet
+    public class Get_RscSnapshot : RscBasePSCmdlet
     {
         // ----------------------------------------------------------
         // Parameter Set "Summary"
@@ -78,6 +85,46 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = false,
             ValueFromPipeline = false)]
         public string ClusterUUID { get; set; }
+
+#pragma warning disable 1591 // ignore warning 'Missing XML comment'
+
+        public Get_RscSnapshot() : base(retrieveConnection: true)
+        {
+        }
+
+        protected string GetSnappableTypeNameById(string id)
+        {
+            if (_rbkClient != null)
+            {
+                string query = @"
+                        query HierarchyObjects($fids: [UUID!]!) {
+                          hierarchyObjects(fids: $fids) {
+                                id
+                                __typename
+                            }
+                        }";
+
+                OperationVariableSet variables = new OperationVariableSet
+                {
+                    Variables = new Dictionary<string, object>()
+                    {
+                        { "fids", (new List<string>{id}).ToArray() }
+                    }
+                };
+
+                Task<List<GqlTypeName>> apiTask = _rbkClient.InvokeGenericCallAsync<List<GqlTypeName>>(query, variables);
+                apiTask.Wait();
+                List<GqlTypeName> response = apiTask.Result;
+
+                if (response.Count > 0)
+                {
+                    return response[0].TypeName;
+                }
+                return null;
+            }
+
+            return null;
+        }
 
         private GraphQL.GraphQLRequest BuildSnapshotBuIdRequest()
         {
@@ -225,6 +272,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 switch (ParameterSetName)
@@ -313,12 +361,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             }
             catch (Exception ex)
             {
-                var error = new ErrorRecord(
-                    ex,
-                    "InvalidArgumentToCmdlet",
-                    ErrorCategory.InvalidArgument,
-                    null);
-                ThrowTerminatingError(error);
+                ThrowTerminatingException(ex);
             }
         }
     }

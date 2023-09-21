@@ -18,9 +18,9 @@ Describe -Name "Test field specs for interface fields" -Fixture {
         $impls = (Get-RscType -Interface $inf)
         $impls.Count | Should -BeGreaterThan 0
         Write-Host "Found $($impls.Count) implementations of interface $inf"
-        # Invoke-RscQueryMssql -TopLevelDescendant invokes
+        # New-RscQueryMssql -TopLevelDescendant invokes
         # mssqlTopLevelDescendants
-        $dbs = (Invoke-RscQueryMssql -TopLevelDescendant)
+        $dbs = (New-RscQueryMssql -TopLevelDescendant)
         if ($dbs.Nodes.Count -gt 0) {
             # for each $dbs.Nodes.Id, 
             # make sure that the type is one of the implementations of $inf

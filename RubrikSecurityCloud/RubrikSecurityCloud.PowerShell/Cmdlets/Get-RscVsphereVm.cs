@@ -44,7 +44,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(VerbsCommon.Get, "RscVsphereVm", DefaultParameterSetName = "Query")] //Get-RscVsphereVm
     [OutputType("List<VsphereVm>", ParameterSetName = new string[] { "Query" })]
     [OutputType("VsphereVm", ParameterSetName = new string[] { "ID" })]
-    public class Get_RscVsphereVm : RscPSCmdlet
+    public class Get_RscVsphereVm : RscBasePSCmdlet
     {
         /// <summary>
         /// Filter VMs by Name
@@ -75,8 +75,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         [Parameter(Mandatory = false)]
         public VsphereVm Fields { get; set; }
 
+    #pragma warning disable 1591 // ignore warning 'Missing XML comment'
+
+        public Get_RscVsphereVm() : base(retrieveConnection: true)
+        {
+        }       
+    
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {                
                 VsphereVmConnection listFields;
@@ -243,12 +250,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             }
             catch (Exception ex)
             {
-                var error = new ErrorRecord(
-                    ex,
-                    "InvalidArgumentToCmdlet",
-                    ErrorCategory.InvalidArgument,
-                    null);
-                ThrowTerminatingError(error);
+                ThrowTerminatingException(ex);
             }
         }
     }

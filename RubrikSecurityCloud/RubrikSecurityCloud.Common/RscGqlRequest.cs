@@ -12,16 +12,16 @@ namespace RubrikSecurityCloud
 
     public class RscGqlRequest : GraphQL.GraphQLRequest
     {
-        public string ReturnTypeName { get; set; }
+        public string ReturnTypeName { get; set; } = "";
 
         public string DefaultSaveDir { get; set; } = "";
 
         public RscGqlRequest(
-            string operationName,
-            string variables,
-            string returnTypeName,
-            string query,
-            string defaultSaveDir = null
+            string? operationName = null,
+            string? variables = null,
+            string? returnTypeName = null,
+            string? query = null,
+            string? defaultSaveDir = null
             )
         {
             Init(operationName, variables, returnTypeName, query,

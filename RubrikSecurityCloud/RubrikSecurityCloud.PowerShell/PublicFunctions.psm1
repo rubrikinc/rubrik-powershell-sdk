@@ -1,31 +1,16 @@
-﻿$Public = @(Get-ChildItem -Path $PSSCriptRoot\Public\*.psm1 -ErrorAction SilentlyContinue)
-
+﻿$CorePublic = @(Get-ChildItem -Path $PSSCriptRoot\Public\*.ps*1 -ErrorAction SilentlyContinue)
+$ToolkitPublic = @(Get-ChildItem -Path $PSSCriptRoot\Toolkit\Public\*.ps*1 -ErrorAction SilentlyContinue)
+$Public = $CorePublic + $ToolkitPublic
 Foreach ($import in @($Public))
 {
     Try
     {
-        Write-Output("Importing $($import.fullname)")
+        Write-Output("Importing module from file $($import.fullname)")
         Import-Module $import.fullname
     }
     Catch
     {
-        Write-Error -Message "Failed to import function $($import.fullname): $_"
+        Write-Error -Message "Failed to import file $($import.fullname): $_"
     }
 }
 Export-ModuleMember -Function $Public.Basename -Alias *
-
-$Extensions = @(Get-ChildItem -Path $PSSCriptRoot\Extensions\*.psm1 -ErrorAction SilentlyContinue)
-
-Foreach ($import in @($Extensions))
-{
-    Try
-    {
-        Write-Output("Importing extension$($import.fullname)")
-        Import-Module $import.fullname
-    }
-    Catch
-    {
-        Write-Error -Message "Failed to import extension function $($import.fullname): $_"
-    }
-}
-Export-ModuleMember -Function $Extensions.Basename -Alias *

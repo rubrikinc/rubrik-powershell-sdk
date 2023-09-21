@@ -41,7 +41,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     [Cmdlet(VerbsCommon.Get, "RscMssqlDatabase",
         DefaultParameterSetName = "Query")]
-    public class Get_RscMssqlDatabase : RscPSCmdlet
+    public class Get_RscMssqlDatabase : RscBasePSCmdlet
     {
         /// <summary>
         /// Filter Mssql Databases by name
@@ -69,8 +69,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         [Parameter(Mandatory = false)]
         public MssqlDatabase Fields { get; set; }
 
+    #pragma warning disable 1591 // ignore warning 'Missing XML comment'
+
+        public Get_RscMssqlDatabase():base(retrieveConnection: true)
+        {
+        }
+
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 MssqlDatabaseConnection listFields;
@@ -192,12 +199,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             }
             catch (Exception ex)
             {
-                var error = new ErrorRecord(
-                    ex,
-                    "InvalidArgumentToCmdlet",
-                    ErrorCategory.InvalidArgument,
-                    null);
-                ThrowTerminatingError(error);
+                ThrowTerminatingException(ex);
             }
         }
     }

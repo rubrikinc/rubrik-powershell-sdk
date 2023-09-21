@@ -31,7 +31,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
 
     [Cmdlet(VerbsCommon.Get, "RscHost", DefaultParameterSetName = "Query")]
-    public class Get_RscHost: RscPSCmdlet
+    public class Get_RscHost: RscBasePSCmdlet
 	{
         /// <summary>
         /// Operating system type of hosts to return. Valid values are
@@ -120,10 +120,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         [Parameter(
             Mandatory = false,
             Position = 0)]
-        public new PhysicalHost Field { get; set; }
+        public PhysicalHost Field { get; set; }
+
+    #pragma warning disable 1591 // ignore warning 'Missing XML comment'
+
+        public Get_RscHost(): base(retrieveConnection: true)
+        {
+        }
 
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 // Create a new GQL Request Object
@@ -280,12 +287,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             }
             catch (Exception ex)
             {
-                var error = new ErrorRecord(
-                    ex,
-                    "InvalidArgumentToCmdlet",
-                    ErrorCategory.InvalidArgument,
-                    null);
-                ThrowTerminatingError(error);
+                ThrowTerminatingException(ex);
             }
         }
     }

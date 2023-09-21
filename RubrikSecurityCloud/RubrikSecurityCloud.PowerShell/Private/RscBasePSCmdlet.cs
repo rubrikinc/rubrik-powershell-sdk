@@ -24,12 +24,21 @@ namespace RubrikSecurityCloud.PowerShell.Private
         internal RscLogger _logger = null;
         internal List<string> _switches = new List<string>();
         internal RscGraphQLClient _rbkClient = null;
+        internal bool _retrieveConnection = false;
 
         /// <summary>
-        /// Create a new RSC PowerShell cmdlet.
+        /// Create a new RSC PowerShell cmdlet with logging and a client.
+        /// Client is left null until RetrieveConnection() is called
+        /// from the derived class, or if the cmdlet is constructed
+        /// with retrieveConnection=true.
+        /// 
+        /// Note that `retrieveConnection=true` retrieves an existing
+        /// connection if any ; if there are none, it does not 
+        /// create a new connection.
         /// </summary>
-        public RscBasePSCmdlet()
+        public RscBasePSCmdlet(bool retrieveConnection = false)
         {
+            _retrieveConnection = retrieveConnection;
             this._logger = new RscLogger(this);
         }
 
@@ -62,7 +71,8 @@ namespace RubrikSecurityCloud.PowerShell.Private
                 var result = this._rbkClient.Invoke(
                     request, null, request.ReturnTypeName, this._logger,
                     GetMetricTags());
-                if (writeObject) {
+                if (writeObject)
+                {
                     WriteObject(result, true);
                 }
                 return result;
@@ -113,14 +123,19 @@ namespace RubrikSecurityCloud.PowerShell.Private
             }
         }
 
-        // ignore warning 'Missing XML comment'
-#pragma warning disable 1591
+        
+#pragma warning disable 1591 // ignore warning 'Missing XML comment'
         protected override void BeginProcessing()
         {
             base.BeginProcessing();
             // build report and tally switches:
             var report = BuildCmdletParametersReport();
             this._logger.Debug(report);
+
+            if (_retrieveConnection)
+            {
+                RetrieveConnection();
+            }
         }
 
         protected override void EndProcessing()
@@ -129,7 +144,11 @@ namespace RubrikSecurityCloud.PowerShell.Private
             this._logger.Flush();
         }
 
-        protected void ThrowTerminatingException(Exception ex)
+        protected void ThrowTerminatingException(
+            Exception ex,
+            string errorId = null,
+            ErrorCategory errorCategory = ErrorCategory.InvalidOperation,
+            object targetObject = null)
         {
             this._logger?.Flush();
             string message = ex.Message;
@@ -143,9 +162,9 @@ namespace RubrikSecurityCloud.PowerShell.Private
             }
             var error = new ErrorRecord(
                 new Exception(message),
-                this.GetType().Name,
-                ErrorCategory.InvalidOperation,
-                null);
+                string.IsNullOrEmpty(errorId) ? this.GetType().Name : errorId,
+                errorCategory,
+                targetObject);
             ThrowTerminatingError(error);
         }
 
@@ -304,10 +323,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
                         {
                             continue; // skip false switch parameters
                         }
-                        if (prop.Name != "GetGqlRequest" && prop.Name != "GetInput")
-                        {
-                            _switches.Add(prop.Name);
-                        }
+                        _switches.Add(prop.Name);
                     }
                     var paramValueStr = StringUtils.FormatObjectForLogging(propVal);
 

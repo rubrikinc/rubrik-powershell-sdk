@@ -33,7 +33,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
     [Cmdlet(VerbsCommon.Get, "RscFilesetTemplate",
         DefaultParameterSetName = "Query")]
-    public class Get_RscFilesetTemplate: RscPSCmdlet
+    public class Get_RscFilesetTemplate: RscBasePSCmdlet
 	{
         /// <summary>
         /// Operating system type of fileset templates to return.
@@ -104,10 +104,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         [Parameter(
             Mandatory = false,
             Position = 0)]
-        public new FilesetTemplate Field { get; set; }
+        public FilesetTemplate Field { get; set; }
+
+    #pragma warning disable 1591 // ignore warning 'Missing XML comment'
+
+        public Get_RscFilesetTemplate(): base(retrieveConnection: true)
+        {
+        }
 
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             try
             {
                 // Create a new GQL Request Object
@@ -245,12 +252,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             }
             catch (Exception ex)
             {
-                var error = new ErrorRecord(
-                    ex,
-                    "InvalidArgumentToCmdlet",
-                    ErrorCategory.InvalidArgument,
-                    null);
-                ThrowTerminatingError(error);
+                ThrowTerminatingException(ex);
             }
         }
     }
