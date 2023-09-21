@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Mutations for the 'SLA' API domain.
     /// </summary>
     /// <description>
-    /// New-RscMutationSla is a master cmdlet for Sla work that can invoke any of the following subcommands: CreateGlobal, UpdateGlobal, Assign, AssignsForSnappableHierarchies, AssignRetentionToSnappables, AssignRetentionToSnapshots, Pause, GetPendingAssignments, ExportManagedVolumeSnapshot.
+    /// New-RscMutationSla is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
     /// </description>
     /// <example>
     /// <code>New-RscMutationSla -CreateGlobal [-Arg ..] [-Field ..]</code>
@@ -855,6 +855,8 @@ $inputs.Var.input = @{
 	)
 	# OPTIONAL
 	isRetentionLockedSla = <System.Boolean>
+	# OPTIONAL
+	retentionLockMode = <RetentionLockMode> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionLockMode]) for enum values.
 }"
             );
         }
@@ -1373,6 +1375,8 @@ $inputs.Var.input = @{
 	)
 	# OPTIONAL
 	isRetentionLockedSla = <System.Boolean>
+	# OPTIONAL
+	retentionLockMode = <RetentionLockMode> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionLockMode]) for enum values.
 }"
             );
         }

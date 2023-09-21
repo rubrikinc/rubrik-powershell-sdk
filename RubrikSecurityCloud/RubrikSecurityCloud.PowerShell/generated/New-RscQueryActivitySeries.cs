@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Queries for the 'Activity series' API domain.
     /// </summary>
     /// <description>
-    /// New-RscQueryActivitySeries is a master cmdlet for ActivitySeries work that can invoke any of the following subcommands: ActivitySeries, List.
+    /// New-RscQueryActivitySeries is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
     /// </description>
     /// <example>
     /// <code>New-RscQueryActivitySeries -ActivitySeries [-Arg ..] [-Field ..]</code>

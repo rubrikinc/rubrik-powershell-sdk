@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Mutations for the 'Oracle' API domain.
     /// </summary>
     /// <description>
-    /// New-RscMutationOracle is a master cmdlet for Oracle work that can invoke any of the following subcommands: BulkUpdateHosts, RefreshDatabase, UpdateDataGuardGroup, DeleteAllDatabaseSnapshots, TakeOnDemandDatabaseSnapshot, TakeOnDemandLogSnapshot, BulkUpdateRacs, ExportTablespace, ValidateAcoFile, ValidateDatabaseBackups, BulkUpdateDatabases, InstantRecoverSnapshot, MountDatabase, ExportDatabase, CreatePdbRestore, DownloadDatabaseSnapshot, DeleteMount, RestoreLogs.
+    /// New-RscMutationOracle is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
     /// </description>
     /// <example>
     /// <code>New-RscMutationOracle -BulkUpdateHosts [-Arg ..] [-Field ..]</code>

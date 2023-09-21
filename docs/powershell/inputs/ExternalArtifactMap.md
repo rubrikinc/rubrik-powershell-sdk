@@ -1,5 +1,5 @@
 ### ExternalArtifactMap
-Key Value pair for external artifacts for AWS account.
+Key value pair for external artifacts associated with an AWS account.
 
 - externalArtifactValue: System.String
   - AWS unique identifier of the external artifact.

@@ -357,6 +357,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "HOST_CBT_STATUS")]
         HOST_CBT_STATUS,
 
+        [EnumMember(Value = "HOST_DOMAIN_CONTROLLER_FID")]
+        HOST_DOMAIN_CONTROLLER_FID,
+
         [EnumMember(Value = "HOST_MIGRATION_STATUS")]
         HOST_MIGRATION_STATUS,
 

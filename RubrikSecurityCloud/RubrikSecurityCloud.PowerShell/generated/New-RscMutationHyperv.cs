@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Mutations for the 'Hyperv' API domain.
     /// </summary>
     /// <description>
-    /// New-RscMutationHyperv is a master cmdlet for Hyperv work that can invoke any of the following subcommands: RegisterScvmm, ScvmmUpdate, ScvmmDelete, RefreshScvmm, OnDemandSnapshot, DeleteAllSnapshots, ExportVirtualMachine, DownloadVirtualMachineSnapshotFiles, InstantRecoverVirtualMachineSnapshot, RestoreVirtualMachineSnapshotFiles, RegisterAgentVirtualMachine, DeleteVirtualMachineSnapshot, DownloadVirtualMachineSnapshot, CreateVirtualMachineSnapshotMount, UpdateVirtualMachineSnapshotMount, DeleteVirtualMachineSnapshotMount, RefreshServer, BatchOnDemandBackupVm, BatchExportVm, BatchMountVm, BatchInstantRecoverVm, UpdateVirtualMachine, DownloadSnapshotFromLocation.
+    /// New-RscMutationHyperv is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
     /// </description>
     /// <example>
     /// <code>New-RscMutationHyperv -RegisterScvmm [-Arg ..] [-Field ..]</code>

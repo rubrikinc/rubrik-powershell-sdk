@@ -141,6 +141,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isRelic")]
         public System.Boolean? IsRelic { get; set; }
 
+        //      C# -> System.Boolean? IsTemplate
+        // GraphQL -> isTemplate: Boolean! (scalar)
+        [JsonProperty("isTemplate")]
+        public System.Boolean? IsTemplate { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -360,6 +365,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsArrayIntegrationPossible = null,
         System.Boolean? IsBlueprintChild = null,
         System.Boolean? IsRelic = null,
+        System.Boolean? IsTemplate = null,
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
         System.Int32? OnDemandSnapshotCount = null,
@@ -470,6 +476,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
+        }
+        if ( IsTemplate != null ) {
+            this.IsTemplate = IsTemplate;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -726,6 +735,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> isRelic: Boolean! (scalar)
         if (this.IsRelic != null) {
             s += ind + "isRelic\n" ;
+        }
+        //      C# -> System.Boolean? IsTemplate
+        // GraphQL -> isTemplate: Boolean! (scalar)
+        if (this.IsTemplate != null) {
+            s += ind + "isTemplate\n" ;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
@@ -1155,6 +1169,12 @@ namespace RubrikSecurityCloud.Types
         if (this.IsRelic == null && ec.Includes("isRelic",true))
         {
             this.IsRelic = true;
+        }
+        //      C# -> System.Boolean? IsTemplate
+        // GraphQL -> isTemplate: Boolean! (scalar)
+        if (this.IsTemplate == null && ec.Includes("isTemplate",true))
+        {
+            this.IsTemplate = true;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)

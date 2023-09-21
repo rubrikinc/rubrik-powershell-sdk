@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Mutations for the 'Mongo' API domain.
     /// </summary>
     /// <description>
-    /// New-RscMutationMongo is a master cmdlet for Mongo work that can invoke any of the following subcommands: AddSource, DeleteSource, DiscoverSource, PatchSource, RetryAddSource, AssignSlaToDbCollection, RecoverSource, CreatedbSource, UpdatedbSource, DeletedbSource, BulkDeletedbSources, RecoverdbSource.
+    /// New-RscMutationMongo is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
     /// </description>
     /// <example>
     /// <code>New-RscMutationMongo -AddSource [-Arg ..] [-Field ..]</code>

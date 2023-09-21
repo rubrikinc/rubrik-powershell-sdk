@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Mutations for the 'MSSQL' API domain.
     /// </summary>
     /// <description>
-    /// New-RscMutationMssql is a master cmdlet for Mssql work that can invoke any of the following subcommands: BrowseDatabaseSnapshot, ExportDatabase, RestoreDatabase, BulkUpdateDbs, TakeLogBackup, CreateOnDemandBackup, DeleteDbSnapshots, DeleteLiveMount, BulkCreateOnDemandBackup, CreateLiveMount, UpdateLogShippingConfiguration, DownloadDatabaseFilesFromArchivalLocation, DownloadDatabaseBackupFiles, AssignSlaDomainProperties, UpdateDefaultProperties, CreateLogShippingConfiguration, AssignSlaDomainPropertiesAsync.
+    /// New-RscMutationMssql is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
     /// </description>
     /// <example>
     /// <code>New-RscMutationMssql -BrowseDatabaseSnapshot [-Arg ..] [-Field ..]</code>

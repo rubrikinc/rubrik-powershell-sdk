@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Queries for the 'Db2' API domain.
     /// </summary>
     /// <description>
-    /// New-RscQueryDb2 is a master cmdlet for Db2 work that can invoke any of the following subcommands: Instances, Instance, Database, Databases, RecoverableRange, RecoverableRanges, LogSnapshot, LogSnapshots.
+    /// New-RscQueryDb2 is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
     /// </description>
     /// <example>
     /// <code>New-RscQueryDb2 -Instances [-Arg ..] [-Field ..]</code>

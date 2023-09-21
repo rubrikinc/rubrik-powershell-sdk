@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Mutations for the 'Db2' API domain.
     /// </summary>
     /// <description>
-    /// New-RscMutationDb2 is a master cmdlet for Db2 work that can invoke any of the following subcommands: AddInstance, DeleteInstance, DiscoverInstance, PatchInstance, CreateOnDemandBackup, DownloadSnapshot, DownloadSnapshotsForPointInTimeRecovery, ExpireDownloadedSnapshots, PatchDatabase, RefreshDatabase, DeleteDatabase.
+    /// New-RscMutationDb2 is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
     /// </description>
     /// <example>
     /// <code>New-RscMutationDb2 -AddInstance [-Arg ..] [-Field ..]</code>

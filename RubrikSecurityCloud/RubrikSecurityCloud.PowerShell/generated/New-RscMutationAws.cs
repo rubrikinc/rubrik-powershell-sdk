@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Mutations for the 'AWS' API domain.
     /// </summary>
     /// <description>
-    /// New-RscMutationAws is a master cmdlet for Aws work that can invoke any of the following subcommands: StartNativeEc2InstanceSnapshotsJob, StartRestoreNativeEc2InstanceSnapshotJob, StartRefreshNativeAccountsJob, StartCreateNativeEbsVolumeSnapshotsJob, StartNativeAccountDisableJob, StartExportNativeEbsVolumeSnapshotJob, ExcludeNativeEbsVolumesFromSnapshot, StartNativeRdsInstanceSnapshotsJob, CreateAccount, UpdateAccount, CreateAutomaticTargetMapping, CreateCloudNativeStorageSetting, UpdateAutomaticTargetMapping, UpdateCloudNativeStorageSetting, CreateTarget, UpdateTarget, CreateReaderTarget, CreateComputeSetting, UpdateComputeSetting, DeleteComputeSetting, ValidateAndCreateCloudAccount, FinalizeCloudAccountProtection, PrepareCloudAccountDeletion, FinalizeCloudAccountDeletion, UpdateCloudAccountFeature, UpdateCloudAccount, PrepareFeatureUpdateForCloudAccount, CreateExocomputeConfigs, DeleteExocomputeConfigs, UpdateExocomputeConfigs, StartExocomputeDisableJob, AddIamUserBasedCloudAccount, UpgradeIamUserBasedCloudAccountPermissions, UpgradeCloudAccountFeaturesWithoutCft, AddAuthenticationServerBasedCloudAccount, PatchAuthenticationServerBasedCloudAccount, PatchIamUserBasedCloudAccount, RegisterFeatureArtifacts, BulkDeleteCloudAccountWithoutCft, CreateCluster, DeleteCluster.
+    /// New-RscMutationAws is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
     /// </description>
     /// <example>
     /// <code>New-RscMutationAws -StartNativeEc2InstanceSnapshotsJob [-Arg ..] [-Field ..]</code>
@@ -2772,6 +2772,15 @@ $inputs.Var.input = @{
 	)
 	# OPTIONAL
 	roleArn = <System.String>
+	# OPTIONAL
+	externalArtifactMap = @(
+		@{
+			# OPTIONAL
+			externalArtifactKey = <AwsCloudExternalArtifact> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudExternalArtifact]) for enum values.
+			# OPTIONAL
+			externalArtifactValue = <System.String>
+		}
+	)
 }"
             );
         }
@@ -2973,6 +2982,15 @@ $inputs.Var.input = @{
 		# REQUIRED
 		roleArn = <System.String>
 	}
+	# OPTIONAL
+	externalArtifactMap = @(
+		@{
+			# OPTIONAL
+			externalArtifactKey = <AwsCloudExternalArtifact> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudExternalArtifact]) for enum values.
+			# OPTIONAL
+			externalArtifactValue = <System.String>
+		}
+	)
 }"
             );
         }

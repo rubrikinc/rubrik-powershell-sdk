@@ -574,6 +574,8 @@ $inputs.Var.input = @{
 	)
 	# OPTIONAL
 	isRetentionLockedSla = <System.Boolean>
+	# OPTIONAL
+	retentionLockMode = <RetentionLockMode> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionLockMode]) for enum values.
 }"
             );
         }

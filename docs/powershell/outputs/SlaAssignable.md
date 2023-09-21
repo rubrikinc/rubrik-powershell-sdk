@@ -11,15 +11,15 @@ Supported in v5.0+
   v5.2+: The name of the SLA Domain configured directly on the Rubrik object.
 - id: System.String
   - Required. Supported in v5.0+
-  v5.0-v5.1:
+  v5.0-v5.1: 
   v5.2+: The ID of the Rubrik object.
 - name: System.String
   - Required. Supported in v5.0+
-  v5.0-v5.1:
+  v5.0-v5.1: 
   v5.2+: The name of the Rubrik object.
 - primaryClusterId: System.String
   - Required. Supported in v5.0+
-  v5.0-v5.1:
+  v5.0-v5.1: 
   v5.2+: The ID of the cluster that manages the Rubrik object.
 - isConfiguredSlaDomainRetentionLocked: System.Boolean
   - Supported in v5.1+

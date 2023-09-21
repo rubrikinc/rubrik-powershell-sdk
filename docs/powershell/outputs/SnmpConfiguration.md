@@ -6,7 +6,7 @@ Supported in v5.0+
 - communityString: System.String
   - Supported in v5.0+
   v5.0-v5.1: communicatyString is a user specified string for authentication to access SNMP statistics.
-
+  
   v5.2+: communityString is a user specified string for authentication to access SNMP statistics. Provides access to MIBs using SNMP v2c.
 - isEnabled: System.Boolean
   - Required. Supported in v5.0+

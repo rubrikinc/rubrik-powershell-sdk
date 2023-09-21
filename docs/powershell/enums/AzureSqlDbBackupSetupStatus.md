@@ -9,5 +9,6 @@ Status of the setup for taking Azure SQL database backup.
 - MISSING_PERMISSIONS - The Azure database configuration is invalid because the backup user is missing some required permissions.
 - CDC_DISABLED - The Azure database configuration is invalid because Change Data Capture (CDC) is not enabled.
 - NOT_SPECIFIED - The Azure backup setup status is not specified.
+- UNSUPPORTED_COLUMNS_EXIST - The Azure database configuration is invalid because of the presence of unsupported columns.
 - LEDGER_TABLES_EXIST - The Azure database configuration is invalid because of the presence of ledger tables.
 - INVALID_CREDENTIALS - The Azure database configuration is invalid because the credentials are invalid.

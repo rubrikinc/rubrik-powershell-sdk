@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Mutations for the 'Nutanix' API domain.
     /// </summary>
     /// <description>
-    /// New-RscMutationNutanix is a master cmdlet for Nutanix work that can invoke any of the following subcommands: CreateCluster, RefreshCluster, UpdateCluster, DeleteCluster, RegisterAgentVm, UpdateVm, CreateOnDemandBackup, DeleteSnapshots, MountSnapshotV1, PatchMountV1, DeleteMountV1, MigrateMountV1, DeleteSnapshot, RestoreFilesSnapshot, DownloadFilesSnapshot, ExportSnapshot, DownloadSnapshot, BatchExportVm, BatchMountVm, DownloadVmFromLocation, CreatePrismCentral, UpdatePrismCentral, DeletePrismCentral, RefreshPrismCentral, BulkOnDemandSnapshotVm.
+    /// New-RscMutationNutanix is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
     /// </description>
     /// <example>
     /// <code>New-RscMutationNutanix -CreateCluster [-Arg ..] [-Field ..]</code>

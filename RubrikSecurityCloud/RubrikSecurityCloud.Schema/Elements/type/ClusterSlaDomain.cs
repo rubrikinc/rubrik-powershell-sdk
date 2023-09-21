@@ -21,6 +21,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> RetentionLockMode? RetentionLockMode
+        // GraphQL -> retentionLockMode: RetentionLockMode! (enum)
+        [JsonProperty("retentionLockMode")]
+        public RetentionLockMode? RetentionLockMode { get; set; }
+
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
         [JsonProperty("cdmId")]
@@ -141,6 +146,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public ClusterSlaDomain Set(
+        RetentionLockMode? RetentionLockMode = null,
         System.String? CdmId = null,
         System.String? Fid = null,
         System.String? Id = null,
@@ -165,6 +171,9 @@ namespace RubrikSecurityCloud.Types
         SlaUpgradeInfo? UpgradeInfo = null
     ) 
     {
+        if ( RetentionLockMode != null ) {
+            this.RetentionLockMode = RetentionLockMode;
+        }
         if ( CdmId != null ) {
             this.CdmId = CdmId;
         }
@@ -241,6 +250,11 @@ namespace RubrikSecurityCloud.Types
     {
         string ind = new string(' ', indent*2);
         string s = "";
+        //      C# -> RetentionLockMode? RetentionLockMode
+        // GraphQL -> retentionLockMode: RetentionLockMode! (enum)
+        if (this.RetentionLockMode != null) {
+            s += ind + "retentionLockMode\n" ;
+        }
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
         if (this.CdmId != null) {
@@ -397,6 +411,12 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> RetentionLockMode? RetentionLockMode
+        // GraphQL -> retentionLockMode: RetentionLockMode! (enum)
+        if (this.RetentionLockMode == null && ec.Includes("retentionLockMode",true))
+        {
+            this.RetentionLockMode = new RetentionLockMode();
+        }
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
         if (this.CdmId == null && ec.Includes("cdmId",true))

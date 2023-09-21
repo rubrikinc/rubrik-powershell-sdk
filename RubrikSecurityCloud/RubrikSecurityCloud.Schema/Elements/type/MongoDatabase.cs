@@ -61,6 +61,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("replicatedObjects")]
         public List<CdmHierarchyObject>? ReplicatedObjects { get; set; }
 
+        //      C# -> System.Int32? ActiveCollectionCount
+        // GraphQL -> activeCollectionCount: Int! (scalar)
+        [JsonProperty("activeCollectionCount")]
+        public System.Int32? ActiveCollectionCount { get; set; }
+
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
         [JsonProperty("cdmId")]
@@ -189,6 +194,7 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? EffectiveSlaDomain = null,
         SlaDomain? PendingSla = null,
         List<CdmHierarchyObject>? ReplicatedObjects = null,
+        System.Int32? ActiveCollectionCount = null,
         System.String? CdmId = null,
         System.String? ClusterUuid = null,
         System.String? Id = null,
@@ -236,6 +242,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ReplicatedObjects != null ) {
             this.ReplicatedObjects = ReplicatedObjects;
+        }
+        if ( ActiveCollectionCount != null ) {
+            this.ActiveCollectionCount = ActiveCollectionCount;
         }
         if ( CdmId != null ) {
             this.CdmId = CdmId;
@@ -367,6 +376,11 @@ namespace RubrikSecurityCloud.Types
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
                 s += ind + "replicatedObjects {\n" + fspec + ind + "}\n";
             }
+        }
+        //      C# -> System.Int32? ActiveCollectionCount
+        // GraphQL -> activeCollectionCount: Int! (scalar)
+        if (this.ActiveCollectionCount != null) {
+            s += ind + "activeCollectionCount\n" ;
         }
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
@@ -577,6 +591,12 @@ namespace RubrikSecurityCloud.Types
         {
             this.ReplicatedObjects = new List<CdmHierarchyObject>();
             this.ReplicatedObjects.ApplyExploratoryFieldSpec(ec.NewChild("replicatedObjects"));
+        }
+        //      C# -> System.Int32? ActiveCollectionCount
+        // GraphQL -> activeCollectionCount: Int! (scalar)
+        if (this.ActiveCollectionCount == null && ec.Includes("activeCollectionCount",true))
+        {
+            this.ActiveCollectionCount = Int32.MinValue;
         }
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)

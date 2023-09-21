@@ -1,4 +1,6 @@
 ### VsphereDatacenter
+- cdmId: System.String
+  - Vsphere Datacenter CDM ID.
 - descendantConnection: VsphereDatacenterDescendantTypeConnection
   - List of descendants.
 - logicalChildConnection: VsphereDatacenterLogicalChildTypeConnection

@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Queries for the 'AWS' API domain.
     /// </summary>
     /// <description>
-    /// New-RscQueryAws is a master cmdlet for Aws work that can invoke any of the following subcommands: NativeRoot, NativeAccount, NativeEc2Instance, NativeEbsVolume, NativeS3Bucket, NativeAccounts, NativeEc2InstancesByName, NativeEc2Instances, NativeEbsVolumesByName, NativeEbsVolumes, AllVpcsByRegion, AllVpcs, IsNativeEbsVolumeSnapshotRestorable, AllAvailabilityZonesByRegion, AllKmsEncryptionKeysByRegion, IsS3BucketNameAvailable, AllS3Buckets, AllS3BucketsDetails, NativeRdsInstance, NativeRdsInstances, NativeRdsPointInTimeRestoreWindow, RdsInstanceDetails, IsNativeRdsInstanceLaunchConfigurationValid, AllOptionGroupsByRegion, AllDbParameterGroupsByRegion, AllDbSubnetGroupsByRegion, ValidateNativeRdsInstanceNameForExport, ValidateNativeRdsClusterNameForExport, NativeRdsExportDefaults, AllEc2KeyPairsByRegion, AmiTypeForNativeArchivedSnapshotExport, AllSupportedRdsDatabaseInstanceClasses, ComputeSettings, AllComputeSettings, AllCloudAccountsWithFeatures, CloudAccountWithFeatures, CloudAccountListVpcs, CloudAccountListSubnets, CloudAccountListSecurityGroups, AllExocomputeConfigs, AllCloudAccountConfigs, TrustPolicy, AllPermissionPolicies, ArtifactsToDelete, AllRegions, AllCdmVersions, AllInstanceProfileNames.
+    /// New-RscQueryAws is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
     /// </description>
     /// <example>
     /// <code>New-RscQueryAws -NativeRoot [-Arg ..] [-Field ..]</code>

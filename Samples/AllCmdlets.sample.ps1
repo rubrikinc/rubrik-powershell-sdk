@@ -1374,6 +1374,15 @@ $inputs.Var.input = @{
 	)
 	# OPTIONAL
 	roleArn = <System.String>
+	# OPTIONAL
+	externalArtifactMap = @(
+		@{
+			# OPTIONAL
+			externalArtifactKey = <AwsCloudExternalArtifact> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudExternalArtifact]) for enum values.
+			# OPTIONAL
+			externalArtifactValue = <System.String>
+		}
+	)
 }
 "@
     Write-Message "New-RscMutationAws -AddIamUserBasedCloudAccount" @"
@@ -1570,6 +1579,15 @@ $inputs.Var.input = @{
 		# REQUIRED
 		roleArn = <System.String>
 	}
+	# OPTIONAL
+	externalArtifactMap = @(
+		@{
+			# OPTIONAL
+			externalArtifactKey = <AwsCloudExternalArtifact> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudExternalArtifact]) for enum values.
+			# OPTIONAL
+			externalArtifactValue = <System.String>
+		}
+	)
 }
 "@
     Write-Message "New-RscMutationAws -PatchIamUserBasedCloudAccount" @"
@@ -3725,6 +3743,221 @@ $inputs.Var.input = @{
     Write-Message "New-RscMutationAzure -DeleteCluster" @"
     Delete a Rubrik Cloud Cluster on Azure.
 "@ "[GraphQL: deleteAzureCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationAzure -StartAdAppSetup
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationAzure -StartAdAppSetup).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationAzure -StartAdAppSetup
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
+    Write-Message @"
+    # REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	domainName = <System.String>
+	# REQUIRED
+	region = <AzureAdRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdRegion]) for enum values.
+	# OPTIONAL
+	azureAdApp = @{
+		# OPTIONAL
+		clientId = <System.String>
+		# OPTIONAL
+		clientSecret = <System.String>
+	}
+}
+"@
+    Write-Message "New-RscMutationAzure -StartAdAppSetup" @"
+    Initiates the Azure AD app creation workflow.
+"@ "[GraphQL: startAzureAdAppSetup]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationAzure -CompleteAdAppSetup
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationAzure -CompleteAdAppSetup).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationAzure -CompleteAdAppSetup
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
+    Write-Message @"
+    # REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	domainName = <System.String>
+	# REQUIRED
+	stateToken = <System.String>
+	# OPTIONAL
+	kmsSpec = @{
+		# OPTIONAL
+		cloudType = <O365AzureCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365AzureCloudType]) for enum values.
+		# OPTIONAL
+		tenantId = <System.String>
+		# OPTIONAL
+		kmsId = <System.String>
+		# OPTIONAL
+		appId = <System.String>
+		# OPTIONAL
+		appSecret = <System.String>
+		# OPTIONAL
+		keyName = <System.String>
+		# OPTIONAL
+		kekNameColossus = <System.String>
+	}
+}
+"@
+    Write-Message "New-RscMutationAzure -CompleteAdAppSetup" @"
+    Completes the creation flow for an Azure AD app.
+"@ "[GraphQL: completeAzureAdAppSetup]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationAzure -DeleteAdDirectory
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationAzure -DeleteAdDirectory).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationAzure -DeleteAdDirectory
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
+    Write-Message @"
+    # REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	workloadFid = <System.String>
+}
+"@
+    Write-Message "New-RscMutationAzure -DeleteAdDirectory" @"
+    Deletes an Azure AD directory.
+"@ "[GraphQL: deleteAzureAdDirectory]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationAzure -BackupAdDirectory
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationAzure -BackupAdDirectory).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationAzure -BackupAdDirectory
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
+    Write-Message @"
+    # REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	workloadFids = @(
+		<System.String>
+	)
+}
+"@
+    Write-Message "New-RscMutationAzure -BackupAdDirectory" @"
+    Backs up the Azure AD directory.
+"@ "[GraphQL: backupAzureAdDirectory]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationAzure -StartAdAppUpdate
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationAzure -StartAdAppUpdate).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationAzure -StartAdAppUpdate
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
+    Write-Message @"
+    # REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	workloadFid = <System.String>
+	# OPTIONAL
+	azureAdApp = @{
+		# OPTIONAL
+		clientId = <System.String>
+		# OPTIONAL
+		clientSecret = <System.String>
+	}
+}
+"@
+    Write-Message "New-RscMutationAzure -StartAdAppUpdate" @"
+    Initiates an update to the Azure AD directory app.
+"@ "[GraphQL: startAzureAdAppUpdate]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationAzure -CompleteAdAppUpdate
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationAzure -CompleteAdAppUpdate).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationAzure -CompleteAdAppUpdate
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
+    Write-Message @"
+    # REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	workloadFid = <System.String>
+	# REQUIRED
+	stateToken = <System.String>
+}
+"@
+    Write-Message "New-RscMutationAzure -CompleteAdAppUpdate" @"
+    Completes an update to the Azure AD directory app.
+"@ "[GraphQL: completeAzureAdAppUpdate]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationAzure -RestoreAdObjectsWithPasswords
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscMutationAzure -RestoreAdObjectsWithPasswords).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscMutationAzure -RestoreAdObjectsWithPasswords
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
+    Write-Message @"
+    # REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	workloadFid = <System.String>
+	# REQUIRED
+	snapshotFid = <System.String>
+	# REQUIRED
+	passwordByUserIdMap = @(
+		@{
+			# REQUIRED
+			userId = <System.String>
+			# REQUIRED
+			password = <System.String>
+		}
+	)
+	# REQUIRED
+	objectTypeToIdMap = @(
+		@{
+			# REQUIRED
+			objectId = <System.String>
+			# REQUIRED
+			azureAdObjectType = <AzureAdObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
+		}
+	)
+	# REQUIRED
+	forceChangePasswordWithMfa = <System.Boolean>
+}
+"@
+    Write-Message "New-RscMutationAzure -RestoreAdObjectsWithPasswords" @"
+    Restores the Azure AD directory with multiple passwords.
+"@ "[GraphQL: restoreAzureAdObjectsWithPasswords]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 
@@ -10954,6 +11187,8 @@ $inputs.Var.input = @{
 	)
 	# OPTIONAL
 	isRetentionLockedSla = <System.Boolean>
+	# OPTIONAL
+	retentionLockMode = <RetentionLockMode> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionLockMode]) for enum values.
 }
 "@
     Write-Message "New-RscMutationSla -CreateGlobal" @"
@@ -11471,6 +11706,8 @@ $inputs.Var.input = @{
 	)
 	# OPTIONAL
 	isRetentionLockedSla = <System.Boolean>
+	# OPTIONAL
+	retentionLockMode = <RetentionLockMode> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionLockMode]) for enum values.
 }
 "@
     Write-Message "New-RscMutationSla -UpdateGlobal" @"
@@ -12475,6 +12712,8 @@ $inputs.Var.input = @{
 		}
 		# OPTIONAL
 		folderId = <System.String>
+		# OPTIONAL
+		shouldConvertToTemplate = <System.Boolean>
 		# REQUIRED
 		datastoreId = <System.String>
 	}
@@ -12566,6 +12805,8 @@ $inputs.Var.input = @{
 		}
 		# OPTIONAL
 		folderId = <System.String>
+		# OPTIONAL
+		shouldConvertToTemplate = <System.Boolean>
 	}
 	# REQUIRED
 	id = <System.String>
@@ -12659,6 +12900,8 @@ $inputs.Var.input = @{
 					}
 					# OPTIONAL
 					folderId = <System.String>
+					# OPTIONAL
+					shouldConvertToTemplate = <System.Boolean>
 					# REQUIRED
 					datastoreId = <System.String>
 				}
@@ -12768,6 +13011,8 @@ $inputs.Var.input = @{
 					}
 					# OPTIONAL
 					folderId = <System.String>
+					# OPTIONAL
+					shouldConvertToTemplate = <System.Boolean>
 				}
 				# REQUIRED
 				vmId = <System.String>
@@ -12883,6 +13128,8 @@ $inputs.Var.input = @{
 		}
 		# OPTIONAL
 		folderId = <System.String>
+		# OPTIONAL
+		shouldConvertToTemplate = <System.Boolean>
 		# REQUIRED
 		datastoreId = <System.String>
 	}
@@ -17412,6 +17659,158 @@ $inputs.Var.managedIdentitiesRequest = @{
     Write-Message "New-RscQueryAzure -AllManagedIdentities" @"
     List all managed identities for Azure resources.
 "@ "[GraphQL: allAzureManagedIdentities]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAzure -AdDirectories
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAzure -AdDirectories).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAzure -AdDirectories
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
+    Write-Message @"
+    # OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.sortBy = <HierarchySortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$inputs.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+}
+)
+"@
+    Write-Message "New-RscQueryAzure -AdDirectories" @"
+    Lists all Azure AD directories for the account.
+"@ "[GraphQL: azureAdDirectories]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAzure -AdDirectory
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAzure -AdDirectory).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAzure -AdDirectory
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
+    Write-Message @"
+    # REQUIRED
+$inputs.Var.workloadFid = <System.String>
+"@
+    Write-Message "New-RscQueryAzure -AdDirectory" @"
+    Details of the Azure AD corresponding to the workload ID.
+"@ "[GraphQL: azureAdDirectory]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAzure -AdObjectsByType
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAzure -AdObjectsByType).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAzure -AdObjectsByType
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
+    Write-Message @"
+    # OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.sortByOption = @(
+	<AzureAdObjectSearchType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectSearchType]) for enum values.
+)
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	snapshotId = <System.String>
+	# REQUIRED
+	azureAdObjectType = <AzureAdObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
+}
+"@
+    Write-Message "New-RscQueryAzure -AdObjectsByType" @"
+    Details of the Azure AD objects corresponding to the type.
+"@ "[GraphQL: azureAdObjectsByType]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryAzure -SearchAdSnapshot
+# -------------------------------------------------------------------
+
+if ($GetGqlRequest) {
+    (New-RscQueryAzure -SearchAdSnapshot).GqlRequest().SaveQueryToFile()
+} else {
+    $query = New-RscQueryAzure -SearchAdSnapshot
+    $fieldTypeName = $query.Field.GetType().Name
+    $argNames = $query.Arg.Keys
+    Write-Message @"
+    # OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	snapshotId = <System.String>
+	# REQUIRED
+	azureAdSearchKeyword = <System.String>
+	# REQUIRED
+	azureAdObjectType = <AzureAdObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
+	# REQUIRED
+	azureAdSearchKeywordType = <AzureAdObjectSearchType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectSearchType]) for enum values.
+}
+"@
+    Write-Message "New-RscQueryAzure -SearchAdSnapshot" @"
+    Search for azureAdObjects in a snapshot.
+"@ "[GraphQL: searchAzureAdSnapshot]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 }
 
 

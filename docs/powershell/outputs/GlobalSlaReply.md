@@ -55,6 +55,8 @@ Metadata for rendering an SLA Domain.
   - Information about Rubrik clusters where this SLA Domain is paused.
 - isRetentionLockedSla: System.Boolean
   - Specifies if this SLA Domain is retention-locked or not.
+- retentionLockMode: RetentionLockMode
+  - Specifies the retention lock mode when enabled for the SLA Domain.
 - allOrgsWithAccess: list of Orgs
   - This field is deprecated.
 - allOrgsHavingAccess: list of SlaAssociatedOrganizations

@@ -31,6 +31,8 @@
   - VMware specific metadata for the snapshot.
 - managedVolumeAppMetadata: ManagedVolumeAppMetadata
   - Managed Volume specific metadata for the snapshot. Null if snapshot is not of a managed volume.
+- activeDirectoryAppMetadata: ActiveDirectoryAppMetadata
+  - Active Directory specific metadata for the snapshot. Null if snapshot is not of a domain controller.
 - fileCount: System.Int64
   - Number of files in the snapshot.
 - pendingSnapshotDeletion: PendingSnapshotDeletion
@@ -57,6 +59,8 @@
   - Vmware vApp specific snapshot metadata.
 - cloudState: SnapshotCloudState
   - Cloud state of the snapshot.
+- cdmWorkloadSnapshot: CdmWorkloadSnapshot
+  - Snapshot of a Rubrik CDM workload.
 - isExpired: System.Boolean
   - Specifies whether or not the snapshot is expired.
 - snappableId: System.String

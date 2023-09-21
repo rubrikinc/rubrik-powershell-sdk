@@ -17,6 +17,8 @@
   - If Virtual Machine integration with storage array is possible.
 - guestCredentialId: System.String
   - ID of guest credential assigned to the virtual machine.
+- isTemplate: System.Boolean
+  - Specifies whether the virtual machine is a template or not.
 - parentWorkloadIdOpt: System.String
   - Parent ID of this workload.
 - parentWorkloadTypeOpt: System.String

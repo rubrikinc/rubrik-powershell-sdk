@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DATE_TIME")]
         DATE_TIME,
 
+        [EnumMember(Value = "FILTER_COMPLIANCE_RANGE")]
+        FILTER_COMPLIANCE_RANGE,
+
         [EnumMember(Value = "FILTER_DATE_RANGE")]
         FILTER_DATE_RANGE,
 

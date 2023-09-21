@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Queries for the 'vSphere vCenter' API domain.
     /// </summary>
     /// <description>
-    /// New-RscQueryVcenter is a master cmdlet for Vcenter work that can invoke any of the following subcommands: Vcenter, List, PreAddInfo, Networks, HotAddNetwork, NumProxiesNeeded, HotAddProxy, HotAddBandwidth, AdvancedTagPreview.
+    /// New-RscQueryVcenter is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
     /// </description>
     /// <example>
     /// <code>New-RscQueryVcenter -Vcenter [-Arg ..] [-Field ..]</code>

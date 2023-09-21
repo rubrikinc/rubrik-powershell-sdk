@@ -31,6 +31,8 @@ Information about MongoDB Source.
   - List of physical children.
 - cluster: Cluster
   - Information about CDM cluster for this MongoDB cluster.
+- activeCollectionCount: System.Int32
+  - Count of active collections for this MongoDB source.
 - protectedCollectionCount: System.Int32
   - Count of protected collections for this MongoDB source.
 - id: System.String

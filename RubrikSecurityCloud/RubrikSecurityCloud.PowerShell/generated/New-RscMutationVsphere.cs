@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Mutations for the 'vSphere' API domain.
     /// </summary>
     /// <description>
-    /// New-RscMutationVsphere is a master cmdlet for Vsphere work that can invoke any of the following subcommands: OnDemandSnapshot, BulkOnDemandSnapshot, DeleteLiveMount, ExportSnapshotToStandaloneHostV2, DownloadVirtualMachineFiles, CreateAdvancedTag, DeleteAdvancedTag, UpdateAdvancedTag.
+    /// New-RscMutationVsphere is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
     /// </description>
     /// <example>
     /// <code>New-RscMutationVsphere -OnDemandSnapshot [-Arg ..] [-Field ..]</code>

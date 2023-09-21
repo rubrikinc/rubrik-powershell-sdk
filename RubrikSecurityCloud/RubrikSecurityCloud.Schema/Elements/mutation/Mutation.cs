@@ -1225,6 +1225,35 @@ namespace RubrikSecurityCloud.Types
             return true ;
         }
 
+        //      C# -> System.String? CompleteAzureAdAppUpdate
+        // GraphQL -> completeAzureAdAppUpdate: Void (scalar)
+        public static string CompleteAzureAdAppUpdate_TypedFieldSpec(System.String fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "completeAzureAdAppUpdate" + args + "\n";
+        }
+        public static string CompleteAzureAdAppUpdate_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return CompleteAzureAdAppUpdate((System.String)fieldSpecObj);
+        }
+        public static string CompleteAzureAdAppUpdate(System.String fieldSpec)
+        {
+            return CompleteAzureAdAppUpdate_TypedFieldSpec(fieldSpec);
+        }
+        public static string CompleteAzureAdAppUpdate(object fieldSpecObj)
+        {
+            return CompleteAzureAdAppUpdate_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object CompleteAzureAdAppUpdateFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
         //      C# -> System.String? CreateReplicationPair
         // GraphQL -> createReplicationPair: Void (scalar)
         public static string CreateReplicationPair_TypedFieldSpec(System.String fieldSpec)
@@ -5090,6 +5119,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> List<CreateOnDemandJobReply>? BackupAzureAdDirectory
+        // GraphQL -> backupAzureAdDirectory: [CreateOnDemandJobReply!]! (type)
+        public static string BackupAzureAdDirectory_TypedFieldSpec(List<CreateOnDemandJobReply> fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "backupAzureAdDirectory" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
+        }
+        public static string BackupAzureAdDirectory_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return BackupAzureAdDirectory((List<CreateOnDemandJobReply>)fieldSpecObj);
+        }
+        public static string BackupAzureAdDirectory(List<CreateOnDemandJobReply> fieldSpec)
+        {
+            return BackupAzureAdDirectory_TypedFieldSpec(fieldSpec);
+        }
+        public static string BackupAzureAdDirectory(object fieldSpecObj)
+        {
+            return BackupAzureAdDirectory_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object BackupAzureAdDirectoryFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new List<CreateOnDemandJobReply>() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> List<CreateOnDemandJobReply>? BackupM365Mailbox
         // GraphQL -> backupM365Mailbox: [CreateOnDemandJobReply!]! (type)
         public static string BackupM365Mailbox_TypedFieldSpec(List<CreateOnDemandJobReply> fieldSpec)
@@ -6667,6 +6727,37 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new DownloadFilesReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> CompleteAzureAdAppSetupReply? CompleteAzureAdAppSetup
+        // GraphQL -> completeAzureAdAppSetup: CompleteAzureAdAppSetupReply! (type)
+        public static string CompleteAzureAdAppSetup_TypedFieldSpec(CompleteAzureAdAppSetupReply fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "completeAzureAdAppSetup" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
+        }
+        public static string CompleteAzureAdAppSetup_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return CompleteAzureAdAppSetup((CompleteAzureAdAppSetupReply)fieldSpecObj);
+        }
+        public static string CompleteAzureAdAppSetup(CompleteAzureAdAppSetupReply fieldSpec)
+        {
+            return CompleteAzureAdAppSetup_TypedFieldSpec(fieldSpec);
+        }
+        public static string CompleteAzureAdAppSetup(object fieldSpecObj)
+        {
+            return CompleteAzureAdAppSetup_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object CompleteAzureAdAppSetupFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new CompleteAzureAdAppSetupReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -8527,6 +8618,37 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new DeleteAwsExocomputeConfigsReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> CreateOnDemandJobReply? DeleteAzureAdDirectory
+        // GraphQL -> deleteAzureAdDirectory: CreateOnDemandJobReply! (type)
+        public static string DeleteAzureAdDirectory_TypedFieldSpec(CreateOnDemandJobReply fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "deleteAzureAdDirectory" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
+        }
+        public static string DeleteAzureAdDirectory_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return DeleteAzureAdDirectory((CreateOnDemandJobReply)fieldSpecObj);
+        }
+        public static string DeleteAzureAdDirectory(CreateOnDemandJobReply fieldSpec)
+        {
+            return DeleteAzureAdDirectory_TypedFieldSpec(fieldSpec);
+        }
+        public static string DeleteAzureAdDirectory(object fieldSpecObj)
+        {
+            return DeleteAzureAdDirectory_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object DeleteAzureAdDirectoryFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new CreateOnDemandJobReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -14328,6 +14450,37 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> RestoreAzureAdObjectsWithPasswordsReply? RestoreAzureAdObjectsWithPasswords
+        // GraphQL -> restoreAzureAdObjectsWithPasswords: RestoreAzureAdObjectsWithPasswordsReply! (type)
+        public static string RestoreAzureAdObjectsWithPasswords_TypedFieldSpec(RestoreAzureAdObjectsWithPasswordsReply fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "restoreAzureAdObjectsWithPasswords" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
+        }
+        public static string RestoreAzureAdObjectsWithPasswords_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return RestoreAzureAdObjectsWithPasswords((RestoreAzureAdObjectsWithPasswordsReply)fieldSpecObj);
+        }
+        public static string RestoreAzureAdObjectsWithPasswords(RestoreAzureAdObjectsWithPasswordsReply fieldSpec)
+        {
+            return RestoreAzureAdObjectsWithPasswords_TypedFieldSpec(fieldSpec);
+        }
+        public static string RestoreAzureAdObjectsWithPasswords(object fieldSpecObj)
+        {
+            return RestoreAzureAdObjectsWithPasswords_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object RestoreAzureAdObjectsWithPasswordsFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new RestoreAzureAdObjectsWithPasswordsReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AsyncRequestStatus? RestoreFilesNutanixSnapshot
         // GraphQL -> restoreFilesNutanixSnapshot: AsyncRequestStatus! (type)
         public static string RestoreFilesNutanixSnapshot_TypedFieldSpec(AsyncRequestStatus fieldSpec)
@@ -15378,6 +15531,68 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new BatchAsyncJobStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> StartAzureAdAppSetupReply? StartAzureAdAppSetup
+        // GraphQL -> startAzureAdAppSetup: StartAzureAdAppSetupReply! (type)
+        public static string StartAzureAdAppSetup_TypedFieldSpec(StartAzureAdAppSetupReply fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "startAzureAdAppSetup" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
+        }
+        public static string StartAzureAdAppSetup_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return StartAzureAdAppSetup((StartAzureAdAppSetupReply)fieldSpecObj);
+        }
+        public static string StartAzureAdAppSetup(StartAzureAdAppSetupReply fieldSpec)
+        {
+            return StartAzureAdAppSetup_TypedFieldSpec(fieldSpec);
+        }
+        public static string StartAzureAdAppSetup(object fieldSpecObj)
+        {
+            return StartAzureAdAppSetup_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object StartAzureAdAppSetupFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new StartAzureAdAppSetupReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> StartAzureAdAppUpdateReply? StartAzureAdAppUpdate
+        // GraphQL -> startAzureAdAppUpdate: StartAzureAdAppUpdateReply! (type)
+        public static string StartAzureAdAppUpdate_TypedFieldSpec(StartAzureAdAppUpdateReply fieldSpec)
+        {
+            string args = "\n(\ninput: $input\n)";
+            return "startAzureAdAppUpdate" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
+        }
+        public static string StartAzureAdAppUpdate_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return StartAzureAdAppUpdate((StartAzureAdAppUpdateReply)fieldSpecObj);
+        }
+        public static string StartAzureAdAppUpdate(StartAzureAdAppUpdateReply fieldSpec)
+        {
+            return StartAzureAdAppUpdate_TypedFieldSpec(fieldSpec);
+        }
+        public static string StartAzureAdAppUpdate(object fieldSpecObj)
+        {
+            return StartAzureAdAppUpdate_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object StartAzureAdAppUpdateFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new StartAzureAdAppUpdateReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

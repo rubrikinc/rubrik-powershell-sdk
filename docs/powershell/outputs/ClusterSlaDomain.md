@@ -45,3 +45,5 @@ Metadata for rendering a Rubrik cluster SLA Domain.
   - This field is deprecated.
 - ownerOrg: SlaAssociatedOrganization
   - Specifies the owner organization of the SLA Domain.
+- retentionLockMode: RetentionLockMode
+  - Specifies the retention lock mode when enabled for the SLA Domain.

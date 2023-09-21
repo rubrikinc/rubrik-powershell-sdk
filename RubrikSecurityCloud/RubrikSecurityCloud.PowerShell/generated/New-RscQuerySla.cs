@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Queries for the 'SLA' API domain.
     /// </summary>
     /// <description>
-    /// New-RscQuerySla is a master cmdlet for Sla work that can invoke any of the following subcommands: Domains, GlobalFilterList, Domain, CountOfObjectsProtected, AuditDetail, AllSummariesByIds, GlobalStatuses, ConflictObjects, ManagedVolumes, ManagedVolume, AllNcdComplianceData.
+    /// New-RscQuerySla is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
     /// </description>
     /// <example>
     /// <code>New-RscQuerySla -Domains [-Arg ..] [-Field ..]</code>

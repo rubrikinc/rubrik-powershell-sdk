@@ -1,5 +1,30 @@
 # New-RscQueryAzure
 ## Subcommands
+### addirectories
+Lists all Azure AD directories for the account.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - sortBy - HierarchySortByField: Sort hierarchy objects by hierarchy field.
+    - sortOrder - SortOrder: Sorting order for the results.
+    - filter - list of Filters: The hierarchy object filter.
+- Returns AzureAdDirectoryConnection.
+### addirectory
+Details of the Azure AD corresponding to the workload ID.
+
+- There is a single argument of type System.String.
+- Returns AzureAdDirectory.
+### adobjectsbytype
+Details of the Azure AD objects corresponding to the type.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - sortByOption - list of AzureAdObjectSearchTypes: Ordered list sorted by column names.
+    - sortOrder - SortOrder: Sorting order for the results.
+    - input - AzureAdObjectTypeInput: Input for the azureAdObjectsByType API.
+- Returns AzureAdObjectConnection.
 ### allarmtemplatesbyfeature
 Retrieve ARM templates for role definition and role assignment.
 
@@ -346,6 +371,14 @@ Gets the Azure resource groups for the given subscription.
     - tenantId - System.String
     - subscriptionId - System.String
 - Returns ResourceGroupConnection.
+### searchadsnapshot
+Search for azureAdObjects in a snapshot.
+
+- There are 3 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - input - SearchAzureAdSnapshotInput: Input for searching for Azure AD objects in a snapshot.
+- Returns AzureAdObjectConnection.
 ### sqldatabase
 Retrieves an Azure SQL Database. Refers to the fully managed SQL database built for the cloud. For more information, see https://azure.microsoft.com/en-us/products/azure-sql/database/.
 

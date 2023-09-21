@@ -27,6 +27,8 @@ Supported in v5.1+
   - 
 - folderId: System.String
   - ID of the virtual machine folder to export the new virtual machine to.
+- shouldConvertToTemplate: System.Boolean
+  - Specifies whether Export converts the recovered virtual machine to a template.
 - datastoreId: System.String
   - Required. Supported in v5.1+
       ID of the datastore to assign to the exported virtual machine.

@@ -11,6 +11,8 @@ Information about MongoDB Database.
   - Specifies whether the MongoDB database is a relic in CDM.
 - source: MongoSource
   - Parent source connection.
+- activeCollectionCount: System.Int32
+  - Count of active collections for this MongoDB database.
 - protectedCollectionCount: System.Int32
   - Count of protected collections for this MongoDB database.
 - descendantConnection: MongoDatabaseDescendantTypeConnection

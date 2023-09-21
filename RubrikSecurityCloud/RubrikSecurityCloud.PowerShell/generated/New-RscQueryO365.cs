@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Queries for the 'O365' API domain.
     /// </summary>
     /// <description>
-    /// New-RscQueryO365 is a master cmdlet for O365 work that can invoke any of the following subcommands: Org, OrgAtSnappableLevel, AllAdGroups, User, Mailbox, Groups, Mailboxes, Onedrive, Onedrives, Site, Sites, SharepointDrive, SharepointDrives, SharepointList, SharepointLists, SharepointSite, SharepointSites, Team, Teams, TeamChannels, TeamConversationsFolderID, TeamPostedBy, Calendar, Orgs, SharepointObjectList, SharepointObjects, UserObjects, OrgSummaries, ObjectAncestors, BrowseTeamConvChannels, ServiceAccount, AllOrgStatuses, License, ListApps, AllSubscriptionsAppTypeCounts, StorageStats, ServiceStatus.
+    /// New-RscQueryO365 is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
     /// </description>
     /// <example>
     /// <code>New-RscQueryO365 -Org [-Arg ..] [-Field ..]</code>

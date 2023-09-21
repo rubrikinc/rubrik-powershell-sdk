@@ -1,4 +1,6 @@
 ### VsphereHost
+- cdmId: System.String
+  - Vsphere ESXI Host CDM ID.
 - isStandaloneHost: System.Boolean
 - ioFilterStatus: System.String
   - This vsphere host's IOFilter status can be Uninstalled or Installed.

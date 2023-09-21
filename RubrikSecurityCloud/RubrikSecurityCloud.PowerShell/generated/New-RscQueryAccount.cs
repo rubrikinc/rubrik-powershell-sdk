@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Queries for the 'Account' API domain.
     /// </summary>
     /// <description>
-    /// New-RscQueryAccount is a master cmdlet for Account work that can invoke any of the following subcommands: Settings, SWithExocomputeMappings, Products, Id, Owners.
+    /// New-RscQueryAccount is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
     /// </description>
     /// <example>
     /// <code>New-RscQueryAccount -Settings [-Arg ..] [-Field ..]</code>

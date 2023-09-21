@@ -6183,6 +6183,99 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AzureAdDirectoryConnection? AzureAdDirectories
+        // GraphQL -> azureAdDirectories: AzureAdDirectoryConnection! (type)
+        public static string AzureAdDirectories_TypedFieldSpec(AzureAdDirectoryConnection fieldSpec)
+        {
+            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            return "azureAdDirectories" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
+        }
+        public static string AzureAdDirectories_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return AzureAdDirectories((AzureAdDirectoryConnection)fieldSpecObj);
+        }
+        public static string AzureAdDirectories(AzureAdDirectoryConnection fieldSpec)
+        {
+            return AzureAdDirectories_TypedFieldSpec(fieldSpec);
+        }
+        public static string AzureAdDirectories(object fieldSpecObj)
+        {
+            return AzureAdDirectories_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object AzureAdDirectoriesFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new AzureAdDirectoryConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AzureAdDirectory? AzureAdDirectory
+        // GraphQL -> azureAdDirectory: AzureAdDirectory! (type)
+        public static string AzureAdDirectory_TypedFieldSpec(AzureAdDirectory fieldSpec)
+        {
+            string args = "\n(\nworkloadFid: $workloadFid\n)";
+            return "azureAdDirectory" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
+        }
+        public static string AzureAdDirectory_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return AzureAdDirectory((AzureAdDirectory)fieldSpecObj);
+        }
+        public static string AzureAdDirectory(AzureAdDirectory fieldSpec)
+        {
+            return AzureAdDirectory_TypedFieldSpec(fieldSpec);
+        }
+        public static string AzureAdDirectory(object fieldSpecObj)
+        {
+            return AzureAdDirectory_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object AzureAdDirectoryFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new AzureAdDirectory() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AzureAdObjectConnection? AzureAdObjectsByType
+        // GraphQL -> azureAdObjectsByType: AzureAdObjectConnection! (type)
+        public static string AzureAdObjectsByType_TypedFieldSpec(AzureAdObjectConnection fieldSpec)
+        {
+            string args = "\n(\nfirst: $first\nafter: $after\nsortByOption: $sortByOption\nsortOrder: $sortOrder\ninput: $input\n)";
+            return "azureAdObjectsByType" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
+        }
+        public static string AzureAdObjectsByType_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return AzureAdObjectsByType((AzureAdObjectConnection)fieldSpecObj);
+        }
+        public static string AzureAdObjectsByType(AzureAdObjectConnection fieldSpec)
+        {
+            return AzureAdObjectsByType_TypedFieldSpec(fieldSpec);
+        }
+        public static string AzureAdObjectsByType(object fieldSpecObj)
+        {
+            return AzureAdObjectsByType_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object AzureAdObjectsByTypeFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new AzureAdObjectConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AzureCloudAccountPermissionConfigResponse? AzureCloudAccountPermissionConfig
         // GraphQL -> azureCloudAccountPermissionConfig: AzureCloudAccountPermissionConfigResponse! (type)
         public static string AzureCloudAccountPermissionConfig_TypedFieldSpec(AzureCloudAccountPermissionConfigResponse fieldSpec)
@@ -8566,6 +8659,37 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new CloudNativeSnapshotDetailsForRecoveryReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> CloudNativeSnapshotTypeDetailsReply? CloudNativeSnapshotTypeDetails
+        // GraphQL -> cloudNativeSnapshotTypeDetails: CloudNativeSnapshotTypeDetailsReply! (type)
+        public static string CloudNativeSnapshotTypeDetails_TypedFieldSpec(CloudNativeSnapshotTypeDetailsReply fieldSpec)
+        {
+            string args = "\n(\nsnapshotId: $snapshotId\n)";
+            return "cloudNativeSnapshotTypeDetails" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
+        }
+        public static string CloudNativeSnapshotTypeDetails_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return CloudNativeSnapshotTypeDetails((CloudNativeSnapshotTypeDetailsReply)fieldSpecObj);
+        }
+        public static string CloudNativeSnapshotTypeDetails(CloudNativeSnapshotTypeDetailsReply fieldSpec)
+        {
+            return CloudNativeSnapshotTypeDetails_TypedFieldSpec(fieldSpec);
+        }
+        public static string CloudNativeSnapshotTypeDetails(object fieldSpecObj)
+        {
+            return CloudNativeSnapshotTypeDetails_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object CloudNativeSnapshotTypeDetailsFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new CloudNativeSnapshotTypeDetailsReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -18796,6 +18920,37 @@ namespace RubrikSecurityCloud.Types
                 ec = new ExplorationContext();
             }
             var fieldSpecObj = new ScheduledReportConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AzureAdObjectConnection? SearchAzureAdSnapshot
+        // GraphQL -> searchAzureAdSnapshot: AzureAdObjectConnection! (type)
+        public static string SearchAzureAdSnapshot_TypedFieldSpec(AzureAdObjectConnection fieldSpec)
+        {
+            string args = "\n(\nfirst: $first\nafter: $after\ninput: $input\n)";
+            return "searchAzureAdSnapshot" + args + "\n{\n" +
+                    fieldSpec.AsFieldSpec(1) +
+                    "}\n";
+        }
+        public static string SearchAzureAdSnapshot_ObjectFieldSpec(object fieldSpecObj)
+        {
+            return SearchAzureAdSnapshot((AzureAdObjectConnection)fieldSpecObj);
+        }
+        public static string SearchAzureAdSnapshot(AzureAdObjectConnection fieldSpec)
+        {
+            return SearchAzureAdSnapshot_TypedFieldSpec(fieldSpec);
+        }
+        public static string SearchAzureAdSnapshot(object fieldSpecObj)
+        {
+            return SearchAzureAdSnapshot_ObjectFieldSpec(fieldSpecObj);
+        }
+        public static object SearchAzureAdSnapshotFieldSpec(ExplorationContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new ExplorationContext();
+            }
+            var fieldSpecObj = new AzureAdObjectConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

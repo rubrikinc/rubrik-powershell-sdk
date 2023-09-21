@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Mutations for the 'Azure' API domain.
     /// </summary>
     /// <description>
-    /// New-RscMutationAzure is a master cmdlet for Azure work that can invoke any of the following subcommands: StartRefreshNativeSubscriptionsJob, StartRestoreNativeVirtualMachineJob, StartExportNativeVirtualMachineJob, ExcludeNativeManagedDisksFromSnapshot, StartCreateNativeVirtualMachineSnapshotsJob, StartDisableNativeSubscriptionProtectionJob, StartCreateNativeManagedDiskSnapshotsJob, StartExportNativeManagedDiskJob, StartExportSqlDatabaseDbJob, StartExportSqlManagedInstanceDbJob, CreateAccount, UpdateAccount, CreateAutomaticTargetMapping, CreateCloudNativeStorageSetting, CreateCloudNativeRcvStorageSetting, UpdateAutomaticTargetMapping, UpdateCloudNativeStorageSetting, UpdateCloudNativeRcvStorageSetting, CreateTarget, UpdateTarget, CreateReaderTarget, StartCloudAccountOauth, CompleteCloudAccountOauth, SetCloudAccountCustomerAppCredentials, AddCloudAccount, AddCloudAccountWithoutOauth, DeleteCloudAccount, DeleteCloudAccountWithoutOauth, UpgradeCloudAccount, UpdateCustomerAppPermissionForSql, StartDisableCloudAccountJob, UpdateCloudAccount, MapCloudAccountToPersistentStorageLocation, AddCloudAccountExocomputeConfigurations, DeleteCloudAccountExocomputeConfigurations, MapCloudAccountExocomputeSubscription, UnmapCloudAccountExocomputeSubscription, UpgradeCloudAccountPermissionsWithoutOauth, UnmapPersistentStorageSubscription, OauthConsentKickoff, OauthConsentComplete, CreateSaasAppAad, CreateCluster, DeleteCluster.
+    /// New-RscMutationAzure is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
     /// </description>
     /// <example>
     /// <code>New-RscMutationAzure -StartRefreshNativeSubscriptionsJob [-Arg ..] [-Field ..]</code>
@@ -155,6 +155,27 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     /// <example>
     /// <code>New-RscMutationAzure -DeleteCluster [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>New-RscMutationAzure -StartAdAppSetup [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>New-RscMutationAzure -CompleteAdAppSetup [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>New-RscMutationAzure -DeleteAdDirectory [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>New-RscMutationAzure -BackupAdDirectory [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>New-RscMutationAzure -StartAdAppUpdate [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>New-RscMutationAzure -CompleteAdAppUpdate [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>New-RscMutationAzure -RestoreAdObjectsWithPasswords [-Arg ..] [-Field ..]</code>
     /// </example>
     [CmdletBinding()]
     [Cmdlet(
@@ -956,6 +977,132 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         )]
         public SwitchParameter DeleteCluster { get; set; }
 
+        
+        /// <summary>
+        /// StartAdAppSetup parameter set
+        ///
+        /// [GraphQL: startAzureAdAppSetup]
+        /// </summary>
+        [Parameter(
+            ParameterSetName = "StartAdAppSetup",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Initiates the Azure AD app creation workflow.
+[GraphQL: startAzureAdAppSetup]",
+            Position = 0
+        )]
+        public SwitchParameter StartAdAppSetup { get; set; }
+
+        
+        /// <summary>
+        /// CompleteAdAppSetup parameter set
+        ///
+        /// [GraphQL: completeAzureAdAppSetup]
+        /// </summary>
+        [Parameter(
+            ParameterSetName = "CompleteAdAppSetup",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Completes the creation flow for an Azure AD app.
+[GraphQL: completeAzureAdAppSetup]",
+            Position = 0
+        )]
+        public SwitchParameter CompleteAdAppSetup { get; set; }
+
+        
+        /// <summary>
+        /// DeleteAdDirectory parameter set
+        ///
+        /// [GraphQL: deleteAzureAdDirectory]
+        /// </summary>
+        [Parameter(
+            ParameterSetName = "DeleteAdDirectory",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Deletes an Azure AD directory.
+[GraphQL: deleteAzureAdDirectory]",
+            Position = 0
+        )]
+        public SwitchParameter DeleteAdDirectory { get; set; }
+
+        
+        /// <summary>
+        /// BackupAdDirectory parameter set
+        ///
+        /// [GraphQL: backupAzureAdDirectory]
+        /// </summary>
+        [Parameter(
+            ParameterSetName = "BackupAdDirectory",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Backs up the Azure AD directory.
+[GraphQL: backupAzureAdDirectory]",
+            Position = 0
+        )]
+        public SwitchParameter BackupAdDirectory { get; set; }
+
+        
+        /// <summary>
+        /// StartAdAppUpdate parameter set
+        ///
+        /// [GraphQL: startAzureAdAppUpdate]
+        /// </summary>
+        [Parameter(
+            ParameterSetName = "StartAdAppUpdate",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Initiates an update to the Azure AD directory app.
+[GraphQL: startAzureAdAppUpdate]",
+            Position = 0
+        )]
+        public SwitchParameter StartAdAppUpdate { get; set; }
+
+        
+        /// <summary>
+        /// CompleteAdAppUpdate parameter set
+        ///
+        /// [GraphQL: completeAzureAdAppUpdate]
+        /// </summary>
+        [Parameter(
+            ParameterSetName = "CompleteAdAppUpdate",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Completes an update to the Azure AD directory app.
+[GraphQL: completeAzureAdAppUpdate]",
+            Position = 0
+        )]
+        public SwitchParameter CompleteAdAppUpdate { get; set; }
+
+        
+        /// <summary>
+        /// RestoreAdObjectsWithPasswords parameter set
+        ///
+        /// [GraphQL: restoreAzureAdObjectsWithPasswords]
+        /// </summary>
+        [Parameter(
+            ParameterSetName = "RestoreAdObjectsWithPasswords",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Restores the Azure AD directory with multiple passwords.
+[GraphQL: restoreAzureAdObjectsWithPasswords]",
+            Position = 0
+        )]
+        public SwitchParameter RestoreAdObjectsWithPasswords { get; set; }
+
 
 // ignore warning 'Missing XML comment'
 #pragma warning disable 1591
@@ -1097,6 +1244,27 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "DeleteCluster":
                         this.ProcessRecord_DeleteCluster();
+                        break;
+                    case "StartAdAppSetup":
+                        this.ProcessRecord_StartAdAppSetup();
+                        break;
+                    case "CompleteAdAppSetup":
+                        this.ProcessRecord_CompleteAdAppSetup();
+                        break;
+                    case "DeleteAdDirectory":
+                        this.ProcessRecord_DeleteAdDirectory();
+                        break;
+                    case "BackupAdDirectory":
+                        this.ProcessRecord_BackupAdDirectory();
+                        break;
+                    case "StartAdAppUpdate":
+                        this.ProcessRecord_StartAdAppUpdate();
+                        break;
+                    case "CompleteAdAppUpdate":
+                        this.ProcessRecord_CompleteAdAppUpdate();
+                        break;
+                    case "RestoreAdObjectsWithPasswords":
+                        this.ProcessRecord_RestoreAdObjectsWithPasswords();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -1503,6 +1671,69 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -DeleteCluster";
             // Create new graphql operation deleteAzureCluster
             InitMutationDeleteAzureCluster();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // startAzureAdAppSetup.
+        internal void ProcessRecord_StartAdAppSetup()
+        {
+            this._logger.name += " -StartAdAppSetup";
+            // Create new graphql operation startAzureAdAppSetup
+            InitMutationStartAzureAdAppSetup();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // completeAzureAdAppSetup.
+        internal void ProcessRecord_CompleteAdAppSetup()
+        {
+            this._logger.name += " -CompleteAdAppSetup";
+            // Create new graphql operation completeAzureAdAppSetup
+            InitMutationCompleteAzureAdAppSetup();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // deleteAzureAdDirectory.
+        internal void ProcessRecord_DeleteAdDirectory()
+        {
+            this._logger.name += " -DeleteAdDirectory";
+            // Create new graphql operation deleteAzureAdDirectory
+            InitMutationDeleteAzureAdDirectory();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // backupAzureAdDirectory.
+        internal void ProcessRecord_BackupAdDirectory()
+        {
+            this._logger.name += " -BackupAdDirectory";
+            // Create new graphql operation backupAzureAdDirectory
+            InitMutationBackupAzureAdDirectory();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // startAzureAdAppUpdate.
+        internal void ProcessRecord_StartAdAppUpdate()
+        {
+            this._logger.name += " -StartAdAppUpdate";
+            // Create new graphql operation startAzureAdAppUpdate
+            InitMutationStartAzureAdAppUpdate();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // completeAzureAdAppUpdate.
+        internal void ProcessRecord_CompleteAdAppUpdate()
+        {
+            this._logger.name += " -CompleteAdAppUpdate";
+            // Create new graphql operation completeAzureAdAppUpdate
+            InitMutationCompleteAzureAdAppUpdate();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // restoreAzureAdObjectsWithPasswords.
+        internal void ProcessRecord_RestoreAdObjectsWithPasswords()
+        {
+            this._logger.name += " -RestoreAdObjectsWithPasswords";
+            // Create new graphql operation restoreAzureAdObjectsWithPasswords
+            InitMutationRestoreAzureAdObjectsWithPasswords();
         }
 
 
@@ -3484,6 +3715,228 @@ $inputs.Var.input = @{
 	isNewContainer = <System.Boolean>
 	# OPTIONAL
 	clusterUuid = <System.String>
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // startAzureAdAppSetup(input: StartAzureAdAppSetupInput!): StartAzureAdAppSetupReply!
+        internal void InitMutationStartAzureAdAppSetup()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "StartAzureAdAppSetupInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationStartAzureAdAppSetup",
+                "($input: StartAzureAdAppSetupInput!)",
+                "StartAzureAdAppSetupReply",
+                Mutation.StartAzureAdAppSetup_ObjectFieldSpec,
+                Mutation.StartAzureAdAppSetupFieldSpec,
+                @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	domainName = <System.String>
+	# REQUIRED
+	region = <AzureAdRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdRegion]) for enum values.
+	# OPTIONAL
+	azureAdApp = @{
+		# OPTIONAL
+		clientId = <System.String>
+		# OPTIONAL
+		clientSecret = <System.String>
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // completeAzureAdAppSetup(input: CompleteAzureAdAppSetupInput!): CompleteAzureAdAppSetupReply!
+        internal void InitMutationCompleteAzureAdAppSetup()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CompleteAzureAdAppSetupInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationCompleteAzureAdAppSetup",
+                "($input: CompleteAzureAdAppSetupInput!)",
+                "CompleteAzureAdAppSetupReply",
+                Mutation.CompleteAzureAdAppSetup_ObjectFieldSpec,
+                Mutation.CompleteAzureAdAppSetupFieldSpec,
+                @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	domainName = <System.String>
+	# REQUIRED
+	stateToken = <System.String>
+	# OPTIONAL
+	kmsSpec = @{
+		# OPTIONAL
+		cloudType = <O365AzureCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365AzureCloudType]) for enum values.
+		# OPTIONAL
+		tenantId = <System.String>
+		# OPTIONAL
+		kmsId = <System.String>
+		# OPTIONAL
+		appId = <System.String>
+		# OPTIONAL
+		appSecret = <System.String>
+		# OPTIONAL
+		keyName = <System.String>
+		# OPTIONAL
+		kekNameColossus = <System.String>
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // deleteAzureAdDirectory(input: DeleteAzureAdDirectoryInput!): CreateOnDemandJobReply!
+        internal void InitMutationDeleteAzureAdDirectory()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DeleteAzureAdDirectoryInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDeleteAzureAdDirectory",
+                "($input: DeleteAzureAdDirectoryInput!)",
+                "CreateOnDemandJobReply",
+                Mutation.DeleteAzureAdDirectory_ObjectFieldSpec,
+                Mutation.DeleteAzureAdDirectoryFieldSpec,
+                @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	workloadFid = <System.String>
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // backupAzureAdDirectory(input: BackupAzureAdDirectoryInput!): [CreateOnDemandJobReply!]!
+        internal void InitMutationBackupAzureAdDirectory()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "BackupAzureAdDirectoryInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationBackupAzureAdDirectory",
+                "($input: BackupAzureAdDirectoryInput!)",
+                "List<CreateOnDemandJobReply>",
+                Mutation.BackupAzureAdDirectory_ObjectFieldSpec,
+                Mutation.BackupAzureAdDirectoryFieldSpec,
+                @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	workloadFids = @(
+		<System.String>
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // startAzureAdAppUpdate(input: StartAzureAdAppUpdateInput!): StartAzureAdAppUpdateReply!
+        internal void InitMutationStartAzureAdAppUpdate()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "StartAzureAdAppUpdateInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationStartAzureAdAppUpdate",
+                "($input: StartAzureAdAppUpdateInput!)",
+                "StartAzureAdAppUpdateReply",
+                Mutation.StartAzureAdAppUpdate_ObjectFieldSpec,
+                Mutation.StartAzureAdAppUpdateFieldSpec,
+                @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	workloadFid = <System.String>
+	# OPTIONAL
+	azureAdApp = @{
+		# OPTIONAL
+		clientId = <System.String>
+		# OPTIONAL
+		clientSecret = <System.String>
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // completeAzureAdAppUpdate(input: CompleteAzureAdAppUpdateInput!): Void
+        internal void InitMutationCompleteAzureAdAppUpdate()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CompleteAzureAdAppUpdateInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationCompleteAzureAdAppUpdate",
+                "($input: CompleteAzureAdAppUpdateInput!)",
+                "System.String",
+                Mutation.CompleteAzureAdAppUpdate_ObjectFieldSpec,
+                Mutation.CompleteAzureAdAppUpdateFieldSpec,
+                @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	workloadFid = <System.String>
+	# REQUIRED
+	stateToken = <System.String>
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // restoreAzureAdObjectsWithPasswords(input: RestoreAzureAdObjectsWithPasswordsInput!): RestoreAzureAdObjectsWithPasswordsReply!
+        internal void InitMutationRestoreAzureAdObjectsWithPasswords()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "RestoreAzureAdObjectsWithPasswordsInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationRestoreAzureAdObjectsWithPasswords",
+                "($input: RestoreAzureAdObjectsWithPasswordsInput!)",
+                "RestoreAzureAdObjectsWithPasswordsReply",
+                Mutation.RestoreAzureAdObjectsWithPasswords_ObjectFieldSpec,
+                Mutation.RestoreAzureAdObjectsWithPasswordsFieldSpec,
+                @"# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	workloadFid = <System.String>
+	# REQUIRED
+	snapshotFid = <System.String>
+	# REQUIRED
+	passwordByUserIdMap = @(
+		@{
+			# REQUIRED
+			userId = <System.String>
+			# REQUIRED
+			password = <System.String>
+		}
+	)
+	# REQUIRED
+	objectTypeToIdMap = @(
+		@{
+			# REQUIRED
+			objectId = <System.String>
+			# REQUIRED
+			azureAdObjectType = <AzureAdObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
+		}
+	)
+	# REQUIRED
+	forceChangePasswordWithMfa = <System.Boolean>
 }"
             );
         }

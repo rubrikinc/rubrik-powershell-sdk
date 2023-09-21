@@ -37,3 +37,5 @@ Input to update SLA Domain.
   - Object types of the SLA Domain.
 - isRetentionLockedSla: System.Boolean
   - Specifies if the SLA Domain to be updated must be Retention Locked or not.
+- retentionLockMode: RetentionLockMode
+  - Specifies the retention lock mode for the intended SLA Domain update.

@@ -132,6 +132,8 @@ $inputs.Var.input = @{
 		}
 		# OPTIONAL
 		folderId = <System.String>
+		# OPTIONAL
+		shouldConvertToTemplate = <System.Boolean>
 		# REQUIRED
 		datastoreId = <System.String>
 	}

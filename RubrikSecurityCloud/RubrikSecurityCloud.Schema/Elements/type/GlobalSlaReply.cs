@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("objectTypes")]
         public List<SlaObjectType>? ObjectTypes { get; set; }
 
+        //      C# -> RetentionLockMode? RetentionLockMode
+        // GraphQL -> retentionLockMode: RetentionLockMode! (enum)
+        [JsonProperty("retentionLockMode")]
+        public RetentionLockMode? RetentionLockMode { get; set; }
+
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
         [JsonProperty("clusterUuid")]
@@ -187,6 +192,7 @@ namespace RubrikSecurityCloud.Types
 
     public GlobalSlaReply Set(
         List<SlaObjectType>? ObjectTypes = null,
+        RetentionLockMode? RetentionLockMode = null,
         System.String? ClusterUuid = null,
         System.String? Description = null,
         System.String? Id = null,
@@ -221,6 +227,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( ObjectTypes != null ) {
             this.ObjectTypes = ObjectTypes;
+        }
+        if ( RetentionLockMode != null ) {
+            this.RetentionLockMode = RetentionLockMode;
         }
         if ( ClusterUuid != null ) {
             this.ClusterUuid = ClusterUuid;
@@ -326,6 +335,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> objectTypes: [SlaObjectType!]! (enum)
         if (this.ObjectTypes != null) {
             s += ind + "objectTypes\n" ;
+        }
+        //      C# -> RetentionLockMode? RetentionLockMode
+        // GraphQL -> retentionLockMode: RetentionLockMode! (enum)
+        if (this.RetentionLockMode != null) {
+            s += ind + "retentionLockMode\n" ;
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
@@ -540,6 +554,12 @@ namespace RubrikSecurityCloud.Types
         if (this.ObjectTypes == null && ec.Includes("objectTypes",true))
         {
             this.ObjectTypes = new List<SlaObjectType>();
+        }
+        //      C# -> RetentionLockMode? RetentionLockMode
+        // GraphQL -> retentionLockMode: RetentionLockMode! (enum)
+        if (this.RetentionLockMode == null && ec.Includes("retentionLockMode",true))
+        {
+            this.RetentionLockMode = new RetentionLockMode();
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)

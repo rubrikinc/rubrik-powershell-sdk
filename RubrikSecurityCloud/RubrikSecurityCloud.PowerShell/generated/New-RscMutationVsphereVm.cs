@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Mutations for the 'vSphere VM' API domain.
     /// </summary>
     /// <description>
-    /// New-RscMutationVsphereVm is a master cmdlet for VsphereVm work that can invoke any of the following subcommands: RecoverFiles, RecoverFilesNew, RegisterAgent, DownloadSnapshot, ExportSnapshotV2, ExportSnapshotV3, BatchExport, BatchExportV3, InitiateInPlaceRecovery, ExportSnapshotWithDownloadFromCloud, BatchInPlaceRecovery, DeleteSnapshot, InitiateInstantRecoveryV2, InitiateBatchInstantRecovery, InitiateDiskMount, InitiateLiveMountV2, InitiateBatchLiveMountV2, PowerOnOffLiveMount, ListEsxiDatastores, MountRelocate, MountRelocateV2, ExcludeVmDisks, DownloadSnapshotFiles, Update.
+    /// New-RscMutationVsphereVm is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
     /// </description>
     /// <example>
     /// <code>New-RscMutationVsphereVm -RecoverFiles [-Arg ..] [-Field ..]</code>
@@ -1110,6 +1110,8 @@ $inputs.Var.input = @{
 		}
 		# OPTIONAL
 		folderId = <System.String>
+		# OPTIONAL
+		shouldConvertToTemplate = <System.Boolean>
 		# REQUIRED
 		datastoreId = <System.String>
 	}
@@ -1202,6 +1204,8 @@ $inputs.Var.input = @{
 		}
 		# OPTIONAL
 		folderId = <System.String>
+		# OPTIONAL
+		shouldConvertToTemplate = <System.Boolean>
 	}
 	# REQUIRED
 	id = <System.String>
@@ -1296,6 +1300,8 @@ $inputs.Var.input = @{
 					}
 					# OPTIONAL
 					folderId = <System.String>
+					# OPTIONAL
+					shouldConvertToTemplate = <System.Boolean>
 					# REQUIRED
 					datastoreId = <System.String>
 				}
@@ -1406,6 +1412,8 @@ $inputs.Var.input = @{
 					}
 					# OPTIONAL
 					folderId = <System.String>
+					# OPTIONAL
+					shouldConvertToTemplate = <System.Boolean>
 				}
 				# REQUIRED
 				vmId = <System.String>
@@ -1523,6 +1531,8 @@ $inputs.Var.input = @{
 		}
 		# OPTIONAL
 		folderId = <System.String>
+		# OPTIONAL
+		shouldConvertToTemplate = <System.Boolean>
 		# REQUIRED
 		datastoreId = <System.String>
 	}

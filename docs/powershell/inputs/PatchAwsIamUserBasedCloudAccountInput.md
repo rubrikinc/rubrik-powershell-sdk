@@ -11,3 +11,5 @@ Input to update IAM user-based AWS cloud account.
   - AWS IAM user access/secret keys.
 - awsRoleArn: AwsRoleArnInput
   - AWS role ARN for native protection.
+- externalArtifactMap: list of ExternalArtifactss
+  - Key value pair for external artifacts associated with an AWS account.

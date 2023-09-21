@@ -27,3 +27,5 @@ Input to create SLA Domain.
   - Object types of the SLA Domain.
 - isRetentionLockedSla: System.Boolean
   - Specifies if the SLA Domain to be created must be Retention Locked or not.
+- retentionLockMode: RetentionLockMode
+  - Specifies the retention lock mode for the intended SLA Domain creation.

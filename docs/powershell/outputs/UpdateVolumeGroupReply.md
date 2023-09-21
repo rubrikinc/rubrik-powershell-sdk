@@ -13,7 +13,7 @@ Supported in v5.0+
   - Summary information about a volume group.
 - volumes: list of HostVolumeSummarys
   - Required. Supported in v5.0+
-  v5.0-v5.2:
+  v5.0-v5.2: 
   v5.3+: Configuration details for the volumes in the Volume Group.
 - pendingSlaDomain: ManagedObjectPendingSlaInfo
   - Supported in v5.3+

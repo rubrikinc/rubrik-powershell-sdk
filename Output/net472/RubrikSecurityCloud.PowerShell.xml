@@ -861,6 +861,18 @@
             azureOauthConsentKickoff: AzureOauthConsentKickoffReply!
             </summary>
         </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscGqlMutationBackupAzureAdDirectory">
+            <summary>
+            Create new GraphQL Mutation backupAzureAdDirectory
+            backupAzureAdDirectory(input: BackupAzureAdDirectoryInput!): [CreateOnDemandJobReply!]!
+            </summary>
+        </member>
+        <member name="M:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscGqlMutationBackupAzureAdDirectory.ProcessRecord">
+            <summary>
+            Create new GraphQL Mutation backupAzureAdDirectory
+            backupAzureAdDirectory(input: BackupAzureAdDirectoryInput!): [CreateOnDemandJobReply!]!
+            </summary>
+        </member>
         <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscGqlMutationBackupO365Mailbox">
             <summary>
             Create new GraphQL Mutation backupO365Mailbox
@@ -1147,6 +1159,30 @@
             <summary>
             Create new GraphQL Mutation cancelActivitySeries
             cancelActivitySeries(input: CancelActivitySeriesInput!): Boolean!
+            </summary>
+        </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscGqlMutationCompleteAzureAdAppSetup">
+            <summary>
+            Create new GraphQL Mutation completeAzureAdAppSetup
+            completeAzureAdAppSetup(input: CompleteAzureAdAppSetupInput!): CompleteAzureAdAppSetupReply!
+            </summary>
+        </member>
+        <member name="M:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscGqlMutationCompleteAzureAdAppSetup.ProcessRecord">
+            <summary>
+            Create new GraphQL Mutation completeAzureAdAppSetup
+            completeAzureAdAppSetup(input: CompleteAzureAdAppSetupInput!): CompleteAzureAdAppSetupReply!
+            </summary>
+        </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscGqlMutationCompleteAzureAdAppUpdate">
+            <summary>
+            Create new GraphQL Mutation completeAzureAdAppUpdate
+            completeAzureAdAppUpdate(input: CompleteAzureAdAppUpdateInput!): Void
+            </summary>
+        </member>
+        <member name="M:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscGqlMutationCompleteAzureAdAppUpdate.ProcessRecord">
+            <summary>
+            Create new GraphQL Mutation completeAzureAdAppUpdate
+            completeAzureAdAppUpdate(input: CompleteAzureAdAppUpdateInput!): Void
             </summary>
         </member>
         <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscGqlMutationCompleteAzureCloudAccountOauth">
@@ -1615,6 +1651,18 @@
             <summary>
             Create new GraphQL Mutation deleteAwsExocomputeConfigs
             deleteAwsExocomputeConfigs(input: DeleteAwsExocomputeConfigsInput!): DeleteAwsExocomputeConfigsReply!
+            </summary>
+        </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscGqlMutationDeleteAzureAdDirectory">
+            <summary>
+            Create new GraphQL Mutation deleteAzureAdDirectory
+            deleteAzureAdDirectory(input: DeleteAzureAdDirectoryInput!): CreateOnDemandJobReply!
+            </summary>
+        </member>
+        <member name="M:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscGqlMutationDeleteAzureAdDirectory.ProcessRecord">
+            <summary>
+            Create new GraphQL Mutation deleteAzureAdDirectory
+            deleteAzureAdDirectory(input: DeleteAzureAdDirectoryInput!): CreateOnDemandJobReply!
             </summary>
         </member>
         <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscGqlMutationDeleteAzureCloudAccount">
@@ -2841,6 +2889,18 @@
             removeLdapIntegration(id: UUID!): Boolean!
             </summary>
         </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscGqlMutationRestoreAzureAdObjectsWithPasswords">
+            <summary>
+            Create new GraphQL Mutation restoreAzureAdObjectsWithPasswords
+            restoreAzureAdObjectsWithPasswords(input: RestoreAzureAdObjectsWithPasswordsInput!): RestoreAzureAdObjectsWithPasswordsReply!
+            </summary>
+        </member>
+        <member name="M:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscGqlMutationRestoreAzureAdObjectsWithPasswords.ProcessRecord">
+            <summary>
+            Create new GraphQL Mutation restoreAzureAdObjectsWithPasswords
+            restoreAzureAdObjectsWithPasswords(input: RestoreAzureAdObjectsWithPasswordsInput!): RestoreAzureAdObjectsWithPasswordsReply!
+            </summary>
+        </member>
         <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscGqlMutationRestoreFilesNutanixSnapshot">
             <summary>
             Create new GraphQL Mutation restoreFilesNutanixSnapshot
@@ -3043,6 +3103,30 @@
             <summary>
             Create new GraphQL Mutation startAwsNativeRdsInstanceSnapshotsJob
             startAwsNativeRdsInstanceSnapshotsJob(input: StartAwsNativeRdsInstanceSnapshotsJobInput!): BatchAsyncJobStatus!
+            </summary>
+        </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscGqlMutationStartAzureAdAppSetup">
+            <summary>
+            Create new GraphQL Mutation startAzureAdAppSetup
+            startAzureAdAppSetup(input: StartAzureAdAppSetupInput!): StartAzureAdAppSetupReply!
+            </summary>
+        </member>
+        <member name="M:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscGqlMutationStartAzureAdAppSetup.ProcessRecord">
+            <summary>
+            Create new GraphQL Mutation startAzureAdAppSetup
+            startAzureAdAppSetup(input: StartAzureAdAppSetupInput!): StartAzureAdAppSetupReply!
+            </summary>
+        </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscGqlMutationStartAzureAdAppUpdate">
+            <summary>
+            Create new GraphQL Mutation startAzureAdAppUpdate
+            startAzureAdAppUpdate(input: StartAzureAdAppUpdateInput!): StartAzureAdAppUpdateReply!
+            </summary>
+        </member>
+        <member name="M:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscGqlMutationStartAzureAdAppUpdate.ProcessRecord">
+            <summary>
+            Create new GraphQL Mutation startAzureAdAppUpdate
+            startAzureAdAppUpdate(input: StartAzureAdAppUpdateInput!): StartAzureAdAppUpdateReply!
             </summary>
         </member>
         <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscGqlMutationStartAzureCloudAccountOauth">
@@ -5457,6 +5541,66 @@
             <summary>
             Create new GraphQL Query awsTrustPolicy
             awsTrustPolicy(input: AwsTrustPolicyInput!): AwsTrustPolicy!
+            </summary>
+        </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscGqlQueryAzureAdDirectories">
+            <summary>
+            Create new GraphQL Query azureAdDirectories
+            azureAdDirectories(
+                first: Int
+                after: String
+                sortBy: HierarchySortByField
+                sortOrder: SortOrder
+                filter: [Filter!]
+              ): AzureAdDirectoryConnection!
+            </summary>
+        </member>
+        <member name="M:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscGqlQueryAzureAdDirectories.ProcessRecord">
+            <summary>
+            Create new GraphQL Query azureAdDirectories
+            azureAdDirectories(
+                first: Int
+                after: String
+                sortBy: HierarchySortByField
+                sortOrder: SortOrder
+                filter: [Filter!]
+              ): AzureAdDirectoryConnection!
+            </summary>
+        </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscGqlQueryAzureAdDirectory">
+            <summary>
+            Create new GraphQL Query azureAdDirectory
+            azureAdDirectory(workloadFid: UUID!): AzureAdDirectory!
+            </summary>
+        </member>
+        <member name="M:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscGqlQueryAzureAdDirectory.ProcessRecord">
+            <summary>
+            Create new GraphQL Query azureAdDirectory
+            azureAdDirectory(workloadFid: UUID!): AzureAdDirectory!
+            </summary>
+        </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscGqlQueryAzureAdObjectsByType">
+            <summary>
+            Create new GraphQL Query azureAdObjectsByType
+            azureAdObjectsByType(
+                first: Int
+                after: String
+                sortByOption: [AzureAdObjectSearchType!]
+                sortOrder: SortOrder
+                input: AzureAdObjectTypeInput!
+              ): AzureAdObjectConnection!
+            </summary>
+        </member>
+        <member name="M:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscGqlQueryAzureAdObjectsByType.ProcessRecord">
+            <summary>
+            Create new GraphQL Query azureAdObjectsByType
+            azureAdObjectsByType(
+                first: Int
+                after: String
+                sortByOption: [AzureAdObjectSearchType!]
+                sortOrder: SortOrder
+                input: AzureAdObjectTypeInput!
+              ): AzureAdObjectConnection!
             </summary>
         </member>
         <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscGqlQueryAzureCloudAccountPermissionConfig">
@@ -9051,6 +9195,18 @@
               ): RdsInstanceDetailsFromAws!
             </summary>
         </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscGqlQuerySearchAzureAdSnapshot">
+            <summary>
+            Create new GraphQL Query searchAzureAdSnapshot
+            searchAzureAdSnapshot(first: Int, after: String, input: SearchAzureAdSnapshotInput!): AzureAdObjectConnection!
+            </summary>
+        </member>
+        <member name="M:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscGqlQuerySearchAzureAdSnapshot.ProcessRecord">
+            <summary>
+            Create new GraphQL Query searchAzureAdSnapshot
+            searchAzureAdSnapshot(first: Int, after: String, input: SearchAzureAdSnapshotInput!): AzureAdObjectConnection!
+            </summary>
+        </member>
         <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscGqlQuerySearchNutanixVm">
             <summary>
             Create new GraphQL Query searchNutanixVm
@@ -9880,7 +10036,7 @@
             Mutations for the 'Activity series' API domain.
             </summary>
             <description>
-            New-RscMutationActivitySeries is a master cmdlet for ActivitySeries work that can invoke any of the following subcommands: Cancel.
+            New-RscMutationActivitySeries is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
             </description>
             <example>
             <code>New-RscMutationActivitySeries -Cancel [-Arg ..] [-Field ..]</code>
@@ -9898,7 +10054,7 @@
             Mutations for the 'AWS' API domain.
             </summary>
             <description>
-            New-RscMutationAws is a master cmdlet for Aws work that can invoke any of the following subcommands: StartNativeEc2InstanceSnapshotsJob, StartRestoreNativeEc2InstanceSnapshotJob, StartRefreshNativeAccountsJob, StartCreateNativeEbsVolumeSnapshotsJob, StartNativeAccountDisableJob, StartExportNativeEbsVolumeSnapshotJob, ExcludeNativeEbsVolumesFromSnapshot, StartNativeRdsInstanceSnapshotsJob, CreateAccount, UpdateAccount, CreateAutomaticTargetMapping, CreateCloudNativeStorageSetting, UpdateAutomaticTargetMapping, UpdateCloudNativeStorageSetting, CreateTarget, UpdateTarget, CreateReaderTarget, CreateComputeSetting, UpdateComputeSetting, DeleteComputeSetting, ValidateAndCreateCloudAccount, FinalizeCloudAccountProtection, PrepareCloudAccountDeletion, FinalizeCloudAccountDeletion, UpdateCloudAccountFeature, UpdateCloudAccount, PrepareFeatureUpdateForCloudAccount, CreateExocomputeConfigs, DeleteExocomputeConfigs, UpdateExocomputeConfigs, StartExocomputeDisableJob, AddIamUserBasedCloudAccount, UpgradeIamUserBasedCloudAccountPermissions, UpgradeCloudAccountFeaturesWithoutCft, AddAuthenticationServerBasedCloudAccount, PatchAuthenticationServerBasedCloudAccount, PatchIamUserBasedCloudAccount, RegisterFeatureArtifacts, BulkDeleteCloudAccountWithoutCft, CreateCluster, DeleteCluster.
+            New-RscMutationAws is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
             </description>
             <example>
             <code>New-RscMutationAws -StartNativeEc2InstanceSnapshotsJob [-Arg ..] [-Field ..]</code>
@@ -10316,7 +10472,7 @@
             Mutations for the 'Azure' API domain.
             </summary>
             <description>
-            New-RscMutationAzure is a master cmdlet for Azure work that can invoke any of the following subcommands: StartRefreshNativeSubscriptionsJob, StartRestoreNativeVirtualMachineJob, StartExportNativeVirtualMachineJob, ExcludeNativeManagedDisksFromSnapshot, StartCreateNativeVirtualMachineSnapshotsJob, StartDisableNativeSubscriptionProtectionJob, StartCreateNativeManagedDiskSnapshotsJob, StartExportNativeManagedDiskJob, StartExportSqlDatabaseDbJob, StartExportSqlManagedInstanceDbJob, CreateAccount, UpdateAccount, CreateAutomaticTargetMapping, CreateCloudNativeStorageSetting, CreateCloudNativeRcvStorageSetting, UpdateAutomaticTargetMapping, UpdateCloudNativeStorageSetting, UpdateCloudNativeRcvStorageSetting, CreateTarget, UpdateTarget, CreateReaderTarget, StartCloudAccountOauth, CompleteCloudAccountOauth, SetCloudAccountCustomerAppCredentials, AddCloudAccount, AddCloudAccountWithoutOauth, DeleteCloudAccount, DeleteCloudAccountWithoutOauth, UpgradeCloudAccount, UpdateCustomerAppPermissionForSql, StartDisableCloudAccountJob, UpdateCloudAccount, MapCloudAccountToPersistentStorageLocation, AddCloudAccountExocomputeConfigurations, DeleteCloudAccountExocomputeConfigurations, MapCloudAccountExocomputeSubscription, UnmapCloudAccountExocomputeSubscription, UpgradeCloudAccountPermissionsWithoutOauth, UnmapPersistentStorageSubscription, OauthConsentKickoff, OauthConsentComplete, CreateSaasAppAad, CreateCluster, DeleteCluster.
+            New-RscMutationAzure is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
             </description>
             <example>
             <code>New-RscMutationAzure -StartRefreshNativeSubscriptionsJob [-Arg ..] [-Field ..]</code>
@@ -10449,6 +10605,27 @@
             </example>
             <example>
             <code>New-RscMutationAzure -DeleteCluster [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>New-RscMutationAzure -StartAdAppSetup [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>New-RscMutationAzure -CompleteAdAppSetup [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>New-RscMutationAzure -DeleteAdDirectory [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>New-RscMutationAzure -BackupAdDirectory [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>New-RscMutationAzure -StartAdAppUpdate [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>New-RscMutationAzure -CompleteAdAppUpdate [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>New-RscMutationAzure -RestoreAdObjectsWithPasswords [-Arg ..] [-Field ..]</code>
             </example>
         </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscMutationAzure.StartRefreshNativeSubscriptionsJob">
@@ -10759,12 +10936,61 @@
              [GraphQL: deleteAzureCluster]
              </summary>
         </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscMutationAzure.StartAdAppSetup">
+             <summary>
+             StartAdAppSetup parameter set
+            
+             [GraphQL: startAzureAdAppSetup]
+             </summary>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscMutationAzure.CompleteAdAppSetup">
+             <summary>
+             CompleteAdAppSetup parameter set
+            
+             [GraphQL: completeAzureAdAppSetup]
+             </summary>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscMutationAzure.DeleteAdDirectory">
+             <summary>
+             DeleteAdDirectory parameter set
+            
+             [GraphQL: deleteAzureAdDirectory]
+             </summary>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscMutationAzure.BackupAdDirectory">
+             <summary>
+             BackupAdDirectory parameter set
+            
+             [GraphQL: backupAzureAdDirectory]
+             </summary>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscMutationAzure.StartAdAppUpdate">
+             <summary>
+             StartAdAppUpdate parameter set
+            
+             [GraphQL: startAzureAdAppUpdate]
+             </summary>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscMutationAzure.CompleteAdAppUpdate">
+             <summary>
+             CompleteAdAppUpdate parameter set
+            
+             [GraphQL: completeAzureAdAppUpdate]
+             </summary>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscMutationAzure.RestoreAdObjectsWithPasswords">
+             <summary>
+             RestoreAdObjectsWithPasswords parameter set
+            
+             [GraphQL: restoreAzureAdObjectsWithPasswords]
+             </summary>
+        </member>
         <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscMutationAzureO365">
             <summary>
             Mutations for the 'AzureO365' API domain.
             </summary>
             <description>
-            New-RscMutationAzureO365 is a master cmdlet for AzureO365 work that can invoke any of the following subcommands: SetupExocompute.
+            New-RscMutationAzureO365 is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
             </description>
             <example>
             <code>New-RscMutationAzureO365 -SetupExocompute [-Arg ..] [-Field ..]</code>
@@ -10782,7 +11008,7 @@
             Mutations for the 'Cassandra' API domain.
             </summary>
             <description>
-            New-RscMutationCassandra is a master cmdlet for Cassandra work that can invoke any of the following subcommands: RecoverSource, CreateSource, UpdateSource, DeleteSource, BulkDeleteSources.
+            New-RscMutationCassandra is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
             </description>
             <example>
             <code>New-RscMutationCassandra -RecoverSource [-Arg ..] [-Field ..]</code>
@@ -10840,7 +11066,7 @@
             Mutations for the 'Cluster' API domain.
             </summary>
             <description>
-            New-RscMutationCluster is a master cmdlet for Cluster work that can invoke any of the following subcommands: AddNodesToCloud, RegisterCloud, UpdateDatabaseLogReportingProperties, CreateFailover, UpdateFailover, DeleteFailover, BulkDeleteFailover, CreateK8s, RefreshK8s, ArchiveK8s, RemoveCdm, RecoverCloud.
+            New-RscMutationCluster is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
             </description>
             <example>
             <code>New-RscMutationCluster -AddNodesToCloud [-Arg ..] [-Field ..]</code>
@@ -10968,7 +11194,7 @@
             Mutations for the 'Db2' API domain.
             </summary>
             <description>
-            New-RscMutationDb2 is a master cmdlet for Db2 work that can invoke any of the following subcommands: AddInstance, DeleteInstance, DiscoverInstance, PatchInstance, CreateOnDemandBackup, DownloadSnapshot, DownloadSnapshotsForPointInTimeRecovery, ExpireDownloadedSnapshots, PatchDatabase, RefreshDatabase, DeleteDatabase.
+            New-RscMutationDb2 is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
             </description>
             <example>
             <code>New-RscMutationDb2 -AddInstance [-Arg ..] [-Field ..]</code>
@@ -11086,7 +11312,7 @@
             Mutations for the 'Hyperv' API domain.
             </summary>
             <description>
-            New-RscMutationHyperv is a master cmdlet for Hyperv work that can invoke any of the following subcommands: RegisterScvmm, ScvmmUpdate, ScvmmDelete, RefreshScvmm, OnDemandSnapshot, DeleteAllSnapshots, ExportVirtualMachine, DownloadVirtualMachineSnapshotFiles, InstantRecoverVirtualMachineSnapshot, RestoreVirtualMachineSnapshotFiles, RegisterAgentVirtualMachine, DeleteVirtualMachineSnapshot, DownloadVirtualMachineSnapshot, CreateVirtualMachineSnapshotMount, UpdateVirtualMachineSnapshotMount, DeleteVirtualMachineSnapshotMount, RefreshServer, BatchOnDemandBackupVm, BatchExportVm, BatchMountVm, BatchInstantRecoverVm, UpdateVirtualMachine, DownloadSnapshotFromLocation.
+            New-RscMutationHyperv is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
             </description>
             <example>
             <code>New-RscMutationHyperv -RegisterScvmm [-Arg ..] [-Field ..]</code>
@@ -11324,7 +11550,7 @@
             Mutations for the 'Ldap' API domain.
             </summary>
             <description>
-            New-RscMutationLdap is a master cmdlet for Ldap work that can invoke any of the following subcommands: UpdateIntegration, RemoveIntegration, DeletePrincipals, SetMfaSetting.
+            New-RscMutationLdap is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
             </description>
             <example>
             <code>New-RscMutationLdap -UpdateIntegration [-Arg ..] [-Field ..]</code>
@@ -11372,7 +11598,7 @@
             Mutations for the 'Mongo' API domain.
             </summary>
             <description>
-            New-RscMutationMongo is a master cmdlet for Mongo work that can invoke any of the following subcommands: AddSource, DeleteSource, DiscoverSource, PatchSource, RetryAddSource, AssignSlaToDbCollection, RecoverSource, CreatedbSource, UpdatedbSource, DeletedbSource, BulkDeletedbSources, RecoverdbSource.
+            New-RscMutationMongo is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
             </description>
             <example>
             <code>New-RscMutationMongo -AddSource [-Arg ..] [-Field ..]</code>
@@ -11500,7 +11726,7 @@
             Mutations for the 'MSSQL' API domain.
             </summary>
             <description>
-            New-RscMutationMssql is a master cmdlet for Mssql work that can invoke any of the following subcommands: BrowseDatabaseSnapshot, ExportDatabase, RestoreDatabase, BulkUpdateDbs, TakeLogBackup, CreateOnDemandBackup, DeleteDbSnapshots, DeleteLiveMount, BulkCreateOnDemandBackup, CreateLiveMount, UpdateLogShippingConfiguration, DownloadDatabaseFilesFromArchivalLocation, DownloadDatabaseBackupFiles, AssignSlaDomainProperties, UpdateDefaultProperties, CreateLogShippingConfiguration, AssignSlaDomainPropertiesAsync.
+            New-RscMutationMssql is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
             </description>
             <example>
             <code>New-RscMutationMssql -BrowseDatabaseSnapshot [-Arg ..] [-Field ..]</code>
@@ -11678,7 +11904,7 @@
             Mutations for the 'Nutanix' API domain.
             </summary>
             <description>
-            New-RscMutationNutanix is a master cmdlet for Nutanix work that can invoke any of the following subcommands: CreateCluster, RefreshCluster, UpdateCluster, DeleteCluster, RegisterAgentVm, UpdateVm, CreateOnDemandBackup, DeleteSnapshots, MountSnapshotV1, PatchMountV1, DeleteMountV1, MigrateMountV1, DeleteSnapshot, RestoreFilesSnapshot, DownloadFilesSnapshot, ExportSnapshot, DownloadSnapshot, BatchExportVm, BatchMountVm, DownloadVmFromLocation, CreatePrismCentral, UpdatePrismCentral, DeletePrismCentral, RefreshPrismCentral, BulkOnDemandSnapshotVm.
+            New-RscMutationNutanix is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
             </description>
             <example>
             <code>New-RscMutationNutanix -CreateCluster [-Arg ..] [-Field ..]</code>
@@ -11936,7 +12162,7 @@
             Mutations for the 'O365' API domain.
             </summary>
             <description>
-            New-RscMutationO365 is a master cmdlet for O365 work that can invoke any of the following subcommands: SaaSSetupKickoff, PdlGroups, SaasSetupComplete, SetupKickoff, AddOrg, OauthConsentKickoff, OauthConsentComplete, CreateAppKickoff, CreateAppComplete, InsertCustomerApp, UpdateAppAuthStatus, UpdateAppPermissions, DeleteAzureApp, BackupMailbox, BackupOnedrive, BackupSharepointDrive, BackupSharepointList, BackupSharePointSite, BackupTeam, RestoreTeamsFiles, RestoreTeamsConversations, RestoreSnappable, RefreshOrg, DeleteOrg, RestoreMailbox, ExportMailbox, SetServiceAccount, EnableSharePoint, EnableTeams, DeleteServiceAccount, UpdateOrgCustomName.
+            New-RscMutationO365 is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
             </description>
             <example>
             <code>New-RscMutationO365 -SaaSSetupKickoff [-Arg ..] [-Field ..]</code>
@@ -12254,7 +12480,7 @@
             Mutations for the 'Oracle' API domain.
             </summary>
             <description>
-            New-RscMutationOracle is a master cmdlet for Oracle work that can invoke any of the following subcommands: BulkUpdateHosts, RefreshDatabase, UpdateDataGuardGroup, DeleteAllDatabaseSnapshots, TakeOnDemandDatabaseSnapshot, TakeOnDemandLogSnapshot, BulkUpdateRacs, ExportTablespace, ValidateAcoFile, ValidateDatabaseBackups, BulkUpdateDatabases, InstantRecoverSnapshot, MountDatabase, ExportDatabase, CreatePdbRestore, DownloadDatabaseSnapshot, DeleteMount, RestoreLogs.
+            New-RscMutationOracle is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
             </description>
             <example>
             <code>New-RscMutationOracle -BulkUpdateHosts [-Arg ..] [-Field ..]</code>
@@ -12442,7 +12668,7 @@
             Mutations for the 'SLA' API domain.
             </summary>
             <description>
-            New-RscMutationSla is a master cmdlet for Sla work that can invoke any of the following subcommands: CreateGlobal, UpdateGlobal, Assign, AssignsForSnappableHierarchies, AssignRetentionToSnappables, AssignRetentionToSnapshots, Pause, GetPendingAssignments, ExportManagedVolumeSnapshot.
+            New-RscMutationSla is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
             </description>
             <example>
             <code>New-RscMutationSla -CreateGlobal [-Arg ..] [-Field ..]</code>
@@ -12540,7 +12766,7 @@
             Mutations for the 'vSphere vCenter' API domain.
             </summary>
             <description>
-            New-RscMutationVcenter is a master cmdlet for Vcenter work that can invoke any of the following subcommands: Create, Delete, Refresh, Update, UpdateHotAddNetwork, UpdateHotAddBandwidth.
+            New-RscMutationVcenter is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
             </description>
             <example>
             <code>New-RscMutationVcenter -Create [-Arg ..] [-Field ..]</code>
@@ -12608,7 +12834,7 @@
             Mutations for the 'vSphere' API domain.
             </summary>
             <description>
-            New-RscMutationVsphere is a master cmdlet for Vsphere work that can invoke any of the following subcommands: OnDemandSnapshot, BulkOnDemandSnapshot, DeleteLiveMount, ExportSnapshotToStandaloneHostV2, DownloadVirtualMachineFiles, CreateAdvancedTag, DeleteAdvancedTag, UpdateAdvancedTag.
+            New-RscMutationVsphere is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
             </description>
             <example>
             <code>New-RscMutationVsphere -OnDemandSnapshot [-Arg ..] [-Field ..]</code>
@@ -12696,7 +12922,7 @@
             Mutations for the 'vSphere VM' API domain.
             </summary>
             <description>
-            New-RscMutationVsphereVm is a master cmdlet for VsphereVm work that can invoke any of the following subcommands: RecoverFiles, RecoverFilesNew, RegisterAgent, DownloadSnapshot, ExportSnapshotV2, ExportSnapshotV3, BatchExport, BatchExportV3, InitiateInPlaceRecovery, ExportSnapshotWithDownloadFromCloud, BatchInPlaceRecovery, DeleteSnapshot, InitiateInstantRecoveryV2, InitiateBatchInstantRecovery, InitiateDiskMount, InitiateLiveMountV2, InitiateBatchLiveMountV2, PowerOnOffLiveMount, ListEsxiDatastores, MountRelocate, MountRelocateV2, ExcludeVmDisks, DownloadSnapshotFiles, Update.
+            New-RscMutationVsphereVm is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
             </description>
             <example>
             <code>New-RscMutationVsphereVm -RecoverFiles [-Arg ..] [-Field ..]</code>
@@ -12944,7 +13170,7 @@
             Queries for the 'Account' API domain.
             </summary>
             <description>
-            New-RscQueryAccount is a master cmdlet for Account work that can invoke any of the following subcommands: Settings, SWithExocomputeMappings, Products, Id, Owners.
+            New-RscQueryAccount is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
             </description>
             <example>
             <code>New-RscQueryAccount -Settings [-Arg ..] [-Field ..]</code>
@@ -13002,7 +13228,7 @@
             Queries for the 'Activity series' API domain.
             </summary>
             <description>
-            New-RscQueryActivitySeries is a master cmdlet for ActivitySeries work that can invoke any of the following subcommands: ActivitySeries, List.
+            New-RscQueryActivitySeries is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
             </description>
             <example>
             <code>New-RscQueryActivitySeries -ActivitySeries [-Arg ..] [-Field ..]</code>
@@ -13030,7 +13256,7 @@
             Queries for the 'AWS' API domain.
             </summary>
             <description>
-            New-RscQueryAws is a master cmdlet for Aws work that can invoke any of the following subcommands: NativeRoot, NativeAccount, NativeEc2Instance, NativeEbsVolume, NativeS3Bucket, NativeAccounts, NativeEc2InstancesByName, NativeEc2Instances, NativeEbsVolumesByName, NativeEbsVolumes, AllVpcsByRegion, AllVpcs, IsNativeEbsVolumeSnapshotRestorable, AllAvailabilityZonesByRegion, AllKmsEncryptionKeysByRegion, IsS3BucketNameAvailable, AllS3Buckets, AllS3BucketsDetails, NativeRdsInstance, NativeRdsInstances, NativeRdsPointInTimeRestoreWindow, RdsInstanceDetails, IsNativeRdsInstanceLaunchConfigurationValid, AllOptionGroupsByRegion, AllDbParameterGroupsByRegion, AllDbSubnetGroupsByRegion, ValidateNativeRdsInstanceNameForExport, ValidateNativeRdsClusterNameForExport, NativeRdsExportDefaults, AllEc2KeyPairsByRegion, AmiTypeForNativeArchivedSnapshotExport, AllSupportedRdsDatabaseInstanceClasses, ComputeSettings, AllComputeSettings, AllCloudAccountsWithFeatures, CloudAccountWithFeatures, CloudAccountListVpcs, CloudAccountListSubnets, CloudAccountListSecurityGroups, AllExocomputeConfigs, AllCloudAccountConfigs, TrustPolicy, AllPermissionPolicies, ArtifactsToDelete, AllRegions, AllCdmVersions, AllInstanceProfileNames.
+            New-RscQueryAws is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
             </description>
             <example>
             <code>New-RscQueryAws -NativeRoot [-Arg ..] [-Field ..]</code>
@@ -13508,7 +13734,7 @@
             Queries for the 'Azure' API domain.
             </summary>
             <description>
-            New-RscQueryAzure is a master cmdlet for Azure work that can invoke any of the following subcommands: NativeRoot, NativeSubscription, NativeSubscriptions, NativeResourceGroup, NativeResourceGroups, NativeVirtualMachine, NativeVirtualMachines, NativeManagedDisk, NativeManagedDisks, AllNativeVirtualNetworks, AllNativeSubnetsByRegionFromAzure, AllNativeSecurityGroupsByRegionFromAzure, AllDiskEncryptionSetsByRegion, AllNativeAvailabilitySetsByRegionFromAzure, AllNativeExportCompatibleVmSizesByRegionFromAzure, AllNativeExportCompatibleDiskTypesByRegionFromAzure, AllNativeVirtualMachineSizes, IsNativeManagedDiskSnapshotRestorable, IsStorageAccountNameAvailable, AllNativeStorageAccountsFromAzure, SqlDatabase, SqlDatabases, SqlDatabaseServer, SqlDatabaseServers, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceServer, SqlManagedInstanceServers, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, ValidateNativeSqlDatabaseDbNameForExport, ValidateNativeSqlManagedInstanceDbNameForExport, AllSqlDatabaseServerElasticPools, IsNativeSqlDatabaseSnapshotPersistent, AllKeyVaultsByRegion, AllEncryptionKeys, CloudAccountTenant, CloudAccountTenantWithExoConfigs, AllCloudAccountTenants, CloudAccountSubscriptionWithFeatures, AllCloudAccountSubscriptionsByFeature, AllSubscriptionWithExocomputeMappings, AllResourceGroupsFrom, DoesNativeResourceGroupExist, AllNativeResourceGroupsInfoIfExist, AllCloudAccountMissingPermissions, CloudAccountPermissionConfig, AllExocomputeConfigsInAccount, AllCloudAccountSubnetsByRegion, ValidateCloudAccountExocomputeConfigurations, AllArmTemplatesByFeature, CheckPersistentStorageSubscriptionCanUnmap, Subscriptions, Regions, ResourceGroups, VNets, Subnets, StorageAccounts, AllHostedRegions, AllResourceGroups, AllVnets, AllSubnets, AllCdmVersions, AllRegions, AllNsgs, AllStorageAccounts, AllManagedIdentities.
+            New-RscQueryAzure is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
             </description>
             <example>
             <code>New-RscQueryAzure -NativeRoot [-Arg ..] [-Field ..]</code>
@@ -13710,6 +13936,18 @@
             </example>
             <example>
             <code>New-RscQueryAzure -AllManagedIdentities [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>New-RscQueryAzure -AdDirectories [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>New-RscQueryAzure -AdDirectory [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>New-RscQueryAzure -AdObjectsByType [-Arg ..] [-Field ..]</code>
+            </example>
+            <example>
+            <code>New-RscQueryAzure -SearchAdSnapshot [-Arg ..] [-Field ..]</code>
             </example>
         </member>
         <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscQueryAzure.NativeRoot">
@@ -14181,12 +14419,40 @@
              [GraphQL: allAzureManagedIdentities]
              </summary>
         </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscQueryAzure.AdDirectories">
+             <summary>
+             AdDirectories parameter set
+            
+             [GraphQL: azureAdDirectories]
+             </summary>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscQueryAzure.AdDirectory">
+             <summary>
+             AdDirectory parameter set
+            
+             [GraphQL: azureAdDirectory]
+             </summary>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscQueryAzure.AdObjectsByType">
+             <summary>
+             AdObjectsByType parameter set
+            
+             [GraphQL: azureAdObjectsByType]
+             </summary>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscQueryAzure.SearchAdSnapshot">
+             <summary>
+             SearchAdSnapshot parameter set
+            
+             [GraphQL: searchAzureAdSnapshot]
+             </summary>
+        </member>
         <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.New_RscQueryAzureO365">
             <summary>
             Queries for the 'AzureO365' API domain.
             </summary>
             <description>
-            New-RscQueryAzureO365 is a master cmdlet for AzureO365 work that can invoke any of the following subcommands: Exocompute, CheckStorageAccountName, CheckStorageAccountAccessibility, CheckSubscriptionQuota, CheckResourceGroupName, CheckVirtualNetworkName, ValidateUserRoles, CheckNSGOutboundRules, CheckNetworkSubnet, GetNetworkSubnetUnusedAddr, GetAzureHostType.
+            New-RscQueryAzureO365 is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
             </description>
             <example>
             <code>New-RscQueryAzureO365 -Exocompute [-Arg ..] [-Field ..]</code>
@@ -14304,7 +14570,7 @@
             Queries for the 'Cassandra' API domain.
             </summary>
             <description>
-            New-RscQueryCassandra is a master cmdlet for Cassandra work that can invoke any of the following subcommands: Sources, Keyspaces, ColumnFamilies, ColumnFamilyRecoverableRange, ColumnFamilySchema, Source, Keyspace, ColumnFamily.
+            New-RscQueryCassandra is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
             </description>
             <example>
             <code>New-RscQueryCassandra -Sources [-Arg ..] [-Field ..]</code>
@@ -14392,7 +14658,7 @@
             Queries for the 'Cluster' API domain.
             </summary>
             <description>
-            New-RscQueryCluster is a master cmdlet for Cluster work that can invoke any of the following subcommands: Nodes, List, Cluster, WithUpgradesInfo, Dns, Proxy, NtpServers, NetworkInterfaces, FloatingIps, Vlans, DefaultGateway, WebSignedCertificate, Ipmi, Certificates, WebCertsAndIpmis, OperationJobProgress, Ipv6Mode, Csr, TypeList, GroupByList, DatabaseLogReportingProperties, DatabaseLogReport, Connected, ReplicationTargets, HostFailover, K8s, Windows, ReportMigrationStatus, ReportMigrationCount, ReportMigrationJobStatus, SlaDomains, VerifySlaWithReplicationTo, GlobalSlas, RegistrationProductInfo, IsTotpAckNecessary, TotpAckStatus.
+            New-RscQueryCluster is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
             </description>
             <example>
             <code>New-RscQueryCluster -Nodes [-Arg ..] [-Field ..]</code>
@@ -14760,7 +15026,7 @@
             Queries for the 'Db2' API domain.
             </summary>
             <description>
-            New-RscQueryDb2 is a master cmdlet for Db2 work that can invoke any of the following subcommands: Instances, Instance, Database, Databases, RecoverableRange, RecoverableRanges, LogSnapshot, LogSnapshots.
+            New-RscQueryDb2 is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
             </description>
             <example>
             <code>New-RscQueryDb2 -Instances [-Arg ..] [-Field ..]</code>
@@ -14848,7 +15114,7 @@
             Queries for the 'Hyperv' API domain.
             </summary>
             <description>
-            New-RscQueryHyperv is a master cmdlet for Hyperv work that can invoke any of the following subcommands: TopLevelDescendants, VirtualMachines, Scvmm, Cluster, Server, VirtualMachine, UniqueServersCount, Scvmms, Servers, Mounts, VmDetail, HostAsyncRequestStatus, ScvmmAsyncRequestStatus, VirtualMachineAsyncRequestStatus.
+            New-RscQueryHyperv is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
             </description>
             <example>
             <code>New-RscQueryHyperv -TopLevelDescendants [-Arg ..] [-Field ..]</code>
@@ -14996,7 +15262,7 @@
             Queries for the 'Ldap' API domain.
             </summary>
             <description>
-            New-RscQueryLdap is a master cmdlet for Ldap work that can invoke any of the following subcommands: IntegrationList, PrincipalList, AuthorizedPrincipalList.
+            New-RscQueryLdap is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
             </description>
             <example>
             <code>New-RscQueryLdap -IntegrationList [-Arg ..] [-Field ..]</code>
@@ -15034,7 +15300,7 @@
             Queries for the 'Mongo' API domain.
             </summary>
             <description>
-            New-RscQueryMongo is a master cmdlet for Mongo work that can invoke any of the following subcommands: Sources, Databases, Collections, Source, Database, Collection, RecoverableRanges, BulkRecoverableRanges, DbSources, DbDatabases, DbCollections, DbSource, DbDatabase, DbCollection, DbCollectionRecoverableRange, DbBulkRecoverableRange.
+            New-RscQueryMongo is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
             </description>
             <example>
             <code>New-RscQueryMongo -Sources [-Arg ..] [-Field ..]</code>
@@ -15202,7 +15468,7 @@
             Queries for the 'MSSQL' API domain.
             </summary>
             <description>
-            New-RscQueryMssql is a master cmdlet for Mssql work that can invoke any of the following subcommands: TopLevelDescendants, Databases, AvailabilityGroup, Instance, Database, RecoverableRanges, DatabaseMissedSnapshots, CompatibleInstances, DatabaseMissedRecoverableRanges, AllDatabaseRestoreFiles, DatabaseLiveMounts, DefaultProperties, DatabaseRestoreEstimate, CdmLogShippingTargets, CdmLogShippingTarget, LogShippingTargets.
+            New-RscQueryMssql is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
             </description>
             <example>
             <code>New-RscQueryMssql -TopLevelDescendants [-Arg ..] [-Field ..]</code>
@@ -15370,7 +15636,7 @@
             Queries for the 'Nutanix' API domain.
             </summary>
             <description>
-            New-RscQueryNutanix is a master cmdlet for Nutanix work that can invoke any of the following subcommands: TopLevelDescendants, Cluster, Clusters, PrismCentrals, PrismCentral, Category, CategoryValue, Vm, Vms, Mounts, ClusterContainers, ClusterNetworks, ClusterAsyncRequestStatus, VmAsyncRequestStatus, SearchVm, VmMissedSnapshots, BrowseSnapshot, SnapshotDetail.
+            New-RscQueryNutanix is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
             </description>
             <example>
             <code>New-RscQueryNutanix -TopLevelDescendants [-Arg ..] [-Field ..]</code>
@@ -15558,7 +15824,7 @@
             Queries for the 'O365' API domain.
             </summary>
             <description>
-            New-RscQueryO365 is a master cmdlet for O365 work that can invoke any of the following subcommands: Org, OrgAtSnappableLevel, AllAdGroups, User, Mailbox, Groups, Mailboxes, Onedrive, Onedrives, Site, Sites, SharepointDrive, SharepointDrives, SharepointList, SharepointLists, SharepointSite, SharepointSites, Team, Teams, TeamChannels, TeamConversationsFolderID, TeamPostedBy, Calendar, Orgs, SharepointObjectList, SharepointObjects, UserObjects, OrgSummaries, ObjectAncestors, BrowseTeamConvChannels, ServiceAccount, AllOrgStatuses, License, ListApps, AllSubscriptionsAppTypeCounts, StorageStats, ServiceStatus.
+            New-RscQueryO365 is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
             </description>
             <example>
             <code>New-RscQueryO365 -Org [-Arg ..] [-Field ..]</code>
@@ -15936,7 +16202,7 @@
             Queries for the 'Oracle' API domain.
             </summary>
             <description>
-            New-RscQueryOracle is a master cmdlet for Oracle work that can invoke any of the following subcommands: TopLevelDescendants, Databases, Host, Rac, DataGuardGroup, Database, LiveMounts, AcoParameters, RecoverableRanges, MissedRecoverableRanges, MissedSnapshots, AcoExampleDownloadLink, PdbDetails, HostLogBackupConfig, DatabaseLogBackupConfig, RacLogBackupConfig.
+            New-RscQueryOracle is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
             </description>
             <example>
             <code>New-RscQueryOracle -TopLevelDescendants [-Arg ..] [-Field ..]</code>
@@ -16104,7 +16370,7 @@
             Queries for the 'SLA' API domain.
             </summary>
             <description>
-            New-RscQuerySla is a master cmdlet for Sla work that can invoke any of the following subcommands: Domains, GlobalFilterList, Domain, CountOfObjectsProtected, AuditDetail, AllSummariesByIds, GlobalStatuses, ConflictObjects, ManagedVolumes, ManagedVolume, AllNcdComplianceData.
+            New-RscQuerySla is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
             </description>
             <example>
             <code>New-RscQuerySla -Domains [-Arg ..] [-Field ..]</code>
@@ -16222,7 +16488,7 @@
             Queries for the 'vSphere vCenter' API domain.
             </summary>
             <description>
-            New-RscQueryVcenter is a master cmdlet for Vcenter work that can invoke any of the following subcommands: Vcenter, List, PreAddInfo, Networks, HotAddNetwork, NumProxiesNeeded, HotAddProxy, HotAddBandwidth, AdvancedTagPreview.
+            New-RscQueryVcenter is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
             </description>
             <example>
             <code>New-RscQueryVcenter -Vcenter [-Arg ..] [-Field ..]</code>
@@ -16320,7 +16586,7 @@
             Queries for the 'vSphere' API domain.
             </summary>
             <description>
-            New-RscQueryVsphere is a master cmdlet for Vsphere work that can invoke any of the following subcommands: Datacenter, ComputeCluster, ResourcePool, Folder, Host, DatastoreCluster, Datastore, HostsByFids, Tag, TagCategory, Network, TopLevelDescendantsList, RootRecoveryHierarchy, HostList, Folders, ComputeClusters, DatastoreList, DatastoreClusters, LiveMounts, MountList, Mount, HostDetails, VmwareCdpLiveInfo.
+            New-RscQueryVsphere is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
             </description>
             <example>
             <code>New-RscQueryVsphere -Datacenter [-Arg ..] [-Field ..]</code>
@@ -16558,7 +16824,7 @@
             Queries for the 'vSphere VM' API domain.
             </summary>
             <description>
-            New-RscQueryVsphereVm is a master cmdlet for VsphereVm work that can invoke any of the following subcommands: New, NewList, AsyncRequestStatus, RecoverableRange, RecoverableRangeInBatch, MissedRecoverableRange.
+            New-RscQueryVsphereVm is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
             </description>
             <example>
             <code>New-RscQueryVsphereVm -New [-Arg ..] [-Field ..]</code>

@@ -1,0 +1,67 @@
+### AzureAdDirectory
+Details of the Azure AD directory object.
+
+- directoryId: System.String
+  - The natural ID of the Azure AD Directory.
+- domainName: System.String
+  - Name of the Azure AD Directory.
+- exocomputeId: System.String
+  - ID of the exocompute cluster.
+- isRelic: System.Boolean
+  - Specifies whether the object is a relic.
+- region: System.String
+  - Region of the Azure AD Directory.
+- latestUserCount: System.Int32
+  - User count from the latest snapshot.
+- latestGroupCount: System.Int32
+  - Group count from the latest snapshot.
+- isProvisioned: System.Boolean
+  - Specifies whether the infrastructure has been provisioned to enable protection for this Azure AD.
+- latestSnapshotTime: DateTime
+  - Time of the latest snapshot.
+- authorizedOperations: list of Operations
+  - The authorized operations on the object.
+- id: System.String
+  - Object ID.
+- name: System.String
+  - The name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - The type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - The SLA Domain assignment type for this object.
+- effectiveSlaDomain: SlaDomain
+  - The effective SLA Domain of the hierarchy object.
+- slaPauseStatus: System.Boolean
+  - The pause status of the effective SLA Domain of the hierarchy object.
+- snapshotDistribution: SnapshotDistribution
+  - The distribution of the snapshots of the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - The effective retention of the SLA Domain of the hierarchy object.
+- configuredSlaDomain: SlaDomain
+  - The SLA Domain configured for the hierarchy object.
+- effectiveSlaSourceObject: PathNode
+  - The path node of the effective SLA Domain source.
+- logicalPath: list of PathNodes
+  - A sequential list of this object's logical ancestors.
+- physicalPath: list of PathNodes
+  - A sequential list of this object's physical ancestors.
+- numWorkloadDescendants: System.Int32
+  - The number of descendant workloads of this object.
+- allOrgs: list of Orgs
+  - The organizations to which this hierarchy object belongs.
+- snapshotConnection: PolarisSnapshotConnection
+  - The list of snapshots taken for this workload.
+- workloadSnapshotConnection: GenericSnapshotConnection
+  - The list of snapshots taken for this workload.
+- snapshotGroupByConnection: PolarisSnapshotGroupByConnection
+  - GroupBy connection for this workload's snapshots.
+- snapshotGroupByNewConnection: PolarisSnapshotGroupByNewConnection
+  - GroupBy connection for this workload's snapshots.
+- newestSnapshot: PolarisSnapshot
+  - The most recent snapshot of this workload.
+- oldestSnapshot: PolarisSnapshot
+  - The oldest snapshot of this workload.
+- onDemandSnapshotCount: System.Int32
+  - The number of on-demand snapshots.
+- newestIndexedSnapshot: PolarisSnapshot
+  - The newest snapshot that is indexed and unexpired, and therefore restorable.

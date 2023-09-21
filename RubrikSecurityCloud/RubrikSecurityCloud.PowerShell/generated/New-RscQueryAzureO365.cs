@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Queries for the 'AzureO365' API domain.
     /// </summary>
     /// <description>
-    /// New-RscQueryAzureO365 is a master cmdlet for AzureO365 work that can invoke any of the following subcommands: Exocompute, CheckStorageAccountName, CheckStorageAccountAccessibility, CheckSubscriptionQuota, CheckResourceGroupName, CheckVirtualNetworkName, ValidateUserRoles, CheckNSGOutboundRules, CheckNetworkSubnet, GetNetworkSubnetUnusedAddr, GetAzureHostType.
+    /// New-RscQueryAzureO365 is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
     /// </description>
     /// <example>
     /// <code>New-RscQueryAzureO365 -Exocompute [-Arg ..] [-Field ..]</code>

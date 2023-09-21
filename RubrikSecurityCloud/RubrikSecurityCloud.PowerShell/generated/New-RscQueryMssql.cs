@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Queries for the 'MSSQL' API domain.
     /// </summary>
     /// <description>
-    /// New-RscQueryMssql is a master cmdlet for Mssql work that can invoke any of the following subcommands: TopLevelDescendants, Databases, AvailabilityGroup, Instance, Database, RecoverableRanges, DatabaseMissedSnapshots, CompatibleInstances, DatabaseMissedRecoverableRanges, AllDatabaseRestoreFiles, DatabaseLiveMounts, DefaultProperties, DatabaseRestoreEstimate, CdmLogShippingTargets, CdmLogShippingTarget, LogShippingTargets.
+    /// New-RscQueryMssql is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
     /// </description>
     /// <example>
     /// <code>New-RscQueryMssql -TopLevelDescendants [-Arg ..] [-Field ..]</code>

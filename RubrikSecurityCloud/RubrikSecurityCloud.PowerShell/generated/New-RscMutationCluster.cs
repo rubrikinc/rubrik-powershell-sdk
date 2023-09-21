@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Mutations for the 'Cluster' API domain.
     /// </summary>
     /// <description>
-    /// New-RscMutationCluster is a master cmdlet for Cluster work that can invoke any of the following subcommands: AddNodesToCloud, RegisterCloud, UpdateDatabaseLogReportingProperties, CreateFailover, UpdateFailover, DeleteFailover, BulkDeleteFailover, CreateK8s, RefreshK8s, ArchiveK8s, RemoveCdm, RecoverCloud.
+    /// New-RscMutationCluster is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
     /// </description>
     /// <example>
     /// <code>New-RscMutationCluster -AddNodesToCloud [-Arg ..] [-Field ..]</code>

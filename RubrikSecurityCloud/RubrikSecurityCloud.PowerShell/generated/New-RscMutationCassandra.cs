@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Mutations for the 'Cassandra' API domain.
     /// </summary>
     /// <description>
-    /// New-RscMutationCassandra is a master cmdlet for Cassandra work that can invoke any of the following subcommands: RecoverSource, CreateSource, UpdateSource, DeleteSource, BulkDeleteSources.
+    /// New-RscMutationCassandra is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
     /// </description>
     /// <example>
     /// <code>New-RscMutationCassandra -RecoverSource [-Arg ..] [-Field ..]</code>

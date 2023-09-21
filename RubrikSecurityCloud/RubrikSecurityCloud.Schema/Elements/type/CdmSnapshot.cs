@@ -156,10 +156,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snappableId")]
         public System.String? SnappableId { get; set; }
 
+        //      C# -> ActiveDirectoryAppMetadata? ActiveDirectoryAppMetadata
+        // GraphQL -> activeDirectoryAppMetadata: ActiveDirectoryAppMetadata (type)
+        [JsonProperty("activeDirectoryAppMetadata")]
+        public ActiveDirectoryAppMetadata? ActiveDirectoryAppMetadata { get; set; }
+
         //      C# -> List<DataLocation>? ArchivalLocations
         // GraphQL -> archivalLocations: [DataLocation!] (type)
         [JsonProperty("archivalLocations")]
         public List<DataLocation>? ArchivalLocations { get; set; }
+
+        //      C# -> CdmWorkloadSnapshot? CdmWorkloadSnapshot
+        // GraphQL -> cdmWorkloadSnapshot: CdmWorkloadSnapshot (type)
+        [JsonProperty("cdmWorkloadSnapshot")]
+        public CdmWorkloadSnapshot? CdmWorkloadSnapshot { get; set; }
 
         //      C# -> List<CdmSnapshot>? ChildSnapshots
         // GraphQL -> childSnapshots: [CdmSnapshot!]! (type)
@@ -273,7 +283,9 @@ namespace RubrikSecurityCloud.Types
         System.String? ParentSnapshotId = null,
         System.String? ResourceSpec = null,
         System.String? SnappableId = null,
+        ActiveDirectoryAppMetadata? ActiveDirectoryAppMetadata = null,
         List<DataLocation>? ArchivalLocations = null,
+        CdmWorkloadSnapshot? CdmWorkloadSnapshot = null,
         List<CdmSnapshot>? ChildSnapshots = null,
         List<DataLocation>? CloudNativeLocations = null,
         Cluster? Cluster = null,
@@ -372,8 +384,14 @@ namespace RubrikSecurityCloud.Types
         if ( SnappableId != null ) {
             this.SnappableId = SnappableId;
         }
+        if ( ActiveDirectoryAppMetadata != null ) {
+            this.ActiveDirectoryAppMetadata = ActiveDirectoryAppMetadata;
+        }
         if ( ArchivalLocations != null ) {
             this.ArchivalLocations = ArchivalLocations;
+        }
+        if ( CdmWorkloadSnapshot != null ) {
+            this.CdmWorkloadSnapshot = CdmWorkloadSnapshot;
         }
         if ( ChildSnapshots != null ) {
             this.ChildSnapshots = ChildSnapshots;
@@ -574,12 +592,28 @@ namespace RubrikSecurityCloud.Types
         if (this.SnappableId != null) {
             s += ind + "snappableId\n" ;
         }
+        //      C# -> ActiveDirectoryAppMetadata? ActiveDirectoryAppMetadata
+        // GraphQL -> activeDirectoryAppMetadata: ActiveDirectoryAppMetadata (type)
+        if (this.ActiveDirectoryAppMetadata != null) {
+            var fspec = this.ActiveDirectoryAppMetadata.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "activeDirectoryAppMetadata {\n" + fspec + ind + "}\n" ;
+            }
+        }
         //      C# -> List<DataLocation>? ArchivalLocations
         // GraphQL -> archivalLocations: [DataLocation!] (type)
         if (this.ArchivalLocations != null) {
             var fspec = this.ArchivalLocations.AsFieldSpec(indent+1);
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
                 s += ind + "archivalLocations {\n" + fspec + ind + "}\n" ;
+            }
+        }
+        //      C# -> CdmWorkloadSnapshot? CdmWorkloadSnapshot
+        // GraphQL -> cdmWorkloadSnapshot: CdmWorkloadSnapshot (type)
+        if (this.CdmWorkloadSnapshot != null) {
+            var fspec = this.CdmWorkloadSnapshot.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cdmWorkloadSnapshot {\n" + fspec + ind + "}\n" ;
             }
         }
         //      C# -> List<CdmSnapshot>? ChildSnapshots
@@ -877,12 +911,26 @@ namespace RubrikSecurityCloud.Types
         {
             this.SnappableId = "FETCH";
         }
+        //      C# -> ActiveDirectoryAppMetadata? ActiveDirectoryAppMetadata
+        // GraphQL -> activeDirectoryAppMetadata: ActiveDirectoryAppMetadata (type)
+        if (this.ActiveDirectoryAppMetadata == null && ec.Includes("activeDirectoryAppMetadata",false))
+        {
+            this.ActiveDirectoryAppMetadata = new ActiveDirectoryAppMetadata();
+            this.ActiveDirectoryAppMetadata.ApplyExploratoryFieldSpec(ec.NewChild("activeDirectoryAppMetadata"));
+        }
         //      C# -> List<DataLocation>? ArchivalLocations
         // GraphQL -> archivalLocations: [DataLocation!] (type)
         if (this.ArchivalLocations == null && ec.Includes("archivalLocations",false))
         {
             this.ArchivalLocations = new List<DataLocation>();
             this.ArchivalLocations.ApplyExploratoryFieldSpec(ec.NewChild("archivalLocations"));
+        }
+        //      C# -> CdmWorkloadSnapshot? CdmWorkloadSnapshot
+        // GraphQL -> cdmWorkloadSnapshot: CdmWorkloadSnapshot (type)
+        if (this.CdmWorkloadSnapshot == null && ec.Includes("cdmWorkloadSnapshot",false))
+        {
+            this.CdmWorkloadSnapshot = new CdmWorkloadSnapshot();
+            this.CdmWorkloadSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("cdmWorkloadSnapshot"));
         }
         //      C# -> List<CdmSnapshot>? ChildSnapshots
         // GraphQL -> childSnapshots: [CdmSnapshot!]! (type)

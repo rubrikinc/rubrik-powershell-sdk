@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Queries for the 'Mongo' API domain.
     /// </summary>
     /// <description>
-    /// New-RscQueryMongo is a master cmdlet for Mongo work that can invoke any of the following subcommands: Sources, Databases, Collections, Source, Database, Collection, RecoverableRanges, BulkRecoverableRanges, DbSources, DbDatabases, DbCollections, DbSource, DbDatabase, DbCollection, DbCollectionRecoverableRange, DbBulkRecoverableRange.
+    /// New-RscQueryMongo is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
     /// </description>
     /// <example>
     /// <code>New-RscQueryMongo -Sources [-Arg ..] [-Field ..]</code>

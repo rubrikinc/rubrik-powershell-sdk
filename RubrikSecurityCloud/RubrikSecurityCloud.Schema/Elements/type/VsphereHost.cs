@@ -61,6 +61,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("replicatedObjects")]
         public List<CdmHierarchyObject>? ReplicatedObjects { get; set; }
 
+        //      C# -> System.String? CdmId
+        // GraphQL -> cdmId: String! (scalar)
+        [JsonProperty("cdmId")]
+        public System.String? CdmId { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]
@@ -169,6 +174,7 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? EffectiveSlaDomain = null,
         SlaDomain? PendingSla = null,
         List<CdmHierarchyObject>? ReplicatedObjects = null,
+        System.String? CdmId = null,
         System.String? Id = null,
         System.String? IoFilterStatus = null,
         System.Boolean? IsStandaloneHost = null,
@@ -212,6 +218,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ReplicatedObjects != null ) {
             this.ReplicatedObjects = ReplicatedObjects;
+        }
+        if ( CdmId != null ) {
+            this.CdmId = CdmId;
         }
         if ( Id != null ) {
             this.Id = Id;
@@ -331,6 +340,11 @@ namespace RubrikSecurityCloud.Types
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
                 s += ind + "replicatedObjects {\n" + fspec + ind + "}\n";
             }
+        }
+        //      C# -> System.String? CdmId
+        // GraphQL -> cdmId: String! (scalar)
+        if (this.CdmId != null) {
+            s += ind + "cdmId\n" ;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
@@ -518,6 +532,12 @@ namespace RubrikSecurityCloud.Types
         {
             this.ReplicatedObjects = new List<CdmHierarchyObject>();
             this.ReplicatedObjects.ApplyExploratoryFieldSpec(ec.NewChild("replicatedObjects"));
+        }
+        //      C# -> System.String? CdmId
+        // GraphQL -> cdmId: String! (scalar)
+        if (this.CdmId == null && ec.Includes("cdmId",true))
+        {
+            this.CdmId = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)

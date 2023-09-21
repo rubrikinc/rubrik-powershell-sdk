@@ -100,6 +100,15 @@ $inputs.Var.input = @{
 		# REQUIRED
 		roleArn = <System.String>
 	}
+	# OPTIONAL
+	externalArtifactMap = @(
+		@{
+			# OPTIONAL
+			externalArtifactKey = <AwsCloudExternalArtifact> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudExternalArtifact]) for enum values.
+			# OPTIONAL
+			externalArtifactValue = <System.String>
+		}
+	)
 }"
             );
         }

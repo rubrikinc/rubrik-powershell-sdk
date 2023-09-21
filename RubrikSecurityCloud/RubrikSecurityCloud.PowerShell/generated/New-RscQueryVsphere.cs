@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Queries for the 'vSphere' API domain.
     /// </summary>
     /// <description>
-    /// New-RscQueryVsphere is a master cmdlet for Vsphere work that can invoke any of the following subcommands: Datacenter, ComputeCluster, ResourcePool, Folder, Host, DatastoreCluster, Datastore, HostsByFids, Tag, TagCategory, Network, TopLevelDescendantsList, RootRecoveryHierarchy, HostList, Folders, ComputeClusters, DatastoreList, DatastoreClusters, LiveMounts, MountList, Mount, HostDetails, VmwareCdpLiveInfo.
+    /// New-RscQueryVsphere is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
     /// </description>
     /// <example>
     /// <code>New-RscQueryVsphere -Datacenter [-Arg ..] [-Field ..]</code>

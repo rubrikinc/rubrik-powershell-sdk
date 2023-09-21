@@ -11,7 +11,7 @@ Supported in v5.0+
   v5.3+: The name of the host that contains the Volume Group.
 - id: System.String
   - Required. Supported in v5.0+
-  v5.0-v5.2:
+  v5.0-v5.2: 
   v5.3+: The unique ID of the Volume Group.
 - isRelic: System.Boolean
   - Required. Supported in v5.0+
@@ -19,7 +19,7 @@ Supported in v5.0+
   v5.3+: Specifies whether the Volume Group is accessible on the Rubrik cluster.
 - name: System.String
   - Required. Supported in v5.0+
-  v5.0-v5.2:
+  v5.0-v5.2: 
   v5.3+: The name of the Volume Group.
 - forceFull: System.Boolean
   - Supported in v5.3+

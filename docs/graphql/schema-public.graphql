@@ -45391,8 +45391,8 @@ enum HierarchyFilterField {
   # Filter unmanaged objects.
   IS_UNMANAGED_OBJECT
 
-  # Filter by the Jira project key.
-  JIRA_PROJECT_KEY
+  # Filter by the Jira project key or name.
+  JIRA_PROJECT_KEY_OR_NAME
 
   # Filter by the Jira project lead.
   JIRA_PROJECT_LEAD

@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Queries for the 'Nutanix' API domain.
     /// </summary>
     /// <description>
-    /// New-RscQueryNutanix is a master cmdlet for Nutanix work that can invoke any of the following subcommands: TopLevelDescendants, Cluster, Clusters, PrismCentrals, PrismCentral, Category, CategoryValue, Vm, Vms, Mounts, ClusterContainers, ClusterNetworks, ClusterAsyncRequestStatus, VmAsyncRequestStatus, SearchVm, VmMissedSnapshots, BrowseSnapshot, SnapshotDetail.
+    /// New-RscQueryNutanix is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
     /// </description>
     /// <example>
     /// <code>New-RscQueryNutanix -TopLevelDescendants [-Arg ..] [-Field ..]</code>

@@ -143,6 +143,8 @@ $inputs.Var.input = @{
 		}
 		# OPTIONAL
 		folderId = <System.String>
+		# OPTIONAL
+		shouldConvertToTemplate = <System.Boolean>
 	}
 	# REQUIRED
 	id = <System.String>

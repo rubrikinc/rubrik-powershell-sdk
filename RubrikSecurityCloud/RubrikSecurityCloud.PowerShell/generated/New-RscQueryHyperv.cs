@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Queries for the 'Hyperv' API domain.
     /// </summary>
     /// <description>
-    /// New-RscQueryHyperv is a master cmdlet for Hyperv work that can invoke any of the following subcommands: TopLevelDescendants, VirtualMachines, Scvmm, Cluster, Server, VirtualMachine, UniqueServersCount, Scvmms, Servers, Mounts, VmDetail, HostAsyncRequestStatus, ScvmmAsyncRequestStatus, VirtualMachineAsyncRequestStatus.
+    /// New-RscQueryHyperv is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
     /// </description>
     /// <example>
     /// <code>New-RscQueryHyperv -TopLevelDescendants [-Arg ..] [-Field ..]</code>

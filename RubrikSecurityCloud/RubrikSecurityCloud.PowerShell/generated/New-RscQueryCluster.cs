@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Queries for the 'Cluster' API domain.
     /// </summary>
     /// <description>
-    /// New-RscQueryCluster is a master cmdlet for Cluster work that can invoke any of the following subcommands: Nodes, List, Cluster, WithUpgradesInfo, Dns, Proxy, NtpServers, NetworkInterfaces, FloatingIps, Vlans, DefaultGateway, WebSignedCertificate, Ipmi, Certificates, WebCertsAndIpmis, OperationJobProgress, Ipv6Mode, Csr, TypeList, GroupByList, DatabaseLogReportingProperties, DatabaseLogReport, Connected, ReplicationTargets, HostFailover, K8s, Windows, ReportMigrationStatus, ReportMigrationCount, ReportMigrationJobStatus, SlaDomains, VerifySlaWithReplicationTo, GlobalSlas, RegistrationProductInfo, IsTotpAckNecessary, TotpAckStatus.
+    /// New-RscQueryCluster is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
     /// </description>
     /// <example>
     /// <code>New-RscQueryCluster -Nodes [-Arg ..] [-Field ..]</code>

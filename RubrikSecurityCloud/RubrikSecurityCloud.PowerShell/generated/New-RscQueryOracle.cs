@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Queries for the 'Oracle' API domain.
     /// </summary>
     /// <description>
-    /// New-RscQueryOracle is a master cmdlet for Oracle work that can invoke any of the following subcommands: TopLevelDescendants, Databases, Host, Rac, DataGuardGroup, Database, LiveMounts, AcoParameters, RecoverableRanges, MissedRecoverableRanges, MissedSnapshots, AcoExampleDownloadLink, PdbDetails, HostLogBackupConfig, DatabaseLogBackupConfig, RacLogBackupConfig.
+    /// New-RscQueryOracle is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
     /// </description>
     /// <example>
     /// <code>New-RscQueryOracle -TopLevelDescendants [-Arg ..] [-Field ..]</code>

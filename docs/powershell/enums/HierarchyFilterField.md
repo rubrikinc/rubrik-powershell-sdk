@@ -250,3 +250,4 @@
 - MIGRATED_HOST_SHARES_WITH_GHOST_OBJECTS - Filter to show all migrated host shares, including ghost objects.
 - RUBRIK_NATIVE_HAS_AT_LEAST_ONE_SNAPSHOT - Filter by objects with at least one snapshot.
 - K8S_CLUSTER_NAME - Filter based on Kubernetes cluster name.
+- HOST_DOMAIN_CONTROLLER_FID - Filter hosts based on the domain controller FID.

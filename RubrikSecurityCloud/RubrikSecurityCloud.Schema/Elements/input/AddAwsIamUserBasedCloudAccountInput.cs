@@ -65,6 +65,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("roleArn")]
         public System.String? RoleArn { get; set; }
 
+        //      C# -> List<ExternalArtifacts>? ExternalArtifactMap
+        // GraphQL -> externalArtifactMap: [ExternalArtifacts!] (input)
+        [JsonProperty("externalArtifactMap")]
+        public List<ExternalArtifacts>? ExternalArtifactMap { get; set; }
+
 
         #endregion
 

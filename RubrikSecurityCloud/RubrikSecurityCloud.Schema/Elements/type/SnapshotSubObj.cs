@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> VmwareVmSubObject? VmwareVmSubObj
+        // GraphQL -> vmwareVmSubObj: VmwareVmSubObject (type)
+        [JsonProperty("vmwareVmSubObj")]
+        public VmwareVmSubObject? VmwareVmSubObj { get; set; }
+
         //      C# -> VolumeGroupSubObject? VolumeGroupSubObj
         // GraphQL -> volumeGroupSubObj: VolumeGroupSubObject (type)
         [JsonProperty("volumeGroupSubObj")]
@@ -35,9 +40,13 @@ namespace RubrikSecurityCloud.Types
     }
 
     public SnapshotSubObj Set(
+        VmwareVmSubObject? VmwareVmSubObj = null,
         VolumeGroupSubObject? VolumeGroupSubObj = null
     ) 
     {
+        if ( VmwareVmSubObj != null ) {
+            this.VmwareVmSubObj = VmwareVmSubObj;
+        }
         if ( VolumeGroupSubObj != null ) {
             this.VolumeGroupSubObj = VolumeGroupSubObj;
         }
@@ -51,6 +60,14 @@ namespace RubrikSecurityCloud.Types
     {
         string ind = new string(' ', indent*2);
         string s = "";
+        //      C# -> VmwareVmSubObject? VmwareVmSubObj
+        // GraphQL -> vmwareVmSubObj: VmwareVmSubObject (type)
+        if (this.VmwareVmSubObj != null) {
+            var fspec = this.VmwareVmSubObj.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "vmwareVmSubObj {\n" + fspec + ind + "}\n" ;
+            }
+        }
         //      C# -> VolumeGroupSubObject? VolumeGroupSubObj
         // GraphQL -> volumeGroupSubObj: VolumeGroupSubObject (type)
         if (this.VolumeGroupSubObj != null) {
@@ -66,6 +83,13 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(ExplorationContext ec)
     {
+        //      C# -> VmwareVmSubObject? VmwareVmSubObj
+        // GraphQL -> vmwareVmSubObj: VmwareVmSubObject (type)
+        if (this.VmwareVmSubObj == null && ec.Includes("vmwareVmSubObj",false))
+        {
+            this.VmwareVmSubObj = new VmwareVmSubObject();
+            this.VmwareVmSubObj.ApplyExploratoryFieldSpec(ec.NewChild("vmwareVmSubObj"));
+        }
         //      C# -> VolumeGroupSubObject? VolumeGroupSubObj
         // GraphQL -> volumeGroupSubObj: VolumeGroupSubObject (type)
         if (this.VolumeGroupSubObj == null && ec.Includes("volumeGroupSubObj",false))

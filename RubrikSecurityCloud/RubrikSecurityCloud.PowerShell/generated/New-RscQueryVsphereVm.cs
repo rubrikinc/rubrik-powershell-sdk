@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Queries for the 'vSphere VM' API domain.
     /// </summary>
     /// <description>
-    /// New-RscQueryVsphereVm is a master cmdlet for VsphereVm work that can invoke any of the following subcommands: New, NewList, AsyncRequestStatus, RecoverableRange, RecoverableRangeInBatch, MissedRecoverableRange.
+    /// New-RscQueryVsphereVm is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
     /// </description>
     /// <example>
     /// <code>New-RscQueryVsphereVm -New [-Arg ..] [-Field ..]</code>

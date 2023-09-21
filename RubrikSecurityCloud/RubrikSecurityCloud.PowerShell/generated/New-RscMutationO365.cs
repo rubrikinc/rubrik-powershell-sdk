@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Mutations for the 'O365' API domain.
     /// </summary>
     /// <description>
-    /// New-RscMutationO365 is a master cmdlet for O365 work that can invoke any of the following subcommands: SaaSSetupKickoff, PdlGroups, SaasSetupComplete, SetupKickoff, AddOrg, OauthConsentKickoff, OauthConsentComplete, CreateAppKickoff, CreateAppComplete, InsertCustomerApp, UpdateAppAuthStatus, UpdateAppPermissions, DeleteAzureApp, BackupMailbox, BackupOnedrive, BackupSharepointDrive, BackupSharepointList, BackupSharePointSite, BackupTeam, RestoreTeamsFiles, RestoreTeamsConversations, RestoreSnappable, RefreshOrg, DeleteOrg, RestoreMailbox, ExportMailbox, SetServiceAccount, EnableSharePoint, EnableTeams, DeleteServiceAccount, UpdateOrgCustomName.
+    /// New-RscMutationO365 is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
     /// </description>
     /// <example>
     /// <code>New-RscMutationO365 -SaaSSetupKickoff [-Arg ..] [-Field ..]</code>

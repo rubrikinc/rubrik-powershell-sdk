@@ -15,6 +15,21 @@ Add the Azure Subscription cloud account for the given feature without OAuth.
 
 - There is a single argument of type AddAzureCloudAccountWithoutOauthInput.
 - Returns AddAzureCloudAccountWithoutOauthReply.
+### backupaddirectory
+Backs up the Azure AD directory.
+
+- There is a single argument of type BackupAzureAdDirectoryInput.
+- Returns list of CreateOnDemandJobReplys.
+### completeadappsetup
+Completes the creation flow for an Azure AD app.
+
+- There is a single argument of type CompleteAzureAdAppSetupInput.
+- Returns CompleteAzureAdAppSetupReply.
+### completeadappupdate
+Completes an update to the Azure AD directory app.
+
+- There is a single argument of type CompleteAzureAdAppUpdateInput.
+- Returns System.String.
 ### completecloudaccountoauth
 Complete the Azure OAuth flow and pass the authorization code.
 
@@ -56,6 +71,11 @@ Creates an Azure archival target on the Rubrik cluster.
 
 - There is a single argument of type CreateAzureTargetInput.
 - Returns Target.
+### deleteaddirectory
+Deletes an Azure AD directory.
+
+- There is a single argument of type DeleteAzureAdDirectoryInput.
+- Returns CreateOnDemandJobReply.
 ### deletecloudaccount
 Delete the Azure Subscriptions cloud account for the given feature.
 
@@ -101,11 +121,26 @@ Kicks off an OAuth consent flow for Azure resource access.
 
 - The oauthconsentkickoff subcommand takes no arguments.
 - Returns AzureOauthConsentKickoffReply.
+### restoreadobjectswithpasswords
+Restores the Azure AD directory with multiple passwords.
+
+- There is a single argument of type RestoreAzureAdObjectsWithPasswordsInput.
+- Returns RestoreAzureAdObjectsWithPasswordsReply.
 ### setcloudaccountcustomerappcredentials
 Set credentials for the customer application, for the tenant domain name.
 
 - There is a single argument of type SetAzureCloudAccountCustomerAppCredentialsInput.
 - Returns System.Boolean.
+### startadappsetup
+Initiates the Azure AD app creation workflow.
+
+- There is a single argument of type StartAzureAdAppSetupInput.
+- Returns StartAzureAdAppSetupReply.
+### startadappupdate
+Initiates an update to the Azure AD directory app.
+
+- There is a single argument of type StartAzureAdAppUpdateInput.
+- Returns StartAzureAdAppUpdateReply.
 ### startcloudaccountoauth
 Initiates a session before doing Azure OAuth flow. If a custom app is configured for the tenant, the client ID of the custom app is returned. Otherwise, the client ID of the default app is returned.
 

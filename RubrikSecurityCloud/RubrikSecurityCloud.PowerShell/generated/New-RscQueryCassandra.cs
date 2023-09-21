@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Queries for the 'Cassandra' API domain.
     /// </summary>
     /// <description>
-    /// New-RscQueryCassandra is a master cmdlet for Cassandra work that can invoke any of the following subcommands: Sources, Keyspaces, ColumnFamilies, ColumnFamilyRecoverableRange, ColumnFamilySchema, Source, Keyspace, ColumnFamily.
+    /// New-RscQueryCassandra is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
     /// </description>
     /// <example>
     /// <code>New-RscQueryCassandra -Sources [-Arg ..] [-Field ..]</code>

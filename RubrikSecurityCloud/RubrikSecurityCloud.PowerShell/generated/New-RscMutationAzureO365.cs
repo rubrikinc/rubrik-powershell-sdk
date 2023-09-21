@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Mutations for the 'AzureO365' API domain.
     /// </summary>
     /// <description>
-    /// New-RscMutationAzureO365 is a master cmdlet for AzureO365 work that can invoke any of the following subcommands: SetupExocompute.
+    /// New-RscMutationAzureO365 is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
     /// </description>
     /// <example>
     /// <code>New-RscMutationAzureO365 -SetupExocompute [-Arg ..] [-Field ..]</code>

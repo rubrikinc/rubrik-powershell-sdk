@@ -69,6 +69,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("folderId")]
         public System.String? FolderId { get; set; }
 
+        //      C# -> System.Boolean? ShouldConvertToTemplate
+        // GraphQL -> shouldConvertToTemplate: Boolean (scalar)
+        [JsonProperty("shouldConvertToTemplate")]
+        public System.Boolean? ShouldConvertToTemplate { get; set; }
+
         //      C# -> System.String? DatastoreId
         // GraphQL -> datastoreId: String! (scalar)
         [Required]

@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Mutations for the 'Ldap' API domain.
     /// </summary>
     /// <description>
-    /// New-RscMutationLdap is a master cmdlet for Ldap work that can invoke any of the following subcommands: UpdateIntegration, RemoveIntegration, DeletePrincipals, SetMfaSetting.
+    /// New-RscMutationLdap is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
     /// </description>
     /// <example>
     /// <code>New-RscMutationLdap -UpdateIntegration [-Arg ..] [-Field ..]</code>

@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// Queries for the 'Azure' API domain.
     /// </summary>
     /// <description>
-    /// New-RscQueryAzure is a master cmdlet for Azure work that can invoke any of the following subcommands: NativeRoot, NativeSubscription, NativeSubscriptions, NativeResourceGroup, NativeResourceGroups, NativeVirtualMachine, NativeVirtualMachines, NativeManagedDisk, NativeManagedDisks, AllNativeVirtualNetworks, AllNativeSubnetsByRegionFromAzure, AllNativeSecurityGroupsByRegionFromAzure, AllDiskEncryptionSetsByRegion, AllNativeAvailabilitySetsByRegionFromAzure, AllNativeExportCompatibleVmSizesByRegionFromAzure, AllNativeExportCompatibleDiskTypesByRegionFromAzure, AllNativeVirtualMachineSizes, IsNativeManagedDiskSnapshotRestorable, IsStorageAccountNameAvailable, AllNativeStorageAccountsFromAzure, SqlDatabase, SqlDatabases, SqlDatabaseServer, SqlDatabaseServers, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceServer, SqlManagedInstanceServers, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, ValidateNativeSqlDatabaseDbNameForExport, ValidateNativeSqlManagedInstanceDbNameForExport, AllSqlDatabaseServerElasticPools, IsNativeSqlDatabaseSnapshotPersistent, AllKeyVaultsByRegion, AllEncryptionKeys, CloudAccountTenant, CloudAccountTenantWithExoConfigs, AllCloudAccountTenants, CloudAccountSubscriptionWithFeatures, AllCloudAccountSubscriptionsByFeature, AllSubscriptionWithExocomputeMappings, AllResourceGroupsFrom, DoesNativeResourceGroupExist, AllNativeResourceGroupsInfoIfExist, AllCloudAccountMissingPermissions, CloudAccountPermissionConfig, AllExocomputeConfigsInAccount, AllCloudAccountSubnetsByRegion, ValidateCloudAccountExocomputeConfigurations, AllArmTemplatesByFeature, CheckPersistentStorageSubscriptionCanUnmap, Subscriptions, Regions, ResourceGroups, VNets, Subnets, StorageAccounts, AllHostedRegions, AllResourceGroups, AllVnets, AllSubnets, AllCdmVersions, AllRegions, AllNsgs, AllStorageAccounts, AllManagedIdentities.
+    /// New-RscQueryAzure is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
     /// </description>
     /// <example>
     /// <code>New-RscQueryAzure -NativeRoot [-Arg ..] [-Field ..]</code>
@@ -224,6 +224,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     /// <example>
     /// <code>New-RscQueryAzure -AllManagedIdentities [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>New-RscQueryAzure -AdDirectories [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>New-RscQueryAzure -AdDirectory [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>New-RscQueryAzure -AdObjectsByType [-Arg ..] [-Field ..]</code>
+    /// </example>
+    /// <example>
+    /// <code>New-RscQueryAzure -SearchAdSnapshot [-Arg ..] [-Field ..]</code>
     /// </example>
     [CmdletBinding()]
     [Cmdlet(
@@ -1439,6 +1451,78 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         )]
         public SwitchParameter AllManagedIdentities { get; set; }
 
+        
+        /// <summary>
+        /// AdDirectories parameter set
+        ///
+        /// [GraphQL: azureAdDirectories]
+        /// </summary>
+        [Parameter(
+            ParameterSetName = "AdDirectories",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Lists all Azure AD directories for the account.
+[GraphQL: azureAdDirectories]",
+            Position = 0
+        )]
+        public SwitchParameter AdDirectories { get; set; }
+
+        
+        /// <summary>
+        /// AdDirectory parameter set
+        ///
+        /// [GraphQL: azureAdDirectory]
+        /// </summary>
+        [Parameter(
+            ParameterSetName = "AdDirectory",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Details of the Azure AD corresponding to the workload ID.
+[GraphQL: azureAdDirectory]",
+            Position = 0
+        )]
+        public SwitchParameter AdDirectory { get; set; }
+
+        
+        /// <summary>
+        /// AdObjectsByType parameter set
+        ///
+        /// [GraphQL: azureAdObjectsByType]
+        /// </summary>
+        [Parameter(
+            ParameterSetName = "AdObjectsByType",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Details of the Azure AD objects corresponding to the type.
+[GraphQL: azureAdObjectsByType]",
+            Position = 0
+        )]
+        public SwitchParameter AdObjectsByType { get; set; }
+
+        
+        /// <summary>
+        /// SearchAdSnapshot parameter set
+        ///
+        /// [GraphQL: searchAzureAdSnapshot]
+        /// </summary>
+        [Parameter(
+            ParameterSetName = "SearchAdSnapshot",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Search for azureAdObjects in a snapshot.
+[GraphQL: searchAzureAdSnapshot]",
+            Position = 0
+        )]
+        public SwitchParameter SearchAdSnapshot { get; set; }
+
 
 // ignore warning 'Missing XML comment'
 #pragma warning disable 1591
@@ -1649,6 +1733,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "AllManagedIdentities":
                         this.ProcessRecord_AllManagedIdentities();
+                        break;
+                    case "AdDirectories":
+                        this.ProcessRecord_AdDirectories();
+                        break;
+                    case "AdDirectory":
+                        this.ProcessRecord_AdDirectory();
+                        break;
+                    case "AdObjectsByType":
+                        this.ProcessRecord_AdObjectsByType();
+                        break;
+                    case "SearchAdSnapshot":
+                        this.ProcessRecord_SearchAdSnapshot();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -2262,6 +2358,42 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -AllManagedIdentities";
             // Create new graphql operation allAzureManagedIdentities
             InitQueryAllAzureManagedIdentities();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // azureAdDirectories.
+        internal void ProcessRecord_AdDirectories()
+        {
+            this._logger.name += " -AdDirectories";
+            // Create new graphql operation azureAdDirectories
+            InitQueryAzureAdDirectories();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // azureAdDirectory.
+        internal void ProcessRecord_AdDirectory()
+        {
+            this._logger.name += " -AdDirectory";
+            // Create new graphql operation azureAdDirectory
+            InitQueryAzureAdDirectory();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // azureAdObjectsByType.
+        internal void ProcessRecord_AdObjectsByType()
+        {
+            this._logger.name += " -AdObjectsByType";
+            // Create new graphql operation azureAdObjectsByType
+            InitQueryAzureAdObjectsByType();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // searchAzureAdSnapshot.
+        internal void ProcessRecord_SearchAdSnapshot()
+        {
+            this._logger.name += " -SearchAdSnapshot";
+            // Create new graphql operation searchAzureAdSnapshot
+            InitQuerySearchAzureAdSnapshot();
         }
 
 
@@ -4536,6 +4668,184 @@ $inputs.Var.storageAccountsRequest = @{
 $inputs.Var.managedIdentitiesRequest = @{
 	# REQUIRED
 	cloudAccountId = <System.String>
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // azureAdDirectories(
+        //     first: Int
+        //     after: String
+        //     sortBy: HierarchySortByField
+        //     sortOrder: SortOrder
+        //     filter: [Filter!]
+        //   ): AzureAdDirectoryConnection!
+        internal void InitQueryAzureAdDirectories()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("sortBy", "HierarchySortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("filter", "[Filter!]"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAzureAdDirectories",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                "AzureAdDirectoryConnection",
+                Query.AzureAdDirectories_ObjectFieldSpec,
+                Query.AzureAdDirectoriesFieldSpec,
+                @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.sortBy = <HierarchySortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$inputs.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = <HierarchyFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			<System.String>
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = <System.String>
+				# OPTIONAL
+				tagValue = <System.String>
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			<ManagedObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			<AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = <System.Boolean>
+		# OPTIONAL
+		isSlowSearchEnabled = <System.Boolean>
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			<AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+}
+)"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // azureAdDirectory(workloadFid: UUID!): AzureAdDirectory!
+        internal void InitQueryAzureAdDirectory()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("workloadFid", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAzureAdDirectory",
+                "($workloadFid: UUID!)",
+                "AzureAdDirectory",
+                Query.AzureAdDirectory_ObjectFieldSpec,
+                Query.AzureAdDirectoryFieldSpec,
+                @"# REQUIRED
+$inputs.Var.workloadFid = <System.String>"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // azureAdObjectsByType(
+        //     first: Int
+        //     after: String
+        //     sortByOption: [AzureAdObjectSearchType!]
+        //     sortOrder: SortOrder
+        //     input: AzureAdObjectTypeInput!
+        //   ): AzureAdObjectConnection!
+        internal void InitQueryAzureAdObjectsByType()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("sortByOption", "[AzureAdObjectSearchType!]"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("input", "AzureAdObjectTypeInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAzureAdObjectsByType",
+                "($first: Int,$after: String,$sortByOption: [AzureAdObjectSearchType!],$sortOrder: SortOrder,$input: AzureAdObjectTypeInput!)",
+                "AzureAdObjectConnection",
+                Query.AzureAdObjectsByType_ObjectFieldSpec,
+                Query.AzureAdObjectsByTypeFieldSpec,
+                @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# OPTIONAL
+$inputs.Var.sortByOption = @(
+	<AzureAdObjectSearchType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectSearchType]) for enum values.
+)
+# OPTIONAL
+$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	snapshotId = <System.String>
+	# REQUIRED
+	azureAdObjectType = <AzureAdObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // searchAzureAdSnapshot(first: Int, after: String, input: SearchAzureAdSnapshotInput!): AzureAdObjectConnection!
+        internal void InitQuerySearchAzureAdSnapshot()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("input", "SearchAzureAdSnapshotInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QuerySearchAzureAdSnapshot",
+                "($first: Int,$after: String,$input: SearchAzureAdSnapshotInput!)",
+                "AzureAdObjectConnection",
+                Query.SearchAzureAdSnapshot_ObjectFieldSpec,
+                Query.SearchAzureAdSnapshotFieldSpec,
+                @"# OPTIONAL
+$inputs.Var.first = <System.Int32>
+# OPTIONAL
+$inputs.Var.after = <System.String>
+# REQUIRED
+$inputs.Var.input = @{
+	# REQUIRED
+	snapshotId = <System.String>
+	# REQUIRED
+	azureAdSearchKeyword = <System.String>
+	# REQUIRED
+	azureAdObjectType = <AzureAdObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
+	# REQUIRED
+	azureAdSearchKeywordType = <AzureAdObjectSearchType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectSearchType]) for enum values.
 }"
             );
         }

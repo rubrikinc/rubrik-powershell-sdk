@@ -31,13 +31,7 @@ namespace RubrikSecurityCloud.Types
         PAST_3_DAYS,
 
         [EnumMember(Value = "PAST_7_DAYS")]
-        PAST_7_DAYS,
-
-        [EnumMember(Value = "PAST_90_DAYS")]
-        PAST_90_DAYS,
-
-        [EnumMember(Value = "START_OF_PROTECTION")]
-        START_OF_PROTECTION
+        PAST_7_DAYS
 
 
     } // enum PastDurationEnum

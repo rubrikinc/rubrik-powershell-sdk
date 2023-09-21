@@ -1,6 +1,6 @@
 ### RegisterNasSystemReply
 Supported in v7.0+
-  v7.0-v8.0:
+  v7.0-v8.0: 
   v8.1+: Response for register NAS system operation.
 
 - nasSystemSummary: UpdateNasSystemReply

@@ -43,7 +43,10 @@ namespace RubrikSecurityCloud.Types
         TEMPORAL_TABLES_EXIST,
 
         [EnumMember(Value = "UNSUPPORTED_COLLATION_CONFIG")]
-        UNSUPPORTED_COLLATION_CONFIG
+        UNSUPPORTED_COLLATION_CONFIG,
+
+        [EnumMember(Value = "UNSUPPORTED_COLUMNS_EXIST")]
+        UNSUPPORTED_COLUMNS_EXIST
 
 
     } // enum AzureSqlDbBackupSetupStatus
