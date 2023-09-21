@@ -4,20 +4,23 @@
 
 New Features:
 
-- Refactor!
-    - The 2-step operation of first asking for "inputs"
-        > `$inputs = Invoke-RscQuery<Domain> -<Operation> -GetInput`
+- Refactor! This update is a major refactor of the SDK that invalidates
+  all previous versions (because all cmdlet names have changed):
+  
+  The 2-step operation of first asking for "inputs"
+  > `$inputs = Invoke-RscQuery<Domain> -<Operation> -GetInput`
 
-        and then executing with the inputs
-        > `Invoke-RscQuery<Domain> -<Operation> -Input $inputs`
-    - is now renamed to first creating a query
-        > `$query = New-RscQuery<Domain> -<Operation>`
+  and then executing with the inputs
+  > `Invoke-RscQuery<Domain> -<Operation> -Input $inputs`
+  
+  is now renamed to first creating a query
+  > `$query = New-RscQuery<Domain> -<Operation>`
 
-        then executing the query
-        > `$result = Invoke-Rsc $query`
+  and then executing the query
+  > `$result = Invoke-Rsc $query`
 
-        or equivalently
-        > `$result = $query.Invoke()`
+  or equivalently
+  > `$result = $query.Invoke()`
 - _SDK Extensions_ are renamed to _SDK Toolkit_,
   and the layout under rubrik-security-cloud/Toolkit
   was reworked.
