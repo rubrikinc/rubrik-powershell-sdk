@@ -145,7 +145,9 @@ function Get-RscMssqlInstance {
         }
         #endregion
         $result = $query.Invoke()
-        if ([bool]($result.PSobject.Properties.Name -match "Nodes")){
+
+        # if ([bool]($result.PSobject.Properties.Name -match "Nodes")){
+        if ($null -ne $result.Nodes){
             $result.Nodes #| Remove-NullProperties
         }else{
             $result #| Remove-NullProperties
