@@ -95,7 +95,10 @@ function Get-RscMssqlDatabase {
             $Instance = $RscMssqlInstance.PhysicalChildConnection.Nodes | Where-Object {$_.ObjectType -eq "MSSQL_INSTANCE"}
             $result = $result.Nodes | Where-Object { $_.PhysicalPath.Fid -eq $Instance.Id }
         }
-
+        If ( $PSBoundParameters.ContainsKey('RscMssqlInstanceId') ) {
+            $result = $result.Nodes | Where-Object { $_.PhysicalPath.Fid -eq $RscMssqlInstanceId }
+        }
+        
         # if ([bool]($result.PSobject.Properties.name -match "Nodes")){
         if ($null -ne $result.Nodes){
             $result.Nodes #| Remove-NullProperties
