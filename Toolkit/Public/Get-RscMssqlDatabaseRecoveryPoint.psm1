@@ -62,9 +62,9 @@ function Get-RscMssqlDatabaseRecoveryPoint {
         [Parameter(
             Position = 0,
             Mandatory = $true,
-            ValueFromPipelineByPropertyName = $true)]
+            ValueFromPipeline = $true)]
         [ValidateNotNullOrEmpty()] 
-        [string]$id,
+        [RubrikSecurityCloud.Types.MssqlDatabase]$RscMssqlDatabase,
         [Parameter(ParameterSetName = 'Latest')]
         [switch]$Latest,
         [Parameter(ParameterSetName = 'LastFull')]
@@ -72,19 +72,20 @@ function Get-RscMssqlDatabaseRecoveryPoint {
         [Parameter(ParameterSetName = 'RestoreTime')]
         [datetime]$RestoreTime
     )
+    # Re-use existing connection, or create a new one:
+    Connect-Rsc -ErrorAction Stop | Out-Null
+
+    
+    # $query.Var
     if ($PSBoundParameters.ContainsKey('Latest')) {
-        
-        $vars = @{"id"=$id}
-        $recoveryRangeFields = Get-RscType -Name MssqlRecoverableRangeListResponse -InitialProperties @("data.begintime", "data.endtime")
-        $query = New-RscQueryMssql -RecoverableRange -Var $vars -Field $recoveryRangeFields
-        
-        $result = Invoke-Rsc $query
-        
+        $query = New-RscGqlQueryMssqlRecoverableRanges -Patch Data.begintime, data.endtime
+        $query.Var.input.id = $RscMssqlDatabase.id
+        $result = $query.Invoke()
         $LatestRecoveryRange = $result.Data[$result.Count -1]
         $RecoveryDateTime = $LatestRecoveryRange.EndTime.ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ss.fffZ')
     }
     if ($PSBoundParameters.ContainsKey('LastFull')) {
-        $RubrikSnapshot = Get-RscSnapshot -SnappableId $id  | Sort-Object date -Descending | Select-object -First 1
+        $RubrikSnapshot = Get-RscSnapshot -SnappableId $RscMssqlDatabase.id  | Sort-Object date -Descending | Select-object -First 1
         $RecoveryDateTime = $(Get-Date $RubrikSnapshot.Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ss.fffZ')
     }
     if ($PSBoundParameters.ContainsKey('RestoreTime')) {
