@@ -101,49 +101,78 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<System.String>? SampleAffectedFiles
         // GraphQL -> sampleAffectedFiles: [String!]! (scalar)
         if (this.SampleAffectedFiles != null) {
-            s += ind + "sampleAffectedFiles\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sampleAffectedFiles\n" ;
+            } else {
+                s += ind + "sampleAffectedFiles\n" ;
+            }
         }
         //      C# -> List<System.String>? SampleRansomwareNotes
         // GraphQL -> sampleRansomwareNotes: [String!]! (scalar)
         if (this.SampleRansomwareNotes != null) {
-            s += ind + "sampleRansomwareNotes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sampleRansomwareNotes\n" ;
+            } else {
+                s += ind + "sampleRansomwareNotes\n" ;
+            }
         }
         //      C# -> System.String? StrainId
         // GraphQL -> strainId: String! (scalar)
         if (this.StrainId != null) {
-            s += ind + "strainId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "strainId\n" ;
+            } else {
+                s += ind + "strainId\n" ;
+            }
         }
         //      C# -> System.Int64? TotalAffectedFiles
         // GraphQL -> totalAffectedFiles: Long! (scalar)
         if (this.TotalAffectedFiles != null) {
-            s += ind + "totalAffectedFiles\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "totalAffectedFiles\n" ;
+            } else {
+                s += ind + "totalAffectedFiles\n" ;
+            }
         }
         //      C# -> System.Int64? TotalRansomwareNotes
         // GraphQL -> totalRansomwareNotes: Long! (scalar)
         if (this.TotalRansomwareNotes != null) {
-            s += ind + "totalRansomwareNotes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "totalRansomwareNotes\n" ;
+            } else {
+                s += ind + "totalRansomwareNotes\n" ;
+            }
         }
         //      C# -> List<SuspiciousFileInfo>? SampleAffectedFilesInfo
         // GraphQL -> sampleAffectedFilesInfo: [SuspiciousFileInfo!]! (type)
         if (this.SampleAffectedFilesInfo != null) {
-            var fspec = this.SampleAffectedFilesInfo.AsFieldSpec(indent+1);
+            var fspec = this.SampleAffectedFilesInfo.AsFieldSpec(conf.Child("sampleAffectedFilesInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "sampleAffectedFilesInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "sampleAffectedFilesInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<SuspiciousFileInfo>? SampleRansomwareNoteFilesInfo
         // GraphQL -> sampleRansomwareNoteFilesInfo: [SuspiciousFileInfo!]! (type)
         if (this.SampleRansomwareNoteFilesInfo != null) {
-            var fspec = this.SampleRansomwareNoteFilesInfo.AsFieldSpec(indent+1);
+            var fspec = this.SampleRansomwareNoteFilesInfo.AsFieldSpec(conf.Child("sampleRansomwareNoteFilesInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "sampleRansomwareNoteFilesInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "sampleRansomwareNoteFilesInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -155,47 +184,126 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<System.String>? SampleAffectedFiles
         // GraphQL -> sampleAffectedFiles: [String!]! (scalar)
-        if (this.SampleAffectedFiles == null && ec.Includes("sampleAffectedFiles",true))
+        if (ec.Includes("sampleAffectedFiles",true))
         {
-            this.SampleAffectedFiles = new List<System.String>();
+            if(this.SampleAffectedFiles == null) {
+
+                this.SampleAffectedFiles = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SampleAffectedFiles != null && ec.Excludes("sampleAffectedFiles",true))
+        {
+            this.SampleAffectedFiles = null;
         }
         //      C# -> List<System.String>? SampleRansomwareNotes
         // GraphQL -> sampleRansomwareNotes: [String!]! (scalar)
-        if (this.SampleRansomwareNotes == null && ec.Includes("sampleRansomwareNotes",true))
+        if (ec.Includes("sampleRansomwareNotes",true))
         {
-            this.SampleRansomwareNotes = new List<System.String>();
+            if(this.SampleRansomwareNotes == null) {
+
+                this.SampleRansomwareNotes = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SampleRansomwareNotes != null && ec.Excludes("sampleRansomwareNotes",true))
+        {
+            this.SampleRansomwareNotes = null;
         }
         //      C# -> System.String? StrainId
         // GraphQL -> strainId: String! (scalar)
-        if (this.StrainId == null && ec.Includes("strainId",true))
+        if (ec.Includes("strainId",true))
         {
-            this.StrainId = "FETCH";
+            if(this.StrainId == null) {
+
+                this.StrainId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.StrainId != null && ec.Excludes("strainId",true))
+        {
+            this.StrainId = null;
         }
         //      C# -> System.Int64? TotalAffectedFiles
         // GraphQL -> totalAffectedFiles: Long! (scalar)
-        if (this.TotalAffectedFiles == null && ec.Includes("totalAffectedFiles",true))
+        if (ec.Includes("totalAffectedFiles",true))
         {
-            this.TotalAffectedFiles = new System.Int64();
+            if(this.TotalAffectedFiles == null) {
+
+                this.TotalAffectedFiles = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalAffectedFiles != null && ec.Excludes("totalAffectedFiles",true))
+        {
+            this.TotalAffectedFiles = null;
         }
         //      C# -> System.Int64? TotalRansomwareNotes
         // GraphQL -> totalRansomwareNotes: Long! (scalar)
-        if (this.TotalRansomwareNotes == null && ec.Includes("totalRansomwareNotes",true))
+        if (ec.Includes("totalRansomwareNotes",true))
         {
-            this.TotalRansomwareNotes = new System.Int64();
+            if(this.TotalRansomwareNotes == null) {
+
+                this.TotalRansomwareNotes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalRansomwareNotes != null && ec.Excludes("totalRansomwareNotes",true))
+        {
+            this.TotalRansomwareNotes = null;
         }
         //      C# -> List<SuspiciousFileInfo>? SampleAffectedFilesInfo
         // GraphQL -> sampleAffectedFilesInfo: [SuspiciousFileInfo!]! (type)
-        if (this.SampleAffectedFilesInfo == null && ec.Includes("sampleAffectedFilesInfo",false))
+        if (ec.Includes("sampleAffectedFilesInfo",false))
         {
-            this.SampleAffectedFilesInfo = new List<SuspiciousFileInfo>();
-            this.SampleAffectedFilesInfo.ApplyExploratoryFieldSpec(ec.NewChild("sampleAffectedFilesInfo"));
+            if(this.SampleAffectedFilesInfo == null) {
+
+                this.SampleAffectedFilesInfo = new List<SuspiciousFileInfo>();
+                this.SampleAffectedFilesInfo.ApplyExploratoryFieldSpec(ec.NewChild("sampleAffectedFilesInfo"));
+
+            } else {
+
+                this.SampleAffectedFilesInfo.ApplyExploratoryFieldSpec(ec.NewChild("sampleAffectedFilesInfo"));
+
+            }
+        }
+        else if (this.SampleAffectedFilesInfo != null && ec.Excludes("sampleAffectedFilesInfo",false))
+        {
+            this.SampleAffectedFilesInfo = null;
         }
         //      C# -> List<SuspiciousFileInfo>? SampleRansomwareNoteFilesInfo
         // GraphQL -> sampleRansomwareNoteFilesInfo: [SuspiciousFileInfo!]! (type)
-        if (this.SampleRansomwareNoteFilesInfo == null && ec.Includes("sampleRansomwareNoteFilesInfo",false))
+        if (ec.Includes("sampleRansomwareNoteFilesInfo",false))
         {
-            this.SampleRansomwareNoteFilesInfo = new List<SuspiciousFileInfo>();
-            this.SampleRansomwareNoteFilesInfo.ApplyExploratoryFieldSpec(ec.NewChild("sampleRansomwareNoteFilesInfo"));
+            if(this.SampleRansomwareNoteFilesInfo == null) {
+
+                this.SampleRansomwareNoteFilesInfo = new List<SuspiciousFileInfo>();
+                this.SampleRansomwareNoteFilesInfo.ApplyExploratoryFieldSpec(ec.NewChild("sampleRansomwareNoteFilesInfo"));
+
+            } else {
+
+                this.SampleRansomwareNoteFilesInfo.ApplyExploratoryFieldSpec(ec.NewChild("sampleRansomwareNoteFilesInfo"));
+
+            }
+        }
+        else if (this.SampleRansomwareNoteFilesInfo != null && ec.Excludes("sampleRansomwareNoteFilesInfo",false))
+        {
+            this.SampleRansomwareNoteFilesInfo = null;
         }
     }
 
@@ -222,9 +330,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<StrainInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -23,7 +23,7 @@ This endpoint is deprecated.
 
 - The settings subcommand takes no arguments.
 - Returns AccountSetting.
-### swithexocomputemappings
+### withexocomputemappings
 Retrieves the list of all accounts with their Exocompute account mapping, if exists.
 
 - There are 3 arguments.

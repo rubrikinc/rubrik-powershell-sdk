@@ -56,21 +56,30 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<System.String>? RuCurrentNodes
         // GraphQL -> ruCurrentNodes: [String!]! (scalar)
         if (this.RuCurrentNodes != null) {
-            s += ind + "ruCurrentNodes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "ruCurrentNodes\n" ;
+            } else {
+                s += ind + "ruCurrentNodes\n" ;
+            }
         }
         //      C# -> List<RollingUpgradeNodeInfoEntry>? RuNodeInfoList
         // GraphQL -> ruNodeInfoList: [RollingUpgradeNodeInfoEntry!]! (type)
         if (this.RuNodeInfoList != null) {
-            var fspec = this.RuNodeInfoList.AsFieldSpec(indent+1);
+            var fspec = this.RuNodeInfoList.AsFieldSpec(conf.Child("ruNodeInfoList"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "ruNodeInfoList {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "ruNodeInfoList {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -82,16 +91,39 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<System.String>? RuCurrentNodes
         // GraphQL -> ruCurrentNodes: [String!]! (scalar)
-        if (this.RuCurrentNodes == null && ec.Includes("ruCurrentNodes",true))
+        if (ec.Includes("ruCurrentNodes",true))
         {
-            this.RuCurrentNodes = new List<System.String>();
+            if(this.RuCurrentNodes == null) {
+
+                this.RuCurrentNodes = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RuCurrentNodes != null && ec.Excludes("ruCurrentNodes",true))
+        {
+            this.RuCurrentNodes = null;
         }
         //      C# -> List<RollingUpgradeNodeInfoEntry>? RuNodeInfoList
         // GraphQL -> ruNodeInfoList: [RollingUpgradeNodeInfoEntry!]! (type)
-        if (this.RuNodeInfoList == null && ec.Includes("ruNodeInfoList",false))
+        if (ec.Includes("ruNodeInfoList",false))
         {
-            this.RuNodeInfoList = new List<RollingUpgradeNodeInfoEntry>();
-            this.RuNodeInfoList.ApplyExploratoryFieldSpec(ec.NewChild("ruNodeInfoList"));
+            if(this.RuNodeInfoList == null) {
+
+                this.RuNodeInfoList = new List<RollingUpgradeNodeInfoEntry>();
+                this.RuNodeInfoList.ApplyExploratoryFieldSpec(ec.NewChild("ruNodeInfoList"));
+
+            } else {
+
+                this.RuNodeInfoList.ApplyExploratoryFieldSpec(ec.NewChild("ruNodeInfoList"));
+
+            }
+        }
+        else if (this.RuNodeInfoList != null && ec.Excludes("ruNodeInfoList",false))
+        {
+            this.RuNodeInfoList = null;
         }
     }
 
@@ -118,9 +150,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<RollingUpgradeInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

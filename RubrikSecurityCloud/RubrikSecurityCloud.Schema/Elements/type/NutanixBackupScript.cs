@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> NutanixBackupScriptFailureHandling? FailureHandling
         // GraphQL -> failureHandling: NutanixBackupScriptFailureHandling! (enum)
         if (this.FailureHandling != null) {
-            s += ind + "failureHandling\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "failureHandling\n" ;
+            } else {
+                s += ind + "failureHandling\n" ;
+            }
         }
         //      C# -> System.String? ScriptPath
         // GraphQL -> scriptPath: String (scalar)
         if (this.ScriptPath != null) {
-            s += ind + "scriptPath\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "scriptPath\n" ;
+            } else {
+                s += ind + "scriptPath\n" ;
+            }
         }
         //      C# -> System.Int64? TimeoutMs
         // GraphQL -> timeoutMs: Long! (scalar)
         if (this.TimeoutMs != null) {
-            s += ind + "timeoutMs\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "timeoutMs\n" ;
+            } else {
+                s += ind + "timeoutMs\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> NutanixBackupScriptFailureHandling? FailureHandling
         // GraphQL -> failureHandling: NutanixBackupScriptFailureHandling! (enum)
-        if (this.FailureHandling == null && ec.Includes("failureHandling",true))
+        if (ec.Includes("failureHandling",true))
         {
-            this.FailureHandling = new NutanixBackupScriptFailureHandling();
+            if(this.FailureHandling == null) {
+
+                this.FailureHandling = new NutanixBackupScriptFailureHandling();
+
+            } else {
+
+
+            }
+        }
+        else if (this.FailureHandling != null && ec.Excludes("failureHandling",true))
+        {
+            this.FailureHandling = null;
         }
         //      C# -> System.String? ScriptPath
         // GraphQL -> scriptPath: String (scalar)
-        if (this.ScriptPath == null && ec.Includes("scriptPath",true))
+        if (ec.Includes("scriptPath",true))
         {
-            this.ScriptPath = "FETCH";
+            if(this.ScriptPath == null) {
+
+                this.ScriptPath = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ScriptPath != null && ec.Excludes("scriptPath",true))
+        {
+            this.ScriptPath = null;
         }
         //      C# -> System.Int64? TimeoutMs
         // GraphQL -> timeoutMs: Long! (scalar)
-        if (this.TimeoutMs == null && ec.Includes("timeoutMs",true))
+        if (ec.Includes("timeoutMs",true))
         {
-            this.TimeoutMs = new System.Int64();
+            if(this.TimeoutMs == null) {
+
+                this.TimeoutMs = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TimeoutMs != null && ec.Excludes("timeoutMs",true))
+        {
+            this.TimeoutMs = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<NutanixBackupScript> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

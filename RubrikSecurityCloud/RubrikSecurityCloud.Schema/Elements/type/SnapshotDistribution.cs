@@ -83,34 +83,55 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.Int64? OnDemandCount
         // GraphQL -> onDemandCount: Long! (scalar)
         if (this.OnDemandCount != null) {
-            s += ind + "onDemandCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "onDemandCount\n" ;
+            } else {
+                s += ind + "onDemandCount\n" ;
+            }
         }
         //      C# -> System.Int64? RetrievedCount
         // GraphQL -> retrievedCount: Long! (scalar)
         if (this.RetrievedCount != null) {
-            s += ind + "retrievedCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "retrievedCount\n" ;
+            } else {
+                s += ind + "retrievedCount\n" ;
+            }
         }
         //      C# -> System.Int64? ScheduledCount
         // GraphQL -> scheduledCount: Long! (scalar)
         if (this.ScheduledCount != null) {
-            s += ind + "scheduledCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "scheduledCount\n" ;
+            } else {
+                s += ind + "scheduledCount\n" ;
+            }
         }
         //      C# -> System.Int64? TotalCount
         // GraphQL -> totalCount: Long! (scalar)
         if (this.TotalCount != null) {
-            s += ind + "totalCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "totalCount\n" ;
+            } else {
+                s += ind + "totalCount\n" ;
+            }
         }
         return s;
     }
@@ -121,33 +142,88 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.Int64? OnDemandCount
         // GraphQL -> onDemandCount: Long! (scalar)
-        if (this.OnDemandCount == null && ec.Includes("onDemandCount",true))
+        if (ec.Includes("onDemandCount",true))
         {
-            this.OnDemandCount = new System.Int64();
+            if(this.OnDemandCount == null) {
+
+                this.OnDemandCount = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.OnDemandCount != null && ec.Excludes("onDemandCount",true))
+        {
+            this.OnDemandCount = null;
         }
         //      C# -> System.Int64? RetrievedCount
         // GraphQL -> retrievedCount: Long! (scalar)
-        if (this.RetrievedCount == null && ec.Includes("retrievedCount",true))
+        if (ec.Includes("retrievedCount",true))
         {
-            this.RetrievedCount = new System.Int64();
+            if(this.RetrievedCount == null) {
+
+                this.RetrievedCount = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RetrievedCount != null && ec.Excludes("retrievedCount",true))
+        {
+            this.RetrievedCount = null;
         }
         //      C# -> System.Int64? ScheduledCount
         // GraphQL -> scheduledCount: Long! (scalar)
-        if (this.ScheduledCount == null && ec.Includes("scheduledCount",true))
+        if (ec.Includes("scheduledCount",true))
         {
-            this.ScheduledCount = new System.Int64();
+            if(this.ScheduledCount == null) {
+
+                this.ScheduledCount = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ScheduledCount != null && ec.Excludes("scheduledCount",true))
+        {
+            this.ScheduledCount = null;
         }
         //      C# -> System.Int64? TotalCount
         // GraphQL -> totalCount: Long! (scalar)
-        if (this.TotalCount == null && ec.Includes("totalCount",true))
+        if (ec.Includes("totalCount",true))
         {
-            this.TotalCount = new System.Int64();
+            if(this.TotalCount == null) {
+
+                this.TotalCount = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalCount != null && ec.Excludes("totalCount",true))
+        {
+            this.TotalCount = null;
         }
     }
 
@@ -174,9 +250,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SnapshotDistribution> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

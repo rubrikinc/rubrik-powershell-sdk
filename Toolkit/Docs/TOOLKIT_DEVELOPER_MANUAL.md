@@ -115,21 +115,21 @@ changes from the `Toolkit/` directory, and re-import the module.
 So say you're working on `Toolkit/Public/Get-RscStuff.ps1` :
 
 1. Make your changes to `Toolkit/Public/Get-RscStuff.ps1`
-2. Run `Update-RscToolkit` to update the `Output/` directory.
+2. Run `Update-RscToolkit -SkipTest` to update the `Output/` directory.
    It will also automatically re-import the module.
 3. Test your changes manually by running `Get-RscStuff` in the
    PowerShell console.
 
 ### TDD workflow
 
-The Manual Workflow is fine to start with, but we want to
-be Test-Driven, so we need to automate the testing.
+The manual workflow is fine to start with, but we want to
+be Test-Driven, so we need to include testing in our workflow.
 
-`Toolkit/Makefile` defaults to running `Update-RscToolkit` and
-running all tests in `Toolkit/Tests/` :
+When `Update-RscToolkit` is run without the `-SkipTest` switch, it will
+also run all unit tests in `Toolkit/Tests/Unit` :
 
 ```powershell
-PS ~/rubrik-powershell-sdk/Toolkit> make
+PS ~/rubrik-powershell-sdk/Toolkit> Update-RscToolkit
 
 Copied 0 files to Output directory.
 Imported module from Output directory.
@@ -143,15 +143,13 @@ Output directory: <SDK root>/Output/Toolkit
 
 All toolkit files in Output are up to date.
 
-[Toolkit] Running PowerShell unit tests...
+[unit] Running Pester tests in Toolkit/Tests/unit
 
-Tests completed in 2.93s
+Starting discovery in 1 files.
+Discovery found 1 tests in 13ms.
+Running tests.
+Tests completed in 132ms
 Tests Passed: 1, Failed: 0, Skipped: 0 NotRun: 0
-
-[Toolkit] Running e2e tests...
-
-Tests completed in 3.5s
-Tests Passed: 3, Failed: 0, Skipped: 0 NotRun: 0
 
 PS ~/rubrik-powershell-sdk/Toolkit>
 ```
@@ -160,4 +158,10 @@ TDD Workflow:
 
 1. Make your changes to `Toolkit/Public/Get-RscStuff.ps1`
 2. Update the tests in `Toolkit/Tests/Get-RscStuff.Tests.ps1`
-3. `make`
+3. Run `Update-RscToolkit`
+
+`Update-RscToolkit` only runs the unit tests. To run the e2e tests too, do:
+
+```powershell
+PS ~/rubrik-powershell-sdk/Toolkit> Update-RscToolkit -RunE2eTests
+```

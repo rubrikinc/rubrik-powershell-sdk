@@ -110,49 +110,82 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? BaseFullSnapshotId
         // GraphQL -> baseFullSnapshotId: String (scalar)
         if (this.BaseFullSnapshotId != null) {
-            s += ind + "baseFullSnapshotId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "baseFullSnapshotId\n" ;
+            } else {
+                s += ind + "baseFullSnapshotId\n" ;
+            }
         }
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
         if (this.CdmId != null) {
-            s += ind + "cdmId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cdmId\n" ;
+            } else {
+                s += ind + "cdmId\n" ;
+            }
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
         if (this.ClusterUuid != null) {
-            s += ind + "clusterUuid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterUuid\n" ;
+            } else {
+                s += ind + "clusterUuid\n" ;
+            }
         }
         //      C# -> System.String? DbId
         // GraphQL -> dbId: String! (scalar)
         if (this.DbId != null) {
-            s += ind + "dbId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "dbId\n" ;
+            } else {
+                s += ind + "dbId\n" ;
+            }
         }
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime (scalar)
         if (this.EndTime != null) {
-            s += ind + "endTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "endTime\n" ;
+            } else {
+                s += ind + "endTime\n" ;
+            }
         }
         //      C# -> System.String? Fid
         // GraphQL -> fid: String! (scalar)
         if (this.Fid != null) {
-            s += ind + "fid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "fid\n" ;
+            } else {
+                s += ind + "fid\n" ;
+            }
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean! (scalar)
         if (this.IsArchived != null) {
-            s += ind + "isArchived\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isArchived\n" ;
+            } else {
+                s += ind + "isArchived\n" ;
+            }
         }
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime (scalar)
         if (this.StartTime != null) {
-            s += ind + "startTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "startTime\n" ;
+            } else {
+                s += ind + "startTime\n" ;
+            }
         }
         return s;
     }
@@ -163,51 +196,139 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? BaseFullSnapshotId
         // GraphQL -> baseFullSnapshotId: String (scalar)
-        if (this.BaseFullSnapshotId == null && ec.Includes("baseFullSnapshotId",true))
+        if (ec.Includes("baseFullSnapshotId",true))
         {
-            this.BaseFullSnapshotId = "FETCH";
+            if(this.BaseFullSnapshotId == null) {
+
+                this.BaseFullSnapshotId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.BaseFullSnapshotId != null && ec.Excludes("baseFullSnapshotId",true))
+        {
+            this.BaseFullSnapshotId = null;
         }
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
-        if (this.CdmId == null && ec.Includes("cdmId",true))
+        if (ec.Includes("cdmId",true))
         {
-            this.CdmId = "FETCH";
+            if(this.CdmId == null) {
+
+                this.CdmId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CdmId != null && ec.Excludes("cdmId",true))
+        {
+            this.CdmId = null;
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
-        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
+        if (ec.Includes("clusterUuid",true))
         {
-            this.ClusterUuid = "FETCH";
+            if(this.ClusterUuid == null) {
+
+                this.ClusterUuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterUuid != null && ec.Excludes("clusterUuid",true))
+        {
+            this.ClusterUuid = null;
         }
         //      C# -> System.String? DbId
         // GraphQL -> dbId: String! (scalar)
-        if (this.DbId == null && ec.Includes("dbId",true))
+        if (ec.Includes("dbId",true))
         {
-            this.DbId = "FETCH";
+            if(this.DbId == null) {
+
+                this.DbId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DbId != null && ec.Excludes("dbId",true))
+        {
+            this.DbId = null;
         }
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime (scalar)
-        if (this.EndTime == null && ec.Includes("endTime",true))
+        if (ec.Includes("endTime",true))
         {
-            this.EndTime = new DateTime();
+            if(this.EndTime == null) {
+
+                this.EndTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EndTime != null && ec.Excludes("endTime",true))
+        {
+            this.EndTime = null;
         }
         //      C# -> System.String? Fid
         // GraphQL -> fid: String! (scalar)
-        if (this.Fid == null && ec.Includes("fid",true))
+        if (ec.Includes("fid",true))
         {
-            this.Fid = "FETCH";
+            if(this.Fid == null) {
+
+                this.Fid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Fid != null && ec.Excludes("fid",true))
+        {
+            this.Fid = null;
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean! (scalar)
-        if (this.IsArchived == null && ec.Includes("isArchived",true))
+        if (ec.Includes("isArchived",true))
         {
-            this.IsArchived = true;
+            if(this.IsArchived == null) {
+
+                this.IsArchived = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsArchived != null && ec.Excludes("isArchived",true))
+        {
+            this.IsArchived = null;
         }
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime (scalar)
-        if (this.StartTime == null && ec.Includes("startTime",true))
+        if (ec.Includes("startTime",true))
         {
-            this.StartTime = new DateTime();
+            if(this.StartTime == null) {
+
+                this.StartTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.StartTime != null && ec.Excludes("startTime",true))
+        {
+            this.StartTime = null;
         }
     }
 
@@ -234,9 +355,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SapHanaRecoverableRange> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

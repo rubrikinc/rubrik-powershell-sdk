@@ -56,24 +56,33 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> GcpCloudAccountFeatureDetail? FeatureDetail
         // GraphQL -> featureDetail: GcpCloudAccountFeatureDetail (type)
         if (this.FeatureDetail != null) {
-            var fspec = this.FeatureDetail.AsFieldSpec(indent+1);
+            var fspec = this.FeatureDetail.AsFieldSpec(conf.Child("featureDetail"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "featureDetail {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "featureDetail {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> GcpCloudAccountProject? Project
         // GraphQL -> project: GcpCloudAccountProject (type)
         if (this.Project != null) {
-            var fspec = this.Project.AsFieldSpec(indent+1);
+            var fspec = this.Project.AsFieldSpec(conf.Child("project"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "project {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "project {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -85,17 +94,41 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> GcpCloudAccountFeatureDetail? FeatureDetail
         // GraphQL -> featureDetail: GcpCloudAccountFeatureDetail (type)
-        if (this.FeatureDetail == null && ec.Includes("featureDetail",false))
+        if (ec.Includes("featureDetail",false))
         {
-            this.FeatureDetail = new GcpCloudAccountFeatureDetail();
-            this.FeatureDetail.ApplyExploratoryFieldSpec(ec.NewChild("featureDetail"));
+            if(this.FeatureDetail == null) {
+
+                this.FeatureDetail = new GcpCloudAccountFeatureDetail();
+                this.FeatureDetail.ApplyExploratoryFieldSpec(ec.NewChild("featureDetail"));
+
+            } else {
+
+                this.FeatureDetail.ApplyExploratoryFieldSpec(ec.NewChild("featureDetail"));
+
+            }
+        }
+        else if (this.FeatureDetail != null && ec.Excludes("featureDetail",false))
+        {
+            this.FeatureDetail = null;
         }
         //      C# -> GcpCloudAccountProject? Project
         // GraphQL -> project: GcpCloudAccountProject (type)
-        if (this.Project == null && ec.Includes("project",false))
+        if (ec.Includes("project",false))
         {
-            this.Project = new GcpCloudAccountProject();
-            this.Project.ApplyExploratoryFieldSpec(ec.NewChild("project"));
+            if(this.Project == null) {
+
+                this.Project = new GcpCloudAccountProject();
+                this.Project.ApplyExploratoryFieldSpec(ec.NewChild("project"));
+
+            } else {
+
+                this.Project.ApplyExploratoryFieldSpec(ec.NewChild("project"));
+
+            }
+        }
+        else if (this.Project != null && ec.Excludes("project",false))
+        {
+            this.Project = null;
         }
     }
 
@@ -122,9 +155,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<GcpCloudAccountProjectDetail> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

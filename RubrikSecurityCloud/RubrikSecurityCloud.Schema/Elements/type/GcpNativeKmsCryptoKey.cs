@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Key
         // GraphQL -> key: String! (scalar)
         if (this.Key != null) {
-            s += ind + "key\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "key\n" ;
+            } else {
+                s += ind + "key\n" ;
+            }
         }
         //      C# -> System.String? KeyRing
         // GraphQL -> keyRing: String! (scalar)
         if (this.KeyRing != null) {
-            s += ind + "keyRing\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "keyRing\n" ;
+            } else {
+                s += ind + "keyRing\n" ;
+            }
         }
         //      C# -> System.String? Location
         // GraphQL -> location: String! (scalar)
         if (this.Location != null) {
-            s += ind + "location\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "location\n" ;
+            } else {
+                s += ind + "location\n" ;
+            }
         }
         //      C# -> System.String? ProjectNativeId
         // GraphQL -> projectNativeId: String! (scalar)
         if (this.ProjectNativeId != null) {
-            s += ind + "projectNativeId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "projectNativeId\n" ;
+            } else {
+                s += ind + "projectNativeId\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Key
         // GraphQL -> key: String! (scalar)
-        if (this.Key == null && ec.Includes("key",true))
+        if (ec.Includes("key",true))
         {
-            this.Key = "FETCH";
+            if(this.Key == null) {
+
+                this.Key = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Key != null && ec.Excludes("key",true))
+        {
+            this.Key = null;
         }
         //      C# -> System.String? KeyRing
         // GraphQL -> keyRing: String! (scalar)
-        if (this.KeyRing == null && ec.Includes("keyRing",true))
+        if (ec.Includes("keyRing",true))
         {
-            this.KeyRing = "FETCH";
+            if(this.KeyRing == null) {
+
+                this.KeyRing = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.KeyRing != null && ec.Excludes("keyRing",true))
+        {
+            this.KeyRing = null;
         }
         //      C# -> System.String? Location
         // GraphQL -> location: String! (scalar)
-        if (this.Location == null && ec.Includes("location",true))
+        if (ec.Includes("location",true))
         {
-            this.Location = "FETCH";
+            if(this.Location == null) {
+
+                this.Location = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Location != null && ec.Excludes("location",true))
+        {
+            this.Location = null;
         }
         //      C# -> System.String? ProjectNativeId
         // GraphQL -> projectNativeId: String! (scalar)
-        if (this.ProjectNativeId == null && ec.Includes("projectNativeId",true))
+        if (ec.Includes("projectNativeId",true))
         {
-            this.ProjectNativeId = "FETCH";
+            if(this.ProjectNativeId == null) {
+
+                this.ProjectNativeId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProjectNativeId != null && ec.Excludes("projectNativeId",true))
+        {
+            this.ProjectNativeId = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<GcpNativeKmsCryptoKey> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

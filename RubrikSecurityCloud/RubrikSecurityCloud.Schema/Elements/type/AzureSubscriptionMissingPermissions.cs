@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<System.String>? MissingPermissions
         // GraphQL -> missingPermissions: [String!]! (scalar)
         if (this.MissingPermissions != null) {
-            s += ind + "missingPermissions\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "missingPermissions\n" ;
+            } else {
+                s += ind + "missingPermissions\n" ;
+            }
         }
         //      C# -> System.String? SubscriptionNativeId
         // GraphQL -> subscriptionNativeId: String! (scalar)
         if (this.SubscriptionNativeId != null) {
-            s += ind + "subscriptionNativeId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "subscriptionNativeId\n" ;
+            } else {
+                s += ind + "subscriptionNativeId\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<System.String>? MissingPermissions
         // GraphQL -> missingPermissions: [String!]! (scalar)
-        if (this.MissingPermissions == null && ec.Includes("missingPermissions",true))
+        if (ec.Includes("missingPermissions",true))
         {
-            this.MissingPermissions = new List<System.String>();
+            if(this.MissingPermissions == null) {
+
+                this.MissingPermissions = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.MissingPermissions != null && ec.Excludes("missingPermissions",true))
+        {
+            this.MissingPermissions = null;
         }
         //      C# -> System.String? SubscriptionNativeId
         // GraphQL -> subscriptionNativeId: String! (scalar)
-        if (this.SubscriptionNativeId == null && ec.Includes("subscriptionNativeId",true))
+        if (ec.Includes("subscriptionNativeId",true))
         {
-            this.SubscriptionNativeId = "FETCH";
+            if(this.SubscriptionNativeId == null) {
+
+                this.SubscriptionNativeId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SubscriptionNativeId != null && ec.Excludes("subscriptionNativeId",true))
+        {
+            this.SubscriptionNativeId = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AzureSubscriptionMissingPermissions> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

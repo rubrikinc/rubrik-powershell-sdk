@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime! (scalar)
         if (this.Date != null) {
-            s += ind + "date\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "date\n" ;
+            } else {
+                s += ind + "date\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.Boolean? IsOnDemandSnapshot
         // GraphQL -> isOnDemandSnapshot: Boolean! (scalar)
         if (this.IsOnDemandSnapshot != null) {
-            s += ind + "isOnDemandSnapshot\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isOnDemandSnapshot\n" ;
+            } else {
+                s += ind + "isOnDemandSnapshot\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime! (scalar)
-        if (this.Date == null && ec.Includes("date",true))
+        if (ec.Includes("date",true))
         {
-            this.Date = new DateTime();
+            if(this.Date == null) {
+
+                this.Date = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Date != null && ec.Excludes("date",true))
+        {
+            this.Date = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.Boolean? IsOnDemandSnapshot
         // GraphQL -> isOnDemandSnapshot: Boolean! (scalar)
-        if (this.IsOnDemandSnapshot == null && ec.Includes("isOnDemandSnapshot",true))
+        if (ec.Includes("isOnDemandSnapshot",true))
         {
-            this.IsOnDemandSnapshot = true;
+            if(this.IsOnDemandSnapshot == null) {
+
+                this.IsOnDemandSnapshot = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsOnDemandSnapshot != null && ec.Excludes("isOnDemandSnapshot",true))
+        {
+            this.IsOnDemandSnapshot = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CloudNativeSnapshotInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

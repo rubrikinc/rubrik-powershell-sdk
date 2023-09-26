@@ -83,34 +83,55 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> ActivityAccessType? AccessType
         // GraphQL -> accessType: ActivityAccessType! (enum)
         if (this.AccessType != null) {
-            s += ind + "accessType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "accessType\n" ;
+            } else {
+                s += ind + "accessType\n" ;
+            }
         }
         //      C# -> System.String? Directory
         // GraphQL -> directory: String! (scalar)
         if (this.Directory != null) {
-            s += ind + "directory\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "directory\n" ;
+            } else {
+                s += ind + "directory\n" ;
+            }
         }
         //      C# -> System.String? Filename
         // GraphQL -> filename: String! (scalar)
         if (this.Filename != null) {
-            s += ind + "filename\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "filename\n" ;
+            } else {
+                s += ind + "filename\n" ;
+            }
         }
         //      C# -> System.String? NativePath
         // GraphQL -> nativePath: String! (scalar)
         if (this.NativePath != null) {
-            s += ind + "nativePath\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "nativePath\n" ;
+            } else {
+                s += ind + "nativePath\n" ;
+            }
         }
         //      C# -> System.Int32? NumAccesses
         // GraphQL -> numAccesses: Int! (scalar)
         if (this.NumAccesses != null) {
-            s += ind + "numAccesses\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "numAccesses\n" ;
+            } else {
+                s += ind + "numAccesses\n" ;
+            }
         }
         return s;
     }
@@ -121,33 +142,88 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> ActivityAccessType? AccessType
         // GraphQL -> accessType: ActivityAccessType! (enum)
-        if (this.AccessType == null && ec.Includes("accessType",true))
+        if (ec.Includes("accessType",true))
         {
-            this.AccessType = new ActivityAccessType();
+            if(this.AccessType == null) {
+
+                this.AccessType = new ActivityAccessType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AccessType != null && ec.Excludes("accessType",true))
+        {
+            this.AccessType = null;
         }
         //      C# -> System.String? Directory
         // GraphQL -> directory: String! (scalar)
-        if (this.Directory == null && ec.Includes("directory",true))
+        if (ec.Includes("directory",true))
         {
-            this.Directory = "FETCH";
+            if(this.Directory == null) {
+
+                this.Directory = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Directory != null && ec.Excludes("directory",true))
+        {
+            this.Directory = null;
         }
         //      C# -> System.String? Filename
         // GraphQL -> filename: String! (scalar)
-        if (this.Filename == null && ec.Includes("filename",true))
+        if (ec.Includes("filename",true))
         {
-            this.Filename = "FETCH";
+            if(this.Filename == null) {
+
+                this.Filename = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Filename != null && ec.Excludes("filename",true))
+        {
+            this.Filename = null;
         }
         //      C# -> System.String? NativePath
         // GraphQL -> nativePath: String! (scalar)
-        if (this.NativePath == null && ec.Includes("nativePath",true))
+        if (ec.Includes("nativePath",true))
         {
-            this.NativePath = "FETCH";
+            if(this.NativePath == null) {
+
+                this.NativePath = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NativePath != null && ec.Excludes("nativePath",true))
+        {
+            this.NativePath = null;
         }
         //      C# -> System.Int32? NumAccesses
         // GraphQL -> numAccesses: Int! (scalar)
-        if (this.NumAccesses == null && ec.Includes("numAccesses",true))
+        if (ec.Includes("numAccesses",true))
         {
-            this.NumAccesses = Int32.MinValue;
+            if(this.NumAccesses == null) {
+
+                this.NumAccesses = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.NumAccesses != null && ec.Excludes("numAccesses",true))
+        {
+            this.NumAccesses = null;
         }
     }
 
@@ -174,9 +250,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<FileAccessResult> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

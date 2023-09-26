@@ -83,34 +83,55 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? ClientId
         // GraphQL -> clientId: String! (scalar)
         if (this.ClientId != null) {
-            s += ind + "clientId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "clientId\n" ;
+            } else {
+                s += ind + "clientId\n" ;
+            }
         }
         //      C# -> System.String? Code
         // GraphQL -> code: String! (scalar)
         if (this.Code != null) {
-            s += ind + "code\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "code\n" ;
+            } else {
+                s += ind + "code\n" ;
+            }
         }
         //      C# -> System.String? CodeVerifier
         // GraphQL -> codeVerifier: String! (scalar)
         if (this.CodeVerifier != null) {
-            s += ind + "codeVerifier\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "codeVerifier\n" ;
+            } else {
+                s += ind + "codeVerifier\n" ;
+            }
         }
         //      C# -> System.String? ExpiryTime
         // GraphQL -> expiryTime: String! (scalar)
         if (this.ExpiryTime != null) {
-            s += ind + "expiryTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "expiryTime\n" ;
+            } else {
+                s += ind + "expiryTime\n" ;
+            }
         }
         //      C# -> System.String? RedirectUri
         // GraphQL -> redirectUri: String! (scalar)
         if (this.RedirectUri != null) {
-            s += ind + "redirectUri\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "redirectUri\n" ;
+            } else {
+                s += ind + "redirectUri\n" ;
+            }
         }
         return s;
     }
@@ -121,33 +142,88 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? ClientId
         // GraphQL -> clientId: String! (scalar)
-        if (this.ClientId == null && ec.Includes("clientId",true))
+        if (ec.Includes("clientId",true))
         {
-            this.ClientId = "FETCH";
+            if(this.ClientId == null) {
+
+                this.ClientId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClientId != null && ec.Excludes("clientId",true))
+        {
+            this.ClientId = null;
         }
         //      C# -> System.String? Code
         // GraphQL -> code: String! (scalar)
-        if (this.Code == null && ec.Includes("code",true))
+        if (ec.Includes("code",true))
         {
-            this.Code = "FETCH";
+            if(this.Code == null) {
+
+                this.Code = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Code != null && ec.Excludes("code",true))
+        {
+            this.Code = null;
         }
         //      C# -> System.String? CodeVerifier
         // GraphQL -> codeVerifier: String! (scalar)
-        if (this.CodeVerifier == null && ec.Includes("codeVerifier",true))
+        if (ec.Includes("codeVerifier",true))
         {
-            this.CodeVerifier = "FETCH";
+            if(this.CodeVerifier == null) {
+
+                this.CodeVerifier = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CodeVerifier != null && ec.Excludes("codeVerifier",true))
+        {
+            this.CodeVerifier = null;
         }
         //      C# -> System.String? ExpiryTime
         // GraphQL -> expiryTime: String! (scalar)
-        if (this.ExpiryTime == null && ec.Includes("expiryTime",true))
+        if (ec.Includes("expiryTime",true))
         {
-            this.ExpiryTime = "FETCH";
+            if(this.ExpiryTime == null) {
+
+                this.ExpiryTime = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExpiryTime != null && ec.Excludes("expiryTime",true))
+        {
+            this.ExpiryTime = null;
         }
         //      C# -> System.String? RedirectUri
         // GraphQL -> redirectUri: String! (scalar)
-        if (this.RedirectUri == null && ec.Includes("redirectUri",true))
+        if (ec.Includes("redirectUri",true))
         {
-            this.RedirectUri = "FETCH";
+            if(this.RedirectUri == null) {
+
+                this.RedirectUri = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RedirectUri != null && ec.Excludes("redirectUri",true))
+        {
+            this.RedirectUri = null;
         }
     }
 
@@ -174,9 +250,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<OauthAccessToken> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

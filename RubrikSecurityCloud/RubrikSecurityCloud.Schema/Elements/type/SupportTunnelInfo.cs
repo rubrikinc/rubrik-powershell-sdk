@@ -92,39 +92,64 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> DateTime? EnabledTime
         // GraphQL -> enabledTime: DateTime (scalar)
         if (this.EnabledTime != null) {
-            s += ind + "enabledTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "enabledTime\n" ;
+            } else {
+                s += ind + "enabledTime\n" ;
+            }
         }
         //      C# -> System.String? ErrorMessage
         // GraphQL -> errorMessage: String (scalar)
         if (this.ErrorMessage != null) {
-            s += ind + "errorMessage\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "errorMessage\n" ;
+            } else {
+                s += ind + "errorMessage\n" ;
+            }
         }
         //      C# -> System.Int64? InactivityTimeoutInSeconds
         // GraphQL -> inactivityTimeoutInSeconds: Long (scalar)
         if (this.InactivityTimeoutInSeconds != null) {
-            s += ind + "inactivityTimeoutInSeconds\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "inactivityTimeoutInSeconds\n" ;
+            } else {
+                s += ind + "inactivityTimeoutInSeconds\n" ;
+            }
         }
         //      C# -> System.Boolean? IsTunnelEnabled
         // GraphQL -> isTunnelEnabled: Boolean! (scalar)
         if (this.IsTunnelEnabled != null) {
-            s += ind + "isTunnelEnabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isTunnelEnabled\n" ;
+            } else {
+                s += ind + "isTunnelEnabled\n" ;
+            }
         }
         //      C# -> DateTime? LastActivityTime
         // GraphQL -> lastActivityTime: DateTime (scalar)
         if (this.LastActivityTime != null) {
-            s += ind + "lastActivityTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "lastActivityTime\n" ;
+            } else {
+                s += ind + "lastActivityTime\n" ;
+            }
         }
         //      C# -> System.Int64? Port
         // GraphQL -> port: Long (scalar)
         if (this.Port != null) {
-            s += ind + "port\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "port\n" ;
+            } else {
+                s += ind + "port\n" ;
+            }
         }
         return s;
     }
@@ -135,39 +160,105 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> DateTime? EnabledTime
         // GraphQL -> enabledTime: DateTime (scalar)
-        if (this.EnabledTime == null && ec.Includes("enabledTime",true))
+        if (ec.Includes("enabledTime",true))
         {
-            this.EnabledTime = new DateTime();
+            if(this.EnabledTime == null) {
+
+                this.EnabledTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EnabledTime != null && ec.Excludes("enabledTime",true))
+        {
+            this.EnabledTime = null;
         }
         //      C# -> System.String? ErrorMessage
         // GraphQL -> errorMessage: String (scalar)
-        if (this.ErrorMessage == null && ec.Includes("errorMessage",true))
+        if (ec.Includes("errorMessage",true))
         {
-            this.ErrorMessage = "FETCH";
+            if(this.ErrorMessage == null) {
+
+                this.ErrorMessage = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ErrorMessage != null && ec.Excludes("errorMessage",true))
+        {
+            this.ErrorMessage = null;
         }
         //      C# -> System.Int64? InactivityTimeoutInSeconds
         // GraphQL -> inactivityTimeoutInSeconds: Long (scalar)
-        if (this.InactivityTimeoutInSeconds == null && ec.Includes("inactivityTimeoutInSeconds",true))
+        if (ec.Includes("inactivityTimeoutInSeconds",true))
         {
-            this.InactivityTimeoutInSeconds = new System.Int64();
+            if(this.InactivityTimeoutInSeconds == null) {
+
+                this.InactivityTimeoutInSeconds = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.InactivityTimeoutInSeconds != null && ec.Excludes("inactivityTimeoutInSeconds",true))
+        {
+            this.InactivityTimeoutInSeconds = null;
         }
         //      C# -> System.Boolean? IsTunnelEnabled
         // GraphQL -> isTunnelEnabled: Boolean! (scalar)
-        if (this.IsTunnelEnabled == null && ec.Includes("isTunnelEnabled",true))
+        if (ec.Includes("isTunnelEnabled",true))
         {
-            this.IsTunnelEnabled = true;
+            if(this.IsTunnelEnabled == null) {
+
+                this.IsTunnelEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsTunnelEnabled != null && ec.Excludes("isTunnelEnabled",true))
+        {
+            this.IsTunnelEnabled = null;
         }
         //      C# -> DateTime? LastActivityTime
         // GraphQL -> lastActivityTime: DateTime (scalar)
-        if (this.LastActivityTime == null && ec.Includes("lastActivityTime",true))
+        if (ec.Includes("lastActivityTime",true))
         {
-            this.LastActivityTime = new DateTime();
+            if(this.LastActivityTime == null) {
+
+                this.LastActivityTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastActivityTime != null && ec.Excludes("lastActivityTime",true))
+        {
+            this.LastActivityTime = null;
         }
         //      C# -> System.Int64? Port
         // GraphQL -> port: Long (scalar)
-        if (this.Port == null && ec.Includes("port",true))
+        if (ec.Includes("port",true))
         {
-            this.Port = new System.Int64();
+            if(this.Port == null) {
+
+                this.Port = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Port != null && ec.Excludes("port",true))
+        {
+            this.Port = null;
         }
     }
 
@@ -194,9 +285,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SupportTunnelInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -101,44 +101,73 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> SyslogFacility? Facility
         // GraphQL -> facility: SyslogFacility! (enum)
         if (this.Facility != null) {
-            s += ind + "facility\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "facility\n" ;
+            } else {
+                s += ind + "facility\n" ;
+            }
         }
         //      C# -> TransportLayerProtocol? Protocol
         // GraphQL -> protocol: TransportLayerProtocol! (enum)
         if (this.Protocol != null) {
-            s += ind + "protocol\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "protocol\n" ;
+            } else {
+                s += ind + "protocol\n" ;
+            }
         }
         //      C# -> SyslogSeverity? Severity
         // GraphQL -> severity: SyslogSeverity! (enum)
         if (this.Severity != null) {
-            s += ind + "severity\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "severity\n" ;
+            } else {
+                s += ind + "severity\n" ;
+            }
         }
         //      C# -> System.String? CertificateId
         // GraphQL -> certificateId: String (scalar)
         if (this.CertificateId != null) {
-            s += ind + "certificateId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "certificateId\n" ;
+            } else {
+                s += ind + "certificateId\n" ;
+            }
         }
         //      C# -> System.Boolean? EnableTls
         // GraphQL -> enableTls: Boolean! (scalar)
         if (this.EnableTls != null) {
-            s += ind + "enableTls\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "enableTls\n" ;
+            } else {
+                s += ind + "enableTls\n" ;
+            }
         }
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
         if (this.Hostname != null) {
-            s += ind + "hostname\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostname\n" ;
+            } else {
+                s += ind + "hostname\n" ;
+            }
         }
         //      C# -> System.Int32? Port
         // GraphQL -> port: Int! (scalar)
         if (this.Port != null) {
-            s += ind + "port\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "port\n" ;
+            } else {
+                s += ind + "port\n" ;
+            }
         }
         return s;
     }
@@ -149,45 +178,122 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> SyslogFacility? Facility
         // GraphQL -> facility: SyslogFacility! (enum)
-        if (this.Facility == null && ec.Includes("facility",true))
+        if (ec.Includes("facility",true))
         {
-            this.Facility = new SyslogFacility();
+            if(this.Facility == null) {
+
+                this.Facility = new SyslogFacility();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Facility != null && ec.Excludes("facility",true))
+        {
+            this.Facility = null;
         }
         //      C# -> TransportLayerProtocol? Protocol
         // GraphQL -> protocol: TransportLayerProtocol! (enum)
-        if (this.Protocol == null && ec.Includes("protocol",true))
+        if (ec.Includes("protocol",true))
         {
-            this.Protocol = new TransportLayerProtocol();
+            if(this.Protocol == null) {
+
+                this.Protocol = new TransportLayerProtocol();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Protocol != null && ec.Excludes("protocol",true))
+        {
+            this.Protocol = null;
         }
         //      C# -> SyslogSeverity? Severity
         // GraphQL -> severity: SyslogSeverity! (enum)
-        if (this.Severity == null && ec.Includes("severity",true))
+        if (ec.Includes("severity",true))
         {
-            this.Severity = new SyslogSeverity();
+            if(this.Severity == null) {
+
+                this.Severity = new SyslogSeverity();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Severity != null && ec.Excludes("severity",true))
+        {
+            this.Severity = null;
         }
         //      C# -> System.String? CertificateId
         // GraphQL -> certificateId: String (scalar)
-        if (this.CertificateId == null && ec.Includes("certificateId",true))
+        if (ec.Includes("certificateId",true))
         {
-            this.CertificateId = "FETCH";
+            if(this.CertificateId == null) {
+
+                this.CertificateId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CertificateId != null && ec.Excludes("certificateId",true))
+        {
+            this.CertificateId = null;
         }
         //      C# -> System.Boolean? EnableTls
         // GraphQL -> enableTls: Boolean! (scalar)
-        if (this.EnableTls == null && ec.Includes("enableTls",true))
+        if (ec.Includes("enableTls",true))
         {
-            this.EnableTls = true;
+            if(this.EnableTls == null) {
+
+                this.EnableTls = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.EnableTls != null && ec.Excludes("enableTls",true))
+        {
+            this.EnableTls = null;
         }
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
-        if (this.Hostname == null && ec.Includes("hostname",true))
+        if (ec.Includes("hostname",true))
         {
-            this.Hostname = "FETCH";
+            if(this.Hostname == null) {
+
+                this.Hostname = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Hostname != null && ec.Excludes("hostname",true))
+        {
+            this.Hostname = null;
         }
         //      C# -> System.Int32? Port
         // GraphQL -> port: Int! (scalar)
-        if (this.Port == null && ec.Includes("port",true))
+        if (ec.Includes("port",true))
         {
-            this.Port = Int32.MinValue;
+            if(this.Port == null) {
+
+                this.Port = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Port != null && ec.Excludes("port",true))
+        {
+            this.Port = null;
         }
     }
 
@@ -214,9 +320,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SyslogExportRuleFull> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

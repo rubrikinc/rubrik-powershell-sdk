@@ -15,13 +15,17 @@ using RubrikSecurityCloud;
 using RubrikSecurityCloud.Types;
 using GraphQL;
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
+
 namespace RubrikSecurityCloud.PowerShell.Private
 {
     /// <summary>
     /// Configuration for RscGqlPSCmdlet
     /// 
-    /// HasPatchDynamicParam:
-    /// If true, add a -Patch dynamic parameter to the cmdlet.
+    /// HasPatchingDynamicParam:
+    /// If true, add patching dynamic parameter to the cmdlet
+    /// (-AddField and -RemoveField)
     /// 
     /// SendQueryOnExitIfAny:
     /// If true, send the query to the server when the cmdlet exits.
@@ -29,7 +33,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
     /// </summary>
     public class RscGqlPSCmdletConfig
     {
-        public bool HasPatchDynamicParam { get; set; } = true;
+        public bool HasPatchingDynamicParam { get; set; } = true;
         public bool SendQueryOnExitIfAny { get; set; } = false;
 
     }
@@ -38,72 +42,55 @@ namespace RubrikSecurityCloud.PowerShell.Private
     /// </summary>
     public class RscGqlPSCmdlet : RscBasePSCmdlet, IDynamicParameters
     {
-        /// <summary>
-        /// Start off by copying another query
-        /// before altering it with 
-        /// -Op -Var -Field -FilePatch -FieldProfile and -Patch.
-        /// </summary>
-        [Parameter(
-            Mandatory = false,
-            Position = 0,
-            ValueFromPipeline = true,
-            ValueFromPipelineByPropertyName = true)]
-        public RscQuery Copy { get; set; }
+        // Note : we are using HelpMessage tags
+        // instead of <summary> tags because the xml doc generator
+        // reads the <summary> tags from the derived classes
+        // (e.g. New-RscQueryVsphere.cs) and ignores the base class
+        // <summary> tags.
 
-        /// <summary>
-        /// Operation to run. Overridden by operation switches.
-        /// Only use -Op to programmatically pick the operation to run.
-        /// Typically, you would use the operation switches instead.
-        /// For example, `New-RscQueryCluster -List` is equivalent to
-        /// `New-RscQueryCluster -Op List`. 
-        /// </summary>
         [Parameter(
             Mandatory = false,
             // No Position -> named parameter only.
             ValueFromPipeline = true,
+            HelpMessage = "Start off by copying another query before altering it with -Var, -AddField, -RemoveField and -FilePatch.",
             ValueFromPipelineByPropertyName = true)]
-        public string Op { get; set; }
+        public RscQuery Copy { get; set; }
 
-        /// <summary>
-        /// Operation variables.
-        /// </summary>
         [Parameter(
             Mandatory = false,
-            Position = 3,
+            // No Position -> named parameter only.
+            HelpMessage = "Operation to run. Overridden by operation switches. Only use -Op to programmatically pick the operation to run. Typically, you would use the operation switches instead. For example, `New-RscQueryCluster -List` is equivalent to `New-RscQueryCluster -Op List`. ",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true)]
+        public object Op { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            Position = 1,
+            HelpMessage = "Operation variables. The set of variables to use depends on the operation. Call Info() on the object this cmdlet returns to see the variables for the operation. If -Var is not given, all variables are null. Specify the variable with a hash table, e.g. @{id = \"123\"}. The keys of the hash table are the variable names, and are case-insensitive. Simple types like ints and strings can be specified directly. The [RubrikSecurityCloud.Types] namespace contains a set of classes that you can use to specify complex types. You can use Get-RscType to create a new object of a given type.",
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
         public object Var { get; set; }
 
-        /// <summary>
-        /// An object that represents the fields that need to be returned
-        /// for a given query. Each property on this object that does not
-        /// have a null value (actual values don’t matter) will be included 
-        /// in the API request.
-        /// </summary>
         [Parameter(
             Mandatory = false,
-            Position = 4,
+            // No Position -> named parameter only.
+            HelpMessage = "Fields to select for retrieval. Unlike -AddField and -RemoveField where fields are specified as dotted strings (e.g. 'nodes.id'), this parameter expects an object that contains the fields you want to select as properties. Any property that is not null in that object is interpreted as a field to select (and the actual values they are set to do not matter). The [RubrikSecurityCloud.Types] namespace contains a set of classes that you can use to specify fields. To know what [RubrikSecurityCloud.Types] object to use for a specific operation, call Info() on the object returned by this cmdlet. You can combine a -Field parameter with patching parameters. -Field is applied first, then -FilePatch, -AddField and -RemoveField.",
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
         public object Field { get; set; }
 
-        /// <summary>
-        ///  Patch the field spec with field names from a file
-        /// </summary>
         [Parameter(
             Mandatory = false,
             // No Position -> named parameter only.
+            HelpMessage = "Patch the field specification with field names from a file. Each line in the file is a field name. If the line starts with a '-', the field is removed from the field spec. If the line does not start with a '-', the field is added to the field specification.",
             ValueFromPipeline = false)]
         public string[] FilePatch { get; set; }
 
-        /// <summary>
-        /// The field profile determines how inputs to the operation
-        /// should be automatically set if they are not explicitly given
-        /// as parameters.
-        /// </summary>
         [Parameter(
             Mandatory = false,
             // No Position -> named parameter only.
+            HelpMessage = "Field profile. Determines what fields should be selected for retrieval when no -Field object is given. If -FieldProfile is not given and -Field is not given either, the default profile is used.",
             ValueFromPipeline = false)]
         public Exploration.Profile FieldProfile { get; set; } = Exploration.Profile.UNSET;
 
@@ -119,36 +106,114 @@ namespace RubrikSecurityCloud.PowerShell.Private
         public RscGqlPSCmdlet(
             RscGqlPSCmdletConfig config = null)
         {
-            _config = (config!=null) ? config : new RscGqlPSCmdletConfig();
+            _config = (config != null) ? config : new RscGqlPSCmdletConfig();
 
-            // set static delegates on RscOp:
-            RubrikSecurityCloud.RscOp.GqlRootFieldLookup =
-                SchemaMeta.StringGqlRootFieldNameLookupByRscOp;
-            RubrikSecurityCloud.RscOp.ReturnTypeLookup =
-                SchemaMeta.ReturnTypeLookupByGqlRootField;
+            // set static delegate on RscOp:
+            RubrikSecurityCloud.RscOp.FillInRscOp =
+                SchemaMeta.FillInRscOp;
         }
 
-        internal virtual RscOp GetRscOp()
+        internal string _OpObjToString(object opObj)
         {
-            // Retrieve the Cmdlet attribute
-            var cmdletAttribute = (CmdletAttribute)Attribute.GetCustomAttribute(this.GetType(), typeof(CmdletAttribute));
-
-            if (cmdletAttribute == null)
+            if (opObj == null)
             {
                 return null;
             }
-            string cmdletName = $"{cmdletAttribute.VerbName}-{cmdletAttribute.NounName}";
-
-            string op = DetermineOp(unknownOk: true);
-            if (string.IsNullOrEmpty(op))
+            if (opObj is string sOp)
             {
-                return null;
+                return sOp;
             }
-
-            return new RscOp(cmdletName, op);
+            if (opObj is RscOp rscOp)
+            {
+                return rscOp.CmdletSwitchName;
+            }
+            if (opObj is RscQuery rscQuery)
+            {
+                return rscQuery.Op;
+            }
+            return null;
         }
 
-        internal virtual string DetermineOp(bool unknownOk = false)
+        internal virtual RscOp GetOp(bool unknownOk = false)
+        {
+            // Op can come from 3 sources
+
+            string opFromParam = _OpObjToString(this.Op);
+            string opFromOpSwitch = DetermineOpFromSwitches();
+            string opFromCopy = (this.Copy != null) ?
+                _OpObjToString(this.Copy.Op) : null;
+
+            opFromParam = opFromParam?.Trim();
+            opFromOpSwitch = opFromOpSwitch?.Trim();
+            opFromCopy = opFromCopy?.Trim();
+
+            opFromParam = string.IsNullOrEmpty(opFromParam) ? null : opFromParam;
+            opFromOpSwitch = string.IsNullOrEmpty(opFromOpSwitch) ? null : opFromOpSwitch;
+            opFromCopy = string.IsNullOrEmpty(opFromCopy) ? null : opFromCopy;
+
+            // The -Copy parameter is applied first
+            string op = opFromCopy;
+
+            // The -Op parameter is applied next
+            if (op == null)
+            {
+                op = opFromParam;
+            }
+            else
+            {
+                _logger?.Debug($"Op from -Copy: {op}");
+            }
+
+            // The operation switch is applied last
+            if (op == null)
+            {
+                op = opFromOpSwitch;
+            }
+
+            // If no operation is specified, throw an exception
+            if (op == null)
+            {
+                if (unknownOk)
+                {
+                    return null;
+                }
+                throw new Exception("No operation specified");
+            }
+
+            // If the operation is not recognized, throw an exception
+            List<string> opNames = this.GetSwitchNames();
+            var opKey = StringUtils.Capitalize(op);
+            if (!opNames.Contains(opKey))
+            {
+                // See if it's a GraphQL root field name:
+                var _rscOp = (new RscOp(gqlRootFieldName: op)).Finalize();
+                if (_rscOp.IsDetermined())
+                {
+                    if (_rscOp.CmdletName == this.GetCmdletName())
+                    {
+                        _logger?.Debug($"Root field {op} resolves to {_rscOp}");
+                        return _rscOp;
+                    }
+                    if (unknownOk)
+                    {
+                        return null;
+                    }
+                    throw new Exception($"GraphQL root field '{op}' is not supported by this cmdlet. Use {_rscOp.Syntax()} instead.");
+                }
+
+                if (unknownOk)
+                {
+                    return null;
+                }
+                throw new Exception($"Unknown operation '{op}'");
+            }
+
+            // Return the operation
+            string cmdletName = this.GetCmdletName();
+            return (new RscOp(cmdletName, opKey)).Finalize();
+        }
+
+        internal virtual string DetermineOpFromSwitches()
         {
             // ~~~ BUG WORKAROUND ~~~
             //
@@ -178,38 +243,38 @@ namespace RubrikSecurityCloud.PowerShell.Private
             {
                 return _switches[0]; // fragile.
             }
-            if (unknownOk)
-            {
-                return null;
-            }
-            throw new Exception("No operation specified");
+            return null;
         }
-
 
         public object GetDynamicParameters()
         {
             // Define the dynamic parameter set:
             _dynamicParameters = new RuntimeDefinedParameterDictionary();
 
-            var rscOp = GetRscOp();
+            var rscOp = GetOp(unknownOk: true);
 
-            // Define -Patch
-            if (_config.HasPatchDynamicParam)
+            // Define -AddField and -RemoveField
+            if (_config.HasPatchingDynamicParam)
             {
-                var patchAttributes = new Collection<Attribute>();
-                patchAttributes.Add(new ParameterAttribute
+                var addFieldAttributes = new Collection<Attribute>();
+                var removeFieldAttributes = new Collection<Attribute>();
+                addFieldAttributes.Add(new ParameterAttribute
                 {
-                    HelpMessage = "Add or remove fields in the response."
+                    HelpMessage = "Add fields to the set of fields that are selected for retrieval."
+                });
+                removeFieldAttributes.Add(new ParameterAttribute
+                {
+                    HelpMessage = "remove fields to the set of fields that are selected for retrieval."
                 });
                 if (rscOp != null && rscOp.IsDetermined())
                 {
                     try
                     {
-                        List<string> validValues = RscPatchString.BuildValidPatchStringsFor(rscOp.GqlReturnTypeName, 5, new HashSet<string> { "Edges" });
+                        List<string> validValues = RscPatchSet.BuildValidPatchStringsFor(rscOp.GqlReturnTypeName, 5, new HashSet<string> { "Edges" });
                         if (validValues.Count > 0)
                         {
                             var attr = new ValidateSetAttribute(validValues.ToArray());
-                            patchAttributes.Add(attr);
+                            addFieldAttributes.Add(attr);
                         }
                     }
                     catch (Exception ex)
@@ -217,10 +282,12 @@ namespace RubrikSecurityCloud.PowerShell.Private
                         _logger.Debug($"Error building valid patch strings for {rscOp.GqlReturnTypeName}: {ex.Message}");
                     }
                 }
-                var patchParams = new RuntimeDefinedParameter("Patch", typeof(string[]), patchAttributes);
+                var addFieldParams = new RuntimeDefinedParameter("AddField", typeof(string[]), addFieldAttributes);
+                var removeFieldParams = new RuntimeDefinedParameter("RemoveField", typeof(string[]), addFieldAttributes);
 
                 // Add Patch to the set:
-                _dynamicParameters.Add("Patch", patchParams);
+                _dynamicParameters.Add("AddField", addFieldParams);
+                _dynamicParameters.Add("RemoveField", removeFieldParams);
             }
 
             return _dynamicParameters;
@@ -232,92 +299,106 @@ namespace RubrikSecurityCloud.PowerShell.Private
             // Log operations dir that will be used:
             string opDir = GetOperationsDir();
             _logger.Debug($"op dir: {opDir} {Directory.Exists(opDir)}");
-            PreprocessInputs();
         }
 
-        protected void PreprocessInputs()
+        protected bool _passPatchesToExploration()
         {
-            // start off by copying another query:
-            if (this.Copy != null)
-            {
-                this.Op = this.Copy.Op;
-                this.Var = this.Copy.Var;
-                this.Field = this.Copy.Field;
-            }
-
-            // If no OpSwitch is given, determine it at run-time:
-            if (string.IsNullOrEmpty(this.Op))
-            {
-                this.Op = DetermineOp();
-            }
-
-            if (this.Field != null)
-            {
-                // If Field is a PSObject, unwrap it
-                // (e.g. this happens when object is piped in)
-                if (this.Field is PSObject psObject)
-                {
-                    this.Field = psObject.BaseObject;
-                }
-            }
-            if (this.FieldProfile == Exploration.Profile.UNSET)
-            {
-                this.FieldProfile = Exploration.Profile.DEFAULT;
-            }
-            Exploration.Init(this.FieldProfile);
-            if (this.Field != null)
-            {
-                // if Field is a string we assume a patch
-                // (e.g. "nodes.snapshotcount, -nodes.name" )
-                if (this.Field is string sField)
-                {
-                    Exploration.ReadPatchFromString(sField);
-                    this.Field = null;
-                }
-            }
-
-            // apply file patches if any:
+            // Pass file patches to Exploration if any:
             if (this.FilePatch != null)
             {
                 foreach (string patchFile in this.FilePatch)
                 {
-                    Exploration.ReadPatchFromFile(patchFile);
+                    Exploration.PatchSet.ReadFromFile(patchFile);
                 }
             }
 
-            // apply string patches if any:
-            string[] patches = null;
+            // Pass string patches to Exploration if any:
             try
             {
-                patches = _dynamicParameters["Patch"].Value as string[];
+                var af = _dynamicParameters["AddField"].Value as string[];
+                if (af != null && af.Length > 0)
+                {
+                    _logger.Debug($"AddField: {string.Join(",", af)}");
+                }
+                var rf = _dynamicParameters["RemoveField"].Value as string[];
+                if (rf != null && rf.Length > 0)
+                {
+                    _logger.Debug($"RemoveField: {string.Join(",", rf)}");
+                }
+                Exploration.PatchSet.ReadFromArrays(af, rf);
             }
             catch (Exception ex)
             {
-                _logger.Debug($"Error getting Patch parameter: {ex.Message}");
+                _logger.Debug($"Error getting Patch parameters: {ex.Message}");
             }
-
-            if (patches != null && patches.Length > 0)
-            {
-                _logger.Debug($"patches: {string.Join(",", patches)}");
-                foreach (string patch in patches)
-                {
-                    Exploration.ReadPatchFromString(patch);
-                }
-            }
-            else
-            {
-                _logger.Debug($"no patches");
-            }
-
-            // if no Field is given, and no patch is given,
-            // profile can't be empty:
-            if (this.Field == null && !Exploration.HasPatch() &&
-            this.FieldProfile == Exploration.Profile.EMPTY)
-            {
-                this.FieldProfile = Exploration.Profile.DEFAULT;
-                Exploration.GlobalProfile = Exploration.Profile.DEFAULT;
-            }
+            return Exploration.PatchSet.HasPatch();
         }
+
+        protected object _makeFields(
+            string opName,
+            QueryFieldSpecMethod queryFieldSpecMethod)
+        {
+            Exploration.Init();
+
+            // start off by copying field from other query.
+            // Note that with PowerShell, passing `-Copy $q` 
+            // passes $q by value,
+            // so if we just did this.Field = this.Copy.Field
+            // we would modify the object passed on the 
+            // command line, which is not what we want.
+            // Instead we serialize by getting the object's
+            // flat list of selected fields,
+            // and we deserialize by feeding it to Exploration
+            // as patch strings.
+            if (this.Copy != null && this.Copy.Field != null)
+            {
+                Exploration.PatchSet.ReadFieldSpecFromObject(this.Copy.Field);
+                _logger?.Debug($"Copied field from passed -Copy.");
+            }
+
+            if (this.Field != null)
+            {
+                var f = this.Field;
+                // If Field is a PSObject, unwrap it
+                // (e.g. this happens when object is piped in)
+                if (this.Field is PSObject psObject)
+                {
+                    f = psObject.BaseObject;
+                }
+                Exploration.PatchSet.ReadFieldSpecFromObject(f);
+                _logger?.Debug($"Copied field from passed -Field.");
+            }
+
+            bool hasPatch = _passPatchesToExploration();
+            Exploration.Profile fieldProf = this.FieldProfile;
+
+            if (fieldProf == Exploration.Profile.UNSET)
+            {
+                fieldProf = Exploration.Profile.DEFAULT;
+            }
+
+            // if no patch is given, profile can't be empty:
+            if (!hasPatch && fieldProf == Exploration.Profile.EMPTY)
+            {
+                fieldProf = Exploration.Profile.DEFAULT;
+            }
+
+            // read override patch file (if any) and apply it:
+            if (fieldProf == Exploration.Profile.DEFAULT ||
+                fieldProf == Exploration.Profile.DETAIL ||
+                fieldProf == Exploration.Profile.CUSTOM)
+            {
+                string f = Path.Combine(
+                    this.GetOperationsDir(), opName + ".patch");
+                Exploration.PatchSet.ReadFromFile(patchFile: f, missingOk: true);
+            }
+
+            // run exploration
+            ExplorationContext ec = new ExplorationContext();
+            Exploration.GlobalProfile = fieldProf;
+            return queryFieldSpecMethod(ec);
+        }
+
         protected string GetOperationsDir()
         {
             switch (this.FieldProfile)
@@ -331,21 +412,59 @@ namespace RubrikSecurityCloud.PowerShell.Private
             }
         }
 
+        protected RscGqlVars _makeVars(
+            Func<object, RscGqlVars> makeRscGqlVars = null)
+        {
+            object fromCopy = (this.Copy != null && this.Copy.Var != null) ? this.Copy.Var : null;
+            object fromVar = this.Var;
+            if (fromCopy == null && fromVar == null)
+            {
+                return makeRscGqlVars(null);
+            }
+            if (fromCopy != null && fromVar != null)
+            {
+                var vc = makeRscGqlVars(fromCopy);
+                var vv = makeRscGqlVars(fromVar);
+                vc.AddFromDictionary(vv as Dictionary<string, object>);
+                return vc;
+            }
+            return makeRscGqlVars((fromVar != null) ? fromVar : fromCopy);
+        }
+
         /// <summary>
-        /// Initialize the inputs
+        /// Initialize the query object.
+        /// Initialize() is called by the cmdlet's ProcessRecord() method.
         /// </summary>
-        /// <param name="argDefs"></param>
-        /// <param name="opKind">
-        /// "query" or "mutation"
+        /// <param name="opArgDefs">
+        /// Operation argument definitions. e.g. { Tuple.Create("first",
+        /// "Int"), Tuple.Create("sortOrder", "SortOrder") }
         /// </param>
-        /// <param name="opName">
-        /// name of operation, e.g. "QueryClusterConnection"
-        /// </param>
+        /// <param name="opKind">"query" or "mutation"</param>
+        /// <param name="opName">e.g. "QueryClusterConnection"</param>
         /// <param name="opArgs">
-        /// e.g. "($first: Int,$after: String,$last: Int,$before: String,$filter: ClusterFilterInput,$sortOrder: SortOrder,$sortBy: ClusterSortByEnum)"
+        /// e.g. "($first: Int ,$sortOrder: SortOrder)"</param>
+        /// <param name="opReturnType">e.g. "ClusterConnection"</param>
+        /// <param name="queryDocMethod">
+        /// Method that returns the query document as a string.
+        /// It does not explore. It takes a field object as input,
+        /// and returns the query document as a string.
+        /// "query document": the text of the operation: 
+        /// the operation name, the operation arguments,
+        /// and the fields to select for retrieval. For example in
+        /// the final query, it's all the text inside
+        /// query QueryClusterConnection($first: Int ...) {
+        ///         -- query document --
+        /// }
+        /// So it's: the query name, the query arguments, and 
+        /// the field spec.
         /// </param>
-        /// <param name="opReturnType">
-        /// e.g. "ClusterConnection"
+        /// <param name="queryFieldSpecMethod">
+        /// Method that builds the field object for this query
+        /// using exploration. It takes for input an exploration context,
+        /// and returns the field object.
+        /// </param>
+        /// <param name="varUsageExample">
+        /// Example text of how to initialize the variables
         /// </param>
         protected void Initialize(
             Tuple<String, String>[] opArgDefs,
@@ -355,27 +474,11 @@ namespace RubrikSecurityCloud.PowerShell.Private
             string opReturnType,
             QueryDocMethod queryDocMethod,
             QueryFieldSpecMethod queryFieldSpecMethod,
-            string example
+            string varUsageExample
         )
         {
-            if (this.FieldProfile == Exploration.Profile.DEFAULT ||
-                this.FieldProfile == Exploration.Profile.DETAIL ||
-                this.FieldProfile == Exploration.Profile.CUSTOM)
-            {
-                // read override patch file (if any) and apply it:
-                string f = Path.Combine(
-                    this.GetOperationsDir(), opName + ".patch");
-                Exploration.ReadPatchFromFile(patchFile: f, missingOk: true);
-            }
-
-            // apply exploratory fragment to Field if it's null:
-            if (this.Field == null)
-            {
-                this.Field = queryFieldSpecMethod();
-            }
-
-            var vars = new RscGqlVars(
-                this.Var,
+            var vars = _makeVars(o => new RscGqlVars(
+                o,
                 opArgDefs,
                 this.GetValueFromParameterSet,
                 // we don't check the variables here,
@@ -383,7 +486,10 @@ namespace RubrikSecurityCloud.PowerShell.Private
                 // variables are checked in Invoke-Rsc
                 // when the query is actually sent
                 ignoreRequired: true,
-                example);
+                varUsageExample)
+            );
+
+            object fields = _makeFields(opName, queryFieldSpecMethod);
 
             var gqlOp = new RscGqlOperation(
                 opKind,
@@ -391,7 +497,8 @@ namespace RubrikSecurityCloud.PowerShell.Private
                 opArgs,
                 opReturnType
             );
-            _query = new RscQuery(this.Op, vars, this.Field, gqlOp);
+            _query = new RscQuery(
+                this.GetOp().OpName(), vars, fields, gqlOp);
             _query.Init(
                 _logger,
                 this.GetOperationsDir(),
@@ -403,7 +510,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
         protected override void EndProcessing()
         {
             base.EndProcessing();
-            if ( _config.SendQueryOnExitIfAny && _query != null)
+            if (_config.SendQueryOnExitIfAny && _query != null)
             {
                 RscGqlRequest gqlReq = _query.GqlRequest();
                 if (gqlReq != null && _rbkClient != null)

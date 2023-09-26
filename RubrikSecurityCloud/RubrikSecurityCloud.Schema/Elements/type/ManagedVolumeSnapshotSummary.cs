@@ -65,29 +65,42 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Boolean? IsQueuedSnapshot
         // GraphQL -> isQueuedSnapshot: Boolean (scalar)
         if (this.IsQueuedSnapshot != null) {
-            s += ind + "isQueuedSnapshot\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isQueuedSnapshot\n" ;
+            } else {
+                s += ind + "isQueuedSnapshot\n" ;
+            }
         }
         //      C# -> BaseSnapshotSummary? BaseSnapshotSummary
         // GraphQL -> baseSnapshotSummary: BaseSnapshotSummary (type)
         if (this.BaseSnapshotSummary != null) {
-            var fspec = this.BaseSnapshotSummary.AsFieldSpec(indent+1);
+            var fspec = this.BaseSnapshotSummary.AsFieldSpec(conf.Child("baseSnapshotSummary"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "baseSnapshotSummary {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "baseSnapshotSummary {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> ManagedVolumeSnapshotLinks? Links
         // GraphQL -> links: ManagedVolumeSnapshotLinks (type)
         if (this.Links != null) {
-            var fspec = this.Links.AsFieldSpec(indent+1);
+            var fspec = this.Links.AsFieldSpec(conf.Child("links"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "links {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "links {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -99,23 +112,58 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Boolean? IsQueuedSnapshot
         // GraphQL -> isQueuedSnapshot: Boolean (scalar)
-        if (this.IsQueuedSnapshot == null && ec.Includes("isQueuedSnapshot",true))
+        if (ec.Includes("isQueuedSnapshot",true))
         {
-            this.IsQueuedSnapshot = true;
+            if(this.IsQueuedSnapshot == null) {
+
+                this.IsQueuedSnapshot = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsQueuedSnapshot != null && ec.Excludes("isQueuedSnapshot",true))
+        {
+            this.IsQueuedSnapshot = null;
         }
         //      C# -> BaseSnapshotSummary? BaseSnapshotSummary
         // GraphQL -> baseSnapshotSummary: BaseSnapshotSummary (type)
-        if (this.BaseSnapshotSummary == null && ec.Includes("baseSnapshotSummary",false))
+        if (ec.Includes("baseSnapshotSummary",false))
         {
-            this.BaseSnapshotSummary = new BaseSnapshotSummary();
-            this.BaseSnapshotSummary.ApplyExploratoryFieldSpec(ec.NewChild("baseSnapshotSummary"));
+            if(this.BaseSnapshotSummary == null) {
+
+                this.BaseSnapshotSummary = new BaseSnapshotSummary();
+                this.BaseSnapshotSummary.ApplyExploratoryFieldSpec(ec.NewChild("baseSnapshotSummary"));
+
+            } else {
+
+                this.BaseSnapshotSummary.ApplyExploratoryFieldSpec(ec.NewChild("baseSnapshotSummary"));
+
+            }
+        }
+        else if (this.BaseSnapshotSummary != null && ec.Excludes("baseSnapshotSummary",false))
+        {
+            this.BaseSnapshotSummary = null;
         }
         //      C# -> ManagedVolumeSnapshotLinks? Links
         // GraphQL -> links: ManagedVolumeSnapshotLinks (type)
-        if (this.Links == null && ec.Includes("links",false))
+        if (ec.Includes("links",false))
         {
-            this.Links = new ManagedVolumeSnapshotLinks();
-            this.Links.ApplyExploratoryFieldSpec(ec.NewChild("links"));
+            if(this.Links == null) {
+
+                this.Links = new ManagedVolumeSnapshotLinks();
+                this.Links.ApplyExploratoryFieldSpec(ec.NewChild("links"));
+
+            } else {
+
+                this.Links.ApplyExploratoryFieldSpec(ec.NewChild("links"));
+
+            }
+        }
+        else if (this.Links != null && ec.Excludes("links",false))
+        {
+            this.Links = null;
         }
     }
 
@@ -142,9 +190,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ManagedVolumeSnapshotSummary> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

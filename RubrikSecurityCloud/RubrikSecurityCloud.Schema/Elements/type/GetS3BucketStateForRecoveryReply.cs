@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Boolean? IsObjectAclEnabled
         // GraphQL -> isObjectAclEnabled: Boolean! (scalar)
         if (this.IsObjectAclEnabled != null) {
-            s += ind + "isObjectAclEnabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isObjectAclEnabled\n" ;
+            } else {
+                s += ind + "isObjectAclEnabled\n" ;
+            }
         }
         //      C# -> System.Boolean? IsVersioningEnabled
         // GraphQL -> isVersioningEnabled: Boolean! (scalar)
         if (this.IsVersioningEnabled != null) {
-            s += ind + "isVersioningEnabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isVersioningEnabled\n" ;
+            } else {
+                s += ind + "isVersioningEnabled\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Boolean? IsObjectAclEnabled
         // GraphQL -> isObjectAclEnabled: Boolean! (scalar)
-        if (this.IsObjectAclEnabled == null && ec.Includes("isObjectAclEnabled",true))
+        if (ec.Includes("isObjectAclEnabled",true))
         {
-            this.IsObjectAclEnabled = true;
+            if(this.IsObjectAclEnabled == null) {
+
+                this.IsObjectAclEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsObjectAclEnabled != null && ec.Excludes("isObjectAclEnabled",true))
+        {
+            this.IsObjectAclEnabled = null;
         }
         //      C# -> System.Boolean? IsVersioningEnabled
         // GraphQL -> isVersioningEnabled: Boolean! (scalar)
-        if (this.IsVersioningEnabled == null && ec.Includes("isVersioningEnabled",true))
+        if (ec.Includes("isVersioningEnabled",true))
         {
-            this.IsVersioningEnabled = true;
+            if(this.IsVersioningEnabled == null) {
+
+                this.IsVersioningEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsVersioningEnabled != null && ec.Excludes("isVersioningEnabled",true))
+        {
+            this.IsVersioningEnabled = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<GetS3BucketStateForRecoveryReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

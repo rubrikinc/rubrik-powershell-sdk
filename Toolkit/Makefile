@@ -3,10 +3,10 @@ default: all
 all: build test
 
 build:
-	pwsh -c '. ./Utils/ToolkitDev -Quiet ; Update-RscToolkit'
+	pwsh -c '. ./Utils/ToolkitDev -Quiet; Update-RscToolkit'
 
 test:
-	$(MAKE) -C Tests
+	@ $(MAKE) -C Tests
 
 clean:
 	$(MAKE) -C Tests clean

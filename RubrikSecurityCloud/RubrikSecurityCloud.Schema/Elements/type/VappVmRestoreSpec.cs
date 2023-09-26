@@ -74,31 +74,48 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.String? StoragePolicyId
         // GraphQL -> storagePolicyId: String (scalar)
         if (this.StoragePolicyId != null) {
-            s += ind + "storagePolicyId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "storagePolicyId\n" ;
+            } else {
+                s += ind + "storagePolicyId\n" ;
+            }
         }
         //      C# -> System.String? VcdMoid
         // GraphQL -> vcdMoid: String! (scalar)
         if (this.VcdMoid != null) {
-            s += ind + "vcdMoid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "vcdMoid\n" ;
+            } else {
+                s += ind + "vcdMoid\n" ;
+            }
         }
         //      C# -> List<VappVmNetworkConnection>? NetworkConnections
         // GraphQL -> networkConnections: [VappVmNetworkConnection!]! (type)
         if (this.NetworkConnections != null) {
-            var fspec = this.NetworkConnections.AsFieldSpec(indent+1);
+            var fspec = this.NetworkConnections.AsFieldSpec(conf.Child("networkConnections"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "networkConnections {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "networkConnections {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -110,28 +127,73 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.String? StoragePolicyId
         // GraphQL -> storagePolicyId: String (scalar)
-        if (this.StoragePolicyId == null && ec.Includes("storagePolicyId",true))
+        if (ec.Includes("storagePolicyId",true))
         {
-            this.StoragePolicyId = "FETCH";
+            if(this.StoragePolicyId == null) {
+
+                this.StoragePolicyId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.StoragePolicyId != null && ec.Excludes("storagePolicyId",true))
+        {
+            this.StoragePolicyId = null;
         }
         //      C# -> System.String? VcdMoid
         // GraphQL -> vcdMoid: String! (scalar)
-        if (this.VcdMoid == null && ec.Includes("vcdMoid",true))
+        if (ec.Includes("vcdMoid",true))
         {
-            this.VcdMoid = "FETCH";
+            if(this.VcdMoid == null) {
+
+                this.VcdMoid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.VcdMoid != null && ec.Excludes("vcdMoid",true))
+        {
+            this.VcdMoid = null;
         }
         //      C# -> List<VappVmNetworkConnection>? NetworkConnections
         // GraphQL -> networkConnections: [VappVmNetworkConnection!]! (type)
-        if (this.NetworkConnections == null && ec.Includes("networkConnections",false))
+        if (ec.Includes("networkConnections",false))
         {
-            this.NetworkConnections = new List<VappVmNetworkConnection>();
-            this.NetworkConnections.ApplyExploratoryFieldSpec(ec.NewChild("networkConnections"));
+            if(this.NetworkConnections == null) {
+
+                this.NetworkConnections = new List<VappVmNetworkConnection>();
+                this.NetworkConnections.ApplyExploratoryFieldSpec(ec.NewChild("networkConnections"));
+
+            } else {
+
+                this.NetworkConnections.ApplyExploratoryFieldSpec(ec.NewChild("networkConnections"));
+
+            }
+        }
+        else if (this.NetworkConnections != null && ec.Excludes("networkConnections",false))
+        {
+            this.NetworkConnections = null;
         }
     }
 
@@ -158,9 +220,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<VappVmRestoreSpec> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

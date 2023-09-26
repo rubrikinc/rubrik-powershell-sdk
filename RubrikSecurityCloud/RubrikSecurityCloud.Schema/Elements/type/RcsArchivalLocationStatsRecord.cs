@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> RcsConsumptionMetricOutputNameType? MetricName
         // GraphQL -> metricName: RcsConsumptionMetricOutputNameType! (enum)
         if (this.MetricName != null) {
-            s += ind + "metricName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "metricName\n" ;
+            } else {
+                s += ind + "metricName\n" ;
+            }
         }
         //      C# -> RcsTierEnumType? Tier
         // GraphQL -> tier: RcsTierEnumType! (enum)
         if (this.Tier != null) {
-            s += ind + "tier\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "tier\n" ;
+            } else {
+                s += ind + "tier\n" ;
+            }
         }
         //      C# -> System.Single? MetricValue
         // GraphQL -> metricValue: Float! (scalar)
         if (this.MetricValue != null) {
-            s += ind + "metricValue\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "metricValue\n" ;
+            } else {
+                s += ind + "metricValue\n" ;
+            }
         }
         //      C# -> System.String? Timestamp
         // GraphQL -> timestamp: String! (scalar)
         if (this.Timestamp != null) {
-            s += ind + "timestamp\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "timestamp\n" ;
+            } else {
+                s += ind + "timestamp\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> RcsConsumptionMetricOutputNameType? MetricName
         // GraphQL -> metricName: RcsConsumptionMetricOutputNameType! (enum)
-        if (this.MetricName == null && ec.Includes("metricName",true))
+        if (ec.Includes("metricName",true))
         {
-            this.MetricName = new RcsConsumptionMetricOutputNameType();
+            if(this.MetricName == null) {
+
+                this.MetricName = new RcsConsumptionMetricOutputNameType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.MetricName != null && ec.Excludes("metricName",true))
+        {
+            this.MetricName = null;
         }
         //      C# -> RcsTierEnumType? Tier
         // GraphQL -> tier: RcsTierEnumType! (enum)
-        if (this.Tier == null && ec.Includes("tier",true))
+        if (ec.Includes("tier",true))
         {
-            this.Tier = new RcsTierEnumType();
+            if(this.Tier == null) {
+
+                this.Tier = new RcsTierEnumType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Tier != null && ec.Excludes("tier",true))
+        {
+            this.Tier = null;
         }
         //      C# -> System.Single? MetricValue
         // GraphQL -> metricValue: Float! (scalar)
-        if (this.MetricValue == null && ec.Includes("metricValue",true))
+        if (ec.Includes("metricValue",true))
         {
-            this.MetricValue = new System.Single();
+            if(this.MetricValue == null) {
+
+                this.MetricValue = new System.Single();
+
+            } else {
+
+
+            }
+        }
+        else if (this.MetricValue != null && ec.Excludes("metricValue",true))
+        {
+            this.MetricValue = null;
         }
         //      C# -> System.String? Timestamp
         // GraphQL -> timestamp: String! (scalar)
-        if (this.Timestamp == null && ec.Includes("timestamp",true))
+        if (ec.Includes("timestamp",true))
         {
-            this.Timestamp = "FETCH";
+            if(this.Timestamp == null) {
+
+                this.Timestamp = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Timestamp != null && ec.Excludes("timestamp",true))
+        {
+            this.Timestamp = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<RcsArchivalLocationStatsRecord> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

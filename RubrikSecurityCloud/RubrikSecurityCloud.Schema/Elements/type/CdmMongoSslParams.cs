@@ -83,34 +83,55 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> SourceSslCertReqs? SslCertRequirements
         // GraphQL -> sslCertRequirements: SourceSslCertReqs! (enum)
         if (this.SslCertRequirements != null) {
-            s += ind + "sslCertRequirements\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sslCertRequirements\n" ;
+            } else {
+                s += ind + "sslCertRequirements\n" ;
+            }
         }
         //      C# -> System.Boolean? IsSslEnabled
         // GraphQL -> isSslEnabled: Boolean! (scalar)
         if (this.IsSslEnabled != null) {
-            s += ind + "isSslEnabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isSslEnabled\n" ;
+            } else {
+                s += ind + "isSslEnabled\n" ;
+            }
         }
         //      C# -> System.String? SslCaCerts
         // GraphQL -> sslCaCerts: String! (scalar)
         if (this.SslCaCerts != null) {
-            s += ind + "sslCaCerts\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sslCaCerts\n" ;
+            } else {
+                s += ind + "sslCaCerts\n" ;
+            }
         }
         //      C# -> System.String? SslCertfile
         // GraphQL -> sslCertfile: String! (scalar)
         if (this.SslCertfile != null) {
-            s += ind + "sslCertfile\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sslCertfile\n" ;
+            } else {
+                s += ind + "sslCertfile\n" ;
+            }
         }
         //      C# -> System.String? SslKeyfile
         // GraphQL -> sslKeyfile: String! (scalar)
         if (this.SslKeyfile != null) {
-            s += ind + "sslKeyfile\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sslKeyfile\n" ;
+            } else {
+                s += ind + "sslKeyfile\n" ;
+            }
         }
         return s;
     }
@@ -121,33 +142,88 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> SourceSslCertReqs? SslCertRequirements
         // GraphQL -> sslCertRequirements: SourceSslCertReqs! (enum)
-        if (this.SslCertRequirements == null && ec.Includes("sslCertRequirements",true))
+        if (ec.Includes("sslCertRequirements",true))
         {
-            this.SslCertRequirements = new SourceSslCertReqs();
+            if(this.SslCertRequirements == null) {
+
+                this.SslCertRequirements = new SourceSslCertReqs();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SslCertRequirements != null && ec.Excludes("sslCertRequirements",true))
+        {
+            this.SslCertRequirements = null;
         }
         //      C# -> System.Boolean? IsSslEnabled
         // GraphQL -> isSslEnabled: Boolean! (scalar)
-        if (this.IsSslEnabled == null && ec.Includes("isSslEnabled",true))
+        if (ec.Includes("isSslEnabled",true))
         {
-            this.IsSslEnabled = true;
+            if(this.IsSslEnabled == null) {
+
+                this.IsSslEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsSslEnabled != null && ec.Excludes("isSslEnabled",true))
+        {
+            this.IsSslEnabled = null;
         }
         //      C# -> System.String? SslCaCerts
         // GraphQL -> sslCaCerts: String! (scalar)
-        if (this.SslCaCerts == null && ec.Includes("sslCaCerts",true))
+        if (ec.Includes("sslCaCerts",true))
         {
-            this.SslCaCerts = "FETCH";
+            if(this.SslCaCerts == null) {
+
+                this.SslCaCerts = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SslCaCerts != null && ec.Excludes("sslCaCerts",true))
+        {
+            this.SslCaCerts = null;
         }
         //      C# -> System.String? SslCertfile
         // GraphQL -> sslCertfile: String! (scalar)
-        if (this.SslCertfile == null && ec.Includes("sslCertfile",true))
+        if (ec.Includes("sslCertfile",true))
         {
-            this.SslCertfile = "FETCH";
+            if(this.SslCertfile == null) {
+
+                this.SslCertfile = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SslCertfile != null && ec.Excludes("sslCertfile",true))
+        {
+            this.SslCertfile = null;
         }
         //      C# -> System.String? SslKeyfile
         // GraphQL -> sslKeyfile: String! (scalar)
-        if (this.SslKeyfile == null && ec.Includes("sslKeyfile",true))
+        if (ec.Includes("sslKeyfile",true))
         {
-            this.SslKeyfile = "FETCH";
+            if(this.SslKeyfile == null) {
+
+                this.SslKeyfile = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SslKeyfile != null && ec.Excludes("sslKeyfile",true))
+        {
+            this.SslKeyfile = null;
         }
     }
 
@@ -174,9 +250,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CdmMongoSslParams> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -119,56 +119,93 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> PendingActionStatus? Status
         // GraphQL -> status: PendingActionStatus! (enum)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         //      C# -> System.String? ActionTypeStr
         // GraphQL -> actionTypeStr: String! (scalar)
         if (this.ActionTypeStr != null) {
-            s += ind + "actionTypeStr\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "actionTypeStr\n" ;
+            } else {
+                s += ind + "actionTypeStr\n" ;
+            }
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
         if (this.ClusterUuid != null) {
-            s += ind + "clusterUuid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterUuid\n" ;
+            } else {
+                s += ind + "clusterUuid\n" ;
+            }
         }
         //      C# -> DateTime? CreatedAt
         // GraphQL -> createdAt: DateTime (scalar)
         if (this.CreatedAt != null) {
-            s += ind + "createdAt\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "createdAt\n" ;
+            } else {
+                s += ind + "createdAt\n" ;
+            }
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
         if (this.Description != null) {
-            s += ind + "description\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "description\n" ;
+            } else {
+                s += ind + "description\n" ;
+            }
         }
         //      C# -> System.String? Info
         // GraphQL -> info: String! (scalar)
         if (this.Info != null) {
-            s += ind + "info\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "info\n" ;
+            } else {
+                s += ind + "info\n" ;
+            }
         }
         //      C# -> System.String? PendingActionId
         // GraphQL -> pendingActionId: String! (scalar)
         if (this.PendingActionId != null) {
-            s += ind + "pendingActionId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "pendingActionId\n" ;
+            } else {
+                s += ind + "pendingActionId\n" ;
+            }
         }
         //      C# -> DateTime? UpdatedAt
         // GraphQL -> updatedAt: DateTime (scalar)
         if (this.UpdatedAt != null) {
-            s += ind + "updatedAt\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "updatedAt\n" ;
+            } else {
+                s += ind + "updatedAt\n" ;
+            }
         }
         //      C# -> PendingActionType? ActionType
         // GraphQL -> actionType: PendingActionType (type)
         if (this.ActionType != null) {
-            var fspec = this.ActionType.AsFieldSpec(indent+1);
+            var fspec = this.ActionType.AsFieldSpec(conf.Child("actionType"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "actionType {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "actionType {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -180,58 +217,158 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> PendingActionStatus? Status
         // GraphQL -> status: PendingActionStatus! (enum)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = new PendingActionStatus();
+            if(this.Status == null) {
+
+                this.Status = new PendingActionStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
         //      C# -> System.String? ActionTypeStr
         // GraphQL -> actionTypeStr: String! (scalar)
-        if (this.ActionTypeStr == null && ec.Includes("actionTypeStr",true))
+        if (ec.Includes("actionTypeStr",true))
         {
-            this.ActionTypeStr = "FETCH";
+            if(this.ActionTypeStr == null) {
+
+                this.ActionTypeStr = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ActionTypeStr != null && ec.Excludes("actionTypeStr",true))
+        {
+            this.ActionTypeStr = null;
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
-        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
+        if (ec.Includes("clusterUuid",true))
         {
-            this.ClusterUuid = "FETCH";
+            if(this.ClusterUuid == null) {
+
+                this.ClusterUuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterUuid != null && ec.Excludes("clusterUuid",true))
+        {
+            this.ClusterUuid = null;
         }
         //      C# -> DateTime? CreatedAt
         // GraphQL -> createdAt: DateTime (scalar)
-        if (this.CreatedAt == null && ec.Includes("createdAt",true))
+        if (ec.Includes("createdAt",true))
         {
-            this.CreatedAt = new DateTime();
+            if(this.CreatedAt == null) {
+
+                this.CreatedAt = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CreatedAt != null && ec.Excludes("createdAt",true))
+        {
+            this.CreatedAt = null;
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
-        if (this.Description == null && ec.Includes("description",true))
+        if (ec.Includes("description",true))
         {
-            this.Description = "FETCH";
+            if(this.Description == null) {
+
+                this.Description = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Description != null && ec.Excludes("description",true))
+        {
+            this.Description = null;
         }
         //      C# -> System.String? Info
         // GraphQL -> info: String! (scalar)
-        if (this.Info == null && ec.Includes("info",true))
+        if (ec.Includes("info",true))
         {
-            this.Info = "FETCH";
+            if(this.Info == null) {
+
+                this.Info = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Info != null && ec.Excludes("info",true))
+        {
+            this.Info = null;
         }
         //      C# -> System.String? PendingActionId
         // GraphQL -> pendingActionId: String! (scalar)
-        if (this.PendingActionId == null && ec.Includes("pendingActionId",true))
+        if (ec.Includes("pendingActionId",true))
         {
-            this.PendingActionId = "FETCH";
+            if(this.PendingActionId == null) {
+
+                this.PendingActionId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PendingActionId != null && ec.Excludes("pendingActionId",true))
+        {
+            this.PendingActionId = null;
         }
         //      C# -> DateTime? UpdatedAt
         // GraphQL -> updatedAt: DateTime (scalar)
-        if (this.UpdatedAt == null && ec.Includes("updatedAt",true))
+        if (ec.Includes("updatedAt",true))
         {
-            this.UpdatedAt = new DateTime();
+            if(this.UpdatedAt == null) {
+
+                this.UpdatedAt = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UpdatedAt != null && ec.Excludes("updatedAt",true))
+        {
+            this.UpdatedAt = null;
         }
         //      C# -> PendingActionType? ActionType
         // GraphQL -> actionType: PendingActionType (type)
-        if (this.ActionType == null && ec.Includes("actionType",false))
+        if (ec.Includes("actionType",false))
         {
-            this.ActionType = new PendingActionType();
-            this.ActionType.ApplyExploratoryFieldSpec(ec.NewChild("actionType"));
+            if(this.ActionType == null) {
+
+                this.ActionType = new PendingActionType();
+                this.ActionType.ApplyExploratoryFieldSpec(ec.NewChild("actionType"));
+
+            } else {
+
+                this.ActionType.ApplyExploratoryFieldSpec(ec.NewChild("actionType"));
+
+            }
+        }
+        else if (this.ActionType != null && ec.Excludes("actionType",false))
+        {
+            this.ActionType = null;
         }
     }
 
@@ -258,9 +395,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<PendingAction> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

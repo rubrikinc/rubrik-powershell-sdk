@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> CdmReportMigrationStatus? Status
         // GraphQL -> status: CdmReportMigrationStatus! (enum)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         //      C# -> System.Int32? Count
         // GraphQL -> count: Int! (scalar)
         if (this.Count != null) {
-            s += ind + "count\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "count\n" ;
+            } else {
+                s += ind + "count\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> CdmReportMigrationStatus? Status
         // GraphQL -> status: CdmReportMigrationStatus! (enum)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = new CdmReportMigrationStatus();
+            if(this.Status == null) {
+
+                this.Status = new CdmReportMigrationStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
         //      C# -> System.Int32? Count
         // GraphQL -> count: Int! (scalar)
-        if (this.Count == null && ec.Includes("count",true))
+        if (ec.Includes("count",true))
         {
-            this.Count = Int32.MinValue;
+            if(this.Count == null) {
+
+                this.Count = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Count != null && ec.Excludes("count",true))
+        {
+            this.Count = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ReportMigrationStatusCountItem> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

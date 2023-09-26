@@ -74,31 +74,48 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Arn
         // GraphQL -> arn: String! (scalar)
         if (this.Arn != null) {
-            s += ind + "arn\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "arn\n" ;
+            } else {
+                s += ind + "arn\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.String? VpcId
         // GraphQL -> vpcId: String! (scalar)
         if (this.VpcId != null) {
-            s += ind + "vpcId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "vpcId\n" ;
+            } else {
+                s += ind + "vpcId\n" ;
+            }
         }
         //      C# -> List<AwsNativeSubnet>? Subnets
         // GraphQL -> subnets: [AwsNativeSubnet!]! (type)
         if (this.Subnets != null) {
-            var fspec = this.Subnets.AsFieldSpec(indent+1);
+            var fspec = this.Subnets.AsFieldSpec(conf.Child("subnets"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "subnets {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "subnets {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -110,28 +127,73 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Arn
         // GraphQL -> arn: String! (scalar)
-        if (this.Arn == null && ec.Includes("arn",true))
+        if (ec.Includes("arn",true))
         {
-            this.Arn = "FETCH";
+            if(this.Arn == null) {
+
+                this.Arn = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Arn != null && ec.Excludes("arn",true))
+        {
+            this.Arn = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.String? VpcId
         // GraphQL -> vpcId: String! (scalar)
-        if (this.VpcId == null && ec.Includes("vpcId",true))
+        if (ec.Includes("vpcId",true))
         {
-            this.VpcId = "FETCH";
+            if(this.VpcId == null) {
+
+                this.VpcId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.VpcId != null && ec.Excludes("vpcId",true))
+        {
+            this.VpcId = null;
         }
         //      C# -> List<AwsNativeSubnet>? Subnets
         // GraphQL -> subnets: [AwsNativeSubnet!]! (type)
-        if (this.Subnets == null && ec.Includes("subnets",false))
+        if (ec.Includes("subnets",false))
         {
-            this.Subnets = new List<AwsNativeSubnet>();
-            this.Subnets.ApplyExploratoryFieldSpec(ec.NewChild("subnets"));
+            if(this.Subnets == null) {
+
+                this.Subnets = new List<AwsNativeSubnet>();
+                this.Subnets.ApplyExploratoryFieldSpec(ec.NewChild("subnets"));
+
+            } else {
+
+                this.Subnets.ApplyExploratoryFieldSpec(ec.NewChild("subnets"));
+
+            }
+        }
+        else if (this.Subnets != null && ec.Excludes("subnets",false))
+        {
+            this.Subnets = null;
         }
     }
 
@@ -158,9 +220,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SubnetGroup> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

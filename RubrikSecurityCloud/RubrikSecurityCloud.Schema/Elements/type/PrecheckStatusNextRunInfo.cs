@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? JobInstanceId
         // GraphQL -> jobInstanceId: String! (scalar)
         if (this.JobInstanceId != null) {
-            s += ind + "jobInstanceId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "jobInstanceId\n" ;
+            } else {
+                s += ind + "jobInstanceId\n" ;
+            }
         }
         //      C# -> System.Int64? StartTime
         // GraphQL -> startTime: Long! (scalar)
         if (this.StartTime != null) {
-            s += ind + "startTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "startTime\n" ;
+            } else {
+                s += ind + "startTime\n" ;
+            }
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? JobInstanceId
         // GraphQL -> jobInstanceId: String! (scalar)
-        if (this.JobInstanceId == null && ec.Includes("jobInstanceId",true))
+        if (ec.Includes("jobInstanceId",true))
         {
-            this.JobInstanceId = "FETCH";
+            if(this.JobInstanceId == null) {
+
+                this.JobInstanceId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.JobInstanceId != null && ec.Excludes("jobInstanceId",true))
+        {
+            this.JobInstanceId = null;
         }
         //      C# -> System.Int64? StartTime
         // GraphQL -> startTime: Long! (scalar)
-        if (this.StartTime == null && ec.Includes("startTime",true))
+        if (ec.Includes("startTime",true))
         {
-            this.StartTime = new System.Int64();
+            if(this.StartTime == null) {
+
+                this.StartTime = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.StartTime != null && ec.Excludes("startTime",true))
+        {
+            this.StartTime = null;
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = "FETCH";
+            if(this.Status == null) {
+
+                this.Status = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<PrecheckStatusNextRunInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

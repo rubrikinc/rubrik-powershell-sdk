@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? RunAsUser
         // GraphQL -> runAsUser: String! (scalar)
         if (this.RunAsUser != null) {
-            s += ind + "runAsUser\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "runAsUser\n" ;
+            } else {
+                s += ind + "runAsUser\n" ;
+            }
         }
         //      C# -> System.String? ScriptCommand
         // GraphQL -> scriptCommand: String! (scalar)
         if (this.ScriptCommand != null) {
-            s += ind + "scriptCommand\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "scriptCommand\n" ;
+            } else {
+                s += ind + "scriptCommand\n" ;
+            }
         }
         //      C# -> System.Int64? Timeout
         // GraphQL -> timeout: Long (scalar)
         if (this.Timeout != null) {
-            s += ind + "timeout\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "timeout\n" ;
+            } else {
+                s += ind + "timeout\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? RunAsUser
         // GraphQL -> runAsUser: String! (scalar)
-        if (this.RunAsUser == null && ec.Includes("runAsUser",true))
+        if (ec.Includes("runAsUser",true))
         {
-            this.RunAsUser = "FETCH";
+            if(this.RunAsUser == null) {
+
+                this.RunAsUser = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RunAsUser != null && ec.Excludes("runAsUser",true))
+        {
+            this.RunAsUser = null;
         }
         //      C# -> System.String? ScriptCommand
         // GraphQL -> scriptCommand: String! (scalar)
-        if (this.ScriptCommand == null && ec.Includes("scriptCommand",true))
+        if (ec.Includes("scriptCommand",true))
         {
-            this.ScriptCommand = "FETCH";
+            if(this.ScriptCommand == null) {
+
+                this.ScriptCommand = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ScriptCommand != null && ec.Excludes("scriptCommand",true))
+        {
+            this.ScriptCommand = null;
         }
         //      C# -> System.Int64? Timeout
         // GraphQL -> timeout: Long (scalar)
-        if (this.Timeout == null && ec.Includes("timeout",true))
+        if (ec.Includes("timeout",true))
         {
-            this.Timeout = new System.Int64();
+            if(this.Timeout == null) {
+
+                this.Timeout = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Timeout != null && ec.Excludes("timeout",true))
+        {
+            this.Timeout = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SlaManagedVolumeScriptSummary> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

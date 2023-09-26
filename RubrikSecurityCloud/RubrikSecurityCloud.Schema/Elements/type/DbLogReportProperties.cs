@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Boolean? EnableDelayNotification
         // GraphQL -> enableDelayNotification: Boolean! (scalar)
         if (this.EnableDelayNotification != null) {
-            s += ind + "enableDelayNotification\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "enableDelayNotification\n" ;
+            } else {
+                s += ind + "enableDelayNotification\n" ;
+            }
         }
         //      C# -> System.Int64? LogDelayNotificationFrequencyInMin
         // GraphQL -> logDelayNotificationFrequencyInMin: Long! (scalar)
         if (this.LogDelayNotificationFrequencyInMin != null) {
-            s += ind + "logDelayNotificationFrequencyInMin\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "logDelayNotificationFrequencyInMin\n" ;
+            } else {
+                s += ind + "logDelayNotificationFrequencyInMin\n" ;
+            }
         }
         //      C# -> System.Int64? LogDelayThresholdInMin
         // GraphQL -> logDelayThresholdInMin: Long! (scalar)
         if (this.LogDelayThresholdInMin != null) {
-            s += ind + "logDelayThresholdInMin\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "logDelayThresholdInMin\n" ;
+            } else {
+                s += ind + "logDelayThresholdInMin\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Boolean? EnableDelayNotification
         // GraphQL -> enableDelayNotification: Boolean! (scalar)
-        if (this.EnableDelayNotification == null && ec.Includes("enableDelayNotification",true))
+        if (ec.Includes("enableDelayNotification",true))
         {
-            this.EnableDelayNotification = true;
+            if(this.EnableDelayNotification == null) {
+
+                this.EnableDelayNotification = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.EnableDelayNotification != null && ec.Excludes("enableDelayNotification",true))
+        {
+            this.EnableDelayNotification = null;
         }
         //      C# -> System.Int64? LogDelayNotificationFrequencyInMin
         // GraphQL -> logDelayNotificationFrequencyInMin: Long! (scalar)
-        if (this.LogDelayNotificationFrequencyInMin == null && ec.Includes("logDelayNotificationFrequencyInMin",true))
+        if (ec.Includes("logDelayNotificationFrequencyInMin",true))
         {
-            this.LogDelayNotificationFrequencyInMin = new System.Int64();
+            if(this.LogDelayNotificationFrequencyInMin == null) {
+
+                this.LogDelayNotificationFrequencyInMin = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LogDelayNotificationFrequencyInMin != null && ec.Excludes("logDelayNotificationFrequencyInMin",true))
+        {
+            this.LogDelayNotificationFrequencyInMin = null;
         }
         //      C# -> System.Int64? LogDelayThresholdInMin
         // GraphQL -> logDelayThresholdInMin: Long! (scalar)
-        if (this.LogDelayThresholdInMin == null && ec.Includes("logDelayThresholdInMin",true))
+        if (ec.Includes("logDelayThresholdInMin",true))
         {
-            this.LogDelayThresholdInMin = new System.Int64();
+            if(this.LogDelayThresholdInMin == null) {
+
+                this.LogDelayThresholdInMin = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LogDelayThresholdInMin != null && ec.Excludes("logDelayThresholdInMin",true))
+        {
+            this.LogDelayThresholdInMin = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<DbLogReportProperties> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

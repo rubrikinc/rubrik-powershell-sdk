@@ -65,26 +65,39 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Boolean? IsLoggedIn
         // GraphQL -> isLoggedIn: Boolean! (scalar)
         if (this.IsLoggedIn != null) {
-            s += ind + "isLoggedIn\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isLoggedIn\n" ;
+            } else {
+                s += ind + "isLoggedIn\n" ;
+            }
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
         if (this.Username != null) {
-            s += ind + "username\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "username\n" ;
+            } else {
+                s += ind + "username\n" ;
+            }
         }
         //      C# -> StatusResponse? Status
         // GraphQL -> status: StatusResponse (type)
         if (this.Status != null) {
-            var fspec = this.Status.AsFieldSpec(indent+1);
+            var fspec = this.Status.AsFieldSpec(conf.Child("status"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "status {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "status {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -96,22 +109,56 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Boolean? IsLoggedIn
         // GraphQL -> isLoggedIn: Boolean! (scalar)
-        if (this.IsLoggedIn == null && ec.Includes("isLoggedIn",true))
+        if (ec.Includes("isLoggedIn",true))
         {
-            this.IsLoggedIn = true;
+            if(this.IsLoggedIn == null) {
+
+                this.IsLoggedIn = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsLoggedIn != null && ec.Excludes("isLoggedIn",true))
+        {
+            this.IsLoggedIn = null;
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
-        if (this.Username == null && ec.Includes("username",true))
+        if (ec.Includes("username",true))
         {
-            this.Username = "FETCH";
+            if(this.Username == null) {
+
+                this.Username = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Username != null && ec.Excludes("username",true))
+        {
+            this.Username = null;
         }
         //      C# -> StatusResponse? Status
         // GraphQL -> status: StatusResponse (type)
-        if (this.Status == null && ec.Includes("status",false))
+        if (ec.Includes("status",false))
         {
-            this.Status = new StatusResponse();
-            this.Status.ApplyExploratoryFieldSpec(ec.NewChild("status"));
+            if(this.Status == null) {
+
+                this.Status = new StatusResponse();
+                this.Status.ApplyExploratoryFieldSpec(ec.NewChild("status"));
+
+            } else {
+
+                this.Status.ApplyExploratoryFieldSpec(ec.NewChild("status"));
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",false))
+        {
+            this.Status = null;
         }
     }
 
@@ -138,9 +185,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SupportPortalStatusReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

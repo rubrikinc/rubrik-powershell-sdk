@@ -47,16 +47,21 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<DeleteAwsCloudAccountWithoutCftResp>? DeleteAwsCloudAccountWithoutCftResp
         // GraphQL -> deleteAwsCloudAccountWithoutCftResp: [DeleteAwsCloudAccountWithoutCftResp!]! (type)
         if (this.DeleteAwsCloudAccountWithoutCftResp != null) {
-            var fspec = this.DeleteAwsCloudAccountWithoutCftResp.AsFieldSpec(indent+1);
+            var fspec = this.DeleteAwsCloudAccountWithoutCftResp.AsFieldSpec(conf.Child("deleteAwsCloudAccountWithoutCftResp"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "deleteAwsCloudAccountWithoutCftResp {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "deleteAwsCloudAccountWithoutCftResp {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -68,10 +73,22 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<DeleteAwsCloudAccountWithoutCftResp>? DeleteAwsCloudAccountWithoutCftResp
         // GraphQL -> deleteAwsCloudAccountWithoutCftResp: [DeleteAwsCloudAccountWithoutCftResp!]! (type)
-        if (this.DeleteAwsCloudAccountWithoutCftResp == null && ec.Includes("deleteAwsCloudAccountWithoutCftResp",false))
+        if (ec.Includes("deleteAwsCloudAccountWithoutCftResp",false))
         {
-            this.DeleteAwsCloudAccountWithoutCftResp = new List<DeleteAwsCloudAccountWithoutCftResp>();
-            this.DeleteAwsCloudAccountWithoutCftResp.ApplyExploratoryFieldSpec(ec.NewChild("deleteAwsCloudAccountWithoutCftResp"));
+            if(this.DeleteAwsCloudAccountWithoutCftResp == null) {
+
+                this.DeleteAwsCloudAccountWithoutCftResp = new List<DeleteAwsCloudAccountWithoutCftResp>();
+                this.DeleteAwsCloudAccountWithoutCftResp.ApplyExploratoryFieldSpec(ec.NewChild("deleteAwsCloudAccountWithoutCftResp"));
+
+            } else {
+
+                this.DeleteAwsCloudAccountWithoutCftResp.ApplyExploratoryFieldSpec(ec.NewChild("deleteAwsCloudAccountWithoutCftResp"));
+
+            }
+        }
+        else if (this.DeleteAwsCloudAccountWithoutCftResp != null && ec.Excludes("deleteAwsCloudAccountWithoutCftResp",false))
+        {
+            this.DeleteAwsCloudAccountWithoutCftResp = null;
         }
     }
 
@@ -98,9 +115,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<BulkDeleteAwsCloudAccountWithoutCftReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

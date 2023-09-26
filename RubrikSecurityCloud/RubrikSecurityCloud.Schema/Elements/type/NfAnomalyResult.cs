@@ -110,51 +110,84 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> ObjectTypeEnum? ObjectType
         // GraphQL -> objectType: ObjectTypeEnum! (enum)
         if (this.ObjectType != null) {
-            s += ind + "objectType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "objectType\n" ;
+            } else {
+                s += ind + "objectType\n" ;
+            }
         }
         //      C# -> System.String? AnomalyId
         // GraphQL -> anomalyId: String! (scalar)
         if (this.AnomalyId != null) {
-            s += ind + "anomalyId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "anomalyId\n" ;
+            } else {
+                s += ind + "anomalyId\n" ;
+            }
         }
         //      C# -> DateTime? DetectionTime
         // GraphQL -> detectionTime: DateTime! (scalar)
         if (this.DetectionTime != null) {
-            s += ind + "detectionTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "detectionTime\n" ;
+            } else {
+                s += ind + "detectionTime\n" ;
+            }
         }
         //      C# -> System.Boolean? IsAnomaly
         // GraphQL -> isAnomaly: Boolean! (scalar)
         if (this.IsAnomaly != null) {
-            s += ind + "isAnomaly\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isAnomaly\n" ;
+            } else {
+                s += ind + "isAnomaly\n" ;
+            }
         }
         //      C# -> System.String? Location
         // GraphQL -> location: String! (scalar)
         if (this.Location != null) {
-            s += ind + "location\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "location\n" ;
+            } else {
+                s += ind + "location\n" ;
+            }
         }
         //      C# -> System.String? WorkloadFid
         // GraphQL -> workloadFid: UUID! (scalar)
         if (this.WorkloadFid != null) {
-            s += ind + "workloadFid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "workloadFid\n" ;
+            } else {
+                s += ind + "workloadFid\n" ;
+            }
         }
         //      C# -> System.String? WorkloadName
         // GraphQL -> workloadName: String! (scalar)
         if (this.WorkloadName != null) {
-            s += ind + "workloadName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "workloadName\n" ;
+            } else {
+                s += ind + "workloadName\n" ;
+            }
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
         if (this.Cluster != null) {
-            var fspec = this.Cluster.AsFieldSpec(indent+1);
+            var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -166,52 +199,141 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> ObjectTypeEnum? ObjectType
         // GraphQL -> objectType: ObjectTypeEnum! (enum)
-        if (this.ObjectType == null && ec.Includes("objectType",true))
+        if (ec.Includes("objectType",true))
         {
-            this.ObjectType = new ObjectTypeEnum();
+            if(this.ObjectType == null) {
+
+                this.ObjectType = new ObjectTypeEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ObjectType != null && ec.Excludes("objectType",true))
+        {
+            this.ObjectType = null;
         }
         //      C# -> System.String? AnomalyId
         // GraphQL -> anomalyId: String! (scalar)
-        if (this.AnomalyId == null && ec.Includes("anomalyId",true))
+        if (ec.Includes("anomalyId",true))
         {
-            this.AnomalyId = "FETCH";
+            if(this.AnomalyId == null) {
+
+                this.AnomalyId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AnomalyId != null && ec.Excludes("anomalyId",true))
+        {
+            this.AnomalyId = null;
         }
         //      C# -> DateTime? DetectionTime
         // GraphQL -> detectionTime: DateTime! (scalar)
-        if (this.DetectionTime == null && ec.Includes("detectionTime",true))
+        if (ec.Includes("detectionTime",true))
         {
-            this.DetectionTime = new DateTime();
+            if(this.DetectionTime == null) {
+
+                this.DetectionTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DetectionTime != null && ec.Excludes("detectionTime",true))
+        {
+            this.DetectionTime = null;
         }
         //      C# -> System.Boolean? IsAnomaly
         // GraphQL -> isAnomaly: Boolean! (scalar)
-        if (this.IsAnomaly == null && ec.Includes("isAnomaly",true))
+        if (ec.Includes("isAnomaly",true))
         {
-            this.IsAnomaly = true;
+            if(this.IsAnomaly == null) {
+
+                this.IsAnomaly = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAnomaly != null && ec.Excludes("isAnomaly",true))
+        {
+            this.IsAnomaly = null;
         }
         //      C# -> System.String? Location
         // GraphQL -> location: String! (scalar)
-        if (this.Location == null && ec.Includes("location",true))
+        if (ec.Includes("location",true))
         {
-            this.Location = "FETCH";
+            if(this.Location == null) {
+
+                this.Location = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Location != null && ec.Excludes("location",true))
+        {
+            this.Location = null;
         }
         //      C# -> System.String? WorkloadFid
         // GraphQL -> workloadFid: UUID! (scalar)
-        if (this.WorkloadFid == null && ec.Includes("workloadFid",true))
+        if (ec.Includes("workloadFid",true))
         {
-            this.WorkloadFid = "FETCH";
+            if(this.WorkloadFid == null) {
+
+                this.WorkloadFid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.WorkloadFid != null && ec.Excludes("workloadFid",true))
+        {
+            this.WorkloadFid = null;
         }
         //      C# -> System.String? WorkloadName
         // GraphQL -> workloadName: String! (scalar)
-        if (this.WorkloadName == null && ec.Includes("workloadName",true))
+        if (ec.Includes("workloadName",true))
         {
-            this.WorkloadName = "FETCH";
+            if(this.WorkloadName == null) {
+
+                this.WorkloadName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.WorkloadName != null && ec.Excludes("workloadName",true))
+        {
+            this.WorkloadName = null;
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
-        if (this.Cluster == null && ec.Includes("cluster",false))
+        if (ec.Includes("cluster",false))
         {
-            this.Cluster = new Cluster();
-            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+            if(this.Cluster == null) {
+
+                this.Cluster = new Cluster();
+                this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+
+            } else {
+
+                this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+
+            }
+        }
+        else if (this.Cluster != null && ec.Excludes("cluster",false))
+        {
+            this.Cluster = null;
         }
     }
 
@@ -238,9 +360,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<NfAnomalyResult> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -92,41 +92,66 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> StorageArrayType? ArrayType
         // GraphQL -> arrayType: StorageArrayType! (enum)
         if (this.ArrayType != null) {
-            s += ind + "arrayType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "arrayType\n" ;
+            } else {
+                s += ind + "arrayType\n" ;
+            }
         }
         //      C# -> System.String? CaCerts
         // GraphQL -> caCerts: String (scalar)
         if (this.CaCerts != null) {
-            s += ind + "caCerts\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "caCerts\n" ;
+            } else {
+                s += ind + "caCerts\n" ;
+            }
         }
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
         if (this.Hostname != null) {
-            s += ind + "hostname\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostname\n" ;
+            } else {
+                s += ind + "hostname\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
         if (this.Username != null) {
-            s += ind + "username\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "username\n" ;
+            } else {
+                s += ind + "username\n" ;
+            }
         }
         //      C# -> RefreshableObjectConnectionStatus? ConnectionStatus
         // GraphQL -> connectionStatus: RefreshableObjectConnectionStatus (type)
         if (this.ConnectionStatus != null) {
-            var fspec = this.ConnectionStatus.AsFieldSpec(indent+1);
+            var fspec = this.ConnectionStatus.AsFieldSpec(conf.Child("connectionStatus"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "connectionStatus {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "connectionStatus {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -138,40 +163,107 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> StorageArrayType? ArrayType
         // GraphQL -> arrayType: StorageArrayType! (enum)
-        if (this.ArrayType == null && ec.Includes("arrayType",true))
+        if (ec.Includes("arrayType",true))
         {
-            this.ArrayType = new StorageArrayType();
+            if(this.ArrayType == null) {
+
+                this.ArrayType = new StorageArrayType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ArrayType != null && ec.Excludes("arrayType",true))
+        {
+            this.ArrayType = null;
         }
         //      C# -> System.String? CaCerts
         // GraphQL -> caCerts: String (scalar)
-        if (this.CaCerts == null && ec.Includes("caCerts",true))
+        if (ec.Includes("caCerts",true))
         {
-            this.CaCerts = "FETCH";
+            if(this.CaCerts == null) {
+
+                this.CaCerts = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CaCerts != null && ec.Excludes("caCerts",true))
+        {
+            this.CaCerts = null;
         }
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
-        if (this.Hostname == null && ec.Includes("hostname",true))
+        if (ec.Includes("hostname",true))
         {
-            this.Hostname = "FETCH";
+            if(this.Hostname == null) {
+
+                this.Hostname = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Hostname != null && ec.Excludes("hostname",true))
+        {
+            this.Hostname = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
-        if (this.Username == null && ec.Includes("username",true))
+        if (ec.Includes("username",true))
         {
-            this.Username = "FETCH";
+            if(this.Username == null) {
+
+                this.Username = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Username != null && ec.Excludes("username",true))
+        {
+            this.Username = null;
         }
         //      C# -> RefreshableObjectConnectionStatus? ConnectionStatus
         // GraphQL -> connectionStatus: RefreshableObjectConnectionStatus (type)
-        if (this.ConnectionStatus == null && ec.Includes("connectionStatus",false))
+        if (ec.Includes("connectionStatus",false))
         {
-            this.ConnectionStatus = new RefreshableObjectConnectionStatus();
-            this.ConnectionStatus.ApplyExploratoryFieldSpec(ec.NewChild("connectionStatus"));
+            if(this.ConnectionStatus == null) {
+
+                this.ConnectionStatus = new RefreshableObjectConnectionStatus();
+                this.ConnectionStatus.ApplyExploratoryFieldSpec(ec.NewChild("connectionStatus"));
+
+            } else {
+
+                this.ConnectionStatus.ApplyExploratoryFieldSpec(ec.NewChild("connectionStatus"));
+
+            }
+        }
+        else if (this.ConnectionStatus != null && ec.Excludes("connectionStatus",false))
+        {
+            this.ConnectionStatus = null;
         }
     }
 
@@ -198,9 +290,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<StorageArrayDetail> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

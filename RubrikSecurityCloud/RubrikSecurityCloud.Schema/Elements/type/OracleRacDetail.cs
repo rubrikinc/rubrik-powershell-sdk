@@ -65,29 +65,42 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Scan
         // GraphQL -> scan: String! (scalar)
         if (this.Scan != null) {
-            s += ind + "scan\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "scan\n" ;
+            } else {
+                s += ind + "scan\n" ;
+            }
         }
         //      C# -> OracleNonSlaProperties? OracleNonSlaProperties
         // GraphQL -> oracleNonSlaProperties: OracleNonSlaProperties (type)
         if (this.OracleNonSlaProperties != null) {
-            var fspec = this.OracleNonSlaProperties.AsFieldSpec(indent+1);
+            var fspec = this.OracleNonSlaProperties.AsFieldSpec(conf.Child("oracleNonSlaProperties"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "oracleNonSlaProperties {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "oracleNonSlaProperties {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> OracleRacSummary? OracleRacSummary
         // GraphQL -> oracleRacSummary: OracleRacSummary (type)
         if (this.OracleRacSummary != null) {
-            var fspec = this.OracleRacSummary.AsFieldSpec(indent+1);
+            var fspec = this.OracleRacSummary.AsFieldSpec(conf.Child("oracleRacSummary"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "oracleRacSummary {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "oracleRacSummary {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -99,23 +112,58 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Scan
         // GraphQL -> scan: String! (scalar)
-        if (this.Scan == null && ec.Includes("scan",true))
+        if (ec.Includes("scan",true))
         {
-            this.Scan = "FETCH";
+            if(this.Scan == null) {
+
+                this.Scan = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Scan != null && ec.Excludes("scan",true))
+        {
+            this.Scan = null;
         }
         //      C# -> OracleNonSlaProperties? OracleNonSlaProperties
         // GraphQL -> oracleNonSlaProperties: OracleNonSlaProperties (type)
-        if (this.OracleNonSlaProperties == null && ec.Includes("oracleNonSlaProperties",false))
+        if (ec.Includes("oracleNonSlaProperties",false))
         {
-            this.OracleNonSlaProperties = new OracleNonSlaProperties();
-            this.OracleNonSlaProperties.ApplyExploratoryFieldSpec(ec.NewChild("oracleNonSlaProperties"));
+            if(this.OracleNonSlaProperties == null) {
+
+                this.OracleNonSlaProperties = new OracleNonSlaProperties();
+                this.OracleNonSlaProperties.ApplyExploratoryFieldSpec(ec.NewChild("oracleNonSlaProperties"));
+
+            } else {
+
+                this.OracleNonSlaProperties.ApplyExploratoryFieldSpec(ec.NewChild("oracleNonSlaProperties"));
+
+            }
+        }
+        else if (this.OracleNonSlaProperties != null && ec.Excludes("oracleNonSlaProperties",false))
+        {
+            this.OracleNonSlaProperties = null;
         }
         //      C# -> OracleRacSummary? OracleRacSummary
         // GraphQL -> oracleRacSummary: OracleRacSummary (type)
-        if (this.OracleRacSummary == null && ec.Includes("oracleRacSummary",false))
+        if (ec.Includes("oracleRacSummary",false))
         {
-            this.OracleRacSummary = new OracleRacSummary();
-            this.OracleRacSummary.ApplyExploratoryFieldSpec(ec.NewChild("oracleRacSummary"));
+            if(this.OracleRacSummary == null) {
+
+                this.OracleRacSummary = new OracleRacSummary();
+                this.OracleRacSummary.ApplyExploratoryFieldSpec(ec.NewChild("oracleRacSummary"));
+
+            } else {
+
+                this.OracleRacSummary.ApplyExploratoryFieldSpec(ec.NewChild("oracleRacSummary"));
+
+            }
+        }
+        else if (this.OracleRacSummary != null && ec.Excludes("oracleRacSummary",false))
+        {
+            this.OracleRacSummary = null;
         }
     }
 
@@ -142,9 +190,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<OracleRacDetail> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

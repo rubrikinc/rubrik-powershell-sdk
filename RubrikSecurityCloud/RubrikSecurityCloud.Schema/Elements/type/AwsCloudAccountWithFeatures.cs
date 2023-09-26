@@ -56,24 +56,33 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> AwsCloudAccount? AwsCloudAccount
         // GraphQL -> awsCloudAccount: AwsCloudAccount (type)
         if (this.AwsCloudAccount != null) {
-            var fspec = this.AwsCloudAccount.AsFieldSpec(indent+1);
+            var fspec = this.AwsCloudAccount.AsFieldSpec(conf.Child("awsCloudAccount"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "awsCloudAccount {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "awsCloudAccount {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<FeatureDetail>? FeatureDetails
         // GraphQL -> featureDetails: [FeatureDetail!]! (type)
         if (this.FeatureDetails != null) {
-            var fspec = this.FeatureDetails.AsFieldSpec(indent+1);
+            var fspec = this.FeatureDetails.AsFieldSpec(conf.Child("featureDetails"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "featureDetails {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "featureDetails {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -85,17 +94,41 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> AwsCloudAccount? AwsCloudAccount
         // GraphQL -> awsCloudAccount: AwsCloudAccount (type)
-        if (this.AwsCloudAccount == null && ec.Includes("awsCloudAccount",false))
+        if (ec.Includes("awsCloudAccount",false))
         {
-            this.AwsCloudAccount = new AwsCloudAccount();
-            this.AwsCloudAccount.ApplyExploratoryFieldSpec(ec.NewChild("awsCloudAccount"));
+            if(this.AwsCloudAccount == null) {
+
+                this.AwsCloudAccount = new AwsCloudAccount();
+                this.AwsCloudAccount.ApplyExploratoryFieldSpec(ec.NewChild("awsCloudAccount"));
+
+            } else {
+
+                this.AwsCloudAccount.ApplyExploratoryFieldSpec(ec.NewChild("awsCloudAccount"));
+
+            }
+        }
+        else if (this.AwsCloudAccount != null && ec.Excludes("awsCloudAccount",false))
+        {
+            this.AwsCloudAccount = null;
         }
         //      C# -> List<FeatureDetail>? FeatureDetails
         // GraphQL -> featureDetails: [FeatureDetail!]! (type)
-        if (this.FeatureDetails == null && ec.Includes("featureDetails",false))
+        if (ec.Includes("featureDetails",false))
         {
-            this.FeatureDetails = new List<FeatureDetail>();
-            this.FeatureDetails.ApplyExploratoryFieldSpec(ec.NewChild("featureDetails"));
+            if(this.FeatureDetails == null) {
+
+                this.FeatureDetails = new List<FeatureDetail>();
+                this.FeatureDetails.ApplyExploratoryFieldSpec(ec.NewChild("featureDetails"));
+
+            } else {
+
+                this.FeatureDetails.ApplyExploratoryFieldSpec(ec.NewChild("featureDetails"));
+
+            }
+        }
+        else if (this.FeatureDetails != null && ec.Excludes("featureDetails",false))
+        {
+            this.FeatureDetails = null;
         }
     }
 
@@ -122,9 +155,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AwsCloudAccountWithFeatures> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

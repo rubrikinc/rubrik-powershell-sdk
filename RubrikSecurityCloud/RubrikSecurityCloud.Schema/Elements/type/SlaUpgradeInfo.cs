@@ -56,24 +56,33 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> SlaUpgradeEligibility? Eligibility
         // GraphQL -> eligibility: SlaUpgradeEligibility (type)
         if (this.Eligibility != null) {
-            var fspec = this.Eligibility.AsFieldSpec(indent+1);
+            var fspec = this.Eligibility.AsFieldSpec(conf.Child("eligibility"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "eligibility {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "eligibility {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> SlaUpgrade? LatestUpgrade
         // GraphQL -> latestUpgrade: SlaUpgrade (type)
         if (this.LatestUpgrade != null) {
-            var fspec = this.LatestUpgrade.AsFieldSpec(indent+1);
+            var fspec = this.LatestUpgrade.AsFieldSpec(conf.Child("latestUpgrade"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "latestUpgrade {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "latestUpgrade {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -85,17 +94,41 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> SlaUpgradeEligibility? Eligibility
         // GraphQL -> eligibility: SlaUpgradeEligibility (type)
-        if (this.Eligibility == null && ec.Includes("eligibility",false))
+        if (ec.Includes("eligibility",false))
         {
-            this.Eligibility = new SlaUpgradeEligibility();
-            this.Eligibility.ApplyExploratoryFieldSpec(ec.NewChild("eligibility"));
+            if(this.Eligibility == null) {
+
+                this.Eligibility = new SlaUpgradeEligibility();
+                this.Eligibility.ApplyExploratoryFieldSpec(ec.NewChild("eligibility"));
+
+            } else {
+
+                this.Eligibility.ApplyExploratoryFieldSpec(ec.NewChild("eligibility"));
+
+            }
+        }
+        else if (this.Eligibility != null && ec.Excludes("eligibility",false))
+        {
+            this.Eligibility = null;
         }
         //      C# -> SlaUpgrade? LatestUpgrade
         // GraphQL -> latestUpgrade: SlaUpgrade (type)
-        if (this.LatestUpgrade == null && ec.Includes("latestUpgrade",false))
+        if (ec.Includes("latestUpgrade",false))
         {
-            this.LatestUpgrade = new SlaUpgrade();
-            this.LatestUpgrade.ApplyExploratoryFieldSpec(ec.NewChild("latestUpgrade"));
+            if(this.LatestUpgrade == null) {
+
+                this.LatestUpgrade = new SlaUpgrade();
+                this.LatestUpgrade.ApplyExploratoryFieldSpec(ec.NewChild("latestUpgrade"));
+
+            } else {
+
+                this.LatestUpgrade.ApplyExploratoryFieldSpec(ec.NewChild("latestUpgrade"));
+
+            }
+        }
+        else if (this.LatestUpgrade != null && ec.Excludes("latestUpgrade",false))
+        {
+            this.LatestUpgrade = null;
         }
     }
 
@@ -122,9 +155,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SlaUpgradeInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -47,16 +47,21 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<Integration>? Integrations
         // GraphQL -> integrations: [Integration!]! (type)
         if (this.Integrations != null) {
-            var fspec = this.Integrations.AsFieldSpec(indent+1);
+            var fspec = this.Integrations.AsFieldSpec(conf.Child("integrations"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "integrations {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "integrations {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -68,10 +73,22 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<Integration>? Integrations
         // GraphQL -> integrations: [Integration!]! (type)
-        if (this.Integrations == null && ec.Includes("integrations",false))
+        if (ec.Includes("integrations",false))
         {
-            this.Integrations = new List<Integration>();
-            this.Integrations.ApplyExploratoryFieldSpec(ec.NewChild("integrations"));
+            if(this.Integrations == null) {
+
+                this.Integrations = new List<Integration>();
+                this.Integrations.ApplyExploratoryFieldSpec(ec.NewChild("integrations"));
+
+            } else {
+
+                this.Integrations.ApplyExploratoryFieldSpec(ec.NewChild("integrations"));
+
+            }
+        }
+        else if (this.Integrations != null && ec.Excludes("integrations",false))
+        {
+            this.Integrations = null;
         }
     }
 
@@ -98,9 +115,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ListIntegrationsReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

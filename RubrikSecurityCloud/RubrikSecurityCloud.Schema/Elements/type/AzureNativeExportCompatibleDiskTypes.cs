@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<AzureNativeManagedDiskType>? DiskTypes
         // GraphQL -> diskTypes: [AzureNativeManagedDiskType!]! (enum)
         if (this.DiskTypes != null) {
-            s += ind + "diskTypes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "diskTypes\n" ;
+            } else {
+                s += ind + "diskTypes\n" ;
+            }
         }
         //      C# -> System.String? AvailabilityZone
         // GraphQL -> availabilityZone: String! (scalar)
         if (this.AvailabilityZone != null) {
-            s += ind + "availabilityZone\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "availabilityZone\n" ;
+            } else {
+                s += ind + "availabilityZone\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<AzureNativeManagedDiskType>? DiskTypes
         // GraphQL -> diskTypes: [AzureNativeManagedDiskType!]! (enum)
-        if (this.DiskTypes == null && ec.Includes("diskTypes",true))
+        if (ec.Includes("diskTypes",true))
         {
-            this.DiskTypes = new List<AzureNativeManagedDiskType>();
+            if(this.DiskTypes == null) {
+
+                this.DiskTypes = new List<AzureNativeManagedDiskType>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DiskTypes != null && ec.Excludes("diskTypes",true))
+        {
+            this.DiskTypes = null;
         }
         //      C# -> System.String? AvailabilityZone
         // GraphQL -> availabilityZone: String! (scalar)
-        if (this.AvailabilityZone == null && ec.Includes("availabilityZone",true))
+        if (ec.Includes("availabilityZone",true))
         {
-            this.AvailabilityZone = "FETCH";
+            if(this.AvailabilityZone == null) {
+
+                this.AvailabilityZone = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AvailabilityZone != null && ec.Excludes("availabilityZone",true))
+        {
+            this.AvailabilityZone = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AzureNativeExportCompatibleDiskTypes> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

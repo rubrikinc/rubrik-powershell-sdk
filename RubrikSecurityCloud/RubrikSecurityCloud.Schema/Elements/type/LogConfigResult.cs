@@ -47,16 +47,21 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> SlaLogFrequencyConfigResult? SlaLogFrequencyConfig
         // GraphQL -> slaLogFrequencyConfig: SlaLogFrequencyConfigResult (type)
         if (this.SlaLogFrequencyConfig != null) {
-            var fspec = this.SlaLogFrequencyConfig.AsFieldSpec(indent+1);
+            var fspec = this.SlaLogFrequencyConfig.AsFieldSpec(conf.Child("slaLogFrequencyConfig"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "slaLogFrequencyConfig {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "slaLogFrequencyConfig {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -68,10 +73,22 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> SlaLogFrequencyConfigResult? SlaLogFrequencyConfig
         // GraphQL -> slaLogFrequencyConfig: SlaLogFrequencyConfigResult (type)
-        if (this.SlaLogFrequencyConfig == null && ec.Includes("slaLogFrequencyConfig",false))
+        if (ec.Includes("slaLogFrequencyConfig",false))
         {
-            this.SlaLogFrequencyConfig = new SlaLogFrequencyConfigResult();
-            this.SlaLogFrequencyConfig.ApplyExploratoryFieldSpec(ec.NewChild("slaLogFrequencyConfig"));
+            if(this.SlaLogFrequencyConfig == null) {
+
+                this.SlaLogFrequencyConfig = new SlaLogFrequencyConfigResult();
+                this.SlaLogFrequencyConfig.ApplyExploratoryFieldSpec(ec.NewChild("slaLogFrequencyConfig"));
+
+            } else {
+
+                this.SlaLogFrequencyConfig.ApplyExploratoryFieldSpec(ec.NewChild("slaLogFrequencyConfig"));
+
+            }
+        }
+        else if (this.SlaLogFrequencyConfig != null && ec.Excludes("slaLogFrequencyConfig",false))
+        {
+            this.SlaLogFrequencyConfig = null;
         }
     }
 
@@ -98,9 +115,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<LogConfigResult> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

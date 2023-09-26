@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> FailoverClusterNodeConnectionStatus? ConnectionStatus
         // GraphQL -> connectionStatus: FailoverClusterNodeConnectionStatus! (enum)
         if (this.ConnectionStatus != null) {
-            s += ind + "connectionStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "connectionStatus\n" ;
+            } else {
+                s += ind + "connectionStatus\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.String? OperatingSystem
         // GraphQL -> operatingSystem: String (scalar)
         if (this.OperatingSystem != null) {
-            s += ind + "operatingSystem\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "operatingSystem\n" ;
+            } else {
+                s += ind + "operatingSystem\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> FailoverClusterNodeConnectionStatus? ConnectionStatus
         // GraphQL -> connectionStatus: FailoverClusterNodeConnectionStatus! (enum)
-        if (this.ConnectionStatus == null && ec.Includes("connectionStatus",true))
+        if (ec.Includes("connectionStatus",true))
         {
-            this.ConnectionStatus = new FailoverClusterNodeConnectionStatus();
+            if(this.ConnectionStatus == null) {
+
+                this.ConnectionStatus = new FailoverClusterNodeConnectionStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ConnectionStatus != null && ec.Excludes("connectionStatus",true))
+        {
+            this.ConnectionStatus = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.String? OperatingSystem
         // GraphQL -> operatingSystem: String (scalar)
-        if (this.OperatingSystem == null && ec.Includes("operatingSystem",true))
+        if (ec.Includes("operatingSystem",true))
         {
-            this.OperatingSystem = "FETCH";
+            if(this.OperatingSystem == null) {
+
+                this.OperatingSystem = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OperatingSystem != null && ec.Excludes("operatingSystem",true))
+        {
+            this.OperatingSystem = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<FailoverClusterNode> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

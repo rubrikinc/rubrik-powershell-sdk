@@ -128,61 +128,102 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> MosaicStoreConnectionStatus? StoreConnectionStatus
         // GraphQL -> storeConnectionStatus: MosaicStoreConnectionStatus! (enum)
         if (this.StoreConnectionStatus != null) {
-            s += ind + "storeConnectionStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "storeConnectionStatus\n" ;
+            } else {
+                s += ind + "storeConnectionStatus\n" ;
+            }
         }
         //      C# -> MosaicStoreType? StoreType
         // GraphQL -> storeType: MosaicStoreType! (enum)
         if (this.StoreType != null) {
-            s += ind + "storeType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "storeType\n" ;
+            } else {
+                s += ind + "storeType\n" ;
+            }
         }
         //      C# -> System.Int32? BackupCount
         // GraphQL -> backupCount: Int! (scalar)
         if (this.BackupCount != null) {
-            s += ind + "backupCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "backupCount\n" ;
+            } else {
+                s += ind + "backupCount\n" ;
+            }
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
         if (this.ClusterUuid != null) {
-            s += ind + "clusterUuid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterUuid\n" ;
+            } else {
+                s += ind + "clusterUuid\n" ;
+            }
         }
         //      C# -> System.String? Fid
         // GraphQL -> fid: String! (scalar)
         if (this.Fid != null) {
-            s += ind + "fid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "fid\n" ;
+            } else {
+                s += ind + "fid\n" ;
+            }
         }
         //      C# -> System.String? GeographicLocation
         // GraphQL -> geographicLocation: String! (scalar)
         if (this.GeographicLocation != null) {
-            s += ind + "geographicLocation\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "geographicLocation\n" ;
+            } else {
+                s += ind + "geographicLocation\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.Int64? SpaceConsumedBytes
         // GraphQL -> spaceConsumedBytes: Long! (scalar)
         if (this.SpaceConsumedBytes != null) {
-            s += ind + "spaceConsumedBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "spaceConsumedBytes\n" ;
+            } else {
+                s += ind + "spaceConsumedBytes\n" ;
+            }
         }
         //      C# -> System.String? StorageLocationName
         // GraphQL -> storageLocationName: String! (scalar)
         if (this.StorageLocationName != null) {
-            s += ind + "storageLocationName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "storageLocationName\n" ;
+            } else {
+                s += ind + "storageLocationName\n" ;
+            }
         }
         //      C# -> MosaicStoreConnectionParameters? ConnectionParameters
         // GraphQL -> connectionParameters: MosaicStoreConnectionParameters (type)
         if (this.ConnectionParameters != null) {
-            var fspec = this.ConnectionParameters.AsFieldSpec(indent+1);
+            var fspec = this.ConnectionParameters.AsFieldSpec(conf.Child("connectionParameters"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "connectionParameters {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "connectionParameters {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -194,64 +235,175 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> MosaicStoreConnectionStatus? StoreConnectionStatus
         // GraphQL -> storeConnectionStatus: MosaicStoreConnectionStatus! (enum)
-        if (this.StoreConnectionStatus == null && ec.Includes("storeConnectionStatus",true))
+        if (ec.Includes("storeConnectionStatus",true))
         {
-            this.StoreConnectionStatus = new MosaicStoreConnectionStatus();
+            if(this.StoreConnectionStatus == null) {
+
+                this.StoreConnectionStatus = new MosaicStoreConnectionStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.StoreConnectionStatus != null && ec.Excludes("storeConnectionStatus",true))
+        {
+            this.StoreConnectionStatus = null;
         }
         //      C# -> MosaicStoreType? StoreType
         // GraphQL -> storeType: MosaicStoreType! (enum)
-        if (this.StoreType == null && ec.Includes("storeType",true))
+        if (ec.Includes("storeType",true))
         {
-            this.StoreType = new MosaicStoreType();
+            if(this.StoreType == null) {
+
+                this.StoreType = new MosaicStoreType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.StoreType != null && ec.Excludes("storeType",true))
+        {
+            this.StoreType = null;
         }
         //      C# -> System.Int32? BackupCount
         // GraphQL -> backupCount: Int! (scalar)
-        if (this.BackupCount == null && ec.Includes("backupCount",true))
+        if (ec.Includes("backupCount",true))
         {
-            this.BackupCount = Int32.MinValue;
+            if(this.BackupCount == null) {
+
+                this.BackupCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.BackupCount != null && ec.Excludes("backupCount",true))
+        {
+            this.BackupCount = null;
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
-        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
+        if (ec.Includes("clusterUuid",true))
         {
-            this.ClusterUuid = "FETCH";
+            if(this.ClusterUuid == null) {
+
+                this.ClusterUuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterUuid != null && ec.Excludes("clusterUuid",true))
+        {
+            this.ClusterUuid = null;
         }
         //      C# -> System.String? Fid
         // GraphQL -> fid: String! (scalar)
-        if (this.Fid == null && ec.Includes("fid",true))
+        if (ec.Includes("fid",true))
         {
-            this.Fid = "FETCH";
+            if(this.Fid == null) {
+
+                this.Fid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Fid != null && ec.Excludes("fid",true))
+        {
+            this.Fid = null;
         }
         //      C# -> System.String? GeographicLocation
         // GraphQL -> geographicLocation: String! (scalar)
-        if (this.GeographicLocation == null && ec.Includes("geographicLocation",true))
+        if (ec.Includes("geographicLocation",true))
         {
-            this.GeographicLocation = "FETCH";
+            if(this.GeographicLocation == null) {
+
+                this.GeographicLocation = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.GeographicLocation != null && ec.Excludes("geographicLocation",true))
+        {
+            this.GeographicLocation = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.Int64? SpaceConsumedBytes
         // GraphQL -> spaceConsumedBytes: Long! (scalar)
-        if (this.SpaceConsumedBytes == null && ec.Includes("spaceConsumedBytes",true))
+        if (ec.Includes("spaceConsumedBytes",true))
         {
-            this.SpaceConsumedBytes = new System.Int64();
+            if(this.SpaceConsumedBytes == null) {
+
+                this.SpaceConsumedBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SpaceConsumedBytes != null && ec.Excludes("spaceConsumedBytes",true))
+        {
+            this.SpaceConsumedBytes = null;
         }
         //      C# -> System.String? StorageLocationName
         // GraphQL -> storageLocationName: String! (scalar)
-        if (this.StorageLocationName == null && ec.Includes("storageLocationName",true))
+        if (ec.Includes("storageLocationName",true))
         {
-            this.StorageLocationName = "FETCH";
+            if(this.StorageLocationName == null) {
+
+                this.StorageLocationName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.StorageLocationName != null && ec.Excludes("storageLocationName",true))
+        {
+            this.StorageLocationName = null;
         }
         //      C# -> MosaicStoreConnectionParameters? ConnectionParameters
         // GraphQL -> connectionParameters: MosaicStoreConnectionParameters (type)
-        if (this.ConnectionParameters == null && ec.Includes("connectionParameters",false))
+        if (ec.Includes("connectionParameters",false))
         {
-            this.ConnectionParameters = new MosaicStoreConnectionParameters();
-            this.ConnectionParameters.ApplyExploratoryFieldSpec(ec.NewChild("connectionParameters"));
+            if(this.ConnectionParameters == null) {
+
+                this.ConnectionParameters = new MosaicStoreConnectionParameters();
+                this.ConnectionParameters.ApplyExploratoryFieldSpec(ec.NewChild("connectionParameters"));
+
+            } else {
+
+                this.ConnectionParameters.ApplyExploratoryFieldSpec(ec.NewChild("connectionParameters"));
+
+            }
+        }
+        else if (this.ConnectionParameters != null && ec.Excludes("connectionParameters",false))
+        {
+            this.ConnectionParameters = null;
         }
     }
 
@@ -278,9 +430,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<MosaicStorageLocation> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

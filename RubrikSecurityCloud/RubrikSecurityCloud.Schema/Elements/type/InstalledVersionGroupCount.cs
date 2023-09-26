@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int32? Count
         // GraphQL -> count: Int! (scalar)
         if (this.Count != null) {
-            s += ind + "count\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "count\n" ;
+            } else {
+                s += ind + "count\n" ;
+            }
         }
         //      C# -> System.String? Group
         // GraphQL -> group: String! (scalar)
         if (this.Group != null) {
-            s += ind + "group\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "group\n" ;
+            } else {
+                s += ind + "group\n" ;
+            }
         }
         //      C# -> System.Boolean? IsUpgradeRecommended
         // GraphQL -> isUpgradeRecommended: Boolean! (scalar)
         if (this.IsUpgradeRecommended != null) {
-            s += ind + "isUpgradeRecommended\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isUpgradeRecommended\n" ;
+            } else {
+                s += ind + "isUpgradeRecommended\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int32? Count
         // GraphQL -> count: Int! (scalar)
-        if (this.Count == null && ec.Includes("count",true))
+        if (ec.Includes("count",true))
         {
-            this.Count = Int32.MinValue;
+            if(this.Count == null) {
+
+                this.Count = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Count != null && ec.Excludes("count",true))
+        {
+            this.Count = null;
         }
         //      C# -> System.String? Group
         // GraphQL -> group: String! (scalar)
-        if (this.Group == null && ec.Includes("group",true))
+        if (ec.Includes("group",true))
         {
-            this.Group = "FETCH";
+            if(this.Group == null) {
+
+                this.Group = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Group != null && ec.Excludes("group",true))
+        {
+            this.Group = null;
         }
         //      C# -> System.Boolean? IsUpgradeRecommended
         // GraphQL -> isUpgradeRecommended: Boolean! (scalar)
-        if (this.IsUpgradeRecommended == null && ec.Includes("isUpgradeRecommended",true))
+        if (ec.Includes("isUpgradeRecommended",true))
         {
-            this.IsUpgradeRecommended = true;
+            if(this.IsUpgradeRecommended == null) {
+
+                this.IsUpgradeRecommended = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsUpgradeRecommended != null && ec.Excludes("isUpgradeRecommended",true))
+        {
+            this.IsUpgradeRecommended = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<InstalledVersionGroupCount> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

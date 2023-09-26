@@ -83,45 +83,66 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? LocationId
         // GraphQL -> locationId: String! (scalar)
         if (this.LocationId != null) {
-            s += ind + "locationId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "locationId\n" ;
+            } else {
+                s += ind + "locationId\n" ;
+            }
         }
         //      C# -> List<RcsArchivalLocationStatsRecord>? BlobCapacityStats
         // GraphQL -> blobCapacityStats: [RcsArchivalLocationStatsRecord!]! (type)
         if (this.BlobCapacityStats != null) {
-            var fspec = this.BlobCapacityStats.AsFieldSpec(indent+1);
+            var fspec = this.BlobCapacityStats.AsFieldSpec(conf.Child("blobCapacityStats"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "blobCapacityStats {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "blobCapacityStats {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<RcsArchivalLocationStatsRecord>? EgressStats
         // GraphQL -> egressStats: [RcsArchivalLocationStatsRecord!]! (type)
         if (this.EgressStats != null) {
-            var fspec = this.EgressStats.AsFieldSpec(indent+1);
+            var fspec = this.EgressStats.AsFieldSpec(conf.Child("egressStats"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "egressStats {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "egressStats {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<RcsArchivalLocationStatsRecord>? ForecastedBlobCapacityStats
         // GraphQL -> forecastedBlobCapacityStats: [RcsArchivalLocationStatsRecord!]! (type)
         if (this.ForecastedBlobCapacityStats != null) {
-            var fspec = this.ForecastedBlobCapacityStats.AsFieldSpec(indent+1);
+            var fspec = this.ForecastedBlobCapacityStats.AsFieldSpec(conf.Child("forecastedBlobCapacityStats"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "forecastedBlobCapacityStats {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "forecastedBlobCapacityStats {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<RcsArchivalLocationStatsRecord>? IngressStats
         // GraphQL -> ingressStats: [RcsArchivalLocationStatsRecord!]! (type)
         if (this.IngressStats != null) {
-            var fspec = this.IngressStats.AsFieldSpec(indent+1);
+            var fspec = this.IngressStats.AsFieldSpec(conf.Child("ingressStats"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "ingressStats {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "ingressStats {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -133,37 +154,96 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? LocationId
         // GraphQL -> locationId: String! (scalar)
-        if (this.LocationId == null && ec.Includes("locationId",true))
+        if (ec.Includes("locationId",true))
         {
-            this.LocationId = "FETCH";
+            if(this.LocationId == null) {
+
+                this.LocationId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.LocationId != null && ec.Excludes("locationId",true))
+        {
+            this.LocationId = null;
         }
         //      C# -> List<RcsArchivalLocationStatsRecord>? BlobCapacityStats
         // GraphQL -> blobCapacityStats: [RcsArchivalLocationStatsRecord!]! (type)
-        if (this.BlobCapacityStats == null && ec.Includes("blobCapacityStats",false))
+        if (ec.Includes("blobCapacityStats",false))
         {
-            this.BlobCapacityStats = new List<RcsArchivalLocationStatsRecord>();
-            this.BlobCapacityStats.ApplyExploratoryFieldSpec(ec.NewChild("blobCapacityStats"));
+            if(this.BlobCapacityStats == null) {
+
+                this.BlobCapacityStats = new List<RcsArchivalLocationStatsRecord>();
+                this.BlobCapacityStats.ApplyExploratoryFieldSpec(ec.NewChild("blobCapacityStats"));
+
+            } else {
+
+                this.BlobCapacityStats.ApplyExploratoryFieldSpec(ec.NewChild("blobCapacityStats"));
+
+            }
+        }
+        else if (this.BlobCapacityStats != null && ec.Excludes("blobCapacityStats",false))
+        {
+            this.BlobCapacityStats = null;
         }
         //      C# -> List<RcsArchivalLocationStatsRecord>? EgressStats
         // GraphQL -> egressStats: [RcsArchivalLocationStatsRecord!]! (type)
-        if (this.EgressStats == null && ec.Includes("egressStats",false))
+        if (ec.Includes("egressStats",false))
         {
-            this.EgressStats = new List<RcsArchivalLocationStatsRecord>();
-            this.EgressStats.ApplyExploratoryFieldSpec(ec.NewChild("egressStats"));
+            if(this.EgressStats == null) {
+
+                this.EgressStats = new List<RcsArchivalLocationStatsRecord>();
+                this.EgressStats.ApplyExploratoryFieldSpec(ec.NewChild("egressStats"));
+
+            } else {
+
+                this.EgressStats.ApplyExploratoryFieldSpec(ec.NewChild("egressStats"));
+
+            }
+        }
+        else if (this.EgressStats != null && ec.Excludes("egressStats",false))
+        {
+            this.EgressStats = null;
         }
         //      C# -> List<RcsArchivalLocationStatsRecord>? ForecastedBlobCapacityStats
         // GraphQL -> forecastedBlobCapacityStats: [RcsArchivalLocationStatsRecord!]! (type)
-        if (this.ForecastedBlobCapacityStats == null && ec.Includes("forecastedBlobCapacityStats",false))
+        if (ec.Includes("forecastedBlobCapacityStats",false))
         {
-            this.ForecastedBlobCapacityStats = new List<RcsArchivalLocationStatsRecord>();
-            this.ForecastedBlobCapacityStats.ApplyExploratoryFieldSpec(ec.NewChild("forecastedBlobCapacityStats"));
+            if(this.ForecastedBlobCapacityStats == null) {
+
+                this.ForecastedBlobCapacityStats = new List<RcsArchivalLocationStatsRecord>();
+                this.ForecastedBlobCapacityStats.ApplyExploratoryFieldSpec(ec.NewChild("forecastedBlobCapacityStats"));
+
+            } else {
+
+                this.ForecastedBlobCapacityStats.ApplyExploratoryFieldSpec(ec.NewChild("forecastedBlobCapacityStats"));
+
+            }
+        }
+        else if (this.ForecastedBlobCapacityStats != null && ec.Excludes("forecastedBlobCapacityStats",false))
+        {
+            this.ForecastedBlobCapacityStats = null;
         }
         //      C# -> List<RcsArchivalLocationStatsRecord>? IngressStats
         // GraphQL -> ingressStats: [RcsArchivalLocationStatsRecord!]! (type)
-        if (this.IngressStats == null && ec.Includes("ingressStats",false))
+        if (ec.Includes("ingressStats",false))
         {
-            this.IngressStats = new List<RcsArchivalLocationStatsRecord>();
-            this.IngressStats.ApplyExploratoryFieldSpec(ec.NewChild("ingressStats"));
+            if(this.IngressStats == null) {
+
+                this.IngressStats = new List<RcsArchivalLocationStatsRecord>();
+                this.IngressStats.ApplyExploratoryFieldSpec(ec.NewChild("ingressStats"));
+
+            } else {
+
+                this.IngressStats.ApplyExploratoryFieldSpec(ec.NewChild("ingressStats"));
+
+            }
+        }
+        else if (this.IngressStats != null && ec.Excludes("ingressStats",false))
+        {
+            this.IngressStats = null;
         }
     }
 
@@ -190,9 +270,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<RcsArchivalLocationConsumptionStats> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

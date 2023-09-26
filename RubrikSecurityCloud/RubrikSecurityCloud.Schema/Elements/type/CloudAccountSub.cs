@@ -83,34 +83,55 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
         if (this.Description != null) {
-            s += ind + "description\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "description\n" ;
+            } else {
+                s += ind + "description\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.String? OwnerId
         // GraphQL -> ownerId: String! (scalar)
         if (this.OwnerId != null) {
-            s += ind + "ownerId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "ownerId\n" ;
+            } else {
+                s += ind + "ownerId\n" ;
+            }
         }
         //      C# -> System.String? SecurityGroupId
         // GraphQL -> securityGroupId: String! (scalar)
         if (this.SecurityGroupId != null) {
-            s += ind + "securityGroupId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "securityGroupId\n" ;
+            } else {
+                s += ind + "securityGroupId\n" ;
+            }
         }
         //      C# -> System.String? VpcId
         // GraphQL -> vpcId: String! (scalar)
         if (this.VpcId != null) {
-            s += ind + "vpcId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "vpcId\n" ;
+            } else {
+                s += ind + "vpcId\n" ;
+            }
         }
         return s;
     }
@@ -121,33 +142,88 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
-        if (this.Description == null && ec.Includes("description",true))
+        if (ec.Includes("description",true))
         {
-            this.Description = "FETCH";
+            if(this.Description == null) {
+
+                this.Description = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Description != null && ec.Excludes("description",true))
+        {
+            this.Description = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.String? OwnerId
         // GraphQL -> ownerId: String! (scalar)
-        if (this.OwnerId == null && ec.Includes("ownerId",true))
+        if (ec.Includes("ownerId",true))
         {
-            this.OwnerId = "FETCH";
+            if(this.OwnerId == null) {
+
+                this.OwnerId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OwnerId != null && ec.Excludes("ownerId",true))
+        {
+            this.OwnerId = null;
         }
         //      C# -> System.String? SecurityGroupId
         // GraphQL -> securityGroupId: String! (scalar)
-        if (this.SecurityGroupId == null && ec.Includes("securityGroupId",true))
+        if (ec.Includes("securityGroupId",true))
         {
-            this.SecurityGroupId = "FETCH";
+            if(this.SecurityGroupId == null) {
+
+                this.SecurityGroupId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SecurityGroupId != null && ec.Excludes("securityGroupId",true))
+        {
+            this.SecurityGroupId = null;
         }
         //      C# -> System.String? VpcId
         // GraphQL -> vpcId: String! (scalar)
-        if (this.VpcId == null && ec.Includes("vpcId",true))
+        if (ec.Includes("vpcId",true))
         {
-            this.VpcId = "FETCH";
+            if(this.VpcId == null) {
+
+                this.VpcId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.VpcId != null && ec.Excludes("vpcId",true))
+        {
+            this.VpcId = null;
         }
     }
 
@@ -174,9 +250,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CloudAccountSub> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

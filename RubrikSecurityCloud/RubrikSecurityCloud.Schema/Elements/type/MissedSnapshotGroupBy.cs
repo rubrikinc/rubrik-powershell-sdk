@@ -65,32 +65,45 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> MissedSnapshotCommonConnection? MissedSnapshotConnection
         // GraphQL -> missedSnapshotConnection: MissedSnapshotCommonConnection! (type)
         if (this.MissedSnapshotConnection != null) {
-            var fspec = this.MissedSnapshotConnection.AsFieldSpec(indent+1);
+            var fspec = this.MissedSnapshotConnection.AsFieldSpec(conf.Child("missedSnapshotConnection"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "missedSnapshotConnection {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "missedSnapshotConnection {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<MissedSnapshotGroupBy>? MissedSnapshotGroupByField
         // GraphQL -> missedSnapshotGroupBy: [MissedSnapshotGroupBy!]! (type)
         if (this.MissedSnapshotGroupByField != null) {
-            var fspec = this.MissedSnapshotGroupByField.AsFieldSpec(indent+1);
+            var fspec = this.MissedSnapshotGroupByField.AsFieldSpec(conf.Child("missedSnapshotGroupBy"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "missedSnapshotGroupBy {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "missedSnapshotGroupBy {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> MissedSnapshotGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: MissedSnapshotGroupByInfo! (union)
         if (this.GroupByInfo != null) {
-            var fspec = this.GroupByInfo.AsFieldSpec(indent+1);
+            var fspec = this.GroupByInfo.AsFieldSpec(conf.Child("groupByInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -102,25 +115,65 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> MissedSnapshotCommonConnection? MissedSnapshotConnection
         // GraphQL -> missedSnapshotConnection: MissedSnapshotCommonConnection! (type)
-        if (this.MissedSnapshotConnection == null && ec.Includes("missedSnapshotConnection",false))
+        if (ec.Includes("missedSnapshotConnection",false))
         {
-            this.MissedSnapshotConnection = new MissedSnapshotCommonConnection();
-            this.MissedSnapshotConnection.ApplyExploratoryFieldSpec(ec.NewChild("missedSnapshotConnection"));
+            if(this.MissedSnapshotConnection == null) {
+
+                this.MissedSnapshotConnection = new MissedSnapshotCommonConnection();
+                this.MissedSnapshotConnection.ApplyExploratoryFieldSpec(ec.NewChild("missedSnapshotConnection"));
+
+            } else {
+
+                this.MissedSnapshotConnection.ApplyExploratoryFieldSpec(ec.NewChild("missedSnapshotConnection"));
+
+            }
+        }
+        else if (this.MissedSnapshotConnection != null && ec.Excludes("missedSnapshotConnection",false))
+        {
+            this.MissedSnapshotConnection = null;
         }
         //      C# -> List<MissedSnapshotGroupBy>? MissedSnapshotGroupByField
         // GraphQL -> missedSnapshotGroupBy: [MissedSnapshotGroupBy!]! (type)
-        if (this.MissedSnapshotGroupByField == null && ec.Includes("missedSnapshotGroupBy",false))
+        if (ec.Includes("missedSnapshotGroupBy",false))
         {
-            this.MissedSnapshotGroupByField = new List<MissedSnapshotGroupBy>();
-            this.MissedSnapshotGroupByField.ApplyExploratoryFieldSpec(ec.NewChild("missedSnapshotGroupBy"));
+            if(this.MissedSnapshotGroupByField == null) {
+
+                this.MissedSnapshotGroupByField = new List<MissedSnapshotGroupBy>();
+                this.MissedSnapshotGroupByField.ApplyExploratoryFieldSpec(ec.NewChild("missedSnapshotGroupBy"));
+
+            } else {
+
+                this.MissedSnapshotGroupByField.ApplyExploratoryFieldSpec(ec.NewChild("missedSnapshotGroupBy"));
+
+            }
+        }
+        else if (this.MissedSnapshotGroupByField != null && ec.Excludes("missedSnapshotGroupBy",false))
+        {
+            this.MissedSnapshotGroupByField = null;
         }
         //      C# -> MissedSnapshotGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: MissedSnapshotGroupByInfo! (union)
-        if (this.GroupByInfo == null && ec.Includes("groupByInfo",false))
+        if (ec.Includes("groupByInfo",false))
         {
-            var impls = new List<MissedSnapshotGroupByInfo>();
-            impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
-            this.GroupByInfo = (MissedSnapshotGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+            if(this.GroupByInfo == null) {
+
+                var impls = new List<MissedSnapshotGroupByInfo>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
+                this.GroupByInfo = (MissedSnapshotGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<MissedSnapshotGroupByInfo>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
+                this.GroupByInfo = (MissedSnapshotGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.GroupByInfo != null && ec.Excludes("groupByInfo",false))
+        {
+            this.GroupByInfo = null;
         }
     }
 
@@ -147,9 +200,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<MissedSnapshotGroupBy> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

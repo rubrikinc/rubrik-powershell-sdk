@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> DhrcMetric? Metric
         // GraphQL -> metric: DhrcMetric! (enum)
         if (this.Metric != null) {
-            s += ind + "metric\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "metric\n" ;
+            } else {
+                s += ind + "metric\n" ;
+            }
         }
         //      C# -> DateTime? CollectedAt
         // GraphQL -> collectedAt: DateTime (scalar)
         if (this.CollectedAt != null) {
-            s += ind + "collectedAt\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "collectedAt\n" ;
+            } else {
+                s += ind + "collectedAt\n" ;
+            }
         }
         //      C# -> System.Single? MaxValue
         // GraphQL -> maxValue: Float! (scalar)
         if (this.MaxValue != null) {
-            s += ind + "maxValue\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "maxValue\n" ;
+            } else {
+                s += ind + "maxValue\n" ;
+            }
         }
         //      C# -> System.Single? Value
         // GraphQL -> value: Float! (scalar)
         if (this.Value != null) {
-            s += ind + "value\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "value\n" ;
+            } else {
+                s += ind + "value\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> DhrcMetric? Metric
         // GraphQL -> metric: DhrcMetric! (enum)
-        if (this.Metric == null && ec.Includes("metric",true))
+        if (ec.Includes("metric",true))
         {
-            this.Metric = new DhrcMetric();
+            if(this.Metric == null) {
+
+                this.Metric = new DhrcMetric();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Metric != null && ec.Excludes("metric",true))
+        {
+            this.Metric = null;
         }
         //      C# -> DateTime? CollectedAt
         // GraphQL -> collectedAt: DateTime (scalar)
-        if (this.CollectedAt == null && ec.Includes("collectedAt",true))
+        if (ec.Includes("collectedAt",true))
         {
-            this.CollectedAt = new DateTime();
+            if(this.CollectedAt == null) {
+
+                this.CollectedAt = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CollectedAt != null && ec.Excludes("collectedAt",true))
+        {
+            this.CollectedAt = null;
         }
         //      C# -> System.Single? MaxValue
         // GraphQL -> maxValue: Float! (scalar)
-        if (this.MaxValue == null && ec.Includes("maxValue",true))
+        if (ec.Includes("maxValue",true))
         {
-            this.MaxValue = new System.Single();
+            if(this.MaxValue == null) {
+
+                this.MaxValue = new System.Single();
+
+            } else {
+
+
+            }
+        }
+        else if (this.MaxValue != null && ec.Excludes("maxValue",true))
+        {
+            this.MaxValue = null;
         }
         //      C# -> System.Single? Value
         // GraphQL -> value: Float! (scalar)
-        if (this.Value == null && ec.Includes("value",true))
+        if (ec.Includes("value",true))
         {
-            this.Value = new System.Single();
+            if(this.Value == null) {
+
+                this.Value = new System.Single();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Value != null && ec.Excludes("value",true))
+        {
+            this.Value = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<DhrcCollectedMetric> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

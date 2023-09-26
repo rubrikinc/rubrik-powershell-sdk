@@ -110,51 +110,84 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> AnalyzerTypeEnum? AnalyzerType
         // GraphQL -> analyzerType: AnalyzerTypeEnum! (enum)
         if (this.AnalyzerType != null) {
-            s += ind + "analyzerType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "analyzerType\n" ;
+            } else {
+                s += ind + "analyzerType\n" ;
+            }
         }
         //      C# -> RiskLevelType? Risk
         // GraphQL -> risk: RiskLevelType! (enum)
         if (this.Risk != null) {
-            s += ind + "risk\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "risk\n" ;
+            } else {
+                s += ind + "risk\n" ;
+            }
         }
         //      C# -> List<System.String>? Dictionary
         // GraphQL -> dictionary: [String!]! (scalar)
         if (this.Dictionary != null) {
-            s += ind + "dictionary\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "dictionary\n" ;
+            } else {
+                s += ind + "dictionary\n" ;
+            }
         }
         //      C# -> System.String? DictionaryCsv
         // GraphQL -> dictionaryCsv: String! (scalar)
         if (this.DictionaryCsv != null) {
-            s += ind + "dictionaryCsv\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "dictionaryCsv\n" ;
+            } else {
+                s += ind + "dictionaryCsv\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.String? Regex
         // GraphQL -> regex: String! (scalar)
         if (this.Regex != null) {
-            s += ind + "regex\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "regex\n" ;
+            } else {
+                s += ind + "regex\n" ;
+            }
         }
         //      C# -> AnalyzerRiskInstance? AnalyzerRiskInstance
         // GraphQL -> analyzerRiskInstance: AnalyzerRiskInstance (type)
         if (this.AnalyzerRiskInstance != null) {
-            var fspec = this.AnalyzerRiskInstance.AsFieldSpec(indent+1);
+            var fspec = this.AnalyzerRiskInstance.AsFieldSpec(conf.Child("analyzerRiskInstance"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "analyzerRiskInstance {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "analyzerRiskInstance {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -166,52 +199,141 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> AnalyzerTypeEnum? AnalyzerType
         // GraphQL -> analyzerType: AnalyzerTypeEnum! (enum)
-        if (this.AnalyzerType == null && ec.Includes("analyzerType",true))
+        if (ec.Includes("analyzerType",true))
         {
-            this.AnalyzerType = new AnalyzerTypeEnum();
+            if(this.AnalyzerType == null) {
+
+                this.AnalyzerType = new AnalyzerTypeEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AnalyzerType != null && ec.Excludes("analyzerType",true))
+        {
+            this.AnalyzerType = null;
         }
         //      C# -> RiskLevelType? Risk
         // GraphQL -> risk: RiskLevelType! (enum)
-        if (this.Risk == null && ec.Includes("risk",true))
+        if (ec.Includes("risk",true))
         {
-            this.Risk = new RiskLevelType();
+            if(this.Risk == null) {
+
+                this.Risk = new RiskLevelType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Risk != null && ec.Excludes("risk",true))
+        {
+            this.Risk = null;
         }
         //      C# -> List<System.String>? Dictionary
         // GraphQL -> dictionary: [String!]! (scalar)
-        if (this.Dictionary == null && ec.Includes("dictionary",true))
+        if (ec.Includes("dictionary",true))
         {
-            this.Dictionary = new List<System.String>();
+            if(this.Dictionary == null) {
+
+                this.Dictionary = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Dictionary != null && ec.Excludes("dictionary",true))
+        {
+            this.Dictionary = null;
         }
         //      C# -> System.String? DictionaryCsv
         // GraphQL -> dictionaryCsv: String! (scalar)
-        if (this.DictionaryCsv == null && ec.Includes("dictionaryCsv",true))
+        if (ec.Includes("dictionaryCsv",true))
         {
-            this.DictionaryCsv = "FETCH";
+            if(this.DictionaryCsv == null) {
+
+                this.DictionaryCsv = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DictionaryCsv != null && ec.Excludes("dictionaryCsv",true))
+        {
+            this.DictionaryCsv = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.String? Regex
         // GraphQL -> regex: String! (scalar)
-        if (this.Regex == null && ec.Includes("regex",true))
+        if (ec.Includes("regex",true))
         {
-            this.Regex = "FETCH";
+            if(this.Regex == null) {
+
+                this.Regex = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Regex != null && ec.Excludes("regex",true))
+        {
+            this.Regex = null;
         }
         //      C# -> AnalyzerRiskInstance? AnalyzerRiskInstance
         // GraphQL -> analyzerRiskInstance: AnalyzerRiskInstance (type)
-        if (this.AnalyzerRiskInstance == null && ec.Includes("analyzerRiskInstance",false))
+        if (ec.Includes("analyzerRiskInstance",false))
         {
-            this.AnalyzerRiskInstance = new AnalyzerRiskInstance();
-            this.AnalyzerRiskInstance.ApplyExploratoryFieldSpec(ec.NewChild("analyzerRiskInstance"));
+            if(this.AnalyzerRiskInstance == null) {
+
+                this.AnalyzerRiskInstance = new AnalyzerRiskInstance();
+                this.AnalyzerRiskInstance.ApplyExploratoryFieldSpec(ec.NewChild("analyzerRiskInstance"));
+
+            } else {
+
+                this.AnalyzerRiskInstance.ApplyExploratoryFieldSpec(ec.NewChild("analyzerRiskInstance"));
+
+            }
+        }
+        else if (this.AnalyzerRiskInstance != null && ec.Excludes("analyzerRiskInstance",false))
+        {
+            this.AnalyzerRiskInstance = null;
         }
     }
 
@@ -238,9 +360,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<Analyzer> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

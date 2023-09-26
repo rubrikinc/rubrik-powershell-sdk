@@ -83,42 +83,63 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
         if (this.Hostname != null) {
-            s += ind + "hostname\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostname\n" ;
+            } else {
+                s += ind + "hostname\n" ;
+            }
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
         if (this.Username != null) {
-            s += ind + "username\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "username\n" ;
+            } else {
+                s += ind + "username\n" ;
+            }
         }
         //      C# -> RefreshableObjectConnectionStatus? ConnectionStatus
         // GraphQL -> connectionStatus: RefreshableObjectConnectionStatus (type)
         if (this.ConnectionStatus != null) {
-            var fspec = this.ConnectionStatus.AsFieldSpec(indent+1);
+            var fspec = this.ConnectionStatus.AsFieldSpec(conf.Child("connectionStatus"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "connectionStatus {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "connectionStatus {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> ManagedObjectPendingSlaInfo? PendingSlaDomain
         // GraphQL -> pendingSlaDomain: ManagedObjectPendingSlaInfo (type)
         if (this.PendingSlaDomain != null) {
-            var fspec = this.PendingSlaDomain.AsFieldSpec(indent+1);
+            var fspec = this.PendingSlaDomain.AsFieldSpec(conf.Child("pendingSlaDomain"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "pendingSlaDomain {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "pendingSlaDomain {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> SlaAssignable? SlaAssignable
         // GraphQL -> slaAssignable: SlaAssignable (type)
         if (this.SlaAssignable != null) {
-            var fspec = this.SlaAssignable.AsFieldSpec(indent+1);
+            var fspec = this.SlaAssignable.AsFieldSpec(conf.Child("slaAssignable"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "slaAssignable {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "slaAssignable {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -130,36 +151,94 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
-        if (this.Hostname == null && ec.Includes("hostname",true))
+        if (ec.Includes("hostname",true))
         {
-            this.Hostname = "FETCH";
+            if(this.Hostname == null) {
+
+                this.Hostname = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Hostname != null && ec.Excludes("hostname",true))
+        {
+            this.Hostname = null;
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
-        if (this.Username == null && ec.Includes("username",true))
+        if (ec.Includes("username",true))
         {
-            this.Username = "FETCH";
+            if(this.Username == null) {
+
+                this.Username = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Username != null && ec.Excludes("username",true))
+        {
+            this.Username = null;
         }
         //      C# -> RefreshableObjectConnectionStatus? ConnectionStatus
         // GraphQL -> connectionStatus: RefreshableObjectConnectionStatus (type)
-        if (this.ConnectionStatus == null && ec.Includes("connectionStatus",false))
+        if (ec.Includes("connectionStatus",false))
         {
-            this.ConnectionStatus = new RefreshableObjectConnectionStatus();
-            this.ConnectionStatus.ApplyExploratoryFieldSpec(ec.NewChild("connectionStatus"));
+            if(this.ConnectionStatus == null) {
+
+                this.ConnectionStatus = new RefreshableObjectConnectionStatus();
+                this.ConnectionStatus.ApplyExploratoryFieldSpec(ec.NewChild("connectionStatus"));
+
+            } else {
+
+                this.ConnectionStatus.ApplyExploratoryFieldSpec(ec.NewChild("connectionStatus"));
+
+            }
+        }
+        else if (this.ConnectionStatus != null && ec.Excludes("connectionStatus",false))
+        {
+            this.ConnectionStatus = null;
         }
         //      C# -> ManagedObjectPendingSlaInfo? PendingSlaDomain
         // GraphQL -> pendingSlaDomain: ManagedObjectPendingSlaInfo (type)
-        if (this.PendingSlaDomain == null && ec.Includes("pendingSlaDomain",false))
+        if (ec.Includes("pendingSlaDomain",false))
         {
-            this.PendingSlaDomain = new ManagedObjectPendingSlaInfo();
-            this.PendingSlaDomain.ApplyExploratoryFieldSpec(ec.NewChild("pendingSlaDomain"));
+            if(this.PendingSlaDomain == null) {
+
+                this.PendingSlaDomain = new ManagedObjectPendingSlaInfo();
+                this.PendingSlaDomain.ApplyExploratoryFieldSpec(ec.NewChild("pendingSlaDomain"));
+
+            } else {
+
+                this.PendingSlaDomain.ApplyExploratoryFieldSpec(ec.NewChild("pendingSlaDomain"));
+
+            }
+        }
+        else if (this.PendingSlaDomain != null && ec.Excludes("pendingSlaDomain",false))
+        {
+            this.PendingSlaDomain = null;
         }
         //      C# -> SlaAssignable? SlaAssignable
         // GraphQL -> slaAssignable: SlaAssignable (type)
-        if (this.SlaAssignable == null && ec.Includes("slaAssignable",false))
+        if (ec.Includes("slaAssignable",false))
         {
-            this.SlaAssignable = new SlaAssignable();
-            this.SlaAssignable.ApplyExploratoryFieldSpec(ec.NewChild("slaAssignable"));
+            if(this.SlaAssignable == null) {
+
+                this.SlaAssignable = new SlaAssignable();
+                this.SlaAssignable.ApplyExploratoryFieldSpec(ec.NewChild("slaAssignable"));
+
+            } else {
+
+                this.SlaAssignable.ApplyExploratoryFieldSpec(ec.NewChild("slaAssignable"));
+
+            }
+        }
+        else if (this.SlaAssignable != null && ec.Excludes("slaAssignable",false))
+        {
+            this.SlaAssignable = null;
         }
     }
 
@@ -186,9 +265,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<UpdateNutanixPrismCentralReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

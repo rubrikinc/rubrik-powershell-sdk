@@ -56,24 +56,33 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> AzureAdGroup? AzureAdGroup
         // GraphQL -> azureAdGroup: AzureAdGroup (type)
         if (this.AzureAdGroup != null) {
-            var fspec = this.AzureAdGroup.AsFieldSpec(indent+1);
+            var fspec = this.AzureAdGroup.AsFieldSpec(conf.Child("azureAdGroup"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "azureAdGroup {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "azureAdGroup {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> AzureAdUser? AzureAdUser
         // GraphQL -> azureAdUser: AzureAdUser (type)
         if (this.AzureAdUser != null) {
-            var fspec = this.AzureAdUser.AsFieldSpec(indent+1);
+            var fspec = this.AzureAdUser.AsFieldSpec(conf.Child("azureAdUser"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "azureAdUser {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "azureAdUser {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -85,17 +94,41 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> AzureAdGroup? AzureAdGroup
         // GraphQL -> azureAdGroup: AzureAdGroup (type)
-        if (this.AzureAdGroup == null && ec.Includes("azureAdGroup",false))
+        if (ec.Includes("azureAdGroup",false))
         {
-            this.AzureAdGroup = new AzureAdGroup();
-            this.AzureAdGroup.ApplyExploratoryFieldSpec(ec.NewChild("azureAdGroup"));
+            if(this.AzureAdGroup == null) {
+
+                this.AzureAdGroup = new AzureAdGroup();
+                this.AzureAdGroup.ApplyExploratoryFieldSpec(ec.NewChild("azureAdGroup"));
+
+            } else {
+
+                this.AzureAdGroup.ApplyExploratoryFieldSpec(ec.NewChild("azureAdGroup"));
+
+            }
+        }
+        else if (this.AzureAdGroup != null && ec.Excludes("azureAdGroup",false))
+        {
+            this.AzureAdGroup = null;
         }
         //      C# -> AzureAdUser? AzureAdUser
         // GraphQL -> azureAdUser: AzureAdUser (type)
-        if (this.AzureAdUser == null && ec.Includes("azureAdUser",false))
+        if (ec.Includes("azureAdUser",false))
         {
-            this.AzureAdUser = new AzureAdUser();
-            this.AzureAdUser.ApplyExploratoryFieldSpec(ec.NewChild("azureAdUser"));
+            if(this.AzureAdUser == null) {
+
+                this.AzureAdUser = new AzureAdUser();
+                this.AzureAdUser.ApplyExploratoryFieldSpec(ec.NewChild("azureAdUser"));
+
+            } else {
+
+                this.AzureAdUser.ApplyExploratoryFieldSpec(ec.NewChild("azureAdUser"));
+
+            }
+        }
+        else if (this.AzureAdUser != null && ec.Excludes("azureAdUser",false))
+        {
+            this.AzureAdUser = null;
         }
     }
 
@@ -122,9 +155,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AzureAdObjects> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

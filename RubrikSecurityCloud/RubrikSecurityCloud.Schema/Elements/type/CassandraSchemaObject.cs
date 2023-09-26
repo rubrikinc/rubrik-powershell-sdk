@@ -56,21 +56,30 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<System.String>? PrimaryKeys
         // GraphQL -> primaryKeys: [String!]! (scalar)
         if (this.PrimaryKeys != null) {
-            s += ind + "primaryKeys\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "primaryKeys\n" ;
+            } else {
+                s += ind + "primaryKeys\n" ;
+            }
         }
         //      C# -> List<CassandraColumnObject>? Columns
         // GraphQL -> columns: [CassandraColumnObject!]! (type)
         if (this.Columns != null) {
-            var fspec = this.Columns.AsFieldSpec(indent+1);
+            var fspec = this.Columns.AsFieldSpec(conf.Child("columns"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "columns {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "columns {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -82,16 +91,39 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<System.String>? PrimaryKeys
         // GraphQL -> primaryKeys: [String!]! (scalar)
-        if (this.PrimaryKeys == null && ec.Includes("primaryKeys",true))
+        if (ec.Includes("primaryKeys",true))
         {
-            this.PrimaryKeys = new List<System.String>();
+            if(this.PrimaryKeys == null) {
+
+                this.PrimaryKeys = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.PrimaryKeys != null && ec.Excludes("primaryKeys",true))
+        {
+            this.PrimaryKeys = null;
         }
         //      C# -> List<CassandraColumnObject>? Columns
         // GraphQL -> columns: [CassandraColumnObject!]! (type)
-        if (this.Columns == null && ec.Includes("columns",false))
+        if (ec.Includes("columns",false))
         {
-            this.Columns = new List<CassandraColumnObject>();
-            this.Columns.ApplyExploratoryFieldSpec(ec.NewChild("columns"));
+            if(this.Columns == null) {
+
+                this.Columns = new List<CassandraColumnObject>();
+                this.Columns.ApplyExploratoryFieldSpec(ec.NewChild("columns"));
+
+            } else {
+
+                this.Columns.ApplyExploratoryFieldSpec(ec.NewChild("columns"));
+
+            }
+        }
+        else if (this.Columns != null && ec.Excludes("columns",false))
+        {
+            this.Columns = null;
         }
     }
 
@@ -118,9 +150,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CassandraSchemaObject> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

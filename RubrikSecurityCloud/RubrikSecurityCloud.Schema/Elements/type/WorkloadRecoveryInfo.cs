@@ -83,34 +83,55 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Boolean? IsRefreshInProgressOpt
         // GraphQL -> isRefreshInProgressOpt: Boolean (scalar)
         if (this.IsRefreshInProgressOpt != null) {
-            s += ind + "isRefreshInProgressOpt\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isRefreshInProgressOpt\n" ;
+            } else {
+                s += ind + "isRefreshInProgressOpt\n" ;
+            }
         }
         //      C# -> DateTime? LastUpdatedTimeOpt
         // GraphQL -> lastUpdatedTimeOpt: DateTime (scalar)
         if (this.LastUpdatedTimeOpt != null) {
-            s += ind + "lastUpdatedTimeOpt\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "lastUpdatedTimeOpt\n" ;
+            } else {
+                s += ind + "lastUpdatedTimeOpt\n" ;
+            }
         }
         //      C# -> System.String? LocationId
         // GraphQL -> locationId: String! (scalar)
         if (this.LocationId != null) {
-            s += ind + "locationId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "locationId\n" ;
+            } else {
+                s += ind + "locationId\n" ;
+            }
         }
         //      C# -> System.String? NewWorkloadId
         // GraphQL -> newWorkloadId: String! (scalar)
         if (this.NewWorkloadId != null) {
-            s += ind + "newWorkloadId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "newWorkloadId\n" ;
+            } else {
+                s += ind + "newWorkloadId\n" ;
+            }
         }
         //      C# -> System.String? OldWorkloadId
         // GraphQL -> oldWorkloadId: String! (scalar)
         if (this.OldWorkloadId != null) {
-            s += ind + "oldWorkloadId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "oldWorkloadId\n" ;
+            } else {
+                s += ind + "oldWorkloadId\n" ;
+            }
         }
         return s;
     }
@@ -121,33 +142,88 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Boolean? IsRefreshInProgressOpt
         // GraphQL -> isRefreshInProgressOpt: Boolean (scalar)
-        if (this.IsRefreshInProgressOpt == null && ec.Includes("isRefreshInProgressOpt",true))
+        if (ec.Includes("isRefreshInProgressOpt",true))
         {
-            this.IsRefreshInProgressOpt = true;
+            if(this.IsRefreshInProgressOpt == null) {
+
+                this.IsRefreshInProgressOpt = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsRefreshInProgressOpt != null && ec.Excludes("isRefreshInProgressOpt",true))
+        {
+            this.IsRefreshInProgressOpt = null;
         }
         //      C# -> DateTime? LastUpdatedTimeOpt
         // GraphQL -> lastUpdatedTimeOpt: DateTime (scalar)
-        if (this.LastUpdatedTimeOpt == null && ec.Includes("lastUpdatedTimeOpt",true))
+        if (ec.Includes("lastUpdatedTimeOpt",true))
         {
-            this.LastUpdatedTimeOpt = new DateTime();
+            if(this.LastUpdatedTimeOpt == null) {
+
+                this.LastUpdatedTimeOpt = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastUpdatedTimeOpt != null && ec.Excludes("lastUpdatedTimeOpt",true))
+        {
+            this.LastUpdatedTimeOpt = null;
         }
         //      C# -> System.String? LocationId
         // GraphQL -> locationId: String! (scalar)
-        if (this.LocationId == null && ec.Includes("locationId",true))
+        if (ec.Includes("locationId",true))
         {
-            this.LocationId = "FETCH";
+            if(this.LocationId == null) {
+
+                this.LocationId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.LocationId != null && ec.Excludes("locationId",true))
+        {
+            this.LocationId = null;
         }
         //      C# -> System.String? NewWorkloadId
         // GraphQL -> newWorkloadId: String! (scalar)
-        if (this.NewWorkloadId == null && ec.Includes("newWorkloadId",true))
+        if (ec.Includes("newWorkloadId",true))
         {
-            this.NewWorkloadId = "FETCH";
+            if(this.NewWorkloadId == null) {
+
+                this.NewWorkloadId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NewWorkloadId != null && ec.Excludes("newWorkloadId",true))
+        {
+            this.NewWorkloadId = null;
         }
         //      C# -> System.String? OldWorkloadId
         // GraphQL -> oldWorkloadId: String! (scalar)
-        if (this.OldWorkloadId == null && ec.Includes("oldWorkloadId",true))
+        if (ec.Includes("oldWorkloadId",true))
         {
-            this.OldWorkloadId = "FETCH";
+            if(this.OldWorkloadId == null) {
+
+                this.OldWorkloadId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OldWorkloadId != null && ec.Excludes("oldWorkloadId",true))
+        {
+            this.OldWorkloadId = null;
         }
     }
 
@@ -174,9 +250,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<WorkloadRecoveryInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

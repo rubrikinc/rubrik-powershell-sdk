@@ -255,176 +255,273 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<Operation>? AuthorizedOperations
         // GraphQL -> authorizedOperations: [Operation!]! (enum)
         if (this.AuthorizedOperations != null) {
-            s += ind + "authorizedOperations\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "authorizedOperations\n" ;
+            } else {
+                s += ind + "authorizedOperations\n" ;
+            }
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         if (this.ObjectType != null) {
-            s += ind + "objectType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "objectType\n" ;
+            } else {
+                s += ind + "objectType\n" ;
+            }
         }
         //      C# -> SlaAssignmentTypeEnum? SlaAssignment
         // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
         if (this.SlaAssignment != null) {
-            s += ind + "slaAssignment\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "slaAssignment\n" ;
+            } else {
+                s += ind + "slaAssignment\n" ;
+            }
         }
         //      C# -> SlaDomain? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
         if (this.ConfiguredSlaDomain != null) {
-                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.ConfiguredSlaDomain).AsFieldSpec(indent+1);
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.ConfiguredSlaDomain).AsFieldSpec(conf.Child("configuredSlaDomain"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "configuredSlaDomain {\n" + fspec + ind + "}\n";
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "configuredSlaDomain {\n" + fspec + ind + "}\n";
+                }
             }
         }
         //      C# -> SlaDomain? EffectiveRetentionSlaDomain
         // GraphQL -> effectiveRetentionSlaDomain: SlaDomain (interface)
         if (this.EffectiveRetentionSlaDomain != null) {
-                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.EffectiveRetentionSlaDomain).AsFieldSpec(indent+1);
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.EffectiveRetentionSlaDomain).AsFieldSpec(conf.Child("effectiveRetentionSlaDomain"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "effectiveRetentionSlaDomain {\n" + fspec + ind + "}\n";
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "effectiveRetentionSlaDomain {\n" + fspec + ind + "}\n";
+                }
             }
         }
         //      C# -> SlaDomain? EffectiveSlaDomain
         // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
         if (this.EffectiveSlaDomain != null) {
-                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.EffectiveSlaDomain).AsFieldSpec(indent+1);
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.EffectiveSlaDomain).AsFieldSpec(conf.Child("effectiveSlaDomain"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "effectiveSlaDomain {\n" + fspec + ind + "}\n";
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "effectiveSlaDomain {\n" + fspec + ind + "}\n";
+                }
             }
         }
         //      C# -> SlaDomain? PendingSla
         // GraphQL -> pendingSla: SlaDomain (interface)
         if (this.PendingSla != null) {
-                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.PendingSla).AsFieldSpec(indent+1);
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.PendingSla).AsFieldSpec(conf.Child("pendingSla"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "pendingSla {\n" + fspec + ind + "}\n";
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "pendingSla {\n" + fspec + ind + "}\n";
+                }
             }
         }
         //      C# -> List<CdmHierarchyObject>? ReplicatedObjects
         // GraphQL -> replicatedObjects: [CdmHierarchyObject!]! (interface)
         if (this.ReplicatedObjects != null) {
-                var fspec = this.ReplicatedObjects.AsFieldSpec(indent+1);
+                var fspec = this.ReplicatedObjects.AsFieldSpec(conf.Child("replicatedObjects"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "replicatedObjects {\n" + fspec + ind + "}\n";
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "replicatedObjects {\n" + fspec + ind + "}\n";
+                }
             }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         if (this.NumWorkloadDescendants != null) {
-            s += ind + "numWorkloadDescendants\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "numWorkloadDescendants\n" ;
+            } else {
+                s += ind + "numWorkloadDescendants\n" ;
+            }
         }
         //      C# -> System.Int32? ReplicatedObjectCount
         // GraphQL -> replicatedObjectCount: Int! (scalar)
         if (this.ReplicatedObjectCount != null) {
-            s += ind + "replicatedObjectCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "replicatedObjectCount\n" ;
+            } else {
+                s += ind + "replicatedObjectCount\n" ;
+            }
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
         if (this.SlaPauseStatus != null) {
-            s += ind + "slaPauseStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "slaPauseStatus\n" ;
+            } else {
+                s += ind + "slaPauseStatus\n" ;
+            }
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
         if (this.AllOrgs != null) {
-            var fspec = this.AllOrgs.AsFieldSpec(indent+1);
+            var fspec = this.AllOrgs.AsFieldSpec(conf.Child("allOrgs"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "allOrgs {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "allOrgs {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
         if (this.Cluster != null) {
-            var fspec = this.Cluster.AsFieldSpec(indent+1);
+            var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> VsphereResourcePoolDescendantTypeConnection? DescendantConnection
         // GraphQL -> descendantConnection: VsphereResourcePoolDescendantTypeConnection! (type)
         if (this.DescendantConnection != null) {
-            var fspec = this.DescendantConnection.AsFieldSpec(indent+1);
+            var fspec = this.DescendantConnection.AsFieldSpec(conf.Child("descendantConnection"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "descendantConnection {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "descendantConnection {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
         if (this.EffectiveSlaSourceObject != null) {
-            var fspec = this.EffectiveSlaSourceObject.AsFieldSpec(indent+1);
+            var fspec = this.EffectiveSlaSourceObject.AsFieldSpec(conf.Child("effectiveSlaSourceObject"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "effectiveSlaSourceObject {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "effectiveSlaSourceObject {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> LatestUserNote? LatestUserNote
         // GraphQL -> latestUserNote: LatestUserNote (type)
         if (this.LatestUserNote != null) {
-            var fspec = this.LatestUserNote.AsFieldSpec(indent+1);
+            var fspec = this.LatestUserNote.AsFieldSpec(conf.Child("latestUserNote"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "latestUserNote {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "latestUserNote {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
         if (this.LogicalPath != null) {
-            var fspec = this.LogicalPath.AsFieldSpec(indent+1);
+            var fspec = this.LogicalPath.AsFieldSpec(conf.Child("logicalPath"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "logicalPath {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "logicalPath {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus
         // GraphQL -> pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion (type)
         if (this.PendingObjectDeletionStatus != null) {
-            var fspec = this.PendingObjectDeletionStatus.AsFieldSpec(indent+1);
+            var fspec = this.PendingObjectDeletionStatus.AsFieldSpec(conf.Child("pendingObjectDeletionStatus"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "pendingObjectDeletionStatus {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "pendingObjectDeletionStatus {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> VsphereResourcePoolPhysicalChildTypeConnection? PhysicalChildConnection
         // GraphQL -> physicalChildConnection: VsphereResourcePoolPhysicalChildTypeConnection! (type)
         if (this.PhysicalChildConnection != null) {
-            var fspec = this.PhysicalChildConnection.AsFieldSpec(indent+1);
+            var fspec = this.PhysicalChildConnection.AsFieldSpec(conf.Child("physicalChildConnection"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "physicalChildConnection {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "physicalChildConnection {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<PathNode>? PhysicalPath
         // GraphQL -> physicalPath: [PathNode!]! (type)
         if (this.PhysicalPath != null) {
-            var fspec = this.PhysicalPath.AsFieldSpec(indent+1);
+            var fspec = this.PhysicalPath.AsFieldSpec(conf.Child("physicalPath"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "physicalPath {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "physicalPath {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> DataLocation? PrimaryClusterLocation
         // GraphQL -> primaryClusterLocation: DataLocation! (type)
         if (this.PrimaryClusterLocation != null) {
-            var fspec = this.PrimaryClusterLocation.AsFieldSpec(indent+1);
+            var fspec = this.PrimaryClusterLocation.AsFieldSpec(conf.Child("primaryClusterLocation"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "primaryClusterLocation {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "primaryClusterLocation {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
         if (this.SnapshotDistribution != null) {
-            var fspec = this.SnapshotDistribution.AsFieldSpec(indent+1);
+            var fspec = this.SnapshotDistribution.AsFieldSpec(conf.Child("snapshotDistribution"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "snapshotDistribution {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "snapshotDistribution {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -436,167 +533,463 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<Operation>? AuthorizedOperations
         // GraphQL -> authorizedOperations: [Operation!]! (enum)
-        if (this.AuthorizedOperations == null && ec.Includes("authorizedOperations",true))
+        if (ec.Includes("authorizedOperations",true))
         {
-            this.AuthorizedOperations = new List<Operation>();
+            if(this.AuthorizedOperations == null) {
+
+                this.AuthorizedOperations = new List<Operation>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AuthorizedOperations != null && ec.Excludes("authorizedOperations",true))
+        {
+            this.AuthorizedOperations = null;
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
-        if (this.ObjectType == null && ec.Includes("objectType",true))
+        if (ec.Includes("objectType",true))
         {
-            this.ObjectType = new HierarchyObjectTypeEnum();
+            if(this.ObjectType == null) {
+
+                this.ObjectType = new HierarchyObjectTypeEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ObjectType != null && ec.Excludes("objectType",true))
+        {
+            this.ObjectType = null;
         }
         //      C# -> SlaAssignmentTypeEnum? SlaAssignment
         // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
-        if (this.SlaAssignment == null && ec.Includes("slaAssignment",true))
+        if (ec.Includes("slaAssignment",true))
         {
-            this.SlaAssignment = new SlaAssignmentTypeEnum();
+            if(this.SlaAssignment == null) {
+
+                this.SlaAssignment = new SlaAssignmentTypeEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SlaAssignment != null && ec.Excludes("slaAssignment",true))
+        {
+            this.SlaAssignment = null;
         }
         //      C# -> SlaDomain? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
-        if (this.ConfiguredSlaDomain == null && ec.Includes("configuredSlaDomain",false))
+        if (ec.Includes("configuredSlaDomain",false))
         {
-            var impls = new List<SlaDomain>();
-            impls.ApplyExploratoryFieldSpec(ec.NewChild("configuredSlaDomain"));
-            this.ConfiguredSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+            if(this.ConfiguredSlaDomain == null) {
+
+                var impls = new List<SlaDomain>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("configuredSlaDomain"));
+                this.ConfiguredSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<SlaDomain>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("configuredSlaDomain"));
+                this.ConfiguredSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.ConfiguredSlaDomain != null && ec.Excludes("configuredSlaDomain",false))
+        {
+            this.ConfiguredSlaDomain = null;
         }
         //      C# -> SlaDomain? EffectiveRetentionSlaDomain
         // GraphQL -> effectiveRetentionSlaDomain: SlaDomain (interface)
-        if (this.EffectiveRetentionSlaDomain == null && ec.Includes("effectiveRetentionSlaDomain",false))
+        if (ec.Includes("effectiveRetentionSlaDomain",false))
         {
-            var impls = new List<SlaDomain>();
-            impls.ApplyExploratoryFieldSpec(ec.NewChild("effectiveRetentionSlaDomain"));
-            this.EffectiveRetentionSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+            if(this.EffectiveRetentionSlaDomain == null) {
+
+                var impls = new List<SlaDomain>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("effectiveRetentionSlaDomain"));
+                this.EffectiveRetentionSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<SlaDomain>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("effectiveRetentionSlaDomain"));
+                this.EffectiveRetentionSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.EffectiveRetentionSlaDomain != null && ec.Excludes("effectiveRetentionSlaDomain",false))
+        {
+            this.EffectiveRetentionSlaDomain = null;
         }
         //      C# -> SlaDomain? EffectiveSlaDomain
         // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
-        if (this.EffectiveSlaDomain == null && ec.Includes("effectiveSlaDomain",false))
+        if (ec.Includes("effectiveSlaDomain",false))
         {
-            var impls = new List<SlaDomain>();
-            impls.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaDomain"));
-            this.EffectiveSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+            if(this.EffectiveSlaDomain == null) {
+
+                var impls = new List<SlaDomain>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaDomain"));
+                this.EffectiveSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<SlaDomain>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaDomain"));
+                this.EffectiveSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.EffectiveSlaDomain != null && ec.Excludes("effectiveSlaDomain",false))
+        {
+            this.EffectiveSlaDomain = null;
         }
         //      C# -> SlaDomain? PendingSla
         // GraphQL -> pendingSla: SlaDomain (interface)
-        if (this.PendingSla == null && ec.Includes("pendingSla",false))
+        if (ec.Includes("pendingSla",false))
         {
-            var impls = new List<SlaDomain>();
-            impls.ApplyExploratoryFieldSpec(ec.NewChild("pendingSla"));
-            this.PendingSla = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+            if(this.PendingSla == null) {
+
+                var impls = new List<SlaDomain>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("pendingSla"));
+                this.PendingSla = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<SlaDomain>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("pendingSla"));
+                this.PendingSla = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.PendingSla != null && ec.Excludes("pendingSla",false))
+        {
+            this.PendingSla = null;
         }
         //      C# -> List<CdmHierarchyObject>? ReplicatedObjects
         // GraphQL -> replicatedObjects: [CdmHierarchyObject!]! (interface)
-        if (this.ReplicatedObjects == null && ec.Includes("replicatedObjects",false))
+        if (ec.Includes("replicatedObjects",false))
         {
-            this.ReplicatedObjects = new List<CdmHierarchyObject>();
-            this.ReplicatedObjects.ApplyExploratoryFieldSpec(ec.NewChild("replicatedObjects"));
+            if(this.ReplicatedObjects == null) {
+
+                this.ReplicatedObjects = new List<CdmHierarchyObject>();
+                this.ReplicatedObjects.ApplyExploratoryFieldSpec(ec.NewChild("replicatedObjects"));
+
+            } else {
+
+                this.ReplicatedObjects.ApplyExploratoryFieldSpec(ec.NewChild("replicatedObjects"));
+
+            }
+        }
+        else if (this.ReplicatedObjects != null && ec.Excludes("replicatedObjects",false))
+        {
+            this.ReplicatedObjects = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
-        if (this.NumWorkloadDescendants == null && ec.Includes("numWorkloadDescendants",true))
+        if (ec.Includes("numWorkloadDescendants",true))
         {
-            this.NumWorkloadDescendants = Int32.MinValue;
+            if(this.NumWorkloadDescendants == null) {
+
+                this.NumWorkloadDescendants = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.NumWorkloadDescendants != null && ec.Excludes("numWorkloadDescendants",true))
+        {
+            this.NumWorkloadDescendants = null;
         }
         //      C# -> System.Int32? ReplicatedObjectCount
         // GraphQL -> replicatedObjectCount: Int! (scalar)
-        if (this.ReplicatedObjectCount == null && ec.Includes("replicatedObjectCount",true))
+        if (ec.Includes("replicatedObjectCount",true))
         {
-            this.ReplicatedObjectCount = Int32.MinValue;
+            if(this.ReplicatedObjectCount == null) {
+
+                this.ReplicatedObjectCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ReplicatedObjectCount != null && ec.Excludes("replicatedObjectCount",true))
+        {
+            this.ReplicatedObjectCount = null;
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
-        if (this.SlaPauseStatus == null && ec.Includes("slaPauseStatus",true))
+        if (ec.Includes("slaPauseStatus",true))
         {
-            this.SlaPauseStatus = true;
+            if(this.SlaPauseStatus == null) {
+
+                this.SlaPauseStatus = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.SlaPauseStatus != null && ec.Excludes("slaPauseStatus",true))
+        {
+            this.SlaPauseStatus = null;
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
-        if (this.AllOrgs == null && ec.Includes("allOrgs",false))
+        if (ec.Includes("allOrgs",false))
         {
-            this.AllOrgs = new List<Org>();
-            this.AllOrgs.ApplyExploratoryFieldSpec(ec.NewChild("allOrgs"));
+            if(this.AllOrgs == null) {
+
+                this.AllOrgs = new List<Org>();
+                this.AllOrgs.ApplyExploratoryFieldSpec(ec.NewChild("allOrgs"));
+
+            } else {
+
+                this.AllOrgs.ApplyExploratoryFieldSpec(ec.NewChild("allOrgs"));
+
+            }
+        }
+        else if (this.AllOrgs != null && ec.Excludes("allOrgs",false))
+        {
+            this.AllOrgs = null;
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
-        if (this.Cluster == null && ec.Includes("cluster",false))
+        if (ec.Includes("cluster",false))
         {
-            this.Cluster = new Cluster();
-            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+            if(this.Cluster == null) {
+
+                this.Cluster = new Cluster();
+                this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+
+            } else {
+
+                this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+
+            }
+        }
+        else if (this.Cluster != null && ec.Excludes("cluster",false))
+        {
+            this.Cluster = null;
         }
         //      C# -> VsphereResourcePoolDescendantTypeConnection? DescendantConnection
         // GraphQL -> descendantConnection: VsphereResourcePoolDescendantTypeConnection! (type)
-        if (this.DescendantConnection == null && ec.Includes("descendantConnection",false))
+        if (ec.Includes("descendantConnection",false))
         {
-            this.DescendantConnection = new VsphereResourcePoolDescendantTypeConnection();
-            this.DescendantConnection.ApplyExploratoryFieldSpec(ec.NewChild("descendantConnection"));
+            if(this.DescendantConnection == null) {
+
+                this.DescendantConnection = new VsphereResourcePoolDescendantTypeConnection();
+                this.DescendantConnection.ApplyExploratoryFieldSpec(ec.NewChild("descendantConnection"));
+
+            } else {
+
+                this.DescendantConnection.ApplyExploratoryFieldSpec(ec.NewChild("descendantConnection"));
+
+            }
+        }
+        else if (this.DescendantConnection != null && ec.Excludes("descendantConnection",false))
+        {
+            this.DescendantConnection = null;
         }
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
-        if (this.EffectiveSlaSourceObject == null && ec.Includes("effectiveSlaSourceObject",false))
+        if (ec.Includes("effectiveSlaSourceObject",false))
         {
-            this.EffectiveSlaSourceObject = new PathNode();
-            this.EffectiveSlaSourceObject.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaSourceObject"));
+            if(this.EffectiveSlaSourceObject == null) {
+
+                this.EffectiveSlaSourceObject = new PathNode();
+                this.EffectiveSlaSourceObject.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaSourceObject"));
+
+            } else {
+
+                this.EffectiveSlaSourceObject.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaSourceObject"));
+
+            }
+        }
+        else if (this.EffectiveSlaSourceObject != null && ec.Excludes("effectiveSlaSourceObject",false))
+        {
+            this.EffectiveSlaSourceObject = null;
         }
         //      C# -> LatestUserNote? LatestUserNote
         // GraphQL -> latestUserNote: LatestUserNote (type)
-        if (this.LatestUserNote == null && ec.Includes("latestUserNote",false))
+        if (ec.Includes("latestUserNote",false))
         {
-            this.LatestUserNote = new LatestUserNote();
-            this.LatestUserNote.ApplyExploratoryFieldSpec(ec.NewChild("latestUserNote"));
+            if(this.LatestUserNote == null) {
+
+                this.LatestUserNote = new LatestUserNote();
+                this.LatestUserNote.ApplyExploratoryFieldSpec(ec.NewChild("latestUserNote"));
+
+            } else {
+
+                this.LatestUserNote.ApplyExploratoryFieldSpec(ec.NewChild("latestUserNote"));
+
+            }
+        }
+        else if (this.LatestUserNote != null && ec.Excludes("latestUserNote",false))
+        {
+            this.LatestUserNote = null;
         }
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
-        if (this.LogicalPath == null && ec.Includes("logicalPath",false))
+        if (ec.Includes("logicalPath",false))
         {
-            this.LogicalPath = new List<PathNode>();
-            this.LogicalPath.ApplyExploratoryFieldSpec(ec.NewChild("logicalPath"));
+            if(this.LogicalPath == null) {
+
+                this.LogicalPath = new List<PathNode>();
+                this.LogicalPath.ApplyExploratoryFieldSpec(ec.NewChild("logicalPath"));
+
+            } else {
+
+                this.LogicalPath.ApplyExploratoryFieldSpec(ec.NewChild("logicalPath"));
+
+            }
+        }
+        else if (this.LogicalPath != null && ec.Excludes("logicalPath",false))
+        {
+            this.LogicalPath = null;
         }
         //      C# -> PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus
         // GraphQL -> pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion (type)
-        if (this.PendingObjectDeletionStatus == null && ec.Includes("pendingObjectDeletionStatus",false))
+        if (ec.Includes("pendingObjectDeletionStatus",false))
         {
-            this.PendingObjectDeletionStatus = new PendingSnapshotsOfObjectDeletion();
-            this.PendingObjectDeletionStatus.ApplyExploratoryFieldSpec(ec.NewChild("pendingObjectDeletionStatus"));
+            if(this.PendingObjectDeletionStatus == null) {
+
+                this.PendingObjectDeletionStatus = new PendingSnapshotsOfObjectDeletion();
+                this.PendingObjectDeletionStatus.ApplyExploratoryFieldSpec(ec.NewChild("pendingObjectDeletionStatus"));
+
+            } else {
+
+                this.PendingObjectDeletionStatus.ApplyExploratoryFieldSpec(ec.NewChild("pendingObjectDeletionStatus"));
+
+            }
+        }
+        else if (this.PendingObjectDeletionStatus != null && ec.Excludes("pendingObjectDeletionStatus",false))
+        {
+            this.PendingObjectDeletionStatus = null;
         }
         //      C# -> VsphereResourcePoolPhysicalChildTypeConnection? PhysicalChildConnection
         // GraphQL -> physicalChildConnection: VsphereResourcePoolPhysicalChildTypeConnection! (type)
-        if (this.PhysicalChildConnection == null && ec.Includes("physicalChildConnection",false))
+        if (ec.Includes("physicalChildConnection",false))
         {
-            this.PhysicalChildConnection = new VsphereResourcePoolPhysicalChildTypeConnection();
-            this.PhysicalChildConnection.ApplyExploratoryFieldSpec(ec.NewChild("physicalChildConnection"));
+            if(this.PhysicalChildConnection == null) {
+
+                this.PhysicalChildConnection = new VsphereResourcePoolPhysicalChildTypeConnection();
+                this.PhysicalChildConnection.ApplyExploratoryFieldSpec(ec.NewChild("physicalChildConnection"));
+
+            } else {
+
+                this.PhysicalChildConnection.ApplyExploratoryFieldSpec(ec.NewChild("physicalChildConnection"));
+
+            }
+        }
+        else if (this.PhysicalChildConnection != null && ec.Excludes("physicalChildConnection",false))
+        {
+            this.PhysicalChildConnection = null;
         }
         //      C# -> List<PathNode>? PhysicalPath
         // GraphQL -> physicalPath: [PathNode!]! (type)
-        if (this.PhysicalPath == null && ec.Includes("physicalPath",false))
+        if (ec.Includes("physicalPath",false))
         {
-            this.PhysicalPath = new List<PathNode>();
-            this.PhysicalPath.ApplyExploratoryFieldSpec(ec.NewChild("physicalPath"));
+            if(this.PhysicalPath == null) {
+
+                this.PhysicalPath = new List<PathNode>();
+                this.PhysicalPath.ApplyExploratoryFieldSpec(ec.NewChild("physicalPath"));
+
+            } else {
+
+                this.PhysicalPath.ApplyExploratoryFieldSpec(ec.NewChild("physicalPath"));
+
+            }
+        }
+        else if (this.PhysicalPath != null && ec.Excludes("physicalPath",false))
+        {
+            this.PhysicalPath = null;
         }
         //      C# -> DataLocation? PrimaryClusterLocation
         // GraphQL -> primaryClusterLocation: DataLocation! (type)
-        if (this.PrimaryClusterLocation == null && ec.Includes("primaryClusterLocation",false))
+        if (ec.Includes("primaryClusterLocation",false))
         {
-            this.PrimaryClusterLocation = new DataLocation();
-            this.PrimaryClusterLocation.ApplyExploratoryFieldSpec(ec.NewChild("primaryClusterLocation"));
+            if(this.PrimaryClusterLocation == null) {
+
+                this.PrimaryClusterLocation = new DataLocation();
+                this.PrimaryClusterLocation.ApplyExploratoryFieldSpec(ec.NewChild("primaryClusterLocation"));
+
+            } else {
+
+                this.PrimaryClusterLocation.ApplyExploratoryFieldSpec(ec.NewChild("primaryClusterLocation"));
+
+            }
+        }
+        else if (this.PrimaryClusterLocation != null && ec.Excludes("primaryClusterLocation",false))
+        {
+            this.PrimaryClusterLocation = null;
         }
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
-        if (this.SnapshotDistribution == null && ec.Includes("snapshotDistribution",false))
+        if (ec.Includes("snapshotDistribution",false))
         {
-            this.SnapshotDistribution = new SnapshotDistribution();
-            this.SnapshotDistribution.ApplyExploratoryFieldSpec(ec.NewChild("snapshotDistribution"));
+            if(this.SnapshotDistribution == null) {
+
+                this.SnapshotDistribution = new SnapshotDistribution();
+                this.SnapshotDistribution.ApplyExploratoryFieldSpec(ec.NewChild("snapshotDistribution"));
+
+            } else {
+
+                this.SnapshotDistribution.ApplyExploratoryFieldSpec(ec.NewChild("snapshotDistribution"));
+
+            }
+        }
+        else if (this.SnapshotDistribution != null && ec.Excludes("snapshotDistribution",false))
+        {
+            this.SnapshotDistribution = null;
         }
     }
 
@@ -623,9 +1016,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<VsphereResourcePool> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

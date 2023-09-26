@@ -92,39 +92,64 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? DeviceType
         // GraphQL -> deviceType: String! (scalar)
         if (this.DeviceType != null) {
-            s += ind + "deviceType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "deviceType\n" ;
+            } else {
+                s += ind + "deviceType\n" ;
+            }
         }
         //      C# -> System.Boolean? IsSnapshottable
         // GraphQL -> isSnapshottable: Boolean! (scalar)
         if (this.IsSnapshottable != null) {
-            s += ind + "isSnapshottable\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isSnapshottable\n" ;
+            } else {
+                s += ind + "isSnapshottable\n" ;
+            }
         }
         //      C# -> System.String? Label
         // GraphQL -> label: String! (scalar)
         if (this.Label != null) {
-            s += ind + "label\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "label\n" ;
+            } else {
+                s += ind + "label\n" ;
+            }
         }
         //      C# -> System.Int64? SizeInBytes
         // GraphQL -> sizeInBytes: Long! (scalar)
         if (this.SizeInBytes != null) {
-            s += ind + "sizeInBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sizeInBytes\n" ;
+            } else {
+                s += ind + "sizeInBytes\n" ;
+            }
         }
         //      C# -> System.String? Uuid
         // GraphQL -> uuid: String! (scalar)
         if (this.Uuid != null) {
-            s += ind + "uuid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "uuid\n" ;
+            } else {
+                s += ind + "uuid\n" ;
+            }
         }
         //      C# -> System.String? VmDiskUuid
         // GraphQL -> vmDiskUuid: String! (scalar)
         if (this.VmDiskUuid != null) {
-            s += ind + "vmDiskUuid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "vmDiskUuid\n" ;
+            } else {
+                s += ind + "vmDiskUuid\n" ;
+            }
         }
         return s;
     }
@@ -135,39 +160,105 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? DeviceType
         // GraphQL -> deviceType: String! (scalar)
-        if (this.DeviceType == null && ec.Includes("deviceType",true))
+        if (ec.Includes("deviceType",true))
         {
-            this.DeviceType = "FETCH";
+            if(this.DeviceType == null) {
+
+                this.DeviceType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DeviceType != null && ec.Excludes("deviceType",true))
+        {
+            this.DeviceType = null;
         }
         //      C# -> System.Boolean? IsSnapshottable
         // GraphQL -> isSnapshottable: Boolean! (scalar)
-        if (this.IsSnapshottable == null && ec.Includes("isSnapshottable",true))
+        if (ec.Includes("isSnapshottable",true))
         {
-            this.IsSnapshottable = true;
+            if(this.IsSnapshottable == null) {
+
+                this.IsSnapshottable = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsSnapshottable != null && ec.Excludes("isSnapshottable",true))
+        {
+            this.IsSnapshottable = null;
         }
         //      C# -> System.String? Label
         // GraphQL -> label: String! (scalar)
-        if (this.Label == null && ec.Includes("label",true))
+        if (ec.Includes("label",true))
         {
-            this.Label = "FETCH";
+            if(this.Label == null) {
+
+                this.Label = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Label != null && ec.Excludes("label",true))
+        {
+            this.Label = null;
         }
         //      C# -> System.Int64? SizeInBytes
         // GraphQL -> sizeInBytes: Long! (scalar)
-        if (this.SizeInBytes == null && ec.Includes("sizeInBytes",true))
+        if (ec.Includes("sizeInBytes",true))
         {
-            this.SizeInBytes = new System.Int64();
+            if(this.SizeInBytes == null) {
+
+                this.SizeInBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SizeInBytes != null && ec.Excludes("sizeInBytes",true))
+        {
+            this.SizeInBytes = null;
         }
         //      C# -> System.String? Uuid
         // GraphQL -> uuid: String! (scalar)
-        if (this.Uuid == null && ec.Includes("uuid",true))
+        if (ec.Includes("uuid",true))
         {
-            this.Uuid = "FETCH";
+            if(this.Uuid == null) {
+
+                this.Uuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Uuid != null && ec.Excludes("uuid",true))
+        {
+            this.Uuid = null;
         }
         //      C# -> System.String? VmDiskUuid
         // GraphQL -> vmDiskUuid: String! (scalar)
-        if (this.VmDiskUuid == null && ec.Includes("vmDiskUuid",true))
+        if (ec.Includes("vmDiskUuid",true))
         {
-            this.VmDiskUuid = "FETCH";
+            if(this.VmDiskUuid == null) {
+
+                this.VmDiskUuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.VmDiskUuid != null && ec.Excludes("vmDiskUuid",true))
+        {
+            this.VmDiskUuid = null;
         }
     }
 
@@ -194,9 +285,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<NutanixVmDisk> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

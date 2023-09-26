@@ -56,21 +56,30 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Cursor
         // GraphQL -> cursor: String! (scalar)
         if (this.Cursor != null) {
-            s += ind + "cursor\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cursor\n" ;
+            } else {
+                s += ind + "cursor\n" ;
+            }
         }
         //      C# -> AccessGroup? Node
         // GraphQL -> node: AccessGroup! (type)
         if (this.Node != null) {
-            var fspec = this.Node.AsFieldSpec(indent+1);
+            var fspec = this.Node.AsFieldSpec(conf.Child("node"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "node {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "node {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -82,16 +91,39 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Cursor
         // GraphQL -> cursor: String! (scalar)
-        if (this.Cursor == null && ec.Includes("cursor",true))
+        if (ec.Includes("cursor",true))
         {
-            this.Cursor = "FETCH";
+            if(this.Cursor == null) {
+
+                this.Cursor = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Cursor != null && ec.Excludes("cursor",true))
+        {
+            this.Cursor = null;
         }
         //      C# -> AccessGroup? Node
         // GraphQL -> node: AccessGroup! (type)
-        if (this.Node == null && ec.Includes("node",false))
+        if (ec.Includes("node",false))
         {
-            this.Node = new AccessGroup();
-            this.Node.ApplyExploratoryFieldSpec(ec.NewChild("node"));
+            if(this.Node == null) {
+
+                this.Node = new AccessGroup();
+                this.Node.ApplyExploratoryFieldSpec(ec.NewChild("node"));
+
+            } else {
+
+                this.Node.ApplyExploratoryFieldSpec(ec.NewChild("node"));
+
+            }
+        }
+        else if (this.Node != null && ec.Excludes("node",false))
+        {
+            this.Node = null;
         }
     }
 
@@ -118,9 +150,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AccessGroupEdge> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

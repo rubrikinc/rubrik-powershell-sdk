@@ -93,39 +93,64 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> ReportFocusEnum? Focus
         // GraphQL -> focus: ReportFocusEnum! (enum)
         if (this.Focus != null) {
-            s += ind + "focus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "focus\n" ;
+            } else {
+                s += ind + "focus\n" ;
+            }
         }
         //      C# -> List<FailoverGroupByEnum>? GroupBy
         // GraphQL -> groupBy: [FailoverGroupByEnum!] (enum)
         if (this.GroupBy != null) {
-            s += ind + "groupBy\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "groupBy\n" ;
+            } else {
+                s += ind + "groupBy\n" ;
+            }
         }
         //      C# -> List<FailoverTableColumnEnum>? SelectedColumns
         // GraphQL -> selectedColumns: [FailoverTableColumnEnum!]! (enum)
         if (this.SelectedColumns != null) {
-            s += ind + "selectedColumns\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "selectedColumns\n" ;
+            } else {
+                s += ind + "selectedColumns\n" ;
+            }
         }
         //      C# -> FailoverSortByEnum? SortBy
         // GraphQL -> sortBy: FailoverSortByEnum (enum)
         if (this.SortBy != null) {
-            s += ind + "sortBy\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sortBy\n" ;
+            } else {
+                s += ind + "sortBy\n" ;
+            }
         }
         //      C# -> SortOrder? SortOrder
         // GraphQL -> sortOrder: SortOrder (enum)
         if (this.SortOrder != null) {
-            s += ind + "sortOrder\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sortOrder\n" ;
+            } else {
+                s += ind + "sortOrder\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         return s;
     }
@@ -136,39 +161,105 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> ReportFocusEnum? Focus
         // GraphQL -> focus: ReportFocusEnum! (enum)
-        if (this.Focus == null && ec.Includes("focus",true))
+        if (ec.Includes("focus",true))
         {
-            this.Focus = new ReportFocusEnum();
+            if(this.Focus == null) {
+
+                this.Focus = new ReportFocusEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Focus != null && ec.Excludes("focus",true))
+        {
+            this.Focus = null;
         }
         //      C# -> List<FailoverGroupByEnum>? GroupBy
         // GraphQL -> groupBy: [FailoverGroupByEnum!] (enum)
-        if (this.GroupBy == null && ec.Includes("groupBy",true))
+        if (ec.Includes("groupBy",true))
         {
-            this.GroupBy = new List<FailoverGroupByEnum>();
+            if(this.GroupBy == null) {
+
+                this.GroupBy = new List<FailoverGroupByEnum>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.GroupBy != null && ec.Excludes("groupBy",true))
+        {
+            this.GroupBy = null;
         }
         //      C# -> List<FailoverTableColumnEnum>? SelectedColumns
         // GraphQL -> selectedColumns: [FailoverTableColumnEnum!]! (enum)
-        if (this.SelectedColumns == null && ec.Includes("selectedColumns",true))
+        if (ec.Includes("selectedColumns",true))
         {
-            this.SelectedColumns = new List<FailoverTableColumnEnum>();
+            if(this.SelectedColumns == null) {
+
+                this.SelectedColumns = new List<FailoverTableColumnEnum>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SelectedColumns != null && ec.Excludes("selectedColumns",true))
+        {
+            this.SelectedColumns = null;
         }
         //      C# -> FailoverSortByEnum? SortBy
         // GraphQL -> sortBy: FailoverSortByEnum (enum)
-        if (this.SortBy == null && ec.Includes("sortBy",true))
+        if (ec.Includes("sortBy",true))
         {
-            this.SortBy = new FailoverSortByEnum();
+            if(this.SortBy == null) {
+
+                this.SortBy = new FailoverSortByEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SortBy != null && ec.Excludes("sortBy",true))
+        {
+            this.SortBy = null;
         }
         //      C# -> SortOrder? SortOrder
         // GraphQL -> sortOrder: SortOrder (enum)
-        if (this.SortOrder == null && ec.Includes("sortOrder",true))
+        if (ec.Includes("sortOrder",true))
         {
-            this.SortOrder = new SortOrder();
+            if(this.SortOrder == null) {
+
+                this.SortOrder = new SortOrder();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SortOrder != null && ec.Excludes("sortOrder",true))
+        {
+            this.SortOrder = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
     }
 
@@ -195,9 +286,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<FailoverTable> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

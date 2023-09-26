@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> CdmFindBadDiskResultType? Result
         // GraphQL -> result: CdmFindBadDiskResultType! (enum)
         if (this.Result != null) {
-            s += ind + "result\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "result\n" ;
+            } else {
+                s += ind + "result\n" ;
+            }
         }
         //      C# -> System.String? Output
         // GraphQL -> output: String (scalar)
         if (this.Output != null) {
-            s += ind + "output\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "output\n" ;
+            } else {
+                s += ind + "output\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> CdmFindBadDiskResultType? Result
         // GraphQL -> result: CdmFindBadDiskResultType! (enum)
-        if (this.Result == null && ec.Includes("result",true))
+        if (ec.Includes("result",true))
         {
-            this.Result = new CdmFindBadDiskResultType();
+            if(this.Result == null) {
+
+                this.Result = new CdmFindBadDiskResultType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Result != null && ec.Excludes("result",true))
+        {
+            this.Result = null;
         }
         //      C# -> System.String? Output
         // GraphQL -> output: String (scalar)
-        if (this.Output == null && ec.Includes("output",true))
+        if (ec.Includes("output",true))
         {
-            this.Output = "FETCH";
+            if(this.Output == null) {
+
+                this.Output = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Output != null && ec.Excludes("output",true))
+        {
+            this.Output = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<UpdateBadDiskLedStatusReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -65,32 +65,45 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> TimelineEntry? HighRiskFiles
         // GraphQL -> highRiskFiles: TimelineEntry (type)
         if (this.HighRiskFiles != null) {
-            var fspec = this.HighRiskFiles.AsFieldSpec(indent+1);
+            var fspec = this.HighRiskFiles.AsFieldSpec(conf.Child("highRiskFiles"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "highRiskFiles {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "highRiskFiles {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> TimelineEntry? LowRiskFiles
         // GraphQL -> lowRiskFiles: TimelineEntry (type)
         if (this.LowRiskFiles != null) {
-            var fspec = this.LowRiskFiles.AsFieldSpec(indent+1);
+            var fspec = this.LowRiskFiles.AsFieldSpec(conf.Child("lowRiskFiles"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "lowRiskFiles {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "lowRiskFiles {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> ClassificationPolicySummary? Summary
         // GraphQL -> summary: ClassificationPolicySummary (type)
         if (this.Summary != null) {
-            var fspec = this.Summary.AsFieldSpec(indent+1);
+            var fspec = this.Summary.AsFieldSpec(conf.Child("summary"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "summary {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "summary {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -102,24 +115,60 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> TimelineEntry? HighRiskFiles
         // GraphQL -> highRiskFiles: TimelineEntry (type)
-        if (this.HighRiskFiles == null && ec.Includes("highRiskFiles",false))
+        if (ec.Includes("highRiskFiles",false))
         {
-            this.HighRiskFiles = new TimelineEntry();
-            this.HighRiskFiles.ApplyExploratoryFieldSpec(ec.NewChild("highRiskFiles"));
+            if(this.HighRiskFiles == null) {
+
+                this.HighRiskFiles = new TimelineEntry();
+                this.HighRiskFiles.ApplyExploratoryFieldSpec(ec.NewChild("highRiskFiles"));
+
+            } else {
+
+                this.HighRiskFiles.ApplyExploratoryFieldSpec(ec.NewChild("highRiskFiles"));
+
+            }
+        }
+        else if (this.HighRiskFiles != null && ec.Excludes("highRiskFiles",false))
+        {
+            this.HighRiskFiles = null;
         }
         //      C# -> TimelineEntry? LowRiskFiles
         // GraphQL -> lowRiskFiles: TimelineEntry (type)
-        if (this.LowRiskFiles == null && ec.Includes("lowRiskFiles",false))
+        if (ec.Includes("lowRiskFiles",false))
         {
-            this.LowRiskFiles = new TimelineEntry();
-            this.LowRiskFiles.ApplyExploratoryFieldSpec(ec.NewChild("lowRiskFiles"));
+            if(this.LowRiskFiles == null) {
+
+                this.LowRiskFiles = new TimelineEntry();
+                this.LowRiskFiles.ApplyExploratoryFieldSpec(ec.NewChild("lowRiskFiles"));
+
+            } else {
+
+                this.LowRiskFiles.ApplyExploratoryFieldSpec(ec.NewChild("lowRiskFiles"));
+
+            }
+        }
+        else if (this.LowRiskFiles != null && ec.Excludes("lowRiskFiles",false))
+        {
+            this.LowRiskFiles = null;
         }
         //      C# -> ClassificationPolicySummary? Summary
         // GraphQL -> summary: ClassificationPolicySummary (type)
-        if (this.Summary == null && ec.Includes("summary",false))
+        if (ec.Includes("summary",false))
         {
-            this.Summary = new ClassificationPolicySummary();
-            this.Summary.ApplyExploratoryFieldSpec(ec.NewChild("summary"));
+            if(this.Summary == null) {
+
+                this.Summary = new ClassificationPolicySummary();
+                this.Summary.ApplyExploratoryFieldSpec(ec.NewChild("summary"));
+
+            } else {
+
+                this.Summary.ApplyExploratoryFieldSpec(ec.NewChild("summary"));
+
+            }
+        }
+        else if (this.Summary != null && ec.Excludes("summary",false))
+        {
+            this.Summary = null;
         }
     }
 
@@ -146,9 +195,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<PolicySummary> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

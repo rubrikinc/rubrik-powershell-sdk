@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? ServerCertificate
         // GraphQL -> serverCertificate: String (scalar)
         if (this.ServerCertificate != null) {
-            s += ind + "serverCertificate\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "serverCertificate\n" ;
+            } else {
+                s += ind + "serverCertificate\n" ;
+            }
         }
         //      C# -> System.String? ServerCertificateName
         // GraphQL -> serverCertificateName: String (scalar)
         if (this.ServerCertificateName != null) {
-            s += ind + "serverCertificateName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "serverCertificateName\n" ;
+            } else {
+                s += ind + "serverCertificateName\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? ServerCertificate
         // GraphQL -> serverCertificate: String (scalar)
-        if (this.ServerCertificate == null && ec.Includes("serverCertificate",true))
+        if (ec.Includes("serverCertificate",true))
         {
-            this.ServerCertificate = "FETCH";
+            if(this.ServerCertificate == null) {
+
+                this.ServerCertificate = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ServerCertificate != null && ec.Excludes("serverCertificate",true))
+        {
+            this.ServerCertificate = null;
         }
         //      C# -> System.String? ServerCertificateName
         // GraphQL -> serverCertificateName: String (scalar)
-        if (this.ServerCertificateName == null && ec.Includes("serverCertificateName",true))
+        if (ec.Includes("serverCertificateName",true))
         {
-            this.ServerCertificateName = "FETCH";
+            if(this.ServerCertificateName == null) {
+
+                this.ServerCertificateName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ServerCertificateName != null && ec.Excludes("serverCertificateName",true))
+        {
+            this.ServerCertificateName = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SyslogCertificateInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

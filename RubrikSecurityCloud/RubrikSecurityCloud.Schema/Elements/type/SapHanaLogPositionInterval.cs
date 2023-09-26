@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? NewestLogPosition
         // GraphQL -> newestLogPosition: Long (scalar)
         if (this.NewestLogPosition != null) {
-            s += ind + "newestLogPosition\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "newestLogPosition\n" ;
+            } else {
+                s += ind + "newestLogPosition\n" ;
+            }
         }
         //      C# -> System.Int64? OldestLogPosition
         // GraphQL -> oldestLogPosition: Long (scalar)
         if (this.OldestLogPosition != null) {
-            s += ind + "oldestLogPosition\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "oldestLogPosition\n" ;
+            } else {
+                s += ind + "oldestLogPosition\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? NewestLogPosition
         // GraphQL -> newestLogPosition: Long (scalar)
-        if (this.NewestLogPosition == null && ec.Includes("newestLogPosition",true))
+        if (ec.Includes("newestLogPosition",true))
         {
-            this.NewestLogPosition = new System.Int64();
+            if(this.NewestLogPosition == null) {
+
+                this.NewestLogPosition = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.NewestLogPosition != null && ec.Excludes("newestLogPosition",true))
+        {
+            this.NewestLogPosition = null;
         }
         //      C# -> System.Int64? OldestLogPosition
         // GraphQL -> oldestLogPosition: Long (scalar)
-        if (this.OldestLogPosition == null && ec.Includes("oldestLogPosition",true))
+        if (ec.Includes("oldestLogPosition",true))
         {
-            this.OldestLogPosition = new System.Int64();
+            if(this.OldestLogPosition == null) {
+
+                this.OldestLogPosition = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.OldestLogPosition != null && ec.Excludes("oldestLogPosition",true))
+        {
+            this.OldestLogPosition = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SapHanaLogPositionInterval> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

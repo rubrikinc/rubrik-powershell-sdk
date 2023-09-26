@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> DateTime? BeginTime
         // GraphQL -> beginTime: DateTime (scalar)
         if (this.BeginTime != null) {
-            s += ind + "beginTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "beginTime\n" ;
+            } else {
+                s += ind + "beginTime\n" ;
+            }
         }
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime (scalar)
         if (this.EndTime != null) {
-            s += ind + "endTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "endTime\n" ;
+            } else {
+                s += ind + "endTime\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> DateTime? BeginTime
         // GraphQL -> beginTime: DateTime (scalar)
-        if (this.BeginTime == null && ec.Includes("beginTime",true))
+        if (ec.Includes("beginTime",true))
         {
-            this.BeginTime = new DateTime();
+            if(this.BeginTime == null) {
+
+                this.BeginTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.BeginTime != null && ec.Excludes("beginTime",true))
+        {
+            this.BeginTime = null;
         }
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime (scalar)
-        if (this.EndTime == null && ec.Includes("endTime",true))
+        if (ec.Includes("endTime",true))
         {
-            this.EndTime = new DateTime();
+            if(this.EndTime == null) {
+
+                this.EndTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EndTime != null && ec.Excludes("endTime",true))
+        {
+            this.EndTime = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<VmwareRecoverableRange> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

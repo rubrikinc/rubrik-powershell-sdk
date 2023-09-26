@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? JobId
         // GraphQL -> jobId: String! (scalar)
         if (this.JobId != null) {
-            s += ind + "jobId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "jobId\n" ;
+            } else {
+                s += ind + "jobId\n" ;
+            }
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? JobId
         // GraphQL -> jobId: String! (scalar)
-        if (this.JobId == null && ec.Includes("jobId",true))
+        if (ec.Includes("jobId",true))
         {
-            this.JobId = "FETCH";
+            if(this.JobId == null) {
+
+                this.JobId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.JobId != null && ec.Excludes("jobId",true))
+        {
+            this.JobId = null;
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = "FETCH";
+            if(this.Status == null) {
+
+                this.Status = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AddClusterNodesReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

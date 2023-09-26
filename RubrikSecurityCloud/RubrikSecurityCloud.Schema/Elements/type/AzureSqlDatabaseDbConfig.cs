@@ -47,14 +47,19 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int32? LogRetentionInDays
         // GraphQL -> logRetentionInDays: Int! (scalar)
         if (this.LogRetentionInDays != null) {
-            s += ind + "logRetentionInDays\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "logRetentionInDays\n" ;
+            } else {
+                s += ind + "logRetentionInDays\n" ;
+            }
         }
         return s;
     }
@@ -65,9 +70,20 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int32? LogRetentionInDays
         // GraphQL -> logRetentionInDays: Int! (scalar)
-        if (this.LogRetentionInDays == null && ec.Includes("logRetentionInDays",true))
+        if (ec.Includes("logRetentionInDays",true))
         {
-            this.LogRetentionInDays = Int32.MinValue;
+            if(this.LogRetentionInDays == null) {
+
+                this.LogRetentionInDays = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LogRetentionInDays != null && ec.Excludes("logRetentionInDays",true))
+        {
+            this.LogRetentionInDays = null;
         }
     }
 
@@ -94,9 +110,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AzureSqlDatabaseDbConfig> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

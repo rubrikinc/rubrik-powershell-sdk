@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> VirtualMachineFileType? FileType
         // GraphQL -> fileType: VirtualMachineFileType! (enum)
         if (this.FileType != null) {
-            s += ind + "fileType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "fileType\n" ;
+            } else {
+                s += ind + "fileType\n" ;
+            }
         }
         //      C# -> System.String? FileName
         // GraphQL -> fileName: String! (scalar)
         if (this.FileName != null) {
-            s += ind + "fileName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "fileName\n" ;
+            } else {
+                s += ind + "fileName\n" ;
+            }
         }
         //      C# -> System.Int64? SizeInBytes
         // GraphQL -> sizeInBytes: Long! (scalar)
         if (this.SizeInBytes != null) {
-            s += ind + "sizeInBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sizeInBytes\n" ;
+            } else {
+                s += ind + "sizeInBytes\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> VirtualMachineFileType? FileType
         // GraphQL -> fileType: VirtualMachineFileType! (enum)
-        if (this.FileType == null && ec.Includes("fileType",true))
+        if (ec.Includes("fileType",true))
         {
-            this.FileType = new VirtualMachineFileType();
+            if(this.FileType == null) {
+
+                this.FileType = new VirtualMachineFileType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.FileType != null && ec.Excludes("fileType",true))
+        {
+            this.FileType = null;
         }
         //      C# -> System.String? FileName
         // GraphQL -> fileName: String! (scalar)
-        if (this.FileName == null && ec.Includes("fileName",true))
+        if (ec.Includes("fileName",true))
         {
-            this.FileName = "FETCH";
+            if(this.FileName == null) {
+
+                this.FileName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.FileName != null && ec.Excludes("fileName",true))
+        {
+            this.FileName = null;
         }
         //      C# -> System.Int64? SizeInBytes
         // GraphQL -> sizeInBytes: Long! (scalar)
-        if (this.SizeInBytes == null && ec.Includes("sizeInBytes",true))
+        if (ec.Includes("sizeInBytes",true))
         {
-            this.SizeInBytes = new System.Int64();
+            if(this.SizeInBytes == null) {
+
+                this.SizeInBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SizeInBytes != null && ec.Excludes("sizeInBytes",true))
+        {
+            this.SizeInBytes = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<VirtualMachineFileInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

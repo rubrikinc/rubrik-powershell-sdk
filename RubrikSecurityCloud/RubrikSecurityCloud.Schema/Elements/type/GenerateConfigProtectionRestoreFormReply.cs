@@ -56,21 +56,30 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<ConfigurationTypes>? ConfigurationTypes
         // GraphQL -> configurationTypes: [ConfigurationTypes!]! (enum)
         if (this.ConfigurationTypes != null) {
-            s += ind + "configurationTypes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "configurationTypes\n" ;
+            } else {
+                s += ind + "configurationTypes\n" ;
+            }
         }
         //      C# -> RestoreFormConfigurations? Configurations
         // GraphQL -> configurations: RestoreFormConfigurations (type)
         if (this.Configurations != null) {
-            var fspec = this.Configurations.AsFieldSpec(indent+1);
+            var fspec = this.Configurations.AsFieldSpec(conf.Child("configurations"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "configurations {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "configurations {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -82,16 +91,39 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<ConfigurationTypes>? ConfigurationTypes
         // GraphQL -> configurationTypes: [ConfigurationTypes!]! (enum)
-        if (this.ConfigurationTypes == null && ec.Includes("configurationTypes",true))
+        if (ec.Includes("configurationTypes",true))
         {
-            this.ConfigurationTypes = new List<ConfigurationTypes>();
+            if(this.ConfigurationTypes == null) {
+
+                this.ConfigurationTypes = new List<ConfigurationTypes>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ConfigurationTypes != null && ec.Excludes("configurationTypes",true))
+        {
+            this.ConfigurationTypes = null;
         }
         //      C# -> RestoreFormConfigurations? Configurations
         // GraphQL -> configurations: RestoreFormConfigurations (type)
-        if (this.Configurations == null && ec.Includes("configurations",false))
+        if (ec.Includes("configurations",false))
         {
-            this.Configurations = new RestoreFormConfigurations();
-            this.Configurations.ApplyExploratoryFieldSpec(ec.NewChild("configurations"));
+            if(this.Configurations == null) {
+
+                this.Configurations = new RestoreFormConfigurations();
+                this.Configurations.ApplyExploratoryFieldSpec(ec.NewChild("configurations"));
+
+            } else {
+
+                this.Configurations.ApplyExploratoryFieldSpec(ec.NewChild("configurations"));
+
+            }
+        }
+        else if (this.Configurations != null && ec.Excludes("configurations",false))
+        {
+            this.Configurations = null;
         }
     }
 
@@ -118,9 +150,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<GenerateConfigProtectionRestoreFormReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

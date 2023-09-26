@@ -56,24 +56,33 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<Failure>? Failures
         // GraphQL -> failures: [Failure!]! (type)
         if (this.Failures != null) {
-            var fspec = this.Failures.AsFieldSpec(indent+1);
+            var fspec = this.Failures.AsFieldSpec(conf.Child("failures"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "failures {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "failures {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<Success>? Successes
         // GraphQL -> successes: [Success!]! (type)
         if (this.Successes != null) {
-            var fspec = this.Successes.AsFieldSpec(indent+1);
+            var fspec = this.Successes.AsFieldSpec(conf.Child("successes"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "successes {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "successes {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -85,17 +94,41 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<Failure>? Failures
         // GraphQL -> failures: [Failure!]! (type)
-        if (this.Failures == null && ec.Includes("failures",false))
+        if (ec.Includes("failures",false))
         {
-            this.Failures = new List<Failure>();
-            this.Failures.ApplyExploratoryFieldSpec(ec.NewChild("failures"));
+            if(this.Failures == null) {
+
+                this.Failures = new List<Failure>();
+                this.Failures.ApplyExploratoryFieldSpec(ec.NewChild("failures"));
+
+            } else {
+
+                this.Failures.ApplyExploratoryFieldSpec(ec.NewChild("failures"));
+
+            }
+        }
+        else if (this.Failures != null && ec.Excludes("failures",false))
+        {
+            this.Failures = null;
         }
         //      C# -> List<Success>? Successes
         // GraphQL -> successes: [Success!]! (type)
-        if (this.Successes == null && ec.Includes("successes",false))
+        if (ec.Includes("successes",false))
         {
-            this.Successes = new List<Success>();
-            this.Successes.ApplyExploratoryFieldSpec(ec.NewChild("successes"));
+            if(this.Successes == null) {
+
+                this.Successes = new List<Success>();
+                this.Successes.ApplyExploratoryFieldSpec(ec.NewChild("successes"));
+
+            } else {
+
+                this.Successes.ApplyExploratoryFieldSpec(ec.NewChild("successes"));
+
+            }
+        }
+        else if (this.Successes != null && ec.Excludes("successes",false))
+        {
+            this.Successes = null;
         }
     }
 
@@ -122,9 +155,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CloudNativeCheckRbaConnectivityReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -65,29 +65,42 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> SnapshotResult? LatestSnapshotResult
         // GraphQL -> latestSnapshotResult: SnapshotResult (type)
         if (this.LatestSnapshotResult != null) {
-            var fspec = this.LatestSnapshotResult.AsFieldSpec(indent+1);
+            var fspec = this.LatestSnapshotResult.AsFieldSpec(conf.Child("latestSnapshotResult"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "latestSnapshotResult {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "latestSnapshotResult {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<PolicyStatus>? PolicyStatuses
         // GraphQL -> policyStatuses: [PolicyStatus!]! (type)
         if (this.PolicyStatuses != null) {
-            var fspec = this.PolicyStatuses.AsFieldSpec(indent+1);
+            var fspec = this.PolicyStatuses.AsFieldSpec(conf.Child("policyStatuses"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "policyStatuses {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "policyStatuses {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -99,23 +112,58 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> SnapshotResult? LatestSnapshotResult
         // GraphQL -> latestSnapshotResult: SnapshotResult (type)
-        if (this.LatestSnapshotResult == null && ec.Includes("latestSnapshotResult",false))
+        if (ec.Includes("latestSnapshotResult",false))
         {
-            this.LatestSnapshotResult = new SnapshotResult();
-            this.LatestSnapshotResult.ApplyExploratoryFieldSpec(ec.NewChild("latestSnapshotResult"));
+            if(this.LatestSnapshotResult == null) {
+
+                this.LatestSnapshotResult = new SnapshotResult();
+                this.LatestSnapshotResult.ApplyExploratoryFieldSpec(ec.NewChild("latestSnapshotResult"));
+
+            } else {
+
+                this.LatestSnapshotResult.ApplyExploratoryFieldSpec(ec.NewChild("latestSnapshotResult"));
+
+            }
+        }
+        else if (this.LatestSnapshotResult != null && ec.Excludes("latestSnapshotResult",false))
+        {
+            this.LatestSnapshotResult = null;
         }
         //      C# -> List<PolicyStatus>? PolicyStatuses
         // GraphQL -> policyStatuses: [PolicyStatus!]! (type)
-        if (this.PolicyStatuses == null && ec.Includes("policyStatuses",false))
+        if (ec.Includes("policyStatuses",false))
         {
-            this.PolicyStatuses = new List<PolicyStatus>();
-            this.PolicyStatuses.ApplyExploratoryFieldSpec(ec.NewChild("policyStatuses"));
+            if(this.PolicyStatuses == null) {
+
+                this.PolicyStatuses = new List<PolicyStatus>();
+                this.PolicyStatuses.ApplyExploratoryFieldSpec(ec.NewChild("policyStatuses"));
+
+            } else {
+
+                this.PolicyStatuses.ApplyExploratoryFieldSpec(ec.NewChild("policyStatuses"));
+
+            }
+        }
+        else if (this.PolicyStatuses != null && ec.Excludes("policyStatuses",false))
+        {
+            this.PolicyStatuses = null;
         }
     }
 
@@ -142,9 +190,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ObjectStatus> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

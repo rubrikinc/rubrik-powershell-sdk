@@ -101,44 +101,73 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> DataLocationName? Type
         // GraphQL -> type: DataLocationName! (enum)
         if (this.Type != null) {
-            s += ind + "type\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "type\n" ;
+            } else {
+                s += ind + "type\n" ;
+            }
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
         if (this.ClusterUuid != null) {
-            s += ind + "clusterUuid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterUuid\n" ;
+            } else {
+                s += ind + "clusterUuid\n" ;
+            }
         }
         //      C# -> DateTime? CreateDate
         // GraphQL -> createDate: DateTime! (scalar)
         if (this.CreateDate != null) {
-            s += ind + "createDate\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "createDate\n" ;
+            } else {
+                s += ind + "createDate\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.Boolean? IsActive
         // GraphQL -> isActive: Boolean! (scalar)
         if (this.IsActive != null) {
-            s += ind + "isActive\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isActive\n" ;
+            } else {
+                s += ind + "isActive\n" ;
+            }
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean! (scalar)
         if (this.IsArchived != null) {
-            s += ind + "isArchived\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isArchived\n" ;
+            } else {
+                s += ind + "isArchived\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         return s;
     }
@@ -149,45 +178,122 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> DataLocationName? Type
         // GraphQL -> type: DataLocationName! (enum)
-        if (this.Type == null && ec.Includes("type",true))
+        if (ec.Includes("type",true))
         {
-            this.Type = new DataLocationName();
+            if(this.Type == null) {
+
+                this.Type = new DataLocationName();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Type != null && ec.Excludes("type",true))
+        {
+            this.Type = null;
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
-        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
+        if (ec.Includes("clusterUuid",true))
         {
-            this.ClusterUuid = "FETCH";
+            if(this.ClusterUuid == null) {
+
+                this.ClusterUuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterUuid != null && ec.Excludes("clusterUuid",true))
+        {
+            this.ClusterUuid = null;
         }
         //      C# -> DateTime? CreateDate
         // GraphQL -> createDate: DateTime! (scalar)
-        if (this.CreateDate == null && ec.Includes("createDate",true))
+        if (ec.Includes("createDate",true))
         {
-            this.CreateDate = new DateTime();
+            if(this.CreateDate == null) {
+
+                this.CreateDate = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CreateDate != null && ec.Excludes("createDate",true))
+        {
+            this.CreateDate = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.Boolean? IsActive
         // GraphQL -> isActive: Boolean! (scalar)
-        if (this.IsActive == null && ec.Includes("isActive",true))
+        if (ec.Includes("isActive",true))
         {
-            this.IsActive = true;
+            if(this.IsActive == null) {
+
+                this.IsActive = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsActive != null && ec.Excludes("isActive",true))
+        {
+            this.IsActive = null;
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean! (scalar)
-        if (this.IsArchived == null && ec.Includes("isArchived",true))
+        if (ec.Includes("isArchived",true))
         {
-            this.IsArchived = true;
+            if(this.IsArchived == null) {
+
+                this.IsArchived = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsArchived != null && ec.Excludes("isArchived",true))
+        {
+            this.IsArchived = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
     }
 
@@ -214,9 +320,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<DataLocation> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> IbmDeploymentType? DeploymentType
         // GraphQL -> deploymentType: IbmDeploymentType! (enum)
         if (this.DeploymentType != null) {
-            s += ind + "deploymentType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "deploymentType\n" ;
+            } else {
+                s += ind + "deploymentType\n" ;
+            }
         }
         //      C# -> System.String? ProvisioningCode
         // GraphQL -> provisioningCode: String! (scalar)
         if (this.ProvisioningCode != null) {
-            s += ind + "provisioningCode\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "provisioningCode\n" ;
+            } else {
+                s += ind + "provisioningCode\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> IbmDeploymentType? DeploymentType
         // GraphQL -> deploymentType: IbmDeploymentType! (enum)
-        if (this.DeploymentType == null && ec.Includes("deploymentType",true))
+        if (ec.Includes("deploymentType",true))
         {
-            this.DeploymentType = new IbmDeploymentType();
+            if(this.DeploymentType == null) {
+
+                this.DeploymentType = new IbmDeploymentType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DeploymentType != null && ec.Excludes("deploymentType",true))
+        {
+            this.DeploymentType = null;
         }
         //      C# -> System.String? ProvisioningCode
         // GraphQL -> provisioningCode: String! (scalar)
-        if (this.ProvisioningCode == null && ec.Includes("provisioningCode",true))
+        if (ec.Includes("provisioningCode",true))
         {
-            this.ProvisioningCode = "FETCH";
+            if(this.ProvisioningCode == null) {
+
+                this.ProvisioningCode = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProvisioningCode != null && ec.Excludes("provisioningCode",true))
+        {
+            this.ProvisioningCode = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<IbmCosDetailsType> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

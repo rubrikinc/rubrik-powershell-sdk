@@ -23,6 +23,11 @@ namespace RubrikSecurityCloud
             return Exploration.Includes(Parent + "." + nodeName, isLeaf);
         }
 
+        public bool Excludes(string nodeName, bool isLeaf = false)
+        {
+            return Exploration.Excludes(Parent + "." + nodeName, isLeaf);
+        }
+
         /// <summary>
         /// Instantiate a new ExplorationContext from a parent context
         /// and a child node name.
@@ -66,9 +71,7 @@ namespace RubrikSecurityCloud
         public static List<string> IncludedFields = new List<string>();
         public static List<string> ExcludedFields = new List<string>();
         public static List<string> LoopyFields = new List<string>();
-        public static HashSet<string> WantedFields = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-        public static HashSet<string> UnwantedFields = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-
+        public static RscPatchSet PatchSet = new RscPatchSet();
 
         public static int MaxDepth = 40;
         // --------------------------------------------------
@@ -80,32 +83,21 @@ namespace RubrikSecurityCloud
             IncludedFields.Clear();
             ExcludedFields.Clear();
             LoopyFields.Clear();
-            WantedFields.Clear();
-            UnwantedFields.Clear();
+            PatchSet.Reset();
         }
 
-        public static bool HasPatch()
+        public static bool Excludes(string nodeName, bool isLeaf = false)
         {
-            return WantedFields.Count > 0 || UnwantedFields.Count > 0;
-        }
-
-        public static void ReadPatchFromFile(string patchFile, bool missingOk = true)
-        {
-            if (File.Exists(patchFile))
+            if (string.IsNullOrEmpty(nodeName))
             {
-                var patch = new RscPatchFile(patchFile);
-                patch.Parse(ref WantedFields, ref UnwantedFields);
+                throw new ArgumentException("FieldSpec exploration: nodeName cannot be null or empty");
             }
-            else if (!missingOk)
+            // strip any initial '.'
+            if (nodeName.StartsWith("."))
             {
-                throw new ArgumentException($"File not found: {patchFile}");
+                nodeName = nodeName.Substring(1);
             }
-        }
-
-        public static void ReadPatchFromString(string patchString)
-        {
-            var patch = new RscPatchString(patchString);
-            patch.Parse(ref WantedFields, ref UnwantedFields);
+            return PatchSet.Excludes(nodeName);
         }
 
         // Static method
@@ -136,6 +128,12 @@ namespace RubrikSecurityCloud
 
         private static bool _Includes(string nodeName, bool isLeaf = false)
         {
+            // global cap on number of fields
+            if (GlobalProfile != Profile.FULL && FieldCount > MaxFieldCount)
+            {
+                return false;
+            }
+
             string[] nodes = nodeName.Split('.');
             int depth = nodes.Length - 1;
             string lastNode = nodes[nodes.Length - 1];
@@ -143,21 +141,26 @@ namespace RubrikSecurityCloud
             lastNode = lastNode.ToLower();
             parent = parent.ToLower();
 
-            if (WantedFields.Contains(nodeName))
+            if (PatchSet.Includes(nodeName))
             {
                 return true;
             }
-            if (UnwantedFields.Contains(nodeName))
+            if (PatchSet.Excludes(nodeName))
             {
                 return false;
             }
-            if (GlobalProfile != Profile.FULL && FieldCount > MaxFieldCount)
-            {
-                return false;
-            }
-            if (WantedFields.Contains(parent) && isLeaf)
+            if (PatchSet.Includes(parent) && isLeaf)
             {
                 return true;
+            }
+            if (!isLeaf)
+            {
+                // if any entry in the WantedFields HashSet starts with
+                // nodeName + ".", then we want to include this node
+                if (PatchSet.IncludesBranch(nodeName))
+                {
+                    return true;
+                }
             }
 
             bool included;
@@ -202,7 +205,7 @@ namespace RubrikSecurityCloud
                         return true;
                     }
                 }
-                
+
                 if (lastNode == "physicalchildconnection" ||
                     lastNode == "effectivesladomain")
                 {

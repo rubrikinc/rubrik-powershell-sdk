@@ -65,29 +65,42 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<System.String>? InvalidIds
         // GraphQL -> invalidIds: [String!]! (scalar)
         if (this.InvalidIds != null) {
-            s += ind + "invalidIds\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "invalidIds\n" ;
+            } else {
+                s += ind + "invalidIds\n" ;
+            }
         }
         //      C# -> List<ManagedObjectSlaInfo>? ObjectsWithNoOp
         // GraphQL -> objectsWithNoOp: [ManagedObjectSlaInfo!]! (type)
         if (this.ObjectsWithNoOp != null) {
-            var fspec = this.ObjectsWithNoOp.AsFieldSpec(indent+1);
+            var fspec = this.ObjectsWithNoOp.AsFieldSpec(conf.Child("objectsWithNoOp"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "objectsWithNoOp {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "objectsWithNoOp {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<ManagedObjectPendingSlaInfo>? ObjectsWithPendingOp
         // GraphQL -> objectsWithPendingOp: [ManagedObjectPendingSlaInfo!]! (type)
         if (this.ObjectsWithPendingOp != null) {
-            var fspec = this.ObjectsWithPendingOp.AsFieldSpec(indent+1);
+            var fspec = this.ObjectsWithPendingOp.AsFieldSpec(conf.Child("objectsWithPendingOp"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "objectsWithPendingOp {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "objectsWithPendingOp {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -99,23 +112,58 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<System.String>? InvalidIds
         // GraphQL -> invalidIds: [String!]! (scalar)
-        if (this.InvalidIds == null && ec.Includes("invalidIds",true))
+        if (ec.Includes("invalidIds",true))
         {
-            this.InvalidIds = new List<System.String>();
+            if(this.InvalidIds == null) {
+
+                this.InvalidIds = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.InvalidIds != null && ec.Excludes("invalidIds",true))
+        {
+            this.InvalidIds = null;
         }
         //      C# -> List<ManagedObjectSlaInfo>? ObjectsWithNoOp
         // GraphQL -> objectsWithNoOp: [ManagedObjectSlaInfo!]! (type)
-        if (this.ObjectsWithNoOp == null && ec.Includes("objectsWithNoOp",false))
+        if (ec.Includes("objectsWithNoOp",false))
         {
-            this.ObjectsWithNoOp = new List<ManagedObjectSlaInfo>();
-            this.ObjectsWithNoOp.ApplyExploratoryFieldSpec(ec.NewChild("objectsWithNoOp"));
+            if(this.ObjectsWithNoOp == null) {
+
+                this.ObjectsWithNoOp = new List<ManagedObjectSlaInfo>();
+                this.ObjectsWithNoOp.ApplyExploratoryFieldSpec(ec.NewChild("objectsWithNoOp"));
+
+            } else {
+
+                this.ObjectsWithNoOp.ApplyExploratoryFieldSpec(ec.NewChild("objectsWithNoOp"));
+
+            }
+        }
+        else if (this.ObjectsWithNoOp != null && ec.Excludes("objectsWithNoOp",false))
+        {
+            this.ObjectsWithNoOp = null;
         }
         //      C# -> List<ManagedObjectPendingSlaInfo>? ObjectsWithPendingOp
         // GraphQL -> objectsWithPendingOp: [ManagedObjectPendingSlaInfo!]! (type)
-        if (this.ObjectsWithPendingOp == null && ec.Includes("objectsWithPendingOp",false))
+        if (ec.Includes("objectsWithPendingOp",false))
         {
-            this.ObjectsWithPendingOp = new List<ManagedObjectPendingSlaInfo>();
-            this.ObjectsWithPendingOp.ApplyExploratoryFieldSpec(ec.NewChild("objectsWithPendingOp"));
+            if(this.ObjectsWithPendingOp == null) {
+
+                this.ObjectsWithPendingOp = new List<ManagedObjectPendingSlaInfo>();
+                this.ObjectsWithPendingOp.ApplyExploratoryFieldSpec(ec.NewChild("objectsWithPendingOp"));
+
+            } else {
+
+                this.ObjectsWithPendingOp.ApplyExploratoryFieldSpec(ec.NewChild("objectsWithPendingOp"));
+
+            }
+        }
+        else if (this.ObjectsWithPendingOp != null && ec.Excludes("objectsWithPendingOp",false))
+        {
+            this.ObjectsWithPendingOp = null;
         }
     }
 
@@ -142,9 +190,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<GetPendingSlaAssignmentsReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

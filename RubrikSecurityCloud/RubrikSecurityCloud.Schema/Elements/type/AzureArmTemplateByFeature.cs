@@ -83,36 +83,57 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> ArmTemplateDeploymentLevel? DeploymentLevel
         // GraphQL -> deploymentLevel: ArmTemplateDeploymentLevel! (enum)
         if (this.DeploymentLevel != null) {
-            s += ind + "deploymentLevel\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "deploymentLevel\n" ;
+            } else {
+                s += ind + "deploymentLevel\n" ;
+            }
         }
         //      C# -> CloudAccountFeature? Feature
         // GraphQL -> feature: CloudAccountFeature! (enum)
         if (this.Feature != null) {
-            s += ind + "feature\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "feature\n" ;
+            } else {
+                s += ind + "feature\n" ;
+            }
         }
         //      C# -> System.String? RoleDefinitionAssignmentTemplate
         // GraphQL -> roleDefinitionAssignmentTemplate: String! (scalar)
         if (this.RoleDefinitionAssignmentTemplate != null) {
-            s += ind + "roleDefinitionAssignmentTemplate\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "roleDefinitionAssignmentTemplate\n" ;
+            } else {
+                s += ind + "roleDefinitionAssignmentTemplate\n" ;
+            }
         }
         //      C# -> System.Int32? Version
         // GraphQL -> version: Int! (scalar)
         if (this.Version != null) {
-            s += ind + "version\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "version\n" ;
+            } else {
+                s += ind + "version\n" ;
+            }
         }
         //      C# -> List<PermissionsGroupWithVersion>? PermissionsGroupVersions
         // GraphQL -> permissionsGroupVersions: [PermissionsGroupWithVersion!]! (type)
         if (this.PermissionsGroupVersions != null) {
-            var fspec = this.PermissionsGroupVersions.AsFieldSpec(indent+1);
+            var fspec = this.PermissionsGroupVersions.AsFieldSpec(conf.Child("permissionsGroupVersions"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "permissionsGroupVersions {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "permissionsGroupVersions {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -124,34 +145,90 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> ArmTemplateDeploymentLevel? DeploymentLevel
         // GraphQL -> deploymentLevel: ArmTemplateDeploymentLevel! (enum)
-        if (this.DeploymentLevel == null && ec.Includes("deploymentLevel",true))
+        if (ec.Includes("deploymentLevel",true))
         {
-            this.DeploymentLevel = new ArmTemplateDeploymentLevel();
+            if(this.DeploymentLevel == null) {
+
+                this.DeploymentLevel = new ArmTemplateDeploymentLevel();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DeploymentLevel != null && ec.Excludes("deploymentLevel",true))
+        {
+            this.DeploymentLevel = null;
         }
         //      C# -> CloudAccountFeature? Feature
         // GraphQL -> feature: CloudAccountFeature! (enum)
-        if (this.Feature == null && ec.Includes("feature",true))
+        if (ec.Includes("feature",true))
         {
-            this.Feature = new CloudAccountFeature();
+            if(this.Feature == null) {
+
+                this.Feature = new CloudAccountFeature();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Feature != null && ec.Excludes("feature",true))
+        {
+            this.Feature = null;
         }
         //      C# -> System.String? RoleDefinitionAssignmentTemplate
         // GraphQL -> roleDefinitionAssignmentTemplate: String! (scalar)
-        if (this.RoleDefinitionAssignmentTemplate == null && ec.Includes("roleDefinitionAssignmentTemplate",true))
+        if (ec.Includes("roleDefinitionAssignmentTemplate",true))
         {
-            this.RoleDefinitionAssignmentTemplate = "FETCH";
+            if(this.RoleDefinitionAssignmentTemplate == null) {
+
+                this.RoleDefinitionAssignmentTemplate = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RoleDefinitionAssignmentTemplate != null && ec.Excludes("roleDefinitionAssignmentTemplate",true))
+        {
+            this.RoleDefinitionAssignmentTemplate = null;
         }
         //      C# -> System.Int32? Version
         // GraphQL -> version: Int! (scalar)
-        if (this.Version == null && ec.Includes("version",true))
+        if (ec.Includes("version",true))
         {
-            this.Version = Int32.MinValue;
+            if(this.Version == null) {
+
+                this.Version = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Version != null && ec.Excludes("version",true))
+        {
+            this.Version = null;
         }
         //      C# -> List<PermissionsGroupWithVersion>? PermissionsGroupVersions
         // GraphQL -> permissionsGroupVersions: [PermissionsGroupWithVersion!]! (type)
-        if (this.PermissionsGroupVersions == null && ec.Includes("permissionsGroupVersions",false))
+        if (ec.Includes("permissionsGroupVersions",false))
         {
-            this.PermissionsGroupVersions = new List<PermissionsGroupWithVersion>();
-            this.PermissionsGroupVersions.ApplyExploratoryFieldSpec(ec.NewChild("permissionsGroupVersions"));
+            if(this.PermissionsGroupVersions == null) {
+
+                this.PermissionsGroupVersions = new List<PermissionsGroupWithVersion>();
+                this.PermissionsGroupVersions.ApplyExploratoryFieldSpec(ec.NewChild("permissionsGroupVersions"));
+
+            } else {
+
+                this.PermissionsGroupVersions.ApplyExploratoryFieldSpec(ec.NewChild("permissionsGroupVersions"));
+
+            }
+        }
+        else if (this.PermissionsGroupVersions != null && ec.Excludes("permissionsGroupVersions",false))
+        {
+            this.PermissionsGroupVersions = null;
         }
     }
 
@@ -178,9 +255,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AzureArmTemplateByFeature> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

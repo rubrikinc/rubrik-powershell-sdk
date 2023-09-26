@@ -119,56 +119,93 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> HotAddProxyVmStatusType? Status
         // GraphQL -> status: HotAddProxyVmStatusType! (enum)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         //      C# -> System.String? ComputeClusterName
         // GraphQL -> computeClusterName: String (scalar)
         if (this.ComputeClusterName != null) {
-            s += ind + "computeClusterName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "computeClusterName\n" ;
+            } else {
+                s += ind + "computeClusterName\n" ;
+            }
         }
         //      C# -> System.String? DatastoreName
         // GraphQL -> datastoreName: String! (scalar)
         if (this.DatastoreName != null) {
-            s += ind + "datastoreName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "datastoreName\n" ;
+            } else {
+                s += ind + "datastoreName\n" ;
+            }
         }
         //      C# -> System.String? HostName
         // GraphQL -> hostName: String (scalar)
         if (this.HostName != null) {
-            s += ind + "hostName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostName\n" ;
+            } else {
+                s += ind + "hostName\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.Int32? UsedPortCount
         // GraphQL -> usedPortCount: Int! (scalar)
         if (this.UsedPortCount != null) {
-            s += ind + "usedPortCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "usedPortCount\n" ;
+            } else {
+                s += ind + "usedPortCount\n" ;
+            }
         }
         //      C# -> System.String? VcenterName
         // GraphQL -> vcenterName: String! (scalar)
         if (this.VcenterName != null) {
-            s += ind + "vcenterName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "vcenterName\n" ;
+            } else {
+                s += ind + "vcenterName\n" ;
+            }
         }
         //      C# -> HotAddNetworkConfigWithName? ProxyNetworkInfo
         // GraphQL -> proxyNetworkInfo: HotAddNetworkConfigWithName (type)
         if (this.ProxyNetworkInfo != null) {
-            var fspec = this.ProxyNetworkInfo.AsFieldSpec(indent+1);
+            var fspec = this.ProxyNetworkInfo.AsFieldSpec(conf.Child("proxyNetworkInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "proxyNetworkInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "proxyNetworkInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -180,58 +217,158 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> HotAddProxyVmStatusType? Status
         // GraphQL -> status: HotAddProxyVmStatusType! (enum)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = new HotAddProxyVmStatusType();
+            if(this.Status == null) {
+
+                this.Status = new HotAddProxyVmStatusType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
         //      C# -> System.String? ComputeClusterName
         // GraphQL -> computeClusterName: String (scalar)
-        if (this.ComputeClusterName == null && ec.Includes("computeClusterName",true))
+        if (ec.Includes("computeClusterName",true))
         {
-            this.ComputeClusterName = "FETCH";
+            if(this.ComputeClusterName == null) {
+
+                this.ComputeClusterName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ComputeClusterName != null && ec.Excludes("computeClusterName",true))
+        {
+            this.ComputeClusterName = null;
         }
         //      C# -> System.String? DatastoreName
         // GraphQL -> datastoreName: String! (scalar)
-        if (this.DatastoreName == null && ec.Includes("datastoreName",true))
+        if (ec.Includes("datastoreName",true))
         {
-            this.DatastoreName = "FETCH";
+            if(this.DatastoreName == null) {
+
+                this.DatastoreName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DatastoreName != null && ec.Excludes("datastoreName",true))
+        {
+            this.DatastoreName = null;
         }
         //      C# -> System.String? HostName
         // GraphQL -> hostName: String (scalar)
-        if (this.HostName == null && ec.Includes("hostName",true))
+        if (ec.Includes("hostName",true))
         {
-            this.HostName = "FETCH";
+            if(this.HostName == null) {
+
+                this.HostName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.HostName != null && ec.Excludes("hostName",true))
+        {
+            this.HostName = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.Int32? UsedPortCount
         // GraphQL -> usedPortCount: Int! (scalar)
-        if (this.UsedPortCount == null && ec.Includes("usedPortCount",true))
+        if (ec.Includes("usedPortCount",true))
         {
-            this.UsedPortCount = Int32.MinValue;
+            if(this.UsedPortCount == null) {
+
+                this.UsedPortCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.UsedPortCount != null && ec.Excludes("usedPortCount",true))
+        {
+            this.UsedPortCount = null;
         }
         //      C# -> System.String? VcenterName
         // GraphQL -> vcenterName: String! (scalar)
-        if (this.VcenterName == null && ec.Includes("vcenterName",true))
+        if (ec.Includes("vcenterName",true))
         {
-            this.VcenterName = "FETCH";
+            if(this.VcenterName == null) {
+
+                this.VcenterName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.VcenterName != null && ec.Excludes("vcenterName",true))
+        {
+            this.VcenterName = null;
         }
         //      C# -> HotAddNetworkConfigWithName? ProxyNetworkInfo
         // GraphQL -> proxyNetworkInfo: HotAddNetworkConfigWithName (type)
-        if (this.ProxyNetworkInfo == null && ec.Includes("proxyNetworkInfo",false))
+        if (ec.Includes("proxyNetworkInfo",false))
         {
-            this.ProxyNetworkInfo = new HotAddNetworkConfigWithName();
-            this.ProxyNetworkInfo.ApplyExploratoryFieldSpec(ec.NewChild("proxyNetworkInfo"));
+            if(this.ProxyNetworkInfo == null) {
+
+                this.ProxyNetworkInfo = new HotAddNetworkConfigWithName();
+                this.ProxyNetworkInfo.ApplyExploratoryFieldSpec(ec.NewChild("proxyNetworkInfo"));
+
+            } else {
+
+                this.ProxyNetworkInfo.ApplyExploratoryFieldSpec(ec.NewChild("proxyNetworkInfo"));
+
+            }
+        }
+        else if (this.ProxyNetworkInfo != null && ec.Excludes("proxyNetworkInfo",false))
+        {
+            this.ProxyNetworkInfo = null;
         }
     }
 
@@ -258,9 +395,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<HotAddProxyVmInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

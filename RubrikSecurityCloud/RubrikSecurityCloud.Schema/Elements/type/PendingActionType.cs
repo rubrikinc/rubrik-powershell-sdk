@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> PendingActionGroupTypeEnum? PendingActionGroupType
         // GraphQL -> pendingActionGroupType: PendingActionGroupTypeEnum! (enum)
         if (this.PendingActionGroupType != null) {
-            s += ind + "pendingActionGroupType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "pendingActionGroupType\n" ;
+            } else {
+                s += ind + "pendingActionGroupType\n" ;
+            }
         }
         //      C# -> PendingActionSubGroupTypeEnum? PendingActionSubGroupType
         // GraphQL -> pendingActionSubGroupType: PendingActionSubGroupTypeEnum! (enum)
         if (this.PendingActionSubGroupType != null) {
-            s += ind + "pendingActionSubGroupType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "pendingActionSubGroupType\n" ;
+            } else {
+                s += ind + "pendingActionSubGroupType\n" ;
+            }
         }
         //      C# -> PendingActionSyncType? PendingActionSyncType
         // GraphQL -> pendingActionSyncType: PendingActionSyncType! (enum)
         if (this.PendingActionSyncType != null) {
-            s += ind + "pendingActionSyncType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "pendingActionSyncType\n" ;
+            } else {
+                s += ind + "pendingActionSyncType\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> PendingActionGroupTypeEnum? PendingActionGroupType
         // GraphQL -> pendingActionGroupType: PendingActionGroupTypeEnum! (enum)
-        if (this.PendingActionGroupType == null && ec.Includes("pendingActionGroupType",true))
+        if (ec.Includes("pendingActionGroupType",true))
         {
-            this.PendingActionGroupType = new PendingActionGroupTypeEnum();
+            if(this.PendingActionGroupType == null) {
+
+                this.PendingActionGroupType = new PendingActionGroupTypeEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.PendingActionGroupType != null && ec.Excludes("pendingActionGroupType",true))
+        {
+            this.PendingActionGroupType = null;
         }
         //      C# -> PendingActionSubGroupTypeEnum? PendingActionSubGroupType
         // GraphQL -> pendingActionSubGroupType: PendingActionSubGroupTypeEnum! (enum)
-        if (this.PendingActionSubGroupType == null && ec.Includes("pendingActionSubGroupType",true))
+        if (ec.Includes("pendingActionSubGroupType",true))
         {
-            this.PendingActionSubGroupType = new PendingActionSubGroupTypeEnum();
+            if(this.PendingActionSubGroupType == null) {
+
+                this.PendingActionSubGroupType = new PendingActionSubGroupTypeEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.PendingActionSubGroupType != null && ec.Excludes("pendingActionSubGroupType",true))
+        {
+            this.PendingActionSubGroupType = null;
         }
         //      C# -> PendingActionSyncType? PendingActionSyncType
         // GraphQL -> pendingActionSyncType: PendingActionSyncType! (enum)
-        if (this.PendingActionSyncType == null && ec.Includes("pendingActionSyncType",true))
+        if (ec.Includes("pendingActionSyncType",true))
         {
-            this.PendingActionSyncType = new PendingActionSyncType();
+            if(this.PendingActionSyncType == null) {
+
+                this.PendingActionSyncType = new PendingActionSyncType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.PendingActionSyncType != null && ec.Excludes("pendingActionSyncType",true))
+        {
+            this.PendingActionSyncType = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<PendingActionType> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

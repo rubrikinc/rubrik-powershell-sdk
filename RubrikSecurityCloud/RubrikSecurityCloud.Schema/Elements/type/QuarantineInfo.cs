@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Boolean? ContainsQuarantinedFiles
         // GraphQL -> containsQuarantinedFiles: Boolean! (scalar)
         if (this.ContainsQuarantinedFiles != null) {
-            s += ind + "containsQuarantinedFiles\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "containsQuarantinedFiles\n" ;
+            } else {
+                s += ind + "containsQuarantinedFiles\n" ;
+            }
         }
         //      C# -> System.Boolean? IsQuarantined
         // GraphQL -> isQuarantined: Boolean! (scalar)
         if (this.IsQuarantined != null) {
-            s += ind + "isQuarantined\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isQuarantined\n" ;
+            } else {
+                s += ind + "isQuarantined\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Boolean? ContainsQuarantinedFiles
         // GraphQL -> containsQuarantinedFiles: Boolean! (scalar)
-        if (this.ContainsQuarantinedFiles == null && ec.Includes("containsQuarantinedFiles",true))
+        if (ec.Includes("containsQuarantinedFiles",true))
         {
-            this.ContainsQuarantinedFiles = true;
+            if(this.ContainsQuarantinedFiles == null) {
+
+                this.ContainsQuarantinedFiles = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ContainsQuarantinedFiles != null && ec.Excludes("containsQuarantinedFiles",true))
+        {
+            this.ContainsQuarantinedFiles = null;
         }
         //      C# -> System.Boolean? IsQuarantined
         // GraphQL -> isQuarantined: Boolean! (scalar)
-        if (this.IsQuarantined == null && ec.Includes("isQuarantined",true))
+        if (ec.Includes("isQuarantined",true))
         {
-            this.IsQuarantined = true;
+            if(this.IsQuarantined == null) {
+
+                this.IsQuarantined = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsQuarantined != null && ec.Excludes("isQuarantined",true))
+        {
+            this.IsQuarantined = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<QuarantineInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

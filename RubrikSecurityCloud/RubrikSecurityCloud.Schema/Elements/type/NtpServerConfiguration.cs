@@ -56,21 +56,30 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Server
         // GraphQL -> server: String! (scalar)
         if (this.Server != null) {
-            s += ind + "server\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "server\n" ;
+            } else {
+                s += ind + "server\n" ;
+            }
         }
         //      C# -> NtpSymmKeyConfiguration? SymmetricKey
         // GraphQL -> symmetricKey: NtpSymmKeyConfiguration (type)
         if (this.SymmetricKey != null) {
-            var fspec = this.SymmetricKey.AsFieldSpec(indent+1);
+            var fspec = this.SymmetricKey.AsFieldSpec(conf.Child("symmetricKey"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "symmetricKey {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "symmetricKey {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -82,16 +91,39 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Server
         // GraphQL -> server: String! (scalar)
-        if (this.Server == null && ec.Includes("server",true))
+        if (ec.Includes("server",true))
         {
-            this.Server = "FETCH";
+            if(this.Server == null) {
+
+                this.Server = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Server != null && ec.Excludes("server",true))
+        {
+            this.Server = null;
         }
         //      C# -> NtpSymmKeyConfiguration? SymmetricKey
         // GraphQL -> symmetricKey: NtpSymmKeyConfiguration (type)
-        if (this.SymmetricKey == null && ec.Includes("symmetricKey",false))
+        if (ec.Includes("symmetricKey",false))
         {
-            this.SymmetricKey = new NtpSymmKeyConfiguration();
-            this.SymmetricKey.ApplyExploratoryFieldSpec(ec.NewChild("symmetricKey"));
+            if(this.SymmetricKey == null) {
+
+                this.SymmetricKey = new NtpSymmKeyConfiguration();
+                this.SymmetricKey.ApplyExploratoryFieldSpec(ec.NewChild("symmetricKey"));
+
+            } else {
+
+                this.SymmetricKey.ApplyExploratoryFieldSpec(ec.NewChild("symmetricKey"));
+
+            }
+        }
+        else if (this.SymmetricKey != null && ec.Excludes("symmetricKey",false))
+        {
+            this.SymmetricKey = null;
         }
     }
 
@@ -118,9 +150,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<NtpServerConfiguration> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

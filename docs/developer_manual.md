@@ -272,7 +272,7 @@ $opCmdlets=(Get-Module RubrikSecurityCloud).ExportedCommands.Keys | Sort-Object 
 | `Get-RscVersion` | Get the RSC API server version |
 | `Get-RscVsphereVm` | Get info about VSphere VMs |
 | `Get-RscVsphereVm` | Get info about VSphere VMs |
-| `Write-SlaDomain` | Write SLA domains |
+| `New-SlaDomain` | Create new SLA domains |
 
 ```powershell
 $wrappers=(Get-Module RubrikSecurityCloud).ExportedCommands.Keys | Sort-Object | Where-Object { $coreCmdlets -notcontains $_ -and $opCmdlets -notcontains $_}

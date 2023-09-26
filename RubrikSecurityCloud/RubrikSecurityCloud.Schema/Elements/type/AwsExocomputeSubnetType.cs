@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? AvailabilityZone
         // GraphQL -> availabilityZone: String! (scalar)
         if (this.AvailabilityZone != null) {
-            s += ind + "availabilityZone\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "availabilityZone\n" ;
+            } else {
+                s += ind + "availabilityZone\n" ;
+            }
         }
         //      C# -> System.String? SubnetId
         // GraphQL -> subnetId: String! (scalar)
         if (this.SubnetId != null) {
-            s += ind + "subnetId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "subnetId\n" ;
+            } else {
+                s += ind + "subnetId\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? AvailabilityZone
         // GraphQL -> availabilityZone: String! (scalar)
-        if (this.AvailabilityZone == null && ec.Includes("availabilityZone",true))
+        if (ec.Includes("availabilityZone",true))
         {
-            this.AvailabilityZone = "FETCH";
+            if(this.AvailabilityZone == null) {
+
+                this.AvailabilityZone = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AvailabilityZone != null && ec.Excludes("availabilityZone",true))
+        {
+            this.AvailabilityZone = null;
         }
         //      C# -> System.String? SubnetId
         // GraphQL -> subnetId: String! (scalar)
-        if (this.SubnetId == null && ec.Includes("subnetId",true))
+        if (ec.Includes("subnetId",true))
         {
-            this.SubnetId = "FETCH";
+            if(this.SubnetId == null) {
+
+                this.SubnetId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SubnetId != null && ec.Excludes("subnetId",true))
+        {
+            this.SubnetId = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AwsExocomputeSubnetType> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

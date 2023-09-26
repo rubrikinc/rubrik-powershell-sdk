@@ -65,32 +65,45 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> AnalyzerGroup? AnalyzerGroup
         // GraphQL -> analyzerGroup: AnalyzerGroup! (type)
         if (this.AnalyzerGroup != null) {
-            var fspec = this.AnalyzerGroup.AsFieldSpec(indent+1);
+            var fspec = this.AnalyzerGroup.AsFieldSpec(conf.Child("analyzerGroup"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "analyzerGroup {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "analyzerGroup {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<AnalyzerResult>? AnalyzerResults
         // GraphQL -> analyzerResults: [AnalyzerResult!]! (type)
         if (this.AnalyzerResults != null) {
-            var fspec = this.AnalyzerResults.AsFieldSpec(indent+1);
+            var fspec = this.AnalyzerResults.AsFieldSpec(conf.Child("analyzerResults"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "analyzerResults {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "analyzerResults {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> Hits? Hits
         // GraphQL -> hits: Hits! (type)
         if (this.Hits != null) {
-            var fspec = this.Hits.AsFieldSpec(indent+1);
+            var fspec = this.Hits.AsFieldSpec(conf.Child("hits"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "hits {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "hits {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -102,24 +115,60 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> AnalyzerGroup? AnalyzerGroup
         // GraphQL -> analyzerGroup: AnalyzerGroup! (type)
-        if (this.AnalyzerGroup == null && ec.Includes("analyzerGroup",false))
+        if (ec.Includes("analyzerGroup",false))
         {
-            this.AnalyzerGroup = new AnalyzerGroup();
-            this.AnalyzerGroup.ApplyExploratoryFieldSpec(ec.NewChild("analyzerGroup"));
+            if(this.AnalyzerGroup == null) {
+
+                this.AnalyzerGroup = new AnalyzerGroup();
+                this.AnalyzerGroup.ApplyExploratoryFieldSpec(ec.NewChild("analyzerGroup"));
+
+            } else {
+
+                this.AnalyzerGroup.ApplyExploratoryFieldSpec(ec.NewChild("analyzerGroup"));
+
+            }
+        }
+        else if (this.AnalyzerGroup != null && ec.Excludes("analyzerGroup",false))
+        {
+            this.AnalyzerGroup = null;
         }
         //      C# -> List<AnalyzerResult>? AnalyzerResults
         // GraphQL -> analyzerResults: [AnalyzerResult!]! (type)
-        if (this.AnalyzerResults == null && ec.Includes("analyzerResults",false))
+        if (ec.Includes("analyzerResults",false))
         {
-            this.AnalyzerResults = new List<AnalyzerResult>();
-            this.AnalyzerResults.ApplyExploratoryFieldSpec(ec.NewChild("analyzerResults"));
+            if(this.AnalyzerResults == null) {
+
+                this.AnalyzerResults = new List<AnalyzerResult>();
+                this.AnalyzerResults.ApplyExploratoryFieldSpec(ec.NewChild("analyzerResults"));
+
+            } else {
+
+                this.AnalyzerResults.ApplyExploratoryFieldSpec(ec.NewChild("analyzerResults"));
+
+            }
+        }
+        else if (this.AnalyzerResults != null && ec.Excludes("analyzerResults",false))
+        {
+            this.AnalyzerResults = null;
         }
         //      C# -> Hits? Hits
         // GraphQL -> hits: Hits! (type)
-        if (this.Hits == null && ec.Includes("hits",false))
+        if (ec.Includes("hits",false))
         {
-            this.Hits = new Hits();
-            this.Hits.ApplyExploratoryFieldSpec(ec.NewChild("hits"));
+            if(this.Hits == null) {
+
+                this.Hits = new Hits();
+                this.Hits.ApplyExploratoryFieldSpec(ec.NewChild("hits"));
+
+            } else {
+
+                this.Hits.ApplyExploratoryFieldSpec(ec.NewChild("hits"));
+
+            }
+        }
+        else if (this.Hits != null && ec.Excludes("hits",false))
+        {
+            this.Hits = null;
         }
     }
 
@@ -146,9 +195,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AnalyzerGroupResult> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

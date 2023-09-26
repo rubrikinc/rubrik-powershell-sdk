@@ -65,26 +65,39 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> DayOfYear? DayOfYear
         // GraphQL -> dayOfYear: DayOfYear! (enum)
         if (this.DayOfYear != null) {
-            s += ind + "dayOfYear\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "dayOfYear\n" ;
+            } else {
+                s += ind + "dayOfYear\n" ;
+            }
         }
         //      C# -> Month? YearStartMonth
         // GraphQL -> yearStartMonth: Month! (enum)
         if (this.YearStartMonth != null) {
-            s += ind + "yearStartMonth\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "yearStartMonth\n" ;
+            } else {
+                s += ind + "yearStartMonth\n" ;
+            }
         }
         //      C# -> BasicSnapshotSchedule? BasicSchedule
         // GraphQL -> basicSchedule: BasicSnapshotSchedule (type)
         if (this.BasicSchedule != null) {
-            var fspec = this.BasicSchedule.AsFieldSpec(indent+1);
+            var fspec = this.BasicSchedule.AsFieldSpec(conf.Child("basicSchedule"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "basicSchedule {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "basicSchedule {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -96,22 +109,56 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> DayOfYear? DayOfYear
         // GraphQL -> dayOfYear: DayOfYear! (enum)
-        if (this.DayOfYear == null && ec.Includes("dayOfYear",true))
+        if (ec.Includes("dayOfYear",true))
         {
-            this.DayOfYear = new DayOfYear();
+            if(this.DayOfYear == null) {
+
+                this.DayOfYear = new DayOfYear();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DayOfYear != null && ec.Excludes("dayOfYear",true))
+        {
+            this.DayOfYear = null;
         }
         //      C# -> Month? YearStartMonth
         // GraphQL -> yearStartMonth: Month! (enum)
-        if (this.YearStartMonth == null && ec.Includes("yearStartMonth",true))
+        if (ec.Includes("yearStartMonth",true))
         {
-            this.YearStartMonth = new Month();
+            if(this.YearStartMonth == null) {
+
+                this.YearStartMonth = new Month();
+
+            } else {
+
+
+            }
+        }
+        else if (this.YearStartMonth != null && ec.Excludes("yearStartMonth",true))
+        {
+            this.YearStartMonth = null;
         }
         //      C# -> BasicSnapshotSchedule? BasicSchedule
         // GraphQL -> basicSchedule: BasicSnapshotSchedule (type)
-        if (this.BasicSchedule == null && ec.Includes("basicSchedule",false))
+        if (ec.Includes("basicSchedule",false))
         {
-            this.BasicSchedule = new BasicSnapshotSchedule();
-            this.BasicSchedule.ApplyExploratoryFieldSpec(ec.NewChild("basicSchedule"));
+            if(this.BasicSchedule == null) {
+
+                this.BasicSchedule = new BasicSnapshotSchedule();
+                this.BasicSchedule.ApplyExploratoryFieldSpec(ec.NewChild("basicSchedule"));
+
+            } else {
+
+                this.BasicSchedule.ApplyExploratoryFieldSpec(ec.NewChild("basicSchedule"));
+
+            }
+        }
+        else if (this.BasicSchedule != null && ec.Excludes("basicSchedule",false))
+        {
+            this.BasicSchedule = null;
         }
     }
 
@@ -138,9 +185,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<YearlySnapshotSchedule> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

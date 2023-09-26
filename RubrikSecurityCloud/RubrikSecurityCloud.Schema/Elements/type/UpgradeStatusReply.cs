@@ -173,89 +173,150 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? CurrentState
         // GraphQL -> currentState: String! (scalar)
         if (this.CurrentState != null) {
-            s += ind + "currentState\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "currentState\n" ;
+            } else {
+                s += ind + "currentState\n" ;
+            }
         }
         //      C# -> System.String? CurrentStateName
         // GraphQL -> currentStateName: String! (scalar)
         if (this.CurrentStateName != null) {
-            s += ind + "currentStateName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "currentStateName\n" ;
+            } else {
+                s += ind + "currentStateName\n" ;
+            }
         }
         //      C# -> System.String? CurrentStateProgress
         // GraphQL -> currentStateProgress: String! (scalar)
         if (this.CurrentStateProgress != null) {
-            s += ind + "currentStateProgress\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "currentStateProgress\n" ;
+            } else {
+                s += ind + "currentStateProgress\n" ;
+            }
         }
         //      C# -> System.String? FinishedStates
         // GraphQL -> finishedStates: String! (scalar)
         if (this.FinishedStates != null) {
-            s += ind + "finishedStates\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "finishedStates\n" ;
+            } else {
+                s += ind + "finishedStates\n" ;
+            }
         }
         //      C# -> System.String? Mode
         // GraphQL -> mode: String! (scalar)
         if (this.Mode != null) {
-            s += ind + "mode\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "mode\n" ;
+            } else {
+                s += ind + "mode\n" ;
+            }
         }
         //      C# -> System.String? NodeName
         // GraphQL -> nodeName: String! (scalar)
         if (this.NodeName != null) {
-            s += ind + "nodeName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "nodeName\n" ;
+            } else {
+                s += ind + "nodeName\n" ;
+            }
         }
         //      C# -> System.String? PendingStates
         // GraphQL -> pendingStates: String! (scalar)
         if (this.PendingStates != null) {
-            s += ind + "pendingStates\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "pendingStates\n" ;
+            } else {
+                s += ind + "pendingStates\n" ;
+            }
         }
         //      C# -> System.String? Progress
         // GraphQL -> progress: String! (scalar)
         if (this.Progress != null) {
-            s += ind + "progress\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "progress\n" ;
+            } else {
+                s += ind + "progress\n" ;
+            }
         }
         //      C# -> System.String? TarballName
         // GraphQL -> tarballName: String! (scalar)
         if (this.TarballName != null) {
-            s += ind + "tarballName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "tarballName\n" ;
+            } else {
+                s += ind + "tarballName\n" ;
+            }
         }
         //      C# -> System.String? UpgradeProgressPercentage
         // GraphQL -> upgradeProgressPercentage: String! (scalar)
         if (this.UpgradeProgressPercentage != null) {
-            s += ind + "upgradeProgressPercentage\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "upgradeProgressPercentage\n" ;
+            } else {
+                s += ind + "upgradeProgressPercentage\n" ;
+            }
         }
         //      C# -> System.String? UpgradeTimeLeftSecs
         // GraphQL -> upgradeTimeLeftSecs: String! (scalar)
         if (this.UpgradeTimeLeftSecs != null) {
-            s += ind + "upgradeTimeLeftSecs\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "upgradeTimeLeftSecs\n" ;
+            } else {
+                s += ind + "upgradeTimeLeftSecs\n" ;
+            }
         }
         //      C# -> System.String? UpgradeTimestamp
         // GraphQL -> upgradeTimestamp: String! (scalar)
         if (this.UpgradeTimestamp != null) {
-            s += ind + "upgradeTimestamp\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "upgradeTimestamp\n" ;
+            } else {
+                s += ind + "upgradeTimestamp\n" ;
+            }
         }
         //      C# -> System.String? UserSurfacedTaskName
         // GraphQL -> userSurfacedTaskName: String! (scalar)
         if (this.UserSurfacedTaskName != null) {
-            s += ind + "userSurfacedTaskName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "userSurfacedTaskName\n" ;
+            } else {
+                s += ind + "userSurfacedTaskName\n" ;
+            }
         }
         //      C# -> RollingUpgradeInfo? RuInfo
         // GraphQL -> ruInfo: RollingUpgradeInfo (type)
         if (this.RuInfo != null) {
-            var fspec = this.RuInfo.AsFieldSpec(indent+1);
+            var fspec = this.RuInfo.AsFieldSpec(conf.Child("ruInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "ruInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "ruInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> StatusResponse? UpgradeStatus
         // GraphQL -> upgradeStatus: StatusResponse (type)
         if (this.UpgradeStatus != null) {
-            var fspec = this.UpgradeStatus.AsFieldSpec(indent+1);
+            var fspec = this.UpgradeStatus.AsFieldSpec(conf.Child("upgradeStatus"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "upgradeStatus {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "upgradeStatus {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -267,95 +328,262 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? CurrentState
         // GraphQL -> currentState: String! (scalar)
-        if (this.CurrentState == null && ec.Includes("currentState",true))
+        if (ec.Includes("currentState",true))
         {
-            this.CurrentState = "FETCH";
+            if(this.CurrentState == null) {
+
+                this.CurrentState = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CurrentState != null && ec.Excludes("currentState",true))
+        {
+            this.CurrentState = null;
         }
         //      C# -> System.String? CurrentStateName
         // GraphQL -> currentStateName: String! (scalar)
-        if (this.CurrentStateName == null && ec.Includes("currentStateName",true))
+        if (ec.Includes("currentStateName",true))
         {
-            this.CurrentStateName = "FETCH";
+            if(this.CurrentStateName == null) {
+
+                this.CurrentStateName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CurrentStateName != null && ec.Excludes("currentStateName",true))
+        {
+            this.CurrentStateName = null;
         }
         //      C# -> System.String? CurrentStateProgress
         // GraphQL -> currentStateProgress: String! (scalar)
-        if (this.CurrentStateProgress == null && ec.Includes("currentStateProgress",true))
+        if (ec.Includes("currentStateProgress",true))
         {
-            this.CurrentStateProgress = "FETCH";
+            if(this.CurrentStateProgress == null) {
+
+                this.CurrentStateProgress = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CurrentStateProgress != null && ec.Excludes("currentStateProgress",true))
+        {
+            this.CurrentStateProgress = null;
         }
         //      C# -> System.String? FinishedStates
         // GraphQL -> finishedStates: String! (scalar)
-        if (this.FinishedStates == null && ec.Includes("finishedStates",true))
+        if (ec.Includes("finishedStates",true))
         {
-            this.FinishedStates = "FETCH";
+            if(this.FinishedStates == null) {
+
+                this.FinishedStates = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.FinishedStates != null && ec.Excludes("finishedStates",true))
+        {
+            this.FinishedStates = null;
         }
         //      C# -> System.String? Mode
         // GraphQL -> mode: String! (scalar)
-        if (this.Mode == null && ec.Includes("mode",true))
+        if (ec.Includes("mode",true))
         {
-            this.Mode = "FETCH";
+            if(this.Mode == null) {
+
+                this.Mode = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Mode != null && ec.Excludes("mode",true))
+        {
+            this.Mode = null;
         }
         //      C# -> System.String? NodeName
         // GraphQL -> nodeName: String! (scalar)
-        if (this.NodeName == null && ec.Includes("nodeName",true))
+        if (ec.Includes("nodeName",true))
         {
-            this.NodeName = "FETCH";
+            if(this.NodeName == null) {
+
+                this.NodeName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NodeName != null && ec.Excludes("nodeName",true))
+        {
+            this.NodeName = null;
         }
         //      C# -> System.String? PendingStates
         // GraphQL -> pendingStates: String! (scalar)
-        if (this.PendingStates == null && ec.Includes("pendingStates",true))
+        if (ec.Includes("pendingStates",true))
         {
-            this.PendingStates = "FETCH";
+            if(this.PendingStates == null) {
+
+                this.PendingStates = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PendingStates != null && ec.Excludes("pendingStates",true))
+        {
+            this.PendingStates = null;
         }
         //      C# -> System.String? Progress
         // GraphQL -> progress: String! (scalar)
-        if (this.Progress == null && ec.Includes("progress",true))
+        if (ec.Includes("progress",true))
         {
-            this.Progress = "FETCH";
+            if(this.Progress == null) {
+
+                this.Progress = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Progress != null && ec.Excludes("progress",true))
+        {
+            this.Progress = null;
         }
         //      C# -> System.String? TarballName
         // GraphQL -> tarballName: String! (scalar)
-        if (this.TarballName == null && ec.Includes("tarballName",true))
+        if (ec.Includes("tarballName",true))
         {
-            this.TarballName = "FETCH";
+            if(this.TarballName == null) {
+
+                this.TarballName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TarballName != null && ec.Excludes("tarballName",true))
+        {
+            this.TarballName = null;
         }
         //      C# -> System.String? UpgradeProgressPercentage
         // GraphQL -> upgradeProgressPercentage: String! (scalar)
-        if (this.UpgradeProgressPercentage == null && ec.Includes("upgradeProgressPercentage",true))
+        if (ec.Includes("upgradeProgressPercentage",true))
         {
-            this.UpgradeProgressPercentage = "FETCH";
+            if(this.UpgradeProgressPercentage == null) {
+
+                this.UpgradeProgressPercentage = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.UpgradeProgressPercentage != null && ec.Excludes("upgradeProgressPercentage",true))
+        {
+            this.UpgradeProgressPercentage = null;
         }
         //      C# -> System.String? UpgradeTimeLeftSecs
         // GraphQL -> upgradeTimeLeftSecs: String! (scalar)
-        if (this.UpgradeTimeLeftSecs == null && ec.Includes("upgradeTimeLeftSecs",true))
+        if (ec.Includes("upgradeTimeLeftSecs",true))
         {
-            this.UpgradeTimeLeftSecs = "FETCH";
+            if(this.UpgradeTimeLeftSecs == null) {
+
+                this.UpgradeTimeLeftSecs = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.UpgradeTimeLeftSecs != null && ec.Excludes("upgradeTimeLeftSecs",true))
+        {
+            this.UpgradeTimeLeftSecs = null;
         }
         //      C# -> System.String? UpgradeTimestamp
         // GraphQL -> upgradeTimestamp: String! (scalar)
-        if (this.UpgradeTimestamp == null && ec.Includes("upgradeTimestamp",true))
+        if (ec.Includes("upgradeTimestamp",true))
         {
-            this.UpgradeTimestamp = "FETCH";
+            if(this.UpgradeTimestamp == null) {
+
+                this.UpgradeTimestamp = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.UpgradeTimestamp != null && ec.Excludes("upgradeTimestamp",true))
+        {
+            this.UpgradeTimestamp = null;
         }
         //      C# -> System.String? UserSurfacedTaskName
         // GraphQL -> userSurfacedTaskName: String! (scalar)
-        if (this.UserSurfacedTaskName == null && ec.Includes("userSurfacedTaskName",true))
+        if (ec.Includes("userSurfacedTaskName",true))
         {
-            this.UserSurfacedTaskName = "FETCH";
+            if(this.UserSurfacedTaskName == null) {
+
+                this.UserSurfacedTaskName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.UserSurfacedTaskName != null && ec.Excludes("userSurfacedTaskName",true))
+        {
+            this.UserSurfacedTaskName = null;
         }
         //      C# -> RollingUpgradeInfo? RuInfo
         // GraphQL -> ruInfo: RollingUpgradeInfo (type)
-        if (this.RuInfo == null && ec.Includes("ruInfo",false))
+        if (ec.Includes("ruInfo",false))
         {
-            this.RuInfo = new RollingUpgradeInfo();
-            this.RuInfo.ApplyExploratoryFieldSpec(ec.NewChild("ruInfo"));
+            if(this.RuInfo == null) {
+
+                this.RuInfo = new RollingUpgradeInfo();
+                this.RuInfo.ApplyExploratoryFieldSpec(ec.NewChild("ruInfo"));
+
+            } else {
+
+                this.RuInfo.ApplyExploratoryFieldSpec(ec.NewChild("ruInfo"));
+
+            }
+        }
+        else if (this.RuInfo != null && ec.Excludes("ruInfo",false))
+        {
+            this.RuInfo = null;
         }
         //      C# -> StatusResponse? UpgradeStatus
         // GraphQL -> upgradeStatus: StatusResponse (type)
-        if (this.UpgradeStatus == null && ec.Includes("upgradeStatus",false))
+        if (ec.Includes("upgradeStatus",false))
         {
-            this.UpgradeStatus = new StatusResponse();
-            this.UpgradeStatus.ApplyExploratoryFieldSpec(ec.NewChild("upgradeStatus"));
+            if(this.UpgradeStatus == null) {
+
+                this.UpgradeStatus = new StatusResponse();
+                this.UpgradeStatus.ApplyExploratoryFieldSpec(ec.NewChild("upgradeStatus"));
+
+            } else {
+
+                this.UpgradeStatus.ApplyExploratoryFieldSpec(ec.NewChild("upgradeStatus"));
+
+            }
+        }
+        else if (this.UpgradeStatus != null && ec.Excludes("upgradeStatus",false))
+        {
+            this.UpgradeStatus = null;
         }
     }
 
@@ -382,9 +610,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<UpgradeStatusReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -47,14 +47,19 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? ProxyServer
         // GraphQL -> proxyServer: String (scalar)
         if (this.ProxyServer != null) {
-            s += ind + "proxyServer\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "proxyServer\n" ;
+            } else {
+                s += ind + "proxyServer\n" ;
+            }
         }
         return s;
     }
@@ -65,9 +70,20 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? ProxyServer
         // GraphQL -> proxyServer: String (scalar)
-        if (this.ProxyServer == null && ec.Includes("proxyServer",true))
+        if (ec.Includes("proxyServer",true))
         {
-            this.ProxyServer = "FETCH";
+            if(this.ProxyServer == null) {
+
+                this.ProxyServer = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProxyServer != null && ec.Excludes("proxyServer",true))
+        {
+            this.ProxyServer = null;
         }
     }
 
@@ -94,9 +110,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<RestoreFormComputeProxyConfig> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

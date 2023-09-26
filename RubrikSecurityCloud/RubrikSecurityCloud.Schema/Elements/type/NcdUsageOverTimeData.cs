@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? ChangeInBytes
         // GraphQL -> changeInBytes: Long! (scalar)
         if (this.ChangeInBytes != null) {
-            s += ind + "changeInBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "changeInBytes\n" ;
+            } else {
+                s += ind + "changeInBytes\n" ;
+            }
         }
         //      C# -> System.Int64? NewInBytes
         // GraphQL -> newInBytes: Long! (scalar)
         if (this.NewInBytes != null) {
-            s += ind + "newInBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "newInBytes\n" ;
+            } else {
+                s += ind + "newInBytes\n" ;
+            }
         }
         //      C# -> DateTime? Timestamp
         // GraphQL -> timestamp: DateTime (scalar)
         if (this.Timestamp != null) {
-            s += ind + "timestamp\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "timestamp\n" ;
+            } else {
+                s += ind + "timestamp\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? ChangeInBytes
         // GraphQL -> changeInBytes: Long! (scalar)
-        if (this.ChangeInBytes == null && ec.Includes("changeInBytes",true))
+        if (ec.Includes("changeInBytes",true))
         {
-            this.ChangeInBytes = new System.Int64();
+            if(this.ChangeInBytes == null) {
+
+                this.ChangeInBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ChangeInBytes != null && ec.Excludes("changeInBytes",true))
+        {
+            this.ChangeInBytes = null;
         }
         //      C# -> System.Int64? NewInBytes
         // GraphQL -> newInBytes: Long! (scalar)
-        if (this.NewInBytes == null && ec.Includes("newInBytes",true))
+        if (ec.Includes("newInBytes",true))
         {
-            this.NewInBytes = new System.Int64();
+            if(this.NewInBytes == null) {
+
+                this.NewInBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.NewInBytes != null && ec.Excludes("newInBytes",true))
+        {
+            this.NewInBytes = null;
         }
         //      C# -> DateTime? Timestamp
         // GraphQL -> timestamp: DateTime (scalar)
-        if (this.Timestamp == null && ec.Includes("timestamp",true))
+        if (ec.Includes("timestamp",true))
         {
-            this.Timestamp = new DateTime();
+            if(this.Timestamp == null) {
+
+                this.Timestamp = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Timestamp != null && ec.Excludes("timestamp",true))
+        {
+            this.Timestamp = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<NcdUsageOverTimeData> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

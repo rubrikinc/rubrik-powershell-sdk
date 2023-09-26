@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? AppId
         // GraphQL -> appId: String! (scalar)
         if (this.AppId != null) {
-            s += ind + "appId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "appId\n" ;
+            } else {
+                s += ind + "appId\n" ;
+            }
         }
         //      C# -> System.String? EncryptedRefreshToken
         // GraphQL -> encryptedRefreshToken: String! (scalar)
         if (this.EncryptedRefreshToken != null) {
-            s += ind + "encryptedRefreshToken\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "encryptedRefreshToken\n" ;
+            } else {
+                s += ind + "encryptedRefreshToken\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? AppId
         // GraphQL -> appId: String! (scalar)
-        if (this.AppId == null && ec.Includes("appId",true))
+        if (ec.Includes("appId",true))
         {
-            this.AppId = "FETCH";
+            if(this.AppId == null) {
+
+                this.AppId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AppId != null && ec.Excludes("appId",true))
+        {
+            this.AppId = null;
         }
         //      C# -> System.String? EncryptedRefreshToken
         // GraphQL -> encryptedRefreshToken: String! (scalar)
-        if (this.EncryptedRefreshToken == null && ec.Includes("encryptedRefreshToken",true))
+        if (ec.Includes("encryptedRefreshToken",true))
         {
-            this.EncryptedRefreshToken = "FETCH";
+            if(this.EncryptedRefreshToken == null) {
+
+                this.EncryptedRefreshToken = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.EncryptedRefreshToken != null && ec.Excludes("encryptedRefreshToken",true))
+        {
+            this.EncryptedRefreshToken = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<O365OauthConsentCompleteReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

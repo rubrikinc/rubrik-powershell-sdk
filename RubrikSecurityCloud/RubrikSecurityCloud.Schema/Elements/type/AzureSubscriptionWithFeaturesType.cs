@@ -92,41 +92,66 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> AzureCloudType? CloudType
         // GraphQL -> cloudType: AzureCloudType! (enum)
         if (this.CloudType != null) {
-            s += ind + "cloudType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cloudType\n" ;
+            } else {
+                s += ind + "cloudType\n" ;
+            }
         }
         //      C# -> System.String? CustomerTenantId
         // GraphQL -> customerTenantId: String! (scalar)
         if (this.CustomerTenantId != null) {
-            s += ind + "customerTenantId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "customerTenantId\n" ;
+            } else {
+                s += ind + "customerTenantId\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.String? NativeId
         // GraphQL -> nativeId: String! (scalar)
         if (this.NativeId != null) {
-            s += ind + "nativeId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "nativeId\n" ;
+            } else {
+                s += ind + "nativeId\n" ;
+            }
         }
         //      C# -> List<AzureCloudAccountFeatureDetail>? FeatureDetails
         // GraphQL -> featureDetails: [AzureCloudAccountFeatureDetail!]! (type)
         if (this.FeatureDetails != null) {
-            var fspec = this.FeatureDetails.AsFieldSpec(indent+1);
+            var fspec = this.FeatureDetails.AsFieldSpec(conf.Child("featureDetails"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "featureDetails {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "featureDetails {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -138,40 +163,107 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> AzureCloudType? CloudType
         // GraphQL -> cloudType: AzureCloudType! (enum)
-        if (this.CloudType == null && ec.Includes("cloudType",true))
+        if (ec.Includes("cloudType",true))
         {
-            this.CloudType = new AzureCloudType();
+            if(this.CloudType == null) {
+
+                this.CloudType = new AzureCloudType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CloudType != null && ec.Excludes("cloudType",true))
+        {
+            this.CloudType = null;
         }
         //      C# -> System.String? CustomerTenantId
         // GraphQL -> customerTenantId: String! (scalar)
-        if (this.CustomerTenantId == null && ec.Includes("customerTenantId",true))
+        if (ec.Includes("customerTenantId",true))
         {
-            this.CustomerTenantId = "FETCH";
+            if(this.CustomerTenantId == null) {
+
+                this.CustomerTenantId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CustomerTenantId != null && ec.Excludes("customerTenantId",true))
+        {
+            this.CustomerTenantId = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.String? NativeId
         // GraphQL -> nativeId: String! (scalar)
-        if (this.NativeId == null && ec.Includes("nativeId",true))
+        if (ec.Includes("nativeId",true))
         {
-            this.NativeId = "FETCH";
+            if(this.NativeId == null) {
+
+                this.NativeId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NativeId != null && ec.Excludes("nativeId",true))
+        {
+            this.NativeId = null;
         }
         //      C# -> List<AzureCloudAccountFeatureDetail>? FeatureDetails
         // GraphQL -> featureDetails: [AzureCloudAccountFeatureDetail!]! (type)
-        if (this.FeatureDetails == null && ec.Includes("featureDetails",false))
+        if (ec.Includes("featureDetails",false))
         {
-            this.FeatureDetails = new List<AzureCloudAccountFeatureDetail>();
-            this.FeatureDetails.ApplyExploratoryFieldSpec(ec.NewChild("featureDetails"));
+            if(this.FeatureDetails == null) {
+
+                this.FeatureDetails = new List<AzureCloudAccountFeatureDetail>();
+                this.FeatureDetails.ApplyExploratoryFieldSpec(ec.NewChild("featureDetails"));
+
+            } else {
+
+                this.FeatureDetails.ApplyExploratoryFieldSpec(ec.NewChild("featureDetails"));
+
+            }
+        }
+        else if (this.FeatureDetails != null && ec.Excludes("featureDetails",false))
+        {
+            this.FeatureDetails = null;
         }
     }
 
@@ -198,9 +290,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AzureSubscriptionWithFeaturesType> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

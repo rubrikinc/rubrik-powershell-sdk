@@ -164,87 +164,144 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> AuthenticationType? AuthType
         // GraphQL -> authType: AuthenticationType! (enum)
         if (this.AuthType != null) {
-            s += ind + "authType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "authType\n" ;
+            } else {
+                s += ind + "authType\n" ;
+            }
         }
         //      C# -> ProviderType? ProviderType
         // GraphQL -> providerType: ProviderType! (enum)
         if (this.ProviderType != null) {
-            s += ind + "providerType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "providerType\n" ;
+            } else {
+                s += ind + "providerType\n" ;
+            }
         }
         //      C# -> WebhookStatus? Status
         // GraphQL -> status: WebhookStatus! (enum)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         //      C# -> DateTime? CreatedAt
         // GraphQL -> createdAt: DateTime (scalar)
         if (this.CreatedAt != null) {
-            s += ind + "createdAt\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "createdAt\n" ;
+            } else {
+                s += ind + "createdAt\n" ;
+            }
         }
         //      C# -> System.String? CreatedBy
         // GraphQL -> createdBy: String! (scalar)
         if (this.CreatedBy != null) {
-            s += ind + "createdBy\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "createdBy\n" ;
+            } else {
+                s += ind + "createdBy\n" ;
+            }
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String (scalar)
         if (this.Description != null) {
-            s += ind + "description\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "description\n" ;
+            } else {
+                s += ind + "description\n" ;
+            }
         }
         //      C# -> System.Int32? Id
         // GraphQL -> id: Int! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.String? ServerCertificate
         // GraphQL -> serverCertificate: String (scalar)
         if (this.ServerCertificate != null) {
-            s += ind + "serverCertificate\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "serverCertificate\n" ;
+            } else {
+                s += ind + "serverCertificate\n" ;
+            }
         }
         //      C# -> DateTime? UpdatedAt
         // GraphQL -> updatedAt: DateTime (scalar)
         if (this.UpdatedAt != null) {
-            s += ind + "updatedAt\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "updatedAt\n" ;
+            } else {
+                s += ind + "updatedAt\n" ;
+            }
         }
         //      C# -> System.String? Url
         // GraphQL -> url: URL! (scalar)
         if (this.Url != null) {
-            s += ind + "url\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "url\n" ;
+            } else {
+                s += ind + "url\n" ;
+            }
         }
         //      C# -> ErrorInfo? LastFailedErrorInfo
         // GraphQL -> lastFailedErrorInfo: ErrorInfo (type)
         if (this.LastFailedErrorInfo != null) {
-            var fspec = this.LastFailedErrorInfo.AsFieldSpec(indent+1);
+            var fspec = this.LastFailedErrorInfo.AsFieldSpec(conf.Child("lastFailedErrorInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "lastFailedErrorInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "lastFailedErrorInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> SubscriptionSeverity? SubscriptionSeverity
         // GraphQL -> subscriptionSeverity: SubscriptionSeverity! (type)
         if (this.SubscriptionSeverity != null) {
-            var fspec = this.SubscriptionSeverity.AsFieldSpec(indent+1);
+            var fspec = this.SubscriptionSeverity.AsFieldSpec(conf.Child("subscriptionSeverity"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "subscriptionSeverity {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "subscriptionSeverity {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> SubscriptionType? SubscriptionType
         // GraphQL -> subscriptionType: SubscriptionType! (type)
         if (this.SubscriptionType != null) {
-            var fspec = this.SubscriptionType.AsFieldSpec(indent+1);
+            var fspec = this.SubscriptionType.AsFieldSpec(conf.Child("subscriptionType"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "subscriptionType {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "subscriptionType {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -256,90 +313,247 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> AuthenticationType? AuthType
         // GraphQL -> authType: AuthenticationType! (enum)
-        if (this.AuthType == null && ec.Includes("authType",true))
+        if (ec.Includes("authType",true))
         {
-            this.AuthType = new AuthenticationType();
+            if(this.AuthType == null) {
+
+                this.AuthType = new AuthenticationType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AuthType != null && ec.Excludes("authType",true))
+        {
+            this.AuthType = null;
         }
         //      C# -> ProviderType? ProviderType
         // GraphQL -> providerType: ProviderType! (enum)
-        if (this.ProviderType == null && ec.Includes("providerType",true))
+        if (ec.Includes("providerType",true))
         {
-            this.ProviderType = new ProviderType();
+            if(this.ProviderType == null) {
+
+                this.ProviderType = new ProviderType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProviderType != null && ec.Excludes("providerType",true))
+        {
+            this.ProviderType = null;
         }
         //      C# -> WebhookStatus? Status
         // GraphQL -> status: WebhookStatus! (enum)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = new WebhookStatus();
+            if(this.Status == null) {
+
+                this.Status = new WebhookStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
         //      C# -> DateTime? CreatedAt
         // GraphQL -> createdAt: DateTime (scalar)
-        if (this.CreatedAt == null && ec.Includes("createdAt",true))
+        if (ec.Includes("createdAt",true))
         {
-            this.CreatedAt = new DateTime();
+            if(this.CreatedAt == null) {
+
+                this.CreatedAt = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CreatedAt != null && ec.Excludes("createdAt",true))
+        {
+            this.CreatedAt = null;
         }
         //      C# -> System.String? CreatedBy
         // GraphQL -> createdBy: String! (scalar)
-        if (this.CreatedBy == null && ec.Includes("createdBy",true))
+        if (ec.Includes("createdBy",true))
         {
-            this.CreatedBy = "FETCH";
+            if(this.CreatedBy == null) {
+
+                this.CreatedBy = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CreatedBy != null && ec.Excludes("createdBy",true))
+        {
+            this.CreatedBy = null;
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String (scalar)
-        if (this.Description == null && ec.Includes("description",true))
+        if (ec.Includes("description",true))
         {
-            this.Description = "FETCH";
+            if(this.Description == null) {
+
+                this.Description = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Description != null && ec.Excludes("description",true))
+        {
+            this.Description = null;
         }
         //      C# -> System.Int32? Id
         // GraphQL -> id: Int! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = Int32.MinValue;
+            if(this.Id == null) {
+
+                this.Id = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.String? ServerCertificate
         // GraphQL -> serverCertificate: String (scalar)
-        if (this.ServerCertificate == null && ec.Includes("serverCertificate",true))
+        if (ec.Includes("serverCertificate",true))
         {
-            this.ServerCertificate = "FETCH";
+            if(this.ServerCertificate == null) {
+
+                this.ServerCertificate = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ServerCertificate != null && ec.Excludes("serverCertificate",true))
+        {
+            this.ServerCertificate = null;
         }
         //      C# -> DateTime? UpdatedAt
         // GraphQL -> updatedAt: DateTime (scalar)
-        if (this.UpdatedAt == null && ec.Includes("updatedAt",true))
+        if (ec.Includes("updatedAt",true))
         {
-            this.UpdatedAt = new DateTime();
+            if(this.UpdatedAt == null) {
+
+                this.UpdatedAt = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UpdatedAt != null && ec.Excludes("updatedAt",true))
+        {
+            this.UpdatedAt = null;
         }
         //      C# -> System.String? Url
         // GraphQL -> url: URL! (scalar)
-        if (this.Url == null && ec.Includes("url",true))
+        if (ec.Includes("url",true))
         {
-            this.Url = "FETCH";
+            if(this.Url == null) {
+
+                this.Url = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Url != null && ec.Excludes("url",true))
+        {
+            this.Url = null;
         }
         //      C# -> ErrorInfo? LastFailedErrorInfo
         // GraphQL -> lastFailedErrorInfo: ErrorInfo (type)
-        if (this.LastFailedErrorInfo == null && ec.Includes("lastFailedErrorInfo",false))
+        if (ec.Includes("lastFailedErrorInfo",false))
         {
-            this.LastFailedErrorInfo = new ErrorInfo();
-            this.LastFailedErrorInfo.ApplyExploratoryFieldSpec(ec.NewChild("lastFailedErrorInfo"));
+            if(this.LastFailedErrorInfo == null) {
+
+                this.LastFailedErrorInfo = new ErrorInfo();
+                this.LastFailedErrorInfo.ApplyExploratoryFieldSpec(ec.NewChild("lastFailedErrorInfo"));
+
+            } else {
+
+                this.LastFailedErrorInfo.ApplyExploratoryFieldSpec(ec.NewChild("lastFailedErrorInfo"));
+
+            }
+        }
+        else if (this.LastFailedErrorInfo != null && ec.Excludes("lastFailedErrorInfo",false))
+        {
+            this.LastFailedErrorInfo = null;
         }
         //      C# -> SubscriptionSeverity? SubscriptionSeverity
         // GraphQL -> subscriptionSeverity: SubscriptionSeverity! (type)
-        if (this.SubscriptionSeverity == null && ec.Includes("subscriptionSeverity",false))
+        if (ec.Includes("subscriptionSeverity",false))
         {
-            this.SubscriptionSeverity = new SubscriptionSeverity();
-            this.SubscriptionSeverity.ApplyExploratoryFieldSpec(ec.NewChild("subscriptionSeverity"));
+            if(this.SubscriptionSeverity == null) {
+
+                this.SubscriptionSeverity = new SubscriptionSeverity();
+                this.SubscriptionSeverity.ApplyExploratoryFieldSpec(ec.NewChild("subscriptionSeverity"));
+
+            } else {
+
+                this.SubscriptionSeverity.ApplyExploratoryFieldSpec(ec.NewChild("subscriptionSeverity"));
+
+            }
+        }
+        else if (this.SubscriptionSeverity != null && ec.Excludes("subscriptionSeverity",false))
+        {
+            this.SubscriptionSeverity = null;
         }
         //      C# -> SubscriptionType? SubscriptionType
         // GraphQL -> subscriptionType: SubscriptionType! (type)
-        if (this.SubscriptionType == null && ec.Includes("subscriptionType",false))
+        if (ec.Includes("subscriptionType",false))
         {
-            this.SubscriptionType = new SubscriptionType();
-            this.SubscriptionType.ApplyExploratoryFieldSpec(ec.NewChild("subscriptionType"));
+            if(this.SubscriptionType == null) {
+
+                this.SubscriptionType = new SubscriptionType();
+                this.SubscriptionType.ApplyExploratoryFieldSpec(ec.NewChild("subscriptionType"));
+
+            } else {
+
+                this.SubscriptionType.ApplyExploratoryFieldSpec(ec.NewChild("subscriptionType"));
+
+            }
+        }
+        else if (this.SubscriptionType != null && ec.Excludes("subscriptionType",false))
+        {
+            this.SubscriptionType = null;
         }
     }
 
@@ -366,9 +580,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<Webhook> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

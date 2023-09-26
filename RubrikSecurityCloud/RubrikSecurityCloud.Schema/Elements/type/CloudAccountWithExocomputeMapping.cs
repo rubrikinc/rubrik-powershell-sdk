@@ -56,24 +56,33 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> CloudAccountDetails? ApplicationAccount
         // GraphQL -> applicationAccount: CloudAccountDetails! (type)
         if (this.ApplicationAccount != null) {
-            var fspec = this.ApplicationAccount.AsFieldSpec(indent+1);
+            var fspec = this.ApplicationAccount.AsFieldSpec(conf.Child("applicationAccount"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "applicationAccount {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "applicationAccount {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> CloudAccountDetails? ExocomputeAccount
         // GraphQL -> exocomputeAccount: CloudAccountDetails (type)
         if (this.ExocomputeAccount != null) {
-            var fspec = this.ExocomputeAccount.AsFieldSpec(indent+1);
+            var fspec = this.ExocomputeAccount.AsFieldSpec(conf.Child("exocomputeAccount"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "exocomputeAccount {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "exocomputeAccount {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -85,17 +94,41 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> CloudAccountDetails? ApplicationAccount
         // GraphQL -> applicationAccount: CloudAccountDetails! (type)
-        if (this.ApplicationAccount == null && ec.Includes("applicationAccount",false))
+        if (ec.Includes("applicationAccount",false))
         {
-            this.ApplicationAccount = new CloudAccountDetails();
-            this.ApplicationAccount.ApplyExploratoryFieldSpec(ec.NewChild("applicationAccount"));
+            if(this.ApplicationAccount == null) {
+
+                this.ApplicationAccount = new CloudAccountDetails();
+                this.ApplicationAccount.ApplyExploratoryFieldSpec(ec.NewChild("applicationAccount"));
+
+            } else {
+
+                this.ApplicationAccount.ApplyExploratoryFieldSpec(ec.NewChild("applicationAccount"));
+
+            }
+        }
+        else if (this.ApplicationAccount != null && ec.Excludes("applicationAccount",false))
+        {
+            this.ApplicationAccount = null;
         }
         //      C# -> CloudAccountDetails? ExocomputeAccount
         // GraphQL -> exocomputeAccount: CloudAccountDetails (type)
-        if (this.ExocomputeAccount == null && ec.Includes("exocomputeAccount",false))
+        if (ec.Includes("exocomputeAccount",false))
         {
-            this.ExocomputeAccount = new CloudAccountDetails();
-            this.ExocomputeAccount.ApplyExploratoryFieldSpec(ec.NewChild("exocomputeAccount"));
+            if(this.ExocomputeAccount == null) {
+
+                this.ExocomputeAccount = new CloudAccountDetails();
+                this.ExocomputeAccount.ApplyExploratoryFieldSpec(ec.NewChild("exocomputeAccount"));
+
+            } else {
+
+                this.ExocomputeAccount.ApplyExploratoryFieldSpec(ec.NewChild("exocomputeAccount"));
+
+            }
+        }
+        else if (this.ExocomputeAccount != null && ec.Excludes("exocomputeAccount",false))
+        {
+            this.ExocomputeAccount = null;
         }
     }
 
@@ -122,9 +155,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CloudAccountWithExocomputeMapping> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

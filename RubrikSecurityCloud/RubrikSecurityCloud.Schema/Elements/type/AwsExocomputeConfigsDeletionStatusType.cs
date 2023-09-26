@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? ExocomputeConfigId
         // GraphQL -> exocomputeConfigId: String! (scalar)
         if (this.ExocomputeConfigId != null) {
-            s += ind + "exocomputeConfigId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "exocomputeConfigId\n" ;
+            } else {
+                s += ind + "exocomputeConfigId\n" ;
+            }
         }
         //      C# -> System.Boolean? Success
         // GraphQL -> success: Boolean! (scalar)
         if (this.Success != null) {
-            s += ind + "success\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "success\n" ;
+            } else {
+                s += ind + "success\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? ExocomputeConfigId
         // GraphQL -> exocomputeConfigId: String! (scalar)
-        if (this.ExocomputeConfigId == null && ec.Includes("exocomputeConfigId",true))
+        if (ec.Includes("exocomputeConfigId",true))
         {
-            this.ExocomputeConfigId = "FETCH";
+            if(this.ExocomputeConfigId == null) {
+
+                this.ExocomputeConfigId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExocomputeConfigId != null && ec.Excludes("exocomputeConfigId",true))
+        {
+            this.ExocomputeConfigId = null;
         }
         //      C# -> System.Boolean? Success
         // GraphQL -> success: Boolean! (scalar)
-        if (this.Success == null && ec.Includes("success",true))
+        if (ec.Includes("success",true))
         {
-            this.Success = true;
+            if(this.Success == null) {
+
+                this.Success = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Success != null && ec.Excludes("success",true))
+        {
+            this.Success = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AwsExocomputeConfigsDeletionStatusType> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

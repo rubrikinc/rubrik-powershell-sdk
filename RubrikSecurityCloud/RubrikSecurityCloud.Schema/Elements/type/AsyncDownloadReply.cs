@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? DownloadId
         // GraphQL -> downloadId: Long! (scalar)
         if (this.DownloadId != null) {
-            s += ind + "downloadId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "downloadId\n" ;
+            } else {
+                s += ind + "downloadId\n" ;
+            }
         }
         //      C# -> System.Int64? JobId
         // GraphQL -> jobId: Long! (scalar)
         if (this.JobId != null) {
-            s += ind + "jobId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "jobId\n" ;
+            } else {
+                s += ind + "jobId\n" ;
+            }
         }
         //      C# -> System.String? ReferenceId
         // GraphQL -> referenceId: String! (scalar)
         if (this.ReferenceId != null) {
-            s += ind + "referenceId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "referenceId\n" ;
+            } else {
+                s += ind + "referenceId\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? DownloadId
         // GraphQL -> downloadId: Long! (scalar)
-        if (this.DownloadId == null && ec.Includes("downloadId",true))
+        if (ec.Includes("downloadId",true))
         {
-            this.DownloadId = new System.Int64();
+            if(this.DownloadId == null) {
+
+                this.DownloadId = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DownloadId != null && ec.Excludes("downloadId",true))
+        {
+            this.DownloadId = null;
         }
         //      C# -> System.Int64? JobId
         // GraphQL -> jobId: Long! (scalar)
-        if (this.JobId == null && ec.Includes("jobId",true))
+        if (ec.Includes("jobId",true))
         {
-            this.JobId = new System.Int64();
+            if(this.JobId == null) {
+
+                this.JobId = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.JobId != null && ec.Excludes("jobId",true))
+        {
+            this.JobId = null;
         }
         //      C# -> System.String? ReferenceId
         // GraphQL -> referenceId: String! (scalar)
-        if (this.ReferenceId == null && ec.Includes("referenceId",true))
+        if (ec.Includes("referenceId",true))
         {
-            this.ReferenceId = "FETCH";
+            if(this.ReferenceId == null) {
+
+                this.ReferenceId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ReferenceId != null && ec.Excludes("referenceId",true))
+        {
+            this.ReferenceId = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AsyncDownloadReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

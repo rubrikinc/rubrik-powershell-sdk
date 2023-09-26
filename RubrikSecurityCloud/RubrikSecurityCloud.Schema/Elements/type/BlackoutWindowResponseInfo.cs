@@ -56,24 +56,33 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> BlackoutWindowStatus? BlackoutWindowStatus
         // GraphQL -> blackoutWindowStatus: BlackoutWindowStatus (type)
         if (this.BlackoutWindowStatus != null) {
-            var fspec = this.BlackoutWindowStatus.AsFieldSpec(indent+1);
+            var fspec = this.BlackoutWindowStatus.AsFieldSpec(conf.Child("blackoutWindowStatus"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "blackoutWindowStatus {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "blackoutWindowStatus {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> BlackoutWindows? BlackoutWindows
         // GraphQL -> blackoutWindows: BlackoutWindows (type)
         if (this.BlackoutWindows != null) {
-            var fspec = this.BlackoutWindows.AsFieldSpec(indent+1);
+            var fspec = this.BlackoutWindows.AsFieldSpec(conf.Child("blackoutWindows"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "blackoutWindows {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "blackoutWindows {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -85,17 +94,41 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> BlackoutWindowStatus? BlackoutWindowStatus
         // GraphQL -> blackoutWindowStatus: BlackoutWindowStatus (type)
-        if (this.BlackoutWindowStatus == null && ec.Includes("blackoutWindowStatus",false))
+        if (ec.Includes("blackoutWindowStatus",false))
         {
-            this.BlackoutWindowStatus = new BlackoutWindowStatus();
-            this.BlackoutWindowStatus.ApplyExploratoryFieldSpec(ec.NewChild("blackoutWindowStatus"));
+            if(this.BlackoutWindowStatus == null) {
+
+                this.BlackoutWindowStatus = new BlackoutWindowStatus();
+                this.BlackoutWindowStatus.ApplyExploratoryFieldSpec(ec.NewChild("blackoutWindowStatus"));
+
+            } else {
+
+                this.BlackoutWindowStatus.ApplyExploratoryFieldSpec(ec.NewChild("blackoutWindowStatus"));
+
+            }
+        }
+        else if (this.BlackoutWindowStatus != null && ec.Excludes("blackoutWindowStatus",false))
+        {
+            this.BlackoutWindowStatus = null;
         }
         //      C# -> BlackoutWindows? BlackoutWindows
         // GraphQL -> blackoutWindows: BlackoutWindows (type)
-        if (this.BlackoutWindows == null && ec.Includes("blackoutWindows",false))
+        if (ec.Includes("blackoutWindows",false))
         {
-            this.BlackoutWindows = new BlackoutWindows();
-            this.BlackoutWindows.ApplyExploratoryFieldSpec(ec.NewChild("blackoutWindows"));
+            if(this.BlackoutWindows == null) {
+
+                this.BlackoutWindows = new BlackoutWindows();
+                this.BlackoutWindows.ApplyExploratoryFieldSpec(ec.NewChild("blackoutWindows"));
+
+            } else {
+
+                this.BlackoutWindows.ApplyExploratoryFieldSpec(ec.NewChild("blackoutWindows"));
+
+            }
+        }
+        else if (this.BlackoutWindows != null && ec.Excludes("blackoutWindows",false))
+        {
+            this.BlackoutWindows = null;
         }
     }
 
@@ -122,9 +155,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<BlackoutWindowResponseInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

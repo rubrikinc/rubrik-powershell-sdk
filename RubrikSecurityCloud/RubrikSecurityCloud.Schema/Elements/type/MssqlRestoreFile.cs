@@ -83,34 +83,55 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> MssqlDatabaseFileType? FileType
         // GraphQL -> fileType: MssqlDatabaseFileType! (enum)
         if (this.FileType != null) {
-            s += ind + "fileType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "fileType\n" ;
+            } else {
+                s += ind + "fileType\n" ;
+            }
         }
         //      C# -> System.Int64? FileId
         // GraphQL -> fileId: Long! (scalar)
         if (this.FileId != null) {
-            s += ind + "fileId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "fileId\n" ;
+            } else {
+                s += ind + "fileId\n" ;
+            }
         }
         //      C# -> System.String? LogicalName
         // GraphQL -> logicalName: String! (scalar)
         if (this.LogicalName != null) {
-            s += ind + "logicalName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "logicalName\n" ;
+            } else {
+                s += ind + "logicalName\n" ;
+            }
         }
         //      C# -> System.String? OriginalName
         // GraphQL -> originalName: String! (scalar)
         if (this.OriginalName != null) {
-            s += ind + "originalName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "originalName\n" ;
+            } else {
+                s += ind + "originalName\n" ;
+            }
         }
         //      C# -> System.String? OriginalPath
         // GraphQL -> originalPath: String! (scalar)
         if (this.OriginalPath != null) {
-            s += ind + "originalPath\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "originalPath\n" ;
+            } else {
+                s += ind + "originalPath\n" ;
+            }
         }
         return s;
     }
@@ -121,33 +142,88 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> MssqlDatabaseFileType? FileType
         // GraphQL -> fileType: MssqlDatabaseFileType! (enum)
-        if (this.FileType == null && ec.Includes("fileType",true))
+        if (ec.Includes("fileType",true))
         {
-            this.FileType = new MssqlDatabaseFileType();
+            if(this.FileType == null) {
+
+                this.FileType = new MssqlDatabaseFileType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.FileType != null && ec.Excludes("fileType",true))
+        {
+            this.FileType = null;
         }
         //      C# -> System.Int64? FileId
         // GraphQL -> fileId: Long! (scalar)
-        if (this.FileId == null && ec.Includes("fileId",true))
+        if (ec.Includes("fileId",true))
         {
-            this.FileId = new System.Int64();
+            if(this.FileId == null) {
+
+                this.FileId = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.FileId != null && ec.Excludes("fileId",true))
+        {
+            this.FileId = null;
         }
         //      C# -> System.String? LogicalName
         // GraphQL -> logicalName: String! (scalar)
-        if (this.LogicalName == null && ec.Includes("logicalName",true))
+        if (ec.Includes("logicalName",true))
         {
-            this.LogicalName = "FETCH";
+            if(this.LogicalName == null) {
+
+                this.LogicalName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.LogicalName != null && ec.Excludes("logicalName",true))
+        {
+            this.LogicalName = null;
         }
         //      C# -> System.String? OriginalName
         // GraphQL -> originalName: String! (scalar)
-        if (this.OriginalName == null && ec.Includes("originalName",true))
+        if (ec.Includes("originalName",true))
         {
-            this.OriginalName = "FETCH";
+            if(this.OriginalName == null) {
+
+                this.OriginalName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OriginalName != null && ec.Excludes("originalName",true))
+        {
+            this.OriginalName = null;
         }
         //      C# -> System.String? OriginalPath
         // GraphQL -> originalPath: String! (scalar)
-        if (this.OriginalPath == null && ec.Includes("originalPath",true))
+        if (ec.Includes("originalPath",true))
         {
-            this.OriginalPath = "FETCH";
+            if(this.OriginalPath == null) {
+
+                this.OriginalPath = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OriginalPath != null && ec.Excludes("originalPath",true))
+        {
+            this.OriginalPath = null;
         }
     }
 
@@ -174,9 +250,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<MssqlRestoreFile> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

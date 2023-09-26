@@ -525,359 +525,576 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<Operation>? AuthorizedOperations
         // GraphQL -> authorizedOperations: [Operation!]! (enum)
         if (this.AuthorizedOperations != null) {
-            s += ind + "authorizedOperations\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "authorizedOperations\n" ;
+            } else {
+                s += ind + "authorizedOperations\n" ;
+            }
         }
         //      C# -> DataGuardType? DataGuardType
         // GraphQL -> dataGuardType: DataGuardType! (enum)
         if (this.DataGuardType != null) {
-            s += ind + "dataGuardType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "dataGuardType\n" ;
+            } else {
+                s += ind + "dataGuardType\n" ;
+            }
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         if (this.ObjectType != null) {
-            s += ind + "objectType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "objectType\n" ;
+            } else {
+                s += ind + "objectType\n" ;
+            }
         }
         //      C# -> SlaAssignmentTypeEnum? SlaAssignment
         // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
         if (this.SlaAssignment != null) {
-            s += ind + "slaAssignment\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "slaAssignment\n" ;
+            } else {
+                s += ind + "slaAssignment\n" ;
+            }
         }
         //      C# -> SlaDomain? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
         if (this.ConfiguredSlaDomain != null) {
-                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.ConfiguredSlaDomain).AsFieldSpec(indent+1);
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.ConfiguredSlaDomain).AsFieldSpec(conf.Child("configuredSlaDomain"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "configuredSlaDomain {\n" + fspec + ind + "}\n";
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "configuredSlaDomain {\n" + fspec + ind + "}\n";
+                }
             }
         }
         //      C# -> SlaDomain? EffectiveRetentionSlaDomain
         // GraphQL -> effectiveRetentionSlaDomain: SlaDomain (interface)
         if (this.EffectiveRetentionSlaDomain != null) {
-                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.EffectiveRetentionSlaDomain).AsFieldSpec(indent+1);
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.EffectiveRetentionSlaDomain).AsFieldSpec(conf.Child("effectiveRetentionSlaDomain"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "effectiveRetentionSlaDomain {\n" + fspec + ind + "}\n";
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "effectiveRetentionSlaDomain {\n" + fspec + ind + "}\n";
+                }
             }
         }
         //      C# -> SlaDomain? EffectiveSlaDomain
         // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
         if (this.EffectiveSlaDomain != null) {
-                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.EffectiveSlaDomain).AsFieldSpec(indent+1);
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.EffectiveSlaDomain).AsFieldSpec(conf.Child("effectiveSlaDomain"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "effectiveSlaDomain {\n" + fspec + ind + "}\n";
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "effectiveSlaDomain {\n" + fspec + ind + "}\n";
+                }
             }
         }
         //      C# -> SlaDomain? PendingSla
         // GraphQL -> pendingSla: SlaDomain (interface)
         if (this.PendingSla != null) {
-                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.PendingSla).AsFieldSpec(indent+1);
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.PendingSla).AsFieldSpec(conf.Child("pendingSla"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "pendingSla {\n" + fspec + ind + "}\n";
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "pendingSla {\n" + fspec + ind + "}\n";
+                }
             }
         }
         //      C# -> List<CdmHierarchyObject>? ReplicatedObjects
         // GraphQL -> replicatedObjects: [CdmHierarchyObject!]! (interface)
         if (this.ReplicatedObjects != null) {
-                var fspec = this.ReplicatedObjects.AsFieldSpec(indent+1);
+                var fspec = this.ReplicatedObjects.AsFieldSpec(conf.Child("replicatedObjects"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "replicatedObjects {\n" + fspec + ind + "}\n";
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "replicatedObjects {\n" + fspec + ind + "}\n";
+                }
             }
         }
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
         if (this.CdmId != null) {
-            s += ind + "cdmId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cdmId\n" ;
+            } else {
+                s += ind + "cdmId\n" ;
+            }
         }
         //      C# -> System.String? CdmLink
         // GraphQL -> cdmLink: String! (scalar)
         if (this.CdmLink != null) {
-            s += ind + "cdmLink\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cdmLink\n" ;
+            } else {
+                s += ind + "cdmLink\n" ;
+            }
         }
         //      C# -> System.String? DataGuardGroupId
         // GraphQL -> dataGuardGroupId: String (scalar)
         if (this.DataGuardGroupId != null) {
-            s += ind + "dataGuardGroupId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "dataGuardGroupId\n" ;
+            } else {
+                s += ind + "dataGuardGroupId\n" ;
+            }
         }
         //      C# -> System.String? DbRole
         // GraphQL -> dbRole: String! (scalar)
         if (this.DbRole != null) {
-            s += ind + "dbRole\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "dbRole\n" ;
+            } else {
+                s += ind + "dbRole\n" ;
+            }
         }
         //      C# -> System.String? DbUniqueName
         // GraphQL -> dbUniqueName: String! (scalar)
         if (this.DbUniqueName != null) {
-            s += ind + "dbUniqueName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "dbUniqueName\n" ;
+            } else {
+                s += ind + "dbUniqueName\n" ;
+            }
         }
         //      C# -> System.Int32? HostLogRetentionHours
         // GraphQL -> hostLogRetentionHours: Int! (scalar)
         if (this.HostLogRetentionHours != null) {
-            s += ind + "hostLogRetentionHours\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostLogRetentionHours\n" ;
+            } else {
+                s += ind + "hostLogRetentionHours\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
         if (this.IsRelic != null) {
-            s += ind + "isRelic\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isRelic\n" ;
+            } else {
+                s += ind + "isRelic\n" ;
+            }
         }
         //      C# -> System.Int32? LogBackupFrequency
         // GraphQL -> logBackupFrequency: Int! (scalar)
         if (this.LogBackupFrequency != null) {
-            s += ind + "logBackupFrequency\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "logBackupFrequency\n" ;
+            } else {
+                s += ind + "logBackupFrequency\n" ;
+            }
         }
         //      C# -> System.Int32? LogRetentionHours
         // GraphQL -> logRetentionHours: Int! (scalar)
         if (this.LogRetentionHours != null) {
-            s += ind + "logRetentionHours\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "logRetentionHours\n" ;
+            } else {
+                s += ind + "logRetentionHours\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.Int64? NumChannels
         // GraphQL -> numChannels: Long! (scalar)
         if (this.NumChannels != null) {
-            s += ind + "numChannels\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "numChannels\n" ;
+            } else {
+                s += ind + "numChannels\n" ;
+            }
         }
         //      C# -> System.Int32? NumInstances
         // GraphQL -> numInstances: Int! (scalar)
         if (this.NumInstances != null) {
-            s += ind + "numInstances\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "numInstances\n" ;
+            } else {
+                s += ind + "numInstances\n" ;
+            }
         }
         //      C# -> System.Int32? NumLogSnapshots
         // GraphQL -> numLogSnapshots: Int! (scalar)
         if (this.NumLogSnapshots != null) {
-            s += ind + "numLogSnapshots\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "numLogSnapshots\n" ;
+            } else {
+                s += ind + "numLogSnapshots\n" ;
+            }
         }
         //      C# -> System.Int32? NumTablespaces
         // GraphQL -> numTablespaces: Int! (scalar)
         if (this.NumTablespaces != null) {
-            s += ind + "numTablespaces\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "numTablespaces\n" ;
+            } else {
+                s += ind + "numTablespaces\n" ;
+            }
         }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         if (this.NumWorkloadDescendants != null) {
-            s += ind + "numWorkloadDescendants\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "numWorkloadDescendants\n" ;
+            } else {
+                s += ind + "numWorkloadDescendants\n" ;
+            }
         }
         //      C# -> System.Int32? OnDemandSnapshotCount
         // GraphQL -> onDemandSnapshotCount: Int! (scalar)
         if (this.OnDemandSnapshotCount != null) {
-            s += ind + "onDemandSnapshotCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "onDemandSnapshotCount\n" ;
+            } else {
+                s += ind + "onDemandSnapshotCount\n" ;
+            }
         }
         //      C# -> List<System.String>? PreferredDataGuardMemberUniqueNames
         // GraphQL -> preferredDataGuardMemberUniqueNames: [String!]! (scalar)
         if (this.PreferredDataGuardMemberUniqueNames != null) {
-            s += ind + "preferredDataGuardMemberUniqueNames\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "preferredDataGuardMemberUniqueNames\n" ;
+            } else {
+                s += ind + "preferredDataGuardMemberUniqueNames\n" ;
+            }
         }
         //      C# -> System.Int32? ReplicatedObjectCount
         // GraphQL -> replicatedObjectCount: Int! (scalar)
         if (this.ReplicatedObjectCount != null) {
-            s += ind + "replicatedObjectCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "replicatedObjectCount\n" ;
+            } else {
+                s += ind + "replicatedObjectCount\n" ;
+            }
         }
         //      C# -> System.Int32? SectionSizeInGigabytes
         // GraphQL -> sectionSizeInGigabytes: Int! (scalar)
         if (this.SectionSizeInGigabytes != null) {
-            s += ind + "sectionSizeInGigabytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sectionSizeInGigabytes\n" ;
+            } else {
+                s += ind + "sectionSizeInGigabytes\n" ;
+            }
         }
         //      C# -> System.Boolean? ShouldBackupFromPrimaryOnly
         // GraphQL -> shouldBackupFromPrimaryOnly: Boolean! (scalar)
         if (this.ShouldBackupFromPrimaryOnly != null) {
-            s += ind + "shouldBackupFromPrimaryOnly\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "shouldBackupFromPrimaryOnly\n" ;
+            } else {
+                s += ind + "shouldBackupFromPrimaryOnly\n" ;
+            }
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
         if (this.SlaPauseStatus != null) {
-            s += ind + "slaPauseStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "slaPauseStatus\n" ;
+            } else {
+                s += ind + "slaPauseStatus\n" ;
+            }
         }
         //      C# -> List<System.String>? Tablespaces
         // GraphQL -> tablespaces: [String!]! (scalar)
         if (this.Tablespaces != null) {
-            s += ind + "tablespaces\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "tablespaces\n" ;
+            } else {
+                s += ind + "tablespaces\n" ;
+            }
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
         if (this.AllOrgs != null) {
-            var fspec = this.AllOrgs.AsFieldSpec(indent+1);
+            var fspec = this.AllOrgs.AsFieldSpec(conf.Child("allOrgs"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "allOrgs {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "allOrgs {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
         if (this.Cluster != null) {
-            var fspec = this.Cluster.AsFieldSpec(indent+1);
+            var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> OracleDataGuardGroupDescendantTypeConnection? DescendantConnection
         // GraphQL -> descendantConnection: OracleDataGuardGroupDescendantTypeConnection! (type)
         if (this.DescendantConnection != null) {
-            var fspec = this.DescendantConnection.AsFieldSpec(indent+1);
+            var fspec = this.DescendantConnection.AsFieldSpec(conf.Child("descendantConnection"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "descendantConnection {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "descendantConnection {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
         if (this.EffectiveSlaSourceObject != null) {
-            var fspec = this.EffectiveSlaSourceObject.AsFieldSpec(indent+1);
+            var fspec = this.EffectiveSlaSourceObject.AsFieldSpec(conf.Child("effectiveSlaSourceObject"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "effectiveSlaSourceObject {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "effectiveSlaSourceObject {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> OracleDatabaseLastValidationStatus? LastValidationResult
         // GraphQL -> lastValidationResult: OracleDatabaseLastValidationStatus (type)
         if (this.LastValidationResult != null) {
-            var fspec = this.LastValidationResult.AsFieldSpec(indent+1);
+            var fspec = this.LastValidationResult.AsFieldSpec(conf.Child("lastValidationResult"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "lastValidationResult {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "lastValidationResult {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> LatestUserNote? LatestUserNote
         // GraphQL -> latestUserNote: LatestUserNote (type)
         if (this.LatestUserNote != null) {
-            var fspec = this.LatestUserNote.AsFieldSpec(indent+1);
+            var fspec = this.LatestUserNote.AsFieldSpec(conf.Child("latestUserNote"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "latestUserNote {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "latestUserNote {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> OracleDataGuardGroupLogicalChildTypeConnection? LogicalChildConnection
         // GraphQL -> logicalChildConnection: OracleDataGuardGroupLogicalChildTypeConnection! (type)
         if (this.LogicalChildConnection != null) {
-            var fspec = this.LogicalChildConnection.AsFieldSpec(indent+1);
+            var fspec = this.LogicalChildConnection.AsFieldSpec(conf.Child("logicalChildConnection"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "logicalChildConnection {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "logicalChildConnection {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
         if (this.LogicalPath != null) {
-            var fspec = this.LogicalPath.AsFieldSpec(indent+1);
+            var fspec = this.LogicalPath.AsFieldSpec(conf.Child("logicalPath"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "logicalPath {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "logicalPath {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> MissedSnapshotCommonConnection? MissedSnapshotConnection
         // GraphQL -> missedSnapshotConnection: MissedSnapshotCommonConnection (type)
         if (this.MissedSnapshotConnection != null) {
-            var fspec = this.MissedSnapshotConnection.AsFieldSpec(indent+1);
+            var fspec = this.MissedSnapshotConnection.AsFieldSpec(conf.Child("missedSnapshotConnection"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "missedSnapshotConnection {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "missedSnapshotConnection {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> MissedSnapshotGroupByConnection? MissedSnapshotGroupByConnection
         // GraphQL -> missedSnapshotGroupByConnection: MissedSnapshotGroupByConnection (type)
         if (this.MissedSnapshotGroupByConnection != null) {
-            var fspec = this.MissedSnapshotGroupByConnection.AsFieldSpec(indent+1);
+            var fspec = this.MissedSnapshotGroupByConnection.AsFieldSpec(conf.Child("missedSnapshotGroupByConnection"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "missedSnapshotGroupByConnection {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "missedSnapshotGroupByConnection {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> CdmSnapshot? NewestArchivedSnapshot
         // GraphQL -> newestArchivedSnapshot: CdmSnapshot (type)
         if (this.NewestArchivedSnapshot != null) {
-            var fspec = this.NewestArchivedSnapshot.AsFieldSpec(indent+1);
+            var fspec = this.NewestArchivedSnapshot.AsFieldSpec(conf.Child("newestArchivedSnapshot"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "newestArchivedSnapshot {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "newestArchivedSnapshot {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> CdmSnapshot? NewestReplicatedSnapshot
         // GraphQL -> newestReplicatedSnapshot: CdmSnapshot (type)
         if (this.NewestReplicatedSnapshot != null) {
-            var fspec = this.NewestReplicatedSnapshot.AsFieldSpec(indent+1);
+            var fspec = this.NewestReplicatedSnapshot.AsFieldSpec(conf.Child("newestReplicatedSnapshot"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "newestReplicatedSnapshot {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "newestReplicatedSnapshot {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> CdmSnapshot? NewestSnapshot
         // GraphQL -> newestSnapshot: CdmSnapshot (type)
         if (this.NewestSnapshot != null) {
-            var fspec = this.NewestSnapshot.AsFieldSpec(indent+1);
+            var fspec = this.NewestSnapshot.AsFieldSpec(conf.Child("newestSnapshot"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "newestSnapshot {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "newestSnapshot {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> CdmSnapshot? OldestSnapshot
         // GraphQL -> oldestSnapshot: CdmSnapshot (type)
         if (this.OldestSnapshot != null) {
-            var fspec = this.OldestSnapshot.AsFieldSpec(indent+1);
+            var fspec = this.OldestSnapshot.AsFieldSpec(conf.Child("oldestSnapshot"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "oldestSnapshot {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "oldestSnapshot {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<OraclePdb>? Pdbs
         // GraphQL -> pdbs: [OraclePdb!]! (type)
         if (this.Pdbs != null) {
-            var fspec = this.Pdbs.AsFieldSpec(indent+1);
+            var fspec = this.Pdbs.AsFieldSpec(conf.Child("pdbs"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "pdbs {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "pdbs {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus
         // GraphQL -> pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion (type)
         if (this.PendingObjectDeletionStatus != null) {
-            var fspec = this.PendingObjectDeletionStatus.AsFieldSpec(indent+1);
+            var fspec = this.PendingObjectDeletionStatus.AsFieldSpec(conf.Child("pendingObjectDeletionStatus"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "pendingObjectDeletionStatus {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "pendingObjectDeletionStatus {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<PathNode>? PhysicalPath
         // GraphQL -> physicalPath: [PathNode!]! (type)
         if (this.PhysicalPath != null) {
-            var fspec = this.PhysicalPath.AsFieldSpec(indent+1);
+            var fspec = this.PhysicalPath.AsFieldSpec(conf.Child("physicalPath"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "physicalPath {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "physicalPath {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> DataLocation? PrimaryClusterLocation
         // GraphQL -> primaryClusterLocation: DataLocation! (type)
         if (this.PrimaryClusterLocation != null) {
-            var fspec = this.PrimaryClusterLocation.AsFieldSpec(indent+1);
+            var fspec = this.PrimaryClusterLocation.AsFieldSpec(conf.Child("primaryClusterLocation"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "primaryClusterLocation {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "primaryClusterLocation {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> CdmSnapshotConnection? SnapshotConnection
         // GraphQL -> snapshotConnection: CdmSnapshotConnection (type)
         if (this.SnapshotConnection != null) {
-            var fspec = this.SnapshotConnection.AsFieldSpec(indent+1);
+            var fspec = this.SnapshotConnection.AsFieldSpec(conf.Child("snapshotConnection"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "snapshotConnection {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "snapshotConnection {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
         if (this.SnapshotDistribution != null) {
-            var fspec = this.SnapshotDistribution.AsFieldSpec(indent+1);
+            var fspec = this.SnapshotDistribution.AsFieldSpec(conf.Child("snapshotDistribution"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "snapshotDistribution {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "snapshotDistribution {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> CdmSnapshotGroupByConnection? SnapshotGroupByConnection
         // GraphQL -> snapshotGroupByConnection: CdmSnapshotGroupByConnection (type)
         if (this.SnapshotGroupByConnection != null) {
-            var fspec = this.SnapshotGroupByConnection.AsFieldSpec(indent+1);
+            var fspec = this.SnapshotGroupByConnection.AsFieldSpec(conf.Child("snapshotGroupByConnection"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "snapshotGroupByConnection {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "snapshotGroupByConnection {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> CdmSnapshotGroupBySummaryConnection? SnapshotGroupBySummary
         // GraphQL -> snapshotGroupBySummary: CdmSnapshotGroupBySummaryConnection (type)
         if (this.SnapshotGroupBySummary != null) {
-            var fspec = this.SnapshotGroupBySummary.AsFieldSpec(indent+1);
+            var fspec = this.SnapshotGroupBySummary.AsFieldSpec(conf.Child("snapshotGroupBySummary"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "snapshotGroupBySummary {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "snapshotGroupBySummary {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -889,358 +1106,995 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<Operation>? AuthorizedOperations
         // GraphQL -> authorizedOperations: [Operation!]! (enum)
-        if (this.AuthorizedOperations == null && ec.Includes("authorizedOperations",true))
+        if (ec.Includes("authorizedOperations",true))
         {
-            this.AuthorizedOperations = new List<Operation>();
+            if(this.AuthorizedOperations == null) {
+
+                this.AuthorizedOperations = new List<Operation>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AuthorizedOperations != null && ec.Excludes("authorizedOperations",true))
+        {
+            this.AuthorizedOperations = null;
         }
         //      C# -> DataGuardType? DataGuardType
         // GraphQL -> dataGuardType: DataGuardType! (enum)
-        if (this.DataGuardType == null && ec.Includes("dataGuardType",true))
+        if (ec.Includes("dataGuardType",true))
         {
-            this.DataGuardType = new DataGuardType();
+            if(this.DataGuardType == null) {
+
+                this.DataGuardType = new DataGuardType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DataGuardType != null && ec.Excludes("dataGuardType",true))
+        {
+            this.DataGuardType = null;
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
-        if (this.ObjectType == null && ec.Includes("objectType",true))
+        if (ec.Includes("objectType",true))
         {
-            this.ObjectType = new HierarchyObjectTypeEnum();
+            if(this.ObjectType == null) {
+
+                this.ObjectType = new HierarchyObjectTypeEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ObjectType != null && ec.Excludes("objectType",true))
+        {
+            this.ObjectType = null;
         }
         //      C# -> SlaAssignmentTypeEnum? SlaAssignment
         // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
-        if (this.SlaAssignment == null && ec.Includes("slaAssignment",true))
+        if (ec.Includes("slaAssignment",true))
         {
-            this.SlaAssignment = new SlaAssignmentTypeEnum();
+            if(this.SlaAssignment == null) {
+
+                this.SlaAssignment = new SlaAssignmentTypeEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SlaAssignment != null && ec.Excludes("slaAssignment",true))
+        {
+            this.SlaAssignment = null;
         }
         //      C# -> SlaDomain? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
-        if (this.ConfiguredSlaDomain == null && ec.Includes("configuredSlaDomain",false))
+        if (ec.Includes("configuredSlaDomain",false))
         {
-            var impls = new List<SlaDomain>();
-            impls.ApplyExploratoryFieldSpec(ec.NewChild("configuredSlaDomain"));
-            this.ConfiguredSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+            if(this.ConfiguredSlaDomain == null) {
+
+                var impls = new List<SlaDomain>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("configuredSlaDomain"));
+                this.ConfiguredSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<SlaDomain>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("configuredSlaDomain"));
+                this.ConfiguredSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.ConfiguredSlaDomain != null && ec.Excludes("configuredSlaDomain",false))
+        {
+            this.ConfiguredSlaDomain = null;
         }
         //      C# -> SlaDomain? EffectiveRetentionSlaDomain
         // GraphQL -> effectiveRetentionSlaDomain: SlaDomain (interface)
-        if (this.EffectiveRetentionSlaDomain == null && ec.Includes("effectiveRetentionSlaDomain",false))
+        if (ec.Includes("effectiveRetentionSlaDomain",false))
         {
-            var impls = new List<SlaDomain>();
-            impls.ApplyExploratoryFieldSpec(ec.NewChild("effectiveRetentionSlaDomain"));
-            this.EffectiveRetentionSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+            if(this.EffectiveRetentionSlaDomain == null) {
+
+                var impls = new List<SlaDomain>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("effectiveRetentionSlaDomain"));
+                this.EffectiveRetentionSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<SlaDomain>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("effectiveRetentionSlaDomain"));
+                this.EffectiveRetentionSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.EffectiveRetentionSlaDomain != null && ec.Excludes("effectiveRetentionSlaDomain",false))
+        {
+            this.EffectiveRetentionSlaDomain = null;
         }
         //      C# -> SlaDomain? EffectiveSlaDomain
         // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
-        if (this.EffectiveSlaDomain == null && ec.Includes("effectiveSlaDomain",false))
+        if (ec.Includes("effectiveSlaDomain",false))
         {
-            var impls = new List<SlaDomain>();
-            impls.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaDomain"));
-            this.EffectiveSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+            if(this.EffectiveSlaDomain == null) {
+
+                var impls = new List<SlaDomain>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaDomain"));
+                this.EffectiveSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<SlaDomain>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaDomain"));
+                this.EffectiveSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.EffectiveSlaDomain != null && ec.Excludes("effectiveSlaDomain",false))
+        {
+            this.EffectiveSlaDomain = null;
         }
         //      C# -> SlaDomain? PendingSla
         // GraphQL -> pendingSla: SlaDomain (interface)
-        if (this.PendingSla == null && ec.Includes("pendingSla",false))
+        if (ec.Includes("pendingSla",false))
         {
-            var impls = new List<SlaDomain>();
-            impls.ApplyExploratoryFieldSpec(ec.NewChild("pendingSla"));
-            this.PendingSla = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+            if(this.PendingSla == null) {
+
+                var impls = new List<SlaDomain>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("pendingSla"));
+                this.PendingSla = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<SlaDomain>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("pendingSla"));
+                this.PendingSla = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.PendingSla != null && ec.Excludes("pendingSla",false))
+        {
+            this.PendingSla = null;
         }
         //      C# -> List<CdmHierarchyObject>? ReplicatedObjects
         // GraphQL -> replicatedObjects: [CdmHierarchyObject!]! (interface)
-        if (this.ReplicatedObjects == null && ec.Includes("replicatedObjects",false))
+        if (ec.Includes("replicatedObjects",false))
         {
-            this.ReplicatedObjects = new List<CdmHierarchyObject>();
-            this.ReplicatedObjects.ApplyExploratoryFieldSpec(ec.NewChild("replicatedObjects"));
+            if(this.ReplicatedObjects == null) {
+
+                this.ReplicatedObjects = new List<CdmHierarchyObject>();
+                this.ReplicatedObjects.ApplyExploratoryFieldSpec(ec.NewChild("replicatedObjects"));
+
+            } else {
+
+                this.ReplicatedObjects.ApplyExploratoryFieldSpec(ec.NewChild("replicatedObjects"));
+
+            }
+        }
+        else if (this.ReplicatedObjects != null && ec.Excludes("replicatedObjects",false))
+        {
+            this.ReplicatedObjects = null;
         }
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
-        if (this.CdmId == null && ec.Includes("cdmId",true))
+        if (ec.Includes("cdmId",true))
         {
-            this.CdmId = "FETCH";
+            if(this.CdmId == null) {
+
+                this.CdmId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CdmId != null && ec.Excludes("cdmId",true))
+        {
+            this.CdmId = null;
         }
         //      C# -> System.String? CdmLink
         // GraphQL -> cdmLink: String! (scalar)
-        if (this.CdmLink == null && ec.Includes("cdmLink",true))
+        if (ec.Includes("cdmLink",true))
         {
-            this.CdmLink = "FETCH";
+            if(this.CdmLink == null) {
+
+                this.CdmLink = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CdmLink != null && ec.Excludes("cdmLink",true))
+        {
+            this.CdmLink = null;
         }
         //      C# -> System.String? DataGuardGroupId
         // GraphQL -> dataGuardGroupId: String (scalar)
-        if (this.DataGuardGroupId == null && ec.Includes("dataGuardGroupId",true))
+        if (ec.Includes("dataGuardGroupId",true))
         {
-            this.DataGuardGroupId = "FETCH";
+            if(this.DataGuardGroupId == null) {
+
+                this.DataGuardGroupId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DataGuardGroupId != null && ec.Excludes("dataGuardGroupId",true))
+        {
+            this.DataGuardGroupId = null;
         }
         //      C# -> System.String? DbRole
         // GraphQL -> dbRole: String! (scalar)
-        if (this.DbRole == null && ec.Includes("dbRole",true))
+        if (ec.Includes("dbRole",true))
         {
-            this.DbRole = "FETCH";
+            if(this.DbRole == null) {
+
+                this.DbRole = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DbRole != null && ec.Excludes("dbRole",true))
+        {
+            this.DbRole = null;
         }
         //      C# -> System.String? DbUniqueName
         // GraphQL -> dbUniqueName: String! (scalar)
-        if (this.DbUniqueName == null && ec.Includes("dbUniqueName",true))
+        if (ec.Includes("dbUniqueName",true))
         {
-            this.DbUniqueName = "FETCH";
+            if(this.DbUniqueName == null) {
+
+                this.DbUniqueName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DbUniqueName != null && ec.Excludes("dbUniqueName",true))
+        {
+            this.DbUniqueName = null;
         }
         //      C# -> System.Int32? HostLogRetentionHours
         // GraphQL -> hostLogRetentionHours: Int! (scalar)
-        if (this.HostLogRetentionHours == null && ec.Includes("hostLogRetentionHours",true))
+        if (ec.Includes("hostLogRetentionHours",true))
         {
-            this.HostLogRetentionHours = Int32.MinValue;
+            if(this.HostLogRetentionHours == null) {
+
+                this.HostLogRetentionHours = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.HostLogRetentionHours != null && ec.Excludes("hostLogRetentionHours",true))
+        {
+            this.HostLogRetentionHours = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
-        if (this.IsRelic == null && ec.Includes("isRelic",true))
+        if (ec.Includes("isRelic",true))
         {
-            this.IsRelic = true;
+            if(this.IsRelic == null) {
+
+                this.IsRelic = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsRelic != null && ec.Excludes("isRelic",true))
+        {
+            this.IsRelic = null;
         }
         //      C# -> System.Int32? LogBackupFrequency
         // GraphQL -> logBackupFrequency: Int! (scalar)
-        if (this.LogBackupFrequency == null && ec.Includes("logBackupFrequency",true))
+        if (ec.Includes("logBackupFrequency",true))
         {
-            this.LogBackupFrequency = Int32.MinValue;
+            if(this.LogBackupFrequency == null) {
+
+                this.LogBackupFrequency = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LogBackupFrequency != null && ec.Excludes("logBackupFrequency",true))
+        {
+            this.LogBackupFrequency = null;
         }
         //      C# -> System.Int32? LogRetentionHours
         // GraphQL -> logRetentionHours: Int! (scalar)
-        if (this.LogRetentionHours == null && ec.Includes("logRetentionHours",true))
+        if (ec.Includes("logRetentionHours",true))
         {
-            this.LogRetentionHours = Int32.MinValue;
+            if(this.LogRetentionHours == null) {
+
+                this.LogRetentionHours = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LogRetentionHours != null && ec.Excludes("logRetentionHours",true))
+        {
+            this.LogRetentionHours = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.Int64? NumChannels
         // GraphQL -> numChannels: Long! (scalar)
-        if (this.NumChannels == null && ec.Includes("numChannels",true))
+        if (ec.Includes("numChannels",true))
         {
-            this.NumChannels = new System.Int64();
+            if(this.NumChannels == null) {
+
+                this.NumChannels = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.NumChannels != null && ec.Excludes("numChannels",true))
+        {
+            this.NumChannels = null;
         }
         //      C# -> System.Int32? NumInstances
         // GraphQL -> numInstances: Int! (scalar)
-        if (this.NumInstances == null && ec.Includes("numInstances",true))
+        if (ec.Includes("numInstances",true))
         {
-            this.NumInstances = Int32.MinValue;
+            if(this.NumInstances == null) {
+
+                this.NumInstances = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.NumInstances != null && ec.Excludes("numInstances",true))
+        {
+            this.NumInstances = null;
         }
         //      C# -> System.Int32? NumLogSnapshots
         // GraphQL -> numLogSnapshots: Int! (scalar)
-        if (this.NumLogSnapshots == null && ec.Includes("numLogSnapshots",true))
+        if (ec.Includes("numLogSnapshots",true))
         {
-            this.NumLogSnapshots = Int32.MinValue;
+            if(this.NumLogSnapshots == null) {
+
+                this.NumLogSnapshots = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.NumLogSnapshots != null && ec.Excludes("numLogSnapshots",true))
+        {
+            this.NumLogSnapshots = null;
         }
         //      C# -> System.Int32? NumTablespaces
         // GraphQL -> numTablespaces: Int! (scalar)
-        if (this.NumTablespaces == null && ec.Includes("numTablespaces",true))
+        if (ec.Includes("numTablespaces",true))
         {
-            this.NumTablespaces = Int32.MinValue;
+            if(this.NumTablespaces == null) {
+
+                this.NumTablespaces = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.NumTablespaces != null && ec.Excludes("numTablespaces",true))
+        {
+            this.NumTablespaces = null;
         }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
-        if (this.NumWorkloadDescendants == null && ec.Includes("numWorkloadDescendants",true))
+        if (ec.Includes("numWorkloadDescendants",true))
         {
-            this.NumWorkloadDescendants = Int32.MinValue;
+            if(this.NumWorkloadDescendants == null) {
+
+                this.NumWorkloadDescendants = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.NumWorkloadDescendants != null && ec.Excludes("numWorkloadDescendants",true))
+        {
+            this.NumWorkloadDescendants = null;
         }
         //      C# -> System.Int32? OnDemandSnapshotCount
         // GraphQL -> onDemandSnapshotCount: Int! (scalar)
-        if (this.OnDemandSnapshotCount == null && ec.Includes("onDemandSnapshotCount",true))
+        if (ec.Includes("onDemandSnapshotCount",true))
         {
-            this.OnDemandSnapshotCount = Int32.MinValue;
+            if(this.OnDemandSnapshotCount == null) {
+
+                this.OnDemandSnapshotCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.OnDemandSnapshotCount != null && ec.Excludes("onDemandSnapshotCount",true))
+        {
+            this.OnDemandSnapshotCount = null;
         }
         //      C# -> List<System.String>? PreferredDataGuardMemberUniqueNames
         // GraphQL -> preferredDataGuardMemberUniqueNames: [String!]! (scalar)
-        if (this.PreferredDataGuardMemberUniqueNames == null && ec.Includes("preferredDataGuardMemberUniqueNames",true))
+        if (ec.Includes("preferredDataGuardMemberUniqueNames",true))
         {
-            this.PreferredDataGuardMemberUniqueNames = new List<System.String>();
+            if(this.PreferredDataGuardMemberUniqueNames == null) {
+
+                this.PreferredDataGuardMemberUniqueNames = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.PreferredDataGuardMemberUniqueNames != null && ec.Excludes("preferredDataGuardMemberUniqueNames",true))
+        {
+            this.PreferredDataGuardMemberUniqueNames = null;
         }
         //      C# -> System.Int32? ReplicatedObjectCount
         // GraphQL -> replicatedObjectCount: Int! (scalar)
-        if (this.ReplicatedObjectCount == null && ec.Includes("replicatedObjectCount",true))
+        if (ec.Includes("replicatedObjectCount",true))
         {
-            this.ReplicatedObjectCount = Int32.MinValue;
+            if(this.ReplicatedObjectCount == null) {
+
+                this.ReplicatedObjectCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ReplicatedObjectCount != null && ec.Excludes("replicatedObjectCount",true))
+        {
+            this.ReplicatedObjectCount = null;
         }
         //      C# -> System.Int32? SectionSizeInGigabytes
         // GraphQL -> sectionSizeInGigabytes: Int! (scalar)
-        if (this.SectionSizeInGigabytes == null && ec.Includes("sectionSizeInGigabytes",true))
+        if (ec.Includes("sectionSizeInGigabytes",true))
         {
-            this.SectionSizeInGigabytes = Int32.MinValue;
+            if(this.SectionSizeInGigabytes == null) {
+
+                this.SectionSizeInGigabytes = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.SectionSizeInGigabytes != null && ec.Excludes("sectionSizeInGigabytes",true))
+        {
+            this.SectionSizeInGigabytes = null;
         }
         //      C# -> System.Boolean? ShouldBackupFromPrimaryOnly
         // GraphQL -> shouldBackupFromPrimaryOnly: Boolean! (scalar)
-        if (this.ShouldBackupFromPrimaryOnly == null && ec.Includes("shouldBackupFromPrimaryOnly",true))
+        if (ec.Includes("shouldBackupFromPrimaryOnly",true))
         {
-            this.ShouldBackupFromPrimaryOnly = true;
+            if(this.ShouldBackupFromPrimaryOnly == null) {
+
+                this.ShouldBackupFromPrimaryOnly = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShouldBackupFromPrimaryOnly != null && ec.Excludes("shouldBackupFromPrimaryOnly",true))
+        {
+            this.ShouldBackupFromPrimaryOnly = null;
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
-        if (this.SlaPauseStatus == null && ec.Includes("slaPauseStatus",true))
+        if (ec.Includes("slaPauseStatus",true))
         {
-            this.SlaPauseStatus = true;
+            if(this.SlaPauseStatus == null) {
+
+                this.SlaPauseStatus = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.SlaPauseStatus != null && ec.Excludes("slaPauseStatus",true))
+        {
+            this.SlaPauseStatus = null;
         }
         //      C# -> List<System.String>? Tablespaces
         // GraphQL -> tablespaces: [String!]! (scalar)
-        if (this.Tablespaces == null && ec.Includes("tablespaces",true))
+        if (ec.Includes("tablespaces",true))
         {
-            this.Tablespaces = new List<System.String>();
+            if(this.Tablespaces == null) {
+
+                this.Tablespaces = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Tablespaces != null && ec.Excludes("tablespaces",true))
+        {
+            this.Tablespaces = null;
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
-        if (this.AllOrgs == null && ec.Includes("allOrgs",false))
+        if (ec.Includes("allOrgs",false))
         {
-            this.AllOrgs = new List<Org>();
-            this.AllOrgs.ApplyExploratoryFieldSpec(ec.NewChild("allOrgs"));
+            if(this.AllOrgs == null) {
+
+                this.AllOrgs = new List<Org>();
+                this.AllOrgs.ApplyExploratoryFieldSpec(ec.NewChild("allOrgs"));
+
+            } else {
+
+                this.AllOrgs.ApplyExploratoryFieldSpec(ec.NewChild("allOrgs"));
+
+            }
+        }
+        else if (this.AllOrgs != null && ec.Excludes("allOrgs",false))
+        {
+            this.AllOrgs = null;
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
-        if (this.Cluster == null && ec.Includes("cluster",false))
+        if (ec.Includes("cluster",false))
         {
-            this.Cluster = new Cluster();
-            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+            if(this.Cluster == null) {
+
+                this.Cluster = new Cluster();
+                this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+
+            } else {
+
+                this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+
+            }
+        }
+        else if (this.Cluster != null && ec.Excludes("cluster",false))
+        {
+            this.Cluster = null;
         }
         //      C# -> OracleDataGuardGroupDescendantTypeConnection? DescendantConnection
         // GraphQL -> descendantConnection: OracleDataGuardGroupDescendantTypeConnection! (type)
-        if (this.DescendantConnection == null && ec.Includes("descendantConnection",false))
+        if (ec.Includes("descendantConnection",false))
         {
-            this.DescendantConnection = new OracleDataGuardGroupDescendantTypeConnection();
-            this.DescendantConnection.ApplyExploratoryFieldSpec(ec.NewChild("descendantConnection"));
+            if(this.DescendantConnection == null) {
+
+                this.DescendantConnection = new OracleDataGuardGroupDescendantTypeConnection();
+                this.DescendantConnection.ApplyExploratoryFieldSpec(ec.NewChild("descendantConnection"));
+
+            } else {
+
+                this.DescendantConnection.ApplyExploratoryFieldSpec(ec.NewChild("descendantConnection"));
+
+            }
+        }
+        else if (this.DescendantConnection != null && ec.Excludes("descendantConnection",false))
+        {
+            this.DescendantConnection = null;
         }
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
-        if (this.EffectiveSlaSourceObject == null && ec.Includes("effectiveSlaSourceObject",false))
+        if (ec.Includes("effectiveSlaSourceObject",false))
         {
-            this.EffectiveSlaSourceObject = new PathNode();
-            this.EffectiveSlaSourceObject.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaSourceObject"));
+            if(this.EffectiveSlaSourceObject == null) {
+
+                this.EffectiveSlaSourceObject = new PathNode();
+                this.EffectiveSlaSourceObject.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaSourceObject"));
+
+            } else {
+
+                this.EffectiveSlaSourceObject.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaSourceObject"));
+
+            }
+        }
+        else if (this.EffectiveSlaSourceObject != null && ec.Excludes("effectiveSlaSourceObject",false))
+        {
+            this.EffectiveSlaSourceObject = null;
         }
         //      C# -> OracleDatabaseLastValidationStatus? LastValidationResult
         // GraphQL -> lastValidationResult: OracleDatabaseLastValidationStatus (type)
-        if (this.LastValidationResult == null && ec.Includes("lastValidationResult",false))
+        if (ec.Includes("lastValidationResult",false))
         {
-            this.LastValidationResult = new OracleDatabaseLastValidationStatus();
-            this.LastValidationResult.ApplyExploratoryFieldSpec(ec.NewChild("lastValidationResult"));
+            if(this.LastValidationResult == null) {
+
+                this.LastValidationResult = new OracleDatabaseLastValidationStatus();
+                this.LastValidationResult.ApplyExploratoryFieldSpec(ec.NewChild("lastValidationResult"));
+
+            } else {
+
+                this.LastValidationResult.ApplyExploratoryFieldSpec(ec.NewChild("lastValidationResult"));
+
+            }
+        }
+        else if (this.LastValidationResult != null && ec.Excludes("lastValidationResult",false))
+        {
+            this.LastValidationResult = null;
         }
         //      C# -> LatestUserNote? LatestUserNote
         // GraphQL -> latestUserNote: LatestUserNote (type)
-        if (this.LatestUserNote == null && ec.Includes("latestUserNote",false))
+        if (ec.Includes("latestUserNote",false))
         {
-            this.LatestUserNote = new LatestUserNote();
-            this.LatestUserNote.ApplyExploratoryFieldSpec(ec.NewChild("latestUserNote"));
+            if(this.LatestUserNote == null) {
+
+                this.LatestUserNote = new LatestUserNote();
+                this.LatestUserNote.ApplyExploratoryFieldSpec(ec.NewChild("latestUserNote"));
+
+            } else {
+
+                this.LatestUserNote.ApplyExploratoryFieldSpec(ec.NewChild("latestUserNote"));
+
+            }
+        }
+        else if (this.LatestUserNote != null && ec.Excludes("latestUserNote",false))
+        {
+            this.LatestUserNote = null;
         }
         //      C# -> OracleDataGuardGroupLogicalChildTypeConnection? LogicalChildConnection
         // GraphQL -> logicalChildConnection: OracleDataGuardGroupLogicalChildTypeConnection! (type)
-        if (this.LogicalChildConnection == null && ec.Includes("logicalChildConnection",false))
+        if (ec.Includes("logicalChildConnection",false))
         {
-            this.LogicalChildConnection = new OracleDataGuardGroupLogicalChildTypeConnection();
-            this.LogicalChildConnection.ApplyExploratoryFieldSpec(ec.NewChild("logicalChildConnection"));
+            if(this.LogicalChildConnection == null) {
+
+                this.LogicalChildConnection = new OracleDataGuardGroupLogicalChildTypeConnection();
+                this.LogicalChildConnection.ApplyExploratoryFieldSpec(ec.NewChild("logicalChildConnection"));
+
+            } else {
+
+                this.LogicalChildConnection.ApplyExploratoryFieldSpec(ec.NewChild("logicalChildConnection"));
+
+            }
+        }
+        else if (this.LogicalChildConnection != null && ec.Excludes("logicalChildConnection",false))
+        {
+            this.LogicalChildConnection = null;
         }
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
-        if (this.LogicalPath == null && ec.Includes("logicalPath",false))
+        if (ec.Includes("logicalPath",false))
         {
-            this.LogicalPath = new List<PathNode>();
-            this.LogicalPath.ApplyExploratoryFieldSpec(ec.NewChild("logicalPath"));
+            if(this.LogicalPath == null) {
+
+                this.LogicalPath = new List<PathNode>();
+                this.LogicalPath.ApplyExploratoryFieldSpec(ec.NewChild("logicalPath"));
+
+            } else {
+
+                this.LogicalPath.ApplyExploratoryFieldSpec(ec.NewChild("logicalPath"));
+
+            }
+        }
+        else if (this.LogicalPath != null && ec.Excludes("logicalPath",false))
+        {
+            this.LogicalPath = null;
         }
         //      C# -> MissedSnapshotCommonConnection? MissedSnapshotConnection
         // GraphQL -> missedSnapshotConnection: MissedSnapshotCommonConnection (type)
-        if (this.MissedSnapshotConnection == null && ec.Includes("missedSnapshotConnection",false))
+        if (ec.Includes("missedSnapshotConnection",false))
         {
-            this.MissedSnapshotConnection = new MissedSnapshotCommonConnection();
-            this.MissedSnapshotConnection.ApplyExploratoryFieldSpec(ec.NewChild("missedSnapshotConnection"));
+            if(this.MissedSnapshotConnection == null) {
+
+                this.MissedSnapshotConnection = new MissedSnapshotCommonConnection();
+                this.MissedSnapshotConnection.ApplyExploratoryFieldSpec(ec.NewChild("missedSnapshotConnection"));
+
+            } else {
+
+                this.MissedSnapshotConnection.ApplyExploratoryFieldSpec(ec.NewChild("missedSnapshotConnection"));
+
+            }
+        }
+        else if (this.MissedSnapshotConnection != null && ec.Excludes("missedSnapshotConnection",false))
+        {
+            this.MissedSnapshotConnection = null;
         }
         //      C# -> MissedSnapshotGroupByConnection? MissedSnapshotGroupByConnection
         // GraphQL -> missedSnapshotGroupByConnection: MissedSnapshotGroupByConnection (type)
-        if (this.MissedSnapshotGroupByConnection == null && ec.Includes("missedSnapshotGroupByConnection",false))
+        if (ec.Includes("missedSnapshotGroupByConnection",false))
         {
-            this.MissedSnapshotGroupByConnection = new MissedSnapshotGroupByConnection();
-            this.MissedSnapshotGroupByConnection.ApplyExploratoryFieldSpec(ec.NewChild("missedSnapshotGroupByConnection"));
+            if(this.MissedSnapshotGroupByConnection == null) {
+
+                this.MissedSnapshotGroupByConnection = new MissedSnapshotGroupByConnection();
+                this.MissedSnapshotGroupByConnection.ApplyExploratoryFieldSpec(ec.NewChild("missedSnapshotGroupByConnection"));
+
+            } else {
+
+                this.MissedSnapshotGroupByConnection.ApplyExploratoryFieldSpec(ec.NewChild("missedSnapshotGroupByConnection"));
+
+            }
+        }
+        else if (this.MissedSnapshotGroupByConnection != null && ec.Excludes("missedSnapshotGroupByConnection",false))
+        {
+            this.MissedSnapshotGroupByConnection = null;
         }
         //      C# -> CdmSnapshot? NewestArchivedSnapshot
         // GraphQL -> newestArchivedSnapshot: CdmSnapshot (type)
-        if (this.NewestArchivedSnapshot == null && ec.Includes("newestArchivedSnapshot",false))
+        if (ec.Includes("newestArchivedSnapshot",false))
         {
-            this.NewestArchivedSnapshot = new CdmSnapshot();
-            this.NewestArchivedSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("newestArchivedSnapshot"));
+            if(this.NewestArchivedSnapshot == null) {
+
+                this.NewestArchivedSnapshot = new CdmSnapshot();
+                this.NewestArchivedSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("newestArchivedSnapshot"));
+
+            } else {
+
+                this.NewestArchivedSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("newestArchivedSnapshot"));
+
+            }
+        }
+        else if (this.NewestArchivedSnapshot != null && ec.Excludes("newestArchivedSnapshot",false))
+        {
+            this.NewestArchivedSnapshot = null;
         }
         //      C# -> CdmSnapshot? NewestReplicatedSnapshot
         // GraphQL -> newestReplicatedSnapshot: CdmSnapshot (type)
-        if (this.NewestReplicatedSnapshot == null && ec.Includes("newestReplicatedSnapshot",false))
+        if (ec.Includes("newestReplicatedSnapshot",false))
         {
-            this.NewestReplicatedSnapshot = new CdmSnapshot();
-            this.NewestReplicatedSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("newestReplicatedSnapshot"));
+            if(this.NewestReplicatedSnapshot == null) {
+
+                this.NewestReplicatedSnapshot = new CdmSnapshot();
+                this.NewestReplicatedSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("newestReplicatedSnapshot"));
+
+            } else {
+
+                this.NewestReplicatedSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("newestReplicatedSnapshot"));
+
+            }
+        }
+        else if (this.NewestReplicatedSnapshot != null && ec.Excludes("newestReplicatedSnapshot",false))
+        {
+            this.NewestReplicatedSnapshot = null;
         }
         //      C# -> CdmSnapshot? NewestSnapshot
         // GraphQL -> newestSnapshot: CdmSnapshot (type)
-        if (this.NewestSnapshot == null && ec.Includes("newestSnapshot",false))
+        if (ec.Includes("newestSnapshot",false))
         {
-            this.NewestSnapshot = new CdmSnapshot();
-            this.NewestSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("newestSnapshot"));
+            if(this.NewestSnapshot == null) {
+
+                this.NewestSnapshot = new CdmSnapshot();
+                this.NewestSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("newestSnapshot"));
+
+            } else {
+
+                this.NewestSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("newestSnapshot"));
+
+            }
+        }
+        else if (this.NewestSnapshot != null && ec.Excludes("newestSnapshot",false))
+        {
+            this.NewestSnapshot = null;
         }
         //      C# -> CdmSnapshot? OldestSnapshot
         // GraphQL -> oldestSnapshot: CdmSnapshot (type)
-        if (this.OldestSnapshot == null && ec.Includes("oldestSnapshot",false))
+        if (ec.Includes("oldestSnapshot",false))
         {
-            this.OldestSnapshot = new CdmSnapshot();
-            this.OldestSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("oldestSnapshot"));
+            if(this.OldestSnapshot == null) {
+
+                this.OldestSnapshot = new CdmSnapshot();
+                this.OldestSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("oldestSnapshot"));
+
+            } else {
+
+                this.OldestSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("oldestSnapshot"));
+
+            }
+        }
+        else if (this.OldestSnapshot != null && ec.Excludes("oldestSnapshot",false))
+        {
+            this.OldestSnapshot = null;
         }
         //      C# -> List<OraclePdb>? Pdbs
         // GraphQL -> pdbs: [OraclePdb!]! (type)
-        if (this.Pdbs == null && ec.Includes("pdbs",false))
+        if (ec.Includes("pdbs",false))
         {
-            this.Pdbs = new List<OraclePdb>();
-            this.Pdbs.ApplyExploratoryFieldSpec(ec.NewChild("pdbs"));
+            if(this.Pdbs == null) {
+
+                this.Pdbs = new List<OraclePdb>();
+                this.Pdbs.ApplyExploratoryFieldSpec(ec.NewChild("pdbs"));
+
+            } else {
+
+                this.Pdbs.ApplyExploratoryFieldSpec(ec.NewChild("pdbs"));
+
+            }
+        }
+        else if (this.Pdbs != null && ec.Excludes("pdbs",false))
+        {
+            this.Pdbs = null;
         }
         //      C# -> PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus
         // GraphQL -> pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion (type)
-        if (this.PendingObjectDeletionStatus == null && ec.Includes("pendingObjectDeletionStatus",false))
+        if (ec.Includes("pendingObjectDeletionStatus",false))
         {
-            this.PendingObjectDeletionStatus = new PendingSnapshotsOfObjectDeletion();
-            this.PendingObjectDeletionStatus.ApplyExploratoryFieldSpec(ec.NewChild("pendingObjectDeletionStatus"));
+            if(this.PendingObjectDeletionStatus == null) {
+
+                this.PendingObjectDeletionStatus = new PendingSnapshotsOfObjectDeletion();
+                this.PendingObjectDeletionStatus.ApplyExploratoryFieldSpec(ec.NewChild("pendingObjectDeletionStatus"));
+
+            } else {
+
+                this.PendingObjectDeletionStatus.ApplyExploratoryFieldSpec(ec.NewChild("pendingObjectDeletionStatus"));
+
+            }
+        }
+        else if (this.PendingObjectDeletionStatus != null && ec.Excludes("pendingObjectDeletionStatus",false))
+        {
+            this.PendingObjectDeletionStatus = null;
         }
         //      C# -> List<PathNode>? PhysicalPath
         // GraphQL -> physicalPath: [PathNode!]! (type)
-        if (this.PhysicalPath == null && ec.Includes("physicalPath",false))
+        if (ec.Includes("physicalPath",false))
         {
-            this.PhysicalPath = new List<PathNode>();
-            this.PhysicalPath.ApplyExploratoryFieldSpec(ec.NewChild("physicalPath"));
+            if(this.PhysicalPath == null) {
+
+                this.PhysicalPath = new List<PathNode>();
+                this.PhysicalPath.ApplyExploratoryFieldSpec(ec.NewChild("physicalPath"));
+
+            } else {
+
+                this.PhysicalPath.ApplyExploratoryFieldSpec(ec.NewChild("physicalPath"));
+
+            }
+        }
+        else if (this.PhysicalPath != null && ec.Excludes("physicalPath",false))
+        {
+            this.PhysicalPath = null;
         }
         //      C# -> DataLocation? PrimaryClusterLocation
         // GraphQL -> primaryClusterLocation: DataLocation! (type)
-        if (this.PrimaryClusterLocation == null && ec.Includes("primaryClusterLocation",false))
+        if (ec.Includes("primaryClusterLocation",false))
         {
-            this.PrimaryClusterLocation = new DataLocation();
-            this.PrimaryClusterLocation.ApplyExploratoryFieldSpec(ec.NewChild("primaryClusterLocation"));
+            if(this.PrimaryClusterLocation == null) {
+
+                this.PrimaryClusterLocation = new DataLocation();
+                this.PrimaryClusterLocation.ApplyExploratoryFieldSpec(ec.NewChild("primaryClusterLocation"));
+
+            } else {
+
+                this.PrimaryClusterLocation.ApplyExploratoryFieldSpec(ec.NewChild("primaryClusterLocation"));
+
+            }
+        }
+        else if (this.PrimaryClusterLocation != null && ec.Excludes("primaryClusterLocation",false))
+        {
+            this.PrimaryClusterLocation = null;
         }
         //      C# -> CdmSnapshotConnection? SnapshotConnection
         // GraphQL -> snapshotConnection: CdmSnapshotConnection (type)
-        if (this.SnapshotConnection == null && ec.Includes("snapshotConnection",false))
+        if (ec.Includes("snapshotConnection",false))
         {
-            this.SnapshotConnection = new CdmSnapshotConnection();
-            this.SnapshotConnection.ApplyExploratoryFieldSpec(ec.NewChild("snapshotConnection"));
+            if(this.SnapshotConnection == null) {
+
+                this.SnapshotConnection = new CdmSnapshotConnection();
+                this.SnapshotConnection.ApplyExploratoryFieldSpec(ec.NewChild("snapshotConnection"));
+
+            } else {
+
+                this.SnapshotConnection.ApplyExploratoryFieldSpec(ec.NewChild("snapshotConnection"));
+
+            }
+        }
+        else if (this.SnapshotConnection != null && ec.Excludes("snapshotConnection",false))
+        {
+            this.SnapshotConnection = null;
         }
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
-        if (this.SnapshotDistribution == null && ec.Includes("snapshotDistribution",false))
+        if (ec.Includes("snapshotDistribution",false))
         {
-            this.SnapshotDistribution = new SnapshotDistribution();
-            this.SnapshotDistribution.ApplyExploratoryFieldSpec(ec.NewChild("snapshotDistribution"));
+            if(this.SnapshotDistribution == null) {
+
+                this.SnapshotDistribution = new SnapshotDistribution();
+                this.SnapshotDistribution.ApplyExploratoryFieldSpec(ec.NewChild("snapshotDistribution"));
+
+            } else {
+
+                this.SnapshotDistribution.ApplyExploratoryFieldSpec(ec.NewChild("snapshotDistribution"));
+
+            }
+        }
+        else if (this.SnapshotDistribution != null && ec.Excludes("snapshotDistribution",false))
+        {
+            this.SnapshotDistribution = null;
         }
         //      C# -> CdmSnapshotGroupByConnection? SnapshotGroupByConnection
         // GraphQL -> snapshotGroupByConnection: CdmSnapshotGroupByConnection (type)
-        if (this.SnapshotGroupByConnection == null && ec.Includes("snapshotGroupByConnection",false))
+        if (ec.Includes("snapshotGroupByConnection",false))
         {
-            this.SnapshotGroupByConnection = new CdmSnapshotGroupByConnection();
-            this.SnapshotGroupByConnection.ApplyExploratoryFieldSpec(ec.NewChild("snapshotGroupByConnection"));
+            if(this.SnapshotGroupByConnection == null) {
+
+                this.SnapshotGroupByConnection = new CdmSnapshotGroupByConnection();
+                this.SnapshotGroupByConnection.ApplyExploratoryFieldSpec(ec.NewChild("snapshotGroupByConnection"));
+
+            } else {
+
+                this.SnapshotGroupByConnection.ApplyExploratoryFieldSpec(ec.NewChild("snapshotGroupByConnection"));
+
+            }
+        }
+        else if (this.SnapshotGroupByConnection != null && ec.Excludes("snapshotGroupByConnection",false))
+        {
+            this.SnapshotGroupByConnection = null;
         }
         //      C# -> CdmSnapshotGroupBySummaryConnection? SnapshotGroupBySummary
         // GraphQL -> snapshotGroupBySummary: CdmSnapshotGroupBySummaryConnection (type)
-        if (this.SnapshotGroupBySummary == null && ec.Includes("snapshotGroupBySummary",false))
+        if (ec.Includes("snapshotGroupBySummary",false))
         {
-            this.SnapshotGroupBySummary = new CdmSnapshotGroupBySummaryConnection();
-            this.SnapshotGroupBySummary.ApplyExploratoryFieldSpec(ec.NewChild("snapshotGroupBySummary"));
+            if(this.SnapshotGroupBySummary == null) {
+
+                this.SnapshotGroupBySummary = new CdmSnapshotGroupBySummaryConnection();
+                this.SnapshotGroupBySummary.ApplyExploratoryFieldSpec(ec.NewChild("snapshotGroupBySummary"));
+
+            } else {
+
+                this.SnapshotGroupBySummary.ApplyExploratoryFieldSpec(ec.NewChild("snapshotGroupBySummary"));
+
+            }
+        }
+        else if (this.SnapshotGroupBySummary != null && ec.Excludes("snapshotGroupBySummary",false))
+        {
+            this.SnapshotGroupBySummary = null;
         }
     }
 
@@ -1267,9 +2121,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<OracleDataGuardGroup> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

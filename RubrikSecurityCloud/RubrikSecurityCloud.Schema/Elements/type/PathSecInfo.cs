@@ -65,26 +65,39 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Owner
         // GraphQL -> owner: String! (scalar)
         if (this.Owner != null) {
-            s += ind + "owner\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "owner\n" ;
+            } else {
+                s += ind + "owner\n" ;
+            }
         }
         //      C# -> System.String? Path
         // GraphQL -> path: String! (scalar)
         if (this.Path != null) {
-            s += ind + "path\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "path\n" ;
+            } else {
+                s += ind + "path\n" ;
+            }
         }
         //      C# -> List<SddlPermission>? Permissions
         // GraphQL -> permissions: [SDDLPermission!]! (type)
         if (this.Permissions != null) {
-            var fspec = this.Permissions.AsFieldSpec(indent+1);
+            var fspec = this.Permissions.AsFieldSpec(conf.Child("permissions"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "permissions {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "permissions {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -96,22 +109,56 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Owner
         // GraphQL -> owner: String! (scalar)
-        if (this.Owner == null && ec.Includes("owner",true))
+        if (ec.Includes("owner",true))
         {
-            this.Owner = "FETCH";
+            if(this.Owner == null) {
+
+                this.Owner = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Owner != null && ec.Excludes("owner",true))
+        {
+            this.Owner = null;
         }
         //      C# -> System.String? Path
         // GraphQL -> path: String! (scalar)
-        if (this.Path == null && ec.Includes("path",true))
+        if (ec.Includes("path",true))
         {
-            this.Path = "FETCH";
+            if(this.Path == null) {
+
+                this.Path = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Path != null && ec.Excludes("path",true))
+        {
+            this.Path = null;
         }
         //      C# -> List<SddlPermission>? Permissions
         // GraphQL -> permissions: [SDDLPermission!]! (type)
-        if (this.Permissions == null && ec.Includes("permissions",false))
+        if (ec.Includes("permissions",false))
         {
-            this.Permissions = new List<SddlPermission>();
-            this.Permissions.ApplyExploratoryFieldSpec(ec.NewChild("permissions"));
+            if(this.Permissions == null) {
+
+                this.Permissions = new List<SddlPermission>();
+                this.Permissions.ApplyExploratoryFieldSpec(ec.NewChild("permissions"));
+
+            } else {
+
+                this.Permissions.ApplyExploratoryFieldSpec(ec.NewChild("permissions"));
+
+            }
+        }
+        else if (this.Permissions != null && ec.Excludes("permissions",false))
+        {
+            this.Permissions = null;
         }
     }
 
@@ -138,9 +185,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<PathSecInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

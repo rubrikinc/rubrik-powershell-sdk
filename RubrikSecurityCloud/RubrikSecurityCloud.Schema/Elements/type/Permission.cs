@@ -56,21 +56,30 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> Operation? Operation
         // GraphQL -> operation: Operation! (enum)
         if (this.Operation != null) {
-            s += ind + "operation\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "operation\n" ;
+            } else {
+                s += ind + "operation\n" ;
+            }
         }
         //      C# -> List<ObjectIdsForHierarchyType>? ObjectsForHierarchyTypes
         // GraphQL -> objectsForHierarchyTypes: [ObjectIdsForHierarchyType!]! (type)
         if (this.ObjectsForHierarchyTypes != null) {
-            var fspec = this.ObjectsForHierarchyTypes.AsFieldSpec(indent+1);
+            var fspec = this.ObjectsForHierarchyTypes.AsFieldSpec(conf.Child("objectsForHierarchyTypes"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "objectsForHierarchyTypes {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "objectsForHierarchyTypes {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -82,16 +91,39 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> Operation? Operation
         // GraphQL -> operation: Operation! (enum)
-        if (this.Operation == null && ec.Includes("operation",true))
+        if (ec.Includes("operation",true))
         {
-            this.Operation = new Operation();
+            if(this.Operation == null) {
+
+                this.Operation = new Operation();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Operation != null && ec.Excludes("operation",true))
+        {
+            this.Operation = null;
         }
         //      C# -> List<ObjectIdsForHierarchyType>? ObjectsForHierarchyTypes
         // GraphQL -> objectsForHierarchyTypes: [ObjectIdsForHierarchyType!]! (type)
-        if (this.ObjectsForHierarchyTypes == null && ec.Includes("objectsForHierarchyTypes",false))
+        if (ec.Includes("objectsForHierarchyTypes",false))
         {
-            this.ObjectsForHierarchyTypes = new List<ObjectIdsForHierarchyType>();
-            this.ObjectsForHierarchyTypes.ApplyExploratoryFieldSpec(ec.NewChild("objectsForHierarchyTypes"));
+            if(this.ObjectsForHierarchyTypes == null) {
+
+                this.ObjectsForHierarchyTypes = new List<ObjectIdsForHierarchyType>();
+                this.ObjectsForHierarchyTypes.ApplyExploratoryFieldSpec(ec.NewChild("objectsForHierarchyTypes"));
+
+            } else {
+
+                this.ObjectsForHierarchyTypes.ApplyExploratoryFieldSpec(ec.NewChild("objectsForHierarchyTypes"));
+
+            }
+        }
+        else if (this.ObjectsForHierarchyTypes != null && ec.Excludes("objectsForHierarchyTypes",false))
+        {
+            this.ObjectsForHierarchyTypes = null;
         }
     }
 
@@ -118,9 +150,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<Permission> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

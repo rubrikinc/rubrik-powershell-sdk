@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Boolean? CbtStatus
         // GraphQL -> cbtStatus: Boolean! (scalar)
         if (this.CbtStatus != null) {
-            s += ind + "cbtStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cbtStatus\n" ;
+            } else {
+                s += ind + "cbtStatus\n" ;
+            }
         }
         //      C# -> System.Int64? LogBackupFrequencyInSeconds
         // GraphQL -> logBackupFrequencyInSeconds: Long! (scalar)
         if (this.LogBackupFrequencyInSeconds != null) {
-            s += ind + "logBackupFrequencyInSeconds\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "logBackupFrequencyInSeconds\n" ;
+            } else {
+                s += ind + "logBackupFrequencyInSeconds\n" ;
+            }
         }
         //      C# -> System.Int32? LogRetentionTimeInHours
         // GraphQL -> logRetentionTimeInHours: Int (scalar)
         if (this.LogRetentionTimeInHours != null) {
-            s += ind + "logRetentionTimeInHours\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "logRetentionTimeInHours\n" ;
+            } else {
+                s += ind + "logRetentionTimeInHours\n" ;
+            }
         }
         //      C# -> System.Boolean? ShouldUseDefaultBackupLocation
         // GraphQL -> shouldUseDefaultBackupLocation: Boolean (scalar)
         if (this.ShouldUseDefaultBackupLocation != null) {
-            s += ind + "shouldUseDefaultBackupLocation\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "shouldUseDefaultBackupLocation\n" ;
+            } else {
+                s += ind + "shouldUseDefaultBackupLocation\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Boolean? CbtStatus
         // GraphQL -> cbtStatus: Boolean! (scalar)
-        if (this.CbtStatus == null && ec.Includes("cbtStatus",true))
+        if (ec.Includes("cbtStatus",true))
         {
-            this.CbtStatus = true;
+            if(this.CbtStatus == null) {
+
+                this.CbtStatus = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.CbtStatus != null && ec.Excludes("cbtStatus",true))
+        {
+            this.CbtStatus = null;
         }
         //      C# -> System.Int64? LogBackupFrequencyInSeconds
         // GraphQL -> logBackupFrequencyInSeconds: Long! (scalar)
-        if (this.LogBackupFrequencyInSeconds == null && ec.Includes("logBackupFrequencyInSeconds",true))
+        if (ec.Includes("logBackupFrequencyInSeconds",true))
         {
-            this.LogBackupFrequencyInSeconds = new System.Int64();
+            if(this.LogBackupFrequencyInSeconds == null) {
+
+                this.LogBackupFrequencyInSeconds = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LogBackupFrequencyInSeconds != null && ec.Excludes("logBackupFrequencyInSeconds",true))
+        {
+            this.LogBackupFrequencyInSeconds = null;
         }
         //      C# -> System.Int32? LogRetentionTimeInHours
         // GraphQL -> logRetentionTimeInHours: Int (scalar)
-        if (this.LogRetentionTimeInHours == null && ec.Includes("logRetentionTimeInHours",true))
+        if (ec.Includes("logRetentionTimeInHours",true))
         {
-            this.LogRetentionTimeInHours = Int32.MinValue;
+            if(this.LogRetentionTimeInHours == null) {
+
+                this.LogRetentionTimeInHours = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LogRetentionTimeInHours != null && ec.Excludes("logRetentionTimeInHours",true))
+        {
+            this.LogRetentionTimeInHours = null;
         }
         //      C# -> System.Boolean? ShouldUseDefaultBackupLocation
         // GraphQL -> shouldUseDefaultBackupLocation: Boolean (scalar)
-        if (this.ShouldUseDefaultBackupLocation == null && ec.Includes("shouldUseDefaultBackupLocation",true))
+        if (ec.Includes("shouldUseDefaultBackupLocation",true))
         {
-            this.ShouldUseDefaultBackupLocation = true;
+            if(this.ShouldUseDefaultBackupLocation == null) {
+
+                this.ShouldUseDefaultBackupLocation = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShouldUseDefaultBackupLocation != null && ec.Excludes("shouldUseDefaultBackupLocation",true))
+        {
+            this.ShouldUseDefaultBackupLocation = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<UpdateMssqlDefaultPropertiesReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

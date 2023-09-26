@@ -56,21 +56,30 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Role
         // GraphQL -> role: String! (scalar)
         if (this.Role != null) {
-            s += ind + "role\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "role\n" ;
+            } else {
+                s += ind + "role\n" ;
+            }
         }
         //      C# -> Db2Instance? Db2Instance
         // GraphQL -> db2Instance: Db2Instance! (type)
         if (this.Db2Instance != null) {
-            var fspec = this.Db2Instance.AsFieldSpec(indent+1);
+            var fspec = this.Db2Instance.AsFieldSpec(conf.Child("db2Instance"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "db2Instance {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "db2Instance {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -82,16 +91,39 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Role
         // GraphQL -> role: String! (scalar)
-        if (this.Role == null && ec.Includes("role",true))
+        if (ec.Includes("role",true))
         {
-            this.Role = "FETCH";
+            if(this.Role == null) {
+
+                this.Role = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Role != null && ec.Excludes("role",true))
+        {
+            this.Role = null;
         }
         //      C# -> Db2Instance? Db2Instance
         // GraphQL -> db2Instance: Db2Instance! (type)
-        if (this.Db2Instance == null && ec.Includes("db2Instance",false))
+        if (ec.Includes("db2Instance",false))
         {
-            this.Db2Instance = new Db2Instance();
-            this.Db2Instance.ApplyExploratoryFieldSpec(ec.NewChild("db2Instance"));
+            if(this.Db2Instance == null) {
+
+                this.Db2Instance = new Db2Instance();
+                this.Db2Instance.ApplyExploratoryFieldSpec(ec.NewChild("db2Instance"));
+
+            } else {
+
+                this.Db2Instance.ApplyExploratoryFieldSpec(ec.NewChild("db2Instance"));
+
+            }
+        }
+        else if (this.Db2Instance != null && ec.Excludes("db2Instance",false))
+        {
+            this.Db2Instance = null;
         }
     }
 
@@ -118,9 +150,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<Db2HadrInstanceInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

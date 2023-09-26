@@ -83,34 +83,55 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? CurrentDatastoreId
         // GraphQL -> currentDatastoreId: UUID (scalar)
         if (this.CurrentDatastoreId != null) {
-            s += ind + "currentDatastoreId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "currentDatastoreId\n" ;
+            } else {
+                s += ind + "currentDatastoreId\n" ;
+            }
         }
         //      C# -> System.Int32? DeviceKey
         // GraphQL -> deviceKey: Int! (scalar)
         if (this.DeviceKey != null) {
-            s += ind + "deviceKey\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "deviceKey\n" ;
+            } else {
+                s += ind + "deviceKey\n" ;
+            }
         }
         //      C# -> System.Int64? FileSizeInBytes
         // GraphQL -> fileSizeInBytes: Long! (scalar)
         if (this.FileSizeInBytes != null) {
-            s += ind + "fileSizeInBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "fileSizeInBytes\n" ;
+            } else {
+                s += ind + "fileSizeInBytes\n" ;
+            }
         }
         //      C# -> System.String? Filename
         // GraphQL -> filename: String! (scalar)
         if (this.Filename != null) {
-            s += ind + "filename\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "filename\n" ;
+            } else {
+                s += ind + "filename\n" ;
+            }
         }
         //      C# -> System.String? VirtualDiskId
         // GraphQL -> virtualDiskId: UUID (scalar)
         if (this.VirtualDiskId != null) {
-            s += ind + "virtualDiskId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "virtualDiskId\n" ;
+            } else {
+                s += ind + "virtualDiskId\n" ;
+            }
         }
         return s;
     }
@@ -121,33 +142,88 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? CurrentDatastoreId
         // GraphQL -> currentDatastoreId: UUID (scalar)
-        if (this.CurrentDatastoreId == null && ec.Includes("currentDatastoreId",true))
+        if (ec.Includes("currentDatastoreId",true))
         {
-            this.CurrentDatastoreId = "FETCH";
+            if(this.CurrentDatastoreId == null) {
+
+                this.CurrentDatastoreId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CurrentDatastoreId != null && ec.Excludes("currentDatastoreId",true))
+        {
+            this.CurrentDatastoreId = null;
         }
         //      C# -> System.Int32? DeviceKey
         // GraphQL -> deviceKey: Int! (scalar)
-        if (this.DeviceKey == null && ec.Includes("deviceKey",true))
+        if (ec.Includes("deviceKey",true))
         {
-            this.DeviceKey = Int32.MinValue;
+            if(this.DeviceKey == null) {
+
+                this.DeviceKey = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.DeviceKey != null && ec.Excludes("deviceKey",true))
+        {
+            this.DeviceKey = null;
         }
         //      C# -> System.Int64? FileSizeInBytes
         // GraphQL -> fileSizeInBytes: Long! (scalar)
-        if (this.FileSizeInBytes == null && ec.Includes("fileSizeInBytes",true))
+        if (ec.Includes("fileSizeInBytes",true))
         {
-            this.FileSizeInBytes = new System.Int64();
+            if(this.FileSizeInBytes == null) {
+
+                this.FileSizeInBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.FileSizeInBytes != null && ec.Excludes("fileSizeInBytes",true))
+        {
+            this.FileSizeInBytes = null;
         }
         //      C# -> System.String? Filename
         // GraphQL -> filename: String! (scalar)
-        if (this.Filename == null && ec.Includes("filename",true))
+        if (ec.Includes("filename",true))
         {
-            this.Filename = "FETCH";
+            if(this.Filename == null) {
+
+                this.Filename = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Filename != null && ec.Excludes("filename",true))
+        {
+            this.Filename = null;
         }
         //      C# -> System.String? VirtualDiskId
         // GraphQL -> virtualDiskId: UUID (scalar)
-        if (this.VirtualDiskId == null && ec.Includes("virtualDiskId",true))
+        if (ec.Includes("virtualDiskId",true))
         {
-            this.VirtualDiskId = "FETCH";
+            if(this.VirtualDiskId == null) {
+
+                this.VirtualDiskId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.VirtualDiskId != null && ec.Excludes("virtualDiskId",true))
+        {
+            this.VirtualDiskId = null;
         }
     }
 
@@ -174,9 +250,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<VmwareVmSubObject> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

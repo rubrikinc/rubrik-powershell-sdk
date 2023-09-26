@@ -3,6 +3,10 @@ using System.Management.Automation;
 using System.Runtime.CompilerServices;
 using RubrikSecurityCloud.Client;
 using System.Collections.Generic;
+
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
+
 namespace RubrikSecurityCloud.PowerShell.Private
 {
     public class RscLogger : IRscLogger

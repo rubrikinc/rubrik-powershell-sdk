@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Boolean? Active
         // GraphQL -> active: Boolean! (scalar)
         if (this.Active != null) {
-            s += ind + "active\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "active\n" ;
+            } else {
+                s += ind + "active\n" ;
+            }
         }
         //      C# -> System.Int32? DefaultValue
         // GraphQL -> defaultValue: Int! (scalar)
         if (this.DefaultValue != null) {
-            s += ind + "defaultValue\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "defaultValue\n" ;
+            } else {
+                s += ind + "defaultValue\n" ;
+            }
         }
         //      C# -> System.Int32? MaxValue
         // GraphQL -> maxValue: Int! (scalar)
         if (this.MaxValue != null) {
-            s += ind + "maxValue\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "maxValue\n" ;
+            } else {
+                s += ind + "maxValue\n" ;
+            }
         }
         //      C# -> System.Int32? MinValue
         // GraphQL -> minValue: Int! (scalar)
         if (this.MinValue != null) {
-            s += ind + "minValue\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "minValue\n" ;
+            } else {
+                s += ind + "minValue\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Boolean? Active
         // GraphQL -> active: Boolean! (scalar)
-        if (this.Active == null && ec.Includes("active",true))
+        if (ec.Includes("active",true))
         {
-            this.Active = true;
+            if(this.Active == null) {
+
+                this.Active = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Active != null && ec.Excludes("active",true))
+        {
+            this.Active = null;
         }
         //      C# -> System.Int32? DefaultValue
         // GraphQL -> defaultValue: Int! (scalar)
-        if (this.DefaultValue == null && ec.Includes("defaultValue",true))
+        if (ec.Includes("defaultValue",true))
         {
-            this.DefaultValue = Int32.MinValue;
+            if(this.DefaultValue == null) {
+
+                this.DefaultValue = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.DefaultValue != null && ec.Excludes("defaultValue",true))
+        {
+            this.DefaultValue = null;
         }
         //      C# -> System.Int32? MaxValue
         // GraphQL -> maxValue: Int! (scalar)
-        if (this.MaxValue == null && ec.Includes("maxValue",true))
+        if (ec.Includes("maxValue",true))
         {
-            this.MaxValue = Int32.MinValue;
+            if(this.MaxValue == null) {
+
+                this.MaxValue = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.MaxValue != null && ec.Excludes("maxValue",true))
+        {
+            this.MaxValue = null;
         }
         //      C# -> System.Int32? MinValue
         // GraphQL -> minValue: Int! (scalar)
-        if (this.MinValue == null && ec.Includes("minValue",true))
+        if (ec.Includes("minValue",true))
         {
-            this.MinValue = Int32.MinValue;
+            if(this.MinValue == null) {
+
+                this.MinValue = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.MinValue != null && ec.Excludes("minValue",true))
+        {
+            this.MinValue = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<PasswordComplexityPolicyTemplate> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

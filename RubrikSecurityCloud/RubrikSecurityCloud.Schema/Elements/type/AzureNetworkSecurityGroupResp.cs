@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> AzureNetworkSecurityRulesStatus? RulesStatus
         // GraphQL -> rulesStatus: AzureNetworkSecurityRulesStatus! (enum)
         if (this.RulesStatus != null) {
-            s += ind + "rulesStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "rulesStatus\n" ;
+            } else {
+                s += ind + "rulesStatus\n" ;
+            }
         }
         //      C# -> System.String? Reason
         // GraphQL -> reason: String! (scalar)
         if (this.Reason != null) {
-            s += ind + "reason\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "reason\n" ;
+            } else {
+                s += ind + "reason\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> AzureNetworkSecurityRulesStatus? RulesStatus
         // GraphQL -> rulesStatus: AzureNetworkSecurityRulesStatus! (enum)
-        if (this.RulesStatus == null && ec.Includes("rulesStatus",true))
+        if (ec.Includes("rulesStatus",true))
         {
-            this.RulesStatus = new AzureNetworkSecurityRulesStatus();
+            if(this.RulesStatus == null) {
+
+                this.RulesStatus = new AzureNetworkSecurityRulesStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RulesStatus != null && ec.Excludes("rulesStatus",true))
+        {
+            this.RulesStatus = null;
         }
         //      C# -> System.String? Reason
         // GraphQL -> reason: String! (scalar)
-        if (this.Reason == null && ec.Includes("reason",true))
+        if (ec.Includes("reason",true))
         {
-            this.Reason = "FETCH";
+            if(this.Reason == null) {
+
+                this.Reason = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Reason != null && ec.Excludes("reason",true))
+        {
+            this.Reason = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AzureNetworkSecurityGroupResp> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

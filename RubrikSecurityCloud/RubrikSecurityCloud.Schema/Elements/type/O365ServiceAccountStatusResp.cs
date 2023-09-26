@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> O365ServiceAccountStatus? Status
         // GraphQL -> status: O365ServiceAccountStatus! (enum)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
         if (this.Username != null) {
-            s += ind + "username\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "username\n" ;
+            } else {
+                s += ind + "username\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> O365ServiceAccountStatus? Status
         // GraphQL -> status: O365ServiceAccountStatus! (enum)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = new O365ServiceAccountStatus();
+            if(this.Status == null) {
+
+                this.Status = new O365ServiceAccountStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
-        if (this.Username == null && ec.Includes("username",true))
+        if (ec.Includes("username",true))
         {
-            this.Username = "FETCH";
+            if(this.Username == null) {
+
+                this.Username = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Username != null && ec.Excludes("username",true))
+        {
+            this.Username = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<O365ServiceAccountStatusResp> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

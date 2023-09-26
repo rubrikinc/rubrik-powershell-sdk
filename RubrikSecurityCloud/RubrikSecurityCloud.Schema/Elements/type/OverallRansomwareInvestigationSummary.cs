@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? AnalysisFailureCount
         // GraphQL -> analysisFailureCount: Long! (scalar)
         if (this.AnalysisFailureCount != null) {
-            s += ind + "analysisFailureCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "analysisFailureCount\n" ;
+            } else {
+                s += ind + "analysisFailureCount\n" ;
+            }
         }
         //      C# -> System.Int64? AnalysisSuccessCount
         // GraphQL -> analysisSuccessCount: Long! (scalar)
         if (this.AnalysisSuccessCount != null) {
-            s += ind + "analysisSuccessCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "analysisSuccessCount\n" ;
+            } else {
+                s += ind + "analysisSuccessCount\n" ;
+            }
         }
         //      C# -> System.Int64? AnomaliesCount
         // GraphQL -> anomaliesCount: Long! (scalar)
         if (this.AnomaliesCount != null) {
-            s += ind + "anomaliesCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "anomaliesCount\n" ;
+            } else {
+                s += ind + "anomaliesCount\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? AnalysisFailureCount
         // GraphQL -> analysisFailureCount: Long! (scalar)
-        if (this.AnalysisFailureCount == null && ec.Includes("analysisFailureCount",true))
+        if (ec.Includes("analysisFailureCount",true))
         {
-            this.AnalysisFailureCount = new System.Int64();
+            if(this.AnalysisFailureCount == null) {
+
+                this.AnalysisFailureCount = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AnalysisFailureCount != null && ec.Excludes("analysisFailureCount",true))
+        {
+            this.AnalysisFailureCount = null;
         }
         //      C# -> System.Int64? AnalysisSuccessCount
         // GraphQL -> analysisSuccessCount: Long! (scalar)
-        if (this.AnalysisSuccessCount == null && ec.Includes("analysisSuccessCount",true))
+        if (ec.Includes("analysisSuccessCount",true))
         {
-            this.AnalysisSuccessCount = new System.Int64();
+            if(this.AnalysisSuccessCount == null) {
+
+                this.AnalysisSuccessCount = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AnalysisSuccessCount != null && ec.Excludes("analysisSuccessCount",true))
+        {
+            this.AnalysisSuccessCount = null;
         }
         //      C# -> System.Int64? AnomaliesCount
         // GraphQL -> anomaliesCount: Long! (scalar)
-        if (this.AnomaliesCount == null && ec.Includes("anomaliesCount",true))
+        if (ec.Includes("anomaliesCount",true))
         {
-            this.AnomaliesCount = new System.Int64();
+            if(this.AnomaliesCount == null) {
+
+                this.AnomaliesCount = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AnomaliesCount != null && ec.Excludes("anomaliesCount",true))
+        {
+            this.AnomaliesCount = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<OverallRansomwareInvestigationSummary> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

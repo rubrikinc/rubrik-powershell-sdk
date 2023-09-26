@@ -83,34 +83,55 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Boolean? IsRubrikManaged
         // GraphQL -> isRubrikManaged: Boolean! (scalar)
         if (this.IsRubrikManaged != null) {
-            s += ind + "isRubrikManaged\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isRubrikManaged\n" ;
+            } else {
+                s += ind + "isRubrikManaged\n" ;
+            }
         }
         //      C# -> System.String? RoleAssignmentName
         // GraphQL -> roleAssignmentName: String! (scalar)
         if (this.RoleAssignmentName != null) {
-            s += ind + "roleAssignmentName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "roleAssignmentName\n" ;
+            } else {
+                s += ind + "roleAssignmentName\n" ;
+            }
         }
         //      C# -> System.String? RoleDefinitionId
         // GraphQL -> roleDefinitionId: UUID! (scalar)
         if (this.RoleDefinitionId != null) {
-            s += ind + "roleDefinitionId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "roleDefinitionId\n" ;
+            } else {
+                s += ind + "roleDefinitionId\n" ;
+            }
         }
         //      C# -> System.String? RoleDisplayName
         // GraphQL -> roleDisplayName: String! (scalar)
         if (this.RoleDisplayName != null) {
-            s += ind + "roleDisplayName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "roleDisplayName\n" ;
+            } else {
+                s += ind + "roleDisplayName\n" ;
+            }
         }
         //      C# -> System.String? Scope
         // GraphQL -> scope: String! (scalar)
         if (this.Scope != null) {
-            s += ind + "scope\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "scope\n" ;
+            } else {
+                s += ind + "scope\n" ;
+            }
         }
         return s;
     }
@@ -121,33 +142,88 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Boolean? IsRubrikManaged
         // GraphQL -> isRubrikManaged: Boolean! (scalar)
-        if (this.IsRubrikManaged == null && ec.Includes("isRubrikManaged",true))
+        if (ec.Includes("isRubrikManaged",true))
         {
-            this.IsRubrikManaged = true;
+            if(this.IsRubrikManaged == null) {
+
+                this.IsRubrikManaged = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsRubrikManaged != null && ec.Excludes("isRubrikManaged",true))
+        {
+            this.IsRubrikManaged = null;
         }
         //      C# -> System.String? RoleAssignmentName
         // GraphQL -> roleAssignmentName: String! (scalar)
-        if (this.RoleAssignmentName == null && ec.Includes("roleAssignmentName",true))
+        if (ec.Includes("roleAssignmentName",true))
         {
-            this.RoleAssignmentName = "FETCH";
+            if(this.RoleAssignmentName == null) {
+
+                this.RoleAssignmentName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RoleAssignmentName != null && ec.Excludes("roleAssignmentName",true))
+        {
+            this.RoleAssignmentName = null;
         }
         //      C# -> System.String? RoleDefinitionId
         // GraphQL -> roleDefinitionId: UUID! (scalar)
-        if (this.RoleDefinitionId == null && ec.Includes("roleDefinitionId",true))
+        if (ec.Includes("roleDefinitionId",true))
         {
-            this.RoleDefinitionId = "FETCH";
+            if(this.RoleDefinitionId == null) {
+
+                this.RoleDefinitionId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RoleDefinitionId != null && ec.Excludes("roleDefinitionId",true))
+        {
+            this.RoleDefinitionId = null;
         }
         //      C# -> System.String? RoleDisplayName
         // GraphQL -> roleDisplayName: String! (scalar)
-        if (this.RoleDisplayName == null && ec.Includes("roleDisplayName",true))
+        if (ec.Includes("roleDisplayName",true))
         {
-            this.RoleDisplayName = "FETCH";
+            if(this.RoleDisplayName == null) {
+
+                this.RoleDisplayName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RoleDisplayName != null && ec.Excludes("roleDisplayName",true))
+        {
+            this.RoleDisplayName = null;
         }
         //      C# -> System.String? Scope
         // GraphQL -> scope: String! (scalar)
-        if (this.Scope == null && ec.Includes("scope",true))
+        if (ec.Includes("scope",true))
         {
-            this.Scope = "FETCH";
+            if(this.Scope == null) {
+
+                this.Scope = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Scope != null && ec.Excludes("scope",true))
+        {
+            this.Scope = null;
         }
     }
 
@@ -174,9 +250,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AzureRole> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

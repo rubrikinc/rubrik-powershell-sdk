@@ -83,36 +83,57 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? AvailabilityZone
         // GraphQL -> availabilityZone: String! (scalar)
         if (this.AvailabilityZone != null) {
-            s += ind + "availabilityZone\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "availabilityZone\n" ;
+            } else {
+                s += ind + "availabilityZone\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.String? SubnetId
         // GraphQL -> subnetId: String! (scalar)
         if (this.SubnetId != null) {
-            s += ind + "subnetId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "subnetId\n" ;
+            } else {
+                s += ind + "subnetId\n" ;
+            }
         }
         //      C# -> System.String? VpcId
         // GraphQL -> vpcId: String! (scalar)
         if (this.VpcId != null) {
-            s += ind + "vpcId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "vpcId\n" ;
+            } else {
+                s += ind + "vpcId\n" ;
+            }
         }
         //      C# -> CloudAccountAddressBlockV4? CidrBlock
         // GraphQL -> cidrBlock: CloudAccountAddressBlockV4 (type)
         if (this.CidrBlock != null) {
-            var fspec = this.CidrBlock.AsFieldSpec(indent+1);
+            var fspec = this.CidrBlock.AsFieldSpec(conf.Child("cidrBlock"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "cidrBlock {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cidrBlock {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -124,34 +145,90 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? AvailabilityZone
         // GraphQL -> availabilityZone: String! (scalar)
-        if (this.AvailabilityZone == null && ec.Includes("availabilityZone",true))
+        if (ec.Includes("availabilityZone",true))
         {
-            this.AvailabilityZone = "FETCH";
+            if(this.AvailabilityZone == null) {
+
+                this.AvailabilityZone = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AvailabilityZone != null && ec.Excludes("availabilityZone",true))
+        {
+            this.AvailabilityZone = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.String? SubnetId
         // GraphQL -> subnetId: String! (scalar)
-        if (this.SubnetId == null && ec.Includes("subnetId",true))
+        if (ec.Includes("subnetId",true))
         {
-            this.SubnetId = "FETCH";
+            if(this.SubnetId == null) {
+
+                this.SubnetId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SubnetId != null && ec.Excludes("subnetId",true))
+        {
+            this.SubnetId = null;
         }
         //      C# -> System.String? VpcId
         // GraphQL -> vpcId: String! (scalar)
-        if (this.VpcId == null && ec.Includes("vpcId",true))
+        if (ec.Includes("vpcId",true))
         {
-            this.VpcId = "FETCH";
+            if(this.VpcId == null) {
+
+                this.VpcId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.VpcId != null && ec.Excludes("vpcId",true))
+        {
+            this.VpcId = null;
         }
         //      C# -> CloudAccountAddressBlockV4? CidrBlock
         // GraphQL -> cidrBlock: CloudAccountAddressBlockV4 (type)
-        if (this.CidrBlock == null && ec.Includes("cidrBlock",false))
+        if (ec.Includes("cidrBlock",false))
         {
-            this.CidrBlock = new CloudAccountAddressBlockV4();
-            this.CidrBlock.ApplyExploratoryFieldSpec(ec.NewChild("cidrBlock"));
+            if(this.CidrBlock == null) {
+
+                this.CidrBlock = new CloudAccountAddressBlockV4();
+                this.CidrBlock.ApplyExploratoryFieldSpec(ec.NewChild("cidrBlock"));
+
+            } else {
+
+                this.CidrBlock.ApplyExploratoryFieldSpec(ec.NewChild("cidrBlock"));
+
+            }
+        }
+        else if (this.CidrBlock != null && ec.Excludes("cidrBlock",false))
+        {
+            this.CidrBlock = null;
         }
     }
 
@@ -178,9 +255,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CloudAccountSubnet> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

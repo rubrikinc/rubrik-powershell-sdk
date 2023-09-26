@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? TotalHits
         // GraphQL -> totalHits: Long! (scalar)
         if (this.TotalHits != null) {
-            s += ind + "totalHits\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "totalHits\n" ;
+            } else {
+                s += ind + "totalHits\n" ;
+            }
         }
         //      C# -> System.Int64? ViolatedHits
         // GraphQL -> violatedHits: Long! (scalar)
         if (this.ViolatedHits != null) {
-            s += ind + "violatedHits\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "violatedHits\n" ;
+            } else {
+                s += ind + "violatedHits\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? TotalHits
         // GraphQL -> totalHits: Long! (scalar)
-        if (this.TotalHits == null && ec.Includes("totalHits",true))
+        if (ec.Includes("totalHits",true))
         {
-            this.TotalHits = new System.Int64();
+            if(this.TotalHits == null) {
+
+                this.TotalHits = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalHits != null && ec.Excludes("totalHits",true))
+        {
+            this.TotalHits = null;
         }
         //      C# -> System.Int64? ViolatedHits
         // GraphQL -> violatedHits: Long! (scalar)
-        if (this.ViolatedHits == null && ec.Includes("violatedHits",true))
+        if (ec.Includes("violatedHits",true))
         {
-            this.ViolatedHits = new System.Int64();
+            if(this.ViolatedHits == null) {
+
+                this.ViolatedHits = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ViolatedHits != null && ec.Excludes("violatedHits",true))
+        {
+            this.ViolatedHits = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SummaryHits> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

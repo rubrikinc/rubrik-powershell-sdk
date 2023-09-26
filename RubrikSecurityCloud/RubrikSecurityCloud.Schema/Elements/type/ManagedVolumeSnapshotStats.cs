@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? LogicalBytes
         // GraphQL -> logicalBytes: Long! (scalar)
         if (this.LogicalBytes != null) {
-            s += ind + "logicalBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "logicalBytes\n" ;
+            } else {
+                s += ind + "logicalBytes\n" ;
+            }
         }
         //      C# -> System.Int64? PhysicalBytes
         // GraphQL -> physicalBytes: Long! (scalar)
         if (this.PhysicalBytes != null) {
-            s += ind + "physicalBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "physicalBytes\n" ;
+            } else {
+                s += ind + "physicalBytes\n" ;
+            }
         }
         //      C# -> System.Int64? TotalInodes
         // GraphQL -> totalInodes: Long (scalar)
         if (this.TotalInodes != null) {
-            s += ind + "totalInodes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "totalInodes\n" ;
+            } else {
+                s += ind + "totalInodes\n" ;
+            }
         }
         //      C# -> System.Int64? UsedInodes
         // GraphQL -> usedInodes: Long (scalar)
         if (this.UsedInodes != null) {
-            s += ind + "usedInodes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "usedInodes\n" ;
+            } else {
+                s += ind + "usedInodes\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? LogicalBytes
         // GraphQL -> logicalBytes: Long! (scalar)
-        if (this.LogicalBytes == null && ec.Includes("logicalBytes",true))
+        if (ec.Includes("logicalBytes",true))
         {
-            this.LogicalBytes = new System.Int64();
+            if(this.LogicalBytes == null) {
+
+                this.LogicalBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LogicalBytes != null && ec.Excludes("logicalBytes",true))
+        {
+            this.LogicalBytes = null;
         }
         //      C# -> System.Int64? PhysicalBytes
         // GraphQL -> physicalBytes: Long! (scalar)
-        if (this.PhysicalBytes == null && ec.Includes("physicalBytes",true))
+        if (ec.Includes("physicalBytes",true))
         {
-            this.PhysicalBytes = new System.Int64();
+            if(this.PhysicalBytes == null) {
+
+                this.PhysicalBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.PhysicalBytes != null && ec.Excludes("physicalBytes",true))
+        {
+            this.PhysicalBytes = null;
         }
         //      C# -> System.Int64? TotalInodes
         // GraphQL -> totalInodes: Long (scalar)
-        if (this.TotalInodes == null && ec.Includes("totalInodes",true))
+        if (ec.Includes("totalInodes",true))
         {
-            this.TotalInodes = new System.Int64();
+            if(this.TotalInodes == null) {
+
+                this.TotalInodes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalInodes != null && ec.Excludes("totalInodes",true))
+        {
+            this.TotalInodes = null;
         }
         //      C# -> System.Int64? UsedInodes
         // GraphQL -> usedInodes: Long (scalar)
-        if (this.UsedInodes == null && ec.Includes("usedInodes",true))
+        if (ec.Includes("usedInodes",true))
         {
-            this.UsedInodes = new System.Int64();
+            if(this.UsedInodes == null) {
+
+                this.UsedInodes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UsedInodes != null && ec.Excludes("usedInodes",true))
+        {
+            this.UsedInodes = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ManagedVolumeSnapshotStats> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

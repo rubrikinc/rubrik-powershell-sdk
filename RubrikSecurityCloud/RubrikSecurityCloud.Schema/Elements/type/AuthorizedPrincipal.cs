@@ -119,59 +119,96 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> PrincipalTypeEnum? PrincipalType
         // GraphQL -> principalType: PrincipalTypeEnum! (enum)
         if (this.PrincipalType != null) {
-            s += ind + "principalType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "principalType\n" ;
+            } else {
+                s += ind + "principalType\n" ;
+            }
         }
         //      C# -> System.String? AuthDomainId
         // GraphQL -> authDomainId: String! (scalar)
         if (this.AuthDomainId != null) {
-            s += ind + "authDomainId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "authDomainId\n" ;
+            } else {
+                s += ind + "authDomainId\n" ;
+            }
         }
         //      C# -> System.String? AuthDomainName
         // GraphQL -> authDomainName: String! (scalar)
         if (this.AuthDomainName != null) {
-            s += ind + "authDomainName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "authDomainName\n" ;
+            } else {
+                s += ind + "authDomainName\n" ;
+            }
         }
         //      C# -> System.String? Email
         // GraphQL -> email: String (scalar)
         if (this.Email != null) {
-            s += ind + "email\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "email\n" ;
+            } else {
+                s += ind + "email\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> DateTime? LastLogin
         // GraphQL -> lastLogin: DateTime (scalar)
         if (this.LastLogin != null) {
-            s += ind + "lastLogin\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "lastLogin\n" ;
+            } else {
+                s += ind + "lastLogin\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> List<Role>? Roles
         // GraphQL -> roles: [Role!]! (type)
         if (this.Roles != null) {
-            var fspec = this.Roles.AsFieldSpec(indent+1);
+            var fspec = this.Roles.AsFieldSpec(conf.Child("roles"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "roles {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "roles {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> LdapTotpStatus? TotpStatus
         // GraphQL -> totpStatus: LdapTotpStatus (type)
         if (this.TotpStatus != null) {
-            var fspec = this.TotpStatus.AsFieldSpec(indent+1);
+            var fspec = this.TotpStatus.AsFieldSpec(conf.Child("totpStatus"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "totpStatus {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "totpStatus {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -183,59 +220,160 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> PrincipalTypeEnum? PrincipalType
         // GraphQL -> principalType: PrincipalTypeEnum! (enum)
-        if (this.PrincipalType == null && ec.Includes("principalType",true))
+        if (ec.Includes("principalType",true))
         {
-            this.PrincipalType = new PrincipalTypeEnum();
+            if(this.PrincipalType == null) {
+
+                this.PrincipalType = new PrincipalTypeEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.PrincipalType != null && ec.Excludes("principalType",true))
+        {
+            this.PrincipalType = null;
         }
         //      C# -> System.String? AuthDomainId
         // GraphQL -> authDomainId: String! (scalar)
-        if (this.AuthDomainId == null && ec.Includes("authDomainId",true))
+        if (ec.Includes("authDomainId",true))
         {
-            this.AuthDomainId = "FETCH";
+            if(this.AuthDomainId == null) {
+
+                this.AuthDomainId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AuthDomainId != null && ec.Excludes("authDomainId",true))
+        {
+            this.AuthDomainId = null;
         }
         //      C# -> System.String? AuthDomainName
         // GraphQL -> authDomainName: String! (scalar)
-        if (this.AuthDomainName == null && ec.Includes("authDomainName",true))
+        if (ec.Includes("authDomainName",true))
         {
-            this.AuthDomainName = "FETCH";
+            if(this.AuthDomainName == null) {
+
+                this.AuthDomainName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AuthDomainName != null && ec.Excludes("authDomainName",true))
+        {
+            this.AuthDomainName = null;
         }
         //      C# -> System.String? Email
         // GraphQL -> email: String (scalar)
-        if (this.Email == null && ec.Includes("email",true))
+        if (ec.Includes("email",true))
         {
-            this.Email = "FETCH";
+            if(this.Email == null) {
+
+                this.Email = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Email != null && ec.Excludes("email",true))
+        {
+            this.Email = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> DateTime? LastLogin
         // GraphQL -> lastLogin: DateTime (scalar)
-        if (this.LastLogin == null && ec.Includes("lastLogin",true))
+        if (ec.Includes("lastLogin",true))
         {
-            this.LastLogin = new DateTime();
+            if(this.LastLogin == null) {
+
+                this.LastLogin = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastLogin != null && ec.Excludes("lastLogin",true))
+        {
+            this.LastLogin = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> List<Role>? Roles
         // GraphQL -> roles: [Role!]! (type)
-        if (this.Roles == null && ec.Includes("roles",false))
+        if (ec.Includes("roles",false))
         {
-            this.Roles = new List<Role>();
-            this.Roles.ApplyExploratoryFieldSpec(ec.NewChild("roles"));
+            if(this.Roles == null) {
+
+                this.Roles = new List<Role>();
+                this.Roles.ApplyExploratoryFieldSpec(ec.NewChild("roles"));
+
+            } else {
+
+                this.Roles.ApplyExploratoryFieldSpec(ec.NewChild("roles"));
+
+            }
+        }
+        else if (this.Roles != null && ec.Excludes("roles",false))
+        {
+            this.Roles = null;
         }
         //      C# -> LdapTotpStatus? TotpStatus
         // GraphQL -> totpStatus: LdapTotpStatus (type)
-        if (this.TotpStatus == null && ec.Includes("totpStatus",false))
+        if (ec.Includes("totpStatus",false))
         {
-            this.TotpStatus = new LdapTotpStatus();
-            this.TotpStatus.ApplyExploratoryFieldSpec(ec.NewChild("totpStatus"));
+            if(this.TotpStatus == null) {
+
+                this.TotpStatus = new LdapTotpStatus();
+                this.TotpStatus.ApplyExploratoryFieldSpec(ec.NewChild("totpStatus"));
+
+            } else {
+
+                this.TotpStatus.ApplyExploratoryFieldSpec(ec.NewChild("totpStatus"));
+
+            }
+        }
+        else if (this.TotpStatus != null && ec.Excludes("totpStatus",false))
+        {
+            this.TotpStatus = null;
         }
     }
 
@@ -262,9 +400,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AuthorizedPrincipal> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

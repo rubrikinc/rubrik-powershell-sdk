@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? FastUpgradeDuration
         // GraphQL -> fastUpgradeDuration: Long! (scalar)
         if (this.FastUpgradeDuration != null) {
-            s += ind + "fastUpgradeDuration\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "fastUpgradeDuration\n" ;
+            } else {
+                s += ind + "fastUpgradeDuration\n" ;
+            }
         }
         //      C# -> System.Int64? RollingUpgradeDuration
         // GraphQL -> rollingUpgradeDuration: Long! (scalar)
         if (this.RollingUpgradeDuration != null) {
-            s += ind + "rollingUpgradeDuration\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "rollingUpgradeDuration\n" ;
+            } else {
+                s += ind + "rollingUpgradeDuration\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? FastUpgradeDuration
         // GraphQL -> fastUpgradeDuration: Long! (scalar)
-        if (this.FastUpgradeDuration == null && ec.Includes("fastUpgradeDuration",true))
+        if (ec.Includes("fastUpgradeDuration",true))
         {
-            this.FastUpgradeDuration = new System.Int64();
+            if(this.FastUpgradeDuration == null) {
+
+                this.FastUpgradeDuration = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.FastUpgradeDuration != null && ec.Excludes("fastUpgradeDuration",true))
+        {
+            this.FastUpgradeDuration = null;
         }
         //      C# -> System.Int64? RollingUpgradeDuration
         // GraphQL -> rollingUpgradeDuration: Long! (scalar)
-        if (this.RollingUpgradeDuration == null && ec.Includes("rollingUpgradeDuration",true))
+        if (ec.Includes("rollingUpgradeDuration",true))
         {
-            this.RollingUpgradeDuration = new System.Int64();
+            if(this.RollingUpgradeDuration == null) {
+
+                this.RollingUpgradeDuration = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RollingUpgradeDuration != null && ec.Excludes("rollingUpgradeDuration",true))
+        {
+            this.RollingUpgradeDuration = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<UpgradeDurationReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

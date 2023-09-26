@@ -9,6 +9,9 @@ using RubrikSecurityCloud.Client;
 using RubrikSecurityCloud.NetSDK.Client.Models.Authentication;
 using RubrikSecurityCloud.PowerShell.Models;
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
+
 namespace RubrikSecurityCloud.PowerShell.Private
 {
 	/// <summary>

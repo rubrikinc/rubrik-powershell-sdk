@@ -92,39 +92,64 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> AccountState? AccountState
         // GraphQL -> accountState: AccountState! (enum)
         if (this.AccountState != null) {
-            s += ind + "accountState\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "accountState\n" ;
+            } else {
+                s += ind + "accountState\n" ;
+            }
         }
         //      C# -> AccountType? AccountType
         // GraphQL -> accountType: AccountType! (enum)
         if (this.AccountType != null) {
-            s += ind + "accountType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "accountType\n" ;
+            } else {
+                s += ind + "accountType\n" ;
+            }
         }
         //      C# -> DateTime? AccountExpiryDate
         // GraphQL -> accountExpiryDate: DateTime (scalar)
         if (this.AccountExpiryDate != null) {
-            s += ind + "accountExpiryDate\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "accountExpiryDate\n" ;
+            } else {
+                s += ind + "accountExpiryDate\n" ;
+            }
         }
         //      C# -> System.Int64? AccountHoldLength
         // GraphQL -> accountHoldLength: Long! (scalar)
         if (this.AccountHoldLength != null) {
-            s += ind + "accountHoldLength\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "accountHoldLength\n" ;
+            } else {
+                s += ind + "accountHoldLength\n" ;
+            }
         }
         //      C# -> DateTime? AccountStateUpdatedAt
         // GraphQL -> accountStateUpdatedAt: DateTime (scalar)
         if (this.AccountStateUpdatedAt != null) {
-            s += ind + "accountStateUpdatedAt\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "accountStateUpdatedAt\n" ;
+            } else {
+                s += ind + "accountStateUpdatedAt\n" ;
+            }
         }
         //      C# -> System.Int64? HoldWarningLength
         // GraphQL -> holdWarningLength: Long! (scalar)
         if (this.HoldWarningLength != null) {
-            s += ind + "holdWarningLength\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "holdWarningLength\n" ;
+            } else {
+                s += ind + "holdWarningLength\n" ;
+            }
         }
         return s;
     }
@@ -135,39 +160,105 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> AccountState? AccountState
         // GraphQL -> accountState: AccountState! (enum)
-        if (this.AccountState == null && ec.Includes("accountState",true))
+        if (ec.Includes("accountState",true))
         {
-            this.AccountState = new AccountState();
+            if(this.AccountState == null) {
+
+                this.AccountState = new AccountState();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AccountState != null && ec.Excludes("accountState",true))
+        {
+            this.AccountState = null;
         }
         //      C# -> AccountType? AccountType
         // GraphQL -> accountType: AccountType! (enum)
-        if (this.AccountType == null && ec.Includes("accountType",true))
+        if (ec.Includes("accountType",true))
         {
-            this.AccountType = new AccountType();
+            if(this.AccountType == null) {
+
+                this.AccountType = new AccountType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AccountType != null && ec.Excludes("accountType",true))
+        {
+            this.AccountType = null;
         }
         //      C# -> DateTime? AccountExpiryDate
         // GraphQL -> accountExpiryDate: DateTime (scalar)
-        if (this.AccountExpiryDate == null && ec.Includes("accountExpiryDate",true))
+        if (ec.Includes("accountExpiryDate",true))
         {
-            this.AccountExpiryDate = new DateTime();
+            if(this.AccountExpiryDate == null) {
+
+                this.AccountExpiryDate = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AccountExpiryDate != null && ec.Excludes("accountExpiryDate",true))
+        {
+            this.AccountExpiryDate = null;
         }
         //      C# -> System.Int64? AccountHoldLength
         // GraphQL -> accountHoldLength: Long! (scalar)
-        if (this.AccountHoldLength == null && ec.Includes("accountHoldLength",true))
+        if (ec.Includes("accountHoldLength",true))
         {
-            this.AccountHoldLength = new System.Int64();
+            if(this.AccountHoldLength == null) {
+
+                this.AccountHoldLength = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AccountHoldLength != null && ec.Excludes("accountHoldLength",true))
+        {
+            this.AccountHoldLength = null;
         }
         //      C# -> DateTime? AccountStateUpdatedAt
         // GraphQL -> accountStateUpdatedAt: DateTime (scalar)
-        if (this.AccountStateUpdatedAt == null && ec.Includes("accountStateUpdatedAt",true))
+        if (ec.Includes("accountStateUpdatedAt",true))
         {
-            this.AccountStateUpdatedAt = new DateTime();
+            if(this.AccountStateUpdatedAt == null) {
+
+                this.AccountStateUpdatedAt = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AccountStateUpdatedAt != null && ec.Excludes("accountStateUpdatedAt",true))
+        {
+            this.AccountStateUpdatedAt = null;
         }
         //      C# -> System.Int64? HoldWarningLength
         // GraphQL -> holdWarningLength: Long! (scalar)
-        if (this.HoldWarningLength == null && ec.Includes("holdWarningLength",true))
+        if (ec.Includes("holdWarningLength",true))
         {
-            this.HoldWarningLength = new System.Int64();
+            if(this.HoldWarningLength == null) {
+
+                this.HoldWarningLength = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.HoldWarningLength != null && ec.Excludes("holdWarningLength",true))
+        {
+            this.HoldWarningLength = null;
         }
     }
 
@@ -194,9 +285,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<LookupAccountReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

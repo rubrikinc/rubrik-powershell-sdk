@@ -65,26 +65,39 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> AwsCloudExternalArtifact? ExternalArtifactKey
         // GraphQL -> externalArtifactKey: AwsCloudExternalArtifact! (enum)
         if (this.ExternalArtifactKey != null) {
-            s += ind + "externalArtifactKey\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "externalArtifactKey\n" ;
+            } else {
+                s += ind + "externalArtifactKey\n" ;
+            }
         }
         //      C# -> List<System.String>? AwsManagedPolicies
         // GraphQL -> awsManagedPolicies: [String!]! (scalar)
         if (this.AwsManagedPolicies != null) {
-            s += ind + "awsManagedPolicies\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "awsManagedPolicies\n" ;
+            } else {
+                s += ind + "awsManagedPolicies\n" ;
+            }
         }
         //      C# -> List<CustomerManagedPolicy>? CustomerManagedPolicies
         // GraphQL -> customerManagedPolicies: [CustomerManagedPolicy!]! (type)
         if (this.CustomerManagedPolicies != null) {
-            var fspec = this.CustomerManagedPolicies.AsFieldSpec(indent+1);
+            var fspec = this.CustomerManagedPolicies.AsFieldSpec(conf.Child("customerManagedPolicies"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "customerManagedPolicies {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "customerManagedPolicies {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -96,22 +109,56 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> AwsCloudExternalArtifact? ExternalArtifactKey
         // GraphQL -> externalArtifactKey: AwsCloudExternalArtifact! (enum)
-        if (this.ExternalArtifactKey == null && ec.Includes("externalArtifactKey",true))
+        if (ec.Includes("externalArtifactKey",true))
         {
-            this.ExternalArtifactKey = new AwsCloudExternalArtifact();
+            if(this.ExternalArtifactKey == null) {
+
+                this.ExternalArtifactKey = new AwsCloudExternalArtifact();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExternalArtifactKey != null && ec.Excludes("externalArtifactKey",true))
+        {
+            this.ExternalArtifactKey = null;
         }
         //      C# -> List<System.String>? AwsManagedPolicies
         // GraphQL -> awsManagedPolicies: [String!]! (scalar)
-        if (this.AwsManagedPolicies == null && ec.Includes("awsManagedPolicies",true))
+        if (ec.Includes("awsManagedPolicies",true))
         {
-            this.AwsManagedPolicies = new List<System.String>();
+            if(this.AwsManagedPolicies == null) {
+
+                this.AwsManagedPolicies = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AwsManagedPolicies != null && ec.Excludes("awsManagedPolicies",true))
+        {
+            this.AwsManagedPolicies = null;
         }
         //      C# -> List<CustomerManagedPolicy>? CustomerManagedPolicies
         // GraphQL -> customerManagedPolicies: [CustomerManagedPolicy!]! (type)
-        if (this.CustomerManagedPolicies == null && ec.Includes("customerManagedPolicies",false))
+        if (ec.Includes("customerManagedPolicies",false))
         {
-            this.CustomerManagedPolicies = new List<CustomerManagedPolicy>();
-            this.CustomerManagedPolicies.ApplyExploratoryFieldSpec(ec.NewChild("customerManagedPolicies"));
+            if(this.CustomerManagedPolicies == null) {
+
+                this.CustomerManagedPolicies = new List<CustomerManagedPolicy>();
+                this.CustomerManagedPolicies.ApplyExploratoryFieldSpec(ec.NewChild("customerManagedPolicies"));
+
+            } else {
+
+                this.CustomerManagedPolicies.ApplyExploratoryFieldSpec(ec.NewChild("customerManagedPolicies"));
+
+            }
+        }
+        else if (this.CustomerManagedPolicies != null && ec.Excludes("customerManagedPolicies",false))
+        {
+            this.CustomerManagedPolicies = null;
         }
     }
 
@@ -138,9 +185,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<PermissionPolicy> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

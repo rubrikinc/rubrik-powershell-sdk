@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? CheckOutput
         // GraphQL -> checkOutput: String (scalar)
         if (this.CheckOutput != null) {
-            s += ind + "checkOutput\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "checkOutput\n" ;
+            } else {
+                s += ind + "checkOutput\n" ;
+            }
         }
         //      C# -> System.Boolean? IsCheckPassed
         // GraphQL -> isCheckPassed: Boolean! (scalar)
         if (this.IsCheckPassed != null) {
-            s += ind + "isCheckPassed\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isCheckPassed\n" ;
+            } else {
+                s += ind + "isCheckPassed\n" ;
+            }
         }
         //      C# -> System.String? NodeId
         // GraphQL -> nodeId: String! (scalar)
         if (this.NodeId != null) {
-            s += ind + "nodeId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "nodeId\n" ;
+            } else {
+                s += ind + "nodeId\n" ;
+            }
         }
         //      C# -> System.String? PolicyId
         // GraphQL -> policyId: String! (scalar)
         if (this.PolicyId != null) {
-            s += ind + "policyId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "policyId\n" ;
+            } else {
+                s += ind + "policyId\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? CheckOutput
         // GraphQL -> checkOutput: String (scalar)
-        if (this.CheckOutput == null && ec.Includes("checkOutput",true))
+        if (ec.Includes("checkOutput",true))
         {
-            this.CheckOutput = "FETCH";
+            if(this.CheckOutput == null) {
+
+                this.CheckOutput = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CheckOutput != null && ec.Excludes("checkOutput",true))
+        {
+            this.CheckOutput = null;
         }
         //      C# -> System.Boolean? IsCheckPassed
         // GraphQL -> isCheckPassed: Boolean! (scalar)
-        if (this.IsCheckPassed == null && ec.Includes("isCheckPassed",true))
+        if (ec.Includes("isCheckPassed",true))
         {
-            this.IsCheckPassed = true;
+            if(this.IsCheckPassed == null) {
+
+                this.IsCheckPassed = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsCheckPassed != null && ec.Excludes("isCheckPassed",true))
+        {
+            this.IsCheckPassed = null;
         }
         //      C# -> System.String? NodeId
         // GraphQL -> nodeId: String! (scalar)
-        if (this.NodeId == null && ec.Includes("nodeId",true))
+        if (ec.Includes("nodeId",true))
         {
-            this.NodeId = "FETCH";
+            if(this.NodeId == null) {
+
+                this.NodeId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NodeId != null && ec.Excludes("nodeId",true))
+        {
+            this.NodeId = null;
         }
         //      C# -> System.String? PolicyId
         // GraphQL -> policyId: String! (scalar)
-        if (this.PolicyId == null && ec.Includes("policyId",true))
+        if (ec.Includes("policyId",true))
         {
-            this.PolicyId = "FETCH";
+            if(this.PolicyId == null) {
+
+                this.PolicyId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PolicyId != null && ec.Excludes("policyId",true))
+        {
+            this.PolicyId = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<PolicyCheckResult> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

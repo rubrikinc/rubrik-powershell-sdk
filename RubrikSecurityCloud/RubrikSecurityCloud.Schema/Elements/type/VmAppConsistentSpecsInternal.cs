@@ -92,39 +92,64 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> CloudNativeRbaStatusType? RbaStatus
         // GraphQL -> rbaStatus: CloudNativeRbaStatusType! (enum)
         if (this.RbaStatus != null) {
-            s += ind + "rbaStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "rbaStatus\n" ;
+            } else {
+                s += ind + "rbaStatus\n" ;
+            }
         }
         //      C# -> System.Boolean? CancelBackupIfPreScriptFails
         // GraphQL -> cancelBackupIfPreScriptFails: Boolean! (scalar)
         if (this.CancelBackupIfPreScriptFails != null) {
-            s += ind + "cancelBackupIfPreScriptFails\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cancelBackupIfPreScriptFails\n" ;
+            } else {
+                s += ind + "cancelBackupIfPreScriptFails\n" ;
+            }
         }
         //      C# -> System.Int32? PostScriptTimeoutInSeconds
         // GraphQL -> postScriptTimeoutInSeconds: Int! (scalar)
         if (this.PostScriptTimeoutInSeconds != null) {
-            s += ind + "postScriptTimeoutInSeconds\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "postScriptTimeoutInSeconds\n" ;
+            } else {
+                s += ind + "postScriptTimeoutInSeconds\n" ;
+            }
         }
         //      C# -> System.String? PostSnapshotScriptPath
         // GraphQL -> postSnapshotScriptPath: String! (scalar)
         if (this.PostSnapshotScriptPath != null) {
-            s += ind + "postSnapshotScriptPath\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "postSnapshotScriptPath\n" ;
+            } else {
+                s += ind + "postSnapshotScriptPath\n" ;
+            }
         }
         //      C# -> System.Int32? PreScriptTimeoutInSeconds
         // GraphQL -> preScriptTimeoutInSeconds: Int! (scalar)
         if (this.PreScriptTimeoutInSeconds != null) {
-            s += ind + "preScriptTimeoutInSeconds\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "preScriptTimeoutInSeconds\n" ;
+            } else {
+                s += ind + "preScriptTimeoutInSeconds\n" ;
+            }
         }
         //      C# -> System.String? PreSnapshotScriptPath
         // GraphQL -> preSnapshotScriptPath: String! (scalar)
         if (this.PreSnapshotScriptPath != null) {
-            s += ind + "preSnapshotScriptPath\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "preSnapshotScriptPath\n" ;
+            } else {
+                s += ind + "preSnapshotScriptPath\n" ;
+            }
         }
         return s;
     }
@@ -135,39 +160,105 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> CloudNativeRbaStatusType? RbaStatus
         // GraphQL -> rbaStatus: CloudNativeRbaStatusType! (enum)
-        if (this.RbaStatus == null && ec.Includes("rbaStatus",true))
+        if (ec.Includes("rbaStatus",true))
         {
-            this.RbaStatus = new CloudNativeRbaStatusType();
+            if(this.RbaStatus == null) {
+
+                this.RbaStatus = new CloudNativeRbaStatusType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RbaStatus != null && ec.Excludes("rbaStatus",true))
+        {
+            this.RbaStatus = null;
         }
         //      C# -> System.Boolean? CancelBackupIfPreScriptFails
         // GraphQL -> cancelBackupIfPreScriptFails: Boolean! (scalar)
-        if (this.CancelBackupIfPreScriptFails == null && ec.Includes("cancelBackupIfPreScriptFails",true))
+        if (ec.Includes("cancelBackupIfPreScriptFails",true))
         {
-            this.CancelBackupIfPreScriptFails = true;
+            if(this.CancelBackupIfPreScriptFails == null) {
+
+                this.CancelBackupIfPreScriptFails = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.CancelBackupIfPreScriptFails != null && ec.Excludes("cancelBackupIfPreScriptFails",true))
+        {
+            this.CancelBackupIfPreScriptFails = null;
         }
         //      C# -> System.Int32? PostScriptTimeoutInSeconds
         // GraphQL -> postScriptTimeoutInSeconds: Int! (scalar)
-        if (this.PostScriptTimeoutInSeconds == null && ec.Includes("postScriptTimeoutInSeconds",true))
+        if (ec.Includes("postScriptTimeoutInSeconds",true))
         {
-            this.PostScriptTimeoutInSeconds = Int32.MinValue;
+            if(this.PostScriptTimeoutInSeconds == null) {
+
+                this.PostScriptTimeoutInSeconds = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.PostScriptTimeoutInSeconds != null && ec.Excludes("postScriptTimeoutInSeconds",true))
+        {
+            this.PostScriptTimeoutInSeconds = null;
         }
         //      C# -> System.String? PostSnapshotScriptPath
         // GraphQL -> postSnapshotScriptPath: String! (scalar)
-        if (this.PostSnapshotScriptPath == null && ec.Includes("postSnapshotScriptPath",true))
+        if (ec.Includes("postSnapshotScriptPath",true))
         {
-            this.PostSnapshotScriptPath = "FETCH";
+            if(this.PostSnapshotScriptPath == null) {
+
+                this.PostSnapshotScriptPath = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PostSnapshotScriptPath != null && ec.Excludes("postSnapshotScriptPath",true))
+        {
+            this.PostSnapshotScriptPath = null;
         }
         //      C# -> System.Int32? PreScriptTimeoutInSeconds
         // GraphQL -> preScriptTimeoutInSeconds: Int! (scalar)
-        if (this.PreScriptTimeoutInSeconds == null && ec.Includes("preScriptTimeoutInSeconds",true))
+        if (ec.Includes("preScriptTimeoutInSeconds",true))
         {
-            this.PreScriptTimeoutInSeconds = Int32.MinValue;
+            if(this.PreScriptTimeoutInSeconds == null) {
+
+                this.PreScriptTimeoutInSeconds = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.PreScriptTimeoutInSeconds != null && ec.Excludes("preScriptTimeoutInSeconds",true))
+        {
+            this.PreScriptTimeoutInSeconds = null;
         }
         //      C# -> System.String? PreSnapshotScriptPath
         // GraphQL -> preSnapshotScriptPath: String! (scalar)
-        if (this.PreSnapshotScriptPath == null && ec.Includes("preSnapshotScriptPath",true))
+        if (ec.Includes("preSnapshotScriptPath",true))
         {
-            this.PreSnapshotScriptPath = "FETCH";
+            if(this.PreSnapshotScriptPath == null) {
+
+                this.PreSnapshotScriptPath = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PreSnapshotScriptPath != null && ec.Excludes("preSnapshotScriptPath",true))
+        {
+            this.PreSnapshotScriptPath = null;
         }
     }
 
@@ -194,9 +285,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<VmAppConsistentSpecsInternal> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

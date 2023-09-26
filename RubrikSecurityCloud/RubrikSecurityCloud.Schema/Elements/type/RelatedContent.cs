@@ -83,34 +83,55 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> ProductDocumentationType? Type
         // GraphQL -> type: ProductDocumentationType! (enum)
         if (this.Type != null) {
-            s += ind + "type\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "type\n" ;
+            } else {
+                s += ind + "type\n" ;
+            }
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
         if (this.Description != null) {
-            s += ind + "description\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "description\n" ;
+            } else {
+                s += ind + "description\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.String? Link
         // GraphQL -> link: URL (scalar)
         if (this.Link != null) {
-            s += ind + "link\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "link\n" ;
+            } else {
+                s += ind + "link\n" ;
+            }
         }
         //      C# -> System.String? Title
         // GraphQL -> title: String! (scalar)
         if (this.Title != null) {
-            s += ind + "title\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "title\n" ;
+            } else {
+                s += ind + "title\n" ;
+            }
         }
         return s;
     }
@@ -121,33 +142,88 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> ProductDocumentationType? Type
         // GraphQL -> type: ProductDocumentationType! (enum)
-        if (this.Type == null && ec.Includes("type",true))
+        if (ec.Includes("type",true))
         {
-            this.Type = new ProductDocumentationType();
+            if(this.Type == null) {
+
+                this.Type = new ProductDocumentationType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Type != null && ec.Excludes("type",true))
+        {
+            this.Type = null;
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
-        if (this.Description == null && ec.Includes("description",true))
+        if (ec.Includes("description",true))
         {
-            this.Description = "FETCH";
+            if(this.Description == null) {
+
+                this.Description = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Description != null && ec.Excludes("description",true))
+        {
+            this.Description = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.String? Link
         // GraphQL -> link: URL (scalar)
-        if (this.Link == null && ec.Includes("link",true))
+        if (ec.Includes("link",true))
         {
-            this.Link = "FETCH";
+            if(this.Link == null) {
+
+                this.Link = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Link != null && ec.Excludes("link",true))
+        {
+            this.Link = null;
         }
         //      C# -> System.String? Title
         // GraphQL -> title: String! (scalar)
-        if (this.Title == null && ec.Includes("title",true))
+        if (ec.Includes("title",true))
         {
-            this.Title = "FETCH";
+            if(this.Title == null) {
+
+                this.Title = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Title != null && ec.Excludes("title",true))
+        {
+            this.Title = null;
         }
     }
 
@@ -174,9 +250,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<RelatedContent> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

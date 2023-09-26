@@ -83,34 +83,55 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int32? HostLogRetentionHours
         // GraphQL -> hostLogRetentionHours: Int (scalar)
         if (this.HostLogRetentionHours != null) {
-            s += ind + "hostLogRetentionHours\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostLogRetentionHours\n" ;
+            } else {
+                s += ind + "hostLogRetentionHours\n" ;
+            }
         }
         //      C# -> System.String? HostMount
         // GraphQL -> hostMount: String! (scalar)
         if (this.HostMount != null) {
-            s += ind + "hostMount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostMount\n" ;
+            } else {
+                s += ind + "hostMount\n" ;
+            }
         }
         //      C# -> System.Int32? LogBackupFrequencyInMinutes
         // GraphQL -> logBackupFrequencyInMinutes: Int! (scalar)
         if (this.LogBackupFrequencyInMinutes != null) {
-            s += ind + "logBackupFrequencyInMinutes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "logBackupFrequencyInMinutes\n" ;
+            } else {
+                s += ind + "logBackupFrequencyInMinutes\n" ;
+            }
         }
         //      C# -> System.Int32? LogRetentionHours
         // GraphQL -> logRetentionHours: Int! (scalar)
         if (this.LogRetentionHours != null) {
-            s += ind + "logRetentionHours\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "logRetentionHours\n" ;
+            } else {
+                s += ind + "logRetentionHours\n" ;
+            }
         }
         //      C# -> System.Int32? NumChannels
         // GraphQL -> numChannels: Int! (scalar)
         if (this.NumChannels != null) {
-            s += ind + "numChannels\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "numChannels\n" ;
+            } else {
+                s += ind + "numChannels\n" ;
+            }
         }
         return s;
     }
@@ -121,33 +142,88 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int32? HostLogRetentionHours
         // GraphQL -> hostLogRetentionHours: Int (scalar)
-        if (this.HostLogRetentionHours == null && ec.Includes("hostLogRetentionHours",true))
+        if (ec.Includes("hostLogRetentionHours",true))
         {
-            this.HostLogRetentionHours = Int32.MinValue;
+            if(this.HostLogRetentionHours == null) {
+
+                this.HostLogRetentionHours = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.HostLogRetentionHours != null && ec.Excludes("hostLogRetentionHours",true))
+        {
+            this.HostLogRetentionHours = null;
         }
         //      C# -> System.String? HostMount
         // GraphQL -> hostMount: String! (scalar)
-        if (this.HostMount == null && ec.Includes("hostMount",true))
+        if (ec.Includes("hostMount",true))
         {
-            this.HostMount = "FETCH";
+            if(this.HostMount == null) {
+
+                this.HostMount = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.HostMount != null && ec.Excludes("hostMount",true))
+        {
+            this.HostMount = null;
         }
         //      C# -> System.Int32? LogBackupFrequencyInMinutes
         // GraphQL -> logBackupFrequencyInMinutes: Int! (scalar)
-        if (this.LogBackupFrequencyInMinutes == null && ec.Includes("logBackupFrequencyInMinutes",true))
+        if (ec.Includes("logBackupFrequencyInMinutes",true))
         {
-            this.LogBackupFrequencyInMinutes = Int32.MinValue;
+            if(this.LogBackupFrequencyInMinutes == null) {
+
+                this.LogBackupFrequencyInMinutes = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LogBackupFrequencyInMinutes != null && ec.Excludes("logBackupFrequencyInMinutes",true))
+        {
+            this.LogBackupFrequencyInMinutes = null;
         }
         //      C# -> System.Int32? LogRetentionHours
         // GraphQL -> logRetentionHours: Int! (scalar)
-        if (this.LogRetentionHours == null && ec.Includes("logRetentionHours",true))
+        if (ec.Includes("logRetentionHours",true))
         {
-            this.LogRetentionHours = Int32.MinValue;
+            if(this.LogRetentionHours == null) {
+
+                this.LogRetentionHours = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LogRetentionHours != null && ec.Excludes("logRetentionHours",true))
+        {
+            this.LogRetentionHours = null;
         }
         //      C# -> System.Int32? NumChannels
         // GraphQL -> numChannels: Int! (scalar)
-        if (this.NumChannels == null && ec.Includes("numChannels",true))
+        if (ec.Includes("numChannels",true))
         {
-            this.NumChannels = Int32.MinValue;
+            if(this.NumChannels == null) {
+
+                this.NumChannels = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.NumChannels != null && ec.Excludes("numChannels",true))
+        {
+            this.NumChannels = null;
         }
     }
 
@@ -174,9 +250,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<OracleNonSlaProperties> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

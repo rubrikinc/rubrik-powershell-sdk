@@ -83,36 +83,57 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? CommunityString
         // GraphQL -> communityString: String (scalar)
         if (this.CommunityString != null) {
-            s += ind + "communityString\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "communityString\n" ;
+            } else {
+                s += ind + "communityString\n" ;
+            }
         }
         //      C# -> System.Boolean? IsEnabled
         // GraphQL -> isEnabled: Boolean! (scalar)
         if (this.IsEnabled != null) {
-            s += ind + "isEnabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isEnabled\n" ;
+            } else {
+                s += ind + "isEnabled\n" ;
+            }
         }
         //      C# -> System.Int32? SnmpAgentPort
         // GraphQL -> snmpAgentPort: Int! (scalar)
         if (this.SnmpAgentPort != null) {
-            s += ind + "snmpAgentPort\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snmpAgentPort\n" ;
+            } else {
+                s += ind + "snmpAgentPort\n" ;
+            }
         }
         //      C# -> List<System.String>? Users
         // GraphQL -> users: [String!]! (scalar)
         if (this.Users != null) {
-            s += ind + "users\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "users\n" ;
+            } else {
+                s += ind + "users\n" ;
+            }
         }
         //      C# -> List<SnmpTrapReceiverConfig>? TrapReceiverConfigs
         // GraphQL -> trapReceiverConfigs: [SnmpTrapReceiverConfig!]! (type)
         if (this.TrapReceiverConfigs != null) {
-            var fspec = this.TrapReceiverConfigs.AsFieldSpec(indent+1);
+            var fspec = this.TrapReceiverConfigs.AsFieldSpec(conf.Child("trapReceiverConfigs"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "trapReceiverConfigs {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "trapReceiverConfigs {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -124,34 +145,90 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? CommunityString
         // GraphQL -> communityString: String (scalar)
-        if (this.CommunityString == null && ec.Includes("communityString",true))
+        if (ec.Includes("communityString",true))
         {
-            this.CommunityString = "FETCH";
+            if(this.CommunityString == null) {
+
+                this.CommunityString = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CommunityString != null && ec.Excludes("communityString",true))
+        {
+            this.CommunityString = null;
         }
         //      C# -> System.Boolean? IsEnabled
         // GraphQL -> isEnabled: Boolean! (scalar)
-        if (this.IsEnabled == null && ec.Includes("isEnabled",true))
+        if (ec.Includes("isEnabled",true))
         {
-            this.IsEnabled = true;
+            if(this.IsEnabled == null) {
+
+                this.IsEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsEnabled != null && ec.Excludes("isEnabled",true))
+        {
+            this.IsEnabled = null;
         }
         //      C# -> System.Int32? SnmpAgentPort
         // GraphQL -> snmpAgentPort: Int! (scalar)
-        if (this.SnmpAgentPort == null && ec.Includes("snmpAgentPort",true))
+        if (ec.Includes("snmpAgentPort",true))
         {
-            this.SnmpAgentPort = Int32.MinValue;
+            if(this.SnmpAgentPort == null) {
+
+                this.SnmpAgentPort = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnmpAgentPort != null && ec.Excludes("snmpAgentPort",true))
+        {
+            this.SnmpAgentPort = null;
         }
         //      C# -> List<System.String>? Users
         // GraphQL -> users: [String!]! (scalar)
-        if (this.Users == null && ec.Includes("users",true))
+        if (ec.Includes("users",true))
         {
-            this.Users = new List<System.String>();
+            if(this.Users == null) {
+
+                this.Users = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Users != null && ec.Excludes("users",true))
+        {
+            this.Users = null;
         }
         //      C# -> List<SnmpTrapReceiverConfig>? TrapReceiverConfigs
         // GraphQL -> trapReceiverConfigs: [SnmpTrapReceiverConfig!]! (type)
-        if (this.TrapReceiverConfigs == null && ec.Includes("trapReceiverConfigs",false))
+        if (ec.Includes("trapReceiverConfigs",false))
         {
-            this.TrapReceiverConfigs = new List<SnmpTrapReceiverConfig>();
-            this.TrapReceiverConfigs.ApplyExploratoryFieldSpec(ec.NewChild("trapReceiverConfigs"));
+            if(this.TrapReceiverConfigs == null) {
+
+                this.TrapReceiverConfigs = new List<SnmpTrapReceiverConfig>();
+                this.TrapReceiverConfigs.ApplyExploratoryFieldSpec(ec.NewChild("trapReceiverConfigs"));
+
+            } else {
+
+                this.TrapReceiverConfigs.ApplyExploratoryFieldSpec(ec.NewChild("trapReceiverConfigs"));
+
+            }
+        }
+        else if (this.TrapReceiverConfigs != null && ec.Excludes("trapReceiverConfigs",false))
+        {
+            this.TrapReceiverConfigs = null;
         }
     }
 
@@ -178,9 +255,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SnmpConfiguration> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

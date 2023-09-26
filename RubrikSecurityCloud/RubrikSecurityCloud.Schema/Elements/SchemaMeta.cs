@@ -15,7 +15,7 @@ namespace RubrikSecurityCloud.Types
         /// <summary>
         /// The version of the schema used to generate the SDK.
         /// </summary>
-        public static string GraphqlSchemaVersion = "v20230913-43" ;
+        public static string GraphqlSchemaVersion = "v20230913-54" ;
 
         /// <summary>
         /// All GraphQL interface names.
@@ -7354,6 +7354,7 @@ namespace RubrikSecurityCloud.Types
             addAzureCloudAccountExocomputeConfigurations,
             addAzureCloudAccountWithoutOauth,
             addDb2Instance,
+            addManagedVolume,
             addMongoSource,
             addNodesToCloudCluster,
             addO365Org,
@@ -7509,6 +7510,7 @@ namespace RubrikSecurityCloud.Types
             batchMountHypervVm,
             batchMountNutanixVm,
             batchOnDemandBackupHypervVm,
+            beginManagedVolumeSnapshot,
             browseMssqlDatabaseSnapshot,
             browseO365TeamConvChannels,
             bulkCreateOnDemandMssqlBackup,
@@ -7621,6 +7623,8 @@ namespace RubrikSecurityCloud.Types
             deleteHypervVirtualMachineSnapshot,
             deleteHypervVirtualMachineSnapshotMount,
             deleteLdapPrincipals,
+            deleteManagedVolume,
+            deleteManagedVolumeSnapshotExport,
             deleteMongoSource,
             deleteMongodbSource,
             deleteMssqlDbSnapshots,
@@ -7645,6 +7649,8 @@ namespace RubrikSecurityCloud.Types
             downloadHypervSnapshotFromLocation,
             downloadHypervVirtualMachineSnapshot,
             downloadHypervVirtualMachineSnapshotFiles,
+            downloadManagedVolumeFiles,
+            downloadManagedVolumeFromLocation,
             downloadMssqlDatabaseBackupFiles,
             downloadMssqlDatabaseFilesFromArchivalLocation,
             downloadNutanixSnapshot,
@@ -7653,10 +7659,12 @@ namespace RubrikSecurityCloud.Types
             downloadVsphereVirtualMachineFiles,
             enableO365SharePoint,
             enableO365Teams,
+            endManagedVolumeSnapshot,
             excludeAwsNativeEbsVolumesFromSnapshot,
             excludeAzureNativeManagedDisksFromSnapshot,
             expireDownloadedDb2Snapshots,
             exportHypervVirtualMachine,
+            exportManagedVolumeSnapshot,
             exportMssqlDatabase,
             exportNutanixSnapshot,
             exportO365Mailbox,
@@ -7701,6 +7709,10 @@ namespace RubrikSecurityCloud.Types
             ldapIntegrationConnection,
             ldapPrincipalConnection,
             listO365Apps,
+            managedVolume,
+            managedVolumeInventoryStats,
+            managedVolumeLiveMounts,
+            managedVolumes,
             mapAzureCloudAccountExocomputeSubscription,
             mapAzureCloudAccountToPersistentStorageLocation,
             migrateNutanixMountV1,
@@ -7836,6 +7848,7 @@ namespace RubrikSecurityCloud.Types
             registerHypervScvmm,
             removeCdmCluster,
             removeLdapIntegration,
+            resizeManagedVolume,
             restoreAzureAdObjectsWithPasswords,
             restoreFilesNutanixSnapshot,
             restoreHypervVirtualMachineSnapshotFiles,
@@ -7879,6 +7892,7 @@ namespace RubrikSecurityCloud.Types
             startRefreshAzureNativeSubscriptionsJob,
             startRestoreAwsNativeEc2InstanceSnapshotJob,
             startRestoreAzureNativeVirtualMachineJob,
+            takeManagedVolumeOnDemandSnapshot,
             takeMssqlLogBackup,
             takeOnDemandOracleDatabaseSnapshot,
             takeOnDemandOracleLogSnapshot,
@@ -7907,6 +7921,7 @@ namespace RubrikSecurityCloud.Types
             updateHypervVirtualMachine,
             updateHypervVirtualMachineSnapshotMount,
             updateLdapIntegration,
+            updateManagedVolume,
             updateMongodbSource,
             updateMssqlDefaultProperties,
             updateMssqlLogShippingConfiguration,
@@ -8011,5260 +8026,5381 @@ namespace RubrikSecurityCloud.Types
             var lookupDict = new Dictionary<GqlRootFieldName, RscOp> {
                 {
                     GqlRootFieldName.accountId,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAccount",
-                        CmdletSwitchName = "Id",
-                        GqlRootFieldName = "accountId"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAccount",
+                        cmdletSwitchName: "Id",
+                        gqlRootFieldName: "accountId"
+                    )
                 },
                 {
                     GqlRootFieldName.accountSettings,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAccount",
-                        CmdletSwitchName = "Settings",
-                        GqlRootFieldName = "accountSettings"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAccount",
+                        cmdletSwitchName: "Settings",
+                        gqlRootFieldName: "accountSettings"
+                    )
                 },
                 {
                     GqlRootFieldName.activitySeries,
-                    new RscOp {
-                        CmdletName = "New-RscQueryActivitySeries",
-                        CmdletSwitchName = "ActivitySeries",
-                        GqlRootFieldName = "activitySeries"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryActivitySeries",
+                        cmdletSwitchName: "ActivitySeries",
+                        gqlRootFieldName: "activitySeries"
+                    )
                 },
                 {
                     GqlRootFieldName.activitySeriesConnection,
-                    new RscOp {
-                        CmdletName = "New-RscQueryActivitySeries",
-                        CmdletSwitchName = "List",
-                        GqlRootFieldName = "activitySeriesConnection"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryActivitySeries",
+                        cmdletSwitchName: "List",
+                        gqlRootFieldName: "activitySeriesConnection"
+                    )
                 },
                 {
                     GqlRootFieldName.addAwsAuthenticationServerBasedCloudAccount,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAws",
-                        CmdletSwitchName = "AddAuthenticationServerBasedCloudAccount",
-                        GqlRootFieldName = "addAwsAuthenticationServerBasedCloudAccount"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "AddAuthenticationServerBasedCloudAccount",
+                        gqlRootFieldName: "addAwsAuthenticationServerBasedCloudAccount"
+                    )
                 },
                 {
                     GqlRootFieldName.addAwsIamUserBasedCloudAccount,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAws",
-                        CmdletSwitchName = "AddIamUserBasedCloudAccount",
-                        GqlRootFieldName = "addAwsIamUserBasedCloudAccount"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "AddIamUserBasedCloudAccount",
+                        gqlRootFieldName: "addAwsIamUserBasedCloudAccount"
+                    )
                 },
                 {
                     GqlRootFieldName.addAzureCloudAccount,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "AddCloudAccount",
-                        GqlRootFieldName = "addAzureCloudAccount"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "AddCloudAccount",
+                        gqlRootFieldName: "addAzureCloudAccount"
+                    )
                 },
                 {
                     GqlRootFieldName.addAzureCloudAccountExocomputeConfigurations,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "AddCloudAccountExocomputeConfigurations",
-                        GqlRootFieldName = "addAzureCloudAccountExocomputeConfigurations"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "AddCloudAccountExocomputeConfigurations",
+                        gqlRootFieldName: "addAzureCloudAccountExocomputeConfigurations"
+                    )
                 },
                 {
                     GqlRootFieldName.addAzureCloudAccountWithoutOauth,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "AddCloudAccountWithoutOauth",
-                        GqlRootFieldName = "addAzureCloudAccountWithoutOauth"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "AddCloudAccountWithoutOauth",
+                        gqlRootFieldName: "addAzureCloudAccountWithoutOauth"
+                    )
                 },
                 {
                     GqlRootFieldName.addDb2Instance,
-                    new RscOp {
-                        CmdletName = "New-RscMutationDb2",
-                        CmdletSwitchName = "AddInstance",
-                        GqlRootFieldName = "addDb2Instance"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationDb2",
+                        cmdletSwitchName: "AddInstance",
+                        gqlRootFieldName: "addDb2Instance"
+                    )
+                },
+                {
+                    GqlRootFieldName.addManagedVolume,
+                    new RscOp(
+                        cmdletName: "New-RscMutationManagedVolume",
+                        cmdletSwitchName: "Add",
+                        gqlRootFieldName: "addManagedVolume"
+                    )
                 },
                 {
                     GqlRootFieldName.addMongoSource,
-                    new RscOp {
-                        CmdletName = "New-RscMutationMongo",
-                        CmdletSwitchName = "AddSource",
-                        GqlRootFieldName = "addMongoSource"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationMongo",
+                        cmdletSwitchName: "AddSource",
+                        gqlRootFieldName: "addMongoSource"
+                    )
                 },
                 {
                     GqlRootFieldName.addNodesToCloudCluster,
-                    new RscOp {
-                        CmdletName = "New-RscMutationCluster",
-                        CmdletSwitchName = "AddNodesToCloud",
-                        GqlRootFieldName = "addNodesToCloudCluster"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationCluster",
+                        cmdletSwitchName: "AddNodesToCloud",
+                        gqlRootFieldName: "addNodesToCloudCluster"
+                    )
                 },
                 {
                     GqlRootFieldName.addO365Org,
-                    new RscOp {
-                        CmdletName = "New-RscMutationO365",
-                        CmdletSwitchName = "AddOrg",
-                        GqlRootFieldName = "addO365Org"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationO365",
+                        cmdletSwitchName: "AddOrg",
+                        gqlRootFieldName: "addO365Org"
+                    )
                 },
                 {
                     GqlRootFieldName.allAccountOwners,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAccount",
-                        CmdletSwitchName = "Owners",
-                        GqlRootFieldName = "allAccountOwners"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAccount",
+                        cmdletSwitchName: "Owners",
+                        gqlRootFieldName: "allAccountOwners"
+                    )
                 },
                 {
                     GqlRootFieldName.allAccountProducts,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAccount",
-                        CmdletSwitchName = "Products",
-                        GqlRootFieldName = "allAccountProducts"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAccount",
+                        cmdletSwitchName: "Products",
+                        gqlRootFieldName: "allAccountProducts"
+                    )
                 },
                 {
                     GqlRootFieldName.allAccountsWithExocomputeMappings,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAccount",
-                        CmdletSwitchName = "SWithExocomputeMappings",
-                        GqlRootFieldName = "allAccountsWithExocomputeMappings"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAccount",
+                        cmdletSwitchName: "WithExocomputeMappings",
+                        gqlRootFieldName: "allAccountsWithExocomputeMappings"
+                    )
                 },
                 {
                     GqlRootFieldName.allAvailabilityZonesByRegionFromAws,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "AllAvailabilityZonesByRegion",
-                        GqlRootFieldName = "allAvailabilityZonesByRegionFromAws"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "AllAvailabilityZonesByRegion",
+                        gqlRootFieldName: "allAvailabilityZonesByRegionFromAws"
+                    )
                 },
                 {
                     GqlRootFieldName.allAwsCdmVersions,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "AllCdmVersions",
-                        GqlRootFieldName = "allAwsCdmVersions"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "AllCdmVersions",
+                        gqlRootFieldName: "allAwsCdmVersions"
+                    )
                 },
                 {
                     GqlRootFieldName.allAwsCloudAccountConfigs,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "AllCloudAccountConfigs",
-                        GqlRootFieldName = "allAwsCloudAccountConfigs"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "AllCloudAccountConfigs",
+                        gqlRootFieldName: "allAwsCloudAccountConfigs"
+                    )
                 },
                 {
                     GqlRootFieldName.allAwsCloudAccountsWithFeatures,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "AllCloudAccountsWithFeatures",
-                        GqlRootFieldName = "allAwsCloudAccountsWithFeatures"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "AllCloudAccountsWithFeatures",
+                        gqlRootFieldName: "allAwsCloudAccountsWithFeatures"
+                    )
                 },
                 {
                     GqlRootFieldName.allAwsComputeSettings,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "AllComputeSettings",
-                        GqlRootFieldName = "allAwsComputeSettings"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "AllComputeSettings",
+                        gqlRootFieldName: "allAwsComputeSettings"
+                    )
                 },
                 {
                     GqlRootFieldName.allAwsExocomputeConfigs,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "AllExocomputeConfigs",
-                        GqlRootFieldName = "allAwsExocomputeConfigs"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "AllExocomputeConfigs",
+                        gqlRootFieldName: "allAwsExocomputeConfigs"
+                    )
                 },
                 {
                     GqlRootFieldName.allAwsInstanceProfileNames,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "AllInstanceProfileNames",
-                        GqlRootFieldName = "allAwsInstanceProfileNames"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "AllInstanceProfileNames",
+                        gqlRootFieldName: "allAwsInstanceProfileNames"
+                    )
                 },
                 {
                     GqlRootFieldName.allAwsPermissionPolicies,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "AllPermissionPolicies",
-                        GqlRootFieldName = "allAwsPermissionPolicies"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "AllPermissionPolicies",
+                        gqlRootFieldName: "allAwsPermissionPolicies"
+                    )
                 },
                 {
                     GqlRootFieldName.allAwsRegions,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "AllRegions",
-                        GqlRootFieldName = "allAwsRegions"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "AllRegions",
+                        gqlRootFieldName: "allAwsRegions"
+                    )
                 },
                 {
                     GqlRootFieldName.allAzureArmTemplatesByFeature,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "AllArmTemplatesByFeature",
-                        GqlRootFieldName = "allAzureArmTemplatesByFeature"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "AllArmTemplatesByFeature",
+                        gqlRootFieldName: "allAzureArmTemplatesByFeature"
+                    )
                 },
                 {
                     GqlRootFieldName.allAzureCdmVersions,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "AllCdmVersions",
-                        GqlRootFieldName = "allAzureCdmVersions"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "AllCdmVersions",
+                        gqlRootFieldName: "allAzureCdmVersions"
+                    )
                 },
                 {
                     GqlRootFieldName.allAzureCloudAccountMissingPermissions,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "AllCloudAccountMissingPermissions",
-                        GqlRootFieldName = "allAzureCloudAccountMissingPermissions"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "AllCloudAccountMissingPermissions",
+                        gqlRootFieldName: "allAzureCloudAccountMissingPermissions"
+                    )
                 },
                 {
                     GqlRootFieldName.allAzureCloudAccountSubnetsByRegion,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "AllCloudAccountSubnetsByRegion",
-                        GqlRootFieldName = "allAzureCloudAccountSubnetsByRegion"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "AllCloudAccountSubnetsByRegion",
+                        gqlRootFieldName: "allAzureCloudAccountSubnetsByRegion"
+                    )
                 },
                 {
                     GqlRootFieldName.allAzureCloudAccountSubscriptionsByFeature,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "AllCloudAccountSubscriptionsByFeature",
-                        GqlRootFieldName = "allAzureCloudAccountSubscriptionsByFeature"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "AllCloudAccountSubscriptionsByFeature",
+                        gqlRootFieldName: "allAzureCloudAccountSubscriptionsByFeature"
+                    )
                 },
                 {
                     GqlRootFieldName.allAzureCloudAccountTenants,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "AllCloudAccountTenants",
-                        GqlRootFieldName = "allAzureCloudAccountTenants"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "AllCloudAccountTenants",
+                        gqlRootFieldName: "allAzureCloudAccountTenants"
+                    )
                 },
                 {
                     GqlRootFieldName.allAzureDiskEncryptionSetsByRegion,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "AllDiskEncryptionSetsByRegion",
-                        GqlRootFieldName = "allAzureDiskEncryptionSetsByRegion"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "AllDiskEncryptionSetsByRegion",
+                        gqlRootFieldName: "allAzureDiskEncryptionSetsByRegion"
+                    )
                 },
                 {
                     GqlRootFieldName.allAzureEncryptionKeys,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "AllEncryptionKeys",
-                        GqlRootFieldName = "allAzureEncryptionKeys"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "AllEncryptionKeys",
+                        gqlRootFieldName: "allAzureEncryptionKeys"
+                    )
                 },
                 {
                     GqlRootFieldName.allAzureExocomputeConfigsInAccount,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "AllExocomputeConfigsInAccount",
-                        GqlRootFieldName = "allAzureExocomputeConfigsInAccount"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "AllExocomputeConfigsInAccount",
+                        gqlRootFieldName: "allAzureExocomputeConfigsInAccount"
+                    )
                 },
                 {
                     GqlRootFieldName.allAzureKeyVaultsByRegion,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "AllKeyVaultsByRegion",
-                        GqlRootFieldName = "allAzureKeyVaultsByRegion"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "AllKeyVaultsByRegion",
+                        gqlRootFieldName: "allAzureKeyVaultsByRegion"
+                    )
                 },
                 {
                     GqlRootFieldName.allAzureManagedIdentities,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "AllManagedIdentities",
-                        GqlRootFieldName = "allAzureManagedIdentities"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "AllManagedIdentities",
+                        gqlRootFieldName: "allAzureManagedIdentities"
+                    )
                 },
                 {
                     GqlRootFieldName.allAzureNativeAvailabilitySetsByRegionFromAzure,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "AllNativeAvailabilitySetsByRegionFromAzure",
-                        GqlRootFieldName = "allAzureNativeAvailabilitySetsByRegionFromAzure"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "AllNativeAvailabilitySetsByRegionFromAzure",
+                        gqlRootFieldName: "allAzureNativeAvailabilitySetsByRegionFromAzure"
+                    )
                 },
                 {
                     GqlRootFieldName.allAzureNativeExportCompatibleDiskTypesByRegionFromAzure,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "AllNativeExportCompatibleDiskTypesByRegionFromAzure",
-                        GqlRootFieldName = "allAzureNativeExportCompatibleDiskTypesByRegionFromAzure"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "AllNativeExportCompatibleDiskTypesByRegionFromAzure",
+                        gqlRootFieldName: "allAzureNativeExportCompatibleDiskTypesByRegionFromAzure"
+                    )
                 },
                 {
                     GqlRootFieldName.allAzureNativeExportCompatibleVmSizesByRegionFromAzure,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "AllNativeExportCompatibleVmSizesByRegionFromAzure",
-                        GqlRootFieldName = "allAzureNativeExportCompatibleVmSizesByRegionFromAzure"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "AllNativeExportCompatibleVmSizesByRegionFromAzure",
+                        gqlRootFieldName: "allAzureNativeExportCompatibleVmSizesByRegionFromAzure"
+                    )
                 },
                 {
                     GqlRootFieldName.allAzureNativeResourceGroupsInfoIfExist,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "AllNativeResourceGroupsInfoIfExist",
-                        GqlRootFieldName = "allAzureNativeResourceGroupsInfoIfExist"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "AllNativeResourceGroupsInfoIfExist",
+                        gqlRootFieldName: "allAzureNativeResourceGroupsInfoIfExist"
+                    )
                 },
                 {
                     GqlRootFieldName.allAzureNativeSecurityGroupsByRegionFromAzure,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "AllNativeSecurityGroupsByRegionFromAzure",
-                        GqlRootFieldName = "allAzureNativeSecurityGroupsByRegionFromAzure"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "AllNativeSecurityGroupsByRegionFromAzure",
+                        gqlRootFieldName: "allAzureNativeSecurityGroupsByRegionFromAzure"
+                    )
                 },
                 {
                     GqlRootFieldName.allAzureNativeStorageAccountsFromAzure,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "AllNativeStorageAccountsFromAzure",
-                        GqlRootFieldName = "allAzureNativeStorageAccountsFromAzure"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "AllNativeStorageAccountsFromAzure",
+                        gqlRootFieldName: "allAzureNativeStorageAccountsFromAzure"
+                    )
                 },
                 {
                     GqlRootFieldName.allAzureNativeSubnetsByRegionFromAzure,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "AllNativeSubnetsByRegionFromAzure",
-                        GqlRootFieldName = "allAzureNativeSubnetsByRegionFromAzure"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "AllNativeSubnetsByRegionFromAzure",
+                        gqlRootFieldName: "allAzureNativeSubnetsByRegionFromAzure"
+                    )
                 },
                 {
                     GqlRootFieldName.allAzureNativeVirtualMachineSizes,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "AllNativeVirtualMachineSizes",
-                        GqlRootFieldName = "allAzureNativeVirtualMachineSizes"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "AllNativeVirtualMachineSizes",
+                        gqlRootFieldName: "allAzureNativeVirtualMachineSizes"
+                    )
                 },
                 {
                     GqlRootFieldName.allAzureNativeVirtualNetworks,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "AllNativeVirtualNetworks",
-                        GqlRootFieldName = "allAzureNativeVirtualNetworks"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "AllNativeVirtualNetworks",
+                        gqlRootFieldName: "allAzureNativeVirtualNetworks"
+                    )
                 },
                 {
                     GqlRootFieldName.allAzureNsgs,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "AllNsgs",
-                        GqlRootFieldName = "allAzureNsgs"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "AllNsgs",
+                        gqlRootFieldName: "allAzureNsgs"
+                    )
                 },
                 {
                     GqlRootFieldName.allAzureRegions,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "AllRegions",
-                        GqlRootFieldName = "allAzureRegions"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "AllRegions",
+                        gqlRootFieldName: "allAzureRegions"
+                    )
                 },
                 {
                     GqlRootFieldName.allAzureResourceGroups,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "AllResourceGroups",
-                        GqlRootFieldName = "allAzureResourceGroups"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "AllResourceGroups",
+                        gqlRootFieldName: "allAzureResourceGroups"
+                    )
                 },
                 {
                     GqlRootFieldName.allAzureSqlDatabaseServerElasticPools,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "AllSqlDatabaseServerElasticPools",
-                        GqlRootFieldName = "allAzureSqlDatabaseServerElasticPools"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "AllSqlDatabaseServerElasticPools",
+                        gqlRootFieldName: "allAzureSqlDatabaseServerElasticPools"
+                    )
                 },
                 {
                     GqlRootFieldName.allAzureStorageAccounts,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "AllStorageAccounts",
-                        GqlRootFieldName = "allAzureStorageAccounts"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "AllStorageAccounts",
+                        gqlRootFieldName: "allAzureStorageAccounts"
+                    )
                 },
                 {
                     GqlRootFieldName.allAzureSubnets,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "AllSubnets",
-                        GqlRootFieldName = "allAzureSubnets"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "AllSubnets",
+                        gqlRootFieldName: "allAzureSubnets"
+                    )
                 },
                 {
                     GqlRootFieldName.allAzureSubscriptionWithExocomputeMappings,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "AllSubscriptionWithExocomputeMappings",
-                        GqlRootFieldName = "allAzureSubscriptionWithExocomputeMappings"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "AllSubscriptionWithExocomputeMappings",
+                        gqlRootFieldName: "allAzureSubscriptionWithExocomputeMappings"
+                    )
                 },
                 {
                     GqlRootFieldName.allAzureVnets,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "AllVnets",
-                        GqlRootFieldName = "allAzureVnets"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "AllVnets",
+                        gqlRootFieldName: "allAzureVnets"
+                    )
                 },
                 {
                     GqlRootFieldName.allClusterGlobalSlas,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCluster",
-                        CmdletSwitchName = "GlobalSlas",
-                        GqlRootFieldName = "allClusterGlobalSlas"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCluster",
+                        cmdletSwitchName: "GlobalSlas",
+                        gqlRootFieldName: "allClusterGlobalSlas"
+                    )
                 },
                 {
                     GqlRootFieldName.allClusterReplicationTargets,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCluster",
-                        CmdletSwitchName = "ReplicationTargets",
-                        GqlRootFieldName = "allClusterReplicationTargets"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCluster",
+                        cmdletSwitchName: "ReplicationTargets",
+                        gqlRootFieldName: "allClusterReplicationTargets"
+                    )
                 },
                 {
                     GqlRootFieldName.allClusterWebCertsAndIpmis,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCluster",
-                        CmdletSwitchName = "WebCertsAndIpmis",
-                        GqlRootFieldName = "allClusterWebCertsAndIpmis"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCluster",
+                        cmdletSwitchName: "WebCertsAndIpmis",
+                        gqlRootFieldName: "allClusterWebCertsAndIpmis"
+                    )
                 },
                 {
                     GqlRootFieldName.allClustersTotpAckStatus,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCluster",
-                        CmdletSwitchName = "TotpAckStatus",
-                        GqlRootFieldName = "allClustersTotpAckStatus"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCluster",
+                        cmdletSwitchName: "TotpAckStatus",
+                        gqlRootFieldName: "allClustersTotpAckStatus"
+                    )
                 },
                 {
                     GqlRootFieldName.allConnectedClusters,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCluster",
-                        CmdletSwitchName = "Connected",
-                        GqlRootFieldName = "allConnectedClusters"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCluster",
+                        cmdletSwitchName: "Connected",
+                        gqlRootFieldName: "allConnectedClusters"
+                    )
                 },
                 {
                     GqlRootFieldName.allDbParameterGroupsByRegionFromAws,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "AllDbParameterGroupsByRegion",
-                        GqlRootFieldName = "allDbParameterGroupsByRegionFromAws"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "AllDbParameterGroupsByRegion",
+                        gqlRootFieldName: "allDbParameterGroupsByRegionFromAws"
+                    )
                 },
                 {
                     GqlRootFieldName.allDbSubnetGroupsByRegionFromAws,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "AllDbSubnetGroupsByRegion",
-                        GqlRootFieldName = "allDbSubnetGroupsByRegionFromAws"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "AllDbSubnetGroupsByRegion",
+                        gqlRootFieldName: "allDbSubnetGroupsByRegionFromAws"
+                    )
                 },
                 {
                     GqlRootFieldName.allEc2KeyPairsByRegionFromAws,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "AllEc2KeyPairsByRegion",
-                        GqlRootFieldName = "allEc2KeyPairsByRegionFromAws"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "AllEc2KeyPairsByRegion",
+                        gqlRootFieldName: "allEc2KeyPairsByRegionFromAws"
+                    )
                 },
                 {
                     GqlRootFieldName.allHostedAzureRegions,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "AllHostedRegions",
-                        GqlRootFieldName = "allHostedAzureRegions"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "AllHostedRegions",
+                        gqlRootFieldName: "allHostedAzureRegions"
+                    )
                 },
                 {
                     GqlRootFieldName.allKmsEncryptionKeysByRegionFromAws,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "AllKmsEncryptionKeysByRegion",
-                        GqlRootFieldName = "allKmsEncryptionKeysByRegionFromAws"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "AllKmsEncryptionKeysByRegion",
+                        gqlRootFieldName: "allKmsEncryptionKeysByRegionFromAws"
+                    )
                 },
                 {
                     GqlRootFieldName.allMssqlDatabaseRestoreFiles,
-                    new RscOp {
-                        CmdletName = "New-RscQueryMssql",
-                        CmdletSwitchName = "AllDatabaseRestoreFiles",
-                        GqlRootFieldName = "allMssqlDatabaseRestoreFiles"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryMssql",
+                        cmdletSwitchName: "AllDatabaseRestoreFiles",
+                        gqlRootFieldName: "allMssqlDatabaseRestoreFiles"
+                    )
                 },
                 {
                     GqlRootFieldName.allNcdSlaComplianceData,
-                    new RscOp {
-                        CmdletName = "New-RscQuerySla",
-                        CmdletSwitchName = "AllNcdComplianceData",
-                        GqlRootFieldName = "allNcdSlaComplianceData"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQuerySla",
+                        cmdletSwitchName: "AllNcdComplianceData",
+                        gqlRootFieldName: "allNcdSlaComplianceData"
+                    )
                 },
                 {
                     GqlRootFieldName.allO365AdGroups,
-                    new RscOp {
-                        CmdletName = "New-RscQueryO365",
-                        CmdletSwitchName = "AllAdGroups",
-                        GqlRootFieldName = "allO365AdGroups"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryO365",
+                        cmdletSwitchName: "AllAdGroups",
+                        gqlRootFieldName: "allO365AdGroups"
+                    )
                 },
                 {
                     GqlRootFieldName.allO365OrgStatuses,
-                    new RscOp {
-                        CmdletName = "New-RscQueryO365",
-                        CmdletSwitchName = "AllOrgStatuses",
-                        GqlRootFieldName = "allO365OrgStatuses"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryO365",
+                        cmdletSwitchName: "AllOrgStatuses",
+                        gqlRootFieldName: "allO365OrgStatuses"
+                    )
                 },
                 {
                     GqlRootFieldName.allO365SubscriptionsAppTypeCounts,
-                    new RscOp {
-                        CmdletName = "New-RscQueryO365",
-                        CmdletSwitchName = "AllSubscriptionsAppTypeCounts",
-                        GqlRootFieldName = "allO365SubscriptionsAppTypeCounts"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryO365",
+                        cmdletSwitchName: "AllSubscriptionsAppTypeCounts",
+                        gqlRootFieldName: "allO365SubscriptionsAppTypeCounts"
+                    )
                 },
                 {
                     GqlRootFieldName.allOptionGroupsByRegionFromAws,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "AllOptionGroupsByRegion",
-                        GqlRootFieldName = "allOptionGroupsByRegionFromAws"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "AllOptionGroupsByRegion",
+                        gqlRootFieldName: "allOptionGroupsByRegionFromAws"
+                    )
                 },
                 {
                     GqlRootFieldName.allResourceGroupsFromAzure,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "AllResourceGroupsFrom",
-                        GqlRootFieldName = "allResourceGroupsFromAzure"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "AllResourceGroupsFrom",
+                        gqlRootFieldName: "allResourceGroupsFromAzure"
+                    )
                 },
                 {
                     GqlRootFieldName.allS3BucketsDetailsFromAws,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "AllS3BucketsDetails",
-                        GqlRootFieldName = "allS3BucketsDetailsFromAws"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "AllS3BucketsDetails",
+                        gqlRootFieldName: "allS3BucketsDetailsFromAws"
+                    )
                 },
                 {
                     GqlRootFieldName.allS3BucketsFromAws,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "AllS3Buckets",
-                        GqlRootFieldName = "allS3BucketsFromAws"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "AllS3Buckets",
+                        gqlRootFieldName: "allS3BucketsFromAws"
+                    )
                 },
                 {
                     GqlRootFieldName.allSlaSummariesByIds,
-                    new RscOp {
-                        CmdletName = "New-RscQuerySla",
-                        CmdletSwitchName = "AllSummariesByIds",
-                        GqlRootFieldName = "allSlaSummariesByIds"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQuerySla",
+                        cmdletSwitchName: "AllSummariesByIds",
+                        gqlRootFieldName: "allSlaSummariesByIds"
+                    )
                 },
                 {
                     GqlRootFieldName.allSupportedAwsRdsDatabaseInstanceClasses,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "AllSupportedRdsDatabaseInstanceClasses",
-                        GqlRootFieldName = "allSupportedAwsRdsDatabaseInstanceClasses"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "AllSupportedRdsDatabaseInstanceClasses",
+                        gqlRootFieldName: "allSupportedAwsRdsDatabaseInstanceClasses"
+                    )
                 },
                 {
                     GqlRootFieldName.allVcenterHotAddProxyVms,
-                    new RscOp {
-                        CmdletName = "New-RscQueryVcenter",
-                        CmdletSwitchName = "HotAddProxy",
-                        GqlRootFieldName = "allVcenterHotAddProxyVms"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryVcenter",
+                        cmdletSwitchName: "HotAddProxy",
+                        gqlRootFieldName: "allVcenterHotAddProxyVms"
+                    )
                 },
                 {
                     GqlRootFieldName.allVpcsByRegionFromAws,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "AllVpcsByRegion",
-                        GqlRootFieldName = "allVpcsByRegionFromAws"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "AllVpcsByRegion",
+                        gqlRootFieldName: "allVpcsByRegionFromAws"
+                    )
                 },
                 {
                     GqlRootFieldName.allVpcsFromAws,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "AllVpcs",
-                        GqlRootFieldName = "allVpcsFromAws"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "AllVpcs",
+                        gqlRootFieldName: "allVpcsFromAws"
+                    )
                 },
                 {
                     GqlRootFieldName.amiTypeForAwsNativeArchivedSnapshotExport,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "AmiTypeForNativeArchivedSnapshotExport",
-                        GqlRootFieldName = "amiTypeForAwsNativeArchivedSnapshotExport"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "AmiTypeForNativeArchivedSnapshotExport",
+                        gqlRootFieldName: "amiTypeForAwsNativeArchivedSnapshotExport"
+                    )
                 },
                 {
                     GqlRootFieldName.archiveK8sCluster,
-                    new RscOp {
-                        CmdletName = "New-RscMutationCluster",
-                        CmdletSwitchName = "ArchiveK8s",
-                        GqlRootFieldName = "archiveK8sCluster"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationCluster",
+                        cmdletSwitchName: "ArchiveK8s",
+                        gqlRootFieldName: "archiveK8sCluster"
+                    )
                 },
                 {
                     GqlRootFieldName.assignMssqlSlaDomainProperties,
-                    new RscOp {
-                        CmdletName = "New-RscMutationMssql",
-                        CmdletSwitchName = "AssignSlaDomainProperties",
-                        GqlRootFieldName = "assignMssqlSlaDomainProperties"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationMssql",
+                        cmdletSwitchName: "AssignSlaDomainProperties",
+                        gqlRootFieldName: "assignMssqlSlaDomainProperties"
+                    )
                 },
                 {
                     GqlRootFieldName.assignMssqlSlaDomainPropertiesAsync,
-                    new RscOp {
-                        CmdletName = "New-RscMutationMssql",
-                        CmdletSwitchName = "AssignSlaDomainPropertiesAsync",
-                        GqlRootFieldName = "assignMssqlSlaDomainPropertiesAsync"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationMssql",
+                        cmdletSwitchName: "AssignSlaDomainPropertiesAsync",
+                        gqlRootFieldName: "assignMssqlSlaDomainPropertiesAsync"
+                    )
                 },
                 {
                     GqlRootFieldName.assignRetentionSLAToSnappables,
-                    new RscOp {
-                        CmdletName = "New-RscMutationSla",
-                        CmdletSwitchName = "AssignRetentionToSnappables",
-                        GqlRootFieldName = "assignRetentionSLAToSnappables"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationSla",
+                        cmdletSwitchName: "AssignRetentionToSnappables",
+                        gqlRootFieldName: "assignRetentionSLAToSnappables"
+                    )
                 },
                 {
                     GqlRootFieldName.assignRetentionSLAToSnapshots,
-                    new RscOp {
-                        CmdletName = "New-RscMutationSla",
-                        CmdletSwitchName = "AssignRetentionToSnapshots",
-                        GqlRootFieldName = "assignRetentionSLAToSnapshots"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationSla",
+                        cmdletSwitchName: "AssignRetentionToSnapshots",
+                        gqlRootFieldName: "assignRetentionSLAToSnapshots"
+                    )
                 },
                 {
                     GqlRootFieldName.assignSla,
-                    new RscOp {
-                        CmdletName = "New-RscMutationSla",
-                        CmdletSwitchName = "Assign",
-                        GqlRootFieldName = "assignSla"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationSla",
+                        cmdletSwitchName: "Assign",
+                        gqlRootFieldName: "assignSla"
+                    )
                 },
                 {
                     GqlRootFieldName.assignSlaToMongoDbCollection,
-                    new RscOp {
-                        CmdletName = "New-RscMutationMongo",
-                        CmdletSwitchName = "AssignSlaToDbCollection",
-                        GqlRootFieldName = "assignSlaToMongoDbCollection"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationMongo",
+                        cmdletSwitchName: "AssignSlaToDbCollection",
+                        gqlRootFieldName: "assignSlaToMongoDbCollection"
+                    )
                 },
                 {
                     GqlRootFieldName.assignSlasForSnappableHierarchies,
-                    new RscOp {
-                        CmdletName = "New-RscMutationSla",
-                        CmdletSwitchName = "AssignsForSnappableHierarchies",
-                        GqlRootFieldName = "assignSlasForSnappableHierarchies"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationSla",
+                        cmdletSwitchName: "AssignsForSnappableHierarchies",
+                        gqlRootFieldName: "assignSlasForSnappableHierarchies"
+                    )
                 },
                 {
                     GqlRootFieldName.awsArtifactsToDelete,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "ArtifactsToDelete",
-                        GqlRootFieldName = "awsArtifactsToDelete"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "ArtifactsToDelete",
+                        gqlRootFieldName: "awsArtifactsToDelete"
+                    )
                 },
                 {
                     GqlRootFieldName.awsCloudAccountListSecurityGroups,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "CloudAccountListSecurityGroups",
-                        GqlRootFieldName = "awsCloudAccountListSecurityGroups"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "CloudAccountListSecurityGroups",
+                        gqlRootFieldName: "awsCloudAccountListSecurityGroups"
+                    )
                 },
                 {
                     GqlRootFieldName.awsCloudAccountListSubnets,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "CloudAccountListSubnets",
-                        GqlRootFieldName = "awsCloudAccountListSubnets"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "CloudAccountListSubnets",
+                        gqlRootFieldName: "awsCloudAccountListSubnets"
+                    )
                 },
                 {
                     GqlRootFieldName.awsCloudAccountListVpcs,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "CloudAccountListVpcs",
-                        GqlRootFieldName = "awsCloudAccountListVpcs"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "CloudAccountListVpcs",
+                        gqlRootFieldName: "awsCloudAccountListVpcs"
+                    )
                 },
                 {
                     GqlRootFieldName.awsCloudAccountWithFeatures,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "CloudAccountWithFeatures",
-                        GqlRootFieldName = "awsCloudAccountWithFeatures"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "CloudAccountWithFeatures",
+                        gqlRootFieldName: "awsCloudAccountWithFeatures"
+                    )
                 },
                 {
                     GqlRootFieldName.awsComputeSettings,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "ComputeSettings",
-                        GqlRootFieldName = "awsComputeSettings"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "ComputeSettings",
+                        gqlRootFieldName: "awsComputeSettings"
+                    )
                 },
                 {
                     GqlRootFieldName.awsNativeAccount,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "NativeAccount",
-                        GqlRootFieldName = "awsNativeAccount"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "NativeAccount",
+                        gqlRootFieldName: "awsNativeAccount"
+                    )
                 },
                 {
                     GqlRootFieldName.awsNativeAccounts,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "NativeAccounts",
-                        GqlRootFieldName = "awsNativeAccounts"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "NativeAccounts",
+                        gqlRootFieldName: "awsNativeAccounts"
+                    )
                 },
                 {
                     GqlRootFieldName.awsNativeEbsVolume,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "NativeEbsVolume",
-                        GqlRootFieldName = "awsNativeEbsVolume"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "NativeEbsVolume",
+                        gqlRootFieldName: "awsNativeEbsVolume"
+                    )
                 },
                 {
                     GqlRootFieldName.awsNativeEbsVolumes,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "NativeEbsVolumes",
-                        GqlRootFieldName = "awsNativeEbsVolumes"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "NativeEbsVolumes",
+                        gqlRootFieldName: "awsNativeEbsVolumes"
+                    )
                 },
                 {
                     GqlRootFieldName.awsNativeEbsVolumesByName,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "NativeEbsVolumesByName",
-                        GqlRootFieldName = "awsNativeEbsVolumesByName"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "NativeEbsVolumesByName",
+                        gqlRootFieldName: "awsNativeEbsVolumesByName"
+                    )
                 },
                 {
                     GqlRootFieldName.awsNativeEc2Instance,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "NativeEc2Instance",
-                        GqlRootFieldName = "awsNativeEc2Instance"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "NativeEc2Instance",
+                        gqlRootFieldName: "awsNativeEc2Instance"
+                    )
                 },
                 {
                     GqlRootFieldName.awsNativeEc2Instances,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "NativeEc2Instances",
-                        GqlRootFieldName = "awsNativeEc2Instances"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "NativeEc2Instances",
+                        gqlRootFieldName: "awsNativeEc2Instances"
+                    )
                 },
                 {
                     GqlRootFieldName.awsNativeEc2InstancesByName,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "NativeEc2InstancesByName",
-                        GqlRootFieldName = "awsNativeEc2InstancesByName"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "NativeEc2InstancesByName",
+                        gqlRootFieldName: "awsNativeEc2InstancesByName"
+                    )
                 },
                 {
                     GqlRootFieldName.awsNativeRdsExportDefaults,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "NativeRdsExportDefaults",
-                        GqlRootFieldName = "awsNativeRdsExportDefaults"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "NativeRdsExportDefaults",
+                        gqlRootFieldName: "awsNativeRdsExportDefaults"
+                    )
                 },
                 {
                     GqlRootFieldName.awsNativeRdsInstance,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "NativeRdsInstance",
-                        GqlRootFieldName = "awsNativeRdsInstance"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "NativeRdsInstance",
+                        gqlRootFieldName: "awsNativeRdsInstance"
+                    )
                 },
                 {
                     GqlRootFieldName.awsNativeRdsInstances,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "NativeRdsInstances",
-                        GqlRootFieldName = "awsNativeRdsInstances"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "NativeRdsInstances",
+                        gqlRootFieldName: "awsNativeRdsInstances"
+                    )
                 },
                 {
                     GqlRootFieldName.awsNativeRdsPointInTimeRestoreWindow,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "NativeRdsPointInTimeRestoreWindow",
-                        GqlRootFieldName = "awsNativeRdsPointInTimeRestoreWindow"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "NativeRdsPointInTimeRestoreWindow",
+                        gqlRootFieldName: "awsNativeRdsPointInTimeRestoreWindow"
+                    )
                 },
                 {
                     GqlRootFieldName.awsNativeRoot,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "NativeRoot",
-                        GqlRootFieldName = "awsNativeRoot"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "NativeRoot",
+                        gqlRootFieldName: "awsNativeRoot"
+                    )
                 },
                 {
                     GqlRootFieldName.awsNativeS3Bucket,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "NativeS3Bucket",
-                        GqlRootFieldName = "awsNativeS3Bucket"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "NativeS3Bucket",
+                        gqlRootFieldName: "awsNativeS3Bucket"
+                    )
                 },
                 {
                     GqlRootFieldName.awsTrustPolicy,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "TrustPolicy",
-                        GqlRootFieldName = "awsTrustPolicy"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "TrustPolicy",
+                        gqlRootFieldName: "awsTrustPolicy"
+                    )
                 },
                 {
                     GqlRootFieldName.azureAdDirectories,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "AdDirectories",
-                        GqlRootFieldName = "azureAdDirectories"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "AdDirectories",
+                        gqlRootFieldName: "azureAdDirectories"
+                    )
                 },
                 {
                     GqlRootFieldName.azureAdDirectory,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "AdDirectory",
-                        GqlRootFieldName = "azureAdDirectory"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "AdDirectory",
+                        gqlRootFieldName: "azureAdDirectory"
+                    )
                 },
                 {
                     GqlRootFieldName.azureAdObjectsByType,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "AdObjectsByType",
-                        GqlRootFieldName = "azureAdObjectsByType"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "AdObjectsByType",
+                        gqlRootFieldName: "azureAdObjectsByType"
+                    )
                 },
                 {
                     GqlRootFieldName.azureCloudAccountPermissionConfig,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "CloudAccountPermissionConfig",
-                        GqlRootFieldName = "azureCloudAccountPermissionConfig"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "CloudAccountPermissionConfig",
+                        gqlRootFieldName: "azureCloudAccountPermissionConfig"
+                    )
                 },
                 {
                     GqlRootFieldName.azureCloudAccountSubscriptionWithFeatures,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "CloudAccountSubscriptionWithFeatures",
-                        GqlRootFieldName = "azureCloudAccountSubscriptionWithFeatures"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "CloudAccountSubscriptionWithFeatures",
+                        gqlRootFieldName: "azureCloudAccountSubscriptionWithFeatures"
+                    )
                 },
                 {
                     GqlRootFieldName.azureCloudAccountTenant,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "CloudAccountTenant",
-                        GqlRootFieldName = "azureCloudAccountTenant"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "CloudAccountTenant",
+                        gqlRootFieldName: "azureCloudAccountTenant"
+                    )
                 },
                 {
                     GqlRootFieldName.azureCloudAccountTenantWithExoConfigs,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "CloudAccountTenantWithExoConfigs",
-                        GqlRootFieldName = "azureCloudAccountTenantWithExoConfigs"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "CloudAccountTenantWithExoConfigs",
+                        gqlRootFieldName: "azureCloudAccountTenantWithExoConfigs"
+                    )
                 },
                 {
                     GqlRootFieldName.azureNativeManagedDisk,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "NativeManagedDisk",
-                        GqlRootFieldName = "azureNativeManagedDisk"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "NativeManagedDisk",
+                        gqlRootFieldName: "azureNativeManagedDisk"
+                    )
                 },
                 {
                     GqlRootFieldName.azureNativeManagedDisks,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "NativeManagedDisks",
-                        GqlRootFieldName = "azureNativeManagedDisks"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "NativeManagedDisks",
+                        gqlRootFieldName: "azureNativeManagedDisks"
+                    )
                 },
                 {
                     GqlRootFieldName.azureNativeResourceGroup,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "NativeResourceGroup",
-                        GqlRootFieldName = "azureNativeResourceGroup"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "NativeResourceGroup",
+                        gqlRootFieldName: "azureNativeResourceGroup"
+                    )
                 },
                 {
                     GqlRootFieldName.azureNativeResourceGroups,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "NativeResourceGroups",
-                        GqlRootFieldName = "azureNativeResourceGroups"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "NativeResourceGroups",
+                        gqlRootFieldName: "azureNativeResourceGroups"
+                    )
                 },
                 {
                     GqlRootFieldName.azureNativeRoot,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "NativeRoot",
-                        GqlRootFieldName = "azureNativeRoot"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "NativeRoot",
+                        gqlRootFieldName: "azureNativeRoot"
+                    )
                 },
                 {
                     GqlRootFieldName.azureNativeSubscription,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "NativeSubscription",
-                        GqlRootFieldName = "azureNativeSubscription"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "NativeSubscription",
+                        gqlRootFieldName: "azureNativeSubscription"
+                    )
                 },
                 {
                     GqlRootFieldName.azureNativeSubscriptions,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "NativeSubscriptions",
-                        GqlRootFieldName = "azureNativeSubscriptions"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "NativeSubscriptions",
+                        gqlRootFieldName: "azureNativeSubscriptions"
+                    )
                 },
                 {
                     GqlRootFieldName.azureNativeVirtualMachine,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "NativeVirtualMachine",
-                        GqlRootFieldName = "azureNativeVirtualMachine"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "NativeVirtualMachine",
+                        gqlRootFieldName: "azureNativeVirtualMachine"
+                    )
                 },
                 {
                     GqlRootFieldName.azureNativeVirtualMachines,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "NativeVirtualMachines",
-                        GqlRootFieldName = "azureNativeVirtualMachines"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "NativeVirtualMachines",
+                        gqlRootFieldName: "azureNativeVirtualMachines"
+                    )
                 },
                 {
                     GqlRootFieldName.azureO365CheckNSGOutboundRules,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzureO365",
-                        CmdletSwitchName = "CheckNSGOutboundRules",
-                        GqlRootFieldName = "azureO365CheckNSGOutboundRules"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzureO365",
+                        cmdletSwitchName: "CheckNSGOutboundRules",
+                        gqlRootFieldName: "azureO365CheckNSGOutboundRules"
+                    )
                 },
                 {
                     GqlRootFieldName.azureO365CheckNetworkSubnet,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzureO365",
-                        CmdletSwitchName = "CheckNetworkSubnet",
-                        GqlRootFieldName = "azureO365CheckNetworkSubnet"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzureO365",
+                        cmdletSwitchName: "CheckNetworkSubnet",
+                        gqlRootFieldName: "azureO365CheckNetworkSubnet"
+                    )
                 },
                 {
                     GqlRootFieldName.azureO365CheckResourceGroupName,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzureO365",
-                        CmdletSwitchName = "CheckResourceGroupName",
-                        GqlRootFieldName = "azureO365CheckResourceGroupName"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzureO365",
+                        cmdletSwitchName: "CheckResourceGroupName",
+                        gqlRootFieldName: "azureO365CheckResourceGroupName"
+                    )
                 },
                 {
                     GqlRootFieldName.azureO365CheckStorageAccountAccessibility,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzureO365",
-                        CmdletSwitchName = "CheckStorageAccountAccessibility",
-                        GqlRootFieldName = "azureO365CheckStorageAccountAccessibility"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzureO365",
+                        cmdletSwitchName: "CheckStorageAccountAccessibility",
+                        gqlRootFieldName: "azureO365CheckStorageAccountAccessibility"
+                    )
                 },
                 {
                     GqlRootFieldName.azureO365CheckStorageAccountName,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzureO365",
-                        CmdletSwitchName = "CheckStorageAccountName",
-                        GqlRootFieldName = "azureO365CheckStorageAccountName"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzureO365",
+                        cmdletSwitchName: "CheckStorageAccountName",
+                        gqlRootFieldName: "azureO365CheckStorageAccountName"
+                    )
                 },
                 {
                     GqlRootFieldName.azureO365CheckSubscriptionQuota,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzureO365",
-                        CmdletSwitchName = "CheckSubscriptionQuota",
-                        GqlRootFieldName = "azureO365CheckSubscriptionQuota"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzureO365",
+                        cmdletSwitchName: "CheckSubscriptionQuota",
+                        gqlRootFieldName: "azureO365CheckSubscriptionQuota"
+                    )
                 },
                 {
                     GqlRootFieldName.azureO365CheckVirtualNetworkName,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzureO365",
-                        CmdletSwitchName = "CheckVirtualNetworkName",
-                        GqlRootFieldName = "azureO365CheckVirtualNetworkName"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzureO365",
+                        cmdletSwitchName: "CheckVirtualNetworkName",
+                        gqlRootFieldName: "azureO365CheckVirtualNetworkName"
+                    )
                 },
                 {
                     GqlRootFieldName.azureO365Exocompute,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzureO365",
-                        CmdletSwitchName = "Exocompute",
-                        GqlRootFieldName = "azureO365Exocompute"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzureO365",
+                        cmdletSwitchName: "Exocompute",
+                        gqlRootFieldName: "azureO365Exocompute"
+                    )
                 },
                 {
                     GqlRootFieldName.azureO365GetAzureHostType,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzureO365",
-                        CmdletSwitchName = "GetAzureHostType",
-                        GqlRootFieldName = "azureO365GetAzureHostType"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzureO365",
+                        cmdletSwitchName: "GetAzureHostType",
+                        gqlRootFieldName: "azureO365GetAzureHostType"
+                    )
                 },
                 {
                     GqlRootFieldName.azureO365GetNetworkSubnetUnusedAddr,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzureO365",
-                        CmdletSwitchName = "GetNetworkSubnetUnusedAddr",
-                        GqlRootFieldName = "azureO365GetNetworkSubnetUnusedAddr"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzureO365",
+                        cmdletSwitchName: "GetNetworkSubnetUnusedAddr",
+                        gqlRootFieldName: "azureO365GetNetworkSubnetUnusedAddr"
+                    )
                 },
                 {
                     GqlRootFieldName.azureO365ValidateUserRoles,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzureO365",
-                        CmdletSwitchName = "ValidateUserRoles",
-                        GqlRootFieldName = "azureO365ValidateUserRoles"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzureO365",
+                        cmdletSwitchName: "ValidateUserRoles",
+                        gqlRootFieldName: "azureO365ValidateUserRoles"
+                    )
                 },
                 {
                     GqlRootFieldName.azureOauthConsentComplete,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "OauthConsentComplete",
-                        GqlRootFieldName = "azureOauthConsentComplete"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "OauthConsentComplete",
+                        gqlRootFieldName: "azureOauthConsentComplete"
+                    )
                 },
                 {
                     GqlRootFieldName.azureOauthConsentKickoff,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "OauthConsentKickoff",
-                        GqlRootFieldName = "azureOauthConsentKickoff"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "OauthConsentKickoff",
+                        gqlRootFieldName: "azureOauthConsentKickoff"
+                    )
                 },
                 {
                     GqlRootFieldName.azureRegions,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "Regions",
-                        GqlRootFieldName = "azureRegions"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "Regions",
+                        gqlRootFieldName: "azureRegions"
+                    )
                 },
                 {
                     GqlRootFieldName.azureResourceGroups,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "ResourceGroups",
-                        GqlRootFieldName = "azureResourceGroups"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "ResourceGroups",
+                        gqlRootFieldName: "azureResourceGroups"
+                    )
                 },
                 {
                     GqlRootFieldName.azureSqlDatabase,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "SqlDatabase",
-                        GqlRootFieldName = "azureSqlDatabase"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "SqlDatabase",
+                        gqlRootFieldName: "azureSqlDatabase"
+                    )
                 },
                 {
                     GqlRootFieldName.azureSqlDatabaseDbPointInTimeRestoreWindowFromAzure,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "SqlDatabaseDbPointInTimeRestoreWindowFromAzure",
-                        GqlRootFieldName = "azureSqlDatabaseDbPointInTimeRestoreWindowFromAzure"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "SqlDatabaseDbPointInTimeRestoreWindowFromAzure",
+                        gqlRootFieldName: "azureSqlDatabaseDbPointInTimeRestoreWindowFromAzure"
+                    )
                 },
                 {
                     GqlRootFieldName.azureSqlDatabaseServer,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "SqlDatabaseServer",
-                        GqlRootFieldName = "azureSqlDatabaseServer"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "SqlDatabaseServer",
+                        gqlRootFieldName: "azureSqlDatabaseServer"
+                    )
                 },
                 {
                     GqlRootFieldName.azureSqlDatabaseServers,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "SqlDatabaseServers",
-                        GqlRootFieldName = "azureSqlDatabaseServers"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "SqlDatabaseServers",
+                        gqlRootFieldName: "azureSqlDatabaseServers"
+                    )
                 },
                 {
                     GqlRootFieldName.azureSqlDatabases,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "SqlDatabases",
-                        GqlRootFieldName = "azureSqlDatabases"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "SqlDatabases",
+                        gqlRootFieldName: "azureSqlDatabases"
+                    )
                 },
                 {
                     GqlRootFieldName.azureSqlManagedInstanceDatabase,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "SqlManagedInstanceDatabase",
-                        GqlRootFieldName = "azureSqlManagedInstanceDatabase"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "SqlManagedInstanceDatabase",
+                        gqlRootFieldName: "azureSqlManagedInstanceDatabase"
+                    )
                 },
                 {
                     GqlRootFieldName.azureSqlManagedInstanceDatabases,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "SqlManagedInstanceDatabases",
-                        GqlRootFieldName = "azureSqlManagedInstanceDatabases"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "SqlManagedInstanceDatabases",
+                        gqlRootFieldName: "azureSqlManagedInstanceDatabases"
+                    )
                 },
                 {
                     GqlRootFieldName.azureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure",
-                        GqlRootFieldName = "azureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure",
+                        gqlRootFieldName: "azureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure"
+                    )
                 },
                 {
                     GqlRootFieldName.azureSqlManagedInstanceServer,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "SqlManagedInstanceServer",
-                        GqlRootFieldName = "azureSqlManagedInstanceServer"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "SqlManagedInstanceServer",
+                        gqlRootFieldName: "azureSqlManagedInstanceServer"
+                    )
                 },
                 {
                     GqlRootFieldName.azureSqlManagedInstanceServers,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "SqlManagedInstanceServers",
-                        GqlRootFieldName = "azureSqlManagedInstanceServers"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "SqlManagedInstanceServers",
+                        gqlRootFieldName: "azureSqlManagedInstanceServers"
+                    )
                 },
                 {
                     GqlRootFieldName.azureStorageAccounts,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "StorageAccounts",
-                        GqlRootFieldName = "azureStorageAccounts"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "StorageAccounts",
+                        gqlRootFieldName: "azureStorageAccounts"
+                    )
                 },
                 {
                     GqlRootFieldName.azureSubnets,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "Subnets",
-                        GqlRootFieldName = "azureSubnets"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "Subnets",
+                        gqlRootFieldName: "azureSubnets"
+                    )
                 },
                 {
                     GqlRootFieldName.azureSubscriptions,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "Subscriptions",
-                        GqlRootFieldName = "azureSubscriptions"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "Subscriptions",
+                        gqlRootFieldName: "azureSubscriptions"
+                    )
                 },
                 {
                     GqlRootFieldName.azureVNets,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "VNets",
-                        GqlRootFieldName = "azureVNets"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "VNets",
+                        gqlRootFieldName: "azureVNets"
+                    )
                 },
                 {
                     GqlRootFieldName.backupAzureAdDirectory,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "BackupAdDirectory",
-                        GqlRootFieldName = "backupAzureAdDirectory"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "BackupAdDirectory",
+                        gqlRootFieldName: "backupAzureAdDirectory"
+                    )
                 },
                 {
                     GqlRootFieldName.backupO365Mailbox,
-                    new RscOp {
-                        CmdletName = "New-RscMutationO365",
-                        CmdletSwitchName = "BackupMailbox",
-                        GqlRootFieldName = "backupO365Mailbox"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationO365",
+                        cmdletSwitchName: "BackupMailbox",
+                        gqlRootFieldName: "backupO365Mailbox"
+                    )
                 },
                 {
                     GqlRootFieldName.backupO365Onedrive,
-                    new RscOp {
-                        CmdletName = "New-RscMutationO365",
-                        CmdletSwitchName = "BackupOnedrive",
-                        GqlRootFieldName = "backupO365Onedrive"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationO365",
+                        cmdletSwitchName: "BackupOnedrive",
+                        gqlRootFieldName: "backupO365Onedrive"
+                    )
                 },
                 {
                     GqlRootFieldName.backupO365SharePointSite,
-                    new RscOp {
-                        CmdletName = "New-RscMutationO365",
-                        CmdletSwitchName = "BackupSharePointSite",
-                        GqlRootFieldName = "backupO365SharePointSite"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationO365",
+                        cmdletSwitchName: "BackupSharePointSite",
+                        gqlRootFieldName: "backupO365SharePointSite"
+                    )
                 },
                 {
                     GqlRootFieldName.backupO365SharepointDrive,
-                    new RscOp {
-                        CmdletName = "New-RscMutationO365",
-                        CmdletSwitchName = "BackupSharepointDrive",
-                        GqlRootFieldName = "backupO365SharepointDrive"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationO365",
+                        cmdletSwitchName: "BackupSharepointDrive",
+                        gqlRootFieldName: "backupO365SharepointDrive"
+                    )
                 },
                 {
                     GqlRootFieldName.backupO365SharepointList,
-                    new RscOp {
-                        CmdletName = "New-RscMutationO365",
-                        CmdletSwitchName = "BackupSharepointList",
-                        GqlRootFieldName = "backupO365SharepointList"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationO365",
+                        cmdletSwitchName: "BackupSharepointList",
+                        gqlRootFieldName: "backupO365SharepointList"
+                    )
                 },
                 {
                     GqlRootFieldName.backupO365Team,
-                    new RscOp {
-                        CmdletName = "New-RscMutationO365",
-                        CmdletSwitchName = "BackupTeam",
-                        GqlRootFieldName = "backupO365Team"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationO365",
+                        cmdletSwitchName: "BackupTeam",
+                        gqlRootFieldName: "backupO365Team"
+                    )
                 },
                 {
                     GqlRootFieldName.batchExportHypervVm,
-                    new RscOp {
-                        CmdletName = "New-RscMutationHyperv",
-                        CmdletSwitchName = "BatchExportVm",
-                        GqlRootFieldName = "batchExportHypervVm"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationHyperv",
+                        cmdletSwitchName: "BatchExportVm",
+                        gqlRootFieldName: "batchExportHypervVm"
+                    )
                 },
                 {
                     GqlRootFieldName.batchExportNutanixVm,
-                    new RscOp {
-                        CmdletName = "New-RscMutationNutanix",
-                        CmdletSwitchName = "BatchExportVm",
-                        GqlRootFieldName = "batchExportNutanixVm"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationNutanix",
+                        cmdletSwitchName: "BatchExportVm",
+                        gqlRootFieldName: "batchExportNutanixVm"
+                    )
                 },
                 {
                     GqlRootFieldName.batchInstantRecoverHypervVm,
-                    new RscOp {
-                        CmdletName = "New-RscMutationHyperv",
-                        CmdletSwitchName = "BatchInstantRecoverVm",
-                        GqlRootFieldName = "batchInstantRecoverHypervVm"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationHyperv",
+                        cmdletSwitchName: "BatchInstantRecoverVm",
+                        gqlRootFieldName: "batchInstantRecoverHypervVm"
+                    )
                 },
                 {
                     GqlRootFieldName.batchMountHypervVm,
-                    new RscOp {
-                        CmdletName = "New-RscMutationHyperv",
-                        CmdletSwitchName = "BatchMountVm",
-                        GqlRootFieldName = "batchMountHypervVm"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationHyperv",
+                        cmdletSwitchName: "BatchMountVm",
+                        gqlRootFieldName: "batchMountHypervVm"
+                    )
                 },
                 {
                     GqlRootFieldName.batchMountNutanixVm,
-                    new RscOp {
-                        CmdletName = "New-RscMutationNutanix",
-                        CmdletSwitchName = "BatchMountVm",
-                        GqlRootFieldName = "batchMountNutanixVm"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationNutanix",
+                        cmdletSwitchName: "BatchMountVm",
+                        gqlRootFieldName: "batchMountNutanixVm"
+                    )
                 },
                 {
                     GqlRootFieldName.batchOnDemandBackupHypervVm,
-                    new RscOp {
-                        CmdletName = "New-RscMutationHyperv",
-                        CmdletSwitchName = "BatchOnDemandBackupVm",
-                        GqlRootFieldName = "batchOnDemandBackupHypervVm"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationHyperv",
+                        cmdletSwitchName: "BatchOnDemandBackupVm",
+                        gqlRootFieldName: "batchOnDemandBackupHypervVm"
+                    )
+                },
+                {
+                    GqlRootFieldName.beginManagedVolumeSnapshot,
+                    new RscOp(
+                        cmdletName: "New-RscMutationManagedVolume",
+                        cmdletSwitchName: "BeginSnapshot",
+                        gqlRootFieldName: "beginManagedVolumeSnapshot"
+                    )
                 },
                 {
                     GqlRootFieldName.browseMssqlDatabaseSnapshot,
-                    new RscOp {
-                        CmdletName = "New-RscMutationMssql",
-                        CmdletSwitchName = "BrowseDatabaseSnapshot",
-                        GqlRootFieldName = "browseMssqlDatabaseSnapshot"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationMssql",
+                        cmdletSwitchName: "BrowseDatabaseSnapshot",
+                        gqlRootFieldName: "browseMssqlDatabaseSnapshot"
+                    )
                 },
                 {
                     GqlRootFieldName.browseO365TeamConvChannels,
-                    new RscOp {
-                        CmdletName = "New-RscQueryO365",
-                        CmdletSwitchName = "BrowseTeamConvChannels",
-                        GqlRootFieldName = "browseO365TeamConvChannels"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryO365",
+                        cmdletSwitchName: "BrowseTeamConvChannels",
+                        gqlRootFieldName: "browseO365TeamConvChannels"
+                    )
                 },
                 {
                     GqlRootFieldName.bulkCreateOnDemandMssqlBackup,
-                    new RscOp {
-                        CmdletName = "New-RscMutationMssql",
-                        CmdletSwitchName = "BulkCreateOnDemandBackup",
-                        GqlRootFieldName = "bulkCreateOnDemandMssqlBackup"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationMssql",
+                        cmdletSwitchName: "BulkCreateOnDemandBackup",
+                        gqlRootFieldName: "bulkCreateOnDemandMssqlBackup"
+                    )
                 },
                 {
                     GqlRootFieldName.bulkDeleteAwsCloudAccountWithoutCft,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAws",
-                        CmdletSwitchName = "BulkDeleteCloudAccountWithoutCft",
-                        GqlRootFieldName = "bulkDeleteAwsCloudAccountWithoutCft"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "BulkDeleteCloudAccountWithoutCft",
+                        gqlRootFieldName: "bulkDeleteAwsCloudAccountWithoutCft"
+                    )
                 },
                 {
                     GqlRootFieldName.bulkDeleteCassandraSources,
-                    new RscOp {
-                        CmdletName = "New-RscMutationCassandra",
-                        CmdletSwitchName = "BulkDeleteSources",
-                        GqlRootFieldName = "bulkDeleteCassandraSources"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationCassandra",
+                        cmdletSwitchName: "BulkDeleteSources",
+                        gqlRootFieldName: "bulkDeleteCassandraSources"
+                    )
                 },
                 {
                     GqlRootFieldName.bulkDeleteFailoverCluster,
-                    new RscOp {
-                        CmdletName = "New-RscMutationCluster",
-                        CmdletSwitchName = "BulkDeleteFailover",
-                        GqlRootFieldName = "bulkDeleteFailoverCluster"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationCluster",
+                        cmdletSwitchName: "BulkDeleteFailover",
+                        gqlRootFieldName: "bulkDeleteFailoverCluster"
+                    )
                 },
                 {
                     GqlRootFieldName.bulkDeleteMongodbSources,
-                    new RscOp {
-                        CmdletName = "New-RscMutationMongo",
-                        CmdletSwitchName = "BulkDeletedbSources",
-                        GqlRootFieldName = "bulkDeleteMongodbSources"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationMongo",
+                        cmdletSwitchName: "BulkDeletedbSources",
+                        gqlRootFieldName: "bulkDeleteMongodbSources"
+                    )
                 },
                 {
                     GqlRootFieldName.bulkOnDemandSnapshotNutanixVm,
-                    new RscOp {
-                        CmdletName = "New-RscMutationNutanix",
-                        CmdletSwitchName = "BulkOnDemandSnapshotVm",
-                        GqlRootFieldName = "bulkOnDemandSnapshotNutanixVm"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationNutanix",
+                        cmdletSwitchName: "BulkOnDemandSnapshotVm",
+                        gqlRootFieldName: "bulkOnDemandSnapshotNutanixVm"
+                    )
                 },
                 {
                     GqlRootFieldName.bulkUpdateMssqlDbs,
-                    new RscOp {
-                        CmdletName = "New-RscMutationMssql",
-                        CmdletSwitchName = "BulkUpdateDbs",
-                        GqlRootFieldName = "bulkUpdateMssqlDbs"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationMssql",
+                        cmdletSwitchName: "BulkUpdateDbs",
+                        gqlRootFieldName: "bulkUpdateMssqlDbs"
+                    )
                 },
                 {
                     GqlRootFieldName.bulkUpdateOracleDatabases,
-                    new RscOp {
-                        CmdletName = "New-RscMutationOracle",
-                        CmdletSwitchName = "BulkUpdateDatabases",
-                        GqlRootFieldName = "bulkUpdateOracleDatabases"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationOracle",
+                        cmdletSwitchName: "BulkUpdateDatabases",
+                        gqlRootFieldName: "bulkUpdateOracleDatabases"
+                    )
                 },
                 {
                     GqlRootFieldName.bulkUpdateOracleHosts,
-                    new RscOp {
-                        CmdletName = "New-RscMutationOracle",
-                        CmdletSwitchName = "BulkUpdateHosts",
-                        GqlRootFieldName = "bulkUpdateOracleHosts"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationOracle",
+                        cmdletSwitchName: "BulkUpdateHosts",
+                        gqlRootFieldName: "bulkUpdateOracleHosts"
+                    )
                 },
                 {
                     GqlRootFieldName.bulkUpdateOracleRacs,
-                    new RscOp {
-                        CmdletName = "New-RscMutationOracle",
-                        CmdletSwitchName = "BulkUpdateRacs",
-                        GqlRootFieldName = "bulkUpdateOracleRacs"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationOracle",
+                        cmdletSwitchName: "BulkUpdateRacs",
+                        gqlRootFieldName: "bulkUpdateOracleRacs"
+                    )
                 },
                 {
                     GqlRootFieldName.cancelActivitySeries,
-                    new RscOp {
-                        CmdletName = "New-RscMutationActivitySeries",
-                        CmdletSwitchName = "Cancel",
-                        GqlRootFieldName = "cancelActivitySeries"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationActivitySeries",
+                        cmdletSwitchName: "Cancel",
+                        gqlRootFieldName: "cancelActivitySeries"
+                    )
                 },
                 {
                     GqlRootFieldName.cassandraColumnFamilies,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCassandra",
-                        CmdletSwitchName = "ColumnFamilies",
-                        GqlRootFieldName = "cassandraColumnFamilies"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCassandra",
+                        cmdletSwitchName: "ColumnFamilies",
+                        gqlRootFieldName: "cassandraColumnFamilies"
+                    )
                 },
                 {
                     GqlRootFieldName.cassandraColumnFamily,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCassandra",
-                        CmdletSwitchName = "ColumnFamily",
-                        GqlRootFieldName = "cassandraColumnFamily"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCassandra",
+                        cmdletSwitchName: "ColumnFamily",
+                        gqlRootFieldName: "cassandraColumnFamily"
+                    )
                 },
                 {
                     GqlRootFieldName.cassandraColumnFamilyRecoverableRange,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCassandra",
-                        CmdletSwitchName = "ColumnFamilyRecoverableRange",
-                        GqlRootFieldName = "cassandraColumnFamilyRecoverableRange"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCassandra",
+                        cmdletSwitchName: "ColumnFamilyRecoverableRange",
+                        gqlRootFieldName: "cassandraColumnFamilyRecoverableRange"
+                    )
                 },
                 {
                     GqlRootFieldName.cassandraColumnFamilySchema,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCassandra",
-                        CmdletSwitchName = "ColumnFamilySchema",
-                        GqlRootFieldName = "cassandraColumnFamilySchema"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCassandra",
+                        cmdletSwitchName: "ColumnFamilySchema",
+                        gqlRootFieldName: "cassandraColumnFamilySchema"
+                    )
                 },
                 {
                     GqlRootFieldName.cassandraKeyspace,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCassandra",
-                        CmdletSwitchName = "Keyspace",
-                        GqlRootFieldName = "cassandraKeyspace"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCassandra",
+                        cmdletSwitchName: "Keyspace",
+                        gqlRootFieldName: "cassandraKeyspace"
+                    )
                 },
                 {
                     GqlRootFieldName.cassandraKeyspaces,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCassandra",
-                        CmdletSwitchName = "Keyspaces",
-                        GqlRootFieldName = "cassandraKeyspaces"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCassandra",
+                        cmdletSwitchName: "Keyspaces",
+                        gqlRootFieldName: "cassandraKeyspaces"
+                    )
                 },
                 {
                     GqlRootFieldName.cassandraSource,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCassandra",
-                        CmdletSwitchName = "Source",
-                        GqlRootFieldName = "cassandraSource"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCassandra",
+                        cmdletSwitchName: "Source",
+                        gqlRootFieldName: "cassandraSource"
+                    )
                 },
                 {
                     GqlRootFieldName.cassandraSources,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCassandra",
-                        CmdletSwitchName = "Sources",
-                        GqlRootFieldName = "cassandraSources"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCassandra",
+                        cmdletSwitchName: "Sources",
+                        gqlRootFieldName: "cassandraSources"
+                    )
                 },
                 {
                     GqlRootFieldName.cdmMssqlLogShippingTarget,
-                    new RscOp {
-                        CmdletName = "New-RscQueryMssql",
-                        CmdletSwitchName = "CdmLogShippingTarget",
-                        GqlRootFieldName = "cdmMssqlLogShippingTarget"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryMssql",
+                        cmdletSwitchName: "CdmLogShippingTarget",
+                        gqlRootFieldName: "cdmMssqlLogShippingTarget"
+                    )
                 },
                 {
                     GqlRootFieldName.cdmMssqlLogShippingTargets,
-                    new RscOp {
-                        CmdletName = "New-RscQueryMssql",
-                        CmdletSwitchName = "CdmLogShippingTargets",
-                        GqlRootFieldName = "cdmMssqlLogShippingTargets"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryMssql",
+                        cmdletSwitchName: "CdmLogShippingTargets",
+                        gqlRootFieldName: "cdmMssqlLogShippingTargets"
+                    )
                 },
                 {
                     GqlRootFieldName.checkAzurePersistentStorageSubscriptionCanUnmap,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "CheckPersistentStorageSubscriptionCanUnmap",
-                        GqlRootFieldName = "checkAzurePersistentStorageSubscriptionCanUnmap"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "CheckPersistentStorageSubscriptionCanUnmap",
+                        gqlRootFieldName: "checkAzurePersistentStorageSubscriptionCanUnmap"
+                    )
                 },
                 {
                     GqlRootFieldName.cluster,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCluster",
-                        CmdletSwitchName = "Cluster",
-                        GqlRootFieldName = "cluster"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCluster",
+                        cmdletSwitchName: "Cluster",
+                        gqlRootFieldName: "cluster"
+                    )
                 },
                 {
                     GqlRootFieldName.clusterCertificates,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCluster",
-                        CmdletSwitchName = "Certificates",
-                        GqlRootFieldName = "clusterCertificates"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCluster",
+                        cmdletSwitchName: "Certificates",
+                        gqlRootFieldName: "clusterCertificates"
+                    )
                 },
                 {
                     GqlRootFieldName.clusterConnection,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCluster",
-                        CmdletSwitchName = "List",
-                        GqlRootFieldName = "clusterConnection"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCluster",
+                        cmdletSwitchName: "List",
+                        gqlRootFieldName: "clusterConnection"
+                    )
                 },
                 {
                     GqlRootFieldName.clusterCsr,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCluster",
-                        CmdletSwitchName = "Csr",
-                        GqlRootFieldName = "clusterCsr"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCluster",
+                        cmdletSwitchName: "Csr",
+                        gqlRootFieldName: "clusterCsr"
+                    )
                 },
                 {
                     GqlRootFieldName.clusterDefaultGateway,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCluster",
-                        CmdletSwitchName = "DefaultGateway",
-                        GqlRootFieldName = "clusterDefaultGateway"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCluster",
+                        cmdletSwitchName: "DefaultGateway",
+                        gqlRootFieldName: "clusterDefaultGateway"
+                    )
                 },
                 {
                     GqlRootFieldName.clusterDns,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCluster",
-                        CmdletSwitchName = "Dns",
-                        GqlRootFieldName = "clusterDns"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCluster",
+                        cmdletSwitchName: "Dns",
+                        gqlRootFieldName: "clusterDns"
+                    )
                 },
                 {
                     GqlRootFieldName.clusterFloatingIps,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCluster",
-                        CmdletSwitchName = "FloatingIps",
-                        GqlRootFieldName = "clusterFloatingIps"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCluster",
+                        cmdletSwitchName: "FloatingIps",
+                        gqlRootFieldName: "clusterFloatingIps"
+                    )
                 },
                 {
                     GqlRootFieldName.clusterGroupByConnection,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCluster",
-                        CmdletSwitchName = "GroupByList",
-                        GqlRootFieldName = "clusterGroupByConnection"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCluster",
+                        cmdletSwitchName: "GroupByList",
+                        gqlRootFieldName: "clusterGroupByConnection"
+                    )
                 },
                 {
                     GqlRootFieldName.clusterIpmi,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCluster",
-                        CmdletSwitchName = "Ipmi",
-                        GqlRootFieldName = "clusterIpmi"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCluster",
+                        cmdletSwitchName: "Ipmi",
+                        gqlRootFieldName: "clusterIpmi"
+                    )
                 },
                 {
                     GqlRootFieldName.clusterIpv6Mode,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCluster",
-                        CmdletSwitchName = "Ipv6Mode",
-                        GqlRootFieldName = "clusterIpv6Mode"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCluster",
+                        cmdletSwitchName: "Ipv6Mode",
+                        gqlRootFieldName: "clusterIpv6Mode"
+                    )
                 },
                 {
                     GqlRootFieldName.clusterNetworkInterfaces,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCluster",
-                        CmdletSwitchName = "NetworkInterfaces",
-                        GqlRootFieldName = "clusterNetworkInterfaces"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCluster",
+                        cmdletSwitchName: "NetworkInterfaces",
+                        gqlRootFieldName: "clusterNetworkInterfaces"
+                    )
                 },
                 {
                     GqlRootFieldName.clusterNodes,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCluster",
-                        CmdletSwitchName = "Nodes",
-                        GqlRootFieldName = "clusterNodes"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCluster",
+                        cmdletSwitchName: "Nodes",
+                        gqlRootFieldName: "clusterNodes"
+                    )
                 },
                 {
                     GqlRootFieldName.clusterNtpServers,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCluster",
-                        CmdletSwitchName = "NtpServers",
-                        GqlRootFieldName = "clusterNtpServers"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCluster",
+                        cmdletSwitchName: "NtpServers",
+                        gqlRootFieldName: "clusterNtpServers"
+                    )
                 },
                 {
                     GqlRootFieldName.clusterOperationJobProgress,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCluster",
-                        CmdletSwitchName = "OperationJobProgress",
-                        GqlRootFieldName = "clusterOperationJobProgress"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCluster",
+                        cmdletSwitchName: "OperationJobProgress",
+                        gqlRootFieldName: "clusterOperationJobProgress"
+                    )
                 },
                 {
                     GqlRootFieldName.clusterProxy,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCluster",
-                        CmdletSwitchName = "Proxy",
-                        GqlRootFieldName = "clusterProxy"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCluster",
+                        cmdletSwitchName: "Proxy",
+                        gqlRootFieldName: "clusterProxy"
+                    )
                 },
                 {
                     GqlRootFieldName.clusterRegistrationProductInfo,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCluster",
-                        CmdletSwitchName = "RegistrationProductInfo",
-                        GqlRootFieldName = "clusterRegistrationProductInfo"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCluster",
+                        cmdletSwitchName: "RegistrationProductInfo",
+                        gqlRootFieldName: "clusterRegistrationProductInfo"
+                    )
                 },
                 {
                     GqlRootFieldName.clusterReportMigrationCount,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCluster",
-                        CmdletSwitchName = "ReportMigrationCount",
-                        GqlRootFieldName = "clusterReportMigrationCount"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCluster",
+                        cmdletSwitchName: "ReportMigrationCount",
+                        gqlRootFieldName: "clusterReportMigrationCount"
+                    )
                 },
                 {
                     GqlRootFieldName.clusterReportMigrationJobStatus,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCluster",
-                        CmdletSwitchName = "ReportMigrationJobStatus",
-                        GqlRootFieldName = "clusterReportMigrationJobStatus"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCluster",
+                        cmdletSwitchName: "ReportMigrationJobStatus",
+                        gqlRootFieldName: "clusterReportMigrationJobStatus"
+                    )
                 },
                 {
                     GqlRootFieldName.clusterReportMigrationStatus,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCluster",
-                        CmdletSwitchName = "ReportMigrationStatus",
-                        GqlRootFieldName = "clusterReportMigrationStatus"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCluster",
+                        cmdletSwitchName: "ReportMigrationStatus",
+                        gqlRootFieldName: "clusterReportMigrationStatus"
+                    )
                 },
                 {
                     GqlRootFieldName.clusterSlaDomains,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCluster",
-                        CmdletSwitchName = "SlaDomains",
-                        GqlRootFieldName = "clusterSlaDomains"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCluster",
+                        cmdletSwitchName: "SlaDomains",
+                        gqlRootFieldName: "clusterSlaDomains"
+                    )
                 },
                 {
                     GqlRootFieldName.clusterTypeList,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCluster",
-                        CmdletSwitchName = "TypeList",
-                        GqlRootFieldName = "clusterTypeList"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCluster",
+                        cmdletSwitchName: "TypeList",
+                        gqlRootFieldName: "clusterTypeList"
+                    )
                 },
                 {
                     GqlRootFieldName.clusterVlans,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCluster",
-                        CmdletSwitchName = "Vlans",
-                        GqlRootFieldName = "clusterVlans"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCluster",
+                        cmdletSwitchName: "Vlans",
+                        gqlRootFieldName: "clusterVlans"
+                    )
                 },
                 {
                     GqlRootFieldName.clusterWebSignedCertificate,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCluster",
-                        CmdletSwitchName = "WebSignedCertificate",
-                        GqlRootFieldName = "clusterWebSignedCertificate"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCluster",
+                        cmdletSwitchName: "WebSignedCertificate",
+                        gqlRootFieldName: "clusterWebSignedCertificate"
+                    )
                 },
                 {
                     GqlRootFieldName.clusterWithUpgradesInfo,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCluster",
-                        CmdletSwitchName = "WithUpgradesInfo",
-                        GqlRootFieldName = "clusterWithUpgradesInfo"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCluster",
+                        cmdletSwitchName: "WithUpgradesInfo",
+                        gqlRootFieldName: "clusterWithUpgradesInfo"
+                    )
                 },
                 {
                     GqlRootFieldName.completeAzureAdAppSetup,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "CompleteAdAppSetup",
-                        GqlRootFieldName = "completeAzureAdAppSetup"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "CompleteAdAppSetup",
+                        gqlRootFieldName: "completeAzureAdAppSetup"
+                    )
                 },
                 {
                     GqlRootFieldName.completeAzureAdAppUpdate,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "CompleteAdAppUpdate",
-                        GqlRootFieldName = "completeAzureAdAppUpdate"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "CompleteAdAppUpdate",
+                        gqlRootFieldName: "completeAzureAdAppUpdate"
+                    )
                 },
                 {
                     GqlRootFieldName.completeAzureCloudAccountOauth,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "CompleteCloudAccountOauth",
-                        GqlRootFieldName = "completeAzureCloudAccountOauth"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "CompleteCloudAccountOauth",
+                        gqlRootFieldName: "completeAzureCloudAccountOauth"
+                    )
                 },
                 {
                     GqlRootFieldName.countOfObjectsProtectedBySlas,
-                    new RscOp {
-                        CmdletName = "New-RscQuerySla",
-                        CmdletSwitchName = "CountOfObjectsProtected",
-                        GqlRootFieldName = "countOfObjectsProtectedBySlas"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQuerySla",
+                        cmdletSwitchName: "CountOfObjectsProtected",
+                        gqlRootFieldName: "countOfObjectsProtectedBySlas"
+                    )
                 },
                 {
                     GqlRootFieldName.createAutomaticAwsTargetMapping,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAws",
-                        CmdletSwitchName = "CreateAutomaticTargetMapping",
-                        GqlRootFieldName = "createAutomaticAwsTargetMapping"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "CreateAutomaticTargetMapping",
+                        gqlRootFieldName: "createAutomaticAwsTargetMapping"
+                    )
                 },
                 {
                     GqlRootFieldName.createAutomaticAzureTargetMapping,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "CreateAutomaticTargetMapping",
-                        GqlRootFieldName = "createAutomaticAzureTargetMapping"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "CreateAutomaticTargetMapping",
+                        gqlRootFieldName: "createAutomaticAzureTargetMapping"
+                    )
                 },
                 {
                     GqlRootFieldName.createAwsAccount,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAws",
-                        CmdletSwitchName = "CreateAccount",
-                        GqlRootFieldName = "createAwsAccount"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "CreateAccount",
+                        gqlRootFieldName: "createAwsAccount"
+                    )
                 },
                 {
                     GqlRootFieldName.createAwsCluster,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAws",
-                        CmdletSwitchName = "CreateCluster",
-                        GqlRootFieldName = "createAwsCluster"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "CreateCluster",
+                        gqlRootFieldName: "createAwsCluster"
+                    )
                 },
                 {
                     GqlRootFieldName.createAwsComputeSetting,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAws",
-                        CmdletSwitchName = "CreateComputeSetting",
-                        GqlRootFieldName = "createAwsComputeSetting"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "CreateComputeSetting",
+                        gqlRootFieldName: "createAwsComputeSetting"
+                    )
                 },
                 {
                     GqlRootFieldName.createAwsExocomputeConfigs,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAws",
-                        CmdletSwitchName = "CreateExocomputeConfigs",
-                        GqlRootFieldName = "createAwsExocomputeConfigs"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "CreateExocomputeConfigs",
+                        gqlRootFieldName: "createAwsExocomputeConfigs"
+                    )
                 },
                 {
                     GqlRootFieldName.createAwsReaderTarget,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAws",
-                        CmdletSwitchName = "CreateReaderTarget",
-                        GqlRootFieldName = "createAwsReaderTarget"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "CreateReaderTarget",
+                        gqlRootFieldName: "createAwsReaderTarget"
+                    )
                 },
                 {
                     GqlRootFieldName.createAwsTarget,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAws",
-                        CmdletSwitchName = "CreateTarget",
-                        GqlRootFieldName = "createAwsTarget"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "CreateTarget",
+                        gqlRootFieldName: "createAwsTarget"
+                    )
                 },
                 {
                     GqlRootFieldName.createAzureAccount,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "CreateAccount",
-                        GqlRootFieldName = "createAzureAccount"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "CreateAccount",
+                        gqlRootFieldName: "createAzureAccount"
+                    )
                 },
                 {
                     GqlRootFieldName.createAzureCluster,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "CreateCluster",
-                        GqlRootFieldName = "createAzureCluster"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "CreateCluster",
+                        gqlRootFieldName: "createAzureCluster"
+                    )
                 },
                 {
                     GqlRootFieldName.createAzureReaderTarget,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "CreateReaderTarget",
-                        GqlRootFieldName = "createAzureReaderTarget"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "CreateReaderTarget",
+                        gqlRootFieldName: "createAzureReaderTarget"
+                    )
                 },
                 {
                     GqlRootFieldName.createAzureSaasAppAad,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "CreateSaasAppAad",
-                        GqlRootFieldName = "createAzureSaasAppAad"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "CreateSaasAppAad",
+                        gqlRootFieldName: "createAzureSaasAppAad"
+                    )
                 },
                 {
                     GqlRootFieldName.createAzureTarget,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "CreateTarget",
-                        GqlRootFieldName = "createAzureTarget"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "CreateTarget",
+                        gqlRootFieldName: "createAzureTarget"
+                    )
                 },
                 {
                     GqlRootFieldName.createCassandraSource,
-                    new RscOp {
-                        CmdletName = "New-RscMutationCassandra",
-                        CmdletSwitchName = "CreateSource",
-                        GqlRootFieldName = "createCassandraSource"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationCassandra",
+                        cmdletSwitchName: "CreateSource",
+                        gqlRootFieldName: "createCassandraSource"
+                    )
                 },
                 {
                     GqlRootFieldName.createCloudNativeAwsStorageSetting,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAws",
-                        CmdletSwitchName = "CreateCloudNativeStorageSetting",
-                        GqlRootFieldName = "createCloudNativeAwsStorageSetting"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "CreateCloudNativeStorageSetting",
+                        gqlRootFieldName: "createCloudNativeAwsStorageSetting"
+                    )
                 },
                 {
                     GqlRootFieldName.createCloudNativeAzureStorageSetting,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "CreateCloudNativeStorageSetting",
-                        GqlRootFieldName = "createCloudNativeAzureStorageSetting"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "CreateCloudNativeStorageSetting",
+                        gqlRootFieldName: "createCloudNativeAzureStorageSetting"
+                    )
                 },
                 {
                     GqlRootFieldName.createCloudNativeRcvAzureStorageSetting,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "CreateCloudNativeRcvStorageSetting",
-                        GqlRootFieldName = "createCloudNativeRcvAzureStorageSetting"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "CreateCloudNativeRcvStorageSetting",
+                        gqlRootFieldName: "createCloudNativeRcvAzureStorageSetting"
+                    )
                 },
                 {
                     GqlRootFieldName.createFailoverCluster,
-                    new RscOp {
-                        CmdletName = "New-RscMutationCluster",
-                        CmdletSwitchName = "CreateFailover",
-                        GqlRootFieldName = "createFailoverCluster"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationCluster",
+                        cmdletSwitchName: "CreateFailover",
+                        gqlRootFieldName: "createFailoverCluster"
+                    )
                 },
                 {
                     GqlRootFieldName.createGlobalSla,
-                    new RscOp {
-                        CmdletName = "New-RscMutationSla",
-                        CmdletSwitchName = "CreateGlobal",
-                        GqlRootFieldName = "createGlobalSla"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationSla",
+                        cmdletSwitchName: "CreateGlobal",
+                        gqlRootFieldName: "createGlobalSla"
+                    )
                 },
                 {
                     GqlRootFieldName.createHypervVirtualMachineSnapshotMount,
-                    new RscOp {
-                        CmdletName = "New-RscMutationHyperv",
-                        CmdletSwitchName = "CreateVirtualMachineSnapshotMount",
-                        GqlRootFieldName = "createHypervVirtualMachineSnapshotMount"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationHyperv",
+                        cmdletSwitchName: "CreateVirtualMachineSnapshotMount",
+                        gqlRootFieldName: "createHypervVirtualMachineSnapshotMount"
+                    )
                 },
                 {
                     GqlRootFieldName.createK8sCluster,
-                    new RscOp {
-                        CmdletName = "New-RscMutationCluster",
-                        CmdletSwitchName = "CreateK8s",
-                        GqlRootFieldName = "createK8sCluster"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationCluster",
+                        cmdletSwitchName: "CreateK8s",
+                        gqlRootFieldName: "createK8sCluster"
+                    )
                 },
                 {
                     GqlRootFieldName.createMongodbSource,
-                    new RscOp {
-                        CmdletName = "New-RscMutationMongo",
-                        CmdletSwitchName = "CreatedbSource",
-                        GqlRootFieldName = "createMongodbSource"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationMongo",
+                        cmdletSwitchName: "CreatedbSource",
+                        gqlRootFieldName: "createMongodbSource"
+                    )
                 },
                 {
                     GqlRootFieldName.createMssqlLiveMount,
-                    new RscOp {
-                        CmdletName = "New-RscMutationMssql",
-                        CmdletSwitchName = "CreateLiveMount",
-                        GqlRootFieldName = "createMssqlLiveMount"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationMssql",
+                        cmdletSwitchName: "CreateLiveMount",
+                        gqlRootFieldName: "createMssqlLiveMount"
+                    )
                 },
                 {
                     GqlRootFieldName.createMssqlLogShippingConfiguration,
-                    new RscOp {
-                        CmdletName = "New-RscMutationMssql",
-                        CmdletSwitchName = "CreateLogShippingConfiguration",
-                        GqlRootFieldName = "createMssqlLogShippingConfiguration"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationMssql",
+                        cmdletSwitchName: "CreateLogShippingConfiguration",
+                        gqlRootFieldName: "createMssqlLogShippingConfiguration"
+                    )
                 },
                 {
                     GqlRootFieldName.createNutanixCluster,
-                    new RscOp {
-                        CmdletName = "New-RscMutationNutanix",
-                        CmdletSwitchName = "CreateCluster",
-                        GqlRootFieldName = "createNutanixCluster"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationNutanix",
+                        cmdletSwitchName: "CreateCluster",
+                        gqlRootFieldName: "createNutanixCluster"
+                    )
                 },
                 {
                     GqlRootFieldName.createNutanixPrismCentral,
-                    new RscOp {
-                        CmdletName = "New-RscMutationNutanix",
-                        CmdletSwitchName = "CreatePrismCentral",
-                        GqlRootFieldName = "createNutanixPrismCentral"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationNutanix",
+                        cmdletSwitchName: "CreatePrismCentral",
+                        gqlRootFieldName: "createNutanixPrismCentral"
+                    )
                 },
                 {
                     GqlRootFieldName.createO365AppComplete,
-                    new RscOp {
-                        CmdletName = "New-RscMutationO365",
-                        CmdletSwitchName = "CreateAppComplete",
-                        GqlRootFieldName = "createO365AppComplete"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationO365",
+                        cmdletSwitchName: "CreateAppComplete",
+                        gqlRootFieldName: "createO365AppComplete"
+                    )
                 },
                 {
                     GqlRootFieldName.createO365AppKickoff,
-                    new RscOp {
-                        CmdletName = "New-RscMutationO365",
-                        CmdletSwitchName = "CreateAppKickoff",
-                        GqlRootFieldName = "createO365AppKickoff"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationO365",
+                        cmdletSwitchName: "CreateAppKickoff",
+                        gqlRootFieldName: "createO365AppKickoff"
+                    )
                 },
                 {
                     GqlRootFieldName.createOnDemandDb2Backup,
-                    new RscOp {
-                        CmdletName = "New-RscMutationDb2",
-                        CmdletSwitchName = "CreateOnDemandBackup",
-                        GqlRootFieldName = "createOnDemandDb2Backup"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationDb2",
+                        cmdletSwitchName: "CreateOnDemandBackup",
+                        gqlRootFieldName: "createOnDemandDb2Backup"
+                    )
                 },
                 {
                     GqlRootFieldName.createOnDemandMssqlBackup,
-                    new RscOp {
-                        CmdletName = "New-RscMutationMssql",
-                        CmdletSwitchName = "CreateOnDemandBackup",
-                        GqlRootFieldName = "createOnDemandMssqlBackup"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationMssql",
+                        cmdletSwitchName: "CreateOnDemandBackup",
+                        gqlRootFieldName: "createOnDemandMssqlBackup"
+                    )
                 },
                 {
                     GqlRootFieldName.createOnDemandNutanixBackup,
-                    new RscOp {
-                        CmdletName = "New-RscMutationNutanix",
-                        CmdletSwitchName = "CreateOnDemandBackup",
-                        GqlRootFieldName = "createOnDemandNutanixBackup"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationNutanix",
+                        cmdletSwitchName: "CreateOnDemandBackup",
+                        gqlRootFieldName: "createOnDemandNutanixBackup"
+                    )
                 },
                 {
                     GqlRootFieldName.createOraclePdbRestore,
-                    new RscOp {
-                        CmdletName = "New-RscMutationOracle",
-                        CmdletSwitchName = "CreatePdbRestore",
-                        GqlRootFieldName = "createOraclePdbRestore"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationOracle",
+                        cmdletSwitchName: "CreatePdbRestore",
+                        gqlRootFieldName: "createOraclePdbRestore"
+                    )
                 },
                 {
                     GqlRootFieldName.createVsphereAdvancedTag,
-                    new RscOp {
-                        CmdletName = "New-RscMutationVsphere",
-                        CmdletSwitchName = "CreateAdvancedTag",
-                        GqlRootFieldName = "createVsphereAdvancedTag"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationVsphere",
+                        cmdletSwitchName: "CreateAdvancedTag",
+                        gqlRootFieldName: "createVsphereAdvancedTag"
+                    )
                 },
                 {
                     GqlRootFieldName.createVsphereVcenter,
-                    new RscOp {
-                        CmdletName = "New-RscMutationVcenter",
-                        CmdletSwitchName = "Create",
-                        GqlRootFieldName = "createVsphereVcenter"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationVcenter",
+                        cmdletSwitchName: "Create",
+                        gqlRootFieldName: "createVsphereVcenter"
+                    )
                 },
                 {
                     GqlRootFieldName.databaseLogReportForCluster,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCluster",
-                        CmdletSwitchName = "DatabaseLogReport",
-                        GqlRootFieldName = "databaseLogReportForCluster"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCluster",
+                        cmdletSwitchName: "DatabaseLogReport",
+                        gqlRootFieldName: "databaseLogReportForCluster"
+                    )
                 },
                 {
                     GqlRootFieldName.databaseLogReportingPropertiesForCluster,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCluster",
-                        CmdletSwitchName = "DatabaseLogReportingProperties",
-                        GqlRootFieldName = "databaseLogReportingPropertiesForCluster"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCluster",
+                        cmdletSwitchName: "DatabaseLogReportingProperties",
+                        gqlRootFieldName: "databaseLogReportingPropertiesForCluster"
+                    )
                 },
                 {
                     GqlRootFieldName.db2Database,
-                    new RscOp {
-                        CmdletName = "New-RscQueryDb2",
-                        CmdletSwitchName = "Database",
-                        GqlRootFieldName = "db2Database"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryDb2",
+                        cmdletSwitchName: "Database",
+                        gqlRootFieldName: "db2Database"
+                    )
                 },
                 {
                     GqlRootFieldName.db2Databases,
-                    new RscOp {
-                        CmdletName = "New-RscQueryDb2",
-                        CmdletSwitchName = "Databases",
-                        GqlRootFieldName = "db2Databases"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryDb2",
+                        cmdletSwitchName: "Databases",
+                        gqlRootFieldName: "db2Databases"
+                    )
                 },
                 {
                     GqlRootFieldName.db2Instance,
-                    new RscOp {
-                        CmdletName = "New-RscQueryDb2",
-                        CmdletSwitchName = "Instance",
-                        GqlRootFieldName = "db2Instance"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryDb2",
+                        cmdletSwitchName: "Instance",
+                        gqlRootFieldName: "db2Instance"
+                    )
                 },
                 {
                     GqlRootFieldName.db2Instances,
-                    new RscOp {
-                        CmdletName = "New-RscQueryDb2",
-                        CmdletSwitchName = "Instances",
-                        GqlRootFieldName = "db2Instances"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryDb2",
+                        cmdletSwitchName: "Instances",
+                        gqlRootFieldName: "db2Instances"
+                    )
                 },
                 {
                     GqlRootFieldName.db2LogSnapshot,
-                    new RscOp {
-                        CmdletName = "New-RscQueryDb2",
-                        CmdletSwitchName = "LogSnapshot",
-                        GqlRootFieldName = "db2LogSnapshot"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryDb2",
+                        cmdletSwitchName: "LogSnapshot",
+                        gqlRootFieldName: "db2LogSnapshot"
+                    )
                 },
                 {
                     GqlRootFieldName.db2LogSnapshots,
-                    new RscOp {
-                        CmdletName = "New-RscQueryDb2",
-                        CmdletSwitchName = "LogSnapshots",
-                        GqlRootFieldName = "db2LogSnapshots"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryDb2",
+                        cmdletSwitchName: "LogSnapshots",
+                        gqlRootFieldName: "db2LogSnapshots"
+                    )
                 },
                 {
                     GqlRootFieldName.db2RecoverableRange,
-                    new RscOp {
-                        CmdletName = "New-RscQueryDb2",
-                        CmdletSwitchName = "RecoverableRange",
-                        GqlRootFieldName = "db2RecoverableRange"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryDb2",
+                        cmdletSwitchName: "RecoverableRange",
+                        gqlRootFieldName: "db2RecoverableRange"
+                    )
                 },
                 {
                     GqlRootFieldName.db2RecoverableRanges,
-                    new RscOp {
-                        CmdletName = "New-RscQueryDb2",
-                        CmdletSwitchName = "RecoverableRanges",
-                        GqlRootFieldName = "db2RecoverableRanges"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryDb2",
+                        cmdletSwitchName: "RecoverableRanges",
+                        gqlRootFieldName: "db2RecoverableRanges"
+                    )
                 },
                 {
                     GqlRootFieldName.deleteAllOracleDatabaseSnapshots,
-                    new RscOp {
-                        CmdletName = "New-RscMutationOracle",
-                        CmdletSwitchName = "DeleteAllDatabaseSnapshots",
-                        GqlRootFieldName = "deleteAllOracleDatabaseSnapshots"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationOracle",
+                        cmdletSwitchName: "DeleteAllDatabaseSnapshots",
+                        gqlRootFieldName: "deleteAllOracleDatabaseSnapshots"
+                    )
                 },
                 {
                     GqlRootFieldName.deleteAwsCluster,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAws",
-                        CmdletSwitchName = "DeleteCluster",
-                        GqlRootFieldName = "deleteAwsCluster"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "DeleteCluster",
+                        gqlRootFieldName: "deleteAwsCluster"
+                    )
                 },
                 {
                     GqlRootFieldName.deleteAwsComputeSetting,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAws",
-                        CmdletSwitchName = "DeleteComputeSetting",
-                        GqlRootFieldName = "deleteAwsComputeSetting"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "DeleteComputeSetting",
+                        gqlRootFieldName: "deleteAwsComputeSetting"
+                    )
                 },
                 {
                     GqlRootFieldName.deleteAwsExocomputeConfigs,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAws",
-                        CmdletSwitchName = "DeleteExocomputeConfigs",
-                        GqlRootFieldName = "deleteAwsExocomputeConfigs"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "DeleteExocomputeConfigs",
+                        gqlRootFieldName: "deleteAwsExocomputeConfigs"
+                    )
                 },
                 {
                     GqlRootFieldName.deleteAzureAdDirectory,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "DeleteAdDirectory",
-                        GqlRootFieldName = "deleteAzureAdDirectory"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "DeleteAdDirectory",
+                        gqlRootFieldName: "deleteAzureAdDirectory"
+                    )
                 },
                 {
                     GqlRootFieldName.deleteAzureCloudAccount,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "DeleteCloudAccount",
-                        GqlRootFieldName = "deleteAzureCloudAccount"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "DeleteCloudAccount",
+                        gqlRootFieldName: "deleteAzureCloudAccount"
+                    )
                 },
                 {
                     GqlRootFieldName.deleteAzureCloudAccountExocomputeConfigurations,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "DeleteCloudAccountExocomputeConfigurations",
-                        GqlRootFieldName = "deleteAzureCloudAccountExocomputeConfigurations"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "DeleteCloudAccountExocomputeConfigurations",
+                        gqlRootFieldName: "deleteAzureCloudAccountExocomputeConfigurations"
+                    )
                 },
                 {
                     GqlRootFieldName.deleteAzureCloudAccountWithoutOauth,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "DeleteCloudAccountWithoutOauth",
-                        GqlRootFieldName = "deleteAzureCloudAccountWithoutOauth"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "DeleteCloudAccountWithoutOauth",
+                        gqlRootFieldName: "deleteAzureCloudAccountWithoutOauth"
+                    )
                 },
                 {
                     GqlRootFieldName.deleteAzureCluster,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "DeleteCluster",
-                        GqlRootFieldName = "deleteAzureCluster"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "DeleteCluster",
+                        gqlRootFieldName: "deleteAzureCluster"
+                    )
                 },
                 {
                     GqlRootFieldName.deleteCassandraSource,
-                    new RscOp {
-                        CmdletName = "New-RscMutationCassandra",
-                        CmdletSwitchName = "DeleteSource",
-                        GqlRootFieldName = "deleteCassandraSource"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationCassandra",
+                        cmdletSwitchName: "DeleteSource",
+                        gqlRootFieldName: "deleteCassandraSource"
+                    )
                 },
                 {
                     GqlRootFieldName.deleteDb2Database,
-                    new RscOp {
-                        CmdletName = "New-RscMutationDb2",
-                        CmdletSwitchName = "DeleteDatabase",
-                        GqlRootFieldName = "deleteDb2Database"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationDb2",
+                        cmdletSwitchName: "DeleteDatabase",
+                        gqlRootFieldName: "deleteDb2Database"
+                    )
                 },
                 {
                     GqlRootFieldName.deleteDb2Instance,
-                    new RscOp {
-                        CmdletName = "New-RscMutationDb2",
-                        CmdletSwitchName = "DeleteInstance",
-                        GqlRootFieldName = "deleteDb2Instance"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationDb2",
+                        cmdletSwitchName: "DeleteInstance",
+                        gqlRootFieldName: "deleteDb2Instance"
+                    )
                 },
                 {
                     GqlRootFieldName.deleteFailoverCluster,
-                    new RscOp {
-                        CmdletName = "New-RscMutationCluster",
-                        CmdletSwitchName = "DeleteFailover",
-                        GqlRootFieldName = "deleteFailoverCluster"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationCluster",
+                        cmdletSwitchName: "DeleteFailover",
+                        gqlRootFieldName: "deleteFailoverCluster"
+                    )
                 },
                 {
                     GqlRootFieldName.deleteHypervVirtualMachineSnapshot,
-                    new RscOp {
-                        CmdletName = "New-RscMutationHyperv",
-                        CmdletSwitchName = "DeleteVirtualMachineSnapshot",
-                        GqlRootFieldName = "deleteHypervVirtualMachineSnapshot"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationHyperv",
+                        cmdletSwitchName: "DeleteVirtualMachineSnapshot",
+                        gqlRootFieldName: "deleteHypervVirtualMachineSnapshot"
+                    )
                 },
                 {
                     GqlRootFieldName.deleteHypervVirtualMachineSnapshotMount,
-                    new RscOp {
-                        CmdletName = "New-RscMutationHyperv",
-                        CmdletSwitchName = "DeleteVirtualMachineSnapshotMount",
-                        GqlRootFieldName = "deleteHypervVirtualMachineSnapshotMount"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationHyperv",
+                        cmdletSwitchName: "DeleteVirtualMachineSnapshotMount",
+                        gqlRootFieldName: "deleteHypervVirtualMachineSnapshotMount"
+                    )
                 },
                 {
                     GqlRootFieldName.deleteLdapPrincipals,
-                    new RscOp {
-                        CmdletName = "New-RscMutationLdap",
-                        CmdletSwitchName = "DeletePrincipals",
-                        GqlRootFieldName = "deleteLdapPrincipals"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationLdap",
+                        cmdletSwitchName: "DeletePrincipals",
+                        gqlRootFieldName: "deleteLdapPrincipals"
+                    )
+                },
+                {
+                    GqlRootFieldName.deleteManagedVolume,
+                    new RscOp(
+                        cmdletName: "New-RscMutationManagedVolume",
+                        cmdletSwitchName: "Delete",
+                        gqlRootFieldName: "deleteManagedVolume"
+                    )
+                },
+                {
+                    GqlRootFieldName.deleteManagedVolumeSnapshotExport,
+                    new RscOp(
+                        cmdletName: "New-RscMutationManagedVolume",
+                        cmdletSwitchName: "DeleteSnapshotExport",
+                        gqlRootFieldName: "deleteManagedVolumeSnapshotExport"
+                    )
                 },
                 {
                     GqlRootFieldName.deleteMongoSource,
-                    new RscOp {
-                        CmdletName = "New-RscMutationMongo",
-                        CmdletSwitchName = "DeleteSource",
-                        GqlRootFieldName = "deleteMongoSource"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationMongo",
+                        cmdletSwitchName: "DeleteSource",
+                        gqlRootFieldName: "deleteMongoSource"
+                    )
                 },
                 {
                     GqlRootFieldName.deleteMongodbSource,
-                    new RscOp {
-                        CmdletName = "New-RscMutationMongo",
-                        CmdletSwitchName = "DeletedbSource",
-                        GqlRootFieldName = "deleteMongodbSource"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationMongo",
+                        cmdletSwitchName: "DeletedbSource",
+                        gqlRootFieldName: "deleteMongodbSource"
+                    )
                 },
                 {
                     GqlRootFieldName.deleteMssqlDbSnapshots,
-                    new RscOp {
-                        CmdletName = "New-RscMutationMssql",
-                        CmdletSwitchName = "DeleteDbSnapshots",
-                        GqlRootFieldName = "deleteMssqlDbSnapshots"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationMssql",
+                        cmdletSwitchName: "DeleteDbSnapshots",
+                        gqlRootFieldName: "deleteMssqlDbSnapshots"
+                    )
                 },
                 {
                     GqlRootFieldName.deleteMssqlLiveMount,
-                    new RscOp {
-                        CmdletName = "New-RscMutationMssql",
-                        CmdletSwitchName = "DeleteLiveMount",
-                        GqlRootFieldName = "deleteMssqlLiveMount"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationMssql",
+                        cmdletSwitchName: "DeleteLiveMount",
+                        gqlRootFieldName: "deleteMssqlLiveMount"
+                    )
                 },
                 {
                     GqlRootFieldName.deleteNutanixCluster,
-                    new RscOp {
-                        CmdletName = "New-RscMutationNutanix",
-                        CmdletSwitchName = "DeleteCluster",
-                        GqlRootFieldName = "deleteNutanixCluster"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationNutanix",
+                        cmdletSwitchName: "DeleteCluster",
+                        gqlRootFieldName: "deleteNutanixCluster"
+                    )
                 },
                 {
                     GqlRootFieldName.deleteNutanixMountV1,
-                    new RscOp {
-                        CmdletName = "New-RscMutationNutanix",
-                        CmdletSwitchName = "DeleteMountV1",
-                        GqlRootFieldName = "deleteNutanixMountV1"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationNutanix",
+                        cmdletSwitchName: "DeleteMountV1",
+                        gqlRootFieldName: "deleteNutanixMountV1"
+                    )
                 },
                 {
                     GqlRootFieldName.deleteNutanixPrismCentral,
-                    new RscOp {
-                        CmdletName = "New-RscMutationNutanix",
-                        CmdletSwitchName = "DeletePrismCentral",
-                        GqlRootFieldName = "deleteNutanixPrismCentral"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationNutanix",
+                        cmdletSwitchName: "DeletePrismCentral",
+                        gqlRootFieldName: "deleteNutanixPrismCentral"
+                    )
                 },
                 {
                     GqlRootFieldName.deleteNutanixSnapshot,
-                    new RscOp {
-                        CmdletName = "New-RscMutationNutanix",
-                        CmdletSwitchName = "DeleteSnapshot",
-                        GqlRootFieldName = "deleteNutanixSnapshot"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationNutanix",
+                        cmdletSwitchName: "DeleteSnapshot",
+                        gqlRootFieldName: "deleteNutanixSnapshot"
+                    )
                 },
                 {
                     GqlRootFieldName.deleteNutanixSnapshots,
-                    new RscOp {
-                        CmdletName = "New-RscMutationNutanix",
-                        CmdletSwitchName = "DeleteSnapshots",
-                        GqlRootFieldName = "deleteNutanixSnapshots"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationNutanix",
+                        cmdletSwitchName: "DeleteSnapshots",
+                        gqlRootFieldName: "deleteNutanixSnapshots"
+                    )
                 },
                 {
                     GqlRootFieldName.deleteO365AzureApp,
-                    new RscOp {
-                        CmdletName = "New-RscMutationO365",
-                        CmdletSwitchName = "DeleteAzureApp",
-                        GqlRootFieldName = "deleteO365AzureApp"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationO365",
+                        cmdletSwitchName: "DeleteAzureApp",
+                        gqlRootFieldName: "deleteO365AzureApp"
+                    )
                 },
                 {
                     GqlRootFieldName.deleteO365Org,
-                    new RscOp {
-                        CmdletName = "New-RscMutationO365",
-                        CmdletSwitchName = "DeleteOrg",
-                        GqlRootFieldName = "deleteO365Org"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationO365",
+                        cmdletSwitchName: "DeleteOrg",
+                        gqlRootFieldName: "deleteO365Org"
+                    )
                 },
                 {
                     GqlRootFieldName.deleteO365ServiceAccount,
-                    new RscOp {
-                        CmdletName = "New-RscMutationO365",
-                        CmdletSwitchName = "DeleteServiceAccount",
-                        GqlRootFieldName = "deleteO365ServiceAccount"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationO365",
+                        cmdletSwitchName: "DeleteServiceAccount",
+                        gqlRootFieldName: "deleteO365ServiceAccount"
+                    )
                 },
                 {
                     GqlRootFieldName.deleteOracleMount,
-                    new RscOp {
-                        CmdletName = "New-RscMutationOracle",
-                        CmdletSwitchName = "DeleteMount",
-                        GqlRootFieldName = "deleteOracleMount"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationOracle",
+                        cmdletSwitchName: "DeleteMount",
+                        gqlRootFieldName: "deleteOracleMount"
+                    )
                 },
                 {
                     GqlRootFieldName.deleteVsphereAdvancedTag,
-                    new RscOp {
-                        CmdletName = "New-RscMutationVsphere",
-                        CmdletSwitchName = "DeleteAdvancedTag",
-                        GqlRootFieldName = "deleteVsphereAdvancedTag"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationVsphere",
+                        cmdletSwitchName: "DeleteAdvancedTag",
+                        gqlRootFieldName: "deleteVsphereAdvancedTag"
+                    )
                 },
                 {
                     GqlRootFieldName.deleteVsphereLiveMount,
-                    new RscOp {
-                        CmdletName = "New-RscMutationVsphere",
-                        CmdletSwitchName = "DeleteLiveMount",
-                        GqlRootFieldName = "deleteVsphereLiveMount"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationVsphere",
+                        cmdletSwitchName: "DeleteLiveMount",
+                        gqlRootFieldName: "deleteVsphereLiveMount"
+                    )
                 },
                 {
                     GqlRootFieldName.discoverDb2Instance,
-                    new RscOp {
-                        CmdletName = "New-RscMutationDb2",
-                        CmdletSwitchName = "DiscoverInstance",
-                        GqlRootFieldName = "discoverDb2Instance"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationDb2",
+                        cmdletSwitchName: "DiscoverInstance",
+                        gqlRootFieldName: "discoverDb2Instance"
+                    )
                 },
                 {
                     GqlRootFieldName.discoverMongoSource,
-                    new RscOp {
-                        CmdletName = "New-RscMutationMongo",
-                        CmdletSwitchName = "DiscoverSource",
-                        GqlRootFieldName = "discoverMongoSource"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationMongo",
+                        cmdletSwitchName: "DiscoverSource",
+                        gqlRootFieldName: "discoverMongoSource"
+                    )
                 },
                 {
                     GqlRootFieldName.doesAzureNativeResourceGroupExist,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "DoesNativeResourceGroupExist",
-                        GqlRootFieldName = "doesAzureNativeResourceGroupExist"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "DoesNativeResourceGroupExist",
+                        gqlRootFieldName: "doesAzureNativeResourceGroupExist"
+                    )
                 },
                 {
                     GqlRootFieldName.downloadDb2Snapshot,
-                    new RscOp {
-                        CmdletName = "New-RscMutationDb2",
-                        CmdletSwitchName = "DownloadSnapshot",
-                        GqlRootFieldName = "downloadDb2Snapshot"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationDb2",
+                        cmdletSwitchName: "DownloadSnapshot",
+                        gqlRootFieldName: "downloadDb2Snapshot"
+                    )
                 },
                 {
                     GqlRootFieldName.downloadDb2SnapshotsForPointInTimeRecovery,
-                    new RscOp {
-                        CmdletName = "New-RscMutationDb2",
-                        CmdletSwitchName = "DownloadSnapshotsForPointInTimeRecovery",
-                        GqlRootFieldName = "downloadDb2SnapshotsForPointInTimeRecovery"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationDb2",
+                        cmdletSwitchName: "DownloadSnapshotsForPointInTimeRecovery",
+                        gqlRootFieldName: "downloadDb2SnapshotsForPointInTimeRecovery"
+                    )
                 },
                 {
                     GqlRootFieldName.downloadFilesNutanixSnapshot,
-                    new RscOp {
-                        CmdletName = "New-RscMutationNutanix",
-                        CmdletSwitchName = "DownloadFilesSnapshot",
-                        GqlRootFieldName = "downloadFilesNutanixSnapshot"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationNutanix",
+                        cmdletSwitchName: "DownloadFilesSnapshot",
+                        gqlRootFieldName: "downloadFilesNutanixSnapshot"
+                    )
                 },
                 {
                     GqlRootFieldName.downloadHypervSnapshotFromLocation,
-                    new RscOp {
-                        CmdletName = "New-RscMutationHyperv",
-                        CmdletSwitchName = "DownloadSnapshotFromLocation",
-                        GqlRootFieldName = "downloadHypervSnapshotFromLocation"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationHyperv",
+                        cmdletSwitchName: "DownloadSnapshotFromLocation",
+                        gqlRootFieldName: "downloadHypervSnapshotFromLocation"
+                    )
                 },
                 {
                     GqlRootFieldName.downloadHypervVirtualMachineSnapshot,
-                    new RscOp {
-                        CmdletName = "New-RscMutationHyperv",
-                        CmdletSwitchName = "DownloadVirtualMachineSnapshot",
-                        GqlRootFieldName = "downloadHypervVirtualMachineSnapshot"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationHyperv",
+                        cmdletSwitchName: "DownloadVirtualMachineSnapshot",
+                        gqlRootFieldName: "downloadHypervVirtualMachineSnapshot"
+                    )
                 },
                 {
                     GqlRootFieldName.downloadHypervVirtualMachineSnapshotFiles,
-                    new RscOp {
-                        CmdletName = "New-RscMutationHyperv",
-                        CmdletSwitchName = "DownloadVirtualMachineSnapshotFiles",
-                        GqlRootFieldName = "downloadHypervVirtualMachineSnapshotFiles"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationHyperv",
+                        cmdletSwitchName: "DownloadVirtualMachineSnapshotFiles",
+                        gqlRootFieldName: "downloadHypervVirtualMachineSnapshotFiles"
+                    )
+                },
+                {
+                    GqlRootFieldName.downloadManagedVolumeFiles,
+                    new RscOp(
+                        cmdletName: "New-RscMutationManagedVolume",
+                        cmdletSwitchName: "DownloadFiles",
+                        gqlRootFieldName: "downloadManagedVolumeFiles"
+                    )
+                },
+                {
+                    GqlRootFieldName.downloadManagedVolumeFromLocation,
+                    new RscOp(
+                        cmdletName: "New-RscMutationManagedVolume",
+                        cmdletSwitchName: "DownloadFromLocation",
+                        gqlRootFieldName: "downloadManagedVolumeFromLocation"
+                    )
                 },
                 {
                     GqlRootFieldName.downloadMssqlDatabaseBackupFiles,
-                    new RscOp {
-                        CmdletName = "New-RscMutationMssql",
-                        CmdletSwitchName = "DownloadDatabaseBackupFiles",
-                        GqlRootFieldName = "downloadMssqlDatabaseBackupFiles"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationMssql",
+                        cmdletSwitchName: "DownloadDatabaseBackupFiles",
+                        gqlRootFieldName: "downloadMssqlDatabaseBackupFiles"
+                    )
                 },
                 {
                     GqlRootFieldName.downloadMssqlDatabaseFilesFromArchivalLocation,
-                    new RscOp {
-                        CmdletName = "New-RscMutationMssql",
-                        CmdletSwitchName = "DownloadDatabaseFilesFromArchivalLocation",
-                        GqlRootFieldName = "downloadMssqlDatabaseFilesFromArchivalLocation"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationMssql",
+                        cmdletSwitchName: "DownloadDatabaseFilesFromArchivalLocation",
+                        gqlRootFieldName: "downloadMssqlDatabaseFilesFromArchivalLocation"
+                    )
                 },
                 {
                     GqlRootFieldName.downloadNutanixSnapshot,
-                    new RscOp {
-                        CmdletName = "New-RscMutationNutanix",
-                        CmdletSwitchName = "DownloadSnapshot",
-                        GqlRootFieldName = "downloadNutanixSnapshot"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationNutanix",
+                        cmdletSwitchName: "DownloadSnapshot",
+                        gqlRootFieldName: "downloadNutanixSnapshot"
+                    )
                 },
                 {
                     GqlRootFieldName.downloadNutanixVmFromLocation,
-                    new RscOp {
-                        CmdletName = "New-RscMutationNutanix",
-                        CmdletSwitchName = "DownloadVmFromLocation",
-                        GqlRootFieldName = "downloadNutanixVmFromLocation"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationNutanix",
+                        cmdletSwitchName: "DownloadVmFromLocation",
+                        gqlRootFieldName: "downloadNutanixVmFromLocation"
+                    )
                 },
                 {
                     GqlRootFieldName.downloadOracleDatabaseSnapshot,
-                    new RscOp {
-                        CmdletName = "New-RscMutationOracle",
-                        CmdletSwitchName = "DownloadDatabaseSnapshot",
-                        GqlRootFieldName = "downloadOracleDatabaseSnapshot"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationOracle",
+                        cmdletSwitchName: "DownloadDatabaseSnapshot",
+                        gqlRootFieldName: "downloadOracleDatabaseSnapshot"
+                    )
                 },
                 {
                     GqlRootFieldName.downloadVsphereVirtualMachineFiles,
-                    new RscOp {
-                        CmdletName = "New-RscMutationVsphere",
-                        CmdletSwitchName = "DownloadVirtualMachineFiles",
-                        GqlRootFieldName = "downloadVsphereVirtualMachineFiles"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationVsphere",
+                        cmdletSwitchName: "DownloadVirtualMachineFiles",
+                        gqlRootFieldName: "downloadVsphereVirtualMachineFiles"
+                    )
                 },
                 {
                     GqlRootFieldName.enableO365SharePoint,
-                    new RscOp {
-                        CmdletName = "New-RscMutationO365",
-                        CmdletSwitchName = "EnableSharePoint",
-                        GqlRootFieldName = "enableO365SharePoint"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationO365",
+                        cmdletSwitchName: "EnableSharePoint",
+                        gqlRootFieldName: "enableO365SharePoint"
+                    )
                 },
                 {
                     GqlRootFieldName.enableO365Teams,
-                    new RscOp {
-                        CmdletName = "New-RscMutationO365",
-                        CmdletSwitchName = "EnableTeams",
-                        GqlRootFieldName = "enableO365Teams"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationO365",
+                        cmdletSwitchName: "EnableTeams",
+                        gqlRootFieldName: "enableO365Teams"
+                    )
+                },
+                {
+                    GqlRootFieldName.endManagedVolumeSnapshot,
+                    new RscOp(
+                        cmdletName: "New-RscMutationManagedVolume",
+                        cmdletSwitchName: "EndSnapshot",
+                        gqlRootFieldName: "endManagedVolumeSnapshot"
+                    )
                 },
                 {
                     GqlRootFieldName.excludeAwsNativeEbsVolumesFromSnapshot,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAws",
-                        CmdletSwitchName = "ExcludeNativeEbsVolumesFromSnapshot",
-                        GqlRootFieldName = "excludeAwsNativeEbsVolumesFromSnapshot"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "ExcludeNativeEbsVolumesFromSnapshot",
+                        gqlRootFieldName: "excludeAwsNativeEbsVolumesFromSnapshot"
+                    )
                 },
                 {
                     GqlRootFieldName.excludeAzureNativeManagedDisksFromSnapshot,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "ExcludeNativeManagedDisksFromSnapshot",
-                        GqlRootFieldName = "excludeAzureNativeManagedDisksFromSnapshot"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "ExcludeNativeManagedDisksFromSnapshot",
+                        gqlRootFieldName: "excludeAzureNativeManagedDisksFromSnapshot"
+                    )
                 },
                 {
                     GqlRootFieldName.expireDownloadedDb2Snapshots,
-                    new RscOp {
-                        CmdletName = "New-RscMutationDb2",
-                        CmdletSwitchName = "ExpireDownloadedSnapshots",
-                        GqlRootFieldName = "expireDownloadedDb2Snapshots"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationDb2",
+                        cmdletSwitchName: "ExpireDownloadedSnapshots",
+                        gqlRootFieldName: "expireDownloadedDb2Snapshots"
+                    )
                 },
                 {
                     GqlRootFieldName.exportHypervVirtualMachine,
-                    new RscOp {
-                        CmdletName = "New-RscMutationHyperv",
-                        CmdletSwitchName = "ExportVirtualMachine",
-                        GqlRootFieldName = "exportHypervVirtualMachine"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationHyperv",
+                        cmdletSwitchName: "ExportVirtualMachine",
+                        gqlRootFieldName: "exportHypervVirtualMachine"
+                    )
+                },
+                {
+                    GqlRootFieldName.exportManagedVolumeSnapshot,
+                    new RscOp(
+                        cmdletName: "New-RscMutationManagedVolume",
+                        cmdletSwitchName: "ExportSnapshot",
+                        gqlRootFieldName: "exportManagedVolumeSnapshot"
+                    )
                 },
                 {
                     GqlRootFieldName.exportMssqlDatabase,
-                    new RscOp {
-                        CmdletName = "New-RscMutationMssql",
-                        CmdletSwitchName = "ExportDatabase",
-                        GqlRootFieldName = "exportMssqlDatabase"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationMssql",
+                        cmdletSwitchName: "ExportDatabase",
+                        gqlRootFieldName: "exportMssqlDatabase"
+                    )
                 },
                 {
                     GqlRootFieldName.exportNutanixSnapshot,
-                    new RscOp {
-                        CmdletName = "New-RscMutationNutanix",
-                        CmdletSwitchName = "ExportSnapshot",
-                        GqlRootFieldName = "exportNutanixSnapshot"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationNutanix",
+                        cmdletSwitchName: "ExportSnapshot",
+                        gqlRootFieldName: "exportNutanixSnapshot"
+                    )
                 },
                 {
                     GqlRootFieldName.exportO365Mailbox,
-                    new RscOp {
-                        CmdletName = "New-RscMutationO365",
-                        CmdletSwitchName = "ExportMailbox",
-                        GqlRootFieldName = "exportO365Mailbox"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationO365",
+                        cmdletSwitchName: "ExportMailbox",
+                        gqlRootFieldName: "exportO365Mailbox"
+                    )
                 },
                 {
                     GqlRootFieldName.exportOracleDatabase,
-                    new RscOp {
-                        CmdletName = "New-RscMutationOracle",
-                        CmdletSwitchName = "ExportDatabase",
-                        GqlRootFieldName = "exportOracleDatabase"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationOracle",
+                        cmdletSwitchName: "ExportDatabase",
+                        gqlRootFieldName: "exportOracleDatabase"
+                    )
                 },
                 {
                     GqlRootFieldName.exportOracleTablespace,
-                    new RscOp {
-                        CmdletName = "New-RscMutationOracle",
-                        CmdletSwitchName = "ExportTablespace",
-                        GqlRootFieldName = "exportOracleTablespace"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationOracle",
+                        cmdletSwitchName: "ExportTablespace",
+                        gqlRootFieldName: "exportOracleTablespace"
+                    )
                 },
                 {
                     GqlRootFieldName.exportSlaManagedVolumeSnapshot,
-                    new RscOp {
-                        CmdletName = "New-RscMutationSla",
-                        CmdletSwitchName = "ExportManagedVolumeSnapshot",
-                        GqlRootFieldName = "exportSlaManagedVolumeSnapshot"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationSla",
+                        cmdletSwitchName: "ExportManagedVolumeSnapshot",
+                        gqlRootFieldName: "exportSlaManagedVolumeSnapshot"
+                    )
                 },
                 {
                     GqlRootFieldName.finalizeAwsCloudAccountDeletion,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAws",
-                        CmdletSwitchName = "FinalizeCloudAccountDeletion",
-                        GqlRootFieldName = "finalizeAwsCloudAccountDeletion"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "FinalizeCloudAccountDeletion",
+                        gqlRootFieldName: "finalizeAwsCloudAccountDeletion"
+                    )
                 },
                 {
                     GqlRootFieldName.finalizeAwsCloudAccountProtection,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAws",
-                        CmdletSwitchName = "FinalizeCloudAccountProtection",
-                        GqlRootFieldName = "finalizeAwsCloudAccountProtection"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "FinalizeCloudAccountProtection",
+                        gqlRootFieldName: "finalizeAwsCloudAccountProtection"
+                    )
                 },
                 {
                     GqlRootFieldName.getPendingSlaAssignments,
-                    new RscOp {
-                        CmdletName = "New-RscMutationSla",
-                        CmdletSwitchName = "GetPendingAssignments",
-                        GqlRootFieldName = "getPendingSlaAssignments"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationSla",
+                        cmdletSwitchName: "GetPendingAssignments",
+                        gqlRootFieldName: "getPendingSlaAssignments"
+                    )
                 },
                 {
                     GqlRootFieldName.globalSlaFilterConnection,
-                    new RscOp {
-                        CmdletName = "New-RscQuerySla",
-                        CmdletSwitchName = "GlobalFilterList",
-                        GqlRootFieldName = "globalSlaFilterConnection"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQuerySla",
+                        cmdletSwitchName: "GlobalFilterList",
+                        gqlRootFieldName: "globalSlaFilterConnection"
+                    )
                 },
                 {
                     GqlRootFieldName.globalSlaStatuses,
-                    new RscOp {
-                        CmdletName = "New-RscQuerySla",
-                        CmdletSwitchName = "GlobalStatuses",
-                        GqlRootFieldName = "globalSlaStatuses"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQuerySla",
+                        cmdletSwitchName: "GlobalStatuses",
+                        gqlRootFieldName: "globalSlaStatuses"
+                    )
                 },
                 {
                     GqlRootFieldName.hostFailoverCluster,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCluster",
-                        CmdletSwitchName = "HostFailover",
-                        GqlRootFieldName = "hostFailoverCluster"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCluster",
+                        cmdletSwitchName: "HostFailover",
+                        gqlRootFieldName: "hostFailoverCluster"
+                    )
                 },
                 {
                     GqlRootFieldName.hypervCluster,
-                    new RscOp {
-                        CmdletName = "New-RscQueryHyperv",
-                        CmdletSwitchName = "Cluster",
-                        GqlRootFieldName = "hypervCluster"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryHyperv",
+                        cmdletSwitchName: "Cluster",
+                        gqlRootFieldName: "hypervCluster"
+                    )
                 },
                 {
                     GqlRootFieldName.hypervDeleteAllSnapshots,
-                    new RscOp {
-                        CmdletName = "New-RscMutationHyperv",
-                        CmdletSwitchName = "DeleteAllSnapshots",
-                        GqlRootFieldName = "hypervDeleteAllSnapshots"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationHyperv",
+                        cmdletSwitchName: "DeleteAllSnapshots",
+                        gqlRootFieldName: "hypervDeleteAllSnapshots"
+                    )
                 },
                 {
                     GqlRootFieldName.hypervHostAsyncRequestStatus,
-                    new RscOp {
-                        CmdletName = "New-RscQueryHyperv",
-                        CmdletSwitchName = "HostAsyncRequestStatus",
-                        GqlRootFieldName = "hypervHostAsyncRequestStatus"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryHyperv",
+                        cmdletSwitchName: "HostAsyncRequestStatus",
+                        gqlRootFieldName: "hypervHostAsyncRequestStatus"
+                    )
                 },
                 {
                     GqlRootFieldName.hypervMounts,
-                    new RscOp {
-                        CmdletName = "New-RscQueryHyperv",
-                        CmdletSwitchName = "Mounts",
-                        GqlRootFieldName = "hypervMounts"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryHyperv",
+                        cmdletSwitchName: "Mounts",
+                        gqlRootFieldName: "hypervMounts"
+                    )
                 },
                 {
                     GqlRootFieldName.hypervOnDemandSnapshot,
-                    new RscOp {
-                        CmdletName = "New-RscMutationHyperv",
-                        CmdletSwitchName = "OnDemandSnapshot",
-                        GqlRootFieldName = "hypervOnDemandSnapshot"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationHyperv",
+                        cmdletSwitchName: "OnDemandSnapshot",
+                        gqlRootFieldName: "hypervOnDemandSnapshot"
+                    )
                 },
                 {
                     GqlRootFieldName.hypervScvmm,
-                    new RscOp {
-                        CmdletName = "New-RscQueryHyperv",
-                        CmdletSwitchName = "Scvmm",
-                        GqlRootFieldName = "hypervScvmm"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryHyperv",
+                        cmdletSwitchName: "Scvmm",
+                        gqlRootFieldName: "hypervScvmm"
+                    )
                 },
                 {
                     GqlRootFieldName.hypervScvmmAsyncRequestStatus,
-                    new RscOp {
-                        CmdletName = "New-RscQueryHyperv",
-                        CmdletSwitchName = "ScvmmAsyncRequestStatus",
-                        GqlRootFieldName = "hypervScvmmAsyncRequestStatus"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryHyperv",
+                        cmdletSwitchName: "ScvmmAsyncRequestStatus",
+                        gqlRootFieldName: "hypervScvmmAsyncRequestStatus"
+                    )
                 },
                 {
                     GqlRootFieldName.hypervScvmmDelete,
-                    new RscOp {
-                        CmdletName = "New-RscMutationHyperv",
-                        CmdletSwitchName = "ScvmmDelete",
-                        GqlRootFieldName = "hypervScvmmDelete"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationHyperv",
+                        cmdletSwitchName: "ScvmmDelete",
+                        gqlRootFieldName: "hypervScvmmDelete"
+                    )
                 },
                 {
                     GqlRootFieldName.hypervScvmmUpdate,
-                    new RscOp {
-                        CmdletName = "New-RscMutationHyperv",
-                        CmdletSwitchName = "ScvmmUpdate",
-                        GqlRootFieldName = "hypervScvmmUpdate"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationHyperv",
+                        cmdletSwitchName: "ScvmmUpdate",
+                        gqlRootFieldName: "hypervScvmmUpdate"
+                    )
                 },
                 {
                     GqlRootFieldName.hypervScvmms,
-                    new RscOp {
-                        CmdletName = "New-RscQueryHyperv",
-                        CmdletSwitchName = "Scvmms",
-                        GqlRootFieldName = "hypervScvmms"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryHyperv",
+                        cmdletSwitchName: "Scvmms",
+                        gqlRootFieldName: "hypervScvmms"
+                    )
                 },
                 {
                     GqlRootFieldName.hypervServer,
-                    new RscOp {
-                        CmdletName = "New-RscQueryHyperv",
-                        CmdletSwitchName = "Server",
-                        GqlRootFieldName = "hypervServer"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryHyperv",
+                        cmdletSwitchName: "Server",
+                        gqlRootFieldName: "hypervServer"
+                    )
                 },
                 {
                     GqlRootFieldName.hypervServers,
-                    new RscOp {
-                        CmdletName = "New-RscQueryHyperv",
-                        CmdletSwitchName = "Servers",
-                        GqlRootFieldName = "hypervServers"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryHyperv",
+                        cmdletSwitchName: "Servers",
+                        gqlRootFieldName: "hypervServers"
+                    )
                 },
                 {
                     GqlRootFieldName.hypervTopLevelDescendants,
-                    new RscOp {
-                        CmdletName = "New-RscQueryHyperv",
-                        CmdletSwitchName = "TopLevelDescendants",
-                        GqlRootFieldName = "hypervTopLevelDescendants"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryHyperv",
+                        cmdletSwitchName: "TopLevelDescendants",
+                        gqlRootFieldName: "hypervTopLevelDescendants"
+                    )
                 },
                 {
                     GqlRootFieldName.hypervVirtualMachine,
-                    new RscOp {
-                        CmdletName = "New-RscQueryHyperv",
-                        CmdletSwitchName = "VirtualMachine",
-                        GqlRootFieldName = "hypervVirtualMachine"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryHyperv",
+                        cmdletSwitchName: "VirtualMachine",
+                        gqlRootFieldName: "hypervVirtualMachine"
+                    )
                 },
                 {
                     GqlRootFieldName.hypervVirtualMachineAsyncRequestStatus,
-                    new RscOp {
-                        CmdletName = "New-RscQueryHyperv",
-                        CmdletSwitchName = "VirtualMachineAsyncRequestStatus",
-                        GqlRootFieldName = "hypervVirtualMachineAsyncRequestStatus"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryHyperv",
+                        cmdletSwitchName: "VirtualMachineAsyncRequestStatus",
+                        gqlRootFieldName: "hypervVirtualMachineAsyncRequestStatus"
+                    )
                 },
                 {
                     GqlRootFieldName.hypervVirtualMachines,
-                    new RscOp {
-                        CmdletName = "New-RscQueryHyperv",
-                        CmdletSwitchName = "VirtualMachines",
-                        GqlRootFieldName = "hypervVirtualMachines"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryHyperv",
+                        cmdletSwitchName: "VirtualMachines",
+                        gqlRootFieldName: "hypervVirtualMachines"
+                    )
                 },
                 {
                     GqlRootFieldName.hypervVmDetail,
-                    new RscOp {
-                        CmdletName = "New-RscQueryHyperv",
-                        CmdletSwitchName = "VmDetail",
-                        GqlRootFieldName = "hypervVmDetail"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryHyperv",
+                        cmdletSwitchName: "VmDetail",
+                        gqlRootFieldName: "hypervVmDetail"
+                    )
                 },
                 {
                     GqlRootFieldName.insertCustomerO365App,
-                    new RscOp {
-                        CmdletName = "New-RscMutationO365",
-                        CmdletSwitchName = "InsertCustomerApp",
-                        GqlRootFieldName = "insertCustomerO365App"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationO365",
+                        cmdletSwitchName: "InsertCustomerApp",
+                        gqlRootFieldName: "insertCustomerO365App"
+                    )
                 },
                 {
                     GqlRootFieldName.instantRecoverHypervVirtualMachineSnapshot,
-                    new RscOp {
-                        CmdletName = "New-RscMutationHyperv",
-                        CmdletSwitchName = "InstantRecoverVirtualMachineSnapshot",
-                        GqlRootFieldName = "instantRecoverHypervVirtualMachineSnapshot"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationHyperv",
+                        cmdletSwitchName: "InstantRecoverVirtualMachineSnapshot",
+                        gqlRootFieldName: "instantRecoverHypervVirtualMachineSnapshot"
+                    )
                 },
                 {
                     GqlRootFieldName.instantRecoverOracleSnapshot,
-                    new RscOp {
-                        CmdletName = "New-RscMutationOracle",
-                        CmdletSwitchName = "InstantRecoverSnapshot",
-                        GqlRootFieldName = "instantRecoverOracleSnapshot"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationOracle",
+                        cmdletSwitchName: "InstantRecoverSnapshot",
+                        gqlRootFieldName: "instantRecoverOracleSnapshot"
+                    )
                 },
                 {
                     GqlRootFieldName.isAwsNativeEbsVolumeSnapshotRestorable,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "IsNativeEbsVolumeSnapshotRestorable",
-                        GqlRootFieldName = "isAwsNativeEbsVolumeSnapshotRestorable"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "IsNativeEbsVolumeSnapshotRestorable",
+                        gqlRootFieldName: "isAwsNativeEbsVolumeSnapshotRestorable"
+                    )
                 },
                 {
                     GqlRootFieldName.isAwsNativeRdsInstanceLaunchConfigurationValid,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "IsNativeRdsInstanceLaunchConfigurationValid",
-                        GqlRootFieldName = "isAwsNativeRdsInstanceLaunchConfigurationValid"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "IsNativeRdsInstanceLaunchConfigurationValid",
+                        gqlRootFieldName: "isAwsNativeRdsInstanceLaunchConfigurationValid"
+                    )
                 },
                 {
                     GqlRootFieldName.isAwsS3BucketNameAvailable,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "IsS3BucketNameAvailable",
-                        GqlRootFieldName = "isAwsS3BucketNameAvailable"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "IsS3BucketNameAvailable",
+                        gqlRootFieldName: "isAwsS3BucketNameAvailable"
+                    )
                 },
                 {
                     GqlRootFieldName.isAzureNativeManagedDiskSnapshotRestorable,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "IsNativeManagedDiskSnapshotRestorable",
-                        GqlRootFieldName = "isAzureNativeManagedDiskSnapshotRestorable"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "IsNativeManagedDiskSnapshotRestorable",
+                        gqlRootFieldName: "isAzureNativeManagedDiskSnapshotRestorable"
+                    )
                 },
                 {
                     GqlRootFieldName.isAzureNativeSqlDatabaseSnapshotPersistent,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "IsNativeSqlDatabaseSnapshotPersistent",
-                        GqlRootFieldName = "isAzureNativeSqlDatabaseSnapshotPersistent"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "IsNativeSqlDatabaseSnapshotPersistent",
+                        gqlRootFieldName: "isAzureNativeSqlDatabaseSnapshotPersistent"
+                    )
                 },
                 {
                     GqlRootFieldName.isAzureStorageAccountNameAvailable,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "IsStorageAccountNameAvailable",
-                        GqlRootFieldName = "isAzureStorageAccountNameAvailable"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "IsStorageAccountNameAvailable",
+                        gqlRootFieldName: "isAzureStorageAccountNameAvailable"
+                    )
                 },
                 {
                     GqlRootFieldName.isTotpAckNecessaryForCluster,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCluster",
-                        CmdletSwitchName = "IsTotpAckNecessary",
-                        GqlRootFieldName = "isTotpAckNecessaryForCluster"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCluster",
+                        cmdletSwitchName: "IsTotpAckNecessary",
+                        gqlRootFieldName: "isTotpAckNecessaryForCluster"
+                    )
                 },
                 {
                     GqlRootFieldName.k8sClusters,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCluster",
-                        CmdletSwitchName = "K8s",
-                        GqlRootFieldName = "k8sClusters"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCluster",
+                        cmdletSwitchName: "K8s",
+                        gqlRootFieldName: "k8sClusters"
+                    )
                 },
                 {
                     GqlRootFieldName.ldapAuthorizedPrincipalConnection,
-                    new RscOp {
-                        CmdletName = "New-RscQueryLdap",
-                        CmdletSwitchName = "AuthorizedPrincipalList",
-                        GqlRootFieldName = "ldapAuthorizedPrincipalConnection"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryLdap",
+                        cmdletSwitchName: "AuthorizedPrincipalList",
+                        gqlRootFieldName: "ldapAuthorizedPrincipalConnection"
+                    )
                 },
                 {
                     GqlRootFieldName.ldapIntegrationConnection,
-                    new RscOp {
-                        CmdletName = "New-RscQueryLdap",
-                        CmdletSwitchName = "IntegrationList",
-                        GqlRootFieldName = "ldapIntegrationConnection"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryLdap",
+                        cmdletSwitchName: "IntegrationList",
+                        gqlRootFieldName: "ldapIntegrationConnection"
+                    )
                 },
                 {
                     GqlRootFieldName.ldapPrincipalConnection,
-                    new RscOp {
-                        CmdletName = "New-RscQueryLdap",
-                        CmdletSwitchName = "PrincipalList",
-                        GqlRootFieldName = "ldapPrincipalConnection"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryLdap",
+                        cmdletSwitchName: "PrincipalList",
+                        gqlRootFieldName: "ldapPrincipalConnection"
+                    )
                 },
                 {
                     GqlRootFieldName.listO365Apps,
-                    new RscOp {
-                        CmdletName = "New-RscQueryO365",
-                        CmdletSwitchName = "ListApps",
-                        GqlRootFieldName = "listO365Apps"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryO365",
+                        cmdletSwitchName: "ListApps",
+                        gqlRootFieldName: "listO365Apps"
+                    )
+                },
+                {
+                    GqlRootFieldName.managedVolume,
+                    new RscOp(
+                        cmdletName: "New-RscQueryManagedVolume",
+                        cmdletSwitchName: "ManagedVolume",
+                        gqlRootFieldName: "managedVolume"
+                    )
+                },
+                {
+                    GqlRootFieldName.managedVolumeInventoryStats,
+                    new RscOp(
+                        cmdletName: "New-RscQueryManagedVolume",
+                        cmdletSwitchName: "InventoryStats",
+                        gqlRootFieldName: "managedVolumeInventoryStats"
+                    )
+                },
+                {
+                    GqlRootFieldName.managedVolumeLiveMounts,
+                    new RscOp(
+                        cmdletName: "New-RscQueryManagedVolume",
+                        cmdletSwitchName: "LiveMounts",
+                        gqlRootFieldName: "managedVolumeLiveMounts"
+                    )
+                },
+                {
+                    GqlRootFieldName.managedVolumes,
+                    new RscOp(
+                        cmdletName: "New-RscQueryManagedVolume",
+                        cmdletSwitchName: "ManagedVolumes",
+                        gqlRootFieldName: "managedVolumes"
+                    )
                 },
                 {
                     GqlRootFieldName.mapAzureCloudAccountExocomputeSubscription,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "MapCloudAccountExocomputeSubscription",
-                        GqlRootFieldName = "mapAzureCloudAccountExocomputeSubscription"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "MapCloudAccountExocomputeSubscription",
+                        gqlRootFieldName: "mapAzureCloudAccountExocomputeSubscription"
+                    )
                 },
                 {
                     GqlRootFieldName.mapAzureCloudAccountToPersistentStorageLocation,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "MapCloudAccountToPersistentStorageLocation",
-                        GqlRootFieldName = "mapAzureCloudAccountToPersistentStorageLocation"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "MapCloudAccountToPersistentStorageLocation",
+                        gqlRootFieldName: "mapAzureCloudAccountToPersistentStorageLocation"
+                    )
                 },
                 {
                     GqlRootFieldName.migrateNutanixMountV1,
-                    new RscOp {
-                        CmdletName = "New-RscMutationNutanix",
-                        CmdletSwitchName = "MigrateMountV1",
-                        GqlRootFieldName = "migrateNutanixMountV1"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationNutanix",
+                        cmdletSwitchName: "MigrateMountV1",
+                        gqlRootFieldName: "migrateNutanixMountV1"
+                    )
                 },
                 {
                     GqlRootFieldName.mongoBulkRecoverableRanges,
-                    new RscOp {
-                        CmdletName = "New-RscQueryMongo",
-                        CmdletSwitchName = "BulkRecoverableRanges",
-                        GqlRootFieldName = "mongoBulkRecoverableRanges"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryMongo",
+                        cmdletSwitchName: "BulkRecoverableRanges",
+                        gqlRootFieldName: "mongoBulkRecoverableRanges"
+                    )
                 },
                 {
                     GqlRootFieldName.mongoCollection,
-                    new RscOp {
-                        CmdletName = "New-RscQueryMongo",
-                        CmdletSwitchName = "Collection",
-                        GqlRootFieldName = "mongoCollection"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryMongo",
+                        cmdletSwitchName: "Collection",
+                        gqlRootFieldName: "mongoCollection"
+                    )
                 },
                 {
                     GqlRootFieldName.mongoCollections,
-                    new RscOp {
-                        CmdletName = "New-RscQueryMongo",
-                        CmdletSwitchName = "Collections",
-                        GqlRootFieldName = "mongoCollections"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryMongo",
+                        cmdletSwitchName: "Collections",
+                        gqlRootFieldName: "mongoCollections"
+                    )
                 },
                 {
                     GqlRootFieldName.mongoDatabase,
-                    new RscOp {
-                        CmdletName = "New-RscQueryMongo",
-                        CmdletSwitchName = "Database",
-                        GqlRootFieldName = "mongoDatabase"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryMongo",
+                        cmdletSwitchName: "Database",
+                        gqlRootFieldName: "mongoDatabase"
+                    )
                 },
                 {
                     GqlRootFieldName.mongoDatabases,
-                    new RscOp {
-                        CmdletName = "New-RscQueryMongo",
-                        CmdletSwitchName = "Databases",
-                        GqlRootFieldName = "mongoDatabases"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryMongo",
+                        cmdletSwitchName: "Databases",
+                        gqlRootFieldName: "mongoDatabases"
+                    )
                 },
                 {
                     GqlRootFieldName.mongoRecoverableRanges,
-                    new RscOp {
-                        CmdletName = "New-RscQueryMongo",
-                        CmdletSwitchName = "RecoverableRanges",
-                        GqlRootFieldName = "mongoRecoverableRanges"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryMongo",
+                        cmdletSwitchName: "RecoverableRanges",
+                        gqlRootFieldName: "mongoRecoverableRanges"
+                    )
                 },
                 {
                     GqlRootFieldName.mongoSource,
-                    new RscOp {
-                        CmdletName = "New-RscQueryMongo",
-                        CmdletSwitchName = "Source",
-                        GqlRootFieldName = "mongoSource"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryMongo",
+                        cmdletSwitchName: "Source",
+                        gqlRootFieldName: "mongoSource"
+                    )
                 },
                 {
                     GqlRootFieldName.mongoSources,
-                    new RscOp {
-                        CmdletName = "New-RscQueryMongo",
-                        CmdletSwitchName = "Sources",
-                        GqlRootFieldName = "mongoSources"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryMongo",
+                        cmdletSwitchName: "Sources",
+                        gqlRootFieldName: "mongoSources"
+                    )
                 },
                 {
                     GqlRootFieldName.mongodbBulkRecoverableRange,
-                    new RscOp {
-                        CmdletName = "New-RscQueryMongo",
-                        CmdletSwitchName = "DbBulkRecoverableRange",
-                        GqlRootFieldName = "mongodbBulkRecoverableRange"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryMongo",
+                        cmdletSwitchName: "DbBulkRecoverableRange",
+                        gqlRootFieldName: "mongodbBulkRecoverableRange"
+                    )
                 },
                 {
                     GqlRootFieldName.mongodbCollection,
-                    new RscOp {
-                        CmdletName = "New-RscQueryMongo",
-                        CmdletSwitchName = "DbCollection",
-                        GqlRootFieldName = "mongodbCollection"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryMongo",
+                        cmdletSwitchName: "DbCollection",
+                        gqlRootFieldName: "mongodbCollection"
+                    )
                 },
                 {
                     GqlRootFieldName.mongodbCollectionRecoverableRange,
-                    new RscOp {
-                        CmdletName = "New-RscQueryMongo",
-                        CmdletSwitchName = "DbCollectionRecoverableRange",
-                        GqlRootFieldName = "mongodbCollectionRecoverableRange"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryMongo",
+                        cmdletSwitchName: "DbCollectionRecoverableRange",
+                        gqlRootFieldName: "mongodbCollectionRecoverableRange"
+                    )
                 },
                 {
                     GqlRootFieldName.mongodbCollections,
-                    new RscOp {
-                        CmdletName = "New-RscQueryMongo",
-                        CmdletSwitchName = "DbCollections",
-                        GqlRootFieldName = "mongodbCollections"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryMongo",
+                        cmdletSwitchName: "DbCollections",
+                        gqlRootFieldName: "mongodbCollections"
+                    )
                 },
                 {
                     GqlRootFieldName.mongodbDatabase,
-                    new RscOp {
-                        CmdletName = "New-RscQueryMongo",
-                        CmdletSwitchName = "DbDatabase",
-                        GqlRootFieldName = "mongodbDatabase"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryMongo",
+                        cmdletSwitchName: "DbDatabase",
+                        gqlRootFieldName: "mongodbDatabase"
+                    )
                 },
                 {
                     GqlRootFieldName.mongodbDatabases,
-                    new RscOp {
-                        CmdletName = "New-RscQueryMongo",
-                        CmdletSwitchName = "DbDatabases",
-                        GqlRootFieldName = "mongodbDatabases"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryMongo",
+                        cmdletSwitchName: "DbDatabases",
+                        gqlRootFieldName: "mongodbDatabases"
+                    )
                 },
                 {
                     GqlRootFieldName.mongodbSource,
-                    new RscOp {
-                        CmdletName = "New-RscQueryMongo",
-                        CmdletSwitchName = "DbSource",
-                        GqlRootFieldName = "mongodbSource"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryMongo",
+                        cmdletSwitchName: "DbSource",
+                        gqlRootFieldName: "mongodbSource"
+                    )
                 },
                 {
                     GqlRootFieldName.mongodbSources,
-                    new RscOp {
-                        CmdletName = "New-RscQueryMongo",
-                        CmdletSwitchName = "DbSources",
-                        GqlRootFieldName = "mongodbSources"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryMongo",
+                        cmdletSwitchName: "DbSources",
+                        gqlRootFieldName: "mongodbSources"
+                    )
                 },
                 {
                     GqlRootFieldName.mountNutanixSnapshotV1,
-                    new RscOp {
-                        CmdletName = "New-RscMutationNutanix",
-                        CmdletSwitchName = "MountSnapshotV1",
-                        GqlRootFieldName = "mountNutanixSnapshotV1"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationNutanix",
+                        cmdletSwitchName: "MountSnapshotV1",
+                        gqlRootFieldName: "mountNutanixSnapshotV1"
+                    )
                 },
                 {
                     GqlRootFieldName.mountOracleDatabase,
-                    new RscOp {
-                        CmdletName = "New-RscMutationOracle",
-                        CmdletSwitchName = "MountDatabase",
-                        GqlRootFieldName = "mountOracleDatabase"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationOracle",
+                        cmdletSwitchName: "MountDatabase",
+                        gqlRootFieldName: "mountOracleDatabase"
+                    )
                 },
                 {
                     GqlRootFieldName.mssqlAvailabilityGroup,
-                    new RscOp {
-                        CmdletName = "New-RscQueryMssql",
-                        CmdletSwitchName = "AvailabilityGroup",
-                        GqlRootFieldName = "mssqlAvailabilityGroup"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryMssql",
+                        cmdletSwitchName: "AvailabilityGroup",
+                        gqlRootFieldName: "mssqlAvailabilityGroup"
+                    )
                 },
                 {
                     GqlRootFieldName.mssqlCompatibleInstances,
-                    new RscOp {
-                        CmdletName = "New-RscQueryMssql",
-                        CmdletSwitchName = "CompatibleInstances",
-                        GqlRootFieldName = "mssqlCompatibleInstances"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryMssql",
+                        cmdletSwitchName: "CompatibleInstances",
+                        gqlRootFieldName: "mssqlCompatibleInstances"
+                    )
                 },
                 {
                     GqlRootFieldName.mssqlDatabase,
-                    new RscOp {
-                        CmdletName = "New-RscQueryMssql",
-                        CmdletSwitchName = "Database",
-                        GqlRootFieldName = "mssqlDatabase"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryMssql",
+                        cmdletSwitchName: "Database",
+                        gqlRootFieldName: "mssqlDatabase"
+                    )
                 },
                 {
                     GqlRootFieldName.mssqlDatabaseLiveMounts,
-                    new RscOp {
-                        CmdletName = "New-RscQueryMssql",
-                        CmdletSwitchName = "DatabaseLiveMounts",
-                        GqlRootFieldName = "mssqlDatabaseLiveMounts"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryMssql",
+                        cmdletSwitchName: "DatabaseLiveMounts",
+                        gqlRootFieldName: "mssqlDatabaseLiveMounts"
+                    )
                 },
                 {
                     GqlRootFieldName.mssqlDatabaseMissedRecoverableRanges,
-                    new RscOp {
-                        CmdletName = "New-RscQueryMssql",
-                        CmdletSwitchName = "DatabaseMissedRecoverableRanges",
-                        GqlRootFieldName = "mssqlDatabaseMissedRecoverableRanges"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryMssql",
+                        cmdletSwitchName: "DatabaseMissedRecoverableRanges",
+                        gqlRootFieldName: "mssqlDatabaseMissedRecoverableRanges"
+                    )
                 },
                 {
                     GqlRootFieldName.mssqlDatabaseMissedSnapshots,
-                    new RscOp {
-                        CmdletName = "New-RscQueryMssql",
-                        CmdletSwitchName = "DatabaseMissedSnapshots",
-                        GqlRootFieldName = "mssqlDatabaseMissedSnapshots"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryMssql",
+                        cmdletSwitchName: "DatabaseMissedSnapshots",
+                        gqlRootFieldName: "mssqlDatabaseMissedSnapshots"
+                    )
                 },
                 {
                     GqlRootFieldName.mssqlDatabaseRestoreEstimate,
-                    new RscOp {
-                        CmdletName = "New-RscQueryMssql",
-                        CmdletSwitchName = "DatabaseRestoreEstimate",
-                        GqlRootFieldName = "mssqlDatabaseRestoreEstimate"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryMssql",
+                        cmdletSwitchName: "DatabaseRestoreEstimate",
+                        gqlRootFieldName: "mssqlDatabaseRestoreEstimate"
+                    )
                 },
                 {
                     GqlRootFieldName.mssqlDatabases,
-                    new RscOp {
-                        CmdletName = "New-RscQueryMssql",
-                        CmdletSwitchName = "Databases",
-                        GqlRootFieldName = "mssqlDatabases"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryMssql",
+                        cmdletSwitchName: "Databases",
+                        gqlRootFieldName: "mssqlDatabases"
+                    )
                 },
                 {
                     GqlRootFieldName.mssqlDefaultProperties,
-                    new RscOp {
-                        CmdletName = "New-RscQueryMssql",
-                        CmdletSwitchName = "DefaultProperties",
-                        GqlRootFieldName = "mssqlDefaultProperties"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryMssql",
+                        cmdletSwitchName: "DefaultProperties",
+                        gqlRootFieldName: "mssqlDefaultProperties"
+                    )
                 },
                 {
                     GqlRootFieldName.mssqlInstance,
-                    new RscOp {
-                        CmdletName = "New-RscQueryMssql",
-                        CmdletSwitchName = "Instance",
-                        GqlRootFieldName = "mssqlInstance"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryMssql",
+                        cmdletSwitchName: "Instance",
+                        gqlRootFieldName: "mssqlInstance"
+                    )
                 },
                 {
                     GqlRootFieldName.mssqlLogShippingTargets,
-                    new RscOp {
-                        CmdletName = "New-RscQueryMssql",
-                        CmdletSwitchName = "LogShippingTargets",
-                        GqlRootFieldName = "mssqlLogShippingTargets"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryMssql",
+                        cmdletSwitchName: "LogShippingTargets",
+                        gqlRootFieldName: "mssqlLogShippingTargets"
+                    )
                 },
                 {
                     GqlRootFieldName.mssqlRecoverableRanges,
-                    new RscOp {
-                        CmdletName = "New-RscQueryMssql",
-                        CmdletSwitchName = "RecoverableRanges",
-                        GqlRootFieldName = "mssqlRecoverableRanges"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryMssql",
+                        cmdletSwitchName: "RecoverableRanges",
+                        gqlRootFieldName: "mssqlRecoverableRanges"
+                    )
                 },
                 {
                     GqlRootFieldName.mssqlTopLevelDescendants,
-                    new RscOp {
-                        CmdletName = "New-RscQueryMssql",
-                        CmdletSwitchName = "TopLevelDescendants",
-                        GqlRootFieldName = "mssqlTopLevelDescendants"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryMssql",
+                        cmdletSwitchName: "TopLevelDescendants",
+                        gqlRootFieldName: "mssqlTopLevelDescendants"
+                    )
                 },
                 {
                     GqlRootFieldName.nutanixBrowseSnapshot,
-                    new RscOp {
-                        CmdletName = "New-RscQueryNutanix",
-                        CmdletSwitchName = "BrowseSnapshot",
-                        GqlRootFieldName = "nutanixBrowseSnapshot"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryNutanix",
+                        cmdletSwitchName: "BrowseSnapshot",
+                        gqlRootFieldName: "nutanixBrowseSnapshot"
+                    )
                 },
                 {
                     GqlRootFieldName.nutanixCategory,
-                    new RscOp {
-                        CmdletName = "New-RscQueryNutanix",
-                        CmdletSwitchName = "Category",
-                        GqlRootFieldName = "nutanixCategory"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryNutanix",
+                        cmdletSwitchName: "Category",
+                        gqlRootFieldName: "nutanixCategory"
+                    )
                 },
                 {
                     GqlRootFieldName.nutanixCategoryValue,
-                    new RscOp {
-                        CmdletName = "New-RscQueryNutanix",
-                        CmdletSwitchName = "CategoryValue",
-                        GqlRootFieldName = "nutanixCategoryValue"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryNutanix",
+                        cmdletSwitchName: "CategoryValue",
+                        gqlRootFieldName: "nutanixCategoryValue"
+                    )
                 },
                 {
                     GqlRootFieldName.nutanixCluster,
-                    new RscOp {
-                        CmdletName = "New-RscQueryNutanix",
-                        CmdletSwitchName = "Cluster",
-                        GqlRootFieldName = "nutanixCluster"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryNutanix",
+                        cmdletSwitchName: "Cluster",
+                        gqlRootFieldName: "nutanixCluster"
+                    )
                 },
                 {
                     GqlRootFieldName.nutanixClusterAsyncRequestStatus,
-                    new RscOp {
-                        CmdletName = "New-RscQueryNutanix",
-                        CmdletSwitchName = "ClusterAsyncRequestStatus",
-                        GqlRootFieldName = "nutanixClusterAsyncRequestStatus"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryNutanix",
+                        cmdletSwitchName: "ClusterAsyncRequestStatus",
+                        gqlRootFieldName: "nutanixClusterAsyncRequestStatus"
+                    )
                 },
                 {
                     GqlRootFieldName.nutanixClusterContainers,
-                    new RscOp {
-                        CmdletName = "New-RscQueryNutanix",
-                        CmdletSwitchName = "ClusterContainers",
-                        GqlRootFieldName = "nutanixClusterContainers"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryNutanix",
+                        cmdletSwitchName: "ClusterContainers",
+                        gqlRootFieldName: "nutanixClusterContainers"
+                    )
                 },
                 {
                     GqlRootFieldName.nutanixClusterNetworks,
-                    new RscOp {
-                        CmdletName = "New-RscQueryNutanix",
-                        CmdletSwitchName = "ClusterNetworks",
-                        GqlRootFieldName = "nutanixClusterNetworks"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryNutanix",
+                        cmdletSwitchName: "ClusterNetworks",
+                        gqlRootFieldName: "nutanixClusterNetworks"
+                    )
                 },
                 {
                     GqlRootFieldName.nutanixClusters,
-                    new RscOp {
-                        CmdletName = "New-RscQueryNutanix",
-                        CmdletSwitchName = "Clusters",
-                        GqlRootFieldName = "nutanixClusters"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryNutanix",
+                        cmdletSwitchName: "Clusters",
+                        gqlRootFieldName: "nutanixClusters"
+                    )
                 },
                 {
                     GqlRootFieldName.nutanixMounts,
-                    new RscOp {
-                        CmdletName = "New-RscQueryNutanix",
-                        CmdletSwitchName = "Mounts",
-                        GqlRootFieldName = "nutanixMounts"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryNutanix",
+                        cmdletSwitchName: "Mounts",
+                        gqlRootFieldName: "nutanixMounts"
+                    )
                 },
                 {
                     GqlRootFieldName.nutanixPrismCentral,
-                    new RscOp {
-                        CmdletName = "New-RscQueryNutanix",
-                        CmdletSwitchName = "PrismCentral",
-                        GqlRootFieldName = "nutanixPrismCentral"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryNutanix",
+                        cmdletSwitchName: "PrismCentral",
+                        gqlRootFieldName: "nutanixPrismCentral"
+                    )
                 },
                 {
                     GqlRootFieldName.nutanixPrismCentrals,
-                    new RscOp {
-                        CmdletName = "New-RscQueryNutanix",
-                        CmdletSwitchName = "PrismCentrals",
-                        GqlRootFieldName = "nutanixPrismCentrals"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryNutanix",
+                        cmdletSwitchName: "PrismCentrals",
+                        gqlRootFieldName: "nutanixPrismCentrals"
+                    )
                 },
                 {
                     GqlRootFieldName.nutanixSnapshotDetail,
-                    new RscOp {
-                        CmdletName = "New-RscQueryNutanix",
-                        CmdletSwitchName = "SnapshotDetail",
-                        GqlRootFieldName = "nutanixSnapshotDetail"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryNutanix",
+                        cmdletSwitchName: "SnapshotDetail",
+                        gqlRootFieldName: "nutanixSnapshotDetail"
+                    )
                 },
                 {
                     GqlRootFieldName.nutanixTopLevelDescendants,
-                    new RscOp {
-                        CmdletName = "New-RscQueryNutanix",
-                        CmdletSwitchName = "TopLevelDescendants",
-                        GqlRootFieldName = "nutanixTopLevelDescendants"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryNutanix",
+                        cmdletSwitchName: "TopLevelDescendants",
+                        gqlRootFieldName: "nutanixTopLevelDescendants"
+                    )
                 },
                 {
                     GqlRootFieldName.nutanixVm,
-                    new RscOp {
-                        CmdletName = "New-RscQueryNutanix",
-                        CmdletSwitchName = "Vm",
-                        GqlRootFieldName = "nutanixVm"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryNutanix",
+                        cmdletSwitchName: "Vm",
+                        gqlRootFieldName: "nutanixVm"
+                    )
                 },
                 {
                     GqlRootFieldName.nutanixVmAsyncRequestStatus,
-                    new RscOp {
-                        CmdletName = "New-RscQueryNutanix",
-                        CmdletSwitchName = "VmAsyncRequestStatus",
-                        GqlRootFieldName = "nutanixVmAsyncRequestStatus"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryNutanix",
+                        cmdletSwitchName: "VmAsyncRequestStatus",
+                        gqlRootFieldName: "nutanixVmAsyncRequestStatus"
+                    )
                 },
                 {
                     GqlRootFieldName.nutanixVmMissedSnapshots,
-                    new RscOp {
-                        CmdletName = "New-RscQueryNutanix",
-                        CmdletSwitchName = "VmMissedSnapshots",
-                        GqlRootFieldName = "nutanixVmMissedSnapshots"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryNutanix",
+                        cmdletSwitchName: "VmMissedSnapshots",
+                        gqlRootFieldName: "nutanixVmMissedSnapshots"
+                    )
                 },
                 {
                     GqlRootFieldName.nutanixVms,
-                    new RscOp {
-                        CmdletName = "New-RscQueryNutanix",
-                        CmdletSwitchName = "Vms",
-                        GqlRootFieldName = "nutanixVms"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryNutanix",
+                        cmdletSwitchName: "Vms",
+                        gqlRootFieldName: "nutanixVms"
+                    )
                 },
                 {
                     GqlRootFieldName.o365Calendar,
-                    new RscOp {
-                        CmdletName = "New-RscQueryO365",
-                        CmdletSwitchName = "Calendar",
-                        GqlRootFieldName = "o365Calendar"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryO365",
+                        cmdletSwitchName: "Calendar",
+                        gqlRootFieldName: "o365Calendar"
+                    )
                 },
                 {
                     GqlRootFieldName.o365Groups,
-                    new RscOp {
-                        CmdletName = "New-RscQueryO365",
-                        CmdletSwitchName = "Groups",
-                        GqlRootFieldName = "o365Groups"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryO365",
+                        cmdletSwitchName: "Groups",
+                        gqlRootFieldName: "o365Groups"
+                    )
                 },
                 {
                     GqlRootFieldName.o365License,
-                    new RscOp {
-                        CmdletName = "New-RscQueryO365",
-                        CmdletSwitchName = "License",
-                        GqlRootFieldName = "o365License"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryO365",
+                        cmdletSwitchName: "License",
+                        gqlRootFieldName: "o365License"
+                    )
                 },
                 {
                     GqlRootFieldName.o365Mailbox,
-                    new RscOp {
-                        CmdletName = "New-RscQueryO365",
-                        CmdletSwitchName = "Mailbox",
-                        GqlRootFieldName = "o365Mailbox"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryO365",
+                        cmdletSwitchName: "Mailbox",
+                        gqlRootFieldName: "o365Mailbox"
+                    )
                 },
                 {
                     GqlRootFieldName.o365Mailboxes,
-                    new RscOp {
-                        CmdletName = "New-RscQueryO365",
-                        CmdletSwitchName = "Mailboxes",
-                        GqlRootFieldName = "o365Mailboxes"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryO365",
+                        cmdletSwitchName: "Mailboxes",
+                        gqlRootFieldName: "o365Mailboxes"
+                    )
                 },
                 {
                     GqlRootFieldName.o365OauthConsentComplete,
-                    new RscOp {
-                        CmdletName = "New-RscMutationO365",
-                        CmdletSwitchName = "OauthConsentComplete",
-                        GqlRootFieldName = "o365OauthConsentComplete"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationO365",
+                        cmdletSwitchName: "OauthConsentComplete",
+                        gqlRootFieldName: "o365OauthConsentComplete"
+                    )
                 },
                 {
                     GqlRootFieldName.o365OauthConsentKickoff,
-                    new RscOp {
-                        CmdletName = "New-RscMutationO365",
-                        CmdletSwitchName = "OauthConsentKickoff",
-                        GqlRootFieldName = "o365OauthConsentKickoff"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationO365",
+                        cmdletSwitchName: "OauthConsentKickoff",
+                        gqlRootFieldName: "o365OauthConsentKickoff"
+                    )
                 },
                 {
                     GqlRootFieldName.o365ObjectAncestors,
-                    new RscOp {
-                        CmdletName = "New-RscQueryO365",
-                        CmdletSwitchName = "ObjectAncestors",
-                        GqlRootFieldName = "o365ObjectAncestors"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryO365",
+                        cmdletSwitchName: "ObjectAncestors",
+                        gqlRootFieldName: "o365ObjectAncestors"
+                    )
                 },
                 {
                     GqlRootFieldName.o365Onedrive,
-                    new RscOp {
-                        CmdletName = "New-RscQueryO365",
-                        CmdletSwitchName = "Onedrive",
-                        GqlRootFieldName = "o365Onedrive"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryO365",
+                        cmdletSwitchName: "Onedrive",
+                        gqlRootFieldName: "o365Onedrive"
+                    )
                 },
                 {
                     GqlRootFieldName.o365Onedrives,
-                    new RscOp {
-                        CmdletName = "New-RscQueryO365",
-                        CmdletSwitchName = "Onedrives",
-                        GqlRootFieldName = "o365Onedrives"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryO365",
+                        cmdletSwitchName: "Onedrives",
+                        gqlRootFieldName: "o365Onedrives"
+                    )
                 },
                 {
                     GqlRootFieldName.o365Org,
-                    new RscOp {
-                        CmdletName = "New-RscQueryO365",
-                        CmdletSwitchName = "Org",
-                        GqlRootFieldName = "o365Org"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryO365",
+                        cmdletSwitchName: "Org",
+                        gqlRootFieldName: "o365Org"
+                    )
                 },
                 {
                     GqlRootFieldName.o365OrgAtSnappableLevel,
-                    new RscOp {
-                        CmdletName = "New-RscQueryO365",
-                        CmdletSwitchName = "OrgAtSnappableLevel",
-                        GqlRootFieldName = "o365OrgAtSnappableLevel"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryO365",
+                        cmdletSwitchName: "OrgAtSnappableLevel",
+                        gqlRootFieldName: "o365OrgAtSnappableLevel"
+                    )
                 },
                 {
                     GqlRootFieldName.o365OrgSummaries,
-                    new RscOp {
-                        CmdletName = "New-RscQueryO365",
-                        CmdletSwitchName = "OrgSummaries",
-                        GqlRootFieldName = "o365OrgSummaries"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryO365",
+                        cmdletSwitchName: "OrgSummaries",
+                        gqlRootFieldName: "o365OrgSummaries"
+                    )
                 },
                 {
                     GqlRootFieldName.o365Orgs,
-                    new RscOp {
-                        CmdletName = "New-RscQueryO365",
-                        CmdletSwitchName = "Orgs",
-                        GqlRootFieldName = "o365Orgs"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryO365",
+                        cmdletSwitchName: "Orgs",
+                        gqlRootFieldName: "o365Orgs"
+                    )
                 },
                 {
                     GqlRootFieldName.o365PdlGroups,
-                    new RscOp {
-                        CmdletName = "New-RscMutationO365",
-                        CmdletSwitchName = "PdlGroups",
-                        GqlRootFieldName = "o365PdlGroups"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationO365",
+                        cmdletSwitchName: "PdlGroups",
+                        gqlRootFieldName: "o365PdlGroups"
+                    )
                 },
                 {
                     GqlRootFieldName.o365SaaSSetupKickoff,
-                    new RscOp {
-                        CmdletName = "New-RscMutationO365",
-                        CmdletSwitchName = "SaaSSetupKickoff",
-                        GqlRootFieldName = "o365SaaSSetupKickoff"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationO365",
+                        cmdletSwitchName: "SaaSSetupKickoff",
+                        gqlRootFieldName: "o365SaaSSetupKickoff"
+                    )
                 },
                 {
                     GqlRootFieldName.o365SaasSetupComplete,
-                    new RscOp {
-                        CmdletName = "New-RscMutationO365",
-                        CmdletSwitchName = "SaasSetupComplete",
-                        GqlRootFieldName = "o365SaasSetupComplete"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationO365",
+                        cmdletSwitchName: "SaasSetupComplete",
+                        gqlRootFieldName: "o365SaasSetupComplete"
+                    )
                 },
                 {
                     GqlRootFieldName.o365ServiceAccount,
-                    new RscOp {
-                        CmdletName = "New-RscQueryO365",
-                        CmdletSwitchName = "ServiceAccount",
-                        GqlRootFieldName = "o365ServiceAccount"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryO365",
+                        cmdletSwitchName: "ServiceAccount",
+                        gqlRootFieldName: "o365ServiceAccount"
+                    )
                 },
                 {
                     GqlRootFieldName.o365ServiceStatus,
-                    new RscOp {
-                        CmdletName = "New-RscQueryO365",
-                        CmdletSwitchName = "ServiceStatus",
-                        GqlRootFieldName = "o365ServiceStatus"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryO365",
+                        cmdletSwitchName: "ServiceStatus",
+                        gqlRootFieldName: "o365ServiceStatus"
+                    )
                 },
                 {
                     GqlRootFieldName.o365SetupKickoff,
-                    new RscOp {
-                        CmdletName = "New-RscMutationO365",
-                        CmdletSwitchName = "SetupKickoff",
-                        GqlRootFieldName = "o365SetupKickoff"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationO365",
+                        cmdletSwitchName: "SetupKickoff",
+                        gqlRootFieldName: "o365SetupKickoff"
+                    )
                 },
                 {
                     GqlRootFieldName.o365SharepointDrive,
-                    new RscOp {
-                        CmdletName = "New-RscQueryO365",
-                        CmdletSwitchName = "SharepointDrive",
-                        GqlRootFieldName = "o365SharepointDrive"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryO365",
+                        cmdletSwitchName: "SharepointDrive",
+                        gqlRootFieldName: "o365SharepointDrive"
+                    )
                 },
                 {
                     GqlRootFieldName.o365SharepointDrives,
-                    new RscOp {
-                        CmdletName = "New-RscQueryO365",
-                        CmdletSwitchName = "SharepointDrives",
-                        GqlRootFieldName = "o365SharepointDrives"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryO365",
+                        cmdletSwitchName: "SharepointDrives",
+                        gqlRootFieldName: "o365SharepointDrives"
+                    )
                 },
                 {
                     GqlRootFieldName.o365SharepointList,
-                    new RscOp {
-                        CmdletName = "New-RscQueryO365",
-                        CmdletSwitchName = "SharepointList",
-                        GqlRootFieldName = "o365SharepointList"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryO365",
+                        cmdletSwitchName: "SharepointList",
+                        gqlRootFieldName: "o365SharepointList"
+                    )
                 },
                 {
                     GqlRootFieldName.o365SharepointLists,
-                    new RscOp {
-                        CmdletName = "New-RscQueryO365",
-                        CmdletSwitchName = "SharepointLists",
-                        GqlRootFieldName = "o365SharepointLists"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryO365",
+                        cmdletSwitchName: "SharepointLists",
+                        gqlRootFieldName: "o365SharepointLists"
+                    )
                 },
                 {
                     GqlRootFieldName.o365SharepointObjectList,
-                    new RscOp {
-                        CmdletName = "New-RscQueryO365",
-                        CmdletSwitchName = "SharepointObjectList",
-                        GqlRootFieldName = "o365SharepointObjectList"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryO365",
+                        cmdletSwitchName: "SharepointObjectList",
+                        gqlRootFieldName: "o365SharepointObjectList"
+                    )
                 },
                 {
                     GqlRootFieldName.o365SharepointObjects,
-                    new RscOp {
-                        CmdletName = "New-RscQueryO365",
-                        CmdletSwitchName = "SharepointObjects",
-                        GqlRootFieldName = "o365SharepointObjects"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryO365",
+                        cmdletSwitchName: "SharepointObjects",
+                        gqlRootFieldName: "o365SharepointObjects"
+                    )
                 },
                 {
                     GqlRootFieldName.o365SharepointSite,
-                    new RscOp {
-                        CmdletName = "New-RscQueryO365",
-                        CmdletSwitchName = "SharepointSite",
-                        GqlRootFieldName = "o365SharepointSite"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryO365",
+                        cmdletSwitchName: "SharepointSite",
+                        gqlRootFieldName: "o365SharepointSite"
+                    )
                 },
                 {
                     GqlRootFieldName.o365SharepointSites,
-                    new RscOp {
-                        CmdletName = "New-RscQueryO365",
-                        CmdletSwitchName = "SharepointSites",
-                        GqlRootFieldName = "o365SharepointSites"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryO365",
+                        cmdletSwitchName: "SharepointSites",
+                        gqlRootFieldName: "o365SharepointSites"
+                    )
                 },
                 {
                     GqlRootFieldName.o365Site,
-                    new RscOp {
-                        CmdletName = "New-RscQueryO365",
-                        CmdletSwitchName = "Site",
-                        GqlRootFieldName = "o365Site"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryO365",
+                        cmdletSwitchName: "Site",
+                        gqlRootFieldName: "o365Site"
+                    )
                 },
                 {
                     GqlRootFieldName.o365Sites,
-                    new RscOp {
-                        CmdletName = "New-RscQueryO365",
-                        CmdletSwitchName = "Sites",
-                        GqlRootFieldName = "o365Sites"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryO365",
+                        cmdletSwitchName: "Sites",
+                        gqlRootFieldName: "o365Sites"
+                    )
                 },
                 {
                     GqlRootFieldName.o365StorageStats,
-                    new RscOp {
-                        CmdletName = "New-RscQueryO365",
-                        CmdletSwitchName = "StorageStats",
-                        GqlRootFieldName = "o365StorageStats"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryO365",
+                        cmdletSwitchName: "StorageStats",
+                        gqlRootFieldName: "o365StorageStats"
+                    )
                 },
                 {
                     GqlRootFieldName.o365Team,
-                    new RscOp {
-                        CmdletName = "New-RscQueryO365",
-                        CmdletSwitchName = "Team",
-                        GqlRootFieldName = "o365Team"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryO365",
+                        cmdletSwitchName: "Team",
+                        gqlRootFieldName: "o365Team"
+                    )
                 },
                 {
                     GqlRootFieldName.o365TeamChannels,
-                    new RscOp {
-                        CmdletName = "New-RscQueryO365",
-                        CmdletSwitchName = "TeamChannels",
-                        GqlRootFieldName = "o365TeamChannels"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryO365",
+                        cmdletSwitchName: "TeamChannels",
+                        gqlRootFieldName: "o365TeamChannels"
+                    )
                 },
                 {
                     GqlRootFieldName.o365TeamConversationsFolderID,
-                    new RscOp {
-                        CmdletName = "New-RscQueryO365",
-                        CmdletSwitchName = "TeamConversationsFolderID",
-                        GqlRootFieldName = "o365TeamConversationsFolderID"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryO365",
+                        cmdletSwitchName: "TeamConversationsFolderID",
+                        gqlRootFieldName: "o365TeamConversationsFolderID"
+                    )
                 },
                 {
                     GqlRootFieldName.o365TeamPostedBy,
-                    new RscOp {
-                        CmdletName = "New-RscQueryO365",
-                        CmdletSwitchName = "TeamPostedBy",
-                        GqlRootFieldName = "o365TeamPostedBy"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryO365",
+                        cmdletSwitchName: "TeamPostedBy",
+                        gqlRootFieldName: "o365TeamPostedBy"
+                    )
                 },
                 {
                     GqlRootFieldName.o365Teams,
-                    new RscOp {
-                        CmdletName = "New-RscQueryO365",
-                        CmdletSwitchName = "Teams",
-                        GqlRootFieldName = "o365Teams"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryO365",
+                        cmdletSwitchName: "Teams",
+                        gqlRootFieldName: "o365Teams"
+                    )
                 },
                 {
                     GqlRootFieldName.o365User,
-                    new RscOp {
-                        CmdletName = "New-RscQueryO365",
-                        CmdletSwitchName = "User",
-                        GqlRootFieldName = "o365User"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryO365",
+                        cmdletSwitchName: "User",
+                        gqlRootFieldName: "o365User"
+                    )
                 },
                 {
                     GqlRootFieldName.o365UserObjects,
-                    new RscOp {
-                        CmdletName = "New-RscQueryO365",
-                        CmdletSwitchName = "UserObjects",
-                        GqlRootFieldName = "o365UserObjects"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryO365",
+                        cmdletSwitchName: "UserObjects",
+                        gqlRootFieldName: "o365UserObjects"
+                    )
                 },
                 {
                     GqlRootFieldName.oracleAcoExampleDownloadLink,
-                    new RscOp {
-                        CmdletName = "New-RscQueryOracle",
-                        CmdletSwitchName = "AcoExampleDownloadLink",
-                        GqlRootFieldName = "oracleAcoExampleDownloadLink"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryOracle",
+                        cmdletSwitchName: "AcoExampleDownloadLink",
+                        gqlRootFieldName: "oracleAcoExampleDownloadLink"
+                    )
                 },
                 {
                     GqlRootFieldName.oracleAcoParameters,
-                    new RscOp {
-                        CmdletName = "New-RscQueryOracle",
-                        CmdletSwitchName = "AcoParameters",
-                        GqlRootFieldName = "oracleAcoParameters"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryOracle",
+                        cmdletSwitchName: "AcoParameters",
+                        gqlRootFieldName: "oracleAcoParameters"
+                    )
                 },
                 {
                     GqlRootFieldName.oracleDataGuardGroup,
-                    new RscOp {
-                        CmdletName = "New-RscQueryOracle",
-                        CmdletSwitchName = "DataGuardGroup",
-                        GqlRootFieldName = "oracleDataGuardGroup"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryOracle",
+                        cmdletSwitchName: "DataGuardGroup",
+                        gqlRootFieldName: "oracleDataGuardGroup"
+                    )
                 },
                 {
                     GqlRootFieldName.oracleDatabase,
-                    new RscOp {
-                        CmdletName = "New-RscQueryOracle",
-                        CmdletSwitchName = "Database",
-                        GqlRootFieldName = "oracleDatabase"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryOracle",
+                        cmdletSwitchName: "Database",
+                        gqlRootFieldName: "oracleDatabase"
+                    )
                 },
                 {
                     GqlRootFieldName.oracleDatabaseLogBackupConfig,
-                    new RscOp {
-                        CmdletName = "New-RscQueryOracle",
-                        CmdletSwitchName = "DatabaseLogBackupConfig",
-                        GqlRootFieldName = "oracleDatabaseLogBackupConfig"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryOracle",
+                        cmdletSwitchName: "DatabaseLogBackupConfig",
+                        gqlRootFieldName: "oracleDatabaseLogBackupConfig"
+                    )
                 },
                 {
                     GqlRootFieldName.oracleDatabases,
-                    new RscOp {
-                        CmdletName = "New-RscQueryOracle",
-                        CmdletSwitchName = "Databases",
-                        GqlRootFieldName = "oracleDatabases"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryOracle",
+                        cmdletSwitchName: "Databases",
+                        gqlRootFieldName: "oracleDatabases"
+                    )
                 },
                 {
                     GqlRootFieldName.oracleHost,
-                    new RscOp {
-                        CmdletName = "New-RscQueryOracle",
-                        CmdletSwitchName = "Host",
-                        GqlRootFieldName = "oracleHost"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryOracle",
+                        cmdletSwitchName: "Host",
+                        gqlRootFieldName: "oracleHost"
+                    )
                 },
                 {
                     GqlRootFieldName.oracleHostLogBackupConfig,
-                    new RscOp {
-                        CmdletName = "New-RscQueryOracle",
-                        CmdletSwitchName = "HostLogBackupConfig",
-                        GqlRootFieldName = "oracleHostLogBackupConfig"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryOracle",
+                        cmdletSwitchName: "HostLogBackupConfig",
+                        gqlRootFieldName: "oracleHostLogBackupConfig"
+                    )
                 },
                 {
                     GqlRootFieldName.oracleLiveMounts,
-                    new RscOp {
-                        CmdletName = "New-RscQueryOracle",
-                        CmdletSwitchName = "LiveMounts",
-                        GqlRootFieldName = "oracleLiveMounts"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryOracle",
+                        cmdletSwitchName: "LiveMounts",
+                        gqlRootFieldName: "oracleLiveMounts"
+                    )
                 },
                 {
                     GqlRootFieldName.oracleMissedRecoverableRanges,
-                    new RscOp {
-                        CmdletName = "New-RscQueryOracle",
-                        CmdletSwitchName = "MissedRecoverableRanges",
-                        GqlRootFieldName = "oracleMissedRecoverableRanges"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryOracle",
+                        cmdletSwitchName: "MissedRecoverableRanges",
+                        gqlRootFieldName: "oracleMissedRecoverableRanges"
+                    )
                 },
                 {
                     GqlRootFieldName.oracleMissedSnapshots,
-                    new RscOp {
-                        CmdletName = "New-RscQueryOracle",
-                        CmdletSwitchName = "MissedSnapshots",
-                        GqlRootFieldName = "oracleMissedSnapshots"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryOracle",
+                        cmdletSwitchName: "MissedSnapshots",
+                        gqlRootFieldName: "oracleMissedSnapshots"
+                    )
                 },
                 {
                     GqlRootFieldName.oraclePdbDetails,
-                    new RscOp {
-                        CmdletName = "New-RscQueryOracle",
-                        CmdletSwitchName = "PdbDetails",
-                        GqlRootFieldName = "oraclePdbDetails"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryOracle",
+                        cmdletSwitchName: "PdbDetails",
+                        gqlRootFieldName: "oraclePdbDetails"
+                    )
                 },
                 {
                     GqlRootFieldName.oracleRac,
-                    new RscOp {
-                        CmdletName = "New-RscQueryOracle",
-                        CmdletSwitchName = "Rac",
-                        GqlRootFieldName = "oracleRac"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryOracle",
+                        cmdletSwitchName: "Rac",
+                        gqlRootFieldName: "oracleRac"
+                    )
                 },
                 {
                     GqlRootFieldName.oracleRacLogBackupConfig,
-                    new RscOp {
-                        CmdletName = "New-RscQueryOracle",
-                        CmdletSwitchName = "RacLogBackupConfig",
-                        GqlRootFieldName = "oracleRacLogBackupConfig"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryOracle",
+                        cmdletSwitchName: "RacLogBackupConfig",
+                        gqlRootFieldName: "oracleRacLogBackupConfig"
+                    )
                 },
                 {
                     GqlRootFieldName.oracleRecoverableRanges,
-                    new RscOp {
-                        CmdletName = "New-RscQueryOracle",
-                        CmdletSwitchName = "RecoverableRanges",
-                        GqlRootFieldName = "oracleRecoverableRanges"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryOracle",
+                        cmdletSwitchName: "RecoverableRanges",
+                        gqlRootFieldName: "oracleRecoverableRanges"
+                    )
                 },
                 {
                     GqlRootFieldName.oracleTopLevelDescendants,
-                    new RscOp {
-                        CmdletName = "New-RscQueryOracle",
-                        CmdletSwitchName = "TopLevelDescendants",
-                        GqlRootFieldName = "oracleTopLevelDescendants"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryOracle",
+                        cmdletSwitchName: "TopLevelDescendants",
+                        gqlRootFieldName: "oracleTopLevelDescendants"
+                    )
                 },
                 {
                     GqlRootFieldName.patchAwsAuthenticationServerBasedCloudAccount,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAws",
-                        CmdletSwitchName = "PatchAuthenticationServerBasedCloudAccount",
-                        GqlRootFieldName = "patchAwsAuthenticationServerBasedCloudAccount"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "PatchAuthenticationServerBasedCloudAccount",
+                        gqlRootFieldName: "patchAwsAuthenticationServerBasedCloudAccount"
+                    )
                 },
                 {
                     GqlRootFieldName.patchAwsIamUserBasedCloudAccount,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAws",
-                        CmdletSwitchName = "PatchIamUserBasedCloudAccount",
-                        GqlRootFieldName = "patchAwsIamUserBasedCloudAccount"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "PatchIamUserBasedCloudAccount",
+                        gqlRootFieldName: "patchAwsIamUserBasedCloudAccount"
+                    )
                 },
                 {
                     GqlRootFieldName.patchDb2Database,
-                    new RscOp {
-                        CmdletName = "New-RscMutationDb2",
-                        CmdletSwitchName = "PatchDatabase",
-                        GqlRootFieldName = "patchDb2Database"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationDb2",
+                        cmdletSwitchName: "PatchDatabase",
+                        gqlRootFieldName: "patchDb2Database"
+                    )
                 },
                 {
                     GqlRootFieldName.patchDb2Instance,
-                    new RscOp {
-                        CmdletName = "New-RscMutationDb2",
-                        CmdletSwitchName = "PatchInstance",
-                        GqlRootFieldName = "patchDb2Instance"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationDb2",
+                        cmdletSwitchName: "PatchInstance",
+                        gqlRootFieldName: "patchDb2Instance"
+                    )
                 },
                 {
                     GqlRootFieldName.patchMongoSource,
-                    new RscOp {
-                        CmdletName = "New-RscMutationMongo",
-                        CmdletSwitchName = "PatchSource",
-                        GqlRootFieldName = "patchMongoSource"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationMongo",
+                        cmdletSwitchName: "PatchSource",
+                        gqlRootFieldName: "patchMongoSource"
+                    )
                 },
                 {
                     GqlRootFieldName.patchNutanixMountV1,
-                    new RscOp {
-                        CmdletName = "New-RscMutationNutanix",
-                        CmdletSwitchName = "PatchMountV1",
-                        GqlRootFieldName = "patchNutanixMountV1"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationNutanix",
+                        cmdletSwitchName: "PatchMountV1",
+                        gqlRootFieldName: "patchNutanixMountV1"
+                    )
                 },
                 {
                     GqlRootFieldName.pauseSla,
-                    new RscOp {
-                        CmdletName = "New-RscMutationSla",
-                        CmdletSwitchName = "Pause",
-                        GqlRootFieldName = "pauseSla"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationSla",
+                        cmdletSwitchName: "Pause",
+                        gqlRootFieldName: "pauseSla"
+                    )
                 },
                 {
                     GqlRootFieldName.prepareAwsCloudAccountDeletion,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAws",
-                        CmdletSwitchName = "PrepareCloudAccountDeletion",
-                        GqlRootFieldName = "prepareAwsCloudAccountDeletion"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "PrepareCloudAccountDeletion",
+                        gqlRootFieldName: "prepareAwsCloudAccountDeletion"
+                    )
                 },
                 {
                     GqlRootFieldName.prepareFeatureUpdateForAwsCloudAccount,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAws",
-                        CmdletSwitchName = "PrepareFeatureUpdateForCloudAccount",
-                        GqlRootFieldName = "prepareFeatureUpdateForAwsCloudAccount"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "PrepareFeatureUpdateForCloudAccount",
+                        gqlRootFieldName: "prepareFeatureUpdateForAwsCloudAccount"
+                    )
                 },
                 {
                     GqlRootFieldName.rdsInstanceDetailsFromAws,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "RdsInstanceDetails",
-                        GqlRootFieldName = "rdsInstanceDetailsFromAws"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "RdsInstanceDetails",
+                        gqlRootFieldName: "rdsInstanceDetailsFromAws"
+                    )
                 },
                 {
                     GqlRootFieldName.recoverCassandraSource,
-                    new RscOp {
-                        CmdletName = "New-RscMutationCassandra",
-                        CmdletSwitchName = "RecoverSource",
-                        GqlRootFieldName = "recoverCassandraSource"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationCassandra",
+                        cmdletSwitchName: "RecoverSource",
+                        gqlRootFieldName: "recoverCassandraSource"
+                    )
                 },
                 {
                     GqlRootFieldName.recoverCloudCluster,
-                    new RscOp {
-                        CmdletName = "New-RscMutationCluster",
-                        CmdletSwitchName = "RecoverCloud",
-                        GqlRootFieldName = "recoverCloudCluster"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationCluster",
+                        cmdletSwitchName: "RecoverCloud",
+                        gqlRootFieldName: "recoverCloudCluster"
+                    )
                 },
                 {
                     GqlRootFieldName.recoverMongoSource,
-                    new RscOp {
-                        CmdletName = "New-RscMutationMongo",
-                        CmdletSwitchName = "RecoverSource",
-                        GqlRootFieldName = "recoverMongoSource"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationMongo",
+                        cmdletSwitchName: "RecoverSource",
+                        gqlRootFieldName: "recoverMongoSource"
+                    )
                 },
                 {
                     GqlRootFieldName.recoverMongodbSource,
-                    new RscOp {
-                        CmdletName = "New-RscMutationMongo",
-                        CmdletSwitchName = "RecoverdbSource",
-                        GqlRootFieldName = "recoverMongodbSource"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationMongo",
+                        cmdletSwitchName: "RecoverdbSource",
+                        gqlRootFieldName: "recoverMongodbSource"
+                    )
                 },
                 {
                     GqlRootFieldName.refreshDb2Database,
-                    new RscOp {
-                        CmdletName = "New-RscMutationDb2",
-                        CmdletSwitchName = "RefreshDatabase",
-                        GqlRootFieldName = "refreshDb2Database"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationDb2",
+                        cmdletSwitchName: "RefreshDatabase",
+                        gqlRootFieldName: "refreshDb2Database"
+                    )
                 },
                 {
                     GqlRootFieldName.refreshHypervScvmm,
-                    new RscOp {
-                        CmdletName = "New-RscMutationHyperv",
-                        CmdletSwitchName = "RefreshScvmm",
-                        GqlRootFieldName = "refreshHypervScvmm"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationHyperv",
+                        cmdletSwitchName: "RefreshScvmm",
+                        gqlRootFieldName: "refreshHypervScvmm"
+                    )
                 },
                 {
                     GqlRootFieldName.refreshHypervServer,
-                    new RscOp {
-                        CmdletName = "New-RscMutationHyperv",
-                        CmdletSwitchName = "RefreshServer",
-                        GqlRootFieldName = "refreshHypervServer"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationHyperv",
+                        cmdletSwitchName: "RefreshServer",
+                        gqlRootFieldName: "refreshHypervServer"
+                    )
                 },
                 {
                     GqlRootFieldName.refreshK8sCluster,
-                    new RscOp {
-                        CmdletName = "New-RscMutationCluster",
-                        CmdletSwitchName = "RefreshK8s",
-                        GqlRootFieldName = "refreshK8sCluster"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationCluster",
+                        cmdletSwitchName: "RefreshK8s",
+                        gqlRootFieldName: "refreshK8sCluster"
+                    )
                 },
                 {
                     GqlRootFieldName.refreshNutanixCluster,
-                    new RscOp {
-                        CmdletName = "New-RscMutationNutanix",
-                        CmdletSwitchName = "RefreshCluster",
-                        GqlRootFieldName = "refreshNutanixCluster"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationNutanix",
+                        cmdletSwitchName: "RefreshCluster",
+                        gqlRootFieldName: "refreshNutanixCluster"
+                    )
                 },
                 {
                     GqlRootFieldName.refreshNutanixPrismCentral,
-                    new RscOp {
-                        CmdletName = "New-RscMutationNutanix",
-                        CmdletSwitchName = "RefreshPrismCentral",
-                        GqlRootFieldName = "refreshNutanixPrismCentral"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationNutanix",
+                        cmdletSwitchName: "RefreshPrismCentral",
+                        gqlRootFieldName: "refreshNutanixPrismCentral"
+                    )
                 },
                 {
                     GqlRootFieldName.refreshO365Org,
-                    new RscOp {
-                        CmdletName = "New-RscMutationO365",
-                        CmdletSwitchName = "RefreshOrg",
-                        GqlRootFieldName = "refreshO365Org"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationO365",
+                        cmdletSwitchName: "RefreshOrg",
+                        gqlRootFieldName: "refreshO365Org"
+                    )
                 },
                 {
                     GqlRootFieldName.refreshOracleDatabase,
-                    new RscOp {
-                        CmdletName = "New-RscMutationOracle",
-                        CmdletSwitchName = "RefreshDatabase",
-                        GqlRootFieldName = "refreshOracleDatabase"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationOracle",
+                        cmdletSwitchName: "RefreshDatabase",
+                        gqlRootFieldName: "refreshOracleDatabase"
+                    )
                 },
                 {
                     GqlRootFieldName.refreshVsphereVcenter,
-                    new RscOp {
-                        CmdletName = "New-RscMutationVcenter",
-                        CmdletSwitchName = "Refresh",
-                        GqlRootFieldName = "refreshVsphereVcenter"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationVcenter",
+                        cmdletSwitchName: "Refresh",
+                        gqlRootFieldName: "refreshVsphereVcenter"
+                    )
                 },
                 {
                     GqlRootFieldName.registerAgentHypervVirtualMachine,
-                    new RscOp {
-                        CmdletName = "New-RscMutationHyperv",
-                        CmdletSwitchName = "RegisterAgentVirtualMachine",
-                        GqlRootFieldName = "registerAgentHypervVirtualMachine"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationHyperv",
+                        cmdletSwitchName: "RegisterAgentVirtualMachine",
+                        gqlRootFieldName: "registerAgentHypervVirtualMachine"
+                    )
                 },
                 {
                     GqlRootFieldName.registerAgentNutanixVm,
-                    new RscOp {
-                        CmdletName = "New-RscMutationNutanix",
-                        CmdletSwitchName = "RegisterAgentVm",
-                        GqlRootFieldName = "registerAgentNutanixVm"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationNutanix",
+                        cmdletSwitchName: "RegisterAgentVm",
+                        gqlRootFieldName: "registerAgentNutanixVm"
+                    )
                 },
                 {
                     GqlRootFieldName.registerAwsFeatureArtifacts,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAws",
-                        CmdletSwitchName = "RegisterFeatureArtifacts",
-                        GqlRootFieldName = "registerAwsFeatureArtifacts"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "RegisterFeatureArtifacts",
+                        gqlRootFieldName: "registerAwsFeatureArtifacts"
+                    )
                 },
                 {
                     GqlRootFieldName.registerCloudCluster,
-                    new RscOp {
-                        CmdletName = "New-RscMutationCluster",
-                        CmdletSwitchName = "RegisterCloud",
-                        GqlRootFieldName = "registerCloudCluster"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationCluster",
+                        cmdletSwitchName: "RegisterCloud",
+                        gqlRootFieldName: "registerCloudCluster"
+                    )
                 },
                 {
                     GqlRootFieldName.registerHypervScvmm,
-                    new RscOp {
-                        CmdletName = "New-RscMutationHyperv",
-                        CmdletSwitchName = "RegisterScvmm",
-                        GqlRootFieldName = "registerHypervScvmm"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationHyperv",
+                        cmdletSwitchName: "RegisterScvmm",
+                        gqlRootFieldName: "registerHypervScvmm"
+                    )
                 },
                 {
                     GqlRootFieldName.removeCdmCluster,
-                    new RscOp {
-                        CmdletName = "New-RscMutationCluster",
-                        CmdletSwitchName = "RemoveCdm",
-                        GqlRootFieldName = "removeCdmCluster"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationCluster",
+                        cmdletSwitchName: "RemoveCdm",
+                        gqlRootFieldName: "removeCdmCluster"
+                    )
                 },
                 {
                     GqlRootFieldName.removeLdapIntegration,
-                    new RscOp {
-                        CmdletName = "New-RscMutationLdap",
-                        CmdletSwitchName = "RemoveIntegration",
-                        GqlRootFieldName = "removeLdapIntegration"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationLdap",
+                        cmdletSwitchName: "RemoveIntegration",
+                        gqlRootFieldName: "removeLdapIntegration"
+                    )
+                },
+                {
+                    GqlRootFieldName.resizeManagedVolume,
+                    new RscOp(
+                        cmdletName: "New-RscMutationManagedVolume",
+                        cmdletSwitchName: "Resize",
+                        gqlRootFieldName: "resizeManagedVolume"
+                    )
                 },
                 {
                     GqlRootFieldName.restoreAzureAdObjectsWithPasswords,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "RestoreAdObjectsWithPasswords",
-                        GqlRootFieldName = "restoreAzureAdObjectsWithPasswords"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "RestoreAdObjectsWithPasswords",
+                        gqlRootFieldName: "restoreAzureAdObjectsWithPasswords"
+                    )
                 },
                 {
                     GqlRootFieldName.restoreFilesNutanixSnapshot,
-                    new RscOp {
-                        CmdletName = "New-RscMutationNutanix",
-                        CmdletSwitchName = "RestoreFilesSnapshot",
-                        GqlRootFieldName = "restoreFilesNutanixSnapshot"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationNutanix",
+                        cmdletSwitchName: "RestoreFilesSnapshot",
+                        gqlRootFieldName: "restoreFilesNutanixSnapshot"
+                    )
                 },
                 {
                     GqlRootFieldName.restoreHypervVirtualMachineSnapshotFiles,
-                    new RscOp {
-                        CmdletName = "New-RscMutationHyperv",
-                        CmdletSwitchName = "RestoreVirtualMachineSnapshotFiles",
-                        GqlRootFieldName = "restoreHypervVirtualMachineSnapshotFiles"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationHyperv",
+                        cmdletSwitchName: "RestoreVirtualMachineSnapshotFiles",
+                        gqlRootFieldName: "restoreHypervVirtualMachineSnapshotFiles"
+                    )
                 },
                 {
                     GqlRootFieldName.restoreMssqlDatabase,
-                    new RscOp {
-                        CmdletName = "New-RscMutationMssql",
-                        CmdletSwitchName = "RestoreDatabase",
-                        GqlRootFieldName = "restoreMssqlDatabase"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationMssql",
+                        cmdletSwitchName: "RestoreDatabase",
+                        gqlRootFieldName: "restoreMssqlDatabase"
+                    )
                 },
                 {
                     GqlRootFieldName.restoreO365Mailbox,
-                    new RscOp {
-                        CmdletName = "New-RscMutationO365",
-                        CmdletSwitchName = "RestoreMailbox",
-                        GqlRootFieldName = "restoreO365Mailbox"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationO365",
+                        cmdletSwitchName: "RestoreMailbox",
+                        gqlRootFieldName: "restoreO365Mailbox"
+                    )
                 },
                 {
                     GqlRootFieldName.restoreO365Snappable,
-                    new RscOp {
-                        CmdletName = "New-RscMutationO365",
-                        CmdletSwitchName = "RestoreSnappable",
-                        GqlRootFieldName = "restoreO365Snappable"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationO365",
+                        cmdletSwitchName: "RestoreSnappable",
+                        gqlRootFieldName: "restoreO365Snappable"
+                    )
                 },
                 {
                     GqlRootFieldName.restoreO365TeamsConversations,
-                    new RscOp {
-                        CmdletName = "New-RscMutationO365",
-                        CmdletSwitchName = "RestoreTeamsConversations",
-                        GqlRootFieldName = "restoreO365TeamsConversations"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationO365",
+                        cmdletSwitchName: "RestoreTeamsConversations",
+                        gqlRootFieldName: "restoreO365TeamsConversations"
+                    )
                 },
                 {
                     GqlRootFieldName.restoreO365TeamsFiles,
-                    new RscOp {
-                        CmdletName = "New-RscMutationO365",
-                        CmdletSwitchName = "RestoreTeamsFiles",
-                        GqlRootFieldName = "restoreO365TeamsFiles"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationO365",
+                        cmdletSwitchName: "RestoreTeamsFiles",
+                        gqlRootFieldName: "restoreO365TeamsFiles"
+                    )
                 },
                 {
                     GqlRootFieldName.restoreOracleLogs,
-                    new RscOp {
-                        CmdletName = "New-RscMutationOracle",
-                        CmdletSwitchName = "RestoreLogs",
-                        GqlRootFieldName = "restoreOracleLogs"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationOracle",
+                        cmdletSwitchName: "RestoreLogs",
+                        gqlRootFieldName: "restoreOracleLogs"
+                    )
                 },
                 {
                     GqlRootFieldName.retryAddMongoSource,
-                    new RscOp {
-                        CmdletName = "New-RscMutationMongo",
-                        CmdletSwitchName = "RetryAddSource",
-                        GqlRootFieldName = "retryAddMongoSource"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationMongo",
+                        cmdletSwitchName: "RetryAddSource",
+                        gqlRootFieldName: "retryAddMongoSource"
+                    )
                 },
                 {
                     GqlRootFieldName.searchAzureAdSnapshot,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "SearchAdSnapshot",
-                        GqlRootFieldName = "searchAzureAdSnapshot"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "SearchAdSnapshot",
+                        gqlRootFieldName: "searchAzureAdSnapshot"
+                    )
                 },
                 {
                     GqlRootFieldName.searchNutanixVm,
-                    new RscOp {
-                        CmdletName = "New-RscQueryNutanix",
-                        CmdletSwitchName = "SearchVm",
-                        GqlRootFieldName = "searchNutanixVm"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryNutanix",
+                        cmdletSwitchName: "SearchVm",
+                        gqlRootFieldName: "searchNutanixVm"
+                    )
                 },
                 {
                     GqlRootFieldName.setAzureCloudAccountCustomerAppCredentials,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "SetCloudAccountCustomerAppCredentials",
-                        GqlRootFieldName = "setAzureCloudAccountCustomerAppCredentials"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "SetCloudAccountCustomerAppCredentials",
+                        gqlRootFieldName: "setAzureCloudAccountCustomerAppCredentials"
+                    )
                 },
                 {
                     GqlRootFieldName.setLdapMfaSetting,
-                    new RscOp {
-                        CmdletName = "New-RscMutationLdap",
-                        CmdletSwitchName = "SetMfaSetting",
-                        GqlRootFieldName = "setLdapMfaSetting"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationLdap",
+                        cmdletSwitchName: "SetMfaSetting",
+                        gqlRootFieldName: "setLdapMfaSetting"
+                    )
                 },
                 {
                     GqlRootFieldName.setO365ServiceAccount,
-                    new RscOp {
-                        CmdletName = "New-RscMutationO365",
-                        CmdletSwitchName = "SetServiceAccount",
-                        GqlRootFieldName = "setO365ServiceAccount"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationO365",
+                        cmdletSwitchName: "SetServiceAccount",
+                        gqlRootFieldName: "setO365ServiceAccount"
+                    )
                 },
                 {
                     GqlRootFieldName.setupAzureO365Exocompute,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzureO365",
-                        CmdletSwitchName = "SetupExocompute",
-                        GqlRootFieldName = "setupAzureO365Exocompute"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzureO365",
+                        cmdletSwitchName: "SetupExocompute",
+                        gqlRootFieldName: "setupAzureO365Exocompute"
+                    )
                 },
                 {
                     GqlRootFieldName.slaAuditDetail,
-                    new RscOp {
-                        CmdletName = "New-RscQuerySla",
-                        CmdletSwitchName = "AuditDetail",
-                        GqlRootFieldName = "slaAuditDetail"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQuerySla",
+                        cmdletSwitchName: "AuditDetail",
+                        gqlRootFieldName: "slaAuditDetail"
+                    )
                 },
                 {
                     GqlRootFieldName.slaConflictObjects,
-                    new RscOp {
-                        CmdletName = "New-RscQuerySla",
-                        CmdletSwitchName = "ConflictObjects",
-                        GqlRootFieldName = "slaConflictObjects"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQuerySla",
+                        cmdletSwitchName: "ConflictObjects",
+                        gqlRootFieldName: "slaConflictObjects"
+                    )
                 },
                 {
                     GqlRootFieldName.slaDomain,
-                    new RscOp {
-                        CmdletName = "New-RscQuerySla",
-                        CmdletSwitchName = "Domain",
-                        GqlRootFieldName = "slaDomain"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQuerySla",
+                        cmdletSwitchName: "Domain",
+                        gqlRootFieldName: "slaDomain"
+                    )
                 },
                 {
                     GqlRootFieldName.slaDomains,
-                    new RscOp {
-                        CmdletName = "New-RscQuerySla",
-                        CmdletSwitchName = "Domains",
-                        GqlRootFieldName = "slaDomains"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQuerySla",
+                        cmdletSwitchName: "Domains",
+                        gqlRootFieldName: "slaDomains"
+                    )
                 },
                 {
                     GqlRootFieldName.slaManagedVolume,
-                    new RscOp {
-                        CmdletName = "New-RscQuerySla",
-                        CmdletSwitchName = "ManagedVolume",
-                        GqlRootFieldName = "slaManagedVolume"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQuerySla",
+                        cmdletSwitchName: "ManagedVolume",
+                        gqlRootFieldName: "slaManagedVolume"
+                    )
                 },
                 {
                     GqlRootFieldName.slaManagedVolumes,
-                    new RscOp {
-                        CmdletName = "New-RscQuerySla",
-                        CmdletSwitchName = "ManagedVolumes",
-                        GqlRootFieldName = "slaManagedVolumes"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQuerySla",
+                        cmdletSwitchName: "ManagedVolumes",
+                        gqlRootFieldName: "slaManagedVolumes"
+                    )
                 },
                 {
                     GqlRootFieldName.startAwsExocomputeDisableJob,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAws",
-                        CmdletSwitchName = "StartExocomputeDisableJob",
-                        GqlRootFieldName = "startAwsExocomputeDisableJob"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "StartExocomputeDisableJob",
+                        gqlRootFieldName: "startAwsExocomputeDisableJob"
+                    )
                 },
                 {
                     GqlRootFieldName.startAwsNativeAccountDisableJob,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAws",
-                        CmdletSwitchName = "StartNativeAccountDisableJob",
-                        GqlRootFieldName = "startAwsNativeAccountDisableJob"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "StartNativeAccountDisableJob",
+                        gqlRootFieldName: "startAwsNativeAccountDisableJob"
+                    )
                 },
                 {
                     GqlRootFieldName.startAwsNativeEc2InstanceSnapshotsJob,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAws",
-                        CmdletSwitchName = "StartNativeEc2InstanceSnapshotsJob",
-                        GqlRootFieldName = "startAwsNativeEc2InstanceSnapshotsJob"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "StartNativeEc2InstanceSnapshotsJob",
+                        gqlRootFieldName: "startAwsNativeEc2InstanceSnapshotsJob"
+                    )
                 },
                 {
                     GqlRootFieldName.startAwsNativeRdsInstanceSnapshotsJob,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAws",
-                        CmdletSwitchName = "StartNativeRdsInstanceSnapshotsJob",
-                        GqlRootFieldName = "startAwsNativeRdsInstanceSnapshotsJob"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "StartNativeRdsInstanceSnapshotsJob",
+                        gqlRootFieldName: "startAwsNativeRdsInstanceSnapshotsJob"
+                    )
                 },
                 {
                     GqlRootFieldName.startAzureAdAppSetup,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "StartAdAppSetup",
-                        GqlRootFieldName = "startAzureAdAppSetup"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "StartAdAppSetup",
+                        gqlRootFieldName: "startAzureAdAppSetup"
+                    )
                 },
                 {
                     GqlRootFieldName.startAzureAdAppUpdate,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "StartAdAppUpdate",
-                        GqlRootFieldName = "startAzureAdAppUpdate"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "StartAdAppUpdate",
+                        gqlRootFieldName: "startAzureAdAppUpdate"
+                    )
                 },
                 {
                     GqlRootFieldName.startAzureCloudAccountOauth,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "StartCloudAccountOauth",
-                        GqlRootFieldName = "startAzureCloudAccountOauth"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "StartCloudAccountOauth",
+                        gqlRootFieldName: "startAzureCloudAccountOauth"
+                    )
                 },
                 {
                     GqlRootFieldName.startCreateAwsNativeEbsVolumeSnapshotsJob,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAws",
-                        CmdletSwitchName = "StartCreateNativeEbsVolumeSnapshotsJob",
-                        GqlRootFieldName = "startCreateAwsNativeEbsVolumeSnapshotsJob"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "StartCreateNativeEbsVolumeSnapshotsJob",
+                        gqlRootFieldName: "startCreateAwsNativeEbsVolumeSnapshotsJob"
+                    )
                 },
                 {
                     GqlRootFieldName.startCreateAzureNativeManagedDiskSnapshotsJob,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "StartCreateNativeManagedDiskSnapshotsJob",
-                        GqlRootFieldName = "startCreateAzureNativeManagedDiskSnapshotsJob"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "StartCreateNativeManagedDiskSnapshotsJob",
+                        gqlRootFieldName: "startCreateAzureNativeManagedDiskSnapshotsJob"
+                    )
                 },
                 {
                     GqlRootFieldName.startCreateAzureNativeVirtualMachineSnapshotsJob,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "StartCreateNativeVirtualMachineSnapshotsJob",
-                        GqlRootFieldName = "startCreateAzureNativeVirtualMachineSnapshotsJob"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "StartCreateNativeVirtualMachineSnapshotsJob",
+                        gqlRootFieldName: "startCreateAzureNativeVirtualMachineSnapshotsJob"
+                    )
                 },
                 {
                     GqlRootFieldName.startDisableAzureCloudAccountJob,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "StartDisableCloudAccountJob",
-                        GqlRootFieldName = "startDisableAzureCloudAccountJob"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "StartDisableCloudAccountJob",
+                        gqlRootFieldName: "startDisableAzureCloudAccountJob"
+                    )
                 },
                 {
                     GqlRootFieldName.startDisableAzureNativeSubscriptionProtectionJob,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "StartDisableNativeSubscriptionProtectionJob",
-                        GqlRootFieldName = "startDisableAzureNativeSubscriptionProtectionJob"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "StartDisableNativeSubscriptionProtectionJob",
+                        gqlRootFieldName: "startDisableAzureNativeSubscriptionProtectionJob"
+                    )
                 },
                 {
                     GqlRootFieldName.startExportAwsNativeEbsVolumeSnapshotJob,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAws",
-                        CmdletSwitchName = "StartExportNativeEbsVolumeSnapshotJob",
-                        GqlRootFieldName = "startExportAwsNativeEbsVolumeSnapshotJob"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "StartExportNativeEbsVolumeSnapshotJob",
+                        gqlRootFieldName: "startExportAwsNativeEbsVolumeSnapshotJob"
+                    )
                 },
                 {
                     GqlRootFieldName.startExportAzureNativeManagedDiskJob,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "StartExportNativeManagedDiskJob",
-                        GqlRootFieldName = "startExportAzureNativeManagedDiskJob"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "StartExportNativeManagedDiskJob",
+                        gqlRootFieldName: "startExportAzureNativeManagedDiskJob"
+                    )
                 },
                 {
                     GqlRootFieldName.startExportAzureNativeVirtualMachineJob,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "StartExportNativeVirtualMachineJob",
-                        GqlRootFieldName = "startExportAzureNativeVirtualMachineJob"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "StartExportNativeVirtualMachineJob",
+                        gqlRootFieldName: "startExportAzureNativeVirtualMachineJob"
+                    )
                 },
                 {
                     GqlRootFieldName.startExportAzureSqlDatabaseDbJob,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "StartExportSqlDatabaseDbJob",
-                        GqlRootFieldName = "startExportAzureSqlDatabaseDbJob"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "StartExportSqlDatabaseDbJob",
+                        gqlRootFieldName: "startExportAzureSqlDatabaseDbJob"
+                    )
                 },
                 {
                     GqlRootFieldName.startExportAzureSqlManagedInstanceDbJob,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "StartExportSqlManagedInstanceDbJob",
-                        GqlRootFieldName = "startExportAzureSqlManagedInstanceDbJob"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "StartExportSqlManagedInstanceDbJob",
+                        gqlRootFieldName: "startExportAzureSqlManagedInstanceDbJob"
+                    )
                 },
                 {
                     GqlRootFieldName.startRefreshAwsNativeAccountsJob,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAws",
-                        CmdletSwitchName = "StartRefreshNativeAccountsJob",
-                        GqlRootFieldName = "startRefreshAwsNativeAccountsJob"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "StartRefreshNativeAccountsJob",
+                        gqlRootFieldName: "startRefreshAwsNativeAccountsJob"
+                    )
                 },
                 {
                     GqlRootFieldName.startRefreshAzureNativeSubscriptionsJob,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "StartRefreshNativeSubscriptionsJob",
-                        GqlRootFieldName = "startRefreshAzureNativeSubscriptionsJob"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "StartRefreshNativeSubscriptionsJob",
+                        gqlRootFieldName: "startRefreshAzureNativeSubscriptionsJob"
+                    )
                 },
                 {
                     GqlRootFieldName.startRestoreAwsNativeEc2InstanceSnapshotJob,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAws",
-                        CmdletSwitchName = "StartRestoreNativeEc2InstanceSnapshotJob",
-                        GqlRootFieldName = "startRestoreAwsNativeEc2InstanceSnapshotJob"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "StartRestoreNativeEc2InstanceSnapshotJob",
+                        gqlRootFieldName: "startRestoreAwsNativeEc2InstanceSnapshotJob"
+                    )
                 },
                 {
                     GqlRootFieldName.startRestoreAzureNativeVirtualMachineJob,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "StartRestoreNativeVirtualMachineJob",
-                        GqlRootFieldName = "startRestoreAzureNativeVirtualMachineJob"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "StartRestoreNativeVirtualMachineJob",
+                        gqlRootFieldName: "startRestoreAzureNativeVirtualMachineJob"
+                    )
+                },
+                {
+                    GqlRootFieldName.takeManagedVolumeOnDemandSnapshot,
+                    new RscOp(
+                        cmdletName: "New-RscMutationManagedVolume",
+                        cmdletSwitchName: "TakeOnDemandSnapshot",
+                        gqlRootFieldName: "takeManagedVolumeOnDemandSnapshot"
+                    )
                 },
                 {
                     GqlRootFieldName.takeMssqlLogBackup,
-                    new RscOp {
-                        CmdletName = "New-RscMutationMssql",
-                        CmdletSwitchName = "TakeLogBackup",
-                        GqlRootFieldName = "takeMssqlLogBackup"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationMssql",
+                        cmdletSwitchName: "TakeLogBackup",
+                        gqlRootFieldName: "takeMssqlLogBackup"
+                    )
                 },
                 {
                     GqlRootFieldName.takeOnDemandOracleDatabaseSnapshot,
-                    new RscOp {
-                        CmdletName = "New-RscMutationOracle",
-                        CmdletSwitchName = "TakeOnDemandDatabaseSnapshot",
-                        GqlRootFieldName = "takeOnDemandOracleDatabaseSnapshot"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationOracle",
+                        cmdletSwitchName: "TakeOnDemandDatabaseSnapshot",
+                        gqlRootFieldName: "takeOnDemandOracleDatabaseSnapshot"
+                    )
                 },
                 {
                     GqlRootFieldName.takeOnDemandOracleLogSnapshot,
-                    new RscOp {
-                        CmdletName = "New-RscMutationOracle",
-                        CmdletSwitchName = "TakeOnDemandLogSnapshot",
-                        GqlRootFieldName = "takeOnDemandOracleLogSnapshot"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationOracle",
+                        cmdletSwitchName: "TakeOnDemandLogSnapshot",
+                        gqlRootFieldName: "takeOnDemandOracleLogSnapshot"
+                    )
                 },
                 {
                     GqlRootFieldName.uniqueHypervServersCount,
-                    new RscOp {
-                        CmdletName = "New-RscQueryHyperv",
-                        CmdletSwitchName = "UniqueServersCount",
-                        GqlRootFieldName = "uniqueHypervServersCount"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryHyperv",
+                        cmdletSwitchName: "UniqueServersCount",
+                        gqlRootFieldName: "uniqueHypervServersCount"
+                    )
                 },
                 {
                     GqlRootFieldName.unmapAzureCloudAccountExocomputeSubscription,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "UnmapCloudAccountExocomputeSubscription",
-                        GqlRootFieldName = "unmapAzureCloudAccountExocomputeSubscription"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "UnmapCloudAccountExocomputeSubscription",
+                        gqlRootFieldName: "unmapAzureCloudAccountExocomputeSubscription"
+                    )
                 },
                 {
                     GqlRootFieldName.unmapAzurePersistentStorageSubscription,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "UnmapPersistentStorageSubscription",
-                        GqlRootFieldName = "unmapAzurePersistentStorageSubscription"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "UnmapPersistentStorageSubscription",
+                        gqlRootFieldName: "unmapAzurePersistentStorageSubscription"
+                    )
                 },
                 {
                     GqlRootFieldName.updateAutomaticAwsTargetMapping,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAws",
-                        CmdletSwitchName = "UpdateAutomaticTargetMapping",
-                        GqlRootFieldName = "updateAutomaticAwsTargetMapping"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "UpdateAutomaticTargetMapping",
+                        gqlRootFieldName: "updateAutomaticAwsTargetMapping"
+                    )
                 },
                 {
                     GqlRootFieldName.updateAutomaticAzureTargetMapping,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "UpdateAutomaticTargetMapping",
-                        GqlRootFieldName = "updateAutomaticAzureTargetMapping"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "UpdateAutomaticTargetMapping",
+                        gqlRootFieldName: "updateAutomaticAzureTargetMapping"
+                    )
                 },
                 {
                     GqlRootFieldName.updateAwsAccount,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAws",
-                        CmdletSwitchName = "UpdateAccount",
-                        GqlRootFieldName = "updateAwsAccount"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "UpdateAccount",
+                        gqlRootFieldName: "updateAwsAccount"
+                    )
                 },
                 {
                     GqlRootFieldName.updateAwsCloudAccount,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAws",
-                        CmdletSwitchName = "UpdateCloudAccount",
-                        GqlRootFieldName = "updateAwsCloudAccount"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "UpdateCloudAccount",
+                        gqlRootFieldName: "updateAwsCloudAccount"
+                    )
                 },
                 {
                     GqlRootFieldName.updateAwsCloudAccountFeature,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAws",
-                        CmdletSwitchName = "UpdateCloudAccountFeature",
-                        GqlRootFieldName = "updateAwsCloudAccountFeature"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "UpdateCloudAccountFeature",
+                        gqlRootFieldName: "updateAwsCloudAccountFeature"
+                    )
                 },
                 {
                     GqlRootFieldName.updateAwsComputeSetting,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAws",
-                        CmdletSwitchName = "UpdateComputeSetting",
-                        GqlRootFieldName = "updateAwsComputeSetting"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "UpdateComputeSetting",
+                        gqlRootFieldName: "updateAwsComputeSetting"
+                    )
                 },
                 {
                     GqlRootFieldName.updateAwsExocomputeConfigs,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAws",
-                        CmdletSwitchName = "UpdateExocomputeConfigs",
-                        GqlRootFieldName = "updateAwsExocomputeConfigs"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "UpdateExocomputeConfigs",
+                        gqlRootFieldName: "updateAwsExocomputeConfigs"
+                    )
                 },
                 {
                     GqlRootFieldName.updateAwsTarget,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAws",
-                        CmdletSwitchName = "UpdateTarget",
-                        GqlRootFieldName = "updateAwsTarget"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "UpdateTarget",
+                        gqlRootFieldName: "updateAwsTarget"
+                    )
                 },
                 {
                     GqlRootFieldName.updateAzureAccount,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "UpdateAccount",
-                        GqlRootFieldName = "updateAzureAccount"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "UpdateAccount",
+                        gqlRootFieldName: "updateAzureAccount"
+                    )
                 },
                 {
                     GqlRootFieldName.updateAzureCloudAccount,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "UpdateCloudAccount",
-                        GqlRootFieldName = "updateAzureCloudAccount"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "UpdateCloudAccount",
+                        gqlRootFieldName: "updateAzureCloudAccount"
+                    )
                 },
                 {
                     GqlRootFieldName.updateAzureTarget,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "UpdateTarget",
-                        GqlRootFieldName = "updateAzureTarget"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "UpdateTarget",
+                        gqlRootFieldName: "updateAzureTarget"
+                    )
                 },
                 {
                     GqlRootFieldName.updateCassandraSource,
-                    new RscOp {
-                        CmdletName = "New-RscMutationCassandra",
-                        CmdletSwitchName = "UpdateSource",
-                        GqlRootFieldName = "updateCassandraSource"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationCassandra",
+                        cmdletSwitchName: "UpdateSource",
+                        gqlRootFieldName: "updateCassandraSource"
+                    )
                 },
                 {
                     GqlRootFieldName.updateCloudNativeAwsStorageSetting,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAws",
-                        CmdletSwitchName = "UpdateCloudNativeStorageSetting",
-                        GqlRootFieldName = "updateCloudNativeAwsStorageSetting"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "UpdateCloudNativeStorageSetting",
+                        gqlRootFieldName: "updateCloudNativeAwsStorageSetting"
+                    )
                 },
                 {
                     GqlRootFieldName.updateCloudNativeAzureStorageSetting,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "UpdateCloudNativeStorageSetting",
-                        GqlRootFieldName = "updateCloudNativeAzureStorageSetting"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "UpdateCloudNativeStorageSetting",
+                        gqlRootFieldName: "updateCloudNativeAzureStorageSetting"
+                    )
                 },
                 {
                     GqlRootFieldName.updateCloudNativeRcvAzureStorageSetting,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "UpdateCloudNativeRcvStorageSetting",
-                        GqlRootFieldName = "updateCloudNativeRcvAzureStorageSetting"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "UpdateCloudNativeRcvStorageSetting",
+                        gqlRootFieldName: "updateCloudNativeRcvAzureStorageSetting"
+                    )
                 },
                 {
                     GqlRootFieldName.updateCustomerAppPermissionForAzureSql,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "UpdateCustomerAppPermissionForSql",
-                        GqlRootFieldName = "updateCustomerAppPermissionForAzureSql"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "UpdateCustomerAppPermissionForSql",
+                        gqlRootFieldName: "updateCustomerAppPermissionForAzureSql"
+                    )
                 },
                 {
                     GqlRootFieldName.updateDatabaseLogReportingPropertiesForCluster,
-                    new RscOp {
-                        CmdletName = "New-RscMutationCluster",
-                        CmdletSwitchName = "UpdateDatabaseLogReportingProperties",
-                        GqlRootFieldName = "updateDatabaseLogReportingPropertiesForCluster"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationCluster",
+                        cmdletSwitchName: "UpdateDatabaseLogReportingProperties",
+                        gqlRootFieldName: "updateDatabaseLogReportingPropertiesForCluster"
+                    )
                 },
                 {
                     GqlRootFieldName.updateFailoverCluster,
-                    new RscOp {
-                        CmdletName = "New-RscMutationCluster",
-                        CmdletSwitchName = "UpdateFailover",
-                        GqlRootFieldName = "updateFailoverCluster"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationCluster",
+                        cmdletSwitchName: "UpdateFailover",
+                        gqlRootFieldName: "updateFailoverCluster"
+                    )
                 },
                 {
                     GqlRootFieldName.updateGlobalSla,
-                    new RscOp {
-                        CmdletName = "New-RscMutationSla",
-                        CmdletSwitchName = "UpdateGlobal",
-                        GqlRootFieldName = "updateGlobalSla"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationSla",
+                        cmdletSwitchName: "UpdateGlobal",
+                        gqlRootFieldName: "updateGlobalSla"
+                    )
                 },
                 {
                     GqlRootFieldName.updateHypervVirtualMachine,
-                    new RscOp {
-                        CmdletName = "New-RscMutationHyperv",
-                        CmdletSwitchName = "UpdateVirtualMachine",
-                        GqlRootFieldName = "updateHypervVirtualMachine"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationHyperv",
+                        cmdletSwitchName: "UpdateVirtualMachine",
+                        gqlRootFieldName: "updateHypervVirtualMachine"
+                    )
                 },
                 {
                     GqlRootFieldName.updateHypervVirtualMachineSnapshotMount,
-                    new RscOp {
-                        CmdletName = "New-RscMutationHyperv",
-                        CmdletSwitchName = "UpdateVirtualMachineSnapshotMount",
-                        GqlRootFieldName = "updateHypervVirtualMachineSnapshotMount"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationHyperv",
+                        cmdletSwitchName: "UpdateVirtualMachineSnapshotMount",
+                        gqlRootFieldName: "updateHypervVirtualMachineSnapshotMount"
+                    )
                 },
                 {
                     GqlRootFieldName.updateLdapIntegration,
-                    new RscOp {
-                        CmdletName = "New-RscMutationLdap",
-                        CmdletSwitchName = "UpdateIntegration",
-                        GqlRootFieldName = "updateLdapIntegration"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationLdap",
+                        cmdletSwitchName: "UpdateIntegration",
+                        gqlRootFieldName: "updateLdapIntegration"
+                    )
+                },
+                {
+                    GqlRootFieldName.updateManagedVolume,
+                    new RscOp(
+                        cmdletName: "New-RscMutationManagedVolume",
+                        cmdletSwitchName: "Update",
+                        gqlRootFieldName: "updateManagedVolume"
+                    )
                 },
                 {
                     GqlRootFieldName.updateMongodbSource,
-                    new RscOp {
-                        CmdletName = "New-RscMutationMongo",
-                        CmdletSwitchName = "UpdatedbSource",
-                        GqlRootFieldName = "updateMongodbSource"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationMongo",
+                        cmdletSwitchName: "UpdatedbSource",
+                        gqlRootFieldName: "updateMongodbSource"
+                    )
                 },
                 {
                     GqlRootFieldName.updateMssqlDefaultProperties,
-                    new RscOp {
-                        CmdletName = "New-RscMutationMssql",
-                        CmdletSwitchName = "UpdateDefaultProperties",
-                        GqlRootFieldName = "updateMssqlDefaultProperties"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationMssql",
+                        cmdletSwitchName: "UpdateDefaultProperties",
+                        gqlRootFieldName: "updateMssqlDefaultProperties"
+                    )
                 },
                 {
                     GqlRootFieldName.updateMssqlLogShippingConfiguration,
-                    new RscOp {
-                        CmdletName = "New-RscMutationMssql",
-                        CmdletSwitchName = "UpdateLogShippingConfiguration",
-                        GqlRootFieldName = "updateMssqlLogShippingConfiguration"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationMssql",
+                        cmdletSwitchName: "UpdateLogShippingConfiguration",
+                        gqlRootFieldName: "updateMssqlLogShippingConfiguration"
+                    )
                 },
                 {
                     GqlRootFieldName.updateNutanixCluster,
-                    new RscOp {
-                        CmdletName = "New-RscMutationNutanix",
-                        CmdletSwitchName = "UpdateCluster",
-                        GqlRootFieldName = "updateNutanixCluster"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationNutanix",
+                        cmdletSwitchName: "UpdateCluster",
+                        gqlRootFieldName: "updateNutanixCluster"
+                    )
                 },
                 {
                     GqlRootFieldName.updateNutanixPrismCentral,
-                    new RscOp {
-                        CmdletName = "New-RscMutationNutanix",
-                        CmdletSwitchName = "UpdatePrismCentral",
-                        GqlRootFieldName = "updateNutanixPrismCentral"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationNutanix",
+                        cmdletSwitchName: "UpdatePrismCentral",
+                        gqlRootFieldName: "updateNutanixPrismCentral"
+                    )
                 },
                 {
                     GqlRootFieldName.updateNutanixVm,
-                    new RscOp {
-                        CmdletName = "New-RscMutationNutanix",
-                        CmdletSwitchName = "UpdateVm",
-                        GqlRootFieldName = "updateNutanixVm"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationNutanix",
+                        cmdletSwitchName: "UpdateVm",
+                        gqlRootFieldName: "updateNutanixVm"
+                    )
                 },
                 {
                     GqlRootFieldName.updateO365AppAuthStatus,
-                    new RscOp {
-                        CmdletName = "New-RscMutationO365",
-                        CmdletSwitchName = "UpdateAppAuthStatus",
-                        GqlRootFieldName = "updateO365AppAuthStatus"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationO365",
+                        cmdletSwitchName: "UpdateAppAuthStatus",
+                        gqlRootFieldName: "updateO365AppAuthStatus"
+                    )
                 },
                 {
                     GqlRootFieldName.updateO365AppPermissions,
-                    new RscOp {
-                        CmdletName = "New-RscMutationO365",
-                        CmdletSwitchName = "UpdateAppPermissions",
-                        GqlRootFieldName = "updateO365AppPermissions"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationO365",
+                        cmdletSwitchName: "UpdateAppPermissions",
+                        gqlRootFieldName: "updateO365AppPermissions"
+                    )
                 },
                 {
                     GqlRootFieldName.updateO365OrgCustomName,
-                    new RscOp {
-                        CmdletName = "New-RscMutationO365",
-                        CmdletSwitchName = "UpdateOrgCustomName",
-                        GqlRootFieldName = "updateO365OrgCustomName"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationO365",
+                        cmdletSwitchName: "UpdateOrgCustomName",
+                        gqlRootFieldName: "updateO365OrgCustomName"
+                    )
                 },
                 {
                     GqlRootFieldName.updateOracleDataGuardGroup,
-                    new RscOp {
-                        CmdletName = "New-RscMutationOracle",
-                        CmdletSwitchName = "UpdateDataGuardGroup",
-                        GqlRootFieldName = "updateOracleDataGuardGroup"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationOracle",
+                        cmdletSwitchName: "UpdateDataGuardGroup",
+                        gqlRootFieldName: "updateOracleDataGuardGroup"
+                    )
                 },
                 {
                     GqlRootFieldName.updateVcenter,
-                    new RscOp {
-                        CmdletName = "New-RscMutationVcenter",
-                        CmdletSwitchName = "Update",
-                        GqlRootFieldName = "updateVcenter"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationVcenter",
+                        cmdletSwitchName: "Update",
+                        gqlRootFieldName: "updateVcenter"
+                    )
                 },
                 {
                     GqlRootFieldName.updateVcenterHotAddBandwidth,
-                    new RscOp {
-                        CmdletName = "New-RscMutationVcenter",
-                        CmdletSwitchName = "UpdateHotAddBandwidth",
-                        GqlRootFieldName = "updateVcenterHotAddBandwidth"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationVcenter",
+                        cmdletSwitchName: "UpdateHotAddBandwidth",
+                        gqlRootFieldName: "updateVcenterHotAddBandwidth"
+                    )
                 },
                 {
                     GqlRootFieldName.updateVcenterHotAddNetwork,
-                    new RscOp {
-                        CmdletName = "New-RscMutationVcenter",
-                        CmdletSwitchName = "UpdateHotAddNetwork",
-                        GqlRootFieldName = "updateVcenterHotAddNetwork"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationVcenter",
+                        cmdletSwitchName: "UpdateHotAddNetwork",
+                        gqlRootFieldName: "updateVcenterHotAddNetwork"
+                    )
                 },
                 {
                     GqlRootFieldName.updateVsphereAdvancedTag,
-                    new RscOp {
-                        CmdletName = "New-RscMutationVsphere",
-                        CmdletSwitchName = "UpdateAdvancedTag",
-                        GqlRootFieldName = "updateVsphereAdvancedTag"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationVsphere",
+                        cmdletSwitchName: "UpdateAdvancedTag",
+                        gqlRootFieldName: "updateVsphereAdvancedTag"
+                    )
                 },
                 {
                     GqlRootFieldName.updateVsphereVm,
-                    new RscOp {
-                        CmdletName = "New-RscMutationVsphereVm",
-                        CmdletSwitchName = "Update",
-                        GqlRootFieldName = "updateVsphereVm"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationVsphereVm",
+                        cmdletSwitchName: "Update",
+                        gqlRootFieldName: "updateVsphereVm"
+                    )
                 },
                 {
                     GqlRootFieldName.upgradeAwsCloudAccountFeaturesWithoutCft,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAws",
-                        CmdletSwitchName = "UpgradeCloudAccountFeaturesWithoutCft",
-                        GqlRootFieldName = "upgradeAwsCloudAccountFeaturesWithoutCft"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "UpgradeCloudAccountFeaturesWithoutCft",
+                        gqlRootFieldName: "upgradeAwsCloudAccountFeaturesWithoutCft"
+                    )
                 },
                 {
                     GqlRootFieldName.upgradeAwsIamUserBasedCloudAccountPermissions,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAws",
-                        CmdletSwitchName = "UpgradeIamUserBasedCloudAccountPermissions",
-                        GqlRootFieldName = "upgradeAwsIamUserBasedCloudAccountPermissions"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "UpgradeIamUserBasedCloudAccountPermissions",
+                        gqlRootFieldName: "upgradeAwsIamUserBasedCloudAccountPermissions"
+                    )
                 },
                 {
                     GqlRootFieldName.upgradeAzureCloudAccount,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "UpgradeCloudAccount",
-                        GqlRootFieldName = "upgradeAzureCloudAccount"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "UpgradeCloudAccount",
+                        gqlRootFieldName: "upgradeAzureCloudAccount"
+                    )
                 },
                 {
                     GqlRootFieldName.upgradeAzureCloudAccountPermissionsWithoutOauth,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAzure",
-                        CmdletSwitchName = "UpgradeCloudAccountPermissionsWithoutOauth",
-                        GqlRootFieldName = "upgradeAzureCloudAccountPermissionsWithoutOauth"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAzure",
+                        cmdletSwitchName: "UpgradeCloudAccountPermissionsWithoutOauth",
+                        gqlRootFieldName: "upgradeAzureCloudAccountPermissionsWithoutOauth"
+                    )
                 },
                 {
                     GqlRootFieldName.vCenterAdvancedTagPreview,
-                    new RscOp {
-                        CmdletName = "New-RscQueryVcenter",
-                        CmdletSwitchName = "AdvancedTagPreview",
-                        GqlRootFieldName = "vCenterAdvancedTagPreview"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryVcenter",
+                        cmdletSwitchName: "AdvancedTagPreview",
+                        gqlRootFieldName: "vCenterAdvancedTagPreview"
+                    )
                 },
                 {
                     GqlRootFieldName.vCenterHotAddBandwidth,
-                    new RscOp {
-                        CmdletName = "New-RscQueryVcenter",
-                        CmdletSwitchName = "HotAddBandwidth",
-                        GqlRootFieldName = "vCenterHotAddBandwidth"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryVcenter",
+                        cmdletSwitchName: "HotAddBandwidth",
+                        gqlRootFieldName: "vCenterHotAddBandwidth"
+                    )
                 },
                 {
                     GqlRootFieldName.vCenterHotAddNetwork,
-                    new RscOp {
-                        CmdletName = "New-RscQueryVcenter",
-                        CmdletSwitchName = "HotAddNetwork",
-                        GqlRootFieldName = "vCenterHotAddNetwork"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryVcenter",
+                        cmdletSwitchName: "HotAddNetwork",
+                        gqlRootFieldName: "vCenterHotAddNetwork"
+                    )
                 },
                 {
                     GqlRootFieldName.vCenterNetworks,
-                    new RscOp {
-                        CmdletName = "New-RscQueryVcenter",
-                        CmdletSwitchName = "Networks",
-                        GqlRootFieldName = "vCenterNetworks"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryVcenter",
+                        cmdletSwitchName: "Networks",
+                        gqlRootFieldName: "vCenterNetworks"
+                    )
                 },
                 {
                     GqlRootFieldName.vCenterNumProxiesNeeded,
-                    new RscOp {
-                        CmdletName = "New-RscQueryVcenter",
-                        CmdletSwitchName = "NumProxiesNeeded",
-                        GqlRootFieldName = "vCenterNumProxiesNeeded"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryVcenter",
+                        cmdletSwitchName: "NumProxiesNeeded",
+                        gqlRootFieldName: "vCenterNumProxiesNeeded"
+                    )
                 },
                 {
                     GqlRootFieldName.vCenterPreAddInfo,
-                    new RscOp {
-                        CmdletName = "New-RscQueryVcenter",
-                        CmdletSwitchName = "PreAddInfo",
-                        GqlRootFieldName = "vCenterPreAddInfo"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryVcenter",
+                        cmdletSwitchName: "PreAddInfo",
+                        gqlRootFieldName: "vCenterPreAddInfo"
+                    )
                 },
                 {
                     GqlRootFieldName.vSphereComputeCluster,
-                    new RscOp {
-                        CmdletName = "New-RscQueryVsphere",
-                        CmdletSwitchName = "ComputeCluster",
-                        GqlRootFieldName = "vSphereComputeCluster"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryVsphere",
+                        cmdletSwitchName: "ComputeCluster",
+                        gqlRootFieldName: "vSphereComputeCluster"
+                    )
                 },
                 {
                     GqlRootFieldName.vSphereComputeClusters,
-                    new RscOp {
-                        CmdletName = "New-RscQueryVsphere",
-                        CmdletSwitchName = "ComputeClusters",
-                        GqlRootFieldName = "vSphereComputeClusters"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryVsphere",
+                        cmdletSwitchName: "ComputeClusters",
+                        gqlRootFieldName: "vSphereComputeClusters"
+                    )
                 },
                 {
                     GqlRootFieldName.vSphereDatacenter,
-                    new RscOp {
-                        CmdletName = "New-RscQueryVsphere",
-                        CmdletSwitchName = "Datacenter",
-                        GqlRootFieldName = "vSphereDatacenter"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryVsphere",
+                        cmdletSwitchName: "Datacenter",
+                        gqlRootFieldName: "vSphereDatacenter"
+                    )
                 },
                 {
                     GqlRootFieldName.vSphereDatastore,
-                    new RscOp {
-                        CmdletName = "New-RscQueryVsphere",
-                        CmdletSwitchName = "Datastore",
-                        GqlRootFieldName = "vSphereDatastore"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryVsphere",
+                        cmdletSwitchName: "Datastore",
+                        gqlRootFieldName: "vSphereDatastore"
+                    )
                 },
                 {
                     GqlRootFieldName.vSphereDatastoreCluster,
-                    new RscOp {
-                        CmdletName = "New-RscQueryVsphere",
-                        CmdletSwitchName = "DatastoreCluster",
-                        GqlRootFieldName = "vSphereDatastoreCluster"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryVsphere",
+                        cmdletSwitchName: "DatastoreCluster",
+                        gqlRootFieldName: "vSphereDatastoreCluster"
+                    )
                 },
                 {
                     GqlRootFieldName.vSphereDatastoreClusters,
-                    new RscOp {
-                        CmdletName = "New-RscQueryVsphere",
-                        CmdletSwitchName = "DatastoreClusters",
-                        GqlRootFieldName = "vSphereDatastoreClusters"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryVsphere",
+                        cmdletSwitchName: "DatastoreClusters",
+                        gqlRootFieldName: "vSphereDatastoreClusters"
+                    )
                 },
                 {
                     GqlRootFieldName.vSphereDatastoreConnection,
-                    new RscOp {
-                        CmdletName = "New-RscQueryVsphere",
-                        CmdletSwitchName = "DatastoreList",
-                        GqlRootFieldName = "vSphereDatastoreConnection"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryVsphere",
+                        cmdletSwitchName: "DatastoreList",
+                        gqlRootFieldName: "vSphereDatastoreConnection"
+                    )
                 },
                 {
                     GqlRootFieldName.vSphereFolder,
-                    new RscOp {
-                        CmdletName = "New-RscQueryVsphere",
-                        CmdletSwitchName = "Folder",
-                        GqlRootFieldName = "vSphereFolder"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryVsphere",
+                        cmdletSwitchName: "Folder",
+                        gqlRootFieldName: "vSphereFolder"
+                    )
                 },
                 {
                     GqlRootFieldName.vSphereFolders,
-                    new RscOp {
-                        CmdletName = "New-RscQueryVsphere",
-                        CmdletSwitchName = "Folders",
-                        GqlRootFieldName = "vSphereFolders"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryVsphere",
+                        cmdletSwitchName: "Folders",
+                        gqlRootFieldName: "vSphereFolders"
+                    )
                 },
                 {
                     GqlRootFieldName.vSphereHost,
-                    new RscOp {
-                        CmdletName = "New-RscQueryVsphere",
-                        CmdletSwitchName = "Host",
-                        GqlRootFieldName = "vSphereHost"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryVsphere",
+                        cmdletSwitchName: "Host",
+                        gqlRootFieldName: "vSphereHost"
+                    )
                 },
                 {
                     GqlRootFieldName.vSphereHostConnection,
-                    new RscOp {
-                        CmdletName = "New-RscQueryVsphere",
-                        CmdletSwitchName = "HostList",
-                        GqlRootFieldName = "vSphereHostConnection"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryVsphere",
+                        cmdletSwitchName: "HostList",
+                        gqlRootFieldName: "vSphereHostConnection"
+                    )
                 },
                 {
                     GqlRootFieldName.vSphereHostDetails,
-                    new RscOp {
-                        CmdletName = "New-RscQueryVsphere",
-                        CmdletSwitchName = "HostDetails",
-                        GqlRootFieldName = "vSphereHostDetails"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryVsphere",
+                        cmdletSwitchName: "HostDetails",
+                        gqlRootFieldName: "vSphereHostDetails"
+                    )
                 },
                 {
                     GqlRootFieldName.vSphereHostsByFids,
-                    new RscOp {
-                        CmdletName = "New-RscQueryVsphere",
-                        CmdletSwitchName = "HostsByFids",
-                        GqlRootFieldName = "vSphereHostsByFids"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryVsphere",
+                        cmdletSwitchName: "HostsByFids",
+                        gqlRootFieldName: "vSphereHostsByFids"
+                    )
                 },
                 {
                     GqlRootFieldName.vSphereLiveMounts,
-                    new RscOp {
-                        CmdletName = "New-RscQueryVsphere",
-                        CmdletSwitchName = "LiveMounts",
-                        GqlRootFieldName = "vSphereLiveMounts"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryVsphere",
+                        cmdletSwitchName: "LiveMounts",
+                        gqlRootFieldName: "vSphereLiveMounts"
+                    )
                 },
                 {
                     GqlRootFieldName.vSphereMount,
-                    new RscOp {
-                        CmdletName = "New-RscQueryVsphere",
-                        CmdletSwitchName = "Mount",
-                        GqlRootFieldName = "vSphereMount"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryVsphere",
+                        cmdletSwitchName: "Mount",
+                        gqlRootFieldName: "vSphereMount"
+                    )
                 },
                 {
                     GqlRootFieldName.vSphereMountConnection,
-                    new RscOp {
-                        CmdletName = "New-RscQueryVsphere",
-                        CmdletSwitchName = "MountList",
-                        GqlRootFieldName = "vSphereMountConnection"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryVsphere",
+                        cmdletSwitchName: "MountList",
+                        gqlRootFieldName: "vSphereMountConnection"
+                    )
                 },
                 {
                     GqlRootFieldName.vSphereNetwork,
-                    new RscOp {
-                        CmdletName = "New-RscQueryVsphere",
-                        CmdletSwitchName = "Network",
-                        GqlRootFieldName = "vSphereNetwork"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryVsphere",
+                        cmdletSwitchName: "Network",
+                        gqlRootFieldName: "vSphereNetwork"
+                    )
                 },
                 {
                     GqlRootFieldName.vSphereResourcePool,
-                    new RscOp {
-                        CmdletName = "New-RscQueryVsphere",
-                        CmdletSwitchName = "ResourcePool",
-                        GqlRootFieldName = "vSphereResourcePool"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryVsphere",
+                        cmdletSwitchName: "ResourcePool",
+                        gqlRootFieldName: "vSphereResourcePool"
+                    )
                 },
                 {
                     GqlRootFieldName.vSphereRootRecoveryHierarchy,
-                    new RscOp {
-                        CmdletName = "New-RscQueryVsphere",
-                        CmdletSwitchName = "RootRecoveryHierarchy",
-                        GqlRootFieldName = "vSphereRootRecoveryHierarchy"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryVsphere",
+                        cmdletSwitchName: "RootRecoveryHierarchy",
+                        gqlRootFieldName: "vSphereRootRecoveryHierarchy"
+                    )
                 },
                 {
                     GqlRootFieldName.vSphereTag,
-                    new RscOp {
-                        CmdletName = "New-RscQueryVsphere",
-                        CmdletSwitchName = "Tag",
-                        GqlRootFieldName = "vSphereTag"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryVsphere",
+                        cmdletSwitchName: "Tag",
+                        gqlRootFieldName: "vSphereTag"
+                    )
                 },
                 {
                     GqlRootFieldName.vSphereTagCategory,
-                    new RscOp {
-                        CmdletName = "New-RscQueryVsphere",
-                        CmdletSwitchName = "TagCategory",
-                        GqlRootFieldName = "vSphereTagCategory"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryVsphere",
+                        cmdletSwitchName: "TagCategory",
+                        gqlRootFieldName: "vSphereTagCategory"
+                    )
                 },
                 {
                     GqlRootFieldName.vSphereTopLevelDescendantsConnection,
-                    new RscOp {
-                        CmdletName = "New-RscQueryVsphere",
-                        CmdletSwitchName = "TopLevelDescendantsList",
-                        GqlRootFieldName = "vSphereTopLevelDescendantsConnection"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryVsphere",
+                        cmdletSwitchName: "TopLevelDescendantsList",
+                        gqlRootFieldName: "vSphereTopLevelDescendantsConnection"
+                    )
                 },
                 {
                     GqlRootFieldName.vSphereVCenter,
-                    new RscOp {
-                        CmdletName = "New-RscQueryVcenter",
-                        CmdletSwitchName = "Vcenter",
-                        GqlRootFieldName = "vSphereVCenter"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryVcenter",
+                        cmdletSwitchName: "Vcenter",
+                        gqlRootFieldName: "vSphereVCenter"
+                    )
                 },
                 {
                     GqlRootFieldName.vSphereVCenterConnection,
-                    new RscOp {
-                        CmdletName = "New-RscQueryVcenter",
-                        CmdletSwitchName = "List",
-                        GqlRootFieldName = "vSphereVCenterConnection"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryVcenter",
+                        cmdletSwitchName: "List",
+                        gqlRootFieldName: "vSphereVCenterConnection"
+                    )
                 },
                 {
                     GqlRootFieldName.vSphereVMAsyncRequestStatus,
-                    new RscOp {
-                        CmdletName = "New-RscQueryVsphereVm",
-                        CmdletSwitchName = "AsyncRequestStatus",
-                        GqlRootFieldName = "vSphereVMAsyncRequestStatus"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryVsphereVm",
+                        cmdletSwitchName: "AsyncRequestStatus",
+                        gqlRootFieldName: "vSphereVMAsyncRequestStatus"
+                    )
                 },
                 {
                     GqlRootFieldName.vSphereVmNew,
-                    new RscOp {
-                        CmdletName = "New-RscQueryVsphereVm",
-                        CmdletSwitchName = "New",
-                        GqlRootFieldName = "vSphereVmNew"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryVsphereVm",
+                        cmdletSwitchName: "New",
+                        gqlRootFieldName: "vSphereVmNew"
+                    )
                 },
                 {
                     GqlRootFieldName.vSphereVmNewConnection,
-                    new RscOp {
-                        CmdletName = "New-RscQueryVsphereVm",
-                        CmdletSwitchName = "NewList",
-                        GqlRootFieldName = "vSphereVmNewConnection"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryVsphereVm",
+                        cmdletSwitchName: "NewList",
+                        gqlRootFieldName: "vSphereVmNewConnection"
+                    )
                 },
                 {
                     GqlRootFieldName.validateAndCreateAwsCloudAccount,
-                    new RscOp {
-                        CmdletName = "New-RscMutationAws",
-                        CmdletSwitchName = "ValidateAndCreateCloudAccount",
-                        GqlRootFieldName = "validateAndCreateAwsCloudAccount"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationAws",
+                        cmdletSwitchName: "ValidateAndCreateCloudAccount",
+                        gqlRootFieldName: "validateAndCreateAwsCloudAccount"
+                    )
                 },
                 {
                     GqlRootFieldName.validateAwsNativeRdsClusterNameForExport,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "ValidateNativeRdsClusterNameForExport",
-                        GqlRootFieldName = "validateAwsNativeRdsClusterNameForExport"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "ValidateNativeRdsClusterNameForExport",
+                        gqlRootFieldName: "validateAwsNativeRdsClusterNameForExport"
+                    )
                 },
                 {
                     GqlRootFieldName.validateAwsNativeRdsInstanceNameForExport,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAws",
-                        CmdletSwitchName = "ValidateNativeRdsInstanceNameForExport",
-                        GqlRootFieldName = "validateAwsNativeRdsInstanceNameForExport"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAws",
+                        cmdletSwitchName: "ValidateNativeRdsInstanceNameForExport",
+                        gqlRootFieldName: "validateAwsNativeRdsInstanceNameForExport"
+                    )
                 },
                 {
                     GqlRootFieldName.validateAzureCloudAccountExocomputeConfigurations,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "ValidateCloudAccountExocomputeConfigurations",
-                        GqlRootFieldName = "validateAzureCloudAccountExocomputeConfigurations"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "ValidateCloudAccountExocomputeConfigurations",
+                        gqlRootFieldName: "validateAzureCloudAccountExocomputeConfigurations"
+                    )
                 },
                 {
                     GqlRootFieldName.validateAzureNativeSqlDatabaseDbNameForExport,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "ValidateNativeSqlDatabaseDbNameForExport",
-                        GqlRootFieldName = "validateAzureNativeSqlDatabaseDbNameForExport"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "ValidateNativeSqlDatabaseDbNameForExport",
+                        gqlRootFieldName: "validateAzureNativeSqlDatabaseDbNameForExport"
+                    )
                 },
                 {
                     GqlRootFieldName.validateAzureNativeSqlManagedInstanceDbNameForExport,
-                    new RscOp {
-                        CmdletName = "New-RscQueryAzure",
-                        CmdletSwitchName = "ValidateNativeSqlManagedInstanceDbNameForExport",
-                        GqlRootFieldName = "validateAzureNativeSqlManagedInstanceDbNameForExport"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryAzure",
+                        cmdletSwitchName: "ValidateNativeSqlManagedInstanceDbNameForExport",
+                        gqlRootFieldName: "validateAzureNativeSqlManagedInstanceDbNameForExport"
+                    )
                 },
                 {
                     GqlRootFieldName.validateOracleAcoFile,
-                    new RscOp {
-                        CmdletName = "New-RscMutationOracle",
-                        CmdletSwitchName = "ValidateAcoFile",
-                        GqlRootFieldName = "validateOracleAcoFile"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationOracle",
+                        cmdletSwitchName: "ValidateAcoFile",
+                        gqlRootFieldName: "validateOracleAcoFile"
+                    )
                 },
                 {
                     GqlRootFieldName.validateOracleDatabaseBackups,
-                    new RscOp {
-                        CmdletName = "New-RscMutationOracle",
-                        CmdletSwitchName = "ValidateDatabaseBackups",
-                        GqlRootFieldName = "validateOracleDatabaseBackups"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationOracle",
+                        cmdletSwitchName: "ValidateDatabaseBackups",
+                        gqlRootFieldName: "validateOracleDatabaseBackups"
+                    )
                 },
                 {
                     GqlRootFieldName.verifySlaWithReplicationToCluster,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCluster",
-                        CmdletSwitchName = "VerifySlaWithReplicationTo",
-                        GqlRootFieldName = "verifySlaWithReplicationToCluster"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCluster",
+                        cmdletSwitchName: "VerifySlaWithReplicationTo",
+                        gqlRootFieldName: "verifySlaWithReplicationToCluster"
+                    )
                 },
                 {
                     GqlRootFieldName.vsphereBulkOnDemandSnapshot,
-                    new RscOp {
-                        CmdletName = "New-RscMutationVsphere",
-                        CmdletSwitchName = "BulkOnDemandSnapshot",
-                        GqlRootFieldName = "vsphereBulkOnDemandSnapshot"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationVsphere",
+                        cmdletSwitchName: "BulkOnDemandSnapshot",
+                        gqlRootFieldName: "vsphereBulkOnDemandSnapshot"
+                    )
                 },
                 {
                     GqlRootFieldName.vsphereDeleteVcenter,
-                    new RscOp {
-                        CmdletName = "New-RscMutationVcenter",
-                        CmdletSwitchName = "Delete",
-                        GqlRootFieldName = "vsphereDeleteVcenter"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationVcenter",
+                        cmdletSwitchName: "Delete",
+                        gqlRootFieldName: "vsphereDeleteVcenter"
+                    )
                 },
                 {
                     GqlRootFieldName.vsphereExcludeVmDisks,
-                    new RscOp {
-                        CmdletName = "New-RscMutationVsphereVm",
-                        CmdletSwitchName = "ExcludeVmDisks",
-                        GqlRootFieldName = "vsphereExcludeVmDisks"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationVsphereVm",
+                        cmdletSwitchName: "ExcludeVmDisks",
+                        gqlRootFieldName: "vsphereExcludeVmDisks"
+                    )
                 },
                 {
                     GqlRootFieldName.vsphereExportSnapshotToStandaloneHostV2,
-                    new RscOp {
-                        CmdletName = "New-RscMutationVsphere",
-                        CmdletSwitchName = "ExportSnapshotToStandaloneHostV2",
-                        GqlRootFieldName = "vsphereExportSnapshotToStandaloneHostV2"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationVsphere",
+                        cmdletSwitchName: "ExportSnapshotToStandaloneHostV2",
+                        gqlRootFieldName: "vsphereExportSnapshotToStandaloneHostV2"
+                    )
                 },
                 {
                     GqlRootFieldName.vsphereOnDemandSnapshot,
-                    new RscOp {
-                        CmdletName = "New-RscMutationVsphere",
-                        CmdletSwitchName = "OnDemandSnapshot",
-                        GqlRootFieldName = "vsphereOnDemandSnapshot"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationVsphere",
+                        cmdletSwitchName: "OnDemandSnapshot",
+                        gqlRootFieldName: "vsphereOnDemandSnapshot"
+                    )
                 },
                 {
                     GqlRootFieldName.vsphereVMMissedRecoverableRange,
-                    new RscOp {
-                        CmdletName = "New-RscQueryVsphereVm",
-                        CmdletSwitchName = "MissedRecoverableRange",
-                        GqlRootFieldName = "vsphereVMMissedRecoverableRange"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryVsphereVm",
+                        cmdletSwitchName: "MissedRecoverableRange",
+                        gqlRootFieldName: "vsphereVMMissedRecoverableRange"
+                    )
                 },
                 {
                     GqlRootFieldName.vsphereVMRecoverableRange,
-                    new RscOp {
-                        CmdletName = "New-RscQueryVsphereVm",
-                        CmdletSwitchName = "RecoverableRange",
-                        GqlRootFieldName = "vsphereVMRecoverableRange"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryVsphereVm",
+                        cmdletSwitchName: "RecoverableRange",
+                        gqlRootFieldName: "vsphereVMRecoverableRange"
+                    )
                 },
                 {
                     GqlRootFieldName.vsphereVMRecoverableRangeInBatch,
-                    new RscOp {
-                        CmdletName = "New-RscQueryVsphereVm",
-                        CmdletSwitchName = "RecoverableRangeInBatch",
-                        GqlRootFieldName = "vsphereVMRecoverableRangeInBatch"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryVsphereVm",
+                        cmdletSwitchName: "RecoverableRangeInBatch",
+                        gqlRootFieldName: "vsphereVMRecoverableRangeInBatch"
+                    )
                 },
                 {
                     GqlRootFieldName.vsphereVmBatchExport,
-                    new RscOp {
-                        CmdletName = "New-RscMutationVsphereVm",
-                        CmdletSwitchName = "BatchExport",
-                        GqlRootFieldName = "vsphereVmBatchExport"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationVsphereVm",
+                        cmdletSwitchName: "BatchExport",
+                        gqlRootFieldName: "vsphereVmBatchExport"
+                    )
                 },
                 {
                     GqlRootFieldName.vsphereVmBatchExportV3,
-                    new RscOp {
-                        CmdletName = "New-RscMutationVsphereVm",
-                        CmdletSwitchName = "BatchExportV3",
-                        GqlRootFieldName = "vsphereVmBatchExportV3"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationVsphereVm",
+                        cmdletSwitchName: "BatchExportV3",
+                        gqlRootFieldName: "vsphereVmBatchExportV3"
+                    )
                 },
                 {
                     GqlRootFieldName.vsphereVmBatchInPlaceRecovery,
-                    new RscOp {
-                        CmdletName = "New-RscMutationVsphereVm",
-                        CmdletSwitchName = "BatchInPlaceRecovery",
-                        GqlRootFieldName = "vsphereVmBatchInPlaceRecovery"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationVsphereVm",
+                        cmdletSwitchName: "BatchInPlaceRecovery",
+                        gqlRootFieldName: "vsphereVmBatchInPlaceRecovery"
+                    )
                 },
                 {
                     GqlRootFieldName.vsphereVmDeleteSnapshot,
-                    new RscOp {
-                        CmdletName = "New-RscMutationVsphereVm",
-                        CmdletSwitchName = "DeleteSnapshot",
-                        GqlRootFieldName = "vsphereVmDeleteSnapshot"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationVsphereVm",
+                        cmdletSwitchName: "DeleteSnapshot",
+                        gqlRootFieldName: "vsphereVmDeleteSnapshot"
+                    )
                 },
                 {
                     GqlRootFieldName.vsphereVmDownloadSnapshot,
-                    new RscOp {
-                        CmdletName = "New-RscMutationVsphereVm",
-                        CmdletSwitchName = "DownloadSnapshot",
-                        GqlRootFieldName = "vsphereVmDownloadSnapshot"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationVsphereVm",
+                        cmdletSwitchName: "DownloadSnapshot",
+                        gqlRootFieldName: "vsphereVmDownloadSnapshot"
+                    )
                 },
                 {
                     GqlRootFieldName.vsphereVmDownloadSnapshotFiles,
-                    new RscOp {
-                        CmdletName = "New-RscMutationVsphereVm",
-                        CmdletSwitchName = "DownloadSnapshotFiles",
-                        GqlRootFieldName = "vsphereVmDownloadSnapshotFiles"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationVsphereVm",
+                        cmdletSwitchName: "DownloadSnapshotFiles",
+                        gqlRootFieldName: "vsphereVmDownloadSnapshotFiles"
+                    )
                 },
                 {
                     GqlRootFieldName.vsphereVmExportSnapshotV2,
-                    new RscOp {
-                        CmdletName = "New-RscMutationVsphereVm",
-                        CmdletSwitchName = "ExportSnapshotV2",
-                        GqlRootFieldName = "vsphereVmExportSnapshotV2"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationVsphereVm",
+                        cmdletSwitchName: "ExportSnapshotV2",
+                        gqlRootFieldName: "vsphereVmExportSnapshotV2"
+                    )
                 },
                 {
                     GqlRootFieldName.vsphereVmExportSnapshotV3,
-                    new RscOp {
-                        CmdletName = "New-RscMutationVsphereVm",
-                        CmdletSwitchName = "ExportSnapshotV3",
-                        GqlRootFieldName = "vsphereVmExportSnapshotV3"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationVsphereVm",
+                        cmdletSwitchName: "ExportSnapshotV3",
+                        gqlRootFieldName: "vsphereVmExportSnapshotV3"
+                    )
                 },
                 {
                     GqlRootFieldName.vsphereVmExportSnapshotWithDownloadFromCloud,
-                    new RscOp {
-                        CmdletName = "New-RscMutationVsphereVm",
-                        CmdletSwitchName = "ExportSnapshotWithDownloadFromCloud",
-                        GqlRootFieldName = "vsphereVmExportSnapshotWithDownloadFromCloud"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationVsphereVm",
+                        cmdletSwitchName: "ExportSnapshotWithDownloadFromCloud",
+                        gqlRootFieldName: "vsphereVmExportSnapshotWithDownloadFromCloud"
+                    )
                 },
                 {
                     GqlRootFieldName.vsphereVmInitiateBatchInstantRecovery,
-                    new RscOp {
-                        CmdletName = "New-RscMutationVsphereVm",
-                        CmdletSwitchName = "InitiateBatchInstantRecovery",
-                        GqlRootFieldName = "vsphereVmInitiateBatchInstantRecovery"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationVsphereVm",
+                        cmdletSwitchName: "InitiateBatchInstantRecovery",
+                        gqlRootFieldName: "vsphereVmInitiateBatchInstantRecovery"
+                    )
                 },
                 {
                     GqlRootFieldName.vsphereVmInitiateBatchLiveMountV2,
-                    new RscOp {
-                        CmdletName = "New-RscMutationVsphereVm",
-                        CmdletSwitchName = "InitiateBatchLiveMountV2",
-                        GqlRootFieldName = "vsphereVmInitiateBatchLiveMountV2"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationVsphereVm",
+                        cmdletSwitchName: "InitiateBatchLiveMountV2",
+                        gqlRootFieldName: "vsphereVmInitiateBatchLiveMountV2"
+                    )
                 },
                 {
                     GqlRootFieldName.vsphereVmInitiateDiskMount,
-                    new RscOp {
-                        CmdletName = "New-RscMutationVsphereVm",
-                        CmdletSwitchName = "InitiateDiskMount",
-                        GqlRootFieldName = "vsphereVmInitiateDiskMount"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationVsphereVm",
+                        cmdletSwitchName: "InitiateDiskMount",
+                        gqlRootFieldName: "vsphereVmInitiateDiskMount"
+                    )
                 },
                 {
                     GqlRootFieldName.vsphereVmInitiateInPlaceRecovery,
-                    new RscOp {
-                        CmdletName = "New-RscMutationVsphereVm",
-                        CmdletSwitchName = "InitiateInPlaceRecovery",
-                        GqlRootFieldName = "vsphereVmInitiateInPlaceRecovery"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationVsphereVm",
+                        cmdletSwitchName: "InitiateInPlaceRecovery",
+                        gqlRootFieldName: "vsphereVmInitiateInPlaceRecovery"
+                    )
                 },
                 {
                     GqlRootFieldName.vsphereVmInitiateInstantRecoveryV2,
-                    new RscOp {
-                        CmdletName = "New-RscMutationVsphereVm",
-                        CmdletSwitchName = "InitiateInstantRecoveryV2",
-                        GqlRootFieldName = "vsphereVmInitiateInstantRecoveryV2"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationVsphereVm",
+                        cmdletSwitchName: "InitiateInstantRecoveryV2",
+                        gqlRootFieldName: "vsphereVmInitiateInstantRecoveryV2"
+                    )
                 },
                 {
                     GqlRootFieldName.vsphereVmInitiateLiveMountV2,
-                    new RscOp {
-                        CmdletName = "New-RscMutationVsphereVm",
-                        CmdletSwitchName = "InitiateLiveMountV2",
-                        GqlRootFieldName = "vsphereVmInitiateLiveMountV2"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationVsphereVm",
+                        cmdletSwitchName: "InitiateLiveMountV2",
+                        gqlRootFieldName: "vsphereVmInitiateLiveMountV2"
+                    )
                 },
                 {
                     GqlRootFieldName.vsphereVmListEsxiDatastores,
-                    new RscOp {
-                        CmdletName = "New-RscMutationVsphereVm",
-                        CmdletSwitchName = "ListEsxiDatastores",
-                        GqlRootFieldName = "vsphereVmListEsxiDatastores"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationVsphereVm",
+                        cmdletSwitchName: "ListEsxiDatastores",
+                        gqlRootFieldName: "vsphereVmListEsxiDatastores"
+                    )
                 },
                 {
                     GqlRootFieldName.vsphereVmMountRelocate,
-                    new RscOp {
-                        CmdletName = "New-RscMutationVsphereVm",
-                        CmdletSwitchName = "MountRelocate",
-                        GqlRootFieldName = "vsphereVmMountRelocate"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationVsphereVm",
+                        cmdletSwitchName: "MountRelocate",
+                        gqlRootFieldName: "vsphereVmMountRelocate"
+                    )
                 },
                 {
                     GqlRootFieldName.vsphereVmMountRelocateV2,
-                    new RscOp {
-                        CmdletName = "New-RscMutationVsphereVm",
-                        CmdletSwitchName = "MountRelocateV2",
-                        GqlRootFieldName = "vsphereVmMountRelocateV2"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationVsphereVm",
+                        cmdletSwitchName: "MountRelocateV2",
+                        gqlRootFieldName: "vsphereVmMountRelocateV2"
+                    )
                 },
                 {
                     GqlRootFieldName.vsphereVmPowerOnOffLiveMount,
-                    new RscOp {
-                        CmdletName = "New-RscMutationVsphereVm",
-                        CmdletSwitchName = "PowerOnOffLiveMount",
-                        GqlRootFieldName = "vsphereVmPowerOnOffLiveMount"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationVsphereVm",
+                        cmdletSwitchName: "PowerOnOffLiveMount",
+                        gqlRootFieldName: "vsphereVmPowerOnOffLiveMount"
+                    )
                 },
                 {
                     GqlRootFieldName.vsphereVmRecoverFiles,
-                    new RscOp {
-                        CmdletName = "New-RscMutationVsphereVm",
-                        CmdletSwitchName = "RecoverFiles",
-                        GqlRootFieldName = "vsphereVmRecoverFiles"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationVsphereVm",
+                        cmdletSwitchName: "RecoverFiles",
+                        gqlRootFieldName: "vsphereVmRecoverFiles"
+                    )
                 },
                 {
                     GqlRootFieldName.vsphereVmRecoverFilesNew,
-                    new RscOp {
-                        CmdletName = "New-RscMutationVsphereVm",
-                        CmdletSwitchName = "RecoverFilesNew",
-                        GqlRootFieldName = "vsphereVmRecoverFilesNew"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationVsphereVm",
+                        cmdletSwitchName: "RecoverFilesNew",
+                        gqlRootFieldName: "vsphereVmRecoverFilesNew"
+                    )
                 },
                 {
                     GqlRootFieldName.vsphereVmRegisterAgent,
-                    new RscOp {
-                        CmdletName = "New-RscMutationVsphereVm",
-                        CmdletSwitchName = "RegisterAgent",
-                        GqlRootFieldName = "vsphereVmRegisterAgent"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscMutationVsphereVm",
+                        cmdletSwitchName: "RegisterAgent",
+                        gqlRootFieldName: "vsphereVmRegisterAgent"
+                    )
                 },
                 {
                     GqlRootFieldName.vsphereVmwareCdpLiveInfo,
-                    new RscOp {
-                        CmdletName = "New-RscQueryVsphere",
-                        CmdletSwitchName = "VmwareCdpLiveInfo",
-                        GqlRootFieldName = "vsphereVmwareCdpLiveInfo"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryVsphere",
+                        cmdletSwitchName: "VmwareCdpLiveInfo",
+                        gqlRootFieldName: "vsphereVmwareCdpLiveInfo"
+                    )
                 },
                 {
                     GqlRootFieldName.windowsCluster,
-                    new RscOp {
-                        CmdletName = "New-RscQueryCluster",
-                        CmdletSwitchName = "Windows",
-                        GqlRootFieldName = "windowsCluster"
-                    }
+                    new RscOp(
+                        cmdletName: "New-RscQueryCluster",
+                        cmdletSwitchName: "Windows",
+                        gqlRootFieldName: "windowsCluster"
+                    )
                 },
             };
             if (lookupDict.TryGetValue(rootField, out var rscOp))
             {
+                rscOp.GqlReturnTypeName = ReturnTypeLookupByGqlRootField(rootField.ToString());
                 return rscOp;
             }
-            return new RscOp{
-                GqlRootFieldName = rootField.ToString()
-            };
+            return new RscOp(
+                gqlRootFieldName: rootField.ToString()
+            );
         }
 
         /// <summary>
@@ -13314,6 +13450,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.addDb2Instance
                 },
                 {
+                    "New-RscMutationManagedVolume -Add",
+                    GqlRootFieldName.addManagedVolume
+                },
+                {
                     "New-RscMutationMongo -AddSource",
                     GqlRootFieldName.addMongoSource
                 },
@@ -13334,7 +13474,7 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.allAccountProducts
                 },
                 {
-                    "New-RscQueryAccount -SWithExocomputeMappings",
+                    "New-RscQueryAccount -WithExocomputeMappings",
                     GqlRootFieldName.allAccountsWithExocomputeMappings
                 },
                 {
@@ -13934,6 +14074,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.batchOnDemandBackupHypervVm
                 },
                 {
+                    "New-RscMutationManagedVolume -BeginSnapshot",
+                    GqlRootFieldName.beginManagedVolumeSnapshot
+                },
+                {
                     "New-RscMutationMssql -BrowseDatabaseSnapshot",
                     GqlRootFieldName.browseMssqlDatabaseSnapshot
                 },
@@ -14382,6 +14526,14 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.deleteLdapPrincipals
                 },
                 {
+                    "New-RscMutationManagedVolume -Delete",
+                    GqlRootFieldName.deleteManagedVolume
+                },
+                {
+                    "New-RscMutationManagedVolume -DeleteSnapshotExport",
+                    GqlRootFieldName.deleteManagedVolumeSnapshotExport
+                },
+                {
                     "New-RscMutationMongo -DeleteSource",
                     GqlRootFieldName.deleteMongoSource
                 },
@@ -14478,6 +14630,14 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.downloadHypervVirtualMachineSnapshotFiles
                 },
                 {
+                    "New-RscMutationManagedVolume -DownloadFiles",
+                    GqlRootFieldName.downloadManagedVolumeFiles
+                },
+                {
+                    "New-RscMutationManagedVolume -DownloadFromLocation",
+                    GqlRootFieldName.downloadManagedVolumeFromLocation
+                },
+                {
                     "New-RscMutationMssql -DownloadDatabaseBackupFiles",
                     GqlRootFieldName.downloadMssqlDatabaseBackupFiles
                 },
@@ -14510,6 +14670,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.enableO365Teams
                 },
                 {
+                    "New-RscMutationManagedVolume -EndSnapshot",
+                    GqlRootFieldName.endManagedVolumeSnapshot
+                },
+                {
                     "New-RscMutationAws -ExcludeNativeEbsVolumesFromSnapshot",
                     GqlRootFieldName.excludeAwsNativeEbsVolumesFromSnapshot
                 },
@@ -14524,6 +14688,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscMutationHyperv -ExportVirtualMachine",
                     GqlRootFieldName.exportHypervVirtualMachine
+                },
+                {
+                    "New-RscMutationManagedVolume -ExportSnapshot",
+                    GqlRootFieldName.exportManagedVolumeSnapshot
                 },
                 {
                     "New-RscMutationMssql -ExportDatabase",
@@ -14700,6 +14868,22 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscQueryO365 -ListApps",
                     GqlRootFieldName.listO365Apps
+                },
+                {
+                    "New-RscQueryManagedVolume -ManagedVolume",
+                    GqlRootFieldName.managedVolume
+                },
+                {
+                    "New-RscQueryManagedVolume -InventoryStats",
+                    GqlRootFieldName.managedVolumeInventoryStats
+                },
+                {
+                    "New-RscQueryManagedVolume -LiveMounts",
+                    GqlRootFieldName.managedVolumeLiveMounts
+                },
+                {
+                    "New-RscQueryManagedVolume -ManagedVolumes",
+                    GqlRootFieldName.managedVolumes
                 },
                 {
                     "New-RscMutationAzure -MapCloudAccountExocomputeSubscription",
@@ -15242,6 +15426,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.removeLdapIntegration
                 },
                 {
+                    "New-RscMutationManagedVolume -Resize",
+                    GqlRootFieldName.resizeManagedVolume
+                },
+                {
                     "New-RscMutationAzure -RestoreAdObjectsWithPasswords",
                     GqlRootFieldName.restoreAzureAdObjectsWithPasswords
                 },
@@ -15414,6 +15602,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.startRestoreAzureNativeVirtualMachineJob
                 },
                 {
+                    "New-RscMutationManagedVolume -TakeOnDemandSnapshot",
+                    GqlRootFieldName.takeManagedVolumeOnDemandSnapshot
+                },
+                {
                     "New-RscMutationMssql -TakeLogBackup",
                     GqlRootFieldName.takeMssqlLogBackup
                 },
@@ -15524,6 +15716,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscMutationLdap -UpdateIntegration",
                     GqlRootFieldName.updateLdapIntegration
+                },
+                {
+                    "New-RscMutationManagedVolume -Update",
+                    GqlRootFieldName.updateManagedVolume
                 },
                 {
                     "New-RscMutationMongo -UpdatedbSource",
@@ -15899,7 +16095,7 @@ namespace RubrikSecurityCloud.Types
                 },
             };
             string key = rscOp.Syntax();
-            if (lookupDict.TryGetValue(key, out var gqlRootFieldName)) {
+            if ( !string.IsNullOrEmpty(key) && lookupDict.TryGetValue(key, out var gqlRootFieldName)) {
                 return gqlRootFieldName;
             }
             return GqlRootFieldName.Unknown;
@@ -15924,9 +16120,9 @@ namespace RubrikSecurityCloud.Types
                 // The provided operation is a valid enum member.
                 return RscOpLookupByGqlRootField(rootFieldEnumVal);
             }
-            return new RscOp{
-                GqlRootFieldName = rootField
-            };
+            return new RscOp(
+                gqlRootFieldName: rootField
+            );
         }
 
         /// <summary>
@@ -21253,7 +21449,105 @@ namespace RubrikSecurityCloud.Types
             {
                 return returnTypeName;
             }
-            return null;
+            return "";
         }
+
+        /// <summary>
+        /// Given a RSC operation, fill in the missing fields
+        /// (if possible) and return whether the operation is fully determined.
+        /// </summary>
+        public static bool FillInRscOp(
+            RscOp rscOp
+        )
+        {
+            if (rscOp == null)
+            {
+                return false;
+            }
+
+            if ( !string.IsNullOrEmpty(rscOp.GqlRootFieldName)) {
+                var _rscop = RscOpLookupByGqlRootField(rscOp.GqlRootFieldName);
+                if(_rscop.IsDetermined()) {
+                    rscOp.CmdletName = _rscop.CmdletName;
+                    rscOp.CmdletSwitchName = _rscop.CmdletSwitchName;
+                    rscOp.GqlReturnTypeName = _rscop.GqlReturnTypeName;
+                    return true ;
+                }
+            }
+            
+            if ( !string.IsNullOrEmpty(rscOp.CmdletName) &&
+                 !string.IsNullOrEmpty(rscOp.CmdletSwitchName) ) {
+                GqlRootFieldName rf = GqlRootFieldNameLookupByRscOp(rscOp);
+                if ( rf != GqlRootFieldName.Unknown ) {
+                    rscOp.GqlRootFieldName = rf.ToString();
+                    var rt = ReturnTypeLookupByGqlRootField(rscOp.GqlRootFieldName);
+                    if ( !string.IsNullOrEmpty(rt) ) {
+                        rscOp.GqlReturnTypeName = rt;
+                    }
+                }
+                if (rscOp.IsDetermined()) 
+                {
+                    return true;
+                }
+            }
+
+            if ( !string.IsNullOrEmpty(rscOp.CmdletName) &&
+                 !string.IsNullOrEmpty(rscOp.GqlReturnTypeName) ) {
+                List<string> rootFields = GqlRootFieldLookupByReturnType(rscOp.GqlReturnTypeName);
+                foreach (string rootField in rootFields) {
+                    var _rscop = RscOpLookupByGqlRootField(rootField);
+                    if ( _rscop.IsDetermined() && _rscop.CmdletName == rscOp.CmdletName ) {
+                        rscOp.CmdletSwitchName = _rscop.CmdletSwitchName;
+                        rscOp.GqlRootFieldName = _rscop.GqlRootFieldName;
+                        return true;
+                    }
+                }
+            }
+
+            if ( !string.IsNullOrEmpty(rscOp.CmdletSwitchName) &&
+                 !string.IsNullOrEmpty(rscOp.GqlReturnTypeName) ) {
+                List<string> rootFields = GqlRootFieldLookupByReturnType(rscOp.GqlReturnTypeName);
+                foreach (string rootField in rootFields) {
+                    var _rscop = RscOpLookupByGqlRootField(rootField);
+                    if ( _rscop.IsDetermined() && _rscop.CmdletSwitchName == rscOp.CmdletSwitchName ) {
+                        rscOp.CmdletName = _rscop.CmdletName;
+                        rscOp.GqlRootFieldName = _rscop.GqlRootFieldName;
+                        return true;
+                    }
+                }
+            }
+
+            return rscOp.IsDetermined();
+        }
+
+        /// <summary>
+        /// All API domain names.
+        /// </summary>
+        public enum ApiDomainName
+        {
+            Unknown,
+            Account,
+            ActivitySeries,
+            Aws,
+            Azure,
+            AzureO365,
+            Cassandra,
+            Cluster,
+            Db2,
+            Hyperv,
+            Ldap,
+            ManagedVolume,
+            Mongo,
+            Mssql,
+            Nutanix,
+            O365,
+            Oracle,
+            Sla,
+            Vcenter,
+            Vsphere,
+            VsphereVm,
+        }
+
+
     }
 }

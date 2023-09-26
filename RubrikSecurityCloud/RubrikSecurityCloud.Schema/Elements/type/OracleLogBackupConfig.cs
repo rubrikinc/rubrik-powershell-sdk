@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int32? HostLogRetentionHours
         // GraphQL -> hostLogRetentionHours: Int! (scalar)
         if (this.HostLogRetentionHours != null) {
-            s += ind + "hostLogRetentionHours\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostLogRetentionHours\n" ;
+            } else {
+                s += ind + "hostLogRetentionHours\n" ;
+            }
         }
         //      C# -> System.Int32? LogBackupFrequencyMin
         // GraphQL -> logBackupFrequencyMin: Int! (scalar)
         if (this.LogBackupFrequencyMin != null) {
-            s += ind + "logBackupFrequencyMin\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "logBackupFrequencyMin\n" ;
+            } else {
+                s += ind + "logBackupFrequencyMin\n" ;
+            }
         }
         //      C# -> System.Int32? LogRetentionHours
         // GraphQL -> logRetentionHours: Int! (scalar)
         if (this.LogRetentionHours != null) {
-            s += ind + "logRetentionHours\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "logRetentionHours\n" ;
+            } else {
+                s += ind + "logRetentionHours\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int32? HostLogRetentionHours
         // GraphQL -> hostLogRetentionHours: Int! (scalar)
-        if (this.HostLogRetentionHours == null && ec.Includes("hostLogRetentionHours",true))
+        if (ec.Includes("hostLogRetentionHours",true))
         {
-            this.HostLogRetentionHours = Int32.MinValue;
+            if(this.HostLogRetentionHours == null) {
+
+                this.HostLogRetentionHours = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.HostLogRetentionHours != null && ec.Excludes("hostLogRetentionHours",true))
+        {
+            this.HostLogRetentionHours = null;
         }
         //      C# -> System.Int32? LogBackupFrequencyMin
         // GraphQL -> logBackupFrequencyMin: Int! (scalar)
-        if (this.LogBackupFrequencyMin == null && ec.Includes("logBackupFrequencyMin",true))
+        if (ec.Includes("logBackupFrequencyMin",true))
         {
-            this.LogBackupFrequencyMin = Int32.MinValue;
+            if(this.LogBackupFrequencyMin == null) {
+
+                this.LogBackupFrequencyMin = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LogBackupFrequencyMin != null && ec.Excludes("logBackupFrequencyMin",true))
+        {
+            this.LogBackupFrequencyMin = null;
         }
         //      C# -> System.Int32? LogRetentionHours
         // GraphQL -> logRetentionHours: Int! (scalar)
-        if (this.LogRetentionHours == null && ec.Includes("logRetentionHours",true))
+        if (ec.Includes("logRetentionHours",true))
         {
-            this.LogRetentionHours = Int32.MinValue;
+            if(this.LogRetentionHours == null) {
+
+                this.LogRetentionHours = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LogRetentionHours != null && ec.Excludes("logRetentionHours",true))
+        {
+            this.LogRetentionHours = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<OracleLogBackupConfig> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

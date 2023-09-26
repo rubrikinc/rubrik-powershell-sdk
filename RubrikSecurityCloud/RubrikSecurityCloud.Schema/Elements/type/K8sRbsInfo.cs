@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? KuprClusterUuid
         // GraphQL -> kuprClusterUuid: UUID! (scalar)
         if (this.KuprClusterUuid != null) {
-            s += ind + "kuprClusterUuid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "kuprClusterUuid\n" ;
+            } else {
+                s += ind + "kuprClusterUuid\n" ;
+            }
         }
         //      C# -> System.Int32? MaxPort
         // GraphQL -> maxPort: Int! (scalar)
         if (this.MaxPort != null) {
-            s += ind + "maxPort\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "maxPort\n" ;
+            } else {
+                s += ind + "maxPort\n" ;
+            }
         }
         //      C# -> System.Int32? MinPort
         // GraphQL -> minPort: Int! (scalar)
         if (this.MinPort != null) {
-            s += ind + "minPort\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "minPort\n" ;
+            } else {
+                s += ind + "minPort\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? KuprClusterUuid
         // GraphQL -> kuprClusterUuid: UUID! (scalar)
-        if (this.KuprClusterUuid == null && ec.Includes("kuprClusterUuid",true))
+        if (ec.Includes("kuprClusterUuid",true))
         {
-            this.KuprClusterUuid = "FETCH";
+            if(this.KuprClusterUuid == null) {
+
+                this.KuprClusterUuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.KuprClusterUuid != null && ec.Excludes("kuprClusterUuid",true))
+        {
+            this.KuprClusterUuid = null;
         }
         //      C# -> System.Int32? MaxPort
         // GraphQL -> maxPort: Int! (scalar)
-        if (this.MaxPort == null && ec.Includes("maxPort",true))
+        if (ec.Includes("maxPort",true))
         {
-            this.MaxPort = Int32.MinValue;
+            if(this.MaxPort == null) {
+
+                this.MaxPort = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.MaxPort != null && ec.Excludes("maxPort",true))
+        {
+            this.MaxPort = null;
         }
         //      C# -> System.Int32? MinPort
         // GraphQL -> minPort: Int! (scalar)
-        if (this.MinPort == null && ec.Includes("minPort",true))
+        if (ec.Includes("minPort",true))
         {
-            this.MinPort = Int32.MinValue;
+            if(this.MinPort == null) {
+
+                this.MinPort = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.MinPort != null && ec.Excludes("minPort",true))
+        {
+            this.MinPort = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<K8sRbsInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

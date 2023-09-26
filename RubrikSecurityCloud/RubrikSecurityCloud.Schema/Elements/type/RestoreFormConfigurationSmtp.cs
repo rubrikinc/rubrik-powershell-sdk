@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? FromEmailId
         // GraphQL -> fromEmailId: String! (scalar)
         if (this.FromEmailId != null) {
-            s += ind + "fromEmailId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "fromEmailId\n" ;
+            } else {
+                s += ind + "fromEmailId\n" ;
+            }
         }
         //      C# -> System.String? SmtpHostname
         // GraphQL -> smtpHostname: String! (scalar)
         if (this.SmtpHostname != null) {
-            s += ind + "smtpHostname\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "smtpHostname\n" ;
+            } else {
+                s += ind + "smtpHostname\n" ;
+            }
         }
         //      C# -> System.Int64? SmtpPort
         // GraphQL -> smtpPort: Long! (scalar)
         if (this.SmtpPort != null) {
-            s += ind + "smtpPort\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "smtpPort\n" ;
+            } else {
+                s += ind + "smtpPort\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? FromEmailId
         // GraphQL -> fromEmailId: String! (scalar)
-        if (this.FromEmailId == null && ec.Includes("fromEmailId",true))
+        if (ec.Includes("fromEmailId",true))
         {
-            this.FromEmailId = "FETCH";
+            if(this.FromEmailId == null) {
+
+                this.FromEmailId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.FromEmailId != null && ec.Excludes("fromEmailId",true))
+        {
+            this.FromEmailId = null;
         }
         //      C# -> System.String? SmtpHostname
         // GraphQL -> smtpHostname: String! (scalar)
-        if (this.SmtpHostname == null && ec.Includes("smtpHostname",true))
+        if (ec.Includes("smtpHostname",true))
         {
-            this.SmtpHostname = "FETCH";
+            if(this.SmtpHostname == null) {
+
+                this.SmtpHostname = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SmtpHostname != null && ec.Excludes("smtpHostname",true))
+        {
+            this.SmtpHostname = null;
         }
         //      C# -> System.Int64? SmtpPort
         // GraphQL -> smtpPort: Long! (scalar)
-        if (this.SmtpPort == null && ec.Includes("smtpPort",true))
+        if (ec.Includes("smtpPort",true))
         {
-            this.SmtpPort = new System.Int64();
+            if(this.SmtpPort == null) {
+
+                this.SmtpPort = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SmtpPort != null && ec.Excludes("smtpPort",true))
+        {
+            this.SmtpPort = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<RestoreFormConfigurationSmtp> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

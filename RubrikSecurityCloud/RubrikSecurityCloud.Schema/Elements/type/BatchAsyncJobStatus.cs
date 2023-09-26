@@ -56,24 +56,33 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<AsyncJobStatusJobError>? Errors
         // GraphQL -> errors: [AsyncJobStatusJobError!]! (type)
         if (this.Errors != null) {
-            var fspec = this.Errors.AsFieldSpec(indent+1);
+            var fspec = this.Errors.AsFieldSpec(conf.Child("errors"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "errors {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "errors {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<AsyncJobStatusJobId>? JobIds
         // GraphQL -> jobIds: [AsyncJobStatusJobId!]! (type)
         if (this.JobIds != null) {
-            var fspec = this.JobIds.AsFieldSpec(indent+1);
+            var fspec = this.JobIds.AsFieldSpec(conf.Child("jobIds"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "jobIds {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "jobIds {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -85,17 +94,41 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<AsyncJobStatusJobError>? Errors
         // GraphQL -> errors: [AsyncJobStatusJobError!]! (type)
-        if (this.Errors == null && ec.Includes("errors",false))
+        if (ec.Includes("errors",false))
         {
-            this.Errors = new List<AsyncJobStatusJobError>();
-            this.Errors.ApplyExploratoryFieldSpec(ec.NewChild("errors"));
+            if(this.Errors == null) {
+
+                this.Errors = new List<AsyncJobStatusJobError>();
+                this.Errors.ApplyExploratoryFieldSpec(ec.NewChild("errors"));
+
+            } else {
+
+                this.Errors.ApplyExploratoryFieldSpec(ec.NewChild("errors"));
+
+            }
+        }
+        else if (this.Errors != null && ec.Excludes("errors",false))
+        {
+            this.Errors = null;
         }
         //      C# -> List<AsyncJobStatusJobId>? JobIds
         // GraphQL -> jobIds: [AsyncJobStatusJobId!]! (type)
-        if (this.JobIds == null && ec.Includes("jobIds",false))
+        if (ec.Includes("jobIds",false))
         {
-            this.JobIds = new List<AsyncJobStatusJobId>();
-            this.JobIds.ApplyExploratoryFieldSpec(ec.NewChild("jobIds"));
+            if(this.JobIds == null) {
+
+                this.JobIds = new List<AsyncJobStatusJobId>();
+                this.JobIds.ApplyExploratoryFieldSpec(ec.NewChild("jobIds"));
+
+            } else {
+
+                this.JobIds.ApplyExploratoryFieldSpec(ec.NewChild("jobIds"));
+
+            }
+        }
+        else if (this.JobIds != null && ec.Excludes("jobIds",false))
+        {
+            this.JobIds = null;
         }
     }
 
@@ -122,9 +155,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<BatchAsyncJobStatus> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

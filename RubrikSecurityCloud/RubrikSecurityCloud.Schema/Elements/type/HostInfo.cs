@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
         if (this.Hostname != null) {
-            s += ind + "hostname\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostname\n" ;
+            } else {
+                s += ind + "hostname\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.String? OracleQueryUser
         // GraphQL -> oracleQueryUser: String! (scalar)
         if (this.OracleQueryUser != null) {
-            s += ind + "oracleQueryUser\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "oracleQueryUser\n" ;
+            } else {
+                s += ind + "oracleQueryUser\n" ;
+            }
         }
         //      C# -> System.String? OracleSysDbaUser
         // GraphQL -> oracleSysDbaUser: String! (scalar)
         if (this.OracleSysDbaUser != null) {
-            s += ind + "oracleSysDbaUser\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "oracleSysDbaUser\n" ;
+            } else {
+                s += ind + "oracleSysDbaUser\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
-        if (this.Hostname == null && ec.Includes("hostname",true))
+        if (ec.Includes("hostname",true))
         {
-            this.Hostname = "FETCH";
+            if(this.Hostname == null) {
+
+                this.Hostname = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Hostname != null && ec.Excludes("hostname",true))
+        {
+            this.Hostname = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.String? OracleQueryUser
         // GraphQL -> oracleQueryUser: String! (scalar)
-        if (this.OracleQueryUser == null && ec.Includes("oracleQueryUser",true))
+        if (ec.Includes("oracleQueryUser",true))
         {
-            this.OracleQueryUser = "FETCH";
+            if(this.OracleQueryUser == null) {
+
+                this.OracleQueryUser = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OracleQueryUser != null && ec.Excludes("oracleQueryUser",true))
+        {
+            this.OracleQueryUser = null;
         }
         //      C# -> System.String? OracleSysDbaUser
         // GraphQL -> oracleSysDbaUser: String! (scalar)
-        if (this.OracleSysDbaUser == null && ec.Includes("oracleSysDbaUser",true))
+        if (ec.Includes("oracleSysDbaUser",true))
         {
-            this.OracleSysDbaUser = "FETCH";
+            if(this.OracleSysDbaUser == null) {
+
+                this.OracleSysDbaUser = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OracleSysDbaUser != null && ec.Excludes("oracleSysDbaUser",true))
+        {
+            this.OracleSysDbaUser = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<HostInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? ClusterId
         // GraphQL -> clusterId: UUID! (scalar)
         if (this.ClusterId != null) {
-            s += ind + "clusterId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterId\n" ;
+            } else {
+                s += ind + "clusterId\n" ;
+            }
         }
         //      C# -> System.String? SignedUrl
         // GraphQL -> signedUrl: String! (scalar)
         if (this.SignedUrl != null) {
-            s += ind + "signedUrl\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "signedUrl\n" ;
+            } else {
+                s += ind + "signedUrl\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? ClusterId
         // GraphQL -> clusterId: UUID! (scalar)
-        if (this.ClusterId == null && ec.Includes("clusterId",true))
+        if (ec.Includes("clusterId",true))
         {
-            this.ClusterId = "FETCH";
+            if(this.ClusterId == null) {
+
+                this.ClusterId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterId != null && ec.Excludes("clusterId",true))
+        {
+            this.ClusterId = null;
         }
         //      C# -> System.String? SignedUrl
         // GraphQL -> signedUrl: String! (scalar)
-        if (this.SignedUrl == null && ec.Includes("signedUrl",true))
+        if (ec.Includes("signedUrl",true))
         {
-            this.SignedUrl = "FETCH";
+            if(this.SignedUrl == null) {
+
+                this.SignedUrl = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SignedUrl != null && ec.Excludes("signedUrl",true))
+        {
+            this.SignedUrl = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<K8sAgentManifestInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

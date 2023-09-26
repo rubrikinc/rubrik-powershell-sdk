@@ -65,32 +65,45 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> ManagedVolumeQueuedSnapshotConnection? ManagedVolumeQueuedSnapshotConnection
         // GraphQL -> managedVolumeQueuedSnapshotConnection: ManagedVolumeQueuedSnapshotConnection! (type)
         if (this.ManagedVolumeQueuedSnapshotConnection != null) {
-            var fspec = this.ManagedVolumeQueuedSnapshotConnection.AsFieldSpec(indent+1);
+            var fspec = this.ManagedVolumeQueuedSnapshotConnection.AsFieldSpec(conf.Child("managedVolumeQueuedSnapshotConnection"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "managedVolumeQueuedSnapshotConnection {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "managedVolumeQueuedSnapshotConnection {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<ManagedVolumeQueuedSnapshotGroupBy>? ManagedVolumeQueuedSnapshotGroupByField
         // GraphQL -> managedVolumeQueuedSnapshotGroupBy: [ManagedVolumeQueuedSnapshotGroupBy!]! (type)
         if (this.ManagedVolumeQueuedSnapshotGroupByField != null) {
-            var fspec = this.ManagedVolumeQueuedSnapshotGroupByField.AsFieldSpec(indent+1);
+            var fspec = this.ManagedVolumeQueuedSnapshotGroupByField.AsFieldSpec(conf.Child("managedVolumeQueuedSnapshotGroupBy"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "managedVolumeQueuedSnapshotGroupBy {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "managedVolumeQueuedSnapshotGroupBy {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> ManagedVolumeQueuedSnapshotGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: ManagedVolumeQueuedSnapshotGroupByInfo! (union)
         if (this.GroupByInfo != null) {
-            var fspec = this.GroupByInfo.AsFieldSpec(indent+1);
+            var fspec = this.GroupByInfo.AsFieldSpec(conf.Child("groupByInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -102,25 +115,65 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> ManagedVolumeQueuedSnapshotConnection? ManagedVolumeQueuedSnapshotConnection
         // GraphQL -> managedVolumeQueuedSnapshotConnection: ManagedVolumeQueuedSnapshotConnection! (type)
-        if (this.ManagedVolumeQueuedSnapshotConnection == null && ec.Includes("managedVolumeQueuedSnapshotConnection",false))
+        if (ec.Includes("managedVolumeQueuedSnapshotConnection",false))
         {
-            this.ManagedVolumeQueuedSnapshotConnection = new ManagedVolumeQueuedSnapshotConnection();
-            this.ManagedVolumeQueuedSnapshotConnection.ApplyExploratoryFieldSpec(ec.NewChild("managedVolumeQueuedSnapshotConnection"));
+            if(this.ManagedVolumeQueuedSnapshotConnection == null) {
+
+                this.ManagedVolumeQueuedSnapshotConnection = new ManagedVolumeQueuedSnapshotConnection();
+                this.ManagedVolumeQueuedSnapshotConnection.ApplyExploratoryFieldSpec(ec.NewChild("managedVolumeQueuedSnapshotConnection"));
+
+            } else {
+
+                this.ManagedVolumeQueuedSnapshotConnection.ApplyExploratoryFieldSpec(ec.NewChild("managedVolumeQueuedSnapshotConnection"));
+
+            }
+        }
+        else if (this.ManagedVolumeQueuedSnapshotConnection != null && ec.Excludes("managedVolumeQueuedSnapshotConnection",false))
+        {
+            this.ManagedVolumeQueuedSnapshotConnection = null;
         }
         //      C# -> List<ManagedVolumeQueuedSnapshotGroupBy>? ManagedVolumeQueuedSnapshotGroupByField
         // GraphQL -> managedVolumeQueuedSnapshotGroupBy: [ManagedVolumeQueuedSnapshotGroupBy!]! (type)
-        if (this.ManagedVolumeQueuedSnapshotGroupByField == null && ec.Includes("managedVolumeQueuedSnapshotGroupBy",false))
+        if (ec.Includes("managedVolumeQueuedSnapshotGroupBy",false))
         {
-            this.ManagedVolumeQueuedSnapshotGroupByField = new List<ManagedVolumeQueuedSnapshotGroupBy>();
-            this.ManagedVolumeQueuedSnapshotGroupByField.ApplyExploratoryFieldSpec(ec.NewChild("managedVolumeQueuedSnapshotGroupBy"));
+            if(this.ManagedVolumeQueuedSnapshotGroupByField == null) {
+
+                this.ManagedVolumeQueuedSnapshotGroupByField = new List<ManagedVolumeQueuedSnapshotGroupBy>();
+                this.ManagedVolumeQueuedSnapshotGroupByField.ApplyExploratoryFieldSpec(ec.NewChild("managedVolumeQueuedSnapshotGroupBy"));
+
+            } else {
+
+                this.ManagedVolumeQueuedSnapshotGroupByField.ApplyExploratoryFieldSpec(ec.NewChild("managedVolumeQueuedSnapshotGroupBy"));
+
+            }
+        }
+        else if (this.ManagedVolumeQueuedSnapshotGroupByField != null && ec.Excludes("managedVolumeQueuedSnapshotGroupBy",false))
+        {
+            this.ManagedVolumeQueuedSnapshotGroupByField = null;
         }
         //      C# -> ManagedVolumeQueuedSnapshotGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: ManagedVolumeQueuedSnapshotGroupByInfo! (union)
-        if (this.GroupByInfo == null && ec.Includes("groupByInfo",false))
+        if (ec.Includes("groupByInfo",false))
         {
-            var impls = new List<ManagedVolumeQueuedSnapshotGroupByInfo>();
-            impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
-            this.GroupByInfo = (ManagedVolumeQueuedSnapshotGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+            if(this.GroupByInfo == null) {
+
+                var impls = new List<ManagedVolumeQueuedSnapshotGroupByInfo>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
+                this.GroupByInfo = (ManagedVolumeQueuedSnapshotGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<ManagedVolumeQueuedSnapshotGroupByInfo>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
+                this.GroupByInfo = (ManagedVolumeQueuedSnapshotGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.GroupByInfo != null && ec.Excludes("groupByInfo",false))
+        {
+            this.GroupByInfo = null;
         }
     }
 
@@ -147,9 +200,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ManagedVolumeQueuedSnapshotGroupBy> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -65,32 +65,45 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> SummaryHits? HighRiskHits
         // GraphQL -> highRiskHits: SummaryHits (type)
         if (this.HighRiskHits != null) {
-            var fspec = this.HighRiskHits.AsFieldSpec(indent+1);
+            var fspec = this.HighRiskHits.AsFieldSpec(conf.Child("highRiskHits"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "highRiskHits {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "highRiskHits {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> SummaryHits? LowRiskHits
         // GraphQL -> lowRiskHits: SummaryHits (type)
         if (this.LowRiskHits != null) {
-            var fspec = this.LowRiskHits.AsFieldSpec(indent+1);
+            var fspec = this.LowRiskHits.AsFieldSpec(conf.Child("lowRiskHits"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "lowRiskHits {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "lowRiskHits {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> SummaryHits? MediumRiskHits
         // GraphQL -> mediumRiskHits: SummaryHits (type)
         if (this.MediumRiskHits != null) {
-            var fspec = this.MediumRiskHits.AsFieldSpec(indent+1);
+            var fspec = this.MediumRiskHits.AsFieldSpec(conf.Child("mediumRiskHits"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "mediumRiskHits {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "mediumRiskHits {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -102,24 +115,60 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> SummaryHits? HighRiskHits
         // GraphQL -> highRiskHits: SummaryHits (type)
-        if (this.HighRiskHits == null && ec.Includes("highRiskHits",false))
+        if (ec.Includes("highRiskHits",false))
         {
-            this.HighRiskHits = new SummaryHits();
-            this.HighRiskHits.ApplyExploratoryFieldSpec(ec.NewChild("highRiskHits"));
+            if(this.HighRiskHits == null) {
+
+                this.HighRiskHits = new SummaryHits();
+                this.HighRiskHits.ApplyExploratoryFieldSpec(ec.NewChild("highRiskHits"));
+
+            } else {
+
+                this.HighRiskHits.ApplyExploratoryFieldSpec(ec.NewChild("highRiskHits"));
+
+            }
+        }
+        else if (this.HighRiskHits != null && ec.Excludes("highRiskHits",false))
+        {
+            this.HighRiskHits = null;
         }
         //      C# -> SummaryHits? LowRiskHits
         // GraphQL -> lowRiskHits: SummaryHits (type)
-        if (this.LowRiskHits == null && ec.Includes("lowRiskHits",false))
+        if (ec.Includes("lowRiskHits",false))
         {
-            this.LowRiskHits = new SummaryHits();
-            this.LowRiskHits.ApplyExploratoryFieldSpec(ec.NewChild("lowRiskHits"));
+            if(this.LowRiskHits == null) {
+
+                this.LowRiskHits = new SummaryHits();
+                this.LowRiskHits.ApplyExploratoryFieldSpec(ec.NewChild("lowRiskHits"));
+
+            } else {
+
+                this.LowRiskHits.ApplyExploratoryFieldSpec(ec.NewChild("lowRiskHits"));
+
+            }
+        }
+        else if (this.LowRiskHits != null && ec.Excludes("lowRiskHits",false))
+        {
+            this.LowRiskHits = null;
         }
         //      C# -> SummaryHits? MediumRiskHits
         // GraphQL -> mediumRiskHits: SummaryHits (type)
-        if (this.MediumRiskHits == null && ec.Includes("mediumRiskHits",false))
+        if (ec.Includes("mediumRiskHits",false))
         {
-            this.MediumRiskHits = new SummaryHits();
-            this.MediumRiskHits.ApplyExploratoryFieldSpec(ec.NewChild("mediumRiskHits"));
+            if(this.MediumRiskHits == null) {
+
+                this.MediumRiskHits = new SummaryHits();
+                this.MediumRiskHits.ApplyExploratoryFieldSpec(ec.NewChild("mediumRiskHits"));
+
+            } else {
+
+                this.MediumRiskHits.ApplyExploratoryFieldSpec(ec.NewChild("mediumRiskHits"));
+
+            }
+        }
+        else if (this.MediumRiskHits != null && ec.Excludes("mediumRiskHits",false))
+        {
+            this.MediumRiskHits = null;
         }
     }
 
@@ -146,9 +195,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AnalyzerHits> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

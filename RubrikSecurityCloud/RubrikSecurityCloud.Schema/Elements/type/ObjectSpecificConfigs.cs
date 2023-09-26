@@ -146,104 +146,153 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> AwsNativeS3SlaConfig? AwsNativeS3SlaConfig
         // GraphQL -> awsNativeS3SlaConfig: AwsNativeS3SlaConfig (type)
         if (this.AwsNativeS3SlaConfig != null) {
-            var fspec = this.AwsNativeS3SlaConfig.AsFieldSpec(indent+1);
+            var fspec = this.AwsNativeS3SlaConfig.AsFieldSpec(conf.Child("awsNativeS3SlaConfig"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "awsNativeS3SlaConfig {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "awsNativeS3SlaConfig {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> AwsRdsConfig? AwsRdsConfig
         // GraphQL -> awsRdsConfig: AwsRdsConfig (type)
         if (this.AwsRdsConfig != null) {
-            var fspec = this.AwsRdsConfig.AsFieldSpec(indent+1);
+            var fspec = this.AwsRdsConfig.AsFieldSpec(conf.Child("awsRdsConfig"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "awsRdsConfig {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "awsRdsConfig {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> AzureBlobConfig? AzureBlobConfig
         // GraphQL -> azureBlobConfig: AzureBlobConfig (type)
         if (this.AzureBlobConfig != null) {
-            var fspec = this.AzureBlobConfig.AsFieldSpec(indent+1);
+            var fspec = this.AzureBlobConfig.AsFieldSpec(conf.Child("azureBlobConfig"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "azureBlobConfig {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "azureBlobConfig {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> AzureSqlDatabaseDbConfig? AzureSqlDatabaseDbConfig
         // GraphQL -> azureSqlDatabaseDbConfig: AzureSqlDatabaseDbConfig (type)
         if (this.AzureSqlDatabaseDbConfig != null) {
-            var fspec = this.AzureSqlDatabaseDbConfig.AsFieldSpec(indent+1);
+            var fspec = this.AzureSqlDatabaseDbConfig.AsFieldSpec(conf.Child("azureSqlDatabaseDbConfig"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "azureSqlDatabaseDbConfig {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "azureSqlDatabaseDbConfig {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> AzureSqlManagedInstanceDbConfig? AzureSqlManagedInstanceDbConfig
         // GraphQL -> azureSqlManagedInstanceDbConfig: AzureSqlManagedInstanceDbConfig (type)
         if (this.AzureSqlManagedInstanceDbConfig != null) {
-            var fspec = this.AzureSqlManagedInstanceDbConfig.AsFieldSpec(indent+1);
+            var fspec = this.AzureSqlManagedInstanceDbConfig.AsFieldSpec(conf.Child("azureSqlManagedInstanceDbConfig"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "azureSqlManagedInstanceDbConfig {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "azureSqlManagedInstanceDbConfig {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> Db2Config? Db2Config
         // GraphQL -> db2Config: Db2Config (type)
         if (this.Db2Config != null) {
-            var fspec = this.Db2Config.AsFieldSpec(indent+1);
+            var fspec = this.Db2Config.AsFieldSpec(conf.Child("db2Config"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "db2Config {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "db2Config {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> ManagedVolumeSlaConfig? ManagedVolumeSlaConfig
         // GraphQL -> managedVolumeSlaConfig: ManagedVolumeSlaConfig (type)
         if (this.ManagedVolumeSlaConfig != null) {
-            var fspec = this.ManagedVolumeSlaConfig.AsFieldSpec(indent+1);
+            var fspec = this.ManagedVolumeSlaConfig.AsFieldSpec(conf.Child("managedVolumeSlaConfig"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "managedVolumeSlaConfig {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "managedVolumeSlaConfig {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> MongoConfig? MongoConfig
         // GraphQL -> mongoConfig: MongoConfig (type)
         if (this.MongoConfig != null) {
-            var fspec = this.MongoConfig.AsFieldSpec(indent+1);
+            var fspec = this.MongoConfig.AsFieldSpec(conf.Child("mongoConfig"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "mongoConfig {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "mongoConfig {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> MssqlConfig? MssqlConfig
         // GraphQL -> mssqlConfig: MssqlConfig (type)
         if (this.MssqlConfig != null) {
-            var fspec = this.MssqlConfig.AsFieldSpec(indent+1);
+            var fspec = this.MssqlConfig.AsFieldSpec(conf.Child("mssqlConfig"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "mssqlConfig {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "mssqlConfig {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> OracleConfig? OracleConfig
         // GraphQL -> oracleConfig: OracleConfig (type)
         if (this.OracleConfig != null) {
-            var fspec = this.OracleConfig.AsFieldSpec(indent+1);
+            var fspec = this.OracleConfig.AsFieldSpec(conf.Child("oracleConfig"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "oracleConfig {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "oracleConfig {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> SapHanaConfig? SapHanaConfig
         // GraphQL -> sapHanaConfig: SapHanaConfig (type)
         if (this.SapHanaConfig != null) {
-            var fspec = this.SapHanaConfig.AsFieldSpec(indent+1);
+            var fspec = this.SapHanaConfig.AsFieldSpec(conf.Child("sapHanaConfig"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "sapHanaConfig {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "sapHanaConfig {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> VmwareVmConfig? VmwareVmConfig
         // GraphQL -> vmwareVmConfig: VmwareVmConfig (type)
         if (this.VmwareVmConfig != null) {
-            var fspec = this.VmwareVmConfig.AsFieldSpec(indent+1);
+            var fspec = this.VmwareVmConfig.AsFieldSpec(conf.Child("vmwareVmConfig"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "vmwareVmConfig {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "vmwareVmConfig {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -255,87 +304,231 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> AwsNativeS3SlaConfig? AwsNativeS3SlaConfig
         // GraphQL -> awsNativeS3SlaConfig: AwsNativeS3SlaConfig (type)
-        if (this.AwsNativeS3SlaConfig == null && ec.Includes("awsNativeS3SlaConfig",false))
+        if (ec.Includes("awsNativeS3SlaConfig",false))
         {
-            this.AwsNativeS3SlaConfig = new AwsNativeS3SlaConfig();
-            this.AwsNativeS3SlaConfig.ApplyExploratoryFieldSpec(ec.NewChild("awsNativeS3SlaConfig"));
+            if(this.AwsNativeS3SlaConfig == null) {
+
+                this.AwsNativeS3SlaConfig = new AwsNativeS3SlaConfig();
+                this.AwsNativeS3SlaConfig.ApplyExploratoryFieldSpec(ec.NewChild("awsNativeS3SlaConfig"));
+
+            } else {
+
+                this.AwsNativeS3SlaConfig.ApplyExploratoryFieldSpec(ec.NewChild("awsNativeS3SlaConfig"));
+
+            }
+        }
+        else if (this.AwsNativeS3SlaConfig != null && ec.Excludes("awsNativeS3SlaConfig",false))
+        {
+            this.AwsNativeS3SlaConfig = null;
         }
         //      C# -> AwsRdsConfig? AwsRdsConfig
         // GraphQL -> awsRdsConfig: AwsRdsConfig (type)
-        if (this.AwsRdsConfig == null && ec.Includes("awsRdsConfig",false))
+        if (ec.Includes("awsRdsConfig",false))
         {
-            this.AwsRdsConfig = new AwsRdsConfig();
-            this.AwsRdsConfig.ApplyExploratoryFieldSpec(ec.NewChild("awsRdsConfig"));
+            if(this.AwsRdsConfig == null) {
+
+                this.AwsRdsConfig = new AwsRdsConfig();
+                this.AwsRdsConfig.ApplyExploratoryFieldSpec(ec.NewChild("awsRdsConfig"));
+
+            } else {
+
+                this.AwsRdsConfig.ApplyExploratoryFieldSpec(ec.NewChild("awsRdsConfig"));
+
+            }
+        }
+        else if (this.AwsRdsConfig != null && ec.Excludes("awsRdsConfig",false))
+        {
+            this.AwsRdsConfig = null;
         }
         //      C# -> AzureBlobConfig? AzureBlobConfig
         // GraphQL -> azureBlobConfig: AzureBlobConfig (type)
-        if (this.AzureBlobConfig == null && ec.Includes("azureBlobConfig",false))
+        if (ec.Includes("azureBlobConfig",false))
         {
-            this.AzureBlobConfig = new AzureBlobConfig();
-            this.AzureBlobConfig.ApplyExploratoryFieldSpec(ec.NewChild("azureBlobConfig"));
+            if(this.AzureBlobConfig == null) {
+
+                this.AzureBlobConfig = new AzureBlobConfig();
+                this.AzureBlobConfig.ApplyExploratoryFieldSpec(ec.NewChild("azureBlobConfig"));
+
+            } else {
+
+                this.AzureBlobConfig.ApplyExploratoryFieldSpec(ec.NewChild("azureBlobConfig"));
+
+            }
+        }
+        else if (this.AzureBlobConfig != null && ec.Excludes("azureBlobConfig",false))
+        {
+            this.AzureBlobConfig = null;
         }
         //      C# -> AzureSqlDatabaseDbConfig? AzureSqlDatabaseDbConfig
         // GraphQL -> azureSqlDatabaseDbConfig: AzureSqlDatabaseDbConfig (type)
-        if (this.AzureSqlDatabaseDbConfig == null && ec.Includes("azureSqlDatabaseDbConfig",false))
+        if (ec.Includes("azureSqlDatabaseDbConfig",false))
         {
-            this.AzureSqlDatabaseDbConfig = new AzureSqlDatabaseDbConfig();
-            this.AzureSqlDatabaseDbConfig.ApplyExploratoryFieldSpec(ec.NewChild("azureSqlDatabaseDbConfig"));
+            if(this.AzureSqlDatabaseDbConfig == null) {
+
+                this.AzureSqlDatabaseDbConfig = new AzureSqlDatabaseDbConfig();
+                this.AzureSqlDatabaseDbConfig.ApplyExploratoryFieldSpec(ec.NewChild("azureSqlDatabaseDbConfig"));
+
+            } else {
+
+                this.AzureSqlDatabaseDbConfig.ApplyExploratoryFieldSpec(ec.NewChild("azureSqlDatabaseDbConfig"));
+
+            }
+        }
+        else if (this.AzureSqlDatabaseDbConfig != null && ec.Excludes("azureSqlDatabaseDbConfig",false))
+        {
+            this.AzureSqlDatabaseDbConfig = null;
         }
         //      C# -> AzureSqlManagedInstanceDbConfig? AzureSqlManagedInstanceDbConfig
         // GraphQL -> azureSqlManagedInstanceDbConfig: AzureSqlManagedInstanceDbConfig (type)
-        if (this.AzureSqlManagedInstanceDbConfig == null && ec.Includes("azureSqlManagedInstanceDbConfig",false))
+        if (ec.Includes("azureSqlManagedInstanceDbConfig",false))
         {
-            this.AzureSqlManagedInstanceDbConfig = new AzureSqlManagedInstanceDbConfig();
-            this.AzureSqlManagedInstanceDbConfig.ApplyExploratoryFieldSpec(ec.NewChild("azureSqlManagedInstanceDbConfig"));
+            if(this.AzureSqlManagedInstanceDbConfig == null) {
+
+                this.AzureSqlManagedInstanceDbConfig = new AzureSqlManagedInstanceDbConfig();
+                this.AzureSqlManagedInstanceDbConfig.ApplyExploratoryFieldSpec(ec.NewChild("azureSqlManagedInstanceDbConfig"));
+
+            } else {
+
+                this.AzureSqlManagedInstanceDbConfig.ApplyExploratoryFieldSpec(ec.NewChild("azureSqlManagedInstanceDbConfig"));
+
+            }
+        }
+        else if (this.AzureSqlManagedInstanceDbConfig != null && ec.Excludes("azureSqlManagedInstanceDbConfig",false))
+        {
+            this.AzureSqlManagedInstanceDbConfig = null;
         }
         //      C# -> Db2Config? Db2Config
         // GraphQL -> db2Config: Db2Config (type)
-        if (this.Db2Config == null && ec.Includes("db2Config",false))
+        if (ec.Includes("db2Config",false))
         {
-            this.Db2Config = new Db2Config();
-            this.Db2Config.ApplyExploratoryFieldSpec(ec.NewChild("db2Config"));
+            if(this.Db2Config == null) {
+
+                this.Db2Config = new Db2Config();
+                this.Db2Config.ApplyExploratoryFieldSpec(ec.NewChild("db2Config"));
+
+            } else {
+
+                this.Db2Config.ApplyExploratoryFieldSpec(ec.NewChild("db2Config"));
+
+            }
+        }
+        else if (this.Db2Config != null && ec.Excludes("db2Config",false))
+        {
+            this.Db2Config = null;
         }
         //      C# -> ManagedVolumeSlaConfig? ManagedVolumeSlaConfig
         // GraphQL -> managedVolumeSlaConfig: ManagedVolumeSlaConfig (type)
-        if (this.ManagedVolumeSlaConfig == null && ec.Includes("managedVolumeSlaConfig",false))
+        if (ec.Includes("managedVolumeSlaConfig",false))
         {
-            this.ManagedVolumeSlaConfig = new ManagedVolumeSlaConfig();
-            this.ManagedVolumeSlaConfig.ApplyExploratoryFieldSpec(ec.NewChild("managedVolumeSlaConfig"));
+            if(this.ManagedVolumeSlaConfig == null) {
+
+                this.ManagedVolumeSlaConfig = new ManagedVolumeSlaConfig();
+                this.ManagedVolumeSlaConfig.ApplyExploratoryFieldSpec(ec.NewChild("managedVolumeSlaConfig"));
+
+            } else {
+
+                this.ManagedVolumeSlaConfig.ApplyExploratoryFieldSpec(ec.NewChild("managedVolumeSlaConfig"));
+
+            }
+        }
+        else if (this.ManagedVolumeSlaConfig != null && ec.Excludes("managedVolumeSlaConfig",false))
+        {
+            this.ManagedVolumeSlaConfig = null;
         }
         //      C# -> MongoConfig? MongoConfig
         // GraphQL -> mongoConfig: MongoConfig (type)
-        if (this.MongoConfig == null && ec.Includes("mongoConfig",false))
+        if (ec.Includes("mongoConfig",false))
         {
-            this.MongoConfig = new MongoConfig();
-            this.MongoConfig.ApplyExploratoryFieldSpec(ec.NewChild("mongoConfig"));
+            if(this.MongoConfig == null) {
+
+                this.MongoConfig = new MongoConfig();
+                this.MongoConfig.ApplyExploratoryFieldSpec(ec.NewChild("mongoConfig"));
+
+            } else {
+
+                this.MongoConfig.ApplyExploratoryFieldSpec(ec.NewChild("mongoConfig"));
+
+            }
+        }
+        else if (this.MongoConfig != null && ec.Excludes("mongoConfig",false))
+        {
+            this.MongoConfig = null;
         }
         //      C# -> MssqlConfig? MssqlConfig
         // GraphQL -> mssqlConfig: MssqlConfig (type)
-        if (this.MssqlConfig == null && ec.Includes("mssqlConfig",false))
+        if (ec.Includes("mssqlConfig",false))
         {
-            this.MssqlConfig = new MssqlConfig();
-            this.MssqlConfig.ApplyExploratoryFieldSpec(ec.NewChild("mssqlConfig"));
+            if(this.MssqlConfig == null) {
+
+                this.MssqlConfig = new MssqlConfig();
+                this.MssqlConfig.ApplyExploratoryFieldSpec(ec.NewChild("mssqlConfig"));
+
+            } else {
+
+                this.MssqlConfig.ApplyExploratoryFieldSpec(ec.NewChild("mssqlConfig"));
+
+            }
+        }
+        else if (this.MssqlConfig != null && ec.Excludes("mssqlConfig",false))
+        {
+            this.MssqlConfig = null;
         }
         //      C# -> OracleConfig? OracleConfig
         // GraphQL -> oracleConfig: OracleConfig (type)
-        if (this.OracleConfig == null && ec.Includes("oracleConfig",false))
+        if (ec.Includes("oracleConfig",false))
         {
-            this.OracleConfig = new OracleConfig();
-            this.OracleConfig.ApplyExploratoryFieldSpec(ec.NewChild("oracleConfig"));
+            if(this.OracleConfig == null) {
+
+                this.OracleConfig = new OracleConfig();
+                this.OracleConfig.ApplyExploratoryFieldSpec(ec.NewChild("oracleConfig"));
+
+            } else {
+
+                this.OracleConfig.ApplyExploratoryFieldSpec(ec.NewChild("oracleConfig"));
+
+            }
+        }
+        else if (this.OracleConfig != null && ec.Excludes("oracleConfig",false))
+        {
+            this.OracleConfig = null;
         }
         //      C# -> SapHanaConfig? SapHanaConfig
         // GraphQL -> sapHanaConfig: SapHanaConfig (type)
-        if (this.SapHanaConfig == null && ec.Includes("sapHanaConfig",false))
+        if (ec.Includes("sapHanaConfig",false))
         {
-            this.SapHanaConfig = new SapHanaConfig();
-            this.SapHanaConfig.ApplyExploratoryFieldSpec(ec.NewChild("sapHanaConfig"));
+            if(this.SapHanaConfig == null) {
+
+                this.SapHanaConfig = new SapHanaConfig();
+                this.SapHanaConfig.ApplyExploratoryFieldSpec(ec.NewChild("sapHanaConfig"));
+
+            } else {
+
+                this.SapHanaConfig.ApplyExploratoryFieldSpec(ec.NewChild("sapHanaConfig"));
+
+            }
+        }
+        else if (this.SapHanaConfig != null && ec.Excludes("sapHanaConfig",false))
+        {
+            this.SapHanaConfig = null;
         }
         //      C# -> VmwareVmConfig? VmwareVmConfig
         // GraphQL -> vmwareVmConfig: VmwareVmConfig (type)
-        if (this.VmwareVmConfig == null && ec.Includes("vmwareVmConfig",false))
+        if (ec.Includes("vmwareVmConfig",false))
         {
-            this.VmwareVmConfig = new VmwareVmConfig();
-            this.VmwareVmConfig.ApplyExploratoryFieldSpec(ec.NewChild("vmwareVmConfig"));
+            if(this.VmwareVmConfig == null) {
+
+                this.VmwareVmConfig = new VmwareVmConfig();
+                this.VmwareVmConfig.ApplyExploratoryFieldSpec(ec.NewChild("vmwareVmConfig"));
+
+            } else {
+
+                this.VmwareVmConfig.ApplyExploratoryFieldSpec(ec.NewChild("vmwareVmConfig"));
+
+            }
+        }
+        else if (this.VmwareVmConfig != null && ec.Excludes("vmwareVmConfig",false))
+        {
+            this.VmwareVmConfig = null;
         }
     }
 
@@ -362,9 +555,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ObjectSpecificConfigs> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -65,26 +65,39 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int32? NumApps
         // GraphQL -> numApps: Int! (scalar)
         if (this.NumApps != null) {
-            s += ind + "numApps\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "numApps\n" ;
+            } else {
+                s += ind + "numApps\n" ;
+            }
         }
         //      C# -> System.Int32? NumNodes
         // GraphQL -> numNodes: Int! (scalar)
         if (this.NumNodes != null) {
-            s += ind + "numNodes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "numNodes\n" ;
+            } else {
+                s += ind + "numNodes\n" ;
+            }
         }
         //      C# -> FailoverClusterSummary? FailoverClusterSummary
         // GraphQL -> failoverClusterSummary: FailoverClusterSummary (type)
         if (this.FailoverClusterSummary != null) {
-            var fspec = this.FailoverClusterSummary.AsFieldSpec(indent+1);
+            var fspec = this.FailoverClusterSummary.AsFieldSpec(conf.Child("failoverClusterSummary"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "failoverClusterSummary {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "failoverClusterSummary {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -96,22 +109,56 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int32? NumApps
         // GraphQL -> numApps: Int! (scalar)
-        if (this.NumApps == null && ec.Includes("numApps",true))
+        if (ec.Includes("numApps",true))
         {
-            this.NumApps = Int32.MinValue;
+            if(this.NumApps == null) {
+
+                this.NumApps = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.NumApps != null && ec.Excludes("numApps",true))
+        {
+            this.NumApps = null;
         }
         //      C# -> System.Int32? NumNodes
         // GraphQL -> numNodes: Int! (scalar)
-        if (this.NumNodes == null && ec.Includes("numNodes",true))
+        if (ec.Includes("numNodes",true))
         {
-            this.NumNodes = Int32.MinValue;
+            if(this.NumNodes == null) {
+
+                this.NumNodes = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.NumNodes != null && ec.Excludes("numNodes",true))
+        {
+            this.NumNodes = null;
         }
         //      C# -> FailoverClusterSummary? FailoverClusterSummary
         // GraphQL -> failoverClusterSummary: FailoverClusterSummary (type)
-        if (this.FailoverClusterSummary == null && ec.Includes("failoverClusterSummary",false))
+        if (ec.Includes("failoverClusterSummary",false))
         {
-            this.FailoverClusterSummary = new FailoverClusterSummary();
-            this.FailoverClusterSummary.ApplyExploratoryFieldSpec(ec.NewChild("failoverClusterSummary"));
+            if(this.FailoverClusterSummary == null) {
+
+                this.FailoverClusterSummary = new FailoverClusterSummary();
+                this.FailoverClusterSummary.ApplyExploratoryFieldSpec(ec.NewChild("failoverClusterSummary"));
+
+            } else {
+
+                this.FailoverClusterSummary.ApplyExploratoryFieldSpec(ec.NewChild("failoverClusterSummary"));
+
+            }
+        }
+        else if (this.FailoverClusterSummary != null && ec.Excludes("failoverClusterSummary",false))
+        {
+            this.FailoverClusterSummary = null;
         }
     }
 
@@ -138,9 +185,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<FailoverClusterDetail> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

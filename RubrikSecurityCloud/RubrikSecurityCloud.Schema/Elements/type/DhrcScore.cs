@@ -92,41 +92,66 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> DhrcCategory? Category
         // GraphQL -> category: DhrcCategory! (enum)
         if (this.Category != null) {
-            s += ind + "category\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "category\n" ;
+            } else {
+                s += ind + "category\n" ;
+            }
         }
         //      C# -> DateTime? CalculatedAt
         // GraphQL -> calculatedAt: DateTime (scalar)
         if (this.CalculatedAt != null) {
-            s += ind + "calculatedAt\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "calculatedAt\n" ;
+            } else {
+                s += ind + "calculatedAt\n" ;
+            }
         }
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime (scalar)
         if (this.Date != null) {
-            s += ind + "date\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "date\n" ;
+            } else {
+                s += ind + "date\n" ;
+            }
         }
         //      C# -> DateTime? EarliestMetric
         // GraphQL -> earliestMetric: DateTime (scalar)
         if (this.EarliestMetric != null) {
-            s += ind + "earliestMetric\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "earliestMetric\n" ;
+            } else {
+                s += ind + "earliestMetric\n" ;
+            }
         }
         //      C# -> System.Single? Value
         // GraphQL -> value: Float! (scalar)
         if (this.Value != null) {
-            s += ind + "value\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "value\n" ;
+            } else {
+                s += ind + "value\n" ;
+            }
         }
         //      C# -> DhrcScoreContext? Context
         // GraphQL -> context: DhrcScoreContext (type)
         if (this.Context != null) {
-            var fspec = this.Context.AsFieldSpec(indent+1);
+            var fspec = this.Context.AsFieldSpec(conf.Child("context"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "context {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "context {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -138,40 +163,107 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> DhrcCategory? Category
         // GraphQL -> category: DhrcCategory! (enum)
-        if (this.Category == null && ec.Includes("category",true))
+        if (ec.Includes("category",true))
         {
-            this.Category = new DhrcCategory();
+            if(this.Category == null) {
+
+                this.Category = new DhrcCategory();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Category != null && ec.Excludes("category",true))
+        {
+            this.Category = null;
         }
         //      C# -> DateTime? CalculatedAt
         // GraphQL -> calculatedAt: DateTime (scalar)
-        if (this.CalculatedAt == null && ec.Includes("calculatedAt",true))
+        if (ec.Includes("calculatedAt",true))
         {
-            this.CalculatedAt = new DateTime();
+            if(this.CalculatedAt == null) {
+
+                this.CalculatedAt = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CalculatedAt != null && ec.Excludes("calculatedAt",true))
+        {
+            this.CalculatedAt = null;
         }
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime (scalar)
-        if (this.Date == null && ec.Includes("date",true))
+        if (ec.Includes("date",true))
         {
-            this.Date = new DateTime();
+            if(this.Date == null) {
+
+                this.Date = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Date != null && ec.Excludes("date",true))
+        {
+            this.Date = null;
         }
         //      C# -> DateTime? EarliestMetric
         // GraphQL -> earliestMetric: DateTime (scalar)
-        if (this.EarliestMetric == null && ec.Includes("earliestMetric",true))
+        if (ec.Includes("earliestMetric",true))
         {
-            this.EarliestMetric = new DateTime();
+            if(this.EarliestMetric == null) {
+
+                this.EarliestMetric = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EarliestMetric != null && ec.Excludes("earliestMetric",true))
+        {
+            this.EarliestMetric = null;
         }
         //      C# -> System.Single? Value
         // GraphQL -> value: Float! (scalar)
-        if (this.Value == null && ec.Includes("value",true))
+        if (ec.Includes("value",true))
         {
-            this.Value = new System.Single();
+            if(this.Value == null) {
+
+                this.Value = new System.Single();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Value != null && ec.Excludes("value",true))
+        {
+            this.Value = null;
         }
         //      C# -> DhrcScoreContext? Context
         // GraphQL -> context: DhrcScoreContext (type)
-        if (this.Context == null && ec.Includes("context",false))
+        if (ec.Includes("context",false))
         {
-            this.Context = new DhrcScoreContext();
-            this.Context.ApplyExploratoryFieldSpec(ec.NewChild("context"));
+            if(this.Context == null) {
+
+                this.Context = new DhrcScoreContext();
+                this.Context.ApplyExploratoryFieldSpec(ec.NewChild("context"));
+
+            } else {
+
+                this.Context.ApplyExploratoryFieldSpec(ec.NewChild("context"));
+
+            }
+        }
+        else if (this.Context != null && ec.Excludes("context",false))
+        {
+            this.Context = null;
         }
     }
 
@@ -198,9 +290,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<DhrcScore> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

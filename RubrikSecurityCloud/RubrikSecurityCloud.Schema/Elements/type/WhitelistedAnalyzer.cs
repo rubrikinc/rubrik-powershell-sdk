@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Boolean? IsExplicit
         // GraphQL -> isExplicit: Boolean! (scalar)
         if (this.IsExplicit != null) {
-            s += ind + "isExplicit\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isExplicit\n" ;
+            } else {
+                s += ind + "isExplicit\n" ;
+            }
         }
         //      C# -> System.String? WhitelistedAnalyzerId
         // GraphQL -> whitelistedAnalyzerId: String! (scalar)
         if (this.WhitelistedAnalyzerId != null) {
-            s += ind + "whitelistedAnalyzerId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "whitelistedAnalyzerId\n" ;
+            } else {
+                s += ind + "whitelistedAnalyzerId\n" ;
+            }
         }
         //      C# -> System.String? WhitelistedPath
         // GraphQL -> whitelistedPath: String! (scalar)
         if (this.WhitelistedPath != null) {
-            s += ind + "whitelistedPath\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "whitelistedPath\n" ;
+            } else {
+                s += ind + "whitelistedPath\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Boolean? IsExplicit
         // GraphQL -> isExplicit: Boolean! (scalar)
-        if (this.IsExplicit == null && ec.Includes("isExplicit",true))
+        if (ec.Includes("isExplicit",true))
         {
-            this.IsExplicit = true;
+            if(this.IsExplicit == null) {
+
+                this.IsExplicit = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsExplicit != null && ec.Excludes("isExplicit",true))
+        {
+            this.IsExplicit = null;
         }
         //      C# -> System.String? WhitelistedAnalyzerId
         // GraphQL -> whitelistedAnalyzerId: String! (scalar)
-        if (this.WhitelistedAnalyzerId == null && ec.Includes("whitelistedAnalyzerId",true))
+        if (ec.Includes("whitelistedAnalyzerId",true))
         {
-            this.WhitelistedAnalyzerId = "FETCH";
+            if(this.WhitelistedAnalyzerId == null) {
+
+                this.WhitelistedAnalyzerId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.WhitelistedAnalyzerId != null && ec.Excludes("whitelistedAnalyzerId",true))
+        {
+            this.WhitelistedAnalyzerId = null;
         }
         //      C# -> System.String? WhitelistedPath
         // GraphQL -> whitelistedPath: String! (scalar)
-        if (this.WhitelistedPath == null && ec.Includes("whitelistedPath",true))
+        if (ec.Includes("whitelistedPath",true))
         {
-            this.WhitelistedPath = "FETCH";
+            if(this.WhitelistedPath == null) {
+
+                this.WhitelistedPath = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.WhitelistedPath != null && ec.Excludes("whitelistedPath",true))
+        {
+            this.WhitelistedPath = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<WhitelistedAnalyzer> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

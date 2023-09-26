@@ -93,39 +93,64 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> ChannelMembershipType? MembershipType
         // GraphQL -> membershipType: ChannelMembershipType (enum)
         if (this.MembershipType != null) {
-            s += ind + "membershipType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "membershipType\n" ;
+            } else {
+                s += ind + "membershipType\n" ;
+            }
         }
         //      C# -> System.String? FolderId
         // GraphQL -> folderId: String (scalar)
         if (this.FolderId != null) {
-            s += ind + "folderId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "folderId\n" ;
+            } else {
+                s += ind + "folderId\n" ;
+            }
         }
         //      C# -> System.String? FolderName
         // GraphQL -> folderName: String (scalar)
         if (this.FolderName != null) {
-            s += ind + "folderName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "folderName\n" ;
+            } else {
+                s += ind + "folderName\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.String? NaturalId
         // GraphQL -> naturalId: String (scalar)
         if (this.NaturalId != null) {
-            s += ind + "naturalId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "naturalId\n" ;
+            } else {
+                s += ind + "naturalId\n" ;
+            }
         }
         return s;
     }
@@ -136,39 +161,105 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> ChannelMembershipType? MembershipType
         // GraphQL -> membershipType: ChannelMembershipType (enum)
-        if (this.MembershipType == null && ec.Includes("membershipType",true))
+        if (ec.Includes("membershipType",true))
         {
-            this.MembershipType = new ChannelMembershipType();
+            if(this.MembershipType == null) {
+
+                this.MembershipType = new ChannelMembershipType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.MembershipType != null && ec.Excludes("membershipType",true))
+        {
+            this.MembershipType = null;
         }
         //      C# -> System.String? FolderId
         // GraphQL -> folderId: String (scalar)
-        if (this.FolderId == null && ec.Includes("folderId",true))
+        if (ec.Includes("folderId",true))
         {
-            this.FolderId = "FETCH";
+            if(this.FolderId == null) {
+
+                this.FolderId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.FolderId != null && ec.Excludes("folderId",true))
+        {
+            this.FolderId = null;
         }
         //      C# -> System.String? FolderName
         // GraphQL -> folderName: String (scalar)
-        if (this.FolderName == null && ec.Includes("folderName",true))
+        if (ec.Includes("folderName",true))
         {
-            this.FolderName = "FETCH";
+            if(this.FolderName == null) {
+
+                this.FolderName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.FolderName != null && ec.Excludes("folderName",true))
+        {
+            this.FolderName = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.String? NaturalId
         // GraphQL -> naturalId: String (scalar)
-        if (this.NaturalId == null && ec.Includes("naturalId",true))
+        if (ec.Includes("naturalId",true))
         {
-            this.NaturalId = "FETCH";
+            if(this.NaturalId == null) {
+
+                this.NaturalId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NaturalId != null && ec.Excludes("naturalId",true))
+        {
+            this.NaturalId = null;
         }
     }
 
@@ -195,9 +286,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<O365TeamsChannel> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

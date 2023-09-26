@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? BlobName
         // GraphQL -> blobName: String! (scalar)
         if (this.BlobName != null) {
-            s += ind + "blobName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "blobName\n" ;
+            } else {
+                s += ind + "blobName\n" ;
+            }
         }
         //      C# -> System.String? BlobSasUri
         // GraphQL -> blobSasUri: String! (scalar)
         if (this.BlobSasUri != null) {
-            s += ind + "blobSasUri\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "blobSasUri\n" ;
+            } else {
+                s += ind + "blobSasUri\n" ;
+            }
         }
         //      C# -> System.String? PolarisAccount
         // GraphQL -> polarisAccount: String! (scalar)
         if (this.PolarisAccount != null) {
-            s += ind + "polarisAccount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "polarisAccount\n" ;
+            } else {
+                s += ind + "polarisAccount\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? BlobName
         // GraphQL -> blobName: String! (scalar)
-        if (this.BlobName == null && ec.Includes("blobName",true))
+        if (ec.Includes("blobName",true))
         {
-            this.BlobName = "FETCH";
+            if(this.BlobName == null) {
+
+                this.BlobName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.BlobName != null && ec.Excludes("blobName",true))
+        {
+            this.BlobName = null;
         }
         //      C# -> System.String? BlobSasUri
         // GraphQL -> blobSasUri: String! (scalar)
-        if (this.BlobSasUri == null && ec.Includes("blobSasUri",true))
+        if (ec.Includes("blobSasUri",true))
         {
-            this.BlobSasUri = "FETCH";
+            if(this.BlobSasUri == null) {
+
+                this.BlobSasUri = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.BlobSasUri != null && ec.Excludes("blobSasUri",true))
+        {
+            this.BlobSasUri = null;
         }
         //      C# -> System.String? PolarisAccount
         // GraphQL -> polarisAccount: String! (scalar)
-        if (this.PolarisAccount == null && ec.Includes("polarisAccount",true))
+        if (ec.Includes("polarisAccount",true))
         {
-            this.PolarisAccount = "FETCH";
+            if(this.PolarisAccount == null) {
+
+                this.PolarisAccount = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PolarisAccount != null && ec.Excludes("polarisAccount",true))
+        {
+            this.PolarisAccount = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ExportUrlSpecs> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -56,21 +56,30 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? NetworkName
         // GraphQL -> networkName: String (scalar)
         if (this.NetworkName != null) {
-            s += ind + "networkName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "networkName\n" ;
+            } else {
+                s += ind + "networkName\n" ;
+            }
         }
         //      C# -> StaticIpInfo? StaticIpConfig
         // GraphQL -> staticIpConfig: StaticIpInfo (type)
         if (this.StaticIpConfig != null) {
-            var fspec = this.StaticIpConfig.AsFieldSpec(indent+1);
+            var fspec = this.StaticIpConfig.AsFieldSpec(conf.Child("staticIpConfig"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "staticIpConfig {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "staticIpConfig {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -82,16 +91,39 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? NetworkName
         // GraphQL -> networkName: String (scalar)
-        if (this.NetworkName == null && ec.Includes("networkName",true))
+        if (ec.Includes("networkName",true))
         {
-            this.NetworkName = "FETCH";
+            if(this.NetworkName == null) {
+
+                this.NetworkName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NetworkName != null && ec.Excludes("networkName",true))
+        {
+            this.NetworkName = null;
         }
         //      C# -> StaticIpInfo? StaticIpConfig
         // GraphQL -> staticIpConfig: StaticIpInfo (type)
-        if (this.StaticIpConfig == null && ec.Includes("staticIpConfig",false))
+        if (ec.Includes("staticIpConfig",false))
         {
-            this.StaticIpConfig = new StaticIpInfo();
-            this.StaticIpConfig.ApplyExploratoryFieldSpec(ec.NewChild("staticIpConfig"));
+            if(this.StaticIpConfig == null) {
+
+                this.StaticIpConfig = new StaticIpInfo();
+                this.StaticIpConfig.ApplyExploratoryFieldSpec(ec.NewChild("staticIpConfig"));
+
+            } else {
+
+                this.StaticIpConfig.ApplyExploratoryFieldSpec(ec.NewChild("staticIpConfig"));
+
+            }
+        }
+        else if (this.StaticIpConfig != null && ec.Excludes("staticIpConfig",false))
+        {
+            this.StaticIpConfig = null;
         }
     }
 
@@ -118,9 +150,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<HotAddNetworkConfigWithName> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? SnapshotFid
         // GraphQL -> snapshotFid: String! (scalar)
         if (this.SnapshotFid != null) {
-            s += ind + "snapshotFid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotFid\n" ;
+            } else {
+                s += ind + "snapshotFid\n" ;
+            }
         }
         //      C# -> System.Int64? SnapshotTime
         // GraphQL -> snapshotTime: Long! (scalar)
         if (this.SnapshotTime != null) {
-            s += ind + "snapshotTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotTime\n" ;
+            } else {
+                s += ind + "snapshotTime\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? SnapshotFid
         // GraphQL -> snapshotFid: String! (scalar)
-        if (this.SnapshotFid == null && ec.Includes("snapshotFid",true))
+        if (ec.Includes("snapshotFid",true))
         {
-            this.SnapshotFid = "FETCH";
+            if(this.SnapshotFid == null) {
+
+                this.SnapshotFid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotFid != null && ec.Excludes("snapshotFid",true))
+        {
+            this.SnapshotFid = null;
         }
         //      C# -> System.Int64? SnapshotTime
         // GraphQL -> snapshotTime: Long! (scalar)
-        if (this.SnapshotTime == null && ec.Includes("snapshotTime",true))
+        if (ec.Includes("snapshotTime",true))
         {
-            this.SnapshotTime = new System.Int64();
+            if(this.SnapshotTime == null) {
+
+                this.SnapshotTime = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotTime != null && ec.Excludes("snapshotTime",true))
+        {
+            this.SnapshotTime = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SnapshotResult> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -47,16 +47,21 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<ReportMigrationStatusCountItem>? Counts
         // GraphQL -> counts: [ReportMigrationStatusCountItem!]! (type)
         if (this.Counts != null) {
-            var fspec = this.Counts.AsFieldSpec(indent+1);
+            var fspec = this.Counts.AsFieldSpec(conf.Child("counts"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "counts {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "counts {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -68,10 +73,22 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<ReportMigrationStatusCountItem>? Counts
         // GraphQL -> counts: [ReportMigrationStatusCountItem!]! (type)
-        if (this.Counts == null && ec.Includes("counts",false))
+        if (ec.Includes("counts",false))
         {
-            this.Counts = new List<ReportMigrationStatusCountItem>();
-            this.Counts.ApplyExploratoryFieldSpec(ec.NewChild("counts"));
+            if(this.Counts == null) {
+
+                this.Counts = new List<ReportMigrationStatusCountItem>();
+                this.Counts.ApplyExploratoryFieldSpec(ec.NewChild("counts"));
+
+            } else {
+
+                this.Counts.ApplyExploratoryFieldSpec(ec.NewChild("counts"));
+
+            }
+        }
+        else if (this.Counts != null && ec.Excludes("counts",false))
+        {
+            this.Counts = null;
         }
     }
 
@@ -98,9 +115,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ReportsMigrationCount> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

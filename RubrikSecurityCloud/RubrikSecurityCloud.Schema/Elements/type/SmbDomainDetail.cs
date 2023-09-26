@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> SmbDomainStatus? Status
         // GraphQL -> status: SmbDomainStatus! (enum)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         //      C# -> System.Boolean? IsStickySmbService
         // GraphQL -> isStickySmbService: Boolean! (scalar)
         if (this.IsStickySmbService != null) {
-            s += ind + "isStickySmbService\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isStickySmbService\n" ;
+            } else {
+                s += ind + "isStickySmbService\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.String? ServiceAccount
         // GraphQL -> serviceAccount: String (scalar)
         if (this.ServiceAccount != null) {
-            s += ind + "serviceAccount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "serviceAccount\n" ;
+            } else {
+                s += ind + "serviceAccount\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> SmbDomainStatus? Status
         // GraphQL -> status: SmbDomainStatus! (enum)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = new SmbDomainStatus();
+            if(this.Status == null) {
+
+                this.Status = new SmbDomainStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
         //      C# -> System.Boolean? IsStickySmbService
         // GraphQL -> isStickySmbService: Boolean! (scalar)
-        if (this.IsStickySmbService == null && ec.Includes("isStickySmbService",true))
+        if (ec.Includes("isStickySmbService",true))
         {
-            this.IsStickySmbService = true;
+            if(this.IsStickySmbService == null) {
+
+                this.IsStickySmbService = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsStickySmbService != null && ec.Excludes("isStickySmbService",true))
+        {
+            this.IsStickySmbService = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.String? ServiceAccount
         // GraphQL -> serviceAccount: String (scalar)
-        if (this.ServiceAccount == null && ec.Includes("serviceAccount",true))
+        if (ec.Includes("serviceAccount",true))
         {
-            this.ServiceAccount = "FETCH";
+            if(this.ServiceAccount == null) {
+
+                this.ServiceAccount = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ServiceAccount != null && ec.Excludes("serviceAccount",true))
+        {
+            this.ServiceAccount = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SmbDomainDetail> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

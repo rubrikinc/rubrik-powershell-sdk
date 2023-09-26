@@ -119,80 +119,117 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> AbsoluteMonthlyRecurrencePattern? AbsoluteMonthlyRecurrence
         // GraphQL -> absoluteMonthlyRecurrence: AbsoluteMonthlyRecurrencePattern (type)
         if (this.AbsoluteMonthlyRecurrence != null) {
-            var fspec = this.AbsoluteMonthlyRecurrence.AsFieldSpec(indent+1);
+            var fspec = this.AbsoluteMonthlyRecurrence.AsFieldSpec(conf.Child("absoluteMonthlyRecurrence"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "absoluteMonthlyRecurrence {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "absoluteMonthlyRecurrence {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> AbsoluteYearlyRecurrencePattern? AbsoluteYearlyRecurrence
         // GraphQL -> absoluteYearlyRecurrence: AbsoluteYearlyRecurrencePattern (type)
         if (this.AbsoluteYearlyRecurrence != null) {
-            var fspec = this.AbsoluteYearlyRecurrence.AsFieldSpec(indent+1);
+            var fspec = this.AbsoluteYearlyRecurrence.AsFieldSpec(conf.Child("absoluteYearlyRecurrence"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "absoluteYearlyRecurrence {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "absoluteYearlyRecurrence {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> DailyRecurrencePattern? DailyRecurrence
         // GraphQL -> dailyRecurrence: DailyRecurrencePattern (type)
         if (this.DailyRecurrence != null) {
-            var fspec = this.DailyRecurrence.AsFieldSpec(indent+1);
+            var fspec = this.DailyRecurrence.AsFieldSpec(conf.Child("dailyRecurrence"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "dailyRecurrence {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "dailyRecurrence {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> EndDateRecurrenceRange? EndDateRecurrenceRange
         // GraphQL -> endDateRecurrenceRange: EndDateRecurrenceRange (type)
         if (this.EndDateRecurrenceRange != null) {
-            var fspec = this.EndDateRecurrenceRange.AsFieldSpec(indent+1);
+            var fspec = this.EndDateRecurrenceRange.AsFieldSpec(conf.Child("endDateRecurrenceRange"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "endDateRecurrenceRange {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "endDateRecurrenceRange {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> NoEndRecurrenceRange? NoEndRecurrenceRange
         // GraphQL -> noEndRecurrenceRange: NoEndRecurrenceRange (type)
         if (this.NoEndRecurrenceRange != null) {
-            var fspec = this.NoEndRecurrenceRange.AsFieldSpec(indent+1);
+            var fspec = this.NoEndRecurrenceRange.AsFieldSpec(conf.Child("noEndRecurrenceRange"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "noEndRecurrenceRange {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "noEndRecurrenceRange {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> NumberedRecurrenceRange? NumberedRecurrenceRange
         // GraphQL -> numberedRecurrenceRange: NumberedRecurrenceRange (type)
         if (this.NumberedRecurrenceRange != null) {
-            var fspec = this.NumberedRecurrenceRange.AsFieldSpec(indent+1);
+            var fspec = this.NumberedRecurrenceRange.AsFieldSpec(conf.Child("numberedRecurrenceRange"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "numberedRecurrenceRange {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "numberedRecurrenceRange {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> RelativeMonthlyRecurrencePattern? RelativeMonthlyRecurrence
         // GraphQL -> relativeMonthlyRecurrence: RelativeMonthlyRecurrencePattern (type)
         if (this.RelativeMonthlyRecurrence != null) {
-            var fspec = this.RelativeMonthlyRecurrence.AsFieldSpec(indent+1);
+            var fspec = this.RelativeMonthlyRecurrence.AsFieldSpec(conf.Child("relativeMonthlyRecurrence"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "relativeMonthlyRecurrence {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "relativeMonthlyRecurrence {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> RelativeYearlyRecurrencePattern? RelativeYearlyRecurrence
         // GraphQL -> relativeYearlyRecurrence: RelativeYearlyRecurrencePattern (type)
         if (this.RelativeYearlyRecurrence != null) {
-            var fspec = this.RelativeYearlyRecurrence.AsFieldSpec(indent+1);
+            var fspec = this.RelativeYearlyRecurrence.AsFieldSpec(conf.Child("relativeYearlyRecurrence"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "relativeYearlyRecurrence {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "relativeYearlyRecurrence {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> WeeklyRecurrencePattern? WeeklyRecurrence
         // GraphQL -> weeklyRecurrence: WeeklyRecurrencePattern (type)
         if (this.WeeklyRecurrence != null) {
-            var fspec = this.WeeklyRecurrence.AsFieldSpec(indent+1);
+            var fspec = this.WeeklyRecurrence.AsFieldSpec(conf.Child("weeklyRecurrence"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "weeklyRecurrence {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "weeklyRecurrence {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -204,66 +241,174 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> AbsoluteMonthlyRecurrencePattern? AbsoluteMonthlyRecurrence
         // GraphQL -> absoluteMonthlyRecurrence: AbsoluteMonthlyRecurrencePattern (type)
-        if (this.AbsoluteMonthlyRecurrence == null && ec.Includes("absoluteMonthlyRecurrence",false))
+        if (ec.Includes("absoluteMonthlyRecurrence",false))
         {
-            this.AbsoluteMonthlyRecurrence = new AbsoluteMonthlyRecurrencePattern();
-            this.AbsoluteMonthlyRecurrence.ApplyExploratoryFieldSpec(ec.NewChild("absoluteMonthlyRecurrence"));
+            if(this.AbsoluteMonthlyRecurrence == null) {
+
+                this.AbsoluteMonthlyRecurrence = new AbsoluteMonthlyRecurrencePattern();
+                this.AbsoluteMonthlyRecurrence.ApplyExploratoryFieldSpec(ec.NewChild("absoluteMonthlyRecurrence"));
+
+            } else {
+
+                this.AbsoluteMonthlyRecurrence.ApplyExploratoryFieldSpec(ec.NewChild("absoluteMonthlyRecurrence"));
+
+            }
+        }
+        else if (this.AbsoluteMonthlyRecurrence != null && ec.Excludes("absoluteMonthlyRecurrence",false))
+        {
+            this.AbsoluteMonthlyRecurrence = null;
         }
         //      C# -> AbsoluteYearlyRecurrencePattern? AbsoluteYearlyRecurrence
         // GraphQL -> absoluteYearlyRecurrence: AbsoluteYearlyRecurrencePattern (type)
-        if (this.AbsoluteYearlyRecurrence == null && ec.Includes("absoluteYearlyRecurrence",false))
+        if (ec.Includes("absoluteYearlyRecurrence",false))
         {
-            this.AbsoluteYearlyRecurrence = new AbsoluteYearlyRecurrencePattern();
-            this.AbsoluteYearlyRecurrence.ApplyExploratoryFieldSpec(ec.NewChild("absoluteYearlyRecurrence"));
+            if(this.AbsoluteYearlyRecurrence == null) {
+
+                this.AbsoluteYearlyRecurrence = new AbsoluteYearlyRecurrencePattern();
+                this.AbsoluteYearlyRecurrence.ApplyExploratoryFieldSpec(ec.NewChild("absoluteYearlyRecurrence"));
+
+            } else {
+
+                this.AbsoluteYearlyRecurrence.ApplyExploratoryFieldSpec(ec.NewChild("absoluteYearlyRecurrence"));
+
+            }
+        }
+        else if (this.AbsoluteYearlyRecurrence != null && ec.Excludes("absoluteYearlyRecurrence",false))
+        {
+            this.AbsoluteYearlyRecurrence = null;
         }
         //      C# -> DailyRecurrencePattern? DailyRecurrence
         // GraphQL -> dailyRecurrence: DailyRecurrencePattern (type)
-        if (this.DailyRecurrence == null && ec.Includes("dailyRecurrence",false))
+        if (ec.Includes("dailyRecurrence",false))
         {
-            this.DailyRecurrence = new DailyRecurrencePattern();
-            this.DailyRecurrence.ApplyExploratoryFieldSpec(ec.NewChild("dailyRecurrence"));
+            if(this.DailyRecurrence == null) {
+
+                this.DailyRecurrence = new DailyRecurrencePattern();
+                this.DailyRecurrence.ApplyExploratoryFieldSpec(ec.NewChild("dailyRecurrence"));
+
+            } else {
+
+                this.DailyRecurrence.ApplyExploratoryFieldSpec(ec.NewChild("dailyRecurrence"));
+
+            }
+        }
+        else if (this.DailyRecurrence != null && ec.Excludes("dailyRecurrence",false))
+        {
+            this.DailyRecurrence = null;
         }
         //      C# -> EndDateRecurrenceRange? EndDateRecurrenceRange
         // GraphQL -> endDateRecurrenceRange: EndDateRecurrenceRange (type)
-        if (this.EndDateRecurrenceRange == null && ec.Includes("endDateRecurrenceRange",false))
+        if (ec.Includes("endDateRecurrenceRange",false))
         {
-            this.EndDateRecurrenceRange = new EndDateRecurrenceRange();
-            this.EndDateRecurrenceRange.ApplyExploratoryFieldSpec(ec.NewChild("endDateRecurrenceRange"));
+            if(this.EndDateRecurrenceRange == null) {
+
+                this.EndDateRecurrenceRange = new EndDateRecurrenceRange();
+                this.EndDateRecurrenceRange.ApplyExploratoryFieldSpec(ec.NewChild("endDateRecurrenceRange"));
+
+            } else {
+
+                this.EndDateRecurrenceRange.ApplyExploratoryFieldSpec(ec.NewChild("endDateRecurrenceRange"));
+
+            }
+        }
+        else if (this.EndDateRecurrenceRange != null && ec.Excludes("endDateRecurrenceRange",false))
+        {
+            this.EndDateRecurrenceRange = null;
         }
         //      C# -> NoEndRecurrenceRange? NoEndRecurrenceRange
         // GraphQL -> noEndRecurrenceRange: NoEndRecurrenceRange (type)
-        if (this.NoEndRecurrenceRange == null && ec.Includes("noEndRecurrenceRange",false))
+        if (ec.Includes("noEndRecurrenceRange",false))
         {
-            this.NoEndRecurrenceRange = new NoEndRecurrenceRange();
-            this.NoEndRecurrenceRange.ApplyExploratoryFieldSpec(ec.NewChild("noEndRecurrenceRange"));
+            if(this.NoEndRecurrenceRange == null) {
+
+                this.NoEndRecurrenceRange = new NoEndRecurrenceRange();
+                this.NoEndRecurrenceRange.ApplyExploratoryFieldSpec(ec.NewChild("noEndRecurrenceRange"));
+
+            } else {
+
+                this.NoEndRecurrenceRange.ApplyExploratoryFieldSpec(ec.NewChild("noEndRecurrenceRange"));
+
+            }
+        }
+        else if (this.NoEndRecurrenceRange != null && ec.Excludes("noEndRecurrenceRange",false))
+        {
+            this.NoEndRecurrenceRange = null;
         }
         //      C# -> NumberedRecurrenceRange? NumberedRecurrenceRange
         // GraphQL -> numberedRecurrenceRange: NumberedRecurrenceRange (type)
-        if (this.NumberedRecurrenceRange == null && ec.Includes("numberedRecurrenceRange",false))
+        if (ec.Includes("numberedRecurrenceRange",false))
         {
-            this.NumberedRecurrenceRange = new NumberedRecurrenceRange();
-            this.NumberedRecurrenceRange.ApplyExploratoryFieldSpec(ec.NewChild("numberedRecurrenceRange"));
+            if(this.NumberedRecurrenceRange == null) {
+
+                this.NumberedRecurrenceRange = new NumberedRecurrenceRange();
+                this.NumberedRecurrenceRange.ApplyExploratoryFieldSpec(ec.NewChild("numberedRecurrenceRange"));
+
+            } else {
+
+                this.NumberedRecurrenceRange.ApplyExploratoryFieldSpec(ec.NewChild("numberedRecurrenceRange"));
+
+            }
+        }
+        else if (this.NumberedRecurrenceRange != null && ec.Excludes("numberedRecurrenceRange",false))
+        {
+            this.NumberedRecurrenceRange = null;
         }
         //      C# -> RelativeMonthlyRecurrencePattern? RelativeMonthlyRecurrence
         // GraphQL -> relativeMonthlyRecurrence: RelativeMonthlyRecurrencePattern (type)
-        if (this.RelativeMonthlyRecurrence == null && ec.Includes("relativeMonthlyRecurrence",false))
+        if (ec.Includes("relativeMonthlyRecurrence",false))
         {
-            this.RelativeMonthlyRecurrence = new RelativeMonthlyRecurrencePattern();
-            this.RelativeMonthlyRecurrence.ApplyExploratoryFieldSpec(ec.NewChild("relativeMonthlyRecurrence"));
+            if(this.RelativeMonthlyRecurrence == null) {
+
+                this.RelativeMonthlyRecurrence = new RelativeMonthlyRecurrencePattern();
+                this.RelativeMonthlyRecurrence.ApplyExploratoryFieldSpec(ec.NewChild("relativeMonthlyRecurrence"));
+
+            } else {
+
+                this.RelativeMonthlyRecurrence.ApplyExploratoryFieldSpec(ec.NewChild("relativeMonthlyRecurrence"));
+
+            }
+        }
+        else if (this.RelativeMonthlyRecurrence != null && ec.Excludes("relativeMonthlyRecurrence",false))
+        {
+            this.RelativeMonthlyRecurrence = null;
         }
         //      C# -> RelativeYearlyRecurrencePattern? RelativeYearlyRecurrence
         // GraphQL -> relativeYearlyRecurrence: RelativeYearlyRecurrencePattern (type)
-        if (this.RelativeYearlyRecurrence == null && ec.Includes("relativeYearlyRecurrence",false))
+        if (ec.Includes("relativeYearlyRecurrence",false))
         {
-            this.RelativeYearlyRecurrence = new RelativeYearlyRecurrencePattern();
-            this.RelativeYearlyRecurrence.ApplyExploratoryFieldSpec(ec.NewChild("relativeYearlyRecurrence"));
+            if(this.RelativeYearlyRecurrence == null) {
+
+                this.RelativeYearlyRecurrence = new RelativeYearlyRecurrencePattern();
+                this.RelativeYearlyRecurrence.ApplyExploratoryFieldSpec(ec.NewChild("relativeYearlyRecurrence"));
+
+            } else {
+
+                this.RelativeYearlyRecurrence.ApplyExploratoryFieldSpec(ec.NewChild("relativeYearlyRecurrence"));
+
+            }
+        }
+        else if (this.RelativeYearlyRecurrence != null && ec.Excludes("relativeYearlyRecurrence",false))
+        {
+            this.RelativeYearlyRecurrence = null;
         }
         //      C# -> WeeklyRecurrencePattern? WeeklyRecurrence
         // GraphQL -> weeklyRecurrence: WeeklyRecurrencePattern (type)
-        if (this.WeeklyRecurrence == null && ec.Includes("weeklyRecurrence",false))
+        if (ec.Includes("weeklyRecurrence",false))
         {
-            this.WeeklyRecurrence = new WeeklyRecurrencePattern();
-            this.WeeklyRecurrence.ApplyExploratoryFieldSpec(ec.NewChild("weeklyRecurrence"));
+            if(this.WeeklyRecurrence == null) {
+
+                this.WeeklyRecurrence = new WeeklyRecurrencePattern();
+                this.WeeklyRecurrence.ApplyExploratoryFieldSpec(ec.NewChild("weeklyRecurrence"));
+
+            } else {
+
+                this.WeeklyRecurrence.ApplyExploratoryFieldSpec(ec.NewChild("weeklyRecurrence"));
+
+            }
+        }
+        else if (this.WeeklyRecurrence != null && ec.Excludes("weeklyRecurrence",false))
+        {
+            this.WeeklyRecurrence = null;
         }
     }
 
@@ -290,9 +435,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<O365CalendarEventRecurrence> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

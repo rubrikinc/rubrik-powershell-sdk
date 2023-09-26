@@ -101,46 +101,75 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> SmbAuthenticationStatus? Status
         // GraphQL -> status: SmbAuthenticationStatus! (enum)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         //      C# -> System.String? AccountName
         // GraphQL -> accountName: String! (scalar)
         if (this.AccountName != null) {
-            s += ind + "accountName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "accountName\n" ;
+            } else {
+                s += ind + "accountName\n" ;
+            }
         }
         //      C# -> System.String? DomainId
         // GraphQL -> domainId: String! (scalar)
         if (this.DomainId != null) {
-            s += ind + "domainId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "domainId\n" ;
+            } else {
+                s += ind + "domainId\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean! (scalar)
         if (this.IsArchived != null) {
-            s += ind + "isArchived\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isArchived\n" ;
+            } else {
+                s += ind + "isArchived\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
         if (this.Cluster != null) {
-            var fspec = this.Cluster.AsFieldSpec(indent+1);
+            var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -152,46 +181,124 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> SmbAuthenticationStatus? Status
         // GraphQL -> status: SmbAuthenticationStatus! (enum)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = new SmbAuthenticationStatus();
+            if(this.Status == null) {
+
+                this.Status = new SmbAuthenticationStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
         //      C# -> System.String? AccountName
         // GraphQL -> accountName: String! (scalar)
-        if (this.AccountName == null && ec.Includes("accountName",true))
+        if (ec.Includes("accountName",true))
         {
-            this.AccountName = "FETCH";
+            if(this.AccountName == null) {
+
+                this.AccountName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AccountName != null && ec.Excludes("accountName",true))
+        {
+            this.AccountName = null;
         }
         //      C# -> System.String? DomainId
         // GraphQL -> domainId: String! (scalar)
-        if (this.DomainId == null && ec.Includes("domainId",true))
+        if (ec.Includes("domainId",true))
         {
-            this.DomainId = "FETCH";
+            if(this.DomainId == null) {
+
+                this.DomainId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DomainId != null && ec.Excludes("domainId",true))
+        {
+            this.DomainId = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean! (scalar)
-        if (this.IsArchived == null && ec.Includes("isArchived",true))
+        if (ec.Includes("isArchived",true))
         {
-            this.IsArchived = true;
+            if(this.IsArchived == null) {
+
+                this.IsArchived = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsArchived != null && ec.Excludes("isArchived",true))
+        {
+            this.IsArchived = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
-        if (this.Cluster == null && ec.Includes("cluster",false))
+        if (ec.Includes("cluster",false))
         {
-            this.Cluster = new Cluster();
-            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+            if(this.Cluster == null) {
+
+                this.Cluster = new Cluster();
+                this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+
+            } else {
+
+                this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+
+            }
+        }
+        else if (this.Cluster != null && ec.Excludes("cluster",false))
+        {
+            this.Cluster = null;
         }
     }
 
@@ -218,9 +325,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SmbDomain> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

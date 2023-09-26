@@ -92,41 +92,66 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? DailyGrowthInBytes
         // GraphQL -> dailyGrowthInBytes: Long! (scalar)
         if (this.DailyGrowthInBytes != null) {
-            s += ind + "dailyGrowthInBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "dailyGrowthInBytes\n" ;
+            } else {
+                s += ind + "dailyGrowthInBytes\n" ;
+            }
         }
         //      C# -> System.Int64? EstimatedThirtyDaysStorageInBytes
         // GraphQL -> estimatedThirtyDaysStorageInBytes: Long! (scalar)
         if (this.EstimatedThirtyDaysStorageInBytes != null) {
-            s += ind + "estimatedThirtyDaysStorageInBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "estimatedThirtyDaysStorageInBytes\n" ;
+            } else {
+                s += ind + "estimatedThirtyDaysStorageInBytes\n" ;
+            }
         }
         //      C# -> System.Int64? LiveDataSizeInBytes
         // GraphQL -> liveDataSizeInBytes: Long! (scalar)
         if (this.LiveDataSizeInBytes != null) {
-            s += ind + "liveDataSizeInBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "liveDataSizeInBytes\n" ;
+            } else {
+                s += ind + "liveDataSizeInBytes\n" ;
+            }
         }
         //      C# -> System.Int64? PhysicalDataSizeInBytes
         // GraphQL -> physicalDataSizeInBytes: Long! (scalar)
         if (this.PhysicalDataSizeInBytes != null) {
-            s += ind + "physicalDataSizeInBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "physicalDataSizeInBytes\n" ;
+            } else {
+                s += ind + "physicalDataSizeInBytes\n" ;
+            }
         }
         //      C# -> System.Int64? StorageEfficiencyPercent
         // GraphQL -> storageEfficiencyPercent: Long! (scalar)
         if (this.StorageEfficiencyPercent != null) {
-            s += ind + "storageEfficiencyPercent\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "storageEfficiencyPercent\n" ;
+            } else {
+                s += ind + "storageEfficiencyPercent\n" ;
+            }
         }
         //      C# -> List<O365PhysicalDataSizeTimeStamp>? PhysicalDataSizeTimeSeries
         // GraphQL -> physicalDataSizeTimeSeries: [O365PhysicalDataSizeTimeStamp!]! (type)
         if (this.PhysicalDataSizeTimeSeries != null) {
-            var fspec = this.PhysicalDataSizeTimeSeries.AsFieldSpec(indent+1);
+            var fspec = this.PhysicalDataSizeTimeSeries.AsFieldSpec(conf.Child("physicalDataSizeTimeSeries"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "physicalDataSizeTimeSeries {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "physicalDataSizeTimeSeries {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -138,40 +163,107 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? DailyGrowthInBytes
         // GraphQL -> dailyGrowthInBytes: Long! (scalar)
-        if (this.DailyGrowthInBytes == null && ec.Includes("dailyGrowthInBytes",true))
+        if (ec.Includes("dailyGrowthInBytes",true))
         {
-            this.DailyGrowthInBytes = new System.Int64();
+            if(this.DailyGrowthInBytes == null) {
+
+                this.DailyGrowthInBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DailyGrowthInBytes != null && ec.Excludes("dailyGrowthInBytes",true))
+        {
+            this.DailyGrowthInBytes = null;
         }
         //      C# -> System.Int64? EstimatedThirtyDaysStorageInBytes
         // GraphQL -> estimatedThirtyDaysStorageInBytes: Long! (scalar)
-        if (this.EstimatedThirtyDaysStorageInBytes == null && ec.Includes("estimatedThirtyDaysStorageInBytes",true))
+        if (ec.Includes("estimatedThirtyDaysStorageInBytes",true))
         {
-            this.EstimatedThirtyDaysStorageInBytes = new System.Int64();
+            if(this.EstimatedThirtyDaysStorageInBytes == null) {
+
+                this.EstimatedThirtyDaysStorageInBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EstimatedThirtyDaysStorageInBytes != null && ec.Excludes("estimatedThirtyDaysStorageInBytes",true))
+        {
+            this.EstimatedThirtyDaysStorageInBytes = null;
         }
         //      C# -> System.Int64? LiveDataSizeInBytes
         // GraphQL -> liveDataSizeInBytes: Long! (scalar)
-        if (this.LiveDataSizeInBytes == null && ec.Includes("liveDataSizeInBytes",true))
+        if (ec.Includes("liveDataSizeInBytes",true))
         {
-            this.LiveDataSizeInBytes = new System.Int64();
+            if(this.LiveDataSizeInBytes == null) {
+
+                this.LiveDataSizeInBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LiveDataSizeInBytes != null && ec.Excludes("liveDataSizeInBytes",true))
+        {
+            this.LiveDataSizeInBytes = null;
         }
         //      C# -> System.Int64? PhysicalDataSizeInBytes
         // GraphQL -> physicalDataSizeInBytes: Long! (scalar)
-        if (this.PhysicalDataSizeInBytes == null && ec.Includes("physicalDataSizeInBytes",true))
+        if (ec.Includes("physicalDataSizeInBytes",true))
         {
-            this.PhysicalDataSizeInBytes = new System.Int64();
+            if(this.PhysicalDataSizeInBytes == null) {
+
+                this.PhysicalDataSizeInBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.PhysicalDataSizeInBytes != null && ec.Excludes("physicalDataSizeInBytes",true))
+        {
+            this.PhysicalDataSizeInBytes = null;
         }
         //      C# -> System.Int64? StorageEfficiencyPercent
         // GraphQL -> storageEfficiencyPercent: Long! (scalar)
-        if (this.StorageEfficiencyPercent == null && ec.Includes("storageEfficiencyPercent",true))
+        if (ec.Includes("storageEfficiencyPercent",true))
         {
-            this.StorageEfficiencyPercent = new System.Int64();
+            if(this.StorageEfficiencyPercent == null) {
+
+                this.StorageEfficiencyPercent = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.StorageEfficiencyPercent != null && ec.Excludes("storageEfficiencyPercent",true))
+        {
+            this.StorageEfficiencyPercent = null;
         }
         //      C# -> List<O365PhysicalDataSizeTimeStamp>? PhysicalDataSizeTimeSeries
         // GraphQL -> physicalDataSizeTimeSeries: [O365PhysicalDataSizeTimeStamp!]! (type)
-        if (this.PhysicalDataSizeTimeSeries == null && ec.Includes("physicalDataSizeTimeSeries",false))
+        if (ec.Includes("physicalDataSizeTimeSeries",false))
         {
-            this.PhysicalDataSizeTimeSeries = new List<O365PhysicalDataSizeTimeStamp>();
-            this.PhysicalDataSizeTimeSeries.ApplyExploratoryFieldSpec(ec.NewChild("physicalDataSizeTimeSeries"));
+            if(this.PhysicalDataSizeTimeSeries == null) {
+
+                this.PhysicalDataSizeTimeSeries = new List<O365PhysicalDataSizeTimeStamp>();
+                this.PhysicalDataSizeTimeSeries.ApplyExploratoryFieldSpec(ec.NewChild("physicalDataSizeTimeSeries"));
+
+            } else {
+
+                this.PhysicalDataSizeTimeSeries.ApplyExploratoryFieldSpec(ec.NewChild("physicalDataSizeTimeSeries"));
+
+            }
+        }
+        else if (this.PhysicalDataSizeTimeSeries != null && ec.Excludes("physicalDataSizeTimeSeries",false))
+        {
+            this.PhysicalDataSizeTimeSeries = null;
         }
     }
 
@@ -198,9 +290,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<GetO365StorageStatsResp> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -74,31 +74,48 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> AzureCloudAccountRegion? Region
         // GraphQL -> region: AzureCloudAccountRegion! (enum)
         if (this.Region != null) {
-            s += ind + "region\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "region\n" ;
+            } else {
+                s += ind + "region\n" ;
+            }
         }
         //      C# -> System.String? ResourceGroupName
         // GraphQL -> resourceGroupName: String! (scalar)
         if (this.ResourceGroupName != null) {
-            s += ind + "resourceGroupName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "resourceGroupName\n" ;
+            } else {
+                s += ind + "resourceGroupName\n" ;
+            }
         }
         //      C# -> System.String? SubscriptionNativeId
         // GraphQL -> subscriptionNativeId: UUID! (scalar)
         if (this.SubscriptionNativeId != null) {
-            s += ind + "subscriptionNativeId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "subscriptionNativeId\n" ;
+            } else {
+                s += ind + "subscriptionNativeId\n" ;
+            }
         }
         //      C# -> List<TagObject>? Tags
         // GraphQL -> tags: [TagObject!]! (type)
         if (this.Tags != null) {
-            var fspec = this.Tags.AsFieldSpec(indent+1);
+            var fspec = this.Tags.AsFieldSpec(conf.Child("tags"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "tags {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "tags {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -110,28 +127,73 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> AzureCloudAccountRegion? Region
         // GraphQL -> region: AzureCloudAccountRegion! (enum)
-        if (this.Region == null && ec.Includes("region",true))
+        if (ec.Includes("region",true))
         {
-            this.Region = new AzureCloudAccountRegion();
+            if(this.Region == null) {
+
+                this.Region = new AzureCloudAccountRegion();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Region != null && ec.Excludes("region",true))
+        {
+            this.Region = null;
         }
         //      C# -> System.String? ResourceGroupName
         // GraphQL -> resourceGroupName: String! (scalar)
-        if (this.ResourceGroupName == null && ec.Includes("resourceGroupName",true))
+        if (ec.Includes("resourceGroupName",true))
         {
-            this.ResourceGroupName = "FETCH";
+            if(this.ResourceGroupName == null) {
+
+                this.ResourceGroupName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ResourceGroupName != null && ec.Excludes("resourceGroupName",true))
+        {
+            this.ResourceGroupName = null;
         }
         //      C# -> System.String? SubscriptionNativeId
         // GraphQL -> subscriptionNativeId: UUID! (scalar)
-        if (this.SubscriptionNativeId == null && ec.Includes("subscriptionNativeId",true))
+        if (ec.Includes("subscriptionNativeId",true))
         {
-            this.SubscriptionNativeId = "FETCH";
+            if(this.SubscriptionNativeId == null) {
+
+                this.SubscriptionNativeId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SubscriptionNativeId != null && ec.Excludes("subscriptionNativeId",true))
+        {
+            this.SubscriptionNativeId = null;
         }
         //      C# -> List<TagObject>? Tags
         // GraphQL -> tags: [TagObject!]! (type)
-        if (this.Tags == null && ec.Includes("tags",false))
+        if (ec.Includes("tags",false))
         {
-            this.Tags = new List<TagObject>();
-            this.Tags.ApplyExploratoryFieldSpec(ec.NewChild("tags"));
+            if(this.Tags == null) {
+
+                this.Tags = new List<TagObject>();
+                this.Tags.ApplyExploratoryFieldSpec(ec.NewChild("tags"));
+
+            } else {
+
+                this.Tags.ApplyExploratoryFieldSpec(ec.NewChild("tags"));
+
+            }
+        }
+        else if (this.Tags != null && ec.Excludes("tags",false))
+        {
+            this.Tags = null;
         }
     }
 
@@ -158,9 +220,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AzureResourceGroupInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

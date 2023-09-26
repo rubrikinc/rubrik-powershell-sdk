@@ -83,34 +83,55 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> IssueEventType? Type
         // GraphQL -> type: IssueEventType! (enum)
         if (this.Type != null) {
-            s += ind + "type\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "type\n" ;
+            } else {
+                s += ind + "type\n" ;
+            }
         }
         //      C# -> System.String? SnapshotFid
         // GraphQL -> snapshotFid: String! (scalar)
         if (this.SnapshotFid != null) {
-            s += ind + "snapshotFid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotFid\n" ;
+            } else {
+                s += ind + "snapshotFid\n" ;
+            }
         }
         //      C# -> System.Int64? Timestamp
         // GraphQL -> timestamp: Long! (scalar)
         if (this.Timestamp != null) {
-            s += ind + "timestamp\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "timestamp\n" ;
+            } else {
+                s += ind + "timestamp\n" ;
+            }
         }
         //      C# -> System.Int32? Violations
         // GraphQL -> violations: Int! (scalar)
         if (this.Violations != null) {
-            s += ind + "violations\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "violations\n" ;
+            } else {
+                s += ind + "violations\n" ;
+            }
         }
         //      C# -> System.Int32? ViolationsDelta
         // GraphQL -> violationsDelta: Int! (scalar)
         if (this.ViolationsDelta != null) {
-            s += ind + "violationsDelta\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "violationsDelta\n" ;
+            } else {
+                s += ind + "violationsDelta\n" ;
+            }
         }
         return s;
     }
@@ -121,33 +142,88 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> IssueEventType? Type
         // GraphQL -> type: IssueEventType! (enum)
-        if (this.Type == null && ec.Includes("type",true))
+        if (ec.Includes("type",true))
         {
-            this.Type = new IssueEventType();
+            if(this.Type == null) {
+
+                this.Type = new IssueEventType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Type != null && ec.Excludes("type",true))
+        {
+            this.Type = null;
         }
         //      C# -> System.String? SnapshotFid
         // GraphQL -> snapshotFid: String! (scalar)
-        if (this.SnapshotFid == null && ec.Includes("snapshotFid",true))
+        if (ec.Includes("snapshotFid",true))
         {
-            this.SnapshotFid = "FETCH";
+            if(this.SnapshotFid == null) {
+
+                this.SnapshotFid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotFid != null && ec.Excludes("snapshotFid",true))
+        {
+            this.SnapshotFid = null;
         }
         //      C# -> System.Int64? Timestamp
         // GraphQL -> timestamp: Long! (scalar)
-        if (this.Timestamp == null && ec.Includes("timestamp",true))
+        if (ec.Includes("timestamp",true))
         {
-            this.Timestamp = new System.Int64();
+            if(this.Timestamp == null) {
+
+                this.Timestamp = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Timestamp != null && ec.Excludes("timestamp",true))
+        {
+            this.Timestamp = null;
         }
         //      C# -> System.Int32? Violations
         // GraphQL -> violations: Int! (scalar)
-        if (this.Violations == null && ec.Includes("violations",true))
+        if (ec.Includes("violations",true))
         {
-            this.Violations = Int32.MinValue;
+            if(this.Violations == null) {
+
+                this.Violations = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Violations != null && ec.Excludes("violations",true))
+        {
+            this.Violations = null;
         }
         //      C# -> System.Int32? ViolationsDelta
         // GraphQL -> violationsDelta: Int! (scalar)
-        if (this.ViolationsDelta == null && ec.Includes("violationsDelta",true))
+        if (ec.Includes("violationsDelta",true))
         {
-            this.ViolationsDelta = Int32.MinValue;
+            if(this.ViolationsDelta == null) {
+
+                this.ViolationsDelta = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ViolationsDelta != null && ec.Excludes("violationsDelta",true))
+        {
+            this.ViolationsDelta = null;
         }
     }
 
@@ -174,9 +250,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<IssueEvent> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> AzureNativeRegion? Region
         // GraphQL -> region: AzureNativeRegion! (enum)
         if (this.Region != null) {
-            s += ind + "region\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "region\n" ;
+            } else {
+                s += ind + "region\n" ;
+            }
         }
         //      C# -> System.Boolean? IsExocomputeConfigured
         // GraphQL -> isExocomputeConfigured: Boolean! (scalar)
         if (this.IsExocomputeConfigured != null) {
-            s += ind + "isExocomputeConfigured\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isExocomputeConfigured\n" ;
+            } else {
+                s += ind + "isExocomputeConfigured\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> AzureNativeRegion? Region
         // GraphQL -> region: AzureNativeRegion! (enum)
-        if (this.Region == null && ec.Includes("region",true))
+        if (ec.Includes("region",true))
         {
-            this.Region = new AzureNativeRegion();
+            if(this.Region == null) {
+
+                this.Region = new AzureNativeRegion();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Region != null && ec.Excludes("region",true))
+        {
+            this.Region = null;
         }
         //      C# -> System.Boolean? IsExocomputeConfigured
         // GraphQL -> isExocomputeConfigured: Boolean! (scalar)
-        if (this.IsExocomputeConfigured == null && ec.Includes("isExocomputeConfigured",true))
+        if (ec.Includes("isExocomputeConfigured",true))
         {
-            this.IsExocomputeConfigured = true;
+            if(this.IsExocomputeConfigured == null) {
+
+                this.IsExocomputeConfigured = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsExocomputeConfigured != null && ec.Excludes("isExocomputeConfigured",true))
+        {
+            this.IsExocomputeConfigured = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AzureNativeRegionSpec> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

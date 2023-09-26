@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> CloudAccountFeature? Feature
         // GraphQL -> feature: CloudAccountFeature! (enum)
         if (this.Feature != null) {
-            s += ind + "feature\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "feature\n" ;
+            } else {
+                s += ind + "feature\n" ;
+            }
         }
         //      C# -> System.String? PolicyDocumentJson
         // GraphQL -> policyDocumentJson: String! (scalar)
         if (this.PolicyDocumentJson != null) {
-            s += ind + "policyDocumentJson\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "policyDocumentJson\n" ;
+            } else {
+                s += ind + "policyDocumentJson\n" ;
+            }
         }
         //      C# -> System.String? PolicyName
         // GraphQL -> policyName: String! (scalar)
         if (this.PolicyName != null) {
-            s += ind + "policyName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "policyName\n" ;
+            } else {
+                s += ind + "policyName\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> CloudAccountFeature? Feature
         // GraphQL -> feature: CloudAccountFeature! (enum)
-        if (this.Feature == null && ec.Includes("feature",true))
+        if (ec.Includes("feature",true))
         {
-            this.Feature = new CloudAccountFeature();
+            if(this.Feature == null) {
+
+                this.Feature = new CloudAccountFeature();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Feature != null && ec.Excludes("feature",true))
+        {
+            this.Feature = null;
         }
         //      C# -> System.String? PolicyDocumentJson
         // GraphQL -> policyDocumentJson: String! (scalar)
-        if (this.PolicyDocumentJson == null && ec.Includes("policyDocumentJson",true))
+        if (ec.Includes("policyDocumentJson",true))
         {
-            this.PolicyDocumentJson = "FETCH";
+            if(this.PolicyDocumentJson == null) {
+
+                this.PolicyDocumentJson = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PolicyDocumentJson != null && ec.Excludes("policyDocumentJson",true))
+        {
+            this.PolicyDocumentJson = null;
         }
         //      C# -> System.String? PolicyName
         // GraphQL -> policyName: String! (scalar)
-        if (this.PolicyName == null && ec.Includes("policyName",true))
+        if (ec.Includes("policyName",true))
         {
-            this.PolicyName = "FETCH";
+            if(this.PolicyName == null) {
+
+                this.PolicyName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PolicyName != null && ec.Excludes("policyName",true))
+        {
+            this.PolicyName = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CustomerManagedPolicy> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

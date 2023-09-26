@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? AvailabilityMode
         // GraphQL -> availabilityMode: String! (scalar)
         if (this.AvailabilityMode != null) {
-            s += ind + "availabilityMode\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "availabilityMode\n" ;
+            } else {
+                s += ind + "availabilityMode\n" ;
+            }
         }
         //      C# -> System.String? ReplicaId
         // GraphQL -> replicaId: String! (scalar)
         if (this.ReplicaId != null) {
-            s += ind + "replicaId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "replicaId\n" ;
+            } else {
+                s += ind + "replicaId\n" ;
+            }
         }
         //      C# -> System.String? Role
         // GraphQL -> role: String! (scalar)
         if (this.Role != null) {
-            s += ind + "role\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "role\n" ;
+            } else {
+                s += ind + "role\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? AvailabilityMode
         // GraphQL -> availabilityMode: String! (scalar)
-        if (this.AvailabilityMode == null && ec.Includes("availabilityMode",true))
+        if (ec.Includes("availabilityMode",true))
         {
-            this.AvailabilityMode = "FETCH";
+            if(this.AvailabilityMode == null) {
+
+                this.AvailabilityMode = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AvailabilityMode != null && ec.Excludes("availabilityMode",true))
+        {
+            this.AvailabilityMode = null;
         }
         //      C# -> System.String? ReplicaId
         // GraphQL -> replicaId: String! (scalar)
-        if (this.ReplicaId == null && ec.Includes("replicaId",true))
+        if (ec.Includes("replicaId",true))
         {
-            this.ReplicaId = "FETCH";
+            if(this.ReplicaId == null) {
+
+                this.ReplicaId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ReplicaId != null && ec.Excludes("replicaId",true))
+        {
+            this.ReplicaId = null;
         }
         //      C# -> System.String? Role
         // GraphQL -> role: String! (scalar)
-        if (this.Role == null && ec.Includes("role",true))
+        if (ec.Includes("role",true))
         {
-            this.Role = "FETCH";
+            if(this.Role == null) {
+
+                this.Role = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Role != null && ec.Excludes("role",true))
+        {
+            this.Role = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CdmMssqlDbReplicaAvailabilityInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

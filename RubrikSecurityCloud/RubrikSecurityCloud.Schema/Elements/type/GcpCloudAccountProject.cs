@@ -101,44 +101,73 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.String? OrganizationName
         // GraphQL -> organizationName: String! (scalar)
         if (this.OrganizationName != null) {
-            s += ind + "organizationName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "organizationName\n" ;
+            } else {
+                s += ind + "organizationName\n" ;
+            }
         }
         //      C# -> System.String? ProjectId
         // GraphQL -> projectId: String! (scalar)
         if (this.ProjectId != null) {
-            s += ind + "projectId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "projectId\n" ;
+            } else {
+                s += ind + "projectId\n" ;
+            }
         }
         //      C# -> System.Int64? ProjectNumber
         // GraphQL -> projectNumber: Long! (scalar)
         if (this.ProjectNumber != null) {
-            s += ind + "projectNumber\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "projectNumber\n" ;
+            } else {
+                s += ind + "projectNumber\n" ;
+            }
         }
         //      C# -> System.String? RoleId
         // GraphQL -> roleId: String! (scalar)
         if (this.RoleId != null) {
-            s += ind + "roleId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "roleId\n" ;
+            } else {
+                s += ind + "roleId\n" ;
+            }
         }
         //      C# -> System.Boolean? UsesGlobalConfig
         // GraphQL -> usesGlobalConfig: Boolean! (scalar)
         if (this.UsesGlobalConfig != null) {
-            s += ind + "usesGlobalConfig\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "usesGlobalConfig\n" ;
+            } else {
+                s += ind + "usesGlobalConfig\n" ;
+            }
         }
         return s;
     }
@@ -149,45 +178,122 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.String? OrganizationName
         // GraphQL -> organizationName: String! (scalar)
-        if (this.OrganizationName == null && ec.Includes("organizationName",true))
+        if (ec.Includes("organizationName",true))
         {
-            this.OrganizationName = "FETCH";
+            if(this.OrganizationName == null) {
+
+                this.OrganizationName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OrganizationName != null && ec.Excludes("organizationName",true))
+        {
+            this.OrganizationName = null;
         }
         //      C# -> System.String? ProjectId
         // GraphQL -> projectId: String! (scalar)
-        if (this.ProjectId == null && ec.Includes("projectId",true))
+        if (ec.Includes("projectId",true))
         {
-            this.ProjectId = "FETCH";
+            if(this.ProjectId == null) {
+
+                this.ProjectId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProjectId != null && ec.Excludes("projectId",true))
+        {
+            this.ProjectId = null;
         }
         //      C# -> System.Int64? ProjectNumber
         // GraphQL -> projectNumber: Long! (scalar)
-        if (this.ProjectNumber == null && ec.Includes("projectNumber",true))
+        if (ec.Includes("projectNumber",true))
         {
-            this.ProjectNumber = new System.Int64();
+            if(this.ProjectNumber == null) {
+
+                this.ProjectNumber = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProjectNumber != null && ec.Excludes("projectNumber",true))
+        {
+            this.ProjectNumber = null;
         }
         //      C# -> System.String? RoleId
         // GraphQL -> roleId: String! (scalar)
-        if (this.RoleId == null && ec.Includes("roleId",true))
+        if (ec.Includes("roleId",true))
         {
-            this.RoleId = "FETCH";
+            if(this.RoleId == null) {
+
+                this.RoleId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RoleId != null && ec.Excludes("roleId",true))
+        {
+            this.RoleId = null;
         }
         //      C# -> System.Boolean? UsesGlobalConfig
         // GraphQL -> usesGlobalConfig: Boolean! (scalar)
-        if (this.UsesGlobalConfig == null && ec.Includes("usesGlobalConfig",true))
+        if (ec.Includes("usesGlobalConfig",true))
         {
-            this.UsesGlobalConfig = true;
+            if(this.UsesGlobalConfig == null) {
+
+                this.UsesGlobalConfig = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.UsesGlobalConfig != null && ec.Excludes("usesGlobalConfig",true))
+        {
+            this.UsesGlobalConfig = null;
         }
     }
 
@@ -214,9 +320,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<GcpCloudAccountProject> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

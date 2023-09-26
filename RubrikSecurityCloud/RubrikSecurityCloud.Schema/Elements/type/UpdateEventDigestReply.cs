@@ -47,16 +47,21 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<EventDigest>? EventDigests
         // GraphQL -> eventDigests: [EventDigest!]! (type)
         if (this.EventDigests != null) {
-            var fspec = this.EventDigests.AsFieldSpec(indent+1);
+            var fspec = this.EventDigests.AsFieldSpec(conf.Child("eventDigests"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "eventDigests {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "eventDigests {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -68,10 +73,22 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<EventDigest>? EventDigests
         // GraphQL -> eventDigests: [EventDigest!]! (type)
-        if (this.EventDigests == null && ec.Includes("eventDigests",false))
+        if (ec.Includes("eventDigests",false))
         {
-            this.EventDigests = new List<EventDigest>();
-            this.EventDigests.ApplyExploratoryFieldSpec(ec.NewChild("eventDigests"));
+            if(this.EventDigests == null) {
+
+                this.EventDigests = new List<EventDigest>();
+                this.EventDigests.ApplyExploratoryFieldSpec(ec.NewChild("eventDigests"));
+
+            } else {
+
+                this.EventDigests.ApplyExploratoryFieldSpec(ec.NewChild("eventDigests"));
+
+            }
+        }
+        else if (this.EventDigests != null && ec.Excludes("eventDigests",false))
+        {
+            this.EventDigests = null;
         }
     }
 
@@ -98,9 +115,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<UpdateEventDigestReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

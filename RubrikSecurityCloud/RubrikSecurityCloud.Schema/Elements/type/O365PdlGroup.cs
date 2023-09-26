@@ -56,21 +56,30 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? GroupId
         // GraphQL -> groupId: UUID! (scalar)
         if (this.GroupId != null) {
-            s += ind + "groupId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "groupId\n" ;
+            } else {
+                s += ind + "groupId\n" ;
+            }
         }
         //      C# -> O365PdlAndWorkloadPair? PdlAndWorkload
         // GraphQL -> pdlAndWorkload: O365PdlAndWorkloadPair! (type)
         if (this.PdlAndWorkload != null) {
-            var fspec = this.PdlAndWorkload.AsFieldSpec(indent+1);
+            var fspec = this.PdlAndWorkload.AsFieldSpec(conf.Child("pdlAndWorkload"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "pdlAndWorkload {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "pdlAndWorkload {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -82,16 +91,39 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? GroupId
         // GraphQL -> groupId: UUID! (scalar)
-        if (this.GroupId == null && ec.Includes("groupId",true))
+        if (ec.Includes("groupId",true))
         {
-            this.GroupId = "FETCH";
+            if(this.GroupId == null) {
+
+                this.GroupId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.GroupId != null && ec.Excludes("groupId",true))
+        {
+            this.GroupId = null;
         }
         //      C# -> O365PdlAndWorkloadPair? PdlAndWorkload
         // GraphQL -> pdlAndWorkload: O365PdlAndWorkloadPair! (type)
-        if (this.PdlAndWorkload == null && ec.Includes("pdlAndWorkload",false))
+        if (ec.Includes("pdlAndWorkload",false))
         {
-            this.PdlAndWorkload = new O365PdlAndWorkloadPair();
-            this.PdlAndWorkload.ApplyExploratoryFieldSpec(ec.NewChild("pdlAndWorkload"));
+            if(this.PdlAndWorkload == null) {
+
+                this.PdlAndWorkload = new O365PdlAndWorkloadPair();
+                this.PdlAndWorkload.ApplyExploratoryFieldSpec(ec.NewChild("pdlAndWorkload"));
+
+            } else {
+
+                this.PdlAndWorkload.ApplyExploratoryFieldSpec(ec.NewChild("pdlAndWorkload"));
+
+            }
+        }
+        else if (this.PdlAndWorkload != null && ec.Excludes("pdlAndWorkload",false))
+        {
+            this.PdlAndWorkload = null;
         }
     }
 
@@ -118,9 +150,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<O365PdlGroup> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

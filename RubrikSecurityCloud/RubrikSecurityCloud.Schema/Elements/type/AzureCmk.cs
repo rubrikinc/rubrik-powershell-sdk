@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> AzureRegion? Region
         // GraphQL -> region: AzureRegion! (enum)
         if (this.Region != null) {
-            s += ind + "region\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "region\n" ;
+            } else {
+                s += ind + "region\n" ;
+            }
         }
         //      C# -> System.String? KeyName
         // GraphQL -> keyName: String! (scalar)
         if (this.KeyName != null) {
-            s += ind + "keyName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "keyName\n" ;
+            } else {
+                s += ind + "keyName\n" ;
+            }
         }
         //      C# -> System.String? KeyVaultName
         // GraphQL -> keyVaultName: String! (scalar)
         if (this.KeyVaultName != null) {
-            s += ind + "keyVaultName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "keyVaultName\n" ;
+            } else {
+                s += ind + "keyVaultName\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> AzureRegion? Region
         // GraphQL -> region: AzureRegion! (enum)
-        if (this.Region == null && ec.Includes("region",true))
+        if (ec.Includes("region",true))
         {
-            this.Region = new AzureRegion();
+            if(this.Region == null) {
+
+                this.Region = new AzureRegion();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Region != null && ec.Excludes("region",true))
+        {
+            this.Region = null;
         }
         //      C# -> System.String? KeyName
         // GraphQL -> keyName: String! (scalar)
-        if (this.KeyName == null && ec.Includes("keyName",true))
+        if (ec.Includes("keyName",true))
         {
-            this.KeyName = "FETCH";
+            if(this.KeyName == null) {
+
+                this.KeyName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.KeyName != null && ec.Excludes("keyName",true))
+        {
+            this.KeyName = null;
         }
         //      C# -> System.String? KeyVaultName
         // GraphQL -> keyVaultName: String! (scalar)
-        if (this.KeyVaultName == null && ec.Includes("keyVaultName",true))
+        if (ec.Includes("keyVaultName",true))
         {
-            this.KeyVaultName = "FETCH";
+            if(this.KeyVaultName == null) {
+
+                this.KeyVaultName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.KeyVaultName != null && ec.Excludes("keyVaultName",true))
+        {
+            this.KeyVaultName = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AzureCmk> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

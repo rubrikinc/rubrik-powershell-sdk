@@ -101,44 +101,73 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> SapHanaSslInfoEncryptionProvider? EncryptionProvider
         // GraphQL -> encryptionProvider: SapHanaSslInfoEncryptionProvider! (enum)
         if (this.EncryptionProvider != null) {
-            s += ind + "encryptionProvider\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "encryptionProvider\n" ;
+            } else {
+                s += ind + "encryptionProvider\n" ;
+            }
         }
         //      C# -> System.String? CryptoLibPath
         // GraphQL -> cryptoLibPath: String (scalar)
         if (this.CryptoLibPath != null) {
-            s += ind + "cryptoLibPath\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cryptoLibPath\n" ;
+            } else {
+                s += ind + "cryptoLibPath\n" ;
+            }
         }
         //      C# -> System.String? HostNameInCertificate
         // GraphQL -> hostNameInCertificate: String (scalar)
         if (this.HostNameInCertificate != null) {
-            s += ind + "hostNameInCertificate\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostNameInCertificate\n" ;
+            } else {
+                s += ind + "hostNameInCertificate\n" ;
+            }
         }
         //      C# -> System.String? KeyStorePath
         // GraphQL -> keyStorePath: String! (scalar)
         if (this.KeyStorePath != null) {
-            s += ind + "keyStorePath\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "keyStorePath\n" ;
+            } else {
+                s += ind + "keyStorePath\n" ;
+            }
         }
         //      C# -> System.Boolean? ShouldEncrypt
         // GraphQL -> shouldEncrypt: Boolean (scalar)
         if (this.ShouldEncrypt != null) {
-            s += ind + "shouldEncrypt\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "shouldEncrypt\n" ;
+            } else {
+                s += ind + "shouldEncrypt\n" ;
+            }
         }
         //      C# -> System.Boolean? ShouldValidateCertificate
         // GraphQL -> shouldValidateCertificate: Boolean (scalar)
         if (this.ShouldValidateCertificate != null) {
-            s += ind + "shouldValidateCertificate\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "shouldValidateCertificate\n" ;
+            } else {
+                s += ind + "shouldValidateCertificate\n" ;
+            }
         }
         //      C# -> System.String? TrustStorePath
         // GraphQL -> trustStorePath: String (scalar)
         if (this.TrustStorePath != null) {
-            s += ind + "trustStorePath\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "trustStorePath\n" ;
+            } else {
+                s += ind + "trustStorePath\n" ;
+            }
         }
         return s;
     }
@@ -149,45 +178,122 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> SapHanaSslInfoEncryptionProvider? EncryptionProvider
         // GraphQL -> encryptionProvider: SapHanaSslInfoEncryptionProvider! (enum)
-        if (this.EncryptionProvider == null && ec.Includes("encryptionProvider",true))
+        if (ec.Includes("encryptionProvider",true))
         {
-            this.EncryptionProvider = new SapHanaSslInfoEncryptionProvider();
+            if(this.EncryptionProvider == null) {
+
+                this.EncryptionProvider = new SapHanaSslInfoEncryptionProvider();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EncryptionProvider != null && ec.Excludes("encryptionProvider",true))
+        {
+            this.EncryptionProvider = null;
         }
         //      C# -> System.String? CryptoLibPath
         // GraphQL -> cryptoLibPath: String (scalar)
-        if (this.CryptoLibPath == null && ec.Includes("cryptoLibPath",true))
+        if (ec.Includes("cryptoLibPath",true))
         {
-            this.CryptoLibPath = "FETCH";
+            if(this.CryptoLibPath == null) {
+
+                this.CryptoLibPath = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CryptoLibPath != null && ec.Excludes("cryptoLibPath",true))
+        {
+            this.CryptoLibPath = null;
         }
         //      C# -> System.String? HostNameInCertificate
         // GraphQL -> hostNameInCertificate: String (scalar)
-        if (this.HostNameInCertificate == null && ec.Includes("hostNameInCertificate",true))
+        if (ec.Includes("hostNameInCertificate",true))
         {
-            this.HostNameInCertificate = "FETCH";
+            if(this.HostNameInCertificate == null) {
+
+                this.HostNameInCertificate = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.HostNameInCertificate != null && ec.Excludes("hostNameInCertificate",true))
+        {
+            this.HostNameInCertificate = null;
         }
         //      C# -> System.String? KeyStorePath
         // GraphQL -> keyStorePath: String! (scalar)
-        if (this.KeyStorePath == null && ec.Includes("keyStorePath",true))
+        if (ec.Includes("keyStorePath",true))
         {
-            this.KeyStorePath = "FETCH";
+            if(this.KeyStorePath == null) {
+
+                this.KeyStorePath = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.KeyStorePath != null && ec.Excludes("keyStorePath",true))
+        {
+            this.KeyStorePath = null;
         }
         //      C# -> System.Boolean? ShouldEncrypt
         // GraphQL -> shouldEncrypt: Boolean (scalar)
-        if (this.ShouldEncrypt == null && ec.Includes("shouldEncrypt",true))
+        if (ec.Includes("shouldEncrypt",true))
         {
-            this.ShouldEncrypt = true;
+            if(this.ShouldEncrypt == null) {
+
+                this.ShouldEncrypt = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShouldEncrypt != null && ec.Excludes("shouldEncrypt",true))
+        {
+            this.ShouldEncrypt = null;
         }
         //      C# -> System.Boolean? ShouldValidateCertificate
         // GraphQL -> shouldValidateCertificate: Boolean (scalar)
-        if (this.ShouldValidateCertificate == null && ec.Includes("shouldValidateCertificate",true))
+        if (ec.Includes("shouldValidateCertificate",true))
         {
-            this.ShouldValidateCertificate = true;
+            if(this.ShouldValidateCertificate == null) {
+
+                this.ShouldValidateCertificate = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShouldValidateCertificate != null && ec.Excludes("shouldValidateCertificate",true))
+        {
+            this.ShouldValidateCertificate = null;
         }
         //      C# -> System.String? TrustStorePath
         // GraphQL -> trustStorePath: String (scalar)
-        if (this.TrustStorePath == null && ec.Includes("trustStorePath",true))
+        if (ec.Includes("trustStorePath",true))
         {
-            this.TrustStorePath = "FETCH";
+            if(this.TrustStorePath == null) {
+
+                this.TrustStorePath = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TrustStorePath != null && ec.Excludes("trustStorePath",true))
+        {
+            this.TrustStorePath = null;
         }
     }
 
@@ -214,9 +320,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SapHanaSslInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

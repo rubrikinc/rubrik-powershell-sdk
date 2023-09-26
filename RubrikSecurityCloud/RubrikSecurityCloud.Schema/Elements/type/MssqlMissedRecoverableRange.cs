@@ -92,44 +92,69 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> DateTime? BeginTime
         // GraphQL -> beginTime: DateTime (scalar)
         if (this.BeginTime != null) {
-            s += ind + "beginTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "beginTime\n" ;
+            } else {
+                s += ind + "beginTime\n" ;
+            }
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
         if (this.Description != null) {
-            s += ind + "description\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "description\n" ;
+            } else {
+                s += ind + "description\n" ;
+            }
         }
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime (scalar)
         if (this.EndTime != null) {
-            s += ind + "endTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "endTime\n" ;
+            } else {
+                s += ind + "endTime\n" ;
+            }
         }
         //      C# -> System.String? ErrorType
         // GraphQL -> errorType: String! (scalar)
         if (this.ErrorType != null) {
-            s += ind + "errorType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "errorType\n" ;
+            } else {
+                s += ind + "errorType\n" ;
+            }
         }
         //      C# -> MssqlMissedRecoverableRangeError? FirstError
         // GraphQL -> firstError: MssqlMissedRecoverableRangeError (type)
         if (this.FirstError != null) {
-            var fspec = this.FirstError.AsFieldSpec(indent+1);
+            var fspec = this.FirstError.AsFieldSpec(conf.Child("firstError"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "firstError {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "firstError {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> MssqlMissedRecoverableRangeError? LastError
         // GraphQL -> lastError: MssqlMissedRecoverableRangeError (type)
         if (this.LastError != null) {
-            var fspec = this.LastError.AsFieldSpec(indent+1);
+            var fspec = this.LastError.AsFieldSpec(conf.Child("lastError"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "lastError {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "lastError {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -141,41 +166,109 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> DateTime? BeginTime
         // GraphQL -> beginTime: DateTime (scalar)
-        if (this.BeginTime == null && ec.Includes("beginTime",true))
+        if (ec.Includes("beginTime",true))
         {
-            this.BeginTime = new DateTime();
+            if(this.BeginTime == null) {
+
+                this.BeginTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.BeginTime != null && ec.Excludes("beginTime",true))
+        {
+            this.BeginTime = null;
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
-        if (this.Description == null && ec.Includes("description",true))
+        if (ec.Includes("description",true))
         {
-            this.Description = "FETCH";
+            if(this.Description == null) {
+
+                this.Description = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Description != null && ec.Excludes("description",true))
+        {
+            this.Description = null;
         }
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime (scalar)
-        if (this.EndTime == null && ec.Includes("endTime",true))
+        if (ec.Includes("endTime",true))
         {
-            this.EndTime = new DateTime();
+            if(this.EndTime == null) {
+
+                this.EndTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EndTime != null && ec.Excludes("endTime",true))
+        {
+            this.EndTime = null;
         }
         //      C# -> System.String? ErrorType
         // GraphQL -> errorType: String! (scalar)
-        if (this.ErrorType == null && ec.Includes("errorType",true))
+        if (ec.Includes("errorType",true))
         {
-            this.ErrorType = "FETCH";
+            if(this.ErrorType == null) {
+
+                this.ErrorType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ErrorType != null && ec.Excludes("errorType",true))
+        {
+            this.ErrorType = null;
         }
         //      C# -> MssqlMissedRecoverableRangeError? FirstError
         // GraphQL -> firstError: MssqlMissedRecoverableRangeError (type)
-        if (this.FirstError == null && ec.Includes("firstError",false))
+        if (ec.Includes("firstError",false))
         {
-            this.FirstError = new MssqlMissedRecoverableRangeError();
-            this.FirstError.ApplyExploratoryFieldSpec(ec.NewChild("firstError"));
+            if(this.FirstError == null) {
+
+                this.FirstError = new MssqlMissedRecoverableRangeError();
+                this.FirstError.ApplyExploratoryFieldSpec(ec.NewChild("firstError"));
+
+            } else {
+
+                this.FirstError.ApplyExploratoryFieldSpec(ec.NewChild("firstError"));
+
+            }
+        }
+        else if (this.FirstError != null && ec.Excludes("firstError",false))
+        {
+            this.FirstError = null;
         }
         //      C# -> MssqlMissedRecoverableRangeError? LastError
         // GraphQL -> lastError: MssqlMissedRecoverableRangeError (type)
-        if (this.LastError == null && ec.Includes("lastError",false))
+        if (ec.Includes("lastError",false))
         {
-            this.LastError = new MssqlMissedRecoverableRangeError();
-            this.LastError.ApplyExploratoryFieldSpec(ec.NewChild("lastError"));
+            if(this.LastError == null) {
+
+                this.LastError = new MssqlMissedRecoverableRangeError();
+                this.LastError.ApplyExploratoryFieldSpec(ec.NewChild("lastError"));
+
+            } else {
+
+                this.LastError.ApplyExploratoryFieldSpec(ec.NewChild("lastError"));
+
+            }
+        }
+        else if (this.LastError != null && ec.Excludes("lastError",false))
+        {
+            this.LastError = null;
         }
     }
 
@@ -202,9 +295,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<MssqlMissedRecoverableRange> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

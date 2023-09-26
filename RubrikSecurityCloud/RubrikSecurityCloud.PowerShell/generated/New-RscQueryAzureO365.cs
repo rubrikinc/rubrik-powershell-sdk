@@ -16,47 +16,430 @@ using RubrikSecurityCloud.Types;
 using RubrikSecurityCloud.NetSDK.Client;
 using RubrikSecurityCloud.PowerShell.Private;
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
+
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Queries for the 'AzureO365' API domain.
+    /// Create a new RscQuery object for any of the 11
+    /// operations in the 'AzureO365' API domain:
+    /// CheckNSGOutboundRules, CheckNetworkSubnet, CheckResourceGroupName, CheckStorageAccountAccessibility, CheckStorageAccountName, CheckSubscriptionQuota, CheckVirtualNetworkName, Exocompute, GetAzureHostType, GetNetworkSubnetUnusedAddr, or ValidateUserRoles.
     /// </summary>
     /// <description>
-    /// New-RscQueryAzureO365 is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
+    /// New-RscQueryAzureO365 creates a new
+    /// query object for operations
+    /// in the 'AzureO365' API domain. It only creates a data structure,
+    /// it does not execute the operation. This cmdlet does not need a
+    /// connection to run. To execute the operation, either call Invoke()
+    /// on the object returned by this cmdlet, or pass the object to
+    /// Invoke-Rsc.
+    /// There are 11 operations
+    /// in the 'AzureO365' API domain. Select the operation this
+    /// query is for by specifying the appropriate switch parameter;
+    /// one of: -CheckNSGOutboundRules, -CheckNetworkSubnet, -CheckResourceGroupName, -CheckStorageAccountAccessibility, -CheckStorageAccountName, -CheckSubscriptionQuota, -CheckVirtualNetworkName, -Exocompute, -GetAzureHostType, -GetNetworkSubnetUnusedAddr, -ValidateUserRoles.
+    /// Alternatively, you can specify the operation by setting the
+    /// -Op parameter, for example: -Op CheckNSGOutboundRules,
+    /// which is equivalent to specifying -CheckNSGOutboundRules.
+    /// Each operation has its own set of variables that can be set with
+    /// the -Var parameter. For more info about the variables, 
+    /// call Info() on the object returned by this cmdlet, for example:
+    /// (New-RscQueryAzureO365 -CheckNSGOutboundRules).Info().
+    /// Each operation also has its own set of fields that can be
+    /// selected for retrieval. If you do not specify any fields,
+    /// a set of default fields will be selected. The selection is
+    /// rule-based, and tries to select the most commonly used fields.
+    /// For example if a field is named 'id' or 'name', 
+    /// it will be selected. If you give -FieldProfile DETAIL, then
+    /// another set of rules will be used to select more fields on top
+    /// of the default fields. The set of rules for selecting fields
+    /// is called a field profile. You can specify a field profile
+    /// with the -FieldProfile parameter. You can add or remove fields
+    /// from the field profile with the -AddField and -RemoveField
+    /// parameters. If you end up with too many -AddField and -RemoveField
+    /// parameters, you can list them in a text file, one per line,
+    /// with a '+' or '-' prefix, and pass the file name to the
+    /// -FilePatch parameter. Profiles and Patches are one way to
+    /// customize the fields that are selected. Another way is to
+    /// specify the fields by passing the -Field parameter an object
+    /// that contains the fields you want to select as properties.
+    /// Any property that is not null in that object is interpreted
+    /// as a field to select
+    /// (and the actual values they are set to do not matter).
+    /// The [RubrikSecurityCloud.Types] namespace
+    /// contains a set of classes that you can use to specify fields.
+    /// To know what [RubrikSecurityCloud.Types] object to use
+    /// for a specific operation,
+    /// call Info() on the object returned by this cmdlet, for example:
+    /// (New-RscQueryAzureO365 -CheckNSGOutboundRules).Info().
+    /// You can combine a -Field parameter with patching parameters.
+    /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
+    ///
     /// </description>
+    ///
     /// <example>
-    /// <code>New-RscQueryAzureO365 -Exocompute [-Arg ..] [-Field ..]</code>
+    /// Runs the CheckNSGOutboundRules operation
+    /// of the 'AzureO365' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AzureO365
+    /// # API Operation: CheckNSGOutboundRules
+    /// 
+    /// $query = New-RscQueryAzureO365 -CheckNSGOutboundRules
+    /// 
+    /// # REQUIRED
+    /// $query.Var.tenantId = $someString
+    /// # REQUIRED
+    /// $query.Var.subscriptionId = $someString
+    /// # REQUIRED
+    /// $query.Var.resourceGroupName = $someString
+    /// # REQUIRED
+    /// $query.Var.vnet_name = $someString
+    /// # REQUIRED
+    /// $query.Var.subnet_name = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AzureNetworkSecurityGroupResp
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryAzureO365 -CheckStorageAccountName [-Arg ..] [-Field ..]</code>
+    /// Runs the CheckNetworkSubnet operation
+    /// of the 'AzureO365' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AzureO365
+    /// # API Operation: CheckNetworkSubnet
+    /// 
+    /// $query = New-RscQueryAzureO365 -CheckNetworkSubnet
+    /// 
+    /// # REQUIRED
+    /// $query.Var.tenantId = $someString
+    /// # REQUIRED
+    /// $query.Var.subscriptionId = $someString
+    /// # REQUIRED
+    /// $query.Var.resourceGroupName = $someString
+    /// # REQUIRED
+    /// $query.Var.vnet_name = $someString
+    /// # REQUIRED
+    /// $query.Var.subnet_name = $someString
+    /// # REQUIRED
+    /// $query.Var.strict_addr_check = $someBoolean
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AzureNetworkSubnetResp
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryAzureO365 -CheckStorageAccountAccessibility [-Arg ..] [-Field ..]</code>
+    /// Runs the CheckResourceGroupName operation
+    /// of the 'AzureO365' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AzureO365
+    /// # API Operation: CheckResourceGroupName
+    /// 
+    /// $query = New-RscQueryAzureO365 -CheckResourceGroupName
+    /// 
+    /// # REQUIRED
+    /// $query.Var.tenantId = $someString
+    /// # REQUIRED
+    /// $query.Var.subscriptionId = $someString
+    /// # REQUIRED
+    /// $query.Var.groupName = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AzureResourceAvailabilityResp
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryAzureO365 -CheckSubscriptionQuota [-Arg ..] [-Field ..]</code>
+    /// Runs the CheckStorageAccountAccessibility operation
+    /// of the 'AzureO365' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AzureO365
+    /// # API Operation: CheckStorageAccountAccessibility
+    /// 
+    /// $query = New-RscQueryAzureO365 -CheckStorageAccountAccessibility
+    /// 
+    /// # REQUIRED
+    /// $query.Var.tenantId = $someString
+    /// # REQUIRED
+    /// $query.Var.subscriptionId = $someString
+    /// # REQUIRED
+    /// $query.Var.storage_account_name = $someString
+    /// # REQUIRED
+    /// $query.Var.groupName = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AzureResourceAvailabilityResp
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryAzureO365 -CheckResourceGroupName [-Arg ..] [-Field ..]</code>
+    /// Runs the CheckStorageAccountName operation
+    /// of the 'AzureO365' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AzureO365
+    /// # API Operation: CheckStorageAccountName
+    /// 
+    /// $query = New-RscQueryAzureO365 -CheckStorageAccountName
+    /// 
+    /// # REQUIRED
+    /// $query.Var.tenantId = $someString
+    /// # REQUIRED
+    /// $query.Var.subscriptionId = $someString
+    /// # REQUIRED
+    /// $query.Var.storage_account_name = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AzureResourceAvailabilityResp
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryAzureO365 -CheckVirtualNetworkName [-Arg ..] [-Field ..]</code>
+    /// Runs the CheckSubscriptionQuota operation
+    /// of the 'AzureO365' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AzureO365
+    /// # API Operation: CheckSubscriptionQuota
+    /// 
+    /// $query = New-RscQueryAzureO365 -CheckSubscriptionQuota
+    /// 
+    /// # REQUIRED
+    /// $query.Var.tenantId = $someString
+    /// # REQUIRED
+    /// $query.Var.subscriptionId = $someString
+    /// # REQUIRED
+    /// $query.Var.regionName = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AzureResourceAvailabilityResp
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryAzureO365 -ValidateUserRoles [-Arg ..] [-Field ..]</code>
+    /// Runs the CheckVirtualNetworkName operation
+    /// of the 'AzureO365' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AzureO365
+    /// # API Operation: CheckVirtualNetworkName
+    /// 
+    /// $query = New-RscQueryAzureO365 -CheckVirtualNetworkName
+    /// 
+    /// # REQUIRED
+    /// $query.Var.tenantId = $someString
+    /// # REQUIRED
+    /// $query.Var.subscriptionId = $someString
+    /// # REQUIRED
+    /// $query.Var.groupName = $someString
+    /// # REQUIRED
+    /// $query.Var.vnet_name = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AzureResourceAvailabilityResp
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryAzureO365 -CheckNSGOutboundRules [-Arg ..] [-Field ..]</code>
+    /// Runs the Exocompute operation
+    /// of the 'AzureO365' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AzureO365
+    /// # API Operation: Exocompute
+    /// 
+    /// $query = New-RscQueryAzureO365 -Exocompute
+    /// 
+    /// # REQUIRED
+    /// $query.Var.orgId = $someString
+    /// # REQUIRED
+    /// $query.Var.exocomputeClusterId = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: GetAzureO365ExocomputeResp
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryAzureO365 -CheckNetworkSubnet [-Arg ..] [-Field ..]</code>
+    /// Runs the GetAzureHostType operation
+    /// of the 'AzureO365' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AzureO365
+    /// # API Operation: GetAzureHostType
+    /// 
+    /// $query = New-RscQueryAzureO365 -GetAzureHostType
+    /// 
+    /// # No variables for this query.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: GetAzureHostTypeResp
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryAzureO365 -GetNetworkSubnetUnusedAddr [-Arg ..] [-Field ..]</code>
+    /// Runs the GetNetworkSubnetUnusedAddr operation
+    /// of the 'AzureO365' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AzureO365
+    /// # API Operation: GetNetworkSubnetUnusedAddr
+    /// 
+    /// $query = New-RscQueryAzureO365 -GetNetworkSubnetUnusedAddr
+    /// 
+    /// # REQUIRED
+    /// $query.Var.tenantId = $someString
+    /// # REQUIRED
+    /// $query.Var.subscriptionId = $someString
+    /// # REQUIRED
+    /// $query.Var.resourceGroupName = $someString
+    /// # REQUIRED
+    /// $query.Var.vnet_name = $someString
+    /// # REQUIRED
+    /// $query.Var.subnet_name = $someString
+    /// # REQUIRED
+    /// $query.Var.strict_addr_check = $someBoolean
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AzureNetworkSubnetUnusedAddrResp
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryAzureO365 -GetAzureHostType [-Arg ..] [-Field ..]</code>
+    /// Runs the ValidateUserRoles operation
+    /// of the 'AzureO365' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AzureO365
+    /// # API Operation: ValidateUserRoles
+    /// 
+    /// $query = New-RscQueryAzureO365 -ValidateUserRoles
+    /// 
+    /// # REQUIRED
+    /// $query.Var.tenantId = $someString
+    /// # REQUIRED
+    /// $query.Var.subscriptionId = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AzureUserRoleResp
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -66,318 +449,231 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     public class New_RscQueryAzureO365 : RscGqlPSCmdlet
     {
         
-        /// <summary>
-        /// Exocompute parameter set
-        ///
-        /// [GraphQL: azureO365Exocompute]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "Exocompute",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Gets the exocompute details of the given cluster.
-[GraphQL: azureO365Exocompute]",
-            Position = 0
-        )]
-        public SwitchParameter Exocompute { get; set; }
-
-        
-        /// <summary>
-        /// CheckStorageAccountName parameter set
-        ///
-        /// [GraphQL: azureO365CheckStorageAccountName]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "CheckStorageAccountName",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Checks the storage account name.
-[GraphQL: azureO365CheckStorageAccountName]",
-            Position = 0
-        )]
-        public SwitchParameter CheckStorageAccountName { get; set; }
-
-        
-        /// <summary>
-        /// CheckStorageAccountAccessibility parameter set
-        ///
-        /// [GraphQL: azureO365CheckStorageAccountAccessibility]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "CheckStorageAccountAccessibility",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Checks the accessibility of the storage account.
-[GraphQL: azureO365CheckStorageAccountAccessibility]",
-            Position = 0
-        )]
-        public SwitchParameter CheckStorageAccountAccessibility { get; set; }
-
-        
-        /// <summary>
-        /// CheckSubscriptionQuota parameter set
-        ///
-        /// [GraphQL: azureO365CheckSubscriptionQuota]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "CheckSubscriptionQuota",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Checks the Azure subscription quota.
-[GraphQL: azureO365CheckSubscriptionQuota]",
-            Position = 0
-        )]
-        public SwitchParameter CheckSubscriptionQuota { get; set; }
-
-        
-        /// <summary>
-        /// CheckResourceGroupName parameter set
-        ///
-        /// [GraphQL: azureO365CheckResourceGroupName]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "CheckResourceGroupName",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Checks the resource group name.
-[GraphQL: azureO365CheckResourceGroupName]",
-            Position = 0
-        )]
-        public SwitchParameter CheckResourceGroupName { get; set; }
-
-        
-        /// <summary>
-        /// CheckVirtualNetworkName parameter set
-        ///
-        /// [GraphQL: azureO365CheckVirtualNetworkName]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "CheckVirtualNetworkName",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Checks the virtual network name.
-[GraphQL: azureO365CheckVirtualNetworkName]",
-            Position = 0
-        )]
-        public SwitchParameter CheckVirtualNetworkName { get; set; }
-
-        
-        /// <summary>
-        /// ValidateUserRoles parameter set
-        ///
-        /// [GraphQL: azureO365ValidateUserRoles]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "ValidateUserRoles",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Validates the user roles in the subscription.
-[GraphQL: azureO365ValidateUserRoles]",
-            Position = 0
-        )]
-        public SwitchParameter ValidateUserRoles { get; set; }
-
-        
-        /// <summary>
-        /// CheckNSGOutboundRules parameter set
-        ///
-        /// [GraphQL: azureO365CheckNSGOutboundRules]
-        /// </summary>
         [Parameter(
             ParameterSetName = "CheckNSGOutboundRules",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Checks the NSG Outbound rules of the Azure resources.
-[GraphQL: azureO365CheckNSGOutboundRules]",
-            Position = 0
+@"Create a query object for the 'CheckNSGOutboundRules' operation
+in the 'AzureO365' API domain.
+Description of the operation:
+Checks the NSG Outbound rules of the Azure resources.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azureo365checknsgoutboundrules.doc.html]"
+            // No Position -> named parameter only.
         )]
         public SwitchParameter CheckNSGOutboundRules { get; set; }
 
         
-        /// <summary>
-        /// CheckNetworkSubnet parameter set
-        ///
-        /// [GraphQL: azureO365CheckNetworkSubnet]
-        /// </summary>
         [Parameter(
             ParameterSetName = "CheckNetworkSubnet",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Checks the network subnet of the Azure resources.
-[GraphQL: azureO365CheckNetworkSubnet]",
-            Position = 0
+@"Create a query object for the 'CheckNetworkSubnet' operation
+in the 'AzureO365' API domain.
+Description of the operation:
+Checks the network subnet of the Azure resources.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azureo365checknetworksubnet.doc.html]"
+            // No Position -> named parameter only.
         )]
         public SwitchParameter CheckNetworkSubnet { get; set; }
 
         
-        /// <summary>
-        /// GetNetworkSubnetUnusedAddr parameter set
-        ///
-        /// [GraphQL: azureO365GetNetworkSubnetUnusedAddr]
-        /// </summary>
         [Parameter(
-            ParameterSetName = "GetNetworkSubnetUnusedAddr",
+            ParameterSetName = "CheckResourceGroupName",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Retrieves the unused addresses available in a subnet.
-[GraphQL: azureO365GetNetworkSubnetUnusedAddr]",
-            Position = 0
+@"Create a query object for the 'CheckResourceGroupName' operation
+in the 'AzureO365' API domain.
+Description of the operation:
+Checks the resource group name.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azureo365checkresourcegroupname.doc.html]"
+            // No Position -> named parameter only.
         )]
-        public SwitchParameter GetNetworkSubnetUnusedAddr { get; set; }
+        public SwitchParameter CheckResourceGroupName { get; set; }
 
         
-        /// <summary>
-        /// GetAzureHostType parameter set
-        ///
-        /// [GraphQL: azureO365GetAzureHostType]
-        /// </summary>
+        [Parameter(
+            ParameterSetName = "CheckStorageAccountAccessibility",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'CheckStorageAccountAccessibility' operation
+in the 'AzureO365' API domain.
+Description of the operation:
+Checks the accessibility of the storage account.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azureo365checkstorageaccountaccessibility.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter CheckStorageAccountAccessibility { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "CheckStorageAccountName",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'CheckStorageAccountName' operation
+in the 'AzureO365' API domain.
+Description of the operation:
+Checks the storage account name.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azureo365checkstorageaccountname.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter CheckStorageAccountName { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "CheckSubscriptionQuota",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'CheckSubscriptionQuota' operation
+in the 'AzureO365' API domain.
+Description of the operation:
+Checks the Azure subscription quota.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azureo365checksubscriptionquota.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter CheckSubscriptionQuota { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "CheckVirtualNetworkName",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'CheckVirtualNetworkName' operation
+in the 'AzureO365' API domain.
+Description of the operation:
+Checks the virtual network name.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azureo365checkvirtualnetworkname.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter CheckVirtualNetworkName { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "Exocompute",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'Exocompute' operation
+in the 'AzureO365' API domain.
+Description of the operation:
+Gets the exocompute details of the given cluster.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azureo365exocompute.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter Exocompute { get; set; }
+
+        
         [Parameter(
             ParameterSetName = "GetAzureHostType",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Retrieves the AzureHostType of the account.
-[GraphQL: azureO365GetAzureHostType]",
-            Position = 0
+@"Create a query object for the 'GetAzureHostType' operation
+in the 'AzureO365' API domain.
+Description of the operation:
+Retrieves the AzureHostType of the account.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azureo365getazurehosttype.doc.html]"
+            // No Position -> named parameter only.
         )]
         public SwitchParameter GetAzureHostType { get; set; }
 
+        
+        [Parameter(
+            ParameterSetName = "GetNetworkSubnetUnusedAddr",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'GetNetworkSubnetUnusedAddr' operation
+in the 'AzureO365' API domain.
+Description of the operation:
+Retrieves the unused addresses available in a subnet.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azureo365getnetworksubnetunusedaddr.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter GetNetworkSubnetUnusedAddr { get; set; }
 
-// ignore warning 'Missing XML comment'
-#pragma warning disable 1591
+        
+        [Parameter(
+            ParameterSetName = "ValidateUserRoles",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'ValidateUserRoles' operation
+in the 'AzureO365' API domain.
+Description of the operation:
+Validates the user roles in the subscription.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/azureo365validateuserroles.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter ValidateUserRoles { get; set; }
+
+
+
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
             try
             {
-                switch(Op)
+                switch(this.GetOp().OpName())
                 {
-                    case "Exocompute":
-                        this.ProcessRecord_Exocompute();
-                        break;
-                    case "CheckStorageAccountName":
-                        this.ProcessRecord_CheckStorageAccountName();
-                        break;
-                    case "CheckStorageAccountAccessibility":
-                        this.ProcessRecord_CheckStorageAccountAccessibility();
-                        break;
-                    case "CheckSubscriptionQuota":
-                        this.ProcessRecord_CheckSubscriptionQuota();
-                        break;
-                    case "CheckResourceGroupName":
-                        this.ProcessRecord_CheckResourceGroupName();
-                        break;
-                    case "CheckVirtualNetworkName":
-                        this.ProcessRecord_CheckVirtualNetworkName();
-                        break;
-                    case "ValidateUserRoles":
-                        this.ProcessRecord_ValidateUserRoles();
-                        break;
                     case "CheckNSGOutboundRules":
                         this.ProcessRecord_CheckNSGOutboundRules();
                         break;
                     case "CheckNetworkSubnet":
                         this.ProcessRecord_CheckNetworkSubnet();
                         break;
-                    case "GetNetworkSubnetUnusedAddr":
-                        this.ProcessRecord_GetNetworkSubnetUnusedAddr();
+                    case "CheckResourceGroupName":
+                        this.ProcessRecord_CheckResourceGroupName();
+                        break;
+                    case "CheckStorageAccountAccessibility":
+                        this.ProcessRecord_CheckStorageAccountAccessibility();
+                        break;
+                    case "CheckStorageAccountName":
+                        this.ProcessRecord_CheckStorageAccountName();
+                        break;
+                    case "CheckSubscriptionQuota":
+                        this.ProcessRecord_CheckSubscriptionQuota();
+                        break;
+                    case "CheckVirtualNetworkName":
+                        this.ProcessRecord_CheckVirtualNetworkName();
+                        break;
+                    case "Exocompute":
+                        this.ProcessRecord_Exocompute();
                         break;
                     case "GetAzureHostType":
                         this.ProcessRecord_GetAzureHostType();
                         break;
+                    case "GetNetworkSubnetUnusedAddr":
+                        this.ProcessRecord_GetNetworkSubnetUnusedAddr();
+                        break;
+                    case "ValidateUserRoles":
+                        this.ProcessRecord_ValidateUserRoles();
+                        break;
                     default:
-                        throw new Exception("Unknown Operation " + Op);
+                        throw new Exception("Unknown Operation " + this.GetOp().OpName());
                 }
            }
            catch (Exception ex)
            {
                 ThrowTerminatingException(ex);
            }
-        }
-#pragma warning restore 1591
-
-        // This parameter set invokes a single graphql operation:
-        // azureO365Exocompute.
-        internal void ProcessRecord_Exocompute()
-        {
-            this._logger.name += " -Exocompute";
-            // Create new graphql operation azureO365Exocompute
-            InitQueryAzureO365Exocompute();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // azureO365CheckStorageAccountName.
-        internal void ProcessRecord_CheckStorageAccountName()
-        {
-            this._logger.name += " -CheckStorageAccountName";
-            // Create new graphql operation azureO365CheckStorageAccountName
-            InitQueryAzureO365CheckStorageAccountName();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // azureO365CheckStorageAccountAccessibility.
-        internal void ProcessRecord_CheckStorageAccountAccessibility()
-        {
-            this._logger.name += " -CheckStorageAccountAccessibility";
-            // Create new graphql operation azureO365CheckStorageAccountAccessibility
-            InitQueryAzureO365CheckStorageAccountAccessibility();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // azureO365CheckSubscriptionQuota.
-        internal void ProcessRecord_CheckSubscriptionQuota()
-        {
-            this._logger.name += " -CheckSubscriptionQuota";
-            // Create new graphql operation azureO365CheckSubscriptionQuota
-            InitQueryAzureO365CheckSubscriptionQuota();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // azureO365CheckResourceGroupName.
-        internal void ProcessRecord_CheckResourceGroupName()
-        {
-            this._logger.name += " -CheckResourceGroupName";
-            // Create new graphql operation azureO365CheckResourceGroupName
-            InitQueryAzureO365CheckResourceGroupName();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // azureO365CheckVirtualNetworkName.
-        internal void ProcessRecord_CheckVirtualNetworkName()
-        {
-            this._logger.name += " -CheckVirtualNetworkName";
-            // Create new graphql operation azureO365CheckVirtualNetworkName
-            InitQueryAzureO365CheckVirtualNetworkName();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // azureO365ValidateUserRoles.
-        internal void ProcessRecord_ValidateUserRoles()
-        {
-            this._logger.name += " -ValidateUserRoles";
-            // Create new graphql operation azureO365ValidateUserRoles
-            InitQueryAzureO365ValidateUserRoles();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -399,12 +695,57 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // azureO365GetNetworkSubnetUnusedAddr.
-        internal void ProcessRecord_GetNetworkSubnetUnusedAddr()
+        // azureO365CheckResourceGroupName.
+        internal void ProcessRecord_CheckResourceGroupName()
         {
-            this._logger.name += " -GetNetworkSubnetUnusedAddr";
-            // Create new graphql operation azureO365GetNetworkSubnetUnusedAddr
-            InitQueryAzureO365GetNetworkSubnetUnusedAddr();
+            this._logger.name += " -CheckResourceGroupName";
+            // Create new graphql operation azureO365CheckResourceGroupName
+            InitQueryAzureO365CheckResourceGroupName();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // azureO365CheckStorageAccountAccessibility.
+        internal void ProcessRecord_CheckStorageAccountAccessibility()
+        {
+            this._logger.name += " -CheckStorageAccountAccessibility";
+            // Create new graphql operation azureO365CheckStorageAccountAccessibility
+            InitQueryAzureO365CheckStorageAccountAccessibility();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // azureO365CheckStorageAccountName.
+        internal void ProcessRecord_CheckStorageAccountName()
+        {
+            this._logger.name += " -CheckStorageAccountName";
+            // Create new graphql operation azureO365CheckStorageAccountName
+            InitQueryAzureO365CheckStorageAccountName();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // azureO365CheckSubscriptionQuota.
+        internal void ProcessRecord_CheckSubscriptionQuota()
+        {
+            this._logger.name += " -CheckSubscriptionQuota";
+            // Create new graphql operation azureO365CheckSubscriptionQuota
+            InitQueryAzureO365CheckSubscriptionQuota();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // azureO365CheckVirtualNetworkName.
+        internal void ProcessRecord_CheckVirtualNetworkName()
+        {
+            this._logger.name += " -CheckVirtualNetworkName";
+            // Create new graphql operation azureO365CheckVirtualNetworkName
+            InitQueryAzureO365CheckVirtualNetworkName();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // azureO365Exocompute.
+        internal void ProcessRecord_Exocompute()
+        {
+            this._logger.name += " -Exocompute";
+            // Create new graphql operation azureO365Exocompute
+            InitQueryAzureO365Exocompute();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -416,198 +757,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             InitQueryAzureO365GetAzureHostType();
         }
 
-
-        // Create new GraphQL Query:
-        // azureO365Exocompute(orgId: UUID!, exocomputeClusterId: String!): GetAzureO365ExocomputeResp!
-        internal void InitQueryAzureO365Exocompute()
+        // This parameter set invokes a single graphql operation:
+        // azureO365GetNetworkSubnetUnusedAddr.
+        internal void ProcessRecord_GetNetworkSubnetUnusedAddr()
         {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("orgId", "UUID!"),
-                Tuple.Create("exocomputeClusterId", "String!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAzureO365Exocompute",
-                "($orgId: UUID!,$exocomputeClusterId: String!)",
-                "GetAzureO365ExocomputeResp",
-                Query.AzureO365Exocompute_ObjectFieldSpec,
-                Query.AzureO365ExocomputeFieldSpec,
-                @"# REQUIRED
-$inputs.Var.orgId = <System.String>
-# REQUIRED
-$inputs.Var.exocomputeClusterId = <System.String>"
-            );
+            this._logger.name += " -GetNetworkSubnetUnusedAddr";
+            // Create new graphql operation azureO365GetNetworkSubnetUnusedAddr
+            InitQueryAzureO365GetNetworkSubnetUnusedAddr();
         }
 
-        // Create new GraphQL Query:
-        // azureO365CheckStorageAccountName(tenantId: String!, subscriptionId: UUID!, storage_account_name: String!): AzureResourceAvailabilityResp!
-        internal void InitQueryAzureO365CheckStorageAccountName()
+        // This parameter set invokes a single graphql operation:
+        // azureO365ValidateUserRoles.
+        internal void ProcessRecord_ValidateUserRoles()
         {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("tenantId", "String!"),
-                Tuple.Create("subscriptionId", "UUID!"),
-                Tuple.Create("storage_account_name", "String!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAzureO365CheckStorageAccountName",
-                "($tenantId: String!,$subscriptionId: UUID!,$storage_account_name: String!)",
-                "AzureResourceAvailabilityResp",
-                Query.AzureO365CheckStorageAccountName_ObjectFieldSpec,
-                Query.AzureO365CheckStorageAccountNameFieldSpec,
-                @"# REQUIRED
-$inputs.Var.tenantId = <System.String>
-# REQUIRED
-$inputs.Var.subscriptionId = <System.String>
-# REQUIRED
-$inputs.Var.storage_account_name = <System.String>"
-            );
+            this._logger.name += " -ValidateUserRoles";
+            // Create new graphql operation azureO365ValidateUserRoles
+            InitQueryAzureO365ValidateUserRoles();
         }
 
-        // Create new GraphQL Query:
-        // azureO365CheckStorageAccountAccessibility(
-        //     tenantId: String!
-        //     subscriptionId: UUID!
-        //     storage_account_name: String!
-        //     groupName: String!
-        //   ): AzureResourceAvailabilityResp!
-        internal void InitQueryAzureO365CheckStorageAccountAccessibility()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("tenantId", "String!"),
-                Tuple.Create("subscriptionId", "UUID!"),
-                Tuple.Create("storage_account_name", "String!"),
-                Tuple.Create("groupName", "String!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAzureO365CheckStorageAccountAccessibility",
-                "($tenantId: String!,$subscriptionId: UUID!,$storage_account_name: String!,$groupName: String!)",
-                "AzureResourceAvailabilityResp",
-                Query.AzureO365CheckStorageAccountAccessibility_ObjectFieldSpec,
-                Query.AzureO365CheckStorageAccountAccessibilityFieldSpec,
-                @"# REQUIRED
-$inputs.Var.tenantId = <System.String>
-# REQUIRED
-$inputs.Var.subscriptionId = <System.String>
-# REQUIRED
-$inputs.Var.storage_account_name = <System.String>
-# REQUIRED
-$inputs.Var.groupName = <System.String>"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // azureO365CheckSubscriptionQuota(tenantId: String!, subscriptionId: UUID!, regionName: String!): AzureResourceAvailabilityResp!
-        internal void InitQueryAzureO365CheckSubscriptionQuota()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("tenantId", "String!"),
-                Tuple.Create("subscriptionId", "UUID!"),
-                Tuple.Create("regionName", "String!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAzureO365CheckSubscriptionQuota",
-                "($tenantId: String!,$subscriptionId: UUID!,$regionName: String!)",
-                "AzureResourceAvailabilityResp",
-                Query.AzureO365CheckSubscriptionQuota_ObjectFieldSpec,
-                Query.AzureO365CheckSubscriptionQuotaFieldSpec,
-                @"# REQUIRED
-$inputs.Var.tenantId = <System.String>
-# REQUIRED
-$inputs.Var.subscriptionId = <System.String>
-# REQUIRED
-$inputs.Var.regionName = <System.String>"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // azureO365CheckResourceGroupName(tenantId: String!, subscriptionId: UUID!, groupName: String!): AzureResourceAvailabilityResp!
-        internal void InitQueryAzureO365CheckResourceGroupName()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("tenantId", "String!"),
-                Tuple.Create("subscriptionId", "UUID!"),
-                Tuple.Create("groupName", "String!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAzureO365CheckResourceGroupName",
-                "($tenantId: String!,$subscriptionId: UUID!,$groupName: String!)",
-                "AzureResourceAvailabilityResp",
-                Query.AzureO365CheckResourceGroupName_ObjectFieldSpec,
-                Query.AzureO365CheckResourceGroupNameFieldSpec,
-                @"# REQUIRED
-$inputs.Var.tenantId = <System.String>
-# REQUIRED
-$inputs.Var.subscriptionId = <System.String>
-# REQUIRED
-$inputs.Var.groupName = <System.String>"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // azureO365CheckVirtualNetworkName(
-        //     tenantId: String!
-        //     subscriptionId: UUID!
-        //     groupName: String!
-        //     vnet_name: String!
-        //   ): AzureResourceAvailabilityResp!
-        internal void InitQueryAzureO365CheckVirtualNetworkName()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("tenantId", "String!"),
-                Tuple.Create("subscriptionId", "UUID!"),
-                Tuple.Create("groupName", "String!"),
-                Tuple.Create("vnet_name", "String!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAzureO365CheckVirtualNetworkName",
-                "($tenantId: String!,$subscriptionId: UUID!,$groupName: String!,$vnet_name: String!)",
-                "AzureResourceAvailabilityResp",
-                Query.AzureO365CheckVirtualNetworkName_ObjectFieldSpec,
-                Query.AzureO365CheckVirtualNetworkNameFieldSpec,
-                @"# REQUIRED
-$inputs.Var.tenantId = <System.String>
-# REQUIRED
-$inputs.Var.subscriptionId = <System.String>
-# REQUIRED
-$inputs.Var.groupName = <System.String>
-# REQUIRED
-$inputs.Var.vnet_name = <System.String>"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // azureO365ValidateUserRoles(tenantId: String!, subscriptionId: UUID!): AzureUserRoleResp!
-        internal void InitQueryAzureO365ValidateUserRoles()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("tenantId", "String!"),
-                Tuple.Create("subscriptionId", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryAzureO365ValidateUserRoles",
-                "($tenantId: String!,$subscriptionId: UUID!)",
-                "AzureUserRoleResp",
-                Query.AzureO365ValidateUserRoles_ObjectFieldSpec,
-                Query.AzureO365ValidateUserRolesFieldSpec,
-                @"# REQUIRED
-$inputs.Var.tenantId = <System.String>
-# REQUIRED
-$inputs.Var.subscriptionId = <System.String>"
-            );
-        }
 
         // Create new GraphQL Query:
         // azureO365CheckNSGOutboundRules(
@@ -635,15 +802,15 @@ $inputs.Var.subscriptionId = <System.String>"
                 Query.AzureO365CheckNsgOutboundRules_ObjectFieldSpec,
                 Query.AzureO365CheckNsgOutboundRulesFieldSpec,
                 @"# REQUIRED
-$inputs.Var.tenantId = <System.String>
+$query.Var.tenantId = $someString
 # REQUIRED
-$inputs.Var.subscriptionId = <System.String>
+$query.Var.subscriptionId = $someString
 # REQUIRED
-$inputs.Var.resourceGroupName = <System.String>
+$query.Var.resourceGroupName = $someString
 # REQUIRED
-$inputs.Var.vnet_name = <System.String>
+$query.Var.vnet_name = $someString
 # REQUIRED
-$inputs.Var.subnet_name = <System.String>"
+$query.Var.subnet_name = $someString"
             );
         }
 
@@ -675,17 +842,204 @@ $inputs.Var.subnet_name = <System.String>"
                 Query.AzureO365CheckNetworkSubnet_ObjectFieldSpec,
                 Query.AzureO365CheckNetworkSubnetFieldSpec,
                 @"# REQUIRED
-$inputs.Var.tenantId = <System.String>
+$query.Var.tenantId = $someString
 # REQUIRED
-$inputs.Var.subscriptionId = <System.String>
+$query.Var.subscriptionId = $someString
 # REQUIRED
-$inputs.Var.resourceGroupName = <System.String>
+$query.Var.resourceGroupName = $someString
 # REQUIRED
-$inputs.Var.vnet_name = <System.String>
+$query.Var.vnet_name = $someString
 # REQUIRED
-$inputs.Var.subnet_name = <System.String>
+$query.Var.subnet_name = $someString
 # REQUIRED
-$inputs.Var.strict_addr_check = <System.Boolean>"
+$query.Var.strict_addr_check = $someBoolean"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // azureO365CheckResourceGroupName(tenantId: String!, subscriptionId: UUID!, groupName: String!): AzureResourceAvailabilityResp!
+        internal void InitQueryAzureO365CheckResourceGroupName()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("tenantId", "String!"),
+                Tuple.Create("subscriptionId", "UUID!"),
+                Tuple.Create("groupName", "String!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAzureO365CheckResourceGroupName",
+                "($tenantId: String!,$subscriptionId: UUID!,$groupName: String!)",
+                "AzureResourceAvailabilityResp",
+                Query.AzureO365CheckResourceGroupName_ObjectFieldSpec,
+                Query.AzureO365CheckResourceGroupNameFieldSpec,
+                @"# REQUIRED
+$query.Var.tenantId = $someString
+# REQUIRED
+$query.Var.subscriptionId = $someString
+# REQUIRED
+$query.Var.groupName = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // azureO365CheckStorageAccountAccessibility(
+        //     tenantId: String!
+        //     subscriptionId: UUID!
+        //     storage_account_name: String!
+        //     groupName: String!
+        //   ): AzureResourceAvailabilityResp!
+        internal void InitQueryAzureO365CheckStorageAccountAccessibility()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("tenantId", "String!"),
+                Tuple.Create("subscriptionId", "UUID!"),
+                Tuple.Create("storage_account_name", "String!"),
+                Tuple.Create("groupName", "String!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAzureO365CheckStorageAccountAccessibility",
+                "($tenantId: String!,$subscriptionId: UUID!,$storage_account_name: String!,$groupName: String!)",
+                "AzureResourceAvailabilityResp",
+                Query.AzureO365CheckStorageAccountAccessibility_ObjectFieldSpec,
+                Query.AzureO365CheckStorageAccountAccessibilityFieldSpec,
+                @"# REQUIRED
+$query.Var.tenantId = $someString
+# REQUIRED
+$query.Var.subscriptionId = $someString
+# REQUIRED
+$query.Var.storage_account_name = $someString
+# REQUIRED
+$query.Var.groupName = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // azureO365CheckStorageAccountName(tenantId: String!, subscriptionId: UUID!, storage_account_name: String!): AzureResourceAvailabilityResp!
+        internal void InitQueryAzureO365CheckStorageAccountName()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("tenantId", "String!"),
+                Tuple.Create("subscriptionId", "UUID!"),
+                Tuple.Create("storage_account_name", "String!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAzureO365CheckStorageAccountName",
+                "($tenantId: String!,$subscriptionId: UUID!,$storage_account_name: String!)",
+                "AzureResourceAvailabilityResp",
+                Query.AzureO365CheckStorageAccountName_ObjectFieldSpec,
+                Query.AzureO365CheckStorageAccountNameFieldSpec,
+                @"# REQUIRED
+$query.Var.tenantId = $someString
+# REQUIRED
+$query.Var.subscriptionId = $someString
+# REQUIRED
+$query.Var.storage_account_name = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // azureO365CheckSubscriptionQuota(tenantId: String!, subscriptionId: UUID!, regionName: String!): AzureResourceAvailabilityResp!
+        internal void InitQueryAzureO365CheckSubscriptionQuota()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("tenantId", "String!"),
+                Tuple.Create("subscriptionId", "UUID!"),
+                Tuple.Create("regionName", "String!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAzureO365CheckSubscriptionQuota",
+                "($tenantId: String!,$subscriptionId: UUID!,$regionName: String!)",
+                "AzureResourceAvailabilityResp",
+                Query.AzureO365CheckSubscriptionQuota_ObjectFieldSpec,
+                Query.AzureO365CheckSubscriptionQuotaFieldSpec,
+                @"# REQUIRED
+$query.Var.tenantId = $someString
+# REQUIRED
+$query.Var.subscriptionId = $someString
+# REQUIRED
+$query.Var.regionName = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // azureO365CheckVirtualNetworkName(
+        //     tenantId: String!
+        //     subscriptionId: UUID!
+        //     groupName: String!
+        //     vnet_name: String!
+        //   ): AzureResourceAvailabilityResp!
+        internal void InitQueryAzureO365CheckVirtualNetworkName()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("tenantId", "String!"),
+                Tuple.Create("subscriptionId", "UUID!"),
+                Tuple.Create("groupName", "String!"),
+                Tuple.Create("vnet_name", "String!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAzureO365CheckVirtualNetworkName",
+                "($tenantId: String!,$subscriptionId: UUID!,$groupName: String!,$vnet_name: String!)",
+                "AzureResourceAvailabilityResp",
+                Query.AzureO365CheckVirtualNetworkName_ObjectFieldSpec,
+                Query.AzureO365CheckVirtualNetworkNameFieldSpec,
+                @"# REQUIRED
+$query.Var.tenantId = $someString
+# REQUIRED
+$query.Var.subscriptionId = $someString
+# REQUIRED
+$query.Var.groupName = $someString
+# REQUIRED
+$query.Var.vnet_name = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // azureO365Exocompute(orgId: UUID!, exocomputeClusterId: String!): GetAzureO365ExocomputeResp!
+        internal void InitQueryAzureO365Exocompute()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("orgId", "UUID!"),
+                Tuple.Create("exocomputeClusterId", "String!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAzureO365Exocompute",
+                "($orgId: UUID!,$exocomputeClusterId: String!)",
+                "GetAzureO365ExocomputeResp",
+                Query.AzureO365Exocompute_ObjectFieldSpec,
+                Query.AzureO365ExocomputeFieldSpec,
+                @"# REQUIRED
+$query.Var.orgId = $someString
+# REQUIRED
+$query.Var.exocomputeClusterId = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // azureO365GetAzureHostType: GetAzureHostTypeResp!
+        internal void InitQueryAzureO365GetAzureHostType()
+        {
+            Tuple<string, string>[] argDefs = {
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAzureO365GetAzureHostType",
+                "",
+                "GetAzureHostTypeResp",
+                Query.AzureO365GetAzureHostType_ObjectFieldSpec,
+                Query.AzureO365GetAzureHostTypeFieldSpec,
+                @""
             );
         }
 
@@ -717,35 +1071,40 @@ $inputs.Var.strict_addr_check = <System.Boolean>"
                 Query.AzureO365GetNetworkSubnetUnusedAddr_ObjectFieldSpec,
                 Query.AzureO365GetNetworkSubnetUnusedAddrFieldSpec,
                 @"# REQUIRED
-$inputs.Var.tenantId = <System.String>
+$query.Var.tenantId = $someString
 # REQUIRED
-$inputs.Var.subscriptionId = <System.String>
+$query.Var.subscriptionId = $someString
 # REQUIRED
-$inputs.Var.resourceGroupName = <System.String>
+$query.Var.resourceGroupName = $someString
 # REQUIRED
-$inputs.Var.vnet_name = <System.String>
+$query.Var.vnet_name = $someString
 # REQUIRED
-$inputs.Var.subnet_name = <System.String>
+$query.Var.subnet_name = $someString
 # REQUIRED
-$inputs.Var.strict_addr_check = <System.Boolean>"
+$query.Var.strict_addr_check = $someBoolean"
             );
         }
 
         // Create new GraphQL Query:
-        // azureO365GetAzureHostType: GetAzureHostTypeResp!
-        internal void InitQueryAzureO365GetAzureHostType()
+        // azureO365ValidateUserRoles(tenantId: String!, subscriptionId: UUID!): AzureUserRoleResp!
+        internal void InitQueryAzureO365ValidateUserRoles()
         {
             Tuple<string, string>[] argDefs = {
+                Tuple.Create("tenantId", "String!"),
+                Tuple.Create("subscriptionId", "UUID!"),
             };
             Initialize(
                 argDefs,
                 "query",
-                "QueryAzureO365GetAzureHostType",
-                "",
-                "GetAzureHostTypeResp",
-                Query.AzureO365GetAzureHostType_ObjectFieldSpec,
-                Query.AzureO365GetAzureHostTypeFieldSpec,
-                @""
+                "QueryAzureO365ValidateUserRoles",
+                "($tenantId: String!,$subscriptionId: UUID!)",
+                "AzureUserRoleResp",
+                Query.AzureO365ValidateUserRoles_ObjectFieldSpec,
+                Query.AzureO365ValidateUserRolesFieldSpec,
+                @"# REQUIRED
+$query.Var.tenantId = $someString
+# REQUIRED
+$query.Var.subscriptionId = $someString"
             );
         }
 

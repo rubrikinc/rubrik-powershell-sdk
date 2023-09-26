@@ -73,6 +73,22 @@ namespace RubrikSecurityCloud
             }
         }
 
+        
+        /// <summary>
+        /// Add values from a dictionary.
+        /// </summary>
+        public VarDict AddFromDictionary(Dictionary<string, object> dict)
+        {
+            if (dict != null && dict.Count > 0)
+            {
+                foreach (var entry in dict)
+                {
+                    this[entry.Key] = entry.Value;
+                }
+            }
+            return this;
+        }
+
         /// <summary>
         /// Add values from a tuple array.
         /// </summary>

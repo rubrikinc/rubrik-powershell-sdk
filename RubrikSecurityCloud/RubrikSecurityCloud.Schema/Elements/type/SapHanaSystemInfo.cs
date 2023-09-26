@@ -65,26 +65,39 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? HanaVersion
         // GraphQL -> hanaVersion: String! (scalar)
         if (this.HanaVersion != null) {
-            s += ind + "hanaVersion\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hanaVersion\n" ;
+            } else {
+                s += ind + "hanaVersion\n" ;
+            }
         }
         //      C# -> System.Boolean? IsSystemReplicationEnabled
         // GraphQL -> isSystemReplicationEnabled: Boolean! (scalar)
         if (this.IsSystemReplicationEnabled != null) {
-            s += ind + "isSystemReplicationEnabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isSystemReplicationEnabled\n" ;
+            } else {
+                s += ind + "isSystemReplicationEnabled\n" ;
+            }
         }
         //      C# -> SapHanaSystemAuthTypeSpec? AuthTypeSpec
         // GraphQL -> authTypeSpec: SapHanaSystemAuthTypeSpec (type)
         if (this.AuthTypeSpec != null) {
-            var fspec = this.AuthTypeSpec.AsFieldSpec(indent+1);
+            var fspec = this.AuthTypeSpec.AsFieldSpec(conf.Child("authTypeSpec"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "authTypeSpec {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "authTypeSpec {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -96,22 +109,56 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? HanaVersion
         // GraphQL -> hanaVersion: String! (scalar)
-        if (this.HanaVersion == null && ec.Includes("hanaVersion",true))
+        if (ec.Includes("hanaVersion",true))
         {
-            this.HanaVersion = "FETCH";
+            if(this.HanaVersion == null) {
+
+                this.HanaVersion = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.HanaVersion != null && ec.Excludes("hanaVersion",true))
+        {
+            this.HanaVersion = null;
         }
         //      C# -> System.Boolean? IsSystemReplicationEnabled
         // GraphQL -> isSystemReplicationEnabled: Boolean! (scalar)
-        if (this.IsSystemReplicationEnabled == null && ec.Includes("isSystemReplicationEnabled",true))
+        if (ec.Includes("isSystemReplicationEnabled",true))
         {
-            this.IsSystemReplicationEnabled = true;
+            if(this.IsSystemReplicationEnabled == null) {
+
+                this.IsSystemReplicationEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsSystemReplicationEnabled != null && ec.Excludes("isSystemReplicationEnabled",true))
+        {
+            this.IsSystemReplicationEnabled = null;
         }
         //      C# -> SapHanaSystemAuthTypeSpec? AuthTypeSpec
         // GraphQL -> authTypeSpec: SapHanaSystemAuthTypeSpec (type)
-        if (this.AuthTypeSpec == null && ec.Includes("authTypeSpec",false))
+        if (ec.Includes("authTypeSpec",false))
         {
-            this.AuthTypeSpec = new SapHanaSystemAuthTypeSpec();
-            this.AuthTypeSpec.ApplyExploratoryFieldSpec(ec.NewChild("authTypeSpec"));
+            if(this.AuthTypeSpec == null) {
+
+                this.AuthTypeSpec = new SapHanaSystemAuthTypeSpec();
+                this.AuthTypeSpec.ApplyExploratoryFieldSpec(ec.NewChild("authTypeSpec"));
+
+            } else {
+
+                this.AuthTypeSpec.ApplyExploratoryFieldSpec(ec.NewChild("authTypeSpec"));
+
+            }
+        }
+        else if (this.AuthTypeSpec != null && ec.Excludes("authTypeSpec",false))
+        {
+            this.AuthTypeSpec = null;
         }
     }
 
@@ -138,9 +185,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SapHanaSystemInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

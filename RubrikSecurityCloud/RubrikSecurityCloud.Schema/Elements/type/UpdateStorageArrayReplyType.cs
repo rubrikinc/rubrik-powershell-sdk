@@ -83,39 +83,60 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? ErrorMessage
         // GraphQL -> errorMessage: String (scalar)
         if (this.ErrorMessage != null) {
-            s += ind + "errorMessage\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "errorMessage\n" ;
+            } else {
+                s += ind + "errorMessage\n" ;
+            }
         }
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
         if (this.Hostname != null) {
-            s += ind + "hostname\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostname\n" ;
+            } else {
+                s += ind + "hostname\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
         if (this.Cluster != null) {
-            var fspec = this.Cluster.AsFieldSpec(indent+1);
+            var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> StorageArrayDetail? Detail
         // GraphQL -> detail: StorageArrayDetail (type)
         if (this.Detail != null) {
-            var fspec = this.Detail.AsFieldSpec(indent+1);
+            var fspec = this.Detail.AsFieldSpec(conf.Child("detail"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "detail {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "detail {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -127,35 +148,92 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? ErrorMessage
         // GraphQL -> errorMessage: String (scalar)
-        if (this.ErrorMessage == null && ec.Includes("errorMessage",true))
+        if (ec.Includes("errorMessage",true))
         {
-            this.ErrorMessage = "FETCH";
+            if(this.ErrorMessage == null) {
+
+                this.ErrorMessage = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ErrorMessage != null && ec.Excludes("errorMessage",true))
+        {
+            this.ErrorMessage = null;
         }
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
-        if (this.Hostname == null && ec.Includes("hostname",true))
+        if (ec.Includes("hostname",true))
         {
-            this.Hostname = "FETCH";
+            if(this.Hostname == null) {
+
+                this.Hostname = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Hostname != null && ec.Excludes("hostname",true))
+        {
+            this.Hostname = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
-        if (this.Cluster == null && ec.Includes("cluster",false))
+        if (ec.Includes("cluster",false))
         {
-            this.Cluster = new Cluster();
-            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+            if(this.Cluster == null) {
+
+                this.Cluster = new Cluster();
+                this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+
+            } else {
+
+                this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+
+            }
+        }
+        else if (this.Cluster != null && ec.Excludes("cluster",false))
+        {
+            this.Cluster = null;
         }
         //      C# -> StorageArrayDetail? Detail
         // GraphQL -> detail: StorageArrayDetail (type)
-        if (this.Detail == null && ec.Includes("detail",false))
+        if (ec.Includes("detail",false))
         {
-            this.Detail = new StorageArrayDetail();
-            this.Detail.ApplyExploratoryFieldSpec(ec.NewChild("detail"));
+            if(this.Detail == null) {
+
+                this.Detail = new StorageArrayDetail();
+                this.Detail.ApplyExploratoryFieldSpec(ec.NewChild("detail"));
+
+            } else {
+
+                this.Detail.ApplyExploratoryFieldSpec(ec.NewChild("detail"));
+
+            }
+        }
+        else if (this.Detail != null && ec.Excludes("detail",false))
+        {
+            this.Detail = null;
         }
     }
 
@@ -182,9 +260,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<UpdateStorageArrayReplyType> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

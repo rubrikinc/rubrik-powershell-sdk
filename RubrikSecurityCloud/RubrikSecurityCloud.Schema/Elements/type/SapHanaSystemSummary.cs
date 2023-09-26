@@ -164,90 +164,147 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> SapHanaSystemSummaryContainerType? ContainerType
         // GraphQL -> containerType: SapHanaSystemSummaryContainerType (enum)
         if (this.ContainerType != null) {
-            s += ind + "containerType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "containerType\n" ;
+            } else {
+                s += ind + "containerType\n" ;
+            }
         }
         //      C# -> SapHanaSystemSummaryStatus? Status
         // GraphQL -> status: SapHanaSystemSummaryStatus! (enum)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.String? InstanceNumber
         // GraphQL -> instanceNumber: String! (scalar)
         if (this.InstanceNumber != null) {
-            s += ind + "instanceNumber\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "instanceNumber\n" ;
+            } else {
+                s += ind + "instanceNumber\n" ;
+            }
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean (scalar)
         if (this.IsArchived != null) {
-            s += ind + "isArchived\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isArchived\n" ;
+            } else {
+                s += ind + "isArchived\n" ;
+            }
         }
         //      C# -> DateTime? LastRefreshTime
         // GraphQL -> lastRefreshTime: DateTime (scalar)
         if (this.LastRefreshTime != null) {
-            s += ind + "lastRefreshTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "lastRefreshTime\n" ;
+            } else {
+                s += ind + "lastRefreshTime\n" ;
+            }
         }
         //      C# -> System.Int32? NumDbs
         // GraphQL -> numDbs: Int! (scalar)
         if (this.NumDbs != null) {
-            s += ind + "numDbs\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "numDbs\n" ;
+            } else {
+                s += ind + "numDbs\n" ;
+            }
         }
         //      C# -> System.String? Sid
         // GraphQL -> sid: String! (scalar)
         if (this.Sid != null) {
-            s += ind + "sid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sid\n" ;
+            } else {
+                s += ind + "sid\n" ;
+            }
         }
         //      C# -> System.String? StatusMessage
         // GraphQL -> statusMessage: String (scalar)
         if (this.StatusMessage != null) {
-            s += ind + "statusMessage\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "statusMessage\n" ;
+            } else {
+                s += ind + "statusMessage\n" ;
+            }
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
         if (this.Username != null) {
-            s += ind + "username\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "username\n" ;
+            } else {
+                s += ind + "username\n" ;
+            }
         }
         //      C# -> List<SapHanaHost>? Hosts
         // GraphQL -> hosts: [SapHanaHost!]! (type)
         if (this.Hosts != null) {
-            var fspec = this.Hosts.AsFieldSpec(indent+1);
+            var fspec = this.Hosts.AsFieldSpec(conf.Child("hosts"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "hosts {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "hosts {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> SlaAssignable? SlaAssignable
         // GraphQL -> slaAssignable: SlaAssignable (type)
         if (this.SlaAssignable != null) {
-            var fspec = this.SlaAssignable.AsFieldSpec(indent+1);
+            var fspec = this.SlaAssignable.AsFieldSpec(conf.Child("slaAssignable"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "slaAssignable {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "slaAssignable {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> SapHanaSslInfo? SslInfo
         // GraphQL -> sslInfo: SapHanaSslInfo (type)
         if (this.SslInfo != null) {
-            var fspec = this.SslInfo.AsFieldSpec(indent+1);
+            var fspec = this.SslInfo.AsFieldSpec(conf.Child("sslInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "sslInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "sslInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> SapHanaSystemInfo? SystemInfo
         // GraphQL -> systemInfo: SapHanaSystemInfo (type)
         if (this.SystemInfo != null) {
-            var fspec = this.SystemInfo.AsFieldSpec(indent+1);
+            var fspec = this.SystemInfo.AsFieldSpec(conf.Child("systemInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "systemInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "systemInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -259,91 +316,249 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> SapHanaSystemSummaryContainerType? ContainerType
         // GraphQL -> containerType: SapHanaSystemSummaryContainerType (enum)
-        if (this.ContainerType == null && ec.Includes("containerType",true))
+        if (ec.Includes("containerType",true))
         {
-            this.ContainerType = new SapHanaSystemSummaryContainerType();
+            if(this.ContainerType == null) {
+
+                this.ContainerType = new SapHanaSystemSummaryContainerType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ContainerType != null && ec.Excludes("containerType",true))
+        {
+            this.ContainerType = null;
         }
         //      C# -> SapHanaSystemSummaryStatus? Status
         // GraphQL -> status: SapHanaSystemSummaryStatus! (enum)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = new SapHanaSystemSummaryStatus();
+            if(this.Status == null) {
+
+                this.Status = new SapHanaSystemSummaryStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.String? InstanceNumber
         // GraphQL -> instanceNumber: String! (scalar)
-        if (this.InstanceNumber == null && ec.Includes("instanceNumber",true))
+        if (ec.Includes("instanceNumber",true))
         {
-            this.InstanceNumber = "FETCH";
+            if(this.InstanceNumber == null) {
+
+                this.InstanceNumber = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.InstanceNumber != null && ec.Excludes("instanceNumber",true))
+        {
+            this.InstanceNumber = null;
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean (scalar)
-        if (this.IsArchived == null && ec.Includes("isArchived",true))
+        if (ec.Includes("isArchived",true))
         {
-            this.IsArchived = true;
+            if(this.IsArchived == null) {
+
+                this.IsArchived = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsArchived != null && ec.Excludes("isArchived",true))
+        {
+            this.IsArchived = null;
         }
         //      C# -> DateTime? LastRefreshTime
         // GraphQL -> lastRefreshTime: DateTime (scalar)
-        if (this.LastRefreshTime == null && ec.Includes("lastRefreshTime",true))
+        if (ec.Includes("lastRefreshTime",true))
         {
-            this.LastRefreshTime = new DateTime();
+            if(this.LastRefreshTime == null) {
+
+                this.LastRefreshTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastRefreshTime != null && ec.Excludes("lastRefreshTime",true))
+        {
+            this.LastRefreshTime = null;
         }
         //      C# -> System.Int32? NumDbs
         // GraphQL -> numDbs: Int! (scalar)
-        if (this.NumDbs == null && ec.Includes("numDbs",true))
+        if (ec.Includes("numDbs",true))
         {
-            this.NumDbs = Int32.MinValue;
+            if(this.NumDbs == null) {
+
+                this.NumDbs = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.NumDbs != null && ec.Excludes("numDbs",true))
+        {
+            this.NumDbs = null;
         }
         //      C# -> System.String? Sid
         // GraphQL -> sid: String! (scalar)
-        if (this.Sid == null && ec.Includes("sid",true))
+        if (ec.Includes("sid",true))
         {
-            this.Sid = "FETCH";
+            if(this.Sid == null) {
+
+                this.Sid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Sid != null && ec.Excludes("sid",true))
+        {
+            this.Sid = null;
         }
         //      C# -> System.String? StatusMessage
         // GraphQL -> statusMessage: String (scalar)
-        if (this.StatusMessage == null && ec.Includes("statusMessage",true))
+        if (ec.Includes("statusMessage",true))
         {
-            this.StatusMessage = "FETCH";
+            if(this.StatusMessage == null) {
+
+                this.StatusMessage = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.StatusMessage != null && ec.Excludes("statusMessage",true))
+        {
+            this.StatusMessage = null;
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
-        if (this.Username == null && ec.Includes("username",true))
+        if (ec.Includes("username",true))
         {
-            this.Username = "FETCH";
+            if(this.Username == null) {
+
+                this.Username = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Username != null && ec.Excludes("username",true))
+        {
+            this.Username = null;
         }
         //      C# -> List<SapHanaHost>? Hosts
         // GraphQL -> hosts: [SapHanaHost!]! (type)
-        if (this.Hosts == null && ec.Includes("hosts",false))
+        if (ec.Includes("hosts",false))
         {
-            this.Hosts = new List<SapHanaHost>();
-            this.Hosts.ApplyExploratoryFieldSpec(ec.NewChild("hosts"));
+            if(this.Hosts == null) {
+
+                this.Hosts = new List<SapHanaHost>();
+                this.Hosts.ApplyExploratoryFieldSpec(ec.NewChild("hosts"));
+
+            } else {
+
+                this.Hosts.ApplyExploratoryFieldSpec(ec.NewChild("hosts"));
+
+            }
+        }
+        else if (this.Hosts != null && ec.Excludes("hosts",false))
+        {
+            this.Hosts = null;
         }
         //      C# -> SlaAssignable? SlaAssignable
         // GraphQL -> slaAssignable: SlaAssignable (type)
-        if (this.SlaAssignable == null && ec.Includes("slaAssignable",false))
+        if (ec.Includes("slaAssignable",false))
         {
-            this.SlaAssignable = new SlaAssignable();
-            this.SlaAssignable.ApplyExploratoryFieldSpec(ec.NewChild("slaAssignable"));
+            if(this.SlaAssignable == null) {
+
+                this.SlaAssignable = new SlaAssignable();
+                this.SlaAssignable.ApplyExploratoryFieldSpec(ec.NewChild("slaAssignable"));
+
+            } else {
+
+                this.SlaAssignable.ApplyExploratoryFieldSpec(ec.NewChild("slaAssignable"));
+
+            }
+        }
+        else if (this.SlaAssignable != null && ec.Excludes("slaAssignable",false))
+        {
+            this.SlaAssignable = null;
         }
         //      C# -> SapHanaSslInfo? SslInfo
         // GraphQL -> sslInfo: SapHanaSslInfo (type)
-        if (this.SslInfo == null && ec.Includes("sslInfo",false))
+        if (ec.Includes("sslInfo",false))
         {
-            this.SslInfo = new SapHanaSslInfo();
-            this.SslInfo.ApplyExploratoryFieldSpec(ec.NewChild("sslInfo"));
+            if(this.SslInfo == null) {
+
+                this.SslInfo = new SapHanaSslInfo();
+                this.SslInfo.ApplyExploratoryFieldSpec(ec.NewChild("sslInfo"));
+
+            } else {
+
+                this.SslInfo.ApplyExploratoryFieldSpec(ec.NewChild("sslInfo"));
+
+            }
+        }
+        else if (this.SslInfo != null && ec.Excludes("sslInfo",false))
+        {
+            this.SslInfo = null;
         }
         //      C# -> SapHanaSystemInfo? SystemInfo
         // GraphQL -> systemInfo: SapHanaSystemInfo (type)
-        if (this.SystemInfo == null && ec.Includes("systemInfo",false))
+        if (ec.Includes("systemInfo",false))
         {
-            this.SystemInfo = new SapHanaSystemInfo();
-            this.SystemInfo.ApplyExploratoryFieldSpec(ec.NewChild("systemInfo"));
+            if(this.SystemInfo == null) {
+
+                this.SystemInfo = new SapHanaSystemInfo();
+                this.SystemInfo.ApplyExploratoryFieldSpec(ec.NewChild("systemInfo"));
+
+            } else {
+
+                this.SystemInfo.ApplyExploratoryFieldSpec(ec.NewChild("systemInfo"));
+
+            }
+        }
+        else if (this.SystemInfo != null && ec.Excludes("systemInfo",false))
+        {
+            this.SystemInfo = null;
         }
     }
 
@@ -370,9 +585,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SapHanaSystemSummary> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

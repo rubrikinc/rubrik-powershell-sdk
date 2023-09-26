@@ -74,40 +74,57 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> BidirectionalReplicationSpec? BidirectionalSpec
         // GraphQL -> bidirectionalSpec: BidirectionalReplicationSpec (type)
         if (this.BidirectionalSpec != null) {
-            var fspec = this.BidirectionalSpec.AsFieldSpec(indent+1);
+            var fspec = this.BidirectionalSpec.AsFieldSpec(conf.Child("bidirectionalSpec"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "bidirectionalSpec {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "bidirectionalSpec {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> ReplicationToCloudLocationSpec? CloudLocationSpec
         // GraphQL -> cloudLocationSpec: ReplicationToCloudLocationSpec (type)
         if (this.CloudLocationSpec != null) {
-            var fspec = this.CloudLocationSpec.AsFieldSpec(indent+1);
+            var fspec = this.CloudLocationSpec.AsFieldSpec(conf.Child("cloudLocationSpec"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "cloudLocationSpec {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cloudLocationSpec {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> ReplicationToCloudRegionSpec? CloudRegionSpec
         // GraphQL -> cloudRegionSpec: ReplicationToCloudRegionSpec (type)
         if (this.CloudRegionSpec != null) {
-            var fspec = this.CloudRegionSpec.AsFieldSpec(indent+1);
+            var fspec = this.CloudRegionSpec.AsFieldSpec(conf.Child("cloudRegionSpec"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "cloudRegionSpec {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cloudRegionSpec {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> UnidirectionalReplicationSpec? UnidirectionalSpec
         // GraphQL -> unidirectionalSpec: UnidirectionalReplicationSpec (type)
         if (this.UnidirectionalSpec != null) {
-            var fspec = this.UnidirectionalSpec.AsFieldSpec(indent+1);
+            var fspec = this.UnidirectionalSpec.AsFieldSpec(conf.Child("unidirectionalSpec"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "unidirectionalSpec {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "unidirectionalSpec {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -119,31 +136,79 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> BidirectionalReplicationSpec? BidirectionalSpec
         // GraphQL -> bidirectionalSpec: BidirectionalReplicationSpec (type)
-        if (this.BidirectionalSpec == null && ec.Includes("bidirectionalSpec",false))
+        if (ec.Includes("bidirectionalSpec",false))
         {
-            this.BidirectionalSpec = new BidirectionalReplicationSpec();
-            this.BidirectionalSpec.ApplyExploratoryFieldSpec(ec.NewChild("bidirectionalSpec"));
+            if(this.BidirectionalSpec == null) {
+
+                this.BidirectionalSpec = new BidirectionalReplicationSpec();
+                this.BidirectionalSpec.ApplyExploratoryFieldSpec(ec.NewChild("bidirectionalSpec"));
+
+            } else {
+
+                this.BidirectionalSpec.ApplyExploratoryFieldSpec(ec.NewChild("bidirectionalSpec"));
+
+            }
+        }
+        else if (this.BidirectionalSpec != null && ec.Excludes("bidirectionalSpec",false))
+        {
+            this.BidirectionalSpec = null;
         }
         //      C# -> ReplicationToCloudLocationSpec? CloudLocationSpec
         // GraphQL -> cloudLocationSpec: ReplicationToCloudLocationSpec (type)
-        if (this.CloudLocationSpec == null && ec.Includes("cloudLocationSpec",false))
+        if (ec.Includes("cloudLocationSpec",false))
         {
-            this.CloudLocationSpec = new ReplicationToCloudLocationSpec();
-            this.CloudLocationSpec.ApplyExploratoryFieldSpec(ec.NewChild("cloudLocationSpec"));
+            if(this.CloudLocationSpec == null) {
+
+                this.CloudLocationSpec = new ReplicationToCloudLocationSpec();
+                this.CloudLocationSpec.ApplyExploratoryFieldSpec(ec.NewChild("cloudLocationSpec"));
+
+            } else {
+
+                this.CloudLocationSpec.ApplyExploratoryFieldSpec(ec.NewChild("cloudLocationSpec"));
+
+            }
+        }
+        else if (this.CloudLocationSpec != null && ec.Excludes("cloudLocationSpec",false))
+        {
+            this.CloudLocationSpec = null;
         }
         //      C# -> ReplicationToCloudRegionSpec? CloudRegionSpec
         // GraphQL -> cloudRegionSpec: ReplicationToCloudRegionSpec (type)
-        if (this.CloudRegionSpec == null && ec.Includes("cloudRegionSpec",false))
+        if (ec.Includes("cloudRegionSpec",false))
         {
-            this.CloudRegionSpec = new ReplicationToCloudRegionSpec();
-            this.CloudRegionSpec.ApplyExploratoryFieldSpec(ec.NewChild("cloudRegionSpec"));
+            if(this.CloudRegionSpec == null) {
+
+                this.CloudRegionSpec = new ReplicationToCloudRegionSpec();
+                this.CloudRegionSpec.ApplyExploratoryFieldSpec(ec.NewChild("cloudRegionSpec"));
+
+            } else {
+
+                this.CloudRegionSpec.ApplyExploratoryFieldSpec(ec.NewChild("cloudRegionSpec"));
+
+            }
+        }
+        else if (this.CloudRegionSpec != null && ec.Excludes("cloudRegionSpec",false))
+        {
+            this.CloudRegionSpec = null;
         }
         //      C# -> UnidirectionalReplicationSpec? UnidirectionalSpec
         // GraphQL -> unidirectionalSpec: UnidirectionalReplicationSpec (type)
-        if (this.UnidirectionalSpec == null && ec.Includes("unidirectionalSpec",false))
+        if (ec.Includes("unidirectionalSpec",false))
         {
-            this.UnidirectionalSpec = new UnidirectionalReplicationSpec();
-            this.UnidirectionalSpec.ApplyExploratoryFieldSpec(ec.NewChild("unidirectionalSpec"));
+            if(this.UnidirectionalSpec == null) {
+
+                this.UnidirectionalSpec = new UnidirectionalReplicationSpec();
+                this.UnidirectionalSpec.ApplyExploratoryFieldSpec(ec.NewChild("unidirectionalSpec"));
+
+            } else {
+
+                this.UnidirectionalSpec.ApplyExploratoryFieldSpec(ec.NewChild("unidirectionalSpec"));
+
+            }
+        }
+        else if (this.UnidirectionalSpec != null && ec.Excludes("unidirectionalSpec",false))
+        {
+            this.UnidirectionalSpec = null;
         }
     }
 
@@ -170,9 +235,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SpecificReplicationSpec> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

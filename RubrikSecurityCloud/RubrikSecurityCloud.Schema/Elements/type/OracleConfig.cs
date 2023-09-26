@@ -65,32 +65,45 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> Duration? Frequency
         // GraphQL -> frequency: Duration (type)
         if (this.Frequency != null) {
-            var fspec = this.Frequency.AsFieldSpec(indent+1);
+            var fspec = this.Frequency.AsFieldSpec(conf.Child("frequency"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "frequency {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "frequency {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> Duration? HostLogRetention
         // GraphQL -> hostLogRetention: Duration (type)
         if (this.HostLogRetention != null) {
-            var fspec = this.HostLogRetention.AsFieldSpec(indent+1);
+            var fspec = this.HostLogRetention.AsFieldSpec(conf.Child("hostLogRetention"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "hostLogRetention {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "hostLogRetention {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> Duration? LogRetention
         // GraphQL -> logRetention: Duration (type)
         if (this.LogRetention != null) {
-            var fspec = this.LogRetention.AsFieldSpec(indent+1);
+            var fspec = this.LogRetention.AsFieldSpec(conf.Child("logRetention"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "logRetention {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "logRetention {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -102,24 +115,60 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> Duration? Frequency
         // GraphQL -> frequency: Duration (type)
-        if (this.Frequency == null && ec.Includes("frequency",false))
+        if (ec.Includes("frequency",false))
         {
-            this.Frequency = new Duration();
-            this.Frequency.ApplyExploratoryFieldSpec(ec.NewChild("frequency"));
+            if(this.Frequency == null) {
+
+                this.Frequency = new Duration();
+                this.Frequency.ApplyExploratoryFieldSpec(ec.NewChild("frequency"));
+
+            } else {
+
+                this.Frequency.ApplyExploratoryFieldSpec(ec.NewChild("frequency"));
+
+            }
+        }
+        else if (this.Frequency != null && ec.Excludes("frequency",false))
+        {
+            this.Frequency = null;
         }
         //      C# -> Duration? HostLogRetention
         // GraphQL -> hostLogRetention: Duration (type)
-        if (this.HostLogRetention == null && ec.Includes("hostLogRetention",false))
+        if (ec.Includes("hostLogRetention",false))
         {
-            this.HostLogRetention = new Duration();
-            this.HostLogRetention.ApplyExploratoryFieldSpec(ec.NewChild("hostLogRetention"));
+            if(this.HostLogRetention == null) {
+
+                this.HostLogRetention = new Duration();
+                this.HostLogRetention.ApplyExploratoryFieldSpec(ec.NewChild("hostLogRetention"));
+
+            } else {
+
+                this.HostLogRetention.ApplyExploratoryFieldSpec(ec.NewChild("hostLogRetention"));
+
+            }
+        }
+        else if (this.HostLogRetention != null && ec.Excludes("hostLogRetention",false))
+        {
+            this.HostLogRetention = null;
         }
         //      C# -> Duration? LogRetention
         // GraphQL -> logRetention: Duration (type)
-        if (this.LogRetention == null && ec.Includes("logRetention",false))
+        if (ec.Includes("logRetention",false))
         {
-            this.LogRetention = new Duration();
-            this.LogRetention.ApplyExploratoryFieldSpec(ec.NewChild("logRetention"));
+            if(this.LogRetention == null) {
+
+                this.LogRetention = new Duration();
+                this.LogRetention.ApplyExploratoryFieldSpec(ec.NewChild("logRetention"));
+
+            } else {
+
+                this.LogRetention.ApplyExploratoryFieldSpec(ec.NewChild("logRetention"));
+
+            }
+        }
+        else if (this.LogRetention != null && ec.Excludes("logRetention",false))
+        {
+            this.LogRetention = null;
         }
     }
 
@@ -146,9 +195,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<OracleConfig> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

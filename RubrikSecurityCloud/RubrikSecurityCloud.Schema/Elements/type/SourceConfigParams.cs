@@ -119,56 +119,93 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<System.String>? CassandraYaml
         // GraphQL -> cassandraYaml: [String!]! (scalar)
         if (this.CassandraYaml != null) {
-            s += ind + "cassandraYaml\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cassandraYaml\n" ;
+            } else {
+                s += ind + "cassandraYaml\n" ;
+            }
         }
         //      C# -> List<System.String>? DseYaml
         // GraphQL -> dseYaml: [String!]! (scalar)
         if (this.DseYaml != null) {
-            s += ind + "dseYaml\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "dseYaml\n" ;
+            } else {
+                s += ind + "dseYaml\n" ;
+            }
         }
         //      C# -> System.String? HttpsCertificate
         // GraphQL -> httpsCertificate: String! (scalar)
         if (this.HttpsCertificate != null) {
-            s += ind + "httpsCertificate\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "httpsCertificate\n" ;
+            } else {
+                s += ind + "httpsCertificate\n" ;
+            }
         }
         //      C# -> System.String? JmxUser
         // GraphQL -> jmxUser: String! (scalar)
         if (this.JmxUser != null) {
-            s += ind + "jmxUser\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "jmxUser\n" ;
+            } else {
+                s += ind + "jmxUser\n" ;
+            }
         }
         //      C# -> System.String? SourceDbUser
         // GraphQL -> sourceDbUser: String! (scalar)
         if (this.SourceDbUser != null) {
-            s += ind + "sourceDbUser\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sourceDbUser\n" ;
+            } else {
+                s += ind + "sourceDbUser\n" ;
+            }
         }
         //      C# -> System.Int32? SourceHttpsPort
         // GraphQL -> sourceHttpsPort: Int! (scalar)
         if (this.SourceHttpsPort != null) {
-            s += ind + "sourceHttpsPort\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sourceHttpsPort\n" ;
+            } else {
+                s += ind + "sourceHttpsPort\n" ;
+            }
         }
         //      C# -> System.Int32? SourcePort
         // GraphQL -> sourcePort: Int! (scalar)
         if (this.SourcePort != null) {
-            s += ind + "sourcePort\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sourcePort\n" ;
+            } else {
+                s += ind + "sourcePort\n" ;
+            }
         }
         //      C# -> System.Int32? SourceRpcPort
         // GraphQL -> sourceRpcPort: Int! (scalar)
         if (this.SourceRpcPort != null) {
-            s += ind + "sourceRpcPort\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sourceRpcPort\n" ;
+            } else {
+                s += ind + "sourceRpcPort\n" ;
+            }
         }
         //      C# -> CassandraSslOptions? SslOptions
         // GraphQL -> sslOptions: CassandraSslOptions (type)
         if (this.SslOptions != null) {
-            var fspec = this.SslOptions.AsFieldSpec(indent+1);
+            var fspec = this.SslOptions.AsFieldSpec(conf.Child("sslOptions"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "sslOptions {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "sslOptions {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -180,58 +217,158 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<System.String>? CassandraYaml
         // GraphQL -> cassandraYaml: [String!]! (scalar)
-        if (this.CassandraYaml == null && ec.Includes("cassandraYaml",true))
+        if (ec.Includes("cassandraYaml",true))
         {
-            this.CassandraYaml = new List<System.String>();
+            if(this.CassandraYaml == null) {
+
+                this.CassandraYaml = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CassandraYaml != null && ec.Excludes("cassandraYaml",true))
+        {
+            this.CassandraYaml = null;
         }
         //      C# -> List<System.String>? DseYaml
         // GraphQL -> dseYaml: [String!]! (scalar)
-        if (this.DseYaml == null && ec.Includes("dseYaml",true))
+        if (ec.Includes("dseYaml",true))
         {
-            this.DseYaml = new List<System.String>();
+            if(this.DseYaml == null) {
+
+                this.DseYaml = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DseYaml != null && ec.Excludes("dseYaml",true))
+        {
+            this.DseYaml = null;
         }
         //      C# -> System.String? HttpsCertificate
         // GraphQL -> httpsCertificate: String! (scalar)
-        if (this.HttpsCertificate == null && ec.Includes("httpsCertificate",true))
+        if (ec.Includes("httpsCertificate",true))
         {
-            this.HttpsCertificate = "FETCH";
+            if(this.HttpsCertificate == null) {
+
+                this.HttpsCertificate = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.HttpsCertificate != null && ec.Excludes("httpsCertificate",true))
+        {
+            this.HttpsCertificate = null;
         }
         //      C# -> System.String? JmxUser
         // GraphQL -> jmxUser: String! (scalar)
-        if (this.JmxUser == null && ec.Includes("jmxUser",true))
+        if (ec.Includes("jmxUser",true))
         {
-            this.JmxUser = "FETCH";
+            if(this.JmxUser == null) {
+
+                this.JmxUser = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.JmxUser != null && ec.Excludes("jmxUser",true))
+        {
+            this.JmxUser = null;
         }
         //      C# -> System.String? SourceDbUser
         // GraphQL -> sourceDbUser: String! (scalar)
-        if (this.SourceDbUser == null && ec.Includes("sourceDbUser",true))
+        if (ec.Includes("sourceDbUser",true))
         {
-            this.SourceDbUser = "FETCH";
+            if(this.SourceDbUser == null) {
+
+                this.SourceDbUser = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SourceDbUser != null && ec.Excludes("sourceDbUser",true))
+        {
+            this.SourceDbUser = null;
         }
         //      C# -> System.Int32? SourceHttpsPort
         // GraphQL -> sourceHttpsPort: Int! (scalar)
-        if (this.SourceHttpsPort == null && ec.Includes("sourceHttpsPort",true))
+        if (ec.Includes("sourceHttpsPort",true))
         {
-            this.SourceHttpsPort = Int32.MinValue;
+            if(this.SourceHttpsPort == null) {
+
+                this.SourceHttpsPort = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.SourceHttpsPort != null && ec.Excludes("sourceHttpsPort",true))
+        {
+            this.SourceHttpsPort = null;
         }
         //      C# -> System.Int32? SourcePort
         // GraphQL -> sourcePort: Int! (scalar)
-        if (this.SourcePort == null && ec.Includes("sourcePort",true))
+        if (ec.Includes("sourcePort",true))
         {
-            this.SourcePort = Int32.MinValue;
+            if(this.SourcePort == null) {
+
+                this.SourcePort = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.SourcePort != null && ec.Excludes("sourcePort",true))
+        {
+            this.SourcePort = null;
         }
         //      C# -> System.Int32? SourceRpcPort
         // GraphQL -> sourceRpcPort: Int! (scalar)
-        if (this.SourceRpcPort == null && ec.Includes("sourceRpcPort",true))
+        if (ec.Includes("sourceRpcPort",true))
         {
-            this.SourceRpcPort = Int32.MinValue;
+            if(this.SourceRpcPort == null) {
+
+                this.SourceRpcPort = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.SourceRpcPort != null && ec.Excludes("sourceRpcPort",true))
+        {
+            this.SourceRpcPort = null;
         }
         //      C# -> CassandraSslOptions? SslOptions
         // GraphQL -> sslOptions: CassandraSslOptions (type)
-        if (this.SslOptions == null && ec.Includes("sslOptions",false))
+        if (ec.Includes("sslOptions",false))
         {
-            this.SslOptions = new CassandraSslOptions();
-            this.SslOptions.ApplyExploratoryFieldSpec(ec.NewChild("sslOptions"));
+            if(this.SslOptions == null) {
+
+                this.SslOptions = new CassandraSslOptions();
+                this.SslOptions.ApplyExploratoryFieldSpec(ec.NewChild("sslOptions"));
+
+            } else {
+
+                this.SslOptions.ApplyExploratoryFieldSpec(ec.NewChild("sslOptions"));
+
+            }
+        }
+        else if (this.SslOptions != null && ec.Excludes("sslOptions",false))
+        {
+            this.SslOptions = null;
         }
     }
 
@@ -258,9 +395,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SourceConfigParams> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

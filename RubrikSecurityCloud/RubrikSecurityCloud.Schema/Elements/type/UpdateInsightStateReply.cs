@@ -47,14 +47,19 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Boolean? IsInsightDismissed
         // GraphQL -> isInsightDismissed: Boolean! (scalar)
         if (this.IsInsightDismissed != null) {
-            s += ind + "isInsightDismissed\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isInsightDismissed\n" ;
+            } else {
+                s += ind + "isInsightDismissed\n" ;
+            }
         }
         return s;
     }
@@ -65,9 +70,20 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Boolean? IsInsightDismissed
         // GraphQL -> isInsightDismissed: Boolean! (scalar)
-        if (this.IsInsightDismissed == null && ec.Includes("isInsightDismissed",true))
+        if (ec.Includes("isInsightDismissed",true))
         {
-            this.IsInsightDismissed = true;
+            if(this.IsInsightDismissed == null) {
+
+                this.IsInsightDismissed = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsInsightDismissed != null && ec.Excludes("isInsightDismissed",true))
+        {
+            this.IsInsightDismissed = null;
         }
     }
 
@@ -94,9 +110,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<UpdateInsightStateReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

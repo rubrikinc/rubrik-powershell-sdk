@@ -83,34 +83,55 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Boolean? IsEnabled
         // GraphQL -> isEnabled: Boolean! (scalar)
         if (this.IsEnabled != null) {
-            s += ind + "isEnabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isEnabled\n" ;
+            } else {
+                s += ind + "isEnabled\n" ;
+            }
         }
         //      C# -> System.Boolean? IsEnforced
         // GraphQL -> isEnforced: Boolean! (scalar)
         if (this.IsEnforced != null) {
-            s += ind + "isEnforced\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isEnforced\n" ;
+            } else {
+                s += ind + "isEnforced\n" ;
+            }
         }
         //      C# -> System.Boolean? IsEnforcedUserLevel
         // GraphQL -> isEnforcedUserLevel: Boolean! (scalar)
         if (this.IsEnforcedUserLevel != null) {
-            s += ind + "isEnforcedUserLevel\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isEnforcedUserLevel\n" ;
+            } else {
+                s += ind + "isEnforcedUserLevel\n" ;
+            }
         }
         //      C# -> System.Boolean? IsSupported
         // GraphQL -> isSupported: Boolean! (scalar)
         if (this.IsSupported != null) {
-            s += ind + "isSupported\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isSupported\n" ;
+            } else {
+                s += ind + "isSupported\n" ;
+            }
         }
         //      C# -> DateTime? TotpConfigUpdateAt
         // GraphQL -> totpConfigUpdateAt: DateTime (scalar)
         if (this.TotpConfigUpdateAt != null) {
-            s += ind + "totpConfigUpdateAt\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "totpConfigUpdateAt\n" ;
+            } else {
+                s += ind + "totpConfigUpdateAt\n" ;
+            }
         }
         return s;
     }
@@ -121,33 +142,88 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Boolean? IsEnabled
         // GraphQL -> isEnabled: Boolean! (scalar)
-        if (this.IsEnabled == null && ec.Includes("isEnabled",true))
+        if (ec.Includes("isEnabled",true))
         {
-            this.IsEnabled = true;
+            if(this.IsEnabled == null) {
+
+                this.IsEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsEnabled != null && ec.Excludes("isEnabled",true))
+        {
+            this.IsEnabled = null;
         }
         //      C# -> System.Boolean? IsEnforced
         // GraphQL -> isEnforced: Boolean! (scalar)
-        if (this.IsEnforced == null && ec.Includes("isEnforced",true))
+        if (ec.Includes("isEnforced",true))
         {
-            this.IsEnforced = true;
+            if(this.IsEnforced == null) {
+
+                this.IsEnforced = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsEnforced != null && ec.Excludes("isEnforced",true))
+        {
+            this.IsEnforced = null;
         }
         //      C# -> System.Boolean? IsEnforcedUserLevel
         // GraphQL -> isEnforcedUserLevel: Boolean! (scalar)
-        if (this.IsEnforcedUserLevel == null && ec.Includes("isEnforcedUserLevel",true))
+        if (ec.Includes("isEnforcedUserLevel",true))
         {
-            this.IsEnforcedUserLevel = true;
+            if(this.IsEnforcedUserLevel == null) {
+
+                this.IsEnforcedUserLevel = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsEnforcedUserLevel != null && ec.Excludes("isEnforcedUserLevel",true))
+        {
+            this.IsEnforcedUserLevel = null;
         }
         //      C# -> System.Boolean? IsSupported
         // GraphQL -> isSupported: Boolean! (scalar)
-        if (this.IsSupported == null && ec.Includes("isSupported",true))
+        if (ec.Includes("isSupported",true))
         {
-            this.IsSupported = true;
+            if(this.IsSupported == null) {
+
+                this.IsSupported = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsSupported != null && ec.Excludes("isSupported",true))
+        {
+            this.IsSupported = null;
         }
         //      C# -> DateTime? TotpConfigUpdateAt
         // GraphQL -> totpConfigUpdateAt: DateTime (scalar)
-        if (this.TotpConfigUpdateAt == null && ec.Includes("totpConfigUpdateAt",true))
+        if (ec.Includes("totpConfigUpdateAt",true))
         {
-            this.TotpConfigUpdateAt = new DateTime();
+            if(this.TotpConfigUpdateAt == null) {
+
+                this.TotpConfigUpdateAt = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotpConfigUpdateAt != null && ec.Excludes("totpConfigUpdateAt",true))
+        {
+            this.TotpConfigUpdateAt = null;
         }
     }
 
@@ -174,9 +250,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<TotpStatus> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

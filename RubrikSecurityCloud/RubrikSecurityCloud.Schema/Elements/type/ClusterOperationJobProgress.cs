@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> CdmJobStatus? JobStatus
         // GraphQL -> jobStatus: CdmJobStatus! (enum)
         if (this.JobStatus != null) {
-            s += ind + "jobStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "jobStatus\n" ;
+            } else {
+                s += ind + "jobStatus\n" ;
+            }
         }
         //      C# -> CcpJobType? JobType
         // GraphQL -> jobType: CcpJobType! (enum)
         if (this.JobType != null) {
-            s += ind + "jobType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "jobType\n" ;
+            } else {
+                s += ind + "jobType\n" ;
+            }
         }
         //      C# -> System.Int32? JobProgress
         // GraphQL -> jobProgress: Int! (scalar)
         if (this.JobProgress != null) {
-            s += ind + "jobProgress\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "jobProgress\n" ;
+            } else {
+                s += ind + "jobProgress\n" ;
+            }
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
         if (this.Message != null) {
-            s += ind + "message\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "message\n" ;
+            } else {
+                s += ind + "message\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> CdmJobStatus? JobStatus
         // GraphQL -> jobStatus: CdmJobStatus! (enum)
-        if (this.JobStatus == null && ec.Includes("jobStatus",true))
+        if (ec.Includes("jobStatus",true))
         {
-            this.JobStatus = new CdmJobStatus();
+            if(this.JobStatus == null) {
+
+                this.JobStatus = new CdmJobStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.JobStatus != null && ec.Excludes("jobStatus",true))
+        {
+            this.JobStatus = null;
         }
         //      C# -> CcpJobType? JobType
         // GraphQL -> jobType: CcpJobType! (enum)
-        if (this.JobType == null && ec.Includes("jobType",true))
+        if (ec.Includes("jobType",true))
         {
-            this.JobType = new CcpJobType();
+            if(this.JobType == null) {
+
+                this.JobType = new CcpJobType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.JobType != null && ec.Excludes("jobType",true))
+        {
+            this.JobType = null;
         }
         //      C# -> System.Int32? JobProgress
         // GraphQL -> jobProgress: Int! (scalar)
-        if (this.JobProgress == null && ec.Includes("jobProgress",true))
+        if (ec.Includes("jobProgress",true))
         {
-            this.JobProgress = Int32.MinValue;
+            if(this.JobProgress == null) {
+
+                this.JobProgress = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.JobProgress != null && ec.Excludes("jobProgress",true))
+        {
+            this.JobProgress = null;
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
-        if (this.Message == null && ec.Includes("message",true))
+        if (ec.Includes("message",true))
         {
-            this.Message = "FETCH";
+            if(this.Message == null) {
+
+                this.Message = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Message != null && ec.Excludes("message",true))
+        {
+            this.Message = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ClusterOperationJobProgress> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

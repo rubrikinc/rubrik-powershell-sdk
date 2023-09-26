@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int32? ObjectCount
         // GraphQL -> objectCount: Int! (scalar)
         if (this.ObjectCount != null) {
-            s += ind + "objectCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "objectCount\n" ;
+            } else {
+                s += ind + "objectCount\n" ;
+            }
         }
         //      C# -> System.String? SlaId
         // GraphQL -> slaId: String! (scalar)
         if (this.SlaId != null) {
-            s += ind + "slaId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "slaId\n" ;
+            } else {
+                s += ind + "slaId\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int32? ObjectCount
         // GraphQL -> objectCount: Int! (scalar)
-        if (this.ObjectCount == null && ec.Includes("objectCount",true))
+        if (ec.Includes("objectCount",true))
         {
-            this.ObjectCount = Int32.MinValue;
+            if(this.ObjectCount == null) {
+
+                this.ObjectCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ObjectCount != null && ec.Excludes("objectCount",true))
+        {
+            this.ObjectCount = null;
         }
         //      C# -> System.String? SlaId
         // GraphQL -> slaId: String! (scalar)
-        if (this.SlaId == null && ec.Includes("slaId",true))
+        if (ec.Includes("slaId",true))
         {
-            this.SlaId = "FETCH";
+            if(this.SlaId == null) {
+
+                this.SlaId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SlaId != null && ec.Excludes("slaId",true))
+        {
+            this.SlaId = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SlaIdToObjectCount> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

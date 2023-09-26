@@ -101,46 +101,75 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> AzureCloudAccountRegion? Region
         // GraphQL -> region: AzureCloudAccountRegion! (enum)
         if (this.Region != null) {
-            s += ind + "region\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "region\n" ;
+            } else {
+                s += ind + "region\n" ;
+            }
         }
         //      C# -> System.String? ConfigUuid
         // GraphQL -> configUuid: String! (scalar)
         if (this.ConfigUuid != null) {
-            s += ind + "configUuid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "configUuid\n" ;
+            } else {
+                s += ind + "configUuid\n" ;
+            }
         }
         //      C# -> System.Boolean? IsRscManaged
         // GraphQL -> isRscManaged: Boolean! (scalar)
         if (this.IsRscManaged != null) {
-            s += ind + "isRscManaged\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isRscManaged\n" ;
+            } else {
+                s += ind + "isRscManaged\n" ;
+            }
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
         if (this.Message != null) {
-            s += ind + "message\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "message\n" ;
+            } else {
+                s += ind + "message\n" ;
+            }
         }
         //      C# -> System.String? PodSubnetNativeId
         // GraphQL -> podSubnetNativeId: String! (scalar)
         if (this.PodSubnetNativeId != null) {
-            s += ind + "podSubnetNativeId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "podSubnetNativeId\n" ;
+            } else {
+                s += ind + "podSubnetNativeId\n" ;
+            }
         }
         //      C# -> System.String? SubnetNativeId
         // GraphQL -> subnetNativeId: String! (scalar)
         if (this.SubnetNativeId != null) {
-            s += ind + "subnetNativeId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "subnetNativeId\n" ;
+            } else {
+                s += ind + "subnetNativeId\n" ;
+            }
         }
         //      C# -> ExocomputeHealthCheckStatus? HealthCheckStatus
         // GraphQL -> healthCheckStatus: ExocomputeHealthCheckStatus! (type)
         if (this.HealthCheckStatus != null) {
-            var fspec = this.HealthCheckStatus.AsFieldSpec(indent+1);
+            var fspec = this.HealthCheckStatus.AsFieldSpec(conf.Child("healthCheckStatus"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "healthCheckStatus {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "healthCheckStatus {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -152,46 +181,124 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> AzureCloudAccountRegion? Region
         // GraphQL -> region: AzureCloudAccountRegion! (enum)
-        if (this.Region == null && ec.Includes("region",true))
+        if (ec.Includes("region",true))
         {
-            this.Region = new AzureCloudAccountRegion();
+            if(this.Region == null) {
+
+                this.Region = new AzureCloudAccountRegion();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Region != null && ec.Excludes("region",true))
+        {
+            this.Region = null;
         }
         //      C# -> System.String? ConfigUuid
         // GraphQL -> configUuid: String! (scalar)
-        if (this.ConfigUuid == null && ec.Includes("configUuid",true))
+        if (ec.Includes("configUuid",true))
         {
-            this.ConfigUuid = "FETCH";
+            if(this.ConfigUuid == null) {
+
+                this.ConfigUuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ConfigUuid != null && ec.Excludes("configUuid",true))
+        {
+            this.ConfigUuid = null;
         }
         //      C# -> System.Boolean? IsRscManaged
         // GraphQL -> isRscManaged: Boolean! (scalar)
-        if (this.IsRscManaged == null && ec.Includes("isRscManaged",true))
+        if (ec.Includes("isRscManaged",true))
         {
-            this.IsRscManaged = true;
+            if(this.IsRscManaged == null) {
+
+                this.IsRscManaged = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsRscManaged != null && ec.Excludes("isRscManaged",true))
+        {
+            this.IsRscManaged = null;
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
-        if (this.Message == null && ec.Includes("message",true))
+        if (ec.Includes("message",true))
         {
-            this.Message = "FETCH";
+            if(this.Message == null) {
+
+                this.Message = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Message != null && ec.Excludes("message",true))
+        {
+            this.Message = null;
         }
         //      C# -> System.String? PodSubnetNativeId
         // GraphQL -> podSubnetNativeId: String! (scalar)
-        if (this.PodSubnetNativeId == null && ec.Includes("podSubnetNativeId",true))
+        if (ec.Includes("podSubnetNativeId",true))
         {
-            this.PodSubnetNativeId = "FETCH";
+            if(this.PodSubnetNativeId == null) {
+
+                this.PodSubnetNativeId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PodSubnetNativeId != null && ec.Excludes("podSubnetNativeId",true))
+        {
+            this.PodSubnetNativeId = null;
         }
         //      C# -> System.String? SubnetNativeId
         // GraphQL -> subnetNativeId: String! (scalar)
-        if (this.SubnetNativeId == null && ec.Includes("subnetNativeId",true))
+        if (ec.Includes("subnetNativeId",true))
         {
-            this.SubnetNativeId = "FETCH";
+            if(this.SubnetNativeId == null) {
+
+                this.SubnetNativeId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SubnetNativeId != null && ec.Excludes("subnetNativeId",true))
+        {
+            this.SubnetNativeId = null;
         }
         //      C# -> ExocomputeHealthCheckStatus? HealthCheckStatus
         // GraphQL -> healthCheckStatus: ExocomputeHealthCheckStatus! (type)
-        if (this.HealthCheckStatus == null && ec.Includes("healthCheckStatus",false))
+        if (ec.Includes("healthCheckStatus",false))
         {
-            this.HealthCheckStatus = new ExocomputeHealthCheckStatus();
-            this.HealthCheckStatus.ApplyExploratoryFieldSpec(ec.NewChild("healthCheckStatus"));
+            if(this.HealthCheckStatus == null) {
+
+                this.HealthCheckStatus = new ExocomputeHealthCheckStatus();
+                this.HealthCheckStatus.ApplyExploratoryFieldSpec(ec.NewChild("healthCheckStatus"));
+
+            } else {
+
+                this.HealthCheckStatus.ApplyExploratoryFieldSpec(ec.NewChild("healthCheckStatus"));
+
+            }
+        }
+        else if (this.HealthCheckStatus != null && ec.Excludes("healthCheckStatus",false))
+        {
+            this.HealthCheckStatus = null;
         }
     }
 
@@ -218,9 +325,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AzureExocomputeConfigDetails> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

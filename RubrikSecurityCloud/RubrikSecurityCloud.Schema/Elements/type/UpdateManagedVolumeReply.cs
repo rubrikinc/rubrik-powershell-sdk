@@ -236,133 +236,222 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> ManagedVolumeApplicationTag? ApplicationTag
         // GraphQL -> applicationTag: ManagedVolumeApplicationTag (enum)
         if (this.ApplicationTag != null) {
-            s += ind + "applicationTag\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "applicationTag\n" ;
+            } else {
+                s += ind + "applicationTag\n" ;
+            }
         }
         //      C# -> CdmManagedVolumeType? MvType
         // GraphQL -> mvType: CdmManagedVolumeType (enum)
         if (this.MvType != null) {
-            s += ind + "mvType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "mvType\n" ;
+            } else {
+                s += ind + "mvType\n" ;
+            }
         }
         //      C# -> ManagedVolumeShareType? ShareType
         // GraphQL -> shareType: ManagedVolumeShareType! (enum)
         if (this.ShareType != null) {
-            s += ind + "shareType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "shareType\n" ;
+            } else {
+                s += ind + "shareType\n" ;
+            }
         }
         //      C# -> ManagedVolumeState? State
         // GraphQL -> state: ManagedVolumeState! (enum)
         if (this.State != null) {
-            s += ind + "state\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "state\n" ;
+            } else {
+                s += ind + "state\n" ;
+            }
         }
         //      C# -> List<System.String>? HostPatterns
         // GraphQL -> hostPatterns: [String!]! (scalar)
         if (this.HostPatterns != null) {
-            s += ind + "hostPatterns\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostPatterns\n" ;
+            } else {
+                s += ind + "hostPatterns\n" ;
+            }
         }
         //      C# -> System.Boolean? IsDeleted
         // GraphQL -> isDeleted: Boolean! (scalar)
         if (this.IsDeleted != null) {
-            s += ind + "isDeleted\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isDeleted\n" ;
+            } else {
+                s += ind + "isDeleted\n" ;
+            }
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
         if (this.IsRelic != null) {
-            s += ind + "isRelic\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isRelic\n" ;
+            } else {
+                s += ind + "isRelic\n" ;
+            }
         }
         //      C# -> System.Boolean? IsWritable
         // GraphQL -> isWritable: Boolean! (scalar)
         if (this.IsWritable != null) {
-            s += ind + "isWritable\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isWritable\n" ;
+            } else {
+                s += ind + "isWritable\n" ;
+            }
         }
         //      C# -> System.Int32? NumChannels
         // GraphQL -> numChannels: Int! (scalar)
         if (this.NumChannels != null) {
-            s += ind + "numChannels\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "numChannels\n" ;
+            } else {
+                s += ind + "numChannels\n" ;
+            }
         }
         //      C# -> System.Int32? PendingSnapshotCount
         // GraphQL -> pendingSnapshotCount: Int! (scalar)
         if (this.PendingSnapshotCount != null) {
-            s += ind + "pendingSnapshotCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "pendingSnapshotCount\n" ;
+            } else {
+                s += ind + "pendingSnapshotCount\n" ;
+            }
         }
         //      C# -> System.String? SmbDomainName
         // GraphQL -> smbDomainName: String (scalar)
         if (this.SmbDomainName != null) {
-            s += ind + "smbDomainName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "smbDomainName\n" ;
+            } else {
+                s += ind + "smbDomainName\n" ;
+            }
         }
         //      C# -> List<System.String>? SmbValidIps
         // GraphQL -> smbValidIps: [String!]! (scalar)
         if (this.SmbValidIps != null) {
-            s += ind + "smbValidIps\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "smbValidIps\n" ;
+            } else {
+                s += ind + "smbValidIps\n" ;
+            }
         }
         //      C# -> List<System.String>? SmbValidUsers
         // GraphQL -> smbValidUsers: [String!]! (scalar)
         if (this.SmbValidUsers != null) {
-            s += ind + "smbValidUsers\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "smbValidUsers\n" ;
+            } else {
+                s += ind + "smbValidUsers\n" ;
+            }
         }
         //      C# -> System.Int32? SnapshotCount
         // GraphQL -> snapshotCount: Int! (scalar)
         if (this.SnapshotCount != null) {
-            s += ind + "snapshotCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotCount\n" ;
+            } else {
+                s += ind + "snapshotCount\n" ;
+            }
         }
         //      C# -> System.String? Subnet
         // GraphQL -> subnet: String (scalar)
         if (this.Subnet != null) {
-            s += ind + "subnet\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "subnet\n" ;
+            } else {
+                s += ind + "subnet\n" ;
+            }
         }
         //      C# -> System.Int64? UsedSize
         // GraphQL -> usedSize: Long! (scalar)
         if (this.UsedSize != null) {
-            s += ind + "usedSize\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "usedSize\n" ;
+            } else {
+                s += ind + "usedSize\n" ;
+            }
         }
         //      C# -> System.Int64? VolumeSize
         // GraphQL -> volumeSize: Long! (scalar)
         if (this.VolumeSize != null) {
-            s += ind + "volumeSize\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "volumeSize\n" ;
+            } else {
+                s += ind + "volumeSize\n" ;
+            }
         }
         //      C# -> List<Link>? Links
         // GraphQL -> links: [Link!]! (type)
         if (this.Links != null) {
-            var fspec = this.Links.AsFieldSpec(indent+1);
+            var fspec = this.Links.AsFieldSpec(conf.Child("links"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "links {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "links {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> ManagedVolumeExport? MainExport
         // GraphQL -> mainExport: ManagedVolumeExport (type)
         if (this.MainExport != null) {
-            var fspec = this.MainExport.AsFieldSpec(indent+1);
+            var fspec = this.MainExport.AsFieldSpec(conf.Child("mainExport"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "mainExport {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "mainExport {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> ManagedObjectPendingSlaInfo? PendingSlaDomain
         // GraphQL -> pendingSlaDomain: ManagedObjectPendingSlaInfo (type)
         if (this.PendingSlaDomain != null) {
-            var fspec = this.PendingSlaDomain.AsFieldSpec(indent+1);
+            var fspec = this.PendingSlaDomain.AsFieldSpec(conf.Child("pendingSlaDomain"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "pendingSlaDomain {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "pendingSlaDomain {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> SlaManagedVolumeDetail? SlaManagedVolumeDetails
         // GraphQL -> slaManagedVolumeDetails: SlaManagedVolumeDetail (type)
         if (this.SlaManagedVolumeDetails != null) {
-            var fspec = this.SlaManagedVolumeDetails.AsFieldSpec(indent+1);
+            var fspec = this.SlaManagedVolumeDetails.AsFieldSpec(conf.Child("slaManagedVolumeDetails"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "slaManagedVolumeDetails {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "slaManagedVolumeDetails {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> CdmWorkload? Snappable
         // GraphQL -> snappable: CdmWorkload (type)
         if (this.Snappable != null) {
-            var fspec = this.Snappable.AsFieldSpec(indent+1);
+            var fspec = this.Snappable.AsFieldSpec(conf.Child("snappable"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "snappable {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "snappable {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -374,140 +463,387 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> ManagedVolumeApplicationTag? ApplicationTag
         // GraphQL -> applicationTag: ManagedVolumeApplicationTag (enum)
-        if (this.ApplicationTag == null && ec.Includes("applicationTag",true))
+        if (ec.Includes("applicationTag",true))
         {
-            this.ApplicationTag = new ManagedVolumeApplicationTag();
+            if(this.ApplicationTag == null) {
+
+                this.ApplicationTag = new ManagedVolumeApplicationTag();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ApplicationTag != null && ec.Excludes("applicationTag",true))
+        {
+            this.ApplicationTag = null;
         }
         //      C# -> CdmManagedVolumeType? MvType
         // GraphQL -> mvType: CdmManagedVolumeType (enum)
-        if (this.MvType == null && ec.Includes("mvType",true))
+        if (ec.Includes("mvType",true))
         {
-            this.MvType = new CdmManagedVolumeType();
+            if(this.MvType == null) {
+
+                this.MvType = new CdmManagedVolumeType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.MvType != null && ec.Excludes("mvType",true))
+        {
+            this.MvType = null;
         }
         //      C# -> ManagedVolumeShareType? ShareType
         // GraphQL -> shareType: ManagedVolumeShareType! (enum)
-        if (this.ShareType == null && ec.Includes("shareType",true))
+        if (ec.Includes("shareType",true))
         {
-            this.ShareType = new ManagedVolumeShareType();
+            if(this.ShareType == null) {
+
+                this.ShareType = new ManagedVolumeShareType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShareType != null && ec.Excludes("shareType",true))
+        {
+            this.ShareType = null;
         }
         //      C# -> ManagedVolumeState? State
         // GraphQL -> state: ManagedVolumeState! (enum)
-        if (this.State == null && ec.Includes("state",true))
+        if (ec.Includes("state",true))
         {
-            this.State = new ManagedVolumeState();
+            if(this.State == null) {
+
+                this.State = new ManagedVolumeState();
+
+            } else {
+
+
+            }
+        }
+        else if (this.State != null && ec.Excludes("state",true))
+        {
+            this.State = null;
         }
         //      C# -> List<System.String>? HostPatterns
         // GraphQL -> hostPatterns: [String!]! (scalar)
-        if (this.HostPatterns == null && ec.Includes("hostPatterns",true))
+        if (ec.Includes("hostPatterns",true))
         {
-            this.HostPatterns = new List<System.String>();
+            if(this.HostPatterns == null) {
+
+                this.HostPatterns = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.HostPatterns != null && ec.Excludes("hostPatterns",true))
+        {
+            this.HostPatterns = null;
         }
         //      C# -> System.Boolean? IsDeleted
         // GraphQL -> isDeleted: Boolean! (scalar)
-        if (this.IsDeleted == null && ec.Includes("isDeleted",true))
+        if (ec.Includes("isDeleted",true))
         {
-            this.IsDeleted = true;
+            if(this.IsDeleted == null) {
+
+                this.IsDeleted = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsDeleted != null && ec.Excludes("isDeleted",true))
+        {
+            this.IsDeleted = null;
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
-        if (this.IsRelic == null && ec.Includes("isRelic",true))
+        if (ec.Includes("isRelic",true))
         {
-            this.IsRelic = true;
+            if(this.IsRelic == null) {
+
+                this.IsRelic = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsRelic != null && ec.Excludes("isRelic",true))
+        {
+            this.IsRelic = null;
         }
         //      C# -> System.Boolean? IsWritable
         // GraphQL -> isWritable: Boolean! (scalar)
-        if (this.IsWritable == null && ec.Includes("isWritable",true))
+        if (ec.Includes("isWritable",true))
         {
-            this.IsWritable = true;
+            if(this.IsWritable == null) {
+
+                this.IsWritable = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsWritable != null && ec.Excludes("isWritable",true))
+        {
+            this.IsWritable = null;
         }
         //      C# -> System.Int32? NumChannels
         // GraphQL -> numChannels: Int! (scalar)
-        if (this.NumChannels == null && ec.Includes("numChannels",true))
+        if (ec.Includes("numChannels",true))
         {
-            this.NumChannels = Int32.MinValue;
+            if(this.NumChannels == null) {
+
+                this.NumChannels = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.NumChannels != null && ec.Excludes("numChannels",true))
+        {
+            this.NumChannels = null;
         }
         //      C# -> System.Int32? PendingSnapshotCount
         // GraphQL -> pendingSnapshotCount: Int! (scalar)
-        if (this.PendingSnapshotCount == null && ec.Includes("pendingSnapshotCount",true))
+        if (ec.Includes("pendingSnapshotCount",true))
         {
-            this.PendingSnapshotCount = Int32.MinValue;
+            if(this.PendingSnapshotCount == null) {
+
+                this.PendingSnapshotCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.PendingSnapshotCount != null && ec.Excludes("pendingSnapshotCount",true))
+        {
+            this.PendingSnapshotCount = null;
         }
         //      C# -> System.String? SmbDomainName
         // GraphQL -> smbDomainName: String (scalar)
-        if (this.SmbDomainName == null && ec.Includes("smbDomainName",true))
+        if (ec.Includes("smbDomainName",true))
         {
-            this.SmbDomainName = "FETCH";
+            if(this.SmbDomainName == null) {
+
+                this.SmbDomainName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SmbDomainName != null && ec.Excludes("smbDomainName",true))
+        {
+            this.SmbDomainName = null;
         }
         //      C# -> List<System.String>? SmbValidIps
         // GraphQL -> smbValidIps: [String!]! (scalar)
-        if (this.SmbValidIps == null && ec.Includes("smbValidIps",true))
+        if (ec.Includes("smbValidIps",true))
         {
-            this.SmbValidIps = new List<System.String>();
+            if(this.SmbValidIps == null) {
+
+                this.SmbValidIps = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SmbValidIps != null && ec.Excludes("smbValidIps",true))
+        {
+            this.SmbValidIps = null;
         }
         //      C# -> List<System.String>? SmbValidUsers
         // GraphQL -> smbValidUsers: [String!]! (scalar)
-        if (this.SmbValidUsers == null && ec.Includes("smbValidUsers",true))
+        if (ec.Includes("smbValidUsers",true))
         {
-            this.SmbValidUsers = new List<System.String>();
+            if(this.SmbValidUsers == null) {
+
+                this.SmbValidUsers = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SmbValidUsers != null && ec.Excludes("smbValidUsers",true))
+        {
+            this.SmbValidUsers = null;
         }
         //      C# -> System.Int32? SnapshotCount
         // GraphQL -> snapshotCount: Int! (scalar)
-        if (this.SnapshotCount == null && ec.Includes("snapshotCount",true))
+        if (ec.Includes("snapshotCount",true))
         {
-            this.SnapshotCount = Int32.MinValue;
+            if(this.SnapshotCount == null) {
+
+                this.SnapshotCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotCount != null && ec.Excludes("snapshotCount",true))
+        {
+            this.SnapshotCount = null;
         }
         //      C# -> System.String? Subnet
         // GraphQL -> subnet: String (scalar)
-        if (this.Subnet == null && ec.Includes("subnet",true))
+        if (ec.Includes("subnet",true))
         {
-            this.Subnet = "FETCH";
+            if(this.Subnet == null) {
+
+                this.Subnet = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Subnet != null && ec.Excludes("subnet",true))
+        {
+            this.Subnet = null;
         }
         //      C# -> System.Int64? UsedSize
         // GraphQL -> usedSize: Long! (scalar)
-        if (this.UsedSize == null && ec.Includes("usedSize",true))
+        if (ec.Includes("usedSize",true))
         {
-            this.UsedSize = new System.Int64();
+            if(this.UsedSize == null) {
+
+                this.UsedSize = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UsedSize != null && ec.Excludes("usedSize",true))
+        {
+            this.UsedSize = null;
         }
         //      C# -> System.Int64? VolumeSize
         // GraphQL -> volumeSize: Long! (scalar)
-        if (this.VolumeSize == null && ec.Includes("volumeSize",true))
+        if (ec.Includes("volumeSize",true))
         {
-            this.VolumeSize = new System.Int64();
+            if(this.VolumeSize == null) {
+
+                this.VolumeSize = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.VolumeSize != null && ec.Excludes("volumeSize",true))
+        {
+            this.VolumeSize = null;
         }
         //      C# -> List<Link>? Links
         // GraphQL -> links: [Link!]! (type)
-        if (this.Links == null && ec.Includes("links",false))
+        if (ec.Includes("links",false))
         {
-            this.Links = new List<Link>();
-            this.Links.ApplyExploratoryFieldSpec(ec.NewChild("links"));
+            if(this.Links == null) {
+
+                this.Links = new List<Link>();
+                this.Links.ApplyExploratoryFieldSpec(ec.NewChild("links"));
+
+            } else {
+
+                this.Links.ApplyExploratoryFieldSpec(ec.NewChild("links"));
+
+            }
+        }
+        else if (this.Links != null && ec.Excludes("links",false))
+        {
+            this.Links = null;
         }
         //      C# -> ManagedVolumeExport? MainExport
         // GraphQL -> mainExport: ManagedVolumeExport (type)
-        if (this.MainExport == null && ec.Includes("mainExport",false))
+        if (ec.Includes("mainExport",false))
         {
-            this.MainExport = new ManagedVolumeExport();
-            this.MainExport.ApplyExploratoryFieldSpec(ec.NewChild("mainExport"));
+            if(this.MainExport == null) {
+
+                this.MainExport = new ManagedVolumeExport();
+                this.MainExport.ApplyExploratoryFieldSpec(ec.NewChild("mainExport"));
+
+            } else {
+
+                this.MainExport.ApplyExploratoryFieldSpec(ec.NewChild("mainExport"));
+
+            }
+        }
+        else if (this.MainExport != null && ec.Excludes("mainExport",false))
+        {
+            this.MainExport = null;
         }
         //      C# -> ManagedObjectPendingSlaInfo? PendingSlaDomain
         // GraphQL -> pendingSlaDomain: ManagedObjectPendingSlaInfo (type)
-        if (this.PendingSlaDomain == null && ec.Includes("pendingSlaDomain",false))
+        if (ec.Includes("pendingSlaDomain",false))
         {
-            this.PendingSlaDomain = new ManagedObjectPendingSlaInfo();
-            this.PendingSlaDomain.ApplyExploratoryFieldSpec(ec.NewChild("pendingSlaDomain"));
+            if(this.PendingSlaDomain == null) {
+
+                this.PendingSlaDomain = new ManagedObjectPendingSlaInfo();
+                this.PendingSlaDomain.ApplyExploratoryFieldSpec(ec.NewChild("pendingSlaDomain"));
+
+            } else {
+
+                this.PendingSlaDomain.ApplyExploratoryFieldSpec(ec.NewChild("pendingSlaDomain"));
+
+            }
+        }
+        else if (this.PendingSlaDomain != null && ec.Excludes("pendingSlaDomain",false))
+        {
+            this.PendingSlaDomain = null;
         }
         //      C# -> SlaManagedVolumeDetail? SlaManagedVolumeDetails
         // GraphQL -> slaManagedVolumeDetails: SlaManagedVolumeDetail (type)
-        if (this.SlaManagedVolumeDetails == null && ec.Includes("slaManagedVolumeDetails",false))
+        if (ec.Includes("slaManagedVolumeDetails",false))
         {
-            this.SlaManagedVolumeDetails = new SlaManagedVolumeDetail();
-            this.SlaManagedVolumeDetails.ApplyExploratoryFieldSpec(ec.NewChild("slaManagedVolumeDetails"));
+            if(this.SlaManagedVolumeDetails == null) {
+
+                this.SlaManagedVolumeDetails = new SlaManagedVolumeDetail();
+                this.SlaManagedVolumeDetails.ApplyExploratoryFieldSpec(ec.NewChild("slaManagedVolumeDetails"));
+
+            } else {
+
+                this.SlaManagedVolumeDetails.ApplyExploratoryFieldSpec(ec.NewChild("slaManagedVolumeDetails"));
+
+            }
+        }
+        else if (this.SlaManagedVolumeDetails != null && ec.Excludes("slaManagedVolumeDetails",false))
+        {
+            this.SlaManagedVolumeDetails = null;
         }
         //      C# -> CdmWorkload? Snappable
         // GraphQL -> snappable: CdmWorkload (type)
-        if (this.Snappable == null && ec.Includes("snappable",false))
+        if (ec.Includes("snappable",false))
         {
-            this.Snappable = new CdmWorkload();
-            this.Snappable.ApplyExploratoryFieldSpec(ec.NewChild("snappable"));
+            if(this.Snappable == null) {
+
+                this.Snappable = new CdmWorkload();
+                this.Snappable.ApplyExploratoryFieldSpec(ec.NewChild("snappable"));
+
+            } else {
+
+                this.Snappable.ApplyExploratoryFieldSpec(ec.NewChild("snappable"));
+
+            }
+        }
+        else if (this.Snappable != null && ec.Excludes("snappable",false))
+        {
+            this.Snappable = null;
         }
     }
 
@@ -534,9 +870,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<UpdateManagedVolumeReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

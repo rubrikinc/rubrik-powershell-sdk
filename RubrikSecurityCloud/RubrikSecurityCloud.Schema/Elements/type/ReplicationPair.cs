@@ -128,73 +128,114 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> ReplicationPairConnectionStatus? Status
         // GraphQL -> status: ReplicationPairConnectionStatus! (enum)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         //      C# -> System.Int64? FailedTasks
         // GraphQL -> failedTasks: Long (scalar)
         if (this.FailedTasks != null) {
-            s += ind + "failedTasks\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "failedTasks\n" ;
+            } else {
+                s += ind + "failedTasks\n" ;
+            }
         }
         //      C# -> System.Boolean? IsPaused
         // GraphQL -> isPaused: Boolean! (scalar)
         if (this.IsPaused != null) {
-            s += ind + "isPaused\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isPaused\n" ;
+            } else {
+                s += ind + "isPaused\n" ;
+            }
         }
         //      C# -> System.Int64? RunningTasks
         // GraphQL -> runningTasks: Long (scalar)
         if (this.RunningTasks != null) {
-            s += ind + "runningTasks\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "runningTasks\n" ;
+            } else {
+                s += ind + "runningTasks\n" ;
+            }
         }
         //      C# -> System.Int64? Storage
         // GraphQL -> storage: Long! (scalar)
         if (this.Storage != null) {
-            s += ind + "storage\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "storage\n" ;
+            } else {
+                s += ind + "storage\n" ;
+            }
         }
         //      C# -> ReplicationPairConfigDetails? ConfigDetails
         // GraphQL -> configDetails: ReplicationPairConfigDetails (type)
         if (this.ConfigDetails != null) {
-            var fspec = this.ConfigDetails.AsFieldSpec(indent+1);
+            var fspec = this.ConfigDetails.AsFieldSpec(conf.Child("configDetails"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "configDetails {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "configDetails {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> ConnectionStatusDetails? ConnectionDetails
         // GraphQL -> connectionDetails: ConnectionStatusDetails! (type)
         if (this.ConnectionDetails != null) {
-            var fspec = this.ConnectionDetails.AsFieldSpec(indent+1);
+            var fspec = this.ConnectionDetails.AsFieldSpec(conf.Child("connectionDetails"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "connectionDetails {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "connectionDetails {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> NetworkThrottle? NetworkThrottle
         // GraphQL -> networkThrottle: NetworkThrottle (type)
         if (this.NetworkThrottle != null) {
-            var fspec = this.NetworkThrottle.AsFieldSpec(indent+1);
+            var fspec = this.NetworkThrottle.AsFieldSpec(conf.Child("networkThrottle"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "networkThrottle {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "networkThrottle {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> ReplicationCluster? SourceCluster
         // GraphQL -> sourceCluster: ReplicationCluster! (type)
         if (this.SourceCluster != null) {
-            var fspec = this.SourceCluster.AsFieldSpec(indent+1);
+            var fspec = this.SourceCluster.AsFieldSpec(conf.Child("sourceCluster"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "sourceCluster {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "sourceCluster {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> ReplicationCluster? TargetCluster
         // GraphQL -> targetCluster: ReplicationCluster! (type)
         if (this.TargetCluster != null) {
-            var fspec = this.TargetCluster.AsFieldSpec(indent+1);
+            var fspec = this.TargetCluster.AsFieldSpec(conf.Child("targetCluster"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "targetCluster {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "targetCluster {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -206,68 +247,183 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> ReplicationPairConnectionStatus? Status
         // GraphQL -> status: ReplicationPairConnectionStatus! (enum)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = new ReplicationPairConnectionStatus();
+            if(this.Status == null) {
+
+                this.Status = new ReplicationPairConnectionStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
         //      C# -> System.Int64? FailedTasks
         // GraphQL -> failedTasks: Long (scalar)
-        if (this.FailedTasks == null && ec.Includes("failedTasks",true))
+        if (ec.Includes("failedTasks",true))
         {
-            this.FailedTasks = new System.Int64();
+            if(this.FailedTasks == null) {
+
+                this.FailedTasks = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.FailedTasks != null && ec.Excludes("failedTasks",true))
+        {
+            this.FailedTasks = null;
         }
         //      C# -> System.Boolean? IsPaused
         // GraphQL -> isPaused: Boolean! (scalar)
-        if (this.IsPaused == null && ec.Includes("isPaused",true))
+        if (ec.Includes("isPaused",true))
         {
-            this.IsPaused = true;
+            if(this.IsPaused == null) {
+
+                this.IsPaused = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsPaused != null && ec.Excludes("isPaused",true))
+        {
+            this.IsPaused = null;
         }
         //      C# -> System.Int64? RunningTasks
         // GraphQL -> runningTasks: Long (scalar)
-        if (this.RunningTasks == null && ec.Includes("runningTasks",true))
+        if (ec.Includes("runningTasks",true))
         {
-            this.RunningTasks = new System.Int64();
+            if(this.RunningTasks == null) {
+
+                this.RunningTasks = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RunningTasks != null && ec.Excludes("runningTasks",true))
+        {
+            this.RunningTasks = null;
         }
         //      C# -> System.Int64? Storage
         // GraphQL -> storage: Long! (scalar)
-        if (this.Storage == null && ec.Includes("storage",true))
+        if (ec.Includes("storage",true))
         {
-            this.Storage = new System.Int64();
+            if(this.Storage == null) {
+
+                this.Storage = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Storage != null && ec.Excludes("storage",true))
+        {
+            this.Storage = null;
         }
         //      C# -> ReplicationPairConfigDetails? ConfigDetails
         // GraphQL -> configDetails: ReplicationPairConfigDetails (type)
-        if (this.ConfigDetails == null && ec.Includes("configDetails",false))
+        if (ec.Includes("configDetails",false))
         {
-            this.ConfigDetails = new ReplicationPairConfigDetails();
-            this.ConfigDetails.ApplyExploratoryFieldSpec(ec.NewChild("configDetails"));
+            if(this.ConfigDetails == null) {
+
+                this.ConfigDetails = new ReplicationPairConfigDetails();
+                this.ConfigDetails.ApplyExploratoryFieldSpec(ec.NewChild("configDetails"));
+
+            } else {
+
+                this.ConfigDetails.ApplyExploratoryFieldSpec(ec.NewChild("configDetails"));
+
+            }
+        }
+        else if (this.ConfigDetails != null && ec.Excludes("configDetails",false))
+        {
+            this.ConfigDetails = null;
         }
         //      C# -> ConnectionStatusDetails? ConnectionDetails
         // GraphQL -> connectionDetails: ConnectionStatusDetails! (type)
-        if (this.ConnectionDetails == null && ec.Includes("connectionDetails",false))
+        if (ec.Includes("connectionDetails",false))
         {
-            this.ConnectionDetails = new ConnectionStatusDetails();
-            this.ConnectionDetails.ApplyExploratoryFieldSpec(ec.NewChild("connectionDetails"));
+            if(this.ConnectionDetails == null) {
+
+                this.ConnectionDetails = new ConnectionStatusDetails();
+                this.ConnectionDetails.ApplyExploratoryFieldSpec(ec.NewChild("connectionDetails"));
+
+            } else {
+
+                this.ConnectionDetails.ApplyExploratoryFieldSpec(ec.NewChild("connectionDetails"));
+
+            }
+        }
+        else if (this.ConnectionDetails != null && ec.Excludes("connectionDetails",false))
+        {
+            this.ConnectionDetails = null;
         }
         //      C# -> NetworkThrottle? NetworkThrottle
         // GraphQL -> networkThrottle: NetworkThrottle (type)
-        if (this.NetworkThrottle == null && ec.Includes("networkThrottle",false))
+        if (ec.Includes("networkThrottle",false))
         {
-            this.NetworkThrottle = new NetworkThrottle();
-            this.NetworkThrottle.ApplyExploratoryFieldSpec(ec.NewChild("networkThrottle"));
+            if(this.NetworkThrottle == null) {
+
+                this.NetworkThrottle = new NetworkThrottle();
+                this.NetworkThrottle.ApplyExploratoryFieldSpec(ec.NewChild("networkThrottle"));
+
+            } else {
+
+                this.NetworkThrottle.ApplyExploratoryFieldSpec(ec.NewChild("networkThrottle"));
+
+            }
+        }
+        else if (this.NetworkThrottle != null && ec.Excludes("networkThrottle",false))
+        {
+            this.NetworkThrottle = null;
         }
         //      C# -> ReplicationCluster? SourceCluster
         // GraphQL -> sourceCluster: ReplicationCluster! (type)
-        if (this.SourceCluster == null && ec.Includes("sourceCluster",false))
+        if (ec.Includes("sourceCluster",false))
         {
-            this.SourceCluster = new ReplicationCluster();
-            this.SourceCluster.ApplyExploratoryFieldSpec(ec.NewChild("sourceCluster"));
+            if(this.SourceCluster == null) {
+
+                this.SourceCluster = new ReplicationCluster();
+                this.SourceCluster.ApplyExploratoryFieldSpec(ec.NewChild("sourceCluster"));
+
+            } else {
+
+                this.SourceCluster.ApplyExploratoryFieldSpec(ec.NewChild("sourceCluster"));
+
+            }
+        }
+        else if (this.SourceCluster != null && ec.Excludes("sourceCluster",false))
+        {
+            this.SourceCluster = null;
         }
         //      C# -> ReplicationCluster? TargetCluster
         // GraphQL -> targetCluster: ReplicationCluster! (type)
-        if (this.TargetCluster == null && ec.Includes("targetCluster",false))
+        if (ec.Includes("targetCluster",false))
         {
-            this.TargetCluster = new ReplicationCluster();
-            this.TargetCluster.ApplyExploratoryFieldSpec(ec.NewChild("targetCluster"));
+            if(this.TargetCluster == null) {
+
+                this.TargetCluster = new ReplicationCluster();
+                this.TargetCluster.ApplyExploratoryFieldSpec(ec.NewChild("targetCluster"));
+
+            } else {
+
+                this.TargetCluster.ApplyExploratoryFieldSpec(ec.NewChild("targetCluster"));
+
+            }
+        }
+        else if (this.TargetCluster != null && ec.Excludes("targetCluster",false))
+        {
+            this.TargetCluster = null;
         }
     }
 
@@ -294,9 +450,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ReplicationPair> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

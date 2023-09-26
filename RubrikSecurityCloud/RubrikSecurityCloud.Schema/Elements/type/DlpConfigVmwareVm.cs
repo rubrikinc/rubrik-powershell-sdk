@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> DlpConfigOsType? OsType
         // GraphQL -> osType: DlpConfigOsType! (enum)
         if (this.OsType != null) {
-            s += ind + "osType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "osType\n" ;
+            } else {
+                s += ind + "osType\n" ;
+            }
         }
         //      C# -> System.String? Path
         // GraphQL -> path: String! (scalar)
         if (this.Path != null) {
-            s += ind + "path\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "path\n" ;
+            } else {
+                s += ind + "path\n" ;
+            }
         }
         //      C# -> System.String? WorkloadId
         // GraphQL -> workloadId: UUID! (scalar)
         if (this.WorkloadId != null) {
-            s += ind + "workloadId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "workloadId\n" ;
+            } else {
+                s += ind + "workloadId\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> DlpConfigOsType? OsType
         // GraphQL -> osType: DlpConfigOsType! (enum)
-        if (this.OsType == null && ec.Includes("osType",true))
+        if (ec.Includes("osType",true))
         {
-            this.OsType = new DlpConfigOsType();
+            if(this.OsType == null) {
+
+                this.OsType = new DlpConfigOsType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.OsType != null && ec.Excludes("osType",true))
+        {
+            this.OsType = null;
         }
         //      C# -> System.String? Path
         // GraphQL -> path: String! (scalar)
-        if (this.Path == null && ec.Includes("path",true))
+        if (ec.Includes("path",true))
         {
-            this.Path = "FETCH";
+            if(this.Path == null) {
+
+                this.Path = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Path != null && ec.Excludes("path",true))
+        {
+            this.Path = null;
         }
         //      C# -> System.String? WorkloadId
         // GraphQL -> workloadId: UUID! (scalar)
-        if (this.WorkloadId == null && ec.Includes("workloadId",true))
+        if (ec.Includes("workloadId",true))
         {
-            this.WorkloadId = "FETCH";
+            if(this.WorkloadId == null) {
+
+                this.WorkloadId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.WorkloadId != null && ec.Excludes("workloadId",true))
+        {
+            this.WorkloadId = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<DlpConfigVmwareVm> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

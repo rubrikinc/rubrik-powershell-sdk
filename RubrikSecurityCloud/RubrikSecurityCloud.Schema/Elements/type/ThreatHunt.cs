@@ -74,34 +74,51 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> ThreatHuntStatus? Status
         // GraphQL -> status: ThreatHuntStatus! (enum)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         //      C# -> System.String? HuntId
         // GraphQL -> huntId: String! (scalar)
         if (this.HuntId != null) {
-            s += ind + "huntId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "huntId\n" ;
+            } else {
+                s += ind + "huntId\n" ;
+            }
         }
         //      C# -> ThreatHuntDetails? HuntDetails
         // GraphQL -> huntDetails: ThreatHuntDetails! (type)
         if (this.HuntDetails != null) {
-            var fspec = this.HuntDetails.AsFieldSpec(indent+1);
+            var fspec = this.HuntDetails.AsFieldSpec(conf.Child("huntDetails"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "huntDetails {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "huntDetails {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> ThreatHuntStats? Stats
         // GraphQL -> stats: ThreatHuntStats (type)
         if (this.Stats != null) {
-            var fspec = this.Stats.AsFieldSpec(indent+1);
+            var fspec = this.Stats.AsFieldSpec(conf.Child("stats"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "stats {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "stats {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -113,29 +130,75 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> ThreatHuntStatus? Status
         // GraphQL -> status: ThreatHuntStatus! (enum)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = new ThreatHuntStatus();
+            if(this.Status == null) {
+
+                this.Status = new ThreatHuntStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
         //      C# -> System.String? HuntId
         // GraphQL -> huntId: String! (scalar)
-        if (this.HuntId == null && ec.Includes("huntId",true))
+        if (ec.Includes("huntId",true))
         {
-            this.HuntId = "FETCH";
+            if(this.HuntId == null) {
+
+                this.HuntId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.HuntId != null && ec.Excludes("huntId",true))
+        {
+            this.HuntId = null;
         }
         //      C# -> ThreatHuntDetails? HuntDetails
         // GraphQL -> huntDetails: ThreatHuntDetails! (type)
-        if (this.HuntDetails == null && ec.Includes("huntDetails",false))
+        if (ec.Includes("huntDetails",false))
         {
-            this.HuntDetails = new ThreatHuntDetails();
-            this.HuntDetails.ApplyExploratoryFieldSpec(ec.NewChild("huntDetails"));
+            if(this.HuntDetails == null) {
+
+                this.HuntDetails = new ThreatHuntDetails();
+                this.HuntDetails.ApplyExploratoryFieldSpec(ec.NewChild("huntDetails"));
+
+            } else {
+
+                this.HuntDetails.ApplyExploratoryFieldSpec(ec.NewChild("huntDetails"));
+
+            }
+        }
+        else if (this.HuntDetails != null && ec.Excludes("huntDetails",false))
+        {
+            this.HuntDetails = null;
         }
         //      C# -> ThreatHuntStats? Stats
         // GraphQL -> stats: ThreatHuntStats (type)
-        if (this.Stats == null && ec.Includes("stats",false))
+        if (ec.Includes("stats",false))
         {
-            this.Stats = new ThreatHuntStats();
-            this.Stats.ApplyExploratoryFieldSpec(ec.NewChild("stats"));
+            if(this.Stats == null) {
+
+                this.Stats = new ThreatHuntStats();
+                this.Stats.ApplyExploratoryFieldSpec(ec.NewChild("stats"));
+
+            } else {
+
+                this.Stats.ApplyExploratoryFieldSpec(ec.NewChild("stats"));
+
+            }
+        }
+        else if (this.Stats != null && ec.Excludes("stats",false))
+        {
+            this.Stats = null;
         }
     }
 
@@ -162,9 +225,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ThreatHunt> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -47,16 +47,21 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<AwsExocomputeConfigsDeletionStatusType>? DeletionStatus
         // GraphQL -> deletionStatus: [AwsExocomputeConfigsDeletionStatusType!]! (type)
         if (this.DeletionStatus != null) {
-            var fspec = this.DeletionStatus.AsFieldSpec(indent+1);
+            var fspec = this.DeletionStatus.AsFieldSpec(conf.Child("deletionStatus"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "deletionStatus {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "deletionStatus {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -68,10 +73,22 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<AwsExocomputeConfigsDeletionStatusType>? DeletionStatus
         // GraphQL -> deletionStatus: [AwsExocomputeConfigsDeletionStatusType!]! (type)
-        if (this.DeletionStatus == null && ec.Includes("deletionStatus",false))
+        if (ec.Includes("deletionStatus",false))
         {
-            this.DeletionStatus = new List<AwsExocomputeConfigsDeletionStatusType>();
-            this.DeletionStatus.ApplyExploratoryFieldSpec(ec.NewChild("deletionStatus"));
+            if(this.DeletionStatus == null) {
+
+                this.DeletionStatus = new List<AwsExocomputeConfigsDeletionStatusType>();
+                this.DeletionStatus.ApplyExploratoryFieldSpec(ec.NewChild("deletionStatus"));
+
+            } else {
+
+                this.DeletionStatus.ApplyExploratoryFieldSpec(ec.NewChild("deletionStatus"));
+
+            }
+        }
+        else if (this.DeletionStatus != null && ec.Excludes("deletionStatus",false))
+        {
+            this.DeletionStatus = null;
         }
     }
 
@@ -98,9 +115,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<DeleteAwsExocomputeConfigsReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

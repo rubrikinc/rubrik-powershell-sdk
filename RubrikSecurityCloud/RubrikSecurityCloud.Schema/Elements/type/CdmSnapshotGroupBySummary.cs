@@ -65,29 +65,42 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int32? Count
         // GraphQL -> count: Int! (scalar)
         if (this.Count != null) {
-            s += ind + "count\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "count\n" ;
+            } else {
+                s += ind + "count\n" ;
+            }
         }
         //      C# -> CdmSnapshotConnection? CdmSnapshots
         // GraphQL -> cdmSnapshots: CdmSnapshotConnection! (type)
         if (this.CdmSnapshots != null) {
-            var fspec = this.CdmSnapshots.AsFieldSpec(indent+1);
+            var fspec = this.CdmSnapshots.AsFieldSpec(conf.Child("cdmSnapshots"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "cdmSnapshots {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cdmSnapshots {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> TimeRangeWithUnit? GroupByInfo
         // GraphQL -> groupByInfo: TimeRangeWithUnit! (type)
         if (this.GroupByInfo != null) {
-            var fspec = this.GroupByInfo.AsFieldSpec(indent+1);
+            var fspec = this.GroupByInfo.AsFieldSpec(conf.Child("groupByInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -99,23 +112,58 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int32? Count
         // GraphQL -> count: Int! (scalar)
-        if (this.Count == null && ec.Includes("count",true))
+        if (ec.Includes("count",true))
         {
-            this.Count = Int32.MinValue;
+            if(this.Count == null) {
+
+                this.Count = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Count != null && ec.Excludes("count",true))
+        {
+            this.Count = null;
         }
         //      C# -> CdmSnapshotConnection? CdmSnapshots
         // GraphQL -> cdmSnapshots: CdmSnapshotConnection! (type)
-        if (this.CdmSnapshots == null && ec.Includes("cdmSnapshots",false))
+        if (ec.Includes("cdmSnapshots",false))
         {
-            this.CdmSnapshots = new CdmSnapshotConnection();
-            this.CdmSnapshots.ApplyExploratoryFieldSpec(ec.NewChild("cdmSnapshots"));
+            if(this.CdmSnapshots == null) {
+
+                this.CdmSnapshots = new CdmSnapshotConnection();
+                this.CdmSnapshots.ApplyExploratoryFieldSpec(ec.NewChild("cdmSnapshots"));
+
+            } else {
+
+                this.CdmSnapshots.ApplyExploratoryFieldSpec(ec.NewChild("cdmSnapshots"));
+
+            }
+        }
+        else if (this.CdmSnapshots != null && ec.Excludes("cdmSnapshots",false))
+        {
+            this.CdmSnapshots = null;
         }
         //      C# -> TimeRangeWithUnit? GroupByInfo
         // GraphQL -> groupByInfo: TimeRangeWithUnit! (type)
-        if (this.GroupByInfo == null && ec.Includes("groupByInfo",false))
+        if (ec.Includes("groupByInfo",false))
         {
-            this.GroupByInfo = new TimeRangeWithUnit();
-            this.GroupByInfo.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
+            if(this.GroupByInfo == null) {
+
+                this.GroupByInfo = new TimeRangeWithUnit();
+                this.GroupByInfo.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
+
+            } else {
+
+                this.GroupByInfo.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
+
+            }
+        }
+        else if (this.GroupByInfo != null && ec.Excludes("groupByInfo",false))
+        {
+            this.GroupByInfo = null;
         }
     }
 
@@ -142,9 +190,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CdmSnapshotGroupBySummary> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

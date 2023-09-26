@@ -74,31 +74,48 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Boolean? IsCurrentlyPresentOnSystem
         // GraphQL -> isCurrentlyPresentOnSystem: Boolean! (scalar)
         if (this.IsCurrentlyPresentOnSystem != null) {
-            s += ind + "isCurrentlyPresentOnSystem\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isCurrentlyPresentOnSystem\n" ;
+            } else {
+                s += ind + "isCurrentlyPresentOnSystem\n" ;
+            }
         }
         //      C# -> System.String? NaturalId
         // GraphQL -> naturalId: String! (scalar)
         if (this.NaturalId != null) {
-            s += ind + "naturalId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "naturalId\n" ;
+            } else {
+                s += ind + "naturalId\n" ;
+            }
         }
         //      C# -> System.String? VolumeGroupId
         // GraphQL -> volumeGroupId: String (scalar)
         if (this.VolumeGroupId != null) {
-            s += ind + "volumeGroupId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "volumeGroupId\n" ;
+            } else {
+                s += ind + "volumeGroupId\n" ;
+            }
         }
         //      C# -> VolumeGroupSnapshotVolumeSummary? VolumeGroupSnapshotVolumeSummary
         // GraphQL -> volumeGroupSnapshotVolumeSummary: VolumeGroupSnapshotVolumeSummary (type)
         if (this.VolumeGroupSnapshotVolumeSummary != null) {
-            var fspec = this.VolumeGroupSnapshotVolumeSummary.AsFieldSpec(indent+1);
+            var fspec = this.VolumeGroupSnapshotVolumeSummary.AsFieldSpec(conf.Child("volumeGroupSnapshotVolumeSummary"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "volumeGroupSnapshotVolumeSummary {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "volumeGroupSnapshotVolumeSummary {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -110,28 +127,73 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Boolean? IsCurrentlyPresentOnSystem
         // GraphQL -> isCurrentlyPresentOnSystem: Boolean! (scalar)
-        if (this.IsCurrentlyPresentOnSystem == null && ec.Includes("isCurrentlyPresentOnSystem",true))
+        if (ec.Includes("isCurrentlyPresentOnSystem",true))
         {
-            this.IsCurrentlyPresentOnSystem = true;
+            if(this.IsCurrentlyPresentOnSystem == null) {
+
+                this.IsCurrentlyPresentOnSystem = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsCurrentlyPresentOnSystem != null && ec.Excludes("isCurrentlyPresentOnSystem",true))
+        {
+            this.IsCurrentlyPresentOnSystem = null;
         }
         //      C# -> System.String? NaturalId
         // GraphQL -> naturalId: String! (scalar)
-        if (this.NaturalId == null && ec.Includes("naturalId",true))
+        if (ec.Includes("naturalId",true))
         {
-            this.NaturalId = "FETCH";
+            if(this.NaturalId == null) {
+
+                this.NaturalId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NaturalId != null && ec.Excludes("naturalId",true))
+        {
+            this.NaturalId = null;
         }
         //      C# -> System.String? VolumeGroupId
         // GraphQL -> volumeGroupId: String (scalar)
-        if (this.VolumeGroupId == null && ec.Includes("volumeGroupId",true))
+        if (ec.Includes("volumeGroupId",true))
         {
-            this.VolumeGroupId = "FETCH";
+            if(this.VolumeGroupId == null) {
+
+                this.VolumeGroupId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.VolumeGroupId != null && ec.Excludes("volumeGroupId",true))
+        {
+            this.VolumeGroupId = null;
         }
         //      C# -> VolumeGroupSnapshotVolumeSummary? VolumeGroupSnapshotVolumeSummary
         // GraphQL -> volumeGroupSnapshotVolumeSummary: VolumeGroupSnapshotVolumeSummary (type)
-        if (this.VolumeGroupSnapshotVolumeSummary == null && ec.Includes("volumeGroupSnapshotVolumeSummary",false))
+        if (ec.Includes("volumeGroupSnapshotVolumeSummary",false))
         {
-            this.VolumeGroupSnapshotVolumeSummary = new VolumeGroupSnapshotVolumeSummary();
-            this.VolumeGroupSnapshotVolumeSummary.ApplyExploratoryFieldSpec(ec.NewChild("volumeGroupSnapshotVolumeSummary"));
+            if(this.VolumeGroupSnapshotVolumeSummary == null) {
+
+                this.VolumeGroupSnapshotVolumeSummary = new VolumeGroupSnapshotVolumeSummary();
+                this.VolumeGroupSnapshotVolumeSummary.ApplyExploratoryFieldSpec(ec.NewChild("volumeGroupSnapshotVolumeSummary"));
+
+            } else {
+
+                this.VolumeGroupSnapshotVolumeSummary.ApplyExploratoryFieldSpec(ec.NewChild("volumeGroupSnapshotVolumeSummary"));
+
+            }
+        }
+        else if (this.VolumeGroupSnapshotVolumeSummary != null && ec.Excludes("volumeGroupSnapshotVolumeSummary",false))
+        {
+            this.VolumeGroupSnapshotVolumeSummary = null;
         }
     }
 
@@ -158,9 +220,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<HostVolumeSummary> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

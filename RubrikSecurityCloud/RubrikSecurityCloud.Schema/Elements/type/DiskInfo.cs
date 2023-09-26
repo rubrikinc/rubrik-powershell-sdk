@@ -92,41 +92,66 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? CapacityBytes
         // GraphQL -> capacityBytes: Long! (scalar)
         if (this.CapacityBytes != null) {
-            s += ind + "capacityBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "capacityBytes\n" ;
+            } else {
+                s += ind + "capacityBytes\n" ;
+            }
         }
         //      C# -> System.Boolean? IsResizable
         // GraphQL -> isResizable: Boolean (scalar)
         if (this.IsResizable != null) {
-            s += ind + "isResizable\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isResizable\n" ;
+            } else {
+                s += ind + "isResizable\n" ;
+            }
         }
         //      C# -> System.String? Path
         // GraphQL -> path: String! (scalar)
         if (this.Path != null) {
-            s += ind + "path\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "path\n" ;
+            } else {
+                s += ind + "path\n" ;
+            }
         }
         //      C# -> System.Int64? UnallocatedBytes
         // GraphQL -> unallocatedBytes: Long (scalar)
         if (this.UnallocatedBytes != null) {
-            s += ind + "unallocatedBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "unallocatedBytes\n" ;
+            } else {
+                s += ind + "unallocatedBytes\n" ;
+            }
         }
         //      C# -> System.Int64? UsableBytes
         // GraphQL -> usableBytes: Long (scalar)
         if (this.UsableBytes != null) {
-            s += ind + "usableBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "usableBytes\n" ;
+            } else {
+                s += ind + "usableBytes\n" ;
+            }
         }
         //      C# -> DiskStatus? DiskStatus
         // GraphQL -> diskStatus: DiskStatus (type)
         if (this.DiskStatus != null) {
-            var fspec = this.DiskStatus.AsFieldSpec(indent+1);
+            var fspec = this.DiskStatus.AsFieldSpec(conf.Child("diskStatus"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "diskStatus {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "diskStatus {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -138,40 +163,107 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? CapacityBytes
         // GraphQL -> capacityBytes: Long! (scalar)
-        if (this.CapacityBytes == null && ec.Includes("capacityBytes",true))
+        if (ec.Includes("capacityBytes",true))
         {
-            this.CapacityBytes = new System.Int64();
+            if(this.CapacityBytes == null) {
+
+                this.CapacityBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CapacityBytes != null && ec.Excludes("capacityBytes",true))
+        {
+            this.CapacityBytes = null;
         }
         //      C# -> System.Boolean? IsResizable
         // GraphQL -> isResizable: Boolean (scalar)
-        if (this.IsResizable == null && ec.Includes("isResizable",true))
+        if (ec.Includes("isResizable",true))
         {
-            this.IsResizable = true;
+            if(this.IsResizable == null) {
+
+                this.IsResizable = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsResizable != null && ec.Excludes("isResizable",true))
+        {
+            this.IsResizable = null;
         }
         //      C# -> System.String? Path
         // GraphQL -> path: String! (scalar)
-        if (this.Path == null && ec.Includes("path",true))
+        if (ec.Includes("path",true))
         {
-            this.Path = "FETCH";
+            if(this.Path == null) {
+
+                this.Path = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Path != null && ec.Excludes("path",true))
+        {
+            this.Path = null;
         }
         //      C# -> System.Int64? UnallocatedBytes
         // GraphQL -> unallocatedBytes: Long (scalar)
-        if (this.UnallocatedBytes == null && ec.Includes("unallocatedBytes",true))
+        if (ec.Includes("unallocatedBytes",true))
         {
-            this.UnallocatedBytes = new System.Int64();
+            if(this.UnallocatedBytes == null) {
+
+                this.UnallocatedBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UnallocatedBytes != null && ec.Excludes("unallocatedBytes",true))
+        {
+            this.UnallocatedBytes = null;
         }
         //      C# -> System.Int64? UsableBytes
         // GraphQL -> usableBytes: Long (scalar)
-        if (this.UsableBytes == null && ec.Includes("usableBytes",true))
+        if (ec.Includes("usableBytes",true))
         {
-            this.UsableBytes = new System.Int64();
+            if(this.UsableBytes == null) {
+
+                this.UsableBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UsableBytes != null && ec.Excludes("usableBytes",true))
+        {
+            this.UsableBytes = null;
         }
         //      C# -> DiskStatus? DiskStatus
         // GraphQL -> diskStatus: DiskStatus (type)
-        if (this.DiskStatus == null && ec.Includes("diskStatus",false))
+        if (ec.Includes("diskStatus",false))
         {
-            this.DiskStatus = new DiskStatus();
-            this.DiskStatus.ApplyExploratoryFieldSpec(ec.NewChild("diskStatus"));
+            if(this.DiskStatus == null) {
+
+                this.DiskStatus = new DiskStatus();
+                this.DiskStatus.ApplyExploratoryFieldSpec(ec.NewChild("diskStatus"));
+
+            } else {
+
+                this.DiskStatus.ApplyExploratoryFieldSpec(ec.NewChild("diskStatus"));
+
+            }
+        }
+        else if (this.DiskStatus != null && ec.Excludes("diskStatus",false))
+        {
+            this.DiskStatus = null;
         }
     }
 
@@ -198,9 +290,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<DiskInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

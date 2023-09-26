@@ -110,51 +110,84 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> Product? Product
         // GraphQL -> product: Product! (enum)
         if (this.Product != null) {
-            s += ind + "product\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "product\n" ;
+            } else {
+                s += ind + "product\n" ;
+            }
         }
         //      C# -> System.Single? NextExpiringBytes
         // GraphQL -> nextExpiringBytes: Float! (scalar)
         if (this.NextExpiringBytes != null) {
-            s += ind + "nextExpiringBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "nextExpiringBytes\n" ;
+            } else {
+                s += ind + "nextExpiringBytes\n" ;
+            }
         }
         //      C# -> DateTime? NextExpiringTime
         // GraphQL -> nextExpiringTime: DateTime (scalar)
         if (this.NextExpiringTime != null) {
-            s += ind + "nextExpiringTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "nextExpiringTime\n" ;
+            } else {
+                s += ind + "nextExpiringTime\n" ;
+            }
         }
         //      C# -> System.Int32? NumClusters
         // GraphQL -> numClusters: Int! (scalar)
         if (this.NumClusters != null) {
-            s += ind + "numClusters\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "numClusters\n" ;
+            } else {
+                s += ind + "numClusters\n" ;
+            }
         }
         //      C# -> List<System.String>? ProductTypes
         // GraphQL -> productTypes: [String!]! (scalar)
         if (this.ProductTypes != null) {
-            s += ind + "productTypes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "productTypes\n" ;
+            } else {
+                s += ind + "productTypes\n" ;
+            }
         }
         //      C# -> System.Single? PurchasedCapacityBytes
         // GraphQL -> purchasedCapacityBytes: Float! (scalar)
         if (this.PurchasedCapacityBytes != null) {
-            s += ind + "purchasedCapacityBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "purchasedCapacityBytes\n" ;
+            } else {
+                s += ind + "purchasedCapacityBytes\n" ;
+            }
         }
         //      C# -> System.Single? RegisteredCapacityBytes
         // GraphQL -> registeredCapacityBytes: Float! (scalar)
         if (this.RegisteredCapacityBytes != null) {
-            s += ind + "registeredCapacityBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "registeredCapacityBytes\n" ;
+            } else {
+                s += ind + "registeredCapacityBytes\n" ;
+            }
         }
         //      C# -> List<CapacityContribution>? Contributions
         // GraphQL -> contributions: [CapacityContribution!]! (type)
         if (this.Contributions != null) {
-            var fspec = this.Contributions.AsFieldSpec(indent+1);
+            var fspec = this.Contributions.AsFieldSpec(conf.Child("contributions"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "contributions {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "contributions {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -166,52 +199,141 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> Product? Product
         // GraphQL -> product: Product! (enum)
-        if (this.Product == null && ec.Includes("product",true))
+        if (ec.Includes("product",true))
         {
-            this.Product = new Product();
+            if(this.Product == null) {
+
+                this.Product = new Product();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Product != null && ec.Excludes("product",true))
+        {
+            this.Product = null;
         }
         //      C# -> System.Single? NextExpiringBytes
         // GraphQL -> nextExpiringBytes: Float! (scalar)
-        if (this.NextExpiringBytes == null && ec.Includes("nextExpiringBytes",true))
+        if (ec.Includes("nextExpiringBytes",true))
         {
-            this.NextExpiringBytes = new System.Single();
+            if(this.NextExpiringBytes == null) {
+
+                this.NextExpiringBytes = new System.Single();
+
+            } else {
+
+
+            }
+        }
+        else if (this.NextExpiringBytes != null && ec.Excludes("nextExpiringBytes",true))
+        {
+            this.NextExpiringBytes = null;
         }
         //      C# -> DateTime? NextExpiringTime
         // GraphQL -> nextExpiringTime: DateTime (scalar)
-        if (this.NextExpiringTime == null && ec.Includes("nextExpiringTime",true))
+        if (ec.Includes("nextExpiringTime",true))
         {
-            this.NextExpiringTime = new DateTime();
+            if(this.NextExpiringTime == null) {
+
+                this.NextExpiringTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.NextExpiringTime != null && ec.Excludes("nextExpiringTime",true))
+        {
+            this.NextExpiringTime = null;
         }
         //      C# -> System.Int32? NumClusters
         // GraphQL -> numClusters: Int! (scalar)
-        if (this.NumClusters == null && ec.Includes("numClusters",true))
+        if (ec.Includes("numClusters",true))
         {
-            this.NumClusters = Int32.MinValue;
+            if(this.NumClusters == null) {
+
+                this.NumClusters = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.NumClusters != null && ec.Excludes("numClusters",true))
+        {
+            this.NumClusters = null;
         }
         //      C# -> List<System.String>? ProductTypes
         // GraphQL -> productTypes: [String!]! (scalar)
-        if (this.ProductTypes == null && ec.Includes("productTypes",true))
+        if (ec.Includes("productTypes",true))
         {
-            this.ProductTypes = new List<System.String>();
+            if(this.ProductTypes == null) {
+
+                this.ProductTypes = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProductTypes != null && ec.Excludes("productTypes",true))
+        {
+            this.ProductTypes = null;
         }
         //      C# -> System.Single? PurchasedCapacityBytes
         // GraphQL -> purchasedCapacityBytes: Float! (scalar)
-        if (this.PurchasedCapacityBytes == null && ec.Includes("purchasedCapacityBytes",true))
+        if (ec.Includes("purchasedCapacityBytes",true))
         {
-            this.PurchasedCapacityBytes = new System.Single();
+            if(this.PurchasedCapacityBytes == null) {
+
+                this.PurchasedCapacityBytes = new System.Single();
+
+            } else {
+
+
+            }
+        }
+        else if (this.PurchasedCapacityBytes != null && ec.Excludes("purchasedCapacityBytes",true))
+        {
+            this.PurchasedCapacityBytes = null;
         }
         //      C# -> System.Single? RegisteredCapacityBytes
         // GraphQL -> registeredCapacityBytes: Float! (scalar)
-        if (this.RegisteredCapacityBytes == null && ec.Includes("registeredCapacityBytes",true))
+        if (ec.Includes("registeredCapacityBytes",true))
         {
-            this.RegisteredCapacityBytes = new System.Single();
+            if(this.RegisteredCapacityBytes == null) {
+
+                this.RegisteredCapacityBytes = new System.Single();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RegisteredCapacityBytes != null && ec.Excludes("registeredCapacityBytes",true))
+        {
+            this.RegisteredCapacityBytes = null;
         }
         //      C# -> List<CapacityContribution>? Contributions
         // GraphQL -> contributions: [CapacityContribution!]! (type)
-        if (this.Contributions == null && ec.Includes("contributions",false))
+        if (ec.Includes("contributions",false))
         {
-            this.Contributions = new List<CapacityContribution>();
-            this.Contributions.ApplyExploratoryFieldSpec(ec.NewChild("contributions"));
+            if(this.Contributions == null) {
+
+                this.Contributions = new List<CapacityContribution>();
+                this.Contributions.ApplyExploratoryFieldSpec(ec.NewChild("contributions"));
+
+            } else {
+
+                this.Contributions.ApplyExploratoryFieldSpec(ec.NewChild("contributions"));
+
+            }
+        }
+        else if (this.Contributions != null && ec.Excludes("contributions",false))
+        {
+            this.Contributions = null;
         }
     }
 
@@ -238,9 +360,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<LicensedClusterProduct> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

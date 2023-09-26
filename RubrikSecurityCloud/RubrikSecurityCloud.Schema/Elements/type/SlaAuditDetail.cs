@@ -110,57 +110,90 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> SlaDomain? CurrentSlaSummary
         // GraphQL -> currentSlaSummary: SlaDomain (interface)
         if (this.CurrentSlaSummary != null) {
-                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.CurrentSlaSummary).AsFieldSpec(indent+1);
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.CurrentSlaSummary).AsFieldSpec(conf.Child("currentSlaSummary"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "currentSlaSummary {\n" + fspec + ind + "}\n";
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "currentSlaSummary {\n" + fspec + ind + "}\n";
+                }
             }
         }
         //      C# -> SlaDomain? PreviousSlaSummary
         // GraphQL -> previousSlaSummary: SlaDomain (interface)
         if (this.PreviousSlaSummary != null) {
-                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.PreviousSlaSummary).AsFieldSpec(indent+1);
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.PreviousSlaSummary).AsFieldSpec(conf.Child("previousSlaSummary"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "previousSlaSummary {\n" + fspec + ind + "}\n";
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "previousSlaSummary {\n" + fspec + ind + "}\n";
+                }
             }
         }
         //      C# -> System.Boolean? ApplyToExistingSnapshots
         // GraphQL -> applyToExistingSnapshots: Boolean! (scalar)
         if (this.ApplyToExistingSnapshots != null) {
-            s += ind + "applyToExistingSnapshots\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "applyToExistingSnapshots\n" ;
+            } else {
+                s += ind + "applyToExistingSnapshots\n" ;
+            }
         }
         //      C# -> System.Boolean? ApplyToOndemandAndDownloadedSnapshots
         // GraphQL -> applyToOndemandAndDownloadedSnapshots: Boolean (scalar)
         if (this.ApplyToOndemandAndDownloadedSnapshots != null) {
-            s += ind + "applyToOndemandAndDownloadedSnapshots\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "applyToOndemandAndDownloadedSnapshots\n" ;
+            } else {
+                s += ind + "applyToOndemandAndDownloadedSnapshots\n" ;
+            }
         }
         //      C# -> DateTime? Timestamp
         // GraphQL -> timestamp: DateTime (scalar)
         if (this.Timestamp != null) {
-            s += ind + "timestamp\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "timestamp\n" ;
+            } else {
+                s += ind + "timestamp\n" ;
+            }
         }
         //      C# -> System.String? UserAction
         // GraphQL -> userAction: String! (scalar)
         if (this.UserAction != null) {
-            s += ind + "userAction\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "userAction\n" ;
+            } else {
+                s += ind + "userAction\n" ;
+            }
         }
         //      C# -> System.String? UserName
         // GraphQL -> userName: String! (scalar)
         if (this.UserName != null) {
-            s += ind + "userName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "userName\n" ;
+            } else {
+                s += ind + "userName\n" ;
+            }
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster (type)
         if (this.Cluster != null) {
-            var fspec = this.Cluster.AsFieldSpec(indent+1);
+            var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -172,56 +205,155 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> SlaDomain? CurrentSlaSummary
         // GraphQL -> currentSlaSummary: SlaDomain (interface)
-        if (this.CurrentSlaSummary == null && ec.Includes("currentSlaSummary",false))
+        if (ec.Includes("currentSlaSummary",false))
         {
-            var impls = new List<SlaDomain>();
-            impls.ApplyExploratoryFieldSpec(ec.NewChild("currentSlaSummary"));
-            this.CurrentSlaSummary = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+            if(this.CurrentSlaSummary == null) {
+
+                var impls = new List<SlaDomain>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("currentSlaSummary"));
+                this.CurrentSlaSummary = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<SlaDomain>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("currentSlaSummary"));
+                this.CurrentSlaSummary = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.CurrentSlaSummary != null && ec.Excludes("currentSlaSummary",false))
+        {
+            this.CurrentSlaSummary = null;
         }
         //      C# -> SlaDomain? PreviousSlaSummary
         // GraphQL -> previousSlaSummary: SlaDomain (interface)
-        if (this.PreviousSlaSummary == null && ec.Includes("previousSlaSummary",false))
+        if (ec.Includes("previousSlaSummary",false))
         {
-            var impls = new List<SlaDomain>();
-            impls.ApplyExploratoryFieldSpec(ec.NewChild("previousSlaSummary"));
-            this.PreviousSlaSummary = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+            if(this.PreviousSlaSummary == null) {
+
+                var impls = new List<SlaDomain>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("previousSlaSummary"));
+                this.PreviousSlaSummary = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<SlaDomain>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("previousSlaSummary"));
+                this.PreviousSlaSummary = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.PreviousSlaSummary != null && ec.Excludes("previousSlaSummary",false))
+        {
+            this.PreviousSlaSummary = null;
         }
         //      C# -> System.Boolean? ApplyToExistingSnapshots
         // GraphQL -> applyToExistingSnapshots: Boolean! (scalar)
-        if (this.ApplyToExistingSnapshots == null && ec.Includes("applyToExistingSnapshots",true))
+        if (ec.Includes("applyToExistingSnapshots",true))
         {
-            this.ApplyToExistingSnapshots = true;
+            if(this.ApplyToExistingSnapshots == null) {
+
+                this.ApplyToExistingSnapshots = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ApplyToExistingSnapshots != null && ec.Excludes("applyToExistingSnapshots",true))
+        {
+            this.ApplyToExistingSnapshots = null;
         }
         //      C# -> System.Boolean? ApplyToOndemandAndDownloadedSnapshots
         // GraphQL -> applyToOndemandAndDownloadedSnapshots: Boolean (scalar)
-        if (this.ApplyToOndemandAndDownloadedSnapshots == null && ec.Includes("applyToOndemandAndDownloadedSnapshots",true))
+        if (ec.Includes("applyToOndemandAndDownloadedSnapshots",true))
         {
-            this.ApplyToOndemandAndDownloadedSnapshots = true;
+            if(this.ApplyToOndemandAndDownloadedSnapshots == null) {
+
+                this.ApplyToOndemandAndDownloadedSnapshots = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ApplyToOndemandAndDownloadedSnapshots != null && ec.Excludes("applyToOndemandAndDownloadedSnapshots",true))
+        {
+            this.ApplyToOndemandAndDownloadedSnapshots = null;
         }
         //      C# -> DateTime? Timestamp
         // GraphQL -> timestamp: DateTime (scalar)
-        if (this.Timestamp == null && ec.Includes("timestamp",true))
+        if (ec.Includes("timestamp",true))
         {
-            this.Timestamp = new DateTime();
+            if(this.Timestamp == null) {
+
+                this.Timestamp = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Timestamp != null && ec.Excludes("timestamp",true))
+        {
+            this.Timestamp = null;
         }
         //      C# -> System.String? UserAction
         // GraphQL -> userAction: String! (scalar)
-        if (this.UserAction == null && ec.Includes("userAction",true))
+        if (ec.Includes("userAction",true))
         {
-            this.UserAction = "FETCH";
+            if(this.UserAction == null) {
+
+                this.UserAction = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.UserAction != null && ec.Excludes("userAction",true))
+        {
+            this.UserAction = null;
         }
         //      C# -> System.String? UserName
         // GraphQL -> userName: String! (scalar)
-        if (this.UserName == null && ec.Includes("userName",true))
+        if (ec.Includes("userName",true))
         {
-            this.UserName = "FETCH";
+            if(this.UserName == null) {
+
+                this.UserName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.UserName != null && ec.Excludes("userName",true))
+        {
+            this.UserName = null;
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster (type)
-        if (this.Cluster == null && ec.Includes("cluster",false))
+        if (ec.Includes("cluster",false))
         {
-            this.Cluster = new Cluster();
-            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+            if(this.Cluster == null) {
+
+                this.Cluster = new Cluster();
+                this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+
+            } else {
+
+                this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+
+            }
+        }
+        else if (this.Cluster != null && ec.Excludes("cluster",false))
+        {
+            this.Cluster = null;
         }
     }
 
@@ -248,9 +380,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SlaAuditDetail> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

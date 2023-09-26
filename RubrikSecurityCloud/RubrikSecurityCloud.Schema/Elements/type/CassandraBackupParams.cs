@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? StoreName
         // GraphQL -> storeName: String! (scalar)
         if (this.StoreName != null) {
-            s += ind + "storeName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "storeName\n" ;
+            } else {
+                s += ind + "storeName\n" ;
+            }
         }
         //      C# -> System.Int64? WatcherFrequency
         // GraphQL -> watcherFrequency: Long! (scalar)
         if (this.WatcherFrequency != null) {
-            s += ind + "watcherFrequency\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "watcherFrequency\n" ;
+            } else {
+                s += ind + "watcherFrequency\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? StoreName
         // GraphQL -> storeName: String! (scalar)
-        if (this.StoreName == null && ec.Includes("storeName",true))
+        if (ec.Includes("storeName",true))
         {
-            this.StoreName = "FETCH";
+            if(this.StoreName == null) {
+
+                this.StoreName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.StoreName != null && ec.Excludes("storeName",true))
+        {
+            this.StoreName = null;
         }
         //      C# -> System.Int64? WatcherFrequency
         // GraphQL -> watcherFrequency: Long! (scalar)
-        if (this.WatcherFrequency == null && ec.Includes("watcherFrequency",true))
+        if (ec.Includes("watcherFrequency",true))
         {
-            this.WatcherFrequency = new System.Int64();
+            if(this.WatcherFrequency == null) {
+
+                this.WatcherFrequency = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.WatcherFrequency != null && ec.Excludes("watcherFrequency",true))
+        {
+            this.WatcherFrequency = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CassandraBackupParams> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

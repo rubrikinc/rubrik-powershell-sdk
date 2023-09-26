@@ -83,36 +83,57 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime! (scalar)
         if (this.Date != null) {
-            s += ind + "date\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "date\n" ;
+            } else {
+                s += ind + "date\n" ;
+            }
         }
         //      C# -> DateTime? ExpirationDate
         // GraphQL -> expirationDate: DateTime (scalar)
         if (this.ExpirationDate != null) {
-            s += ind + "expirationDate\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "expirationDate\n" ;
+            } else {
+                s += ind + "expirationDate\n" ;
+            }
         }
         //      C# -> System.String? SnappableId
         // GraphQL -> snappableId: String! (scalar)
         if (this.SnappableId != null) {
-            s += ind + "snappableId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snappableId\n" ;
+            } else {
+                s += ind + "snappableId\n" ;
+            }
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String! (scalar)
         if (this.SnapshotId != null) {
-            s += ind + "snapshotId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotId\n" ;
+            } else {
+                s += ind + "snapshotId\n" ;
+            }
         }
         //      C# -> Cluster? AssociatedCdm
         // GraphQL -> associatedCdm: Cluster (type)
         if (this.AssociatedCdm != null) {
-            var fspec = this.AssociatedCdm.AsFieldSpec(indent+1);
+            var fspec = this.AssociatedCdm.AsFieldSpec(conf.Child("associatedCdm"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "associatedCdm {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "associatedCdm {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -124,34 +145,90 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime! (scalar)
-        if (this.Date == null && ec.Includes("date",true))
+        if (ec.Includes("date",true))
         {
-            this.Date = new DateTime();
+            if(this.Date == null) {
+
+                this.Date = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Date != null && ec.Excludes("date",true))
+        {
+            this.Date = null;
         }
         //      C# -> DateTime? ExpirationDate
         // GraphQL -> expirationDate: DateTime (scalar)
-        if (this.ExpirationDate == null && ec.Includes("expirationDate",true))
+        if (ec.Includes("expirationDate",true))
         {
-            this.ExpirationDate = new DateTime();
+            if(this.ExpirationDate == null) {
+
+                this.ExpirationDate = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExpirationDate != null && ec.Excludes("expirationDate",true))
+        {
+            this.ExpirationDate = null;
         }
         //      C# -> System.String? SnappableId
         // GraphQL -> snappableId: String! (scalar)
-        if (this.SnappableId == null && ec.Includes("snappableId",true))
+        if (ec.Includes("snappableId",true))
         {
-            this.SnappableId = "FETCH";
+            if(this.SnappableId == null) {
+
+                this.SnappableId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnappableId != null && ec.Excludes("snappableId",true))
+        {
+            this.SnappableId = null;
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String! (scalar)
-        if (this.SnapshotId == null && ec.Includes("snapshotId",true))
+        if (ec.Includes("snapshotId",true))
         {
-            this.SnapshotId = "FETCH";
+            if(this.SnapshotId == null) {
+
+                this.SnapshotId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotId != null && ec.Excludes("snapshotId",true))
+        {
+            this.SnapshotId = null;
         }
         //      C# -> Cluster? AssociatedCdm
         // GraphQL -> associatedCdm: Cluster (type)
-        if (this.AssociatedCdm == null && ec.Includes("associatedCdm",false))
+        if (ec.Includes("associatedCdm",false))
         {
-            this.AssociatedCdm = new Cluster();
-            this.AssociatedCdm.ApplyExploratoryFieldSpec(ec.NewChild("associatedCdm"));
+            if(this.AssociatedCdm == null) {
+
+                this.AssociatedCdm = new Cluster();
+                this.AssociatedCdm.ApplyExploratoryFieldSpec(ec.NewChild("associatedCdm"));
+
+            } else {
+
+                this.AssociatedCdm.ApplyExploratoryFieldSpec(ec.NewChild("associatedCdm"));
+
+            }
+        }
+        else if (this.AssociatedCdm != null && ec.Excludes("associatedCdm",false))
+        {
+            this.AssociatedCdm = null;
         }
     }
 
@@ -178,9 +255,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ReplicatedSnapshotInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

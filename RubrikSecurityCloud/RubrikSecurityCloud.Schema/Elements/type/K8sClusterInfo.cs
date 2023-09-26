@@ -83,36 +83,57 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> K8sClusterType? Type
         // GraphQL -> type: K8sClusterType! (enum)
         if (this.Type != null) {
-            s += ind + "type\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "type\n" ;
+            } else {
+                s += ind + "type\n" ;
+            }
         }
         //      C# -> System.String? K8sVersion
         // GraphQL -> k8sVersion: String (scalar)
         if (this.K8sVersion != null) {
-            s += ind + "k8sVersion\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "k8sVersion\n" ;
+            } else {
+                s += ind + "k8sVersion\n" ;
+            }
         }
         //      C# -> System.String? KuprClusterUuid
         // GraphQL -> kuprClusterUuid: UUID! (scalar)
         if (this.KuprClusterUuid != null) {
-            s += ind + "kuprClusterUuid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "kuprClusterUuid\n" ;
+            } else {
+                s += ind + "kuprClusterUuid\n" ;
+            }
         }
         //      C# -> System.Int32? Port
         // GraphQL -> port: Int! (scalar)
         if (this.Port != null) {
-            s += ind + "port\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "port\n" ;
+            } else {
+                s += ind + "port\n" ;
+            }
         }
         //      C# -> Cluster? AssociatedCdm
         // GraphQL -> associatedCdm: Cluster (type)
         if (this.AssociatedCdm != null) {
-            var fspec = this.AssociatedCdm.AsFieldSpec(indent+1);
+            var fspec = this.AssociatedCdm.AsFieldSpec(conf.Child("associatedCdm"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "associatedCdm {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "associatedCdm {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -124,34 +145,90 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> K8sClusterType? Type
         // GraphQL -> type: K8sClusterType! (enum)
-        if (this.Type == null && ec.Includes("type",true))
+        if (ec.Includes("type",true))
         {
-            this.Type = new K8sClusterType();
+            if(this.Type == null) {
+
+                this.Type = new K8sClusterType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Type != null && ec.Excludes("type",true))
+        {
+            this.Type = null;
         }
         //      C# -> System.String? K8sVersion
         // GraphQL -> k8sVersion: String (scalar)
-        if (this.K8sVersion == null && ec.Includes("k8sVersion",true))
+        if (ec.Includes("k8sVersion",true))
         {
-            this.K8sVersion = "FETCH";
+            if(this.K8sVersion == null) {
+
+                this.K8sVersion = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.K8sVersion != null && ec.Excludes("k8sVersion",true))
+        {
+            this.K8sVersion = null;
         }
         //      C# -> System.String? KuprClusterUuid
         // GraphQL -> kuprClusterUuid: UUID! (scalar)
-        if (this.KuprClusterUuid == null && ec.Includes("kuprClusterUuid",true))
+        if (ec.Includes("kuprClusterUuid",true))
         {
-            this.KuprClusterUuid = "FETCH";
+            if(this.KuprClusterUuid == null) {
+
+                this.KuprClusterUuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.KuprClusterUuid != null && ec.Excludes("kuprClusterUuid",true))
+        {
+            this.KuprClusterUuid = null;
         }
         //      C# -> System.Int32? Port
         // GraphQL -> port: Int! (scalar)
-        if (this.Port == null && ec.Includes("port",true))
+        if (ec.Includes("port",true))
         {
-            this.Port = Int32.MinValue;
+            if(this.Port == null) {
+
+                this.Port = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Port != null && ec.Excludes("port",true))
+        {
+            this.Port = null;
         }
         //      C# -> Cluster? AssociatedCdm
         // GraphQL -> associatedCdm: Cluster (type)
-        if (this.AssociatedCdm == null && ec.Includes("associatedCdm",false))
+        if (ec.Includes("associatedCdm",false))
         {
-            this.AssociatedCdm = new Cluster();
-            this.AssociatedCdm.ApplyExploratoryFieldSpec(ec.NewChild("associatedCdm"));
+            if(this.AssociatedCdm == null) {
+
+                this.AssociatedCdm = new Cluster();
+                this.AssociatedCdm.ApplyExploratoryFieldSpec(ec.NewChild("associatedCdm"));
+
+            } else {
+
+                this.AssociatedCdm.ApplyExploratoryFieldSpec(ec.NewChild("associatedCdm"));
+
+            }
+        }
+        else if (this.AssociatedCdm != null && ec.Excludes("associatedCdm",false))
+        {
+            this.AssociatedCdm = null;
         }
     }
 
@@ -178,9 +255,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<K8sClusterInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

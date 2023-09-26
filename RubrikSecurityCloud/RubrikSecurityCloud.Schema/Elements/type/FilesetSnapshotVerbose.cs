@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Boolean? HasFingerprint
         // GraphQL -> hasFingerprint: Boolean! (scalar)
         if (this.HasFingerprint != null) {
-            s += ind + "hasFingerprint\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hasFingerprint\n" ;
+            } else {
+                s += ind + "hasFingerprint\n" ;
+            }
         }
         //      C# -> List<System.String>? PartitionPaths
         // GraphQL -> partitionPaths: [String!]! (scalar)
         if (this.PartitionPaths != null) {
-            s += ind + "partitionPaths\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "partitionPaths\n" ;
+            } else {
+                s += ind + "partitionPaths\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Boolean? HasFingerprint
         // GraphQL -> hasFingerprint: Boolean! (scalar)
-        if (this.HasFingerprint == null && ec.Includes("hasFingerprint",true))
+        if (ec.Includes("hasFingerprint",true))
         {
-            this.HasFingerprint = true;
+            if(this.HasFingerprint == null) {
+
+                this.HasFingerprint = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.HasFingerprint != null && ec.Excludes("hasFingerprint",true))
+        {
+            this.HasFingerprint = null;
         }
         //      C# -> List<System.String>? PartitionPaths
         // GraphQL -> partitionPaths: [String!]! (scalar)
-        if (this.PartitionPaths == null && ec.Includes("partitionPaths",true))
+        if (ec.Includes("partitionPaths",true))
         {
-            this.PartitionPaths = new List<System.String>();
+            if(this.PartitionPaths == null) {
+
+                this.PartitionPaths = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.PartitionPaths != null && ec.Excludes("partitionPaths",true))
+        {
+            this.PartitionPaths = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<FilesetSnapshotVerbose> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

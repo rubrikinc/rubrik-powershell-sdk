@@ -92,44 +92,69 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> DateTime? ExportDate
         // GraphQL -> exportDate: DateTime! (scalar)
         if (this.ExportDate != null) {
-            s += ind + "exportDate\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "exportDate\n" ;
+            } else {
+                s += ind + "exportDate\n" ;
+            }
         }
         //      C# -> System.String? FloatingIpAddress
         // GraphQL -> floatingIpAddress: String! (scalar)
         if (this.FloatingIpAddress != null) {
-            s += ind + "floatingIpAddress\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "floatingIpAddress\n" ;
+            } else {
+                s += ind + "floatingIpAddress\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.String? MountPath
         // GraphQL -> mountPath: String! (scalar)
         if (this.MountPath != null) {
-            s += ind + "mountPath\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "mountPath\n" ;
+            } else {
+                s += ind + "mountPath\n" ;
+            }
         }
         //      C# -> ManagedVolumeExportChannelStats? ChannelStats
         // GraphQL -> channelStats: ManagedVolumeExportChannelStats! (type)
         if (this.ChannelStats != null) {
-            var fspec = this.ChannelStats.AsFieldSpec(indent+1);
+            var fspec = this.ChannelStats.AsFieldSpec(conf.Child("channelStats"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "channelStats {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "channelStats {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> ManagedVolumeMountSpec? MountSpec
         // GraphQL -> mountSpec: ManagedVolumeMountSpec! (type)
         if (this.MountSpec != null) {
-            var fspec = this.MountSpec.AsFieldSpec(indent+1);
+            var fspec = this.MountSpec.AsFieldSpec(conf.Child("mountSpec"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "mountSpec {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "mountSpec {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -141,41 +166,109 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> DateTime? ExportDate
         // GraphQL -> exportDate: DateTime! (scalar)
-        if (this.ExportDate == null && ec.Includes("exportDate",true))
+        if (ec.Includes("exportDate",true))
         {
-            this.ExportDate = new DateTime();
+            if(this.ExportDate == null) {
+
+                this.ExportDate = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExportDate != null && ec.Excludes("exportDate",true))
+        {
+            this.ExportDate = null;
         }
         //      C# -> System.String? FloatingIpAddress
         // GraphQL -> floatingIpAddress: String! (scalar)
-        if (this.FloatingIpAddress == null && ec.Includes("floatingIpAddress",true))
+        if (ec.Includes("floatingIpAddress",true))
         {
-            this.FloatingIpAddress = "FETCH";
+            if(this.FloatingIpAddress == null) {
+
+                this.FloatingIpAddress = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.FloatingIpAddress != null && ec.Excludes("floatingIpAddress",true))
+        {
+            this.FloatingIpAddress = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.String? MountPath
         // GraphQL -> mountPath: String! (scalar)
-        if (this.MountPath == null && ec.Includes("mountPath",true))
+        if (ec.Includes("mountPath",true))
         {
-            this.MountPath = "FETCH";
+            if(this.MountPath == null) {
+
+                this.MountPath = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.MountPath != null && ec.Excludes("mountPath",true))
+        {
+            this.MountPath = null;
         }
         //      C# -> ManagedVolumeExportChannelStats? ChannelStats
         // GraphQL -> channelStats: ManagedVolumeExportChannelStats! (type)
-        if (this.ChannelStats == null && ec.Includes("channelStats",false))
+        if (ec.Includes("channelStats",false))
         {
-            this.ChannelStats = new ManagedVolumeExportChannelStats();
-            this.ChannelStats.ApplyExploratoryFieldSpec(ec.NewChild("channelStats"));
+            if(this.ChannelStats == null) {
+
+                this.ChannelStats = new ManagedVolumeExportChannelStats();
+                this.ChannelStats.ApplyExploratoryFieldSpec(ec.NewChild("channelStats"));
+
+            } else {
+
+                this.ChannelStats.ApplyExploratoryFieldSpec(ec.NewChild("channelStats"));
+
+            }
+        }
+        else if (this.ChannelStats != null && ec.Excludes("channelStats",false))
+        {
+            this.ChannelStats = null;
         }
         //      C# -> ManagedVolumeMountSpec? MountSpec
         // GraphQL -> mountSpec: ManagedVolumeMountSpec! (type)
-        if (this.MountSpec == null && ec.Includes("mountSpec",false))
+        if (ec.Includes("mountSpec",false))
         {
-            this.MountSpec = new ManagedVolumeMountSpec();
-            this.MountSpec.ApplyExploratoryFieldSpec(ec.NewChild("mountSpec"));
+            if(this.MountSpec == null) {
+
+                this.MountSpec = new ManagedVolumeMountSpec();
+                this.MountSpec.ApplyExploratoryFieldSpec(ec.NewChild("mountSpec"));
+
+            } else {
+
+                this.MountSpec.ApplyExploratoryFieldSpec(ec.NewChild("mountSpec"));
+
+            }
+        }
+        else if (this.MountSpec != null && ec.Excludes("mountSpec",false))
+        {
+            this.MountSpec = null;
         }
     }
 
@@ -202,9 +295,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ManagedVolumeExportChannel> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<System.String>? Domains
         // GraphQL -> domains: [String!]! (scalar)
         if (this.Domains != null) {
-            s += ind + "domains\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "domains\n" ;
+            } else {
+                s += ind + "domains\n" ;
+            }
         }
         //      C# -> List<System.String>? Servers
         // GraphQL -> servers: [String!]! (scalar)
         if (this.Servers != null) {
-            s += ind + "servers\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "servers\n" ;
+            } else {
+                s += ind + "servers\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<System.String>? Domains
         // GraphQL -> domains: [String!]! (scalar)
-        if (this.Domains == null && ec.Includes("domains",true))
+        if (ec.Includes("domains",true))
         {
-            this.Domains = new List<System.String>();
+            if(this.Domains == null) {
+
+                this.Domains = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Domains != null && ec.Excludes("domains",true))
+        {
+            this.Domains = null;
         }
         //      C# -> List<System.String>? Servers
         // GraphQL -> servers: [String!]! (scalar)
-        if (this.Servers == null && ec.Includes("servers",true))
+        if (ec.Includes("servers",true))
         {
-            this.Servers = new List<System.String>();
+            if(this.Servers == null) {
+
+                this.Servers = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Servers != null && ec.Excludes("servers",true))
+        {
+            this.Servers = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ClusterDnsReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

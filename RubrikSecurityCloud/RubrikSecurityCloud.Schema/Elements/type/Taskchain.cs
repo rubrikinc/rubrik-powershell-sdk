@@ -218,109 +218,190 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> TaskchainState? State
         // GraphQL -> state: TaskchainState! (enum)
         if (this.State != null) {
-            s += ind + "state\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "state\n" ;
+            } else {
+                s += ind + "state\n" ;
+            }
         }
         //      C# -> System.String? Account
         // GraphQL -> account: String! (scalar)
         if (this.Account != null) {
-            s += ind + "account\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "account\n" ;
+            } else {
+                s += ind + "account\n" ;
+            }
         }
         //      C# -> System.String? Component
         // GraphQL -> component: String! (scalar)
         if (this.Component != null) {
-            s += ind + "component\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "component\n" ;
+            } else {
+                s += ind + "component\n" ;
+            }
         }
         //      C# -> System.String? Config
         // GraphQL -> config: String! (scalar)
         if (this.Config != null) {
-            s += ind + "config\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "config\n" ;
+            } else {
+                s += ind + "config\n" ;
+            }
         }
         //      C# -> System.Int32? CurrentTaskExecutionAttempts
         // GraphQL -> currentTaskExecutionAttempts: Int! (scalar)
         if (this.CurrentTaskExecutionAttempts != null) {
-            s += ind + "currentTaskExecutionAttempts\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "currentTaskExecutionAttempts\n" ;
+            } else {
+                s += ind + "currentTaskExecutionAttempts\n" ;
+            }
         }
         //      C# -> System.Int32? CurrentTaskIndex
         // GraphQL -> currentTaskIndex: Int! (scalar)
         if (this.CurrentTaskIndex != null) {
-            s += ind + "currentTaskIndex\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "currentTaskIndex\n" ;
+            } else {
+                s += ind + "currentTaskIndex\n" ;
+            }
         }
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime (scalar)
         if (this.EndTime != null) {
-            s += ind + "endTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "endTime\n" ;
+            } else {
+                s += ind + "endTime\n" ;
+            }
         }
         //      C# -> System.String? Error
         // GraphQL -> error: String! (scalar)
         if (this.Error != null) {
-            s += ind + "error\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "error\n" ;
+            } else {
+                s += ind + "error\n" ;
+            }
         }
         //      C# -> System.Int64? Id
         // GraphQL -> id: Long! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.Int64? JobId
         // GraphQL -> jobId: Long! (scalar)
         if (this.JobId != null) {
-            s += ind + "jobId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "jobId\n" ;
+            } else {
+                s += ind + "jobId\n" ;
+            }
         }
         //      C# -> System.String? JobType
         // GraphQL -> jobType: String! (scalar)
         if (this.JobType != null) {
-            s += ind + "jobType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "jobType\n" ;
+            } else {
+                s += ind + "jobType\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.String? ParentTaskchainId
         // GraphQL -> parentTaskchainId: String! (scalar)
         if (this.ParentTaskchainId != null) {
-            s += ind + "parentTaskchainId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "parentTaskchainId\n" ;
+            } else {
+                s += ind + "parentTaskchainId\n" ;
+            }
         }
         //      C# -> System.String? PodName
         // GraphQL -> podName: String! (scalar)
         if (this.PodName != null) {
-            s += ind + "podName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "podName\n" ;
+            } else {
+                s += ind + "podName\n" ;
+            }
         }
         //      C# -> System.Int32? Priority
         // GraphQL -> priority: Int! (scalar)
         if (this.Priority != null) {
-            s += ind + "priority\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "priority\n" ;
+            } else {
+                s += ind + "priority\n" ;
+            }
         }
         //      C# -> System.Int64? Progress
         // GraphQL -> progress: Long! (scalar)
         if (this.Progress != null) {
-            s += ind + "progress\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "progress\n" ;
+            } else {
+                s += ind + "progress\n" ;
+            }
         }
         //      C# -> DateTime? ProgressedAt
         // GraphQL -> progressedAt: DateTime (scalar)
         if (this.ProgressedAt != null) {
-            s += ind + "progressedAt\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "progressedAt\n" ;
+            } else {
+                s += ind + "progressedAt\n" ;
+            }
         }
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime (scalar)
         if (this.StartTime != null) {
-            s += ind + "startTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "startTime\n" ;
+            } else {
+                s += ind + "startTime\n" ;
+            }
         }
         //      C# -> System.String? TaskchainUuid
         // GraphQL -> taskchainUuid: String! (scalar)
         if (this.TaskchainUuid != null) {
-            s += ind + "taskchainUuid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "taskchainUuid\n" ;
+            } else {
+                s += ind + "taskchainUuid\n" ;
+            }
         }
         //      C# -> System.String? WorkflowName
         // GraphQL -> workflowName: String! (scalar)
         if (this.WorkflowName != null) {
-            s += ind + "workflowName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "workflowName\n" ;
+            } else {
+                s += ind + "workflowName\n" ;
+            }
         }
         return s;
     }
@@ -331,123 +412,343 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> TaskchainState? State
         // GraphQL -> state: TaskchainState! (enum)
-        if (this.State == null && ec.Includes("state",true))
+        if (ec.Includes("state",true))
         {
-            this.State = new TaskchainState();
+            if(this.State == null) {
+
+                this.State = new TaskchainState();
+
+            } else {
+
+
+            }
+        }
+        else if (this.State != null && ec.Excludes("state",true))
+        {
+            this.State = null;
         }
         //      C# -> System.String? Account
         // GraphQL -> account: String! (scalar)
-        if (this.Account == null && ec.Includes("account",true))
+        if (ec.Includes("account",true))
         {
-            this.Account = "FETCH";
+            if(this.Account == null) {
+
+                this.Account = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Account != null && ec.Excludes("account",true))
+        {
+            this.Account = null;
         }
         //      C# -> System.String? Component
         // GraphQL -> component: String! (scalar)
-        if (this.Component == null && ec.Includes("component",true))
+        if (ec.Includes("component",true))
         {
-            this.Component = "FETCH";
+            if(this.Component == null) {
+
+                this.Component = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Component != null && ec.Excludes("component",true))
+        {
+            this.Component = null;
         }
         //      C# -> System.String? Config
         // GraphQL -> config: String! (scalar)
-        if (this.Config == null && ec.Includes("config",true))
+        if (ec.Includes("config",true))
         {
-            this.Config = "FETCH";
+            if(this.Config == null) {
+
+                this.Config = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Config != null && ec.Excludes("config",true))
+        {
+            this.Config = null;
         }
         //      C# -> System.Int32? CurrentTaskExecutionAttempts
         // GraphQL -> currentTaskExecutionAttempts: Int! (scalar)
-        if (this.CurrentTaskExecutionAttempts == null && ec.Includes("currentTaskExecutionAttempts",true))
+        if (ec.Includes("currentTaskExecutionAttempts",true))
         {
-            this.CurrentTaskExecutionAttempts = Int32.MinValue;
+            if(this.CurrentTaskExecutionAttempts == null) {
+
+                this.CurrentTaskExecutionAttempts = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.CurrentTaskExecutionAttempts != null && ec.Excludes("currentTaskExecutionAttempts",true))
+        {
+            this.CurrentTaskExecutionAttempts = null;
         }
         //      C# -> System.Int32? CurrentTaskIndex
         // GraphQL -> currentTaskIndex: Int! (scalar)
-        if (this.CurrentTaskIndex == null && ec.Includes("currentTaskIndex",true))
+        if (ec.Includes("currentTaskIndex",true))
         {
-            this.CurrentTaskIndex = Int32.MinValue;
+            if(this.CurrentTaskIndex == null) {
+
+                this.CurrentTaskIndex = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.CurrentTaskIndex != null && ec.Excludes("currentTaskIndex",true))
+        {
+            this.CurrentTaskIndex = null;
         }
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime (scalar)
-        if (this.EndTime == null && ec.Includes("endTime",true))
+        if (ec.Includes("endTime",true))
         {
-            this.EndTime = new DateTime();
+            if(this.EndTime == null) {
+
+                this.EndTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EndTime != null && ec.Excludes("endTime",true))
+        {
+            this.EndTime = null;
         }
         //      C# -> System.String? Error
         // GraphQL -> error: String! (scalar)
-        if (this.Error == null && ec.Includes("error",true))
+        if (ec.Includes("error",true))
         {
-            this.Error = "FETCH";
+            if(this.Error == null) {
+
+                this.Error = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Error != null && ec.Excludes("error",true))
+        {
+            this.Error = null;
         }
         //      C# -> System.Int64? Id
         // GraphQL -> id: Long! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = new System.Int64();
+            if(this.Id == null) {
+
+                this.Id = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.Int64? JobId
         // GraphQL -> jobId: Long! (scalar)
-        if (this.JobId == null && ec.Includes("jobId",true))
+        if (ec.Includes("jobId",true))
         {
-            this.JobId = new System.Int64();
+            if(this.JobId == null) {
+
+                this.JobId = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.JobId != null && ec.Excludes("jobId",true))
+        {
+            this.JobId = null;
         }
         //      C# -> System.String? JobType
         // GraphQL -> jobType: String! (scalar)
-        if (this.JobType == null && ec.Includes("jobType",true))
+        if (ec.Includes("jobType",true))
         {
-            this.JobType = "FETCH";
+            if(this.JobType == null) {
+
+                this.JobType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.JobType != null && ec.Excludes("jobType",true))
+        {
+            this.JobType = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.String? ParentTaskchainId
         // GraphQL -> parentTaskchainId: String! (scalar)
-        if (this.ParentTaskchainId == null && ec.Includes("parentTaskchainId",true))
+        if (ec.Includes("parentTaskchainId",true))
         {
-            this.ParentTaskchainId = "FETCH";
+            if(this.ParentTaskchainId == null) {
+
+                this.ParentTaskchainId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ParentTaskchainId != null && ec.Excludes("parentTaskchainId",true))
+        {
+            this.ParentTaskchainId = null;
         }
         //      C# -> System.String? PodName
         // GraphQL -> podName: String! (scalar)
-        if (this.PodName == null && ec.Includes("podName",true))
+        if (ec.Includes("podName",true))
         {
-            this.PodName = "FETCH";
+            if(this.PodName == null) {
+
+                this.PodName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PodName != null && ec.Excludes("podName",true))
+        {
+            this.PodName = null;
         }
         //      C# -> System.Int32? Priority
         // GraphQL -> priority: Int! (scalar)
-        if (this.Priority == null && ec.Includes("priority",true))
+        if (ec.Includes("priority",true))
         {
-            this.Priority = Int32.MinValue;
+            if(this.Priority == null) {
+
+                this.Priority = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Priority != null && ec.Excludes("priority",true))
+        {
+            this.Priority = null;
         }
         //      C# -> System.Int64? Progress
         // GraphQL -> progress: Long! (scalar)
-        if (this.Progress == null && ec.Includes("progress",true))
+        if (ec.Includes("progress",true))
         {
-            this.Progress = new System.Int64();
+            if(this.Progress == null) {
+
+                this.Progress = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Progress != null && ec.Excludes("progress",true))
+        {
+            this.Progress = null;
         }
         //      C# -> DateTime? ProgressedAt
         // GraphQL -> progressedAt: DateTime (scalar)
-        if (this.ProgressedAt == null && ec.Includes("progressedAt",true))
+        if (ec.Includes("progressedAt",true))
         {
-            this.ProgressedAt = new DateTime();
+            if(this.ProgressedAt == null) {
+
+                this.ProgressedAt = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProgressedAt != null && ec.Excludes("progressedAt",true))
+        {
+            this.ProgressedAt = null;
         }
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime (scalar)
-        if (this.StartTime == null && ec.Includes("startTime",true))
+        if (ec.Includes("startTime",true))
         {
-            this.StartTime = new DateTime();
+            if(this.StartTime == null) {
+
+                this.StartTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.StartTime != null && ec.Excludes("startTime",true))
+        {
+            this.StartTime = null;
         }
         //      C# -> System.String? TaskchainUuid
         // GraphQL -> taskchainUuid: String! (scalar)
-        if (this.TaskchainUuid == null && ec.Includes("taskchainUuid",true))
+        if (ec.Includes("taskchainUuid",true))
         {
-            this.TaskchainUuid = "FETCH";
+            if(this.TaskchainUuid == null) {
+
+                this.TaskchainUuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TaskchainUuid != null && ec.Excludes("taskchainUuid",true))
+        {
+            this.TaskchainUuid = null;
         }
         //      C# -> System.String? WorkflowName
         // GraphQL -> workflowName: String! (scalar)
-        if (this.WorkflowName == null && ec.Includes("workflowName",true))
+        if (ec.Includes("workflowName",true))
         {
-            this.WorkflowName = "FETCH";
+            if(this.WorkflowName == null) {
+
+                this.WorkflowName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.WorkflowName != null && ec.Excludes("workflowName",true))
+        {
+            this.WorkflowName = null;
         }
     }
 
@@ -474,9 +775,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<Taskchain> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

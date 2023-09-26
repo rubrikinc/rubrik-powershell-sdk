@@ -65,26 +65,39 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<System.String>? BundleFeatures
         // GraphQL -> bundleFeatures: [String!]! (scalar)
         if (this.BundleFeatures != null) {
-            s += ind + "bundleFeatures\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "bundleFeatures\n" ;
+            } else {
+                s += ind + "bundleFeatures\n" ;
+            }
         }
         //      C# -> System.String? ProductType
         // GraphQL -> productType: String! (scalar)
         if (this.ProductType != null) {
-            s += ind + "productType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "productType\n" ;
+            } else {
+                s += ind + "productType\n" ;
+            }
         }
         //      C# -> List<License>? Licenses
         // GraphQL -> licenses: [License!]! (type)
         if (this.Licenses != null) {
-            var fspec = this.Licenses.AsFieldSpec(indent+1);
+            var fspec = this.Licenses.AsFieldSpec(conf.Child("licenses"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "licenses {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "licenses {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -96,22 +109,56 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<System.String>? BundleFeatures
         // GraphQL -> bundleFeatures: [String!]! (scalar)
-        if (this.BundleFeatures == null && ec.Includes("bundleFeatures",true))
+        if (ec.Includes("bundleFeatures",true))
         {
-            this.BundleFeatures = new List<System.String>();
+            if(this.BundleFeatures == null) {
+
+                this.BundleFeatures = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.BundleFeatures != null && ec.Excludes("bundleFeatures",true))
+        {
+            this.BundleFeatures = null;
         }
         //      C# -> System.String? ProductType
         // GraphQL -> productType: String! (scalar)
-        if (this.ProductType == null && ec.Includes("productType",true))
+        if (ec.Includes("productType",true))
         {
-            this.ProductType = "FETCH";
+            if(this.ProductType == null) {
+
+                this.ProductType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProductType != null && ec.Excludes("productType",true))
+        {
+            this.ProductType = null;
         }
         //      C# -> List<License>? Licenses
         // GraphQL -> licenses: [License!]! (type)
-        if (this.Licenses == null && ec.Includes("licenses",false))
+        if (ec.Includes("licenses",false))
         {
-            this.Licenses = new List<License>();
-            this.Licenses.ApplyExploratoryFieldSpec(ec.NewChild("licenses"));
+            if(this.Licenses == null) {
+
+                this.Licenses = new List<License>();
+                this.Licenses.ApplyExploratoryFieldSpec(ec.NewChild("licenses"));
+
+            } else {
+
+                this.Licenses.ApplyExploratoryFieldSpec(ec.NewChild("licenses"));
+
+            }
+        }
+        else if (this.Licenses != null && ec.Excludes("licenses",false))
+        {
+            this.Licenses = null;
         }
     }
 
@@ -138,9 +185,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ProductTypeInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

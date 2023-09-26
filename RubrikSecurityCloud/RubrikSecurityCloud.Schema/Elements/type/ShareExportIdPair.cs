@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int32? ExportId
         // GraphQL -> exportId: Int! (scalar)
         if (this.ExportId != null) {
-            s += ind + "exportId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "exportId\n" ;
+            } else {
+                s += ind + "exportId\n" ;
+            }
         }
         //      C# -> System.String? Share
         // GraphQL -> share: String! (scalar)
         if (this.Share != null) {
-            s += ind + "share\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "share\n" ;
+            } else {
+                s += ind + "share\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int32? ExportId
         // GraphQL -> exportId: Int! (scalar)
-        if (this.ExportId == null && ec.Includes("exportId",true))
+        if (ec.Includes("exportId",true))
         {
-            this.ExportId = Int32.MinValue;
+            if(this.ExportId == null) {
+
+                this.ExportId = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExportId != null && ec.Excludes("exportId",true))
+        {
+            this.ExportId = null;
         }
         //      C# -> System.String? Share
         // GraphQL -> share: String! (scalar)
-        if (this.Share == null && ec.Includes("share",true))
+        if (ec.Includes("share",true))
         {
-            this.Share = "FETCH";
+            if(this.Share == null) {
+
+                this.Share = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Share != null && ec.Excludes("share",true))
+        {
+            this.Share = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ShareExportIdPair> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

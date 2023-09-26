@@ -14,6 +14,9 @@ using RubrikSecurityCloud;
 using RubrikSecurityCloud.Types;
 using GraphQL;
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
+
 namespace RubrikSecurityCloud.PowerShell.Private
 {
     /// <summary>
@@ -123,7 +126,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
             }
         }
 
-        
+
 #pragma warning disable 1591 // ignore warning 'Missing XML comment'
         protected override void BeginProcessing()
         {
@@ -166,6 +169,17 @@ namespace RubrikSecurityCloud.PowerShell.Private
                 errorCategory,
                 targetObject);
             ThrowTerminatingError(error);
+        }
+
+        protected string GetCmdletName()
+        {
+            var attr = (CmdletAttribute)Attribute.GetCustomAttribute(
+                this.GetType(), typeof(CmdletAttribute));
+            if (attr == null)
+            {
+                return null;
+            }
+            return $"{attr.VerbName}-{attr.NounName}";
         }
 
         protected string GetSessionCWD()
@@ -284,7 +298,32 @@ namespace RubrikSecurityCloud.PowerShell.Private
             return argValue;
         }
 
-#pragma warning restore 1591
+        internal List<string> GetSwitchNames()
+        {
+            List<string> switchNames = new();
+            try
+            {
+                System.Reflection.PropertyInfo[] cmdletProperties = this.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance);
+                foreach (var prop in cmdletProperties)
+                {
+                    // filter for parameters only
+                    ParameterAttribute parameterAttribute = prop.GetCustomAttributes(typeof(ParameterAttribute), true).FirstOrDefault() as ParameterAttribute;
+                    if (parameterAttribute == null)
+                    {
+                        continue;
+                    }
+                    if (prop.PropertyType.Name == "SwitchParameter")
+                    {
+                        switchNames.Add(prop.Name);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                _logger?.Debug($"Could not retrieve switch names: {e}");
+            }
+            return switchNames;
+        }
 
         // For debugging purposes,
         // Create a report of all inputs with their types and values,

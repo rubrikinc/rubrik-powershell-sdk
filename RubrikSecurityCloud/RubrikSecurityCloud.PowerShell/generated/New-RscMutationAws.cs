@@ -16,137 +16,2195 @@ using RubrikSecurityCloud.Types;
 using RubrikSecurityCloud.NetSDK.Client;
 using RubrikSecurityCloud.PowerShell.Private;
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
+
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Mutations for the 'AWS' API domain.
+    /// Create a new RscQuery object for any of the 41
+    /// operations in the 'AWS' API domain:
+    /// AddAuthenticationServerBasedCloudAccount, AddIamUserBasedCloudAccount, BulkDeleteCloudAccountWithoutCft, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeStorageSetting, CreateCluster, CreateComputeSetting, CreateExocomputeConfigs, CreateReaderTarget, CreateTarget, DeleteCluster, DeleteComputeSetting, DeleteExocomputeConfigs, ExcludeNativeEbsVolumesFromSnapshot, FinalizeCloudAccountDeletion, FinalizeCloudAccountProtection, PatchAuthenticationServerBasedCloudAccount, PatchIamUserBasedCloudAccount, PrepareCloudAccountDeletion, PrepareFeatureUpdateForCloudAccount, RegisterFeatureArtifacts, StartCreateNativeEbsVolumeSnapshotsJob, StartExocomputeDisableJob, StartExportNativeEbsVolumeSnapshotJob, StartNativeAccountDisableJob, StartNativeEc2InstanceSnapshotsJob, StartNativeRdsInstanceSnapshotsJob, StartRefreshNativeAccountsJob, StartRestoreNativeEc2InstanceSnapshotJob, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudAccountFeature, UpdateCloudNativeStorageSetting, UpdateComputeSetting, UpdateExocomputeConfigs, UpdateTarget, UpgradeCloudAccountFeaturesWithoutCft, UpgradeIamUserBasedCloudAccountPermissions, or ValidateAndCreateCloudAccount.
     /// </summary>
     /// <description>
-    /// New-RscMutationAws is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
+    /// New-RscMutationAws creates a new
+    /// mutation object for operations
+    /// in the 'AWS' API domain. It only creates a data structure,
+    /// it does not execute the operation. This cmdlet does not need a
+    /// connection to run. To execute the operation, either call Invoke()
+    /// on the object returned by this cmdlet, or pass the object to
+    /// Invoke-Rsc.
+    /// There are 41 operations
+    /// in the 'AWS' API domain. Select the operation this
+    /// query is for by specifying the appropriate switch parameter;
+    /// one of: -AddAuthenticationServerBasedCloudAccount, -AddIamUserBasedCloudAccount, -BulkDeleteCloudAccountWithoutCft, -CreateAccount, -CreateAutomaticTargetMapping, -CreateCloudNativeStorageSetting, -CreateCluster, -CreateComputeSetting, -CreateExocomputeConfigs, -CreateReaderTarget, -CreateTarget, -DeleteCluster, -DeleteComputeSetting, -DeleteExocomputeConfigs, -ExcludeNativeEbsVolumesFromSnapshot, -FinalizeCloudAccountDeletion, -FinalizeCloudAccountProtection, -PatchAuthenticationServerBasedCloudAccount, -PatchIamUserBasedCloudAccount, -PrepareCloudAccountDeletion, -PrepareFeatureUpdateForCloudAccount, -RegisterFeatureArtifacts, -StartCreateNativeEbsVolumeSnapshotsJob, -StartExocomputeDisableJob, -StartExportNativeEbsVolumeSnapshotJob, -StartNativeAccountDisableJob, -StartNativeEc2InstanceSnapshotsJob, -StartNativeRdsInstanceSnapshotsJob, -StartRefreshNativeAccountsJob, -StartRestoreNativeEc2InstanceSnapshotJob, -UpdateAccount, -UpdateAutomaticTargetMapping, -UpdateCloudAccount, -UpdateCloudAccountFeature, -UpdateCloudNativeStorageSetting, -UpdateComputeSetting, -UpdateExocomputeConfigs, -UpdateTarget, -UpgradeCloudAccountFeaturesWithoutCft, -UpgradeIamUserBasedCloudAccountPermissions, -ValidateAndCreateCloudAccount.
+    /// Alternatively, you can specify the operation by setting the
+    /// -Op parameter, for example: -Op AddAuthenticationServerBasedCloudAccount,
+    /// which is equivalent to specifying -AddAuthenticationServerBasedCloudAccount.
+    /// Each operation has its own set of variables that can be set with
+    /// the -Var parameter. For more info about the variables, 
+    /// call Info() on the object returned by this cmdlet, for example:
+    /// (New-RscMutationAws -AddAuthenticationServerBasedCloudAccount).Info().
+    /// Each operation also has its own set of fields that can be
+    /// selected for retrieval. If you do not specify any fields,
+    /// a set of default fields will be selected. The selection is
+    /// rule-based, and tries to select the most commonly used fields.
+    /// For example if a field is named 'id' or 'name', 
+    /// it will be selected. If you give -FieldProfile DETAIL, then
+    /// another set of rules will be used to select more fields on top
+    /// of the default fields. The set of rules for selecting fields
+    /// is called a field profile. You can specify a field profile
+    /// with the -FieldProfile parameter. You can add or remove fields
+    /// from the field profile with the -AddField and -RemoveField
+    /// parameters. If you end up with too many -AddField and -RemoveField
+    /// parameters, you can list them in a text file, one per line,
+    /// with a '+' or '-' prefix, and pass the file name to the
+    /// -FilePatch parameter. Profiles and Patches are one way to
+    /// customize the fields that are selected. Another way is to
+    /// specify the fields by passing the -Field parameter an object
+    /// that contains the fields you want to select as properties.
+    /// Any property that is not null in that object is interpreted
+    /// as a field to select
+    /// (and the actual values they are set to do not matter).
+    /// The [RubrikSecurityCloud.Types] namespace
+    /// contains a set of classes that you can use to specify fields.
+    /// To know what [RubrikSecurityCloud.Types] object to use
+    /// for a specific operation,
+    /// call Info() on the object returned by this cmdlet, for example:
+    /// (New-RscMutationAws -AddAuthenticationServerBasedCloudAccount).Info().
+    /// You can combine a -Field parameter with patching parameters.
+    /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
+    ///
     /// </description>
+    ///
     /// <example>
-    /// <code>New-RscMutationAws -StartNativeEc2InstanceSnapshotsJob [-Arg ..] [-Field ..]</code>
+    /// Runs the AddAuthenticationServerBasedCloudAccount operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AWS
+    /// # API Operation: AddAuthenticationServerBasedCloudAccount
+    /// 
+    /// $query = New-RscMutationAws -AddAuthenticationServerBasedCloudAccount
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+    /// 	# REQUIRED
+    /// 	awsAccountName = $someString
+    /// 	# OPTIONAL
+    /// 	awsRegions = @(
+    /// 		$someAwsAuthServerBasedCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsAuthServerBasedCloudAccountRegion]) for enum values.
+    /// 	)
+    /// 	# REQUIRED
+    /// 	features = @(
+    /// 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	nativeId = $someString
+    /// 	# OPTIONAL
+    /// 	agencyName = $someString
+    /// 	# OPTIONAL
+    /// 	roleName = $someString
+    /// 	# OPTIONAL
+    /// 	authServerHostName = $someString
+    /// 	# OPTIONAL
+    /// 	authServerUserClientCertId = @{
+    /// 		# REQUIRED
+    /// 		id = $someInt64
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	authServerCaCertId = @{
+    /// 		# REQUIRED
+    /// 		id = $someInt64
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	awsCaCertId = @{
+    /// 		# REQUIRED
+    /// 		id = $someInt64
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AddAwsAuthenticationServerBasedCloudAccountReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationAws -StartRestoreNativeEc2InstanceSnapshotJob [-Arg ..] [-Field ..]</code>
+    /// Runs the AddIamUserBasedCloudAccount operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AWS
+    /// # API Operation: AddIamUserBasedCloudAccount
+    /// 
+    /// $query = New-RscMutationAws -AddIamUserBasedCloudAccount
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	features = @(
+    /// 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	accessKey = $someString
+    /// 	# OPTIONAL
+    /// 	secretKey = $someString
+    /// 	# REQUIRED
+    /// 	nativeId = $someString
+    /// 	# REQUIRED
+    /// 	cloudAccountName = $someString
+    /// 	# OPTIONAL
+    /// 	cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	awsRegions = @(
+    /// 		$someAwsCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountRegion]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	roleArn = $someString
+    /// 	# OPTIONAL
+    /// 	externalArtifactMap = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			externalArtifactKey = $someAwsCloudExternalArtifact # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudExternalArtifact]) for enum values.
+    /// 			# OPTIONAL
+    /// 			externalArtifactValue = $someString
+    /// 		}
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AddAwsIamUserBasedCloudAccountReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationAws -StartRefreshNativeAccountsJob [-Arg ..] [-Field ..]</code>
+    /// Runs the BulkDeleteCloudAccountWithoutCft operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AWS
+    /// # API Operation: BulkDeleteCloudAccountWithoutCft
+    /// 
+    /// $query = New-RscMutationAws -BulkDeleteCloudAccountWithoutCft
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	awsNativeId = $someString
+    /// 	# OPTIONAL
+    /// 	features = @(
+    /// 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: BulkDeleteAwsCloudAccountWithoutCftReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationAws -StartCreateNativeEbsVolumeSnapshotsJob [-Arg ..] [-Field ..]</code>
+    /// Runs the CreateAccount operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AWS
+    /// # API Operation: CreateAccount
+    /// 
+    /// $query = New-RscMutationAws -CreateAccount
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	name = $someString
+    /// 	# OPTIONAL
+    /// 	description = $someString
+    /// 	# REQUIRED
+    /// 	accessKey = $someString
+    /// 	# REQUIRED
+    /// 	secretKey = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CloudAccount
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationAws -StartNativeAccountDisableJob [-Arg ..] [-Field ..]</code>
+    /// Runs the CreateAutomaticTargetMapping operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AWS
+    /// # API Operation: CreateAutomaticTargetMapping
+    /// 
+    /// $query = New-RscMutationAws -CreateAutomaticTargetMapping
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	name = $someString
+    /// 	# REQUIRED
+    /// 	cloudAccountId = $someString
+    /// 	# REQUIRED
+    /// 	bucketPrefix = $someString
+    /// 	# REQUIRED
+    /// 	storageClass = $someAwsStorageClass # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
+    /// 	# REQUIRED
+    /// 	region = $someAwsRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
+    /// 	# OPTIONAL
+    /// 	kmsMasterKeyId = $someString
+    /// 	# OPTIONAL
+    /// 	rsaKey = $someString
+    /// 	# REQUIRED
+    /// 	isConsolidationEnabled = $someBoolean
+    /// 	# OPTIONAL
+    /// 	proxySettings = @{
+    /// 		# OPTIONAL
+    /// 		proxyServer = $someString
+    /// 		# OPTIONAL
+    /// 		portNumber = $someInt
+    /// 		# OPTIONAL
+    /// 		username = $someString
+    /// 		# OPTIONAL
+    /// 		password = $someString
+    /// 		# OPTIONAL
+    /// 		protocol = $someString
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	clusterUuidList = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	awsComputeSettingsId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: TargetMapping
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationAws -StartExportNativeEbsVolumeSnapshotJob [-Arg ..] [-Field ..]</code>
+    /// Runs the CreateCloudNativeStorageSetting operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AWS
+    /// # API Operation: CreateCloudNativeStorageSetting
+    /// 
+    /// $query = New-RscMutationAws -CreateCloudNativeStorageSetting
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	name = $someString
+    /// 	# REQUIRED
+    /// 	cloudAccountId = $someString
+    /// 	# REQUIRED
+    /// 	bucketPrefix = $someString
+    /// 	# REQUIRED
+    /// 	storageClass = $someAwsStorageClass # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
+    /// 	# OPTIONAL
+    /// 	region = $someAwsRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
+    /// 	# OPTIONAL
+    /// 	kmsMasterKeyId = $someString
+    /// 	# REQUIRED
+    /// 	cloudNativeLocTemplateType = $someCloudNativeLocTemplateType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeLocTemplateType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	bucketTags = @{
+    /// 		# REQUIRED
+    /// 		tagList = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				key = $someString
+    /// 				# REQUIRED
+    /// 				value = $someString
+    /// 			}
+    /// 		)
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CreateCloudNativeAwsStorageSettingReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationAws -ExcludeNativeEbsVolumesFromSnapshot [-Arg ..] [-Field ..]</code>
+    /// Runs the CreateCluster operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AWS
+    /// # API Operation: CreateCluster
+    /// 
+    /// $query = New-RscMutationAws -CreateCluster
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	cloudAccountId = $someString
+    /// 	# OPTIONAL
+    /// 	isEsType = $someBoolean
+    /// 	# OPTIONAL
+    /// 	keepClusterOnFailure = $someBoolean
+    /// 	# OPTIONAL
+    /// 	region = $someString
+    /// 	# OPTIONAL
+    /// 	disableApiTermination = $someBoolean
+    /// 	# OPTIONAL
+    /// 	clusterConfig = @{
+    /// 		# OPTIONAL
+    /// 		userEmail = $someString
+    /// 		# OPTIONAL
+    /// 		adminPassword = $someString
+    /// 		# OPTIONAL
+    /// 		clusterName = $someString
+    /// 		# OPTIONAL
+    /// 		numNodes = $someInt
+    /// 		# OPTIONAL
+    /// 		dnsSearchDomains = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		dnsNameServers = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		ntpServers = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		azureEsConfig = @{
+    /// 			# OPTIONAL
+    /// 			storageAccount = $someString
+    /// 			# OPTIONAL
+    /// 			resourceGroup = $someString
+    /// 			# OPTIONAL
+    /// 			storageSecret = $someString
+    /// 			# OPTIONAL
+    /// 			containerName = $someString
+    /// 			# OPTIONAL
+    /// 			shouldCreateContainer = $someBoolean
+    /// 			# OPTIONAL
+    /// 			enableImmutability = $someBoolean
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		awsEsConfig = @{
+    /// 			# OPTIONAL
+    /// 			bucketName = $someString
+    /// 			# OPTIONAL
+    /// 			shouldCreateBucket = $someBoolean
+    /// 			# OPTIONAL
+    /// 			enableObjectLock = $someBoolean
+    /// 			# OPTIONAL
+    /// 			enableImmutability = $someBoolean
+    /// 		}
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	vmConfig = @{
+    /// 		# OPTIONAL
+    /// 		cdmVersion = $someString
+    /// 		# OPTIONAL
+    /// 		nodeSizeGb = $someInt
+    /// 		# OPTIONAL
+    /// 		subnet = $someString
+    /// 		# OPTIONAL
+    /// 		tags = $someString
+    /// 		# OPTIONAL
+    /// 		imageId = $someString
+    /// 		# OPTIONAL
+    /// 		instanceProfileName = $someString
+    /// 		# OPTIONAL
+    /// 		cdmProduct = $someString
+    /// 		# OPTIONAL
+    /// 		vmType = $someVmType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
+    /// 		# OPTIONAL
+    /// 		securityGroups = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		instanceType = $someAwsInstanceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsInstanceType]) for enum values.
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CcProvisionJobReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationAws -StartNativeRdsInstanceSnapshotsJob [-Arg ..] [-Field ..]</code>
+    /// Runs the CreateComputeSetting operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AWS
+    /// # API Operation: CreateComputeSetting
+    /// 
+    /// $query = New-RscMutationAws -CreateComputeSetting
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	name = $someString
+    /// 	# OPTIONAL
+    /// 	subnetId = $someString
+    /// 	# OPTIONAL
+    /// 	vpcId = $someString
+    /// 	# OPTIONAL
+    /// 	securityGroupId = $someString
+    /// 	# OPTIONAL
+    /// 	cloudAccountId = $someString
+    /// 	# OPTIONAL
+    /// 	region = $someAwsRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
+    /// 	# OPTIONAL
+    /// 	isSecurityGroupPolarisManaged = $someBoolean
+    /// 	# OPTIONAL
+    /// 	clusterInterfaceCidrs = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			clusterName = $someString
+    /// 			# OPTIONAL
+    /// 			clusterId = $someString
+    /// 			# OPTIONAL
+    /// 			interfaceCidr = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					interfaceType = $someInterfaceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InterfaceType]) for enum values.
+    /// 					# OPTIONAL
+    /// 					cidr = $someString
+    /// 					# OPTIONAL
+    /// 					selected = $someBoolean
+    /// 				}
+    /// 			)
+    /// 		}
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AwsComputeSettings
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationAws -CreateAccount [-Arg ..] [-Field ..]</code>
+    /// Runs the CreateExocomputeConfigs operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AWS
+    /// # API Operation: CreateExocomputeConfigs
+    /// 
+    /// $query = New-RscMutationAws -CreateExocomputeConfigs
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	cloudAccountId = $someString
+    /// 	# REQUIRED
+    /// 	configs = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			region = $someAwsCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountRegion]) for enum values.
+    /// 			# OPTIONAL
+    /// 			clusterSecurityGroupId = $someString
+    /// 			# REQUIRED
+    /// 			vpcId = $someString
+    /// 			# OPTIONAL
+    /// 			nodeSecurityGroupId = $someString
+    /// 			# REQUIRED
+    /// 			subnets = @(
+    /// 				@{
+    /// 					# REQUIRED
+    /// 					subnetId = $someString
+    /// 					# REQUIRED
+    /// 					availabilityZone = $someString
+    /// 				}
+    /// 			)
+    /// 			# REQUIRED
+    /// 			isRscManaged = $someBoolean
+    /// 		}
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	triggerHealthCheck = $someBoolean
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CreateAwsExocomputeConfigsReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationAws -UpdateAccount [-Arg ..] [-Field ..]</code>
+    /// Runs the CreateReaderTarget operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AWS
+    /// # API Operation: CreateReaderTarget
+    /// 
+    /// $query = New-RscMutationAws -CreateReaderTarget
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	name = $someString
+    /// 	# REQUIRED
+    /// 	cloudAccountId = $someString
+    /// 	# REQUIRED
+    /// 	bucketName = $someString
+    /// 	# REQUIRED
+    /// 	storageClass = $someAwsStorageClass # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
+    /// 	# REQUIRED
+    /// 	region = $someAwsRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
+    /// 	# OPTIONAL
+    /// 	kmsMasterKeyId = $someString
+    /// 	# OPTIONAL
+    /// 	rsaKey = $someString
+    /// 	# OPTIONAL
+    /// 	encryptionPassword = $someString
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	isConsolidationEnabled = $someBoolean
+    /// 	# OPTIONAL
+    /// 	proxySettings = @{
+    /// 		# OPTIONAL
+    /// 		proxyServer = $someString
+    /// 		# OPTIONAL
+    /// 		portNumber = $someInt
+    /// 		# OPTIONAL
+    /// 		username = $someString
+    /// 		# OPTIONAL
+    /// 		password = $someString
+    /// 		# OPTIONAL
+    /// 		protocol = $someString
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	awsComputeSettingsId = $someString
+    /// 	# OPTIONAL
+    /// 	cloudComputeSettings = @{
+    /// 		# OPTIONAL
+    /// 		subnetId = $someString
+    /// 		# OPTIONAL
+    /// 		vpcId = $someString
+    /// 		# OPTIONAL
+    /// 		securityGroupId = $someString
+    /// 		# OPTIONAL
+    /// 		computeProxySettings = @{
+    /// 			# OPTIONAL
+    /// 			proxyServer = $someString
+    /// 			# OPTIONAL
+    /// 			portNumber = $someInt
+    /// 			# OPTIONAL
+    /// 			username = $someString
+    /// 			# OPTIONAL
+    /// 			password = $someString
+    /// 			# OPTIONAL
+    /// 			protocol = $someString
+    /// 		}
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	awsRetrievalTier = $someAwsRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
+    /// 	# REQUIRED
+    /// 	readerRetrievalMethod = $someReaderRetrievalMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReaderRetrievalMethod]) for enum values.
+    /// 	# OPTIONAL
+    /// 	s3Endpoint = $someString
+    /// 	# OPTIONAL
+    /// 	kmsEndpoint = $someString
+    /// 	# OPTIONAL
+    /// 	computeProxySettings = @{
+    /// 		# OPTIONAL
+    /// 		proxyServer = $someString
+    /// 		# OPTIONAL
+    /// 		portNumber = $someInt
+    /// 		# OPTIONAL
+    /// 		username = $someString
+    /// 		# OPTIONAL
+    /// 		password = $someString
+    /// 		# OPTIONAL
+    /// 		protocol = $someString
+    /// 	}
+    /// 	# REQUIRED
+    /// 	bypassProxy = $someBoolean
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: Target
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationAws -CreateAutomaticTargetMapping [-Arg ..] [-Field ..]</code>
+    /// Runs the CreateTarget operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AWS
+    /// # API Operation: CreateTarget
+    /// 
+    /// $query = New-RscMutationAws -CreateTarget
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	name = $someString
+    /// 	# REQUIRED
+    /// 	cloudAccountId = $someString
+    /// 	# REQUIRED
+    /// 	bucketName = $someString
+    /// 	# REQUIRED
+    /// 	storageClass = $someAwsStorageClass # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
+    /// 	# REQUIRED
+    /// 	region = $someAwsRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
+    /// 	# OPTIONAL
+    /// 	kmsMasterKeyId = $someString
+    /// 	# OPTIONAL
+    /// 	rsaKey = $someString
+    /// 	# OPTIONAL
+    /// 	encryptionPassword = $someString
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	isConsolidationEnabled = $someBoolean
+    /// 	# OPTIONAL
+    /// 	proxySettings = @{
+    /// 		# OPTIONAL
+    /// 		proxyServer = $someString
+    /// 		# OPTIONAL
+    /// 		portNumber = $someInt
+    /// 		# OPTIONAL
+    /// 		username = $someString
+    /// 		# OPTIONAL
+    /// 		password = $someString
+    /// 		# OPTIONAL
+    /// 		protocol = $someString
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	awsComputeSettingsId = $someString
+    /// 	# OPTIONAL
+    /// 	cloudComputeSettings = @{
+    /// 		# OPTIONAL
+    /// 		subnetId = $someString
+    /// 		# OPTIONAL
+    /// 		vpcId = $someString
+    /// 		# OPTIONAL
+    /// 		securityGroupId = $someString
+    /// 		# OPTIONAL
+    /// 		computeProxySettings = @{
+    /// 			# OPTIONAL
+    /// 			proxyServer = $someString
+    /// 			# OPTIONAL
+    /// 			portNumber = $someInt
+    /// 			# OPTIONAL
+    /// 			username = $someString
+    /// 			# OPTIONAL
+    /// 			password = $someString
+    /// 			# OPTIONAL
+    /// 			protocol = $someString
+    /// 		}
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	computeProxySettings = @{
+    /// 		# OPTIONAL
+    /// 		proxyServer = $someString
+    /// 		# OPTIONAL
+    /// 		portNumber = $someInt
+    /// 		# OPTIONAL
+    /// 		username = $someString
+    /// 		# OPTIONAL
+    /// 		password = $someString
+    /// 		# OPTIONAL
+    /// 		protocol = $someString
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	awsRetrievalTier = $someAwsRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
+    /// 	# OPTIONAL
+    /// 	immutabilitySettings = @{
+    /// 		# OPTIONAL
+    /// 		lockDurationDays = $someInt
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	s3Endpoint = $someString
+    /// 	# OPTIONAL
+    /// 	kmsEndpoint = $someString
+    /// 	# REQUIRED
+    /// 	bypassProxy = $someBoolean
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: Target
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationAws -CreateCloudNativeStorageSetting [-Arg ..] [-Field ..]</code>
+    /// Runs the DeleteCluster operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AWS
+    /// # API Operation: DeleteCluster
+    /// 
+    /// $query = New-RscMutationAws -DeleteCluster
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	cloudAccountId = $someString
+    /// 	# OPTIONAL
+    /// 	clusterName = $someString
+    /// 	# OPTIONAL
+    /// 	numNodes = $someInt
+    /// 	# OPTIONAL
+    /// 	isEsType = $someBoolean
+    /// 	# OPTIONAL
+    /// 	bucketName = $someString
+    /// 	# OPTIONAL
+    /// 	isNewContainer = $someBoolean
+    /// 	# OPTIONAL
+    /// 	clusterUuid = $someString
+    /// 	# OPTIONAL
+    /// 	region = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CcProvisionJobReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationAws -UpdateAutomaticTargetMapping [-Arg ..] [-Field ..]</code>
+    /// Runs the DeleteComputeSetting operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AWS
+    /// # API Operation: DeleteComputeSetting
+    /// 
+    /// $query = New-RscMutationAws -DeleteComputeSetting
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationAws -UpdateCloudNativeStorageSetting [-Arg ..] [-Field ..]</code>
+    /// Runs the DeleteExocomputeConfigs operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AWS
+    /// # API Operation: DeleteExocomputeConfigs
+    /// 
+    /// $query = New-RscMutationAws -DeleteExocomputeConfigs
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	configIdsToBeDeleted = @(
+    /// 		$someString
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: DeleteAwsExocomputeConfigsReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationAws -CreateTarget [-Arg ..] [-Field ..]</code>
+    /// Runs the ExcludeNativeEbsVolumesFromSnapshot operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AWS
+    /// # API Operation: ExcludeNativeEbsVolumesFromSnapshot
+    /// 
+    /// $query = New-RscMutationAws -ExcludeNativeEbsVolumesFromSnapshot
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	awsNativeEc2InstanceId = $someString
+    /// 	# REQUIRED
+    /// 	volumeIdExclusions = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			volumeId = $someString
+    /// 			# REQUIRED
+    /// 			isExcluded = $someBoolean
+    /// 		}
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationAws -UpdateTarget [-Arg ..] [-Field ..]</code>
+    /// Runs the FinalizeCloudAccountDeletion operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AWS
+    /// # API Operation: FinalizeCloudAccountDeletion
+    /// 
+    /// $query = New-RscMutationAws -FinalizeCloudAccountDeletion
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	cloudAccountId = $someString
+    /// 	# REQUIRED
+    /// 	feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: FinalizeAwsCloudAccountDeletionReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationAws -CreateReaderTarget [-Arg ..] [-Field ..]</code>
+    /// Runs the FinalizeCloudAccountProtection operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AWS
+    /// # API Operation: FinalizeCloudAccountProtection
+    /// 
+    /// $query = New-RscMutationAws -FinalizeCloudAccountProtection
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	action = $someCloudAccountAction # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountAction]) for enum values.
+    /// 	# REQUIRED
+    /// 	features = @(
+    /// 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	awsAdminAccount = @{
+    /// 		# OPTIONAL
+    /// 		id = $someString
+    /// 		# OPTIONAL
+    /// 		nativeId = $someString
+    /// 		# OPTIONAL
+    /// 		accountName = $someString
+    /// 		# OPTIONAL
+    /// 		seamlessFlowEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+    /// 	}
+    /// 	# REQUIRED
+    /// 	awsChildAccounts = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			id = $someString
+    /// 			# OPTIONAL
+    /// 			nativeId = $someString
+    /// 			# OPTIONAL
+    /// 			accountName = $someString
+    /// 			# OPTIONAL
+    /// 			seamlessFlowEnabled = $someBoolean
+    /// 			# OPTIONAL
+    /// 			cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+    /// 		}
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	awsRegions = @(
+    /// 		$someAwsCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountRegion]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	stackName = $someString
+    /// 	# OPTIONAL
+    /// 	stackSetName = $someString
+    /// 	# OPTIONAL
+    /// 	externalId = $someString
+    /// 	# OPTIONAL
+    /// 	featureVersion = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 			# REQUIRED
+    /// 			version = $someInt
+    /// 		}
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: FinalizeAwsCloudAccountProtectionReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationAws -CreateComputeSetting [-Arg ..] [-Field ..]</code>
+    /// Runs the PatchAuthenticationServerBasedCloudAccount operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AWS
+    /// # API Operation: PatchAuthenticationServerBasedCloudAccount
+    /// 
+    /// $query = New-RscMutationAws -PatchAuthenticationServerBasedCloudAccount
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	awsCloudAccountId = $someString
+    /// 	# REQUIRED
+    /// 	feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 	# OPTIONAL
+    /// 	awsRegions = @{
+    /// 		# REQUIRED
+    /// 		regions = @(
+    /// 			$someAwsAuthServerBasedCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsAuthServerBasedCloudAccountRegion]) for enum values.
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	roleName = @{
+    /// 		# REQUIRED
+    /// 		name = $someString
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	authServerUserClientCertId = @{
+    /// 		# REQUIRED
+    /// 		id = $someInt64
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	authServerCaCertId = @{
+    /// 		# REQUIRED
+    /// 		id = $someInt64
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.Boolean
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationAws -UpdateComputeSetting [-Arg ..] [-Field ..]</code>
+    /// Runs the PatchIamUserBasedCloudAccount operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AWS
+    /// # API Operation: PatchIamUserBasedCloudAccount
+    /// 
+    /// $query = New-RscMutationAws -PatchIamUserBasedCloudAccount
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	awsCloudAccountId = $someString
+    /// 	# REQUIRED
+    /// 	feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 	# OPTIONAL
+    /// 	awsRegions = @{
+    /// 		# REQUIRED
+    /// 		regions = @(
+    /// 			$someAwsCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountRegion]) for enum values.
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	awsUserKeys = @{
+    /// 		# REQUIRED
+    /// 		accessKey = $someString
+    /// 		# REQUIRED
+    /// 		secretKey = $someString
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	awsRoleArn = @{
+    /// 		# REQUIRED
+    /// 		roleArn = $someString
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	externalArtifactMap = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			externalArtifactKey = $someAwsCloudExternalArtifact # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudExternalArtifact]) for enum values.
+    /// 			# OPTIONAL
+    /// 			externalArtifactValue = $someString
+    /// 		}
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.Boolean
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationAws -DeleteComputeSetting [-Arg ..] [-Field ..]</code>
+    /// Runs the PrepareCloudAccountDeletion operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AWS
+    /// # API Operation: PrepareCloudAccountDeletion
+    /// 
+    /// $query = New-RscMutationAws -PrepareCloudAccountDeletion
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	cloudAccountId = $someString
+    /// 	# REQUIRED
+    /// 	feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: PrepareAwsCloudAccountDeletionReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationAws -ValidateAndCreateCloudAccount [-Arg ..] [-Field ..]</code>
+    /// Runs the PrepareFeatureUpdateForCloudAccount operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AWS
+    /// # API Operation: PrepareFeatureUpdateForCloudAccount
+    /// 
+    /// $query = New-RscMutationAws -PrepareFeatureUpdateForCloudAccount
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	cloudAccountId = $someString
+    /// 	# REQUIRED
+    /// 	features = @(
+    /// 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: PrepareFeatureUpdateForAwsCloudAccountReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationAws -FinalizeCloudAccountProtection [-Arg ..] [-Field ..]</code>
+    /// Runs the RegisterFeatureArtifacts operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AWS
+    /// # API Operation: RegisterFeatureArtifacts
+    /// 
+    /// $query = New-RscMutationAws -RegisterFeatureArtifacts
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	awsArtifacts = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			awsNativeId = $someString
+    /// 			# REQUIRED
+    /// 			externalArtifacts = @(
+    /// 				@{
+    /// 					# REQUIRED
+    /// 					externalArtifactValue = $someString
+    /// 					# OPTIONAL
+    /// 					externalArtifactKey = $someAwsCloudExternalArtifact # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudExternalArtifact]) for enum values.
+    /// 				}
+    /// 			)
+    /// 			# REQUIRED
+    /// 			features = @(
+    /// 				$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 			)
+    /// 		}
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: RegisterAwsFeatureArtifactsReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationAws -PrepareCloudAccountDeletion [-Arg ..] [-Field ..]</code>
+    /// Runs the StartCreateNativeEbsVolumeSnapshotsJob operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AWS
+    /// # API Operation: StartCreateNativeEbsVolumeSnapshotsJob
+    /// 
+    /// $query = New-RscMutationAws -StartCreateNativeEbsVolumeSnapshotsJob
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	ebsVolumeIds = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	retentionSlaId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: BatchAsyncJobStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationAws -FinalizeCloudAccountDeletion [-Arg ..] [-Field ..]</code>
+    /// Runs the StartExocomputeDisableJob operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AWS
+    /// # API Operation: StartExocomputeDisableJob
+    /// 
+    /// $query = New-RscMutationAws -StartExocomputeDisableJob
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	cloudAccountId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncJobStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationAws -UpdateCloudAccountFeature [-Arg ..] [-Field ..]</code>
+    /// Runs the StartExportNativeEbsVolumeSnapshotJob operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AWS
+    /// # API Operation: StartExportNativeEbsVolumeSnapshotJob
+    /// 
+    /// $query = New-RscMutationAws -StartExportNativeEbsVolumeSnapshotJob
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	snapshotId = $someString
+    /// 	# REQUIRED
+    /// 	destinationAwsAccountRubrikId = $someString
+    /// 	# REQUIRED
+    /// 	destinationRegionNativeId = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
+    /// 	# REQUIRED
+    /// 	volumeName = $someString
+    /// 	# REQUIRED
+    /// 	volumeSize = $someInt
+    /// 	# REQUIRED
+    /// 	volumeType = $someAwsNativeEbsVolumeType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeEbsVolumeType]) for enum values.
+    /// 	# REQUIRED
+    /// 	availabilityZone = $someString
+    /// 	# REQUIRED
+    /// 	iops = $someInt
+    /// 	# REQUIRED
+    /// 	shouldCopyTags = $someBoolean
+    /// 	# REQUIRED
+    /// 	shouldReplaceAttached = $someBoolean
+    /// 	# OPTIONAL
+    /// 	kmsKeyId = $someString
+    /// 	# OPTIONAL
+    /// 	snapshotType = $someSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotType]) for enum values.
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncJobStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationAws -UpdateCloudAccount [-Arg ..] [-Field ..]</code>
+    /// Runs the StartNativeAccountDisableJob operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AWS
+    /// # API Operation: StartNativeAccountDisableJob
+    /// 
+    /// $query = New-RscMutationAws -StartNativeAccountDisableJob
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	awsAccountRubrikId = $someString
+    /// 	# REQUIRED
+    /// 	shouldDeleteNativeSnapshots = $someBoolean
+    /// 	# REQUIRED
+    /// 	awsNativeProtectionFeature = $someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncJobStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationAws -PrepareFeatureUpdateForCloudAccount [-Arg ..] [-Field ..]</code>
+    /// Runs the StartNativeEc2InstanceSnapshotsJob operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AWS
+    /// # API Operation: StartNativeEc2InstanceSnapshotsJob
+    /// 
+    /// $query = New-RscMutationAws -StartNativeEc2InstanceSnapshotsJob
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	ec2InstanceIds = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	retentionSlaId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: BatchAsyncJobStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationAws -CreateExocomputeConfigs [-Arg ..] [-Field ..]</code>
+    /// Runs the StartNativeRdsInstanceSnapshotsJob operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AWS
+    /// # API Operation: StartNativeRdsInstanceSnapshotsJob
+    /// 
+    /// $query = New-RscMutationAws -StartNativeRdsInstanceSnapshotsJob
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	rdsInstanceIds = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	retentionSlaId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: BatchAsyncJobStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationAws -DeleteExocomputeConfigs [-Arg ..] [-Field ..]</code>
+    /// Runs the StartRefreshNativeAccountsJob operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AWS
+    /// # API Operation: StartRefreshNativeAccountsJob
+    /// 
+    /// $query = New-RscMutationAws -StartRefreshNativeAccountsJob
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	awsAccountRubrikIds = @(
+    /// 		$someString
+    /// 	)
+    /// 	# REQUIRED
+    /// 	awsNativeProtectionFeatures = @(
+    /// 		$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: BatchAsyncJobStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationAws -UpdateExocomputeConfigs [-Arg ..] [-Field ..]</code>
+    /// Runs the StartRestoreNativeEc2InstanceSnapshotJob operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AWS
+    /// # API Operation: StartRestoreNativeEc2InstanceSnapshotJob
+    /// 
+    /// $query = New-RscMutationAws -StartRestoreNativeEc2InstanceSnapshotJob
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	snapshotId = $someString
+    /// 	# REQUIRED
+    /// 	shouldPowerOn = $someBoolean
+    /// 	# REQUIRED
+    /// 	shouldRestoreTags = $someBoolean
+    /// 	# OPTIONAL
+    /// 	snapshotTypeToUseIfSourceExpired = $someSnapshotTypeToUseIfSourceExpired # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotTypeToUseIfSourceExpired]) for enum values.
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncJobStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationAws -StartExocomputeDisableJob [-Arg ..] [-Field ..]</code>
+    /// Runs the UpdateAccount operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AWS
+    /// # API Operation: UpdateAccount
+    /// 
+    /// $query = New-RscMutationAws -UpdateAccount
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	name = $someString
+    /// 	# OPTIONAL
+    /// 	description = $someString
+    /// 	# REQUIRED
+    /// 	accessKey = $someString
+    /// 	# REQUIRED
+    /// 	secretKey = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CloudAccount
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationAws -AddIamUserBasedCloudAccount [-Arg ..] [-Field ..]</code>
+    /// Runs the UpdateAutomaticTargetMapping operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AWS
+    /// # API Operation: UpdateAutomaticTargetMapping
+    /// 
+    /// $query = New-RscMutationAws -UpdateAutomaticTargetMapping
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	name = $someString
+    /// 	# OPTIONAL
+    /// 	cloudAccountId = $someString
+    /// 	# OPTIONAL
+    /// 	storageClass = $someAwsStorageClass # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
+    /// 	# OPTIONAL
+    /// 	isConsolidationEnabled = $someBoolean
+    /// 	# OPTIONAL
+    /// 	proxySettings = @{
+    /// 		# OPTIONAL
+    /// 		proxyServer = $someString
+    /// 		# OPTIONAL
+    /// 		portNumber = $someInt
+    /// 		# OPTIONAL
+    /// 		username = $someString
+    /// 		# OPTIONAL
+    /// 		password = $someString
+    /// 		# OPTIONAL
+    /// 		protocol = $someString
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	clusterUuidList = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	awsComputeSettingsId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: TargetMapping
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationAws -UpgradeIamUserBasedCloudAccountPermissions [-Arg ..] [-Field ..]</code>
+    /// Runs the UpdateCloudAccount operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AWS
+    /// # API Operation: UpdateCloudAccount
+    /// 
+    /// $query = New-RscMutationAws -UpdateCloudAccount
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	cloudAccountId = $someString
+    /// 	# OPTIONAL
+    /// 	awsAccountName = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationAws -UpgradeCloudAccountFeaturesWithoutCft [-Arg ..] [-Field ..]</code>
+    /// Runs the UpdateCloudAccountFeature operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AWS
+    /// # API Operation: UpdateCloudAccountFeature
+    /// 
+    /// $query = New-RscMutationAws -UpdateCloudAccountFeature
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	cloudAccountId = $someString
+    /// 	# REQUIRED
+    /// 	action = $someCloudAccountAction # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountAction]) for enum values.
+    /// 	# REQUIRED
+    /// 	feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 	# OPTIONAL
+    /// 	awsRegions = @(
+    /// 		$someAwsCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountRegion]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	roleArn = $someString
+    /// 	# OPTIONAL
+    /// 	stackArn = $someString
+    /// 	# OPTIONAL
+    /// 	awsAccountName = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: UpdateAwsCloudAccountFeatureReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationAws -AddAuthenticationServerBasedCloudAccount [-Arg ..] [-Field ..]</code>
+    /// Runs the UpdateCloudNativeStorageSetting operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AWS
+    /// # API Operation: UpdateCloudNativeStorageSetting
+    /// 
+    /// $query = New-RscMutationAws -UpdateCloudNativeStorageSetting
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	name = $someString
+    /// 	# OPTIONAL
+    /// 	storageClass = $someAwsStorageClass # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
+    /// 	# OPTIONAL
+    /// 	kmsMasterKeyId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: UpdateCloudNativeAwsStorageSettingReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationAws -PatchAuthenticationServerBasedCloudAccount [-Arg ..] [-Field ..]</code>
+    /// Runs the UpdateComputeSetting operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AWS
+    /// # API Operation: UpdateComputeSetting
+    /// 
+    /// $query = New-RscMutationAws -UpdateComputeSetting
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	name = $someString
+    /// 	# OPTIONAL
+    /// 	subnetId = $someString
+    /// 	# OPTIONAL
+    /// 	vpcId = $someString
+    /// 	# OPTIONAL
+    /// 	securityGroupId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AwsComputeSettings
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationAws -PatchIamUserBasedCloudAccount [-Arg ..] [-Field ..]</code>
+    /// Runs the UpdateExocomputeConfigs operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AWS
+    /// # API Operation: UpdateExocomputeConfigs
+    /// 
+    /// $query = New-RscMutationAws -UpdateExocomputeConfigs
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	cloudAccountId = $someString
+    /// 	# REQUIRED
+    /// 	configs = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			region = $someAwsCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountRegion]) for enum values.
+    /// 			# OPTIONAL
+    /// 			clusterSecurityGroupId = $someString
+    /// 			# REQUIRED
+    /// 			vpcId = $someString
+    /// 			# OPTIONAL
+    /// 			nodeSecurityGroupId = $someString
+    /// 			# REQUIRED
+    /// 			subnets = @(
+    /// 				@{
+    /// 					# REQUIRED
+    /// 					subnetId = $someString
+    /// 					# REQUIRED
+    /// 					availabilityZone = $someString
+    /// 				}
+    /// 			)
+    /// 			# REQUIRED
+    /// 			isRscManaged = $someBoolean
+    /// 		}
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	triggerHealthCheck = $someBoolean
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: UpdateAwsExocomputeConfigsReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationAws -RegisterFeatureArtifacts [-Arg ..] [-Field ..]</code>
+    /// Runs the UpdateTarget operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AWS
+    /// # API Operation: UpdateTarget
+    /// 
+    /// $query = New-RscMutationAws -UpdateTarget
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	name = $someString
+    /// 	# OPTIONAL
+    /// 	cloudAccountId = $someString
+    /// 	# OPTIONAL
+    /// 	storageClass = $someAwsStorageClass # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
+    /// 	# OPTIONAL
+    /// 	isConsolidationEnabled = $someBoolean
+    /// 	# OPTIONAL
+    /// 	proxySettings = @{
+    /// 		# OPTIONAL
+    /// 		proxyServer = $someString
+    /// 		# OPTIONAL
+    /// 		portNumber = $someInt
+    /// 		# OPTIONAL
+    /// 		username = $someString
+    /// 		# OPTIONAL
+    /// 		password = $someString
+    /// 		# OPTIONAL
+    /// 		protocol = $someString
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	awsComputeSettingsId = $someString
+    /// 	# OPTIONAL
+    /// 	cloudComputeSettings = @{
+    /// 		# OPTIONAL
+    /// 		subnetId = $someString
+    /// 		# OPTIONAL
+    /// 		vpcId = $someString
+    /// 		# OPTIONAL
+    /// 		securityGroupId = $someString
+    /// 		# OPTIONAL
+    /// 		computeProxySettings = @{
+    /// 			# OPTIONAL
+    /// 			proxyServer = $someString
+    /// 			# OPTIONAL
+    /// 			portNumber = $someInt
+    /// 			# OPTIONAL
+    /// 			username = $someString
+    /// 			# OPTIONAL
+    /// 			password = $someString
+    /// 			# OPTIONAL
+    /// 			protocol = $someString
+    /// 		}
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	computeProxySettings = @{
+    /// 		# OPTIONAL
+    /// 		proxyServer = $someString
+    /// 		# OPTIONAL
+    /// 		portNumber = $someInt
+    /// 		# OPTIONAL
+    /// 		username = $someString
+    /// 		# OPTIONAL
+    /// 		password = $someString
+    /// 		# OPTIONAL
+    /// 		protocol = $someString
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	awsRetrievalTier = $someAwsRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
+    /// 	# OPTIONAL
+    /// 	immutabilitySettings = @{
+    /// 		# OPTIONAL
+    /// 		lockDurationDays = $someInt
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	s3Endpoint = $someString
+    /// 	# OPTIONAL
+    /// 	kmsEndpoint = $someString
+    /// 	# OPTIONAL
+    /// 	bypassProxy = $someBoolean
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: Target
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationAws -BulkDeleteCloudAccountWithoutCft [-Arg ..] [-Field ..]</code>
+    /// Runs the UpgradeCloudAccountFeaturesWithoutCft operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AWS
+    /// # API Operation: UpgradeCloudAccountFeaturesWithoutCft
+    /// 
+    /// $query = New-RscMutationAws -UpgradeCloudAccountFeaturesWithoutCft
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	awsCloudAccountId = $someString
+    /// 	# REQUIRED
+    /// 	features = @(
+    /// 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.Boolean
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationAws -CreateCluster [-Arg ..] [-Field ..]</code>
+    /// Runs the UpgradeIamUserBasedCloudAccountPermissions operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AWS
+    /// # API Operation: UpgradeIamUserBasedCloudAccountPermissions
+    /// 
+    /// $query = New-RscMutationAws -UpgradeIamUserBasedCloudAccountPermissions
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	awsCloudAccountId = $someString
+    /// 	# REQUIRED
+    /// 	features = @(
+    /// 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.Boolean
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationAws -DeleteCluster [-Arg ..] [-Field ..]</code>
+    /// Runs the ValidateAndCreateCloudAccount operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    AWS
+    /// # API Operation: ValidateAndCreateCloudAccount
+    /// 
+    /// $query = New-RscMutationAws -ValidateAndCreateCloudAccount
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	action = $someCloudAccountAction # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountAction]) for enum values.
+    /// 	# REQUIRED
+    /// 	features = @(
+    /// 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	awsAdminAccount = @{
+    /// 		# OPTIONAL
+    /// 		id = $someString
+    /// 		# OPTIONAL
+    /// 		nativeId = $someString
+    /// 		# OPTIONAL
+    /// 		accountName = $someString
+    /// 		# OPTIONAL
+    /// 		seamlessFlowEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+    /// 	}
+    /// 	# REQUIRED
+    /// 	awsChildAccounts = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			id = $someString
+    /// 			# OPTIONAL
+    /// 			nativeId = $someString
+    /// 			# OPTIONAL
+    /// 			accountName = $someString
+    /// 			# OPTIONAL
+    /// 			seamlessFlowEnabled = $someBoolean
+    /// 			# OPTIONAL
+    /// 			cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+    /// 		}
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	awsRoleCustomization = @{
+    /// 		# OPTIONAL
+    /// 		crossAccountRoleName = $someString
+    /// 		# OPTIONAL
+    /// 		crossAccountRolePath = $someString
+    /// 		# OPTIONAL
+    /// 		masterRoleName = $someString
+    /// 		# OPTIONAL
+    /// 		masterRolePath = $someString
+    /// 		# OPTIONAL
+    /// 		workerRoleName = $someString
+    /// 		# OPTIONAL
+    /// 		workerRolePath = $someString
+    /// 		# OPTIONAL
+    /// 		instanceProfileName = $someString
+    /// 		# OPTIONAL
+    /// 		instanceProfilePath = $someString
+    /// 		# OPTIONAL
+    /// 		ec2RecoveryRolePath = $someString
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ValidateAndCreateAwsCloudAccountReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -156,782 +2214,681 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     public class New_RscMutationAws : RscGqlPSCmdlet
     {
         
-        /// <summary>
-        /// StartNativeEc2InstanceSnapshotsJob parameter set
-        ///
-        /// [GraphQL: startAwsNativeEc2InstanceSnapshotsJob]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "StartNativeEc2InstanceSnapshotsJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Start an on demand create snapshot job for AWS EC2 Instances.When completed, this will start taking an on-demand snapshot of the selected EC2 Instances  as per the SLA Policy assigned to the respective instances.
-[GraphQL: startAwsNativeEc2InstanceSnapshotsJob]",
-            Position = 0
-        )]
-        public SwitchParameter StartNativeEc2InstanceSnapshotsJob { get; set; }
-
-        
-        /// <summary>
-        /// StartRestoreNativeEc2InstanceSnapshotJob parameter set
-        ///
-        /// [GraphQL: startRestoreAwsNativeEc2InstanceSnapshotJob]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "StartRestoreNativeEc2InstanceSnapshotJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Start an on demand restore snapshot job for AWS EC2 Instance. When completed, this will replace the original EC2 Instance with the selected snapshot.
-[GraphQL: startRestoreAwsNativeEc2InstanceSnapshotJob]",
-            Position = 0
-        )]
-        public SwitchParameter StartRestoreNativeEc2InstanceSnapshotJob { get; set; }
-
-        
-        /// <summary>
-        /// StartRefreshNativeAccountsJob parameter set
-        ///
-        /// [GraphQL: startRefreshAwsNativeAccountsJob]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "StartRefreshNativeAccountsJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Start an on demand job to refresh AWS accounts. The job updates the Rubrik platform with changes to the AWS Native accounts.
-[GraphQL: startRefreshAwsNativeAccountsJob]",
-            Position = 0
-        )]
-        public SwitchParameter StartRefreshNativeAccountsJob { get; set; }
-
-        
-        /// <summary>
-        /// StartCreateNativeEbsVolumeSnapshotsJob parameter set
-        ///
-        /// [GraphQL: startCreateAwsNativeEbsVolumeSnapshotsJob]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "StartCreateNativeEbsVolumeSnapshotsJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Start job to create snapshots of EBS Volumes with given IDs. When completed, this will start taking an on-demand snapshot of the selected EBS Volumes  as per the SLA Policy assigned to the respective volumes.
-[GraphQL: startCreateAwsNativeEbsVolumeSnapshotsJob]",
-            Position = 0
-        )]
-        public SwitchParameter StartCreateNativeEbsVolumeSnapshotsJob { get; set; }
-
-        
-        /// <summary>
-        /// StartNativeAccountDisableJob parameter set
-        ///
-        /// [GraphQL: startAwsNativeAccountDisableJob]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "StartNativeAccountDisableJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Starts a job to disable a specific AWS Native account. When complete, the job will disable protection for the specified AWS Native account.
-[GraphQL: startAwsNativeAccountDisableJob]",
-            Position = 0
-        )]
-        public SwitchParameter StartNativeAccountDisableJob { get; set; }
-
-        
-        /// <summary>
-        /// StartExportNativeEbsVolumeSnapshotJob parameter set
-        ///
-        /// [GraphQL: startExportAwsNativeEbsVolumeSnapshotJob]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "StartExportNativeEbsVolumeSnapshotJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Start a job to export EBS Volume. The job creates a new EBS Volume with the same properties as that of the snapshot that is exported.
-[GraphQL: startExportAwsNativeEbsVolumeSnapshotJob]",
-            Position = 0
-        )]
-        public SwitchParameter StartExportNativeEbsVolumeSnapshotJob { get; set; }
-
-        
-        /// <summary>
-        /// ExcludeNativeEbsVolumesFromSnapshot parameter set
-        ///
-        /// [GraphQL: excludeAwsNativeEbsVolumesFromSnapshot]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "ExcludeNativeEbsVolumesFromSnapshot",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Mark AWS Native EBS Volumes to be excluded from EC2 Instance snapshot. By default, all EBS Volumes are marked as included.
-[GraphQL: excludeAwsNativeEbsVolumesFromSnapshot]",
-            Position = 0
-        )]
-        public SwitchParameter ExcludeNativeEbsVolumesFromSnapshot { get; set; }
-
-        
-        /// <summary>
-        /// StartNativeRdsInstanceSnapshotsJob parameter set
-        ///
-        /// [GraphQL: startAwsNativeRdsInstanceSnapshotsJob]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "StartNativeRdsInstanceSnapshotsJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Start job to create snapshots of RDS Instance with given IDs. When completed, this will start taking an on-demand snapshot of the selected RDS Instances  as per the SLA Policy assigned to the respective instances.
-[GraphQL: startAwsNativeRdsInstanceSnapshotsJob]",
-            Position = 0
-        )]
-        public SwitchParameter StartNativeRdsInstanceSnapshotsJob { get; set; }
-
-        
-        /// <summary>
-        /// CreateAccount parameter set
-        ///
-        /// [GraphQL: createAwsAccount]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "CreateAccount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-[GraphQL: createAwsAccount]",
-            Position = 0
-        )]
-        public SwitchParameter CreateAccount { get; set; }
-
-        
-        /// <summary>
-        /// UpdateAccount parameter set
-        ///
-        /// [GraphQL: updateAwsAccount]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "UpdateAccount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-[GraphQL: updateAwsAccount]",
-            Position = 0
-        )]
-        public SwitchParameter UpdateAccount { get; set; }
-
-        
-        /// <summary>
-        /// CreateAutomaticTargetMapping parameter set
-        ///
-        /// [GraphQL: createAutomaticAwsTargetMapping]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "CreateAutomaticTargetMapping",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-[GraphQL: createAutomaticAwsTargetMapping]",
-            Position = 0
-        )]
-        public SwitchParameter CreateAutomaticTargetMapping { get; set; }
-
-        
-        /// <summary>
-        /// CreateCloudNativeStorageSetting parameter set
-        ///
-        /// [GraphQL: createCloudNativeAwsStorageSetting]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "CreateCloudNativeStorageSetting",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-[GraphQL: createCloudNativeAwsStorageSetting]",
-            Position = 0
-        )]
-        public SwitchParameter CreateCloudNativeStorageSetting { get; set; }
-
-        
-        /// <summary>
-        /// UpdateAutomaticTargetMapping parameter set
-        ///
-        /// [GraphQL: updateAutomaticAwsTargetMapping]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "UpdateAutomaticTargetMapping",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-[GraphQL: updateAutomaticAwsTargetMapping]",
-            Position = 0
-        )]
-        public SwitchParameter UpdateAutomaticTargetMapping { get; set; }
-
-        
-        /// <summary>
-        /// UpdateCloudNativeStorageSetting parameter set
-        ///
-        /// [GraphQL: updateCloudNativeAwsStorageSetting]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "UpdateCloudNativeStorageSetting",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-[GraphQL: updateCloudNativeAwsStorageSetting]",
-            Position = 0
-        )]
-        public SwitchParameter UpdateCloudNativeStorageSetting { get; set; }
-
-        
-        /// <summary>
-        /// CreateTarget parameter set
-        ///
-        /// [GraphQL: createAwsTarget]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "CreateTarget",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-[GraphQL: createAwsTarget]",
-            Position = 0
-        )]
-        public SwitchParameter CreateTarget { get; set; }
-
-        
-        /// <summary>
-        /// UpdateTarget parameter set
-        ///
-        /// [GraphQL: updateAwsTarget]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "UpdateTarget",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-[GraphQL: updateAwsTarget]",
-            Position = 0
-        )]
-        public SwitchParameter UpdateTarget { get; set; }
-
-        
-        /// <summary>
-        /// CreateReaderTarget parameter set
-        ///
-        /// [GraphQL: createAwsReaderTarget]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "CreateReaderTarget",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a reader type for AWS archival location on a Rubrik cluster.
-[GraphQL: createAwsReaderTarget]",
-            Position = 0
-        )]
-        public SwitchParameter CreateReaderTarget { get; set; }
-
-        
-        /// <summary>
-        /// CreateComputeSetting parameter set
-        ///
-        /// [GraphQL: createAwsComputeSetting]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "CreateComputeSetting",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-[GraphQL: createAwsComputeSetting]",
-            Position = 0
-        )]
-        public SwitchParameter CreateComputeSetting { get; set; }
-
-        
-        /// <summary>
-        /// UpdateComputeSetting parameter set
-        ///
-        /// [GraphQL: updateAwsComputeSetting]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "UpdateComputeSetting",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-[GraphQL: updateAwsComputeSetting]",
-            Position = 0
-        )]
-        public SwitchParameter UpdateComputeSetting { get; set; }
-
-        
-        /// <summary>
-        /// DeleteComputeSetting parameter set
-        ///
-        /// [GraphQL: deleteAwsComputeSetting]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "DeleteComputeSetting",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-[GraphQL: deleteAwsComputeSetting]",
-            Position = 0
-        )]
-        public SwitchParameter DeleteComputeSetting { get; set; }
-
-        
-        /// <summary>
-        /// ValidateAndCreateCloudAccount parameter set
-        ///
-        /// [GraphQL: validateAndCreateAwsCloudAccount]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "ValidateAndCreateCloudAccount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Validate and create AWS cloud account. If validation fails, no error is returned and the cause is present in the ""message"" field of return object or within admin/child accounts of return object. In case validation succeeds, it initiates creation of AWS cloud account. This is the first step to set up native protection.
-[GraphQL: validateAndCreateAwsCloudAccount]",
-            Position = 0
-        )]
-        public SwitchParameter ValidateAndCreateCloudAccount { get; set; }
-
-        
-        /// <summary>
-        /// FinalizeCloudAccountProtection parameter set
-        ///
-        /// [GraphQL: finalizeAwsCloudAccountProtection]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "FinalizeCloudAccountProtection",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Process cloud account. This is the second step after validate and create in addition of a feature for cloud account.The CloudFormation stack should be created after this step using the CloudFormation URL provided in the first step.
-[GraphQL: finalizeAwsCloudAccountProtection]",
-            Position = 0
-        )]
-        public SwitchParameter FinalizeCloudAccountProtection { get; set; }
-
-        
-        /// <summary>
-        /// PrepareCloudAccountDeletion parameter set
-        ///
-        /// [GraphQL: prepareAwsCloudAccountDeletion]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "PrepareCloudAccountDeletion",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Prepare deletion of cloud account. This is the first step to delete AWS cloud account. It generated template for deletion of cloud account and does not change any state of account.
-[GraphQL: prepareAwsCloudAccountDeletion]",
-            Position = 0
-        )]
-        public SwitchParameter PrepareCloudAccountDeletion { get; set; }
-
-        
-        /// <summary>
-        /// FinalizeCloudAccountDeletion parameter set
-        ///
-        /// [GraphQL: finalizeAwsCloudAccountDeletion]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "FinalizeCloudAccountDeletion",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Process and finalize deletion of cloud account is the last step in deletion of a feature from cloud account. This endpoint is a MUST for deletion of disconnected features.
-[GraphQL: finalizeAwsCloudAccountDeletion]",
-            Position = 0
-        )]
-        public SwitchParameter FinalizeCloudAccountDeletion { get; set; }
-
-        
-        /// <summary>
-        /// UpdateCloudAccountFeature parameter set
-        ///
-        /// [GraphQL: updateAwsCloudAccountFeature]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "UpdateCloudAccountFeature",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Updates regions, stack ARN, and role ARN for a feature for a given cloud account.
-[GraphQL: updateAwsCloudAccountFeature]",
-            Position = 0
-        )]
-        public SwitchParameter UpdateCloudAccountFeature { get; set; }
-
-        
-        /// <summary>
-        /// UpdateCloudAccount parameter set
-        ///
-        /// [GraphQL: updateAwsCloudAccount]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "UpdateCloudAccount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Update properties for a given AWS cloud account.
-[GraphQL: updateAwsCloudAccount]",
-            Position = 0
-        )]
-        public SwitchParameter UpdateCloudAccount { get; set; }
-
-        
-        /// <summary>
-        /// PrepareFeatureUpdateForCloudAccount parameter set
-        ///
-        /// [GraphQL: prepareFeatureUpdateForAwsCloudAccount]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "PrepareFeatureUpdateForCloudAccount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Prepare manual update features to latest version.
-[GraphQL: prepareFeatureUpdateForAwsCloudAccount]",
-            Position = 0
-        )]
-        public SwitchParameter PrepareFeatureUpdateForCloudAccount { get; set; }
-
-        
-        /// <summary>
-        /// CreateExocomputeConfigs parameter set
-        ///
-        /// [GraphQL: createAwsExocomputeConfigs]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "CreateExocomputeConfigs",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create AWS Exocompute configs.
-[GraphQL: createAwsExocomputeConfigs]",
-            Position = 0
-        )]
-        public SwitchParameter CreateExocomputeConfigs { get; set; }
-
-        
-        /// <summary>
-        /// DeleteExocomputeConfigs parameter set
-        ///
-        /// [GraphQL: deleteAwsExocomputeConfigs]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "DeleteExocomputeConfigs",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Deletes AWS Exocompute configs.
-[GraphQL: deleteAwsExocomputeConfigs]",
-            Position = 0
-        )]
-        public SwitchParameter DeleteExocomputeConfigs { get; set; }
-
-        
-        /// <summary>
-        /// UpdateExocomputeConfigs parameter set
-        ///
-        /// [GraphQL: updateAwsExocomputeConfigs]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "UpdateExocomputeConfigs",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Update AWS Exocompute configs.
-[GraphQL: updateAwsExocomputeConfigs]",
-            Position = 0
-        )]
-        public SwitchParameter UpdateExocomputeConfigs { get; set; }
-
-        
-        /// <summary>
-        /// StartExocomputeDisableJob parameter set
-        ///
-        /// [GraphQL: startAwsExocomputeDisableJob]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "StartExocomputeDisableJob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Starts a job to disable AWS Exocompute feature. When complete, the job will disable exocompute feature for the specified AWS Native account.
-[GraphQL: startAwsExocomputeDisableJob]",
-            Position = 0
-        )]
-        public SwitchParameter StartExocomputeDisableJob { get; set; }
-
-        
-        /// <summary>
-        /// AddIamUserBasedCloudAccount parameter set
-        ///
-        /// [GraphQL: addAwsIamUserBasedCloudAccount]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "AddIamUserBasedCloudAccount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Adds an IAM user-based AWS cloud account and enables the features specified in the input after successful validation of the request.
-[GraphQL: addAwsIamUserBasedCloudAccount]",
-            Position = 0
-        )]
-        public SwitchParameter AddIamUserBasedCloudAccount { get; set; }
-
-        
-        /// <summary>
-        /// UpgradeIamUserBasedCloudAccountPermissions parameter set
-        ///
-        /// [GraphQL: upgradeAwsIamUserBasedCloudAccountPermissions]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "UpgradeIamUserBasedCloudAccountPermissions",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Set IAM user-based AWS account features status to Connected from Update Permissions state. It should be used by caution from cloud accounts only after latest required permissions are granted to authorized IAM user.
-[GraphQL: upgradeAwsIamUserBasedCloudAccountPermissions]",
-            Position = 0
-        )]
-        public SwitchParameter UpgradeIamUserBasedCloudAccountPermissions { get; set; }
-
-        
-        /// <summary>
-        /// UpgradeCloudAccountFeaturesWithoutCft parameter set
-        ///
-        /// [GraphQL: upgradeAwsCloudAccountFeaturesWithoutCft]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "UpgradeCloudAccountFeaturesWithoutCft",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Updates status of AWS cloud account features to connected if they are in update permissions state. This mutation should be used with caution. It should be invoked only after the latest required permissions are granted to the AWS cloud account user used by Rubrik. This mutation does not verify if the required permissions are actually granted to the user or not. Its usage is restricted to only IAM user-based and authentication server-based AWS cloud accounts.
-[GraphQL: upgradeAwsCloudAccountFeaturesWithoutCft]",
-            Position = 0
-        )]
-        public SwitchParameter UpgradeCloudAccountFeaturesWithoutCft { get; set; }
-
-        
-        /// <summary>
-        /// AddAuthenticationServerBasedCloudAccount parameter set
-        ///
-        /// [GraphQL: addAwsAuthenticationServerBasedCloudAccount]
-        /// </summary>
         [Parameter(
             ParameterSetName = "AddAuthenticationServerBasedCloudAccount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Validates and adds an authentication server-based AWS cloud account. When validation succeeds, the AWS cloud account is added and the features specified in the request are enabled. When validation fails, an error is not returned, but the cause of the failure is specified in the ""message"" field of the response object.
-[GraphQL: addAwsAuthenticationServerBasedCloudAccount]",
-            Position = 0
+@"Create a mutation object for the 'AddAuthenticationServerBasedCloudAccount' operation
+in the 'AWS' API domain.
+Description of the operation:
+Validates and adds an authentication server-based AWS cloud account. When validation succeeds, the AWS cloud account is added and the features specified in the request are enabled. When validation fails, an error is not returned, but the cause of the failure is specified in the ""message"" field of the response object.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/addawsauthenticationserverbasedcloudaccount.doc.html]"
+            // No Position -> named parameter only.
         )]
         public SwitchParameter AddAuthenticationServerBasedCloudAccount { get; set; }
 
         
-        /// <summary>
-        /// PatchAuthenticationServerBasedCloudAccount parameter set
-        ///
-        /// [GraphQL: patchAwsAuthenticationServerBasedCloudAccount]
-        /// </summary>
         [Parameter(
-            ParameterSetName = "PatchAuthenticationServerBasedCloudAccount",
+            ParameterSetName = "AddIamUserBasedCloudAccount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Updates authentication server-based AWS cloud account. Use this mutation to update account details related to role name, certificates, features. The mutation can update one or more certificates associated to an account in a single request. All input fields except account identifier are optional so that any combination of account attributes can be updated in a single call. If none of the optional fields are provided in the input then no updates are performed, and the response does not contain any error message.
-[GraphQL: patchAwsAuthenticationServerBasedCloudAccount]",
-            Position = 0
+@"Create a mutation object for the 'AddIamUserBasedCloudAccount' operation
+in the 'AWS' API domain.
+Description of the operation:
+Adds an IAM user-based AWS cloud account and enables the features specified in the input after successful validation of the request.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/addawsiamuserbasedcloudaccount.doc.html]"
+            // No Position -> named parameter only.
         )]
-        public SwitchParameter PatchAuthenticationServerBasedCloudAccount { get; set; }
+        public SwitchParameter AddIamUserBasedCloudAccount { get; set; }
 
         
-        /// <summary>
-        /// PatchIamUserBasedCloudAccount parameter set
-        ///
-        /// [GraphQL: patchAwsIamUserBasedCloudAccount]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "PatchIamUserBasedCloudAccount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Updates IAM user-based AWS cloud account. Use this mutation to update account details access/secret keys, role ARN and regions. All input fields except account ID are optional so that any combination of account attributes can be updated in a single call. If none of the optional fields are provided in the input then no updates are performed, and the response does not contain any error message.
-[GraphQL: patchAwsIamUserBasedCloudAccount]",
-            Position = 0
-        )]
-        public SwitchParameter PatchIamUserBasedCloudAccount { get; set; }
-
-        
-        /// <summary>
-        /// RegisterFeatureArtifacts parameter set
-        ///
-        /// [GraphQL: registerAwsFeatureArtifacts]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "RegisterFeatureArtifacts",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Registers the AWS account artifacts such as roles in RSC backend while onboarding AWS account in manual flow.
-[GraphQL: registerAwsFeatureArtifacts]",
-            Position = 0
-        )]
-        public SwitchParameter RegisterFeatureArtifacts { get; set; }
-
-        
-        /// <summary>
-        /// BulkDeleteCloudAccountWithoutCft parameter set
-        ///
-        /// [GraphQL: bulkDeleteAwsCloudAccountWithoutCft]
-        /// </summary>
         [Parameter(
             ParameterSetName = "BulkDeleteCloudAccountWithoutCft",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Deletes specified AWS cloud accounts without using CloudFormation Template (CFT).
-[GraphQL: bulkDeleteAwsCloudAccountWithoutCft]",
-            Position = 0
+@"Create a mutation object for the 'BulkDeleteCloudAccountWithoutCft' operation
+in the 'AWS' API domain.
+Description of the operation:
+Deletes specified AWS cloud accounts without using CloudFormation Template (CFT).
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/bulkdeleteawscloudaccountwithoutcft.doc.html]"
+            // No Position -> named parameter only.
         )]
         public SwitchParameter BulkDeleteCloudAccountWithoutCft { get; set; }
 
         
-        /// <summary>
-        /// CreateCluster parameter set
-        ///
-        /// [GraphQL: createAwsCluster]
-        /// </summary>
+        [Parameter(
+            ParameterSetName = "CreateAccount",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'CreateAccount' operation
+in the 'AWS' API domain.
+Description of the operation:
+
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createawsaccount.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter CreateAccount { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "CreateAutomaticTargetMapping",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'CreateAutomaticTargetMapping' operation
+in the 'AWS' API domain.
+Description of the operation:
+
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createautomaticawstargetmapping.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter CreateAutomaticTargetMapping { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "CreateCloudNativeStorageSetting",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'CreateCloudNativeStorageSetting' operation
+in the 'AWS' API domain.
+Description of the operation:
+
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createcloudnativeawsstoragesetting.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter CreateCloudNativeStorageSetting { get; set; }
+
+        
         [Parameter(
             ParameterSetName = "CreateCluster",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Create a Rubrik Cloud Cluster on AWS.
-[GraphQL: createAwsCluster]",
-            Position = 0
+@"Create a mutation object for the 'CreateCluster' operation
+in the 'AWS' API domain.
+Description of the operation:
+Create a Rubrik Cloud Cluster on AWS.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createawscluster.doc.html]"
+            // No Position -> named parameter only.
         )]
         public SwitchParameter CreateCluster { get; set; }
 
         
-        /// <summary>
-        /// DeleteCluster parameter set
-        ///
-        /// [GraphQL: deleteAwsCluster]
-        /// </summary>
+        [Parameter(
+            ParameterSetName = "CreateComputeSetting",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'CreateComputeSetting' operation
+in the 'AWS' API domain.
+Description of the operation:
+
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createawscomputesetting.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter CreateComputeSetting { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "CreateExocomputeConfigs",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'CreateExocomputeConfigs' operation
+in the 'AWS' API domain.
+Description of the operation:
+Create AWS Exocompute configs.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createawsexocomputeconfigs.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter CreateExocomputeConfigs { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "CreateReaderTarget",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'CreateReaderTarget' operation
+in the 'AWS' API domain.
+Description of the operation:
+Create a reader type for AWS archival location on a Rubrik cluster.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createawsreadertarget.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter CreateReaderTarget { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "CreateTarget",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'CreateTarget' operation
+in the 'AWS' API domain.
+Description of the operation:
+
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createawstarget.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter CreateTarget { get; set; }
+
+        
         [Parameter(
             ParameterSetName = "DeleteCluster",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Delete a Rubrik Cloud Cluster on AWS.
-[GraphQL: deleteAwsCluster]",
-            Position = 0
+@"Create a mutation object for the 'DeleteCluster' operation
+in the 'AWS' API domain.
+Description of the operation:
+Delete a Rubrik Cloud Cluster on AWS.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deleteawscluster.doc.html]"
+            // No Position -> named parameter only.
         )]
         public SwitchParameter DeleteCluster { get; set; }
 
+        
+        [Parameter(
+            ParameterSetName = "DeleteComputeSetting",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'DeleteComputeSetting' operation
+in the 'AWS' API domain.
+Description of the operation:
 
-// ignore warning 'Missing XML comment'
-#pragma warning disable 1591
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deleteawscomputesetting.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter DeleteComputeSetting { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "DeleteExocomputeConfigs",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'DeleteExocomputeConfigs' operation
+in the 'AWS' API domain.
+Description of the operation:
+Deletes AWS Exocompute configs.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deleteawsexocomputeconfigs.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter DeleteExocomputeConfigs { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "ExcludeNativeEbsVolumesFromSnapshot",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'ExcludeNativeEbsVolumesFromSnapshot' operation
+in the 'AWS' API domain.
+Description of the operation:
+Mark AWS Native EBS Volumes to be excluded from EC2 Instance snapshot. By default, all EBS Volumes are marked as included.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/excludeawsnativeebsvolumesfromsnapshot.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter ExcludeNativeEbsVolumesFromSnapshot { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "FinalizeCloudAccountDeletion",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'FinalizeCloudAccountDeletion' operation
+in the 'AWS' API domain.
+Description of the operation:
+Process and finalize deletion of cloud account is the last step in deletion of a feature from cloud account. This endpoint is a MUST for deletion of disconnected features.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/finalizeawscloudaccountdeletion.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter FinalizeCloudAccountDeletion { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "FinalizeCloudAccountProtection",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'FinalizeCloudAccountProtection' operation
+in the 'AWS' API domain.
+Description of the operation:
+Process cloud account. This is the second step after validate and create in addition of a feature for cloud account.The CloudFormation stack should be created after this step using the CloudFormation URL provided in the first step.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/finalizeawscloudaccountprotection.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter FinalizeCloudAccountProtection { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "PatchAuthenticationServerBasedCloudAccount",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'PatchAuthenticationServerBasedCloudAccount' operation
+in the 'AWS' API domain.
+Description of the operation:
+Updates authentication server-based AWS cloud account. Use this mutation to update account details related to role name, certificates, features. The mutation can update one or more certificates associated to an account in a single request. All input fields except account identifier are optional so that any combination of account attributes can be updated in a single call. If none of the optional fields are provided in the input then no updates are performed, and the response does not contain any error message.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/patchawsauthenticationserverbasedcloudaccount.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter PatchAuthenticationServerBasedCloudAccount { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "PatchIamUserBasedCloudAccount",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'PatchIamUserBasedCloudAccount' operation
+in the 'AWS' API domain.
+Description of the operation:
+Updates IAM user-based AWS cloud account. Use this mutation to update account details access/secret keys, role ARN and regions. All input fields except account ID are optional so that any combination of account attributes can be updated in a single call. If none of the optional fields are provided in the input then no updates are performed, and the response does not contain any error message.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/patchawsiamuserbasedcloudaccount.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter PatchIamUserBasedCloudAccount { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "PrepareCloudAccountDeletion",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'PrepareCloudAccountDeletion' operation
+in the 'AWS' API domain.
+Description of the operation:
+Prepare deletion of cloud account. This is the first step to delete AWS cloud account. It generated template for deletion of cloud account and does not change any state of account.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/prepareawscloudaccountdeletion.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter PrepareCloudAccountDeletion { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "PrepareFeatureUpdateForCloudAccount",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'PrepareFeatureUpdateForCloudAccount' operation
+in the 'AWS' API domain.
+Description of the operation:
+Prepare manual update features to latest version.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/preparefeatureupdateforawscloudaccount.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter PrepareFeatureUpdateForCloudAccount { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "RegisterFeatureArtifacts",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'RegisterFeatureArtifacts' operation
+in the 'AWS' API domain.
+Description of the operation:
+Registers the AWS account artifacts such as roles in RSC backend while onboarding AWS account in manual flow.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/registerawsfeatureartifacts.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter RegisterFeatureArtifacts { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "StartCreateNativeEbsVolumeSnapshotsJob",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'StartCreateNativeEbsVolumeSnapshotsJob' operation
+in the 'AWS' API domain.
+Description of the operation:
+Start job to create snapshots of EBS Volumes with given IDs. When completed, this will start taking an on-demand snapshot of the selected EBS Volumes  as per the SLA Policy assigned to the respective volumes.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startcreateawsnativeebsvolumesnapshotsjob.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter StartCreateNativeEbsVolumeSnapshotsJob { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "StartExocomputeDisableJob",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'StartExocomputeDisableJob' operation
+in the 'AWS' API domain.
+Description of the operation:
+Starts a job to disable AWS Exocompute feature. When complete, the job will disable exocompute feature for the specified AWS Native account.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startawsexocomputedisablejob.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter StartExocomputeDisableJob { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "StartExportNativeEbsVolumeSnapshotJob",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'StartExportNativeEbsVolumeSnapshotJob' operation
+in the 'AWS' API domain.
+Description of the operation:
+Start a job to export EBS Volume. The job creates a new EBS Volume with the same properties as that of the snapshot that is exported.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startexportawsnativeebsvolumesnapshotjob.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter StartExportNativeEbsVolumeSnapshotJob { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "StartNativeAccountDisableJob",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'StartNativeAccountDisableJob' operation
+in the 'AWS' API domain.
+Description of the operation:
+Starts a job to disable a specific AWS Native account. When complete, the job will disable protection for the specified AWS Native account.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startawsnativeaccountdisablejob.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter StartNativeAccountDisableJob { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "StartNativeEc2InstanceSnapshotsJob",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'StartNativeEc2InstanceSnapshotsJob' operation
+in the 'AWS' API domain.
+Description of the operation:
+Start an on demand create snapshot job for AWS EC2 Instances.When completed, this will start taking an on-demand snapshot of the selected EC2 Instances  as per the SLA Policy assigned to the respective instances.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startawsnativeec2instancesnapshotsjob.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter StartNativeEc2InstanceSnapshotsJob { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "StartNativeRdsInstanceSnapshotsJob",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'StartNativeRdsInstanceSnapshotsJob' operation
+in the 'AWS' API domain.
+Description of the operation:
+Start job to create snapshots of RDS Instance with given IDs. When completed, this will start taking an on-demand snapshot of the selected RDS Instances  as per the SLA Policy assigned to the respective instances.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startawsnativerdsinstancesnapshotsjob.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter StartNativeRdsInstanceSnapshotsJob { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "StartRefreshNativeAccountsJob",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'StartRefreshNativeAccountsJob' operation
+in the 'AWS' API domain.
+Description of the operation:
+Start an on demand job to refresh AWS accounts. The job updates the Rubrik platform with changes to the AWS Native accounts.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startrefreshawsnativeaccountsjob.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter StartRefreshNativeAccountsJob { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "StartRestoreNativeEc2InstanceSnapshotJob",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'StartRestoreNativeEc2InstanceSnapshotJob' operation
+in the 'AWS' API domain.
+Description of the operation:
+Start an on demand restore snapshot job for AWS EC2 Instance. When completed, this will replace the original EC2 Instance with the selected snapshot.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/startrestoreawsnativeec2instancesnapshotjob.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter StartRestoreNativeEc2InstanceSnapshotJob { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "UpdateAccount",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'UpdateAccount' operation
+in the 'AWS' API domain.
+Description of the operation:
+
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updateawsaccount.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter UpdateAccount { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "UpdateAutomaticTargetMapping",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'UpdateAutomaticTargetMapping' operation
+in the 'AWS' API domain.
+Description of the operation:
+
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updateautomaticawstargetmapping.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter UpdateAutomaticTargetMapping { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "UpdateCloudAccount",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'UpdateCloudAccount' operation
+in the 'AWS' API domain.
+Description of the operation:
+Update properties for a given AWS cloud account.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updateawscloudaccount.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter UpdateCloudAccount { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "UpdateCloudAccountFeature",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'UpdateCloudAccountFeature' operation
+in the 'AWS' API domain.
+Description of the operation:
+Updates regions, stack ARN, and role ARN for a feature for a given cloud account.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updateawscloudaccountfeature.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter UpdateCloudAccountFeature { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "UpdateCloudNativeStorageSetting",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'UpdateCloudNativeStorageSetting' operation
+in the 'AWS' API domain.
+Description of the operation:
+
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatecloudnativeawsstoragesetting.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter UpdateCloudNativeStorageSetting { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "UpdateComputeSetting",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'UpdateComputeSetting' operation
+in the 'AWS' API domain.
+Description of the operation:
+
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updateawscomputesetting.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter UpdateComputeSetting { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "UpdateExocomputeConfigs",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'UpdateExocomputeConfigs' operation
+in the 'AWS' API domain.
+Description of the operation:
+Update AWS Exocompute configs.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updateawsexocomputeconfigs.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter UpdateExocomputeConfigs { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "UpdateTarget",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'UpdateTarget' operation
+in the 'AWS' API domain.
+Description of the operation:
+
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updateawstarget.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter UpdateTarget { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "UpgradeCloudAccountFeaturesWithoutCft",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'UpgradeCloudAccountFeaturesWithoutCft' operation
+in the 'AWS' API domain.
+Description of the operation:
+Updates status of AWS cloud account features to connected if they are in update permissions state. This mutation should be used with caution. It should be invoked only after the latest required permissions are granted to the AWS cloud account user used by Rubrik. This mutation does not verify if the required permissions are actually granted to the user or not. Its usage is restricted to only IAM user-based and authentication server-based AWS cloud accounts.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/upgradeawscloudaccountfeatureswithoutcft.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter UpgradeCloudAccountFeaturesWithoutCft { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "UpgradeIamUserBasedCloudAccountPermissions",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'UpgradeIamUserBasedCloudAccountPermissions' operation
+in the 'AWS' API domain.
+Description of the operation:
+Set IAM user-based AWS account features status to Connected from Update Permissions state. It should be used by caution from cloud accounts only after latest required permissions are granted to authorized IAM user.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/upgradeawsiamuserbasedcloudaccountpermissions.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter UpgradeIamUserBasedCloudAccountPermissions { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "ValidateAndCreateCloudAccount",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'ValidateAndCreateCloudAccount' operation
+in the 'AWS' API domain.
+Description of the operation:
+Validate and create AWS cloud account. If validation fails, no error is returned and the cause is present in the ""message"" field of return object or within admin/child accounts of return object. In case validation succeeds, it initiates creation of AWS cloud account. This is the first step to set up native protection.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/validateandcreateawscloudaccount.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter ValidateAndCreateCloudAccount { get; set; }
+
+
+
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
             try
             {
-                switch(Op)
+                switch(this.GetOp().OpName())
                 {
-                    case "StartNativeEc2InstanceSnapshotsJob":
-                        this.ProcessRecord_StartNativeEc2InstanceSnapshotsJob();
+                    case "AddAuthenticationServerBasedCloudAccount":
+                        this.ProcessRecord_AddAuthenticationServerBasedCloudAccount();
                         break;
-                    case "StartRestoreNativeEc2InstanceSnapshotJob":
-                        this.ProcessRecord_StartRestoreNativeEc2InstanceSnapshotJob();
+                    case "AddIamUserBasedCloudAccount":
+                        this.ProcessRecord_AddIamUserBasedCloudAccount();
                         break;
-                    case "StartRefreshNativeAccountsJob":
-                        this.ProcessRecord_StartRefreshNativeAccountsJob();
-                        break;
-                    case "StartCreateNativeEbsVolumeSnapshotsJob":
-                        this.ProcessRecord_StartCreateNativeEbsVolumeSnapshotsJob();
-                        break;
-                    case "StartNativeAccountDisableJob":
-                        this.ProcessRecord_StartNativeAccountDisableJob();
-                        break;
-                    case "StartExportNativeEbsVolumeSnapshotJob":
-                        this.ProcessRecord_StartExportNativeEbsVolumeSnapshotJob();
-                        break;
-                    case "ExcludeNativeEbsVolumesFromSnapshot":
-                        this.ProcessRecord_ExcludeNativeEbsVolumesFromSnapshot();
-                        break;
-                    case "StartNativeRdsInstanceSnapshotsJob":
-                        this.ProcessRecord_StartNativeRdsInstanceSnapshotsJob();
+                    case "BulkDeleteCloudAccountWithoutCft":
+                        this.ProcessRecord_BulkDeleteCloudAccountWithoutCft();
                         break;
                     case "CreateAccount":
                         this.ProcessRecord_CreateAccount();
-                        break;
-                    case "UpdateAccount":
-                        this.ProcessRecord_UpdateAccount();
                         break;
                     case "CreateAutomaticTargetMapping":
                         this.ProcessRecord_CreateAutomaticTargetMapping();
@@ -939,74 +2896,38 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "CreateCloudNativeStorageSetting":
                         this.ProcessRecord_CreateCloudNativeStorageSetting();
                         break;
-                    case "UpdateAutomaticTargetMapping":
-                        this.ProcessRecord_UpdateAutomaticTargetMapping();
-                        break;
-                    case "UpdateCloudNativeStorageSetting":
-                        this.ProcessRecord_UpdateCloudNativeStorageSetting();
-                        break;
-                    case "CreateTarget":
-                        this.ProcessRecord_CreateTarget();
-                        break;
-                    case "UpdateTarget":
-                        this.ProcessRecord_UpdateTarget();
-                        break;
-                    case "CreateReaderTarget":
-                        this.ProcessRecord_CreateReaderTarget();
+                    case "CreateCluster":
+                        this.ProcessRecord_CreateCluster();
                         break;
                     case "CreateComputeSetting":
                         this.ProcessRecord_CreateComputeSetting();
                         break;
-                    case "UpdateComputeSetting":
-                        this.ProcessRecord_UpdateComputeSetting();
+                    case "CreateExocomputeConfigs":
+                        this.ProcessRecord_CreateExocomputeConfigs();
+                        break;
+                    case "CreateReaderTarget":
+                        this.ProcessRecord_CreateReaderTarget();
+                        break;
+                    case "CreateTarget":
+                        this.ProcessRecord_CreateTarget();
+                        break;
+                    case "DeleteCluster":
+                        this.ProcessRecord_DeleteCluster();
                         break;
                     case "DeleteComputeSetting":
                         this.ProcessRecord_DeleteComputeSetting();
                         break;
-                    case "ValidateAndCreateCloudAccount":
-                        this.ProcessRecord_ValidateAndCreateCloudAccount();
+                    case "DeleteExocomputeConfigs":
+                        this.ProcessRecord_DeleteExocomputeConfigs();
                         break;
-                    case "FinalizeCloudAccountProtection":
-                        this.ProcessRecord_FinalizeCloudAccountProtection();
-                        break;
-                    case "PrepareCloudAccountDeletion":
-                        this.ProcessRecord_PrepareCloudAccountDeletion();
+                    case "ExcludeNativeEbsVolumesFromSnapshot":
+                        this.ProcessRecord_ExcludeNativeEbsVolumesFromSnapshot();
                         break;
                     case "FinalizeCloudAccountDeletion":
                         this.ProcessRecord_FinalizeCloudAccountDeletion();
                         break;
-                    case "UpdateCloudAccountFeature":
-                        this.ProcessRecord_UpdateCloudAccountFeature();
-                        break;
-                    case "UpdateCloudAccount":
-                        this.ProcessRecord_UpdateCloudAccount();
-                        break;
-                    case "PrepareFeatureUpdateForCloudAccount":
-                        this.ProcessRecord_PrepareFeatureUpdateForCloudAccount();
-                        break;
-                    case "CreateExocomputeConfigs":
-                        this.ProcessRecord_CreateExocomputeConfigs();
-                        break;
-                    case "DeleteExocomputeConfigs":
-                        this.ProcessRecord_DeleteExocomputeConfigs();
-                        break;
-                    case "UpdateExocomputeConfigs":
-                        this.ProcessRecord_UpdateExocomputeConfigs();
-                        break;
-                    case "StartExocomputeDisableJob":
-                        this.ProcessRecord_StartExocomputeDisableJob();
-                        break;
-                    case "AddIamUserBasedCloudAccount":
-                        this.ProcessRecord_AddIamUserBasedCloudAccount();
-                        break;
-                    case "UpgradeIamUserBasedCloudAccountPermissions":
-                        this.ProcessRecord_UpgradeIamUserBasedCloudAccountPermissions();
-                        break;
-                    case "UpgradeCloudAccountFeaturesWithoutCft":
-                        this.ProcessRecord_UpgradeCloudAccountFeaturesWithoutCft();
-                        break;
-                    case "AddAuthenticationServerBasedCloudAccount":
-                        this.ProcessRecord_AddAuthenticationServerBasedCloudAccount();
+                    case "FinalizeCloudAccountProtection":
+                        this.ProcessRecord_FinalizeCloudAccountProtection();
                         break;
                     case "PatchAuthenticationServerBasedCloudAccount":
                         this.ProcessRecord_PatchAuthenticationServerBasedCloudAccount();
@@ -1014,20 +2935,74 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "PatchIamUserBasedCloudAccount":
                         this.ProcessRecord_PatchIamUserBasedCloudAccount();
                         break;
+                    case "PrepareCloudAccountDeletion":
+                        this.ProcessRecord_PrepareCloudAccountDeletion();
+                        break;
+                    case "PrepareFeatureUpdateForCloudAccount":
+                        this.ProcessRecord_PrepareFeatureUpdateForCloudAccount();
+                        break;
                     case "RegisterFeatureArtifacts":
                         this.ProcessRecord_RegisterFeatureArtifacts();
                         break;
-                    case "BulkDeleteCloudAccountWithoutCft":
-                        this.ProcessRecord_BulkDeleteCloudAccountWithoutCft();
+                    case "StartCreateNativeEbsVolumeSnapshotsJob":
+                        this.ProcessRecord_StartCreateNativeEbsVolumeSnapshotsJob();
                         break;
-                    case "CreateCluster":
-                        this.ProcessRecord_CreateCluster();
+                    case "StartExocomputeDisableJob":
+                        this.ProcessRecord_StartExocomputeDisableJob();
                         break;
-                    case "DeleteCluster":
-                        this.ProcessRecord_DeleteCluster();
+                    case "StartExportNativeEbsVolumeSnapshotJob":
+                        this.ProcessRecord_StartExportNativeEbsVolumeSnapshotJob();
+                        break;
+                    case "StartNativeAccountDisableJob":
+                        this.ProcessRecord_StartNativeAccountDisableJob();
+                        break;
+                    case "StartNativeEc2InstanceSnapshotsJob":
+                        this.ProcessRecord_StartNativeEc2InstanceSnapshotsJob();
+                        break;
+                    case "StartNativeRdsInstanceSnapshotsJob":
+                        this.ProcessRecord_StartNativeRdsInstanceSnapshotsJob();
+                        break;
+                    case "StartRefreshNativeAccountsJob":
+                        this.ProcessRecord_StartRefreshNativeAccountsJob();
+                        break;
+                    case "StartRestoreNativeEc2InstanceSnapshotJob":
+                        this.ProcessRecord_StartRestoreNativeEc2InstanceSnapshotJob();
+                        break;
+                    case "UpdateAccount":
+                        this.ProcessRecord_UpdateAccount();
+                        break;
+                    case "UpdateAutomaticTargetMapping":
+                        this.ProcessRecord_UpdateAutomaticTargetMapping();
+                        break;
+                    case "UpdateCloudAccount":
+                        this.ProcessRecord_UpdateCloudAccount();
+                        break;
+                    case "UpdateCloudAccountFeature":
+                        this.ProcessRecord_UpdateCloudAccountFeature();
+                        break;
+                    case "UpdateCloudNativeStorageSetting":
+                        this.ProcessRecord_UpdateCloudNativeStorageSetting();
+                        break;
+                    case "UpdateComputeSetting":
+                        this.ProcessRecord_UpdateComputeSetting();
+                        break;
+                    case "UpdateExocomputeConfigs":
+                        this.ProcessRecord_UpdateExocomputeConfigs();
+                        break;
+                    case "UpdateTarget":
+                        this.ProcessRecord_UpdateTarget();
+                        break;
+                    case "UpgradeCloudAccountFeaturesWithoutCft":
+                        this.ProcessRecord_UpgradeCloudAccountFeaturesWithoutCft();
+                        break;
+                    case "UpgradeIamUserBasedCloudAccountPermissions":
+                        this.ProcessRecord_UpgradeIamUserBasedCloudAccountPermissions();
+                        break;
+                    case "ValidateAndCreateCloudAccount":
+                        this.ProcessRecord_ValidateAndCreateCloudAccount();
                         break;
                     default:
-                        throw new Exception("Unknown Operation " + Op);
+                        throw new Exception("Unknown Operation " + this.GetOp().OpName());
                 }
            }
            catch (Exception ex)
@@ -1035,78 +3010,32 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 ThrowTerminatingException(ex);
            }
         }
-#pragma warning restore 1591
 
         // This parameter set invokes a single graphql operation:
-        // startAwsNativeEc2InstanceSnapshotsJob.
-        internal void ProcessRecord_StartNativeEc2InstanceSnapshotsJob()
+        // addAwsAuthenticationServerBasedCloudAccount.
+        internal void ProcessRecord_AddAuthenticationServerBasedCloudAccount()
         {
-            this._logger.name += " -StartNativeEc2InstanceSnapshotsJob";
-            // Create new graphql operation startAwsNativeEc2InstanceSnapshotsJob
-            InitMutationStartAwsNativeEc2InstanceSnapshotsJob();
+            this._logger.name += " -AddAuthenticationServerBasedCloudAccount";
+            // Create new graphql operation addAwsAuthenticationServerBasedCloudAccount
+            InitMutationAddAwsAuthenticationServerBasedCloudAccount();
         }
 
         // This parameter set invokes a single graphql operation:
-        // startRestoreAwsNativeEc2InstanceSnapshotJob.
-        internal void ProcessRecord_StartRestoreNativeEc2InstanceSnapshotJob()
+        // addAwsIamUserBasedCloudAccount.
+        internal void ProcessRecord_AddIamUserBasedCloudAccount()
         {
-            this._logger.name += " -StartRestoreNativeEc2InstanceSnapshotJob";
-            // Create new graphql operation startRestoreAwsNativeEc2InstanceSnapshotJob
-            InitMutationStartRestoreAwsNativeEc2InstanceSnapshotJob();
+            this._logger.name += " -AddIamUserBasedCloudAccount";
+            // Create new graphql operation addAwsIamUserBasedCloudAccount
+            InitMutationAddAwsIamUserBasedCloudAccount();
         }
 
         // This parameter set invokes a single graphql operation:
-        // startRefreshAwsNativeAccountsJob.
-        internal void ProcessRecord_StartRefreshNativeAccountsJob()
+        // bulkDeleteAwsCloudAccountWithoutCft.
+        internal void ProcessRecord_BulkDeleteCloudAccountWithoutCft()
         {
-            this._logger.name += " -StartRefreshNativeAccountsJob";
-            // Create new graphql operation startRefreshAwsNativeAccountsJob
-            InitMutationStartRefreshAwsNativeAccountsJob();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // startCreateAwsNativeEbsVolumeSnapshotsJob.
-        internal void ProcessRecord_StartCreateNativeEbsVolumeSnapshotsJob()
-        {
-            this._logger.name += " -StartCreateNativeEbsVolumeSnapshotsJob";
-            // Create new graphql operation startCreateAwsNativeEbsVolumeSnapshotsJob
-            InitMutationStartCreateAwsNativeEbsVolumeSnapshotsJob();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // startAwsNativeAccountDisableJob.
-        internal void ProcessRecord_StartNativeAccountDisableJob()
-        {
-            this._logger.name += " -StartNativeAccountDisableJob";
-            // Create new graphql operation startAwsNativeAccountDisableJob
-            InitMutationStartAwsNativeAccountDisableJob();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // startExportAwsNativeEbsVolumeSnapshotJob.
-        internal void ProcessRecord_StartExportNativeEbsVolumeSnapshotJob()
-        {
-            this._logger.name += " -StartExportNativeEbsVolumeSnapshotJob";
-            // Create new graphql operation startExportAwsNativeEbsVolumeSnapshotJob
-            InitMutationStartExportAwsNativeEbsVolumeSnapshotJob();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // excludeAwsNativeEbsVolumesFromSnapshot.
-        internal void ProcessRecord_ExcludeNativeEbsVolumesFromSnapshot()
-        {
-            this._logger.name += " -ExcludeNativeEbsVolumesFromSnapshot";
-            // Create new graphql operation excludeAwsNativeEbsVolumesFromSnapshot
-            InitMutationExcludeAwsNativeEbsVolumesFromSnapshot();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // startAwsNativeRdsInstanceSnapshotsJob.
-        internal void ProcessRecord_StartNativeRdsInstanceSnapshotsJob()
-        {
-            this._logger.name += " -StartNativeRdsInstanceSnapshotsJob";
-            // Create new graphql operation startAwsNativeRdsInstanceSnapshotsJob
-            InitMutationStartAwsNativeRdsInstanceSnapshotsJob();
+            this._logger.name += " -BulkDeleteCloudAccountWithoutCft";
+            // Create new graphql operation bulkDeleteAwsCloudAccountWithoutCft
+            InitMutationBulkDeleteAwsCloudAccountWithoutCft();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1116,15 +3045,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -CreateAccount";
             // Create new graphql operation createAwsAccount
             InitMutationCreateAwsAccount();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // updateAwsAccount.
-        internal void ProcessRecord_UpdateAccount()
-        {
-            this._logger.name += " -UpdateAccount";
-            // Create new graphql operation updateAwsAccount
-            InitMutationUpdateAwsAccount();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1146,48 +3066,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // updateAutomaticAwsTargetMapping.
-        internal void ProcessRecord_UpdateAutomaticTargetMapping()
+        // createAwsCluster.
+        internal void ProcessRecord_CreateCluster()
         {
-            this._logger.name += " -UpdateAutomaticTargetMapping";
-            // Create new graphql operation updateAutomaticAwsTargetMapping
-            InitMutationUpdateAutomaticAwsTargetMapping();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // updateCloudNativeAwsStorageSetting.
-        internal void ProcessRecord_UpdateCloudNativeStorageSetting()
-        {
-            this._logger.name += " -UpdateCloudNativeStorageSetting";
-            // Create new graphql operation updateCloudNativeAwsStorageSetting
-            InitMutationUpdateCloudNativeAwsStorageSetting();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // createAwsTarget.
-        internal void ProcessRecord_CreateTarget()
-        {
-            this._logger.name += " -CreateTarget";
-            // Create new graphql operation createAwsTarget
-            InitMutationCreateAwsTarget();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // updateAwsTarget.
-        internal void ProcessRecord_UpdateTarget()
-        {
-            this._logger.name += " -UpdateTarget";
-            // Create new graphql operation updateAwsTarget
-            InitMutationUpdateAwsTarget();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // createAwsReaderTarget.
-        internal void ProcessRecord_CreateReaderTarget()
-        {
-            this._logger.name += " -CreateReaderTarget";
-            // Create new graphql operation createAwsReaderTarget
-            InitMutationCreateAwsReaderTarget();
+            this._logger.name += " -CreateCluster";
+            // Create new graphql operation createAwsCluster
+            InitMutationCreateAwsCluster();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1200,12 +3084,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // updateAwsComputeSetting.
-        internal void ProcessRecord_UpdateComputeSetting()
+        // createAwsExocomputeConfigs.
+        internal void ProcessRecord_CreateExocomputeConfigs()
         {
-            this._logger.name += " -UpdateComputeSetting";
-            // Create new graphql operation updateAwsComputeSetting
-            InitMutationUpdateAwsComputeSetting();
+            this._logger.name += " -CreateExocomputeConfigs";
+            // Create new graphql operation createAwsExocomputeConfigs
+            InitMutationCreateAwsExocomputeConfigs();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // createAwsReaderTarget.
+        internal void ProcessRecord_CreateReaderTarget()
+        {
+            this._logger.name += " -CreateReaderTarget";
+            // Create new graphql operation createAwsReaderTarget
+            InitMutationCreateAwsReaderTarget();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // createAwsTarget.
+        internal void ProcessRecord_CreateTarget()
+        {
+            this._logger.name += " -CreateTarget";
+            // Create new graphql operation createAwsTarget
+            InitMutationCreateAwsTarget();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // deleteAwsCluster.
+        internal void ProcessRecord_DeleteCluster()
+        {
+            this._logger.name += " -DeleteCluster";
+            // Create new graphql operation deleteAwsCluster
+            InitMutationDeleteAwsCluster();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1218,30 +3129,21 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // validateAndCreateAwsCloudAccount.
-        internal void ProcessRecord_ValidateAndCreateCloudAccount()
+        // deleteAwsExocomputeConfigs.
+        internal void ProcessRecord_DeleteExocomputeConfigs()
         {
-            this._logger.name += " -ValidateAndCreateCloudAccount";
-            // Create new graphql operation validateAndCreateAwsCloudAccount
-            InitMutationValidateAndCreateAwsCloudAccount();
+            this._logger.name += " -DeleteExocomputeConfigs";
+            // Create new graphql operation deleteAwsExocomputeConfigs
+            InitMutationDeleteAwsExocomputeConfigs();
         }
 
         // This parameter set invokes a single graphql operation:
-        // finalizeAwsCloudAccountProtection.
-        internal void ProcessRecord_FinalizeCloudAccountProtection()
+        // excludeAwsNativeEbsVolumesFromSnapshot.
+        internal void ProcessRecord_ExcludeNativeEbsVolumesFromSnapshot()
         {
-            this._logger.name += " -FinalizeCloudAccountProtection";
-            // Create new graphql operation finalizeAwsCloudAccountProtection
-            InitMutationFinalizeAwsCloudAccountProtection();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // prepareAwsCloudAccountDeletion.
-        internal void ProcessRecord_PrepareCloudAccountDeletion()
-        {
-            this._logger.name += " -PrepareCloudAccountDeletion";
-            // Create new graphql operation prepareAwsCloudAccountDeletion
-            InitMutationPrepareAwsCloudAccountDeletion();
+            this._logger.name += " -ExcludeNativeEbsVolumesFromSnapshot";
+            // Create new graphql operation excludeAwsNativeEbsVolumesFromSnapshot
+            InitMutationExcludeAwsNativeEbsVolumesFromSnapshot();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1254,102 +3156,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // updateAwsCloudAccountFeature.
-        internal void ProcessRecord_UpdateCloudAccountFeature()
+        // finalizeAwsCloudAccountProtection.
+        internal void ProcessRecord_FinalizeCloudAccountProtection()
         {
-            this._logger.name += " -UpdateCloudAccountFeature";
-            // Create new graphql operation updateAwsCloudAccountFeature
-            InitMutationUpdateAwsCloudAccountFeature();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // updateAwsCloudAccount.
-        internal void ProcessRecord_UpdateCloudAccount()
-        {
-            this._logger.name += " -UpdateCloudAccount";
-            // Create new graphql operation updateAwsCloudAccount
-            InitMutationUpdateAwsCloudAccount();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // prepareFeatureUpdateForAwsCloudAccount.
-        internal void ProcessRecord_PrepareFeatureUpdateForCloudAccount()
-        {
-            this._logger.name += " -PrepareFeatureUpdateForCloudAccount";
-            // Create new graphql operation prepareFeatureUpdateForAwsCloudAccount
-            InitMutationPrepareFeatureUpdateForAwsCloudAccount();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // createAwsExocomputeConfigs.
-        internal void ProcessRecord_CreateExocomputeConfigs()
-        {
-            this._logger.name += " -CreateExocomputeConfigs";
-            // Create new graphql operation createAwsExocomputeConfigs
-            InitMutationCreateAwsExocomputeConfigs();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // deleteAwsExocomputeConfigs.
-        internal void ProcessRecord_DeleteExocomputeConfigs()
-        {
-            this._logger.name += " -DeleteExocomputeConfigs";
-            // Create new graphql operation deleteAwsExocomputeConfigs
-            InitMutationDeleteAwsExocomputeConfigs();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // updateAwsExocomputeConfigs.
-        internal void ProcessRecord_UpdateExocomputeConfigs()
-        {
-            this._logger.name += " -UpdateExocomputeConfigs";
-            // Create new graphql operation updateAwsExocomputeConfigs
-            InitMutationUpdateAwsExocomputeConfigs();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // startAwsExocomputeDisableJob.
-        internal void ProcessRecord_StartExocomputeDisableJob()
-        {
-            this._logger.name += " -StartExocomputeDisableJob";
-            // Create new graphql operation startAwsExocomputeDisableJob
-            InitMutationStartAwsExocomputeDisableJob();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // addAwsIamUserBasedCloudAccount.
-        internal void ProcessRecord_AddIamUserBasedCloudAccount()
-        {
-            this._logger.name += " -AddIamUserBasedCloudAccount";
-            // Create new graphql operation addAwsIamUserBasedCloudAccount
-            InitMutationAddAwsIamUserBasedCloudAccount();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // upgradeAwsIamUserBasedCloudAccountPermissions.
-        internal void ProcessRecord_UpgradeIamUserBasedCloudAccountPermissions()
-        {
-            this._logger.name += " -UpgradeIamUserBasedCloudAccountPermissions";
-            // Create new graphql operation upgradeAwsIamUserBasedCloudAccountPermissions
-            InitMutationUpgradeAwsIamUserBasedCloudAccountPermissions();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // upgradeAwsCloudAccountFeaturesWithoutCft.
-        internal void ProcessRecord_UpgradeCloudAccountFeaturesWithoutCft()
-        {
-            this._logger.name += " -UpgradeCloudAccountFeaturesWithoutCft";
-            // Create new graphql operation upgradeAwsCloudAccountFeaturesWithoutCft
-            InitMutationUpgradeAwsCloudAccountFeaturesWithoutCft();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // addAwsAuthenticationServerBasedCloudAccount.
-        internal void ProcessRecord_AddAuthenticationServerBasedCloudAccount()
-        {
-            this._logger.name += " -AddAuthenticationServerBasedCloudAccount";
-            // Create new graphql operation addAwsAuthenticationServerBasedCloudAccount
-            InitMutationAddAwsAuthenticationServerBasedCloudAccount();
+            this._logger.name += " -FinalizeCloudAccountProtection";
+            // Create new graphql operation finalizeAwsCloudAccountProtection
+            InitMutationFinalizeAwsCloudAccountProtection();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1371,6 +3183,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // prepareAwsCloudAccountDeletion.
+        internal void ProcessRecord_PrepareCloudAccountDeletion()
+        {
+            this._logger.name += " -PrepareCloudAccountDeletion";
+            // Create new graphql operation prepareAwsCloudAccountDeletion
+            InitMutationPrepareAwsCloudAccountDeletion();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // prepareFeatureUpdateForAwsCloudAccount.
+        internal void ProcessRecord_PrepareFeatureUpdateForCloudAccount()
+        {
+            this._logger.name += " -PrepareFeatureUpdateForCloudAccount";
+            // Create new graphql operation prepareFeatureUpdateForAwsCloudAccount
+            InitMutationPrepareFeatureUpdateForAwsCloudAccount();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // registerAwsFeatureArtifacts.
         internal void ProcessRecord_RegisterFeatureArtifacts()
         {
@@ -1380,243 +3210,277 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // bulkDeleteAwsCloudAccountWithoutCft.
-        internal void ProcessRecord_BulkDeleteCloudAccountWithoutCft()
+        // startCreateAwsNativeEbsVolumeSnapshotsJob.
+        internal void ProcessRecord_StartCreateNativeEbsVolumeSnapshotsJob()
         {
-            this._logger.name += " -BulkDeleteCloudAccountWithoutCft";
-            // Create new graphql operation bulkDeleteAwsCloudAccountWithoutCft
-            InitMutationBulkDeleteAwsCloudAccountWithoutCft();
+            this._logger.name += " -StartCreateNativeEbsVolumeSnapshotsJob";
+            // Create new graphql operation startCreateAwsNativeEbsVolumeSnapshotsJob
+            InitMutationStartCreateAwsNativeEbsVolumeSnapshotsJob();
         }
 
         // This parameter set invokes a single graphql operation:
-        // createAwsCluster.
-        internal void ProcessRecord_CreateCluster()
+        // startAwsExocomputeDisableJob.
+        internal void ProcessRecord_StartExocomputeDisableJob()
         {
-            this._logger.name += " -CreateCluster";
-            // Create new graphql operation createAwsCluster
-            InitMutationCreateAwsCluster();
+            this._logger.name += " -StartExocomputeDisableJob";
+            // Create new graphql operation startAwsExocomputeDisableJob
+            InitMutationStartAwsExocomputeDisableJob();
         }
 
         // This parameter set invokes a single graphql operation:
-        // deleteAwsCluster.
-        internal void ProcessRecord_DeleteCluster()
+        // startExportAwsNativeEbsVolumeSnapshotJob.
+        internal void ProcessRecord_StartExportNativeEbsVolumeSnapshotJob()
         {
-            this._logger.name += " -DeleteCluster";
-            // Create new graphql operation deleteAwsCluster
-            InitMutationDeleteAwsCluster();
+            this._logger.name += " -StartExportNativeEbsVolumeSnapshotJob";
+            // Create new graphql operation startExportAwsNativeEbsVolumeSnapshotJob
+            InitMutationStartExportAwsNativeEbsVolumeSnapshotJob();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // startAwsNativeAccountDisableJob.
+        internal void ProcessRecord_StartNativeAccountDisableJob()
+        {
+            this._logger.name += " -StartNativeAccountDisableJob";
+            // Create new graphql operation startAwsNativeAccountDisableJob
+            InitMutationStartAwsNativeAccountDisableJob();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // startAwsNativeEc2InstanceSnapshotsJob.
+        internal void ProcessRecord_StartNativeEc2InstanceSnapshotsJob()
+        {
+            this._logger.name += " -StartNativeEc2InstanceSnapshotsJob";
+            // Create new graphql operation startAwsNativeEc2InstanceSnapshotsJob
+            InitMutationStartAwsNativeEc2InstanceSnapshotsJob();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // startAwsNativeRdsInstanceSnapshotsJob.
+        internal void ProcessRecord_StartNativeRdsInstanceSnapshotsJob()
+        {
+            this._logger.name += " -StartNativeRdsInstanceSnapshotsJob";
+            // Create new graphql operation startAwsNativeRdsInstanceSnapshotsJob
+            InitMutationStartAwsNativeRdsInstanceSnapshotsJob();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // startRefreshAwsNativeAccountsJob.
+        internal void ProcessRecord_StartRefreshNativeAccountsJob()
+        {
+            this._logger.name += " -StartRefreshNativeAccountsJob";
+            // Create new graphql operation startRefreshAwsNativeAccountsJob
+            InitMutationStartRefreshAwsNativeAccountsJob();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // startRestoreAwsNativeEc2InstanceSnapshotJob.
+        internal void ProcessRecord_StartRestoreNativeEc2InstanceSnapshotJob()
+        {
+            this._logger.name += " -StartRestoreNativeEc2InstanceSnapshotJob";
+            // Create new graphql operation startRestoreAwsNativeEc2InstanceSnapshotJob
+            InitMutationStartRestoreAwsNativeEc2InstanceSnapshotJob();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updateAwsAccount.
+        internal void ProcessRecord_UpdateAccount()
+        {
+            this._logger.name += " -UpdateAccount";
+            // Create new graphql operation updateAwsAccount
+            InitMutationUpdateAwsAccount();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updateAutomaticAwsTargetMapping.
+        internal void ProcessRecord_UpdateAutomaticTargetMapping()
+        {
+            this._logger.name += " -UpdateAutomaticTargetMapping";
+            // Create new graphql operation updateAutomaticAwsTargetMapping
+            InitMutationUpdateAutomaticAwsTargetMapping();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updateAwsCloudAccount.
+        internal void ProcessRecord_UpdateCloudAccount()
+        {
+            this._logger.name += " -UpdateCloudAccount";
+            // Create new graphql operation updateAwsCloudAccount
+            InitMutationUpdateAwsCloudAccount();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updateAwsCloudAccountFeature.
+        internal void ProcessRecord_UpdateCloudAccountFeature()
+        {
+            this._logger.name += " -UpdateCloudAccountFeature";
+            // Create new graphql operation updateAwsCloudAccountFeature
+            InitMutationUpdateAwsCloudAccountFeature();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updateCloudNativeAwsStorageSetting.
+        internal void ProcessRecord_UpdateCloudNativeStorageSetting()
+        {
+            this._logger.name += " -UpdateCloudNativeStorageSetting";
+            // Create new graphql operation updateCloudNativeAwsStorageSetting
+            InitMutationUpdateCloudNativeAwsStorageSetting();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updateAwsComputeSetting.
+        internal void ProcessRecord_UpdateComputeSetting()
+        {
+            this._logger.name += " -UpdateComputeSetting";
+            // Create new graphql operation updateAwsComputeSetting
+            InitMutationUpdateAwsComputeSetting();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updateAwsExocomputeConfigs.
+        internal void ProcessRecord_UpdateExocomputeConfigs()
+        {
+            this._logger.name += " -UpdateExocomputeConfigs";
+            // Create new graphql operation updateAwsExocomputeConfigs
+            InitMutationUpdateAwsExocomputeConfigs();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updateAwsTarget.
+        internal void ProcessRecord_UpdateTarget()
+        {
+            this._logger.name += " -UpdateTarget";
+            // Create new graphql operation updateAwsTarget
+            InitMutationUpdateAwsTarget();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // upgradeAwsCloudAccountFeaturesWithoutCft.
+        internal void ProcessRecord_UpgradeCloudAccountFeaturesWithoutCft()
+        {
+            this._logger.name += " -UpgradeCloudAccountFeaturesWithoutCft";
+            // Create new graphql operation upgradeAwsCloudAccountFeaturesWithoutCft
+            InitMutationUpgradeAwsCloudAccountFeaturesWithoutCft();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // upgradeAwsIamUserBasedCloudAccountPermissions.
+        internal void ProcessRecord_UpgradeIamUserBasedCloudAccountPermissions()
+        {
+            this._logger.name += " -UpgradeIamUserBasedCloudAccountPermissions";
+            // Create new graphql operation upgradeAwsIamUserBasedCloudAccountPermissions
+            InitMutationUpgradeAwsIamUserBasedCloudAccountPermissions();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // validateAndCreateAwsCloudAccount.
+        internal void ProcessRecord_ValidateAndCreateCloudAccount()
+        {
+            this._logger.name += " -ValidateAndCreateCloudAccount";
+            // Create new graphql operation validateAndCreateAwsCloudAccount
+            InitMutationValidateAndCreateAwsCloudAccount();
         }
 
 
         // Create new GraphQL Mutation:
-        // startAwsNativeEc2InstanceSnapshotsJob(input: StartAwsNativeEc2InstanceSnapshotsJobInput!): BatchAsyncJobStatus!
-        internal void InitMutationStartAwsNativeEc2InstanceSnapshotsJob()
+        // addAwsAuthenticationServerBasedCloudAccount(input: AddAwsAuthenticationServerBasedCloudAccountInput!): AddAwsAuthenticationServerBasedCloudAccountReply!
+        internal void InitMutationAddAwsAuthenticationServerBasedCloudAccount()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "StartAwsNativeEc2InstanceSnapshotsJobInput!"),
+                Tuple.Create("input", "AddAwsAuthenticationServerBasedCloudAccountInput!"),
             };
             Initialize(
                 argDefs,
                 "mutation",
-                "MutationStartAwsNativeEc2InstanceSnapshotsJob",
-                "($input: StartAwsNativeEc2InstanceSnapshotsJobInput!)",
-                "BatchAsyncJobStatus",
-                Mutation.StartAwsNativeEc2InstanceSnapshotsJob_ObjectFieldSpec,
-                Mutation.StartAwsNativeEc2InstanceSnapshotsJobFieldSpec,
+                "MutationAddAwsAuthenticationServerBasedCloudAccount",
+                "($input: AddAwsAuthenticationServerBasedCloudAccountInput!)",
+                "AddAwsAuthenticationServerBasedCloudAccountReply",
+                Mutation.AddAwsAuthenticationServerBasedCloudAccount_ObjectFieldSpec,
+                Mutation.AddAwsAuthenticationServerBasedCloudAccountFieldSpec,
                 @"# REQUIRED
-$inputs.Var.input = @{
+$query.Var.input = @{
 	# REQUIRED
-	ec2InstanceIds = @(
-		<System.String>
+	cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+	# REQUIRED
+	awsAccountName = $someString
+	# OPTIONAL
+	awsRegions = @(
+		$someAwsAuthServerBasedCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsAuthServerBasedCloudAccountRegion]) for enum values.
+	)
+	# REQUIRED
+	features = @(
+		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 	)
 	# OPTIONAL
-	retentionSlaId = <System.String>
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // startRestoreAwsNativeEc2InstanceSnapshotJob(input: StartRestoreAwsNativeEc2InstanceSnapshotJobInput!): AsyncJobStatus!
-        internal void InitMutationStartRestoreAwsNativeEc2InstanceSnapshotJob()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "StartRestoreAwsNativeEc2InstanceSnapshotJobInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationStartRestoreAwsNativeEc2InstanceSnapshotJob",
-                "($input: StartRestoreAwsNativeEc2InstanceSnapshotJobInput!)",
-                "AsyncJobStatus",
-                Mutation.StartRestoreAwsNativeEc2InstanceSnapshotJob_ObjectFieldSpec,
-                Mutation.StartRestoreAwsNativeEc2InstanceSnapshotJobFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	snapshotId = <System.String>
-	# REQUIRED
-	shouldPowerOn = <System.Boolean>
-	# REQUIRED
-	shouldRestoreTags = <System.Boolean>
+	nativeId = $someString
 	# OPTIONAL
-	snapshotTypeToUseIfSourceExpired = <SnapshotTypeToUseIfSourceExpired> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotTypeToUseIfSourceExpired]) for enum values.
+	agencyName = $someString
+	# OPTIONAL
+	roleName = $someString
+	# OPTIONAL
+	authServerHostName = $someString
+	# OPTIONAL
+	authServerUserClientCertId = @{
+		# REQUIRED
+		id = $someInt64
+	}
+	# OPTIONAL
+	authServerCaCertId = @{
+		# REQUIRED
+		id = $someInt64
+	}
+	# OPTIONAL
+	awsCaCertId = @{
+		# REQUIRED
+		id = $someInt64
+	}
 }"
             );
         }
 
         // Create new GraphQL Mutation:
-        // startRefreshAwsNativeAccountsJob(input: StartRefreshAwsNativeAccountsJobInput!): BatchAsyncJobStatus!
-        internal void InitMutationStartRefreshAwsNativeAccountsJob()
+        // addAwsIamUserBasedCloudAccount(input: AddAwsIamUserBasedCloudAccountInput!): AddAwsIamUserBasedCloudAccountReply!
+        internal void InitMutationAddAwsIamUserBasedCloudAccount()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "StartRefreshAwsNativeAccountsJobInput!"),
+                Tuple.Create("input", "AddAwsIamUserBasedCloudAccountInput!"),
             };
             Initialize(
                 argDefs,
                 "mutation",
-                "MutationStartRefreshAwsNativeAccountsJob",
-                "($input: StartRefreshAwsNativeAccountsJobInput!)",
-                "BatchAsyncJobStatus",
-                Mutation.StartRefreshAwsNativeAccountsJob_ObjectFieldSpec,
-                Mutation.StartRefreshAwsNativeAccountsJobFieldSpec,
+                "MutationAddAwsIamUserBasedCloudAccount",
+                "($input: AddAwsIamUserBasedCloudAccountInput!)",
+                "AddAwsIamUserBasedCloudAccountReply",
+                Mutation.AddAwsIamUserBasedCloudAccount_ObjectFieldSpec,
+                Mutation.AddAwsIamUserBasedCloudAccountFieldSpec,
                 @"# REQUIRED
-$inputs.Var.input = @{
+$query.Var.input = @{
 	# REQUIRED
-	awsAccountRubrikIds = @(
-		<System.String>
-	)
-	# REQUIRED
-	awsNativeProtectionFeatures = @(
-		<AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
-	)
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // startCreateAwsNativeEbsVolumeSnapshotsJob(input: StartCreateAwsNativeEbsVolumeSnapshotsJobInput!): BatchAsyncJobStatus!
-        internal void InitMutationStartCreateAwsNativeEbsVolumeSnapshotsJob()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "StartCreateAwsNativeEbsVolumeSnapshotsJobInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationStartCreateAwsNativeEbsVolumeSnapshotsJob",
-                "($input: StartCreateAwsNativeEbsVolumeSnapshotsJobInput!)",
-                "BatchAsyncJobStatus",
-                Mutation.StartCreateAwsNativeEbsVolumeSnapshotsJob_ObjectFieldSpec,
-                Mutation.StartCreateAwsNativeEbsVolumeSnapshotsJobFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	ebsVolumeIds = @(
-		<System.String>
+	features = @(
+		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 	)
 	# OPTIONAL
-	retentionSlaId = <System.String>
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // startAwsNativeAccountDisableJob(input: StartAwsNativeAccountDisableJobInput!): AsyncJobStatus!
-        internal void InitMutationStartAwsNativeAccountDisableJob()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "StartAwsNativeAccountDisableJobInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationStartAwsNativeAccountDisableJob",
-                "($input: StartAwsNativeAccountDisableJobInput!)",
-                "AsyncJobStatus",
-                Mutation.StartAwsNativeAccountDisableJob_ObjectFieldSpec,
-                Mutation.StartAwsNativeAccountDisableJobFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	awsAccountRubrikId = <System.String>
-	# REQUIRED
-	shouldDeleteNativeSnapshots = <System.Boolean>
-	# REQUIRED
-	awsNativeProtectionFeature = <AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // startExportAwsNativeEbsVolumeSnapshotJob(input: StartExportAwsNativeEbsVolumeSnapshotJobInput!): AsyncJobStatus!
-        internal void InitMutationStartExportAwsNativeEbsVolumeSnapshotJob()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "StartExportAwsNativeEbsVolumeSnapshotJobInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationStartExportAwsNativeEbsVolumeSnapshotJob",
-                "($input: StartExportAwsNativeEbsVolumeSnapshotJobInput!)",
-                "AsyncJobStatus",
-                Mutation.StartExportAwsNativeEbsVolumeSnapshotJob_ObjectFieldSpec,
-                Mutation.StartExportAwsNativeEbsVolumeSnapshotJobFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	snapshotId = <System.String>
-	# REQUIRED
-	destinationAwsAccountRubrikId = <System.String>
-	# REQUIRED
-	destinationRegionNativeId = <AwsNativeRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
-	# REQUIRED
-	volumeName = <System.String>
-	# REQUIRED
-	volumeSize = <System.Int32>
-	# REQUIRED
-	volumeType = <AwsNativeEbsVolumeType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeEbsVolumeType]) for enum values.
-	# REQUIRED
-	availabilityZone = <System.String>
-	# REQUIRED
-	iops = <System.Int32>
-	# REQUIRED
-	shouldCopyTags = <System.Boolean>
-	# REQUIRED
-	shouldReplaceAttached = <System.Boolean>
+	accessKey = $someString
 	# OPTIONAL
-	kmsKeyId = <System.String>
+	secretKey = $someString
+	# REQUIRED
+	nativeId = $someString
+	# REQUIRED
+	cloudAccountName = $someString
 	# OPTIONAL
-	snapshotType = <SnapshotType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotType]) for enum values.
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // excludeAwsNativeEbsVolumesFromSnapshot(input: ExcludeAwsNativeEbsVolumesFromSnapshotInput!): Void
-        internal void InitMutationExcludeAwsNativeEbsVolumesFromSnapshot()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "ExcludeAwsNativeEbsVolumesFromSnapshotInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationExcludeAwsNativeEbsVolumesFromSnapshot",
-                "($input: ExcludeAwsNativeEbsVolumesFromSnapshotInput!)",
-                "System.String",
-                Mutation.ExcludeAwsNativeEbsVolumesFromSnapshot_ObjectFieldSpec,
-                Mutation.ExcludeAwsNativeEbsVolumesFromSnapshotFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	awsNativeEc2InstanceId = <System.String>
-	# REQUIRED
-	volumeIdExclusions = @(
+	cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+	# OPTIONAL
+	awsRegions = @(
+		$someAwsCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountRegion]) for enum values.
+	)
+	# OPTIONAL
+	roleArn = $someString
+	# OPTIONAL
+	externalArtifactMap = @(
 		@{
-			# REQUIRED
-			volumeId = <System.String>
-			# REQUIRED
-			isExcluded = <System.Boolean>
+			# OPTIONAL
+			externalArtifactKey = $someAwsCloudExternalArtifact # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudExternalArtifact]) for enum values.
+			# OPTIONAL
+			externalArtifactValue = $someString
 		}
 	)
 }"
@@ -1624,28 +3488,28 @@ $inputs.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
-        // startAwsNativeRdsInstanceSnapshotsJob(input: StartAwsNativeRdsInstanceSnapshotsJobInput!): BatchAsyncJobStatus!
-        internal void InitMutationStartAwsNativeRdsInstanceSnapshotsJob()
+        // bulkDeleteAwsCloudAccountWithoutCft(input: BulkDeleteAwsCloudAccountWithoutCftInput!): BulkDeleteAwsCloudAccountWithoutCftReply!
+        internal void InitMutationBulkDeleteAwsCloudAccountWithoutCft()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "StartAwsNativeRdsInstanceSnapshotsJobInput!"),
+                Tuple.Create("input", "BulkDeleteAwsCloudAccountWithoutCftInput!"),
             };
             Initialize(
                 argDefs,
                 "mutation",
-                "MutationStartAwsNativeRdsInstanceSnapshotsJob",
-                "($input: StartAwsNativeRdsInstanceSnapshotsJobInput!)",
-                "BatchAsyncJobStatus",
-                Mutation.StartAwsNativeRdsInstanceSnapshotsJob_ObjectFieldSpec,
-                Mutation.StartAwsNativeRdsInstanceSnapshotsJobFieldSpec,
+                "MutationBulkDeleteAwsCloudAccountWithoutCft",
+                "($input: BulkDeleteAwsCloudAccountWithoutCftInput!)",
+                "BulkDeleteAwsCloudAccountWithoutCftReply",
+                Mutation.BulkDeleteAwsCloudAccountWithoutCft_ObjectFieldSpec,
+                Mutation.BulkDeleteAwsCloudAccountWithoutCftFieldSpec,
                 @"# REQUIRED
-$inputs.Var.input = @{
+$query.Var.input = @{
 	# REQUIRED
-	rdsInstanceIds = @(
-		<System.String>
-	)
+	awsNativeId = $someString
 	# OPTIONAL
-	retentionSlaId = <System.String>
+	features = @(
+		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	)
 }"
             );
         }
@@ -1666,46 +3530,15 @@ $inputs.Var.input = @{
                 Mutation.CreateAwsAccount_ObjectFieldSpec,
                 Mutation.CreateAwsAccountFieldSpec,
                 @"# REQUIRED
-$inputs.Var.input = @{
+$query.Var.input = @{
 	# REQUIRED
-	name = <System.String>
+	name = $someString
 	# OPTIONAL
-	description = <System.String>
+	description = $someString
 	# REQUIRED
-	accessKey = <System.String>
+	accessKey = $someString
 	# REQUIRED
-	secretKey = <System.String>
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // updateAwsAccount(input: UpdateAwsAccountInput!): CloudAccount!
-        internal void InitMutationUpdateAwsAccount()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "UpdateAwsAccountInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationUpdateAwsAccount",
-                "($input: UpdateAwsAccountInput!)",
-                "CloudAccount",
-                Mutation.UpdateAwsAccount_ObjectFieldSpec,
-                Mutation.UpdateAwsAccountFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	id = <System.String>
-	# REQUIRED
-	name = <System.String>
-	# OPTIONAL
-	description = <System.String>
-	# REQUIRED
-	accessKey = <System.String>
-	# REQUIRED
-	secretKey = <System.String>
+	secretKey = $someString
 }"
             );
         }
@@ -1726,42 +3559,42 @@ $inputs.Var.input = @{
                 Mutation.CreateAutomaticAwsTargetMapping_ObjectFieldSpec,
                 Mutation.CreateAutomaticAwsTargetMappingFieldSpec,
                 @"# REQUIRED
-$inputs.Var.input = @{
+$query.Var.input = @{
 	# REQUIRED
-	name = <System.String>
+	name = $someString
 	# REQUIRED
-	cloudAccountId = <System.String>
+	cloudAccountId = $someString
 	# REQUIRED
-	bucketPrefix = <System.String>
+	bucketPrefix = $someString
 	# REQUIRED
-	storageClass = <AwsStorageClass> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
+	storageClass = $someAwsStorageClass # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
 	# REQUIRED
-	region = <AwsRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
+	region = $someAwsRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
 	# OPTIONAL
-	kmsMasterKeyId = <System.String>
+	kmsMasterKeyId = $someString
 	# OPTIONAL
-	rsaKey = <System.String>
+	rsaKey = $someString
 	# REQUIRED
-	isConsolidationEnabled = <System.Boolean>
+	isConsolidationEnabled = $someBoolean
 	# OPTIONAL
 	proxySettings = @{
 		# OPTIONAL
-		proxyServer = <System.String>
+		proxyServer = $someString
 		# OPTIONAL
-		portNumber = <System.Int32>
+		portNumber = $someInt
 		# OPTIONAL
-		username = <System.String>
+		username = $someString
 		# OPTIONAL
-		password = <System.String>
+		password = $someString
 		# OPTIONAL
-		protocol = <System.String>
+		protocol = $someString
 	}
 	# OPTIONAL
 	clusterUuidList = @(
-		<System.String>
+		$someString
 	)
 	# OPTIONAL
-	awsComputeSettingsId = <System.String>
+	awsComputeSettingsId = $someString
 }"
             );
         }
@@ -1782,30 +3615,30 @@ $inputs.Var.input = @{
                 Mutation.CreateCloudNativeAwsStorageSetting_ObjectFieldSpec,
                 Mutation.CreateCloudNativeAwsStorageSettingFieldSpec,
                 @"# REQUIRED
-$inputs.Var.input = @{
+$query.Var.input = @{
 	# REQUIRED
-	name = <System.String>
+	name = $someString
 	# REQUIRED
-	cloudAccountId = <System.String>
+	cloudAccountId = $someString
 	# REQUIRED
-	bucketPrefix = <System.String>
+	bucketPrefix = $someString
 	# REQUIRED
-	storageClass = <AwsStorageClass> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
+	storageClass = $someAwsStorageClass # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
 	# OPTIONAL
-	region = <AwsRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
+	region = $someAwsRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
 	# OPTIONAL
-	kmsMasterKeyId = <System.String>
+	kmsMasterKeyId = $someString
 	# REQUIRED
-	cloudNativeLocTemplateType = <CloudNativeLocTemplateType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeLocTemplateType]) for enum values.
+	cloudNativeLocTemplateType = $someCloudNativeLocTemplateType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeLocTemplateType]) for enum values.
 	# OPTIONAL
 	bucketTags = @{
 		# REQUIRED
 		tagList = @(
 			@{
 				# REQUIRED
-				key = <System.String>
+				key = $someString
 				# REQUIRED
-				value = <System.String>
+				value = $someString
 			}
 		)
 	}
@@ -1814,379 +3647,106 @@ $inputs.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
-        // updateAutomaticAwsTargetMapping(input: UpdateAutomaticAwsTargetMappingInput!): TargetMapping!
-        internal void InitMutationUpdateAutomaticAwsTargetMapping()
+        // createAwsCluster(input: CreateAwsClusterInput!): CcProvisionJobReply!
+        internal void InitMutationCreateAwsCluster()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "UpdateAutomaticAwsTargetMappingInput!"),
+                Tuple.Create("input", "CreateAwsClusterInput!"),
             };
             Initialize(
                 argDefs,
                 "mutation",
-                "MutationUpdateAutomaticAwsTargetMapping",
-                "($input: UpdateAutomaticAwsTargetMappingInput!)",
-                "TargetMapping",
-                Mutation.UpdateAutomaticAwsTargetMapping_ObjectFieldSpec,
-                Mutation.UpdateAutomaticAwsTargetMappingFieldSpec,
+                "MutationCreateAwsCluster",
+                "($input: CreateAwsClusterInput!)",
+                "CcProvisionJobReply",
+                Mutation.CreateAwsCluster_ObjectFieldSpec,
+                Mutation.CreateAwsClusterFieldSpec,
                 @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	id = <System.String>
+$query.Var.input = @{
 	# OPTIONAL
-	name = <System.String>
+	cloudAccountId = $someString
 	# OPTIONAL
-	cloudAccountId = <System.String>
+	isEsType = $someBoolean
 	# OPTIONAL
-	storageClass = <AwsStorageClass> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
+	keepClusterOnFailure = $someBoolean
 	# OPTIONAL
-	isConsolidationEnabled = <System.Boolean>
+	region = $someString
 	# OPTIONAL
-	proxySettings = @{
+	disableApiTermination = $someBoolean
+	# OPTIONAL
+	clusterConfig = @{
 		# OPTIONAL
-		proxyServer = <System.String>
+		userEmail = $someString
 		# OPTIONAL
-		portNumber = <System.Int32>
+		adminPassword = $someString
 		# OPTIONAL
-		username = <System.String>
+		clusterName = $someString
 		# OPTIONAL
-		password = <System.String>
+		numNodes = $someInt
 		# OPTIONAL
-		protocol = <System.String>
-	}
-	# OPTIONAL
-	clusterUuidList = @(
-		<System.String>
-	)
-	# OPTIONAL
-	awsComputeSettingsId = <System.String>
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // updateCloudNativeAwsStorageSetting(input: UpdateCloudNativeAwsStorageSettingInput!): UpdateCloudNativeAwsStorageSettingReply!
-        internal void InitMutationUpdateCloudNativeAwsStorageSetting()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "UpdateCloudNativeAwsStorageSettingInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationUpdateCloudNativeAwsStorageSetting",
-                "($input: UpdateCloudNativeAwsStorageSettingInput!)",
-                "UpdateCloudNativeAwsStorageSettingReply",
-                Mutation.UpdateCloudNativeAwsStorageSetting_ObjectFieldSpec,
-                Mutation.UpdateCloudNativeAwsStorageSettingFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	id = <System.String>
-	# OPTIONAL
-	name = <System.String>
-	# OPTIONAL
-	storageClass = <AwsStorageClass> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
-	# OPTIONAL
-	kmsMasterKeyId = <System.String>
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // createAwsTarget(input: CreateAwsTargetInput!): Target!
-        internal void InitMutationCreateAwsTarget()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "CreateAwsTargetInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationCreateAwsTarget",
-                "($input: CreateAwsTargetInput!)",
-                "Target",
-                Mutation.CreateAwsTarget_ObjectFieldSpec,
-                Mutation.CreateAwsTargetFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	name = <System.String>
-	# REQUIRED
-	cloudAccountId = <System.String>
-	# REQUIRED
-	bucketName = <System.String>
-	# REQUIRED
-	storageClass = <AwsStorageClass> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
-	# REQUIRED
-	region = <AwsRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
-	# OPTIONAL
-	kmsMasterKeyId = <System.String>
-	# OPTIONAL
-	rsaKey = <System.String>
-	# OPTIONAL
-	encryptionPassword = <System.String>
-	# REQUIRED
-	clusterUuid = <System.String>
-	# REQUIRED
-	isConsolidationEnabled = <System.Boolean>
-	# OPTIONAL
-	proxySettings = @{
+		dnsSearchDomains = @(
+			$someString
+		)
 		# OPTIONAL
-		proxyServer = <System.String>
+		dnsNameServers = @(
+			$someString
+		)
 		# OPTIONAL
-		portNumber = <System.Int32>
+		ntpServers = @(
+			$someString
+		)
 		# OPTIONAL
-		username = <System.String>
-		# OPTIONAL
-		password = <System.String>
-		# OPTIONAL
-		protocol = <System.String>
-	}
-	# OPTIONAL
-	awsComputeSettingsId = <System.String>
-	# OPTIONAL
-	cloudComputeSettings = @{
-		# OPTIONAL
-		subnetId = <System.String>
-		# OPTIONAL
-		vpcId = <System.String>
-		# OPTIONAL
-		securityGroupId = <System.String>
-		# OPTIONAL
-		computeProxySettings = @{
+		azureEsConfig = @{
 			# OPTIONAL
-			proxyServer = <System.String>
+			storageAccount = $someString
 			# OPTIONAL
-			portNumber = <System.Int32>
+			resourceGroup = $someString
 			# OPTIONAL
-			username = <System.String>
+			storageSecret = $someString
 			# OPTIONAL
-			password = <System.String>
+			containerName = $someString
 			# OPTIONAL
-			protocol = <System.String>
+			shouldCreateContainer = $someBoolean
+			# OPTIONAL
+			enableImmutability = $someBoolean
+		}
+		# OPTIONAL
+		awsEsConfig = @{
+			# OPTIONAL
+			bucketName = $someString
+			# OPTIONAL
+			shouldCreateBucket = $someBoolean
+			# OPTIONAL
+			enableObjectLock = $someBoolean
+			# OPTIONAL
+			enableImmutability = $someBoolean
 		}
 	}
 	# OPTIONAL
-	computeProxySettings = @{
+	vmConfig = @{
 		# OPTIONAL
-		proxyServer = <System.String>
+		cdmVersion = $someString
 		# OPTIONAL
-		portNumber = <System.Int32>
+		nodeSizeGb = $someInt
 		# OPTIONAL
-		username = <System.String>
+		subnet = $someString
 		# OPTIONAL
-		password = <System.String>
+		tags = $someString
 		# OPTIONAL
-		protocol = <System.String>
+		imageId = $someString
+		# OPTIONAL
+		instanceProfileName = $someString
+		# OPTIONAL
+		cdmProduct = $someString
+		# OPTIONAL
+		vmType = $someVmType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
+		# OPTIONAL
+		securityGroups = @(
+			$someString
+		)
+		# OPTIONAL
+		instanceType = $someAwsInstanceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsInstanceType]) for enum values.
 	}
-	# OPTIONAL
-	awsRetrievalTier = <AwsRetrievalTier> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
-	# OPTIONAL
-	immutabilitySettings = @{
-		# OPTIONAL
-		lockDurationDays = <System.Int32>
-	}
-	# OPTIONAL
-	s3Endpoint = <System.String>
-	# OPTIONAL
-	kmsEndpoint = <System.String>
-	# REQUIRED
-	bypassProxy = <System.Boolean>
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // updateAwsTarget(input: UpdateAwsTargetInput!): Target!
-        internal void InitMutationUpdateAwsTarget()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "UpdateAwsTargetInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationUpdateAwsTarget",
-                "($input: UpdateAwsTargetInput!)",
-                "Target",
-                Mutation.UpdateAwsTarget_ObjectFieldSpec,
-                Mutation.UpdateAwsTargetFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	id = <System.String>
-	# OPTIONAL
-	name = <System.String>
-	# OPTIONAL
-	cloudAccountId = <System.String>
-	# OPTIONAL
-	storageClass = <AwsStorageClass> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
-	# OPTIONAL
-	isConsolidationEnabled = <System.Boolean>
-	# OPTIONAL
-	proxySettings = @{
-		# OPTIONAL
-		proxyServer = <System.String>
-		# OPTIONAL
-		portNumber = <System.Int32>
-		# OPTIONAL
-		username = <System.String>
-		# OPTIONAL
-		password = <System.String>
-		# OPTIONAL
-		protocol = <System.String>
-	}
-	# OPTIONAL
-	awsComputeSettingsId = <System.String>
-	# OPTIONAL
-	cloudComputeSettings = @{
-		# OPTIONAL
-		subnetId = <System.String>
-		# OPTIONAL
-		vpcId = <System.String>
-		# OPTIONAL
-		securityGroupId = <System.String>
-		# OPTIONAL
-		computeProxySettings = @{
-			# OPTIONAL
-			proxyServer = <System.String>
-			# OPTIONAL
-			portNumber = <System.Int32>
-			# OPTIONAL
-			username = <System.String>
-			# OPTIONAL
-			password = <System.String>
-			# OPTIONAL
-			protocol = <System.String>
-		}
-	}
-	# OPTIONAL
-	computeProxySettings = @{
-		# OPTIONAL
-		proxyServer = <System.String>
-		# OPTIONAL
-		portNumber = <System.Int32>
-		# OPTIONAL
-		username = <System.String>
-		# OPTIONAL
-		password = <System.String>
-		# OPTIONAL
-		protocol = <System.String>
-	}
-	# OPTIONAL
-	awsRetrievalTier = <AwsRetrievalTier> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
-	# OPTIONAL
-	immutabilitySettings = @{
-		# OPTIONAL
-		lockDurationDays = <System.Int32>
-	}
-	# OPTIONAL
-	s3Endpoint = <System.String>
-	# OPTIONAL
-	kmsEndpoint = <System.String>
-	# OPTIONAL
-	bypassProxy = <System.Boolean>
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // createAwsReaderTarget(input: CreateAwsReaderTargetInput!): Target!
-        internal void InitMutationCreateAwsReaderTarget()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "CreateAwsReaderTargetInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationCreateAwsReaderTarget",
-                "($input: CreateAwsReaderTargetInput!)",
-                "Target",
-                Mutation.CreateAwsReaderTarget_ObjectFieldSpec,
-                Mutation.CreateAwsReaderTargetFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	name = <System.String>
-	# REQUIRED
-	cloudAccountId = <System.String>
-	# REQUIRED
-	bucketName = <System.String>
-	# REQUIRED
-	storageClass = <AwsStorageClass> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
-	# REQUIRED
-	region = <AwsRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
-	# OPTIONAL
-	kmsMasterKeyId = <System.String>
-	# OPTIONAL
-	rsaKey = <System.String>
-	# OPTIONAL
-	encryptionPassword = <System.String>
-	# REQUIRED
-	clusterUuid = <System.String>
-	# REQUIRED
-	isConsolidationEnabled = <System.Boolean>
-	# OPTIONAL
-	proxySettings = @{
-		# OPTIONAL
-		proxyServer = <System.String>
-		# OPTIONAL
-		portNumber = <System.Int32>
-		# OPTIONAL
-		username = <System.String>
-		# OPTIONAL
-		password = <System.String>
-		# OPTIONAL
-		protocol = <System.String>
-	}
-	# OPTIONAL
-	awsComputeSettingsId = <System.String>
-	# OPTIONAL
-	cloudComputeSettings = @{
-		# OPTIONAL
-		subnetId = <System.String>
-		# OPTIONAL
-		vpcId = <System.String>
-		# OPTIONAL
-		securityGroupId = <System.String>
-		# OPTIONAL
-		computeProxySettings = @{
-			# OPTIONAL
-			proxyServer = <System.String>
-			# OPTIONAL
-			portNumber = <System.Int32>
-			# OPTIONAL
-			username = <System.String>
-			# OPTIONAL
-			password = <System.String>
-			# OPTIONAL
-			protocol = <System.String>
-		}
-	}
-	# OPTIONAL
-	awsRetrievalTier = <AwsRetrievalTier> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
-	# REQUIRED
-	readerRetrievalMethod = <ReaderRetrievalMethod> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReaderRetrievalMethod]) for enum values.
-	# OPTIONAL
-	s3Endpoint = <System.String>
-	# OPTIONAL
-	kmsEndpoint = <System.String>
-	# OPTIONAL
-	computeProxySettings = @{
-		# OPTIONAL
-		proxyServer = <System.String>
-		# OPTIONAL
-		portNumber = <System.Int32>
-		# OPTIONAL
-		username = <System.String>
-		# OPTIONAL
-		password = <System.String>
-		# OPTIONAL
-		protocol = <System.String>
-	}
-	# REQUIRED
-	bypassProxy = <System.Boolean>
 }"
             );
         }
@@ -2207,37 +3767,37 @@ $inputs.Var.input = @{
                 Mutation.CreateAwsComputeSetting_ObjectFieldSpec,
                 Mutation.CreateAwsComputeSettingFieldSpec,
                 @"# REQUIRED
-$inputs.Var.input = @{
+$query.Var.input = @{
 	# OPTIONAL
-	name = <System.String>
+	name = $someString
 	# OPTIONAL
-	subnetId = <System.String>
+	subnetId = $someString
 	# OPTIONAL
-	vpcId = <System.String>
+	vpcId = $someString
 	# OPTIONAL
-	securityGroupId = <System.String>
+	securityGroupId = $someString
 	# OPTIONAL
-	cloudAccountId = <System.String>
+	cloudAccountId = $someString
 	# OPTIONAL
-	region = <AwsRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
+	region = $someAwsRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
 	# OPTIONAL
-	isSecurityGroupPolarisManaged = <System.Boolean>
+	isSecurityGroupPolarisManaged = $someBoolean
 	# OPTIONAL
 	clusterInterfaceCidrs = @(
 		@{
 			# OPTIONAL
-			clusterName = <System.String>
+			clusterName = $someString
 			# OPTIONAL
-			clusterId = <System.String>
+			clusterId = $someString
 			# OPTIONAL
 			interfaceCidr = @(
 				@{
 					# OPTIONAL
-					interfaceType = <InterfaceType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InterfaceType]) for enum values.
+					interfaceType = $someInterfaceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InterfaceType]) for enum values.
 					# OPTIONAL
-					cidr = <System.String>
+					cidr = $someString
 					# OPTIONAL
-					selected = <System.Boolean>
+					selected = $someBoolean
 				}
 			)
 		}
@@ -2247,32 +3807,292 @@ $inputs.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
-        // updateAwsComputeSetting(input: UpdateAwsComputeSettingInput!): AwsComputeSettings!
-        internal void InitMutationUpdateAwsComputeSetting()
+        // createAwsExocomputeConfigs(input: CreateAwsExocomputeConfigsInput!): CreateAwsExocomputeConfigsReply!
+        internal void InitMutationCreateAwsExocomputeConfigs()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "UpdateAwsComputeSettingInput!"),
+                Tuple.Create("input", "CreateAwsExocomputeConfigsInput!"),
             };
             Initialize(
                 argDefs,
                 "mutation",
-                "MutationUpdateAwsComputeSetting",
-                "($input: UpdateAwsComputeSettingInput!)",
-                "AwsComputeSettings",
-                Mutation.UpdateAwsComputeSetting_ObjectFieldSpec,
-                Mutation.UpdateAwsComputeSettingFieldSpec,
+                "MutationCreateAwsExocomputeConfigs",
+                "($input: CreateAwsExocomputeConfigsInput!)",
+                "CreateAwsExocomputeConfigsReply",
+                Mutation.CreateAwsExocomputeConfigs_ObjectFieldSpec,
+                Mutation.CreateAwsExocomputeConfigsFieldSpec,
                 @"# REQUIRED
-$inputs.Var.input = @{
+$query.Var.input = @{
+	# REQUIRED
+	cloudAccountId = $someString
+	# REQUIRED
+	configs = @(
+		@{
+			# REQUIRED
+			region = $someAwsCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountRegion]) for enum values.
+			# OPTIONAL
+			clusterSecurityGroupId = $someString
+			# REQUIRED
+			vpcId = $someString
+			# OPTIONAL
+			nodeSecurityGroupId = $someString
+			# REQUIRED
+			subnets = @(
+				@{
+					# REQUIRED
+					subnetId = $someString
+					# REQUIRED
+					availabilityZone = $someString
+				}
+			)
+			# REQUIRED
+			isRscManaged = $someBoolean
+		}
+	)
 	# OPTIONAL
-	id = <System.String>
+	triggerHealthCheck = $someBoolean
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // createAwsReaderTarget(input: CreateAwsReaderTargetInput!): Target!
+        internal void InitMutationCreateAwsReaderTarget()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CreateAwsReaderTargetInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationCreateAwsReaderTarget",
+                "($input: CreateAwsReaderTargetInput!)",
+                "Target",
+                Mutation.CreateAwsReaderTarget_ObjectFieldSpec,
+                Mutation.CreateAwsReaderTargetFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	name = $someString
+	# REQUIRED
+	cloudAccountId = $someString
+	# REQUIRED
+	bucketName = $someString
+	# REQUIRED
+	storageClass = $someAwsStorageClass # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
+	# REQUIRED
+	region = $someAwsRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
 	# OPTIONAL
-	name = <System.String>
+	kmsMasterKeyId = $someString
 	# OPTIONAL
-	subnetId = <System.String>
+	rsaKey = $someString
 	# OPTIONAL
-	vpcId = <System.String>
+	encryptionPassword = $someString
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	isConsolidationEnabled = $someBoolean
 	# OPTIONAL
-	securityGroupId = <System.String>
+	proxySettings = @{
+		# OPTIONAL
+		proxyServer = $someString
+		# OPTIONAL
+		portNumber = $someInt
+		# OPTIONAL
+		username = $someString
+		# OPTIONAL
+		password = $someString
+		# OPTIONAL
+		protocol = $someString
+	}
+	# OPTIONAL
+	awsComputeSettingsId = $someString
+	# OPTIONAL
+	cloudComputeSettings = @{
+		# OPTIONAL
+		subnetId = $someString
+		# OPTIONAL
+		vpcId = $someString
+		# OPTIONAL
+		securityGroupId = $someString
+		# OPTIONAL
+		computeProxySettings = @{
+			# OPTIONAL
+			proxyServer = $someString
+			# OPTIONAL
+			portNumber = $someInt
+			# OPTIONAL
+			username = $someString
+			# OPTIONAL
+			password = $someString
+			# OPTIONAL
+			protocol = $someString
+		}
+	}
+	# OPTIONAL
+	awsRetrievalTier = $someAwsRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
+	# REQUIRED
+	readerRetrievalMethod = $someReaderRetrievalMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReaderRetrievalMethod]) for enum values.
+	# OPTIONAL
+	s3Endpoint = $someString
+	# OPTIONAL
+	kmsEndpoint = $someString
+	# OPTIONAL
+	computeProxySettings = @{
+		# OPTIONAL
+		proxyServer = $someString
+		# OPTIONAL
+		portNumber = $someInt
+		# OPTIONAL
+		username = $someString
+		# OPTIONAL
+		password = $someString
+		# OPTIONAL
+		protocol = $someString
+	}
+	# REQUIRED
+	bypassProxy = $someBoolean
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // createAwsTarget(input: CreateAwsTargetInput!): Target!
+        internal void InitMutationCreateAwsTarget()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CreateAwsTargetInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationCreateAwsTarget",
+                "($input: CreateAwsTargetInput!)",
+                "Target",
+                Mutation.CreateAwsTarget_ObjectFieldSpec,
+                Mutation.CreateAwsTargetFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	name = $someString
+	# REQUIRED
+	cloudAccountId = $someString
+	# REQUIRED
+	bucketName = $someString
+	# REQUIRED
+	storageClass = $someAwsStorageClass # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
+	# REQUIRED
+	region = $someAwsRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
+	# OPTIONAL
+	kmsMasterKeyId = $someString
+	# OPTIONAL
+	rsaKey = $someString
+	# OPTIONAL
+	encryptionPassword = $someString
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	isConsolidationEnabled = $someBoolean
+	# OPTIONAL
+	proxySettings = @{
+		# OPTIONAL
+		proxyServer = $someString
+		# OPTIONAL
+		portNumber = $someInt
+		# OPTIONAL
+		username = $someString
+		# OPTIONAL
+		password = $someString
+		# OPTIONAL
+		protocol = $someString
+	}
+	# OPTIONAL
+	awsComputeSettingsId = $someString
+	# OPTIONAL
+	cloudComputeSettings = @{
+		# OPTIONAL
+		subnetId = $someString
+		# OPTIONAL
+		vpcId = $someString
+		# OPTIONAL
+		securityGroupId = $someString
+		# OPTIONAL
+		computeProxySettings = @{
+			# OPTIONAL
+			proxyServer = $someString
+			# OPTIONAL
+			portNumber = $someInt
+			# OPTIONAL
+			username = $someString
+			# OPTIONAL
+			password = $someString
+			# OPTIONAL
+			protocol = $someString
+		}
+	}
+	# OPTIONAL
+	computeProxySettings = @{
+		# OPTIONAL
+		proxyServer = $someString
+		# OPTIONAL
+		portNumber = $someInt
+		# OPTIONAL
+		username = $someString
+		# OPTIONAL
+		password = $someString
+		# OPTIONAL
+		protocol = $someString
+	}
+	# OPTIONAL
+	awsRetrievalTier = $someAwsRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
+	# OPTIONAL
+	immutabilitySettings = @{
+		# OPTIONAL
+		lockDurationDays = $someInt
+	}
+	# OPTIONAL
+	s3Endpoint = $someString
+	# OPTIONAL
+	kmsEndpoint = $someString
+	# REQUIRED
+	bypassProxy = $someBoolean
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // deleteAwsCluster(input: DeleteAwsClusterInput!): CcProvisionJobReply!
+        internal void InitMutationDeleteAwsCluster()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DeleteAwsClusterInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDeleteAwsCluster",
+                "($input: DeleteAwsClusterInput!)",
+                "CcProvisionJobReply",
+                Mutation.DeleteAwsCluster_ObjectFieldSpec,
+                Mutation.DeleteAwsClusterFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	cloudAccountId = $someString
+	# OPTIONAL
+	clusterName = $someString
+	# OPTIONAL
+	numNodes = $someInt
+	# OPTIONAL
+	isEsType = $someBoolean
+	# OPTIONAL
+	bucketName = $someString
+	# OPTIONAL
+	isNewContainer = $someBoolean
+	# OPTIONAL
+	clusterUuid = $someString
+	# OPTIONAL
+	region = $someString
 }"
             );
         }
@@ -2293,85 +4113,91 @@ $inputs.Var.input = @{
                 Mutation.DeleteAwsComputeSetting_ObjectFieldSpec,
                 Mutation.DeleteAwsComputeSettingFieldSpec,
                 @"# REQUIRED
-$inputs.Var.input = @{
+$query.Var.input = @{
 	# OPTIONAL
-	id = <System.String>
+	id = $someString
 }"
             );
         }
 
         // Create new GraphQL Mutation:
-        // validateAndCreateAwsCloudAccount(input: ValidateAndCreateAwsCloudAccountInput!): ValidateAndCreateAwsCloudAccountReply!
-        internal void InitMutationValidateAndCreateAwsCloudAccount()
+        // deleteAwsExocomputeConfigs(input: DeleteAwsExocomputeConfigsInput!): DeleteAwsExocomputeConfigsReply!
+        internal void InitMutationDeleteAwsExocomputeConfigs()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "ValidateAndCreateAwsCloudAccountInput!"),
+                Tuple.Create("input", "DeleteAwsExocomputeConfigsInput!"),
             };
             Initialize(
                 argDefs,
                 "mutation",
-                "MutationValidateAndCreateAwsCloudAccount",
-                "($input: ValidateAndCreateAwsCloudAccountInput!)",
-                "ValidateAndCreateAwsCloudAccountReply",
-                Mutation.ValidateAndCreateAwsCloudAccount_ObjectFieldSpec,
-                Mutation.ValidateAndCreateAwsCloudAccountFieldSpec,
+                "MutationDeleteAwsExocomputeConfigs",
+                "($input: DeleteAwsExocomputeConfigsInput!)",
+                "DeleteAwsExocomputeConfigsReply",
+                Mutation.DeleteAwsExocomputeConfigs_ObjectFieldSpec,
+                Mutation.DeleteAwsExocomputeConfigsFieldSpec,
                 @"# REQUIRED
-$inputs.Var.input = @{
+$query.Var.input = @{
 	# REQUIRED
-	action = <CloudAccountAction> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountAction]) for enum values.
-	# REQUIRED
-	features = @(
-		<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	configIdsToBeDeleted = @(
+		$someString
 	)
-	# OPTIONAL
-	awsAdminAccount = @{
-		# OPTIONAL
-		id = <System.String>
-		# OPTIONAL
-		nativeId = <System.String>
-		# OPTIONAL
-		accountName = <System.String>
-		# OPTIONAL
-		seamlessFlowEnabled = <System.Boolean>
-		# OPTIONAL
-		cloudType = <AwsCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
-	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // excludeAwsNativeEbsVolumesFromSnapshot(input: ExcludeAwsNativeEbsVolumesFromSnapshotInput!): Void
+        internal void InitMutationExcludeAwsNativeEbsVolumesFromSnapshot()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "ExcludeAwsNativeEbsVolumesFromSnapshotInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationExcludeAwsNativeEbsVolumesFromSnapshot",
+                "($input: ExcludeAwsNativeEbsVolumesFromSnapshotInput!)",
+                "System.String",
+                Mutation.ExcludeAwsNativeEbsVolumesFromSnapshot_ObjectFieldSpec,
+                Mutation.ExcludeAwsNativeEbsVolumesFromSnapshotFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
 	# REQUIRED
-	awsChildAccounts = @(
+	awsNativeEc2InstanceId = $someString
+	# REQUIRED
+	volumeIdExclusions = @(
 		@{
-			# OPTIONAL
-			id = <System.String>
-			# OPTIONAL
-			nativeId = <System.String>
-			# OPTIONAL
-			accountName = <System.String>
-			# OPTIONAL
-			seamlessFlowEnabled = <System.Boolean>
-			# OPTIONAL
-			cloudType = <AwsCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+			# REQUIRED
+			volumeId = $someString
+			# REQUIRED
+			isExcluded = $someBoolean
 		}
 	)
-	# OPTIONAL
-	awsRoleCustomization = @{
-		# OPTIONAL
-		crossAccountRoleName = <System.String>
-		# OPTIONAL
-		crossAccountRolePath = <System.String>
-		# OPTIONAL
-		masterRoleName = <System.String>
-		# OPTIONAL
-		masterRolePath = <System.String>
-		# OPTIONAL
-		workerRoleName = <System.String>
-		# OPTIONAL
-		workerRolePath = <System.String>
-		# OPTIONAL
-		instanceProfileName = <System.String>
-		# OPTIONAL
-		instanceProfilePath = <System.String>
-		# OPTIONAL
-		ec2RecoveryRolePath = <System.String>
-	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // finalizeAwsCloudAccountDeletion(input: FinalizeAwsCloudAccountDeletionInput!): FinalizeAwsCloudAccountDeletionReply!
+        internal void InitMutationFinalizeAwsCloudAccountDeletion()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "FinalizeAwsCloudAccountDeletionInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationFinalizeAwsCloudAccountDeletion",
+                "($input: FinalizeAwsCloudAccountDeletionInput!)",
+                "FinalizeAwsCloudAccountDeletionReply",
+                Mutation.FinalizeAwsCloudAccountDeletion_ObjectFieldSpec,
+                Mutation.FinalizeAwsCloudAccountDeletionFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	cloudAccountId = $someString
+	# REQUIRED
+	feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 }"
             );
         }
@@ -2392,58 +4218,158 @@ $inputs.Var.input = @{
                 Mutation.FinalizeAwsCloudAccountProtection_ObjectFieldSpec,
                 Mutation.FinalizeAwsCloudAccountProtectionFieldSpec,
                 @"# REQUIRED
-$inputs.Var.input = @{
+$query.Var.input = @{
 	# REQUIRED
-	action = <CloudAccountAction> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountAction]) for enum values.
+	action = $someCloudAccountAction # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountAction]) for enum values.
 	# REQUIRED
 	features = @(
-		<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 	)
 	# OPTIONAL
 	awsAdminAccount = @{
 		# OPTIONAL
-		id = <System.String>
+		id = $someString
 		# OPTIONAL
-		nativeId = <System.String>
+		nativeId = $someString
 		# OPTIONAL
-		accountName = <System.String>
+		accountName = $someString
 		# OPTIONAL
-		seamlessFlowEnabled = <System.Boolean>
+		seamlessFlowEnabled = $someBoolean
 		# OPTIONAL
-		cloudType = <AwsCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+		cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
 	}
 	# REQUIRED
 	awsChildAccounts = @(
 		@{
 			# OPTIONAL
-			id = <System.String>
+			id = $someString
 			# OPTIONAL
-			nativeId = <System.String>
+			nativeId = $someString
 			# OPTIONAL
-			accountName = <System.String>
+			accountName = $someString
 			# OPTIONAL
-			seamlessFlowEnabled = <System.Boolean>
+			seamlessFlowEnabled = $someBoolean
 			# OPTIONAL
-			cloudType = <AwsCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+			cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
 		}
 	)
 	# OPTIONAL
 	awsRegions = @(
-		<AwsCloudAccountRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountRegion]) for enum values.
+		$someAwsCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountRegion]) for enum values.
 	)
 	# OPTIONAL
-	stackName = <System.String>
+	stackName = $someString
 	# OPTIONAL
-	stackSetName = <System.String>
+	stackSetName = $someString
 	# OPTIONAL
-	externalId = <System.String>
+	externalId = $someString
 	# OPTIONAL
 	featureVersion = @(
 		@{
 			# REQUIRED
-			feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+			feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 			# REQUIRED
-			version = <System.Int32>
+			version = $someInt
+		}
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // patchAwsAuthenticationServerBasedCloudAccount(input: PatchAwsAuthenticationServerBasedCloudAccountInput!): Boolean!
+        internal void InitMutationPatchAwsAuthenticationServerBasedCloudAccount()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "PatchAwsAuthenticationServerBasedCloudAccountInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationPatchAwsAuthenticationServerBasedCloudAccount",
+                "($input: PatchAwsAuthenticationServerBasedCloudAccountInput!)",
+                "System.Boolean",
+                Mutation.PatchAwsAuthenticationServerBasedCloudAccount_ObjectFieldSpec,
+                Mutation.PatchAwsAuthenticationServerBasedCloudAccountFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	awsCloudAccountId = $someString
+	# REQUIRED
+	feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	# OPTIONAL
+	awsRegions = @{
+		# REQUIRED
+		regions = @(
+			$someAwsAuthServerBasedCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsAuthServerBasedCloudAccountRegion]) for enum values.
+		)
+	}
+	# OPTIONAL
+	roleName = @{
+		# REQUIRED
+		name = $someString
+	}
+	# OPTIONAL
+	authServerUserClientCertId = @{
+		# REQUIRED
+		id = $someInt64
+	}
+	# OPTIONAL
+	authServerCaCertId = @{
+		# REQUIRED
+		id = $someInt64
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // patchAwsIamUserBasedCloudAccount(input: PatchAwsIamUserBasedCloudAccountInput!): Boolean!
+        internal void InitMutationPatchAwsIamUserBasedCloudAccount()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "PatchAwsIamUserBasedCloudAccountInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationPatchAwsIamUserBasedCloudAccount",
+                "($input: PatchAwsIamUserBasedCloudAccountInput!)",
+                "System.Boolean",
+                Mutation.PatchAwsIamUserBasedCloudAccount_ObjectFieldSpec,
+                Mutation.PatchAwsIamUserBasedCloudAccountFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	awsCloudAccountId = $someString
+	# REQUIRED
+	feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	# OPTIONAL
+	awsRegions = @{
+		# REQUIRED
+		regions = @(
+			$someAwsCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountRegion]) for enum values.
+		)
+	}
+	# OPTIONAL
+	awsUserKeys = @{
+		# REQUIRED
+		accessKey = $someString
+		# REQUIRED
+		secretKey = $someString
+	}
+	# OPTIONAL
+	awsRoleArn = @{
+		# REQUIRED
+		roleArn = $someString
+	}
+	# OPTIONAL
+	externalArtifactMap = @(
+		@{
+			# OPTIONAL
+			externalArtifactKey = $someAwsCloudExternalArtifact # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudExternalArtifact]) for enum values.
+			# OPTIONAL
+			externalArtifactValue = $someString
 		}
 	)
 }"
@@ -2466,98 +4392,11 @@ $inputs.Var.input = @{
                 Mutation.PrepareAwsCloudAccountDeletion_ObjectFieldSpec,
                 Mutation.PrepareAwsCloudAccountDeletionFieldSpec,
                 @"# REQUIRED
-$inputs.Var.input = @{
+$query.Var.input = @{
 	# REQUIRED
-	cloudAccountId = <System.String>
+	cloudAccountId = $someString
 	# REQUIRED
-	feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // finalizeAwsCloudAccountDeletion(input: FinalizeAwsCloudAccountDeletionInput!): FinalizeAwsCloudAccountDeletionReply!
-        internal void InitMutationFinalizeAwsCloudAccountDeletion()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "FinalizeAwsCloudAccountDeletionInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationFinalizeAwsCloudAccountDeletion",
-                "($input: FinalizeAwsCloudAccountDeletionInput!)",
-                "FinalizeAwsCloudAccountDeletionReply",
-                Mutation.FinalizeAwsCloudAccountDeletion_ObjectFieldSpec,
-                Mutation.FinalizeAwsCloudAccountDeletionFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	cloudAccountId = <System.String>
-	# REQUIRED
-	feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // updateAwsCloudAccountFeature(input: UpdateAwsCloudAccountFeatureInput!): UpdateAwsCloudAccountFeatureReply!
-        internal void InitMutationUpdateAwsCloudAccountFeature()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "UpdateAwsCloudAccountFeatureInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationUpdateAwsCloudAccountFeature",
-                "($input: UpdateAwsCloudAccountFeatureInput!)",
-                "UpdateAwsCloudAccountFeatureReply",
-                Mutation.UpdateAwsCloudAccountFeature_ObjectFieldSpec,
-                Mutation.UpdateAwsCloudAccountFeatureFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	cloudAccountId = <System.String>
-	# REQUIRED
-	action = <CloudAccountAction> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountAction]) for enum values.
-	# REQUIRED
-	feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-	# OPTIONAL
-	awsRegions = @(
-		<AwsCloudAccountRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountRegion]) for enum values.
-	)
-	# OPTIONAL
-	roleArn = <System.String>
-	# OPTIONAL
-	stackArn = <System.String>
-	# OPTIONAL
-	awsAccountName = <System.String>
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // updateAwsCloudAccount(input: UpdateAwsCloudAccountInput!): Void
-        internal void InitMutationUpdateAwsCloudAccount()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "UpdateAwsCloudAccountInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationUpdateAwsCloudAccount",
-                "($input: UpdateAwsCloudAccountInput!)",
-                "System.String",
-                Mutation.UpdateAwsCloudAccount_ObjectFieldSpec,
-                Mutation.UpdateAwsCloudAccountFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	cloudAccountId = <System.String>
-	# OPTIONAL
-	awsAccountName = <System.String>
+	feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 }"
             );
         }
@@ -2578,418 +4417,12 @@ $inputs.Var.input = @{
                 Mutation.PrepareFeatureUpdateForAwsCloudAccount_ObjectFieldSpec,
                 Mutation.PrepareFeatureUpdateForAwsCloudAccountFieldSpec,
                 @"# REQUIRED
-$inputs.Var.input = @{
+$query.Var.input = @{
 	# REQUIRED
-	cloudAccountId = <System.String>
-	# REQUIRED
-	features = @(
-		<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-	)
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // createAwsExocomputeConfigs(input: CreateAwsExocomputeConfigsInput!): CreateAwsExocomputeConfigsReply!
-        internal void InitMutationCreateAwsExocomputeConfigs()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "CreateAwsExocomputeConfigsInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationCreateAwsExocomputeConfigs",
-                "($input: CreateAwsExocomputeConfigsInput!)",
-                "CreateAwsExocomputeConfigsReply",
-                Mutation.CreateAwsExocomputeConfigs_ObjectFieldSpec,
-                Mutation.CreateAwsExocomputeConfigsFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	cloudAccountId = <System.String>
-	# REQUIRED
-	configs = @(
-		@{
-			# REQUIRED
-			region = <AwsCloudAccountRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountRegion]) for enum values.
-			# OPTIONAL
-			clusterSecurityGroupId = <System.String>
-			# REQUIRED
-			vpcId = <System.String>
-			# OPTIONAL
-			nodeSecurityGroupId = <System.String>
-			# REQUIRED
-			subnets = @(
-				@{
-					# REQUIRED
-					subnetId = <System.String>
-					# REQUIRED
-					availabilityZone = <System.String>
-				}
-			)
-			# REQUIRED
-			isRscManaged = <System.Boolean>
-		}
-	)
-	# OPTIONAL
-	triggerHealthCheck = <System.Boolean>
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // deleteAwsExocomputeConfigs(input: DeleteAwsExocomputeConfigsInput!): DeleteAwsExocomputeConfigsReply!
-        internal void InitMutationDeleteAwsExocomputeConfigs()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "DeleteAwsExocomputeConfigsInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationDeleteAwsExocomputeConfigs",
-                "($input: DeleteAwsExocomputeConfigsInput!)",
-                "DeleteAwsExocomputeConfigsReply",
-                Mutation.DeleteAwsExocomputeConfigs_ObjectFieldSpec,
-                Mutation.DeleteAwsExocomputeConfigsFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	configIdsToBeDeleted = @(
-		<System.String>
-	)
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // updateAwsExocomputeConfigs(input: UpdateAwsExocomputeConfigsInput!): UpdateAwsExocomputeConfigsReply!
-        internal void InitMutationUpdateAwsExocomputeConfigs()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "UpdateAwsExocomputeConfigsInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationUpdateAwsExocomputeConfigs",
-                "($input: UpdateAwsExocomputeConfigsInput!)",
-                "UpdateAwsExocomputeConfigsReply",
-                Mutation.UpdateAwsExocomputeConfigs_ObjectFieldSpec,
-                Mutation.UpdateAwsExocomputeConfigsFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	cloudAccountId = <System.String>
-	# REQUIRED
-	configs = @(
-		@{
-			# REQUIRED
-			region = <AwsCloudAccountRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountRegion]) for enum values.
-			# OPTIONAL
-			clusterSecurityGroupId = <System.String>
-			# REQUIRED
-			vpcId = <System.String>
-			# OPTIONAL
-			nodeSecurityGroupId = <System.String>
-			# REQUIRED
-			subnets = @(
-				@{
-					# REQUIRED
-					subnetId = <System.String>
-					# REQUIRED
-					availabilityZone = <System.String>
-				}
-			)
-			# REQUIRED
-			isRscManaged = <System.Boolean>
-		}
-	)
-	# OPTIONAL
-	triggerHealthCheck = <System.Boolean>
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // startAwsExocomputeDisableJob(input: StartAwsExocomputeDisableJobInput!): AsyncJobStatus!
-        internal void InitMutationStartAwsExocomputeDisableJob()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "StartAwsExocomputeDisableJobInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationStartAwsExocomputeDisableJob",
-                "($input: StartAwsExocomputeDisableJobInput!)",
-                "AsyncJobStatus",
-                Mutation.StartAwsExocomputeDisableJob_ObjectFieldSpec,
-                Mutation.StartAwsExocomputeDisableJobFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	cloudAccountId = <System.String>
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // addAwsIamUserBasedCloudAccount(input: AddAwsIamUserBasedCloudAccountInput!): AddAwsIamUserBasedCloudAccountReply!
-        internal void InitMutationAddAwsIamUserBasedCloudAccount()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "AddAwsIamUserBasedCloudAccountInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationAddAwsIamUserBasedCloudAccount",
-                "($input: AddAwsIamUserBasedCloudAccountInput!)",
-                "AddAwsIamUserBasedCloudAccountReply",
-                Mutation.AddAwsIamUserBasedCloudAccount_ObjectFieldSpec,
-                Mutation.AddAwsIamUserBasedCloudAccountFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
+	cloudAccountId = $someString
 	# REQUIRED
 	features = @(
-		<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-	)
-	# OPTIONAL
-	accessKey = <System.String>
-	# OPTIONAL
-	secretKey = <System.String>
-	# REQUIRED
-	nativeId = <System.String>
-	# REQUIRED
-	cloudAccountName = <System.String>
-	# OPTIONAL
-	cloudType = <AwsCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
-	# OPTIONAL
-	awsRegions = @(
-		<AwsCloudAccountRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountRegion]) for enum values.
-	)
-	# OPTIONAL
-	roleArn = <System.String>
-	# OPTIONAL
-	externalArtifactMap = @(
-		@{
-			# OPTIONAL
-			externalArtifactKey = <AwsCloudExternalArtifact> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudExternalArtifact]) for enum values.
-			# OPTIONAL
-			externalArtifactValue = <System.String>
-		}
-	)
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // upgradeAwsIamUserBasedCloudAccountPermissions(input: UpgradeAwsIamUserBasedCloudAccountPermissionsInput!): Boolean!
-        internal void InitMutationUpgradeAwsIamUserBasedCloudAccountPermissions()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "UpgradeAwsIamUserBasedCloudAccountPermissionsInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationUpgradeAwsIamUserBasedCloudAccountPermissions",
-                "($input: UpgradeAwsIamUserBasedCloudAccountPermissionsInput!)",
-                "System.Boolean",
-                Mutation.UpgradeAwsIamUserBasedCloudAccountPermissions_ObjectFieldSpec,
-                Mutation.UpgradeAwsIamUserBasedCloudAccountPermissionsFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	awsCloudAccountId = <System.String>
-	# REQUIRED
-	features = @(
-		<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-	)
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // upgradeAwsCloudAccountFeaturesWithoutCft(input: UpgradeAwsCloudAccountFeaturesWithoutCftInput!): Boolean!
-        internal void InitMutationUpgradeAwsCloudAccountFeaturesWithoutCft()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "UpgradeAwsCloudAccountFeaturesWithoutCftInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationUpgradeAwsCloudAccountFeaturesWithoutCft",
-                "($input: UpgradeAwsCloudAccountFeaturesWithoutCftInput!)",
-                "System.Boolean",
-                Mutation.UpgradeAwsCloudAccountFeaturesWithoutCft_ObjectFieldSpec,
-                Mutation.UpgradeAwsCloudAccountFeaturesWithoutCftFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	awsCloudAccountId = <System.String>
-	# REQUIRED
-	features = @(
-		<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-	)
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // addAwsAuthenticationServerBasedCloudAccount(input: AddAwsAuthenticationServerBasedCloudAccountInput!): AddAwsAuthenticationServerBasedCloudAccountReply!
-        internal void InitMutationAddAwsAuthenticationServerBasedCloudAccount()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "AddAwsAuthenticationServerBasedCloudAccountInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationAddAwsAuthenticationServerBasedCloudAccount",
-                "($input: AddAwsAuthenticationServerBasedCloudAccountInput!)",
-                "AddAwsAuthenticationServerBasedCloudAccountReply",
-                Mutation.AddAwsAuthenticationServerBasedCloudAccount_ObjectFieldSpec,
-                Mutation.AddAwsAuthenticationServerBasedCloudAccountFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	cloudType = <AwsCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
-	# REQUIRED
-	awsAccountName = <System.String>
-	# OPTIONAL
-	awsRegions = @(
-		<AwsAuthServerBasedCloudAccountRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsAuthServerBasedCloudAccountRegion]) for enum values.
-	)
-	# REQUIRED
-	features = @(
-		<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-	)
-	# OPTIONAL
-	nativeId = <System.String>
-	# OPTIONAL
-	agencyName = <System.String>
-	# OPTIONAL
-	roleName = <System.String>
-	# OPTIONAL
-	authServerHostName = <System.String>
-	# OPTIONAL
-	authServerUserClientCertId = @{
-		# REQUIRED
-		id = <System.Int64>
-	}
-	# OPTIONAL
-	authServerCaCertId = @{
-		# REQUIRED
-		id = <System.Int64>
-	}
-	# OPTIONAL
-	awsCaCertId = @{
-		# REQUIRED
-		id = <System.Int64>
-	}
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // patchAwsAuthenticationServerBasedCloudAccount(input: PatchAwsAuthenticationServerBasedCloudAccountInput!): Boolean!
-        internal void InitMutationPatchAwsAuthenticationServerBasedCloudAccount()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "PatchAwsAuthenticationServerBasedCloudAccountInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationPatchAwsAuthenticationServerBasedCloudAccount",
-                "($input: PatchAwsAuthenticationServerBasedCloudAccountInput!)",
-                "System.Boolean",
-                Mutation.PatchAwsAuthenticationServerBasedCloudAccount_ObjectFieldSpec,
-                Mutation.PatchAwsAuthenticationServerBasedCloudAccountFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	awsCloudAccountId = <System.String>
-	# REQUIRED
-	feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-	# OPTIONAL
-	awsRegions = @{
-		# REQUIRED
-		regions = @(
-			<AwsAuthServerBasedCloudAccountRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsAuthServerBasedCloudAccountRegion]) for enum values.
-		)
-	}
-	# OPTIONAL
-	roleName = @{
-		# REQUIRED
-		name = <System.String>
-	}
-	# OPTIONAL
-	authServerUserClientCertId = @{
-		# REQUIRED
-		id = <System.Int64>
-	}
-	# OPTIONAL
-	authServerCaCertId = @{
-		# REQUIRED
-		id = <System.Int64>
-	}
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // patchAwsIamUserBasedCloudAccount(input: PatchAwsIamUserBasedCloudAccountInput!): Boolean!
-        internal void InitMutationPatchAwsIamUserBasedCloudAccount()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "PatchAwsIamUserBasedCloudAccountInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationPatchAwsIamUserBasedCloudAccount",
-                "($input: PatchAwsIamUserBasedCloudAccountInput!)",
-                "System.Boolean",
-                Mutation.PatchAwsIamUserBasedCloudAccount_ObjectFieldSpec,
-                Mutation.PatchAwsIamUserBasedCloudAccountFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	awsCloudAccountId = <System.String>
-	# REQUIRED
-	feature = <CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-	# OPTIONAL
-	awsRegions = @{
-		# REQUIRED
-		regions = @(
-			<AwsCloudAccountRegion> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountRegion]) for enum values.
-		)
-	}
-	# OPTIONAL
-	awsUserKeys = @{
-		# REQUIRED
-		accessKey = <System.String>
-		# REQUIRED
-		secretKey = <System.String>
-	}
-	# OPTIONAL
-	awsRoleArn = @{
-		# REQUIRED
-		roleArn = <System.String>
-	}
-	# OPTIONAL
-	externalArtifactMap = @(
-		@{
-			# OPTIONAL
-			externalArtifactKey = <AwsCloudExternalArtifact> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudExternalArtifact]) for enum values.
-			# OPTIONAL
-			externalArtifactValue = <System.String>
-		}
+		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 	)
 }"
             );
@@ -3011,198 +4444,739 @@ $inputs.Var.input = @{
                 Mutation.RegisterAwsFeatureArtifacts_ObjectFieldSpec,
                 Mutation.RegisterAwsFeatureArtifactsFieldSpec,
                 @"# REQUIRED
-$inputs.Var.input = @{
+$query.Var.input = @{
 	# REQUIRED
 	awsArtifacts = @(
 		@{
 			# REQUIRED
-			awsNativeId = <System.String>
+			awsNativeId = $someString
 			# REQUIRED
 			externalArtifacts = @(
 				@{
 					# REQUIRED
-					externalArtifactValue = <System.String>
+					externalArtifactValue = $someString
 					# OPTIONAL
-					externalArtifactKey = <AwsCloudExternalArtifact> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudExternalArtifact]) for enum values.
+					externalArtifactKey = $someAwsCloudExternalArtifact # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudExternalArtifact]) for enum values.
 				}
 			)
 			# REQUIRED
 			features = @(
-				<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+				$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 			)
 		}
 	)
 	# OPTIONAL
-	cloudType = <AwsCloudType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+	cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
 }"
             );
         }
 
         // Create new GraphQL Mutation:
-        // bulkDeleteAwsCloudAccountWithoutCft(input: BulkDeleteAwsCloudAccountWithoutCftInput!): BulkDeleteAwsCloudAccountWithoutCftReply!
-        internal void InitMutationBulkDeleteAwsCloudAccountWithoutCft()
+        // startCreateAwsNativeEbsVolumeSnapshotsJob(input: StartCreateAwsNativeEbsVolumeSnapshotsJobInput!): BatchAsyncJobStatus!
+        internal void InitMutationStartCreateAwsNativeEbsVolumeSnapshotsJob()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "BulkDeleteAwsCloudAccountWithoutCftInput!"),
+                Tuple.Create("input", "StartCreateAwsNativeEbsVolumeSnapshotsJobInput!"),
             };
             Initialize(
                 argDefs,
                 "mutation",
-                "MutationBulkDeleteAwsCloudAccountWithoutCft",
-                "($input: BulkDeleteAwsCloudAccountWithoutCftInput!)",
-                "BulkDeleteAwsCloudAccountWithoutCftReply",
-                Mutation.BulkDeleteAwsCloudAccountWithoutCft_ObjectFieldSpec,
-                Mutation.BulkDeleteAwsCloudAccountWithoutCftFieldSpec,
+                "MutationStartCreateAwsNativeEbsVolumeSnapshotsJob",
+                "($input: StartCreateAwsNativeEbsVolumeSnapshotsJobInput!)",
+                "BatchAsyncJobStatus",
+                Mutation.StartCreateAwsNativeEbsVolumeSnapshotsJob_ObjectFieldSpec,
+                Mutation.StartCreateAwsNativeEbsVolumeSnapshotsJobFieldSpec,
                 @"# REQUIRED
-$inputs.Var.input = @{
+$query.Var.input = @{
 	# REQUIRED
-	awsNativeId = <System.String>
+	ebsVolumeIds = @(
+		$someString
+	)
 	# OPTIONAL
-	features = @(
-		<CloudAccountFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	retentionSlaId = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // startAwsExocomputeDisableJob(input: StartAwsExocomputeDisableJobInput!): AsyncJobStatus!
+        internal void InitMutationStartAwsExocomputeDisableJob()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "StartAwsExocomputeDisableJobInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationStartAwsExocomputeDisableJob",
+                "($input: StartAwsExocomputeDisableJobInput!)",
+                "AsyncJobStatus",
+                Mutation.StartAwsExocomputeDisableJob_ObjectFieldSpec,
+                Mutation.StartAwsExocomputeDisableJobFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	cloudAccountId = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // startExportAwsNativeEbsVolumeSnapshotJob(input: StartExportAwsNativeEbsVolumeSnapshotJobInput!): AsyncJobStatus!
+        internal void InitMutationStartExportAwsNativeEbsVolumeSnapshotJob()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "StartExportAwsNativeEbsVolumeSnapshotJobInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationStartExportAwsNativeEbsVolumeSnapshotJob",
+                "($input: StartExportAwsNativeEbsVolumeSnapshotJobInput!)",
+                "AsyncJobStatus",
+                Mutation.StartExportAwsNativeEbsVolumeSnapshotJob_ObjectFieldSpec,
+                Mutation.StartExportAwsNativeEbsVolumeSnapshotJobFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	snapshotId = $someString
+	# REQUIRED
+	destinationAwsAccountRubrikId = $someString
+	# REQUIRED
+	destinationRegionNativeId = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
+	# REQUIRED
+	volumeName = $someString
+	# REQUIRED
+	volumeSize = $someInt
+	# REQUIRED
+	volumeType = $someAwsNativeEbsVolumeType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeEbsVolumeType]) for enum values.
+	# REQUIRED
+	availabilityZone = $someString
+	# REQUIRED
+	iops = $someInt
+	# REQUIRED
+	shouldCopyTags = $someBoolean
+	# REQUIRED
+	shouldReplaceAttached = $someBoolean
+	# OPTIONAL
+	kmsKeyId = $someString
+	# OPTIONAL
+	snapshotType = $someSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotType]) for enum values.
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // startAwsNativeAccountDisableJob(input: StartAwsNativeAccountDisableJobInput!): AsyncJobStatus!
+        internal void InitMutationStartAwsNativeAccountDisableJob()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "StartAwsNativeAccountDisableJobInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationStartAwsNativeAccountDisableJob",
+                "($input: StartAwsNativeAccountDisableJobInput!)",
+                "AsyncJobStatus",
+                Mutation.StartAwsNativeAccountDisableJob_ObjectFieldSpec,
+                Mutation.StartAwsNativeAccountDisableJobFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	awsAccountRubrikId = $someString
+	# REQUIRED
+	shouldDeleteNativeSnapshots = $someBoolean
+	# REQUIRED
+	awsNativeProtectionFeature = $someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // startAwsNativeEc2InstanceSnapshotsJob(input: StartAwsNativeEc2InstanceSnapshotsJobInput!): BatchAsyncJobStatus!
+        internal void InitMutationStartAwsNativeEc2InstanceSnapshotsJob()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "StartAwsNativeEc2InstanceSnapshotsJobInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationStartAwsNativeEc2InstanceSnapshotsJob",
+                "($input: StartAwsNativeEc2InstanceSnapshotsJobInput!)",
+                "BatchAsyncJobStatus",
+                Mutation.StartAwsNativeEc2InstanceSnapshotsJob_ObjectFieldSpec,
+                Mutation.StartAwsNativeEc2InstanceSnapshotsJobFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	ec2InstanceIds = @(
+		$someString
+	)
+	# OPTIONAL
+	retentionSlaId = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // startAwsNativeRdsInstanceSnapshotsJob(input: StartAwsNativeRdsInstanceSnapshotsJobInput!): BatchAsyncJobStatus!
+        internal void InitMutationStartAwsNativeRdsInstanceSnapshotsJob()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "StartAwsNativeRdsInstanceSnapshotsJobInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationStartAwsNativeRdsInstanceSnapshotsJob",
+                "($input: StartAwsNativeRdsInstanceSnapshotsJobInput!)",
+                "BatchAsyncJobStatus",
+                Mutation.StartAwsNativeRdsInstanceSnapshotsJob_ObjectFieldSpec,
+                Mutation.StartAwsNativeRdsInstanceSnapshotsJobFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	rdsInstanceIds = @(
+		$someString
+	)
+	# OPTIONAL
+	retentionSlaId = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // startRefreshAwsNativeAccountsJob(input: StartRefreshAwsNativeAccountsJobInput!): BatchAsyncJobStatus!
+        internal void InitMutationStartRefreshAwsNativeAccountsJob()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "StartRefreshAwsNativeAccountsJobInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationStartRefreshAwsNativeAccountsJob",
+                "($input: StartRefreshAwsNativeAccountsJobInput!)",
+                "BatchAsyncJobStatus",
+                Mutation.StartRefreshAwsNativeAccountsJob_ObjectFieldSpec,
+                Mutation.StartRefreshAwsNativeAccountsJobFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	awsAccountRubrikIds = @(
+		$someString
+	)
+	# REQUIRED
+	awsNativeProtectionFeatures = @(
+		$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
 	)
 }"
             );
         }
 
         // Create new GraphQL Mutation:
-        // createAwsCluster(input: CreateAwsClusterInput!): CcProvisionJobReply!
-        internal void InitMutationCreateAwsCluster()
+        // startRestoreAwsNativeEc2InstanceSnapshotJob(input: StartRestoreAwsNativeEc2InstanceSnapshotJobInput!): AsyncJobStatus!
+        internal void InitMutationStartRestoreAwsNativeEc2InstanceSnapshotJob()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "CreateAwsClusterInput!"),
+                Tuple.Create("input", "StartRestoreAwsNativeEc2InstanceSnapshotJobInput!"),
             };
             Initialize(
                 argDefs,
                 "mutation",
-                "MutationCreateAwsCluster",
-                "($input: CreateAwsClusterInput!)",
-                "CcProvisionJobReply",
-                Mutation.CreateAwsCluster_ObjectFieldSpec,
-                Mutation.CreateAwsClusterFieldSpec,
+                "MutationStartRestoreAwsNativeEc2InstanceSnapshotJob",
+                "($input: StartRestoreAwsNativeEc2InstanceSnapshotJobInput!)",
+                "AsyncJobStatus",
+                Mutation.StartRestoreAwsNativeEc2InstanceSnapshotJob_ObjectFieldSpec,
+                Mutation.StartRestoreAwsNativeEc2InstanceSnapshotJobFieldSpec,
                 @"# REQUIRED
-$inputs.Var.input = @{
+$query.Var.input = @{
+	# REQUIRED
+	snapshotId = $someString
+	# REQUIRED
+	shouldPowerOn = $someBoolean
+	# REQUIRED
+	shouldRestoreTags = $someBoolean
 	# OPTIONAL
-	cloudAccountId = <System.String>
-	# OPTIONAL
-	isEsType = <System.Boolean>
-	# OPTIONAL
-	keepClusterOnFailure = <System.Boolean>
-	# OPTIONAL
-	region = <System.String>
-	# OPTIONAL
-	disableApiTermination = <System.Boolean>
-	# OPTIONAL
-	clusterConfig = @{
-		# OPTIONAL
-		userEmail = <System.String>
-		# OPTIONAL
-		adminPassword = <System.String>
-		# OPTIONAL
-		clusterName = <System.String>
-		# OPTIONAL
-		numNodes = <System.Int32>
-		# OPTIONAL
-		dnsSearchDomains = @(
-			<System.String>
-		)
-		# OPTIONAL
-		dnsNameServers = @(
-			<System.String>
-		)
-		# OPTIONAL
-		ntpServers = @(
-			<System.String>
-		)
-		# OPTIONAL
-		azureEsConfig = @{
-			# OPTIONAL
-			storageAccount = <System.String>
-			# OPTIONAL
-			resourceGroup = <System.String>
-			# OPTIONAL
-			storageSecret = <System.String>
-			# OPTIONAL
-			containerName = <System.String>
-			# OPTIONAL
-			shouldCreateContainer = <System.Boolean>
-			# OPTIONAL
-			enableImmutability = <System.Boolean>
-		}
-		# OPTIONAL
-		awsEsConfig = @{
-			# OPTIONAL
-			bucketName = <System.String>
-			# OPTIONAL
-			shouldCreateBucket = <System.Boolean>
-			# OPTIONAL
-			enableObjectLock = <System.Boolean>
-			# OPTIONAL
-			enableImmutability = <System.Boolean>
-		}
-	}
-	# OPTIONAL
-	vmConfig = @{
-		# OPTIONAL
-		cdmVersion = <System.String>
-		# OPTIONAL
-		nodeSizeGb = <System.Int32>
-		# OPTIONAL
-		subnet = <System.String>
-		# OPTIONAL
-		tags = <System.String>
-		# OPTIONAL
-		imageId = <System.String>
-		# OPTIONAL
-		instanceProfileName = <System.String>
-		# OPTIONAL
-		cdmProduct = <System.String>
-		# OPTIONAL
-		vmType = <VmType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
-		# OPTIONAL
-		securityGroups = @(
-			<System.String>
-		)
-		# OPTIONAL
-		instanceType = <AwsInstanceType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsInstanceType]) for enum values.
-	}
+	snapshotTypeToUseIfSourceExpired = $someSnapshotTypeToUseIfSourceExpired # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotTypeToUseIfSourceExpired]) for enum values.
 }"
             );
         }
 
         // Create new GraphQL Mutation:
-        // deleteAwsCluster(input: DeleteAwsClusterInput!): CcProvisionJobReply!
-        internal void InitMutationDeleteAwsCluster()
+        // updateAwsAccount(input: UpdateAwsAccountInput!): CloudAccount!
+        internal void InitMutationUpdateAwsAccount()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "DeleteAwsClusterInput!"),
+                Tuple.Create("input", "UpdateAwsAccountInput!"),
             };
             Initialize(
                 argDefs,
                 "mutation",
-                "MutationDeleteAwsCluster",
-                "($input: DeleteAwsClusterInput!)",
-                "CcProvisionJobReply",
-                Mutation.DeleteAwsCluster_ObjectFieldSpec,
-                Mutation.DeleteAwsClusterFieldSpec,
+                "MutationUpdateAwsAccount",
+                "($input: UpdateAwsAccountInput!)",
+                "CloudAccount",
+                Mutation.UpdateAwsAccount_ObjectFieldSpec,
+                Mutation.UpdateAwsAccountFieldSpec,
                 @"# REQUIRED
-$inputs.Var.input = @{
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# REQUIRED
+	name = $someString
 	# OPTIONAL
-	cloudAccountId = <System.String>
+	description = $someString
+	# REQUIRED
+	accessKey = $someString
+	# REQUIRED
+	secretKey = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateAutomaticAwsTargetMapping(input: UpdateAutomaticAwsTargetMappingInput!): TargetMapping!
+        internal void InitMutationUpdateAutomaticAwsTargetMapping()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateAutomaticAwsTargetMappingInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateAutomaticAwsTargetMapping",
+                "($input: UpdateAutomaticAwsTargetMappingInput!)",
+                "TargetMapping",
+                Mutation.UpdateAutomaticAwsTargetMapping_ObjectFieldSpec,
+                Mutation.UpdateAutomaticAwsTargetMappingFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
 	# OPTIONAL
-	clusterName = <System.String>
+	name = $someString
 	# OPTIONAL
-	numNodes = <System.Int32>
+	cloudAccountId = $someString
 	# OPTIONAL
-	isEsType = <System.Boolean>
+	storageClass = $someAwsStorageClass # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
 	# OPTIONAL
-	bucketName = <System.String>
+	isConsolidationEnabled = $someBoolean
 	# OPTIONAL
-	isNewContainer = <System.Boolean>
+	proxySettings = @{
+		# OPTIONAL
+		proxyServer = $someString
+		# OPTIONAL
+		portNumber = $someInt
+		# OPTIONAL
+		username = $someString
+		# OPTIONAL
+		password = $someString
+		# OPTIONAL
+		protocol = $someString
+	}
 	# OPTIONAL
-	clusterUuid = <System.String>
+	clusterUuidList = @(
+		$someString
+	)
 	# OPTIONAL
-	region = <System.String>
+	awsComputeSettingsId = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateAwsCloudAccount(input: UpdateAwsCloudAccountInput!): Void
+        internal void InitMutationUpdateAwsCloudAccount()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateAwsCloudAccountInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateAwsCloudAccount",
+                "($input: UpdateAwsCloudAccountInput!)",
+                "System.String",
+                Mutation.UpdateAwsCloudAccount_ObjectFieldSpec,
+                Mutation.UpdateAwsCloudAccountFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	cloudAccountId = $someString
+	# OPTIONAL
+	awsAccountName = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateAwsCloudAccountFeature(input: UpdateAwsCloudAccountFeatureInput!): UpdateAwsCloudAccountFeatureReply!
+        internal void InitMutationUpdateAwsCloudAccountFeature()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateAwsCloudAccountFeatureInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateAwsCloudAccountFeature",
+                "($input: UpdateAwsCloudAccountFeatureInput!)",
+                "UpdateAwsCloudAccountFeatureReply",
+                Mutation.UpdateAwsCloudAccountFeature_ObjectFieldSpec,
+                Mutation.UpdateAwsCloudAccountFeatureFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	cloudAccountId = $someString
+	# REQUIRED
+	action = $someCloudAccountAction # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountAction]) for enum values.
+	# REQUIRED
+	feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	# OPTIONAL
+	awsRegions = @(
+		$someAwsCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountRegion]) for enum values.
+	)
+	# OPTIONAL
+	roleArn = $someString
+	# OPTIONAL
+	stackArn = $someString
+	# OPTIONAL
+	awsAccountName = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateCloudNativeAwsStorageSetting(input: UpdateCloudNativeAwsStorageSettingInput!): UpdateCloudNativeAwsStorageSettingReply!
+        internal void InitMutationUpdateCloudNativeAwsStorageSetting()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateCloudNativeAwsStorageSettingInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateCloudNativeAwsStorageSetting",
+                "($input: UpdateCloudNativeAwsStorageSettingInput!)",
+                "UpdateCloudNativeAwsStorageSettingReply",
+                Mutation.UpdateCloudNativeAwsStorageSetting_ObjectFieldSpec,
+                Mutation.UpdateCloudNativeAwsStorageSettingFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# OPTIONAL
+	name = $someString
+	# OPTIONAL
+	storageClass = $someAwsStorageClass # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
+	# OPTIONAL
+	kmsMasterKeyId = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateAwsComputeSetting(input: UpdateAwsComputeSettingInput!): AwsComputeSettings!
+        internal void InitMutationUpdateAwsComputeSetting()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateAwsComputeSettingInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateAwsComputeSetting",
+                "($input: UpdateAwsComputeSettingInput!)",
+                "AwsComputeSettings",
+                Mutation.UpdateAwsComputeSetting_ObjectFieldSpec,
+                Mutation.UpdateAwsComputeSettingFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	id = $someString
+	# OPTIONAL
+	name = $someString
+	# OPTIONAL
+	subnetId = $someString
+	# OPTIONAL
+	vpcId = $someString
+	# OPTIONAL
+	securityGroupId = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateAwsExocomputeConfigs(input: UpdateAwsExocomputeConfigsInput!): UpdateAwsExocomputeConfigsReply!
+        internal void InitMutationUpdateAwsExocomputeConfigs()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateAwsExocomputeConfigsInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateAwsExocomputeConfigs",
+                "($input: UpdateAwsExocomputeConfigsInput!)",
+                "UpdateAwsExocomputeConfigsReply",
+                Mutation.UpdateAwsExocomputeConfigs_ObjectFieldSpec,
+                Mutation.UpdateAwsExocomputeConfigsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	cloudAccountId = $someString
+	# REQUIRED
+	configs = @(
+		@{
+			# REQUIRED
+			region = $someAwsCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountRegion]) for enum values.
+			# OPTIONAL
+			clusterSecurityGroupId = $someString
+			# REQUIRED
+			vpcId = $someString
+			# OPTIONAL
+			nodeSecurityGroupId = $someString
+			# REQUIRED
+			subnets = @(
+				@{
+					# REQUIRED
+					subnetId = $someString
+					# REQUIRED
+					availabilityZone = $someString
+				}
+			)
+			# REQUIRED
+			isRscManaged = $someBoolean
+		}
+	)
+	# OPTIONAL
+	triggerHealthCheck = $someBoolean
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateAwsTarget(input: UpdateAwsTargetInput!): Target!
+        internal void InitMutationUpdateAwsTarget()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateAwsTargetInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateAwsTarget",
+                "($input: UpdateAwsTargetInput!)",
+                "Target",
+                Mutation.UpdateAwsTarget_ObjectFieldSpec,
+                Mutation.UpdateAwsTargetFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# OPTIONAL
+	name = $someString
+	# OPTIONAL
+	cloudAccountId = $someString
+	# OPTIONAL
+	storageClass = $someAwsStorageClass # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsStorageClass]) for enum values.
+	# OPTIONAL
+	isConsolidationEnabled = $someBoolean
+	# OPTIONAL
+	proxySettings = @{
+		# OPTIONAL
+		proxyServer = $someString
+		# OPTIONAL
+		portNumber = $someInt
+		# OPTIONAL
+		username = $someString
+		# OPTIONAL
+		password = $someString
+		# OPTIONAL
+		protocol = $someString
+	}
+	# OPTIONAL
+	awsComputeSettingsId = $someString
+	# OPTIONAL
+	cloudComputeSettings = @{
+		# OPTIONAL
+		subnetId = $someString
+		# OPTIONAL
+		vpcId = $someString
+		# OPTIONAL
+		securityGroupId = $someString
+		# OPTIONAL
+		computeProxySettings = @{
+			# OPTIONAL
+			proxyServer = $someString
+			# OPTIONAL
+			portNumber = $someInt
+			# OPTIONAL
+			username = $someString
+			# OPTIONAL
+			password = $someString
+			# OPTIONAL
+			protocol = $someString
+		}
+	}
+	# OPTIONAL
+	computeProxySettings = @{
+		# OPTIONAL
+		proxyServer = $someString
+		# OPTIONAL
+		portNumber = $someInt
+		# OPTIONAL
+		username = $someString
+		# OPTIONAL
+		password = $someString
+		# OPTIONAL
+		protocol = $someString
+	}
+	# OPTIONAL
+	awsRetrievalTier = $someAwsRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
+	# OPTIONAL
+	immutabilitySettings = @{
+		# OPTIONAL
+		lockDurationDays = $someInt
+	}
+	# OPTIONAL
+	s3Endpoint = $someString
+	# OPTIONAL
+	kmsEndpoint = $someString
+	# OPTIONAL
+	bypassProxy = $someBoolean
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // upgradeAwsCloudAccountFeaturesWithoutCft(input: UpgradeAwsCloudAccountFeaturesWithoutCftInput!): Boolean!
+        internal void InitMutationUpgradeAwsCloudAccountFeaturesWithoutCft()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpgradeAwsCloudAccountFeaturesWithoutCftInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpgradeAwsCloudAccountFeaturesWithoutCft",
+                "($input: UpgradeAwsCloudAccountFeaturesWithoutCftInput!)",
+                "System.Boolean",
+                Mutation.UpgradeAwsCloudAccountFeaturesWithoutCft_ObjectFieldSpec,
+                Mutation.UpgradeAwsCloudAccountFeaturesWithoutCftFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	awsCloudAccountId = $someString
+	# REQUIRED
+	features = @(
+		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // upgradeAwsIamUserBasedCloudAccountPermissions(input: UpgradeAwsIamUserBasedCloudAccountPermissionsInput!): Boolean!
+        internal void InitMutationUpgradeAwsIamUserBasedCloudAccountPermissions()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpgradeAwsIamUserBasedCloudAccountPermissionsInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpgradeAwsIamUserBasedCloudAccountPermissions",
+                "($input: UpgradeAwsIamUserBasedCloudAccountPermissionsInput!)",
+                "System.Boolean",
+                Mutation.UpgradeAwsIamUserBasedCloudAccountPermissions_ObjectFieldSpec,
+                Mutation.UpgradeAwsIamUserBasedCloudAccountPermissionsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	awsCloudAccountId = $someString
+	# REQUIRED
+	features = @(
+		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // validateAndCreateAwsCloudAccount(input: ValidateAndCreateAwsCloudAccountInput!): ValidateAndCreateAwsCloudAccountReply!
+        internal void InitMutationValidateAndCreateAwsCloudAccount()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "ValidateAndCreateAwsCloudAccountInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationValidateAndCreateAwsCloudAccount",
+                "($input: ValidateAndCreateAwsCloudAccountInput!)",
+                "ValidateAndCreateAwsCloudAccountReply",
+                Mutation.ValidateAndCreateAwsCloudAccount_ObjectFieldSpec,
+                Mutation.ValidateAndCreateAwsCloudAccountFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	action = $someCloudAccountAction # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountAction]) for enum values.
+	# REQUIRED
+	features = @(
+		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+	)
+	# OPTIONAL
+	awsAdminAccount = @{
+		# OPTIONAL
+		id = $someString
+		# OPTIONAL
+		nativeId = $someString
+		# OPTIONAL
+		accountName = $someString
+		# OPTIONAL
+		seamlessFlowEnabled = $someBoolean
+		# OPTIONAL
+		cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+	}
+	# REQUIRED
+	awsChildAccounts = @(
+		@{
+			# OPTIONAL
+			id = $someString
+			# OPTIONAL
+			nativeId = $someString
+			# OPTIONAL
+			accountName = $someString
+			# OPTIONAL
+			seamlessFlowEnabled = $someBoolean
+			# OPTIONAL
+			cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+		}
+	)
+	# OPTIONAL
+	awsRoleCustomization = @{
+		# OPTIONAL
+		crossAccountRoleName = $someString
+		# OPTIONAL
+		crossAccountRolePath = $someString
+		# OPTIONAL
+		masterRoleName = $someString
+		# OPTIONAL
+		masterRolePath = $someString
+		# OPTIONAL
+		workerRoleName = $someString
+		# OPTIONAL
+		workerRolePath = $someString
+		# OPTIONAL
+		instanceProfileName = $someString
+		# OPTIONAL
+		instanceProfilePath = $someString
+		# OPTIONAL
+		ec2RecoveryRolePath = $someString
+	}
 }"
             );
         }

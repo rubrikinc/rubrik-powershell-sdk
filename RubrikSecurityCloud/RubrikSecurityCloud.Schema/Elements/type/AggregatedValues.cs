@@ -83,34 +83,55 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? MaxCreatedFileCount
         // GraphQL -> maxCreatedFileCount: Long! (scalar)
         if (this.MaxCreatedFileCount != null) {
-            s += ind + "maxCreatedFileCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "maxCreatedFileCount\n" ;
+            } else {
+                s += ind + "maxCreatedFileCount\n" ;
+            }
         }
         //      C# -> System.Int64? MaxDeletedFileCount
         // GraphQL -> maxDeletedFileCount: Long! (scalar)
         if (this.MaxDeletedFileCount != null) {
-            s += ind + "maxDeletedFileCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "maxDeletedFileCount\n" ;
+            } else {
+                s += ind + "maxDeletedFileCount\n" ;
+            }
         }
         //      C# -> System.Int64? MaxModifiedFileCount
         // GraphQL -> maxModifiedFileCount: Long! (scalar)
         if (this.MaxModifiedFileCount != null) {
-            s += ind + "maxModifiedFileCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "maxModifiedFileCount\n" ;
+            } else {
+                s += ind + "maxModifiedFileCount\n" ;
+            }
         }
         //      C# -> System.Int64? MaxSuspiciousFileCount
         // GraphQL -> maxSuspiciousFileCount: Long! (scalar)
         if (this.MaxSuspiciousFileCount != null) {
-            s += ind + "maxSuspiciousFileCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "maxSuspiciousFileCount\n" ;
+            } else {
+                s += ind + "maxSuspiciousFileCount\n" ;
+            }
         }
         //      C# -> System.Int64? Total
         // GraphQL -> total: Long! (scalar)
         if (this.Total != null) {
-            s += ind + "total\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "total\n" ;
+            } else {
+                s += ind + "total\n" ;
+            }
         }
         return s;
     }
@@ -121,33 +142,88 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? MaxCreatedFileCount
         // GraphQL -> maxCreatedFileCount: Long! (scalar)
-        if (this.MaxCreatedFileCount == null && ec.Includes("maxCreatedFileCount",true))
+        if (ec.Includes("maxCreatedFileCount",true))
         {
-            this.MaxCreatedFileCount = new System.Int64();
+            if(this.MaxCreatedFileCount == null) {
+
+                this.MaxCreatedFileCount = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.MaxCreatedFileCount != null && ec.Excludes("maxCreatedFileCount",true))
+        {
+            this.MaxCreatedFileCount = null;
         }
         //      C# -> System.Int64? MaxDeletedFileCount
         // GraphQL -> maxDeletedFileCount: Long! (scalar)
-        if (this.MaxDeletedFileCount == null && ec.Includes("maxDeletedFileCount",true))
+        if (ec.Includes("maxDeletedFileCount",true))
         {
-            this.MaxDeletedFileCount = new System.Int64();
+            if(this.MaxDeletedFileCount == null) {
+
+                this.MaxDeletedFileCount = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.MaxDeletedFileCount != null && ec.Excludes("maxDeletedFileCount",true))
+        {
+            this.MaxDeletedFileCount = null;
         }
         //      C# -> System.Int64? MaxModifiedFileCount
         // GraphQL -> maxModifiedFileCount: Long! (scalar)
-        if (this.MaxModifiedFileCount == null && ec.Includes("maxModifiedFileCount",true))
+        if (ec.Includes("maxModifiedFileCount",true))
         {
-            this.MaxModifiedFileCount = new System.Int64();
+            if(this.MaxModifiedFileCount == null) {
+
+                this.MaxModifiedFileCount = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.MaxModifiedFileCount != null && ec.Excludes("maxModifiedFileCount",true))
+        {
+            this.MaxModifiedFileCount = null;
         }
         //      C# -> System.Int64? MaxSuspiciousFileCount
         // GraphQL -> maxSuspiciousFileCount: Long! (scalar)
-        if (this.MaxSuspiciousFileCount == null && ec.Includes("maxSuspiciousFileCount",true))
+        if (ec.Includes("maxSuspiciousFileCount",true))
         {
-            this.MaxSuspiciousFileCount = new System.Int64();
+            if(this.MaxSuspiciousFileCount == null) {
+
+                this.MaxSuspiciousFileCount = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.MaxSuspiciousFileCount != null && ec.Excludes("maxSuspiciousFileCount",true))
+        {
+            this.MaxSuspiciousFileCount = null;
         }
         //      C# -> System.Int64? Total
         // GraphQL -> total: Long! (scalar)
-        if (this.Total == null && ec.Includes("total",true))
+        if (ec.Includes("total",true))
         {
-            this.Total = new System.Int64();
+            if(this.Total == null) {
+
+                this.Total = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Total != null && ec.Excludes("total",true))
+        {
+            this.Total = null;
         }
     }
 
@@ -174,9 +250,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AggregatedValues> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

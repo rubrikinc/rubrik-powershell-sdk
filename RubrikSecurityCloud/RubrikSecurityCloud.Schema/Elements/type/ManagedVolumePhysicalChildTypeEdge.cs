@@ -56,22 +56,31 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> ManagedVolumePhysicalChildType? Node
         // GraphQL -> node: ManagedVolumePhysicalChildType! (interface)
         if (this.Node != null) {
-                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.Node).AsFieldSpec(indent+1);
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.Node).AsFieldSpec(conf.Child("node"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "node {\n" + fspec + ind + "}\n";
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "node {\n" + fspec + ind + "}\n";
+                }
             }
         }
         //      C# -> System.String? Cursor
         // GraphQL -> cursor: String! (scalar)
         if (this.Cursor != null) {
-            s += ind + "cursor\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cursor\n" ;
+            } else {
+                s += ind + "cursor\n" ;
+            }
         }
         return s;
     }
@@ -82,17 +91,44 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> ManagedVolumePhysicalChildType? Node
         // GraphQL -> node: ManagedVolumePhysicalChildType! (interface)
-        if (this.Node == null && ec.Includes("node",false))
+        if (ec.Includes("node",false))
         {
-            var impls = new List<ManagedVolumePhysicalChildType>();
-            impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
-            this.Node = (ManagedVolumePhysicalChildType)InterfaceHelper.MakeCompositeFromList(impls);
+            if(this.Node == null) {
+
+                var impls = new List<ManagedVolumePhysicalChildType>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
+                this.Node = (ManagedVolumePhysicalChildType)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<ManagedVolumePhysicalChildType>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("node"));
+                this.Node = (ManagedVolumePhysicalChildType)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.Node != null && ec.Excludes("node",false))
+        {
+            this.Node = null;
         }
         //      C# -> System.String? Cursor
         // GraphQL -> cursor: String! (scalar)
-        if (this.Cursor == null && ec.Includes("cursor",true))
+        if (ec.Includes("cursor",true))
         {
-            this.Cursor = "FETCH";
+            if(this.Cursor == null) {
+
+                this.Cursor = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Cursor != null && ec.Excludes("cursor",true))
+        {
+            this.Cursor = null;
         }
     }
 
@@ -119,9 +155,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ManagedVolumePhysicalChildTypeEdge> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

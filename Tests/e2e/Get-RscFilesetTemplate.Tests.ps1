@@ -3,11 +3,9 @@
 Run tests around fileset templates
 #>
 BeforeAll {
-    . "$PSScriptRoot\e2eInit.ps1"
+    . "$PSScriptRoot\..\..\Toolkit\Utils\E2eTestInit.ps1"
 }
 
-# TODO: SPARK-225906 fix this test
-return
 
 Describe -Name 'Get-RscFilesetTemplate' -Tag 'Public' -Fixture{
     Context -Name 'Parameter Validation' {
@@ -44,6 +42,10 @@ Describe -Name 'Get-RscFilesetTemplate' -Tag 'Public' -Fixture{
         It -Name 'Fields work as expected' -Test {
             $fields = Get-RscType -Name FilesetTemplate -InitialProperties @("Name","OsType")
             $results = Get-RscFilesetTemplate -OsType Windows -Field $fields -First 1
+            if ($results.Count -eq 0) {
+                Set-ItResult -Skipped -Because "No fileset templates found"
+                return
+            }
             $results[0].Id | Should -BeNullOrEmpty
             $results[0].Name | Should -Not -BeNullOrEmpty
             $results[0].OsType | Should -Not -BeNullOrEmpty

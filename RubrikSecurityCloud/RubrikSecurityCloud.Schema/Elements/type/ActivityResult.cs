@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> ActivityAccessType? AccessType
         // GraphQL -> accessType: ActivityAccessType! (enum)
         if (this.AccessType != null) {
-            s += ind + "accessType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "accessType\n" ;
+            } else {
+                s += ind + "accessType\n" ;
+            }
         }
         //      C# -> System.Int64? Count
         // GraphQL -> count: Long! (scalar)
         if (this.Count != null) {
-            s += ind + "count\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "count\n" ;
+            } else {
+                s += ind + "count\n" ;
+            }
         }
         //      C# -> System.Int64? CountDelta
         // GraphQL -> countDelta: Long! (scalar)
         if (this.CountDelta != null) {
-            s += ind + "countDelta\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "countDelta\n" ;
+            } else {
+                s += ind + "countDelta\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> ActivityAccessType? AccessType
         // GraphQL -> accessType: ActivityAccessType! (enum)
-        if (this.AccessType == null && ec.Includes("accessType",true))
+        if (ec.Includes("accessType",true))
         {
-            this.AccessType = new ActivityAccessType();
+            if(this.AccessType == null) {
+
+                this.AccessType = new ActivityAccessType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AccessType != null && ec.Excludes("accessType",true))
+        {
+            this.AccessType = null;
         }
         //      C# -> System.Int64? Count
         // GraphQL -> count: Long! (scalar)
-        if (this.Count == null && ec.Includes("count",true))
+        if (ec.Includes("count",true))
         {
-            this.Count = new System.Int64();
+            if(this.Count == null) {
+
+                this.Count = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Count != null && ec.Excludes("count",true))
+        {
+            this.Count = null;
         }
         //      C# -> System.Int64? CountDelta
         // GraphQL -> countDelta: Long! (scalar)
-        if (this.CountDelta == null && ec.Includes("countDelta",true))
+        if (ec.Includes("countDelta",true))
         {
-            this.CountDelta = new System.Int64();
+            if(this.CountDelta == null) {
+
+                this.CountDelta = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CountDelta != null && ec.Excludes("countDelta",true))
+        {
+            this.CountDelta = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ActivityResult> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -92,44 +92,69 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? AclDetails
         // GraphQL -> aclDetails: String (scalar)
         if (this.AclDetails != null) {
-            s += ind + "aclDetails\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "aclDetails\n" ;
+            } else {
+                s += ind + "aclDetails\n" ;
+            }
         }
         //      C# -> DateTime? CreationTime
         // GraphQL -> creationTime: DateTime (scalar)
         if (this.CreationTime != null) {
-            s += ind + "creationTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "creationTime\n" ;
+            } else {
+                s += ind + "creationTime\n" ;
+            }
         }
         //      C# -> DateTime? ModificationTime
         // GraphQL -> modificationTime: DateTime (scalar)
         if (this.ModificationTime != null) {
-            s += ind + "modificationTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "modificationTime\n" ;
+            } else {
+                s += ind + "modificationTime\n" ;
+            }
         }
         //      C# -> System.String? Path
         // GraphQL -> path: String! (scalar)
         if (this.Path != null) {
-            s += ind + "path\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "path\n" ;
+            } else {
+                s += ind + "path\n" ;
+            }
         }
         //      C# -> List<HashDetail>? RequestedHashDetails
         // GraphQL -> requestedHashDetails: [HashDetail!]! (type)
         if (this.RequestedHashDetails != null) {
-            var fspec = this.RequestedHashDetails.AsFieldSpec(indent+1);
+            var fspec = this.RequestedHashDetails.AsFieldSpec(conf.Child("requestedHashDetails"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "requestedHashDetails {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "requestedHashDetails {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<YaraMatchDetail>? YaraMatchDetails
         // GraphQL -> yaraMatchDetails: [YARAMatchDetail!]! (type)
         if (this.YaraMatchDetails != null) {
-            var fspec = this.YaraMatchDetails.AsFieldSpec(indent+1);
+            var fspec = this.YaraMatchDetails.AsFieldSpec(conf.Child("yaraMatchDetails"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "yaraMatchDetails {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "yaraMatchDetails {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -141,41 +166,109 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? AclDetails
         // GraphQL -> aclDetails: String (scalar)
-        if (this.AclDetails == null && ec.Includes("aclDetails",true))
+        if (ec.Includes("aclDetails",true))
         {
-            this.AclDetails = "FETCH";
+            if(this.AclDetails == null) {
+
+                this.AclDetails = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AclDetails != null && ec.Excludes("aclDetails",true))
+        {
+            this.AclDetails = null;
         }
         //      C# -> DateTime? CreationTime
         // GraphQL -> creationTime: DateTime (scalar)
-        if (this.CreationTime == null && ec.Includes("creationTime",true))
+        if (ec.Includes("creationTime",true))
         {
-            this.CreationTime = new DateTime();
+            if(this.CreationTime == null) {
+
+                this.CreationTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CreationTime != null && ec.Excludes("creationTime",true))
+        {
+            this.CreationTime = null;
         }
         //      C# -> DateTime? ModificationTime
         // GraphQL -> modificationTime: DateTime (scalar)
-        if (this.ModificationTime == null && ec.Includes("modificationTime",true))
+        if (ec.Includes("modificationTime",true))
         {
-            this.ModificationTime = new DateTime();
+            if(this.ModificationTime == null) {
+
+                this.ModificationTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ModificationTime != null && ec.Excludes("modificationTime",true))
+        {
+            this.ModificationTime = null;
         }
         //      C# -> System.String? Path
         // GraphQL -> path: String! (scalar)
-        if (this.Path == null && ec.Includes("path",true))
+        if (ec.Includes("path",true))
         {
-            this.Path = "FETCH";
+            if(this.Path == null) {
+
+                this.Path = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Path != null && ec.Excludes("path",true))
+        {
+            this.Path = null;
         }
         //      C# -> List<HashDetail>? RequestedHashDetails
         // GraphQL -> requestedHashDetails: [HashDetail!]! (type)
-        if (this.RequestedHashDetails == null && ec.Includes("requestedHashDetails",false))
+        if (ec.Includes("requestedHashDetails",false))
         {
-            this.RequestedHashDetails = new List<HashDetail>();
-            this.RequestedHashDetails.ApplyExploratoryFieldSpec(ec.NewChild("requestedHashDetails"));
+            if(this.RequestedHashDetails == null) {
+
+                this.RequestedHashDetails = new List<HashDetail>();
+                this.RequestedHashDetails.ApplyExploratoryFieldSpec(ec.NewChild("requestedHashDetails"));
+
+            } else {
+
+                this.RequestedHashDetails.ApplyExploratoryFieldSpec(ec.NewChild("requestedHashDetails"));
+
+            }
+        }
+        else if (this.RequestedHashDetails != null && ec.Excludes("requestedHashDetails",false))
+        {
+            this.RequestedHashDetails = null;
         }
         //      C# -> List<YaraMatchDetail>? YaraMatchDetails
         // GraphQL -> yaraMatchDetails: [YARAMatchDetail!]! (type)
-        if (this.YaraMatchDetails == null && ec.Includes("yaraMatchDetails",false))
+        if (ec.Includes("yaraMatchDetails",false))
         {
-            this.YaraMatchDetails = new List<YaraMatchDetail>();
-            this.YaraMatchDetails.ApplyExploratoryFieldSpec(ec.NewChild("yaraMatchDetails"));
+            if(this.YaraMatchDetails == null) {
+
+                this.YaraMatchDetails = new List<YaraMatchDetail>();
+                this.YaraMatchDetails.ApplyExploratoryFieldSpec(ec.NewChild("yaraMatchDetails"));
+
+            } else {
+
+                this.YaraMatchDetails.ApplyExploratoryFieldSpec(ec.NewChild("yaraMatchDetails"));
+
+            }
+        }
+        else if (this.YaraMatchDetails != null && ec.Excludes("yaraMatchDetails",false))
+        {
+            this.YaraMatchDetails = null;
         }
     }
 
@@ -202,9 +295,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<PathInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

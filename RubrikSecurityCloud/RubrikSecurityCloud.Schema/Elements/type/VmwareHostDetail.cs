@@ -101,58 +101,87 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? ComputeClusterId
         // GraphQL -> computeClusterId: String (scalar)
         if (this.ComputeClusterId != null) {
-            s += ind + "computeClusterId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "computeClusterId\n" ;
+            } else {
+                s += ind + "computeClusterId\n" ;
+            }
         }
         //      C# -> System.String? Moid
         // GraphQL -> moid: String (scalar)
         if (this.Moid != null) {
-            s += ind + "moid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "moid\n" ;
+            } else {
+                s += ind + "moid\n" ;
+            }
         }
         //      C# -> DataCenterSummary? Datacenter
         // GraphQL -> datacenter: DataCenterSummary (type)
         if (this.Datacenter != null) {
-            var fspec = this.Datacenter.AsFieldSpec(indent+1);
+            var fspec = this.Datacenter.AsFieldSpec(conf.Child("datacenter"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "datacenter {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "datacenter {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<DataStoreSummary>? Datastores
         // GraphQL -> datastores: [DataStoreSummary!]! (type)
         if (this.Datastores != null) {
-            var fspec = this.Datastores.AsFieldSpec(indent+1);
+            var fspec = this.Datastores.AsFieldSpec(conf.Child("datastores"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "datastores {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "datastores {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<VirtualMachineSummary>? VirtualMachines
         // GraphQL -> virtualMachines: [VirtualMachineSummary!]! (type)
         if (this.VirtualMachines != null) {
-            var fspec = this.VirtualMachines.AsFieldSpec(indent+1);
+            var fspec = this.VirtualMachines.AsFieldSpec(conf.Child("virtualMachines"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "virtualMachines {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "virtualMachines {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> VmwareHostSummary? VmwareHostSummary
         // GraphQL -> vmwareHostSummary: VmwareHostSummary (type)
         if (this.VmwareHostSummary != null) {
-            var fspec = this.VmwareHostSummary.AsFieldSpec(indent+1);
+            var fspec = this.VmwareHostSummary.AsFieldSpec(conf.Child("vmwareHostSummary"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "vmwareHostSummary {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "vmwareHostSummary {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> VmwareHostUpdate? VmwareHostUpdate
         // GraphQL -> vmwareHostUpdate: VmwareHostUpdate (type)
         if (this.VmwareHostUpdate != null) {
-            var fspec = this.VmwareHostUpdate.AsFieldSpec(indent+1);
+            var fspec = this.VmwareHostUpdate.AsFieldSpec(conf.Child("vmwareHostUpdate"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "vmwareHostUpdate {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "vmwareHostUpdate {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -164,50 +193,132 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? ComputeClusterId
         // GraphQL -> computeClusterId: String (scalar)
-        if (this.ComputeClusterId == null && ec.Includes("computeClusterId",true))
+        if (ec.Includes("computeClusterId",true))
         {
-            this.ComputeClusterId = "FETCH";
+            if(this.ComputeClusterId == null) {
+
+                this.ComputeClusterId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ComputeClusterId != null && ec.Excludes("computeClusterId",true))
+        {
+            this.ComputeClusterId = null;
         }
         //      C# -> System.String? Moid
         // GraphQL -> moid: String (scalar)
-        if (this.Moid == null && ec.Includes("moid",true))
+        if (ec.Includes("moid",true))
         {
-            this.Moid = "FETCH";
+            if(this.Moid == null) {
+
+                this.Moid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Moid != null && ec.Excludes("moid",true))
+        {
+            this.Moid = null;
         }
         //      C# -> DataCenterSummary? Datacenter
         // GraphQL -> datacenter: DataCenterSummary (type)
-        if (this.Datacenter == null && ec.Includes("datacenter",false))
+        if (ec.Includes("datacenter",false))
         {
-            this.Datacenter = new DataCenterSummary();
-            this.Datacenter.ApplyExploratoryFieldSpec(ec.NewChild("datacenter"));
+            if(this.Datacenter == null) {
+
+                this.Datacenter = new DataCenterSummary();
+                this.Datacenter.ApplyExploratoryFieldSpec(ec.NewChild("datacenter"));
+
+            } else {
+
+                this.Datacenter.ApplyExploratoryFieldSpec(ec.NewChild("datacenter"));
+
+            }
+        }
+        else if (this.Datacenter != null && ec.Excludes("datacenter",false))
+        {
+            this.Datacenter = null;
         }
         //      C# -> List<DataStoreSummary>? Datastores
         // GraphQL -> datastores: [DataStoreSummary!]! (type)
-        if (this.Datastores == null && ec.Includes("datastores",false))
+        if (ec.Includes("datastores",false))
         {
-            this.Datastores = new List<DataStoreSummary>();
-            this.Datastores.ApplyExploratoryFieldSpec(ec.NewChild("datastores"));
+            if(this.Datastores == null) {
+
+                this.Datastores = new List<DataStoreSummary>();
+                this.Datastores.ApplyExploratoryFieldSpec(ec.NewChild("datastores"));
+
+            } else {
+
+                this.Datastores.ApplyExploratoryFieldSpec(ec.NewChild("datastores"));
+
+            }
+        }
+        else if (this.Datastores != null && ec.Excludes("datastores",false))
+        {
+            this.Datastores = null;
         }
         //      C# -> List<VirtualMachineSummary>? VirtualMachines
         // GraphQL -> virtualMachines: [VirtualMachineSummary!]! (type)
-        if (this.VirtualMachines == null && ec.Includes("virtualMachines",false))
+        if (ec.Includes("virtualMachines",false))
         {
-            this.VirtualMachines = new List<VirtualMachineSummary>();
-            this.VirtualMachines.ApplyExploratoryFieldSpec(ec.NewChild("virtualMachines"));
+            if(this.VirtualMachines == null) {
+
+                this.VirtualMachines = new List<VirtualMachineSummary>();
+                this.VirtualMachines.ApplyExploratoryFieldSpec(ec.NewChild("virtualMachines"));
+
+            } else {
+
+                this.VirtualMachines.ApplyExploratoryFieldSpec(ec.NewChild("virtualMachines"));
+
+            }
+        }
+        else if (this.VirtualMachines != null && ec.Excludes("virtualMachines",false))
+        {
+            this.VirtualMachines = null;
         }
         //      C# -> VmwareHostSummary? VmwareHostSummary
         // GraphQL -> vmwareHostSummary: VmwareHostSummary (type)
-        if (this.VmwareHostSummary == null && ec.Includes("vmwareHostSummary",false))
+        if (ec.Includes("vmwareHostSummary",false))
         {
-            this.VmwareHostSummary = new VmwareHostSummary();
-            this.VmwareHostSummary.ApplyExploratoryFieldSpec(ec.NewChild("vmwareHostSummary"));
+            if(this.VmwareHostSummary == null) {
+
+                this.VmwareHostSummary = new VmwareHostSummary();
+                this.VmwareHostSummary.ApplyExploratoryFieldSpec(ec.NewChild("vmwareHostSummary"));
+
+            } else {
+
+                this.VmwareHostSummary.ApplyExploratoryFieldSpec(ec.NewChild("vmwareHostSummary"));
+
+            }
+        }
+        else if (this.VmwareHostSummary != null && ec.Excludes("vmwareHostSummary",false))
+        {
+            this.VmwareHostSummary = null;
         }
         //      C# -> VmwareHostUpdate? VmwareHostUpdate
         // GraphQL -> vmwareHostUpdate: VmwareHostUpdate (type)
-        if (this.VmwareHostUpdate == null && ec.Includes("vmwareHostUpdate",false))
+        if (ec.Includes("vmwareHostUpdate",false))
         {
-            this.VmwareHostUpdate = new VmwareHostUpdate();
-            this.VmwareHostUpdate.ApplyExploratoryFieldSpec(ec.NewChild("vmwareHostUpdate"));
+            if(this.VmwareHostUpdate == null) {
+
+                this.VmwareHostUpdate = new VmwareHostUpdate();
+                this.VmwareHostUpdate.ApplyExploratoryFieldSpec(ec.NewChild("vmwareHostUpdate"));
+
+            } else {
+
+                this.VmwareHostUpdate.ApplyExploratoryFieldSpec(ec.NewChild("vmwareHostUpdate"));
+
+            }
+        }
+        else if (this.VmwareHostUpdate != null && ec.Excludes("vmwareHostUpdate",false))
+        {
+            this.VmwareHostUpdate = null;
         }
     }
 
@@ -234,9 +345,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<VmwareHostDetail> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

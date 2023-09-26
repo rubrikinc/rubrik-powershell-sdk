@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<System.String>? FailedObjectIds
         // GraphQL -> failedObjectIds: [UUID!]! (scalar)
         if (this.FailedObjectIds != null) {
-            s += ind + "failedObjectIds\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "failedObjectIds\n" ;
+            } else {
+                s += ind + "failedObjectIds\n" ;
+            }
         }
         //      C# -> List<System.String>? SuccessObjectIds
         // GraphQL -> successObjectIds: [UUID!]! (scalar)
         if (this.SuccessObjectIds != null) {
-            s += ind + "successObjectIds\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "successObjectIds\n" ;
+            } else {
+                s += ind + "successObjectIds\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<System.String>? FailedObjectIds
         // GraphQL -> failedObjectIds: [UUID!]! (scalar)
-        if (this.FailedObjectIds == null && ec.Includes("failedObjectIds",true))
+        if (ec.Includes("failedObjectIds",true))
         {
-            this.FailedObjectIds = new List<System.String>();
+            if(this.FailedObjectIds == null) {
+
+                this.FailedObjectIds = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.FailedObjectIds != null && ec.Excludes("failedObjectIds",true))
+        {
+            this.FailedObjectIds = null;
         }
         //      C# -> List<System.String>? SuccessObjectIds
         // GraphQL -> successObjectIds: [UUID!]! (scalar)
-        if (this.SuccessObjectIds == null && ec.Includes("successObjectIds",true))
+        if (ec.Includes("successObjectIds",true))
         {
-            this.SuccessObjectIds = new List<System.String>();
+            if(this.SuccessObjectIds == null) {
+
+                this.SuccessObjectIds = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SuccessObjectIds != null && ec.Excludes("successObjectIds",true))
+        {
+            this.SuccessObjectIds = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AddCloudNativeSqlServerBackupCredentialsReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

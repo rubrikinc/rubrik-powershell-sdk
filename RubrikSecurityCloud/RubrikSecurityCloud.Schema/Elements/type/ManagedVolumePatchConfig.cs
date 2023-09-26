@@ -83,34 +83,55 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<System.String>? HostPatterns
         // GraphQL -> hostPatterns: [String!]! (scalar)
         if (this.HostPatterns != null) {
-            s += ind + "hostPatterns\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostPatterns\n" ;
+            } else {
+                s += ind + "hostPatterns\n" ;
+            }
         }
         //      C# -> List<System.String>? NodeHint
         // GraphQL -> nodeHint: [String!]! (scalar)
         if (this.NodeHint != null) {
-            s += ind + "nodeHint\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "nodeHint\n" ;
+            } else {
+                s += ind + "nodeHint\n" ;
+            }
         }
         //      C# -> System.String? SmbDomainName
         // GraphQL -> smbDomainName: String (scalar)
         if (this.SmbDomainName != null) {
-            s += ind + "smbDomainName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "smbDomainName\n" ;
+            } else {
+                s += ind + "smbDomainName\n" ;
+            }
         }
         //      C# -> List<System.String>? SmbValidIps
         // GraphQL -> smbValidIps: [String!]! (scalar)
         if (this.SmbValidIps != null) {
-            s += ind + "smbValidIps\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "smbValidIps\n" ;
+            } else {
+                s += ind + "smbValidIps\n" ;
+            }
         }
         //      C# -> List<System.String>? SmbValidUsers
         // GraphQL -> smbValidUsers: [String!]! (scalar)
         if (this.SmbValidUsers != null) {
-            s += ind + "smbValidUsers\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "smbValidUsers\n" ;
+            } else {
+                s += ind + "smbValidUsers\n" ;
+            }
         }
         return s;
     }
@@ -121,33 +142,88 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<System.String>? HostPatterns
         // GraphQL -> hostPatterns: [String!]! (scalar)
-        if (this.HostPatterns == null && ec.Includes("hostPatterns",true))
+        if (ec.Includes("hostPatterns",true))
         {
-            this.HostPatterns = new List<System.String>();
+            if(this.HostPatterns == null) {
+
+                this.HostPatterns = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.HostPatterns != null && ec.Excludes("hostPatterns",true))
+        {
+            this.HostPatterns = null;
         }
         //      C# -> List<System.String>? NodeHint
         // GraphQL -> nodeHint: [String!]! (scalar)
-        if (this.NodeHint == null && ec.Includes("nodeHint",true))
+        if (ec.Includes("nodeHint",true))
         {
-            this.NodeHint = new List<System.String>();
+            if(this.NodeHint == null) {
+
+                this.NodeHint = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.NodeHint != null && ec.Excludes("nodeHint",true))
+        {
+            this.NodeHint = null;
         }
         //      C# -> System.String? SmbDomainName
         // GraphQL -> smbDomainName: String (scalar)
-        if (this.SmbDomainName == null && ec.Includes("smbDomainName",true))
+        if (ec.Includes("smbDomainName",true))
         {
-            this.SmbDomainName = "FETCH";
+            if(this.SmbDomainName == null) {
+
+                this.SmbDomainName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SmbDomainName != null && ec.Excludes("smbDomainName",true))
+        {
+            this.SmbDomainName = null;
         }
         //      C# -> List<System.String>? SmbValidIps
         // GraphQL -> smbValidIps: [String!]! (scalar)
-        if (this.SmbValidIps == null && ec.Includes("smbValidIps",true))
+        if (ec.Includes("smbValidIps",true))
         {
-            this.SmbValidIps = new List<System.String>();
+            if(this.SmbValidIps == null) {
+
+                this.SmbValidIps = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SmbValidIps != null && ec.Excludes("smbValidIps",true))
+        {
+            this.SmbValidIps = null;
         }
         //      C# -> List<System.String>? SmbValidUsers
         // GraphQL -> smbValidUsers: [String!]! (scalar)
-        if (this.SmbValidUsers == null && ec.Includes("smbValidUsers",true))
+        if (ec.Includes("smbValidUsers",true))
         {
-            this.SmbValidUsers = new List<System.String>();
+            if(this.SmbValidUsers == null) {
+
+                this.SmbValidUsers = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SmbValidUsers != null && ec.Excludes("smbValidUsers",true))
+        {
+            this.SmbValidUsers = null;
         }
     }
 
@@ -174,9 +250,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ManagedVolumePatchConfig> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

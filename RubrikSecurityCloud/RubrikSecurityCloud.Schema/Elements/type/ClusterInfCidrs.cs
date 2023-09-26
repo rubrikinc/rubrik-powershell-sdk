@@ -65,26 +65,39 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? ClusterId
         // GraphQL -> clusterId: String! (scalar)
         if (this.ClusterId != null) {
-            s += ind + "clusterId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterId\n" ;
+            } else {
+                s += ind + "clusterId\n" ;
+            }
         }
         //      C# -> System.String? ClusterName
         // GraphQL -> clusterName: String! (scalar)
         if (this.ClusterName != null) {
-            s += ind + "clusterName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterName\n" ;
+            } else {
+                s += ind + "clusterName\n" ;
+            }
         }
         //      C# -> List<InterfaceCidr>? InterfaceCidr
         // GraphQL -> interfaceCidr: [InterfaceCidr!]! (type)
         if (this.InterfaceCidr != null) {
-            var fspec = this.InterfaceCidr.AsFieldSpec(indent+1);
+            var fspec = this.InterfaceCidr.AsFieldSpec(conf.Child("interfaceCidr"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "interfaceCidr {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "interfaceCidr {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -96,22 +109,56 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? ClusterId
         // GraphQL -> clusterId: String! (scalar)
-        if (this.ClusterId == null && ec.Includes("clusterId",true))
+        if (ec.Includes("clusterId",true))
         {
-            this.ClusterId = "FETCH";
+            if(this.ClusterId == null) {
+
+                this.ClusterId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterId != null && ec.Excludes("clusterId",true))
+        {
+            this.ClusterId = null;
         }
         //      C# -> System.String? ClusterName
         // GraphQL -> clusterName: String! (scalar)
-        if (this.ClusterName == null && ec.Includes("clusterName",true))
+        if (ec.Includes("clusterName",true))
         {
-            this.ClusterName = "FETCH";
+            if(this.ClusterName == null) {
+
+                this.ClusterName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterName != null && ec.Excludes("clusterName",true))
+        {
+            this.ClusterName = null;
         }
         //      C# -> List<InterfaceCidr>? InterfaceCidr
         // GraphQL -> interfaceCidr: [InterfaceCidr!]! (type)
-        if (this.InterfaceCidr == null && ec.Includes("interfaceCidr",false))
+        if (ec.Includes("interfaceCidr",false))
         {
-            this.InterfaceCidr = new List<InterfaceCidr>();
-            this.InterfaceCidr.ApplyExploratoryFieldSpec(ec.NewChild("interfaceCidr"));
+            if(this.InterfaceCidr == null) {
+
+                this.InterfaceCidr = new List<InterfaceCidr>();
+                this.InterfaceCidr.ApplyExploratoryFieldSpec(ec.NewChild("interfaceCidr"));
+
+            } else {
+
+                this.InterfaceCidr.ApplyExploratoryFieldSpec(ec.NewChild("interfaceCidr"));
+
+            }
+        }
+        else if (this.InterfaceCidr != null && ec.Excludes("interfaceCidr",false))
+        {
+            this.InterfaceCidr = null;
         }
     }
 
@@ -138,9 +185,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ClusterInfCidrs> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

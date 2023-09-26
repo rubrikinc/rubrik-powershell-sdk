@@ -83,36 +83,57 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? AbsolutePath
         // GraphQL -> absolutePath: String! (scalar)
         if (this.AbsolutePath != null) {
-            s += ind + "absolutePath\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "absolutePath\n" ;
+            } else {
+                s += ind + "absolutePath\n" ;
+            }
         }
         //      C# -> System.String? DisplayPath
         // GraphQL -> displayPath: String! (scalar)
         if (this.DisplayPath != null) {
-            s += ind + "displayPath\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "displayPath\n" ;
+            } else {
+                s += ind + "displayPath\n" ;
+            }
         }
         //      C# -> System.String? Filename
         // GraphQL -> filename: String! (scalar)
         if (this.Filename != null) {
-            s += ind + "filename\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "filename\n" ;
+            } else {
+                s += ind + "filename\n" ;
+            }
         }
         //      C# -> System.String? Path
         // GraphQL -> path: String! (scalar)
         if (this.Path != null) {
-            s += ind + "path\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "path\n" ;
+            } else {
+                s += ind + "path\n" ;
+            }
         }
         //      C# -> List<HierarchySnappableFileVersion>? FileVersions
         // GraphQL -> fileVersions: [HierarchySnappableFileVersion!]! (type)
         if (this.FileVersions != null) {
-            var fspec = this.FileVersions.AsFieldSpec(indent+1);
+            var fspec = this.FileVersions.AsFieldSpec(conf.Child("fileVersions"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "fileVersions {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "fileVersions {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -124,34 +145,90 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? AbsolutePath
         // GraphQL -> absolutePath: String! (scalar)
-        if (this.AbsolutePath == null && ec.Includes("absolutePath",true))
+        if (ec.Includes("absolutePath",true))
         {
-            this.AbsolutePath = "FETCH";
+            if(this.AbsolutePath == null) {
+
+                this.AbsolutePath = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AbsolutePath != null && ec.Excludes("absolutePath",true))
+        {
+            this.AbsolutePath = null;
         }
         //      C# -> System.String? DisplayPath
         // GraphQL -> displayPath: String! (scalar)
-        if (this.DisplayPath == null && ec.Includes("displayPath",true))
+        if (ec.Includes("displayPath",true))
         {
-            this.DisplayPath = "FETCH";
+            if(this.DisplayPath == null) {
+
+                this.DisplayPath = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DisplayPath != null && ec.Excludes("displayPath",true))
+        {
+            this.DisplayPath = null;
         }
         //      C# -> System.String? Filename
         // GraphQL -> filename: String! (scalar)
-        if (this.Filename == null && ec.Includes("filename",true))
+        if (ec.Includes("filename",true))
         {
-            this.Filename = "FETCH";
+            if(this.Filename == null) {
+
+                this.Filename = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Filename != null && ec.Excludes("filename",true))
+        {
+            this.Filename = null;
         }
         //      C# -> System.String? Path
         // GraphQL -> path: String! (scalar)
-        if (this.Path == null && ec.Includes("path",true))
+        if (ec.Includes("path",true))
         {
-            this.Path = "FETCH";
+            if(this.Path == null) {
+
+                this.Path = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Path != null && ec.Excludes("path",true))
+        {
+            this.Path = null;
         }
         //      C# -> List<HierarchySnappableFileVersion>? FileVersions
         // GraphQL -> fileVersions: [HierarchySnappableFileVersion!]! (type)
-        if (this.FileVersions == null && ec.Includes("fileVersions",false))
+        if (ec.Includes("fileVersions",false))
         {
-            this.FileVersions = new List<HierarchySnappableFileVersion>();
-            this.FileVersions.ApplyExploratoryFieldSpec(ec.NewChild("fileVersions"));
+            if(this.FileVersions == null) {
+
+                this.FileVersions = new List<HierarchySnappableFileVersion>();
+                this.FileVersions.ApplyExploratoryFieldSpec(ec.NewChild("fileVersions"));
+
+            } else {
+
+                this.FileVersions.ApplyExploratoryFieldSpec(ec.NewChild("fileVersions"));
+
+            }
+        }
+        else if (this.FileVersions != null && ec.Excludes("fileVersions",false))
+        {
+            this.FileVersions = null;
         }
     }
 
@@ -178,9 +255,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<VersionedFile> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

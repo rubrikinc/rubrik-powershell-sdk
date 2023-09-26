@@ -245,138 +245,231 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> AnomalyType? AnomalyType
         // GraphQL -> anomalyType: AnomalyType! (enum)
         if (this.AnomalyType != null) {
-            s += ind + "anomalyType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "anomalyType\n" ;
+            } else {
+                s += ind + "anomalyType\n" ;
+            }
         }
         //      C# -> EncryptionLevel? Encryption
         // GraphQL -> encryption: EncryptionLevel! (enum)
         if (this.Encryption != null) {
-            s += ind + "encryption\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "encryption\n" ;
+            } else {
+                s += ind + "encryption\n" ;
+            }
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         if (this.ObjectType != null) {
-            s += ind + "objectType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "objectType\n" ;
+            } else {
+                s += ind + "objectType\n" ;
+            }
         }
         //      C# -> ActivitySeverityEnum? Severity
         // GraphQL -> severity: ActivitySeverityEnum! (enum)
         if (this.Severity != null) {
-            s += ind + "severity\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "severity\n" ;
+            } else {
+                s += ind + "severity\n" ;
+            }
         }
         //      C# -> DateTime? AnomalousSnapshotDate
         // GraphQL -> anomalousSnapshotDate: DateTime! (scalar)
         if (this.AnomalousSnapshotDate != null) {
-            s += ind + "anomalousSnapshotDate\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "anomalousSnapshotDate\n" ;
+            } else {
+                s += ind + "anomalousSnapshotDate\n" ;
+            }
         }
         //      C# -> System.String? AnomalousSnapshotFid
         // GraphQL -> anomalousSnapshotFid: String! (scalar)
         if (this.AnomalousSnapshotFid != null) {
-            s += ind + "anomalousSnapshotFid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "anomalousSnapshotFid\n" ;
+            } else {
+                s += ind + "anomalousSnapshotFid\n" ;
+            }
         }
         //      C# -> System.String? AnomalousSnapshotId
         // GraphQL -> anomalousSnapshotId: String! (scalar)
         if (this.AnomalousSnapshotId != null) {
-            s += ind + "anomalousSnapshotId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "anomalousSnapshotId\n" ;
+            } else {
+                s += ind + "anomalousSnapshotId\n" ;
+            }
         }
         //      C# -> System.String? AnomalyId
         // GraphQL -> anomalyId: String! (scalar)
         if (this.AnomalyId != null) {
-            s += ind + "anomalyId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "anomalyId\n" ;
+            } else {
+                s += ind + "anomalyId\n" ;
+            }
         }
         //      C# -> System.Int64? CreatedFileCount
         // GraphQL -> createdFileCount: Long! (scalar)
         if (this.CreatedFileCount != null) {
-            s += ind + "createdFileCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "createdFileCount\n" ;
+            } else {
+                s += ind + "createdFileCount\n" ;
+            }
         }
         //      C# -> System.Int64? DeletedFileCount
         // GraphQL -> deletedFileCount: Long! (scalar)
         if (this.DeletedFileCount != null) {
-            s += ind + "deletedFileCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "deletedFileCount\n" ;
+            } else {
+                s += ind + "deletedFileCount\n" ;
+            }
         }
         //      C# -> DateTime? DetectionTime
         // GraphQL -> detectionTime: DateTime (scalar)
         if (this.DetectionTime != null) {
-            s += ind + "detectionTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "detectionTime\n" ;
+            } else {
+                s += ind + "detectionTime\n" ;
+            }
         }
         //      C# -> System.Int64? ModifiedFileCount
         // GraphQL -> modifiedFileCount: Long! (scalar)
         if (this.ModifiedFileCount != null) {
-            s += ind + "modifiedFileCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "modifiedFileCount\n" ;
+            } else {
+                s += ind + "modifiedFileCount\n" ;
+            }
         }
         //      C# -> System.String? PreviousSnapshotFid
         // GraphQL -> previousSnapshotFid: String! (scalar)
         if (this.PreviousSnapshotFid != null) {
-            s += ind + "previousSnapshotFid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "previousSnapshotFid\n" ;
+            } else {
+                s += ind + "previousSnapshotFid\n" ;
+            }
         }
         //      C# -> System.Int64? SuspiciousFileCount
         // GraphQL -> suspiciousFileCount: Long! (scalar)
         if (this.SuspiciousFileCount != null) {
-            s += ind + "suspiciousFileCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "suspiciousFileCount\n" ;
+            } else {
+                s += ind + "suspiciousFileCount\n" ;
+            }
         }
         //      C# -> System.Int64? TotalChildren
         // GraphQL -> totalChildren: Long! (scalar)
         if (this.TotalChildren != null) {
-            s += ind + "totalChildren\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "totalChildren\n" ;
+            } else {
+                s += ind + "totalChildren\n" ;
+            }
         }
         //      C# -> System.String? WorkloadFid
         // GraphQL -> workloadFid: String! (scalar)
         if (this.WorkloadFid != null) {
-            s += ind + "workloadFid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "workloadFid\n" ;
+            } else {
+                s += ind + "workloadFid\n" ;
+            }
         }
         //      C# -> System.String? WorkloadId
         // GraphQL -> workloadId: String! (scalar)
         if (this.WorkloadId != null) {
-            s += ind + "workloadId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "workloadId\n" ;
+            } else {
+                s += ind + "workloadId\n" ;
+            }
         }
         //      C# -> System.String? WorkloadName
         // GraphQL -> workloadName: String! (scalar)
         if (this.WorkloadName != null) {
-            s += ind + "workloadName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "workloadName\n" ;
+            } else {
+                s += ind + "workloadName\n" ;
+            }
         }
         //      C# -> List<WorkloadAnomaly>? AnomalousChildren
         // GraphQL -> anomalousChildren: [WorkloadAnomaly!]! (type)
         if (this.AnomalousChildren != null) {
-            var fspec = this.AnomalousChildren.AsFieldSpec(indent+1);
+            var fspec = this.AnomalousChildren.AsFieldSpec(conf.Child("anomalousChildren"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "anomalousChildren {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "anomalousChildren {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> AnomalyInfo? AnomalyInfo
         // GraphQL -> anomalyInfo: AnomalyInfo (type)
         if (this.AnomalyInfo != null) {
-            var fspec = this.AnomalyInfo.AsFieldSpec(indent+1);
+            var fspec = this.AnomalyInfo.AsFieldSpec(conf.Child("anomalyInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "anomalyInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "anomalyInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
         if (this.Cluster != null) {
-            var fspec = this.Cluster.AsFieldSpec(indent+1);
+            var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> PolicyObj? PreviousPolicyObj
         // GraphQL -> previousPolicyObj: PolicyObj (type)
         if (this.PreviousPolicyObj != null) {
-            var fspec = this.PreviousPolicyObj.AsFieldSpec(indent+1);
+            var fspec = this.PreviousPolicyObj.AsFieldSpec(conf.Child("previousPolicyObj"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "previousPolicyObj {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "previousPolicyObj {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> SnappableLocationType? Location
         // GraphQL -> location: SnappableLocationType! (union)
         if (this.Location != null) {
-            var fspec = this.Location.AsFieldSpec(indent+1);
+            var fspec = this.Location.AsFieldSpec(conf.Child("location"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "location {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "location {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -388,147 +481,409 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> AnomalyType? AnomalyType
         // GraphQL -> anomalyType: AnomalyType! (enum)
-        if (this.AnomalyType == null && ec.Includes("anomalyType",true))
+        if (ec.Includes("anomalyType",true))
         {
-            this.AnomalyType = new AnomalyType();
+            if(this.AnomalyType == null) {
+
+                this.AnomalyType = new AnomalyType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AnomalyType != null && ec.Excludes("anomalyType",true))
+        {
+            this.AnomalyType = null;
         }
         //      C# -> EncryptionLevel? Encryption
         // GraphQL -> encryption: EncryptionLevel! (enum)
-        if (this.Encryption == null && ec.Includes("encryption",true))
+        if (ec.Includes("encryption",true))
         {
-            this.Encryption = new EncryptionLevel();
+            if(this.Encryption == null) {
+
+                this.Encryption = new EncryptionLevel();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Encryption != null && ec.Excludes("encryption",true))
+        {
+            this.Encryption = null;
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
-        if (this.ObjectType == null && ec.Includes("objectType",true))
+        if (ec.Includes("objectType",true))
         {
-            this.ObjectType = new HierarchyObjectTypeEnum();
+            if(this.ObjectType == null) {
+
+                this.ObjectType = new HierarchyObjectTypeEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ObjectType != null && ec.Excludes("objectType",true))
+        {
+            this.ObjectType = null;
         }
         //      C# -> ActivitySeverityEnum? Severity
         // GraphQL -> severity: ActivitySeverityEnum! (enum)
-        if (this.Severity == null && ec.Includes("severity",true))
+        if (ec.Includes("severity",true))
         {
-            this.Severity = new ActivitySeverityEnum();
+            if(this.Severity == null) {
+
+                this.Severity = new ActivitySeverityEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Severity != null && ec.Excludes("severity",true))
+        {
+            this.Severity = null;
         }
         //      C# -> DateTime? AnomalousSnapshotDate
         // GraphQL -> anomalousSnapshotDate: DateTime! (scalar)
-        if (this.AnomalousSnapshotDate == null && ec.Includes("anomalousSnapshotDate",true))
+        if (ec.Includes("anomalousSnapshotDate",true))
         {
-            this.AnomalousSnapshotDate = new DateTime();
+            if(this.AnomalousSnapshotDate == null) {
+
+                this.AnomalousSnapshotDate = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AnomalousSnapshotDate != null && ec.Excludes("anomalousSnapshotDate",true))
+        {
+            this.AnomalousSnapshotDate = null;
         }
         //      C# -> System.String? AnomalousSnapshotFid
         // GraphQL -> anomalousSnapshotFid: String! (scalar)
-        if (this.AnomalousSnapshotFid == null && ec.Includes("anomalousSnapshotFid",true))
+        if (ec.Includes("anomalousSnapshotFid",true))
         {
-            this.AnomalousSnapshotFid = "FETCH";
+            if(this.AnomalousSnapshotFid == null) {
+
+                this.AnomalousSnapshotFid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AnomalousSnapshotFid != null && ec.Excludes("anomalousSnapshotFid",true))
+        {
+            this.AnomalousSnapshotFid = null;
         }
         //      C# -> System.String? AnomalousSnapshotId
         // GraphQL -> anomalousSnapshotId: String! (scalar)
-        if (this.AnomalousSnapshotId == null && ec.Includes("anomalousSnapshotId",true))
+        if (ec.Includes("anomalousSnapshotId",true))
         {
-            this.AnomalousSnapshotId = "FETCH";
+            if(this.AnomalousSnapshotId == null) {
+
+                this.AnomalousSnapshotId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AnomalousSnapshotId != null && ec.Excludes("anomalousSnapshotId",true))
+        {
+            this.AnomalousSnapshotId = null;
         }
         //      C# -> System.String? AnomalyId
         // GraphQL -> anomalyId: String! (scalar)
-        if (this.AnomalyId == null && ec.Includes("anomalyId",true))
+        if (ec.Includes("anomalyId",true))
         {
-            this.AnomalyId = "FETCH";
+            if(this.AnomalyId == null) {
+
+                this.AnomalyId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AnomalyId != null && ec.Excludes("anomalyId",true))
+        {
+            this.AnomalyId = null;
         }
         //      C# -> System.Int64? CreatedFileCount
         // GraphQL -> createdFileCount: Long! (scalar)
-        if (this.CreatedFileCount == null && ec.Includes("createdFileCount",true))
+        if (ec.Includes("createdFileCount",true))
         {
-            this.CreatedFileCount = new System.Int64();
+            if(this.CreatedFileCount == null) {
+
+                this.CreatedFileCount = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CreatedFileCount != null && ec.Excludes("createdFileCount",true))
+        {
+            this.CreatedFileCount = null;
         }
         //      C# -> System.Int64? DeletedFileCount
         // GraphQL -> deletedFileCount: Long! (scalar)
-        if (this.DeletedFileCount == null && ec.Includes("deletedFileCount",true))
+        if (ec.Includes("deletedFileCount",true))
         {
-            this.DeletedFileCount = new System.Int64();
+            if(this.DeletedFileCount == null) {
+
+                this.DeletedFileCount = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DeletedFileCount != null && ec.Excludes("deletedFileCount",true))
+        {
+            this.DeletedFileCount = null;
         }
         //      C# -> DateTime? DetectionTime
         // GraphQL -> detectionTime: DateTime (scalar)
-        if (this.DetectionTime == null && ec.Includes("detectionTime",true))
+        if (ec.Includes("detectionTime",true))
         {
-            this.DetectionTime = new DateTime();
+            if(this.DetectionTime == null) {
+
+                this.DetectionTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DetectionTime != null && ec.Excludes("detectionTime",true))
+        {
+            this.DetectionTime = null;
         }
         //      C# -> System.Int64? ModifiedFileCount
         // GraphQL -> modifiedFileCount: Long! (scalar)
-        if (this.ModifiedFileCount == null && ec.Includes("modifiedFileCount",true))
+        if (ec.Includes("modifiedFileCount",true))
         {
-            this.ModifiedFileCount = new System.Int64();
+            if(this.ModifiedFileCount == null) {
+
+                this.ModifiedFileCount = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ModifiedFileCount != null && ec.Excludes("modifiedFileCount",true))
+        {
+            this.ModifiedFileCount = null;
         }
         //      C# -> System.String? PreviousSnapshotFid
         // GraphQL -> previousSnapshotFid: String! (scalar)
-        if (this.PreviousSnapshotFid == null && ec.Includes("previousSnapshotFid",true))
+        if (ec.Includes("previousSnapshotFid",true))
         {
-            this.PreviousSnapshotFid = "FETCH";
+            if(this.PreviousSnapshotFid == null) {
+
+                this.PreviousSnapshotFid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PreviousSnapshotFid != null && ec.Excludes("previousSnapshotFid",true))
+        {
+            this.PreviousSnapshotFid = null;
         }
         //      C# -> System.Int64? SuspiciousFileCount
         // GraphQL -> suspiciousFileCount: Long! (scalar)
-        if (this.SuspiciousFileCount == null && ec.Includes("suspiciousFileCount",true))
+        if (ec.Includes("suspiciousFileCount",true))
         {
-            this.SuspiciousFileCount = new System.Int64();
+            if(this.SuspiciousFileCount == null) {
+
+                this.SuspiciousFileCount = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SuspiciousFileCount != null && ec.Excludes("suspiciousFileCount",true))
+        {
+            this.SuspiciousFileCount = null;
         }
         //      C# -> System.Int64? TotalChildren
         // GraphQL -> totalChildren: Long! (scalar)
-        if (this.TotalChildren == null && ec.Includes("totalChildren",true))
+        if (ec.Includes("totalChildren",true))
         {
-            this.TotalChildren = new System.Int64();
+            if(this.TotalChildren == null) {
+
+                this.TotalChildren = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalChildren != null && ec.Excludes("totalChildren",true))
+        {
+            this.TotalChildren = null;
         }
         //      C# -> System.String? WorkloadFid
         // GraphQL -> workloadFid: String! (scalar)
-        if (this.WorkloadFid == null && ec.Includes("workloadFid",true))
+        if (ec.Includes("workloadFid",true))
         {
-            this.WorkloadFid = "FETCH";
+            if(this.WorkloadFid == null) {
+
+                this.WorkloadFid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.WorkloadFid != null && ec.Excludes("workloadFid",true))
+        {
+            this.WorkloadFid = null;
         }
         //      C# -> System.String? WorkloadId
         // GraphQL -> workloadId: String! (scalar)
-        if (this.WorkloadId == null && ec.Includes("workloadId",true))
+        if (ec.Includes("workloadId",true))
         {
-            this.WorkloadId = "FETCH";
+            if(this.WorkloadId == null) {
+
+                this.WorkloadId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.WorkloadId != null && ec.Excludes("workloadId",true))
+        {
+            this.WorkloadId = null;
         }
         //      C# -> System.String? WorkloadName
         // GraphQL -> workloadName: String! (scalar)
-        if (this.WorkloadName == null && ec.Includes("workloadName",true))
+        if (ec.Includes("workloadName",true))
         {
-            this.WorkloadName = "FETCH";
+            if(this.WorkloadName == null) {
+
+                this.WorkloadName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.WorkloadName != null && ec.Excludes("workloadName",true))
+        {
+            this.WorkloadName = null;
         }
         //      C# -> List<WorkloadAnomaly>? AnomalousChildren
         // GraphQL -> anomalousChildren: [WorkloadAnomaly!]! (type)
-        if (this.AnomalousChildren == null && ec.Includes("anomalousChildren",false))
+        if (ec.Includes("anomalousChildren",false))
         {
-            this.AnomalousChildren = new List<WorkloadAnomaly>();
-            this.AnomalousChildren.ApplyExploratoryFieldSpec(ec.NewChild("anomalousChildren"));
+            if(this.AnomalousChildren == null) {
+
+                this.AnomalousChildren = new List<WorkloadAnomaly>();
+                this.AnomalousChildren.ApplyExploratoryFieldSpec(ec.NewChild("anomalousChildren"));
+
+            } else {
+
+                this.AnomalousChildren.ApplyExploratoryFieldSpec(ec.NewChild("anomalousChildren"));
+
+            }
+        }
+        else if (this.AnomalousChildren != null && ec.Excludes("anomalousChildren",false))
+        {
+            this.AnomalousChildren = null;
         }
         //      C# -> AnomalyInfo? AnomalyInfo
         // GraphQL -> anomalyInfo: AnomalyInfo (type)
-        if (this.AnomalyInfo == null && ec.Includes("anomalyInfo",false))
+        if (ec.Includes("anomalyInfo",false))
         {
-            this.AnomalyInfo = new AnomalyInfo();
-            this.AnomalyInfo.ApplyExploratoryFieldSpec(ec.NewChild("anomalyInfo"));
+            if(this.AnomalyInfo == null) {
+
+                this.AnomalyInfo = new AnomalyInfo();
+                this.AnomalyInfo.ApplyExploratoryFieldSpec(ec.NewChild("anomalyInfo"));
+
+            } else {
+
+                this.AnomalyInfo.ApplyExploratoryFieldSpec(ec.NewChild("anomalyInfo"));
+
+            }
+        }
+        else if (this.AnomalyInfo != null && ec.Excludes("anomalyInfo",false))
+        {
+            this.AnomalyInfo = null;
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
-        if (this.Cluster == null && ec.Includes("cluster",false))
+        if (ec.Includes("cluster",false))
         {
-            this.Cluster = new Cluster();
-            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+            if(this.Cluster == null) {
+
+                this.Cluster = new Cluster();
+                this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+
+            } else {
+
+                this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+
+            }
+        }
+        else if (this.Cluster != null && ec.Excludes("cluster",false))
+        {
+            this.Cluster = null;
         }
         //      C# -> PolicyObj? PreviousPolicyObj
         // GraphQL -> previousPolicyObj: PolicyObj (type)
-        if (this.PreviousPolicyObj == null && ec.Includes("previousPolicyObj",false))
+        if (ec.Includes("previousPolicyObj",false))
         {
-            this.PreviousPolicyObj = new PolicyObj();
-            this.PreviousPolicyObj.ApplyExploratoryFieldSpec(ec.NewChild("previousPolicyObj"));
+            if(this.PreviousPolicyObj == null) {
+
+                this.PreviousPolicyObj = new PolicyObj();
+                this.PreviousPolicyObj.ApplyExploratoryFieldSpec(ec.NewChild("previousPolicyObj"));
+
+            } else {
+
+                this.PreviousPolicyObj.ApplyExploratoryFieldSpec(ec.NewChild("previousPolicyObj"));
+
+            }
+        }
+        else if (this.PreviousPolicyObj != null && ec.Excludes("previousPolicyObj",false))
+        {
+            this.PreviousPolicyObj = null;
         }
         //      C# -> SnappableLocationType? Location
         // GraphQL -> location: SnappableLocationType! (union)
-        if (this.Location == null && ec.Includes("location",false))
+        if (ec.Includes("location",false))
         {
-            var impls = new List<SnappableLocationType>();
-            impls.ApplyExploratoryFieldSpec(ec.NewChild("location"));
-            this.Location = (SnappableLocationType)InterfaceHelper.MakeCompositeFromList(impls);
+            if(this.Location == null) {
+
+                var impls = new List<SnappableLocationType>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("location"));
+                this.Location = (SnappableLocationType)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<SnappableLocationType>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("location"));
+                this.Location = (SnappableLocationType)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.Location != null && ec.Excludes("location",false))
+        {
+            this.Location = null;
         }
     }
 
@@ -555,9 +910,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<WorkloadAnomaly> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

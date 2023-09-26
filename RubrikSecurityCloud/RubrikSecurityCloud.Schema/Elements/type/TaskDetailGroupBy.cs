@@ -65,32 +65,45 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> TaskDetailConnection? TaskDetailConnection
         // GraphQL -> taskDetailConnection: TaskDetailConnection! (type)
         if (this.TaskDetailConnection != null) {
-            var fspec = this.TaskDetailConnection.AsFieldSpec(indent+1);
+            var fspec = this.TaskDetailConnection.AsFieldSpec(conf.Child("taskDetailConnection"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "taskDetailConnection {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "taskDetailConnection {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<TaskDetailGroupBy>? TaskDetailGroupByField
         // GraphQL -> taskDetailGroupBy: [TaskDetailGroupBy!]! (type)
         if (this.TaskDetailGroupByField != null) {
-            var fspec = this.TaskDetailGroupByField.AsFieldSpec(indent+1);
+            var fspec = this.TaskDetailGroupByField.AsFieldSpec(conf.Child("taskDetailGroupBy"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "taskDetailGroupBy {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "taskDetailGroupBy {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> TaskDetailGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: TaskDetailGroupByInfo! (union)
         if (this.GroupByInfo != null) {
-            var fspec = this.GroupByInfo.AsFieldSpec(indent+1);
+            var fspec = this.GroupByInfo.AsFieldSpec(conf.Child("groupByInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -102,25 +115,65 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> TaskDetailConnection? TaskDetailConnection
         // GraphQL -> taskDetailConnection: TaskDetailConnection! (type)
-        if (this.TaskDetailConnection == null && ec.Includes("taskDetailConnection",false))
+        if (ec.Includes("taskDetailConnection",false))
         {
-            this.TaskDetailConnection = new TaskDetailConnection();
-            this.TaskDetailConnection.ApplyExploratoryFieldSpec(ec.NewChild("taskDetailConnection"));
+            if(this.TaskDetailConnection == null) {
+
+                this.TaskDetailConnection = new TaskDetailConnection();
+                this.TaskDetailConnection.ApplyExploratoryFieldSpec(ec.NewChild("taskDetailConnection"));
+
+            } else {
+
+                this.TaskDetailConnection.ApplyExploratoryFieldSpec(ec.NewChild("taskDetailConnection"));
+
+            }
+        }
+        else if (this.TaskDetailConnection != null && ec.Excludes("taskDetailConnection",false))
+        {
+            this.TaskDetailConnection = null;
         }
         //      C# -> List<TaskDetailGroupBy>? TaskDetailGroupByField
         // GraphQL -> taskDetailGroupBy: [TaskDetailGroupBy!]! (type)
-        if (this.TaskDetailGroupByField == null && ec.Includes("taskDetailGroupBy",false))
+        if (ec.Includes("taskDetailGroupBy",false))
         {
-            this.TaskDetailGroupByField = new List<TaskDetailGroupBy>();
-            this.TaskDetailGroupByField.ApplyExploratoryFieldSpec(ec.NewChild("taskDetailGroupBy"));
+            if(this.TaskDetailGroupByField == null) {
+
+                this.TaskDetailGroupByField = new List<TaskDetailGroupBy>();
+                this.TaskDetailGroupByField.ApplyExploratoryFieldSpec(ec.NewChild("taskDetailGroupBy"));
+
+            } else {
+
+                this.TaskDetailGroupByField.ApplyExploratoryFieldSpec(ec.NewChild("taskDetailGroupBy"));
+
+            }
+        }
+        else if (this.TaskDetailGroupByField != null && ec.Excludes("taskDetailGroupBy",false))
+        {
+            this.TaskDetailGroupByField = null;
         }
         //      C# -> TaskDetailGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: TaskDetailGroupByInfo! (union)
-        if (this.GroupByInfo == null && ec.Includes("groupByInfo",false))
+        if (ec.Includes("groupByInfo",false))
         {
-            var impls = new List<TaskDetailGroupByInfo>();
-            impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
-            this.GroupByInfo = (TaskDetailGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+            if(this.GroupByInfo == null) {
+
+                var impls = new List<TaskDetailGroupByInfo>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
+                this.GroupByInfo = (TaskDetailGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<TaskDetailGroupByInfo>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
+                this.GroupByInfo = (TaskDetailGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.GroupByInfo != null && ec.Excludes("groupByInfo",false))
+        {
+            this.GroupByInfo = null;
         }
     }
 
@@ -147,9 +200,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<TaskDetailGroupBy> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

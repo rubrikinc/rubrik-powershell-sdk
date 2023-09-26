@@ -92,39 +92,64 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? FileSystemType
         // GraphQL -> fileSystemType: String! (scalar)
         if (this.FileSystemType != null) {
-            s += ind + "fileSystemType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "fileSystemType\n" ;
+            } else {
+                s += ind + "fileSystemType\n" ;
+            }
         }
         //      C# -> System.String? HostMountPath
         // GraphQL -> hostMountPath: String (scalar)
         if (this.HostMountPath != null) {
-            s += ind + "hostMountPath\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostMountPath\n" ;
+            } else {
+                s += ind + "hostMountPath\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> List<System.String>? OriginalMountPoints
         // GraphQL -> originalMountPoints: [String!]! (scalar)
         if (this.OriginalMountPoints != null) {
-            s += ind + "originalMountPoints\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "originalMountPoints\n" ;
+            } else {
+                s += ind + "originalMountPoints\n" ;
+            }
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long! (scalar)
         if (this.Size != null) {
-            s += ind + "size\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "size\n" ;
+            } else {
+                s += ind + "size\n" ;
+            }
         }
         //      C# -> System.String? SmbPath
         // GraphQL -> smbPath: String (scalar)
         if (this.SmbPath != null) {
-            s += ind + "smbPath\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "smbPath\n" ;
+            } else {
+                s += ind + "smbPath\n" ;
+            }
         }
         return s;
     }
@@ -135,39 +160,105 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? FileSystemType
         // GraphQL -> fileSystemType: String! (scalar)
-        if (this.FileSystemType == null && ec.Includes("fileSystemType",true))
+        if (ec.Includes("fileSystemType",true))
         {
-            this.FileSystemType = "FETCH";
+            if(this.FileSystemType == null) {
+
+                this.FileSystemType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.FileSystemType != null && ec.Excludes("fileSystemType",true))
+        {
+            this.FileSystemType = null;
         }
         //      C# -> System.String? HostMountPath
         // GraphQL -> hostMountPath: String (scalar)
-        if (this.HostMountPath == null && ec.Includes("hostMountPath",true))
+        if (ec.Includes("hostMountPath",true))
         {
-            this.HostMountPath = "FETCH";
+            if(this.HostMountPath == null) {
+
+                this.HostMountPath = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.HostMountPath != null && ec.Excludes("hostMountPath",true))
+        {
+            this.HostMountPath = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> List<System.String>? OriginalMountPoints
         // GraphQL -> originalMountPoints: [String!]! (scalar)
-        if (this.OriginalMountPoints == null && ec.Includes("originalMountPoints",true))
+        if (ec.Includes("originalMountPoints",true))
         {
-            this.OriginalMountPoints = new List<System.String>();
+            if(this.OriginalMountPoints == null) {
+
+                this.OriginalMountPoints = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.OriginalMountPoints != null && ec.Excludes("originalMountPoints",true))
+        {
+            this.OriginalMountPoints = null;
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long! (scalar)
-        if (this.Size == null && ec.Includes("size",true))
+        if (ec.Includes("size",true))
         {
-            this.Size = new System.Int64();
+            if(this.Size == null) {
+
+                this.Size = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Size != null && ec.Excludes("size",true))
+        {
+            this.Size = null;
         }
         //      C# -> System.String? SmbPath
         // GraphQL -> smbPath: String (scalar)
-        if (this.SmbPath == null && ec.Includes("smbPath",true))
+        if (ec.Includes("smbPath",true))
         {
-            this.SmbPath = "FETCH";
+            if(this.SmbPath == null) {
+
+                this.SmbPath = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SmbPath != null && ec.Excludes("smbPath",true))
+        {
+            this.SmbPath = null;
         }
     }
 
@@ -194,9 +285,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<MountedVolume> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Key
         // GraphQL -> key: String! (scalar)
         if (this.Key != null) {
-            s += ind + "key\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "key\n" ;
+            } else {
+                s += ind + "key\n" ;
+            }
         }
         //      C# -> System.Int32? KeyId
         // GraphQL -> keyId: Int! (scalar)
         if (this.KeyId != null) {
-            s += ind + "keyId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "keyId\n" ;
+            } else {
+                s += ind + "keyId\n" ;
+            }
         }
         //      C# -> System.String? KeyType
         // GraphQL -> keyType: String! (scalar)
         if (this.KeyType != null) {
-            s += ind + "keyType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "keyType\n" ;
+            } else {
+                s += ind + "keyType\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Key
         // GraphQL -> key: String! (scalar)
-        if (this.Key == null && ec.Includes("key",true))
+        if (ec.Includes("key",true))
         {
-            this.Key = "FETCH";
+            if(this.Key == null) {
+
+                this.Key = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Key != null && ec.Excludes("key",true))
+        {
+            this.Key = null;
         }
         //      C# -> System.Int32? KeyId
         // GraphQL -> keyId: Int! (scalar)
-        if (this.KeyId == null && ec.Includes("keyId",true))
+        if (ec.Includes("keyId",true))
         {
-            this.KeyId = Int32.MinValue;
+            if(this.KeyId == null) {
+
+                this.KeyId = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.KeyId != null && ec.Excludes("keyId",true))
+        {
+            this.KeyId = null;
         }
         //      C# -> System.String? KeyType
         // GraphQL -> keyType: String! (scalar)
-        if (this.KeyType == null && ec.Includes("keyType",true))
+        if (ec.Includes("keyType",true))
         {
-            this.KeyType = "FETCH";
+            if(this.KeyType == null) {
+
+                this.KeyType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.KeyType != null && ec.Excludes("keyType",true))
+        {
+            this.KeyType = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<NtpSymmKeyConfiguration> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

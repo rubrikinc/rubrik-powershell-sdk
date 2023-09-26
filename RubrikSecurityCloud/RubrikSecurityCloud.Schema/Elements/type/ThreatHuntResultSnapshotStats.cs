@@ -101,46 +101,75 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> MalwareScanInSnapshotStatus? Status
         // GraphQL -> status: MalwareScanInSnapshotStatus! (enum)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         //      C# -> System.Boolean? IsExpired
         // GraphQL -> isExpired: Boolean! (scalar)
         if (this.IsExpired != null) {
-            s += ind + "isExpired\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isExpired\n" ;
+            } else {
+                s += ind + "isExpired\n" ;
+            }
         }
         //      C# -> System.Boolean? IsQuarantined
         // GraphQL -> isQuarantined: Boolean! (scalar)
         if (this.IsQuarantined != null) {
-            s += ind + "isQuarantined\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isQuarantined\n" ;
+            } else {
+                s += ind + "isQuarantined\n" ;
+            }
         }
         //      C# -> DateTime? SnapshotDate
         // GraphQL -> snapshotDate: DateTime (scalar)
         if (this.SnapshotDate != null) {
-            s += ind + "snapshotDate\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotDate\n" ;
+            } else {
+                s += ind + "snapshotDate\n" ;
+            }
         }
         //      C# -> System.String? SnapshotFid
         // GraphQL -> snapshotFid: String! (scalar)
         if (this.SnapshotFid != null) {
-            s += ind + "snapshotFid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotFid\n" ;
+            } else {
+                s += ind + "snapshotFid\n" ;
+            }
         }
         //      C# -> System.Int64? TotalMatchedPaths
         // GraphQL -> totalMatchedPaths: Long! (scalar)
         if (this.TotalMatchedPaths != null) {
-            s += ind + "totalMatchedPaths\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "totalMatchedPaths\n" ;
+            } else {
+                s += ind + "totalMatchedPaths\n" ;
+            }
         }
         //      C# -> List<IndicatorOfCompromise>? MatchTypes
         // GraphQL -> matchTypes: [IndicatorOfCompromise!]! (type)
         if (this.MatchTypes != null) {
-            var fspec = this.MatchTypes.AsFieldSpec(indent+1);
+            var fspec = this.MatchTypes.AsFieldSpec(conf.Child("matchTypes"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "matchTypes {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "matchTypes {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -152,46 +181,124 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> MalwareScanInSnapshotStatus? Status
         // GraphQL -> status: MalwareScanInSnapshotStatus! (enum)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = new MalwareScanInSnapshotStatus();
+            if(this.Status == null) {
+
+                this.Status = new MalwareScanInSnapshotStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
         //      C# -> System.Boolean? IsExpired
         // GraphQL -> isExpired: Boolean! (scalar)
-        if (this.IsExpired == null && ec.Includes("isExpired",true))
+        if (ec.Includes("isExpired",true))
         {
-            this.IsExpired = true;
+            if(this.IsExpired == null) {
+
+                this.IsExpired = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsExpired != null && ec.Excludes("isExpired",true))
+        {
+            this.IsExpired = null;
         }
         //      C# -> System.Boolean? IsQuarantined
         // GraphQL -> isQuarantined: Boolean! (scalar)
-        if (this.IsQuarantined == null && ec.Includes("isQuarantined",true))
+        if (ec.Includes("isQuarantined",true))
         {
-            this.IsQuarantined = true;
+            if(this.IsQuarantined == null) {
+
+                this.IsQuarantined = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsQuarantined != null && ec.Excludes("isQuarantined",true))
+        {
+            this.IsQuarantined = null;
         }
         //      C# -> DateTime? SnapshotDate
         // GraphQL -> snapshotDate: DateTime (scalar)
-        if (this.SnapshotDate == null && ec.Includes("snapshotDate",true))
+        if (ec.Includes("snapshotDate",true))
         {
-            this.SnapshotDate = new DateTime();
+            if(this.SnapshotDate == null) {
+
+                this.SnapshotDate = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotDate != null && ec.Excludes("snapshotDate",true))
+        {
+            this.SnapshotDate = null;
         }
         //      C# -> System.String? SnapshotFid
         // GraphQL -> snapshotFid: String! (scalar)
-        if (this.SnapshotFid == null && ec.Includes("snapshotFid",true))
+        if (ec.Includes("snapshotFid",true))
         {
-            this.SnapshotFid = "FETCH";
+            if(this.SnapshotFid == null) {
+
+                this.SnapshotFid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotFid != null && ec.Excludes("snapshotFid",true))
+        {
+            this.SnapshotFid = null;
         }
         //      C# -> System.Int64? TotalMatchedPaths
         // GraphQL -> totalMatchedPaths: Long! (scalar)
-        if (this.TotalMatchedPaths == null && ec.Includes("totalMatchedPaths",true))
+        if (ec.Includes("totalMatchedPaths",true))
         {
-            this.TotalMatchedPaths = new System.Int64();
+            if(this.TotalMatchedPaths == null) {
+
+                this.TotalMatchedPaths = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalMatchedPaths != null && ec.Excludes("totalMatchedPaths",true))
+        {
+            this.TotalMatchedPaths = null;
         }
         //      C# -> List<IndicatorOfCompromise>? MatchTypes
         // GraphQL -> matchTypes: [IndicatorOfCompromise!]! (type)
-        if (this.MatchTypes == null && ec.Includes("matchTypes",false))
+        if (ec.Includes("matchTypes",false))
         {
-            this.MatchTypes = new List<IndicatorOfCompromise>();
-            this.MatchTypes.ApplyExploratoryFieldSpec(ec.NewChild("matchTypes"));
+            if(this.MatchTypes == null) {
+
+                this.MatchTypes = new List<IndicatorOfCompromise>();
+                this.MatchTypes.ApplyExploratoryFieldSpec(ec.NewChild("matchTypes"));
+
+            } else {
+
+                this.MatchTypes.ApplyExploratoryFieldSpec(ec.NewChild("matchTypes"));
+
+            }
+        }
+        else if (this.MatchTypes != null && ec.Excludes("matchTypes",false))
+        {
+            this.MatchTypes = null;
         }
     }
 
@@ -218,9 +325,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ThreatHuntResultSnapshotStats> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -65,29 +65,42 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> SyslogCertificateInfo? SyslogCertificateInfo
         // GraphQL -> syslogCertificateInfo: SyslogCertificateInfo (type)
         if (this.SyslogCertificateInfo != null) {
-            var fspec = this.SyslogCertificateInfo.AsFieldSpec(indent+1);
+            var fspec = this.SyslogCertificateInfo.AsFieldSpec(conf.Child("syslogCertificateInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "syslogCertificateInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "syslogCertificateInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> SyslogExportRuleFull? SyslogExportRuleFull
         // GraphQL -> syslogExportRuleFull: SyslogExportRuleFull (type)
         if (this.SyslogExportRuleFull != null) {
-            var fspec = this.SyslogExportRuleFull.AsFieldSpec(indent+1);
+            var fspec = this.SyslogExportRuleFull.AsFieldSpec(conf.Child("syslogExportRuleFull"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "syslogExportRuleFull {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "syslogExportRuleFull {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -99,23 +112,58 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> SyslogCertificateInfo? SyslogCertificateInfo
         // GraphQL -> syslogCertificateInfo: SyslogCertificateInfo (type)
-        if (this.SyslogCertificateInfo == null && ec.Includes("syslogCertificateInfo",false))
+        if (ec.Includes("syslogCertificateInfo",false))
         {
-            this.SyslogCertificateInfo = new SyslogCertificateInfo();
-            this.SyslogCertificateInfo.ApplyExploratoryFieldSpec(ec.NewChild("syslogCertificateInfo"));
+            if(this.SyslogCertificateInfo == null) {
+
+                this.SyslogCertificateInfo = new SyslogCertificateInfo();
+                this.SyslogCertificateInfo.ApplyExploratoryFieldSpec(ec.NewChild("syslogCertificateInfo"));
+
+            } else {
+
+                this.SyslogCertificateInfo.ApplyExploratoryFieldSpec(ec.NewChild("syslogCertificateInfo"));
+
+            }
+        }
+        else if (this.SyslogCertificateInfo != null && ec.Excludes("syslogCertificateInfo",false))
+        {
+            this.SyslogCertificateInfo = null;
         }
         //      C# -> SyslogExportRuleFull? SyslogExportRuleFull
         // GraphQL -> syslogExportRuleFull: SyslogExportRuleFull (type)
-        if (this.SyslogExportRuleFull == null && ec.Includes("syslogExportRuleFull",false))
+        if (ec.Includes("syslogExportRuleFull",false))
         {
-            this.SyslogExportRuleFull = new SyslogExportRuleFull();
-            this.SyslogExportRuleFull.ApplyExploratoryFieldSpec(ec.NewChild("syslogExportRuleFull"));
+            if(this.SyslogExportRuleFull == null) {
+
+                this.SyslogExportRuleFull = new SyslogExportRuleFull();
+                this.SyslogExportRuleFull.ApplyExploratoryFieldSpec(ec.NewChild("syslogExportRuleFull"));
+
+            } else {
+
+                this.SyslogExportRuleFull.ApplyExploratoryFieldSpec(ec.NewChild("syslogExportRuleFull"));
+
+            }
+        }
+        else if (this.SyslogExportRuleFull != null && ec.Excludes("syslogExportRuleFull",false))
+        {
+            this.SyslogExportRuleFull = null;
         }
     }
 
@@ -142,9 +190,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SyslogExportRuleSummary> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

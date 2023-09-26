@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? QueryUser
         // GraphQL -> queryUser: String! (scalar)
         if (this.QueryUser != null) {
-            s += ind + "queryUser\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "queryUser\n" ;
+            } else {
+                s += ind + "queryUser\n" ;
+            }
         }
         //      C# -> System.String? SysDbaUser
         // GraphQL -> sysDbaUser: String! (scalar)
         if (this.SysDbaUser != null) {
-            s += ind + "sysDbaUser\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sysDbaUser\n" ;
+            } else {
+                s += ind + "sysDbaUser\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? QueryUser
         // GraphQL -> queryUser: String! (scalar)
-        if (this.QueryUser == null && ec.Includes("queryUser",true))
+        if (ec.Includes("queryUser",true))
         {
-            this.QueryUser = "FETCH";
+            if(this.QueryUser == null) {
+
+                this.QueryUser = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.QueryUser != null && ec.Excludes("queryUser",true))
+        {
+            this.QueryUser = null;
         }
         //      C# -> System.String? SysDbaUser
         // GraphQL -> sysDbaUser: String! (scalar)
-        if (this.SysDbaUser == null && ec.Includes("sysDbaUser",true))
+        if (ec.Includes("sysDbaUser",true))
         {
-            this.SysDbaUser = "FETCH";
+            if(this.SysDbaUser == null) {
+
+                this.SysDbaUser = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SysDbaUser != null && ec.Excludes("sysDbaUser",true))
+        {
+            this.SysDbaUser = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<OracleUserDetails> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

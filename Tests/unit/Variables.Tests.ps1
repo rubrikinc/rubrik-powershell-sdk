@@ -58,5 +58,35 @@ Describe -Name "Test variables" -Fixture {
         $vars.Id = "123"
         $serialized = (New-RscQueryMssql -RecoverableRanges -Var $vars).GqlRequest().Variables
         $serialized | Should -Be '{"input":{"id":"123"}}'
+
+        # different ways to pass a variable:
+        $vars = (New-RscQueryCluster -List -Var @{first = 1 }).Var.ToString()
+        $q = New-RscQueryCluster -List -Var first=1
+        $q.Var.ToString() | Should -Be $vars
+        $q = New-RscQueryCluster -List -Var @{First = 1 }
+        $q.Var.ToString() | Should -Be $vars
+        $q = New-RscQueryCluster -List -Var First=1
+        $q.Var.ToString() | Should -Be $vars
+        # Var def says First is an int, but we pass a string
+        $q = New-RscQueryCluster -List -Var @{First = "1" }
+        $q.Var.ToString() | Should -Be $vars
+
+        # different ways to pass 2 variables
+        $vars = (New-RscQueryCluster -List -Var @{first = 1; after = "2" }).Var.ToString()
+        $q = New-RscQueryCluster -List -Var "first=1,after=2"
+        $q.Var.ToString() | Should -Be $vars
+        $q = New-RscQueryCluster -List -Var @{First = 1; After = "2" }
+        $q.Var.ToString() | Should -Be $vars 
+        $q = New-RscQueryCluster -List -Var "First=1,After=2"
+        $q.Var.ToString() | Should -Be $vars
+        # Var def says Last is a string, but we pass an int
+        $q = New-RscQueryCluster -List -Var @{First = 1; After = 2 }
+        $q.Var.ToString() | Should -Be $vars
+
+        # Enum values
+        $q1 = New-RscQueryCluster -Connected -Var @{"clusterFilterArg" = [RubrikSecurityCloud.Types.ClusterTypeEnum]::POLARIS }
+        $q2 = New-RscQueryCluster -Connected -Var ([RubrikSecurityCloud.Types.ClusterTypeEnum]::POLARIS)
+        $q1.Var.ToString() | Should -Be $q2.Var.ToString()
+
     }
 }

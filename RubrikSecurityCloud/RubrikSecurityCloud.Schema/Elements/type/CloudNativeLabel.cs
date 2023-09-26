@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? LabelKey
         // GraphQL -> labelKey: String! (scalar)
         if (this.LabelKey != null) {
-            s += ind + "labelKey\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "labelKey\n" ;
+            } else {
+                s += ind + "labelKey\n" ;
+            }
         }
         //      C# -> System.String? LabelValue
         // GraphQL -> labelValue: String! (scalar)
         if (this.LabelValue != null) {
-            s += ind + "labelValue\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "labelValue\n" ;
+            } else {
+                s += ind + "labelValue\n" ;
+            }
         }
         //      C# -> System.Boolean? MatchAllValues
         // GraphQL -> matchAllValues: Boolean! (scalar)
         if (this.MatchAllValues != null) {
-            s += ind + "matchAllValues\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "matchAllValues\n" ;
+            } else {
+                s += ind + "matchAllValues\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? LabelKey
         // GraphQL -> labelKey: String! (scalar)
-        if (this.LabelKey == null && ec.Includes("labelKey",true))
+        if (ec.Includes("labelKey",true))
         {
-            this.LabelKey = "FETCH";
+            if(this.LabelKey == null) {
+
+                this.LabelKey = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.LabelKey != null && ec.Excludes("labelKey",true))
+        {
+            this.LabelKey = null;
         }
         //      C# -> System.String? LabelValue
         // GraphQL -> labelValue: String! (scalar)
-        if (this.LabelValue == null && ec.Includes("labelValue",true))
+        if (ec.Includes("labelValue",true))
         {
-            this.LabelValue = "FETCH";
+            if(this.LabelValue == null) {
+
+                this.LabelValue = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.LabelValue != null && ec.Excludes("labelValue",true))
+        {
+            this.LabelValue = null;
         }
         //      C# -> System.Boolean? MatchAllValues
         // GraphQL -> matchAllValues: Boolean! (scalar)
-        if (this.MatchAllValues == null && ec.Includes("matchAllValues",true))
+        if (ec.Includes("matchAllValues",true))
         {
-            this.MatchAllValues = true;
+            if(this.MatchAllValues == null) {
+
+                this.MatchAllValues = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.MatchAllValues != null && ec.Excludes("matchAllValues",true))
+        {
+            this.MatchAllValues = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CloudNativeLabel> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

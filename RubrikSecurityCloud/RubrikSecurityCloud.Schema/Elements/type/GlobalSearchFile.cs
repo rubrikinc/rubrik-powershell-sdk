@@ -119,54 +119,91 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<System.String>? Dirs
         // GraphQL -> dirs: [String!]! (scalar)
         if (this.Dirs != null) {
-            s += ind + "dirs\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "dirs\n" ;
+            } else {
+                s += ind + "dirs\n" ;
+            }
         }
         //      C# -> System.String? Filename
         // GraphQL -> filename: String! (scalar)
         if (this.Filename != null) {
-            s += ind + "filename\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "filename\n" ;
+            } else {
+                s += ind + "filename\n" ;
+            }
         }
         //      C# -> System.Boolean? IsFile
         // GraphQL -> isFile: Boolean! (scalar)
         if (this.IsFile != null) {
-            s += ind + "isFile\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isFile\n" ;
+            } else {
+                s += ind + "isFile\n" ;
+            }
         }
         //      C# -> System.Int64? ModifiedTime
         // GraphQL -> modifiedTime: Long (scalar)
         if (this.ModifiedTime != null) {
-            s += ind + "modifiedTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "modifiedTime\n" ;
+            } else {
+                s += ind + "modifiedTime\n" ;
+            }
         }
         //      C# -> System.Int32? NumSnapshots
         // GraphQL -> numSnapshots: Int (scalar)
         if (this.NumSnapshots != null) {
-            s += ind + "numSnapshots\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "numSnapshots\n" ;
+            } else {
+                s += ind + "numSnapshots\n" ;
+            }
         }
         //      C# -> System.Int64? SizeInBytes
         // GraphQL -> sizeInBytes: Long (scalar)
         if (this.SizeInBytes != null) {
-            s += ind + "sizeInBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sizeInBytes\n" ;
+            } else {
+                s += ind + "sizeInBytes\n" ;
+            }
         }
         //      C# -> System.String? SnappableId
         // GraphQL -> snappableId: String! (scalar)
         if (this.SnappableId != null) {
-            s += ind + "snappableId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snappableId\n" ;
+            } else {
+                s += ind + "snappableId\n" ;
+            }
         }
         //      C# -> System.String? SnappableName
         // GraphQL -> snappableName: String! (scalar)
         if (this.SnappableName != null) {
-            s += ind + "snappableName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snappableName\n" ;
+            } else {
+                s += ind + "snappableName\n" ;
+            }
         }
         //      C# -> System.Int64? SnapshotTime
         // GraphQL -> snapshotTime: Long (scalar)
         if (this.SnapshotTime != null) {
-            s += ind + "snapshotTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotTime\n" ;
+            } else {
+                s += ind + "snapshotTime\n" ;
+            }
         }
         return s;
     }
@@ -177,57 +214,156 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<System.String>? Dirs
         // GraphQL -> dirs: [String!]! (scalar)
-        if (this.Dirs == null && ec.Includes("dirs",true))
+        if (ec.Includes("dirs",true))
         {
-            this.Dirs = new List<System.String>();
+            if(this.Dirs == null) {
+
+                this.Dirs = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Dirs != null && ec.Excludes("dirs",true))
+        {
+            this.Dirs = null;
         }
         //      C# -> System.String? Filename
         // GraphQL -> filename: String! (scalar)
-        if (this.Filename == null && ec.Includes("filename",true))
+        if (ec.Includes("filename",true))
         {
-            this.Filename = "FETCH";
+            if(this.Filename == null) {
+
+                this.Filename = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Filename != null && ec.Excludes("filename",true))
+        {
+            this.Filename = null;
         }
         //      C# -> System.Boolean? IsFile
         // GraphQL -> isFile: Boolean! (scalar)
-        if (this.IsFile == null && ec.Includes("isFile",true))
+        if (ec.Includes("isFile",true))
         {
-            this.IsFile = true;
+            if(this.IsFile == null) {
+
+                this.IsFile = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsFile != null && ec.Excludes("isFile",true))
+        {
+            this.IsFile = null;
         }
         //      C# -> System.Int64? ModifiedTime
         // GraphQL -> modifiedTime: Long (scalar)
-        if (this.ModifiedTime == null && ec.Includes("modifiedTime",true))
+        if (ec.Includes("modifiedTime",true))
         {
-            this.ModifiedTime = new System.Int64();
+            if(this.ModifiedTime == null) {
+
+                this.ModifiedTime = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ModifiedTime != null && ec.Excludes("modifiedTime",true))
+        {
+            this.ModifiedTime = null;
         }
         //      C# -> System.Int32? NumSnapshots
         // GraphQL -> numSnapshots: Int (scalar)
-        if (this.NumSnapshots == null && ec.Includes("numSnapshots",true))
+        if (ec.Includes("numSnapshots",true))
         {
-            this.NumSnapshots = Int32.MinValue;
+            if(this.NumSnapshots == null) {
+
+                this.NumSnapshots = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.NumSnapshots != null && ec.Excludes("numSnapshots",true))
+        {
+            this.NumSnapshots = null;
         }
         //      C# -> System.Int64? SizeInBytes
         // GraphQL -> sizeInBytes: Long (scalar)
-        if (this.SizeInBytes == null && ec.Includes("sizeInBytes",true))
+        if (ec.Includes("sizeInBytes",true))
         {
-            this.SizeInBytes = new System.Int64();
+            if(this.SizeInBytes == null) {
+
+                this.SizeInBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SizeInBytes != null && ec.Excludes("sizeInBytes",true))
+        {
+            this.SizeInBytes = null;
         }
         //      C# -> System.String? SnappableId
         // GraphQL -> snappableId: String! (scalar)
-        if (this.SnappableId == null && ec.Includes("snappableId",true))
+        if (ec.Includes("snappableId",true))
         {
-            this.SnappableId = "FETCH";
+            if(this.SnappableId == null) {
+
+                this.SnappableId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnappableId != null && ec.Excludes("snappableId",true))
+        {
+            this.SnappableId = null;
         }
         //      C# -> System.String? SnappableName
         // GraphQL -> snappableName: String! (scalar)
-        if (this.SnappableName == null && ec.Includes("snappableName",true))
+        if (ec.Includes("snappableName",true))
         {
-            this.SnappableName = "FETCH";
+            if(this.SnappableName == null) {
+
+                this.SnappableName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnappableName != null && ec.Excludes("snappableName",true))
+        {
+            this.SnappableName = null;
         }
         //      C# -> System.Int64? SnapshotTime
         // GraphQL -> snapshotTime: Long (scalar)
-        if (this.SnapshotTime == null && ec.Includes("snapshotTime",true))
+        if (ec.Includes("snapshotTime",true))
         {
-            this.SnapshotTime = new System.Int64();
+            if(this.SnapshotTime == null) {
+
+                this.SnapshotTime = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotTime != null && ec.Excludes("snapshotTime",true))
+        {
+            this.SnapshotTime = null;
         }
     }
 
@@ -254,9 +390,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<GlobalSearchFile> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

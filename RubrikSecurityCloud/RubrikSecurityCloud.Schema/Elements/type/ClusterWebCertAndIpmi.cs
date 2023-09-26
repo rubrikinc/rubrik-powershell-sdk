@@ -74,34 +74,51 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
         if (this.ClusterUuid != null) {
-            s += ind + "clusterUuid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterUuid\n" ;
+            } else {
+                s += ind + "clusterUuid\n" ;
+            }
         }
         //      C# -> System.String? Error
         // GraphQL -> error: String! (scalar)
         if (this.Error != null) {
-            s += ind + "error\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "error\n" ;
+            } else {
+                s += ind + "error\n" ;
+            }
         }
         //      C# -> ClusterWebSignedCertificateReply? CertInfo
         // GraphQL -> certInfo: ClusterWebSignedCertificateReply (type)
         if (this.CertInfo != null) {
-            var fspec = this.CertInfo.AsFieldSpec(indent+1);
+            var fspec = this.CertInfo.AsFieldSpec(conf.Child("certInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "certInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "certInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> ModifyIpmiReply? IpmiInfo
         // GraphQL -> ipmiInfo: ModifyIpmiReply (type)
         if (this.IpmiInfo != null) {
-            var fspec = this.IpmiInfo.AsFieldSpec(indent+1);
+            var fspec = this.IpmiInfo.AsFieldSpec(conf.Child("ipmiInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "ipmiInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "ipmiInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -113,29 +130,75 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
-        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
+        if (ec.Includes("clusterUuid",true))
         {
-            this.ClusterUuid = "FETCH";
+            if(this.ClusterUuid == null) {
+
+                this.ClusterUuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterUuid != null && ec.Excludes("clusterUuid",true))
+        {
+            this.ClusterUuid = null;
         }
         //      C# -> System.String? Error
         // GraphQL -> error: String! (scalar)
-        if (this.Error == null && ec.Includes("error",true))
+        if (ec.Includes("error",true))
         {
-            this.Error = "FETCH";
+            if(this.Error == null) {
+
+                this.Error = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Error != null && ec.Excludes("error",true))
+        {
+            this.Error = null;
         }
         //      C# -> ClusterWebSignedCertificateReply? CertInfo
         // GraphQL -> certInfo: ClusterWebSignedCertificateReply (type)
-        if (this.CertInfo == null && ec.Includes("certInfo",false))
+        if (ec.Includes("certInfo",false))
         {
-            this.CertInfo = new ClusterWebSignedCertificateReply();
-            this.CertInfo.ApplyExploratoryFieldSpec(ec.NewChild("certInfo"));
+            if(this.CertInfo == null) {
+
+                this.CertInfo = new ClusterWebSignedCertificateReply();
+                this.CertInfo.ApplyExploratoryFieldSpec(ec.NewChild("certInfo"));
+
+            } else {
+
+                this.CertInfo.ApplyExploratoryFieldSpec(ec.NewChild("certInfo"));
+
+            }
+        }
+        else if (this.CertInfo != null && ec.Excludes("certInfo",false))
+        {
+            this.CertInfo = null;
         }
         //      C# -> ModifyIpmiReply? IpmiInfo
         // GraphQL -> ipmiInfo: ModifyIpmiReply (type)
-        if (this.IpmiInfo == null && ec.Includes("ipmiInfo",false))
+        if (ec.Includes("ipmiInfo",false))
         {
-            this.IpmiInfo = new ModifyIpmiReply();
-            this.IpmiInfo.ApplyExploratoryFieldSpec(ec.NewChild("ipmiInfo"));
+            if(this.IpmiInfo == null) {
+
+                this.IpmiInfo = new ModifyIpmiReply();
+                this.IpmiInfo.ApplyExploratoryFieldSpec(ec.NewChild("ipmiInfo"));
+
+            } else {
+
+                this.IpmiInfo.ApplyExploratoryFieldSpec(ec.NewChild("ipmiInfo"));
+
+            }
+        }
+        else if (this.IpmiInfo != null && ec.Excludes("ipmiInfo",false))
+        {
+            this.IpmiInfo = null;
         }
     }
 
@@ -162,9 +225,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ClusterWebCertAndIpmi> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

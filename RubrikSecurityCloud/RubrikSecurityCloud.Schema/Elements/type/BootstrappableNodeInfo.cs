@@ -155,74 +155,127 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? CapacityInBytes
         // GraphQL -> capacityInBytes: Long (scalar)
         if (this.CapacityInBytes != null) {
-            s += ind + "capacityInBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "capacityInBytes\n" ;
+            } else {
+                s += ind + "capacityInBytes\n" ;
+            }
         }
         //      C# -> System.String? ChassisId
         // GraphQL -> chassisId: String (scalar)
         if (this.ChassisId != null) {
-            s += ind + "chassisId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "chassisId\n" ;
+            } else {
+                s += ind + "chassisId\n" ;
+            }
         }
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
         if (this.Hostname != null) {
-            s += ind + "hostname\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostname\n" ;
+            } else {
+                s += ind + "hostname\n" ;
+            }
         }
         //      C# -> System.String? Ipv6
         // GraphQL -> ipv6: String! (scalar)
         if (this.Ipv6 != null) {
-            s += ind + "ipv6\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "ipv6\n" ;
+            } else {
+                s += ind + "ipv6\n" ;
+            }
         }
         //      C# -> System.Boolean? IsAllCopper
         // GraphQL -> isAllCopper: Boolean (scalar)
         if (this.IsAllCopper != null) {
-            s += ind + "isAllCopper\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isAllCopper\n" ;
+            } else {
+                s += ind + "isAllCopper\n" ;
+            }
         }
         //      C# -> System.Boolean? IsBond0Eth0Enabled
         // GraphQL -> isBond0Eth0Enabled: Boolean (scalar)
         if (this.IsBond0Eth0Enabled != null) {
-            s += ind + "isBond0Eth0Enabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isBond0Eth0Enabled\n" ;
+            } else {
+                s += ind + "isBond0Eth0Enabled\n" ;
+            }
         }
         //      C# -> System.Boolean? IsBond0Eth1Enabled
         // GraphQL -> isBond0Eth1Enabled: Boolean (scalar)
         if (this.IsBond0Eth1Enabled != null) {
-            s += ind + "isBond0Eth1Enabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isBond0Eth1Enabled\n" ;
+            } else {
+                s += ind + "isBond0Eth1Enabled\n" ;
+            }
         }
         //      C# -> System.Boolean? IsBond0Reachable
         // GraphQL -> isBond0Reachable: Boolean (scalar)
         if (this.IsBond0Reachable != null) {
-            s += ind + "isBond0Reachable\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isBond0Reachable\n" ;
+            } else {
+                s += ind + "isBond0Reachable\n" ;
+            }
         }
         //      C# -> System.Boolean? IsBond1Eth2Enabled
         // GraphQL -> isBond1Eth2Enabled: Boolean (scalar)
         if (this.IsBond1Eth2Enabled != null) {
-            s += ind + "isBond1Eth2Enabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isBond1Eth2Enabled\n" ;
+            } else {
+                s += ind + "isBond1Eth2Enabled\n" ;
+            }
         }
         //      C# -> System.Boolean? IsBond1Eth3Enabled
         // GraphQL -> isBond1Eth3Enabled: Boolean (scalar)
         if (this.IsBond1Eth3Enabled != null) {
-            s += ind + "isBond1Eth3Enabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isBond1Eth3Enabled\n" ;
+            } else {
+                s += ind + "isBond1Eth3Enabled\n" ;
+            }
         }
         //      C# -> System.String? NodePosition
         // GraphQL -> nodePosition: String (scalar)
         if (this.NodePosition != null) {
-            s += ind + "nodePosition\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "nodePosition\n" ;
+            } else {
+                s += ind + "nodePosition\n" ;
+            }
         }
         //      C# -> System.String? PlatformName
         // GraphQL -> platformName: String (scalar)
         if (this.PlatformName != null) {
-            s += ind + "platformName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "platformName\n" ;
+            } else {
+                s += ind + "platformName\n" ;
+            }
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String (scalar)
         if (this.Version != null) {
-            s += ind + "version\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "version\n" ;
+            } else {
+                s += ind + "version\n" ;
+            }
         }
         return s;
     }
@@ -233,81 +286,224 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? CapacityInBytes
         // GraphQL -> capacityInBytes: Long (scalar)
-        if (this.CapacityInBytes == null && ec.Includes("capacityInBytes",true))
+        if (ec.Includes("capacityInBytes",true))
         {
-            this.CapacityInBytes = new System.Int64();
+            if(this.CapacityInBytes == null) {
+
+                this.CapacityInBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CapacityInBytes != null && ec.Excludes("capacityInBytes",true))
+        {
+            this.CapacityInBytes = null;
         }
         //      C# -> System.String? ChassisId
         // GraphQL -> chassisId: String (scalar)
-        if (this.ChassisId == null && ec.Includes("chassisId",true))
+        if (ec.Includes("chassisId",true))
         {
-            this.ChassisId = "FETCH";
+            if(this.ChassisId == null) {
+
+                this.ChassisId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ChassisId != null && ec.Excludes("chassisId",true))
+        {
+            this.ChassisId = null;
         }
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
-        if (this.Hostname == null && ec.Includes("hostname",true))
+        if (ec.Includes("hostname",true))
         {
-            this.Hostname = "FETCH";
+            if(this.Hostname == null) {
+
+                this.Hostname = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Hostname != null && ec.Excludes("hostname",true))
+        {
+            this.Hostname = null;
         }
         //      C# -> System.String? Ipv6
         // GraphQL -> ipv6: String! (scalar)
-        if (this.Ipv6 == null && ec.Includes("ipv6",true))
+        if (ec.Includes("ipv6",true))
         {
-            this.Ipv6 = "FETCH";
+            if(this.Ipv6 == null) {
+
+                this.Ipv6 = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Ipv6 != null && ec.Excludes("ipv6",true))
+        {
+            this.Ipv6 = null;
         }
         //      C# -> System.Boolean? IsAllCopper
         // GraphQL -> isAllCopper: Boolean (scalar)
-        if (this.IsAllCopper == null && ec.Includes("isAllCopper",true))
+        if (ec.Includes("isAllCopper",true))
         {
-            this.IsAllCopper = true;
+            if(this.IsAllCopper == null) {
+
+                this.IsAllCopper = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAllCopper != null && ec.Excludes("isAllCopper",true))
+        {
+            this.IsAllCopper = null;
         }
         //      C# -> System.Boolean? IsBond0Eth0Enabled
         // GraphQL -> isBond0Eth0Enabled: Boolean (scalar)
-        if (this.IsBond0Eth0Enabled == null && ec.Includes("isBond0Eth0Enabled",true))
+        if (ec.Includes("isBond0Eth0Enabled",true))
         {
-            this.IsBond0Eth0Enabled = true;
+            if(this.IsBond0Eth0Enabled == null) {
+
+                this.IsBond0Eth0Enabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsBond0Eth0Enabled != null && ec.Excludes("isBond0Eth0Enabled",true))
+        {
+            this.IsBond0Eth0Enabled = null;
         }
         //      C# -> System.Boolean? IsBond0Eth1Enabled
         // GraphQL -> isBond0Eth1Enabled: Boolean (scalar)
-        if (this.IsBond0Eth1Enabled == null && ec.Includes("isBond0Eth1Enabled",true))
+        if (ec.Includes("isBond0Eth1Enabled",true))
         {
-            this.IsBond0Eth1Enabled = true;
+            if(this.IsBond0Eth1Enabled == null) {
+
+                this.IsBond0Eth1Enabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsBond0Eth1Enabled != null && ec.Excludes("isBond0Eth1Enabled",true))
+        {
+            this.IsBond0Eth1Enabled = null;
         }
         //      C# -> System.Boolean? IsBond0Reachable
         // GraphQL -> isBond0Reachable: Boolean (scalar)
-        if (this.IsBond0Reachable == null && ec.Includes("isBond0Reachable",true))
+        if (ec.Includes("isBond0Reachable",true))
         {
-            this.IsBond0Reachable = true;
+            if(this.IsBond0Reachable == null) {
+
+                this.IsBond0Reachable = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsBond0Reachable != null && ec.Excludes("isBond0Reachable",true))
+        {
+            this.IsBond0Reachable = null;
         }
         //      C# -> System.Boolean? IsBond1Eth2Enabled
         // GraphQL -> isBond1Eth2Enabled: Boolean (scalar)
-        if (this.IsBond1Eth2Enabled == null && ec.Includes("isBond1Eth2Enabled",true))
+        if (ec.Includes("isBond1Eth2Enabled",true))
         {
-            this.IsBond1Eth2Enabled = true;
+            if(this.IsBond1Eth2Enabled == null) {
+
+                this.IsBond1Eth2Enabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsBond1Eth2Enabled != null && ec.Excludes("isBond1Eth2Enabled",true))
+        {
+            this.IsBond1Eth2Enabled = null;
         }
         //      C# -> System.Boolean? IsBond1Eth3Enabled
         // GraphQL -> isBond1Eth3Enabled: Boolean (scalar)
-        if (this.IsBond1Eth3Enabled == null && ec.Includes("isBond1Eth3Enabled",true))
+        if (ec.Includes("isBond1Eth3Enabled",true))
         {
-            this.IsBond1Eth3Enabled = true;
+            if(this.IsBond1Eth3Enabled == null) {
+
+                this.IsBond1Eth3Enabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsBond1Eth3Enabled != null && ec.Excludes("isBond1Eth3Enabled",true))
+        {
+            this.IsBond1Eth3Enabled = null;
         }
         //      C# -> System.String? NodePosition
         // GraphQL -> nodePosition: String (scalar)
-        if (this.NodePosition == null && ec.Includes("nodePosition",true))
+        if (ec.Includes("nodePosition",true))
         {
-            this.NodePosition = "FETCH";
+            if(this.NodePosition == null) {
+
+                this.NodePosition = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NodePosition != null && ec.Excludes("nodePosition",true))
+        {
+            this.NodePosition = null;
         }
         //      C# -> System.String? PlatformName
         // GraphQL -> platformName: String (scalar)
-        if (this.PlatformName == null && ec.Includes("platformName",true))
+        if (ec.Includes("platformName",true))
         {
-            this.PlatformName = "FETCH";
+            if(this.PlatformName == null) {
+
+                this.PlatformName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PlatformName != null && ec.Excludes("platformName",true))
+        {
+            this.PlatformName = null;
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String (scalar)
-        if (this.Version == null && ec.Includes("version",true))
+        if (ec.Includes("version",true))
         {
-            this.Version = "FETCH";
+            if(this.Version == null) {
+
+                this.Version = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Version != null && ec.Excludes("version",true))
+        {
+            this.Version = null;
         }
     }
 
@@ -334,9 +530,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<BootstrappableNodeInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

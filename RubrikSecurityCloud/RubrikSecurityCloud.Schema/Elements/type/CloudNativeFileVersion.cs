@@ -74,31 +74,48 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> FileModeEnum? FileMode
         // GraphQL -> fileMode: FileModeEnum! (enum)
         if (this.FileMode != null) {
-            s += ind + "fileMode\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "fileMode\n" ;
+            } else {
+                s += ind + "fileMode\n" ;
+            }
         }
         //      C# -> DateTime? LastModified
         // GraphQL -> lastModified: DateTime! (scalar)
         if (this.LastModified != null) {
-            s += ind + "lastModified\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "lastModified\n" ;
+            } else {
+                s += ind + "lastModified\n" ;
+            }
         }
         //      C# -> System.Int64? SizeInBytes
         // GraphQL -> sizeInBytes: Long! (scalar)
         if (this.SizeInBytes != null) {
-            s += ind + "sizeInBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sizeInBytes\n" ;
+            } else {
+                s += ind + "sizeInBytes\n" ;
+            }
         }
         //      C# -> CloudNativeSnapshotInfo? Snapshot
         // GraphQL -> snapshot: CloudNativeSnapshotInfo! (type)
         if (this.Snapshot != null) {
-            var fspec = this.Snapshot.AsFieldSpec(indent+1);
+            var fspec = this.Snapshot.AsFieldSpec(conf.Child("snapshot"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "snapshot {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "snapshot {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -110,28 +127,73 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> FileModeEnum? FileMode
         // GraphQL -> fileMode: FileModeEnum! (enum)
-        if (this.FileMode == null && ec.Includes("fileMode",true))
+        if (ec.Includes("fileMode",true))
         {
-            this.FileMode = new FileModeEnum();
+            if(this.FileMode == null) {
+
+                this.FileMode = new FileModeEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.FileMode != null && ec.Excludes("fileMode",true))
+        {
+            this.FileMode = null;
         }
         //      C# -> DateTime? LastModified
         // GraphQL -> lastModified: DateTime! (scalar)
-        if (this.LastModified == null && ec.Includes("lastModified",true))
+        if (ec.Includes("lastModified",true))
         {
-            this.LastModified = new DateTime();
+            if(this.LastModified == null) {
+
+                this.LastModified = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastModified != null && ec.Excludes("lastModified",true))
+        {
+            this.LastModified = null;
         }
         //      C# -> System.Int64? SizeInBytes
         // GraphQL -> sizeInBytes: Long! (scalar)
-        if (this.SizeInBytes == null && ec.Includes("sizeInBytes",true))
+        if (ec.Includes("sizeInBytes",true))
         {
-            this.SizeInBytes = new System.Int64();
+            if(this.SizeInBytes == null) {
+
+                this.SizeInBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SizeInBytes != null && ec.Excludes("sizeInBytes",true))
+        {
+            this.SizeInBytes = null;
         }
         //      C# -> CloudNativeSnapshotInfo? Snapshot
         // GraphQL -> snapshot: CloudNativeSnapshotInfo! (type)
-        if (this.Snapshot == null && ec.Includes("snapshot",false))
+        if (ec.Includes("snapshot",false))
         {
-            this.Snapshot = new CloudNativeSnapshotInfo();
-            this.Snapshot.ApplyExploratoryFieldSpec(ec.NewChild("snapshot"));
+            if(this.Snapshot == null) {
+
+                this.Snapshot = new CloudNativeSnapshotInfo();
+                this.Snapshot.ApplyExploratoryFieldSpec(ec.NewChild("snapshot"));
+
+            } else {
+
+                this.Snapshot.ApplyExploratoryFieldSpec(ec.NewChild("snapshot"));
+
+            }
+        }
+        else if (this.Snapshot != null && ec.Excludes("snapshot",false))
+        {
+            this.Snapshot = null;
         }
     }
 
@@ -158,9 +220,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CloudNativeFileVersion> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

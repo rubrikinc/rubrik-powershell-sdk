@@ -74,34 +74,51 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? LastModified
         // GraphQL -> lastModified: String! (scalar)
         if (this.LastModified != null) {
-            s += ind + "lastModified\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "lastModified\n" ;
+            } else {
+                s += ind + "lastModified\n" ;
+            }
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long! (scalar)
         if (this.Size != null) {
-            s += ind + "size\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "size\n" ;
+            } else {
+                s += ind + "size\n" ;
+            }
         }
         //      C# -> FilesetSnapshotSummary? FilesetSnapshotSummary
         // GraphQL -> filesetSnapshotSummary: FilesetSnapshotSummary (type)
         if (this.FilesetSnapshotSummary != null) {
-            var fspec = this.FilesetSnapshotSummary.AsFieldSpec(indent+1);
+            var fspec = this.FilesetSnapshotSummary.AsFieldSpec(conf.Child("filesetSnapshotSummary"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "filesetSnapshotSummary {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "filesetSnapshotSummary {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> FilesetSnapshotVerbose? Verbose
         // GraphQL -> verbose: FilesetSnapshotVerbose (type)
         if (this.Verbose != null) {
-            var fspec = this.Verbose.AsFieldSpec(indent+1);
+            var fspec = this.Verbose.AsFieldSpec(conf.Child("verbose"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "verbose {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "verbose {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -113,29 +130,75 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? LastModified
         // GraphQL -> lastModified: String! (scalar)
-        if (this.LastModified == null && ec.Includes("lastModified",true))
+        if (ec.Includes("lastModified",true))
         {
-            this.LastModified = "FETCH";
+            if(this.LastModified == null) {
+
+                this.LastModified = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastModified != null && ec.Excludes("lastModified",true))
+        {
+            this.LastModified = null;
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long! (scalar)
-        if (this.Size == null && ec.Includes("size",true))
+        if (ec.Includes("size",true))
         {
-            this.Size = new System.Int64();
+            if(this.Size == null) {
+
+                this.Size = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Size != null && ec.Excludes("size",true))
+        {
+            this.Size = null;
         }
         //      C# -> FilesetSnapshotSummary? FilesetSnapshotSummary
         // GraphQL -> filesetSnapshotSummary: FilesetSnapshotSummary (type)
-        if (this.FilesetSnapshotSummary == null && ec.Includes("filesetSnapshotSummary",false))
+        if (ec.Includes("filesetSnapshotSummary",false))
         {
-            this.FilesetSnapshotSummary = new FilesetSnapshotSummary();
-            this.FilesetSnapshotSummary.ApplyExploratoryFieldSpec(ec.NewChild("filesetSnapshotSummary"));
+            if(this.FilesetSnapshotSummary == null) {
+
+                this.FilesetSnapshotSummary = new FilesetSnapshotSummary();
+                this.FilesetSnapshotSummary.ApplyExploratoryFieldSpec(ec.NewChild("filesetSnapshotSummary"));
+
+            } else {
+
+                this.FilesetSnapshotSummary.ApplyExploratoryFieldSpec(ec.NewChild("filesetSnapshotSummary"));
+
+            }
+        }
+        else if (this.FilesetSnapshotSummary != null && ec.Excludes("filesetSnapshotSummary",false))
+        {
+            this.FilesetSnapshotSummary = null;
         }
         //      C# -> FilesetSnapshotVerbose? Verbose
         // GraphQL -> verbose: FilesetSnapshotVerbose (type)
-        if (this.Verbose == null && ec.Includes("verbose",false))
+        if (ec.Includes("verbose",false))
         {
-            this.Verbose = new FilesetSnapshotVerbose();
-            this.Verbose.ApplyExploratoryFieldSpec(ec.NewChild("verbose"));
+            if(this.Verbose == null) {
+
+                this.Verbose = new FilesetSnapshotVerbose();
+                this.Verbose.ApplyExploratoryFieldSpec(ec.NewChild("verbose"));
+
+            } else {
+
+                this.Verbose.ApplyExploratoryFieldSpec(ec.NewChild("verbose"));
+
+            }
+        }
+        else if (this.Verbose != null && ec.Excludes("verbose",false))
+        {
+            this.Verbose = null;
         }
     }
 
@@ -162,9 +225,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<FilesetSnapshotDetail> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

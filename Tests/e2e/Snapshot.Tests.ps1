@@ -3,7 +3,7 @@
 Run tests around snapshots
 #>
 BeforeAll {
-    . "$PSScriptRoot\e2eInit.ps1"
+    . "$PSScriptRoot\..\..\Toolkit\Utils\E2eTestInit.ps1"
 }
 
 Describe -Name 'Connect to API' -Fixture {

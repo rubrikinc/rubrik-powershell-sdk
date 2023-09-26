@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? EventSeriesId
         // GraphQL -> eventSeriesId: String! (scalar)
         if (this.EventSeriesId != null) {
-            s += ind + "eventSeriesId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "eventSeriesId\n" ;
+            } else {
+                s += ind + "eventSeriesId\n" ;
+            }
         }
         //      C# -> System.Boolean? IsSuccess
         // GraphQL -> isSuccess: Boolean! (scalar)
         if (this.IsSuccess != null) {
-            s += ind + "isSuccess\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isSuccess\n" ;
+            } else {
+                s += ind + "isSuccess\n" ;
+            }
         }
         //      C# -> DateTime? ValidationTime
         // GraphQL -> validationTime: DateTime (scalar)
         if (this.ValidationTime != null) {
-            s += ind + "validationTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "validationTime\n" ;
+            } else {
+                s += ind + "validationTime\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? EventSeriesId
         // GraphQL -> eventSeriesId: String! (scalar)
-        if (this.EventSeriesId == null && ec.Includes("eventSeriesId",true))
+        if (ec.Includes("eventSeriesId",true))
         {
-            this.EventSeriesId = "FETCH";
+            if(this.EventSeriesId == null) {
+
+                this.EventSeriesId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.EventSeriesId != null && ec.Excludes("eventSeriesId",true))
+        {
+            this.EventSeriesId = null;
         }
         //      C# -> System.Boolean? IsSuccess
         // GraphQL -> isSuccess: Boolean! (scalar)
-        if (this.IsSuccess == null && ec.Includes("isSuccess",true))
+        if (ec.Includes("isSuccess",true))
         {
-            this.IsSuccess = true;
+            if(this.IsSuccess == null) {
+
+                this.IsSuccess = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsSuccess != null && ec.Excludes("isSuccess",true))
+        {
+            this.IsSuccess = null;
         }
         //      C# -> DateTime? ValidationTime
         // GraphQL -> validationTime: DateTime (scalar)
-        if (this.ValidationTime == null && ec.Includes("validationTime",true))
+        if (ec.Includes("validationTime",true))
         {
-            this.ValidationTime = new DateTime();
+            if(this.ValidationTime == null) {
+
+                this.ValidationTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ValidationTime != null && ec.Excludes("validationTime",true))
+        {
+            this.ValidationTime = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<OracleLastValidationResult> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

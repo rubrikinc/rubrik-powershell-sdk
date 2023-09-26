@@ -209,104 +209,181 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? AllocatedStorageInGb
         // GraphQL -> allocatedStorageInGb: Long! (scalar)
         if (this.AllocatedStorageInGb != null) {
-            s += ind + "allocatedStorageInGb\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "allocatedStorageInGb\n" ;
+            } else {
+                s += ind + "allocatedStorageInGb\n" ;
+            }
         }
         //      C# -> System.Int64? BackupRetentionPeriod
         // GraphQL -> backupRetentionPeriod: Long! (scalar)
         if (this.BackupRetentionPeriod != null) {
-            s += ind + "backupRetentionPeriod\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "backupRetentionPeriod\n" ;
+            } else {
+                s += ind + "backupRetentionPeriod\n" ;
+            }
         }
         //      C# -> System.String? DbEngine
         // GraphQL -> dbEngine: String! (scalar)
         if (this.DbEngine != null) {
-            s += ind + "dbEngine\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "dbEngine\n" ;
+            } else {
+                s += ind + "dbEngine\n" ;
+            }
         }
         //      C# -> System.String? DbEngineVersion
         // GraphQL -> dbEngineVersion: String! (scalar)
         if (this.DbEngineVersion != null) {
-            s += ind + "dbEngineVersion\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "dbEngineVersion\n" ;
+            } else {
+                s += ind + "dbEngineVersion\n" ;
+            }
         }
         //      C# -> System.String? DbInstanceClass
         // GraphQL -> dbInstanceClass: String! (scalar)
         if (this.DbInstanceClass != null) {
-            s += ind + "dbInstanceClass\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "dbInstanceClass\n" ;
+            } else {
+                s += ind + "dbInstanceClass\n" ;
+            }
         }
         //      C# -> System.String? DbInstanceStatus
         // GraphQL -> dbInstanceStatus: String! (scalar)
         if (this.DbInstanceStatus != null) {
-            s += ind + "dbInstanceStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "dbInstanceStatus\n" ;
+            } else {
+                s += ind + "dbInstanceStatus\n" ;
+            }
         }
         //      C# -> System.String? DbMaintenanceWindow
         // GraphQL -> dbMaintenanceWindow: String! (scalar)
         if (this.DbMaintenanceWindow != null) {
-            s += ind + "dbMaintenanceWindow\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "dbMaintenanceWindow\n" ;
+            } else {
+                s += ind + "dbMaintenanceWindow\n" ;
+            }
         }
         //      C# -> System.String? DbParameterGroupName
         // GraphQL -> dbParameterGroupName: String! (scalar)
         if (this.DbParameterGroupName != null) {
-            s += ind + "dbParameterGroupName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "dbParameterGroupName\n" ;
+            } else {
+                s += ind + "dbParameterGroupName\n" ;
+            }
         }
         //      C# -> System.String? DbSubnetGroupName
         // GraphQL -> dbSubnetGroupName: String! (scalar)
         if (this.DbSubnetGroupName != null) {
-            s += ind + "dbSubnetGroupName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "dbSubnetGroupName\n" ;
+            } else {
+                s += ind + "dbSubnetGroupName\n" ;
+            }
         }
         //      C# -> System.String? EngineVersion
         // GraphQL -> engineVersion: String! (scalar)
         if (this.EngineVersion != null) {
-            s += ind + "engineVersion\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "engineVersion\n" ;
+            } else {
+                s += ind + "engineVersion\n" ;
+            }
         }
         //      C# -> System.Int64? Iops
         // GraphQL -> iops: Long! (scalar)
         if (this.Iops != null) {
-            s += ind + "iops\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "iops\n" ;
+            } else {
+                s += ind + "iops\n" ;
+            }
         }
         //      C# -> System.Boolean? IsMultiAz
         // GraphQL -> isMultiAz: Boolean! (scalar)
         if (this.IsMultiAz != null) {
-            s += ind + "isMultiAz\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isMultiAz\n" ;
+            } else {
+                s += ind + "isMultiAz\n" ;
+            }
         }
         //      C# -> System.String? KmsKeyId
         // GraphQL -> kmsKeyId: String! (scalar)
         if (this.KmsKeyId != null) {
-            s += ind + "kmsKeyId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "kmsKeyId\n" ;
+            } else {
+                s += ind + "kmsKeyId\n" ;
+            }
         }
         //      C# -> System.String? OptionGroupName
         // GraphQL -> optionGroupName: String! (scalar)
         if (this.OptionGroupName != null) {
-            s += ind + "optionGroupName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "optionGroupName\n" ;
+            } else {
+                s += ind + "optionGroupName\n" ;
+            }
         }
         //      C# -> System.Int64? Port
         // GraphQL -> port: Long! (scalar)
         if (this.Port != null) {
-            s += ind + "port\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "port\n" ;
+            } else {
+                s += ind + "port\n" ;
+            }
         }
         //      C# -> System.String? PrimaryAz
         // GraphQL -> primaryAz: String! (scalar)
         if (this.PrimaryAz != null) {
-            s += ind + "primaryAz\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "primaryAz\n" ;
+            } else {
+                s += ind + "primaryAz\n" ;
+            }
         }
         //      C# -> System.String? RdsInstanceArn
         // GraphQL -> rdsInstanceArn: String! (scalar)
         if (this.RdsInstanceArn != null) {
-            s += ind + "rdsInstanceArn\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "rdsInstanceArn\n" ;
+            } else {
+                s += ind + "rdsInstanceArn\n" ;
+            }
         }
         //      C# -> System.String? StorageType
         // GraphQL -> storageType: String! (scalar)
         if (this.StorageType != null) {
-            s += ind + "storageType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "storageType\n" ;
+            } else {
+                s += ind + "storageType\n" ;
+            }
         }
         //      C# -> System.String? VpcId
         // GraphQL -> vpcId: String! (scalar)
         if (this.VpcId != null) {
-            s += ind + "vpcId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "vpcId\n" ;
+            } else {
+                s += ind + "vpcId\n" ;
+            }
         }
         return s;
     }
@@ -317,117 +394,326 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? AllocatedStorageInGb
         // GraphQL -> allocatedStorageInGb: Long! (scalar)
-        if (this.AllocatedStorageInGb == null && ec.Includes("allocatedStorageInGb",true))
+        if (ec.Includes("allocatedStorageInGb",true))
         {
-            this.AllocatedStorageInGb = new System.Int64();
+            if(this.AllocatedStorageInGb == null) {
+
+                this.AllocatedStorageInGb = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AllocatedStorageInGb != null && ec.Excludes("allocatedStorageInGb",true))
+        {
+            this.AllocatedStorageInGb = null;
         }
         //      C# -> System.Int64? BackupRetentionPeriod
         // GraphQL -> backupRetentionPeriod: Long! (scalar)
-        if (this.BackupRetentionPeriod == null && ec.Includes("backupRetentionPeriod",true))
+        if (ec.Includes("backupRetentionPeriod",true))
         {
-            this.BackupRetentionPeriod = new System.Int64();
+            if(this.BackupRetentionPeriod == null) {
+
+                this.BackupRetentionPeriod = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.BackupRetentionPeriod != null && ec.Excludes("backupRetentionPeriod",true))
+        {
+            this.BackupRetentionPeriod = null;
         }
         //      C# -> System.String? DbEngine
         // GraphQL -> dbEngine: String! (scalar)
-        if (this.DbEngine == null && ec.Includes("dbEngine",true))
+        if (ec.Includes("dbEngine",true))
         {
-            this.DbEngine = "FETCH";
+            if(this.DbEngine == null) {
+
+                this.DbEngine = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DbEngine != null && ec.Excludes("dbEngine",true))
+        {
+            this.DbEngine = null;
         }
         //      C# -> System.String? DbEngineVersion
         // GraphQL -> dbEngineVersion: String! (scalar)
-        if (this.DbEngineVersion == null && ec.Includes("dbEngineVersion",true))
+        if (ec.Includes("dbEngineVersion",true))
         {
-            this.DbEngineVersion = "FETCH";
+            if(this.DbEngineVersion == null) {
+
+                this.DbEngineVersion = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DbEngineVersion != null && ec.Excludes("dbEngineVersion",true))
+        {
+            this.DbEngineVersion = null;
         }
         //      C# -> System.String? DbInstanceClass
         // GraphQL -> dbInstanceClass: String! (scalar)
-        if (this.DbInstanceClass == null && ec.Includes("dbInstanceClass",true))
+        if (ec.Includes("dbInstanceClass",true))
         {
-            this.DbInstanceClass = "FETCH";
+            if(this.DbInstanceClass == null) {
+
+                this.DbInstanceClass = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DbInstanceClass != null && ec.Excludes("dbInstanceClass",true))
+        {
+            this.DbInstanceClass = null;
         }
         //      C# -> System.String? DbInstanceStatus
         // GraphQL -> dbInstanceStatus: String! (scalar)
-        if (this.DbInstanceStatus == null && ec.Includes("dbInstanceStatus",true))
+        if (ec.Includes("dbInstanceStatus",true))
         {
-            this.DbInstanceStatus = "FETCH";
+            if(this.DbInstanceStatus == null) {
+
+                this.DbInstanceStatus = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DbInstanceStatus != null && ec.Excludes("dbInstanceStatus",true))
+        {
+            this.DbInstanceStatus = null;
         }
         //      C# -> System.String? DbMaintenanceWindow
         // GraphQL -> dbMaintenanceWindow: String! (scalar)
-        if (this.DbMaintenanceWindow == null && ec.Includes("dbMaintenanceWindow",true))
+        if (ec.Includes("dbMaintenanceWindow",true))
         {
-            this.DbMaintenanceWindow = "FETCH";
+            if(this.DbMaintenanceWindow == null) {
+
+                this.DbMaintenanceWindow = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DbMaintenanceWindow != null && ec.Excludes("dbMaintenanceWindow",true))
+        {
+            this.DbMaintenanceWindow = null;
         }
         //      C# -> System.String? DbParameterGroupName
         // GraphQL -> dbParameterGroupName: String! (scalar)
-        if (this.DbParameterGroupName == null && ec.Includes("dbParameterGroupName",true))
+        if (ec.Includes("dbParameterGroupName",true))
         {
-            this.DbParameterGroupName = "FETCH";
+            if(this.DbParameterGroupName == null) {
+
+                this.DbParameterGroupName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DbParameterGroupName != null && ec.Excludes("dbParameterGroupName",true))
+        {
+            this.DbParameterGroupName = null;
         }
         //      C# -> System.String? DbSubnetGroupName
         // GraphQL -> dbSubnetGroupName: String! (scalar)
-        if (this.DbSubnetGroupName == null && ec.Includes("dbSubnetGroupName",true))
+        if (ec.Includes("dbSubnetGroupName",true))
         {
-            this.DbSubnetGroupName = "FETCH";
+            if(this.DbSubnetGroupName == null) {
+
+                this.DbSubnetGroupName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DbSubnetGroupName != null && ec.Excludes("dbSubnetGroupName",true))
+        {
+            this.DbSubnetGroupName = null;
         }
         //      C# -> System.String? EngineVersion
         // GraphQL -> engineVersion: String! (scalar)
-        if (this.EngineVersion == null && ec.Includes("engineVersion",true))
+        if (ec.Includes("engineVersion",true))
         {
-            this.EngineVersion = "FETCH";
+            if(this.EngineVersion == null) {
+
+                this.EngineVersion = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.EngineVersion != null && ec.Excludes("engineVersion",true))
+        {
+            this.EngineVersion = null;
         }
         //      C# -> System.Int64? Iops
         // GraphQL -> iops: Long! (scalar)
-        if (this.Iops == null && ec.Includes("iops",true))
+        if (ec.Includes("iops",true))
         {
-            this.Iops = new System.Int64();
+            if(this.Iops == null) {
+
+                this.Iops = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Iops != null && ec.Excludes("iops",true))
+        {
+            this.Iops = null;
         }
         //      C# -> System.Boolean? IsMultiAz
         // GraphQL -> isMultiAz: Boolean! (scalar)
-        if (this.IsMultiAz == null && ec.Includes("isMultiAz",true))
+        if (ec.Includes("isMultiAz",true))
         {
-            this.IsMultiAz = true;
+            if(this.IsMultiAz == null) {
+
+                this.IsMultiAz = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsMultiAz != null && ec.Excludes("isMultiAz",true))
+        {
+            this.IsMultiAz = null;
         }
         //      C# -> System.String? KmsKeyId
         // GraphQL -> kmsKeyId: String! (scalar)
-        if (this.KmsKeyId == null && ec.Includes("kmsKeyId",true))
+        if (ec.Includes("kmsKeyId",true))
         {
-            this.KmsKeyId = "FETCH";
+            if(this.KmsKeyId == null) {
+
+                this.KmsKeyId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.KmsKeyId != null && ec.Excludes("kmsKeyId",true))
+        {
+            this.KmsKeyId = null;
         }
         //      C# -> System.String? OptionGroupName
         // GraphQL -> optionGroupName: String! (scalar)
-        if (this.OptionGroupName == null && ec.Includes("optionGroupName",true))
+        if (ec.Includes("optionGroupName",true))
         {
-            this.OptionGroupName = "FETCH";
+            if(this.OptionGroupName == null) {
+
+                this.OptionGroupName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OptionGroupName != null && ec.Excludes("optionGroupName",true))
+        {
+            this.OptionGroupName = null;
         }
         //      C# -> System.Int64? Port
         // GraphQL -> port: Long! (scalar)
-        if (this.Port == null && ec.Includes("port",true))
+        if (ec.Includes("port",true))
         {
-            this.Port = new System.Int64();
+            if(this.Port == null) {
+
+                this.Port = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Port != null && ec.Excludes("port",true))
+        {
+            this.Port = null;
         }
         //      C# -> System.String? PrimaryAz
         // GraphQL -> primaryAz: String! (scalar)
-        if (this.PrimaryAz == null && ec.Includes("primaryAz",true))
+        if (ec.Includes("primaryAz",true))
         {
-            this.PrimaryAz = "FETCH";
+            if(this.PrimaryAz == null) {
+
+                this.PrimaryAz = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PrimaryAz != null && ec.Excludes("primaryAz",true))
+        {
+            this.PrimaryAz = null;
         }
         //      C# -> System.String? RdsInstanceArn
         // GraphQL -> rdsInstanceArn: String! (scalar)
-        if (this.RdsInstanceArn == null && ec.Includes("rdsInstanceArn",true))
+        if (ec.Includes("rdsInstanceArn",true))
         {
-            this.RdsInstanceArn = "FETCH";
+            if(this.RdsInstanceArn == null) {
+
+                this.RdsInstanceArn = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RdsInstanceArn != null && ec.Excludes("rdsInstanceArn",true))
+        {
+            this.RdsInstanceArn = null;
         }
         //      C# -> System.String? StorageType
         // GraphQL -> storageType: String! (scalar)
-        if (this.StorageType == null && ec.Includes("storageType",true))
+        if (ec.Includes("storageType",true))
         {
-            this.StorageType = "FETCH";
+            if(this.StorageType == null) {
+
+                this.StorageType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.StorageType != null && ec.Excludes("storageType",true))
+        {
+            this.StorageType = null;
         }
         //      C# -> System.String? VpcId
         // GraphQL -> vpcId: String! (scalar)
-        if (this.VpcId == null && ec.Includes("vpcId",true))
+        if (ec.Includes("vpcId",true))
         {
-            this.VpcId = "FETCH";
+            if(this.VpcId == null) {
+
+                this.VpcId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.VpcId != null && ec.Excludes("vpcId",true))
+        {
+            this.VpcId = null;
         }
     }
 
@@ -454,9 +740,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<RdsInstanceDetailsFromAws> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

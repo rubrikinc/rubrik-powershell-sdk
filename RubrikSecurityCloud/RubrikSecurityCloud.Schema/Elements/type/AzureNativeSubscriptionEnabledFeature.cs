@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> AzureNativeProtectionFeature? FeatureName
         // GraphQL -> featureName: AzureNativeProtectionFeature! (enum)
         if (this.FeatureName != null) {
-            s += ind + "featureName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "featureName\n" ;
+            } else {
+                s += ind + "featureName\n" ;
+            }
         }
         //      C# -> AzureSubscriptionStatus? Status
         // GraphQL -> status: AzureSubscriptionStatus! (enum)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         //      C# -> DateTime? LastRefreshedAt
         // GraphQL -> lastRefreshedAt: DateTime (scalar)
         if (this.LastRefreshedAt != null) {
-            s += ind + "lastRefreshedAt\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "lastRefreshedAt\n" ;
+            } else {
+                s += ind + "lastRefreshedAt\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> AzureNativeProtectionFeature? FeatureName
         // GraphQL -> featureName: AzureNativeProtectionFeature! (enum)
-        if (this.FeatureName == null && ec.Includes("featureName",true))
+        if (ec.Includes("featureName",true))
         {
-            this.FeatureName = new AzureNativeProtectionFeature();
+            if(this.FeatureName == null) {
+
+                this.FeatureName = new AzureNativeProtectionFeature();
+
+            } else {
+
+
+            }
+        }
+        else if (this.FeatureName != null && ec.Excludes("featureName",true))
+        {
+            this.FeatureName = null;
         }
         //      C# -> AzureSubscriptionStatus? Status
         // GraphQL -> status: AzureSubscriptionStatus! (enum)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = new AzureSubscriptionStatus();
+            if(this.Status == null) {
+
+                this.Status = new AzureSubscriptionStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
         //      C# -> DateTime? LastRefreshedAt
         // GraphQL -> lastRefreshedAt: DateTime (scalar)
-        if (this.LastRefreshedAt == null && ec.Includes("lastRefreshedAt",true))
+        if (ec.Includes("lastRefreshedAt",true))
         {
-            this.LastRefreshedAt = new DateTime();
+            if(this.LastRefreshedAt == null) {
+
+                this.LastRefreshedAt = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastRefreshedAt != null && ec.Excludes("lastRefreshedAt",true))
+        {
+            this.LastRefreshedAt = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AzureNativeSubscriptionEnabledFeature> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

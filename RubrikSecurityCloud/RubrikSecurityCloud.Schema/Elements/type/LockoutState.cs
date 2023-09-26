@@ -83,34 +83,55 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> LockMethod? LockMethod
         // GraphQL -> lockMethod: LockMethod! (enum)
         if (this.LockMethod != null) {
-            s += ind + "lockMethod\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "lockMethod\n" ;
+            } else {
+                s += ind + "lockMethod\n" ;
+            }
         }
         //      C# -> UnlockMethod? UnlockMethod
         // GraphQL -> unlockMethod: UnlockMethod! (enum)
         if (this.UnlockMethod != null) {
-            s += ind + "unlockMethod\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "unlockMethod\n" ;
+            } else {
+                s += ind + "unlockMethod\n" ;
+            }
         }
         //      C# -> System.Boolean? IsLocked
         // GraphQL -> isLocked: Boolean! (scalar)
         if (this.IsLocked != null) {
-            s += ind + "isLocked\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isLocked\n" ;
+            } else {
+                s += ind + "isLocked\n" ;
+            }
         }
         //      C# -> DateTime? LockedAt
         // GraphQL -> lockedAt: DateTime (scalar)
         if (this.LockedAt != null) {
-            s += ind + "lockedAt\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "lockedAt\n" ;
+            } else {
+                s += ind + "lockedAt\n" ;
+            }
         }
         //      C# -> DateTime? UnlockedAt
         // GraphQL -> unlockedAt: DateTime (scalar)
         if (this.UnlockedAt != null) {
-            s += ind + "unlockedAt\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "unlockedAt\n" ;
+            } else {
+                s += ind + "unlockedAt\n" ;
+            }
         }
         return s;
     }
@@ -121,33 +142,88 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> LockMethod? LockMethod
         // GraphQL -> lockMethod: LockMethod! (enum)
-        if (this.LockMethod == null && ec.Includes("lockMethod",true))
+        if (ec.Includes("lockMethod",true))
         {
-            this.LockMethod = new LockMethod();
+            if(this.LockMethod == null) {
+
+                this.LockMethod = new LockMethod();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LockMethod != null && ec.Excludes("lockMethod",true))
+        {
+            this.LockMethod = null;
         }
         //      C# -> UnlockMethod? UnlockMethod
         // GraphQL -> unlockMethod: UnlockMethod! (enum)
-        if (this.UnlockMethod == null && ec.Includes("unlockMethod",true))
+        if (ec.Includes("unlockMethod",true))
         {
-            this.UnlockMethod = new UnlockMethod();
+            if(this.UnlockMethod == null) {
+
+                this.UnlockMethod = new UnlockMethod();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UnlockMethod != null && ec.Excludes("unlockMethod",true))
+        {
+            this.UnlockMethod = null;
         }
         //      C# -> System.Boolean? IsLocked
         // GraphQL -> isLocked: Boolean! (scalar)
-        if (this.IsLocked == null && ec.Includes("isLocked",true))
+        if (ec.Includes("isLocked",true))
         {
-            this.IsLocked = true;
+            if(this.IsLocked == null) {
+
+                this.IsLocked = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsLocked != null && ec.Excludes("isLocked",true))
+        {
+            this.IsLocked = null;
         }
         //      C# -> DateTime? LockedAt
         // GraphQL -> lockedAt: DateTime (scalar)
-        if (this.LockedAt == null && ec.Includes("lockedAt",true))
+        if (ec.Includes("lockedAt",true))
         {
-            this.LockedAt = new DateTime();
+            if(this.LockedAt == null) {
+
+                this.LockedAt = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LockedAt != null && ec.Excludes("lockedAt",true))
+        {
+            this.LockedAt = null;
         }
         //      C# -> DateTime? UnlockedAt
         // GraphQL -> unlockedAt: DateTime (scalar)
-        if (this.UnlockedAt == null && ec.Includes("unlockedAt",true))
+        if (ec.Includes("unlockedAt",true))
         {
-            this.UnlockedAt = new DateTime();
+            if(this.UnlockedAt == null) {
+
+                this.UnlockedAt = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UnlockedAt != null && ec.Excludes("unlockedAt",true))
+        {
+            this.UnlockedAt = null;
         }
     }
 
@@ -174,9 +250,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<LockoutState> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

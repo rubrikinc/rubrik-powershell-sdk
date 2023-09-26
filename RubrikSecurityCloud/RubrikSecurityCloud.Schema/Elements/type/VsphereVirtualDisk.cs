@@ -137,66 +137,111 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
         if (this.CdmId != null) {
-            s += ind + "cdmId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cdmId\n" ;
+            } else {
+                s += ind + "cdmId\n" ;
+            }
         }
         //      C# -> System.String? CdmVersion
         // GraphQL -> cdmVersion: String! (scalar)
         if (this.CdmVersion != null) {
-            s += ind + "cdmVersion\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cdmVersion\n" ;
+            } else {
+                s += ind + "cdmVersion\n" ;
+            }
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
         if (this.ClusterUuid != null) {
-            s += ind + "clusterUuid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterUuid\n" ;
+            } else {
+                s += ind + "clusterUuid\n" ;
+            }
         }
         //      C# -> System.String? DatastoreFid
         // GraphQL -> datastoreFid: String (scalar)
         if (this.DatastoreFid != null) {
-            s += ind + "datastoreFid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "datastoreFid\n" ;
+            } else {
+                s += ind + "datastoreFid\n" ;
+            }
         }
         //      C# -> System.Int32? DeviceKey
         // GraphQL -> deviceKey: Int (scalar)
         if (this.DeviceKey != null) {
-            s += ind + "deviceKey\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "deviceKey\n" ;
+            } else {
+                s += ind + "deviceKey\n" ;
+            }
         }
         //      C# -> System.Boolean? ExcludeFromSnapshots
         // GraphQL -> excludeFromSnapshots: Boolean! (scalar)
         if (this.ExcludeFromSnapshots != null) {
-            s += ind + "excludeFromSnapshots\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "excludeFromSnapshots\n" ;
+            } else {
+                s += ind + "excludeFromSnapshots\n" ;
+            }
         }
         //      C# -> System.String? Fid
         // GraphQL -> fid: UUID! (scalar)
         if (this.Fid != null) {
-            s += ind + "fid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "fid\n" ;
+            } else {
+                s += ind + "fid\n" ;
+            }
         }
         //      C# -> System.String? FileName
         // GraphQL -> fileName: String! (scalar)
         if (this.FileName != null) {
-            s += ind + "fileName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "fileName\n" ;
+            } else {
+                s += ind + "fileName\n" ;
+            }
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long (scalar)
         if (this.Size != null) {
-            s += ind + "size\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "size\n" ;
+            } else {
+                s += ind + "size\n" ;
+            }
         }
         //      C# -> System.String? VirtualMachineId
         // GraphQL -> virtualMachineId: String! (scalar)
         if (this.VirtualMachineId != null) {
-            s += ind + "virtualMachineId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "virtualMachineId\n" ;
+            } else {
+                s += ind + "virtualMachineId\n" ;
+            }
         }
         //      C# -> VsphereDatastore? Datastore
         // GraphQL -> datastore: VsphereDatastore (type)
         if (this.Datastore != null) {
-            var fspec = this.Datastore.AsFieldSpec(indent+1);
+            var fspec = this.Datastore.AsFieldSpec(conf.Child("datastore"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "datastore {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "datastore {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -208,70 +253,192 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
-        if (this.CdmId == null && ec.Includes("cdmId",true))
+        if (ec.Includes("cdmId",true))
         {
-            this.CdmId = "FETCH";
+            if(this.CdmId == null) {
+
+                this.CdmId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CdmId != null && ec.Excludes("cdmId",true))
+        {
+            this.CdmId = null;
         }
         //      C# -> System.String? CdmVersion
         // GraphQL -> cdmVersion: String! (scalar)
-        if (this.CdmVersion == null && ec.Includes("cdmVersion",true))
+        if (ec.Includes("cdmVersion",true))
         {
-            this.CdmVersion = "FETCH";
+            if(this.CdmVersion == null) {
+
+                this.CdmVersion = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CdmVersion != null && ec.Excludes("cdmVersion",true))
+        {
+            this.CdmVersion = null;
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
-        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
+        if (ec.Includes("clusterUuid",true))
         {
-            this.ClusterUuid = "FETCH";
+            if(this.ClusterUuid == null) {
+
+                this.ClusterUuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterUuid != null && ec.Excludes("clusterUuid",true))
+        {
+            this.ClusterUuid = null;
         }
         //      C# -> System.String? DatastoreFid
         // GraphQL -> datastoreFid: String (scalar)
-        if (this.DatastoreFid == null && ec.Includes("datastoreFid",true))
+        if (ec.Includes("datastoreFid",true))
         {
-            this.DatastoreFid = "FETCH";
+            if(this.DatastoreFid == null) {
+
+                this.DatastoreFid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DatastoreFid != null && ec.Excludes("datastoreFid",true))
+        {
+            this.DatastoreFid = null;
         }
         //      C# -> System.Int32? DeviceKey
         // GraphQL -> deviceKey: Int (scalar)
-        if (this.DeviceKey == null && ec.Includes("deviceKey",true))
+        if (ec.Includes("deviceKey",true))
         {
-            this.DeviceKey = Int32.MinValue;
+            if(this.DeviceKey == null) {
+
+                this.DeviceKey = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.DeviceKey != null && ec.Excludes("deviceKey",true))
+        {
+            this.DeviceKey = null;
         }
         //      C# -> System.Boolean? ExcludeFromSnapshots
         // GraphQL -> excludeFromSnapshots: Boolean! (scalar)
-        if (this.ExcludeFromSnapshots == null && ec.Includes("excludeFromSnapshots",true))
+        if (ec.Includes("excludeFromSnapshots",true))
         {
-            this.ExcludeFromSnapshots = true;
+            if(this.ExcludeFromSnapshots == null) {
+
+                this.ExcludeFromSnapshots = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExcludeFromSnapshots != null && ec.Excludes("excludeFromSnapshots",true))
+        {
+            this.ExcludeFromSnapshots = null;
         }
         //      C# -> System.String? Fid
         // GraphQL -> fid: UUID! (scalar)
-        if (this.Fid == null && ec.Includes("fid",true))
+        if (ec.Includes("fid",true))
         {
-            this.Fid = "FETCH";
+            if(this.Fid == null) {
+
+                this.Fid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Fid != null && ec.Excludes("fid",true))
+        {
+            this.Fid = null;
         }
         //      C# -> System.String? FileName
         // GraphQL -> fileName: String! (scalar)
-        if (this.FileName == null && ec.Includes("fileName",true))
+        if (ec.Includes("fileName",true))
         {
-            this.FileName = "FETCH";
+            if(this.FileName == null) {
+
+                this.FileName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.FileName != null && ec.Excludes("fileName",true))
+        {
+            this.FileName = null;
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long (scalar)
-        if (this.Size == null && ec.Includes("size",true))
+        if (ec.Includes("size",true))
         {
-            this.Size = new System.Int64();
+            if(this.Size == null) {
+
+                this.Size = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Size != null && ec.Excludes("size",true))
+        {
+            this.Size = null;
         }
         //      C# -> System.String? VirtualMachineId
         // GraphQL -> virtualMachineId: String! (scalar)
-        if (this.VirtualMachineId == null && ec.Includes("virtualMachineId",true))
+        if (ec.Includes("virtualMachineId",true))
         {
-            this.VirtualMachineId = "FETCH";
+            if(this.VirtualMachineId == null) {
+
+                this.VirtualMachineId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.VirtualMachineId != null && ec.Excludes("virtualMachineId",true))
+        {
+            this.VirtualMachineId = null;
         }
         //      C# -> VsphereDatastore? Datastore
         // GraphQL -> datastore: VsphereDatastore (type)
-        if (this.Datastore == null && ec.Includes("datastore",false))
+        if (ec.Includes("datastore",false))
         {
-            this.Datastore = new VsphereDatastore();
-            this.Datastore.ApplyExploratoryFieldSpec(ec.NewChild("datastore"));
+            if(this.Datastore == null) {
+
+                this.Datastore = new VsphereDatastore();
+                this.Datastore.ApplyExploratoryFieldSpec(ec.NewChild("datastore"));
+
+            } else {
+
+                this.Datastore.ApplyExploratoryFieldSpec(ec.NewChild("datastore"));
+
+            }
+        }
+        else if (this.Datastore != null && ec.Excludes("datastore",false))
+        {
+            this.Datastore = null;
         }
     }
 
@@ -298,9 +465,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<VsphereVirtualDisk> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

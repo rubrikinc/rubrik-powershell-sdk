@@ -83,34 +83,55 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? CapacityInBytes
         // GraphQL -> capacityInBytes: Long! (scalar)
         if (this.CapacityInBytes != null) {
-            s += ind + "capacityInBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "capacityInBytes\n" ;
+            } else {
+                s += ind + "capacityInBytes\n" ;
+            }
         }
         //      C# -> System.Int64? FileSizeInBytes
         // GraphQL -> fileSizeInBytes: Long! (scalar)
         if (this.FileSizeInBytes != null) {
-            s += ind + "fileSizeInBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "fileSizeInBytes\n" ;
+            } else {
+                s += ind + "fileSizeInBytes\n" ;
+            }
         }
         //      C# -> System.String? FileSystemType
         // GraphQL -> fileSystemType: String! (scalar)
         if (this.FileSystemType != null) {
-            s += ind + "fileSystemType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "fileSystemType\n" ;
+            } else {
+                s += ind + "fileSystemType\n" ;
+            }
         }
         //      C# -> List<System.String>? MountPointsOpt
         // GraphQL -> mountPointsOpt: [String!]! (scalar)
         if (this.MountPointsOpt != null) {
-            s += ind + "mountPointsOpt\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "mountPointsOpt\n" ;
+            } else {
+                s += ind + "mountPointsOpt\n" ;
+            }
         }
         //      C# -> System.String? VolumeId
         // GraphQL -> volumeId: String! (scalar)
         if (this.VolumeId != null) {
-            s += ind + "volumeId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "volumeId\n" ;
+            } else {
+                s += ind + "volumeId\n" ;
+            }
         }
         return s;
     }
@@ -121,33 +142,88 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? CapacityInBytes
         // GraphQL -> capacityInBytes: Long! (scalar)
-        if (this.CapacityInBytes == null && ec.Includes("capacityInBytes",true))
+        if (ec.Includes("capacityInBytes",true))
         {
-            this.CapacityInBytes = new System.Int64();
+            if(this.CapacityInBytes == null) {
+
+                this.CapacityInBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CapacityInBytes != null && ec.Excludes("capacityInBytes",true))
+        {
+            this.CapacityInBytes = null;
         }
         //      C# -> System.Int64? FileSizeInBytes
         // GraphQL -> fileSizeInBytes: Long! (scalar)
-        if (this.FileSizeInBytes == null && ec.Includes("fileSizeInBytes",true))
+        if (ec.Includes("fileSizeInBytes",true))
         {
-            this.FileSizeInBytes = new System.Int64();
+            if(this.FileSizeInBytes == null) {
+
+                this.FileSizeInBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.FileSizeInBytes != null && ec.Excludes("fileSizeInBytes",true))
+        {
+            this.FileSizeInBytes = null;
         }
         //      C# -> System.String? FileSystemType
         // GraphQL -> fileSystemType: String! (scalar)
-        if (this.FileSystemType == null && ec.Includes("fileSystemType",true))
+        if (ec.Includes("fileSystemType",true))
         {
-            this.FileSystemType = "FETCH";
+            if(this.FileSystemType == null) {
+
+                this.FileSystemType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.FileSystemType != null && ec.Excludes("fileSystemType",true))
+        {
+            this.FileSystemType = null;
         }
         //      C# -> List<System.String>? MountPointsOpt
         // GraphQL -> mountPointsOpt: [String!]! (scalar)
-        if (this.MountPointsOpt == null && ec.Includes("mountPointsOpt",true))
+        if (ec.Includes("mountPointsOpt",true))
         {
-            this.MountPointsOpt = new List<System.String>();
+            if(this.MountPointsOpt == null) {
+
+                this.MountPointsOpt = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.MountPointsOpt != null && ec.Excludes("mountPointsOpt",true))
+        {
+            this.MountPointsOpt = null;
         }
         //      C# -> System.String? VolumeId
         // GraphQL -> volumeId: String! (scalar)
-        if (this.VolumeId == null && ec.Includes("volumeId",true))
+        if (ec.Includes("volumeId",true))
         {
-            this.VolumeId = "FETCH";
+            if(this.VolumeId == null) {
+
+                this.VolumeId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.VolumeId != null && ec.Excludes("volumeId",true))
+        {
+            this.VolumeId = null;
         }
     }
 
@@ -174,9 +250,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<VolumeGroupSubObject> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

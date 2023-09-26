@@ -83,36 +83,57 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? AccountName
         // GraphQL -> accountName: String! (scalar)
         if (this.AccountName != null) {
-            s += ind + "accountName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "accountName\n" ;
+            } else {
+                s += ind + "accountName\n" ;
+            }
         }
         //      C# -> System.String? OrgFullName
         // GraphQL -> orgFullName: String! (scalar)
         if (this.OrgFullName != null) {
-            s += ind + "orgFullName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "orgFullName\n" ;
+            } else {
+                s += ind + "orgFullName\n" ;
+            }
         }
         //      C# -> System.String? OrgId
         // GraphQL -> orgId: String! (scalar)
         if (this.OrgId != null) {
-            s += ind + "orgId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "orgId\n" ;
+            } else {
+                s += ind + "orgId\n" ;
+            }
         }
         //      C# -> System.String? OrgName
         // GraphQL -> orgName: String! (scalar)
         if (this.OrgName != null) {
-            s += ind + "orgName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "orgName\n" ;
+            } else {
+                s += ind + "orgName\n" ;
+            }
         }
         //      C# -> User? User
         // GraphQL -> user: User! (type)
         if (this.User != null) {
-            var fspec = this.User.AsFieldSpec(indent+1);
+            var fspec = this.User.AsFieldSpec(conf.Child("user"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "user {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "user {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -124,34 +145,90 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? AccountName
         // GraphQL -> accountName: String! (scalar)
-        if (this.AccountName == null && ec.Includes("accountName",true))
+        if (ec.Includes("accountName",true))
         {
-            this.AccountName = "FETCH";
+            if(this.AccountName == null) {
+
+                this.AccountName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AccountName != null && ec.Excludes("accountName",true))
+        {
+            this.AccountName = null;
         }
         //      C# -> System.String? OrgFullName
         // GraphQL -> orgFullName: String! (scalar)
-        if (this.OrgFullName == null && ec.Includes("orgFullName",true))
+        if (ec.Includes("orgFullName",true))
         {
-            this.OrgFullName = "FETCH";
+            if(this.OrgFullName == null) {
+
+                this.OrgFullName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OrgFullName != null && ec.Excludes("orgFullName",true))
+        {
+            this.OrgFullName = null;
         }
         //      C# -> System.String? OrgId
         // GraphQL -> orgId: String! (scalar)
-        if (this.OrgId == null && ec.Includes("orgId",true))
+        if (ec.Includes("orgId",true))
         {
-            this.OrgId = "FETCH";
+            if(this.OrgId == null) {
+
+                this.OrgId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OrgId != null && ec.Excludes("orgId",true))
+        {
+            this.OrgId = null;
         }
         //      C# -> System.String? OrgName
         // GraphQL -> orgName: String! (scalar)
-        if (this.OrgName == null && ec.Includes("orgName",true))
+        if (ec.Includes("orgName",true))
         {
-            this.OrgName = "FETCH";
+            if(this.OrgName == null) {
+
+                this.OrgName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OrgName != null && ec.Excludes("orgName",true))
+        {
+            this.OrgName = null;
         }
         //      C# -> User? User
         // GraphQL -> user: User! (type)
-        if (this.User == null && ec.Includes("user",false))
+        if (ec.Includes("user",false))
         {
-            this.User = new User();
-            this.User.ApplyExploratoryFieldSpec(ec.NewChild("user"));
+            if(this.User == null) {
+
+                this.User = new User();
+                this.User.ApplyExploratoryFieldSpec(ec.NewChild("user"));
+
+            } else {
+
+                this.User.ApplyExploratoryFieldSpec(ec.NewChild("user"));
+
+            }
+        }
+        else if (this.User != null && ec.Excludes("user",false))
+        {
+            this.User = null;
         }
     }
 
@@ -178,9 +255,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<UserLoginContext> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

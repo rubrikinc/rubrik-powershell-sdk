@@ -16,62 +16,690 @@ using RubrikSecurityCloud.Types;
 using RubrikSecurityCloud.NetSDK.Client;
 using RubrikSecurityCloud.PowerShell.Private;
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
+
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Queries for the 'Oracle' API domain.
+    /// Create a new RscQuery object for any of the 16
+    /// operations in the 'Oracle' API domain:
+    /// AcoExampleDownloadLink, AcoParameters, DataGuardGroup, Database, DatabaseLogBackupConfig, Databases, Host, HostLogBackupConfig, LiveMounts, MissedRecoverableRanges, MissedSnapshots, PdbDetails, Rac, RacLogBackupConfig, RecoverableRanges, or TopLevelDescendants.
     /// </summary>
     /// <description>
-    /// New-RscQueryOracle is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
+    /// New-RscQueryOracle creates a new
+    /// query object for operations
+    /// in the 'Oracle' API domain. It only creates a data structure,
+    /// it does not execute the operation. This cmdlet does not need a
+    /// connection to run. To execute the operation, either call Invoke()
+    /// on the object returned by this cmdlet, or pass the object to
+    /// Invoke-Rsc.
+    /// There are 16 operations
+    /// in the 'Oracle' API domain. Select the operation this
+    /// query is for by specifying the appropriate switch parameter;
+    /// one of: -AcoExampleDownloadLink, -AcoParameters, -DataGuardGroup, -Database, -DatabaseLogBackupConfig, -Databases, -Host, -HostLogBackupConfig, -LiveMounts, -MissedRecoverableRanges, -MissedSnapshots, -PdbDetails, -Rac, -RacLogBackupConfig, -RecoverableRanges, -TopLevelDescendants.
+    /// Alternatively, you can specify the operation by setting the
+    /// -Op parameter, for example: -Op AcoExampleDownloadLink,
+    /// which is equivalent to specifying -AcoExampleDownloadLink.
+    /// Each operation has its own set of variables that can be set with
+    /// the -Var parameter. For more info about the variables, 
+    /// call Info() on the object returned by this cmdlet, for example:
+    /// (New-RscQueryOracle -AcoExampleDownloadLink).Info().
+    /// Each operation also has its own set of fields that can be
+    /// selected for retrieval. If you do not specify any fields,
+    /// a set of default fields will be selected. The selection is
+    /// rule-based, and tries to select the most commonly used fields.
+    /// For example if a field is named 'id' or 'name', 
+    /// it will be selected. If you give -FieldProfile DETAIL, then
+    /// another set of rules will be used to select more fields on top
+    /// of the default fields. The set of rules for selecting fields
+    /// is called a field profile. You can specify a field profile
+    /// with the -FieldProfile parameter. You can add or remove fields
+    /// from the field profile with the -AddField and -RemoveField
+    /// parameters. If you end up with too many -AddField and -RemoveField
+    /// parameters, you can list them in a text file, one per line,
+    /// with a '+' or '-' prefix, and pass the file name to the
+    /// -FilePatch parameter. Profiles and Patches are one way to
+    /// customize the fields that are selected. Another way is to
+    /// specify the fields by passing the -Field parameter an object
+    /// that contains the fields you want to select as properties.
+    /// Any property that is not null in that object is interpreted
+    /// as a field to select
+    /// (and the actual values they are set to do not matter).
+    /// The [RubrikSecurityCloud.Types] namespace
+    /// contains a set of classes that you can use to specify fields.
+    /// To know what [RubrikSecurityCloud.Types] object to use
+    /// for a specific operation,
+    /// call Info() on the object returned by this cmdlet, for example:
+    /// (New-RscQueryOracle -AcoExampleDownloadLink).Info().
+    /// You can combine a -Field parameter with patching parameters.
+    /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
+    ///
     /// </description>
+    ///
     /// <example>
-    /// <code>New-RscQueryOracle -TopLevelDescendants [-Arg ..] [-Field ..]</code>
+    /// Runs the AcoExampleDownloadLink operation
+    /// of the 'Oracle' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Oracle
+    /// # API Operation: AcoExampleDownloadLink
+    /// 
+    /// $query = New-RscQueryOracle -AcoExampleDownloadLink
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	dbId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: OracleFileDownloadLink
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryOracle -Databases [-Arg ..] [-Field ..]</code>
+    /// Runs the AcoParameters operation
+    /// of the 'Oracle' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Oracle
+    /// # API Operation: AcoParameters
+    /// 
+    /// $query = New-RscQueryOracle -AcoParameters
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	dbId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: OracleAcoParameterList
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryOracle -Host [-Arg ..] [-Field ..]</code>
+    /// Runs the DataGuardGroup operation
+    /// of the 'Oracle' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Oracle
+    /// # API Operation: DataGuardGroup
+    /// 
+    /// $query = New-RscQueryOracle -DataGuardGroup
+    /// 
+    /// # REQUIRED
+    /// $query.Var.fid = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: OracleDataGuardGroup
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryOracle -Rac [-Arg ..] [-Field ..]</code>
+    /// Runs the Database operation
+    /// of the 'Oracle' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Oracle
+    /// # API Operation: Database
+    /// 
+    /// $query = New-RscQueryOracle -Database
+    /// 
+    /// # REQUIRED
+    /// $query.Var.fid = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: OracleDatabase
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryOracle -DataGuardGroup [-Arg ..] [-Field ..]</code>
+    /// Runs the DatabaseLogBackupConfig operation
+    /// of the 'Oracle' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Oracle
+    /// # API Operation: DatabaseLogBackupConfig
+    /// 
+    /// $query = New-RscQueryOracle -DatabaseLogBackupConfig
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: OracleLogBackupConfig
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryOracle -Database [-Arg ..] [-Field ..]</code>
+    /// Runs the Databases operation
+    /// of the 'Oracle' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Oracle
+    /// # API Operation: Databases
+    /// 
+    /// $query = New-RscQueryOracle -Databases
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.filter = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		texts = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		tagFilterParams = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+    /// 				# OPTIONAL
+    /// 				tagKey = $someString
+    /// 				# OPTIONAL
+    /// 				tagValue = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		objectTypeFilterParams = @(
+    /// 			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		awsNativeProtectionFeatureNames = @(
+    /// 			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		isNegative = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isSlowSearchEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		azureNativeProtectionFeatureNames = @(
+    /// 			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		unmanagedObjectAvailabilityFilter = @(
+    /// 			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+    /// 		)
+    /// }
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: OracleDatabaseConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryOracle -LiveMounts [-Arg ..] [-Field ..]</code>
+    /// Runs the Host operation
+    /// of the 'Oracle' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Oracle
+    /// # API Operation: Host
+    /// 
+    /// $query = New-RscQueryOracle -Host
+    /// 
+    /// # REQUIRED
+    /// $query.Var.fid = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: OracleHost
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryOracle -AcoParameters [-Arg ..] [-Field ..]</code>
+    /// Runs the HostLogBackupConfig operation
+    /// of the 'Oracle' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Oracle
+    /// # API Operation: HostLogBackupConfig
+    /// 
+    /// $query = New-RscQueryOracle -HostLogBackupConfig
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: OracleLogBackupConfig
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryOracle -RecoverableRanges [-Arg ..] [-Field ..]</code>
+    /// Runs the LiveMounts operation
+    /// of the 'Oracle' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Oracle
+    /// # API Operation: LiveMounts
+    /// 
+    /// $query = New-RscQueryOracle -LiveMounts
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.filters = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		field = $someOracleLiveMountFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.OracleLiveMountFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		texts = @(
+    /// 			$someString
+    /// 		)
+    /// }
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.sortBy = @{
+    /// 	# OPTIONAL
+    /// 	field = $someOracleLiveMountSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.OracleLiveMountSortByField]) for enum values.
+    /// 	# OPTIONAL
+    /// 	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: OracleLiveMountConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryOracle -MissedRecoverableRanges [-Arg ..] [-Field ..]</code>
+    /// Runs the MissedRecoverableRanges operation
+    /// of the 'Oracle' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Oracle
+    /// # API Operation: MissedRecoverableRanges
+    /// 
+    /// $query = New-RscQueryOracle -MissedRecoverableRanges
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	afterTime = $someDateTime
+    /// 	# OPTIONAL
+    /// 	beforeTime = $someDateTime
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: OracleMissedRecoverableRangeListResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryOracle -MissedSnapshots [-Arg ..] [-Field ..]</code>
+    /// Runs the MissedSnapshots operation
+    /// of the 'Oracle' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Oracle
+    /// # API Operation: MissedSnapshots
+    /// 
+    /// $query = New-RscQueryOracle -MissedSnapshots
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	afterTime = $someDateTime
+    /// 	# OPTIONAL
+    /// 	beforeTime = $someDateTime
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: MissedSnapshotListResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryOracle -AcoExampleDownloadLink [-Arg ..] [-Field ..]</code>
+    /// Runs the PdbDetails operation
+    /// of the 'Oracle' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Oracle
+    /// # API Operation: PdbDetails
+    /// 
+    /// $query = New-RscQueryOracle -PdbDetails
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	pdbDetailsRequest = @{
+    /// 		# REQUIRED
+    /// 		recoveryPoint = @{
+    /// 			# OPTIONAL
+    /// 			snapshotId = $someString
+    /// 			# OPTIONAL
+    /// 			timestampMs = $someInt64
+    /// 		}
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: OraclePdbDetails
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryOracle -PdbDetails [-Arg ..] [-Field ..]</code>
+    /// Runs the Rac operation
+    /// of the 'Oracle' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Oracle
+    /// # API Operation: Rac
+    /// 
+    /// $query = New-RscQueryOracle -Rac
+    /// 
+    /// # REQUIRED
+    /// $query.Var.fid = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: OracleRac
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryOracle -HostLogBackupConfig [-Arg ..] [-Field ..]</code>
+    /// Runs the RacLogBackupConfig operation
+    /// of the 'Oracle' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Oracle
+    /// # API Operation: RacLogBackupConfig
+    /// 
+    /// $query = New-RscQueryOracle -RacLogBackupConfig
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: OracleLogBackupConfig
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryOracle -DatabaseLogBackupConfig [-Arg ..] [-Field ..]</code>
+    /// Runs the RecoverableRanges operation
+    /// of the 'Oracle' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Oracle
+    /// # API Operation: RecoverableRanges
+    /// 
+    /// $query = New-RscQueryOracle -RecoverableRanges
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	afterTime = $someDateTime
+    /// 	# OPTIONAL
+    /// 	beforeTime = $someDateTime
+    /// 	# OPTIONAL
+    /// 	shouldIncludeDbSnapshotSummaries = $someBoolean
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: OracleRecoverableRangeListResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryOracle -RacLogBackupConfig [-Arg ..] [-Field ..]</code>
+    /// Runs the TopLevelDescendants operation
+    /// of the 'Oracle' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Oracle
+    /// # API Operation: TopLevelDescendants
+    /// 
+    /// $query = New-RscQueryOracle -TopLevelDescendants
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.typeFilter = @(
+    /// 	$someHierarchyObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.filter = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		texts = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		tagFilterParams = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+    /// 				# OPTIONAL
+    /// 				tagKey = $someString
+    /// 				# OPTIONAL
+    /// 				tagValue = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		objectTypeFilterParams = @(
+    /// 			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		awsNativeProtectionFeatureNames = @(
+    /// 			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		isNegative = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isSlowSearchEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		azureNativeProtectionFeatureNames = @(
+    /// 			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		unmanagedObjectAvailabilityFilter = @(
+    /// 			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+    /// 		)
+    /// }
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: OracleTopLevelDescendantTypeConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -81,332 +709,293 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     public class New_RscQueryOracle : RscGqlPSCmdlet
     {
         
-        /// <summary>
-        /// TopLevelDescendants parameter set
-        ///
-        /// [GraphQL: oracleTopLevelDescendants]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "TopLevelDescendants",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Paginated list of the highest-level Oracle Objects accessible by the current user.
-[GraphQL: oracleTopLevelDescendants]",
-            Position = 0
-        )]
-        public SwitchParameter TopLevelDescendants { get; set; }
-
-        
-        /// <summary>
-        /// Databases parameter set
-        ///
-        /// [GraphQL: oracleDatabases]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "Databases",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Paginated list of Oracle Databases.
-[GraphQL: oracleDatabases]",
-            Position = 0
-        )]
-        public SwitchParameter Databases { get; set; }
-
-        
-        /// <summary>
-        /// Host parameter set
-        ///
-        /// [GraphQL: oracleHost]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "Host",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"An Oracle Host.
-[GraphQL: oracleHost]",
-            Position = 0
-        )]
-        public new SwitchParameter Host { get; set; }
-
-        
-        /// <summary>
-        /// Rac parameter set
-        ///
-        /// [GraphQL: oracleRac]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "Rac",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"An Oracle Real Application Cluster.
-[GraphQL: oracleRac]",
-            Position = 0
-        )]
-        public SwitchParameter Rac { get; set; }
-
-        
-        /// <summary>
-        /// DataGuardGroup parameter set
-        ///
-        /// [GraphQL: oracleDataGuardGroup]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "DataGuardGroup",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"An Oracle Data Guard Group.
-[GraphQL: oracleDataGuardGroup]",
-            Position = 0
-        )]
-        public SwitchParameter DataGuardGroup { get; set; }
-
-        
-        /// <summary>
-        /// Database parameter set
-        ///
-        /// [GraphQL: oracleDatabase]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "Database",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"An Oracle Database.
-[GraphQL: oracleDatabase]",
-            Position = 0
-        )]
-        public SwitchParameter Database { get; set; }
-
-        
-        /// <summary>
-        /// LiveMounts parameter set
-        ///
-        /// [GraphQL: oracleLiveMounts]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "LiveMounts",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Paginated list of Oracle Live Mounts.
-[GraphQL: oracleLiveMounts]",
-            Position = 0
-        )]
-        public SwitchParameter LiveMounts { get; set; }
-
-        
-        /// <summary>
-        /// AcoParameters parameter set
-        ///
-        /// [GraphQL: oracleAcoParameters]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "AcoParameters",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"List of supported Advanced Cloning Options
-
-Supported in v6.0+
-Get the list of supported Advanced Cloning Options (ACO) parameters.
-[GraphQL: oracleAcoParameters]",
-            Position = 0
-        )]
-        public SwitchParameter AcoParameters { get; set; }
-
-        
-        /// <summary>
-        /// RecoverableRanges parameter set
-        ///
-        /// [GraphQL: oracleRecoverableRanges]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "RecoverableRanges",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Get recoverable ranges of a Oracle database
-
-Supported in v5.0+
-Retrieve the recoverable ranges for a specified Oracle database. A begin and/or end timestamp can be provided to retrieve only the ranges that fall within the window.
-[GraphQL: oracleRecoverableRanges]",
-            Position = 0
-        )]
-        public SwitchParameter RecoverableRanges { get; set; }
-
-        
-        /// <summary>
-        /// MissedRecoverableRanges parameter set
-        ///
-        /// [GraphQL: oracleMissedRecoverableRanges]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "MissedRecoverableRanges",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Get missed recoverable ranges of a Oracle database
-
-Supported in v5.0+
-Retrieve a list of missed recoverable ranges for a Oracle database. For each run of one type of error, the first and last occurrence of the error are given.
-[GraphQL: oracleMissedRecoverableRanges]",
-            Position = 0
-        )]
-        public SwitchParameter MissedRecoverableRanges { get; set; }
-
-        
-        /// <summary>
-        /// MissedSnapshots parameter set
-        ///
-        /// [GraphQL: oracleMissedSnapshots]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "MissedSnapshots",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Get missed snapshots for an Oracle database
-
-Supported in v5.0+
-Retrieve summary information about the missed snapshots of an Oracle database.
-[GraphQL: oracleMissedSnapshots]",
-            Position = 0
-        )]
-        public SwitchParameter MissedSnapshots { get; set; }
-
-        
-        /// <summary>
-        /// AcoExampleDownloadLink parameter set
-        ///
-        /// [GraphQL: oracleAcoExampleDownloadLink]
-        /// </summary>
         [Parameter(
             ParameterSetName = "AcoExampleDownloadLink",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Link to download the Advanced Recovery Options example file
+@"Create a query object for the 'AcoExampleDownloadLink' operation
+in the 'Oracle' API domain.
+Description of the operation:
+Link to download the Advanced Recovery Options example file
 
 Supported in v5.3+
 Link to download the Advanced Recovery Options example file which can be used to customize Oracle recoveries.
-[GraphQL: oracleAcoExampleDownloadLink]",
-            Position = 0
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/oracleacoexampledownloadlink.doc.html]"
+            // No Position -> named parameter only.
         )]
         public SwitchParameter AcoExampleDownloadLink { get; set; }
 
         
-        /// <summary>
-        /// PdbDetails parameter set
-        ///
-        /// [GraphQL: oraclePdbDetails]
-        /// </summary>
         [Parameter(
-            ParameterSetName = "PdbDetails",
+            ParameterSetName = "AcoParameters",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Get PDB details
+@"Create a query object for the 'AcoParameters' operation
+in the 'Oracle' API domain.
+Description of the operation:
+List of supported Advanced Cloning Options
 
-Supported in v8.0+
-Retrieves information about available pluggable databases (PDBs) for a given recovery point.
-[GraphQL: oraclePdbDetails]",
-            Position = 0
+Supported in v6.0+
+Get the list of supported Advanced Cloning Options (ACO) parameters.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/oracleacoparameters.doc.html]"
+            // No Position -> named parameter only.
         )]
-        public SwitchParameter PdbDetails { get; set; }
+        public SwitchParameter AcoParameters { get; set; }
 
         
-        /// <summary>
-        /// HostLogBackupConfig parameter set
-        ///
-        /// [GraphQL: oracleHostLogBackupConfig]
-        /// </summary>
         [Parameter(
-            ParameterSetName = "HostLogBackupConfig",
+            ParameterSetName = "DataGuardGroup",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Oracle Log backup configuration for Oracle Host.
-[GraphQL: oracleHostLogBackupConfig]",
-            Position = 0
+@"Create a query object for the 'DataGuardGroup' operation
+in the 'Oracle' API domain.
+Description of the operation:
+An Oracle Data Guard Group.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/oracledataguardgroup.doc.html]"
+            // No Position -> named parameter only.
         )]
-        public SwitchParameter HostLogBackupConfig { get; set; }
+        public SwitchParameter DataGuardGroup { get; set; }
 
         
-        /// <summary>
-        /// DatabaseLogBackupConfig parameter set
-        ///
-        /// [GraphQL: oracleDatabaseLogBackupConfig]
-        /// </summary>
+        [Parameter(
+            ParameterSetName = "Database",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'Database' operation
+in the 'Oracle' API domain.
+Description of the operation:
+An Oracle Database.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/oracledatabase.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter Database { get; set; }
+
+        
         [Parameter(
             ParameterSetName = "DatabaseLogBackupConfig",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Oracle log backup configuration for an Oracle Database.
-[GraphQL: oracleDatabaseLogBackupConfig]",
-            Position = 0
+@"Create a query object for the 'DatabaseLogBackupConfig' operation
+in the 'Oracle' API domain.
+Description of the operation:
+Oracle log backup configuration for an Oracle Database.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/oracledatabaselogbackupconfig.doc.html]"
+            // No Position -> named parameter only.
         )]
         public SwitchParameter DatabaseLogBackupConfig { get; set; }
 
         
-        /// <summary>
-        /// RacLogBackupConfig parameter set
-        ///
-        /// [GraphQL: oracleRacLogBackupConfig]
-        /// </summary>
+        [Parameter(
+            ParameterSetName = "Databases",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'Databases' operation
+in the 'Oracle' API domain.
+Description of the operation:
+Paginated list of Oracle Databases.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/oracledatabases.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter Databases { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "Host",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'Host' operation
+in the 'Oracle' API domain.
+Description of the operation:
+An Oracle Host.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/oraclehost.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public new SwitchParameter Host { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "HostLogBackupConfig",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'HostLogBackupConfig' operation
+in the 'Oracle' API domain.
+Description of the operation:
+Oracle Log backup configuration for Oracle Host.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/oraclehostlogbackupconfig.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter HostLogBackupConfig { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "LiveMounts",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'LiveMounts' operation
+in the 'Oracle' API domain.
+Description of the operation:
+Paginated list of Oracle Live Mounts.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/oraclelivemounts.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter LiveMounts { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "MissedRecoverableRanges",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'MissedRecoverableRanges' operation
+in the 'Oracle' API domain.
+Description of the operation:
+Get missed recoverable ranges of a Oracle database
+
+Supported in v5.0+
+Retrieve a list of missed recoverable ranges for a Oracle database. For each run of one type of error, the first and last occurrence of the error are given.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/oraclemissedrecoverableranges.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter MissedRecoverableRanges { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "MissedSnapshots",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'MissedSnapshots' operation
+in the 'Oracle' API domain.
+Description of the operation:
+Get missed snapshots for an Oracle database
+
+Supported in v5.0+
+Retrieve summary information about the missed snapshots of an Oracle database.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/oraclemissedsnapshots.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter MissedSnapshots { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "PdbDetails",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'PdbDetails' operation
+in the 'Oracle' API domain.
+Description of the operation:
+Get PDB details
+
+Supported in v8.0+
+Retrieves information about available pluggable databases (PDBs) for a given recovery point.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/oraclepdbdetails.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter PdbDetails { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "Rac",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'Rac' operation
+in the 'Oracle' API domain.
+Description of the operation:
+An Oracle Real Application Cluster.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/oraclerac.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter Rac { get; set; }
+
+        
         [Parameter(
             ParameterSetName = "RacLogBackupConfig",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Oracle log backup configuration for an Oracle RAC.
-[GraphQL: oracleRacLogBackupConfig]",
-            Position = 0
+@"Create a query object for the 'RacLogBackupConfig' operation
+in the 'Oracle' API domain.
+Description of the operation:
+Oracle log backup configuration for an Oracle RAC.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/oracleraclogbackupconfig.doc.html]"
+            // No Position -> named parameter only.
         )]
         public SwitchParameter RacLogBackupConfig { get; set; }
 
+        
+        [Parameter(
+            ParameterSetName = "RecoverableRanges",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'RecoverableRanges' operation
+in the 'Oracle' API domain.
+Description of the operation:
+Get recoverable ranges of a Oracle database
 
-// ignore warning 'Missing XML comment'
-#pragma warning disable 1591
+Supported in v5.0+
+Retrieve the recoverable ranges for a specified Oracle database. A begin and/or end timestamp can be provided to retrieve only the ranges that fall within the window.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/oraclerecoverableranges.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter RecoverableRanges { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "TopLevelDescendants",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'TopLevelDescendants' operation
+in the 'Oracle' API domain.
+Description of the operation:
+Paginated list of the highest-level Oracle Objects accessible by the current user.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/oracletopleveldescendants.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter TopLevelDescendants { get; set; }
+
+
+
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
             try
             {
-                switch(Op)
+                switch(this.GetOp().OpName())
                 {
-                    case "TopLevelDescendants":
-                        this.ProcessRecord_TopLevelDescendants();
+                    case "AcoExampleDownloadLink":
+                        this.ProcessRecord_AcoExampleDownloadLink();
                         break;
-                    case "Databases":
-                        this.ProcessRecord_Databases();
-                        break;
-                    case "Host":
-                        this.ProcessRecord_Host();
-                        break;
-                    case "Rac":
-                        this.ProcessRecord_Rac();
+                    case "AcoParameters":
+                        this.ProcessRecord_AcoParameters();
                         break;
                     case "DataGuardGroup":
                         this.ProcessRecord_DataGuardGroup();
@@ -414,14 +1003,20 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
                     case "Database":
                         this.ProcessRecord_Database();
                         break;
+                    case "DatabaseLogBackupConfig":
+                        this.ProcessRecord_DatabaseLogBackupConfig();
+                        break;
+                    case "Databases":
+                        this.ProcessRecord_Databases();
+                        break;
+                    case "Host":
+                        this.ProcessRecord_Host();
+                        break;
+                    case "HostLogBackupConfig":
+                        this.ProcessRecord_HostLogBackupConfig();
+                        break;
                     case "LiveMounts":
                         this.ProcessRecord_LiveMounts();
-                        break;
-                    case "AcoParameters":
-                        this.ProcessRecord_AcoParameters();
-                        break;
-                    case "RecoverableRanges":
-                        this.ProcessRecord_RecoverableRanges();
                         break;
                     case "MissedRecoverableRanges":
                         this.ProcessRecord_MissedRecoverableRanges();
@@ -429,23 +1024,23 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
                     case "MissedSnapshots":
                         this.ProcessRecord_MissedSnapshots();
                         break;
-                    case "AcoExampleDownloadLink":
-                        this.ProcessRecord_AcoExampleDownloadLink();
-                        break;
                     case "PdbDetails":
                         this.ProcessRecord_PdbDetails();
                         break;
-                    case "HostLogBackupConfig":
-                        this.ProcessRecord_HostLogBackupConfig();
-                        break;
-                    case "DatabaseLogBackupConfig":
-                        this.ProcessRecord_DatabaseLogBackupConfig();
+                    case "Rac":
+                        this.ProcessRecord_Rac();
                         break;
                     case "RacLogBackupConfig":
                         this.ProcessRecord_RacLogBackupConfig();
                         break;
+                    case "RecoverableRanges":
+                        this.ProcessRecord_RecoverableRanges();
+                        break;
+                    case "TopLevelDescendants":
+                        this.ProcessRecord_TopLevelDescendants();
+                        break;
                     default:
-                        throw new Exception("Unknown Operation " + Op);
+                        throw new Exception("Unknown Operation " + this.GetOp().OpName());
                 }
            }
            catch (Exception ex)
@@ -453,42 +1048,23 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
                 ThrowTerminatingException(ex);
            }
         }
-#pragma warning restore 1591
 
         // This parameter set invokes a single graphql operation:
-        // oracleTopLevelDescendants.
-        internal void ProcessRecord_TopLevelDescendants()
+        // oracleAcoExampleDownloadLink.
+        internal void ProcessRecord_AcoExampleDownloadLink()
         {
-            this._logger.name += " -TopLevelDescendants";
-            // Create new graphql operation oracleTopLevelDescendants
-            InitQueryOracleTopLevelDescendants();
+            this._logger.name += " -AcoExampleDownloadLink";
+            // Create new graphql operation oracleAcoExampleDownloadLink
+            InitQueryOracleAcoExampleDownloadLink();
         }
 
         // This parameter set invokes a single graphql operation:
-        // oracleDatabases.
-        internal void ProcessRecord_Databases()
+        // oracleAcoParameters.
+        internal void ProcessRecord_AcoParameters()
         {
-            this._logger.name += " -Databases";
-            // Create new graphql operation oracleDatabases
-            InitQueryOracleDatabases();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // oracleHost.
-        internal void ProcessRecord_Host()
-        {
-            this._logger.name += " -Host";
-            // Create new graphql operation oracleHost
-            InitQueryOracleHost();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // oracleRac.
-        internal void ProcessRecord_Rac()
-        {
-            this._logger.name += " -Rac";
-            // Create new graphql operation oracleRac
-            InitQueryOracleRac();
+            this._logger.name += " -AcoParameters";
+            // Create new graphql operation oracleAcoParameters
+            InitQueryOracleAcoParameters();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -510,30 +1086,48 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
         }
 
         // This parameter set invokes a single graphql operation:
+        // oracleDatabaseLogBackupConfig.
+        internal void ProcessRecord_DatabaseLogBackupConfig()
+        {
+            this._logger.name += " -DatabaseLogBackupConfig";
+            // Create new graphql operation oracleDatabaseLogBackupConfig
+            InitQueryOracleDatabaseLogBackupConfig();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // oracleDatabases.
+        internal void ProcessRecord_Databases()
+        {
+            this._logger.name += " -Databases";
+            // Create new graphql operation oracleDatabases
+            InitQueryOracleDatabases();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // oracleHost.
+        internal void ProcessRecord_Host()
+        {
+            this._logger.name += " -Host";
+            // Create new graphql operation oracleHost
+            InitQueryOracleHost();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // oracleHostLogBackupConfig.
+        internal void ProcessRecord_HostLogBackupConfig()
+        {
+            this._logger.name += " -HostLogBackupConfig";
+            // Create new graphql operation oracleHostLogBackupConfig
+            InitQueryOracleHostLogBackupConfig();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // oracleLiveMounts.
         internal void ProcessRecord_LiveMounts()
         {
             this._logger.name += " -LiveMounts";
             // Create new graphql operation oracleLiveMounts
             InitQueryOracleLiveMounts();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // oracleAcoParameters.
-        internal void ProcessRecord_AcoParameters()
-        {
-            this._logger.name += " -AcoParameters";
-            // Create new graphql operation oracleAcoParameters
-            InitQueryOracleAcoParameters();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // oracleRecoverableRanges.
-        internal void ProcessRecord_RecoverableRanges()
-        {
-            this._logger.name += " -RecoverableRanges";
-            // Create new graphql operation oracleRecoverableRanges
-            InitQueryOracleRecoverableRanges();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -555,15 +1149,6 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
         }
 
         // This parameter set invokes a single graphql operation:
-        // oracleAcoExampleDownloadLink.
-        internal void ProcessRecord_AcoExampleDownloadLink()
-        {
-            this._logger.name += " -AcoExampleDownloadLink";
-            // Create new graphql operation oracleAcoExampleDownloadLink
-            InitQueryOracleAcoExampleDownloadLink();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // oraclePdbDetails.
         internal void ProcessRecord_PdbDetails()
         {
@@ -573,21 +1158,12 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
         }
 
         // This parameter set invokes a single graphql operation:
-        // oracleHostLogBackupConfig.
-        internal void ProcessRecord_HostLogBackupConfig()
+        // oracleRac.
+        internal void ProcessRecord_Rac()
         {
-            this._logger.name += " -HostLogBackupConfig";
-            // Create new graphql operation oracleHostLogBackupConfig
-            InitQueryOracleHostLogBackupConfig();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // oracleDatabaseLogBackupConfig.
-        internal void ProcessRecord_DatabaseLogBackupConfig()
-        {
-            this._logger.name += " -DatabaseLogBackupConfig";
-            // Create new graphql operation oracleDatabaseLogBackupConfig
-            InitQueryOracleDatabaseLogBackupConfig();
+            this._logger.name += " -Rac";
+            // Create new graphql operation oracleRac
+            InitQueryOracleRac();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -599,88 +1175,135 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             InitQueryOracleRacLogBackupConfig();
         }
 
+        // This parameter set invokes a single graphql operation:
+        // oracleRecoverableRanges.
+        internal void ProcessRecord_RecoverableRanges()
+        {
+            this._logger.name += " -RecoverableRanges";
+            // Create new graphql operation oracleRecoverableRanges
+            InitQueryOracleRecoverableRanges();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // oracleTopLevelDescendants.
+        internal void ProcessRecord_TopLevelDescendants()
+        {
+            this._logger.name += " -TopLevelDescendants";
+            // Create new graphql operation oracleTopLevelDescendants
+            InitQueryOracleTopLevelDescendants();
+        }
+
 
         // Create new GraphQL Query:
-        // oracleTopLevelDescendants(
-        //     first: Int
-        //     after: String
-        //     sortBy: HierarchySortByField
-        //     sortOrder: SortOrder
-        //     typeFilter: [HierarchyObjectTypeEnum!]
-        //     filter: [Filter!]
-        //   ): OracleTopLevelDescendantTypeConnection!
-        internal void InitQueryOracleTopLevelDescendants()
+        // oracleAcoExampleDownloadLink(input: ClusterUuidWithDbIdInput!): OracleFileDownloadLink!
+        internal void InitQueryOracleAcoExampleDownloadLink()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("sortBy", "HierarchySortByField"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),
-                Tuple.Create("filter", "[Filter!]"),
+                Tuple.Create("input", "ClusterUuidWithDbIdInput!"),
             };
             Initialize(
                 argDefs,
                 "query",
-                "QueryOracleTopLevelDescendants",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!],$filter: [Filter!])",
-                "OracleTopLevelDescendantTypeConnection",
-                Query.OracleTopLevelDescendants_ObjectFieldSpec,
-                Query.OracleTopLevelDescendantsFieldSpec,
-                @"# OPTIONAL
-$inputs.Var.first = <System.Int32>
-# OPTIONAL
-$inputs.Var.after = <System.String>
-# OPTIONAL
-$inputs.Var.sortBy = <HierarchySortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
-# OPTIONAL
-$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$inputs.Var.typeFilter = @(
-	<HierarchyObjectTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
-)
-# OPTIONAL
-$inputs.Var.filter = @(
-	@{
-		# OPTIONAL
-		field = <HierarchyFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
-		# OPTIONAL
-		texts = @(
-			<System.String>
-		)
-		# OPTIONAL
-		tagFilterParams = @(
-			@{
-				# OPTIONAL
-				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-				# OPTIONAL
-				tagKey = <System.String>
-				# OPTIONAL
-				tagValue = <System.String>
-			}
-		)
-		# OPTIONAL
-		objectTypeFilterParams = @(
-			<ManagedObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
-		)
-		# OPTIONAL
-		awsNativeProtectionFeatureNames = @(
-			<AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		isNegative = <System.Boolean>
-		# OPTIONAL
-		isSlowSearchEnabled = <System.Boolean>
-		# OPTIONAL
-		azureNativeProtectionFeatureNames = @(
-			<AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		unmanagedObjectAvailabilityFilter = @(
-			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
-		)
-}
-)"
+                "QueryOracleAcoExampleDownloadLink",
+                "($input: ClusterUuidWithDbIdInput!)",
+                "OracleFileDownloadLink",
+                Query.OracleAcoExampleDownloadLink_ObjectFieldSpec,
+                Query.OracleAcoExampleDownloadLinkFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	dbId = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // oracleAcoParameters(input: ClusterUuidWithDbIdInput!): OracleAcoParameterList!
+        internal void InitQueryOracleAcoParameters()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "ClusterUuidWithDbIdInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryOracleAcoParameters",
+                "($input: ClusterUuidWithDbIdInput!)",
+                "OracleAcoParameterList",
+                Query.OracleAcoParameters_ObjectFieldSpec,
+                Query.OracleAcoParametersFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	dbId = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // oracleDataGuardGroup(fid: UUID!): OracleDataGuardGroup!
+        internal void InitQueryOracleDataGuardGroup()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("fid", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryOracleDataGuardGroup",
+                "($fid: UUID!)",
+                "OracleDataGuardGroup",
+                Query.OracleDataGuardGroup_ObjectFieldSpec,
+                Query.OracleDataGuardGroupFieldSpec,
+                @"# REQUIRED
+$query.Var.fid = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // oracleDatabase(fid: UUID!): OracleDatabase!
+        internal void InitQueryOracleDatabase()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("fid", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryOracleDatabase",
+                "($fid: UUID!)",
+                "OracleDatabase",
+                Query.OracleDatabase_ObjectFieldSpec,
+                Query.OracleDatabaseFieldSpec,
+                @"# REQUIRED
+$query.Var.fid = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // oracleDatabaseLogBackupConfig(input: OracleDbInput!): OracleLogBackupConfig!
+        internal void InitQueryOracleDatabaseLogBackupConfig()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "OracleDbInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryOracleDatabaseLogBackupConfig",
+                "($input: OracleDbInput!)",
+                "OracleLogBackupConfig",
+                Query.OracleDatabaseLogBackupConfig_ObjectFieldSpec,
+                Query.OracleDatabaseLogBackupConfigFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+}"
             );
         }
 
@@ -710,52 +1333,52 @@ $inputs.Var.filter = @(
                 Query.OracleDatabases_ObjectFieldSpec,
                 Query.OracleDatabasesFieldSpec,
                 @"# OPTIONAL
-$inputs.Var.first = <System.Int32>
+$query.Var.first = $someInt
 # OPTIONAL
-$inputs.Var.after = <System.String>
+$query.Var.after = $someString
 # OPTIONAL
-$inputs.Var.sortBy = <HierarchySortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
 # OPTIONAL
-$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
 # OPTIONAL
-$inputs.Var.filter = @(
+$query.Var.filter = @(
 	@{
 		# OPTIONAL
-		field = <HierarchyFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
 		# OPTIONAL
 		texts = @(
-			<System.String>
+			$someString
 		)
 		# OPTIONAL
 		tagFilterParams = @(
 			@{
 				# OPTIONAL
-				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
 				# OPTIONAL
-				tagKey = <System.String>
+				tagKey = $someString
 				# OPTIONAL
-				tagValue = <System.String>
+				tagValue = $someString
 			}
 		)
 		# OPTIONAL
 		objectTypeFilterParams = @(
-			<ManagedObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
 		)
 		# OPTIONAL
 		awsNativeProtectionFeatureNames = @(
-			<AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
 		)
 		# OPTIONAL
-		isNegative = <System.Boolean>
+		isNegative = $someBoolean
 		# OPTIONAL
-		isSlowSearchEnabled = <System.Boolean>
+		isSlowSearchEnabled = $someBoolean
 		# OPTIONAL
 		azureNativeProtectionFeatureNames = @(
-			<AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
 		)
 		# OPTIONAL
 		unmanagedObjectAvailabilityFilter = @(
-			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
 		)
 }
 )"
@@ -778,67 +1401,30 @@ $inputs.Var.filter = @(
                 Query.OracleHost_ObjectFieldSpec,
                 Query.OracleHostFieldSpec,
                 @"# REQUIRED
-$inputs.Var.fid = <System.String>"
+$query.Var.fid = $someString"
             );
         }
 
         // Create new GraphQL Query:
-        // oracleRac(fid: UUID!): OracleRac!
-        internal void InitQueryOracleRac()
+        // oracleHostLogBackupConfig(input: OracleHostInput!): OracleLogBackupConfig!
+        internal void InitQueryOracleHostLogBackupConfig()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("fid", "UUID!"),
+                Tuple.Create("input", "OracleHostInput!"),
             };
             Initialize(
                 argDefs,
                 "query",
-                "QueryOracleRac",
-                "($fid: UUID!)",
-                "OracleRac",
-                Query.OracleRac_ObjectFieldSpec,
-                Query.OracleRacFieldSpec,
+                "QueryOracleHostLogBackupConfig",
+                "($input: OracleHostInput!)",
+                "OracleLogBackupConfig",
+                Query.OracleHostLogBackupConfig_ObjectFieldSpec,
+                Query.OracleHostLogBackupConfigFieldSpec,
                 @"# REQUIRED
-$inputs.Var.fid = <System.String>"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // oracleDataGuardGroup(fid: UUID!): OracleDataGuardGroup!
-        internal void InitQueryOracleDataGuardGroup()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("fid", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryOracleDataGuardGroup",
-                "($fid: UUID!)",
-                "OracleDataGuardGroup",
-                Query.OracleDataGuardGroup_ObjectFieldSpec,
-                Query.OracleDataGuardGroupFieldSpec,
-                @"# REQUIRED
-$inputs.Var.fid = <System.String>"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // oracleDatabase(fid: UUID!): OracleDatabase!
-        internal void InitQueryOracleDatabase()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("fid", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryOracleDatabase",
-                "($fid: UUID!)",
-                "OracleDatabase",
-                Query.OracleDatabase_ObjectFieldSpec,
-                Query.OracleDatabaseFieldSpec,
-                @"# REQUIRED
-$inputs.Var.fid = <System.String>"
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+}"
             );
         }
 
@@ -866,80 +1452,26 @@ $inputs.Var.fid = <System.String>"
                 Query.OracleLiveMounts_ObjectFieldSpec,
                 Query.OracleLiveMountsFieldSpec,
                 @"# OPTIONAL
-$inputs.Var.first = <System.Int32>
+$query.Var.first = $someInt
 # OPTIONAL
-$inputs.Var.after = <System.String>
+$query.Var.after = $someString
 # OPTIONAL
-$inputs.Var.filters = @(
+$query.Var.filters = @(
 	@{
 		# OPTIONAL
-		field = <OracleLiveMountFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.OracleLiveMountFilterField]) for enum values.
+		field = $someOracleLiveMountFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.OracleLiveMountFilterField]) for enum values.
 		# OPTIONAL
 		texts = @(
-			<System.String>
+			$someString
 		)
 }
 )
 # OPTIONAL
-$inputs.Var.sortBy = @{
+$query.Var.sortBy = @{
 	# OPTIONAL
-	field = <OracleLiveMountSortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.OracleLiveMountSortByField]) for enum values.
+	field = $someOracleLiveMountSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.OracleLiveMountSortByField]) for enum values.
 	# OPTIONAL
-	sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-}"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // oracleAcoParameters(input: ClusterUuidWithDbIdInput!): OracleAcoParameterList!
-        internal void InitQueryOracleAcoParameters()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "ClusterUuidWithDbIdInput!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryOracleAcoParameters",
-                "($input: ClusterUuidWithDbIdInput!)",
-                "OracleAcoParameterList",
-                Query.OracleAcoParameters_ObjectFieldSpec,
-                Query.OracleAcoParametersFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	clusterUuid = <System.String>
-	# REQUIRED
-	dbId = <System.String>
-}"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // oracleRecoverableRanges(input: GetOracleDbRecoverableRangesInput!): OracleRecoverableRangeListResponse!
-        internal void InitQueryOracleRecoverableRanges()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "GetOracleDbRecoverableRangesInput!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryOracleRecoverableRanges",
-                "($input: GetOracleDbRecoverableRangesInput!)",
-                "OracleRecoverableRangeListResponse",
-                Query.OracleRecoverableRanges_ObjectFieldSpec,
-                Query.OracleRecoverableRangesFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# OPTIONAL
-	afterTime = <DateTime>
-	# OPTIONAL
-	beforeTime = <DateTime>
-	# OPTIONAL
-	shouldIncludeDbSnapshotSummaries = <System.Boolean>
-	# REQUIRED
-	id = <System.String>
+	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
 }"
             );
         }
@@ -960,13 +1492,13 @@ $inputs.Var.input = @{
                 Query.OracleMissedRecoverableRanges_ObjectFieldSpec,
                 Query.OracleMissedRecoverableRangesFieldSpec,
                 @"# REQUIRED
-$inputs.Var.input = @{
+$query.Var.input = @{
 	# OPTIONAL
-	afterTime = <DateTime>
+	afterTime = $someDateTime
 	# OPTIONAL
-	beforeTime = <DateTime>
+	beforeTime = $someDateTime
 	# REQUIRED
-	id = <System.String>
+	id = $someString
 }"
             );
         }
@@ -987,38 +1519,13 @@ $inputs.Var.input = @{
                 Query.OracleMissedSnapshots_ObjectFieldSpec,
                 Query.OracleMissedSnapshotsFieldSpec,
                 @"# REQUIRED
-$inputs.Var.input = @{
+$query.Var.input = @{
 	# OPTIONAL
-	afterTime = <DateTime>
+	afterTime = $someDateTime
 	# OPTIONAL
-	beforeTime = <DateTime>
+	beforeTime = $someDateTime
 	# REQUIRED
-	id = <System.String>
-}"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // oracleAcoExampleDownloadLink(input: ClusterUuidWithDbIdInput!): OracleFileDownloadLink!
-        internal void InitQueryOracleAcoExampleDownloadLink()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "ClusterUuidWithDbIdInput!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryOracleAcoExampleDownloadLink",
-                "($input: ClusterUuidWithDbIdInput!)",
-                "OracleFileDownloadLink",
-                Query.OracleAcoExampleDownloadLink_ObjectFieldSpec,
-                Query.OracleAcoExampleDownloadLinkFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	clusterUuid = <System.String>
-	# REQUIRED
-	dbId = <System.String>
+	id = $someString
 }"
             );
         }
@@ -1039,17 +1546,17 @@ $inputs.Var.input = @{
                 Query.OraclePdbDetails_ObjectFieldSpec,
                 Query.OraclePdbDetailsFieldSpec,
                 @"# REQUIRED
-$inputs.Var.input = @{
+$query.Var.input = @{
 	# REQUIRED
-	id = <System.String>
+	id = $someString
 	# REQUIRED
 	pdbDetailsRequest = @{
 		# REQUIRED
 		recoveryPoint = @{
 			# OPTIONAL
-			snapshotId = <System.String>
+			snapshotId = $someString
 			# OPTIONAL
-			timestampMs = <System.Int64>
+			timestampMs = $someInt64
 		}
 	}
 }"
@@ -1057,48 +1564,22 @@ $inputs.Var.input = @{
         }
 
         // Create new GraphQL Query:
-        // oracleHostLogBackupConfig(input: OracleHostInput!): OracleLogBackupConfig!
-        internal void InitQueryOracleHostLogBackupConfig()
+        // oracleRac(fid: UUID!): OracleRac!
+        internal void InitQueryOracleRac()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "OracleHostInput!"),
+                Tuple.Create("fid", "UUID!"),
             };
             Initialize(
                 argDefs,
                 "query",
-                "QueryOracleHostLogBackupConfig",
-                "($input: OracleHostInput!)",
-                "OracleLogBackupConfig",
-                Query.OracleHostLogBackupConfig_ObjectFieldSpec,
-                Query.OracleHostLogBackupConfigFieldSpec,
+                "QueryOracleRac",
+                "($fid: UUID!)",
+                "OracleRac",
+                Query.OracleRac_ObjectFieldSpec,
+                Query.OracleRacFieldSpec,
                 @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	id = <System.String>
-}"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // oracleDatabaseLogBackupConfig(input: OracleDbInput!): OracleLogBackupConfig!
-        internal void InitQueryOracleDatabaseLogBackupConfig()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "OracleDbInput!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryOracleDatabaseLogBackupConfig",
-                "($input: OracleDbInput!)",
-                "OracleLogBackupConfig",
-                Query.OracleDatabaseLogBackupConfig_ObjectFieldSpec,
-                Query.OracleDatabaseLogBackupConfigFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	id = <System.String>
-}"
+$query.Var.fid = $someString"
             );
         }
 
@@ -1118,10 +1599,123 @@ $inputs.Var.input = @{
                 Query.OracleRacLogBackupConfig_ObjectFieldSpec,
                 Query.OracleRacLogBackupConfigFieldSpec,
                 @"# REQUIRED
-$inputs.Var.input = @{
+$query.Var.input = @{
 	# REQUIRED
-	id = <System.String>
+	id = $someString
 }"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // oracleRecoverableRanges(input: GetOracleDbRecoverableRangesInput!): OracleRecoverableRangeListResponse!
+        internal void InitQueryOracleRecoverableRanges()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "GetOracleDbRecoverableRangesInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryOracleRecoverableRanges",
+                "($input: GetOracleDbRecoverableRangesInput!)",
+                "OracleRecoverableRangeListResponse",
+                Query.OracleRecoverableRanges_ObjectFieldSpec,
+                Query.OracleRecoverableRangesFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	afterTime = $someDateTime
+	# OPTIONAL
+	beforeTime = $someDateTime
+	# OPTIONAL
+	shouldIncludeDbSnapshotSummaries = $someBoolean
+	# REQUIRED
+	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // oracleTopLevelDescendants(
+        //     first: Int
+        //     after: String
+        //     sortBy: HierarchySortByField
+        //     sortOrder: SortOrder
+        //     typeFilter: [HierarchyObjectTypeEnum!]
+        //     filter: [Filter!]
+        //   ): OracleTopLevelDescendantTypeConnection!
+        internal void InitQueryOracleTopLevelDescendants()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("sortBy", "HierarchySortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),
+                Tuple.Create("filter", "[Filter!]"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryOracleTopLevelDescendants",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!],$filter: [Filter!])",
+                "OracleTopLevelDescendantTypeConnection",
+                Query.OracleTopLevelDescendants_ObjectFieldSpec,
+                Query.OracleTopLevelDescendantsFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.typeFilter = @(
+	$someHierarchyObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
+)
+# OPTIONAL
+$query.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			$someString
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = $someString
+				# OPTIONAL
+				tagValue = $someString
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = $someBoolean
+		# OPTIONAL
+		isSlowSearchEnabled = $someBoolean
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+}
+)"
             );
         }
 

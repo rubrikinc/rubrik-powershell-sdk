@@ -66,24 +66,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> ReportFocusEnum? Focus
         // GraphQL -> focus: ReportFocusEnum! (enum)
         if (this.Focus != null) {
-            s += ind + "focus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "focus\n" ;
+            } else {
+                s += ind + "focus\n" ;
+            }
         }
         //      C# -> List<DiscoveryContentReportGroupBy>? GroupBy
         // GraphQL -> groupBy: [DiscoveryContentReportGroupBy!] (enum)
         if (this.GroupBy != null) {
-            s += ind + "groupBy\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "groupBy\n" ;
+            } else {
+                s += ind + "groupBy\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         return s;
     }
@@ -94,21 +107,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> ReportFocusEnum? Focus
         // GraphQL -> focus: ReportFocusEnum! (enum)
-        if (this.Focus == null && ec.Includes("focus",true))
+        if (ec.Includes("focus",true))
         {
-            this.Focus = new ReportFocusEnum();
+            if(this.Focus == null) {
+
+                this.Focus = new ReportFocusEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Focus != null && ec.Excludes("focus",true))
+        {
+            this.Focus = null;
         }
         //      C# -> List<DiscoveryContentReportGroupBy>? GroupBy
         // GraphQL -> groupBy: [DiscoveryContentReportGroupBy!] (enum)
-        if (this.GroupBy == null && ec.Includes("groupBy",true))
+        if (ec.Includes("groupBy",true))
         {
-            this.GroupBy = new List<DiscoveryContentReportGroupBy>();
+            if(this.GroupBy == null) {
+
+                this.GroupBy = new List<DiscoveryContentReportGroupBy>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.GroupBy != null && ec.Excludes("groupBy",true))
+        {
+            this.GroupBy = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
     }
 
@@ -135,9 +181,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SonarContentReportChart> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

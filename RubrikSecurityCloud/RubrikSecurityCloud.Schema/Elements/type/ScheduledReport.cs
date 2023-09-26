@@ -173,92 +173,153 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<ReportAttachmentType>? AttachmentTypes
         // GraphQL -> attachmentTypes: [ReportAttachmentType!]! (enum)
         if (this.AttachmentTypes != null) {
-            s += ind + "attachmentTypes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "attachmentTypes\n" ;
+            } else {
+                s += ind + "attachmentTypes\n" ;
+            }
         }
         //      C# -> List<WeekDay>? WeeklyDays
         // GraphQL -> weeklyDays: [WeekDay!] (enum)
         if (this.WeeklyDays != null) {
-            s += ind + "weeklyDays\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "weeklyDays\n" ;
+            } else {
+                s += ind + "weeklyDays\n" ;
+            }
         }
         //      C# -> DateTime? CreatedAt
         // GraphQL -> createdAt: DateTime! (scalar)
         if (this.CreatedAt != null) {
-            s += ind + "createdAt\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "createdAt\n" ;
+            } else {
+                s += ind + "createdAt\n" ;
+            }
         }
         //      C# -> DateTime? DailyTime
         // GraphQL -> dailyTime: LocalTime (scalar)
         if (this.DailyTime != null) {
-            s += ind + "dailyTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "dailyTime\n" ;
+            } else {
+                s += ind + "dailyTime\n" ;
+            }
         }
         //      C# -> System.Int64? Id
         // GraphQL -> id: Long! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> DateTime? LastUpdatedAt
         // GraphQL -> lastUpdatedAt: DateTime! (scalar)
         if (this.LastUpdatedAt != null) {
-            s += ind + "lastUpdatedAt\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "lastUpdatedAt\n" ;
+            } else {
+                s += ind + "lastUpdatedAt\n" ;
+            }
         }
         //      C# -> System.Int32? MonthlyDate
         // GraphQL -> monthlyDate: Int (scalar)
         if (this.MonthlyDate != null) {
-            s += ind + "monthlyDate\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "monthlyDate\n" ;
+            } else {
+                s += ind + "monthlyDate\n" ;
+            }
         }
         //      C# -> DateTime? MonthlyTime
         // GraphQL -> monthlyTime: LocalTime (scalar)
         if (this.MonthlyTime != null) {
-            s += ind + "monthlyTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "monthlyTime\n" ;
+            } else {
+                s += ind + "monthlyTime\n" ;
+            }
         }
         //      C# -> List<System.String>? RecipientEmails
         // GraphQL -> recipientEmails: [String!]! (scalar)
         if (this.RecipientEmails != null) {
-            s += ind + "recipientEmails\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "recipientEmails\n" ;
+            } else {
+                s += ind + "recipientEmails\n" ;
+            }
         }
         //      C# -> System.Int32? ReportId
         // GraphQL -> reportId: Int! (scalar)
         if (this.ReportId != null) {
-            s += ind + "reportId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "reportId\n" ;
+            } else {
+                s += ind + "reportId\n" ;
+            }
         }
         //      C# -> System.String? Title
         // GraphQL -> title: String! (scalar)
         if (this.Title != null) {
-            s += ind + "title\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "title\n" ;
+            } else {
+                s += ind + "title\n" ;
+            }
         }
         //      C# -> DateTime? WeeklyTime
         // GraphQL -> weeklyTime: LocalTime (scalar)
         if (this.WeeklyTime != null) {
-            s += ind + "weeklyTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "weeklyTime\n" ;
+            } else {
+                s += ind + "weeklyTime\n" ;
+            }
         }
         //      C# -> User? Creator
         // GraphQL -> creator: User! (type)
         if (this.Creator != null) {
-            var fspec = this.Creator.AsFieldSpec(indent+1);
+            var fspec = this.Creator.AsFieldSpec(conf.Child("creator"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "creator {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "creator {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> User? LastEditor
         // GraphQL -> lastEditor: User! (type)
         if (this.LastEditor != null) {
-            var fspec = this.LastEditor.AsFieldSpec(indent+1);
+            var fspec = this.LastEditor.AsFieldSpec(conf.Child("lastEditor"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "lastEditor {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "lastEditor {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<User>? RubrikRecipientUsers
         // GraphQL -> rubrikRecipientUsers: [User!]! (type)
         if (this.RubrikRecipientUsers != null) {
-            var fspec = this.RubrikRecipientUsers.AsFieldSpec(indent+1);
+            var fspec = this.RubrikRecipientUsers.AsFieldSpec(conf.Child("rubrikRecipientUsers"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "rubrikRecipientUsers {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "rubrikRecipientUsers {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -270,96 +331,264 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<ReportAttachmentType>? AttachmentTypes
         // GraphQL -> attachmentTypes: [ReportAttachmentType!]! (enum)
-        if (this.AttachmentTypes == null && ec.Includes("attachmentTypes",true))
+        if (ec.Includes("attachmentTypes",true))
         {
-            this.AttachmentTypes = new List<ReportAttachmentType>();
+            if(this.AttachmentTypes == null) {
+
+                this.AttachmentTypes = new List<ReportAttachmentType>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AttachmentTypes != null && ec.Excludes("attachmentTypes",true))
+        {
+            this.AttachmentTypes = null;
         }
         //      C# -> List<WeekDay>? WeeklyDays
         // GraphQL -> weeklyDays: [WeekDay!] (enum)
-        if (this.WeeklyDays == null && ec.Includes("weeklyDays",true))
+        if (ec.Includes("weeklyDays",true))
         {
-            this.WeeklyDays = new List<WeekDay>();
+            if(this.WeeklyDays == null) {
+
+                this.WeeklyDays = new List<WeekDay>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.WeeklyDays != null && ec.Excludes("weeklyDays",true))
+        {
+            this.WeeklyDays = null;
         }
         //      C# -> DateTime? CreatedAt
         // GraphQL -> createdAt: DateTime! (scalar)
-        if (this.CreatedAt == null && ec.Includes("createdAt",true))
+        if (ec.Includes("createdAt",true))
         {
-            this.CreatedAt = new DateTime();
+            if(this.CreatedAt == null) {
+
+                this.CreatedAt = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CreatedAt != null && ec.Excludes("createdAt",true))
+        {
+            this.CreatedAt = null;
         }
         //      C# -> DateTime? DailyTime
         // GraphQL -> dailyTime: LocalTime (scalar)
-        if (this.DailyTime == null && ec.Includes("dailyTime",true))
+        if (ec.Includes("dailyTime",true))
         {
-            this.DailyTime = new DateTime();
+            if(this.DailyTime == null) {
+
+                this.DailyTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DailyTime != null && ec.Excludes("dailyTime",true))
+        {
+            this.DailyTime = null;
         }
         //      C# -> System.Int64? Id
         // GraphQL -> id: Long! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = new System.Int64();
+            if(this.Id == null) {
+
+                this.Id = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> DateTime? LastUpdatedAt
         // GraphQL -> lastUpdatedAt: DateTime! (scalar)
-        if (this.LastUpdatedAt == null && ec.Includes("lastUpdatedAt",true))
+        if (ec.Includes("lastUpdatedAt",true))
         {
-            this.LastUpdatedAt = new DateTime();
+            if(this.LastUpdatedAt == null) {
+
+                this.LastUpdatedAt = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastUpdatedAt != null && ec.Excludes("lastUpdatedAt",true))
+        {
+            this.LastUpdatedAt = null;
         }
         //      C# -> System.Int32? MonthlyDate
         // GraphQL -> monthlyDate: Int (scalar)
-        if (this.MonthlyDate == null && ec.Includes("monthlyDate",true))
+        if (ec.Includes("monthlyDate",true))
         {
-            this.MonthlyDate = Int32.MinValue;
+            if(this.MonthlyDate == null) {
+
+                this.MonthlyDate = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.MonthlyDate != null && ec.Excludes("monthlyDate",true))
+        {
+            this.MonthlyDate = null;
         }
         //      C# -> DateTime? MonthlyTime
         // GraphQL -> monthlyTime: LocalTime (scalar)
-        if (this.MonthlyTime == null && ec.Includes("monthlyTime",true))
+        if (ec.Includes("monthlyTime",true))
         {
-            this.MonthlyTime = new DateTime();
+            if(this.MonthlyTime == null) {
+
+                this.MonthlyTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.MonthlyTime != null && ec.Excludes("monthlyTime",true))
+        {
+            this.MonthlyTime = null;
         }
         //      C# -> List<System.String>? RecipientEmails
         // GraphQL -> recipientEmails: [String!]! (scalar)
-        if (this.RecipientEmails == null && ec.Includes("recipientEmails",true))
+        if (ec.Includes("recipientEmails",true))
         {
-            this.RecipientEmails = new List<System.String>();
+            if(this.RecipientEmails == null) {
+
+                this.RecipientEmails = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RecipientEmails != null && ec.Excludes("recipientEmails",true))
+        {
+            this.RecipientEmails = null;
         }
         //      C# -> System.Int32? ReportId
         // GraphQL -> reportId: Int! (scalar)
-        if (this.ReportId == null && ec.Includes("reportId",true))
+        if (ec.Includes("reportId",true))
         {
-            this.ReportId = Int32.MinValue;
+            if(this.ReportId == null) {
+
+                this.ReportId = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ReportId != null && ec.Excludes("reportId",true))
+        {
+            this.ReportId = null;
         }
         //      C# -> System.String? Title
         // GraphQL -> title: String! (scalar)
-        if (this.Title == null && ec.Includes("title",true))
+        if (ec.Includes("title",true))
         {
-            this.Title = "FETCH";
+            if(this.Title == null) {
+
+                this.Title = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Title != null && ec.Excludes("title",true))
+        {
+            this.Title = null;
         }
         //      C# -> DateTime? WeeklyTime
         // GraphQL -> weeklyTime: LocalTime (scalar)
-        if (this.WeeklyTime == null && ec.Includes("weeklyTime",true))
+        if (ec.Includes("weeklyTime",true))
         {
-            this.WeeklyTime = new DateTime();
+            if(this.WeeklyTime == null) {
+
+                this.WeeklyTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.WeeklyTime != null && ec.Excludes("weeklyTime",true))
+        {
+            this.WeeklyTime = null;
         }
         //      C# -> User? Creator
         // GraphQL -> creator: User! (type)
-        if (this.Creator == null && ec.Includes("creator",false))
+        if (ec.Includes("creator",false))
         {
-            this.Creator = new User();
-            this.Creator.ApplyExploratoryFieldSpec(ec.NewChild("creator"));
+            if(this.Creator == null) {
+
+                this.Creator = new User();
+                this.Creator.ApplyExploratoryFieldSpec(ec.NewChild("creator"));
+
+            } else {
+
+                this.Creator.ApplyExploratoryFieldSpec(ec.NewChild("creator"));
+
+            }
+        }
+        else if (this.Creator != null && ec.Excludes("creator",false))
+        {
+            this.Creator = null;
         }
         //      C# -> User? LastEditor
         // GraphQL -> lastEditor: User! (type)
-        if (this.LastEditor == null && ec.Includes("lastEditor",false))
+        if (ec.Includes("lastEditor",false))
         {
-            this.LastEditor = new User();
-            this.LastEditor.ApplyExploratoryFieldSpec(ec.NewChild("lastEditor"));
+            if(this.LastEditor == null) {
+
+                this.LastEditor = new User();
+                this.LastEditor.ApplyExploratoryFieldSpec(ec.NewChild("lastEditor"));
+
+            } else {
+
+                this.LastEditor.ApplyExploratoryFieldSpec(ec.NewChild("lastEditor"));
+
+            }
+        }
+        else if (this.LastEditor != null && ec.Excludes("lastEditor",false))
+        {
+            this.LastEditor = null;
         }
         //      C# -> List<User>? RubrikRecipientUsers
         // GraphQL -> rubrikRecipientUsers: [User!]! (type)
-        if (this.RubrikRecipientUsers == null && ec.Includes("rubrikRecipientUsers",false))
+        if (ec.Includes("rubrikRecipientUsers",false))
         {
-            this.RubrikRecipientUsers = new List<User>();
-            this.RubrikRecipientUsers.ApplyExploratoryFieldSpec(ec.NewChild("rubrikRecipientUsers"));
+            if(this.RubrikRecipientUsers == null) {
+
+                this.RubrikRecipientUsers = new List<User>();
+                this.RubrikRecipientUsers.ApplyExploratoryFieldSpec(ec.NewChild("rubrikRecipientUsers"));
+
+            } else {
+
+                this.RubrikRecipientUsers.ApplyExploratoryFieldSpec(ec.NewChild("rubrikRecipientUsers"));
+
+            }
+        }
+        else if (this.RubrikRecipientUsers != null && ec.Excludes("rubrikRecipientUsers",false))
+        {
+            this.RubrikRecipientUsers = null;
         }
     }
 
@@ -386,9 +615,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ScheduledReport> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

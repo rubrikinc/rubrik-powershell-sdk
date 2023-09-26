@@ -110,54 +110,87 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Bucket
         // GraphQL -> bucket: String (scalar)
         if (this.Bucket != null) {
-            s += ind + "bucket\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "bucket\n" ;
+            } else {
+                s += ind + "bucket\n" ;
+            }
         }
         //      C# -> System.String? CloudRehydrationSpeed
         // GraphQL -> cloudRehydrationSpeed: String (scalar)
         if (this.CloudRehydrationSpeed != null) {
-            s += ind + "cloudRehydrationSpeed\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cloudRehydrationSpeed\n" ;
+            } else {
+                s += ind + "cloudRehydrationSpeed\n" ;
+            }
         }
         //      C# -> System.String? DefaultRegion
         // GraphQL -> defaultRegion: String (scalar)
         if (this.DefaultRegion != null) {
-            s += ind + "defaultRegion\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "defaultRegion\n" ;
+            } else {
+                s += ind + "defaultRegion\n" ;
+            }
         }
         //      C# -> System.String? EncryptionType
         // GraphQL -> encryptionType: String (scalar)
         if (this.EncryptionType != null) {
-            s += ind + "encryptionType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "encryptionType\n" ;
+            } else {
+                s += ind + "encryptionType\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.String? StorageClass
         // GraphQL -> storageClass: String (scalar)
         if (this.StorageClass != null) {
-            s += ind + "storageClass\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "storageClass\n" ;
+            } else {
+                s += ind + "storageClass\n" ;
+            }
         }
         //      C# -> RestoreFormArchivalProxyConfig? ArchivalProxyConfig
         // GraphQL -> archivalProxyConfig: RestoreFormArchivalProxyConfig (type)
         if (this.ArchivalProxyConfig != null) {
-            var fspec = this.ArchivalProxyConfig.AsFieldSpec(indent+1);
+            var fspec = this.ArchivalProxyConfig.AsFieldSpec(conf.Child("archivalProxyConfig"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "archivalProxyConfig {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "archivalProxyConfig {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> RestoreFormComputeProxyConfig? ComputeProxyConfig
         // GraphQL -> computeProxyConfig: RestoreFormComputeProxyConfig (type)
         if (this.ComputeProxyConfig != null) {
-            var fspec = this.ComputeProxyConfig.AsFieldSpec(indent+1);
+            var fspec = this.ComputeProxyConfig.AsFieldSpec(conf.Child("computeProxyConfig"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "computeProxyConfig {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "computeProxyConfig {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -169,53 +202,143 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Bucket
         // GraphQL -> bucket: String (scalar)
-        if (this.Bucket == null && ec.Includes("bucket",true))
+        if (ec.Includes("bucket",true))
         {
-            this.Bucket = "FETCH";
+            if(this.Bucket == null) {
+
+                this.Bucket = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Bucket != null && ec.Excludes("bucket",true))
+        {
+            this.Bucket = null;
         }
         //      C# -> System.String? CloudRehydrationSpeed
         // GraphQL -> cloudRehydrationSpeed: String (scalar)
-        if (this.CloudRehydrationSpeed == null && ec.Includes("cloudRehydrationSpeed",true))
+        if (ec.Includes("cloudRehydrationSpeed",true))
         {
-            this.CloudRehydrationSpeed = "FETCH";
+            if(this.CloudRehydrationSpeed == null) {
+
+                this.CloudRehydrationSpeed = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CloudRehydrationSpeed != null && ec.Excludes("cloudRehydrationSpeed",true))
+        {
+            this.CloudRehydrationSpeed = null;
         }
         //      C# -> System.String? DefaultRegion
         // GraphQL -> defaultRegion: String (scalar)
-        if (this.DefaultRegion == null && ec.Includes("defaultRegion",true))
+        if (ec.Includes("defaultRegion",true))
         {
-            this.DefaultRegion = "FETCH";
+            if(this.DefaultRegion == null) {
+
+                this.DefaultRegion = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DefaultRegion != null && ec.Excludes("defaultRegion",true))
+        {
+            this.DefaultRegion = null;
         }
         //      C# -> System.String? EncryptionType
         // GraphQL -> encryptionType: String (scalar)
-        if (this.EncryptionType == null && ec.Includes("encryptionType",true))
+        if (ec.Includes("encryptionType",true))
         {
-            this.EncryptionType = "FETCH";
+            if(this.EncryptionType == null) {
+
+                this.EncryptionType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.EncryptionType != null && ec.Excludes("encryptionType",true))
+        {
+            this.EncryptionType = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.String? StorageClass
         // GraphQL -> storageClass: String (scalar)
-        if (this.StorageClass == null && ec.Includes("storageClass",true))
+        if (ec.Includes("storageClass",true))
         {
-            this.StorageClass = "FETCH";
+            if(this.StorageClass == null) {
+
+                this.StorageClass = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.StorageClass != null && ec.Excludes("storageClass",true))
+        {
+            this.StorageClass = null;
         }
         //      C# -> RestoreFormArchivalProxyConfig? ArchivalProxyConfig
         // GraphQL -> archivalProxyConfig: RestoreFormArchivalProxyConfig (type)
-        if (this.ArchivalProxyConfig == null && ec.Includes("archivalProxyConfig",false))
+        if (ec.Includes("archivalProxyConfig",false))
         {
-            this.ArchivalProxyConfig = new RestoreFormArchivalProxyConfig();
-            this.ArchivalProxyConfig.ApplyExploratoryFieldSpec(ec.NewChild("archivalProxyConfig"));
+            if(this.ArchivalProxyConfig == null) {
+
+                this.ArchivalProxyConfig = new RestoreFormArchivalProxyConfig();
+                this.ArchivalProxyConfig.ApplyExploratoryFieldSpec(ec.NewChild("archivalProxyConfig"));
+
+            } else {
+
+                this.ArchivalProxyConfig.ApplyExploratoryFieldSpec(ec.NewChild("archivalProxyConfig"));
+
+            }
+        }
+        else if (this.ArchivalProxyConfig != null && ec.Excludes("archivalProxyConfig",false))
+        {
+            this.ArchivalProxyConfig = null;
         }
         //      C# -> RestoreFormComputeProxyConfig? ComputeProxyConfig
         // GraphQL -> computeProxyConfig: RestoreFormComputeProxyConfig (type)
-        if (this.ComputeProxyConfig == null && ec.Includes("computeProxyConfig",false))
+        if (ec.Includes("computeProxyConfig",false))
         {
-            this.ComputeProxyConfig = new RestoreFormComputeProxyConfig();
-            this.ComputeProxyConfig.ApplyExploratoryFieldSpec(ec.NewChild("computeProxyConfig"));
+            if(this.ComputeProxyConfig == null) {
+
+                this.ComputeProxyConfig = new RestoreFormComputeProxyConfig();
+                this.ComputeProxyConfig.ApplyExploratoryFieldSpec(ec.NewChild("computeProxyConfig"));
+
+            } else {
+
+                this.ComputeProxyConfig.ApplyExploratoryFieldSpec(ec.NewChild("computeProxyConfig"));
+
+            }
+        }
+        else if (this.ComputeProxyConfig != null && ec.Excludes("computeProxyConfig",false))
+        {
+            this.ComputeProxyConfig = null;
         }
     }
 
@@ -242,9 +365,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<RestoreFormConfigurationS3ArchivalLocation> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -56,21 +56,30 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Uuid
         // GraphQL -> uuid: String! (scalar)
         if (this.Uuid != null) {
-            s += ind + "uuid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "uuid\n" ;
+            } else {
+                s += ind + "uuid\n" ;
+            }
         }
         //      C# -> UpgradeJobReply? UpgradeJobReply
         // GraphQL -> upgradeJobReply: UpgradeJobReply! (type)
         if (this.UpgradeJobReply != null) {
-            var fspec = this.UpgradeJobReply.AsFieldSpec(indent+1);
+            var fspec = this.UpgradeJobReply.AsFieldSpec(conf.Child("upgradeJobReply"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "upgradeJobReply {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "upgradeJobReply {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -82,16 +91,39 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Uuid
         // GraphQL -> uuid: String! (scalar)
-        if (this.Uuid == null && ec.Includes("uuid",true))
+        if (ec.Includes("uuid",true))
         {
-            this.Uuid = "FETCH";
+            if(this.Uuid == null) {
+
+                this.Uuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Uuid != null && ec.Excludes("uuid",true))
+        {
+            this.Uuid = null;
         }
         //      C# -> UpgradeJobReply? UpgradeJobReply
         // GraphQL -> upgradeJobReply: UpgradeJobReply! (type)
-        if (this.UpgradeJobReply == null && ec.Includes("upgradeJobReply",false))
+        if (ec.Includes("upgradeJobReply",false))
         {
-            this.UpgradeJobReply = new UpgradeJobReply();
-            this.UpgradeJobReply.ApplyExploratoryFieldSpec(ec.NewChild("upgradeJobReply"));
+            if(this.UpgradeJobReply == null) {
+
+                this.UpgradeJobReply = new UpgradeJobReply();
+                this.UpgradeJobReply.ApplyExploratoryFieldSpec(ec.NewChild("upgradeJobReply"));
+
+            } else {
+
+                this.UpgradeJobReply.ApplyExploratoryFieldSpec(ec.NewChild("upgradeJobReply"));
+
+            }
+        }
+        else if (this.UpgradeJobReply != null && ec.Excludes("upgradeJobReply",false))
+        {
+            this.UpgradeJobReply = null;
         }
     }
 
@@ -118,9 +150,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<UpgradeJobReplyWithUuid> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<System.String>? Aliases
         // GraphQL -> aliases: [String!]! (scalar)
         if (this.Aliases != null) {
-            s += ind + "aliases\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "aliases\n" ;
+            } else {
+                s += ind + "aliases\n" ;
+            }
         }
         //      C# -> System.String? Arn
         // GraphQL -> arn: String! (scalar)
         if (this.Arn != null) {
-            s += ind + "arn\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "arn\n" ;
+            } else {
+                s += ind + "arn\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<System.String>? Aliases
         // GraphQL -> aliases: [String!]! (scalar)
-        if (this.Aliases == null && ec.Includes("aliases",true))
+        if (ec.Includes("aliases",true))
         {
-            this.Aliases = new List<System.String>();
+            if(this.Aliases == null) {
+
+                this.Aliases = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Aliases != null && ec.Excludes("aliases",true))
+        {
+            this.Aliases = null;
         }
         //      C# -> System.String? Arn
         // GraphQL -> arn: String! (scalar)
-        if (this.Arn == null && ec.Includes("arn",true))
+        if (ec.Includes("arn",true))
         {
-            this.Arn = "FETCH";
+            if(this.Arn == null) {
+
+                this.Arn = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Arn != null && ec.Excludes("arn",true))
+        {
+            this.Arn = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<KmsEncryptionKey> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -110,51 +110,84 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int32? Analyzers
         // GraphQL -> analyzers: Int! (scalar)
         if (this.Analyzers != null) {
-            s += ind + "analyzers\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "analyzers\n" ;
+            } else {
+                s += ind + "analyzers\n" ;
+            }
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
         if (this.Description != null) {
-            s += ind + "description\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "description\n" ;
+            } else {
+                s += ind + "description\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.Int64? LastUpdatedTime
         // GraphQL -> lastUpdatedTime: Long! (scalar)
         if (this.LastUpdatedTime != null) {
-            s += ind + "lastUpdatedTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "lastUpdatedTime\n" ;
+            } else {
+                s += ind + "lastUpdatedTime\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.Int32? PendingAnalysisObjects
         // GraphQL -> pendingAnalysisObjects: Int! (scalar)
         if (this.PendingAnalysisObjects != null) {
-            s += ind + "pendingAnalysisObjects\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "pendingAnalysisObjects\n" ;
+            } else {
+                s += ind + "pendingAnalysisObjects\n" ;
+            }
         }
         //      C# -> System.Int32? TotalObjects
         // GraphQL -> totalObjects: Int! (scalar)
         if (this.TotalObjects != null) {
-            s += ind + "totalObjects\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "totalObjects\n" ;
+            } else {
+                s += ind + "totalObjects\n" ;
+            }
         }
         //      C# -> User? Creator
         // GraphQL -> creator: User (type)
         if (this.Creator != null) {
-            var fspec = this.Creator.AsFieldSpec(indent+1);
+            var fspec = this.Creator.AsFieldSpec(conf.Child("creator"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "creator {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "creator {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -166,52 +199,141 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int32? Analyzers
         // GraphQL -> analyzers: Int! (scalar)
-        if (this.Analyzers == null && ec.Includes("analyzers",true))
+        if (ec.Includes("analyzers",true))
         {
-            this.Analyzers = Int32.MinValue;
+            if(this.Analyzers == null) {
+
+                this.Analyzers = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Analyzers != null && ec.Excludes("analyzers",true))
+        {
+            this.Analyzers = null;
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
-        if (this.Description == null && ec.Includes("description",true))
+        if (ec.Includes("description",true))
         {
-            this.Description = "FETCH";
+            if(this.Description == null) {
+
+                this.Description = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Description != null && ec.Excludes("description",true))
+        {
+            this.Description = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.Int64? LastUpdatedTime
         // GraphQL -> lastUpdatedTime: Long! (scalar)
-        if (this.LastUpdatedTime == null && ec.Includes("lastUpdatedTime",true))
+        if (ec.Includes("lastUpdatedTime",true))
         {
-            this.LastUpdatedTime = new System.Int64();
+            if(this.LastUpdatedTime == null) {
+
+                this.LastUpdatedTime = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastUpdatedTime != null && ec.Excludes("lastUpdatedTime",true))
+        {
+            this.LastUpdatedTime = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.Int32? PendingAnalysisObjects
         // GraphQL -> pendingAnalysisObjects: Int! (scalar)
-        if (this.PendingAnalysisObjects == null && ec.Includes("pendingAnalysisObjects",true))
+        if (ec.Includes("pendingAnalysisObjects",true))
         {
-            this.PendingAnalysisObjects = Int32.MinValue;
+            if(this.PendingAnalysisObjects == null) {
+
+                this.PendingAnalysisObjects = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.PendingAnalysisObjects != null && ec.Excludes("pendingAnalysisObjects",true))
+        {
+            this.PendingAnalysisObjects = null;
         }
         //      C# -> System.Int32? TotalObjects
         // GraphQL -> totalObjects: Int! (scalar)
-        if (this.TotalObjects == null && ec.Includes("totalObjects",true))
+        if (ec.Includes("totalObjects",true))
         {
-            this.TotalObjects = Int32.MinValue;
+            if(this.TotalObjects == null) {
+
+                this.TotalObjects = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalObjects != null && ec.Excludes("totalObjects",true))
+        {
+            this.TotalObjects = null;
         }
         //      C# -> User? Creator
         // GraphQL -> creator: User (type)
-        if (this.Creator == null && ec.Includes("creator",false))
+        if (ec.Includes("creator",false))
         {
-            this.Creator = new User();
-            this.Creator.ApplyExploratoryFieldSpec(ec.NewChild("creator"));
+            if(this.Creator == null) {
+
+                this.Creator = new User();
+                this.Creator.ApplyExploratoryFieldSpec(ec.NewChild("creator"));
+
+            } else {
+
+                this.Creator.ApplyExploratoryFieldSpec(ec.NewChild("creator"));
+
+            }
+        }
+        else if (this.Creator != null && ec.Excludes("creator",false))
+        {
+            this.Creator = null;
         }
     }
 
@@ -238,9 +360,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<PolicyDetail> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

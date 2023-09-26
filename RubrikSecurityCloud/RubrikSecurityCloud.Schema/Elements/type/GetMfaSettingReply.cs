@@ -92,39 +92,64 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Boolean? IsTotpEnforcedGlobal
         // GraphQL -> isTotpEnforcedGlobal: Boolean! (scalar)
         if (this.IsTotpEnforcedGlobal != null) {
-            s += ind + "isTotpEnforcedGlobal\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isTotpEnforcedGlobal\n" ;
+            } else {
+                s += ind + "isTotpEnforcedGlobal\n" ;
+            }
         }
         //      C# -> System.Boolean? IsTotpGlobalEnforceLocked
         // GraphQL -> isTotpGlobalEnforceLocked: Boolean! (scalar)
         if (this.IsTotpGlobalEnforceLocked != null) {
-            s += ind + "isTotpGlobalEnforceLocked\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isTotpGlobalEnforceLocked\n" ;
+            } else {
+                s += ind + "isTotpGlobalEnforceLocked\n" ;
+            }
         }
         //      C# -> System.Boolean? IsTotpMandatory
         // GraphQL -> isTotpMandatory: Boolean! (scalar)
         if (this.IsTotpMandatory != null) {
-            s += ind + "isTotpMandatory\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isTotpMandatory\n" ;
+            } else {
+                s += ind + "isTotpMandatory\n" ;
+            }
         }
         //      C# -> DateTime? MandatoryTotpEnforcementDate
         // GraphQL -> mandatoryTotpEnforcementDate: DateTime (scalar)
         if (this.MandatoryTotpEnforcementDate != null) {
-            s += ind + "mandatoryTotpEnforcementDate\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "mandatoryTotpEnforcementDate\n" ;
+            } else {
+                s += ind + "mandatoryTotpEnforcementDate\n" ;
+            }
         }
         //      C# -> System.Int32? MfaRememberHours
         // GraphQL -> mfaRememberHours: Int! (scalar)
         if (this.MfaRememberHours != null) {
-            s += ind + "mfaRememberHours\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "mfaRememberHours\n" ;
+            } else {
+                s += ind + "mfaRememberHours\n" ;
+            }
         }
         //      C# -> System.Int32? TotpReminderHours
         // GraphQL -> totpReminderHours: Int! (scalar)
         if (this.TotpReminderHours != null) {
-            s += ind + "totpReminderHours\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "totpReminderHours\n" ;
+            } else {
+                s += ind + "totpReminderHours\n" ;
+            }
         }
         return s;
     }
@@ -135,39 +160,105 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Boolean? IsTotpEnforcedGlobal
         // GraphQL -> isTotpEnforcedGlobal: Boolean! (scalar)
-        if (this.IsTotpEnforcedGlobal == null && ec.Includes("isTotpEnforcedGlobal",true))
+        if (ec.Includes("isTotpEnforcedGlobal",true))
         {
-            this.IsTotpEnforcedGlobal = true;
+            if(this.IsTotpEnforcedGlobal == null) {
+
+                this.IsTotpEnforcedGlobal = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsTotpEnforcedGlobal != null && ec.Excludes("isTotpEnforcedGlobal",true))
+        {
+            this.IsTotpEnforcedGlobal = null;
         }
         //      C# -> System.Boolean? IsTotpGlobalEnforceLocked
         // GraphQL -> isTotpGlobalEnforceLocked: Boolean! (scalar)
-        if (this.IsTotpGlobalEnforceLocked == null && ec.Includes("isTotpGlobalEnforceLocked",true))
+        if (ec.Includes("isTotpGlobalEnforceLocked",true))
         {
-            this.IsTotpGlobalEnforceLocked = true;
+            if(this.IsTotpGlobalEnforceLocked == null) {
+
+                this.IsTotpGlobalEnforceLocked = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsTotpGlobalEnforceLocked != null && ec.Excludes("isTotpGlobalEnforceLocked",true))
+        {
+            this.IsTotpGlobalEnforceLocked = null;
         }
         //      C# -> System.Boolean? IsTotpMandatory
         // GraphQL -> isTotpMandatory: Boolean! (scalar)
-        if (this.IsTotpMandatory == null && ec.Includes("isTotpMandatory",true))
+        if (ec.Includes("isTotpMandatory",true))
         {
-            this.IsTotpMandatory = true;
+            if(this.IsTotpMandatory == null) {
+
+                this.IsTotpMandatory = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsTotpMandatory != null && ec.Excludes("isTotpMandatory",true))
+        {
+            this.IsTotpMandatory = null;
         }
         //      C# -> DateTime? MandatoryTotpEnforcementDate
         // GraphQL -> mandatoryTotpEnforcementDate: DateTime (scalar)
-        if (this.MandatoryTotpEnforcementDate == null && ec.Includes("mandatoryTotpEnforcementDate",true))
+        if (ec.Includes("mandatoryTotpEnforcementDate",true))
         {
-            this.MandatoryTotpEnforcementDate = new DateTime();
+            if(this.MandatoryTotpEnforcementDate == null) {
+
+                this.MandatoryTotpEnforcementDate = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.MandatoryTotpEnforcementDate != null && ec.Excludes("mandatoryTotpEnforcementDate",true))
+        {
+            this.MandatoryTotpEnforcementDate = null;
         }
         //      C# -> System.Int32? MfaRememberHours
         // GraphQL -> mfaRememberHours: Int! (scalar)
-        if (this.MfaRememberHours == null && ec.Includes("mfaRememberHours",true))
+        if (ec.Includes("mfaRememberHours",true))
         {
-            this.MfaRememberHours = Int32.MinValue;
+            if(this.MfaRememberHours == null) {
+
+                this.MfaRememberHours = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.MfaRememberHours != null && ec.Excludes("mfaRememberHours",true))
+        {
+            this.MfaRememberHours = null;
         }
         //      C# -> System.Int32? TotpReminderHours
         // GraphQL -> totpReminderHours: Int! (scalar)
-        if (this.TotpReminderHours == null && ec.Includes("totpReminderHours",true))
+        if (ec.Includes("totpReminderHours",true))
         {
-            this.TotpReminderHours = Int32.MinValue;
+            if(this.TotpReminderHours == null) {
+
+                this.TotpReminderHours = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotpReminderHours != null && ec.Excludes("totpReminderHours",true))
+        {
+            this.TotpReminderHours = null;
         }
     }
 
@@ -194,9 +285,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<GetMfaSettingReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

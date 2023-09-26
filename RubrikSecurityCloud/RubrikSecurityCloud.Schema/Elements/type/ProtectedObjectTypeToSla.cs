@@ -56,21 +56,30 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> WorkloadLevelHierarchy? ProtectedObjectType
         // GraphQL -> protectedObjectType: WorkloadLevelHierarchy! (enum)
         if (this.ProtectedObjectType != null) {
-            s += ind + "protectedObjectType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "protectedObjectType\n" ;
+            } else {
+                s += ind + "protectedObjectType\n" ;
+            }
         }
         //      C# -> AzureNativeResourceGroupSlaAssignment? SlaAssignment
         // GraphQL -> slaAssignment: AzureNativeResourceGroupSlaAssignment! (type)
         if (this.SlaAssignment != null) {
-            var fspec = this.SlaAssignment.AsFieldSpec(indent+1);
+            var fspec = this.SlaAssignment.AsFieldSpec(conf.Child("slaAssignment"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "slaAssignment {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "slaAssignment {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -82,16 +91,39 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> WorkloadLevelHierarchy? ProtectedObjectType
         // GraphQL -> protectedObjectType: WorkloadLevelHierarchy! (enum)
-        if (this.ProtectedObjectType == null && ec.Includes("protectedObjectType",true))
+        if (ec.Includes("protectedObjectType",true))
         {
-            this.ProtectedObjectType = new WorkloadLevelHierarchy();
+            if(this.ProtectedObjectType == null) {
+
+                this.ProtectedObjectType = new WorkloadLevelHierarchy();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProtectedObjectType != null && ec.Excludes("protectedObjectType",true))
+        {
+            this.ProtectedObjectType = null;
         }
         //      C# -> AzureNativeResourceGroupSlaAssignment? SlaAssignment
         // GraphQL -> slaAssignment: AzureNativeResourceGroupSlaAssignment! (type)
-        if (this.SlaAssignment == null && ec.Includes("slaAssignment",false))
+        if (ec.Includes("slaAssignment",false))
         {
-            this.SlaAssignment = new AzureNativeResourceGroupSlaAssignment();
-            this.SlaAssignment.ApplyExploratoryFieldSpec(ec.NewChild("slaAssignment"));
+            if(this.SlaAssignment == null) {
+
+                this.SlaAssignment = new AzureNativeResourceGroupSlaAssignment();
+                this.SlaAssignment.ApplyExploratoryFieldSpec(ec.NewChild("slaAssignment"));
+
+            } else {
+
+                this.SlaAssignment.ApplyExploratoryFieldSpec(ec.NewChild("slaAssignment"));
+
+            }
+        }
+        else if (this.SlaAssignment != null && ec.Excludes("slaAssignment",false))
+        {
+            this.SlaAssignment = null;
         }
     }
 
@@ -118,9 +150,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ProtectedObjectTypeToSla> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -56,24 +56,33 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> SlaArchivalCluster? Cluster
         // GraphQL -> cluster: SlaArchivalCluster (type)
         if (this.Cluster != null) {
-            var fspec = this.Cluster.AsFieldSpec(indent+1);
+            var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> DlsArchivalLocation? Location
         // GraphQL -> location: DlsArchivalLocation (type)
         if (this.Location != null) {
-            var fspec = this.Location.AsFieldSpec(indent+1);
+            var fspec = this.Location.AsFieldSpec(conf.Child("location"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "location {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "location {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -85,17 +94,41 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> SlaArchivalCluster? Cluster
         // GraphQL -> cluster: SlaArchivalCluster (type)
-        if (this.Cluster == null && ec.Includes("cluster",false))
+        if (ec.Includes("cluster",false))
         {
-            this.Cluster = new SlaArchivalCluster();
-            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+            if(this.Cluster == null) {
+
+                this.Cluster = new SlaArchivalCluster();
+                this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+
+            } else {
+
+                this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+
+            }
+        }
+        else if (this.Cluster != null && ec.Excludes("cluster",false))
+        {
+            this.Cluster = null;
         }
         //      C# -> DlsArchivalLocation? Location
         // GraphQL -> location: DlsArchivalLocation (type)
-        if (this.Location == null && ec.Includes("location",false))
+        if (ec.Includes("location",false))
         {
-            this.Location = new DlsArchivalLocation();
-            this.Location.ApplyExploratoryFieldSpec(ec.NewChild("location"));
+            if(this.Location == null) {
+
+                this.Location = new DlsArchivalLocation();
+                this.Location.ApplyExploratoryFieldSpec(ec.NewChild("location"));
+
+            } else {
+
+                this.Location.ApplyExploratoryFieldSpec(ec.NewChild("location"));
+
+            }
+        }
+        else if (this.Location != null && ec.Excludes("location",false))
+        {
+            this.Location = null;
         }
     }
 
@@ -122,9 +155,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ArchivalLocationToClusterMapping> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

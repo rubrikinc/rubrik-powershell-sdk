@@ -65,26 +65,39 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> ManagedVolumeShareType? ShareType
         // GraphQL -> shareType: ManagedVolumeShareType (enum)
         if (this.ShareType != null) {
-            s += ind + "shareType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "shareType\n" ;
+            } else {
+                s += ind + "shareType\n" ;
+            }
         }
         //      C# -> System.String? Subnet
         // GraphQL -> subnet: String (scalar)
         if (this.Subnet != null) {
-            s += ind + "subnet\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "subnet\n" ;
+            } else {
+                s += ind + "subnet\n" ;
+            }
         }
         //      C# -> ManagedVolumePatchConfig? ManagedVolumePatchConfig
         // GraphQL -> managedVolumePatchConfig: ManagedVolumePatchConfig (type)
         if (this.ManagedVolumePatchConfig != null) {
-            var fspec = this.ManagedVolumePatchConfig.AsFieldSpec(indent+1);
+            var fspec = this.ManagedVolumePatchConfig.AsFieldSpec(conf.Child("managedVolumePatchConfig"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "managedVolumePatchConfig {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "managedVolumePatchConfig {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -96,22 +109,56 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> ManagedVolumeShareType? ShareType
         // GraphQL -> shareType: ManagedVolumeShareType (enum)
-        if (this.ShareType == null && ec.Includes("shareType",true))
+        if (ec.Includes("shareType",true))
         {
-            this.ShareType = new ManagedVolumeShareType();
+            if(this.ShareType == null) {
+
+                this.ShareType = new ManagedVolumeShareType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShareType != null && ec.Excludes("shareType",true))
+        {
+            this.ShareType = null;
         }
         //      C# -> System.String? Subnet
         // GraphQL -> subnet: String (scalar)
-        if (this.Subnet == null && ec.Includes("subnet",true))
+        if (ec.Includes("subnet",true))
         {
-            this.Subnet = "FETCH";
+            if(this.Subnet == null) {
+
+                this.Subnet = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Subnet != null && ec.Excludes("subnet",true))
+        {
+            this.Subnet = null;
         }
         //      C# -> ManagedVolumePatchConfig? ManagedVolumePatchConfig
         // GraphQL -> managedVolumePatchConfig: ManagedVolumePatchConfig (type)
-        if (this.ManagedVolumePatchConfig == null && ec.Includes("managedVolumePatchConfig",false))
+        if (ec.Includes("managedVolumePatchConfig",false))
         {
-            this.ManagedVolumePatchConfig = new ManagedVolumePatchConfig();
-            this.ManagedVolumePatchConfig.ApplyExploratoryFieldSpec(ec.NewChild("managedVolumePatchConfig"));
+            if(this.ManagedVolumePatchConfig == null) {
+
+                this.ManagedVolumePatchConfig = new ManagedVolumePatchConfig();
+                this.ManagedVolumePatchConfig.ApplyExploratoryFieldSpec(ec.NewChild("managedVolumePatchConfig"));
+
+            } else {
+
+                this.ManagedVolumePatchConfig.ApplyExploratoryFieldSpec(ec.NewChild("managedVolumePatchConfig"));
+
+            }
+        }
+        else if (this.ManagedVolumePatchConfig != null && ec.Excludes("managedVolumePatchConfig",false))
+        {
+            this.ManagedVolumePatchConfig = null;
         }
     }
 
@@ -138,9 +185,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ManagedVolumeExportConfig> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

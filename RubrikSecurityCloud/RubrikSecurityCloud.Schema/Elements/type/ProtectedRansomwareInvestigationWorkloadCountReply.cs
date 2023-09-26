@@ -47,16 +47,21 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<ProtectedRansomwareInvestigationWorkload>? WorkloadCounts
         // GraphQL -> workloadCounts: [ProtectedRansomwareInvestigationWorkload!]! (type)
         if (this.WorkloadCounts != null) {
-            var fspec = this.WorkloadCounts.AsFieldSpec(indent+1);
+            var fspec = this.WorkloadCounts.AsFieldSpec(conf.Child("workloadCounts"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "workloadCounts {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "workloadCounts {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -68,10 +73,22 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<ProtectedRansomwareInvestigationWorkload>? WorkloadCounts
         // GraphQL -> workloadCounts: [ProtectedRansomwareInvestigationWorkload!]! (type)
-        if (this.WorkloadCounts == null && ec.Includes("workloadCounts",false))
+        if (ec.Includes("workloadCounts",false))
         {
-            this.WorkloadCounts = new List<ProtectedRansomwareInvestigationWorkload>();
-            this.WorkloadCounts.ApplyExploratoryFieldSpec(ec.NewChild("workloadCounts"));
+            if(this.WorkloadCounts == null) {
+
+                this.WorkloadCounts = new List<ProtectedRansomwareInvestigationWorkload>();
+                this.WorkloadCounts.ApplyExploratoryFieldSpec(ec.NewChild("workloadCounts"));
+
+            } else {
+
+                this.WorkloadCounts.ApplyExploratoryFieldSpec(ec.NewChild("workloadCounts"));
+
+            }
+        }
+        else if (this.WorkloadCounts != null && ec.Excludes("workloadCounts",false))
+        {
+            this.WorkloadCounts = null;
         }
     }
 
@@ -98,9 +115,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ProtectedRansomwareInvestigationWorkloadCountReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

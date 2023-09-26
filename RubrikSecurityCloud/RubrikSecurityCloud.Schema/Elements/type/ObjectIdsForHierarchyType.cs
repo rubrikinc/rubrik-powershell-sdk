@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> WorkloadLevelHierarchy? SnappableType
         // GraphQL -> snappableType: WorkloadLevelHierarchy! (enum)
         if (this.SnappableType != null) {
-            s += ind + "snappableType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snappableType\n" ;
+            } else {
+                s += ind + "snappableType\n" ;
+            }
         }
         //      C# -> List<System.String>? ObjectIds
         // GraphQL -> objectIds: [String!]! (scalar)
         if (this.ObjectIds != null) {
-            s += ind + "objectIds\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "objectIds\n" ;
+            } else {
+                s += ind + "objectIds\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> WorkloadLevelHierarchy? SnappableType
         // GraphQL -> snappableType: WorkloadLevelHierarchy! (enum)
-        if (this.SnappableType == null && ec.Includes("snappableType",true))
+        if (ec.Includes("snappableType",true))
         {
-            this.SnappableType = new WorkloadLevelHierarchy();
+            if(this.SnappableType == null) {
+
+                this.SnappableType = new WorkloadLevelHierarchy();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnappableType != null && ec.Excludes("snappableType",true))
+        {
+            this.SnappableType = null;
         }
         //      C# -> List<System.String>? ObjectIds
         // GraphQL -> objectIds: [String!]! (scalar)
-        if (this.ObjectIds == null && ec.Includes("objectIds",true))
+        if (ec.Includes("objectIds",true))
         {
-            this.ObjectIds = new List<System.String>();
+            if(this.ObjectIds == null) {
+
+                this.ObjectIds = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ObjectIds != null && ec.Excludes("objectIds",true))
+        {
+            this.ObjectIds = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ObjectIdsForHierarchyType> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

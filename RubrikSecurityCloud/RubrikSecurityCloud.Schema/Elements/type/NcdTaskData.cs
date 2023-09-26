@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> NcdTaskStatus? Status
         // GraphQL -> status: NcdTaskStatus! (enum)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
         if (this.Description != null) {
-            s += ind + "description\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "description\n" ;
+            } else {
+                s += ind + "description\n" ;
+            }
         }
         //      C# -> System.String? Site
         // GraphQL -> site: String! (scalar)
         if (this.Site != null) {
-            s += ind + "site\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "site\n" ;
+            } else {
+                s += ind + "site\n" ;
+            }
         }
         //      C# -> DateTime? Timestamp
         // GraphQL -> timestamp: DateTime (scalar)
         if (this.Timestamp != null) {
-            s += ind + "timestamp\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "timestamp\n" ;
+            } else {
+                s += ind + "timestamp\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> NcdTaskStatus? Status
         // GraphQL -> status: NcdTaskStatus! (enum)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = new NcdTaskStatus();
+            if(this.Status == null) {
+
+                this.Status = new NcdTaskStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
-        if (this.Description == null && ec.Includes("description",true))
+        if (ec.Includes("description",true))
         {
-            this.Description = "FETCH";
+            if(this.Description == null) {
+
+                this.Description = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Description != null && ec.Excludes("description",true))
+        {
+            this.Description = null;
         }
         //      C# -> System.String? Site
         // GraphQL -> site: String! (scalar)
-        if (this.Site == null && ec.Includes("site",true))
+        if (ec.Includes("site",true))
         {
-            this.Site = "FETCH";
+            if(this.Site == null) {
+
+                this.Site = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Site != null && ec.Excludes("site",true))
+        {
+            this.Site = null;
         }
         //      C# -> DateTime? Timestamp
         // GraphQL -> timestamp: DateTime (scalar)
-        if (this.Timestamp == null && ec.Includes("timestamp",true))
+        if (ec.Includes("timestamp",true))
         {
-            this.Timestamp = new DateTime();
+            if(this.Timestamp == null) {
+
+                this.Timestamp = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Timestamp != null && ec.Excludes("timestamp",true))
+        {
+            this.Timestamp = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<NcdTaskData> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

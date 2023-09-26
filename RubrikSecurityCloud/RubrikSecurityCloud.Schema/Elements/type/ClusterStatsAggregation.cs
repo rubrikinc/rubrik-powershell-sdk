@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? IngestedArchivalStorage
         // GraphQL -> ingestedArchivalStorage: Long! (scalar)
         if (this.IngestedArchivalStorage != null) {
-            s += ind + "ingestedArchivalStorage\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "ingestedArchivalStorage\n" ;
+            } else {
+                s += ind + "ingestedArchivalStorage\n" ;
+            }
         }
         //      C# -> System.Int64? IngestedSnapshotStorage
         // GraphQL -> ingestedSnapshotStorage: Long! (scalar)
         if (this.IngestedSnapshotStorage != null) {
-            s += ind + "ingestedSnapshotStorage\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "ingestedSnapshotStorage\n" ;
+            } else {
+                s += ind + "ingestedSnapshotStorage\n" ;
+            }
         }
         //      C# -> System.Int64? PhysicalArchivalStorage
         // GraphQL -> physicalArchivalStorage: Long! (scalar)
         if (this.PhysicalArchivalStorage != null) {
-            s += ind + "physicalArchivalStorage\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "physicalArchivalStorage\n" ;
+            } else {
+                s += ind + "physicalArchivalStorage\n" ;
+            }
         }
         //      C# -> System.Int64? PhysicalSnapshotStorage
         // GraphQL -> physicalSnapshotStorage: Long! (scalar)
         if (this.PhysicalSnapshotStorage != null) {
-            s += ind + "physicalSnapshotStorage\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "physicalSnapshotStorage\n" ;
+            } else {
+                s += ind + "physicalSnapshotStorage\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? IngestedArchivalStorage
         // GraphQL -> ingestedArchivalStorage: Long! (scalar)
-        if (this.IngestedArchivalStorage == null && ec.Includes("ingestedArchivalStorage",true))
+        if (ec.Includes("ingestedArchivalStorage",true))
         {
-            this.IngestedArchivalStorage = new System.Int64();
+            if(this.IngestedArchivalStorage == null) {
+
+                this.IngestedArchivalStorage = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.IngestedArchivalStorage != null && ec.Excludes("ingestedArchivalStorage",true))
+        {
+            this.IngestedArchivalStorage = null;
         }
         //      C# -> System.Int64? IngestedSnapshotStorage
         // GraphQL -> ingestedSnapshotStorage: Long! (scalar)
-        if (this.IngestedSnapshotStorage == null && ec.Includes("ingestedSnapshotStorage",true))
+        if (ec.Includes("ingestedSnapshotStorage",true))
         {
-            this.IngestedSnapshotStorage = new System.Int64();
+            if(this.IngestedSnapshotStorage == null) {
+
+                this.IngestedSnapshotStorage = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.IngestedSnapshotStorage != null && ec.Excludes("ingestedSnapshotStorage",true))
+        {
+            this.IngestedSnapshotStorage = null;
         }
         //      C# -> System.Int64? PhysicalArchivalStorage
         // GraphQL -> physicalArchivalStorage: Long! (scalar)
-        if (this.PhysicalArchivalStorage == null && ec.Includes("physicalArchivalStorage",true))
+        if (ec.Includes("physicalArchivalStorage",true))
         {
-            this.PhysicalArchivalStorage = new System.Int64();
+            if(this.PhysicalArchivalStorage == null) {
+
+                this.PhysicalArchivalStorage = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.PhysicalArchivalStorage != null && ec.Excludes("physicalArchivalStorage",true))
+        {
+            this.PhysicalArchivalStorage = null;
         }
         //      C# -> System.Int64? PhysicalSnapshotStorage
         // GraphQL -> physicalSnapshotStorage: Long! (scalar)
-        if (this.PhysicalSnapshotStorage == null && ec.Includes("physicalSnapshotStorage",true))
+        if (ec.Includes("physicalSnapshotStorage",true))
         {
-            this.PhysicalSnapshotStorage = new System.Int64();
+            if(this.PhysicalSnapshotStorage == null) {
+
+                this.PhysicalSnapshotStorage = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.PhysicalSnapshotStorage != null && ec.Excludes("physicalSnapshotStorage",true))
+        {
+            this.PhysicalSnapshotStorage = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ClusterStatsAggregation> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

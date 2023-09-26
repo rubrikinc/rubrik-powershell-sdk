@@ -56,21 +56,30 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? AwsNativeId
         // GraphQL -> awsNativeId: String! (scalar)
         if (this.AwsNativeId != null) {
-            s += ind + "awsNativeId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "awsNativeId\n" ;
+            } else {
+                s += ind + "awsNativeId\n" ;
+            }
         }
         //      C# -> List<ArtifactPolicy>? Artifacts
         // GraphQL -> artifacts: [ArtifactPolicy!]! (type)
         if (this.Artifacts != null) {
-            var fspec = this.Artifacts.AsFieldSpec(indent+1);
+            var fspec = this.Artifacts.AsFieldSpec(conf.Child("artifacts"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "artifacts {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "artifacts {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -82,16 +91,39 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? AwsNativeId
         // GraphQL -> awsNativeId: String! (scalar)
-        if (this.AwsNativeId == null && ec.Includes("awsNativeId",true))
+        if (ec.Includes("awsNativeId",true))
         {
-            this.AwsNativeId = "FETCH";
+            if(this.AwsNativeId == null) {
+
+                this.AwsNativeId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AwsNativeId != null && ec.Excludes("awsNativeId",true))
+        {
+            this.AwsNativeId = null;
         }
         //      C# -> List<ArtifactPolicy>? Artifacts
         // GraphQL -> artifacts: [ArtifactPolicy!]! (type)
-        if (this.Artifacts == null && ec.Includes("artifacts",false))
+        if (ec.Includes("artifacts",false))
         {
-            this.Artifacts = new List<ArtifactPolicy>();
-            this.Artifacts.ApplyExploratoryFieldSpec(ec.NewChild("artifacts"));
+            if(this.Artifacts == null) {
+
+                this.Artifacts = new List<ArtifactPolicy>();
+                this.Artifacts.ApplyExploratoryFieldSpec(ec.NewChild("artifacts"));
+
+            } else {
+
+                this.Artifacts.ApplyExploratoryFieldSpec(ec.NewChild("artifacts"));
+
+            }
+        }
+        else if (this.Artifacts != null && ec.Excludes("artifacts",false))
+        {
+            this.Artifacts = null;
         }
     }
 
@@ -118,9 +150,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AwsTrustPolicyResult> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

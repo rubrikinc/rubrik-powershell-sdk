@@ -200,110 +200,183 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         if (this.ObjectType != null) {
-            s += ind + "objectType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "objectType\n" ;
+            } else {
+                s += ind + "objectType\n" ;
+            }
         }
         //      C# -> System.String? AnalyzerId
         // GraphQL -> analyzerId: String! (scalar)
         if (this.AnalyzerId != null) {
-            s += ind + "analyzerId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "analyzerId\n" ;
+            } else {
+                s += ind + "analyzerId\n" ;
+            }
         }
         //      C# -> System.String? Cluster
         // GraphQL -> cluster: String! (scalar)
         if (this.Cluster != null) {
-            s += ind + "cluster\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cluster\n" ;
+            } else {
+                s += ind + "cluster\n" ;
+            }
         }
         //      C# -> System.String? FileName
         // GraphQL -> fileName: String! (scalar)
         if (this.FileName != null) {
-            s += ind + "fileName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "fileName\n" ;
+            } else {
+                s += ind + "fileName\n" ;
+            }
         }
         //      C# -> System.Int32? FilesWithHits
         // GraphQL -> filesWithHits: Int! (scalar)
         if (this.FilesWithHits != null) {
-            s += ind + "filesWithHits\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "filesWithHits\n" ;
+            } else {
+                s += ind + "filesWithHits\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.String? Location
         // GraphQL -> location: String! (scalar)
         if (this.Location != null) {
-            s += ind + "location\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "location\n" ;
+            } else {
+                s += ind + "location\n" ;
+            }
         }
         //      C# -> System.String? ObjectName
         // GraphQL -> objectName: String! (scalar)
         if (this.ObjectName != null) {
-            s += ind + "objectName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "objectName\n" ;
+            } else {
+                s += ind + "objectName\n" ;
+            }
         }
         //      C# -> System.String? Path
         // GraphQL -> path: String! (scalar)
         if (this.Path != null) {
-            s += ind + "path\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "path\n" ;
+            } else {
+                s += ind + "path\n" ;
+            }
         }
         //      C# -> System.String? PolicyId
         // GraphQL -> policyId: String! (scalar)
         if (this.PolicyId != null) {
-            s += ind + "policyId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "policyId\n" ;
+            } else {
+                s += ind + "policyId\n" ;
+            }
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long! (scalar)
         if (this.Size != null) {
-            s += ind + "size\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "size\n" ;
+            } else {
+                s += ind + "size\n" ;
+            }
         }
         //      C# -> System.String? SlaDomainId
         // GraphQL -> slaDomainId: String! (scalar)
         if (this.SlaDomainId != null) {
-            s += ind + "slaDomainId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "slaDomainId\n" ;
+            } else {
+                s += ind + "slaDomainId\n" ;
+            }
         }
         //      C# -> System.String? SnappableFid
         // GraphQL -> snappableFid: String! (scalar)
         if (this.SnappableFid != null) {
-            s += ind + "snappableFid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snappableFid\n" ;
+            } else {
+                s += ind + "snappableFid\n" ;
+            }
         }
         //      C# -> System.Int64? SnapshotTimestamp
         // GraphQL -> snapshotTimestamp: Long! (scalar)
         if (this.SnapshotTimestamp != null) {
-            s += ind + "snapshotTimestamp\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotTimestamp\n" ;
+            } else {
+                s += ind + "snapshotTimestamp\n" ;
+            }
         }
         //      C# -> List<AnalyzerGroupResult>? AnalyzerGroupResults
         // GraphQL -> analyzerGroupResults: [AnalyzerGroupResult!]! (type)
         if (this.AnalyzerGroupResults != null) {
-            var fspec = this.AnalyzerGroupResults.AsFieldSpec(indent+1);
+            var fspec = this.AnalyzerGroupResults.AsFieldSpec(conf.Child("analyzerGroupResults"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "analyzerGroupResults {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "analyzerGroupResults {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<AnalyzerResult>? AnalyzerResults
         // GraphQL -> analyzerResults: [AnalyzerResult!]! (type)
         if (this.AnalyzerResults != null) {
-            var fspec = this.AnalyzerResults.AsFieldSpec(indent+1);
+            var fspec = this.AnalyzerResults.AsFieldSpec(conf.Child("analyzerResults"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "analyzerResults {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "analyzerResults {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> Hits? Hits
         // GraphQL -> hits: Hits (type)
         if (this.Hits != null) {
-            var fspec = this.Hits.AsFieldSpec(indent+1);
+            var fspec = this.Hits.AsFieldSpec(conf.Child("hits"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "hits {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "hits {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
         if (this.LogicalPath != null) {
-            var fspec = this.LogicalPath.AsFieldSpec(indent+1);
+            var fspec = this.LogicalPath.AsFieldSpec(conf.Child("logicalPath"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "logicalPath {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "logicalPath {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -315,115 +388,317 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
-        if (this.ObjectType == null && ec.Includes("objectType",true))
+        if (ec.Includes("objectType",true))
         {
-            this.ObjectType = new HierarchyObjectTypeEnum();
+            if(this.ObjectType == null) {
+
+                this.ObjectType = new HierarchyObjectTypeEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ObjectType != null && ec.Excludes("objectType",true))
+        {
+            this.ObjectType = null;
         }
         //      C# -> System.String? AnalyzerId
         // GraphQL -> analyzerId: String! (scalar)
-        if (this.AnalyzerId == null && ec.Includes("analyzerId",true))
+        if (ec.Includes("analyzerId",true))
         {
-            this.AnalyzerId = "FETCH";
+            if(this.AnalyzerId == null) {
+
+                this.AnalyzerId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AnalyzerId != null && ec.Excludes("analyzerId",true))
+        {
+            this.AnalyzerId = null;
         }
         //      C# -> System.String? Cluster
         // GraphQL -> cluster: String! (scalar)
-        if (this.Cluster == null && ec.Includes("cluster",true))
+        if (ec.Includes("cluster",true))
         {
-            this.Cluster = "FETCH";
+            if(this.Cluster == null) {
+
+                this.Cluster = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Cluster != null && ec.Excludes("cluster",true))
+        {
+            this.Cluster = null;
         }
         //      C# -> System.String? FileName
         // GraphQL -> fileName: String! (scalar)
-        if (this.FileName == null && ec.Includes("fileName",true))
+        if (ec.Includes("fileName",true))
         {
-            this.FileName = "FETCH";
+            if(this.FileName == null) {
+
+                this.FileName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.FileName != null && ec.Excludes("fileName",true))
+        {
+            this.FileName = null;
         }
         //      C# -> System.Int32? FilesWithHits
         // GraphQL -> filesWithHits: Int! (scalar)
-        if (this.FilesWithHits == null && ec.Includes("filesWithHits",true))
+        if (ec.Includes("filesWithHits",true))
         {
-            this.FilesWithHits = Int32.MinValue;
+            if(this.FilesWithHits == null) {
+
+                this.FilesWithHits = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.FilesWithHits != null && ec.Excludes("filesWithHits",true))
+        {
+            this.FilesWithHits = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.String? Location
         // GraphQL -> location: String! (scalar)
-        if (this.Location == null && ec.Includes("location",true))
+        if (ec.Includes("location",true))
         {
-            this.Location = "FETCH";
+            if(this.Location == null) {
+
+                this.Location = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Location != null && ec.Excludes("location",true))
+        {
+            this.Location = null;
         }
         //      C# -> System.String? ObjectName
         // GraphQL -> objectName: String! (scalar)
-        if (this.ObjectName == null && ec.Includes("objectName",true))
+        if (ec.Includes("objectName",true))
         {
-            this.ObjectName = "FETCH";
+            if(this.ObjectName == null) {
+
+                this.ObjectName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ObjectName != null && ec.Excludes("objectName",true))
+        {
+            this.ObjectName = null;
         }
         //      C# -> System.String? Path
         // GraphQL -> path: String! (scalar)
-        if (this.Path == null && ec.Includes("path",true))
+        if (ec.Includes("path",true))
         {
-            this.Path = "FETCH";
+            if(this.Path == null) {
+
+                this.Path = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Path != null && ec.Excludes("path",true))
+        {
+            this.Path = null;
         }
         //      C# -> System.String? PolicyId
         // GraphQL -> policyId: String! (scalar)
-        if (this.PolicyId == null && ec.Includes("policyId",true))
+        if (ec.Includes("policyId",true))
         {
-            this.PolicyId = "FETCH";
+            if(this.PolicyId == null) {
+
+                this.PolicyId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PolicyId != null && ec.Excludes("policyId",true))
+        {
+            this.PolicyId = null;
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long! (scalar)
-        if (this.Size == null && ec.Includes("size",true))
+        if (ec.Includes("size",true))
         {
-            this.Size = new System.Int64();
+            if(this.Size == null) {
+
+                this.Size = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Size != null && ec.Excludes("size",true))
+        {
+            this.Size = null;
         }
         //      C# -> System.String? SlaDomainId
         // GraphQL -> slaDomainId: String! (scalar)
-        if (this.SlaDomainId == null && ec.Includes("slaDomainId",true))
+        if (ec.Includes("slaDomainId",true))
         {
-            this.SlaDomainId = "FETCH";
+            if(this.SlaDomainId == null) {
+
+                this.SlaDomainId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SlaDomainId != null && ec.Excludes("slaDomainId",true))
+        {
+            this.SlaDomainId = null;
         }
         //      C# -> System.String? SnappableFid
         // GraphQL -> snappableFid: String! (scalar)
-        if (this.SnappableFid == null && ec.Includes("snappableFid",true))
+        if (ec.Includes("snappableFid",true))
         {
-            this.SnappableFid = "FETCH";
+            if(this.SnappableFid == null) {
+
+                this.SnappableFid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnappableFid != null && ec.Excludes("snappableFid",true))
+        {
+            this.SnappableFid = null;
         }
         //      C# -> System.Int64? SnapshotTimestamp
         // GraphQL -> snapshotTimestamp: Long! (scalar)
-        if (this.SnapshotTimestamp == null && ec.Includes("snapshotTimestamp",true))
+        if (ec.Includes("snapshotTimestamp",true))
         {
-            this.SnapshotTimestamp = new System.Int64();
+            if(this.SnapshotTimestamp == null) {
+
+                this.SnapshotTimestamp = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotTimestamp != null && ec.Excludes("snapshotTimestamp",true))
+        {
+            this.SnapshotTimestamp = null;
         }
         //      C# -> List<AnalyzerGroupResult>? AnalyzerGroupResults
         // GraphQL -> analyzerGroupResults: [AnalyzerGroupResult!]! (type)
-        if (this.AnalyzerGroupResults == null && ec.Includes("analyzerGroupResults",false))
+        if (ec.Includes("analyzerGroupResults",false))
         {
-            this.AnalyzerGroupResults = new List<AnalyzerGroupResult>();
-            this.AnalyzerGroupResults.ApplyExploratoryFieldSpec(ec.NewChild("analyzerGroupResults"));
+            if(this.AnalyzerGroupResults == null) {
+
+                this.AnalyzerGroupResults = new List<AnalyzerGroupResult>();
+                this.AnalyzerGroupResults.ApplyExploratoryFieldSpec(ec.NewChild("analyzerGroupResults"));
+
+            } else {
+
+                this.AnalyzerGroupResults.ApplyExploratoryFieldSpec(ec.NewChild("analyzerGroupResults"));
+
+            }
+        }
+        else if (this.AnalyzerGroupResults != null && ec.Excludes("analyzerGroupResults",false))
+        {
+            this.AnalyzerGroupResults = null;
         }
         //      C# -> List<AnalyzerResult>? AnalyzerResults
         // GraphQL -> analyzerResults: [AnalyzerResult!]! (type)
-        if (this.AnalyzerResults == null && ec.Includes("analyzerResults",false))
+        if (ec.Includes("analyzerResults",false))
         {
-            this.AnalyzerResults = new List<AnalyzerResult>();
-            this.AnalyzerResults.ApplyExploratoryFieldSpec(ec.NewChild("analyzerResults"));
+            if(this.AnalyzerResults == null) {
+
+                this.AnalyzerResults = new List<AnalyzerResult>();
+                this.AnalyzerResults.ApplyExploratoryFieldSpec(ec.NewChild("analyzerResults"));
+
+            } else {
+
+                this.AnalyzerResults.ApplyExploratoryFieldSpec(ec.NewChild("analyzerResults"));
+
+            }
+        }
+        else if (this.AnalyzerResults != null && ec.Excludes("analyzerResults",false))
+        {
+            this.AnalyzerResults = null;
         }
         //      C# -> Hits? Hits
         // GraphQL -> hits: Hits (type)
-        if (this.Hits == null && ec.Includes("hits",false))
+        if (ec.Includes("hits",false))
         {
-            this.Hits = new Hits();
-            this.Hits.ApplyExploratoryFieldSpec(ec.NewChild("hits"));
+            if(this.Hits == null) {
+
+                this.Hits = new Hits();
+                this.Hits.ApplyExploratoryFieldSpec(ec.NewChild("hits"));
+
+            } else {
+
+                this.Hits.ApplyExploratoryFieldSpec(ec.NewChild("hits"));
+
+            }
+        }
+        else if (this.Hits != null && ec.Excludes("hits",false))
+        {
+            this.Hits = null;
         }
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
-        if (this.LogicalPath == null && ec.Includes("logicalPath",false))
+        if (ec.Includes("logicalPath",false))
         {
-            this.LogicalPath = new List<PathNode>();
-            this.LogicalPath.ApplyExploratoryFieldSpec(ec.NewChild("logicalPath"));
+            if(this.LogicalPath == null) {
+
+                this.LogicalPath = new List<PathNode>();
+                this.LogicalPath.ApplyExploratoryFieldSpec(ec.NewChild("logicalPath"));
+
+            } else {
+
+                this.LogicalPath.ApplyExploratoryFieldSpec(ec.NewChild("logicalPath"));
+
+            }
+        }
+        else if (this.LogicalPath != null && ec.Excludes("logicalPath",false))
+        {
+            this.LogicalPath = null;
         }
     }
 
@@ -450,9 +725,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SonarContentReport> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> SnapshotServiceBackupStatus? Status
         // GraphQL -> status: SnapshotServiceBackupStatus! (enum)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         //      C# -> System.Int64? SkippedItemCount
         // GraphQL -> skippedItemCount: Long! (scalar)
         if (this.SkippedItemCount != null) {
-            s += ind + "skippedItemCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "skippedItemCount\n" ;
+            } else {
+                s += ind + "skippedItemCount\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> SnapshotServiceBackupStatus? Status
         // GraphQL -> status: SnapshotServiceBackupStatus! (enum)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = new SnapshotServiceBackupStatus();
+            if(this.Status == null) {
+
+                this.Status = new SnapshotServiceBackupStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
         //      C# -> System.Int64? SkippedItemCount
         // GraphQL -> skippedItemCount: Long! (scalar)
-        if (this.SkippedItemCount == null && ec.Includes("skippedItemCount",true))
+        if (ec.Includes("skippedItemCount",true))
         {
-            this.SkippedItemCount = new System.Int64();
+            if(this.SkippedItemCount == null) {
+
+                this.SkippedItemCount = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SkippedItemCount != null && ec.Excludes("skippedItemCount",true))
+        {
+            this.SkippedItemCount = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<BackupEventStatus> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

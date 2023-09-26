@@ -56,21 +56,30 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> DefaultActionType? DefaultAction
         // GraphQL -> defaultAction: DefaultActionType! (enum)
         if (this.DefaultAction != null) {
-            s += ind + "defaultAction\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "defaultAction\n" ;
+            } else {
+                s += ind + "defaultAction\n" ;
+            }
         }
         //      C# -> List<IpRule>? IpRules
         // GraphQL -> ipRules: [IpRule!]! (type)
         if (this.IpRules != null) {
-            var fspec = this.IpRules.AsFieldSpec(indent+1);
+            var fspec = this.IpRules.AsFieldSpec(conf.Child("ipRules"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "ipRules {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "ipRules {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -82,16 +91,39 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> DefaultActionType? DefaultAction
         // GraphQL -> defaultAction: DefaultActionType! (enum)
-        if (this.DefaultAction == null && ec.Includes("defaultAction",true))
+        if (ec.Includes("defaultAction",true))
         {
-            this.DefaultAction = new DefaultActionType();
+            if(this.DefaultAction == null) {
+
+                this.DefaultAction = new DefaultActionType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DefaultAction != null && ec.Excludes("defaultAction",true))
+        {
+            this.DefaultAction = null;
         }
         //      C# -> List<IpRule>? IpRules
         // GraphQL -> ipRules: [IpRule!]! (type)
-        if (this.IpRules == null && ec.Includes("ipRules",false))
+        if (ec.Includes("ipRules",false))
         {
-            this.IpRules = new List<IpRule>();
-            this.IpRules.ApplyExploratoryFieldSpec(ec.NewChild("ipRules"));
+            if(this.IpRules == null) {
+
+                this.IpRules = new List<IpRule>();
+                this.IpRules.ApplyExploratoryFieldSpec(ec.NewChild("ipRules"));
+
+            } else {
+
+                this.IpRules.ApplyExploratoryFieldSpec(ec.NewChild("ipRules"));
+
+            }
+        }
+        else if (this.IpRules != null && ec.Excludes("ipRules",false))
+        {
+            this.IpRules = null;
         }
     }
 
@@ -118,9 +150,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<NetworkRuleSet> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

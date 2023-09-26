@@ -164,79 +164,136 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> ClusterDiskType? DiskType
         // GraphQL -> diskType: ClusterDiskType! (enum)
         if (this.DiskType != null) {
-            s += ind + "diskType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "diskType\n" ;
+            } else {
+                s += ind + "diskType\n" ;
+            }
         }
         //      C# -> ClusterDiskStatus? Status
         // GraphQL -> status: ClusterDiskStatus! (enum)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         //      C# -> System.Int64? CapacityBytes
         // GraphQL -> capacityBytes: Long! (scalar)
         if (this.CapacityBytes != null) {
-            s += ind + "capacityBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "capacityBytes\n" ;
+            } else {
+                s += ind + "capacityBytes\n" ;
+            }
         }
         //      C# -> System.String? ClusterId
         // GraphQL -> clusterId: UUID! (scalar)
         if (this.ClusterId != null) {
-            s += ind + "clusterId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterId\n" ;
+            } else {
+                s += ind + "clusterId\n" ;
+            }
         }
         //      C# -> System.String? DiskId
         // GraphQL -> diskId: String! (scalar)
         if (this.DiskId != null) {
-            s += ind + "diskId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "diskId\n" ;
+            } else {
+                s += ind + "diskId\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.Boolean? IsEncrypted
         // GraphQL -> isEncrypted: Boolean! (scalar)
         if (this.IsEncrypted != null) {
-            s += ind + "isEncrypted\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isEncrypted\n" ;
+            } else {
+                s += ind + "isEncrypted\n" ;
+            }
         }
         //      C# -> System.Boolean? IsResizable
         // GraphQL -> isResizable: Boolean! (scalar)
         if (this.IsResizable != null) {
-            s += ind + "isResizable\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isResizable\n" ;
+            } else {
+                s += ind + "isResizable\n" ;
+            }
         }
         //      C# -> System.Boolean? LedStatus
         // GraphQL -> ledStatus: Boolean (scalar)
         if (this.LedStatus != null) {
-            s += ind + "ledStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "ledStatus\n" ;
+            } else {
+                s += ind + "ledStatus\n" ;
+            }
         }
         //      C# -> System.String? NodeId
         // GraphQL -> nodeId: String (scalar)
         if (this.NodeId != null) {
-            s += ind + "nodeId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "nodeId\n" ;
+            } else {
+                s += ind + "nodeId\n" ;
+            }
         }
         //      C# -> System.String? Path
         // GraphQL -> path: String! (scalar)
         if (this.Path != null) {
-            s += ind + "path\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "path\n" ;
+            } else {
+                s += ind + "path\n" ;
+            }
         }
         //      C# -> System.String? Serial
         // GraphQL -> serial: String (scalar)
         if (this.Serial != null) {
-            s += ind + "serial\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "serial\n" ;
+            } else {
+                s += ind + "serial\n" ;
+            }
         }
         //      C# -> System.Int64? UnallocatedBytes
         // GraphQL -> unallocatedBytes: Long (scalar)
         if (this.UnallocatedBytes != null) {
-            s += ind + "unallocatedBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "unallocatedBytes\n" ;
+            } else {
+                s += ind + "unallocatedBytes\n" ;
+            }
         }
         //      C# -> System.Int64? UsableBytes
         // GraphQL -> usableBytes: Long (scalar)
         if (this.UsableBytes != null) {
-            s += ind + "usableBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "usableBytes\n" ;
+            } else {
+                s += ind + "usableBytes\n" ;
+            }
         }
         return s;
     }
@@ -247,87 +304,241 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> ClusterDiskType? DiskType
         // GraphQL -> diskType: ClusterDiskType! (enum)
-        if (this.DiskType == null && ec.Includes("diskType",true))
+        if (ec.Includes("diskType",true))
         {
-            this.DiskType = new ClusterDiskType();
+            if(this.DiskType == null) {
+
+                this.DiskType = new ClusterDiskType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DiskType != null && ec.Excludes("diskType",true))
+        {
+            this.DiskType = null;
         }
         //      C# -> ClusterDiskStatus? Status
         // GraphQL -> status: ClusterDiskStatus! (enum)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = new ClusterDiskStatus();
+            if(this.Status == null) {
+
+                this.Status = new ClusterDiskStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
         //      C# -> System.Int64? CapacityBytes
         // GraphQL -> capacityBytes: Long! (scalar)
-        if (this.CapacityBytes == null && ec.Includes("capacityBytes",true))
+        if (ec.Includes("capacityBytes",true))
         {
-            this.CapacityBytes = new System.Int64();
+            if(this.CapacityBytes == null) {
+
+                this.CapacityBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CapacityBytes != null && ec.Excludes("capacityBytes",true))
+        {
+            this.CapacityBytes = null;
         }
         //      C# -> System.String? ClusterId
         // GraphQL -> clusterId: UUID! (scalar)
-        if (this.ClusterId == null && ec.Includes("clusterId",true))
+        if (ec.Includes("clusterId",true))
         {
-            this.ClusterId = "FETCH";
+            if(this.ClusterId == null) {
+
+                this.ClusterId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterId != null && ec.Excludes("clusterId",true))
+        {
+            this.ClusterId = null;
         }
         //      C# -> System.String? DiskId
         // GraphQL -> diskId: String! (scalar)
-        if (this.DiskId == null && ec.Includes("diskId",true))
+        if (ec.Includes("diskId",true))
         {
-            this.DiskId = "FETCH";
+            if(this.DiskId == null) {
+
+                this.DiskId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DiskId != null && ec.Excludes("diskId",true))
+        {
+            this.DiskId = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.Boolean? IsEncrypted
         // GraphQL -> isEncrypted: Boolean! (scalar)
-        if (this.IsEncrypted == null && ec.Includes("isEncrypted",true))
+        if (ec.Includes("isEncrypted",true))
         {
-            this.IsEncrypted = true;
+            if(this.IsEncrypted == null) {
+
+                this.IsEncrypted = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsEncrypted != null && ec.Excludes("isEncrypted",true))
+        {
+            this.IsEncrypted = null;
         }
         //      C# -> System.Boolean? IsResizable
         // GraphQL -> isResizable: Boolean! (scalar)
-        if (this.IsResizable == null && ec.Includes("isResizable",true))
+        if (ec.Includes("isResizable",true))
         {
-            this.IsResizable = true;
+            if(this.IsResizable == null) {
+
+                this.IsResizable = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsResizable != null && ec.Excludes("isResizable",true))
+        {
+            this.IsResizable = null;
         }
         //      C# -> System.Boolean? LedStatus
         // GraphQL -> ledStatus: Boolean (scalar)
-        if (this.LedStatus == null && ec.Includes("ledStatus",true))
+        if (ec.Includes("ledStatus",true))
         {
-            this.LedStatus = true;
+            if(this.LedStatus == null) {
+
+                this.LedStatus = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LedStatus != null && ec.Excludes("ledStatus",true))
+        {
+            this.LedStatus = null;
         }
         //      C# -> System.String? NodeId
         // GraphQL -> nodeId: String (scalar)
-        if (this.NodeId == null && ec.Includes("nodeId",true))
+        if (ec.Includes("nodeId",true))
         {
-            this.NodeId = "FETCH";
+            if(this.NodeId == null) {
+
+                this.NodeId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NodeId != null && ec.Excludes("nodeId",true))
+        {
+            this.NodeId = null;
         }
         //      C# -> System.String? Path
         // GraphQL -> path: String! (scalar)
-        if (this.Path == null && ec.Includes("path",true))
+        if (ec.Includes("path",true))
         {
-            this.Path = "FETCH";
+            if(this.Path == null) {
+
+                this.Path = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Path != null && ec.Excludes("path",true))
+        {
+            this.Path = null;
         }
         //      C# -> System.String? Serial
         // GraphQL -> serial: String (scalar)
-        if (this.Serial == null && ec.Includes("serial",true))
+        if (ec.Includes("serial",true))
         {
-            this.Serial = "FETCH";
+            if(this.Serial == null) {
+
+                this.Serial = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Serial != null && ec.Excludes("serial",true))
+        {
+            this.Serial = null;
         }
         //      C# -> System.Int64? UnallocatedBytes
         // GraphQL -> unallocatedBytes: Long (scalar)
-        if (this.UnallocatedBytes == null && ec.Includes("unallocatedBytes",true))
+        if (ec.Includes("unallocatedBytes",true))
         {
-            this.UnallocatedBytes = new System.Int64();
+            if(this.UnallocatedBytes == null) {
+
+                this.UnallocatedBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UnallocatedBytes != null && ec.Excludes("unallocatedBytes",true))
+        {
+            this.UnallocatedBytes = null;
         }
         //      C# -> System.Int64? UsableBytes
         // GraphQL -> usableBytes: Long (scalar)
-        if (this.UsableBytes == null && ec.Includes("usableBytes",true))
+        if (ec.Includes("usableBytes",true))
         {
-            this.UsableBytes = new System.Int64();
+            if(this.UsableBytes == null) {
+
+                this.UsableBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UsableBytes != null && ec.Excludes("usableBytes",true))
+        {
+            this.UsableBytes = null;
         }
     }
 
@@ -354,9 +565,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ClusterDisk> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

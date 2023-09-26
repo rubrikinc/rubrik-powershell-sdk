@@ -200,119 +200,192 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> ClassificationPolicyColor? ColorEnum
         // GraphQL -> colorEnum: ClassificationPolicyColor! (enum)
         if (this.ColorEnum != null) {
-            s += ind + "colorEnum\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "colorEnum\n" ;
+            } else {
+                s += ind + "colorEnum\n" ;
+            }
         }
         //      C# -> ClassificationPolicyMode? Mode
         // GraphQL -> mode: ClassificationPolicyMode! (enum)
         if (this.Mode != null) {
-            s += ind + "mode\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "mode\n" ;
+            } else {
+                s += ind + "mode\n" ;
+            }
         }
         //      C# -> List<HierarchyObject>? HierarchyObjects
         // GraphQL -> hierarchyObjects: [HierarchyObject]! (interface)
         if (this.HierarchyObjects != null) {
-                var fspec = this.HierarchyObjects.AsFieldSpec(indent+1);
+                var fspec = this.HierarchyObjects.AsFieldSpec(conf.Child("hierarchyObjects"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "hierarchyObjects {\n" + fspec + ind + "}\n";
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "hierarchyObjects {\n" + fspec + ind + "}\n";
+                }
             }
         }
         //      C# -> System.Int64? CreatedTime
         // GraphQL -> createdTime: Long! (scalar)
         if (this.CreatedTime != null) {
-            s += ind + "createdTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "createdTime\n" ;
+            } else {
+                s += ind + "createdTime\n" ;
+            }
         }
         //      C# -> System.Boolean? Deletable
         // GraphQL -> deletable: Boolean! (scalar)
         if (this.Deletable != null) {
-            s += ind + "deletable\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "deletable\n" ;
+            } else {
+                s += ind + "deletable\n" ;
+            }
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
         if (this.Description != null) {
-            s += ind + "description\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "description\n" ;
+            } else {
+                s += ind + "description\n" ;
+            }
         }
         //      C# -> List<System.String>? HierarchyObjectIds
         // GraphQL -> hierarchyObjectIds: [String!]! (scalar)
         if (this.HierarchyObjectIds != null) {
-            s += ind + "hierarchyObjectIds\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hierarchyObjectIds\n" ;
+            } else {
+                s += ind + "hierarchyObjectIds\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.Int64? LastUpdatedTime
         // GraphQL -> lastUpdatedTime: Long! (scalar)
         if (this.LastUpdatedTime != null) {
-            s += ind + "lastUpdatedTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "lastUpdatedTime\n" ;
+            } else {
+                s += ind + "lastUpdatedTime\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.Int32? NumAnalyzers
         // GraphQL -> numAnalyzers: Int! (scalar)
         if (this.NumAnalyzers != null) {
-            s += ind + "numAnalyzers\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "numAnalyzers\n" ;
+            } else {
+                s += ind + "numAnalyzers\n" ;
+            }
         }
         //      C# -> System.Int32? TotalObjects
         // GraphQL -> totalObjects: Int! (scalar)
         if (this.TotalObjects != null) {
-            s += ind + "totalObjects\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "totalObjects\n" ;
+            } else {
+                s += ind + "totalObjects\n" ;
+            }
         }
         //      C# -> List<Analyzer>? Analyzers
         // GraphQL -> analyzers: [Analyzer!]! (type)
         if (this.Analyzers != null) {
-            var fspec = this.Analyzers.AsFieldSpec(indent+1);
+            var fspec = this.Analyzers.AsFieldSpec(conf.Child("analyzers"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "analyzers {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "analyzers {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> AssignmentResourceDetailsConnection? AssignmentResources
         // GraphQL -> assignmentResources: AssignmentResourceDetailsConnection! (type)
         if (this.AssignmentResources != null) {
-            var fspec = this.AssignmentResources.AsFieldSpec(indent+1);
+            var fspec = this.AssignmentResources.AsFieldSpec(conf.Child("assignmentResources"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "assignmentResources {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "assignmentResources {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> User? Creator
         // GraphQL -> creator: User (type)
         if (this.Creator != null) {
-            var fspec = this.Creator.AsFieldSpec(indent+1);
+            var fspec = this.Creator.AsFieldSpec(conf.Child("creator"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "creator {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "creator {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> HierarchyObjectConnection? HierarchyObjectConnection
         // GraphQL -> hierarchyObjectConnection: HierarchyObjectConnection! (type)
         if (this.HierarchyObjectConnection != null) {
-            var fspec = this.HierarchyObjectConnection.AsFieldSpec(indent+1);
+            var fspec = this.HierarchyObjectConnection.AsFieldSpec(conf.Child("hierarchyObjectConnection"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "hierarchyObjectConnection {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "hierarchyObjectConnection {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<ObjectStatus>? ObjectStatuses
         // GraphQL -> objectStatuses: [ObjectStatus!]! (type)
         if (this.ObjectStatuses != null) {
-            var fspec = this.ObjectStatuses.AsFieldSpec(indent+1);
+            var fspec = this.ObjectStatuses.AsFieldSpec(conf.Child("objectStatuses"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "objectStatuses {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "objectStatuses {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<ClassificationPolicyWhitelistDetailedEntry>? Whitelists
         // GraphQL -> whitelists: [ClassificationPolicyWhitelistDetailedEntry!]! (type)
         if (this.Whitelists != null) {
-            var fspec = this.Whitelists.AsFieldSpec(indent+1);
+            var fspec = this.Whitelists.AsFieldSpec(conf.Child("whitelists"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "whitelists {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "whitelists {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -324,118 +397,323 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> ClassificationPolicyColor? ColorEnum
         // GraphQL -> colorEnum: ClassificationPolicyColor! (enum)
-        if (this.ColorEnum == null && ec.Includes("colorEnum",true))
+        if (ec.Includes("colorEnum",true))
         {
-            this.ColorEnum = new ClassificationPolicyColor();
+            if(this.ColorEnum == null) {
+
+                this.ColorEnum = new ClassificationPolicyColor();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ColorEnum != null && ec.Excludes("colorEnum",true))
+        {
+            this.ColorEnum = null;
         }
         //      C# -> ClassificationPolicyMode? Mode
         // GraphQL -> mode: ClassificationPolicyMode! (enum)
-        if (this.Mode == null && ec.Includes("mode",true))
+        if (ec.Includes("mode",true))
         {
-            this.Mode = new ClassificationPolicyMode();
+            if(this.Mode == null) {
+
+                this.Mode = new ClassificationPolicyMode();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Mode != null && ec.Excludes("mode",true))
+        {
+            this.Mode = null;
         }
         //      C# -> List<HierarchyObject>? HierarchyObjects
         // GraphQL -> hierarchyObjects: [HierarchyObject]! (interface)
-        if (this.HierarchyObjects == null && ec.Includes("hierarchyObjects",false))
+        if (ec.Includes("hierarchyObjects",false))
         {
-            this.HierarchyObjects = new List<HierarchyObject>();
-            this.HierarchyObjects.ApplyExploratoryFieldSpec(ec.NewChild("hierarchyObjects"));
+            if(this.HierarchyObjects == null) {
+
+                this.HierarchyObjects = new List<HierarchyObject>();
+                this.HierarchyObjects.ApplyExploratoryFieldSpec(ec.NewChild("hierarchyObjects"));
+
+            } else {
+
+                this.HierarchyObjects.ApplyExploratoryFieldSpec(ec.NewChild("hierarchyObjects"));
+
+            }
+        }
+        else if (this.HierarchyObjects != null && ec.Excludes("hierarchyObjects",false))
+        {
+            this.HierarchyObjects = null;
         }
         //      C# -> System.Int64? CreatedTime
         // GraphQL -> createdTime: Long! (scalar)
-        if (this.CreatedTime == null && ec.Includes("createdTime",true))
+        if (ec.Includes("createdTime",true))
         {
-            this.CreatedTime = new System.Int64();
+            if(this.CreatedTime == null) {
+
+                this.CreatedTime = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CreatedTime != null && ec.Excludes("createdTime",true))
+        {
+            this.CreatedTime = null;
         }
         //      C# -> System.Boolean? Deletable
         // GraphQL -> deletable: Boolean! (scalar)
-        if (this.Deletable == null && ec.Includes("deletable",true))
+        if (ec.Includes("deletable",true))
         {
-            this.Deletable = true;
+            if(this.Deletable == null) {
+
+                this.Deletable = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Deletable != null && ec.Excludes("deletable",true))
+        {
+            this.Deletable = null;
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
-        if (this.Description == null && ec.Includes("description",true))
+        if (ec.Includes("description",true))
         {
-            this.Description = "FETCH";
+            if(this.Description == null) {
+
+                this.Description = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Description != null && ec.Excludes("description",true))
+        {
+            this.Description = null;
         }
         //      C# -> List<System.String>? HierarchyObjectIds
         // GraphQL -> hierarchyObjectIds: [String!]! (scalar)
-        if (this.HierarchyObjectIds == null && ec.Includes("hierarchyObjectIds",true))
+        if (ec.Includes("hierarchyObjectIds",true))
         {
-            this.HierarchyObjectIds = new List<System.String>();
+            if(this.HierarchyObjectIds == null) {
+
+                this.HierarchyObjectIds = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.HierarchyObjectIds != null && ec.Excludes("hierarchyObjectIds",true))
+        {
+            this.HierarchyObjectIds = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.Int64? LastUpdatedTime
         // GraphQL -> lastUpdatedTime: Long! (scalar)
-        if (this.LastUpdatedTime == null && ec.Includes("lastUpdatedTime",true))
+        if (ec.Includes("lastUpdatedTime",true))
         {
-            this.LastUpdatedTime = new System.Int64();
+            if(this.LastUpdatedTime == null) {
+
+                this.LastUpdatedTime = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastUpdatedTime != null && ec.Excludes("lastUpdatedTime",true))
+        {
+            this.LastUpdatedTime = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.Int32? NumAnalyzers
         // GraphQL -> numAnalyzers: Int! (scalar)
-        if (this.NumAnalyzers == null && ec.Includes("numAnalyzers",true))
+        if (ec.Includes("numAnalyzers",true))
         {
-            this.NumAnalyzers = Int32.MinValue;
+            if(this.NumAnalyzers == null) {
+
+                this.NumAnalyzers = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.NumAnalyzers != null && ec.Excludes("numAnalyzers",true))
+        {
+            this.NumAnalyzers = null;
         }
         //      C# -> System.Int32? TotalObjects
         // GraphQL -> totalObjects: Int! (scalar)
-        if (this.TotalObjects == null && ec.Includes("totalObjects",true))
+        if (ec.Includes("totalObjects",true))
         {
-            this.TotalObjects = Int32.MinValue;
+            if(this.TotalObjects == null) {
+
+                this.TotalObjects = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalObjects != null && ec.Excludes("totalObjects",true))
+        {
+            this.TotalObjects = null;
         }
         //      C# -> List<Analyzer>? Analyzers
         // GraphQL -> analyzers: [Analyzer!]! (type)
-        if (this.Analyzers == null && ec.Includes("analyzers",false))
+        if (ec.Includes("analyzers",false))
         {
-            this.Analyzers = new List<Analyzer>();
-            this.Analyzers.ApplyExploratoryFieldSpec(ec.NewChild("analyzers"));
+            if(this.Analyzers == null) {
+
+                this.Analyzers = new List<Analyzer>();
+                this.Analyzers.ApplyExploratoryFieldSpec(ec.NewChild("analyzers"));
+
+            } else {
+
+                this.Analyzers.ApplyExploratoryFieldSpec(ec.NewChild("analyzers"));
+
+            }
+        }
+        else if (this.Analyzers != null && ec.Excludes("analyzers",false))
+        {
+            this.Analyzers = null;
         }
         //      C# -> AssignmentResourceDetailsConnection? AssignmentResources
         // GraphQL -> assignmentResources: AssignmentResourceDetailsConnection! (type)
-        if (this.AssignmentResources == null && ec.Includes("assignmentResources",false))
+        if (ec.Includes("assignmentResources",false))
         {
-            this.AssignmentResources = new AssignmentResourceDetailsConnection();
-            this.AssignmentResources.ApplyExploratoryFieldSpec(ec.NewChild("assignmentResources"));
+            if(this.AssignmentResources == null) {
+
+                this.AssignmentResources = new AssignmentResourceDetailsConnection();
+                this.AssignmentResources.ApplyExploratoryFieldSpec(ec.NewChild("assignmentResources"));
+
+            } else {
+
+                this.AssignmentResources.ApplyExploratoryFieldSpec(ec.NewChild("assignmentResources"));
+
+            }
+        }
+        else if (this.AssignmentResources != null && ec.Excludes("assignmentResources",false))
+        {
+            this.AssignmentResources = null;
         }
         //      C# -> User? Creator
         // GraphQL -> creator: User (type)
-        if (this.Creator == null && ec.Includes("creator",false))
+        if (ec.Includes("creator",false))
         {
-            this.Creator = new User();
-            this.Creator.ApplyExploratoryFieldSpec(ec.NewChild("creator"));
+            if(this.Creator == null) {
+
+                this.Creator = new User();
+                this.Creator.ApplyExploratoryFieldSpec(ec.NewChild("creator"));
+
+            } else {
+
+                this.Creator.ApplyExploratoryFieldSpec(ec.NewChild("creator"));
+
+            }
+        }
+        else if (this.Creator != null && ec.Excludes("creator",false))
+        {
+            this.Creator = null;
         }
         //      C# -> HierarchyObjectConnection? HierarchyObjectConnection
         // GraphQL -> hierarchyObjectConnection: HierarchyObjectConnection! (type)
-        if (this.HierarchyObjectConnection == null && ec.Includes("hierarchyObjectConnection",false))
+        if (ec.Includes("hierarchyObjectConnection",false))
         {
-            this.HierarchyObjectConnection = new HierarchyObjectConnection();
-            this.HierarchyObjectConnection.ApplyExploratoryFieldSpec(ec.NewChild("hierarchyObjectConnection"));
+            if(this.HierarchyObjectConnection == null) {
+
+                this.HierarchyObjectConnection = new HierarchyObjectConnection();
+                this.HierarchyObjectConnection.ApplyExploratoryFieldSpec(ec.NewChild("hierarchyObjectConnection"));
+
+            } else {
+
+                this.HierarchyObjectConnection.ApplyExploratoryFieldSpec(ec.NewChild("hierarchyObjectConnection"));
+
+            }
+        }
+        else if (this.HierarchyObjectConnection != null && ec.Excludes("hierarchyObjectConnection",false))
+        {
+            this.HierarchyObjectConnection = null;
         }
         //      C# -> List<ObjectStatus>? ObjectStatuses
         // GraphQL -> objectStatuses: [ObjectStatus!]! (type)
-        if (this.ObjectStatuses == null && ec.Includes("objectStatuses",false))
+        if (ec.Includes("objectStatuses",false))
         {
-            this.ObjectStatuses = new List<ObjectStatus>();
-            this.ObjectStatuses.ApplyExploratoryFieldSpec(ec.NewChild("objectStatuses"));
+            if(this.ObjectStatuses == null) {
+
+                this.ObjectStatuses = new List<ObjectStatus>();
+                this.ObjectStatuses.ApplyExploratoryFieldSpec(ec.NewChild("objectStatuses"));
+
+            } else {
+
+                this.ObjectStatuses.ApplyExploratoryFieldSpec(ec.NewChild("objectStatuses"));
+
+            }
+        }
+        else if (this.ObjectStatuses != null && ec.Excludes("objectStatuses",false))
+        {
+            this.ObjectStatuses = null;
         }
         //      C# -> List<ClassificationPolicyWhitelistDetailedEntry>? Whitelists
         // GraphQL -> whitelists: [ClassificationPolicyWhitelistDetailedEntry!]! (type)
-        if (this.Whitelists == null && ec.Includes("whitelists",false))
+        if (ec.Includes("whitelists",false))
         {
-            this.Whitelists = new List<ClassificationPolicyWhitelistDetailedEntry>();
-            this.Whitelists.ApplyExploratoryFieldSpec(ec.NewChild("whitelists"));
+            if(this.Whitelists == null) {
+
+                this.Whitelists = new List<ClassificationPolicyWhitelistDetailedEntry>();
+                this.Whitelists.ApplyExploratoryFieldSpec(ec.NewChild("whitelists"));
+
+            } else {
+
+                this.Whitelists.ApplyExploratoryFieldSpec(ec.NewChild("whitelists"));
+
+            }
+        }
+        else if (this.Whitelists != null && ec.Excludes("whitelists",false))
+        {
+            this.Whitelists = null;
         }
     }
 
@@ -462,9 +740,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ClassificationPolicyDetail> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

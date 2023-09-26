@@ -65,26 +65,39 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? ImageSizeOpt
         // GraphQL -> imageSizeOpt: Long (scalar)
         if (this.ImageSizeOpt != null) {
-            s += ind + "imageSizeOpt\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "imageSizeOpt\n" ;
+            } else {
+                s += ind + "imageSizeOpt\n" ;
+            }
         }
         //      C# -> System.String? MountDir
         // GraphQL -> mountDir: String! (scalar)
         if (this.MountDir != null) {
-            s += ind + "mountDir\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "mountDir\n" ;
+            } else {
+                s += ind + "mountDir\n" ;
+            }
         }
         //      C# -> ClusterNode? Node
         // GraphQL -> node: ClusterNode (type)
         if (this.Node != null) {
-            var fspec = this.Node.AsFieldSpec(indent+1);
+            var fspec = this.Node.AsFieldSpec(conf.Child("node"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "node {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "node {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -96,22 +109,56 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? ImageSizeOpt
         // GraphQL -> imageSizeOpt: Long (scalar)
-        if (this.ImageSizeOpt == null && ec.Includes("imageSizeOpt",true))
+        if (ec.Includes("imageSizeOpt",true))
         {
-            this.ImageSizeOpt = new System.Int64();
+            if(this.ImageSizeOpt == null) {
+
+                this.ImageSizeOpt = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ImageSizeOpt != null && ec.Excludes("imageSizeOpt",true))
+        {
+            this.ImageSizeOpt = null;
         }
         //      C# -> System.String? MountDir
         // GraphQL -> mountDir: String! (scalar)
-        if (this.MountDir == null && ec.Includes("mountDir",true))
+        if (ec.Includes("mountDir",true))
         {
-            this.MountDir = "FETCH";
+            if(this.MountDir == null) {
+
+                this.MountDir = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.MountDir != null && ec.Excludes("mountDir",true))
+        {
+            this.MountDir = null;
         }
         //      C# -> ClusterNode? Node
         // GraphQL -> node: ClusterNode (type)
-        if (this.Node == null && ec.Includes("node",false))
+        if (ec.Includes("node",false))
         {
-            this.Node = new ClusterNode();
-            this.Node.ApplyExploratoryFieldSpec(ec.NewChild("node"));
+            if(this.Node == null) {
+
+                this.Node = new ClusterNode();
+                this.Node.ApplyExploratoryFieldSpec(ec.NewChild("node"));
+
+            } else {
+
+                this.Node.ApplyExploratoryFieldSpec(ec.NewChild("node"));
+
+            }
+        }
+        else if (this.Node != null && ec.Excludes("node",false))
+        {
+            this.Node = null;
         }
     }
 
@@ -138,9 +185,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ManagedVolumeMountSpec> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

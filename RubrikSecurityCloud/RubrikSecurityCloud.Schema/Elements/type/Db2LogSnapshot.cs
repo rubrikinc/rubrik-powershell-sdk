@@ -119,56 +119,93 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
         if (this.CdmId != null) {
-            s += ind + "cdmId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cdmId\n" ;
+            } else {
+                s += ind + "cdmId\n" ;
+            }
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
         if (this.ClusterUuid != null) {
-            s += ind + "clusterUuid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterUuid\n" ;
+            } else {
+                s += ind + "clusterUuid\n" ;
+            }
         }
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime (scalar)
         if (this.Date != null) {
-            s += ind + "date\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "date\n" ;
+            } else {
+                s += ind + "date\n" ;
+            }
         }
         //      C# -> System.String? Fid
         // GraphQL -> fid: String! (scalar)
         if (this.Fid != null) {
-            s += ind + "fid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "fid\n" ;
+            } else {
+                s += ind + "fid\n" ;
+            }
         }
         //      C# -> System.Int64? InternalTimestamp
         // GraphQL -> internalTimestamp: Long! (scalar)
         if (this.InternalTimestamp != null) {
-            s += ind + "internalTimestamp\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "internalTimestamp\n" ;
+            } else {
+                s += ind + "internalTimestamp\n" ;
+            }
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean! (scalar)
         if (this.IsArchived != null) {
-            s += ind + "isArchived\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isArchived\n" ;
+            } else {
+                s += ind + "isArchived\n" ;
+            }
         }
         //      C# -> System.String? WorkloadId
         // GraphQL -> workloadId: String! (scalar)
         if (this.WorkloadId != null) {
-            s += ind + "workloadId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "workloadId\n" ;
+            } else {
+                s += ind + "workloadId\n" ;
+            }
         }
         //      C# -> System.String? WorkloadType
         // GraphQL -> workloadType: String! (scalar)
         if (this.WorkloadType != null) {
-            s += ind + "workloadType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "workloadType\n" ;
+            } else {
+                s += ind + "workloadType\n" ;
+            }
         }
         //      C# -> Db2LogSnapshotAppMetadata? AppMetadata
         // GraphQL -> appMetadata: Db2LogSnapshotAppMetadata (type)
         if (this.AppMetadata != null) {
-            var fspec = this.AppMetadata.AsFieldSpec(indent+1);
+            var fspec = this.AppMetadata.AsFieldSpec(conf.Child("appMetadata"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "appMetadata {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "appMetadata {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -180,58 +217,158 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
-        if (this.CdmId == null && ec.Includes("cdmId",true))
+        if (ec.Includes("cdmId",true))
         {
-            this.CdmId = "FETCH";
+            if(this.CdmId == null) {
+
+                this.CdmId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CdmId != null && ec.Excludes("cdmId",true))
+        {
+            this.CdmId = null;
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
-        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
+        if (ec.Includes("clusterUuid",true))
         {
-            this.ClusterUuid = "FETCH";
+            if(this.ClusterUuid == null) {
+
+                this.ClusterUuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterUuid != null && ec.Excludes("clusterUuid",true))
+        {
+            this.ClusterUuid = null;
         }
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime (scalar)
-        if (this.Date == null && ec.Includes("date",true))
+        if (ec.Includes("date",true))
         {
-            this.Date = new DateTime();
+            if(this.Date == null) {
+
+                this.Date = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Date != null && ec.Excludes("date",true))
+        {
+            this.Date = null;
         }
         //      C# -> System.String? Fid
         // GraphQL -> fid: String! (scalar)
-        if (this.Fid == null && ec.Includes("fid",true))
+        if (ec.Includes("fid",true))
         {
-            this.Fid = "FETCH";
+            if(this.Fid == null) {
+
+                this.Fid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Fid != null && ec.Excludes("fid",true))
+        {
+            this.Fid = null;
         }
         //      C# -> System.Int64? InternalTimestamp
         // GraphQL -> internalTimestamp: Long! (scalar)
-        if (this.InternalTimestamp == null && ec.Includes("internalTimestamp",true))
+        if (ec.Includes("internalTimestamp",true))
         {
-            this.InternalTimestamp = new System.Int64();
+            if(this.InternalTimestamp == null) {
+
+                this.InternalTimestamp = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.InternalTimestamp != null && ec.Excludes("internalTimestamp",true))
+        {
+            this.InternalTimestamp = null;
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean! (scalar)
-        if (this.IsArchived == null && ec.Includes("isArchived",true))
+        if (ec.Includes("isArchived",true))
         {
-            this.IsArchived = true;
+            if(this.IsArchived == null) {
+
+                this.IsArchived = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsArchived != null && ec.Excludes("isArchived",true))
+        {
+            this.IsArchived = null;
         }
         //      C# -> System.String? WorkloadId
         // GraphQL -> workloadId: String! (scalar)
-        if (this.WorkloadId == null && ec.Includes("workloadId",true))
+        if (ec.Includes("workloadId",true))
         {
-            this.WorkloadId = "FETCH";
+            if(this.WorkloadId == null) {
+
+                this.WorkloadId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.WorkloadId != null && ec.Excludes("workloadId",true))
+        {
+            this.WorkloadId = null;
         }
         //      C# -> System.String? WorkloadType
         // GraphQL -> workloadType: String! (scalar)
-        if (this.WorkloadType == null && ec.Includes("workloadType",true))
+        if (ec.Includes("workloadType",true))
         {
-            this.WorkloadType = "FETCH";
+            if(this.WorkloadType == null) {
+
+                this.WorkloadType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.WorkloadType != null && ec.Excludes("workloadType",true))
+        {
+            this.WorkloadType = null;
         }
         //      C# -> Db2LogSnapshotAppMetadata? AppMetadata
         // GraphQL -> appMetadata: Db2LogSnapshotAppMetadata (type)
-        if (this.AppMetadata == null && ec.Includes("appMetadata",false))
+        if (ec.Includes("appMetadata",false))
         {
-            this.AppMetadata = new Db2LogSnapshotAppMetadata();
-            this.AppMetadata.ApplyExploratoryFieldSpec(ec.NewChild("appMetadata"));
+            if(this.AppMetadata == null) {
+
+                this.AppMetadata = new Db2LogSnapshotAppMetadata();
+                this.AppMetadata.ApplyExploratoryFieldSpec(ec.NewChild("appMetadata"));
+
+            } else {
+
+                this.AppMetadata.ApplyExploratoryFieldSpec(ec.NewChild("appMetadata"));
+
+            }
+        }
+        else if (this.AppMetadata != null && ec.Excludes("appMetadata",false))
+        {
+            this.AppMetadata = null;
         }
     }
 
@@ -258,9 +395,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<Db2LogSnapshot> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

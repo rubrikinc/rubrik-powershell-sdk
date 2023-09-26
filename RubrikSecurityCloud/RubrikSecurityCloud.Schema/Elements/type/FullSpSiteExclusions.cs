@@ -56,21 +56,30 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? SiteFid
         // GraphQL -> siteFid: String! (scalar)
         if (this.SiteFid != null) {
-            s += ind + "siteFid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "siteFid\n" ;
+            } else {
+                s += ind + "siteFid\n" ;
+            }
         }
         //      C# -> List<FullSpObjectExclusion>? ExcludedObjects
         // GraphQL -> excludedObjects: [FullSpObjectExclusion!]! (type)
         if (this.ExcludedObjects != null) {
-            var fspec = this.ExcludedObjects.AsFieldSpec(indent+1);
+            var fspec = this.ExcludedObjects.AsFieldSpec(conf.Child("excludedObjects"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "excludedObjects {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "excludedObjects {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -82,16 +91,39 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? SiteFid
         // GraphQL -> siteFid: String! (scalar)
-        if (this.SiteFid == null && ec.Includes("siteFid",true))
+        if (ec.Includes("siteFid",true))
         {
-            this.SiteFid = "FETCH";
+            if(this.SiteFid == null) {
+
+                this.SiteFid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SiteFid != null && ec.Excludes("siteFid",true))
+        {
+            this.SiteFid = null;
         }
         //      C# -> List<FullSpObjectExclusion>? ExcludedObjects
         // GraphQL -> excludedObjects: [FullSpObjectExclusion!]! (type)
-        if (this.ExcludedObjects == null && ec.Includes("excludedObjects",false))
+        if (ec.Includes("excludedObjects",false))
         {
-            this.ExcludedObjects = new List<FullSpObjectExclusion>();
-            this.ExcludedObjects.ApplyExploratoryFieldSpec(ec.NewChild("excludedObjects"));
+            if(this.ExcludedObjects == null) {
+
+                this.ExcludedObjects = new List<FullSpObjectExclusion>();
+                this.ExcludedObjects.ApplyExploratoryFieldSpec(ec.NewChild("excludedObjects"));
+
+            } else {
+
+                this.ExcludedObjects.ApplyExploratoryFieldSpec(ec.NewChild("excludedObjects"));
+
+            }
+        }
+        else if (this.ExcludedObjects != null && ec.Excludes("excludedObjects",false))
+        {
+            this.ExcludedObjects = null;
         }
     }
 
@@ -118,9 +150,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<FullSpSiteExclusions> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

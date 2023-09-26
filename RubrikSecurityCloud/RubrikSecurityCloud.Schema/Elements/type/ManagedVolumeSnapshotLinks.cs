@@ -56,24 +56,33 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> Link? ExportLink
         // GraphQL -> exportLink: Link (type)
         if (this.ExportLink != null) {
-            var fspec = this.ExportLink.AsFieldSpec(indent+1);
+            var fspec = this.ExportLink.AsFieldSpec(conf.Child("exportLink"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "exportLink {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "exportLink {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> Link? Self
         // GraphQL -> self: Link (type)
         if (this.Self != null) {
-            var fspec = this.Self.AsFieldSpec(indent+1);
+            var fspec = this.Self.AsFieldSpec(conf.Child("self"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "self {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "self {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -85,17 +94,41 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> Link? ExportLink
         // GraphQL -> exportLink: Link (type)
-        if (this.ExportLink == null && ec.Includes("exportLink",false))
+        if (ec.Includes("exportLink",false))
         {
-            this.ExportLink = new Link();
-            this.ExportLink.ApplyExploratoryFieldSpec(ec.NewChild("exportLink"));
+            if(this.ExportLink == null) {
+
+                this.ExportLink = new Link();
+                this.ExportLink.ApplyExploratoryFieldSpec(ec.NewChild("exportLink"));
+
+            } else {
+
+                this.ExportLink.ApplyExploratoryFieldSpec(ec.NewChild("exportLink"));
+
+            }
+        }
+        else if (this.ExportLink != null && ec.Excludes("exportLink",false))
+        {
+            this.ExportLink = null;
         }
         //      C# -> Link? Self
         // GraphQL -> self: Link (type)
-        if (this.Self == null && ec.Includes("self",false))
+        if (ec.Includes("self",false))
         {
-            this.Self = new Link();
-            this.Self.ApplyExploratoryFieldSpec(ec.NewChild("self"));
+            if(this.Self == null) {
+
+                this.Self = new Link();
+                this.Self.ApplyExploratoryFieldSpec(ec.NewChild("self"));
+
+            } else {
+
+                this.Self.ApplyExploratoryFieldSpec(ec.NewChild("self"));
+
+            }
+        }
+        else if (this.Self != null && ec.Excludes("self",false))
+        {
+            this.Self = null;
         }
     }
 
@@ -122,9 +155,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ManagedVolumeSnapshotLinks> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

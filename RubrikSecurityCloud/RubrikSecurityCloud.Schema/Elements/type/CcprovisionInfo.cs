@@ -83,34 +83,55 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> CcpJobStatus? JobStatus
         // GraphQL -> jobStatus: CcpJobStatus! (enum)
         if (this.JobStatus != null) {
-            s += ind + "jobStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "jobStatus\n" ;
+            } else {
+                s += ind + "jobStatus\n" ;
+            }
         }
         //      C# -> CcpJobType? JobType
         // GraphQL -> jobType: CcpJobType! (enum)
         if (this.JobType != null) {
-            s += ind + "jobType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "jobType\n" ;
+            } else {
+                s += ind + "jobType\n" ;
+            }
         }
         //      C# -> CcpVendorType? Vendor
         // GraphQL -> vendor: CcpVendorType! (enum)
         if (this.Vendor != null) {
-            s += ind + "vendor\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "vendor\n" ;
+            } else {
+                s += ind + "vendor\n" ;
+            }
         }
         //      C# -> System.String? MarshaledConfig
         // GraphQL -> marshaledConfig: String! (scalar)
         if (this.MarshaledConfig != null) {
-            s += ind + "marshaledConfig\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "marshaledConfig\n" ;
+            } else {
+                s += ind + "marshaledConfig\n" ;
+            }
         }
         //      C# -> System.Int32? Progress
         // GraphQL -> progress: Int! (scalar)
         if (this.Progress != null) {
-            s += ind + "progress\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "progress\n" ;
+            } else {
+                s += ind + "progress\n" ;
+            }
         }
         return s;
     }
@@ -121,33 +142,88 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> CcpJobStatus? JobStatus
         // GraphQL -> jobStatus: CcpJobStatus! (enum)
-        if (this.JobStatus == null && ec.Includes("jobStatus",true))
+        if (ec.Includes("jobStatus",true))
         {
-            this.JobStatus = new CcpJobStatus();
+            if(this.JobStatus == null) {
+
+                this.JobStatus = new CcpJobStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.JobStatus != null && ec.Excludes("jobStatus",true))
+        {
+            this.JobStatus = null;
         }
         //      C# -> CcpJobType? JobType
         // GraphQL -> jobType: CcpJobType! (enum)
-        if (this.JobType == null && ec.Includes("jobType",true))
+        if (ec.Includes("jobType",true))
         {
-            this.JobType = new CcpJobType();
+            if(this.JobType == null) {
+
+                this.JobType = new CcpJobType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.JobType != null && ec.Excludes("jobType",true))
+        {
+            this.JobType = null;
         }
         //      C# -> CcpVendorType? Vendor
         // GraphQL -> vendor: CcpVendorType! (enum)
-        if (this.Vendor == null && ec.Includes("vendor",true))
+        if (ec.Includes("vendor",true))
         {
-            this.Vendor = new CcpVendorType();
+            if(this.Vendor == null) {
+
+                this.Vendor = new CcpVendorType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Vendor != null && ec.Excludes("vendor",true))
+        {
+            this.Vendor = null;
         }
         //      C# -> System.String? MarshaledConfig
         // GraphQL -> marshaledConfig: String! (scalar)
-        if (this.MarshaledConfig == null && ec.Includes("marshaledConfig",true))
+        if (ec.Includes("marshaledConfig",true))
         {
-            this.MarshaledConfig = "FETCH";
+            if(this.MarshaledConfig == null) {
+
+                this.MarshaledConfig = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.MarshaledConfig != null && ec.Excludes("marshaledConfig",true))
+        {
+            this.MarshaledConfig = null;
         }
         //      C# -> System.Int32? Progress
         // GraphQL -> progress: Int! (scalar)
-        if (this.Progress == null && ec.Includes("progress",true))
+        if (ec.Includes("progress",true))
         {
-            this.Progress = Int32.MinValue;
+            if(this.Progress == null) {
+
+                this.Progress = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Progress != null && ec.Excludes("progress",true))
+        {
+            this.Progress = null;
         }
     }
 
@@ -174,9 +250,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CcprovisionInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

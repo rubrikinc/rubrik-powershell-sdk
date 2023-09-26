@@ -65,32 +65,45 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> SnappableConnection? SnappableConnection
         // GraphQL -> snappableConnection: SnappableConnection! (type)
         if (this.SnappableConnection != null) {
-            var fspec = this.SnappableConnection.AsFieldSpec(indent+1);
+            var fspec = this.SnappableConnection.AsFieldSpec(conf.Child("snappableConnection"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "snappableConnection {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "snappableConnection {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<SnappableGroupBy>? SnappableGroupByField
         // GraphQL -> snappableGroupBy: [SnappableGroupBy!]! (type)
         if (this.SnappableGroupByField != null) {
-            var fspec = this.SnappableGroupByField.AsFieldSpec(indent+1);
+            var fspec = this.SnappableGroupByField.AsFieldSpec(conf.Child("snappableGroupBy"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "snappableGroupBy {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "snappableGroupBy {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> SnappableGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: SnappableGroupByInfo! (union)
         if (this.GroupByInfo != null) {
-            var fspec = this.GroupByInfo.AsFieldSpec(indent+1);
+            var fspec = this.GroupByInfo.AsFieldSpec(conf.Child("groupByInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -102,25 +115,65 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> SnappableConnection? SnappableConnection
         // GraphQL -> snappableConnection: SnappableConnection! (type)
-        if (this.SnappableConnection == null && ec.Includes("snappableConnection",false))
+        if (ec.Includes("snappableConnection",false))
         {
-            this.SnappableConnection = new SnappableConnection();
-            this.SnappableConnection.ApplyExploratoryFieldSpec(ec.NewChild("snappableConnection"));
+            if(this.SnappableConnection == null) {
+
+                this.SnappableConnection = new SnappableConnection();
+                this.SnappableConnection.ApplyExploratoryFieldSpec(ec.NewChild("snappableConnection"));
+
+            } else {
+
+                this.SnappableConnection.ApplyExploratoryFieldSpec(ec.NewChild("snappableConnection"));
+
+            }
+        }
+        else if (this.SnappableConnection != null && ec.Excludes("snappableConnection",false))
+        {
+            this.SnappableConnection = null;
         }
         //      C# -> List<SnappableGroupBy>? SnappableGroupByField
         // GraphQL -> snappableGroupBy: [SnappableGroupBy!]! (type)
-        if (this.SnappableGroupByField == null && ec.Includes("snappableGroupBy",false))
+        if (ec.Includes("snappableGroupBy",false))
         {
-            this.SnappableGroupByField = new List<SnappableGroupBy>();
-            this.SnappableGroupByField.ApplyExploratoryFieldSpec(ec.NewChild("snappableGroupBy"));
+            if(this.SnappableGroupByField == null) {
+
+                this.SnappableGroupByField = new List<SnappableGroupBy>();
+                this.SnappableGroupByField.ApplyExploratoryFieldSpec(ec.NewChild("snappableGroupBy"));
+
+            } else {
+
+                this.SnappableGroupByField.ApplyExploratoryFieldSpec(ec.NewChild("snappableGroupBy"));
+
+            }
+        }
+        else if (this.SnappableGroupByField != null && ec.Excludes("snappableGroupBy",false))
+        {
+            this.SnappableGroupByField = null;
         }
         //      C# -> SnappableGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: SnappableGroupByInfo! (union)
-        if (this.GroupByInfo == null && ec.Includes("groupByInfo",false))
+        if (ec.Includes("groupByInfo",false))
         {
-            var impls = new List<SnappableGroupByInfo>();
-            impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
-            this.GroupByInfo = (SnappableGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+            if(this.GroupByInfo == null) {
+
+                var impls = new List<SnappableGroupByInfo>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
+                this.GroupByInfo = (SnappableGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<SnappableGroupByInfo>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
+                this.GroupByInfo = (SnappableGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.GroupByInfo != null && ec.Excludes("groupByInfo",false))
+        {
+            this.GroupByInfo = null;
         }
     }
 
@@ -147,9 +200,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SnappableGroupBy> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

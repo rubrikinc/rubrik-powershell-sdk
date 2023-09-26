@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> SlaMigrationStatus? Status
         // GraphQL -> status: SlaMigrationStatus! (enum)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         //      C# -> System.String? Msg
         // GraphQL -> msg: String! (scalar)
         if (this.Msg != null) {
-            s += ind + "msg\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "msg\n" ;
+            } else {
+                s += ind + "msg\n" ;
+            }
         }
         //      C# -> System.String? TaskchainId
         // GraphQL -> taskchainId: String! (scalar)
         if (this.TaskchainId != null) {
-            s += ind + "taskchainId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "taskchainId\n" ;
+            } else {
+                s += ind + "taskchainId\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> SlaMigrationStatus? Status
         // GraphQL -> status: SlaMigrationStatus! (enum)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = new SlaMigrationStatus();
+            if(this.Status == null) {
+
+                this.Status = new SlaMigrationStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
         //      C# -> System.String? Msg
         // GraphQL -> msg: String! (scalar)
-        if (this.Msg == null && ec.Includes("msg",true))
+        if (ec.Includes("msg",true))
         {
-            this.Msg = "FETCH";
+            if(this.Msg == null) {
+
+                this.Msg = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Msg != null && ec.Excludes("msg",true))
+        {
+            this.Msg = null;
         }
         //      C# -> System.String? TaskchainId
         // GraphQL -> taskchainId: String! (scalar)
-        if (this.TaskchainId == null && ec.Includes("taskchainId",true))
+        if (ec.Includes("taskchainId",true))
         {
-            this.TaskchainId = "FETCH";
+            if(this.TaskchainId == null) {
+
+                this.TaskchainId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TaskchainId != null && ec.Excludes("taskchainId",true))
+        {
+            this.TaskchainId = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SlaUpgrade> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

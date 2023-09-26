@@ -101,49 +101,78 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> FileModeEnum? FileMode
         // GraphQL -> fileMode: FileModeEnum! (enum)
         if (this.FileMode != null) {
-            s += ind + "fileMode\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "fileMode\n" ;
+            } else {
+                s += ind + "fileMode\n" ;
+            }
         }
         //      C# -> FileVersionSourceEnum? Source
         // GraphQL -> source: FileVersionSourceEnum! (enum)
         if (this.Source != null) {
-            s += ind + "source\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "source\n" ;
+            } else {
+                s += ind + "source\n" ;
+            }
         }
         //      C# -> DateTime? LastModified
         // GraphQL -> lastModified: DateTime! (scalar)
         if (this.LastModified != null) {
-            s += ind + "lastModified\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "lastModified\n" ;
+            } else {
+                s += ind + "lastModified\n" ;
+            }
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long! (scalar)
         if (this.Size != null) {
-            s += ind + "size\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "size\n" ;
+            } else {
+                s += ind + "size\n" ;
+            }
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String! (scalar)
         if (this.SnapshotId != null) {
-            s += ind + "snapshotId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotId\n" ;
+            } else {
+                s += ind + "snapshotId\n" ;
+            }
         }
         //      C# -> QuarantineInfo? QuarantineInfo
         // GraphQL -> quarantineInfo: QuarantineInfo (type)
         if (this.QuarantineInfo != null) {
-            var fspec = this.QuarantineInfo.AsFieldSpec(indent+1);
+            var fspec = this.QuarantineInfo.AsFieldSpec(conf.Child("quarantineInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "quarantineInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "quarantineInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> CdmSnapshot? Snapshot
         // GraphQL -> snapshot: CdmSnapshot (type)
         if (this.Snapshot != null) {
-            var fspec = this.Snapshot.AsFieldSpec(indent+1);
+            var fspec = this.Snapshot.AsFieldSpec(conf.Child("snapshot"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "snapshot {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "snapshot {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -155,47 +184,126 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> FileModeEnum? FileMode
         // GraphQL -> fileMode: FileModeEnum! (enum)
-        if (this.FileMode == null && ec.Includes("fileMode",true))
+        if (ec.Includes("fileMode",true))
         {
-            this.FileMode = new FileModeEnum();
+            if(this.FileMode == null) {
+
+                this.FileMode = new FileModeEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.FileMode != null && ec.Excludes("fileMode",true))
+        {
+            this.FileMode = null;
         }
         //      C# -> FileVersionSourceEnum? Source
         // GraphQL -> source: FileVersionSourceEnum! (enum)
-        if (this.Source == null && ec.Includes("source",true))
+        if (ec.Includes("source",true))
         {
-            this.Source = new FileVersionSourceEnum();
+            if(this.Source == null) {
+
+                this.Source = new FileVersionSourceEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Source != null && ec.Excludes("source",true))
+        {
+            this.Source = null;
         }
         //      C# -> DateTime? LastModified
         // GraphQL -> lastModified: DateTime! (scalar)
-        if (this.LastModified == null && ec.Includes("lastModified",true))
+        if (ec.Includes("lastModified",true))
         {
-            this.LastModified = new DateTime();
+            if(this.LastModified == null) {
+
+                this.LastModified = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastModified != null && ec.Excludes("lastModified",true))
+        {
+            this.LastModified = null;
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long! (scalar)
-        if (this.Size == null && ec.Includes("size",true))
+        if (ec.Includes("size",true))
         {
-            this.Size = new System.Int64();
+            if(this.Size == null) {
+
+                this.Size = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Size != null && ec.Excludes("size",true))
+        {
+            this.Size = null;
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String! (scalar)
-        if (this.SnapshotId == null && ec.Includes("snapshotId",true))
+        if (ec.Includes("snapshotId",true))
         {
-            this.SnapshotId = "FETCH";
+            if(this.SnapshotId == null) {
+
+                this.SnapshotId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotId != null && ec.Excludes("snapshotId",true))
+        {
+            this.SnapshotId = null;
         }
         //      C# -> QuarantineInfo? QuarantineInfo
         // GraphQL -> quarantineInfo: QuarantineInfo (type)
-        if (this.QuarantineInfo == null && ec.Includes("quarantineInfo",false))
+        if (ec.Includes("quarantineInfo",false))
         {
-            this.QuarantineInfo = new QuarantineInfo();
-            this.QuarantineInfo.ApplyExploratoryFieldSpec(ec.NewChild("quarantineInfo"));
+            if(this.QuarantineInfo == null) {
+
+                this.QuarantineInfo = new QuarantineInfo();
+                this.QuarantineInfo.ApplyExploratoryFieldSpec(ec.NewChild("quarantineInfo"));
+
+            } else {
+
+                this.QuarantineInfo.ApplyExploratoryFieldSpec(ec.NewChild("quarantineInfo"));
+
+            }
+        }
+        else if (this.QuarantineInfo != null && ec.Excludes("quarantineInfo",false))
+        {
+            this.QuarantineInfo = null;
         }
         //      C# -> CdmSnapshot? Snapshot
         // GraphQL -> snapshot: CdmSnapshot (type)
-        if (this.Snapshot == null && ec.Includes("snapshot",false))
+        if (ec.Includes("snapshot",false))
         {
-            this.Snapshot = new CdmSnapshot();
-            this.Snapshot.ApplyExploratoryFieldSpec(ec.NewChild("snapshot"));
+            if(this.Snapshot == null) {
+
+                this.Snapshot = new CdmSnapshot();
+                this.Snapshot.ApplyExploratoryFieldSpec(ec.NewChild("snapshot"));
+
+            } else {
+
+                this.Snapshot.ApplyExploratoryFieldSpec(ec.NewChild("snapshot"));
+
+            }
+        }
+        else if (this.Snapshot != null && ec.Excludes("snapshot",false))
+        {
+            this.Snapshot = null;
         }
     }
 
@@ -222,9 +330,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<HierarchySnappableFileVersion> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

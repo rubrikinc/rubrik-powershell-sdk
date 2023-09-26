@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? NextReleaseRecommendation
         // GraphQL -> nextReleaseRecommendation: String! (scalar)
         if (this.NextReleaseRecommendation != null) {
-            s += ind + "nextReleaseRecommendation\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "nextReleaseRecommendation\n" ;
+            } else {
+                s += ind + "nextReleaseRecommendation\n" ;
+            }
         }
         //      C# -> System.String? Recommendation
         // GraphQL -> recommendation: String! (scalar)
         if (this.Recommendation != null) {
-            s += ind + "recommendation\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "recommendation\n" ;
+            } else {
+                s += ind + "recommendation\n" ;
+            }
         }
         //      C# -> List<System.String>? Upgradability
         // GraphQL -> upgradability: [String!]! (scalar)
         if (this.Upgradability != null) {
-            s += ind + "upgradability\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "upgradability\n" ;
+            } else {
+                s += ind + "upgradability\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? NextReleaseRecommendation
         // GraphQL -> nextReleaseRecommendation: String! (scalar)
-        if (this.NextReleaseRecommendation == null && ec.Includes("nextReleaseRecommendation",true))
+        if (ec.Includes("nextReleaseRecommendation",true))
         {
-            this.NextReleaseRecommendation = "FETCH";
+            if(this.NextReleaseRecommendation == null) {
+
+                this.NextReleaseRecommendation = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NextReleaseRecommendation != null && ec.Excludes("nextReleaseRecommendation",true))
+        {
+            this.NextReleaseRecommendation = null;
         }
         //      C# -> System.String? Recommendation
         // GraphQL -> recommendation: String! (scalar)
-        if (this.Recommendation == null && ec.Includes("recommendation",true))
+        if (ec.Includes("recommendation",true))
         {
-            this.Recommendation = "FETCH";
+            if(this.Recommendation == null) {
+
+                this.Recommendation = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Recommendation != null && ec.Excludes("recommendation",true))
+        {
+            this.Recommendation = null;
         }
         //      C# -> List<System.String>? Upgradability
         // GraphQL -> upgradability: [String!]! (scalar)
-        if (this.Upgradability == null && ec.Includes("upgradability",true))
+        if (ec.Includes("upgradability",true))
         {
-            this.Upgradability = new List<System.String>();
+            if(this.Upgradability == null) {
+
+                this.Upgradability = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Upgradability != null && ec.Excludes("upgradability",true))
+        {
+            this.Upgradability = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<UpgradeRecommendationInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -92,47 +92,72 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? SourceDbUser
         // GraphQL -> sourceDbUser: String! (scalar)
         if (this.SourceDbUser != null) {
-            s += ind + "sourceDbUser\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sourceDbUser\n" ;
+            } else {
+                s += ind + "sourceDbUser\n" ;
+            }
         }
         //      C# -> System.String? SourceNodeUser
         // GraphQL -> sourceNodeUser: String! (scalar)
         if (this.SourceNodeUser != null) {
-            s += ind + "sourceNodeUser\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sourceNodeUser\n" ;
+            } else {
+                s += ind + "sourceNodeUser\n" ;
+            }
         }
         //      C# -> System.Int32? SourceSshPort
         // GraphQL -> sourceSshPort: Int! (scalar)
         if (this.SourceSshPort != null) {
-            s += ind + "sourceSshPort\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sourceSshPort\n" ;
+            } else {
+                s += ind + "sourceSshPort\n" ;
+            }
         }
         //      C# -> List<MongodbHost>? IgnoreSecondaries
         // GraphQL -> ignoreSecondaries: [MongodbHost!]! (type)
         if (this.IgnoreSecondaries != null) {
-            var fspec = this.IgnoreSecondaries.AsFieldSpec(indent+1);
+            var fspec = this.IgnoreSecondaries.AsFieldSpec(conf.Child("ignoreSecondaries"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "ignoreSecondaries {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "ignoreSecondaries {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<MongodbHost>? MongodbHosts
         // GraphQL -> mongodbHosts: [MongodbHost!]! (type)
         if (this.MongodbHosts != null) {
-            var fspec = this.MongodbHosts.AsFieldSpec(indent+1);
+            var fspec = this.MongodbHosts.AsFieldSpec(conf.Child("mongodbHosts"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "mongodbHosts {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "mongodbHosts {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> MongodbSslOptions? SslOptions
         // GraphQL -> sslOptions: MongodbSslOptions (type)
         if (this.SslOptions != null) {
-            var fspec = this.SslOptions.AsFieldSpec(indent+1);
+            var fspec = this.SslOptions.AsFieldSpec(conf.Child("sslOptions"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "sslOptions {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "sslOptions {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -144,42 +169,111 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? SourceDbUser
         // GraphQL -> sourceDbUser: String! (scalar)
-        if (this.SourceDbUser == null && ec.Includes("sourceDbUser",true))
+        if (ec.Includes("sourceDbUser",true))
         {
-            this.SourceDbUser = "FETCH";
+            if(this.SourceDbUser == null) {
+
+                this.SourceDbUser = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SourceDbUser != null && ec.Excludes("sourceDbUser",true))
+        {
+            this.SourceDbUser = null;
         }
         //      C# -> System.String? SourceNodeUser
         // GraphQL -> sourceNodeUser: String! (scalar)
-        if (this.SourceNodeUser == null && ec.Includes("sourceNodeUser",true))
+        if (ec.Includes("sourceNodeUser",true))
         {
-            this.SourceNodeUser = "FETCH";
+            if(this.SourceNodeUser == null) {
+
+                this.SourceNodeUser = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SourceNodeUser != null && ec.Excludes("sourceNodeUser",true))
+        {
+            this.SourceNodeUser = null;
         }
         //      C# -> System.Int32? SourceSshPort
         // GraphQL -> sourceSshPort: Int! (scalar)
-        if (this.SourceSshPort == null && ec.Includes("sourceSshPort",true))
+        if (ec.Includes("sourceSshPort",true))
         {
-            this.SourceSshPort = Int32.MinValue;
+            if(this.SourceSshPort == null) {
+
+                this.SourceSshPort = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.SourceSshPort != null && ec.Excludes("sourceSshPort",true))
+        {
+            this.SourceSshPort = null;
         }
         //      C# -> List<MongodbHost>? IgnoreSecondaries
         // GraphQL -> ignoreSecondaries: [MongodbHost!]! (type)
-        if (this.IgnoreSecondaries == null && ec.Includes("ignoreSecondaries",false))
+        if (ec.Includes("ignoreSecondaries",false))
         {
-            this.IgnoreSecondaries = new List<MongodbHost>();
-            this.IgnoreSecondaries.ApplyExploratoryFieldSpec(ec.NewChild("ignoreSecondaries"));
+            if(this.IgnoreSecondaries == null) {
+
+                this.IgnoreSecondaries = new List<MongodbHost>();
+                this.IgnoreSecondaries.ApplyExploratoryFieldSpec(ec.NewChild("ignoreSecondaries"));
+
+            } else {
+
+                this.IgnoreSecondaries.ApplyExploratoryFieldSpec(ec.NewChild("ignoreSecondaries"));
+
+            }
+        }
+        else if (this.IgnoreSecondaries != null && ec.Excludes("ignoreSecondaries",false))
+        {
+            this.IgnoreSecondaries = null;
         }
         //      C# -> List<MongodbHost>? MongodbHosts
         // GraphQL -> mongodbHosts: [MongodbHost!]! (type)
-        if (this.MongodbHosts == null && ec.Includes("mongodbHosts",false))
+        if (ec.Includes("mongodbHosts",false))
         {
-            this.MongodbHosts = new List<MongodbHost>();
-            this.MongodbHosts.ApplyExploratoryFieldSpec(ec.NewChild("mongodbHosts"));
+            if(this.MongodbHosts == null) {
+
+                this.MongodbHosts = new List<MongodbHost>();
+                this.MongodbHosts.ApplyExploratoryFieldSpec(ec.NewChild("mongodbHosts"));
+
+            } else {
+
+                this.MongodbHosts.ApplyExploratoryFieldSpec(ec.NewChild("mongodbHosts"));
+
+            }
+        }
+        else if (this.MongodbHosts != null && ec.Excludes("mongodbHosts",false))
+        {
+            this.MongodbHosts = null;
         }
         //      C# -> MongodbSslOptions? SslOptions
         // GraphQL -> sslOptions: MongodbSslOptions (type)
-        if (this.SslOptions == null && ec.Includes("sslOptions",false))
+        if (ec.Includes("sslOptions",false))
         {
-            this.SslOptions = new MongodbSslOptions();
-            this.SslOptions.ApplyExploratoryFieldSpec(ec.NewChild("sslOptions"));
+            if(this.SslOptions == null) {
+
+                this.SslOptions = new MongodbSslOptions();
+                this.SslOptions.ApplyExploratoryFieldSpec(ec.NewChild("sslOptions"));
+
+            } else {
+
+                this.SslOptions.ApplyExploratoryFieldSpec(ec.NewChild("sslOptions"));
+
+            }
+        }
+        else if (this.SslOptions != null && ec.Excludes("sslOptions",false))
+        {
+            this.SslOptions = null;
         }
     }
 
@@ -206,9 +300,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<MongodbSourceConfigParams> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

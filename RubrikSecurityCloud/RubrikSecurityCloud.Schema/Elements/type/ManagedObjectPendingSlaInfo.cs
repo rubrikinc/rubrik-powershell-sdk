@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Boolean? IsPendingSlaDomainRetentionLocked
         // GraphQL -> isPendingSlaDomainRetentionLocked: Boolean (scalar)
         if (this.IsPendingSlaDomainRetentionLocked != null) {
-            s += ind + "isPendingSlaDomainRetentionLocked\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isPendingSlaDomainRetentionLocked\n" ;
+            } else {
+                s += ind + "isPendingSlaDomainRetentionLocked\n" ;
+            }
         }
         //      C# -> System.String? ObjectId
         // GraphQL -> objectId: String! (scalar)
         if (this.ObjectId != null) {
-            s += ind + "objectId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "objectId\n" ;
+            } else {
+                s += ind + "objectId\n" ;
+            }
         }
         //      C# -> System.String? PendingSlaDomainId
         // GraphQL -> pendingSlaDomainId: String! (scalar)
         if (this.PendingSlaDomainId != null) {
-            s += ind + "pendingSlaDomainId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "pendingSlaDomainId\n" ;
+            } else {
+                s += ind + "pendingSlaDomainId\n" ;
+            }
         }
         //      C# -> System.String? PendingSlaDomainName
         // GraphQL -> pendingSlaDomainName: String! (scalar)
         if (this.PendingSlaDomainName != null) {
-            s += ind + "pendingSlaDomainName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "pendingSlaDomainName\n" ;
+            } else {
+                s += ind + "pendingSlaDomainName\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Boolean? IsPendingSlaDomainRetentionLocked
         // GraphQL -> isPendingSlaDomainRetentionLocked: Boolean (scalar)
-        if (this.IsPendingSlaDomainRetentionLocked == null && ec.Includes("isPendingSlaDomainRetentionLocked",true))
+        if (ec.Includes("isPendingSlaDomainRetentionLocked",true))
         {
-            this.IsPendingSlaDomainRetentionLocked = true;
+            if(this.IsPendingSlaDomainRetentionLocked == null) {
+
+                this.IsPendingSlaDomainRetentionLocked = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsPendingSlaDomainRetentionLocked != null && ec.Excludes("isPendingSlaDomainRetentionLocked",true))
+        {
+            this.IsPendingSlaDomainRetentionLocked = null;
         }
         //      C# -> System.String? ObjectId
         // GraphQL -> objectId: String! (scalar)
-        if (this.ObjectId == null && ec.Includes("objectId",true))
+        if (ec.Includes("objectId",true))
         {
-            this.ObjectId = "FETCH";
+            if(this.ObjectId == null) {
+
+                this.ObjectId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ObjectId != null && ec.Excludes("objectId",true))
+        {
+            this.ObjectId = null;
         }
         //      C# -> System.String? PendingSlaDomainId
         // GraphQL -> pendingSlaDomainId: String! (scalar)
-        if (this.PendingSlaDomainId == null && ec.Includes("pendingSlaDomainId",true))
+        if (ec.Includes("pendingSlaDomainId",true))
         {
-            this.PendingSlaDomainId = "FETCH";
+            if(this.PendingSlaDomainId == null) {
+
+                this.PendingSlaDomainId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PendingSlaDomainId != null && ec.Excludes("pendingSlaDomainId",true))
+        {
+            this.PendingSlaDomainId = null;
         }
         //      C# -> System.String? PendingSlaDomainName
         // GraphQL -> pendingSlaDomainName: String! (scalar)
-        if (this.PendingSlaDomainName == null && ec.Includes("pendingSlaDomainName",true))
+        if (ec.Includes("pendingSlaDomainName",true))
         {
-            this.PendingSlaDomainName = "FETCH";
+            if(this.PendingSlaDomainName == null) {
+
+                this.PendingSlaDomainName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PendingSlaDomainName != null && ec.Excludes("pendingSlaDomainName",true))
+        {
+            this.PendingSlaDomainName = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ManagedObjectPendingSlaInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

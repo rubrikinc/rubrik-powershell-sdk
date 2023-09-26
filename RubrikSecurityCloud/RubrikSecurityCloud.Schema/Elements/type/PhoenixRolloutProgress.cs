@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int32? NumEnabled
         // GraphQL -> numEnabled: Int! (scalar)
         if (this.NumEnabled != null) {
-            s += ind + "numEnabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "numEnabled\n" ;
+            } else {
+                s += ind + "numEnabled\n" ;
+            }
         }
         //      C# -> System.Int32? NumInProcess
         // GraphQL -> numInProcess: Int! (scalar)
         if (this.NumInProcess != null) {
-            s += ind + "numInProcess\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "numInProcess\n" ;
+            } else {
+                s += ind + "numInProcess\n" ;
+            }
         }
         //      C# -> System.Int32? NumIncompleteFirstFull
         // GraphQL -> numIncompleteFirstFull: Int! (scalar)
         if (this.NumIncompleteFirstFull != null) {
-            s += ind + "numIncompleteFirstFull\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "numIncompleteFirstFull\n" ;
+            } else {
+                s += ind + "numIncompleteFirstFull\n" ;
+            }
         }
         //      C# -> System.Int32? NumNotEnabled
         // GraphQL -> numNotEnabled: Int! (scalar)
         if (this.NumNotEnabled != null) {
-            s += ind + "numNotEnabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "numNotEnabled\n" ;
+            } else {
+                s += ind + "numNotEnabled\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int32? NumEnabled
         // GraphQL -> numEnabled: Int! (scalar)
-        if (this.NumEnabled == null && ec.Includes("numEnabled",true))
+        if (ec.Includes("numEnabled",true))
         {
-            this.NumEnabled = Int32.MinValue;
+            if(this.NumEnabled == null) {
+
+                this.NumEnabled = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.NumEnabled != null && ec.Excludes("numEnabled",true))
+        {
+            this.NumEnabled = null;
         }
         //      C# -> System.Int32? NumInProcess
         // GraphQL -> numInProcess: Int! (scalar)
-        if (this.NumInProcess == null && ec.Includes("numInProcess",true))
+        if (ec.Includes("numInProcess",true))
         {
-            this.NumInProcess = Int32.MinValue;
+            if(this.NumInProcess == null) {
+
+                this.NumInProcess = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.NumInProcess != null && ec.Excludes("numInProcess",true))
+        {
+            this.NumInProcess = null;
         }
         //      C# -> System.Int32? NumIncompleteFirstFull
         // GraphQL -> numIncompleteFirstFull: Int! (scalar)
-        if (this.NumIncompleteFirstFull == null && ec.Includes("numIncompleteFirstFull",true))
+        if (ec.Includes("numIncompleteFirstFull",true))
         {
-            this.NumIncompleteFirstFull = Int32.MinValue;
+            if(this.NumIncompleteFirstFull == null) {
+
+                this.NumIncompleteFirstFull = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.NumIncompleteFirstFull != null && ec.Excludes("numIncompleteFirstFull",true))
+        {
+            this.NumIncompleteFirstFull = null;
         }
         //      C# -> System.Int32? NumNotEnabled
         // GraphQL -> numNotEnabled: Int! (scalar)
-        if (this.NumNotEnabled == null && ec.Includes("numNotEnabled",true))
+        if (ec.Includes("numNotEnabled",true))
         {
-            this.NumNotEnabled = Int32.MinValue;
+            if(this.NumNotEnabled == null) {
+
+                this.NumNotEnabled = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.NumNotEnabled != null && ec.Excludes("numNotEnabled",true))
+        {
+            this.NumNotEnabled = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<PhoenixRolloutProgress> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

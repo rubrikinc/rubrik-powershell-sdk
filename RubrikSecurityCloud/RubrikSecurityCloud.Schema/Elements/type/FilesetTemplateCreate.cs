@@ -164,81 +164,138 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> FilesetTemplateCreateOperatingSystemType? OperatingSystemType
         // GraphQL -> operatingSystemType: FilesetTemplateCreateOperatingSystemType (enum)
         if (this.OperatingSystemType != null) {
-            s += ind + "operatingSystemType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "operatingSystemType\n" ;
+            } else {
+                s += ind + "operatingSystemType\n" ;
+            }
         }
         //      C# -> FilesetTemplateCreateShareType? ShareType
         // GraphQL -> shareType: FilesetTemplateCreateShareType (enum)
         if (this.ShareType != null) {
-            s += ind + "shareType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "shareType\n" ;
+            } else {
+                s += ind + "shareType\n" ;
+            }
         }
         //      C# -> System.String? BackupScriptErrorHandling
         // GraphQL -> backupScriptErrorHandling: String (scalar)
         if (this.BackupScriptErrorHandling != null) {
-            s += ind + "backupScriptErrorHandling\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "backupScriptErrorHandling\n" ;
+            } else {
+                s += ind + "backupScriptErrorHandling\n" ;
+            }
         }
         //      C# -> System.Int64? BackupScriptTimeout
         // GraphQL -> backupScriptTimeout: Long (scalar)
         if (this.BackupScriptTimeout != null) {
-            s += ind + "backupScriptTimeout\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "backupScriptTimeout\n" ;
+            } else {
+                s += ind + "backupScriptTimeout\n" ;
+            }
         }
         //      C# -> List<System.String>? Exceptions
         // GraphQL -> exceptions: [String!]! (scalar)
         if (this.Exceptions != null) {
-            s += ind + "exceptions\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "exceptions\n" ;
+            } else {
+                s += ind + "exceptions\n" ;
+            }
         }
         //      C# -> List<System.String>? Excludes
         // GraphQL -> excludes: [String!]! (scalar)
         if (this.Excludes != null) {
-            s += ind + "excludes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "excludes\n" ;
+            } else {
+                s += ind + "excludes\n" ;
+            }
         }
         //      C# -> List<System.String>? Includes
         // GraphQL -> includes: [String!]! (scalar)
         if (this.Includes != null) {
-            s += ind + "includes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "includes\n" ;
+            } else {
+                s += ind + "includes\n" ;
+            }
         }
         //      C# -> System.Boolean? IsArrayEnabled
         // GraphQL -> isArrayEnabled: Boolean (scalar)
         if (this.IsArrayEnabled != null) {
-            s += ind + "isArrayEnabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isArrayEnabled\n" ;
+            } else {
+                s += ind + "isArrayEnabled\n" ;
+            }
         }
         //      C# -> System.Boolean? IsCreatedByKupr
         // GraphQL -> isCreatedByKupr: Boolean (scalar)
         if (this.IsCreatedByKupr != null) {
-            s += ind + "isCreatedByKupr\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isCreatedByKupr\n" ;
+            } else {
+                s += ind + "isCreatedByKupr\n" ;
+            }
         }
         //      C# -> System.Boolean? IsCreatedByPolarisNas
         // GraphQL -> isCreatedByPolarisNas: Boolean (scalar)
         if (this.IsCreatedByPolarisNas != null) {
-            s += ind + "isCreatedByPolarisNas\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isCreatedByPolarisNas\n" ;
+            } else {
+                s += ind + "isCreatedByPolarisNas\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.String? PostBackupScript
         // GraphQL -> postBackupScript: String (scalar)
         if (this.PostBackupScript != null) {
-            s += ind + "postBackupScript\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "postBackupScript\n" ;
+            } else {
+                s += ind + "postBackupScript\n" ;
+            }
         }
         //      C# -> System.String? PreBackupScript
         // GraphQL -> preBackupScript: String (scalar)
         if (this.PreBackupScript != null) {
-            s += ind + "preBackupScript\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "preBackupScript\n" ;
+            } else {
+                s += ind + "preBackupScript\n" ;
+            }
         }
         //      C# -> FilesetOptions? FilesetOptions
         // GraphQL -> filesetOptions: FilesetOptions (type)
         if (this.FilesetOptions != null) {
-            var fspec = this.FilesetOptions.AsFieldSpec(indent+1);
+            var fspec = this.FilesetOptions.AsFieldSpec(conf.Child("filesetOptions"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "filesetOptions {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "filesetOptions {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -250,88 +307,243 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> FilesetTemplateCreateOperatingSystemType? OperatingSystemType
         // GraphQL -> operatingSystemType: FilesetTemplateCreateOperatingSystemType (enum)
-        if (this.OperatingSystemType == null && ec.Includes("operatingSystemType",true))
+        if (ec.Includes("operatingSystemType",true))
         {
-            this.OperatingSystemType = new FilesetTemplateCreateOperatingSystemType();
+            if(this.OperatingSystemType == null) {
+
+                this.OperatingSystemType = new FilesetTemplateCreateOperatingSystemType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.OperatingSystemType != null && ec.Excludes("operatingSystemType",true))
+        {
+            this.OperatingSystemType = null;
         }
         //      C# -> FilesetTemplateCreateShareType? ShareType
         // GraphQL -> shareType: FilesetTemplateCreateShareType (enum)
-        if (this.ShareType == null && ec.Includes("shareType",true))
+        if (ec.Includes("shareType",true))
         {
-            this.ShareType = new FilesetTemplateCreateShareType();
+            if(this.ShareType == null) {
+
+                this.ShareType = new FilesetTemplateCreateShareType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShareType != null && ec.Excludes("shareType",true))
+        {
+            this.ShareType = null;
         }
         //      C# -> System.String? BackupScriptErrorHandling
         // GraphQL -> backupScriptErrorHandling: String (scalar)
-        if (this.BackupScriptErrorHandling == null && ec.Includes("backupScriptErrorHandling",true))
+        if (ec.Includes("backupScriptErrorHandling",true))
         {
-            this.BackupScriptErrorHandling = "FETCH";
+            if(this.BackupScriptErrorHandling == null) {
+
+                this.BackupScriptErrorHandling = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.BackupScriptErrorHandling != null && ec.Excludes("backupScriptErrorHandling",true))
+        {
+            this.BackupScriptErrorHandling = null;
         }
         //      C# -> System.Int64? BackupScriptTimeout
         // GraphQL -> backupScriptTimeout: Long (scalar)
-        if (this.BackupScriptTimeout == null && ec.Includes("backupScriptTimeout",true))
+        if (ec.Includes("backupScriptTimeout",true))
         {
-            this.BackupScriptTimeout = new System.Int64();
+            if(this.BackupScriptTimeout == null) {
+
+                this.BackupScriptTimeout = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.BackupScriptTimeout != null && ec.Excludes("backupScriptTimeout",true))
+        {
+            this.BackupScriptTimeout = null;
         }
         //      C# -> List<System.String>? Exceptions
         // GraphQL -> exceptions: [String!]! (scalar)
-        if (this.Exceptions == null && ec.Includes("exceptions",true))
+        if (ec.Includes("exceptions",true))
         {
-            this.Exceptions = new List<System.String>();
+            if(this.Exceptions == null) {
+
+                this.Exceptions = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Exceptions != null && ec.Excludes("exceptions",true))
+        {
+            this.Exceptions = null;
         }
         //      C# -> List<System.String>? Excludes
         // GraphQL -> excludes: [String!]! (scalar)
-        if (this.Excludes == null && ec.Includes("excludes",true))
+        if (ec.Includes("excludes",true))
         {
-            this.Excludes = new List<System.String>();
+            if(this.Excludes == null) {
+
+                this.Excludes = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Excludes != null && ec.Excludes("excludes",true))
+        {
+            this.Excludes = null;
         }
         //      C# -> List<System.String>? Includes
         // GraphQL -> includes: [String!]! (scalar)
-        if (this.Includes == null && ec.Includes("includes",true))
+        if (ec.Includes("includes",true))
         {
-            this.Includes = new List<System.String>();
+            if(this.Includes == null) {
+
+                this.Includes = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Includes != null && ec.Excludes("includes",true))
+        {
+            this.Includes = null;
         }
         //      C# -> System.Boolean? IsArrayEnabled
         // GraphQL -> isArrayEnabled: Boolean (scalar)
-        if (this.IsArrayEnabled == null && ec.Includes("isArrayEnabled",true))
+        if (ec.Includes("isArrayEnabled",true))
         {
-            this.IsArrayEnabled = true;
+            if(this.IsArrayEnabled == null) {
+
+                this.IsArrayEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsArrayEnabled != null && ec.Excludes("isArrayEnabled",true))
+        {
+            this.IsArrayEnabled = null;
         }
         //      C# -> System.Boolean? IsCreatedByKupr
         // GraphQL -> isCreatedByKupr: Boolean (scalar)
-        if (this.IsCreatedByKupr == null && ec.Includes("isCreatedByKupr",true))
+        if (ec.Includes("isCreatedByKupr",true))
         {
-            this.IsCreatedByKupr = true;
+            if(this.IsCreatedByKupr == null) {
+
+                this.IsCreatedByKupr = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsCreatedByKupr != null && ec.Excludes("isCreatedByKupr",true))
+        {
+            this.IsCreatedByKupr = null;
         }
         //      C# -> System.Boolean? IsCreatedByPolarisNas
         // GraphQL -> isCreatedByPolarisNas: Boolean (scalar)
-        if (this.IsCreatedByPolarisNas == null && ec.Includes("isCreatedByPolarisNas",true))
+        if (ec.Includes("isCreatedByPolarisNas",true))
         {
-            this.IsCreatedByPolarisNas = true;
+            if(this.IsCreatedByPolarisNas == null) {
+
+                this.IsCreatedByPolarisNas = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsCreatedByPolarisNas != null && ec.Excludes("isCreatedByPolarisNas",true))
+        {
+            this.IsCreatedByPolarisNas = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.String? PostBackupScript
         // GraphQL -> postBackupScript: String (scalar)
-        if (this.PostBackupScript == null && ec.Includes("postBackupScript",true))
+        if (ec.Includes("postBackupScript",true))
         {
-            this.PostBackupScript = "FETCH";
+            if(this.PostBackupScript == null) {
+
+                this.PostBackupScript = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PostBackupScript != null && ec.Excludes("postBackupScript",true))
+        {
+            this.PostBackupScript = null;
         }
         //      C# -> System.String? PreBackupScript
         // GraphQL -> preBackupScript: String (scalar)
-        if (this.PreBackupScript == null && ec.Includes("preBackupScript",true))
+        if (ec.Includes("preBackupScript",true))
         {
-            this.PreBackupScript = "FETCH";
+            if(this.PreBackupScript == null) {
+
+                this.PreBackupScript = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PreBackupScript != null && ec.Excludes("preBackupScript",true))
+        {
+            this.PreBackupScript = null;
         }
         //      C# -> FilesetOptions? FilesetOptions
         // GraphQL -> filesetOptions: FilesetOptions (type)
-        if (this.FilesetOptions == null && ec.Includes("filesetOptions",false))
+        if (ec.Includes("filesetOptions",false))
         {
-            this.FilesetOptions = new FilesetOptions();
-            this.FilesetOptions.ApplyExploratoryFieldSpec(ec.NewChild("filesetOptions"));
+            if(this.FilesetOptions == null) {
+
+                this.FilesetOptions = new FilesetOptions();
+                this.FilesetOptions.ApplyExploratoryFieldSpec(ec.NewChild("filesetOptions"));
+
+            } else {
+
+                this.FilesetOptions.ApplyExploratoryFieldSpec(ec.NewChild("filesetOptions"));
+
+            }
+        }
+        else if (this.FilesetOptions != null && ec.Excludes("filesetOptions",false))
+        {
+            this.FilesetOptions = null;
         }
     }
 
@@ -358,9 +570,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<FilesetTemplateCreate> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

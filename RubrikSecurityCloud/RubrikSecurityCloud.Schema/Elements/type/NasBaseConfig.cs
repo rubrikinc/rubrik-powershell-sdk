@@ -137,64 +137,109 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? ApiCertificate
         // GraphQL -> apiCertificate: String (scalar)
         if (this.ApiCertificate != null) {
-            s += ind + "apiCertificate\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "apiCertificate\n" ;
+            } else {
+                s += ind + "apiCertificate\n" ;
+            }
         }
         //      C# -> System.String? ApiEndpoint
         // GraphQL -> apiEndpoint: String (scalar)
         if (this.ApiEndpoint != null) {
-            s += ind + "apiEndpoint\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "apiEndpoint\n" ;
+            } else {
+                s += ind + "apiEndpoint\n" ;
+            }
         }
         //      C# -> System.String? ApiHostname
         // GraphQL -> apiHostname: String (scalar)
         if (this.ApiHostname != null) {
-            s += ind + "apiHostname\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "apiHostname\n" ;
+            } else {
+                s += ind + "apiHostname\n" ;
+            }
         }
         //      C# -> System.String? ApiUsername
         // GraphQL -> apiUsername: String (scalar)
         if (this.ApiUsername != null) {
-            s += ind + "apiUsername\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "apiUsername\n" ;
+            } else {
+                s += ind + "apiUsername\n" ;
+            }
         }
         //      C# -> System.Boolean? IsIsilonChangelistEnabled
         // GraphQL -> isIsilonChangelistEnabled: Boolean (scalar)
         if (this.IsIsilonChangelistEnabled != null) {
-            s += ind + "isIsilonChangelistEnabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isIsilonChangelistEnabled\n" ;
+            } else {
+                s += ind + "isIsilonChangelistEnabled\n" ;
+            }
         }
         //      C# -> System.Boolean? IsNetAppSnapDiffEnabled
         // GraphQL -> isNetAppSnapDiffEnabled: Boolean (scalar)
         if (this.IsNetAppSnapDiffEnabled != null) {
-            s += ind + "isNetAppSnapDiffEnabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isNetAppSnapDiffEnabled\n" ;
+            } else {
+                s += ind + "isNetAppSnapDiffEnabled\n" ;
+            }
         }
         //      C# -> System.Boolean? IsNutanixCftEnabled
         // GraphQL -> isNutanixCftEnabled: Boolean (scalar)
         if (this.IsNutanixCftEnabled != null) {
-            s += ind + "isNutanixCftEnabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isNutanixCftEnabled\n" ;
+            } else {
+                s += ind + "isNutanixCftEnabled\n" ;
+            }
         }
         //      C# -> System.Boolean? IsShareAutoDiscoveryEnabled
         // GraphQL -> isShareAutoDiscoveryEnabled: Boolean (scalar)
         if (this.IsShareAutoDiscoveryEnabled != null) {
-            s += ind + "isShareAutoDiscoveryEnabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isShareAutoDiscoveryEnabled\n" ;
+            } else {
+                s += ind + "isShareAutoDiscoveryEnabled\n" ;
+            }
         }
         //      C# -> System.Boolean? IsSnapdiffEnabled
         // GraphQL -> isSnapdiffEnabled: Boolean (scalar)
         if (this.IsSnapdiffEnabled != null) {
-            s += ind + "isSnapdiffEnabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isSnapdiffEnabled\n" ;
+            } else {
+                s += ind + "isSnapdiffEnabled\n" ;
+            }
         }
         //      C# -> System.String? VendorType
         // GraphQL -> vendorType: String! (scalar)
         if (this.VendorType != null) {
-            s += ind + "vendorType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "vendorType\n" ;
+            } else {
+                s += ind + "vendorType\n" ;
+            }
         }
         //      C# -> System.String? ZoneName
         // GraphQL -> zoneName: String (scalar)
         if (this.ZoneName != null) {
-            s += ind + "zoneName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "zoneName\n" ;
+            } else {
+                s += ind + "zoneName\n" ;
+            }
         }
         return s;
     }
@@ -205,69 +250,190 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? ApiCertificate
         // GraphQL -> apiCertificate: String (scalar)
-        if (this.ApiCertificate == null && ec.Includes("apiCertificate",true))
+        if (ec.Includes("apiCertificate",true))
         {
-            this.ApiCertificate = "FETCH";
+            if(this.ApiCertificate == null) {
+
+                this.ApiCertificate = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ApiCertificate != null && ec.Excludes("apiCertificate",true))
+        {
+            this.ApiCertificate = null;
         }
         //      C# -> System.String? ApiEndpoint
         // GraphQL -> apiEndpoint: String (scalar)
-        if (this.ApiEndpoint == null && ec.Includes("apiEndpoint",true))
+        if (ec.Includes("apiEndpoint",true))
         {
-            this.ApiEndpoint = "FETCH";
+            if(this.ApiEndpoint == null) {
+
+                this.ApiEndpoint = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ApiEndpoint != null && ec.Excludes("apiEndpoint",true))
+        {
+            this.ApiEndpoint = null;
         }
         //      C# -> System.String? ApiHostname
         // GraphQL -> apiHostname: String (scalar)
-        if (this.ApiHostname == null && ec.Includes("apiHostname",true))
+        if (ec.Includes("apiHostname",true))
         {
-            this.ApiHostname = "FETCH";
+            if(this.ApiHostname == null) {
+
+                this.ApiHostname = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ApiHostname != null && ec.Excludes("apiHostname",true))
+        {
+            this.ApiHostname = null;
         }
         //      C# -> System.String? ApiUsername
         // GraphQL -> apiUsername: String (scalar)
-        if (this.ApiUsername == null && ec.Includes("apiUsername",true))
+        if (ec.Includes("apiUsername",true))
         {
-            this.ApiUsername = "FETCH";
+            if(this.ApiUsername == null) {
+
+                this.ApiUsername = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ApiUsername != null && ec.Excludes("apiUsername",true))
+        {
+            this.ApiUsername = null;
         }
         //      C# -> System.Boolean? IsIsilonChangelistEnabled
         // GraphQL -> isIsilonChangelistEnabled: Boolean (scalar)
-        if (this.IsIsilonChangelistEnabled == null && ec.Includes("isIsilonChangelistEnabled",true))
+        if (ec.Includes("isIsilonChangelistEnabled",true))
         {
-            this.IsIsilonChangelistEnabled = true;
+            if(this.IsIsilonChangelistEnabled == null) {
+
+                this.IsIsilonChangelistEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsIsilonChangelistEnabled != null && ec.Excludes("isIsilonChangelistEnabled",true))
+        {
+            this.IsIsilonChangelistEnabled = null;
         }
         //      C# -> System.Boolean? IsNetAppSnapDiffEnabled
         // GraphQL -> isNetAppSnapDiffEnabled: Boolean (scalar)
-        if (this.IsNetAppSnapDiffEnabled == null && ec.Includes("isNetAppSnapDiffEnabled",true))
+        if (ec.Includes("isNetAppSnapDiffEnabled",true))
         {
-            this.IsNetAppSnapDiffEnabled = true;
+            if(this.IsNetAppSnapDiffEnabled == null) {
+
+                this.IsNetAppSnapDiffEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsNetAppSnapDiffEnabled != null && ec.Excludes("isNetAppSnapDiffEnabled",true))
+        {
+            this.IsNetAppSnapDiffEnabled = null;
         }
         //      C# -> System.Boolean? IsNutanixCftEnabled
         // GraphQL -> isNutanixCftEnabled: Boolean (scalar)
-        if (this.IsNutanixCftEnabled == null && ec.Includes("isNutanixCftEnabled",true))
+        if (ec.Includes("isNutanixCftEnabled",true))
         {
-            this.IsNutanixCftEnabled = true;
+            if(this.IsNutanixCftEnabled == null) {
+
+                this.IsNutanixCftEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsNutanixCftEnabled != null && ec.Excludes("isNutanixCftEnabled",true))
+        {
+            this.IsNutanixCftEnabled = null;
         }
         //      C# -> System.Boolean? IsShareAutoDiscoveryEnabled
         // GraphQL -> isShareAutoDiscoveryEnabled: Boolean (scalar)
-        if (this.IsShareAutoDiscoveryEnabled == null && ec.Includes("isShareAutoDiscoveryEnabled",true))
+        if (ec.Includes("isShareAutoDiscoveryEnabled",true))
         {
-            this.IsShareAutoDiscoveryEnabled = true;
+            if(this.IsShareAutoDiscoveryEnabled == null) {
+
+                this.IsShareAutoDiscoveryEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsShareAutoDiscoveryEnabled != null && ec.Excludes("isShareAutoDiscoveryEnabled",true))
+        {
+            this.IsShareAutoDiscoveryEnabled = null;
         }
         //      C# -> System.Boolean? IsSnapdiffEnabled
         // GraphQL -> isSnapdiffEnabled: Boolean (scalar)
-        if (this.IsSnapdiffEnabled == null && ec.Includes("isSnapdiffEnabled",true))
+        if (ec.Includes("isSnapdiffEnabled",true))
         {
-            this.IsSnapdiffEnabled = true;
+            if(this.IsSnapdiffEnabled == null) {
+
+                this.IsSnapdiffEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsSnapdiffEnabled != null && ec.Excludes("isSnapdiffEnabled",true))
+        {
+            this.IsSnapdiffEnabled = null;
         }
         //      C# -> System.String? VendorType
         // GraphQL -> vendorType: String! (scalar)
-        if (this.VendorType == null && ec.Includes("vendorType",true))
+        if (ec.Includes("vendorType",true))
         {
-            this.VendorType = "FETCH";
+            if(this.VendorType == null) {
+
+                this.VendorType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.VendorType != null && ec.Excludes("vendorType",true))
+        {
+            this.VendorType = null;
         }
         //      C# -> System.String? ZoneName
         // GraphQL -> zoneName: String (scalar)
-        if (this.ZoneName == null && ec.Includes("zoneName",true))
+        if (ec.Includes("zoneName",true))
         {
-            this.ZoneName = "FETCH";
+            if(this.ZoneName == null) {
+
+                this.ZoneName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ZoneName != null && ec.Excludes("zoneName",true))
+        {
+            this.ZoneName = null;
         }
     }
 
@@ -294,9 +460,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<NasBaseConfig> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -92,41 +92,66 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> UnmanagedSnapshotType? SnapshotType
         // GraphQL -> snapshotType: UnmanagedSnapshotType! (enum)
         if (this.SnapshotType != null) {
-            s += ind + "snapshotType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotType\n" ;
+            } else {
+                s += ind + "snapshotType\n" ;
+            }
         }
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime (scalar)
         if (this.Date != null) {
-            s += ind + "date\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "date\n" ;
+            } else {
+                s += ind + "date\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.Boolean? IsCustomRetentionApplied
         // GraphQL -> isCustomRetentionApplied: Boolean! (scalar)
         if (this.IsCustomRetentionApplied != null) {
-            s += ind + "isCustomRetentionApplied\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isCustomRetentionApplied\n" ;
+            } else {
+                s += ind + "isCustomRetentionApplied\n" ;
+            }
         }
         //      C# -> System.Boolean? IsRetentionLockApplied
         // GraphQL -> isRetentionLockApplied: Boolean! (scalar)
         if (this.IsRetentionLockApplied != null) {
-            s += ind + "isRetentionLockApplied\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isRetentionLockApplied\n" ;
+            } else {
+                s += ind + "isRetentionLockApplied\n" ;
+            }
         }
         //      C# -> SnapshotRetentionInfo? SnapshotRetentionInfo
         // GraphQL -> snapshotRetentionInfo: SnapshotRetentionInfo (type)
         if (this.SnapshotRetentionInfo != null) {
-            var fspec = this.SnapshotRetentionInfo.AsFieldSpec(indent+1);
+            var fspec = this.SnapshotRetentionInfo.AsFieldSpec(conf.Child("snapshotRetentionInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "snapshotRetentionInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "snapshotRetentionInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -138,40 +163,107 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> UnmanagedSnapshotType? SnapshotType
         // GraphQL -> snapshotType: UnmanagedSnapshotType! (enum)
-        if (this.SnapshotType == null && ec.Includes("snapshotType",true))
+        if (ec.Includes("snapshotType",true))
         {
-            this.SnapshotType = new UnmanagedSnapshotType();
+            if(this.SnapshotType == null) {
+
+                this.SnapshotType = new UnmanagedSnapshotType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotType != null && ec.Excludes("snapshotType",true))
+        {
+            this.SnapshotType = null;
         }
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime (scalar)
-        if (this.Date == null && ec.Includes("date",true))
+        if (ec.Includes("date",true))
         {
-            this.Date = new DateTime();
+            if(this.Date == null) {
+
+                this.Date = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Date != null && ec.Excludes("date",true))
+        {
+            this.Date = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.Boolean? IsCustomRetentionApplied
         // GraphQL -> isCustomRetentionApplied: Boolean! (scalar)
-        if (this.IsCustomRetentionApplied == null && ec.Includes("isCustomRetentionApplied",true))
+        if (ec.Includes("isCustomRetentionApplied",true))
         {
-            this.IsCustomRetentionApplied = true;
+            if(this.IsCustomRetentionApplied == null) {
+
+                this.IsCustomRetentionApplied = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsCustomRetentionApplied != null && ec.Excludes("isCustomRetentionApplied",true))
+        {
+            this.IsCustomRetentionApplied = null;
         }
         //      C# -> System.Boolean? IsRetentionLockApplied
         // GraphQL -> isRetentionLockApplied: Boolean! (scalar)
-        if (this.IsRetentionLockApplied == null && ec.Includes("isRetentionLockApplied",true))
+        if (ec.Includes("isRetentionLockApplied",true))
         {
-            this.IsRetentionLockApplied = true;
+            if(this.IsRetentionLockApplied == null) {
+
+                this.IsRetentionLockApplied = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsRetentionLockApplied != null && ec.Excludes("isRetentionLockApplied",true))
+        {
+            this.IsRetentionLockApplied = null;
         }
         //      C# -> SnapshotRetentionInfo? SnapshotRetentionInfo
         // GraphQL -> snapshotRetentionInfo: SnapshotRetentionInfo (type)
-        if (this.SnapshotRetentionInfo == null && ec.Includes("snapshotRetentionInfo",false))
+        if (ec.Includes("snapshotRetentionInfo",false))
         {
-            this.SnapshotRetentionInfo = new SnapshotRetentionInfo();
-            this.SnapshotRetentionInfo.ApplyExploratoryFieldSpec(ec.NewChild("snapshotRetentionInfo"));
+            if(this.SnapshotRetentionInfo == null) {
+
+                this.SnapshotRetentionInfo = new SnapshotRetentionInfo();
+                this.SnapshotRetentionInfo.ApplyExploratoryFieldSpec(ec.NewChild("snapshotRetentionInfo"));
+
+            } else {
+
+                this.SnapshotRetentionInfo.ApplyExploratoryFieldSpec(ec.NewChild("snapshotRetentionInfo"));
+
+            }
+        }
+        else if (this.SnapshotRetentionInfo != null && ec.Excludes("snapshotRetentionInfo",false))
+        {
+            this.SnapshotRetentionInfo = null;
         }
     }
 
@@ -198,9 +290,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SnapshotSummary> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

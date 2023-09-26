@@ -65,26 +65,39 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> AwsNativeRegion? AwsRegion
         // GraphQL -> awsRegion: AwsNativeRegion (enum)
         if (this.AwsRegion != null) {
-            s += ind + "awsRegion\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "awsRegion\n" ;
+            } else {
+                s += ind + "awsRegion\n" ;
+            }
         }
         //      C# -> AzureNativeRegion? AzureRegion
         // GraphQL -> azureRegion: AzureNativeRegion (enum)
         if (this.AzureRegion != null) {
-            s += ind + "azureRegion\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "azureRegion\n" ;
+            } else {
+                s += ind + "azureRegion\n" ;
+            }
         }
         //      C# -> GcpNativeRegion? GcpRegion
         // GraphQL -> gcpRegion: GcpNativeRegion (type)
         if (this.GcpRegion != null) {
-            var fspec = this.GcpRegion.AsFieldSpec(indent+1);
+            var fspec = this.GcpRegion.AsFieldSpec(conf.Child("gcpRegion"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "gcpRegion {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "gcpRegion {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -96,22 +109,56 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> AwsNativeRegion? AwsRegion
         // GraphQL -> awsRegion: AwsNativeRegion (enum)
-        if (this.AwsRegion == null && ec.Includes("awsRegion",true))
+        if (ec.Includes("awsRegion",true))
         {
-            this.AwsRegion = new AwsNativeRegion();
+            if(this.AwsRegion == null) {
+
+                this.AwsRegion = new AwsNativeRegion();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AwsRegion != null && ec.Excludes("awsRegion",true))
+        {
+            this.AwsRegion = null;
         }
         //      C# -> AzureNativeRegion? AzureRegion
         // GraphQL -> azureRegion: AzureNativeRegion (enum)
-        if (this.AzureRegion == null && ec.Includes("azureRegion",true))
+        if (ec.Includes("azureRegion",true))
         {
-            this.AzureRegion = new AzureNativeRegion();
+            if(this.AzureRegion == null) {
+
+                this.AzureRegion = new AzureNativeRegion();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AzureRegion != null && ec.Excludes("azureRegion",true))
+        {
+            this.AzureRegion = null;
         }
         //      C# -> GcpNativeRegion? GcpRegion
         // GraphQL -> gcpRegion: GcpNativeRegion (type)
-        if (this.GcpRegion == null && ec.Includes("gcpRegion",false))
+        if (ec.Includes("gcpRegion",false))
         {
-            this.GcpRegion = new GcpNativeRegion();
-            this.GcpRegion.ApplyExploratoryFieldSpec(ec.NewChild("gcpRegion"));
+            if(this.GcpRegion == null) {
+
+                this.GcpRegion = new GcpNativeRegion();
+                this.GcpRegion.ApplyExploratoryFieldSpec(ec.NewChild("gcpRegion"));
+
+            } else {
+
+                this.GcpRegion.ApplyExploratoryFieldSpec(ec.NewChild("gcpRegion"));
+
+            }
+        }
+        else if (this.GcpRegion != null && ec.Excludes("gcpRegion",false))
+        {
+            this.GcpRegion = null;
         }
     }
 
@@ -138,9 +185,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CloudNativeRegion> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

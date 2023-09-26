@@ -56,24 +56,33 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> ManagedVolumeStats? AlwaysMounted
         // GraphQL -> alwaysMounted: ManagedVolumeStats! (type)
         if (this.AlwaysMounted != null) {
-            var fspec = this.AlwaysMounted.AsFieldSpec(indent+1);
+            var fspec = this.AlwaysMounted.AsFieldSpec(conf.Child("alwaysMounted"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "alwaysMounted {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "alwaysMounted {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> ManagedVolumeStats? SlaBased
         // GraphQL -> slaBased: ManagedVolumeStats! (type)
         if (this.SlaBased != null) {
-            var fspec = this.SlaBased.AsFieldSpec(indent+1);
+            var fspec = this.SlaBased.AsFieldSpec(conf.Child("slaBased"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "slaBased {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "slaBased {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -85,17 +94,41 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> ManagedVolumeStats? AlwaysMounted
         // GraphQL -> alwaysMounted: ManagedVolumeStats! (type)
-        if (this.AlwaysMounted == null && ec.Includes("alwaysMounted",false))
+        if (ec.Includes("alwaysMounted",false))
         {
-            this.AlwaysMounted = new ManagedVolumeStats();
-            this.AlwaysMounted.ApplyExploratoryFieldSpec(ec.NewChild("alwaysMounted"));
+            if(this.AlwaysMounted == null) {
+
+                this.AlwaysMounted = new ManagedVolumeStats();
+                this.AlwaysMounted.ApplyExploratoryFieldSpec(ec.NewChild("alwaysMounted"));
+
+            } else {
+
+                this.AlwaysMounted.ApplyExploratoryFieldSpec(ec.NewChild("alwaysMounted"));
+
+            }
+        }
+        else if (this.AlwaysMounted != null && ec.Excludes("alwaysMounted",false))
+        {
+            this.AlwaysMounted = null;
         }
         //      C# -> ManagedVolumeStats? SlaBased
         // GraphQL -> slaBased: ManagedVolumeStats! (type)
-        if (this.SlaBased == null && ec.Includes("slaBased",false))
+        if (ec.Includes("slaBased",false))
         {
-            this.SlaBased = new ManagedVolumeStats();
-            this.SlaBased.ApplyExploratoryFieldSpec(ec.NewChild("slaBased"));
+            if(this.SlaBased == null) {
+
+                this.SlaBased = new ManagedVolumeStats();
+                this.SlaBased.ApplyExploratoryFieldSpec(ec.NewChild("slaBased"));
+
+            } else {
+
+                this.SlaBased.ApplyExploratoryFieldSpec(ec.NewChild("slaBased"));
+
+            }
+        }
+        else if (this.SlaBased != null && ec.Excludes("slaBased",false))
+        {
+            this.SlaBased = null;
         }
     }
 
@@ -122,9 +155,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ManagedVolumeInventoryStats> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

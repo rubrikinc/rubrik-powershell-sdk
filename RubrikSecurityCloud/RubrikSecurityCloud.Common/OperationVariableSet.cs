@@ -21,6 +21,7 @@ namespace RubrikSecurityCloud
     {
         public IDictionary<string, object>? Variables { get; set; }
 
+        private IRscLogger? _logger = null;
         private readonly JsonSerializerSettings _serializerSettings =
             new JsonSerializerSettings
             {
@@ -42,6 +43,7 @@ namespace RubrikSecurityCloud
 
         private JObject processVariables(IRscLogger? logger = null)
         {
+            _logger = logger;
             JObject variables = new JObject();
             if (this.Variables == null)
             {
@@ -55,93 +57,80 @@ namespace RubrikSecurityCloud
 
             foreach (var key in sortedKeys)
             {
-                var item = new KeyValuePair<string, object>(key, Variables[key]);
-
-                logger?.Debug($"Var {item.Key} = " +
-                    StringUtils.FormatObjectForLogging(item.Value));
-
-                if (item.Value is string sVal)
-                {
-                    variables.Add(item.Key, sVal);
-                }
-                else if (item.Value is string[] sarrVal)
-                {
-                    variables.Add(item.Key, new JArray(sarrVal));
-                }
-                else if (item.Value is object[] objArrVal)
-                {
-                    var arr = new JArray();
-                    foreach (var obj in objArrVal)
-                    {
-                        arr.Add(
-                            JObject.FromObject(
-                                obj,
-                                JsonSerializer.Create(_serializerSettings)
-                            )
-                        );
-                    }
-                    variables.Add(item.Key, arr);
-                }
-                else if (item.Value is int iVal)
-                {
-                    variables.Add(item.Key, iVal);
-                }
-                else if (item.Value is bool bVal)
-                {
-                    variables.Add(item.Key, bVal);
-                }
-                else if (item.Value is DateTime dtVal)
-                {
-                    variables.Add(
-                        item.Key,
-                        dtVal.ToString(
-                            "yyyy-MM-ddTHH:mm:sszzz",
-                            System.Globalization.CultureInfo
-                                .InvariantCulture
-                        )
-                    );
-                }
-                else if (item.Value is null)
-                {
-                    variables.Add(item.Key, null);
-                }
-                else if (item.Value is VarDict vdObj)
-                {
-                    JObject vdJObject = new JObject();
-                    foreach (var vdItem in vdObj)
-                    {
-                        vdJObject[vdItem.Key] = JToken.FromObject(vdItem.Value);
-                    }
-                    variables.Add(item.Key, vdJObject);
-                }
-                // If value is a List<>
-                else if (item.Value is ICollection objListVal)
-                {
-                    var arr = new JArray();
-                    foreach (var obj in objListVal)
-                    {
-                        arr.Add(
-                            JObject.FromObject(
-                                obj,
-                                JsonSerializer.Create(_serializerSettings)
-                            )
-                        );
-                    }
-                    variables.Add(item.Key, arr);
-                }
-                else
-                {
-                    variables.Add(
-                        item.Key,
-                        JObject.FromObject(
-                            item.Value,
-                            JsonSerializer.Create(_serializerSettings)
-                        )
-                    );
-                }
+                logger?.Debug($"Var {key} = " +
+                    StringUtils.FormatObjectForLogging(Variables[key]));
+                var processedValue = processVariable(Variables[key]);
+                variables.Add(key, processedValue);
             }
+
             return variables;
         }
 
+        private JToken? processVariable(object obj)
+        {
+            if (obj is null)
+            {
+                return null;
+            }
+            if (obj is DateTime dtVal)
+            {
+                return dtVal.ToString(
+                        "yyyy-MM-ddTHH:mm:sszzz",
+                        System.Globalization.CultureInfo
+                            .InvariantCulture);
+            }
+
+            // IConvertible is an interface that many of the
+            // built-in simple types (like int, double, bool,
+            // string, etc.) implement, and we're using it to
+            // identify such scalar types
+            if (obj is IConvertible || obj.GetType().IsEnum)
+            {
+                return JToken.FromObject(
+                        obj,
+                        JsonSerializer.Create(_serializerSettings)
+                );
+            }
+            if (obj is string[] sarrVal)
+            {
+                return new JArray(sarrVal);
+            }
+
+
+            if (obj is object[] objArrVal)
+            {
+                var arr = new JArray();
+                foreach (var arrItem in objArrVal)
+                {
+                    arr.Add(processVariable(arrItem));
+                }
+                return arr;
+            }
+            if (obj is VarDict vdObj)
+            {
+                JObject vdJObject = new JObject();
+                foreach (var vdItem in vdObj)
+                {
+                    vdJObject[vdItem.Key] = processVariable(vdItem.Value);
+                }
+                return vdJObject;
+            }
+            // If value is a List<>
+            if (obj is ICollection objListVal)
+            {
+                var arr = new JArray();
+                foreach (var listItem in objListVal)
+                {
+                    arr.Add(processVariable(listItem));
+                }
+                return arr;
+            }
+
+            // default:
+            return JObject.FromObject(
+                    obj,
+                    JsonSerializer.Create(_serializerSettings)
+            );
+        }
     }
 }

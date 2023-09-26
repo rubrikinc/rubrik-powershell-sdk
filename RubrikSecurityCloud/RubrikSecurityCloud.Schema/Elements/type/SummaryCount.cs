@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? TotalCount
         // GraphQL -> totalCount: Long! (scalar)
         if (this.TotalCount != null) {
-            s += ind + "totalCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "totalCount\n" ;
+            } else {
+                s += ind + "totalCount\n" ;
+            }
         }
         //      C# -> System.Int64? ViolatedCount
         // GraphQL -> violatedCount: Long! (scalar)
         if (this.ViolatedCount != null) {
-            s += ind + "violatedCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "violatedCount\n" ;
+            } else {
+                s += ind + "violatedCount\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? TotalCount
         // GraphQL -> totalCount: Long! (scalar)
-        if (this.TotalCount == null && ec.Includes("totalCount",true))
+        if (ec.Includes("totalCount",true))
         {
-            this.TotalCount = new System.Int64();
+            if(this.TotalCount == null) {
+
+                this.TotalCount = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalCount != null && ec.Excludes("totalCount",true))
+        {
+            this.TotalCount = null;
         }
         //      C# -> System.Int64? ViolatedCount
         // GraphQL -> violatedCount: Long! (scalar)
-        if (this.ViolatedCount == null && ec.Includes("violatedCount",true))
+        if (ec.Includes("violatedCount",true))
         {
-            this.ViolatedCount = new System.Int64();
+            if(this.ViolatedCount == null) {
+
+                this.ViolatedCount = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ViolatedCount != null && ec.Excludes("violatedCount",true))
+        {
+            this.ViolatedCount = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SummaryCount> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

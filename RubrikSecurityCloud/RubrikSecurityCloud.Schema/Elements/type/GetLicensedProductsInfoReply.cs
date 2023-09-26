@@ -47,16 +47,21 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<LicensedClusterProduct>? ClusterProducts
         // GraphQL -> clusterProducts: [LicensedClusterProduct!]! (type)
         if (this.ClusterProducts != null) {
-            var fspec = this.ClusterProducts.AsFieldSpec(indent+1);
+            var fspec = this.ClusterProducts.AsFieldSpec(conf.Child("clusterProducts"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "clusterProducts {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "clusterProducts {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -68,10 +73,22 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<LicensedClusterProduct>? ClusterProducts
         // GraphQL -> clusterProducts: [LicensedClusterProduct!]! (type)
-        if (this.ClusterProducts == null && ec.Includes("clusterProducts",false))
+        if (ec.Includes("clusterProducts",false))
         {
-            this.ClusterProducts = new List<LicensedClusterProduct>();
-            this.ClusterProducts.ApplyExploratoryFieldSpec(ec.NewChild("clusterProducts"));
+            if(this.ClusterProducts == null) {
+
+                this.ClusterProducts = new List<LicensedClusterProduct>();
+                this.ClusterProducts.ApplyExploratoryFieldSpec(ec.NewChild("clusterProducts"));
+
+            } else {
+
+                this.ClusterProducts.ApplyExploratoryFieldSpec(ec.NewChild("clusterProducts"));
+
+            }
+        }
+        else if (this.ClusterProducts != null && ec.Excludes("clusterProducts",false))
+        {
+            this.ClusterProducts = null;
         }
     }
 
@@ -98,9 +115,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<GetLicensedProductsInfoReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

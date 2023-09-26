@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> HierarchyObjectTypeEnum? SnappableType
         // GraphQL -> snappableType: HierarchyObjectTypeEnum! (enum)
         if (this.SnappableType != null) {
-            s += ind + "snappableType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snappableType\n" ;
+            } else {
+                s += ind + "snappableType\n" ;
+            }
         }
         //      C# -> System.Int32? Count
         // GraphQL -> count: Int! (scalar)
         if (this.Count != null) {
-            s += ind + "count\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "count\n" ;
+            } else {
+                s += ind + "count\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> HierarchyObjectTypeEnum? SnappableType
         // GraphQL -> snappableType: HierarchyObjectTypeEnum! (enum)
-        if (this.SnappableType == null && ec.Includes("snappableType",true))
+        if (ec.Includes("snappableType",true))
         {
-            this.SnappableType = new HierarchyObjectTypeEnum();
+            if(this.SnappableType == null) {
+
+                this.SnappableType = new HierarchyObjectTypeEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnappableType != null && ec.Excludes("snappableType",true))
+        {
+            this.SnappableType = null;
         }
         //      C# -> System.Int32? Count
         // GraphQL -> count: Int! (scalar)
-        if (this.Count == null && ec.Includes("count",true))
+        if (ec.Includes("count",true))
         {
-            this.Count = Int32.MinValue;
+            if(this.Count == null) {
+
+                this.Count = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Count != null && ec.Excludes("count",true))
+        {
+            this.Count = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SnappableTypeSummary> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> AmiType? AmiType
         // GraphQL -> amiType: AmiType! (enum)
         if (this.AmiType != null) {
-            s += ind + "amiType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "amiType\n" ;
+            } else {
+                s += ind + "amiType\n" ;
+            }
         }
         //      C# -> AwsNativeRegion? RegionNativeId
         // GraphQL -> regionNativeId: AwsNativeRegion! (enum)
         if (this.RegionNativeId != null) {
-            s += ind + "regionNativeId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "regionNativeId\n" ;
+            } else {
+                s += ind + "regionNativeId\n" ;
+            }
         }
         //      C# -> System.String? AmiId
         // GraphQL -> amiId: String! (scalar)
         if (this.AmiId != null) {
-            s += ind + "amiId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "amiId\n" ;
+            } else {
+                s += ind + "amiId\n" ;
+            }
         }
         //      C# -> System.String? AwsAccountRubrikId
         // GraphQL -> awsAccountRubrikId: String! (scalar)
         if (this.AwsAccountRubrikId != null) {
-            s += ind + "awsAccountRubrikId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "awsAccountRubrikId\n" ;
+            } else {
+                s += ind + "awsAccountRubrikId\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> AmiType? AmiType
         // GraphQL -> amiType: AmiType! (enum)
-        if (this.AmiType == null && ec.Includes("amiType",true))
+        if (ec.Includes("amiType",true))
         {
-            this.AmiType = new AmiType();
+            if(this.AmiType == null) {
+
+                this.AmiType = new AmiType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AmiType != null && ec.Excludes("amiType",true))
+        {
+            this.AmiType = null;
         }
         //      C# -> AwsNativeRegion? RegionNativeId
         // GraphQL -> regionNativeId: AwsNativeRegion! (enum)
-        if (this.RegionNativeId == null && ec.Includes("regionNativeId",true))
+        if (ec.Includes("regionNativeId",true))
         {
-            this.RegionNativeId = new AwsNativeRegion();
+            if(this.RegionNativeId == null) {
+
+                this.RegionNativeId = new AwsNativeRegion();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RegionNativeId != null && ec.Excludes("regionNativeId",true))
+        {
+            this.RegionNativeId = null;
         }
         //      C# -> System.String? AmiId
         // GraphQL -> amiId: String! (scalar)
-        if (this.AmiId == null && ec.Includes("amiId",true))
+        if (ec.Includes("amiId",true))
         {
-            this.AmiId = "FETCH";
+            if(this.AmiId == null) {
+
+                this.AmiId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AmiId != null && ec.Excludes("amiId",true))
+        {
+            this.AmiId = null;
         }
         //      C# -> System.String? AwsAccountRubrikId
         // GraphQL -> awsAccountRubrikId: String! (scalar)
-        if (this.AwsAccountRubrikId == null && ec.Includes("awsAccountRubrikId",true))
+        if (ec.Includes("awsAccountRubrikId",true))
         {
-            this.AwsAccountRubrikId = "FETCH";
+            if(this.AwsAccountRubrikId == null) {
+
+                this.AwsAccountRubrikId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AwsAccountRubrikId != null && ec.Excludes("awsAccountRubrikId",true))
+        {
+            this.AwsAccountRubrikId = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AmiTypeForAwsNativeArchivedSnapshotExportReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

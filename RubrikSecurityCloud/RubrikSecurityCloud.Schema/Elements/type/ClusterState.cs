@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> ClusterRemovalState? ClusterRemovalState
         // GraphQL -> clusterRemovalState: ClusterRemovalState! (enum)
         if (this.ClusterRemovalState != null) {
-            s += ind + "clusterRemovalState\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterRemovalState\n" ;
+            } else {
+                s += ind + "clusterRemovalState\n" ;
+            }
         }
         //      C# -> ClusterStatus? ConnectedState
         // GraphQL -> connectedState: ClusterStatus! (enum)
         if (this.ConnectedState != null) {
-            s += ind + "connectedState\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "connectedState\n" ;
+            } else {
+                s += ind + "connectedState\n" ;
+            }
         }
         //      C# -> DateTime? ClusterRemovalCreatedAt
         // GraphQL -> clusterRemovalCreatedAt: DateTime (scalar)
         if (this.ClusterRemovalCreatedAt != null) {
-            s += ind + "clusterRemovalCreatedAt\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterRemovalCreatedAt\n" ;
+            } else {
+                s += ind + "clusterRemovalCreatedAt\n" ;
+            }
         }
         //      C# -> DateTime? ClusterRemovalUpdatedAt
         // GraphQL -> clusterRemovalUpdatedAt: DateTime (scalar)
         if (this.ClusterRemovalUpdatedAt != null) {
-            s += ind + "clusterRemovalUpdatedAt\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterRemovalUpdatedAt\n" ;
+            } else {
+                s += ind + "clusterRemovalUpdatedAt\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> ClusterRemovalState? ClusterRemovalState
         // GraphQL -> clusterRemovalState: ClusterRemovalState! (enum)
-        if (this.ClusterRemovalState == null && ec.Includes("clusterRemovalState",true))
+        if (ec.Includes("clusterRemovalState",true))
         {
-            this.ClusterRemovalState = new ClusterRemovalState();
+            if(this.ClusterRemovalState == null) {
+
+                this.ClusterRemovalState = new ClusterRemovalState();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterRemovalState != null && ec.Excludes("clusterRemovalState",true))
+        {
+            this.ClusterRemovalState = null;
         }
         //      C# -> ClusterStatus? ConnectedState
         // GraphQL -> connectedState: ClusterStatus! (enum)
-        if (this.ConnectedState == null && ec.Includes("connectedState",true))
+        if (ec.Includes("connectedState",true))
         {
-            this.ConnectedState = new ClusterStatus();
+            if(this.ConnectedState == null) {
+
+                this.ConnectedState = new ClusterStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ConnectedState != null && ec.Excludes("connectedState",true))
+        {
+            this.ConnectedState = null;
         }
         //      C# -> DateTime? ClusterRemovalCreatedAt
         // GraphQL -> clusterRemovalCreatedAt: DateTime (scalar)
-        if (this.ClusterRemovalCreatedAt == null && ec.Includes("clusterRemovalCreatedAt",true))
+        if (ec.Includes("clusterRemovalCreatedAt",true))
         {
-            this.ClusterRemovalCreatedAt = new DateTime();
+            if(this.ClusterRemovalCreatedAt == null) {
+
+                this.ClusterRemovalCreatedAt = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterRemovalCreatedAt != null && ec.Excludes("clusterRemovalCreatedAt",true))
+        {
+            this.ClusterRemovalCreatedAt = null;
         }
         //      C# -> DateTime? ClusterRemovalUpdatedAt
         // GraphQL -> clusterRemovalUpdatedAt: DateTime (scalar)
-        if (this.ClusterRemovalUpdatedAt == null && ec.Includes("clusterRemovalUpdatedAt",true))
+        if (ec.Includes("clusterRemovalUpdatedAt",true))
         {
-            this.ClusterRemovalUpdatedAt = new DateTime();
+            if(this.ClusterRemovalUpdatedAt == null) {
+
+                this.ClusterRemovalUpdatedAt = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterRemovalUpdatedAt != null && ec.Excludes("clusterRemovalUpdatedAt",true))
+        {
+            this.ClusterRemovalUpdatedAt = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ClusterState> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

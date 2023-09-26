@@ -74,37 +74,54 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int32? Count
         // GraphQL -> count: Int! (scalar)
         if (this.Count != null) {
-            s += ind + "count\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "count\n" ;
+            } else {
+                s += ind + "count\n" ;
+            }
         }
         //      C# -> List<O365GroupEdge>? Edges
         // GraphQL -> edges: [O365GroupEdge!]! (type)
         if (this.Edges != null) {
-            var fspec = this.Edges.AsFieldSpec(indent+1);
+            var fspec = this.Edges.AsFieldSpec(conf.Child("edges"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "edges {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "edges {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<O365Group>? Nodes
         // GraphQL -> nodes: [O365Group!]! (type)
         if (this.Nodes != null) {
-            var fspec = this.Nodes.AsFieldSpec(indent+1);
+            var fspec = this.Nodes.AsFieldSpec(conf.Child("nodes"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "nodes {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "nodes {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> PageInfo? PageInfo
         // GraphQL -> pageInfo: PageInfo! (type)
         if (this.PageInfo != null) {
-            var fspec = this.PageInfo.AsFieldSpec(indent+1);
+            var fspec = this.PageInfo.AsFieldSpec(conf.Child("pageInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "pageInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "pageInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -116,30 +133,77 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int32? Count
         // GraphQL -> count: Int! (scalar)
-        if (this.Count == null && ec.Includes("count",true))
+        if (ec.Includes("count",true))
         {
-            this.Count = Int32.MinValue;
+            if(this.Count == null) {
+
+                this.Count = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Count != null && ec.Excludes("count",true))
+        {
+            this.Count = null;
         }
         //      C# -> List<O365GroupEdge>? Edges
         // GraphQL -> edges: [O365GroupEdge!]! (type)
-        if (this.Edges == null && ec.Includes("edges",false))
+        if (ec.Includes("edges",false))
         {
-            this.Edges = new List<O365GroupEdge>();
-            this.Edges.ApplyExploratoryFieldSpec(ec.NewChild("edges"));
+            if(this.Edges == null) {
+
+                this.Edges = new List<O365GroupEdge>();
+                this.Edges.ApplyExploratoryFieldSpec(ec.NewChild("edges"));
+
+            } else {
+
+                this.Edges.ApplyExploratoryFieldSpec(ec.NewChild("edges"));
+
+            }
+        }
+        else if (this.Edges != null && ec.Excludes("edges",false))
+        {
+            this.Edges = null;
         }
         //      C# -> List<O365Group>? Nodes
         // GraphQL -> nodes: [O365Group!]! (type)
-        if (this.Nodes == null && ec.Includes("nodes",false))
+        if (ec.Includes("nodes",false))
         {
-            this.Nodes = new List<O365Group>();
-            this.Nodes.ApplyExploratoryFieldSpec(ec.NewChild("nodes"));
+            if(this.Nodes == null) {
+
+                this.Nodes = new List<O365Group>();
+                this.Nodes.ApplyExploratoryFieldSpec(ec.NewChild("nodes"));
+
+            } else {
+
+                this.Nodes.ApplyExploratoryFieldSpec(ec.NewChild("nodes"));
+
+            }
+        }
+        else if (this.Nodes != null && ec.Excludes("nodes",false))
+        {
+            this.Nodes = null;
         }
         //      C# -> PageInfo? PageInfo
         // GraphQL -> pageInfo: PageInfo! (type)
-        if (this.PageInfo == null && ec.Includes("pageInfo",false))
+        if (ec.Includes("pageInfo",false))
         {
-            this.PageInfo = new PageInfo();
-            this.PageInfo.ApplyExploratoryFieldSpec(ec.NewChild("pageInfo"));
+            if(this.PageInfo == null) {
+
+                this.PageInfo = new PageInfo();
+                this.PageInfo.ApplyExploratoryFieldSpec(ec.NewChild("pageInfo"));
+
+            } else {
+
+                this.PageInfo.ApplyExploratoryFieldSpec(ec.NewChild("pageInfo"));
+
+            }
+        }
+        else if (this.PageInfo != null && ec.Excludes("pageInfo",false))
+        {
+            this.PageInfo = null;
         }
     }
 
@@ -166,9 +230,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<O365GroupConnection> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

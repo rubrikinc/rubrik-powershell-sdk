@@ -92,47 +92,72 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
         if (this.CdmId != null) {
-            s += ind + "cdmId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cdmId\n" ;
+            } else {
+                s += ind + "cdmId\n" ;
+            }
         }
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime (scalar)
         if (this.EndTime != null) {
-            s += ind + "endTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "endTime\n" ;
+            } else {
+                s += ind + "endTime\n" ;
+            }
         }
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime (scalar)
         if (this.StartTime != null) {
-            s += ind + "startTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "startTime\n" ;
+            } else {
+                s += ind + "startTime\n" ;
+            }
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
         if (this.Cluster != null) {
-            var fspec = this.Cluster.AsFieldSpec(indent+1);
+            var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> ThreatHuntConfig? Config
         // GraphQL -> config: ThreatHuntConfig! (type)
         if (this.Config != null) {
-            var fspec = this.Config.AsFieldSpec(indent+1);
+            var fspec = this.Config.AsFieldSpec(conf.Child("config"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "config {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "config {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<WorkloadIdToSnapshotIds>? Snapshots
         // GraphQL -> snapshots: [WorkloadIdToSnapshotIds!]! (type)
         if (this.Snapshots != null) {
-            var fspec = this.Snapshots.AsFieldSpec(indent+1);
+            var fspec = this.Snapshots.AsFieldSpec(conf.Child("snapshots"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "snapshots {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "snapshots {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -144,42 +169,111 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
-        if (this.CdmId == null && ec.Includes("cdmId",true))
+        if (ec.Includes("cdmId",true))
         {
-            this.CdmId = "FETCH";
+            if(this.CdmId == null) {
+
+                this.CdmId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CdmId != null && ec.Excludes("cdmId",true))
+        {
+            this.CdmId = null;
         }
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime (scalar)
-        if (this.EndTime == null && ec.Includes("endTime",true))
+        if (ec.Includes("endTime",true))
         {
-            this.EndTime = new DateTime();
+            if(this.EndTime == null) {
+
+                this.EndTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EndTime != null && ec.Excludes("endTime",true))
+        {
+            this.EndTime = null;
         }
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime (scalar)
-        if (this.StartTime == null && ec.Includes("startTime",true))
+        if (ec.Includes("startTime",true))
         {
-            this.StartTime = new DateTime();
+            if(this.StartTime == null) {
+
+                this.StartTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.StartTime != null && ec.Excludes("startTime",true))
+        {
+            this.StartTime = null;
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
-        if (this.Cluster == null && ec.Includes("cluster",false))
+        if (ec.Includes("cluster",false))
         {
-            this.Cluster = new Cluster();
-            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+            if(this.Cluster == null) {
+
+                this.Cluster = new Cluster();
+                this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+
+            } else {
+
+                this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+
+            }
+        }
+        else if (this.Cluster != null && ec.Excludes("cluster",false))
+        {
+            this.Cluster = null;
         }
         //      C# -> ThreatHuntConfig? Config
         // GraphQL -> config: ThreatHuntConfig! (type)
-        if (this.Config == null && ec.Includes("config",false))
+        if (ec.Includes("config",false))
         {
-            this.Config = new ThreatHuntConfig();
-            this.Config.ApplyExploratoryFieldSpec(ec.NewChild("config"));
+            if(this.Config == null) {
+
+                this.Config = new ThreatHuntConfig();
+                this.Config.ApplyExploratoryFieldSpec(ec.NewChild("config"));
+
+            } else {
+
+                this.Config.ApplyExploratoryFieldSpec(ec.NewChild("config"));
+
+            }
+        }
+        else if (this.Config != null && ec.Excludes("config",false))
+        {
+            this.Config = null;
         }
         //      C# -> List<WorkloadIdToSnapshotIds>? Snapshots
         // GraphQL -> snapshots: [WorkloadIdToSnapshotIds!]! (type)
-        if (this.Snapshots == null && ec.Includes("snapshots",false))
+        if (ec.Includes("snapshots",false))
         {
-            this.Snapshots = new List<WorkloadIdToSnapshotIds>();
-            this.Snapshots.ApplyExploratoryFieldSpec(ec.NewChild("snapshots"));
+            if(this.Snapshots == null) {
+
+                this.Snapshots = new List<WorkloadIdToSnapshotIds>();
+                this.Snapshots.ApplyExploratoryFieldSpec(ec.NewChild("snapshots"));
+
+            } else {
+
+                this.Snapshots.ApplyExploratoryFieldSpec(ec.NewChild("snapshots"));
+
+            }
+        }
+        else if (this.Snapshots != null && ec.Excludes("snapshots",false))
+        {
+            this.Snapshots = null;
         }
     }
 
@@ -206,9 +300,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ThreatHuntDetails> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

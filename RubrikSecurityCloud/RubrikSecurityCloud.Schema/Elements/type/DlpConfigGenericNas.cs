@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> DlpConfigShareType? ShareType
         // GraphQL -> shareType: DlpConfigShareType! (enum)
         if (this.ShareType != null) {
-            s += ind + "shareType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "shareType\n" ;
+            } else {
+                s += ind + "shareType\n" ;
+            }
         }
         //      C# -> System.String? Path
         // GraphQL -> path: String! (scalar)
         if (this.Path != null) {
-            s += ind + "path\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "path\n" ;
+            } else {
+                s += ind + "path\n" ;
+            }
         }
         //      C# -> System.String? ShareId
         // GraphQL -> shareId: String! (scalar)
         if (this.ShareId != null) {
-            s += ind + "shareId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "shareId\n" ;
+            } else {
+                s += ind + "shareId\n" ;
+            }
         }
         //      C# -> System.String? WorkloadId
         // GraphQL -> workloadId: UUID! (scalar)
         if (this.WorkloadId != null) {
-            s += ind + "workloadId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "workloadId\n" ;
+            } else {
+                s += ind + "workloadId\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> DlpConfigShareType? ShareType
         // GraphQL -> shareType: DlpConfigShareType! (enum)
-        if (this.ShareType == null && ec.Includes("shareType",true))
+        if (ec.Includes("shareType",true))
         {
-            this.ShareType = new DlpConfigShareType();
+            if(this.ShareType == null) {
+
+                this.ShareType = new DlpConfigShareType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShareType != null && ec.Excludes("shareType",true))
+        {
+            this.ShareType = null;
         }
         //      C# -> System.String? Path
         // GraphQL -> path: String! (scalar)
-        if (this.Path == null && ec.Includes("path",true))
+        if (ec.Includes("path",true))
         {
-            this.Path = "FETCH";
+            if(this.Path == null) {
+
+                this.Path = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Path != null && ec.Excludes("path",true))
+        {
+            this.Path = null;
         }
         //      C# -> System.String? ShareId
         // GraphQL -> shareId: String! (scalar)
-        if (this.ShareId == null && ec.Includes("shareId",true))
+        if (ec.Includes("shareId",true))
         {
-            this.ShareId = "FETCH";
+            if(this.ShareId == null) {
+
+                this.ShareId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShareId != null && ec.Excludes("shareId",true))
+        {
+            this.ShareId = null;
         }
         //      C# -> System.String? WorkloadId
         // GraphQL -> workloadId: UUID! (scalar)
-        if (this.WorkloadId == null && ec.Includes("workloadId",true))
+        if (ec.Includes("workloadId",true))
         {
-            this.WorkloadId = "FETCH";
+            if(this.WorkloadId == null) {
+
+                this.WorkloadId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.WorkloadId != null && ec.Excludes("workloadId",true))
+        {
+            this.WorkloadId = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<DlpConfigGenericNas> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

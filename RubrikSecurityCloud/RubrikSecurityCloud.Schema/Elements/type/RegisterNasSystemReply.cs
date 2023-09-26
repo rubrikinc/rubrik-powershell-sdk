@@ -56,24 +56,33 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> AsyncRequestStatus? NasDiscoverJobStatus
         // GraphQL -> nasDiscoverJobStatus: AsyncRequestStatus (type)
         if (this.NasDiscoverJobStatus != null) {
-            var fspec = this.NasDiscoverJobStatus.AsFieldSpec(indent+1);
+            var fspec = this.NasDiscoverJobStatus.AsFieldSpec(conf.Child("nasDiscoverJobStatus"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "nasDiscoverJobStatus {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "nasDiscoverJobStatus {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> UpdateNasSystemReply? NasSystemSummary
         // GraphQL -> nasSystemSummary: UpdateNasSystemReply (type)
         if (this.NasSystemSummary != null) {
-            var fspec = this.NasSystemSummary.AsFieldSpec(indent+1);
+            var fspec = this.NasSystemSummary.AsFieldSpec(conf.Child("nasSystemSummary"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "nasSystemSummary {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "nasSystemSummary {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -85,17 +94,41 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> AsyncRequestStatus? NasDiscoverJobStatus
         // GraphQL -> nasDiscoverJobStatus: AsyncRequestStatus (type)
-        if (this.NasDiscoverJobStatus == null && ec.Includes("nasDiscoverJobStatus",false))
+        if (ec.Includes("nasDiscoverJobStatus",false))
         {
-            this.NasDiscoverJobStatus = new AsyncRequestStatus();
-            this.NasDiscoverJobStatus.ApplyExploratoryFieldSpec(ec.NewChild("nasDiscoverJobStatus"));
+            if(this.NasDiscoverJobStatus == null) {
+
+                this.NasDiscoverJobStatus = new AsyncRequestStatus();
+                this.NasDiscoverJobStatus.ApplyExploratoryFieldSpec(ec.NewChild("nasDiscoverJobStatus"));
+
+            } else {
+
+                this.NasDiscoverJobStatus.ApplyExploratoryFieldSpec(ec.NewChild("nasDiscoverJobStatus"));
+
+            }
+        }
+        else if (this.NasDiscoverJobStatus != null && ec.Excludes("nasDiscoverJobStatus",false))
+        {
+            this.NasDiscoverJobStatus = null;
         }
         //      C# -> UpdateNasSystemReply? NasSystemSummary
         // GraphQL -> nasSystemSummary: UpdateNasSystemReply (type)
-        if (this.NasSystemSummary == null && ec.Includes("nasSystemSummary",false))
+        if (ec.Includes("nasSystemSummary",false))
         {
-            this.NasSystemSummary = new UpdateNasSystemReply();
-            this.NasSystemSummary.ApplyExploratoryFieldSpec(ec.NewChild("nasSystemSummary"));
+            if(this.NasSystemSummary == null) {
+
+                this.NasSystemSummary = new UpdateNasSystemReply();
+                this.NasSystemSummary.ApplyExploratoryFieldSpec(ec.NewChild("nasSystemSummary"));
+
+            } else {
+
+                this.NasSystemSummary.ApplyExploratoryFieldSpec(ec.NewChild("nasSystemSummary"));
+
+            }
+        }
+        else if (this.NasSystemSummary != null && ec.Excludes("nasSystemSummary",false))
+        {
+            this.NasSystemSummary = null;
         }
     }
 
@@ -122,9 +155,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<RegisterNasSystemReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -66,24 +66,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? AzureRegion
         // GraphQL -> azureRegion: String! (scalar)
         if (this.AzureRegion != null) {
-            s += ind + "azureRegion\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "azureRegion\n" ;
+            } else {
+                s += ind + "azureRegion\n" ;
+            }
         }
         //      C# -> System.String? SubscriptionRubrikId
         // GraphQL -> subscriptionRubrikId: String (scalar)
         if (this.SubscriptionRubrikId != null) {
-            s += ind + "subscriptionRubrikId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "subscriptionRubrikId\n" ;
+            } else {
+                s += ind + "subscriptionRubrikId\n" ;
+            }
         }
         //      C# -> System.String? SubscriptionRubrikName
         // GraphQL -> subscriptionRubrikName: String (scalar)
         if (this.SubscriptionRubrikName != null) {
-            s += ind + "subscriptionRubrikName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "subscriptionRubrikName\n" ;
+            } else {
+                s += ind + "subscriptionRubrikName\n" ;
+            }
         }
         return s;
     }
@@ -94,21 +107,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? AzureRegion
         // GraphQL -> azureRegion: String! (scalar)
-        if (this.AzureRegion == null && ec.Includes("azureRegion",true))
+        if (ec.Includes("azureRegion",true))
         {
-            this.AzureRegion = "FETCH";
+            if(this.AzureRegion == null) {
+
+                this.AzureRegion = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AzureRegion != null && ec.Excludes("azureRegion",true))
+        {
+            this.AzureRegion = null;
         }
         //      C# -> System.String? SubscriptionRubrikId
         // GraphQL -> subscriptionRubrikId: String (scalar)
-        if (this.SubscriptionRubrikId == null && ec.Includes("subscriptionRubrikId",true))
+        if (ec.Includes("subscriptionRubrikId",true))
         {
-            this.SubscriptionRubrikId = "FETCH";
+            if(this.SubscriptionRubrikId == null) {
+
+                this.SubscriptionRubrikId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SubscriptionRubrikId != null && ec.Excludes("subscriptionRubrikId",true))
+        {
+            this.SubscriptionRubrikId = null;
         }
         //      C# -> System.String? SubscriptionRubrikName
         // GraphQL -> subscriptionRubrikName: String (scalar)
-        if (this.SubscriptionRubrikName == null && ec.Includes("subscriptionRubrikName",true))
+        if (ec.Includes("subscriptionRubrikName",true))
         {
-            this.SubscriptionRubrikName = "FETCH";
+            if(this.SubscriptionRubrikName == null) {
+
+                this.SubscriptionRubrikName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SubscriptionRubrikName != null && ec.Excludes("subscriptionRubrikName",true))
+        {
+            this.SubscriptionRubrikName = null;
         }
     }
 
@@ -135,9 +181,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AzureSnappableLocation> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

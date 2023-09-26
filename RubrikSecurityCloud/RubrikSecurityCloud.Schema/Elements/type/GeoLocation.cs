@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Address
         // GraphQL -> address: String! (scalar)
         if (this.Address != null) {
-            s += ind + "address\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "address\n" ;
+            } else {
+                s += ind + "address\n" ;
+            }
         }
         //      C# -> System.Single? Latitude
         // GraphQL -> latitude: Float! (scalar)
         if (this.Latitude != null) {
-            s += ind + "latitude\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "latitude\n" ;
+            } else {
+                s += ind + "latitude\n" ;
+            }
         }
         //      C# -> System.Single? Longitude
         // GraphQL -> longitude: Float! (scalar)
         if (this.Longitude != null) {
-            s += ind + "longitude\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "longitude\n" ;
+            } else {
+                s += ind + "longitude\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Address
         // GraphQL -> address: String! (scalar)
-        if (this.Address == null && ec.Includes("address",true))
+        if (ec.Includes("address",true))
         {
-            this.Address = "FETCH";
+            if(this.Address == null) {
+
+                this.Address = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Address != null && ec.Excludes("address",true))
+        {
+            this.Address = null;
         }
         //      C# -> System.Single? Latitude
         // GraphQL -> latitude: Float! (scalar)
-        if (this.Latitude == null && ec.Includes("latitude",true))
+        if (ec.Includes("latitude",true))
         {
-            this.Latitude = new System.Single();
+            if(this.Latitude == null) {
+
+                this.Latitude = new System.Single();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Latitude != null && ec.Excludes("latitude",true))
+        {
+            this.Latitude = null;
         }
         //      C# -> System.Single? Longitude
         // GraphQL -> longitude: Float! (scalar)
-        if (this.Longitude == null && ec.Includes("longitude",true))
+        if (ec.Includes("longitude",true))
         {
-            this.Longitude = new System.Single();
+            if(this.Longitude == null) {
+
+                this.Longitude = new System.Single();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Longitude != null && ec.Excludes("longitude",true))
+        {
+            this.Longitude = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<GeoLocation> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

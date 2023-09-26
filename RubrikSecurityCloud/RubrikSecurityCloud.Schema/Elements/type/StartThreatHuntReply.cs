@@ -65,26 +65,39 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? HuntId
         // GraphQL -> huntId: String! (scalar)
         if (this.HuntId != null) {
-            s += ind + "huntId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "huntId\n" ;
+            } else {
+                s += ind + "huntId\n" ;
+            }
         }
         //      C# -> System.Boolean? IsSyncSuccessful
         // GraphQL -> isSyncSuccessful: Boolean! (scalar)
         if (this.IsSyncSuccessful != null) {
-            s += ind + "isSyncSuccessful\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isSyncSuccessful\n" ;
+            } else {
+                s += ind + "isSyncSuccessful\n" ;
+            }
         }
         //      C# -> AsyncRequestStatus? HuntStatus
         // GraphQL -> huntStatus: AsyncRequestStatus (type)
         if (this.HuntStatus != null) {
-            var fspec = this.HuntStatus.AsFieldSpec(indent+1);
+            var fspec = this.HuntStatus.AsFieldSpec(conf.Child("huntStatus"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "huntStatus {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "huntStatus {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -96,22 +109,56 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? HuntId
         // GraphQL -> huntId: String! (scalar)
-        if (this.HuntId == null && ec.Includes("huntId",true))
+        if (ec.Includes("huntId",true))
         {
-            this.HuntId = "FETCH";
+            if(this.HuntId == null) {
+
+                this.HuntId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.HuntId != null && ec.Excludes("huntId",true))
+        {
+            this.HuntId = null;
         }
         //      C# -> System.Boolean? IsSyncSuccessful
         // GraphQL -> isSyncSuccessful: Boolean! (scalar)
-        if (this.IsSyncSuccessful == null && ec.Includes("isSyncSuccessful",true))
+        if (ec.Includes("isSyncSuccessful",true))
         {
-            this.IsSyncSuccessful = true;
+            if(this.IsSyncSuccessful == null) {
+
+                this.IsSyncSuccessful = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsSyncSuccessful != null && ec.Excludes("isSyncSuccessful",true))
+        {
+            this.IsSyncSuccessful = null;
         }
         //      C# -> AsyncRequestStatus? HuntStatus
         // GraphQL -> huntStatus: AsyncRequestStatus (type)
-        if (this.HuntStatus == null && ec.Includes("huntStatus",false))
+        if (ec.Includes("huntStatus",false))
         {
-            this.HuntStatus = new AsyncRequestStatus();
-            this.HuntStatus.ApplyExploratoryFieldSpec(ec.NewChild("huntStatus"));
+            if(this.HuntStatus == null) {
+
+                this.HuntStatus = new AsyncRequestStatus();
+                this.HuntStatus.ApplyExploratoryFieldSpec(ec.NewChild("huntStatus"));
+
+            } else {
+
+                this.HuntStatus.ApplyExploratoryFieldSpec(ec.NewChild("huntStatus"));
+
+            }
+        }
+        else if (this.HuntStatus != null && ec.Excludes("huntStatus",false))
+        {
+            this.HuntStatus = null;
         }
     }
 
@@ -138,9 +185,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<StartThreatHuntReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

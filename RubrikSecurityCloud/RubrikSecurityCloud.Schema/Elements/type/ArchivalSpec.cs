@@ -92,47 +92,72 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<RetentionUnit>? Frequencies
         // GraphQL -> frequencies: [RetentionUnit!]! (enum)
         if (this.Frequencies != null) {
-            s += ind + "frequencies\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "frequencies\n" ;
+            } else {
+                s += ind + "frequencies\n" ;
+            }
         }
         //      C# -> RetentionUnit? ThresholdUnit
         // GraphQL -> thresholdUnit: RetentionUnit! (enum)
         if (this.ThresholdUnit != null) {
-            s += ind + "thresholdUnit\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "thresholdUnit\n" ;
+            } else {
+                s += ind + "thresholdUnit\n" ;
+            }
         }
         //      C# -> System.Int32? Threshold
         // GraphQL -> threshold: Int! (scalar)
         if (this.Threshold != null) {
-            s += ind + "threshold\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "threshold\n" ;
+            } else {
+                s += ind + "threshold\n" ;
+            }
         }
         //      C# -> List<ArchivalLocationToClusterMapping>? ArchivalLocationToClusterMapping
         // GraphQL -> archivalLocationToClusterMapping: [ArchivalLocationToClusterMapping!]! (type)
         if (this.ArchivalLocationToClusterMapping != null) {
-            var fspec = this.ArchivalLocationToClusterMapping.AsFieldSpec(indent+1);
+            var fspec = this.ArchivalLocationToClusterMapping.AsFieldSpec(conf.Child("archivalLocationToClusterMapping"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "archivalLocationToClusterMapping {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "archivalLocationToClusterMapping {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> ArchivalTieringSpec? ArchivalTieringSpec
         // GraphQL -> archivalTieringSpec: ArchivalTieringSpec (type)
         if (this.ArchivalTieringSpec != null) {
-            var fspec = this.ArchivalTieringSpec.AsFieldSpec(indent+1);
+            var fspec = this.ArchivalTieringSpec.AsFieldSpec(conf.Child("archivalTieringSpec"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "archivalTieringSpec {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "archivalTieringSpec {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> TargetMapping? StorageSetting
         // GraphQL -> storageSetting: TargetMapping (type)
         if (this.StorageSetting != null) {
-            var fspec = this.StorageSetting.AsFieldSpec(indent+1);
+            var fspec = this.StorageSetting.AsFieldSpec(conf.Child("storageSetting"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "storageSetting {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "storageSetting {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -144,42 +169,111 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<RetentionUnit>? Frequencies
         // GraphQL -> frequencies: [RetentionUnit!]! (enum)
-        if (this.Frequencies == null && ec.Includes("frequencies",true))
+        if (ec.Includes("frequencies",true))
         {
-            this.Frequencies = new List<RetentionUnit>();
+            if(this.Frequencies == null) {
+
+                this.Frequencies = new List<RetentionUnit>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Frequencies != null && ec.Excludes("frequencies",true))
+        {
+            this.Frequencies = null;
         }
         //      C# -> RetentionUnit? ThresholdUnit
         // GraphQL -> thresholdUnit: RetentionUnit! (enum)
-        if (this.ThresholdUnit == null && ec.Includes("thresholdUnit",true))
+        if (ec.Includes("thresholdUnit",true))
         {
-            this.ThresholdUnit = new RetentionUnit();
+            if(this.ThresholdUnit == null) {
+
+                this.ThresholdUnit = new RetentionUnit();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ThresholdUnit != null && ec.Excludes("thresholdUnit",true))
+        {
+            this.ThresholdUnit = null;
         }
         //      C# -> System.Int32? Threshold
         // GraphQL -> threshold: Int! (scalar)
-        if (this.Threshold == null && ec.Includes("threshold",true))
+        if (ec.Includes("threshold",true))
         {
-            this.Threshold = Int32.MinValue;
+            if(this.Threshold == null) {
+
+                this.Threshold = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Threshold != null && ec.Excludes("threshold",true))
+        {
+            this.Threshold = null;
         }
         //      C# -> List<ArchivalLocationToClusterMapping>? ArchivalLocationToClusterMapping
         // GraphQL -> archivalLocationToClusterMapping: [ArchivalLocationToClusterMapping!]! (type)
-        if (this.ArchivalLocationToClusterMapping == null && ec.Includes("archivalLocationToClusterMapping",false))
+        if (ec.Includes("archivalLocationToClusterMapping",false))
         {
-            this.ArchivalLocationToClusterMapping = new List<ArchivalLocationToClusterMapping>();
-            this.ArchivalLocationToClusterMapping.ApplyExploratoryFieldSpec(ec.NewChild("archivalLocationToClusterMapping"));
+            if(this.ArchivalLocationToClusterMapping == null) {
+
+                this.ArchivalLocationToClusterMapping = new List<ArchivalLocationToClusterMapping>();
+                this.ArchivalLocationToClusterMapping.ApplyExploratoryFieldSpec(ec.NewChild("archivalLocationToClusterMapping"));
+
+            } else {
+
+                this.ArchivalLocationToClusterMapping.ApplyExploratoryFieldSpec(ec.NewChild("archivalLocationToClusterMapping"));
+
+            }
+        }
+        else if (this.ArchivalLocationToClusterMapping != null && ec.Excludes("archivalLocationToClusterMapping",false))
+        {
+            this.ArchivalLocationToClusterMapping = null;
         }
         //      C# -> ArchivalTieringSpec? ArchivalTieringSpec
         // GraphQL -> archivalTieringSpec: ArchivalTieringSpec (type)
-        if (this.ArchivalTieringSpec == null && ec.Includes("archivalTieringSpec",false))
+        if (ec.Includes("archivalTieringSpec",false))
         {
-            this.ArchivalTieringSpec = new ArchivalTieringSpec();
-            this.ArchivalTieringSpec.ApplyExploratoryFieldSpec(ec.NewChild("archivalTieringSpec"));
+            if(this.ArchivalTieringSpec == null) {
+
+                this.ArchivalTieringSpec = new ArchivalTieringSpec();
+                this.ArchivalTieringSpec.ApplyExploratoryFieldSpec(ec.NewChild("archivalTieringSpec"));
+
+            } else {
+
+                this.ArchivalTieringSpec.ApplyExploratoryFieldSpec(ec.NewChild("archivalTieringSpec"));
+
+            }
+        }
+        else if (this.ArchivalTieringSpec != null && ec.Excludes("archivalTieringSpec",false))
+        {
+            this.ArchivalTieringSpec = null;
         }
         //      C# -> TargetMapping? StorageSetting
         // GraphQL -> storageSetting: TargetMapping (type)
-        if (this.StorageSetting == null && ec.Includes("storageSetting",false))
+        if (ec.Includes("storageSetting",false))
         {
-            this.StorageSetting = new TargetMapping();
-            this.StorageSetting.ApplyExploratoryFieldSpec(ec.NewChild("storageSetting"));
+            if(this.StorageSetting == null) {
+
+                this.StorageSetting = new TargetMapping();
+                this.StorageSetting.ApplyExploratoryFieldSpec(ec.NewChild("storageSetting"));
+
+            } else {
+
+                this.StorageSetting.ApplyExploratoryFieldSpec(ec.NewChild("storageSetting"));
+
+            }
+        }
+        else if (this.StorageSetting != null && ec.Excludes("storageSetting",false))
+        {
+            this.StorageSetting = null;
         }
     }
 
@@ -206,9 +300,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ArchivalSpec> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

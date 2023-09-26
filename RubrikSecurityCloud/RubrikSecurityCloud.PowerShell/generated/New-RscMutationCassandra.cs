@@ -16,29 +16,424 @@ using RubrikSecurityCloud.Types;
 using RubrikSecurityCloud.NetSDK.Client;
 using RubrikSecurityCloud.PowerShell.Private;
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
+
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Mutations for the 'Cassandra' API domain.
+    /// Create a new RscQuery object for any of the 5
+    /// operations in the 'Cassandra' API domain:
+    /// BulkDeleteSources, CreateSource, DeleteSource, RecoverSource, or UpdateSource.
     /// </summary>
     /// <description>
-    /// New-RscMutationCassandra is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
+    /// New-RscMutationCassandra creates a new
+    /// mutation object for operations
+    /// in the 'Cassandra' API domain. It only creates a data structure,
+    /// it does not execute the operation. This cmdlet does not need a
+    /// connection to run. To execute the operation, either call Invoke()
+    /// on the object returned by this cmdlet, or pass the object to
+    /// Invoke-Rsc.
+    /// There are 5 operations
+    /// in the 'Cassandra' API domain. Select the operation this
+    /// query is for by specifying the appropriate switch parameter;
+    /// one of: -BulkDeleteSources, -CreateSource, -DeleteSource, -RecoverSource, -UpdateSource.
+    /// Alternatively, you can specify the operation by setting the
+    /// -Op parameter, for example: -Op BulkDeleteSources,
+    /// which is equivalent to specifying -BulkDeleteSources.
+    /// Each operation has its own set of variables that can be set with
+    /// the -Var parameter. For more info about the variables, 
+    /// call Info() on the object returned by this cmdlet, for example:
+    /// (New-RscMutationCassandra -BulkDeleteSources).Info().
+    /// Each operation also has its own set of fields that can be
+    /// selected for retrieval. If you do not specify any fields,
+    /// a set of default fields will be selected. The selection is
+    /// rule-based, and tries to select the most commonly used fields.
+    /// For example if a field is named 'id' or 'name', 
+    /// it will be selected. If you give -FieldProfile DETAIL, then
+    /// another set of rules will be used to select more fields on top
+    /// of the default fields. The set of rules for selecting fields
+    /// is called a field profile. You can specify a field profile
+    /// with the -FieldProfile parameter. You can add or remove fields
+    /// from the field profile with the -AddField and -RemoveField
+    /// parameters. If you end up with too many -AddField and -RemoveField
+    /// parameters, you can list them in a text file, one per line,
+    /// with a '+' or '-' prefix, and pass the file name to the
+    /// -FilePatch parameter. Profiles and Patches are one way to
+    /// customize the fields that are selected. Another way is to
+    /// specify the fields by passing the -Field parameter an object
+    /// that contains the fields you want to select as properties.
+    /// Any property that is not null in that object is interpreted
+    /// as a field to select
+    /// (and the actual values they are set to do not matter).
+    /// The [RubrikSecurityCloud.Types] namespace
+    /// contains a set of classes that you can use to specify fields.
+    /// To know what [RubrikSecurityCloud.Types] object to use
+    /// for a specific operation,
+    /// call Info() on the object returned by this cmdlet, for example:
+    /// (New-RscMutationCassandra -BulkDeleteSources).Info().
+    /// You can combine a -Field parameter with patching parameters.
+    /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
+    ///
     /// </description>
+    ///
     /// <example>
-    /// <code>New-RscMutationCassandra -RecoverSource [-Arg ..] [-Field ..]</code>
+    /// Runs the BulkDeleteSources operation
+    /// of the 'Cassandra' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cassandra
+    /// # API Operation: BulkDeleteSources
+    /// 
+    /// $query = New-RscMutationCassandra -BulkDeleteSources
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	sourceType = $someV2BulkDeleteMosaicSourcesRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V2BulkDeleteMosaicSourcesRequestSourceType]) for enum values.
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	sourceData = @{
+    /// 		# OPTIONAL
+    /// 		async = $someBoolean
+    /// 		# REQUIRED
+    /// 		sourceNames = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: MosaicAsyncResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationCassandra -CreateSource [-Arg ..] [-Field ..]</code>
+    /// Runs the CreateSource operation
+    /// of the 'Cassandra' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cassandra
+    /// # API Operation: CreateSource
+    /// 
+    /// $query = New-RscMutationCassandra -CreateSource
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	sourceData = @{
+    /// 		# OPTIONAL
+    /// 		async = $someBoolean
+    /// 		# OPTIONAL
+    /// 		cassandraYaml = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		dseYaml = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		enableSsl = $someBoolean
+    /// 		# OPTIONAL
+    /// 		httpsCertificate = $someString
+    /// 		# OPTIONAL
+    /// 		ignoreSecondaries = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		jmxPassword = $someString
+    /// 		# OPTIONAL
+    /// 		jmxUser = $someString
+    /// 		# OPTIONAL
+    /// 		parameterEncoded = $someBoolean
+    /// 		# OPTIONAL
+    /// 		sourceAuthKey = $someString
+    /// 		# OPTIONAL
+    /// 		sourceAuthKeyfile = $someString
+    /// 		# OPTIONAL
+    /// 		sourceAuthPassphrase = $someString
+    /// 		# OPTIONAL
+    /// 		sourceDriverPassword = $someString
+    /// 		# OPTIONAL
+    /// 		sourceDriverUser = $someString
+    /// 		# OPTIONAL
+    /// 		sourceHttpsPort = $someString
+    /// 		# OPTIONAL
+    /// 		sourcePassword = $someString
+    /// 		# OPTIONAL
+    /// 		sourcePort = $someString
+    /// 		# OPTIONAL
+    /// 		sourceRpcPort = $someString
+    /// 		# OPTIONAL
+    /// 		sourceSshPort = $someString
+    /// 		# OPTIONAL
+    /// 		sourceUser = $someString
+    /// 		# OPTIONAL
+    /// 		sslCaCerts = $someString
+    /// 		# OPTIONAL
+    /// 		sslCertfile = $someString
+    /// 		# OPTIONAL
+    /// 		sslKeyfile = $someString
+    /// 		# REQUIRED
+    /// 		sourceType = $someSourceSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceSourceType]) for enum values.
+    /// 		# OPTIONAL
+    /// 		sslCertReqs = $someSourceSslCertReqs # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceSslCertReqs]) for enum values.
+    /// 		# REQUIRED
+    /// 		sourceIp = @(
+    /// 			$someString
+    /// 		)
+    /// 		# REQUIRED
+    /// 		sourceName = $someString
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: MosaicAsyncResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationCassandra -UpdateSource [-Arg ..] [-Field ..]</code>
+    /// Runs the DeleteSource operation
+    /// of the 'Cassandra' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cassandra
+    /// # API Operation: DeleteSource
+    /// 
+    /// $query = New-RscMutationCassandra -DeleteSource
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	sourceType = $someV2DeleteMosaicSourceRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V2DeleteMosaicSourceRequestSourceType]) for enum values.
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	sourceName = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: MosaicAsyncResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationCassandra -DeleteSource [-Arg ..] [-Field ..]</code>
+    /// Runs the RecoverSource operation
+    /// of the 'Cassandra' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cassandra
+    /// # API Operation: RecoverSource
+    /// 
+    /// $query = New-RscMutationCassandra -RecoverSource
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	recoveryData = @{
+    /// 		# OPTIONAL
+    /// 		destinationManagementObjects = @{
+    /// 			# OPTIONAL
+    /// 			databases = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					dbName = $someString
+    /// 					# OPTIONAL
+    /// 					tables = @(
+    /// 						$someString
+    /// 					)
+    /// 				}
+    /// 			)
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		destinationSourceName = $someString
+    /// 		# OPTIONAL
+    /// 		keyspaceConfig = $someString
+    /// 		# OPTIONAL
+    /// 		maxDiskUsage = $someString
+    /// 		# OPTIONAL
+    /// 		restoreDbUserPwd = $someString
+    /// 		# OPTIONAL
+    /// 		restoreDbUsername = $someString
+    /// 		# OPTIONAL
+    /// 		startTimestamp = $someInt
+    /// 		# OPTIONAL
+    /// 		targetEncryptionKey = $someString
+    /// 		# OPTIONAL
+    /// 		targetQuery = $someString
+    /// 		# OPTIONAL
+    /// 		sourceType = $someMosaicRetrieveRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicRetrieveRequestSourceType]) for enum values.
+    /// 		# REQUIRED
+    /// 		destinationPath = $someString
+    /// 		# REQUIRED
+    /// 		managementObjects = @{
+    /// 			# OPTIONAL
+    /// 			databases = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					dbName = $someString
+    /// 					# OPTIONAL
+    /// 					tables = @(
+    /// 						$someString
+    /// 					)
+    /// 				}
+    /// 			)
+    /// 		}
+    /// 		# REQUIRED
+    /// 		parameterEncoded = $someBoolean
+    /// 		# REQUIRED
+    /// 		sourceName = $someString
+    /// 		# REQUIRED
+    /// 		versionTime = $someInt
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: MosaicAsyncResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationCassandra -BulkDeleteSources [-Arg ..] [-Field ..]</code>
+    /// Runs the UpdateSource operation
+    /// of the 'Cassandra' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cassandra
+    /// # API Operation: UpdateSource
+    /// 
+    /// $query = New-RscMutationCassandra -UpdateSource
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	sourceData = @{
+    /// 		# OPTIONAL
+    /// 		async = $someBoolean
+    /// 		# OPTIONAL
+    /// 		cassandraYaml = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		dseYaml = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		enableSsl = $someBoolean
+    /// 		# OPTIONAL
+    /// 		httpsCertificate = $someString
+    /// 		# OPTIONAL
+    /// 		ignoreSecondaries = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		jmxPassword = $someString
+    /// 		# OPTIONAL
+    /// 		jmxUser = $someString
+    /// 		# OPTIONAL
+    /// 		parameterEncoded = $someBoolean
+    /// 		# OPTIONAL
+    /// 		sourceAuthKey = $someString
+    /// 		# OPTIONAL
+    /// 		sourceAuthKeyfile = $someString
+    /// 		# OPTIONAL
+    /// 		sourceAuthPassphrase = $someString
+    /// 		# OPTIONAL
+    /// 		sourceDriverPassword = $someString
+    /// 		# OPTIONAL
+    /// 		sourceDriverUser = $someString
+    /// 		# OPTIONAL
+    /// 		sourceHttpsPort = $someString
+    /// 		# OPTIONAL
+    /// 		sourcePassword = $someString
+    /// 		# OPTIONAL
+    /// 		sourcePort = $someString
+    /// 		# OPTIONAL
+    /// 		sourceRpcPort = $someString
+    /// 		# OPTIONAL
+    /// 		sourceSshPort = $someString
+    /// 		# OPTIONAL
+    /// 		sourceUser = $someString
+    /// 		# OPTIONAL
+    /// 		sslCaCerts = $someString
+    /// 		# OPTIONAL
+    /// 		sslCertfile = $someString
+    /// 		# OPTIONAL
+    /// 		sslKeyfile = $someString
+    /// 		# REQUIRED
+    /// 		sourceType = $someSourceSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceSourceType]) for enum values.
+    /// 		# OPTIONAL
+    /// 		sslCertReqs = $someSourceSslCertReqs # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceSslCertReqs]) for enum values.
+    /// 		# REQUIRED
+    /// 		sourceIp = @(
+    /// 			$someString
+    /// 		)
+    /// 		# REQUIRED
+    /// 		sourceName = $someString
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: MosaicAsyncResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -48,122 +443,111 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     public class New_RscMutationCassandra : RscGqlPSCmdlet
     {
         
-        /// <summary>
-        /// RecoverSource parameter set
-        ///
-        /// [GraphQL: recoverCassandraSource]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "RecoverSource",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Recover a cassandra source.
-[GraphQL: recoverCassandraSource]",
-            Position = 0
-        )]
-        public SwitchParameter RecoverSource { get; set; }
-
-        
-        /// <summary>
-        /// CreateSource parameter set
-        ///
-        /// [GraphQL: createCassandraSource]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "CreateSource",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a cassandra source.
-[GraphQL: createCassandraSource]",
-            Position = 0
-        )]
-        public SwitchParameter CreateSource { get; set; }
-
-        
-        /// <summary>
-        /// UpdateSource parameter set
-        ///
-        /// [GraphQL: updateCassandraSource]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "UpdateSource",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Update a cassandra source.
-[GraphQL: updateCassandraSource]",
-            Position = 0
-        )]
-        public SwitchParameter UpdateSource { get; set; }
-
-        
-        /// <summary>
-        /// DeleteSource parameter set
-        ///
-        /// [GraphQL: deleteCassandraSource]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "DeleteSource",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Delete a cassandra source.
-[GraphQL: deleteCassandraSource]",
-            Position = 0
-        )]
-        public SwitchParameter DeleteSource { get; set; }
-
-        
-        /// <summary>
-        /// BulkDeleteSources parameter set
-        ///
-        /// [GraphQL: bulkDeleteCassandraSources]
-        /// </summary>
         [Parameter(
             ParameterSetName = "BulkDeleteSources",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Bulk Delete cassandra sources.
-[GraphQL: bulkDeleteCassandraSources]",
-            Position = 0
+@"Create a mutation object for the 'BulkDeleteSources' operation
+in the 'Cassandra' API domain.
+Description of the operation:
+Bulk Delete cassandra sources.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/bulkdeletecassandrasources.doc.html]"
+            // No Position -> named parameter only.
         )]
         public SwitchParameter BulkDeleteSources { get; set; }
 
+        
+        [Parameter(
+            ParameterSetName = "CreateSource",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'CreateSource' operation
+in the 'Cassandra' API domain.
+Description of the operation:
+Create a cassandra source.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createcassandrasource.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter CreateSource { get; set; }
 
-// ignore warning 'Missing XML comment'
-#pragma warning disable 1591
+        
+        [Parameter(
+            ParameterSetName = "DeleteSource",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'DeleteSource' operation
+in the 'Cassandra' API domain.
+Description of the operation:
+Delete a cassandra source.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deletecassandrasource.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter DeleteSource { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "RecoverSource",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'RecoverSource' operation
+in the 'Cassandra' API domain.
+Description of the operation:
+Recover a cassandra source.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/recovercassandrasource.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter RecoverSource { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "UpdateSource",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'UpdateSource' operation
+in the 'Cassandra' API domain.
+Description of the operation:
+Update a cassandra source.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatecassandrasource.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter UpdateSource { get; set; }
+
+
+
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
             try
             {
-                switch(Op)
+                switch(this.GetOp().OpName())
                 {
-                    case "RecoverSource":
-                        this.ProcessRecord_RecoverSource();
+                    case "BulkDeleteSources":
+                        this.ProcessRecord_BulkDeleteSources();
                         break;
                     case "CreateSource":
                         this.ProcessRecord_CreateSource();
                         break;
-                    case "UpdateSource":
-                        this.ProcessRecord_UpdateSource();
-                        break;
                     case "DeleteSource":
                         this.ProcessRecord_DeleteSource();
                         break;
-                    case "BulkDeleteSources":
-                        this.ProcessRecord_BulkDeleteSources();
+                    case "RecoverSource":
+                        this.ProcessRecord_RecoverSource();
+                        break;
+                    case "UpdateSource":
+                        this.ProcessRecord_UpdateSource();
                         break;
                     default:
-                        throw new Exception("Unknown Operation " + Op);
+                        throw new Exception("Unknown Operation " + this.GetOp().OpName());
                 }
            }
            catch (Exception ex)
@@ -171,15 +555,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 ThrowTerminatingException(ex);
            }
         }
-#pragma warning restore 1591
 
         // This parameter set invokes a single graphql operation:
-        // recoverCassandraSource.
-        internal void ProcessRecord_RecoverSource()
+        // bulkDeleteCassandraSources.
+        internal void ProcessRecord_BulkDeleteSources()
         {
-            this._logger.name += " -RecoverSource";
-            // Create new graphql operation recoverCassandraSource
-            InitMutationRecoverCassandraSource();
+            this._logger.name += " -BulkDeleteSources";
+            // Create new graphql operation bulkDeleteCassandraSources
+            InitMutationBulkDeleteCassandraSources();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -192,15 +575,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // updateCassandraSource.
-        internal void ProcessRecord_UpdateSource()
-        {
-            this._logger.name += " -UpdateSource";
-            // Create new graphql operation updateCassandraSource
-            InitMutationUpdateCassandraSource();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // deleteCassandraSource.
         internal void ProcessRecord_DeleteSource()
         {
@@ -210,90 +584,53 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // bulkDeleteCassandraSources.
-        internal void ProcessRecord_BulkDeleteSources()
+        // recoverCassandraSource.
+        internal void ProcessRecord_RecoverSource()
         {
-            this._logger.name += " -BulkDeleteSources";
-            // Create new graphql operation bulkDeleteCassandraSources
-            InitMutationBulkDeleteCassandraSources();
+            this._logger.name += " -RecoverSource";
+            // Create new graphql operation recoverCassandraSource
+            InitMutationRecoverCassandraSource();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updateCassandraSource.
+        internal void ProcessRecord_UpdateSource()
+        {
+            this._logger.name += " -UpdateSource";
+            // Create new graphql operation updateCassandraSource
+            InitMutationUpdateCassandraSource();
         }
 
 
         // Create new GraphQL Mutation:
-        // recoverCassandraSource(input: MosaicRestoreDataInput!): MosaicAsyncResponse!
-        internal void InitMutationRecoverCassandraSource()
+        // bulkDeleteCassandraSources(input: BulkDeleteMosaicSourcesInput!): MosaicAsyncResponse!
+        internal void InitMutationBulkDeleteCassandraSources()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "MosaicRestoreDataInput!"),
+                Tuple.Create("input", "BulkDeleteMosaicSourcesInput!"),
             };
             Initialize(
                 argDefs,
                 "mutation",
-                "MutationRecoverCassandraSource",
-                "($input: MosaicRestoreDataInput!)",
+                "MutationBulkDeleteCassandraSources",
+                "($input: BulkDeleteMosaicSourcesInput!)",
                 "MosaicAsyncResponse",
-                Mutation.RecoverCassandraSource_ObjectFieldSpec,
-                Mutation.RecoverCassandraSourceFieldSpec,
+                Mutation.BulkDeleteCassandraSources_ObjectFieldSpec,
+                Mutation.BulkDeleteCassandraSourcesFieldSpec,
                 @"# REQUIRED
-$inputs.Var.input = @{
+$query.Var.input = @{
+	# OPTIONAL
+	sourceType = $someV2BulkDeleteMosaicSourcesRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V2BulkDeleteMosaicSourcesRequestSourceType]) for enum values.
 	# REQUIRED
-	clusterUuid = <System.String>
+	clusterUuid = $someString
 	# REQUIRED
-	recoveryData = @{
+	sourceData = @{
 		# OPTIONAL
-		destinationManagementObjects = @{
-			# OPTIONAL
-			databases = @(
-				@{
-					# OPTIONAL
-					dbName = <System.String>
-					# OPTIONAL
-					tables = @(
-						<System.String>
-					)
-				}
-			)
-		}
-		# OPTIONAL
-		destinationSourceName = <System.String>
-		# OPTIONAL
-		keyspaceConfig = <System.String>
-		# OPTIONAL
-		maxDiskUsage = <System.String>
-		# OPTIONAL
-		restoreDbUserPwd = <System.String>
-		# OPTIONAL
-		restoreDbUsername = <System.String>
-		# OPTIONAL
-		startTimestamp = <System.Int32>
-		# OPTIONAL
-		targetEncryptionKey = <System.String>
-		# OPTIONAL
-		targetQuery = <System.String>
-		# OPTIONAL
-		sourceType = <MosaicRetrieveRequestSourceType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicRetrieveRequestSourceType]) for enum values.
+		async = $someBoolean
 		# REQUIRED
-		destinationPath = <System.String>
-		# REQUIRED
-		managementObjects = @{
-			# OPTIONAL
-			databases = @(
-				@{
-					# OPTIONAL
-					dbName = <System.String>
-					# OPTIONAL
-					tables = @(
-						<System.String>
-					)
-				}
-			)
-		}
-		# REQUIRED
-		parameterEncoded = <System.Boolean>
-		# REQUIRED
-		sourceName = <System.String>
-		# REQUIRED
-		versionTime = <System.Int32>
+		sourceNames = @(
+			$someString
+		)
 	}
 }"
             );
@@ -315,161 +652,73 @@ $inputs.Var.input = @{
                 Mutation.CreateCassandraSource_ObjectFieldSpec,
                 Mutation.CreateCassandraSourceFieldSpec,
                 @"# REQUIRED
-$inputs.Var.input = @{
+$query.Var.input = @{
 	# REQUIRED
-	clusterUuid = <System.String>
-	# REQUIRED
-	sourceData = @{
-		# OPTIONAL
-		async = <System.Boolean>
-		# OPTIONAL
-		cassandraYaml = @(
-			<System.String>
-		)
-		# OPTIONAL
-		dseYaml = @(
-			<System.String>
-		)
-		# OPTIONAL
-		enableSsl = <System.Boolean>
-		# OPTIONAL
-		httpsCertificate = <System.String>
-		# OPTIONAL
-		ignoreSecondaries = @(
-			<System.String>
-		)
-		# OPTIONAL
-		jmxPassword = <System.String>
-		# OPTIONAL
-		jmxUser = <System.String>
-		# OPTIONAL
-		parameterEncoded = <System.Boolean>
-		# OPTIONAL
-		sourceAuthKey = <System.String>
-		# OPTIONAL
-		sourceAuthKeyfile = <System.String>
-		# OPTIONAL
-		sourceAuthPassphrase = <System.String>
-		# OPTIONAL
-		sourceDriverPassword = <System.String>
-		# OPTIONAL
-		sourceDriverUser = <System.String>
-		# OPTIONAL
-		sourceHttpsPort = <System.String>
-		# OPTIONAL
-		sourcePassword = <System.String>
-		# OPTIONAL
-		sourcePort = <System.String>
-		# OPTIONAL
-		sourceRpcPort = <System.String>
-		# OPTIONAL
-		sourceSshPort = <System.String>
-		# OPTIONAL
-		sourceUser = <System.String>
-		# OPTIONAL
-		sslCaCerts = <System.String>
-		# OPTIONAL
-		sslCertfile = <System.String>
-		# OPTIONAL
-		sslKeyfile = <System.String>
-		# REQUIRED
-		sourceType = <SourceSourceType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceSourceType]) for enum values.
-		# OPTIONAL
-		sslCertReqs = <SourceSslCertReqs> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceSslCertReqs]) for enum values.
-		# REQUIRED
-		sourceIp = @(
-			<System.String>
-		)
-		# REQUIRED
-		sourceName = <System.String>
-	}
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // updateCassandraSource(input: ModifyMosaicSourceInput!): MosaicAsyncResponse!
-        internal void InitMutationUpdateCassandraSource()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "ModifyMosaicSourceInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationUpdateCassandraSource",
-                "($input: ModifyMosaicSourceInput!)",
-                "MosaicAsyncResponse",
-                Mutation.UpdateCassandraSource_ObjectFieldSpec,
-                Mutation.UpdateCassandraSourceFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	clusterUuid = <System.String>
+	clusterUuid = $someString
 	# REQUIRED
 	sourceData = @{
 		# OPTIONAL
-		async = <System.Boolean>
+		async = $someBoolean
 		# OPTIONAL
 		cassandraYaml = @(
-			<System.String>
+			$someString
 		)
 		# OPTIONAL
 		dseYaml = @(
-			<System.String>
+			$someString
 		)
 		# OPTIONAL
-		enableSsl = <System.Boolean>
+		enableSsl = $someBoolean
 		# OPTIONAL
-		httpsCertificate = <System.String>
+		httpsCertificate = $someString
 		# OPTIONAL
 		ignoreSecondaries = @(
-			<System.String>
+			$someString
 		)
 		# OPTIONAL
-		jmxPassword = <System.String>
+		jmxPassword = $someString
 		# OPTIONAL
-		jmxUser = <System.String>
+		jmxUser = $someString
 		# OPTIONAL
-		parameterEncoded = <System.Boolean>
+		parameterEncoded = $someBoolean
 		# OPTIONAL
-		sourceAuthKey = <System.String>
+		sourceAuthKey = $someString
 		# OPTIONAL
-		sourceAuthKeyfile = <System.String>
+		sourceAuthKeyfile = $someString
 		# OPTIONAL
-		sourceAuthPassphrase = <System.String>
+		sourceAuthPassphrase = $someString
 		# OPTIONAL
-		sourceDriverPassword = <System.String>
+		sourceDriverPassword = $someString
 		# OPTIONAL
-		sourceDriverUser = <System.String>
+		sourceDriverUser = $someString
 		# OPTIONAL
-		sourceHttpsPort = <System.String>
+		sourceHttpsPort = $someString
 		# OPTIONAL
-		sourcePassword = <System.String>
+		sourcePassword = $someString
 		# OPTIONAL
-		sourcePort = <System.String>
+		sourcePort = $someString
 		# OPTIONAL
-		sourceRpcPort = <System.String>
+		sourceRpcPort = $someString
 		# OPTIONAL
-		sourceSshPort = <System.String>
+		sourceSshPort = $someString
 		# OPTIONAL
-		sourceUser = <System.String>
+		sourceUser = $someString
 		# OPTIONAL
-		sslCaCerts = <System.String>
+		sslCaCerts = $someString
 		# OPTIONAL
-		sslCertfile = <System.String>
+		sslCertfile = $someString
 		# OPTIONAL
-		sslKeyfile = <System.String>
+		sslKeyfile = $someString
 		# REQUIRED
-		sourceType = <SourceSourceType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceSourceType]) for enum values.
+		sourceType = $someSourceSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceSourceType]) for enum values.
 		# OPTIONAL
-		sslCertReqs = <SourceSslCertReqs> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceSslCertReqs]) for enum values.
+		sslCertReqs = $someSourceSslCertReqs # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceSslCertReqs]) for enum values.
 		# REQUIRED
 		sourceIp = @(
-			<System.String>
+			$someString
 		)
 		# REQUIRED
-		sourceName = <System.String>
+		sourceName = $someString
 	}
 }"
             );
@@ -491,46 +740,180 @@ $inputs.Var.input = @{
                 Mutation.DeleteCassandraSource_ObjectFieldSpec,
                 Mutation.DeleteCassandraSourceFieldSpec,
                 @"# REQUIRED
-$inputs.Var.input = @{
+$query.Var.input = @{
 	# OPTIONAL
-	sourceType = <V2DeleteMosaicSourceRequestSourceType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V2DeleteMosaicSourceRequestSourceType]) for enum values.
+	sourceType = $someV2DeleteMosaicSourceRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V2DeleteMosaicSourceRequestSourceType]) for enum values.
 	# REQUIRED
-	clusterUuid = <System.String>
+	clusterUuid = $someString
 	# REQUIRED
-	sourceName = <System.String>
+	sourceName = $someString
 }"
             );
         }
 
         // Create new GraphQL Mutation:
-        // bulkDeleteCassandraSources(input: BulkDeleteMosaicSourcesInput!): MosaicAsyncResponse!
-        internal void InitMutationBulkDeleteCassandraSources()
+        // recoverCassandraSource(input: MosaicRestoreDataInput!): MosaicAsyncResponse!
+        internal void InitMutationRecoverCassandraSource()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "BulkDeleteMosaicSourcesInput!"),
+                Tuple.Create("input", "MosaicRestoreDataInput!"),
             };
             Initialize(
                 argDefs,
                 "mutation",
-                "MutationBulkDeleteCassandraSources",
-                "($input: BulkDeleteMosaicSourcesInput!)",
+                "MutationRecoverCassandraSource",
+                "($input: MosaicRestoreDataInput!)",
                 "MosaicAsyncResponse",
-                Mutation.BulkDeleteCassandraSources_ObjectFieldSpec,
-                Mutation.BulkDeleteCassandraSourcesFieldSpec,
+                Mutation.RecoverCassandraSource_ObjectFieldSpec,
+                Mutation.RecoverCassandraSourceFieldSpec,
                 @"# REQUIRED
-$inputs.Var.input = @{
-	# OPTIONAL
-	sourceType = <V2BulkDeleteMosaicSourcesRequestSourceType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V2BulkDeleteMosaicSourcesRequestSourceType]) for enum values.
+$query.Var.input = @{
 	# REQUIRED
-	clusterUuid = <System.String>
+	clusterUuid = $someString
+	# REQUIRED
+	recoveryData = @{
+		# OPTIONAL
+		destinationManagementObjects = @{
+			# OPTIONAL
+			databases = @(
+				@{
+					# OPTIONAL
+					dbName = $someString
+					# OPTIONAL
+					tables = @(
+						$someString
+					)
+				}
+			)
+		}
+		# OPTIONAL
+		destinationSourceName = $someString
+		# OPTIONAL
+		keyspaceConfig = $someString
+		# OPTIONAL
+		maxDiskUsage = $someString
+		# OPTIONAL
+		restoreDbUserPwd = $someString
+		# OPTIONAL
+		restoreDbUsername = $someString
+		# OPTIONAL
+		startTimestamp = $someInt
+		# OPTIONAL
+		targetEncryptionKey = $someString
+		# OPTIONAL
+		targetQuery = $someString
+		# OPTIONAL
+		sourceType = $someMosaicRetrieveRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicRetrieveRequestSourceType]) for enum values.
+		# REQUIRED
+		destinationPath = $someString
+		# REQUIRED
+		managementObjects = @{
+			# OPTIONAL
+			databases = @(
+				@{
+					# OPTIONAL
+					dbName = $someString
+					# OPTIONAL
+					tables = @(
+						$someString
+					)
+				}
+			)
+		}
+		# REQUIRED
+		parameterEncoded = $someBoolean
+		# REQUIRED
+		sourceName = $someString
+		# REQUIRED
+		versionTime = $someInt
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateCassandraSource(input: ModifyMosaicSourceInput!): MosaicAsyncResponse!
+        internal void InitMutationUpdateCassandraSource()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "ModifyMosaicSourceInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateCassandraSource",
+                "($input: ModifyMosaicSourceInput!)",
+                "MosaicAsyncResponse",
+                Mutation.UpdateCassandraSource_ObjectFieldSpec,
+                Mutation.UpdateCassandraSourceFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
 	# REQUIRED
 	sourceData = @{
 		# OPTIONAL
-		async = <System.Boolean>
-		# REQUIRED
-		sourceNames = @(
-			<System.String>
+		async = $someBoolean
+		# OPTIONAL
+		cassandraYaml = @(
+			$someString
 		)
+		# OPTIONAL
+		dseYaml = @(
+			$someString
+		)
+		# OPTIONAL
+		enableSsl = $someBoolean
+		# OPTIONAL
+		httpsCertificate = $someString
+		# OPTIONAL
+		ignoreSecondaries = @(
+			$someString
+		)
+		# OPTIONAL
+		jmxPassword = $someString
+		# OPTIONAL
+		jmxUser = $someString
+		# OPTIONAL
+		parameterEncoded = $someBoolean
+		# OPTIONAL
+		sourceAuthKey = $someString
+		# OPTIONAL
+		sourceAuthKeyfile = $someString
+		# OPTIONAL
+		sourceAuthPassphrase = $someString
+		# OPTIONAL
+		sourceDriverPassword = $someString
+		# OPTIONAL
+		sourceDriverUser = $someString
+		# OPTIONAL
+		sourceHttpsPort = $someString
+		# OPTIONAL
+		sourcePassword = $someString
+		# OPTIONAL
+		sourcePort = $someString
+		# OPTIONAL
+		sourceRpcPort = $someString
+		# OPTIONAL
+		sourceSshPort = $someString
+		# OPTIONAL
+		sourceUser = $someString
+		# OPTIONAL
+		sslCaCerts = $someString
+		# OPTIONAL
+		sslCertfile = $someString
+		# OPTIONAL
+		sslKeyfile = $someString
+		# REQUIRED
+		sourceType = $someSourceSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceSourceType]) for enum values.
+		# OPTIONAL
+		sslCertReqs = $someSourceSslCertReqs # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceSslCertReqs]) for enum values.
+		# REQUIRED
+		sourceIp = @(
+			$someString
+		)
+		# REQUIRED
+		sourceName = $someString
 	}
 }"
             );

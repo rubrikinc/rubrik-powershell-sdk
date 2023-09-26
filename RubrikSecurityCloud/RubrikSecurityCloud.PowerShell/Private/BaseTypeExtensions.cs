@@ -5,6 +5,9 @@ using System.Linq;
 using System.Management.Automation;
 using RubrikSecurityCloud;
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
+
 namespace RubrikSecurityCloud.Types
 {
     // THIS DOESN'T WORK BECAUSE

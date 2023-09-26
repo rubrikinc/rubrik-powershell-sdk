@@ -16,65 +16,1009 @@ using RubrikSecurityCloud.Types;
 using RubrikSecurityCloud.NetSDK.Client;
 using RubrikSecurityCloud.PowerShell.Private;
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
+
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Mutations for the 'MSSQL' API domain.
+    /// Create a new RscQuery object for any of the 17
+    /// operations in the 'MSSQL' API domain:
+    /// AssignSlaDomainProperties, AssignSlaDomainPropertiesAsync, BrowseDatabaseSnapshot, BulkCreateOnDemandBackup, BulkUpdateDbs, CreateLiveMount, CreateLogShippingConfiguration, CreateOnDemandBackup, DeleteDbSnapshots, DeleteLiveMount, DownloadDatabaseBackupFiles, DownloadDatabaseFilesFromArchivalLocation, ExportDatabase, RestoreDatabase, TakeLogBackup, UpdateDefaultProperties, or UpdateLogShippingConfiguration.
     /// </summary>
     /// <description>
-    /// New-RscMutationMssql is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
+    /// New-RscMutationMssql creates a new
+    /// mutation object for operations
+    /// in the 'MSSQL' API domain. It only creates a data structure,
+    /// it does not execute the operation. This cmdlet does not need a
+    /// connection to run. To execute the operation, either call Invoke()
+    /// on the object returned by this cmdlet, or pass the object to
+    /// Invoke-Rsc.
+    /// There are 17 operations
+    /// in the 'MSSQL' API domain. Select the operation this
+    /// query is for by specifying the appropriate switch parameter;
+    /// one of: -AssignSlaDomainProperties, -AssignSlaDomainPropertiesAsync, -BrowseDatabaseSnapshot, -BulkCreateOnDemandBackup, -BulkUpdateDbs, -CreateLiveMount, -CreateLogShippingConfiguration, -CreateOnDemandBackup, -DeleteDbSnapshots, -DeleteLiveMount, -DownloadDatabaseBackupFiles, -DownloadDatabaseFilesFromArchivalLocation, -ExportDatabase, -RestoreDatabase, -TakeLogBackup, -UpdateDefaultProperties, -UpdateLogShippingConfiguration.
+    /// Alternatively, you can specify the operation by setting the
+    /// -Op parameter, for example: -Op AssignSlaDomainProperties,
+    /// which is equivalent to specifying -AssignSlaDomainProperties.
+    /// Each operation has its own set of variables that can be set with
+    /// the -Var parameter. For more info about the variables, 
+    /// call Info() on the object returned by this cmdlet, for example:
+    /// (New-RscMutationMssql -AssignSlaDomainProperties).Info().
+    /// Each operation also has its own set of fields that can be
+    /// selected for retrieval. If you do not specify any fields,
+    /// a set of default fields will be selected. The selection is
+    /// rule-based, and tries to select the most commonly used fields.
+    /// For example if a field is named 'id' or 'name', 
+    /// it will be selected. If you give -FieldProfile DETAIL, then
+    /// another set of rules will be used to select more fields on top
+    /// of the default fields. The set of rules for selecting fields
+    /// is called a field profile. You can specify a field profile
+    /// with the -FieldProfile parameter. You can add or remove fields
+    /// from the field profile with the -AddField and -RemoveField
+    /// parameters. If you end up with too many -AddField and -RemoveField
+    /// parameters, you can list them in a text file, one per line,
+    /// with a '+' or '-' prefix, and pass the file name to the
+    /// -FilePatch parameter. Profiles and Patches are one way to
+    /// customize the fields that are selected. Another way is to
+    /// specify the fields by passing the -Field parameter an object
+    /// that contains the fields you want to select as properties.
+    /// Any property that is not null in that object is interpreted
+    /// as a field to select
+    /// (and the actual values they are set to do not matter).
+    /// The [RubrikSecurityCloud.Types] namespace
+    /// contains a set of classes that you can use to specify fields.
+    /// To know what [RubrikSecurityCloud.Types] object to use
+    /// for a specific operation,
+    /// call Info() on the object returned by this cmdlet, for example:
+    /// (New-RscMutationMssql -AssignSlaDomainProperties).Info().
+    /// You can combine a -Field parameter with patching parameters.
+    /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
+    ///
     /// </description>
+    ///
     /// <example>
-    /// <code>New-RscMutationMssql -BrowseDatabaseSnapshot [-Arg ..] [-Field ..]</code>
+    /// Runs the AssignSlaDomainProperties operation
+    /// of the 'MSSQL' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    MSSQL
+    /// # API Operation: AssignSlaDomainProperties
+    /// 
+    /// $query = New-RscMutationMssql -AssignSlaDomainProperties
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	updateInfo = @{
+    /// 		# OPTIONAL
+    /// 		shouldApplyToExistingSnapshots = $someBoolean
+    /// 		# OPTIONAL
+    /// 		shouldApplyToNonPolicySnapshots = $someBoolean
+    /// 		# OPTIONAL
+    /// 		mssqlSlaPatchProperties = @{
+    /// 			# OPTIONAL
+    /// 			configuredSlaDomainId = $someString
+    /// 			# OPTIONAL
+    /// 			useConfiguredDefaultLogRetention = $someBoolean
+    /// 			# OPTIONAL
+    /// 			mssqlSlaRelatedProperties = @{
+    /// 				# OPTIONAL
+    /// 				copyOnly = $someBoolean
+    /// 				# OPTIONAL
+    /// 				logBackupFrequencyInSeconds = $someInt
+    /// 				# OPTIONAL
+    /// 				logRetentionHours = $someInt
+    /// 				# OPTIONAL
+    /// 				hasLogConfigFromSla = $someBoolean
+    /// 				# OPTIONAL
+    /// 				hostLogRetention = $someInt
+    /// 			}
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		existingSnapshotRetention = $someExistingSnapshotRetention # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExistingSnapshotRetention]) for enum values.
+    /// 		# REQUIRED
+    /// 		ids = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ResponseSuccess
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationMssql -ExportDatabase [-Arg ..] [-Field ..]</code>
+    /// Runs the AssignSlaDomainPropertiesAsync operation
+    /// of the 'MSSQL' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    MSSQL
+    /// # API Operation: AssignSlaDomainPropertiesAsync
+    /// 
+    /// $query = New-RscMutationMssql -AssignSlaDomainPropertiesAsync
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	updateInfo = @{
+    /// 		# OPTIONAL
+    /// 		shouldApplyToExistingSnapshots = $someBoolean
+    /// 		# OPTIONAL
+    /// 		shouldApplyToNonPolicySnapshots = $someBoolean
+    /// 		# OPTIONAL
+    /// 		mssqlSlaPatchProperties = @{
+    /// 			# OPTIONAL
+    /// 			configuredSlaDomainId = $someString
+    /// 			# OPTIONAL
+    /// 			useConfiguredDefaultLogRetention = $someBoolean
+    /// 			# OPTIONAL
+    /// 			mssqlSlaRelatedProperties = @{
+    /// 				# OPTIONAL
+    /// 				copyOnly = $someBoolean
+    /// 				# OPTIONAL
+    /// 				logBackupFrequencyInSeconds = $someInt
+    /// 				# OPTIONAL
+    /// 				logRetentionHours = $someInt
+    /// 				# OPTIONAL
+    /// 				hasLogConfigFromSla = $someBoolean
+    /// 				# OPTIONAL
+    /// 				hostLogRetention = $someInt
+    /// 			}
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		existingSnapshotRetention = $someExistingSnapshotRetention # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExistingSnapshotRetention]) for enum values.
+    /// 		# REQUIRED
+    /// 		ids = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AssignMssqlSlaDomainPropertiesAsyncReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationMssql -RestoreDatabase [-Arg ..] [-Field ..]</code>
+    /// Runs the BrowseDatabaseSnapshot operation
+    /// of the 'MSSQL' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    MSSQL
+    /// # API Operation: BrowseDatabaseSnapshot
+    /// 
+    /// $query = New-RscMutationMssql -BrowseDatabaseSnapshot
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		endPoint = @{
+    /// 			# OPTIONAL
+    /// 			lsnPoint = @{
+    /// 				# OPTIONAL
+    /// 				recoveryForkGuid = $someString
+    /// 				# REQUIRED
+    /// 				lsn = $someString
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			timestampMs = $someInt64
+    /// 			# OPTIONAL
+    /// 			date = $someDateTime
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		legalHoldDownloadConfig = @{
+    /// 			# REQUIRED
+    /// 			isLegalHoldDownload = $someBoolean
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		recoveryPoint = @{
+    /// 			# OPTIONAL
+    /// 			lsnPoint = @{
+    /// 				# OPTIONAL
+    /// 				recoveryForkGuid = $someString
+    /// 				# REQUIRED
+    /// 				lsn = $someString
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			timestampMs = $someInt64
+    /// 			# OPTIONAL
+    /// 			date = $someDateTime
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		startPoint = @{
+    /// 			# OPTIONAL
+    /// 			lsnPoint = @{
+    /// 				# OPTIONAL
+    /// 				recoveryForkGuid = $someString
+    /// 				# REQUIRED
+    /// 				lsn = $someString
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			timestampMs = $someInt64
+    /// 			# OPTIONAL
+    /// 			date = $someDateTime
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		backupType = $someMssqlBackupType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlBackupType]) for enum values.
+    /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: BrowseMssqlDatabaseSnapshotReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationMssql -BulkUpdateDbs [-Arg ..] [-Field ..]</code>
+    /// Runs the BulkCreateOnDemandBackup operation
+    /// of the 'MSSQL' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    MSSQL
+    /// # API Operation: BulkCreateOnDemandBackup
+    /// 
+    /// $query = New-RscMutationMssql -BulkCreateOnDemandBackup
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		availabilityGroupIds = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		databaseIds = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		forceFullSnapshot = $someBoolean
+    /// 		# OPTIONAL
+    /// 		hostIds = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		instanceIds = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		windowsClusterIds = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		baseOnDemandSnapshotConfig = @{
+    /// 			# OPTIONAL
+    /// 			slaId = $someString
+    /// 		}
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationMssql -TakeLogBackup [-Arg ..] [-Field ..]</code>
+    /// Runs the BulkUpdateDbs operation
+    /// of the 'MSSQL' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    MSSQL
+    /// # API Operation: BulkUpdateDbs
+    /// 
+    /// $query = New-RscMutationMssql -BulkUpdateDbs
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	dbsUpdateProperties = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			databaseId = $someString
+    /// 			# REQUIRED
+    /// 			updateProperties = @{
+    /// 				# OPTIONAL
+    /// 				configuredSlaDomainId = $someString
+    /// 				# OPTIONAL
+    /// 				maxDataStreams = $someInt
+    /// 				# OPTIONAL
+    /// 				postBackupScript = @{
+    /// 					# REQUIRED
+    /// 					scriptErrorAction = $someScriptErrorAction # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ScriptErrorAction]) for enum values.
+    /// 					# REQUIRED
+    /// 					scriptPath = $someString
+    /// 					# REQUIRED
+    /// 					timeoutMs = $someInt64
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				preBackupScript = @{
+    /// 					# REQUIRED
+    /// 					scriptErrorAction = $someScriptErrorAction # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ScriptErrorAction]) for enum values.
+    /// 					# REQUIRED
+    /// 					scriptPath = $someString
+    /// 					# REQUIRED
+    /// 					timeoutMs = $someInt64
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				isPaused = $someBoolean
+    /// 				# OPTIONAL
+    /// 				shouldForceFull = $someBoolean
+    /// 				# OPTIONAL
+    /// 				mssqlNonSlaProperties = @{
+    /// 					# OPTIONAL
+    /// 					copyOnly = $someBoolean
+    /// 					# OPTIONAL
+    /// 					logBackupFrequencyInSeconds = $someInt
+    /// 					# OPTIONAL
+    /// 					logRetentionHours = $someInt
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				mssqlSlaPatchProperties = @{
+    /// 					# OPTIONAL
+    /// 					configuredSlaDomainId = $someString
+    /// 					# OPTIONAL
+    /// 					useConfiguredDefaultLogRetention = $someBoolean
+    /// 					# OPTIONAL
+    /// 					mssqlSlaRelatedProperties = @{
+    /// 						# OPTIONAL
+    /// 						copyOnly = $someBoolean
+    /// 						# OPTIONAL
+    /// 						logBackupFrequencyInSeconds = $someInt
+    /// 						# OPTIONAL
+    /// 						logRetentionHours = $someInt
+    /// 						# OPTIONAL
+    /// 						hasLogConfigFromSla = $someBoolean
+    /// 						# OPTIONAL
+    /// 						hostLogRetention = $someInt
+    /// 					}
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				mssqlSlaRelatedProperties = @{
+    /// 					# OPTIONAL
+    /// 					copyOnly = $someBoolean
+    /// 					# OPTIONAL
+    /// 					logBackupFrequencyInSeconds = $someInt
+    /// 					# OPTIONAL
+    /// 					logRetentionHours = $someInt
+    /// 					# OPTIONAL
+    /// 					hasLogConfigFromSla = $someBoolean
+    /// 					# OPTIONAL
+    /// 					hostLogRetention = $someInt
+    /// 				}
+    /// 			}
+    /// 		}
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: BulkUpdateMssqlDbsReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationMssql -CreateOnDemandBackup [-Arg ..] [-Field ..]</code>
+    /// Runs the CreateLiveMount operation
+    /// of the 'MSSQL' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    MSSQL
+    /// # API Operation: CreateLiveMount
+    /// 
+    /// $query = New-RscMutationMssql -CreateLiveMount
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		targetInstanceId = $someString
+    /// 		# OPTIONAL
+    /// 		recoveryModel = $someMssqlDatabaseRecoveryModel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlDatabaseRecoveryModel]) for enum values.
+    /// 		# REQUIRED
+    /// 		mountedDatabaseName = $someString
+    /// 		# REQUIRED
+    /// 		recoveryPoint = @{
+    /// 			# OPTIONAL
+    /// 			lsnPoint = @{
+    /// 				# OPTIONAL
+    /// 				recoveryForkGuid = $someString
+    /// 				# REQUIRED
+    /// 				lsn = $someString
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			timestampMs = $someInt64
+    /// 			# OPTIONAL
+    /// 			date = $someDateTime
+    /// 		}
+    /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationMssql -DeleteDbSnapshots [-Arg ..] [-Field ..]</code>
+    /// Runs the CreateLogShippingConfiguration operation
+    /// of the 'MSSQL' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    MSSQL
+    /// # API Operation: CreateLogShippingConfiguration
+    /// 
+    /// $query = New-RscMutationMssql -CreateLogShippingConfiguration
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		makeupReseedLimit = $someInt
+    /// 		# OPTIONAL
+    /// 		mssqlLogShippingCreateConfig = @{
+    /// 			# OPTIONAL
+    /// 			maxDataStreams = $someInt
+    /// 			# OPTIONAL
+    /// 			targetDataFilePath = $someString
+    /// 			# OPTIONAL
+    /// 			targetFilePaths = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					newFilename = $someString
+    /// 					# OPTIONAL
+    /// 					newLogicalName = $someString
+    /// 					# REQUIRED
+    /// 					exportPath = $someString
+    /// 					# REQUIRED
+    /// 					logicalName = $someString
+    /// 				}
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			targetLogFilePath = $someString
+    /// 			# OPTIONAL
+    /// 			mssqlLogShippingTargetStateOptions = @{
+    /// 				# OPTIONAL
+    /// 				shouldDisconnectStandbyUsers = $someBoolean
+    /// 				# REQUIRED
+    /// 				state = $someMssqlLogShippingOkState # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlLogShippingOkState]) for enum values.
+    /// 			}
+    /// 			# REQUIRED
+    /// 			targetDatabaseName = $someString
+    /// 			# REQUIRED
+    /// 			targetInstanceId = $someString
+    /// 		}
+    /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationMssql -DeleteLiveMount [-Arg ..] [-Field ..]</code>
+    /// Runs the CreateOnDemandBackup operation
+    /// of the 'MSSQL' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    MSSQL
+    /// # API Operation: CreateOnDemandBackup
+    /// 
+    /// $query = New-RscMutationMssql -CreateOnDemandBackup
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		forceFullSnapshot = $someBoolean
+    /// 		# OPTIONAL
+    /// 		baseOnDemandSnapshotConfig = @{
+    /// 			# OPTIONAL
+    /// 			slaId = $someString
+    /// 		}
+    /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationMssql -BulkCreateOnDemandBackup [-Arg ..] [-Field ..]</code>
+    /// Runs the DeleteDbSnapshots operation
+    /// of the 'MSSQL' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    MSSQL
+    /// # API Operation: DeleteDbSnapshots
+    /// 
+    /// $query = New-RscMutationMssql -DeleteDbSnapshots
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ResponseSuccess
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationMssql -CreateLiveMount [-Arg ..] [-Field ..]</code>
+    /// Runs the DeleteLiveMount operation
+    /// of the 'MSSQL' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    MSSQL
+    /// # API Operation: DeleteLiveMount
+    /// 
+    /// $query = New-RscMutationMssql -DeleteLiveMount
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	force = $someBoolean
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationMssql -UpdateLogShippingConfiguration [-Arg ..] [-Field ..]</code>
+    /// Runs the DownloadDatabaseBackupFiles operation
+    /// of the 'MSSQL' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    MSSQL
+    /// # API Operation: DownloadDatabaseBackupFiles
+    /// 
+    /// $query = New-RscMutationMssql -DownloadDatabaseBackupFiles
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		legalHoldDownloadConfig = @{
+    /// 			# REQUIRED
+    /// 			isLegalHoldDownload = $someBoolean
+    /// 		}
+    /// 		# REQUIRED
+    /// 		items = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationMssql -DownloadDatabaseFilesFromArchivalLocation [-Arg ..] [-Field ..]</code>
+    /// Runs the DownloadDatabaseFilesFromArchivalLocation operation
+    /// of the 'MSSQL' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    MSSQL
+    /// # API Operation: DownloadDatabaseFilesFromArchivalLocation
+    /// 
+    /// $query = New-RscMutationMssql -DownloadDatabaseFilesFromArchivalLocation
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# REQUIRED
+    /// 		recoveryPoint = @{
+    /// 			# OPTIONAL
+    /// 			lsnPoint = @{
+    /// 				# OPTIONAL
+    /// 				recoveryForkGuid = $someString
+    /// 				# REQUIRED
+    /// 				lsn = $someString
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			timestampMs = $someInt64
+    /// 			# OPTIONAL
+    /// 			date = $someDateTime
+    /// 		}
+    /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationMssql -DownloadDatabaseBackupFiles [-Arg ..] [-Field ..]</code>
+    /// Runs the ExportDatabase operation
+    /// of the 'MSSQL' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    MSSQL
+    /// # API Operation: ExportDatabase
+    /// 
+    /// $query = New-RscMutationMssql -ExportDatabase
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		allowOverwrite = $someBoolean
+    /// 		# OPTIONAL
+    /// 		finishRecovery = $someBoolean
+    /// 		# OPTIONAL
+    /// 		maxDataStreams = $someInt
+    /// 		# OPTIONAL
+    /// 		targetDataFilePath = $someString
+    /// 		# OPTIONAL
+    /// 		targetFilePaths = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				newFilename = $someString
+    /// 				# OPTIONAL
+    /// 				newLogicalName = $someString
+    /// 				# REQUIRED
+    /// 				exportPath = $someString
+    /// 				# REQUIRED
+    /// 				logicalName = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		targetLogFilePath = $someString
+    /// 		# REQUIRED
+    /// 		recoveryPoint = @{
+    /// 			# OPTIONAL
+    /// 			lsnPoint = @{
+    /// 				# OPTIONAL
+    /// 				recoveryForkGuid = $someString
+    /// 				# REQUIRED
+    /// 				lsn = $someString
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			timestampMs = $someInt64
+    /// 			# OPTIONAL
+    /// 			date = $someDateTime
+    /// 		}
+    /// 		# REQUIRED
+    /// 		targetDatabaseName = $someString
+    /// 		# REQUIRED
+    /// 		targetInstanceId = $someString
+    /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationMssql -AssignSlaDomainProperties [-Arg ..] [-Field ..]</code>
+    /// Runs the RestoreDatabase operation
+    /// of the 'MSSQL' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    MSSQL
+    /// # API Operation: RestoreDatabase
+    /// 
+    /// $query = New-RscMutationMssql -RestoreDatabase
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		finishRecovery = $someBoolean
+    /// 		# OPTIONAL
+    /// 		maxDataStreams = $someInt
+    /// 		# REQUIRED
+    /// 		recoveryPoint = @{
+    /// 			# OPTIONAL
+    /// 			lsnPoint = @{
+    /// 				# OPTIONAL
+    /// 				recoveryForkGuid = $someString
+    /// 				# REQUIRED
+    /// 				lsn = $someString
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			timestampMs = $someInt64
+    /// 			# OPTIONAL
+    /// 			date = $someDateTime
+    /// 		}
+    /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationMssql -UpdateDefaultProperties [-Arg ..] [-Field ..]</code>
+    /// Runs the TakeLogBackup operation
+    /// of the 'MSSQL' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    MSSQL
+    /// # API Operation: TakeLogBackup
+    /// 
+    /// $query = New-RscMutationMssql -TakeLogBackup
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationMssql -CreateLogShippingConfiguration [-Arg ..] [-Field ..]</code>
+    /// Runs the UpdateDefaultProperties operation
+    /// of the 'MSSQL' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    MSSQL
+    /// # API Operation: UpdateDefaultProperties
+    /// 
+    /// $query = New-RscMutationMssql -UpdateDefaultProperties
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	defaultProperties = @{
+    /// 		# OPTIONAL
+    /// 		cbtStatus = $someBoolean
+    /// 		# OPTIONAL
+    /// 		logBackupFrequencyInSeconds = $someInt64
+    /// 		# OPTIONAL
+    /// 		logRetentionTimeInHours = $someInt
+    /// 		# OPTIONAL
+    /// 		shouldUseDefaultBackupLocation = $someBoolean
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: UpdateMssqlDefaultPropertiesReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscMutationMssql -AssignSlaDomainPropertiesAsync [-Arg ..] [-Field ..]</code>
+    /// Runs the UpdateLogShippingConfiguration operation
+    /// of the 'MSSQL' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    MSSQL
+    /// # API Operation: UpdateLogShippingConfiguration
+    /// 
+    /// $query = New-RscMutationMssql -UpdateLogShippingConfiguration
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		makeupReseedLimit = $someInt
+    /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: UpdateMssqlLogShippingConfigurationReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -84,341 +1028,312 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     public class New_RscMutationMssql : RscGqlPSCmdlet
     {
         
-        /// <summary>
-        /// BrowseDatabaseSnapshot parameter set
-        ///
-        /// [GraphQL: browseMssqlDatabaseSnapshot]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "BrowseDatabaseSnapshot",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"List snapshots and logs from a Mssql Database. This endpoint is only used to fetch data, but uses a mutation instead of a query due to limitations with the CDM API.
-[GraphQL: browseMssqlDatabaseSnapshot]",
-            Position = 0
-        )]
-        public SwitchParameter BrowseDatabaseSnapshot { get; set; }
-
-        
-        /// <summary>
-        /// ExportDatabase parameter set
-        ///
-        /// [GraphQL: exportMssqlDatabase]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "ExportDatabase",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a request to export a Microsoft SQL database.
-[GraphQL: exportMssqlDatabase]",
-            Position = 0
-        )]
-        public SwitchParameter ExportDatabase { get; set; }
-
-        
-        /// <summary>
-        /// RestoreDatabase parameter set
-        ///
-        /// [GraphQL: restoreMssqlDatabase]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "RestoreDatabase",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create a request to restore a Microsoft SQL database.
-[GraphQL: restoreMssqlDatabase]",
-            Position = 0
-        )]
-        public SwitchParameter RestoreDatabase { get; set; }
-
-        
-        /// <summary>
-        /// BulkUpdateDbs parameter set
-        ///
-        /// [GraphQL: bulkUpdateMssqlDbs]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "BulkUpdateDbs",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Update multiple Microsoft SQL databases with the specified properties.
-[GraphQL: bulkUpdateMssqlDbs]",
-            Position = 0
-        )]
-        public SwitchParameter BulkUpdateDbs { get; set; }
-
-        
-        /// <summary>
-        /// TakeLogBackup parameter set
-        ///
-        /// [GraphQL: takeMssqlLogBackup]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "TakeLogBackup",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Take an on-demand log backup for a Microsoft SQL database.
-[GraphQL: takeMssqlLogBackup]",
-            Position = 0
-        )]
-        public SwitchParameter TakeLogBackup { get; set; }
-
-        
-        /// <summary>
-        /// CreateOnDemandBackup parameter set
-        ///
-        /// [GraphQL: createOnDemandMssqlBackup]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "CreateOnDemandBackup",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Take an on-demand backup of a Microsoft SQL Database
-[GraphQL: createOnDemandMssqlBackup]",
-            Position = 0
-        )]
-        public SwitchParameter CreateOnDemandBackup { get; set; }
-
-        
-        /// <summary>
-        /// DeleteDbSnapshots parameter set
-        ///
-        /// [GraphQL: deleteMssqlDbSnapshots]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "DeleteDbSnapshots",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Delete snapshots of a Microsoft SQL Database.
-[GraphQL: deleteMssqlDbSnapshots]",
-            Position = 0
-        )]
-        public SwitchParameter DeleteDbSnapshots { get; set; }
-
-        
-        /// <summary>
-        /// DeleteLiveMount parameter set
-        ///
-        /// [GraphQL: deleteMssqlLiveMount]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "DeleteLiveMount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Delete a Live Mount of a SQL Server database
-
-Supported in v5.0+
-Create an async request to delete a Live Mount of a SQL Server database. Poll the task status by using /mssql/request/{id}.
-[GraphQL: deleteMssqlLiveMount]",
-            Position = 0
-        )]
-        public SwitchParameter DeleteLiveMount { get; set; }
-
-        
-        /// <summary>
-        /// BulkCreateOnDemandBackup parameter set
-        ///
-        /// [GraphQL: bulkCreateOnDemandMssqlBackup]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "BulkCreateOnDemandBackup",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Take a bulk on-demand backup of a Microsoft SQL Database.
-[GraphQL: bulkCreateOnDemandMssqlBackup]",
-            Position = 0
-        )]
-        public SwitchParameter BulkCreateOnDemandBackup { get; set; }
-
-        
-        /// <summary>
-        /// CreateLiveMount parameter set
-        ///
-        /// [GraphQL: createMssqlLiveMount]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "CreateLiveMount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create live mount of a Microsoft SQL Database.
-[GraphQL: createMssqlLiveMount]",
-            Position = 0
-        )]
-        public SwitchParameter CreateLiveMount { get; set; }
-
-        
-        /// <summary>
-        /// UpdateLogShippingConfiguration parameter set
-        ///
-        /// [GraphQL: updateMssqlLogShippingConfiguration]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "UpdateLogShippingConfiguration",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Update log shipping configuration of a Microsoft SQL Database.
-[GraphQL: updateMssqlLogShippingConfiguration]",
-            Position = 0
-        )]
-        public SwitchParameter UpdateLogShippingConfiguration { get; set; }
-
-        
-        /// <summary>
-        /// DownloadDatabaseFilesFromArchivalLocation parameter set
-        ///
-        /// [GraphQL: downloadMssqlDatabaseFilesFromArchivalLocation]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "DownloadDatabaseFilesFromArchivalLocation",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Download Microsoft SQL Database backup files from archival location.
-[GraphQL: downloadMssqlDatabaseFilesFromArchivalLocation]",
-            Position = 0
-        )]
-        public SwitchParameter DownloadDatabaseFilesFromArchivalLocation { get; set; }
-
-        
-        /// <summary>
-        /// DownloadDatabaseBackupFiles parameter set
-        ///
-        /// [GraphQL: downloadMssqlDatabaseBackupFiles]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "DownloadDatabaseBackupFiles",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Downloads a list of snapshot and log backups from a Microsoft SQL database
-
-Supported in v5.2+
-Downloads a list of snapshot and log backups from a Microsoft SQL database.
-[GraphQL: downloadMssqlDatabaseBackupFiles]",
-            Position = 0
-        )]
-        public SwitchParameter DownloadDatabaseBackupFiles { get; set; }
-
-        
-        /// <summary>
-        /// AssignSlaDomainProperties parameter set
-        ///
-        /// [GraphQL: assignMssqlSlaDomainProperties]
-        /// </summary>
         [Parameter(
             ParameterSetName = "AssignSlaDomainProperties",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Assign SLA domain properties to Mssql objects.
-[GraphQL: assignMssqlSlaDomainProperties]",
-            Position = 0
+@"Create a mutation object for the 'AssignSlaDomainProperties' operation
+in the 'MSSQL' API domain.
+Description of the operation:
+Assign SLA domain properties to Mssql objects.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/assignmssqlsladomainproperties.doc.html]"
+            // No Position -> named parameter only.
         )]
         public SwitchParameter AssignSlaDomainProperties { get; set; }
 
         
-        /// <summary>
-        /// UpdateDefaultProperties parameter set
-        ///
-        /// [GraphQL: updateMssqlDefaultProperties]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "UpdateDefaultProperties",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Update the default properties for Microsoft SQL databases.
-[GraphQL: updateMssqlDefaultProperties]",
-            Position = 0
-        )]
-        public SwitchParameter UpdateDefaultProperties { get; set; }
-
-        
-        /// <summary>
-        /// CreateLogShippingConfiguration parameter set
-        ///
-        /// [GraphQL: createMssqlLogShippingConfiguration]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "CreateLogShippingConfiguration",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Create log shipping configuration of a Microsoft SQL Database.
-[GraphQL: createMssqlLogShippingConfiguration]",
-            Position = 0
-        )]
-        public SwitchParameter CreateLogShippingConfiguration { get; set; }
-
-        
-        /// <summary>
-        /// AssignSlaDomainPropertiesAsync parameter set
-        ///
-        /// [GraphQL: assignMssqlSlaDomainPropertiesAsync]
-        /// </summary>
         [Parameter(
             ParameterSetName = "AssignSlaDomainPropertiesAsync",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Assign SLA domain properties to Mssql objects.
-[GraphQL: assignMssqlSlaDomainPropertiesAsync]",
-            Position = 0
+@"Create a mutation object for the 'AssignSlaDomainPropertiesAsync' operation
+in the 'MSSQL' API domain.
+Description of the operation:
+Assign SLA domain properties to Mssql objects.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/assignmssqlsladomainpropertiesasync.doc.html]"
+            // No Position -> named parameter only.
         )]
         public SwitchParameter AssignSlaDomainPropertiesAsync { get; set; }
 
+        
+        [Parameter(
+            ParameterSetName = "BrowseDatabaseSnapshot",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'BrowseDatabaseSnapshot' operation
+in the 'MSSQL' API domain.
+Description of the operation:
+List snapshots and logs from a Mssql Database. This endpoint is only used to fetch data, but uses a mutation instead of a query due to limitations with the CDM API.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/browsemssqldatabasesnapshot.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter BrowseDatabaseSnapshot { get; set; }
 
-// ignore warning 'Missing XML comment'
-#pragma warning disable 1591
+        
+        [Parameter(
+            ParameterSetName = "BulkCreateOnDemandBackup",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'BulkCreateOnDemandBackup' operation
+in the 'MSSQL' API domain.
+Description of the operation:
+Take a bulk on-demand backup of a Microsoft SQL Database.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/bulkcreateondemandmssqlbackup.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter BulkCreateOnDemandBackup { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "BulkUpdateDbs",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'BulkUpdateDbs' operation
+in the 'MSSQL' API domain.
+Description of the operation:
+Update multiple Microsoft SQL databases with the specified properties.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/bulkupdatemssqldbs.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter BulkUpdateDbs { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "CreateLiveMount",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'CreateLiveMount' operation
+in the 'MSSQL' API domain.
+Description of the operation:
+Create live mount of a Microsoft SQL Database.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createmssqllivemount.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter CreateLiveMount { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "CreateLogShippingConfiguration",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'CreateLogShippingConfiguration' operation
+in the 'MSSQL' API domain.
+Description of the operation:
+Create log shipping configuration of a Microsoft SQL Database.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createmssqllogshippingconfiguration.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter CreateLogShippingConfiguration { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "CreateOnDemandBackup",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'CreateOnDemandBackup' operation
+in the 'MSSQL' API domain.
+Description of the operation:
+Take an on-demand backup of a Microsoft SQL Database
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/createondemandmssqlbackup.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter CreateOnDemandBackup { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "DeleteDbSnapshots",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'DeleteDbSnapshots' operation
+in the 'MSSQL' API domain.
+Description of the operation:
+Delete snapshots of a Microsoft SQL Database.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deletemssqldbsnapshots.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter DeleteDbSnapshots { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "DeleteLiveMount",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'DeleteLiveMount' operation
+in the 'MSSQL' API domain.
+Description of the operation:
+Delete a Live Mount of a SQL Server database
+
+Supported in v5.0+
+Create an async request to delete a Live Mount of a SQL Server database. Poll the task status by using /mssql/request/{id}.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/deletemssqllivemount.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter DeleteLiveMount { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "DownloadDatabaseBackupFiles",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'DownloadDatabaseBackupFiles' operation
+in the 'MSSQL' API domain.
+Description of the operation:
+Downloads a list of snapshot and log backups from a Microsoft SQL database
+
+Supported in v5.2+
+Downloads a list of snapshot and log backups from a Microsoft SQL database.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/downloadmssqldatabasebackupfiles.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter DownloadDatabaseBackupFiles { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "DownloadDatabaseFilesFromArchivalLocation",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'DownloadDatabaseFilesFromArchivalLocation' operation
+in the 'MSSQL' API domain.
+Description of the operation:
+Download Microsoft SQL Database backup files from archival location.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/downloadmssqldatabasefilesfromarchivallocation.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter DownloadDatabaseFilesFromArchivalLocation { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "ExportDatabase",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'ExportDatabase' operation
+in the 'MSSQL' API domain.
+Description of the operation:
+Create a request to export a Microsoft SQL database.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/exportmssqldatabase.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter ExportDatabase { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "RestoreDatabase",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'RestoreDatabase' operation
+in the 'MSSQL' API domain.
+Description of the operation:
+Create a request to restore a Microsoft SQL database.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/restoremssqldatabase.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter RestoreDatabase { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "TakeLogBackup",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'TakeLogBackup' operation
+in the 'MSSQL' API domain.
+Description of the operation:
+Take an on-demand log backup for a Microsoft SQL database.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/takemssqllogbackup.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter TakeLogBackup { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "UpdateDefaultProperties",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'UpdateDefaultProperties' operation
+in the 'MSSQL' API domain.
+Description of the operation:
+Update the default properties for Microsoft SQL databases.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatemssqldefaultproperties.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter UpdateDefaultProperties { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "UpdateLogShippingConfiguration",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a mutation object for the 'UpdateLogShippingConfiguration' operation
+in the 'MSSQL' API domain.
+Description of the operation:
+Update log shipping configuration of a Microsoft SQL Database.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/updatemssqllogshippingconfiguration.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter UpdateLogShippingConfiguration { get; set; }
+
+
+
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
             try
             {
-                switch(Op)
+                switch(this.GetOp().OpName())
                 {
+                    case "AssignSlaDomainProperties":
+                        this.ProcessRecord_AssignSlaDomainProperties();
+                        break;
+                    case "AssignSlaDomainPropertiesAsync":
+                        this.ProcessRecord_AssignSlaDomainPropertiesAsync();
+                        break;
                     case "BrowseDatabaseSnapshot":
                         this.ProcessRecord_BrowseDatabaseSnapshot();
                         break;
-                    case "ExportDatabase":
-                        this.ProcessRecord_ExportDatabase();
-                        break;
-                    case "RestoreDatabase":
-                        this.ProcessRecord_RestoreDatabase();
+                    case "BulkCreateOnDemandBackup":
+                        this.ProcessRecord_BulkCreateOnDemandBackup();
                         break;
                     case "BulkUpdateDbs":
                         this.ProcessRecord_BulkUpdateDbs();
                         break;
-                    case "TakeLogBackup":
-                        this.ProcessRecord_TakeLogBackup();
+                    case "CreateLiveMount":
+                        this.ProcessRecord_CreateLiveMount();
+                        break;
+                    case "CreateLogShippingConfiguration":
+                        this.ProcessRecord_CreateLogShippingConfiguration();
                         break;
                     case "CreateOnDemandBackup":
                         this.ProcessRecord_CreateOnDemandBackup();
@@ -429,35 +1344,29 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
                     case "DeleteLiveMount":
                         this.ProcessRecord_DeleteLiveMount();
                         break;
-                    case "BulkCreateOnDemandBackup":
-                        this.ProcessRecord_BulkCreateOnDemandBackup();
-                        break;
-                    case "CreateLiveMount":
-                        this.ProcessRecord_CreateLiveMount();
-                        break;
-                    case "UpdateLogShippingConfiguration":
-                        this.ProcessRecord_UpdateLogShippingConfiguration();
+                    case "DownloadDatabaseBackupFiles":
+                        this.ProcessRecord_DownloadDatabaseBackupFiles();
                         break;
                     case "DownloadDatabaseFilesFromArchivalLocation":
                         this.ProcessRecord_DownloadDatabaseFilesFromArchivalLocation();
                         break;
-                    case "DownloadDatabaseBackupFiles":
-                        this.ProcessRecord_DownloadDatabaseBackupFiles();
+                    case "ExportDatabase":
+                        this.ProcessRecord_ExportDatabase();
                         break;
-                    case "AssignSlaDomainProperties":
-                        this.ProcessRecord_AssignSlaDomainProperties();
+                    case "RestoreDatabase":
+                        this.ProcessRecord_RestoreDatabase();
+                        break;
+                    case "TakeLogBackup":
+                        this.ProcessRecord_TakeLogBackup();
                         break;
                     case "UpdateDefaultProperties":
                         this.ProcessRecord_UpdateDefaultProperties();
                         break;
-                    case "CreateLogShippingConfiguration":
-                        this.ProcessRecord_CreateLogShippingConfiguration();
-                        break;
-                    case "AssignSlaDomainPropertiesAsync":
-                        this.ProcessRecord_AssignSlaDomainPropertiesAsync();
+                    case "UpdateLogShippingConfiguration":
+                        this.ProcessRecord_UpdateLogShippingConfiguration();
                         break;
                     default:
-                        throw new Exception("Unknown Operation " + Op);
+                        throw new Exception("Unknown Operation " + this.GetOp().OpName());
                 }
            }
            catch (Exception ex)
@@ -465,7 +1374,24 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
                 ThrowTerminatingException(ex);
            }
         }
-#pragma warning restore 1591
+
+        // This parameter set invokes a single graphql operation:
+        // assignMssqlSlaDomainProperties.
+        internal void ProcessRecord_AssignSlaDomainProperties()
+        {
+            this._logger.name += " -AssignSlaDomainProperties";
+            // Create new graphql operation assignMssqlSlaDomainProperties
+            InitMutationAssignMssqlSlaDomainProperties();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // assignMssqlSlaDomainPropertiesAsync.
+        internal void ProcessRecord_AssignSlaDomainPropertiesAsync()
+        {
+            this._logger.name += " -AssignSlaDomainPropertiesAsync";
+            // Create new graphql operation assignMssqlSlaDomainPropertiesAsync
+            InitMutationAssignMssqlSlaDomainPropertiesAsync();
+        }
 
         // This parameter set invokes a single graphql operation:
         // browseMssqlDatabaseSnapshot.
@@ -477,21 +1403,12 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
         }
 
         // This parameter set invokes a single graphql operation:
-        // exportMssqlDatabase.
-        internal void ProcessRecord_ExportDatabase()
+        // bulkCreateOnDemandMssqlBackup.
+        internal void ProcessRecord_BulkCreateOnDemandBackup()
         {
-            this._logger.name += " -ExportDatabase";
-            // Create new graphql operation exportMssqlDatabase
-            InitMutationExportMssqlDatabase();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // restoreMssqlDatabase.
-        internal void ProcessRecord_RestoreDatabase()
-        {
-            this._logger.name += " -RestoreDatabase";
-            // Create new graphql operation restoreMssqlDatabase
-            InitMutationRestoreMssqlDatabase();
+            this._logger.name += " -BulkCreateOnDemandBackup";
+            // Create new graphql operation bulkCreateOnDemandMssqlBackup
+            InitMutationBulkCreateOnDemandMssqlBackup();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -504,12 +1421,21 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
         }
 
         // This parameter set invokes a single graphql operation:
-        // takeMssqlLogBackup.
-        internal void ProcessRecord_TakeLogBackup()
+        // createMssqlLiveMount.
+        internal void ProcessRecord_CreateLiveMount()
         {
-            this._logger.name += " -TakeLogBackup";
-            // Create new graphql operation takeMssqlLogBackup
-            InitMutationTakeMssqlLogBackup();
+            this._logger.name += " -CreateLiveMount";
+            // Create new graphql operation createMssqlLiveMount
+            InitMutationCreateMssqlLiveMount();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // createMssqlLogShippingConfiguration.
+        internal void ProcessRecord_CreateLogShippingConfiguration()
+        {
+            this._logger.name += " -CreateLogShippingConfiguration";
+            // Create new graphql operation createMssqlLogShippingConfiguration
+            InitMutationCreateMssqlLogShippingConfiguration();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -540,30 +1466,12 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
         }
 
         // This parameter set invokes a single graphql operation:
-        // bulkCreateOnDemandMssqlBackup.
-        internal void ProcessRecord_BulkCreateOnDemandBackup()
+        // downloadMssqlDatabaseBackupFiles.
+        internal void ProcessRecord_DownloadDatabaseBackupFiles()
         {
-            this._logger.name += " -BulkCreateOnDemandBackup";
-            // Create new graphql operation bulkCreateOnDemandMssqlBackup
-            InitMutationBulkCreateOnDemandMssqlBackup();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // createMssqlLiveMount.
-        internal void ProcessRecord_CreateLiveMount()
-        {
-            this._logger.name += " -CreateLiveMount";
-            // Create new graphql operation createMssqlLiveMount
-            InitMutationCreateMssqlLiveMount();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // updateMssqlLogShippingConfiguration.
-        internal void ProcessRecord_UpdateLogShippingConfiguration()
-        {
-            this._logger.name += " -UpdateLogShippingConfiguration";
-            // Create new graphql operation updateMssqlLogShippingConfiguration
-            InitMutationUpdateMssqlLogShippingConfiguration();
+            this._logger.name += " -DownloadDatabaseBackupFiles";
+            // Create new graphql operation downloadMssqlDatabaseBackupFiles
+            InitMutationDownloadMssqlDatabaseBackupFiles();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -576,21 +1484,30 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
         }
 
         // This parameter set invokes a single graphql operation:
-        // downloadMssqlDatabaseBackupFiles.
-        internal void ProcessRecord_DownloadDatabaseBackupFiles()
+        // exportMssqlDatabase.
+        internal void ProcessRecord_ExportDatabase()
         {
-            this._logger.name += " -DownloadDatabaseBackupFiles";
-            // Create new graphql operation downloadMssqlDatabaseBackupFiles
-            InitMutationDownloadMssqlDatabaseBackupFiles();
+            this._logger.name += " -ExportDatabase";
+            // Create new graphql operation exportMssqlDatabase
+            InitMutationExportMssqlDatabase();
         }
 
         // This parameter set invokes a single graphql operation:
-        // assignMssqlSlaDomainProperties.
-        internal void ProcessRecord_AssignSlaDomainProperties()
+        // restoreMssqlDatabase.
+        internal void ProcessRecord_RestoreDatabase()
         {
-            this._logger.name += " -AssignSlaDomainProperties";
-            // Create new graphql operation assignMssqlSlaDomainProperties
-            InitMutationAssignMssqlSlaDomainProperties();
+            this._logger.name += " -RestoreDatabase";
+            // Create new graphql operation restoreMssqlDatabase
+            InitMutationRestoreMssqlDatabase();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // takeMssqlLogBackup.
+        internal void ProcessRecord_TakeLogBackup()
+        {
+            this._logger.name += " -TakeLogBackup";
+            // Create new graphql operation takeMssqlLogBackup
+            InitMutationTakeMssqlLogBackup();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -603,622 +1520,14 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
         }
 
         // This parameter set invokes a single graphql operation:
-        // createMssqlLogShippingConfiguration.
-        internal void ProcessRecord_CreateLogShippingConfiguration()
+        // updateMssqlLogShippingConfiguration.
+        internal void ProcessRecord_UpdateLogShippingConfiguration()
         {
-            this._logger.name += " -CreateLogShippingConfiguration";
-            // Create new graphql operation createMssqlLogShippingConfiguration
-            InitMutationCreateMssqlLogShippingConfiguration();
+            this._logger.name += " -UpdateLogShippingConfiguration";
+            // Create new graphql operation updateMssqlLogShippingConfiguration
+            InitMutationUpdateMssqlLogShippingConfiguration();
         }
 
-        // This parameter set invokes a single graphql operation:
-        // assignMssqlSlaDomainPropertiesAsync.
-        internal void ProcessRecord_AssignSlaDomainPropertiesAsync()
-        {
-            this._logger.name += " -AssignSlaDomainPropertiesAsync";
-            // Create new graphql operation assignMssqlSlaDomainPropertiesAsync
-            InitMutationAssignMssqlSlaDomainPropertiesAsync();
-        }
-
-
-        // Create new GraphQL Mutation:
-        // browseMssqlDatabaseSnapshot(input: BrowseMssqlDatabaseSnapshotInput!): BrowseMssqlDatabaseSnapshotReply!
-        internal void InitMutationBrowseMssqlDatabaseSnapshot()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "BrowseMssqlDatabaseSnapshotInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationBrowseMssqlDatabaseSnapshot",
-                "($input: BrowseMssqlDatabaseSnapshotInput!)",
-                "BrowseMssqlDatabaseSnapshotReply",
-                Mutation.BrowseMssqlDatabaseSnapshot_ObjectFieldSpec,
-                Mutation.BrowseMssqlDatabaseSnapshotFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	config = @{
-		# OPTIONAL
-		endPoint = @{
-			# OPTIONAL
-			lsnPoint = @{
-				# OPTIONAL
-				recoveryForkGuid = <System.String>
-				# REQUIRED
-				lsn = <System.String>
-			}
-			# OPTIONAL
-			timestampMs = <System.Int64>
-			# OPTIONAL
-			date = <DateTime>
-		}
-		# OPTIONAL
-		legalHoldDownloadConfig = @{
-			# REQUIRED
-			isLegalHoldDownload = <System.Boolean>
-		}
-		# OPTIONAL
-		recoveryPoint = @{
-			# OPTIONAL
-			lsnPoint = @{
-				# OPTIONAL
-				recoveryForkGuid = <System.String>
-				# REQUIRED
-				lsn = <System.String>
-			}
-			# OPTIONAL
-			timestampMs = <System.Int64>
-			# OPTIONAL
-			date = <DateTime>
-		}
-		# OPTIONAL
-		startPoint = @{
-			# OPTIONAL
-			lsnPoint = @{
-				# OPTIONAL
-				recoveryForkGuid = <System.String>
-				# REQUIRED
-				lsn = <System.String>
-			}
-			# OPTIONAL
-			timestampMs = <System.Int64>
-			# OPTIONAL
-			date = <DateTime>
-		}
-		# OPTIONAL
-		backupType = <MssqlBackupType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlBackupType]) for enum values.
-	}
-	# REQUIRED
-	id = <System.String>
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // exportMssqlDatabase(input: ExportMssqlDatabaseInput!): AsyncRequestStatus!
-        internal void InitMutationExportMssqlDatabase()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "ExportMssqlDatabaseInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationExportMssqlDatabase",
-                "($input: ExportMssqlDatabaseInput!)",
-                "AsyncRequestStatus",
-                Mutation.ExportMssqlDatabase_ObjectFieldSpec,
-                Mutation.ExportMssqlDatabaseFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	config = @{
-		# OPTIONAL
-		allowOverwrite = <System.Boolean>
-		# OPTIONAL
-		finishRecovery = <System.Boolean>
-		# OPTIONAL
-		maxDataStreams = <System.Int32>
-		# OPTIONAL
-		targetDataFilePath = <System.String>
-		# OPTIONAL
-		targetFilePaths = @(
-			@{
-				# OPTIONAL
-				newFilename = <System.String>
-				# OPTIONAL
-				newLogicalName = <System.String>
-				# REQUIRED
-				exportPath = <System.String>
-				# REQUIRED
-				logicalName = <System.String>
-			}
-		)
-		# OPTIONAL
-		targetLogFilePath = <System.String>
-		# REQUIRED
-		recoveryPoint = @{
-			# OPTIONAL
-			lsnPoint = @{
-				# OPTIONAL
-				recoveryForkGuid = <System.String>
-				# REQUIRED
-				lsn = <System.String>
-			}
-			# OPTIONAL
-			timestampMs = <System.Int64>
-			# OPTIONAL
-			date = <DateTime>
-		}
-		# REQUIRED
-		targetDatabaseName = <System.String>
-		# REQUIRED
-		targetInstanceId = <System.String>
-	}
-	# REQUIRED
-	id = <System.String>
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // restoreMssqlDatabase(input: RestoreMssqlDatabaseInput!): AsyncRequestStatus!
-        internal void InitMutationRestoreMssqlDatabase()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "RestoreMssqlDatabaseInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationRestoreMssqlDatabase",
-                "($input: RestoreMssqlDatabaseInput!)",
-                "AsyncRequestStatus",
-                Mutation.RestoreMssqlDatabase_ObjectFieldSpec,
-                Mutation.RestoreMssqlDatabaseFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	config = @{
-		# OPTIONAL
-		finishRecovery = <System.Boolean>
-		# OPTIONAL
-		maxDataStreams = <System.Int32>
-		# REQUIRED
-		recoveryPoint = @{
-			# OPTIONAL
-			lsnPoint = @{
-				# OPTIONAL
-				recoveryForkGuid = <System.String>
-				# REQUIRED
-				lsn = <System.String>
-			}
-			# OPTIONAL
-			timestampMs = <System.Int64>
-			# OPTIONAL
-			date = <DateTime>
-		}
-	}
-	# REQUIRED
-	id = <System.String>
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // bulkUpdateMssqlDbs(input: BulkUpdateMssqlDbsInput!): BulkUpdateMssqlDbsReply!
-        internal void InitMutationBulkUpdateMssqlDbs()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "BulkUpdateMssqlDbsInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationBulkUpdateMssqlDbs",
-                "($input: BulkUpdateMssqlDbsInput!)",
-                "BulkUpdateMssqlDbsReply",
-                Mutation.BulkUpdateMssqlDbs_ObjectFieldSpec,
-                Mutation.BulkUpdateMssqlDbsFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	clusterUuid = <System.String>
-	# REQUIRED
-	dbsUpdateProperties = @(
-		@{
-			# REQUIRED
-			databaseId = <System.String>
-			# REQUIRED
-			updateProperties = @{
-				# OPTIONAL
-				configuredSlaDomainId = <System.String>
-				# OPTIONAL
-				maxDataStreams = <System.Int32>
-				# OPTIONAL
-				postBackupScript = @{
-					# REQUIRED
-					scriptErrorAction = <ScriptErrorAction> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ScriptErrorAction]) for enum values.
-					# REQUIRED
-					scriptPath = <System.String>
-					# REQUIRED
-					timeoutMs = <System.Int64>
-				}
-				# OPTIONAL
-				preBackupScript = @{
-					# REQUIRED
-					scriptErrorAction = <ScriptErrorAction> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ScriptErrorAction]) for enum values.
-					# REQUIRED
-					scriptPath = <System.String>
-					# REQUIRED
-					timeoutMs = <System.Int64>
-				}
-				# OPTIONAL
-				isPaused = <System.Boolean>
-				# OPTIONAL
-				shouldForceFull = <System.Boolean>
-				# OPTIONAL
-				mssqlNonSlaProperties = @{
-					# OPTIONAL
-					copyOnly = <System.Boolean>
-					# OPTIONAL
-					logBackupFrequencyInSeconds = <System.Int32>
-					# OPTIONAL
-					logRetentionHours = <System.Int32>
-				}
-				# OPTIONAL
-				mssqlSlaPatchProperties = @{
-					# OPTIONAL
-					configuredSlaDomainId = <System.String>
-					# OPTIONAL
-					useConfiguredDefaultLogRetention = <System.Boolean>
-					# OPTIONAL
-					mssqlSlaRelatedProperties = @{
-						# OPTIONAL
-						copyOnly = <System.Boolean>
-						# OPTIONAL
-						logBackupFrequencyInSeconds = <System.Int32>
-						# OPTIONAL
-						logRetentionHours = <System.Int32>
-						# OPTIONAL
-						hasLogConfigFromSla = <System.Boolean>
-						# OPTIONAL
-						hostLogRetention = <System.Int32>
-					}
-				}
-				# OPTIONAL
-				mssqlSlaRelatedProperties = @{
-					# OPTIONAL
-					copyOnly = <System.Boolean>
-					# OPTIONAL
-					logBackupFrequencyInSeconds = <System.Int32>
-					# OPTIONAL
-					logRetentionHours = <System.Int32>
-					# OPTIONAL
-					hasLogConfigFromSla = <System.Boolean>
-					# OPTIONAL
-					hostLogRetention = <System.Int32>
-				}
-			}
-		}
-	)
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // takeMssqlLogBackup(input: TakeMssqlLogBackupInput!): AsyncRequestStatus!
-        internal void InitMutationTakeMssqlLogBackup()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "TakeMssqlLogBackupInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationTakeMssqlLogBackup",
-                "($input: TakeMssqlLogBackupInput!)",
-                "AsyncRequestStatus",
-                Mutation.TakeMssqlLogBackup_ObjectFieldSpec,
-                Mutation.TakeMssqlLogBackupFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	id = <System.String>
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // createOnDemandMssqlBackup(input: CreateOnDemandMssqlBackupInput!): AsyncRequestStatus!
-        internal void InitMutationCreateOnDemandMssqlBackup()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "CreateOnDemandMssqlBackupInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationCreateOnDemandMssqlBackup",
-                "($input: CreateOnDemandMssqlBackupInput!)",
-                "AsyncRequestStatus",
-                Mutation.CreateOnDemandMssqlBackup_ObjectFieldSpec,
-                Mutation.CreateOnDemandMssqlBackupFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	config = @{
-		# OPTIONAL
-		forceFullSnapshot = <System.Boolean>
-		# OPTIONAL
-		baseOnDemandSnapshotConfig = @{
-			# OPTIONAL
-			slaId = <System.String>
-		}
-	}
-	# REQUIRED
-	id = <System.String>
-	# OPTIONAL
-	userNote = <System.String>
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // deleteMssqlDbSnapshots(input: DeleteMssqlDbSnapshotsInput!): ResponseSuccess!
-        internal void InitMutationDeleteMssqlDbSnapshots()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "DeleteMssqlDbSnapshotsInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationDeleteMssqlDbSnapshots",
-                "($input: DeleteMssqlDbSnapshotsInput!)",
-                "ResponseSuccess",
-                Mutation.DeleteMssqlDbSnapshots_ObjectFieldSpec,
-                Mutation.DeleteMssqlDbSnapshotsFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	id = <System.String>
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // deleteMssqlLiveMount(input: DeleteMssqlLiveMountInput!): AsyncRequestStatus!
-        internal void InitMutationDeleteMssqlLiveMount()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "DeleteMssqlLiveMountInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationDeleteMssqlLiveMount",
-                "($input: DeleteMssqlLiveMountInput!)",
-                "AsyncRequestStatus",
-                Mutation.DeleteMssqlLiveMount_ObjectFieldSpec,
-                Mutation.DeleteMssqlLiveMountFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# OPTIONAL
-	force = <System.Boolean>
-	# REQUIRED
-	id = <System.String>
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // bulkCreateOnDemandMssqlBackup(input: BulkCreateOnDemandMssqlBackupInput!): AsyncRequestStatus!
-        internal void InitMutationBulkCreateOnDemandMssqlBackup()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "BulkCreateOnDemandMssqlBackupInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationBulkCreateOnDemandMssqlBackup",
-                "($input: BulkCreateOnDemandMssqlBackupInput!)",
-                "AsyncRequestStatus",
-                Mutation.BulkCreateOnDemandMssqlBackup_ObjectFieldSpec,
-                Mutation.BulkCreateOnDemandMssqlBackupFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	config = @{
-		# OPTIONAL
-		availabilityGroupIds = @(
-			<System.String>
-		)
-		# OPTIONAL
-		databaseIds = @(
-			<System.String>
-		)
-		# OPTIONAL
-		forceFullSnapshot = <System.Boolean>
-		# OPTIONAL
-		hostIds = @(
-			<System.String>
-		)
-		# OPTIONAL
-		instanceIds = @(
-			<System.String>
-		)
-		# OPTIONAL
-		windowsClusterIds = @(
-			<System.String>
-		)
-		# OPTIONAL
-		baseOnDemandSnapshotConfig = @{
-			# OPTIONAL
-			slaId = <System.String>
-		}
-	}
-	# OPTIONAL
-	userNote = <System.String>
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // createMssqlLiveMount(input: CreateMssqlLiveMountInput!): AsyncRequestStatus!
-        internal void InitMutationCreateMssqlLiveMount()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "CreateMssqlLiveMountInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationCreateMssqlLiveMount",
-                "($input: CreateMssqlLiveMountInput!)",
-                "AsyncRequestStatus",
-                Mutation.CreateMssqlLiveMount_ObjectFieldSpec,
-                Mutation.CreateMssqlLiveMountFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	config = @{
-		# OPTIONAL
-		targetInstanceId = <System.String>
-		# OPTIONAL
-		recoveryModel = <MssqlDatabaseRecoveryModel> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlDatabaseRecoveryModel]) for enum values.
-		# REQUIRED
-		mountedDatabaseName = <System.String>
-		# REQUIRED
-		recoveryPoint = @{
-			# OPTIONAL
-			lsnPoint = @{
-				# OPTIONAL
-				recoveryForkGuid = <System.String>
-				# REQUIRED
-				lsn = <System.String>
-			}
-			# OPTIONAL
-			timestampMs = <System.Int64>
-			# OPTIONAL
-			date = <DateTime>
-		}
-	}
-	# REQUIRED
-	id = <System.String>
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // updateMssqlLogShippingConfiguration(input: UpdateMssqlLogShippingConfigurationInput!): UpdateMssqlLogShippingConfigurationReply!
-        internal void InitMutationUpdateMssqlLogShippingConfiguration()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "UpdateMssqlLogShippingConfigurationInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationUpdateMssqlLogShippingConfiguration",
-                "($input: UpdateMssqlLogShippingConfigurationInput!)",
-                "UpdateMssqlLogShippingConfigurationReply",
-                Mutation.UpdateMssqlLogShippingConfiguration_ObjectFieldSpec,
-                Mutation.UpdateMssqlLogShippingConfigurationFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	clusterUuid = <System.String>
-	# REQUIRED
-	config = @{
-		# OPTIONAL
-		makeupReseedLimit = <System.Int32>
-	}
-	# REQUIRED
-	id = <System.String>
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // downloadMssqlDatabaseFilesFromArchivalLocation(input: DownloadMssqlDatabaseFilesFromArchivalLocationInput!): AsyncRequestStatus!
-        internal void InitMutationDownloadMssqlDatabaseFilesFromArchivalLocation()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "DownloadMssqlDatabaseFilesFromArchivalLocationInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationDownloadMssqlDatabaseFilesFromArchivalLocation",
-                "($input: DownloadMssqlDatabaseFilesFromArchivalLocationInput!)",
-                "AsyncRequestStatus",
-                Mutation.DownloadMssqlDatabaseFilesFromArchivalLocation_ObjectFieldSpec,
-                Mutation.DownloadMssqlDatabaseFilesFromArchivalLocationFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	config = @{
-		# REQUIRED
-		recoveryPoint = @{
-			# OPTIONAL
-			lsnPoint = @{
-				# OPTIONAL
-				recoveryForkGuid = <System.String>
-				# REQUIRED
-				lsn = <System.String>
-			}
-			# OPTIONAL
-			timestampMs = <System.Int64>
-			# OPTIONAL
-			date = <DateTime>
-		}
-	}
-	# REQUIRED
-	id = <System.String>
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // downloadMssqlDatabaseBackupFiles(input: DownloadMssqlDatabaseBackupFilesInput!): AsyncRequestStatus!
-        internal void InitMutationDownloadMssqlDatabaseBackupFiles()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "DownloadMssqlDatabaseBackupFilesInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationDownloadMssqlDatabaseBackupFiles",
-                "($input: DownloadMssqlDatabaseBackupFilesInput!)",
-                "AsyncRequestStatus",
-                Mutation.DownloadMssqlDatabaseBackupFiles_ObjectFieldSpec,
-                Mutation.DownloadMssqlDatabaseBackupFilesFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	config = @{
-		# OPTIONAL
-		legalHoldDownloadConfig = @{
-			# REQUIRED
-			isLegalHoldDownload = <System.Boolean>
-		}
-		# REQUIRED
-		items = @(
-			<System.String>
-		)
-	}
-	# REQUIRED
-	id = <System.String>
-	# OPTIONAL
-	userNote = <System.String>
-}"
-            );
-        }
 
         // Create new GraphQL Mutation:
         // assignMssqlSlaDomainProperties(input: AssignMssqlSlaDomainPropertiesInput!): ResponseSuccess!
@@ -1236,137 +1545,40 @@ $inputs.Var.input = @{
                 Mutation.AssignMssqlSlaDomainProperties_ObjectFieldSpec,
                 Mutation.AssignMssqlSlaDomainPropertiesFieldSpec,
                 @"# REQUIRED
-$inputs.Var.input = @{
+$query.Var.input = @{
 	# REQUIRED
 	updateInfo = @{
 		# OPTIONAL
-		shouldApplyToExistingSnapshots = <System.Boolean>
+		shouldApplyToExistingSnapshots = $someBoolean
 		# OPTIONAL
-		shouldApplyToNonPolicySnapshots = <System.Boolean>
+		shouldApplyToNonPolicySnapshots = $someBoolean
 		# OPTIONAL
 		mssqlSlaPatchProperties = @{
 			# OPTIONAL
-			configuredSlaDomainId = <System.String>
+			configuredSlaDomainId = $someString
 			# OPTIONAL
-			useConfiguredDefaultLogRetention = <System.Boolean>
+			useConfiguredDefaultLogRetention = $someBoolean
 			# OPTIONAL
 			mssqlSlaRelatedProperties = @{
 				# OPTIONAL
-				copyOnly = <System.Boolean>
+				copyOnly = $someBoolean
 				# OPTIONAL
-				logBackupFrequencyInSeconds = <System.Int32>
+				logBackupFrequencyInSeconds = $someInt
 				# OPTIONAL
-				logRetentionHours = <System.Int32>
+				logRetentionHours = $someInt
 				# OPTIONAL
-				hasLogConfigFromSla = <System.Boolean>
+				hasLogConfigFromSla = $someBoolean
 				# OPTIONAL
-				hostLogRetention = <System.Int32>
+				hostLogRetention = $someInt
 			}
 		}
 		# OPTIONAL
-		existingSnapshotRetention = <ExistingSnapshotRetention> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExistingSnapshotRetention]) for enum values.
+		existingSnapshotRetention = $someExistingSnapshotRetention # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExistingSnapshotRetention]) for enum values.
 		# REQUIRED
 		ids = @(
-			<System.String>
+			$someString
 		)
 	}
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // updateMssqlDefaultProperties(input: UpdateMssqlDefaultPropertiesInput!): UpdateMssqlDefaultPropertiesReply!
-        internal void InitMutationUpdateMssqlDefaultProperties()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "UpdateMssqlDefaultPropertiesInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationUpdateMssqlDefaultProperties",
-                "($input: UpdateMssqlDefaultPropertiesInput!)",
-                "UpdateMssqlDefaultPropertiesReply",
-                Mutation.UpdateMssqlDefaultProperties_ObjectFieldSpec,
-                Mutation.UpdateMssqlDefaultPropertiesFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	clusterUuid = <System.String>
-	# REQUIRED
-	defaultProperties = @{
-		# OPTIONAL
-		cbtStatus = <System.Boolean>
-		# OPTIONAL
-		logBackupFrequencyInSeconds = <System.Int64>
-		# OPTIONAL
-		logRetentionTimeInHours = <System.Int32>
-		# OPTIONAL
-		shouldUseDefaultBackupLocation = <System.Boolean>
-	}
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // createMssqlLogShippingConfiguration(input: CreateMssqlLogShippingConfigurationInput!): AsyncRequestStatus!
-        internal void InitMutationCreateMssqlLogShippingConfiguration()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "CreateMssqlLogShippingConfigurationInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationCreateMssqlLogShippingConfiguration",
-                "($input: CreateMssqlLogShippingConfigurationInput!)",
-                "AsyncRequestStatus",
-                Mutation.CreateMssqlLogShippingConfiguration_ObjectFieldSpec,
-                Mutation.CreateMssqlLogShippingConfigurationFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	clusterUuid = <System.String>
-	# REQUIRED
-	config = @{
-		# OPTIONAL
-		makeupReseedLimit = <System.Int32>
-		# OPTIONAL
-		mssqlLogShippingCreateConfig = @{
-			# OPTIONAL
-			maxDataStreams = <System.Int32>
-			# OPTIONAL
-			targetDataFilePath = <System.String>
-			# OPTIONAL
-			targetFilePaths = @(
-				@{
-					# OPTIONAL
-					newFilename = <System.String>
-					# OPTIONAL
-					newLogicalName = <System.String>
-					# REQUIRED
-					exportPath = <System.String>
-					# REQUIRED
-					logicalName = <System.String>
-				}
-			)
-			# OPTIONAL
-			targetLogFilePath = <System.String>
-			# OPTIONAL
-			mssqlLogShippingTargetStateOptions = @{
-				# OPTIONAL
-				shouldDisconnectStandbyUsers = <System.Boolean>
-				# REQUIRED
-				state = <MssqlLogShippingOkState> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlLogShippingOkState]) for enum values.
-			}
-			# REQUIRED
-			targetDatabaseName = <System.String>
-			# REQUIRED
-			targetInstanceId = <System.String>
-		}
-	}
-	# REQUIRED
-	id = <System.String>
 }"
             );
         }
@@ -1387,42 +1599,738 @@ $inputs.Var.input = @{
                 Mutation.AssignMssqlSlaDomainPropertiesAsync_ObjectFieldSpec,
                 Mutation.AssignMssqlSlaDomainPropertiesAsyncFieldSpec,
                 @"# REQUIRED
-$inputs.Var.input = @{
+$query.Var.input = @{
 	# REQUIRED
 	updateInfo = @{
 		# OPTIONAL
-		shouldApplyToExistingSnapshots = <System.Boolean>
+		shouldApplyToExistingSnapshots = $someBoolean
 		# OPTIONAL
-		shouldApplyToNonPolicySnapshots = <System.Boolean>
+		shouldApplyToNonPolicySnapshots = $someBoolean
 		# OPTIONAL
 		mssqlSlaPatchProperties = @{
 			# OPTIONAL
-			configuredSlaDomainId = <System.String>
+			configuredSlaDomainId = $someString
 			# OPTIONAL
-			useConfiguredDefaultLogRetention = <System.Boolean>
+			useConfiguredDefaultLogRetention = $someBoolean
 			# OPTIONAL
 			mssqlSlaRelatedProperties = @{
 				# OPTIONAL
-				copyOnly = <System.Boolean>
+				copyOnly = $someBoolean
 				# OPTIONAL
-				logBackupFrequencyInSeconds = <System.Int32>
+				logBackupFrequencyInSeconds = $someInt
 				# OPTIONAL
-				logRetentionHours = <System.Int32>
+				logRetentionHours = $someInt
 				# OPTIONAL
-				hasLogConfigFromSla = <System.Boolean>
+				hasLogConfigFromSla = $someBoolean
 				# OPTIONAL
-				hostLogRetention = <System.Int32>
+				hostLogRetention = $someInt
 			}
 		}
 		# OPTIONAL
-		existingSnapshotRetention = <ExistingSnapshotRetention> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExistingSnapshotRetention]) for enum values.
+		existingSnapshotRetention = $someExistingSnapshotRetention # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExistingSnapshotRetention]) for enum values.
 		# REQUIRED
 		ids = @(
-			<System.String>
+			$someString
 		)
 	}
 	# OPTIONAL
-	userNote = <System.String>
+	userNote = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // browseMssqlDatabaseSnapshot(input: BrowseMssqlDatabaseSnapshotInput!): BrowseMssqlDatabaseSnapshotReply!
+        internal void InitMutationBrowseMssqlDatabaseSnapshot()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "BrowseMssqlDatabaseSnapshotInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationBrowseMssqlDatabaseSnapshot",
+                "($input: BrowseMssqlDatabaseSnapshotInput!)",
+                "BrowseMssqlDatabaseSnapshotReply",
+                Mutation.BrowseMssqlDatabaseSnapshot_ObjectFieldSpec,
+                Mutation.BrowseMssqlDatabaseSnapshotFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		endPoint = @{
+			# OPTIONAL
+			lsnPoint = @{
+				# OPTIONAL
+				recoveryForkGuid = $someString
+				# REQUIRED
+				lsn = $someString
+			}
+			# OPTIONAL
+			timestampMs = $someInt64
+			# OPTIONAL
+			date = $someDateTime
+		}
+		# OPTIONAL
+		legalHoldDownloadConfig = @{
+			# REQUIRED
+			isLegalHoldDownload = $someBoolean
+		}
+		# OPTIONAL
+		recoveryPoint = @{
+			# OPTIONAL
+			lsnPoint = @{
+				# OPTIONAL
+				recoveryForkGuid = $someString
+				# REQUIRED
+				lsn = $someString
+			}
+			# OPTIONAL
+			timestampMs = $someInt64
+			# OPTIONAL
+			date = $someDateTime
+		}
+		# OPTIONAL
+		startPoint = @{
+			# OPTIONAL
+			lsnPoint = @{
+				# OPTIONAL
+				recoveryForkGuid = $someString
+				# REQUIRED
+				lsn = $someString
+			}
+			# OPTIONAL
+			timestampMs = $someInt64
+			# OPTIONAL
+			date = $someDateTime
+		}
+		# OPTIONAL
+		backupType = $someMssqlBackupType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlBackupType]) for enum values.
+	}
+	# REQUIRED
+	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // bulkCreateOnDemandMssqlBackup(input: BulkCreateOnDemandMssqlBackupInput!): AsyncRequestStatus!
+        internal void InitMutationBulkCreateOnDemandMssqlBackup()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "BulkCreateOnDemandMssqlBackupInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationBulkCreateOnDemandMssqlBackup",
+                "($input: BulkCreateOnDemandMssqlBackupInput!)",
+                "AsyncRequestStatus",
+                Mutation.BulkCreateOnDemandMssqlBackup_ObjectFieldSpec,
+                Mutation.BulkCreateOnDemandMssqlBackupFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		availabilityGroupIds = @(
+			$someString
+		)
+		# OPTIONAL
+		databaseIds = @(
+			$someString
+		)
+		# OPTIONAL
+		forceFullSnapshot = $someBoolean
+		# OPTIONAL
+		hostIds = @(
+			$someString
+		)
+		# OPTIONAL
+		instanceIds = @(
+			$someString
+		)
+		# OPTIONAL
+		windowsClusterIds = @(
+			$someString
+		)
+		# OPTIONAL
+		baseOnDemandSnapshotConfig = @{
+			# OPTIONAL
+			slaId = $someString
+		}
+	}
+	# OPTIONAL
+	userNote = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // bulkUpdateMssqlDbs(input: BulkUpdateMssqlDbsInput!): BulkUpdateMssqlDbsReply!
+        internal void InitMutationBulkUpdateMssqlDbs()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "BulkUpdateMssqlDbsInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationBulkUpdateMssqlDbs",
+                "($input: BulkUpdateMssqlDbsInput!)",
+                "BulkUpdateMssqlDbsReply",
+                Mutation.BulkUpdateMssqlDbs_ObjectFieldSpec,
+                Mutation.BulkUpdateMssqlDbsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	dbsUpdateProperties = @(
+		@{
+			# REQUIRED
+			databaseId = $someString
+			# REQUIRED
+			updateProperties = @{
+				# OPTIONAL
+				configuredSlaDomainId = $someString
+				# OPTIONAL
+				maxDataStreams = $someInt
+				# OPTIONAL
+				postBackupScript = @{
+					# REQUIRED
+					scriptErrorAction = $someScriptErrorAction # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ScriptErrorAction]) for enum values.
+					# REQUIRED
+					scriptPath = $someString
+					# REQUIRED
+					timeoutMs = $someInt64
+				}
+				# OPTIONAL
+				preBackupScript = @{
+					# REQUIRED
+					scriptErrorAction = $someScriptErrorAction # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ScriptErrorAction]) for enum values.
+					# REQUIRED
+					scriptPath = $someString
+					# REQUIRED
+					timeoutMs = $someInt64
+				}
+				# OPTIONAL
+				isPaused = $someBoolean
+				# OPTIONAL
+				shouldForceFull = $someBoolean
+				# OPTIONAL
+				mssqlNonSlaProperties = @{
+					# OPTIONAL
+					copyOnly = $someBoolean
+					# OPTIONAL
+					logBackupFrequencyInSeconds = $someInt
+					# OPTIONAL
+					logRetentionHours = $someInt
+				}
+				# OPTIONAL
+				mssqlSlaPatchProperties = @{
+					# OPTIONAL
+					configuredSlaDomainId = $someString
+					# OPTIONAL
+					useConfiguredDefaultLogRetention = $someBoolean
+					# OPTIONAL
+					mssqlSlaRelatedProperties = @{
+						# OPTIONAL
+						copyOnly = $someBoolean
+						# OPTIONAL
+						logBackupFrequencyInSeconds = $someInt
+						# OPTIONAL
+						logRetentionHours = $someInt
+						# OPTIONAL
+						hasLogConfigFromSla = $someBoolean
+						# OPTIONAL
+						hostLogRetention = $someInt
+					}
+				}
+				# OPTIONAL
+				mssqlSlaRelatedProperties = @{
+					# OPTIONAL
+					copyOnly = $someBoolean
+					# OPTIONAL
+					logBackupFrequencyInSeconds = $someInt
+					# OPTIONAL
+					logRetentionHours = $someInt
+					# OPTIONAL
+					hasLogConfigFromSla = $someBoolean
+					# OPTIONAL
+					hostLogRetention = $someInt
+				}
+			}
+		}
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // createMssqlLiveMount(input: CreateMssqlLiveMountInput!): AsyncRequestStatus!
+        internal void InitMutationCreateMssqlLiveMount()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CreateMssqlLiveMountInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationCreateMssqlLiveMount",
+                "($input: CreateMssqlLiveMountInput!)",
+                "AsyncRequestStatus",
+                Mutation.CreateMssqlLiveMount_ObjectFieldSpec,
+                Mutation.CreateMssqlLiveMountFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		targetInstanceId = $someString
+		# OPTIONAL
+		recoveryModel = $someMssqlDatabaseRecoveryModel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlDatabaseRecoveryModel]) for enum values.
+		# REQUIRED
+		mountedDatabaseName = $someString
+		# REQUIRED
+		recoveryPoint = @{
+			# OPTIONAL
+			lsnPoint = @{
+				# OPTIONAL
+				recoveryForkGuid = $someString
+				# REQUIRED
+				lsn = $someString
+			}
+			# OPTIONAL
+			timestampMs = $someInt64
+			# OPTIONAL
+			date = $someDateTime
+		}
+	}
+	# REQUIRED
+	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // createMssqlLogShippingConfiguration(input: CreateMssqlLogShippingConfigurationInput!): AsyncRequestStatus!
+        internal void InitMutationCreateMssqlLogShippingConfiguration()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CreateMssqlLogShippingConfigurationInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationCreateMssqlLogShippingConfiguration",
+                "($input: CreateMssqlLogShippingConfigurationInput!)",
+                "AsyncRequestStatus",
+                Mutation.CreateMssqlLogShippingConfiguration_ObjectFieldSpec,
+                Mutation.CreateMssqlLogShippingConfigurationFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		makeupReseedLimit = $someInt
+		# OPTIONAL
+		mssqlLogShippingCreateConfig = @{
+			# OPTIONAL
+			maxDataStreams = $someInt
+			# OPTIONAL
+			targetDataFilePath = $someString
+			# OPTIONAL
+			targetFilePaths = @(
+				@{
+					# OPTIONAL
+					newFilename = $someString
+					# OPTIONAL
+					newLogicalName = $someString
+					# REQUIRED
+					exportPath = $someString
+					# REQUIRED
+					logicalName = $someString
+				}
+			)
+			# OPTIONAL
+			targetLogFilePath = $someString
+			# OPTIONAL
+			mssqlLogShippingTargetStateOptions = @{
+				# OPTIONAL
+				shouldDisconnectStandbyUsers = $someBoolean
+				# REQUIRED
+				state = $someMssqlLogShippingOkState # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlLogShippingOkState]) for enum values.
+			}
+			# REQUIRED
+			targetDatabaseName = $someString
+			# REQUIRED
+			targetInstanceId = $someString
+		}
+	}
+	# REQUIRED
+	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // createOnDemandMssqlBackup(input: CreateOnDemandMssqlBackupInput!): AsyncRequestStatus!
+        internal void InitMutationCreateOnDemandMssqlBackup()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CreateOnDemandMssqlBackupInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationCreateOnDemandMssqlBackup",
+                "($input: CreateOnDemandMssqlBackupInput!)",
+                "AsyncRequestStatus",
+                Mutation.CreateOnDemandMssqlBackup_ObjectFieldSpec,
+                Mutation.CreateOnDemandMssqlBackupFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		forceFullSnapshot = $someBoolean
+		# OPTIONAL
+		baseOnDemandSnapshotConfig = @{
+			# OPTIONAL
+			slaId = $someString
+		}
+	}
+	# REQUIRED
+	id = $someString
+	# OPTIONAL
+	userNote = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // deleteMssqlDbSnapshots(input: DeleteMssqlDbSnapshotsInput!): ResponseSuccess!
+        internal void InitMutationDeleteMssqlDbSnapshots()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DeleteMssqlDbSnapshotsInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDeleteMssqlDbSnapshots",
+                "($input: DeleteMssqlDbSnapshotsInput!)",
+                "ResponseSuccess",
+                Mutation.DeleteMssqlDbSnapshots_ObjectFieldSpec,
+                Mutation.DeleteMssqlDbSnapshotsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // deleteMssqlLiveMount(input: DeleteMssqlLiveMountInput!): AsyncRequestStatus!
+        internal void InitMutationDeleteMssqlLiveMount()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DeleteMssqlLiveMountInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDeleteMssqlLiveMount",
+                "($input: DeleteMssqlLiveMountInput!)",
+                "AsyncRequestStatus",
+                Mutation.DeleteMssqlLiveMount_ObjectFieldSpec,
+                Mutation.DeleteMssqlLiveMountFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	force = $someBoolean
+	# REQUIRED
+	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // downloadMssqlDatabaseBackupFiles(input: DownloadMssqlDatabaseBackupFilesInput!): AsyncRequestStatus!
+        internal void InitMutationDownloadMssqlDatabaseBackupFiles()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DownloadMssqlDatabaseBackupFilesInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDownloadMssqlDatabaseBackupFiles",
+                "($input: DownloadMssqlDatabaseBackupFilesInput!)",
+                "AsyncRequestStatus",
+                Mutation.DownloadMssqlDatabaseBackupFiles_ObjectFieldSpec,
+                Mutation.DownloadMssqlDatabaseBackupFilesFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		legalHoldDownloadConfig = @{
+			# REQUIRED
+			isLegalHoldDownload = $someBoolean
+		}
+		# REQUIRED
+		items = @(
+			$someString
+		)
+	}
+	# REQUIRED
+	id = $someString
+	# OPTIONAL
+	userNote = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // downloadMssqlDatabaseFilesFromArchivalLocation(input: DownloadMssqlDatabaseFilesFromArchivalLocationInput!): AsyncRequestStatus!
+        internal void InitMutationDownloadMssqlDatabaseFilesFromArchivalLocation()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DownloadMssqlDatabaseFilesFromArchivalLocationInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDownloadMssqlDatabaseFilesFromArchivalLocation",
+                "($input: DownloadMssqlDatabaseFilesFromArchivalLocationInput!)",
+                "AsyncRequestStatus",
+                Mutation.DownloadMssqlDatabaseFilesFromArchivalLocation_ObjectFieldSpec,
+                Mutation.DownloadMssqlDatabaseFilesFromArchivalLocationFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		recoveryPoint = @{
+			# OPTIONAL
+			lsnPoint = @{
+				# OPTIONAL
+				recoveryForkGuid = $someString
+				# REQUIRED
+				lsn = $someString
+			}
+			# OPTIONAL
+			timestampMs = $someInt64
+			# OPTIONAL
+			date = $someDateTime
+		}
+	}
+	# REQUIRED
+	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // exportMssqlDatabase(input: ExportMssqlDatabaseInput!): AsyncRequestStatus!
+        internal void InitMutationExportMssqlDatabase()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "ExportMssqlDatabaseInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationExportMssqlDatabase",
+                "($input: ExportMssqlDatabaseInput!)",
+                "AsyncRequestStatus",
+                Mutation.ExportMssqlDatabase_ObjectFieldSpec,
+                Mutation.ExportMssqlDatabaseFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		allowOverwrite = $someBoolean
+		# OPTIONAL
+		finishRecovery = $someBoolean
+		# OPTIONAL
+		maxDataStreams = $someInt
+		# OPTIONAL
+		targetDataFilePath = $someString
+		# OPTIONAL
+		targetFilePaths = @(
+			@{
+				# OPTIONAL
+				newFilename = $someString
+				# OPTIONAL
+				newLogicalName = $someString
+				# REQUIRED
+				exportPath = $someString
+				# REQUIRED
+				logicalName = $someString
+			}
+		)
+		# OPTIONAL
+		targetLogFilePath = $someString
+		# REQUIRED
+		recoveryPoint = @{
+			# OPTIONAL
+			lsnPoint = @{
+				# OPTIONAL
+				recoveryForkGuid = $someString
+				# REQUIRED
+				lsn = $someString
+			}
+			# OPTIONAL
+			timestampMs = $someInt64
+			# OPTIONAL
+			date = $someDateTime
+		}
+		# REQUIRED
+		targetDatabaseName = $someString
+		# REQUIRED
+		targetInstanceId = $someString
+	}
+	# REQUIRED
+	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // restoreMssqlDatabase(input: RestoreMssqlDatabaseInput!): AsyncRequestStatus!
+        internal void InitMutationRestoreMssqlDatabase()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "RestoreMssqlDatabaseInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationRestoreMssqlDatabase",
+                "($input: RestoreMssqlDatabaseInput!)",
+                "AsyncRequestStatus",
+                Mutation.RestoreMssqlDatabase_ObjectFieldSpec,
+                Mutation.RestoreMssqlDatabaseFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		finishRecovery = $someBoolean
+		# OPTIONAL
+		maxDataStreams = $someInt
+		# REQUIRED
+		recoveryPoint = @{
+			# OPTIONAL
+			lsnPoint = @{
+				# OPTIONAL
+				recoveryForkGuid = $someString
+				# REQUIRED
+				lsn = $someString
+			}
+			# OPTIONAL
+			timestampMs = $someInt64
+			# OPTIONAL
+			date = $someDateTime
+		}
+	}
+	# REQUIRED
+	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // takeMssqlLogBackup(input: TakeMssqlLogBackupInput!): AsyncRequestStatus!
+        internal void InitMutationTakeMssqlLogBackup()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "TakeMssqlLogBackupInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationTakeMssqlLogBackup",
+                "($input: TakeMssqlLogBackupInput!)",
+                "AsyncRequestStatus",
+                Mutation.TakeMssqlLogBackup_ObjectFieldSpec,
+                Mutation.TakeMssqlLogBackupFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateMssqlDefaultProperties(input: UpdateMssqlDefaultPropertiesInput!): UpdateMssqlDefaultPropertiesReply!
+        internal void InitMutationUpdateMssqlDefaultProperties()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateMssqlDefaultPropertiesInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateMssqlDefaultProperties",
+                "($input: UpdateMssqlDefaultPropertiesInput!)",
+                "UpdateMssqlDefaultPropertiesReply",
+                Mutation.UpdateMssqlDefaultProperties_ObjectFieldSpec,
+                Mutation.UpdateMssqlDefaultPropertiesFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	defaultProperties = @{
+		# OPTIONAL
+		cbtStatus = $someBoolean
+		# OPTIONAL
+		logBackupFrequencyInSeconds = $someInt64
+		# OPTIONAL
+		logRetentionTimeInHours = $someInt
+		# OPTIONAL
+		shouldUseDefaultBackupLocation = $someBoolean
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateMssqlLogShippingConfiguration(input: UpdateMssqlLogShippingConfigurationInput!): UpdateMssqlLogShippingConfigurationReply!
+        internal void InitMutationUpdateMssqlLogShippingConfiguration()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateMssqlLogShippingConfigurationInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateMssqlLogShippingConfiguration",
+                "($input: UpdateMssqlLogShippingConfigurationInput!)",
+                "UpdateMssqlLogShippingConfigurationReply",
+                Mutation.UpdateMssqlLogShippingConfiguration_ObjectFieldSpec,
+                Mutation.UpdateMssqlLogShippingConfigurationFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		makeupReseedLimit = $someInt
+	}
+	# REQUIRED
+	id = $someString
 }"
             );
         }

@@ -56,24 +56,33 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> UnidirectionalReplicationSpec? ReplicationSpec1
         // GraphQL -> replicationSpec1: UnidirectionalReplicationSpec (type)
         if (this.ReplicationSpec1 != null) {
-            var fspec = this.ReplicationSpec1.AsFieldSpec(indent+1);
+            var fspec = this.ReplicationSpec1.AsFieldSpec(conf.Child("replicationSpec1"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "replicationSpec1 {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "replicationSpec1 {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> UnidirectionalReplicationSpec? ReplicationSpec2
         // GraphQL -> replicationSpec2: UnidirectionalReplicationSpec (type)
         if (this.ReplicationSpec2 != null) {
-            var fspec = this.ReplicationSpec2.AsFieldSpec(indent+1);
+            var fspec = this.ReplicationSpec2.AsFieldSpec(conf.Child("replicationSpec2"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "replicationSpec2 {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "replicationSpec2 {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -85,17 +94,41 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> UnidirectionalReplicationSpec? ReplicationSpec1
         // GraphQL -> replicationSpec1: UnidirectionalReplicationSpec (type)
-        if (this.ReplicationSpec1 == null && ec.Includes("replicationSpec1",false))
+        if (ec.Includes("replicationSpec1",false))
         {
-            this.ReplicationSpec1 = new UnidirectionalReplicationSpec();
-            this.ReplicationSpec1.ApplyExploratoryFieldSpec(ec.NewChild("replicationSpec1"));
+            if(this.ReplicationSpec1 == null) {
+
+                this.ReplicationSpec1 = new UnidirectionalReplicationSpec();
+                this.ReplicationSpec1.ApplyExploratoryFieldSpec(ec.NewChild("replicationSpec1"));
+
+            } else {
+
+                this.ReplicationSpec1.ApplyExploratoryFieldSpec(ec.NewChild("replicationSpec1"));
+
+            }
+        }
+        else if (this.ReplicationSpec1 != null && ec.Excludes("replicationSpec1",false))
+        {
+            this.ReplicationSpec1 = null;
         }
         //      C# -> UnidirectionalReplicationSpec? ReplicationSpec2
         // GraphQL -> replicationSpec2: UnidirectionalReplicationSpec (type)
-        if (this.ReplicationSpec2 == null && ec.Includes("replicationSpec2",false))
+        if (ec.Includes("replicationSpec2",false))
         {
-            this.ReplicationSpec2 = new UnidirectionalReplicationSpec();
-            this.ReplicationSpec2.ApplyExploratoryFieldSpec(ec.NewChild("replicationSpec2"));
+            if(this.ReplicationSpec2 == null) {
+
+                this.ReplicationSpec2 = new UnidirectionalReplicationSpec();
+                this.ReplicationSpec2.ApplyExploratoryFieldSpec(ec.NewChild("replicationSpec2"));
+
+            } else {
+
+                this.ReplicationSpec2.ApplyExploratoryFieldSpec(ec.NewChild("replicationSpec2"));
+
+            }
+        }
+        else if (this.ReplicationSpec2 != null && ec.Excludes("replicationSpec2",false))
+        {
+            this.ReplicationSpec2 = null;
         }
     }
 
@@ -122,9 +155,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<BidirectionalReplicationSpec> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

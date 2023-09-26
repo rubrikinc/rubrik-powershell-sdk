@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> DiagnosticTaskStatus? TaskStatus
         // GraphQL -> taskStatus: DiagnosticTaskStatus! (enum)
         if (this.TaskStatus != null) {
-            s += ind + "taskStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "taskStatus\n" ;
+            } else {
+                s += ind + "taskStatus\n" ;
+            }
         }
         //      C# -> DateTime? ExpectedEndTime
         // GraphQL -> expectedEndTime: DateTime (scalar)
         if (this.ExpectedEndTime != null) {
-            s += ind + "expectedEndTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "expectedEndTime\n" ;
+            } else {
+                s += ind + "expectedEndTime\n" ;
+            }
         }
         //      C# -> DateTime? QueueTime
         // GraphQL -> queueTime: DateTime (scalar)
         if (this.QueueTime != null) {
-            s += ind + "queueTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "queueTime\n" ;
+            } else {
+                s += ind + "queueTime\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> DiagnosticTaskStatus? TaskStatus
         // GraphQL -> taskStatus: DiagnosticTaskStatus! (enum)
-        if (this.TaskStatus == null && ec.Includes("taskStatus",true))
+        if (ec.Includes("taskStatus",true))
         {
-            this.TaskStatus = new DiagnosticTaskStatus();
+            if(this.TaskStatus == null) {
+
+                this.TaskStatus = new DiagnosticTaskStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TaskStatus != null && ec.Excludes("taskStatus",true))
+        {
+            this.TaskStatus = null;
         }
         //      C# -> DateTime? ExpectedEndTime
         // GraphQL -> expectedEndTime: DateTime (scalar)
-        if (this.ExpectedEndTime == null && ec.Includes("expectedEndTime",true))
+        if (ec.Includes("expectedEndTime",true))
         {
-            this.ExpectedEndTime = new DateTime();
+            if(this.ExpectedEndTime == null) {
+
+                this.ExpectedEndTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExpectedEndTime != null && ec.Excludes("expectedEndTime",true))
+        {
+            this.ExpectedEndTime = null;
         }
         //      C# -> DateTime? QueueTime
         // GraphQL -> queueTime: DateTime (scalar)
-        if (this.QueueTime == null && ec.Includes("queueTime",true))
+        if (ec.Includes("queueTime",true))
         {
-            this.QueueTime = new DateTime();
+            if(this.QueueTime == null) {
+
+                this.QueueTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.QueueTime != null && ec.Excludes("queueTime",true))
+        {
+            this.QueueTime = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<BackupTaskDiagnosticInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

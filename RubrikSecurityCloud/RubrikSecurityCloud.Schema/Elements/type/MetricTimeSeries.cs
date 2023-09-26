@@ -56,24 +56,33 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> ClusterMetric? Metric
         // GraphQL -> metric: ClusterMetric! (type)
         if (this.Metric != null) {
-            var fspec = this.Metric.AsFieldSpec(indent+1);
+            var fspec = this.Metric.AsFieldSpec(conf.Child("metric"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "metric {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "metric {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> ClusterMetricGroupByInfo? TimeInfo
         // GraphQL -> timeInfo: ClusterMetricGroupByInfo! (union)
         if (this.TimeInfo != null) {
-            var fspec = this.TimeInfo.AsFieldSpec(indent+1);
+            var fspec = this.TimeInfo.AsFieldSpec(conf.Child("timeInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "timeInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "timeInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -85,18 +94,46 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> ClusterMetric? Metric
         // GraphQL -> metric: ClusterMetric! (type)
-        if (this.Metric == null && ec.Includes("metric",false))
+        if (ec.Includes("metric",false))
         {
-            this.Metric = new ClusterMetric();
-            this.Metric.ApplyExploratoryFieldSpec(ec.NewChild("metric"));
+            if(this.Metric == null) {
+
+                this.Metric = new ClusterMetric();
+                this.Metric.ApplyExploratoryFieldSpec(ec.NewChild("metric"));
+
+            } else {
+
+                this.Metric.ApplyExploratoryFieldSpec(ec.NewChild("metric"));
+
+            }
+        }
+        else if (this.Metric != null && ec.Excludes("metric",false))
+        {
+            this.Metric = null;
         }
         //      C# -> ClusterMetricGroupByInfo? TimeInfo
         // GraphQL -> timeInfo: ClusterMetricGroupByInfo! (union)
-        if (this.TimeInfo == null && ec.Includes("timeInfo",false))
+        if (ec.Includes("timeInfo",false))
         {
-            var impls = new List<ClusterMetricGroupByInfo>();
-            impls.ApplyExploratoryFieldSpec(ec.NewChild("timeInfo"));
-            this.TimeInfo = (ClusterMetricGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+            if(this.TimeInfo == null) {
+
+                var impls = new List<ClusterMetricGroupByInfo>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("timeInfo"));
+                this.TimeInfo = (ClusterMetricGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<ClusterMetricGroupByInfo>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("timeInfo"));
+                this.TimeInfo = (ClusterMetricGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.TimeInfo != null && ec.Excludes("timeInfo",false))
+        {
+            this.TimeInfo = null;
         }
     }
 
@@ -123,9 +160,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<MetricTimeSeries> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

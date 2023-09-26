@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Parameter
         // GraphQL -> parameter: String! (scalar)
         if (this.Parameter != null) {
-            s += ind + "parameter\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "parameter\n" ;
+            } else {
+                s += ind + "parameter\n" ;
+            }
         }
         //      C# -> System.String? Value
         // GraphQL -> value: String! (scalar)
         if (this.Value != null) {
-            s += ind + "value\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "value\n" ;
+            } else {
+                s += ind + "value\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Parameter
         // GraphQL -> parameter: String! (scalar)
-        if (this.Parameter == null && ec.Includes("parameter",true))
+        if (ec.Includes("parameter",true))
         {
-            this.Parameter = "FETCH";
+            if(this.Parameter == null) {
+
+                this.Parameter = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Parameter != null && ec.Excludes("parameter",true))
+        {
+            this.Parameter = null;
         }
         //      C# -> System.String? Value
         // GraphQL -> value: String! (scalar)
-        if (this.Value == null && ec.Includes("value",true))
+        if (ec.Includes("value",true))
         {
-            this.Value = "FETCH";
+            if(this.Value == null) {
+
+                this.Value = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Value != null && ec.Excludes("value",true))
+        {
+            this.Value = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<OracleAcoParameterDetail> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

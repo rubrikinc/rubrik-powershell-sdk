@@ -47,14 +47,19 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> MssqlDbReplicaAvailabilityInfoRole? Role
         // GraphQL -> role: MssqlDbReplicaAvailabilityInfoRole! (enum)
         if (this.Role != null) {
-            s += ind + "role\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "role\n" ;
+            } else {
+                s += ind + "role\n" ;
+            }
         }
         return s;
     }
@@ -65,9 +70,20 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> MssqlDbReplicaAvailabilityInfoRole? Role
         // GraphQL -> role: MssqlDbReplicaAvailabilityInfoRole! (enum)
-        if (this.Role == null && ec.Includes("role",true))
+        if (ec.Includes("role",true))
         {
-            this.Role = new MssqlDbReplicaAvailabilityInfoRole();
+            if(this.Role == null) {
+
+                this.Role = new MssqlDbReplicaAvailabilityInfoRole();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Role != null && ec.Excludes("role",true))
+        {
+            this.Role = null;
         }
     }
 
@@ -94,9 +110,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<MssqlDbReplicaAvailabilityInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

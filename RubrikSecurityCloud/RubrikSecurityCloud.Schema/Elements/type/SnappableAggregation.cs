@@ -110,49 +110,82 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? ArchiveStorage
         // GraphQL -> archiveStorage: Long! (scalar)
         if (this.ArchiveStorage != null) {
-            s += ind + "archiveStorage\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "archiveStorage\n" ;
+            } else {
+                s += ind + "archiveStorage\n" ;
+            }
         }
         //      C# -> System.Int64? LastSnapshotLogicalBytes
         // GraphQL -> lastSnapshotLogicalBytes: Long! (scalar)
         if (this.LastSnapshotLogicalBytes != null) {
-            s += ind + "lastSnapshotLogicalBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "lastSnapshotLogicalBytes\n" ;
+            } else {
+                s += ind + "lastSnapshotLogicalBytes\n" ;
+            }
         }
         //      C# -> System.Int64? LogicalBytes
         // GraphQL -> logicalBytes: Long! (scalar)
         if (this.LogicalBytes != null) {
-            s += ind + "logicalBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "logicalBytes\n" ;
+            } else {
+                s += ind + "logicalBytes\n" ;
+            }
         }
         //      C# -> System.Int32? MissedSnapshots
         // GraphQL -> missedSnapshots: Int! (scalar)
         if (this.MissedSnapshots != null) {
-            s += ind + "missedSnapshots\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "missedSnapshots\n" ;
+            } else {
+                s += ind + "missedSnapshots\n" ;
+            }
         }
         //      C# -> System.Int64? PhysicalBytes
         // GraphQL -> physicalBytes: Long! (scalar)
         if (this.PhysicalBytes != null) {
-            s += ind + "physicalBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "physicalBytes\n" ;
+            } else {
+                s += ind + "physicalBytes\n" ;
+            }
         }
         //      C# -> System.Int64? ReplicaStorage
         // GraphQL -> replicaStorage: Long! (scalar)
         if (this.ReplicaStorage != null) {
-            s += ind + "replicaStorage\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "replicaStorage\n" ;
+            } else {
+                s += ind + "replicaStorage\n" ;
+            }
         }
         //      C# -> System.Int32? TotalSnapshots
         // GraphQL -> totalSnapshots: Int! (scalar)
         if (this.TotalSnapshots != null) {
-            s += ind + "totalSnapshots\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "totalSnapshots\n" ;
+            } else {
+                s += ind + "totalSnapshots\n" ;
+            }
         }
         //      C# -> System.Int64? TransferredBytes
         // GraphQL -> transferredBytes: Long! (scalar)
         if (this.TransferredBytes != null) {
-            s += ind + "transferredBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "transferredBytes\n" ;
+            } else {
+                s += ind + "transferredBytes\n" ;
+            }
         }
         return s;
     }
@@ -163,51 +196,139 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? ArchiveStorage
         // GraphQL -> archiveStorage: Long! (scalar)
-        if (this.ArchiveStorage == null && ec.Includes("archiveStorage",true))
+        if (ec.Includes("archiveStorage",true))
         {
-            this.ArchiveStorage = new System.Int64();
+            if(this.ArchiveStorage == null) {
+
+                this.ArchiveStorage = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ArchiveStorage != null && ec.Excludes("archiveStorage",true))
+        {
+            this.ArchiveStorage = null;
         }
         //      C# -> System.Int64? LastSnapshotLogicalBytes
         // GraphQL -> lastSnapshotLogicalBytes: Long! (scalar)
-        if (this.LastSnapshotLogicalBytes == null && ec.Includes("lastSnapshotLogicalBytes",true))
+        if (ec.Includes("lastSnapshotLogicalBytes",true))
         {
-            this.LastSnapshotLogicalBytes = new System.Int64();
+            if(this.LastSnapshotLogicalBytes == null) {
+
+                this.LastSnapshotLogicalBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastSnapshotLogicalBytes != null && ec.Excludes("lastSnapshotLogicalBytes",true))
+        {
+            this.LastSnapshotLogicalBytes = null;
         }
         //      C# -> System.Int64? LogicalBytes
         // GraphQL -> logicalBytes: Long! (scalar)
-        if (this.LogicalBytes == null && ec.Includes("logicalBytes",true))
+        if (ec.Includes("logicalBytes",true))
         {
-            this.LogicalBytes = new System.Int64();
+            if(this.LogicalBytes == null) {
+
+                this.LogicalBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LogicalBytes != null && ec.Excludes("logicalBytes",true))
+        {
+            this.LogicalBytes = null;
         }
         //      C# -> System.Int32? MissedSnapshots
         // GraphQL -> missedSnapshots: Int! (scalar)
-        if (this.MissedSnapshots == null && ec.Includes("missedSnapshots",true))
+        if (ec.Includes("missedSnapshots",true))
         {
-            this.MissedSnapshots = Int32.MinValue;
+            if(this.MissedSnapshots == null) {
+
+                this.MissedSnapshots = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.MissedSnapshots != null && ec.Excludes("missedSnapshots",true))
+        {
+            this.MissedSnapshots = null;
         }
         //      C# -> System.Int64? PhysicalBytes
         // GraphQL -> physicalBytes: Long! (scalar)
-        if (this.PhysicalBytes == null && ec.Includes("physicalBytes",true))
+        if (ec.Includes("physicalBytes",true))
         {
-            this.PhysicalBytes = new System.Int64();
+            if(this.PhysicalBytes == null) {
+
+                this.PhysicalBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.PhysicalBytes != null && ec.Excludes("physicalBytes",true))
+        {
+            this.PhysicalBytes = null;
         }
         //      C# -> System.Int64? ReplicaStorage
         // GraphQL -> replicaStorage: Long! (scalar)
-        if (this.ReplicaStorage == null && ec.Includes("replicaStorage",true))
+        if (ec.Includes("replicaStorage",true))
         {
-            this.ReplicaStorage = new System.Int64();
+            if(this.ReplicaStorage == null) {
+
+                this.ReplicaStorage = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ReplicaStorage != null && ec.Excludes("replicaStorage",true))
+        {
+            this.ReplicaStorage = null;
         }
         //      C# -> System.Int32? TotalSnapshots
         // GraphQL -> totalSnapshots: Int! (scalar)
-        if (this.TotalSnapshots == null && ec.Includes("totalSnapshots",true))
+        if (ec.Includes("totalSnapshots",true))
         {
-            this.TotalSnapshots = Int32.MinValue;
+            if(this.TotalSnapshots == null) {
+
+                this.TotalSnapshots = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalSnapshots != null && ec.Excludes("totalSnapshots",true))
+        {
+            this.TotalSnapshots = null;
         }
         //      C# -> System.Int64? TransferredBytes
         // GraphQL -> transferredBytes: Long! (scalar)
-        if (this.TransferredBytes == null && ec.Includes("transferredBytes",true))
+        if (ec.Includes("transferredBytes",true))
         {
-            this.TransferredBytes = new System.Int64();
+            if(this.TransferredBytes == null) {
+
+                this.TransferredBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TransferredBytes != null && ec.Excludes("transferredBytes",true))
+        {
+            this.TransferredBytes = null;
         }
     }
 
@@ -234,9 +355,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SnappableAggregation> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

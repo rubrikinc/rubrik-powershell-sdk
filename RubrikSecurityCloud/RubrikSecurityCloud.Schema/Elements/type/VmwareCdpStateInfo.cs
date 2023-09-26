@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> CdpLocalStatus? LocalStatus
         // GraphQL -> localStatus: CdpLocalStatus (enum)
         if (this.LocalStatus != null) {
-            s += ind + "localStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "localStatus\n" ;
+            } else {
+                s += ind + "localStatus\n" ;
+            }
         }
         //      C# -> CdpReplicationStatus? ReplicationStatus
         // GraphQL -> replicationStatus: CdpReplicationStatus (enum)
         if (this.ReplicationStatus != null) {
-            s += ind + "replicationStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "replicationStatus\n" ;
+            } else {
+                s += ind + "replicationStatus\n" ;
+            }
         }
         //      C# -> System.Single? HealthPercentage
         // GraphQL -> healthPercentage: Float (scalar)
         if (this.HealthPercentage != null) {
-            s += ind + "healthPercentage\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "healthPercentage\n" ;
+            } else {
+                s += ind + "healthPercentage\n" ;
+            }
         }
         //      C# -> System.String? VmId
         // GraphQL -> vmId: String! (scalar)
         if (this.VmId != null) {
-            s += ind + "vmId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "vmId\n" ;
+            } else {
+                s += ind + "vmId\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> CdpLocalStatus? LocalStatus
         // GraphQL -> localStatus: CdpLocalStatus (enum)
-        if (this.LocalStatus == null && ec.Includes("localStatus",true))
+        if (ec.Includes("localStatus",true))
         {
-            this.LocalStatus = new CdpLocalStatus();
+            if(this.LocalStatus == null) {
+
+                this.LocalStatus = new CdpLocalStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LocalStatus != null && ec.Excludes("localStatus",true))
+        {
+            this.LocalStatus = null;
         }
         //      C# -> CdpReplicationStatus? ReplicationStatus
         // GraphQL -> replicationStatus: CdpReplicationStatus (enum)
-        if (this.ReplicationStatus == null && ec.Includes("replicationStatus",true))
+        if (ec.Includes("replicationStatus",true))
         {
-            this.ReplicationStatus = new CdpReplicationStatus();
+            if(this.ReplicationStatus == null) {
+
+                this.ReplicationStatus = new CdpReplicationStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ReplicationStatus != null && ec.Excludes("replicationStatus",true))
+        {
+            this.ReplicationStatus = null;
         }
         //      C# -> System.Single? HealthPercentage
         // GraphQL -> healthPercentage: Float (scalar)
-        if (this.HealthPercentage == null && ec.Includes("healthPercentage",true))
+        if (ec.Includes("healthPercentage",true))
         {
-            this.HealthPercentage = new System.Single();
+            if(this.HealthPercentage == null) {
+
+                this.HealthPercentage = new System.Single();
+
+            } else {
+
+
+            }
+        }
+        else if (this.HealthPercentage != null && ec.Excludes("healthPercentage",true))
+        {
+            this.HealthPercentage = null;
         }
         //      C# -> System.String? VmId
         // GraphQL -> vmId: String! (scalar)
-        if (this.VmId == null && ec.Includes("vmId",true))
+        if (ec.Includes("vmId",true))
         {
-            this.VmId = "FETCH";
+            if(this.VmId == null) {
+
+                this.VmId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.VmId != null && ec.Excludes("vmId",true))
+        {
+            this.VmId = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<VmwareCdpStateInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

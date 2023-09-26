@@ -65,32 +65,45 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> RcvEntitlement? ArchiveEntitlement
         // GraphQL -> archiveEntitlement: RcvEntitlement (type)
         if (this.ArchiveEntitlement != null) {
-            var fspec = this.ArchiveEntitlement.AsFieldSpec(indent+1);
+            var fspec = this.ArchiveEntitlement.AsFieldSpec(conf.Child("archiveEntitlement"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "archiveEntitlement {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "archiveEntitlement {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> RcvEntitlement? BackupEntitlement
         // GraphQL -> backupEntitlement: RcvEntitlement (type)
         if (this.BackupEntitlement != null) {
-            var fspec = this.BackupEntitlement.AsFieldSpec(indent+1);
+            var fspec = this.BackupEntitlement.AsFieldSpec(conf.Child("backupEntitlement"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "backupEntitlement {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "backupEntitlement {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<RcvEntitlementsUsageDetails>? Entitlements
         // GraphQL -> entitlements: [RcvEntitlementsUsageDetails!]! (type)
         if (this.Entitlements != null) {
-            var fspec = this.Entitlements.AsFieldSpec(indent+1);
+            var fspec = this.Entitlements.AsFieldSpec(conf.Child("entitlements"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "entitlements {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "entitlements {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -102,24 +115,60 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> RcvEntitlement? ArchiveEntitlement
         // GraphQL -> archiveEntitlement: RcvEntitlement (type)
-        if (this.ArchiveEntitlement == null && ec.Includes("archiveEntitlement",false))
+        if (ec.Includes("archiveEntitlement",false))
         {
-            this.ArchiveEntitlement = new RcvEntitlement();
-            this.ArchiveEntitlement.ApplyExploratoryFieldSpec(ec.NewChild("archiveEntitlement"));
+            if(this.ArchiveEntitlement == null) {
+
+                this.ArchiveEntitlement = new RcvEntitlement();
+                this.ArchiveEntitlement.ApplyExploratoryFieldSpec(ec.NewChild("archiveEntitlement"));
+
+            } else {
+
+                this.ArchiveEntitlement.ApplyExploratoryFieldSpec(ec.NewChild("archiveEntitlement"));
+
+            }
+        }
+        else if (this.ArchiveEntitlement != null && ec.Excludes("archiveEntitlement",false))
+        {
+            this.ArchiveEntitlement = null;
         }
         //      C# -> RcvEntitlement? BackupEntitlement
         // GraphQL -> backupEntitlement: RcvEntitlement (type)
-        if (this.BackupEntitlement == null && ec.Includes("backupEntitlement",false))
+        if (ec.Includes("backupEntitlement",false))
         {
-            this.BackupEntitlement = new RcvEntitlement();
-            this.BackupEntitlement.ApplyExploratoryFieldSpec(ec.NewChild("backupEntitlement"));
+            if(this.BackupEntitlement == null) {
+
+                this.BackupEntitlement = new RcvEntitlement();
+                this.BackupEntitlement.ApplyExploratoryFieldSpec(ec.NewChild("backupEntitlement"));
+
+            } else {
+
+                this.BackupEntitlement.ApplyExploratoryFieldSpec(ec.NewChild("backupEntitlement"));
+
+            }
+        }
+        else if (this.BackupEntitlement != null && ec.Excludes("backupEntitlement",false))
+        {
+            this.BackupEntitlement = null;
         }
         //      C# -> List<RcvEntitlementsUsageDetails>? Entitlements
         // GraphQL -> entitlements: [RcvEntitlementsUsageDetails!]! (type)
-        if (this.Entitlements == null && ec.Includes("entitlements",false))
+        if (ec.Includes("entitlements",false))
         {
-            this.Entitlements = new List<RcvEntitlementsUsageDetails>();
-            this.Entitlements.ApplyExploratoryFieldSpec(ec.NewChild("entitlements"));
+            if(this.Entitlements == null) {
+
+                this.Entitlements = new List<RcvEntitlementsUsageDetails>();
+                this.Entitlements.ApplyExploratoryFieldSpec(ec.NewChild("entitlements"));
+
+            } else {
+
+                this.Entitlements.ApplyExploratoryFieldSpec(ec.NewChild("entitlements"));
+
+            }
+        }
+        else if (this.Entitlements != null && ec.Excludes("entitlements",false))
+        {
+            this.Entitlements = null;
         }
     }
 
@@ -146,9 +195,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<RcvAccountEntitlement> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

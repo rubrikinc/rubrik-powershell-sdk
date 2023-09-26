@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> CloudProvider? CloudProvider
         // GraphQL -> cloudProvider: CloudProvider! (enum)
         if (this.CloudProvider != null) {
-            s += ind + "cloudProvider\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cloudProvider\n" ;
+            } else {
+                s += ind + "cloudProvider\n" ;
+            }
         }
         //      C# -> RetentionUnit? RetentionUnit
         // GraphQL -> retentionUnit: RetentionUnit! (enum)
         if (this.RetentionUnit != null) {
-            s += ind + "retentionUnit\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "retentionUnit\n" ;
+            } else {
+                s += ind + "retentionUnit\n" ;
+            }
         }
         //      C# -> System.String? ReplicationTargetRegion
         // GraphQL -> replicationTargetRegion: String! (scalar)
         if (this.ReplicationTargetRegion != null) {
-            s += ind + "replicationTargetRegion\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "replicationTargetRegion\n" ;
+            } else {
+                s += ind + "replicationTargetRegion\n" ;
+            }
         }
         //      C# -> System.Int32? Retention
         // GraphQL -> retention: Int! (scalar)
         if (this.Retention != null) {
-            s += ind + "retention\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "retention\n" ;
+            } else {
+                s += ind + "retention\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> CloudProvider? CloudProvider
         // GraphQL -> cloudProvider: CloudProvider! (enum)
-        if (this.CloudProvider == null && ec.Includes("cloudProvider",true))
+        if (ec.Includes("cloudProvider",true))
         {
-            this.CloudProvider = new CloudProvider();
+            if(this.CloudProvider == null) {
+
+                this.CloudProvider = new CloudProvider();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CloudProvider != null && ec.Excludes("cloudProvider",true))
+        {
+            this.CloudProvider = null;
         }
         //      C# -> RetentionUnit? RetentionUnit
         // GraphQL -> retentionUnit: RetentionUnit! (enum)
-        if (this.RetentionUnit == null && ec.Includes("retentionUnit",true))
+        if (ec.Includes("retentionUnit",true))
         {
-            this.RetentionUnit = new RetentionUnit();
+            if(this.RetentionUnit == null) {
+
+                this.RetentionUnit = new RetentionUnit();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RetentionUnit != null && ec.Excludes("retentionUnit",true))
+        {
+            this.RetentionUnit = null;
         }
         //      C# -> System.String? ReplicationTargetRegion
         // GraphQL -> replicationTargetRegion: String! (scalar)
-        if (this.ReplicationTargetRegion == null && ec.Includes("replicationTargetRegion",true))
+        if (ec.Includes("replicationTargetRegion",true))
         {
-            this.ReplicationTargetRegion = "FETCH";
+            if(this.ReplicationTargetRegion == null) {
+
+                this.ReplicationTargetRegion = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ReplicationTargetRegion != null && ec.Excludes("replicationTargetRegion",true))
+        {
+            this.ReplicationTargetRegion = null;
         }
         //      C# -> System.Int32? Retention
         // GraphQL -> retention: Int! (scalar)
-        if (this.Retention == null && ec.Includes("retention",true))
+        if (ec.Includes("retention",true))
         {
-            this.Retention = Int32.MinValue;
+            if(this.Retention == null) {
+
+                this.Retention = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Retention != null && ec.Excludes("retention",true))
+        {
+            this.Retention = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ReplicationToCloudRegionSpec> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

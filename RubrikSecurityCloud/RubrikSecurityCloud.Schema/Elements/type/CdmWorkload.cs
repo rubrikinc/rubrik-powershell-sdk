@@ -119,59 +119,96 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> SnappableSlaAssignment? SlaAssignment
         // GraphQL -> slaAssignment: SnappableSlaAssignment! (enum)
         if (this.SlaAssignment != null) {
-            s += ind + "slaAssignment\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "slaAssignment\n" ;
+            } else {
+                s += ind + "slaAssignment\n" ;
+            }
         }
         //      C# -> System.String? EffectiveSlaDomainId
         // GraphQL -> effectiveSlaDomainId: String (scalar)
         if (this.EffectiveSlaDomainId != null) {
-            s += ind + "effectiveSlaDomainId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "effectiveSlaDomainId\n" ;
+            } else {
+                s += ind + "effectiveSlaDomainId\n" ;
+            }
         }
         //      C# -> System.String? EffectiveSlaDomainName
         // GraphQL -> effectiveSlaDomainName: String (scalar)
         if (this.EffectiveSlaDomainName != null) {
-            s += ind + "effectiveSlaDomainName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "effectiveSlaDomainName\n" ;
+            } else {
+                s += ind + "effectiveSlaDomainName\n" ;
+            }
         }
         //      C# -> System.String? EffectiveSlaDomainPolarisManagedId
         // GraphQL -> effectiveSlaDomainPolarisManagedId: String (scalar)
         if (this.EffectiveSlaDomainPolarisManagedId != null) {
-            s += ind + "effectiveSlaDomainPolarisManagedId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "effectiveSlaDomainPolarisManagedId\n" ;
+            } else {
+                s += ind + "effectiveSlaDomainPolarisManagedId\n" ;
+            }
         }
         //      C# -> System.String? EffectiveSlaSourceObjectId
         // GraphQL -> effectiveSlaSourceObjectId: String (scalar)
         if (this.EffectiveSlaSourceObjectId != null) {
-            s += ind + "effectiveSlaSourceObjectId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "effectiveSlaSourceObjectId\n" ;
+            } else {
+                s += ind + "effectiveSlaSourceObjectId\n" ;
+            }
         }
         //      C# -> System.String? EffectiveSlaSourceObjectName
         // GraphQL -> effectiveSlaSourceObjectName: String (scalar)
         if (this.EffectiveSlaSourceObjectName != null) {
-            s += ind + "effectiveSlaSourceObjectName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "effectiveSlaSourceObjectName\n" ;
+            } else {
+                s += ind + "effectiveSlaSourceObjectName\n" ;
+            }
         }
         //      C# -> System.String? RetentionSlaDomainId
         // GraphQL -> retentionSlaDomainId: String (scalar)
         if (this.RetentionSlaDomainId != null) {
-            s += ind + "retentionSlaDomainId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "retentionSlaDomainId\n" ;
+            } else {
+                s += ind + "retentionSlaDomainId\n" ;
+            }
         }
         //      C# -> EffectiveSlaHolder? EffectiveSlaHolder
         // GraphQL -> effectiveSlaHolder: EffectiveSlaHolder (type)
         if (this.EffectiveSlaHolder != null) {
-            var fspec = this.EffectiveSlaHolder.AsFieldSpec(indent+1);
+            var fspec = this.EffectiveSlaHolder.AsFieldSpec(conf.Child("effectiveSlaHolder"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "effectiveSlaHolder {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "effectiveSlaHolder {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> SlaAssignable? SlaAssignable
         // GraphQL -> slaAssignable: SlaAssignable (type)
         if (this.SlaAssignable != null) {
-            var fspec = this.SlaAssignable.AsFieldSpec(indent+1);
+            var fspec = this.SlaAssignable.AsFieldSpec(conf.Child("slaAssignable"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "slaAssignable {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "slaAssignable {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -183,59 +220,160 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> SnappableSlaAssignment? SlaAssignment
         // GraphQL -> slaAssignment: SnappableSlaAssignment! (enum)
-        if (this.SlaAssignment == null && ec.Includes("slaAssignment",true))
+        if (ec.Includes("slaAssignment",true))
         {
-            this.SlaAssignment = new SnappableSlaAssignment();
+            if(this.SlaAssignment == null) {
+
+                this.SlaAssignment = new SnappableSlaAssignment();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SlaAssignment != null && ec.Excludes("slaAssignment",true))
+        {
+            this.SlaAssignment = null;
         }
         //      C# -> System.String? EffectiveSlaDomainId
         // GraphQL -> effectiveSlaDomainId: String (scalar)
-        if (this.EffectiveSlaDomainId == null && ec.Includes("effectiveSlaDomainId",true))
+        if (ec.Includes("effectiveSlaDomainId",true))
         {
-            this.EffectiveSlaDomainId = "FETCH";
+            if(this.EffectiveSlaDomainId == null) {
+
+                this.EffectiveSlaDomainId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.EffectiveSlaDomainId != null && ec.Excludes("effectiveSlaDomainId",true))
+        {
+            this.EffectiveSlaDomainId = null;
         }
         //      C# -> System.String? EffectiveSlaDomainName
         // GraphQL -> effectiveSlaDomainName: String (scalar)
-        if (this.EffectiveSlaDomainName == null && ec.Includes("effectiveSlaDomainName",true))
+        if (ec.Includes("effectiveSlaDomainName",true))
         {
-            this.EffectiveSlaDomainName = "FETCH";
+            if(this.EffectiveSlaDomainName == null) {
+
+                this.EffectiveSlaDomainName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.EffectiveSlaDomainName != null && ec.Excludes("effectiveSlaDomainName",true))
+        {
+            this.EffectiveSlaDomainName = null;
         }
         //      C# -> System.String? EffectiveSlaDomainPolarisManagedId
         // GraphQL -> effectiveSlaDomainPolarisManagedId: String (scalar)
-        if (this.EffectiveSlaDomainPolarisManagedId == null && ec.Includes("effectiveSlaDomainPolarisManagedId",true))
+        if (ec.Includes("effectiveSlaDomainPolarisManagedId",true))
         {
-            this.EffectiveSlaDomainPolarisManagedId = "FETCH";
+            if(this.EffectiveSlaDomainPolarisManagedId == null) {
+
+                this.EffectiveSlaDomainPolarisManagedId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.EffectiveSlaDomainPolarisManagedId != null && ec.Excludes("effectiveSlaDomainPolarisManagedId",true))
+        {
+            this.EffectiveSlaDomainPolarisManagedId = null;
         }
         //      C# -> System.String? EffectiveSlaSourceObjectId
         // GraphQL -> effectiveSlaSourceObjectId: String (scalar)
-        if (this.EffectiveSlaSourceObjectId == null && ec.Includes("effectiveSlaSourceObjectId",true))
+        if (ec.Includes("effectiveSlaSourceObjectId",true))
         {
-            this.EffectiveSlaSourceObjectId = "FETCH";
+            if(this.EffectiveSlaSourceObjectId == null) {
+
+                this.EffectiveSlaSourceObjectId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.EffectiveSlaSourceObjectId != null && ec.Excludes("effectiveSlaSourceObjectId",true))
+        {
+            this.EffectiveSlaSourceObjectId = null;
         }
         //      C# -> System.String? EffectiveSlaSourceObjectName
         // GraphQL -> effectiveSlaSourceObjectName: String (scalar)
-        if (this.EffectiveSlaSourceObjectName == null && ec.Includes("effectiveSlaSourceObjectName",true))
+        if (ec.Includes("effectiveSlaSourceObjectName",true))
         {
-            this.EffectiveSlaSourceObjectName = "FETCH";
+            if(this.EffectiveSlaSourceObjectName == null) {
+
+                this.EffectiveSlaSourceObjectName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.EffectiveSlaSourceObjectName != null && ec.Excludes("effectiveSlaSourceObjectName",true))
+        {
+            this.EffectiveSlaSourceObjectName = null;
         }
         //      C# -> System.String? RetentionSlaDomainId
         // GraphQL -> retentionSlaDomainId: String (scalar)
-        if (this.RetentionSlaDomainId == null && ec.Includes("retentionSlaDomainId",true))
+        if (ec.Includes("retentionSlaDomainId",true))
         {
-            this.RetentionSlaDomainId = "FETCH";
+            if(this.RetentionSlaDomainId == null) {
+
+                this.RetentionSlaDomainId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RetentionSlaDomainId != null && ec.Excludes("retentionSlaDomainId",true))
+        {
+            this.RetentionSlaDomainId = null;
         }
         //      C# -> EffectiveSlaHolder? EffectiveSlaHolder
         // GraphQL -> effectiveSlaHolder: EffectiveSlaHolder (type)
-        if (this.EffectiveSlaHolder == null && ec.Includes("effectiveSlaHolder",false))
+        if (ec.Includes("effectiveSlaHolder",false))
         {
-            this.EffectiveSlaHolder = new EffectiveSlaHolder();
-            this.EffectiveSlaHolder.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaHolder"));
+            if(this.EffectiveSlaHolder == null) {
+
+                this.EffectiveSlaHolder = new EffectiveSlaHolder();
+                this.EffectiveSlaHolder.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaHolder"));
+
+            } else {
+
+                this.EffectiveSlaHolder.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaHolder"));
+
+            }
+        }
+        else if (this.EffectiveSlaHolder != null && ec.Excludes("effectiveSlaHolder",false))
+        {
+            this.EffectiveSlaHolder = null;
         }
         //      C# -> SlaAssignable? SlaAssignable
         // GraphQL -> slaAssignable: SlaAssignable (type)
-        if (this.SlaAssignable == null && ec.Includes("slaAssignable",false))
+        if (ec.Includes("slaAssignable",false))
         {
-            this.SlaAssignable = new SlaAssignable();
-            this.SlaAssignable.ApplyExploratoryFieldSpec(ec.NewChild("slaAssignable"));
+            if(this.SlaAssignable == null) {
+
+                this.SlaAssignable = new SlaAssignable();
+                this.SlaAssignable.ApplyExploratoryFieldSpec(ec.NewChild("slaAssignable"));
+
+            } else {
+
+                this.SlaAssignable.ApplyExploratoryFieldSpec(ec.NewChild("slaAssignable"));
+
+            }
+        }
+        else if (this.SlaAssignable != null && ec.Excludes("slaAssignable",false))
+        {
+            this.SlaAssignable = null;
         }
     }
 
@@ -262,9 +400,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CdmWorkload> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

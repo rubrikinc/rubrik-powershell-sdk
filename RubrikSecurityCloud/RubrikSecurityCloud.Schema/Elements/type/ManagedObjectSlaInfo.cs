@@ -128,59 +128,100 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> SlaAssignment? SlaAssignment
         // GraphQL -> slaAssignment: SlaAssignment! (enum)
         if (this.SlaAssignment != null) {
-            s += ind + "slaAssignment\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "slaAssignment\n" ;
+            } else {
+                s += ind + "slaAssignment\n" ;
+            }
         }
         //      C# -> System.String? ConfiguredSlaDomainId
         // GraphQL -> configuredSlaDomainId: String! (scalar)
         if (this.ConfiguredSlaDomainId != null) {
-            s += ind + "configuredSlaDomainId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "configuredSlaDomainId\n" ;
+            } else {
+                s += ind + "configuredSlaDomainId\n" ;
+            }
         }
         //      C# -> System.String? ConfiguredSlaDomainName
         // GraphQL -> configuredSlaDomainName: String! (scalar)
         if (this.ConfiguredSlaDomainName != null) {
-            s += ind + "configuredSlaDomainName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "configuredSlaDomainName\n" ;
+            } else {
+                s += ind + "configuredSlaDomainName\n" ;
+            }
         }
         //      C# -> System.String? EffectiveSlaDomainId
         // GraphQL -> effectiveSlaDomainId: String! (scalar)
         if (this.EffectiveSlaDomainId != null) {
-            s += ind + "effectiveSlaDomainId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "effectiveSlaDomainId\n" ;
+            } else {
+                s += ind + "effectiveSlaDomainId\n" ;
+            }
         }
         //      C# -> System.String? EffectiveSlaDomainName
         // GraphQL -> effectiveSlaDomainName: String! (scalar)
         if (this.EffectiveSlaDomainName != null) {
-            s += ind + "effectiveSlaDomainName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "effectiveSlaDomainName\n" ;
+            } else {
+                s += ind + "effectiveSlaDomainName\n" ;
+            }
         }
         //      C# -> System.String? EffectiveSlaDomainSourceId
         // GraphQL -> effectiveSlaDomainSourceId: String (scalar)
         if (this.EffectiveSlaDomainSourceId != null) {
-            s += ind + "effectiveSlaDomainSourceId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "effectiveSlaDomainSourceId\n" ;
+            } else {
+                s += ind + "effectiveSlaDomainSourceId\n" ;
+            }
         }
         //      C# -> System.String? EffectiveSlaDomainSourceName
         // GraphQL -> effectiveSlaDomainSourceName: String (scalar)
         if (this.EffectiveSlaDomainSourceName != null) {
-            s += ind + "effectiveSlaDomainSourceName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "effectiveSlaDomainSourceName\n" ;
+            } else {
+                s += ind + "effectiveSlaDomainSourceName\n" ;
+            }
         }
         //      C# -> System.String? EffectiveSlaPolarisManagedId
         // GraphQL -> effectiveSlaPolarisManagedId: String (scalar)
         if (this.EffectiveSlaPolarisManagedId != null) {
-            s += ind + "effectiveSlaPolarisManagedId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "effectiveSlaPolarisManagedId\n" ;
+            } else {
+                s += ind + "effectiveSlaPolarisManagedId\n" ;
+            }
         }
         //      C# -> System.Boolean? IsEffectiveSlaDomainRetentionLocked
         // GraphQL -> isEffectiveSlaDomainRetentionLocked: Boolean (scalar)
         if (this.IsEffectiveSlaDomainRetentionLocked != null) {
-            s += ind + "isEffectiveSlaDomainRetentionLocked\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isEffectiveSlaDomainRetentionLocked\n" ;
+            } else {
+                s += ind + "isEffectiveSlaDomainRetentionLocked\n" ;
+            }
         }
         //      C# -> System.String? ObjectId
         // GraphQL -> objectId: String! (scalar)
         if (this.ObjectId != null) {
-            s += ind + "objectId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "objectId\n" ;
+            } else {
+                s += ind + "objectId\n" ;
+            }
         }
         return s;
     }
@@ -191,63 +232,173 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> SlaAssignment? SlaAssignment
         // GraphQL -> slaAssignment: SlaAssignment! (enum)
-        if (this.SlaAssignment == null && ec.Includes("slaAssignment",true))
+        if (ec.Includes("slaAssignment",true))
         {
-            this.SlaAssignment = new SlaAssignment();
+            if(this.SlaAssignment == null) {
+
+                this.SlaAssignment = new SlaAssignment();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SlaAssignment != null && ec.Excludes("slaAssignment",true))
+        {
+            this.SlaAssignment = null;
         }
         //      C# -> System.String? ConfiguredSlaDomainId
         // GraphQL -> configuredSlaDomainId: String! (scalar)
-        if (this.ConfiguredSlaDomainId == null && ec.Includes("configuredSlaDomainId",true))
+        if (ec.Includes("configuredSlaDomainId",true))
         {
-            this.ConfiguredSlaDomainId = "FETCH";
+            if(this.ConfiguredSlaDomainId == null) {
+
+                this.ConfiguredSlaDomainId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ConfiguredSlaDomainId != null && ec.Excludes("configuredSlaDomainId",true))
+        {
+            this.ConfiguredSlaDomainId = null;
         }
         //      C# -> System.String? ConfiguredSlaDomainName
         // GraphQL -> configuredSlaDomainName: String! (scalar)
-        if (this.ConfiguredSlaDomainName == null && ec.Includes("configuredSlaDomainName",true))
+        if (ec.Includes("configuredSlaDomainName",true))
         {
-            this.ConfiguredSlaDomainName = "FETCH";
+            if(this.ConfiguredSlaDomainName == null) {
+
+                this.ConfiguredSlaDomainName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ConfiguredSlaDomainName != null && ec.Excludes("configuredSlaDomainName",true))
+        {
+            this.ConfiguredSlaDomainName = null;
         }
         //      C# -> System.String? EffectiveSlaDomainId
         // GraphQL -> effectiveSlaDomainId: String! (scalar)
-        if (this.EffectiveSlaDomainId == null && ec.Includes("effectiveSlaDomainId",true))
+        if (ec.Includes("effectiveSlaDomainId",true))
         {
-            this.EffectiveSlaDomainId = "FETCH";
+            if(this.EffectiveSlaDomainId == null) {
+
+                this.EffectiveSlaDomainId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.EffectiveSlaDomainId != null && ec.Excludes("effectiveSlaDomainId",true))
+        {
+            this.EffectiveSlaDomainId = null;
         }
         //      C# -> System.String? EffectiveSlaDomainName
         // GraphQL -> effectiveSlaDomainName: String! (scalar)
-        if (this.EffectiveSlaDomainName == null && ec.Includes("effectiveSlaDomainName",true))
+        if (ec.Includes("effectiveSlaDomainName",true))
         {
-            this.EffectiveSlaDomainName = "FETCH";
+            if(this.EffectiveSlaDomainName == null) {
+
+                this.EffectiveSlaDomainName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.EffectiveSlaDomainName != null && ec.Excludes("effectiveSlaDomainName",true))
+        {
+            this.EffectiveSlaDomainName = null;
         }
         //      C# -> System.String? EffectiveSlaDomainSourceId
         // GraphQL -> effectiveSlaDomainSourceId: String (scalar)
-        if (this.EffectiveSlaDomainSourceId == null && ec.Includes("effectiveSlaDomainSourceId",true))
+        if (ec.Includes("effectiveSlaDomainSourceId",true))
         {
-            this.EffectiveSlaDomainSourceId = "FETCH";
+            if(this.EffectiveSlaDomainSourceId == null) {
+
+                this.EffectiveSlaDomainSourceId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.EffectiveSlaDomainSourceId != null && ec.Excludes("effectiveSlaDomainSourceId",true))
+        {
+            this.EffectiveSlaDomainSourceId = null;
         }
         //      C# -> System.String? EffectiveSlaDomainSourceName
         // GraphQL -> effectiveSlaDomainSourceName: String (scalar)
-        if (this.EffectiveSlaDomainSourceName == null && ec.Includes("effectiveSlaDomainSourceName",true))
+        if (ec.Includes("effectiveSlaDomainSourceName",true))
         {
-            this.EffectiveSlaDomainSourceName = "FETCH";
+            if(this.EffectiveSlaDomainSourceName == null) {
+
+                this.EffectiveSlaDomainSourceName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.EffectiveSlaDomainSourceName != null && ec.Excludes("effectiveSlaDomainSourceName",true))
+        {
+            this.EffectiveSlaDomainSourceName = null;
         }
         //      C# -> System.String? EffectiveSlaPolarisManagedId
         // GraphQL -> effectiveSlaPolarisManagedId: String (scalar)
-        if (this.EffectiveSlaPolarisManagedId == null && ec.Includes("effectiveSlaPolarisManagedId",true))
+        if (ec.Includes("effectiveSlaPolarisManagedId",true))
         {
-            this.EffectiveSlaPolarisManagedId = "FETCH";
+            if(this.EffectiveSlaPolarisManagedId == null) {
+
+                this.EffectiveSlaPolarisManagedId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.EffectiveSlaPolarisManagedId != null && ec.Excludes("effectiveSlaPolarisManagedId",true))
+        {
+            this.EffectiveSlaPolarisManagedId = null;
         }
         //      C# -> System.Boolean? IsEffectiveSlaDomainRetentionLocked
         // GraphQL -> isEffectiveSlaDomainRetentionLocked: Boolean (scalar)
-        if (this.IsEffectiveSlaDomainRetentionLocked == null && ec.Includes("isEffectiveSlaDomainRetentionLocked",true))
+        if (ec.Includes("isEffectiveSlaDomainRetentionLocked",true))
         {
-            this.IsEffectiveSlaDomainRetentionLocked = true;
+            if(this.IsEffectiveSlaDomainRetentionLocked == null) {
+
+                this.IsEffectiveSlaDomainRetentionLocked = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsEffectiveSlaDomainRetentionLocked != null && ec.Excludes("isEffectiveSlaDomainRetentionLocked",true))
+        {
+            this.IsEffectiveSlaDomainRetentionLocked = null;
         }
         //      C# -> System.String? ObjectId
         // GraphQL -> objectId: String! (scalar)
-        if (this.ObjectId == null && ec.Includes("objectId",true))
+        if (ec.Includes("objectId",true))
         {
-            this.ObjectId = "FETCH";
+            if(this.ObjectId == null) {
+
+                this.ObjectId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ObjectId != null && ec.Excludes("objectId",true))
+        {
+            this.ObjectId = null;
         }
     }
 
@@ -274,9 +425,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ManagedObjectSlaInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

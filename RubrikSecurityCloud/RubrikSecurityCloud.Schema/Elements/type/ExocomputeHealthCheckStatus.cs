@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> ExocomputeHealthCheckStatusValue? Status
         // GraphQL -> status: ExocomputeHealthCheckStatusValue! (enum)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         //      C# -> System.String? FailureReason
         // GraphQL -> failureReason: String! (scalar)
         if (this.FailureReason != null) {
-            s += ind + "failureReason\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "failureReason\n" ;
+            } else {
+                s += ind + "failureReason\n" ;
+            }
         }
         //      C# -> DateTime? LastUpdatedAt
         // GraphQL -> lastUpdatedAt: DateTime (scalar)
         if (this.LastUpdatedAt != null) {
-            s += ind + "lastUpdatedAt\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "lastUpdatedAt\n" ;
+            } else {
+                s += ind + "lastUpdatedAt\n" ;
+            }
         }
         //      C# -> System.String? TaskchainId
         // GraphQL -> taskchainId: String! (scalar)
         if (this.TaskchainId != null) {
-            s += ind + "taskchainId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "taskchainId\n" ;
+            } else {
+                s += ind + "taskchainId\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> ExocomputeHealthCheckStatusValue? Status
         // GraphQL -> status: ExocomputeHealthCheckStatusValue! (enum)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = new ExocomputeHealthCheckStatusValue();
+            if(this.Status == null) {
+
+                this.Status = new ExocomputeHealthCheckStatusValue();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
         //      C# -> System.String? FailureReason
         // GraphQL -> failureReason: String! (scalar)
-        if (this.FailureReason == null && ec.Includes("failureReason",true))
+        if (ec.Includes("failureReason",true))
         {
-            this.FailureReason = "FETCH";
+            if(this.FailureReason == null) {
+
+                this.FailureReason = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.FailureReason != null && ec.Excludes("failureReason",true))
+        {
+            this.FailureReason = null;
         }
         //      C# -> DateTime? LastUpdatedAt
         // GraphQL -> lastUpdatedAt: DateTime (scalar)
-        if (this.LastUpdatedAt == null && ec.Includes("lastUpdatedAt",true))
+        if (ec.Includes("lastUpdatedAt",true))
         {
-            this.LastUpdatedAt = new DateTime();
+            if(this.LastUpdatedAt == null) {
+
+                this.LastUpdatedAt = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastUpdatedAt != null && ec.Excludes("lastUpdatedAt",true))
+        {
+            this.LastUpdatedAt = null;
         }
         //      C# -> System.String? TaskchainId
         // GraphQL -> taskchainId: String! (scalar)
-        if (this.TaskchainId == null && ec.Includes("taskchainId",true))
+        if (ec.Includes("taskchainId",true))
         {
-            this.TaskchainId = "FETCH";
+            if(this.TaskchainId == null) {
+
+                this.TaskchainId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TaskchainId != null && ec.Excludes("taskchainId",true))
+        {
+            this.TaskchainId = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ExocomputeHealthCheckStatus> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

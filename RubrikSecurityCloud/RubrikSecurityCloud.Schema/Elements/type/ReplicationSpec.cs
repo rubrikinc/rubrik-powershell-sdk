@@ -56,21 +56,30 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> ReplicationType? ReplicationType
         // GraphQL -> replicationType: ReplicationType! (enum)
         if (this.ReplicationType != null) {
-            s += ind + "replicationType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "replicationType\n" ;
+            } else {
+                s += ind + "replicationType\n" ;
+            }
         }
         //      C# -> SpecificReplicationSpec? SpecificReplicationSpec
         // GraphQL -> specificReplicationSpec: SpecificReplicationSpec (type)
         if (this.SpecificReplicationSpec != null) {
-            var fspec = this.SpecificReplicationSpec.AsFieldSpec(indent+1);
+            var fspec = this.SpecificReplicationSpec.AsFieldSpec(conf.Child("specificReplicationSpec"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "specificReplicationSpec {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "specificReplicationSpec {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -82,16 +91,39 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> ReplicationType? ReplicationType
         // GraphQL -> replicationType: ReplicationType! (enum)
-        if (this.ReplicationType == null && ec.Includes("replicationType",true))
+        if (ec.Includes("replicationType",true))
         {
-            this.ReplicationType = new ReplicationType();
+            if(this.ReplicationType == null) {
+
+                this.ReplicationType = new ReplicationType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ReplicationType != null && ec.Excludes("replicationType",true))
+        {
+            this.ReplicationType = null;
         }
         //      C# -> SpecificReplicationSpec? SpecificReplicationSpec
         // GraphQL -> specificReplicationSpec: SpecificReplicationSpec (type)
-        if (this.SpecificReplicationSpec == null && ec.Includes("specificReplicationSpec",false))
+        if (ec.Includes("specificReplicationSpec",false))
         {
-            this.SpecificReplicationSpec = new SpecificReplicationSpec();
-            this.SpecificReplicationSpec.ApplyExploratoryFieldSpec(ec.NewChild("specificReplicationSpec"));
+            if(this.SpecificReplicationSpec == null) {
+
+                this.SpecificReplicationSpec = new SpecificReplicationSpec();
+                this.SpecificReplicationSpec.ApplyExploratoryFieldSpec(ec.NewChild("specificReplicationSpec"));
+
+            } else {
+
+                this.SpecificReplicationSpec.ApplyExploratoryFieldSpec(ec.NewChild("specificReplicationSpec"));
+
+            }
+        }
+        else if (this.SpecificReplicationSpec != null && ec.Excludes("specificReplicationSpec",false))
+        {
+            this.SpecificReplicationSpec = null;
         }
     }
 
@@ -118,9 +150,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ReplicationSpec> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

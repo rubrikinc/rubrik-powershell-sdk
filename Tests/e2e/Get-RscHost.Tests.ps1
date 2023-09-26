@@ -2,12 +2,11 @@
 .SYNOPSIS
 Run tests around hosts
 #>
-# TODO: SPARK-225907 fix this
-return
+
 
 Describe -Name 'Get-RscHost' -Tag 'Public' -Fixture{
     BeforeAll {
-        . "$PSScriptRoot\e2eInit.ps1"
+        . "$PSScriptRoot\..\..\Toolkit\Utils\E2eTestInit.ps1"
     }
 
     Context -Name 'Parameter Validation' {
@@ -44,6 +43,10 @@ Describe -Name 'Get-RscHost' -Tag 'Public' -Fixture{
         It -Name 'Fields work as expected' -Test {
             $fields = Get-RscType -Name PhysicalHost -InitialProperties @("Name","OsType")
             $results = Get-RscHost -OsType Windows -Field $fields -First 1
+            if ($results.Count -eq 0) {
+                Set-ItResult -Skipped -Because "No hosts found"
+                return
+            }
             $results[0].Id | Should -BeNullOrEmpty
             $results[0].Name | Should -Not -BeNullOrEmpty
             $results[0].OsType | Should -Not -BeNullOrEmpty

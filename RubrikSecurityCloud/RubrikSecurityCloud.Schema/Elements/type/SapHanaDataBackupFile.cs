@@ -101,44 +101,73 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? BackupFileSizeInBytes
         // GraphQL -> backupFileSizeInBytes: Long! (scalar)
         if (this.BackupFileSizeInBytes != null) {
-            s += ind + "backupFileSizeInBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "backupFileSizeInBytes\n" ;
+            } else {
+                s += ind + "backupFileSizeInBytes\n" ;
+            }
         }
         //      C# -> System.String? DestinationPath
         // GraphQL -> destinationPath: String! (scalar)
         if (this.DestinationPath != null) {
-            s += ind + "destinationPath\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "destinationPath\n" ;
+            } else {
+                s += ind + "destinationPath\n" ;
+            }
         }
         //      C# -> System.String? ExternalBackupId
         // GraphQL -> externalBackupId: String! (scalar)
         if (this.ExternalBackupId != null) {
-            s += ind + "externalBackupId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "externalBackupId\n" ;
+            } else {
+                s += ind + "externalBackupId\n" ;
+            }
         }
         //      C# -> System.Int64? RedoLogPositionOpt
         // GraphQL -> redoLogPositionOpt: Long (scalar)
         if (this.RedoLogPositionOpt != null) {
-            s += ind + "redoLogPositionOpt\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "redoLogPositionOpt\n" ;
+            } else {
+                s += ind + "redoLogPositionOpt\n" ;
+            }
         }
         //      C# -> System.String? ServiceType
         // GraphQL -> serviceType: String! (scalar)
         if (this.ServiceType != null) {
-            s += ind + "serviceType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "serviceType\n" ;
+            } else {
+                s += ind + "serviceType\n" ;
+            }
         }
         //      C# -> System.Int64? SourceId
         // GraphQL -> sourceId: Long! (scalar)
         if (this.SourceId != null) {
-            s += ind + "sourceId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sourceId\n" ;
+            } else {
+                s += ind + "sourceId\n" ;
+            }
         }
         //      C# -> System.String? SourceType
         // GraphQL -> sourceType: String! (scalar)
         if (this.SourceType != null) {
-            s += ind + "sourceType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sourceType\n" ;
+            } else {
+                s += ind + "sourceType\n" ;
+            }
         }
         return s;
     }
@@ -149,45 +178,122 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? BackupFileSizeInBytes
         // GraphQL -> backupFileSizeInBytes: Long! (scalar)
-        if (this.BackupFileSizeInBytes == null && ec.Includes("backupFileSizeInBytes",true))
+        if (ec.Includes("backupFileSizeInBytes",true))
         {
-            this.BackupFileSizeInBytes = new System.Int64();
+            if(this.BackupFileSizeInBytes == null) {
+
+                this.BackupFileSizeInBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.BackupFileSizeInBytes != null && ec.Excludes("backupFileSizeInBytes",true))
+        {
+            this.BackupFileSizeInBytes = null;
         }
         //      C# -> System.String? DestinationPath
         // GraphQL -> destinationPath: String! (scalar)
-        if (this.DestinationPath == null && ec.Includes("destinationPath",true))
+        if (ec.Includes("destinationPath",true))
         {
-            this.DestinationPath = "FETCH";
+            if(this.DestinationPath == null) {
+
+                this.DestinationPath = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DestinationPath != null && ec.Excludes("destinationPath",true))
+        {
+            this.DestinationPath = null;
         }
         //      C# -> System.String? ExternalBackupId
         // GraphQL -> externalBackupId: String! (scalar)
-        if (this.ExternalBackupId == null && ec.Includes("externalBackupId",true))
+        if (ec.Includes("externalBackupId",true))
         {
-            this.ExternalBackupId = "FETCH";
+            if(this.ExternalBackupId == null) {
+
+                this.ExternalBackupId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExternalBackupId != null && ec.Excludes("externalBackupId",true))
+        {
+            this.ExternalBackupId = null;
         }
         //      C# -> System.Int64? RedoLogPositionOpt
         // GraphQL -> redoLogPositionOpt: Long (scalar)
-        if (this.RedoLogPositionOpt == null && ec.Includes("redoLogPositionOpt",true))
+        if (ec.Includes("redoLogPositionOpt",true))
         {
-            this.RedoLogPositionOpt = new System.Int64();
+            if(this.RedoLogPositionOpt == null) {
+
+                this.RedoLogPositionOpt = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RedoLogPositionOpt != null && ec.Excludes("redoLogPositionOpt",true))
+        {
+            this.RedoLogPositionOpt = null;
         }
         //      C# -> System.String? ServiceType
         // GraphQL -> serviceType: String! (scalar)
-        if (this.ServiceType == null && ec.Includes("serviceType",true))
+        if (ec.Includes("serviceType",true))
         {
-            this.ServiceType = "FETCH";
+            if(this.ServiceType == null) {
+
+                this.ServiceType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ServiceType != null && ec.Excludes("serviceType",true))
+        {
+            this.ServiceType = null;
         }
         //      C# -> System.Int64? SourceId
         // GraphQL -> sourceId: Long! (scalar)
-        if (this.SourceId == null && ec.Includes("sourceId",true))
+        if (ec.Includes("sourceId",true))
         {
-            this.SourceId = new System.Int64();
+            if(this.SourceId == null) {
+
+                this.SourceId = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SourceId != null && ec.Excludes("sourceId",true))
+        {
+            this.SourceId = null;
         }
         //      C# -> System.String? SourceType
         // GraphQL -> sourceType: String! (scalar)
-        if (this.SourceType == null && ec.Includes("sourceType",true))
+        if (ec.Includes("sourceType",true))
         {
-            this.SourceType = "FETCH";
+            if(this.SourceType == null) {
+
+                this.SourceType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SourceType != null && ec.Excludes("sourceType",true))
+        {
+            this.SourceType = null;
         }
     }
 
@@ -214,9 +320,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SapHanaDataBackupFile> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

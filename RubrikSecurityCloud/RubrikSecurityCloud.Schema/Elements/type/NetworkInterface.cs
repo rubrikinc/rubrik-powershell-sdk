@@ -101,44 +101,73 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> NetworkInterfaceType? InterfaceType
         // GraphQL -> interfaceType: NetworkInterfaceType! (enum)
         if (this.InterfaceType != null) {
-            s += ind + "interfaceType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "interfaceType\n" ;
+            } else {
+                s += ind + "interfaceType\n" ;
+            }
         }
         //      C# -> System.String? InterfaceName
         // GraphQL -> interfaceName: String! (scalar)
         if (this.InterfaceName != null) {
-            s += ind + "interfaceName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "interfaceName\n" ;
+            } else {
+                s += ind + "interfaceName\n" ;
+            }
         }
         //      C# -> List<System.String>? IpAddresses
         // GraphQL -> ipAddresses: [String!]! (scalar)
         if (this.IpAddresses != null) {
-            s += ind + "ipAddresses\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "ipAddresses\n" ;
+            } else {
+                s += ind + "ipAddresses\n" ;
+            }
         }
         //      C# -> System.String? Netmask
         // GraphQL -> netmask: String! (scalar)
         if (this.Netmask != null) {
-            s += ind + "netmask\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "netmask\n" ;
+            } else {
+                s += ind + "netmask\n" ;
+            }
         }
         //      C# -> System.String? Node
         // GraphQL -> node: String (scalar)
         if (this.Node != null) {
-            s += ind + "node\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "node\n" ;
+            } else {
+                s += ind + "node\n" ;
+            }
         }
         //      C# -> System.String? NodeId
         // GraphQL -> nodeId: String (scalar)
         if (this.NodeId != null) {
-            s += ind + "nodeId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "nodeId\n" ;
+            } else {
+                s += ind + "nodeId\n" ;
+            }
         }
         //      C# -> System.String? NodeName
         // GraphQL -> nodeName: String (scalar)
         if (this.NodeName != null) {
-            s += ind + "nodeName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "nodeName\n" ;
+            } else {
+                s += ind + "nodeName\n" ;
+            }
         }
         return s;
     }
@@ -149,45 +178,122 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> NetworkInterfaceType? InterfaceType
         // GraphQL -> interfaceType: NetworkInterfaceType! (enum)
-        if (this.InterfaceType == null && ec.Includes("interfaceType",true))
+        if (ec.Includes("interfaceType",true))
         {
-            this.InterfaceType = new NetworkInterfaceType();
+            if(this.InterfaceType == null) {
+
+                this.InterfaceType = new NetworkInterfaceType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.InterfaceType != null && ec.Excludes("interfaceType",true))
+        {
+            this.InterfaceType = null;
         }
         //      C# -> System.String? InterfaceName
         // GraphQL -> interfaceName: String! (scalar)
-        if (this.InterfaceName == null && ec.Includes("interfaceName",true))
+        if (ec.Includes("interfaceName",true))
         {
-            this.InterfaceName = "FETCH";
+            if(this.InterfaceName == null) {
+
+                this.InterfaceName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.InterfaceName != null && ec.Excludes("interfaceName",true))
+        {
+            this.InterfaceName = null;
         }
         //      C# -> List<System.String>? IpAddresses
         // GraphQL -> ipAddresses: [String!]! (scalar)
-        if (this.IpAddresses == null && ec.Includes("ipAddresses",true))
+        if (ec.Includes("ipAddresses",true))
         {
-            this.IpAddresses = new List<System.String>();
+            if(this.IpAddresses == null) {
+
+                this.IpAddresses = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.IpAddresses != null && ec.Excludes("ipAddresses",true))
+        {
+            this.IpAddresses = null;
         }
         //      C# -> System.String? Netmask
         // GraphQL -> netmask: String! (scalar)
-        if (this.Netmask == null && ec.Includes("netmask",true))
+        if (ec.Includes("netmask",true))
         {
-            this.Netmask = "FETCH";
+            if(this.Netmask == null) {
+
+                this.Netmask = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Netmask != null && ec.Excludes("netmask",true))
+        {
+            this.Netmask = null;
         }
         //      C# -> System.String? Node
         // GraphQL -> node: String (scalar)
-        if (this.Node == null && ec.Includes("node",true))
+        if (ec.Includes("node",true))
         {
-            this.Node = "FETCH";
+            if(this.Node == null) {
+
+                this.Node = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Node != null && ec.Excludes("node",true))
+        {
+            this.Node = null;
         }
         //      C# -> System.String? NodeId
         // GraphQL -> nodeId: String (scalar)
-        if (this.NodeId == null && ec.Includes("nodeId",true))
+        if (ec.Includes("nodeId",true))
         {
-            this.NodeId = "FETCH";
+            if(this.NodeId == null) {
+
+                this.NodeId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NodeId != null && ec.Excludes("nodeId",true))
+        {
+            this.NodeId = null;
         }
         //      C# -> System.String? NodeName
         // GraphQL -> nodeName: String (scalar)
-        if (this.NodeName == null && ec.Includes("nodeName",true))
+        if (ec.Includes("nodeName",true))
         {
-            this.NodeName = "FETCH";
+            if(this.NodeName == null) {
+
+                this.NodeName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NodeName != null && ec.Excludes("nodeName",true))
+        {
+            this.NodeName = null;
         }
     }
 
@@ -214,9 +320,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<NetworkInterface> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

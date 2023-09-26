@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? EventId
         // GraphQL -> eventId: String! (scalar)
         if (this.EventId != null) {
-            s += ind + "eventId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "eventId\n" ;
+            } else {
+                s += ind + "eventId\n" ;
+            }
         }
         //      C# -> System.Boolean? IsSuccess
         // GraphQL -> isSuccess: Boolean! (scalar)
         if (this.IsSuccess != null) {
-            s += ind + "isSuccess\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isSuccess\n" ;
+            } else {
+                s += ind + "isSuccess\n" ;
+            }
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String (scalar)
         if (this.SnapshotId != null) {
-            s += ind + "snapshotId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotId\n" ;
+            } else {
+                s += ind + "snapshotId\n" ;
+            }
         }
         //      C# -> DateTime? TimestampMs
         // GraphQL -> timestampMs: DateTime (scalar)
         if (this.TimestampMs != null) {
-            s += ind + "timestampMs\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "timestampMs\n" ;
+            } else {
+                s += ind + "timestampMs\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? EventId
         // GraphQL -> eventId: String! (scalar)
-        if (this.EventId == null && ec.Includes("eventId",true))
+        if (ec.Includes("eventId",true))
         {
-            this.EventId = "FETCH";
+            if(this.EventId == null) {
+
+                this.EventId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.EventId != null && ec.Excludes("eventId",true))
+        {
+            this.EventId = null;
         }
         //      C# -> System.Boolean? IsSuccess
         // GraphQL -> isSuccess: Boolean! (scalar)
-        if (this.IsSuccess == null && ec.Includes("isSuccess",true))
+        if (ec.Includes("isSuccess",true))
         {
-            this.IsSuccess = true;
+            if(this.IsSuccess == null) {
+
+                this.IsSuccess = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsSuccess != null && ec.Excludes("isSuccess",true))
+        {
+            this.IsSuccess = null;
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String (scalar)
-        if (this.SnapshotId == null && ec.Includes("snapshotId",true))
+        if (ec.Includes("snapshotId",true))
         {
-            this.SnapshotId = "FETCH";
+            if(this.SnapshotId == null) {
+
+                this.SnapshotId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotId != null && ec.Excludes("snapshotId",true))
+        {
+            this.SnapshotId = null;
         }
         //      C# -> DateTime? TimestampMs
         // GraphQL -> timestampMs: DateTime (scalar)
-        if (this.TimestampMs == null && ec.Includes("timestampMs",true))
+        if (ec.Includes("timestampMs",true))
         {
-            this.TimestampMs = new DateTime();
+            if(this.TimestampMs == null) {
+
+                this.TimestampMs = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TimestampMs != null && ec.Excludes("timestampMs",true))
+        {
+            this.TimestampMs = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<OracleDatabaseLastValidationStatus> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

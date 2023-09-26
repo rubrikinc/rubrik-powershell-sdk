@@ -83,34 +83,55 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> PrecheckIdentifier? PrecheckIdentifier
         // GraphQL -> precheckIdentifier: PrecheckIdentifier! (enum)
         if (this.PrecheckIdentifier != null) {
-            s += ind + "precheckIdentifier\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "precheckIdentifier\n" ;
+            } else {
+                s += ind + "precheckIdentifier\n" ;
+            }
         }
         //      C# -> System.String? Cause
         // GraphQL -> cause: String! (scalar)
         if (this.Cause != null) {
-            s += ind + "cause\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cause\n" ;
+            } else {
+                s += ind + "cause\n" ;
+            }
         }
         //      C# -> System.String? PrecheckName
         // GraphQL -> precheckName: String! (scalar)
         if (this.PrecheckName != null) {
-            s += ind + "precheckName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "precheckName\n" ;
+            } else {
+                s += ind + "precheckName\n" ;
+            }
         }
         //      C# -> System.String? Remedy
         // GraphQL -> remedy: String! (scalar)
         if (this.Remedy != null) {
-            s += ind + "remedy\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "remedy\n" ;
+            } else {
+                s += ind + "remedy\n" ;
+            }
         }
         //      C# -> System.Boolean? UpgradeBlocker
         // GraphQL -> upgradeBlocker: Boolean! (scalar)
         if (this.UpgradeBlocker != null) {
-            s += ind + "upgradeBlocker\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "upgradeBlocker\n" ;
+            } else {
+                s += ind + "upgradeBlocker\n" ;
+            }
         }
         return s;
     }
@@ -121,33 +142,88 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> PrecheckIdentifier? PrecheckIdentifier
         // GraphQL -> precheckIdentifier: PrecheckIdentifier! (enum)
-        if (this.PrecheckIdentifier == null && ec.Includes("precheckIdentifier",true))
+        if (ec.Includes("precheckIdentifier",true))
         {
-            this.PrecheckIdentifier = new PrecheckIdentifier();
+            if(this.PrecheckIdentifier == null) {
+
+                this.PrecheckIdentifier = new PrecheckIdentifier();
+
+            } else {
+
+
+            }
+        }
+        else if (this.PrecheckIdentifier != null && ec.Excludes("precheckIdentifier",true))
+        {
+            this.PrecheckIdentifier = null;
         }
         //      C# -> System.String? Cause
         // GraphQL -> cause: String! (scalar)
-        if (this.Cause == null && ec.Includes("cause",true))
+        if (ec.Includes("cause",true))
         {
-            this.Cause = "FETCH";
+            if(this.Cause == null) {
+
+                this.Cause = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Cause != null && ec.Excludes("cause",true))
+        {
+            this.Cause = null;
         }
         //      C# -> System.String? PrecheckName
         // GraphQL -> precheckName: String! (scalar)
-        if (this.PrecheckName == null && ec.Includes("precheckName",true))
+        if (ec.Includes("precheckName",true))
         {
-            this.PrecheckName = "FETCH";
+            if(this.PrecheckName == null) {
+
+                this.PrecheckName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PrecheckName != null && ec.Excludes("precheckName",true))
+        {
+            this.PrecheckName = null;
         }
         //      C# -> System.String? Remedy
         // GraphQL -> remedy: String! (scalar)
-        if (this.Remedy == null && ec.Includes("remedy",true))
+        if (ec.Includes("remedy",true))
         {
-            this.Remedy = "FETCH";
+            if(this.Remedy == null) {
+
+                this.Remedy = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Remedy != null && ec.Excludes("remedy",true))
+        {
+            this.Remedy = null;
         }
         //      C# -> System.Boolean? UpgradeBlocker
         // GraphQL -> upgradeBlocker: Boolean! (scalar)
-        if (this.UpgradeBlocker == null && ec.Includes("upgradeBlocker",true))
+        if (ec.Includes("upgradeBlocker",true))
         {
-            this.UpgradeBlocker = true;
+            if(this.UpgradeBlocker == null) {
+
+                this.UpgradeBlocker = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.UpgradeBlocker != null && ec.Excludes("upgradeBlocker",true))
+        {
+            this.UpgradeBlocker = null;
         }
     }
 
@@ -174,9 +250,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<PrecheckFailure> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

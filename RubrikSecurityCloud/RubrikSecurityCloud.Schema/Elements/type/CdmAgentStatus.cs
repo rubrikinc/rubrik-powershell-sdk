@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? AgentStatus
         // GraphQL -> agentStatus: String! (scalar)
         if (this.AgentStatus != null) {
-            s += ind + "agentStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "agentStatus\n" ;
+            } else {
+                s += ind + "agentStatus\n" ;
+            }
         }
         //      C# -> System.String? DisconnectReason
         // GraphQL -> disconnectReason: String (scalar)
         if (this.DisconnectReason != null) {
-            s += ind + "disconnectReason\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "disconnectReason\n" ;
+            } else {
+                s += ind + "disconnectReason\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? AgentStatus
         // GraphQL -> agentStatus: String! (scalar)
-        if (this.AgentStatus == null && ec.Includes("agentStatus",true))
+        if (ec.Includes("agentStatus",true))
         {
-            this.AgentStatus = "FETCH";
+            if(this.AgentStatus == null) {
+
+                this.AgentStatus = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AgentStatus != null && ec.Excludes("agentStatus",true))
+        {
+            this.AgentStatus = null;
         }
         //      C# -> System.String? DisconnectReason
         // GraphQL -> disconnectReason: String (scalar)
-        if (this.DisconnectReason == null && ec.Includes("disconnectReason",true))
+        if (ec.Includes("disconnectReason",true))
         {
-            this.DisconnectReason = "FETCH";
+            if(this.DisconnectReason == null) {
+
+                this.DisconnectReason = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DisconnectReason != null && ec.Excludes("disconnectReason",true))
+        {
+            this.DisconnectReason = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CdmAgentStatus> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

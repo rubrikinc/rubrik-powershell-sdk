@@ -3,10 +3,9 @@
 Run tests around mssql databases
 #>
 BeforeAll {
-    . "$PSScriptRoot\e2eInit.ps1"
+    . "$PSScriptRoot\..\..\Toolkit\Utils\E2eTestInit.ps1"
 }
-# TODO: SPARK-225907 fix this
-return
+
 
 Describe -Name 'Get-RscMssqlDatabase' -Tag 'Public' -Fixture{
 

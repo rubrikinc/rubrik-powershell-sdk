@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime! (scalar)
         if (this.Date != null) {
-            s += ind + "date\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "date\n" ;
+            } else {
+                s += ind + "date\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.Boolean? IsAnomaly
         // GraphQL -> isAnomaly: Boolean! (scalar)
         if (this.IsAnomaly != null) {
-            s += ind + "isAnomaly\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isAnomaly\n" ;
+            } else {
+                s += ind + "isAnomaly\n" ;
+            }
         }
         //      C# -> System.Boolean? IsQuarantined
         // GraphQL -> isQuarantined: Boolean! (scalar)
         if (this.IsQuarantined != null) {
-            s += ind + "isQuarantined\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isQuarantined\n" ;
+            } else {
+                s += ind + "isQuarantined\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime! (scalar)
-        if (this.Date == null && ec.Includes("date",true))
+        if (ec.Includes("date",true))
         {
-            this.Date = new DateTime();
+            if(this.Date == null) {
+
+                this.Date = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Date != null && ec.Excludes("date",true))
+        {
+            this.Date = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.Boolean? IsAnomaly
         // GraphQL -> isAnomaly: Boolean! (scalar)
-        if (this.IsAnomaly == null && ec.Includes("isAnomaly",true))
+        if (ec.Includes("isAnomaly",true))
         {
-            this.IsAnomaly = true;
+            if(this.IsAnomaly == null) {
+
+                this.IsAnomaly = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAnomaly != null && ec.Excludes("isAnomaly",true))
+        {
+            this.IsAnomaly = null;
         }
         //      C# -> System.Boolean? IsQuarantined
         // GraphQL -> isQuarantined: Boolean! (scalar)
-        if (this.IsQuarantined == null && ec.Includes("isQuarantined",true))
+        if (ec.Includes("isQuarantined",true))
         {
-            this.IsQuarantined = true;
+            if(this.IsQuarantined == null) {
+
+                this.IsQuarantined = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsQuarantined != null && ec.Excludes("isQuarantined",true))
+        {
+            this.IsQuarantined = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ClosestSnapshotDetail> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

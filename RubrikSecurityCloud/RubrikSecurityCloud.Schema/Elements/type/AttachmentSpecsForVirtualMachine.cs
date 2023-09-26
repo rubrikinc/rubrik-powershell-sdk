@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Boolean? IsExcludedFromSnapshot
         // GraphQL -> isExcludedFromSnapshot: Boolean! (scalar)
         if (this.IsExcludedFromSnapshot != null) {
-            s += ind + "isExcludedFromSnapshot\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isExcludedFromSnapshot\n" ;
+            } else {
+                s += ind + "isExcludedFromSnapshot\n" ;
+            }
         }
         //      C# -> System.Boolean? IsOsDisk
         // GraphQL -> isOsDisk: Boolean! (scalar)
         if (this.IsOsDisk != null) {
-            s += ind + "isOsDisk\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isOsDisk\n" ;
+            } else {
+                s += ind + "isOsDisk\n" ;
+            }
         }
         //      C# -> System.Int32? Lun
         // GraphQL -> lun: Int! (scalar)
         if (this.Lun != null) {
-            s += ind + "lun\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "lun\n" ;
+            } else {
+                s += ind + "lun\n" ;
+            }
         }
         //      C# -> System.String? ManagedDiskId
         // GraphQL -> managedDiskId: String! (scalar)
         if (this.ManagedDiskId != null) {
-            s += ind + "managedDiskId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "managedDiskId\n" ;
+            } else {
+                s += ind + "managedDiskId\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Boolean? IsExcludedFromSnapshot
         // GraphQL -> isExcludedFromSnapshot: Boolean! (scalar)
-        if (this.IsExcludedFromSnapshot == null && ec.Includes("isExcludedFromSnapshot",true))
+        if (ec.Includes("isExcludedFromSnapshot",true))
         {
-            this.IsExcludedFromSnapshot = true;
+            if(this.IsExcludedFromSnapshot == null) {
+
+                this.IsExcludedFromSnapshot = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsExcludedFromSnapshot != null && ec.Excludes("isExcludedFromSnapshot",true))
+        {
+            this.IsExcludedFromSnapshot = null;
         }
         //      C# -> System.Boolean? IsOsDisk
         // GraphQL -> isOsDisk: Boolean! (scalar)
-        if (this.IsOsDisk == null && ec.Includes("isOsDisk",true))
+        if (ec.Includes("isOsDisk",true))
         {
-            this.IsOsDisk = true;
+            if(this.IsOsDisk == null) {
+
+                this.IsOsDisk = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsOsDisk != null && ec.Excludes("isOsDisk",true))
+        {
+            this.IsOsDisk = null;
         }
         //      C# -> System.Int32? Lun
         // GraphQL -> lun: Int! (scalar)
-        if (this.Lun == null && ec.Includes("lun",true))
+        if (ec.Includes("lun",true))
         {
-            this.Lun = Int32.MinValue;
+            if(this.Lun == null) {
+
+                this.Lun = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Lun != null && ec.Excludes("lun",true))
+        {
+            this.Lun = null;
         }
         //      C# -> System.String? ManagedDiskId
         // GraphQL -> managedDiskId: String! (scalar)
-        if (this.ManagedDiskId == null && ec.Includes("managedDiskId",true))
+        if (ec.Includes("managedDiskId",true))
         {
-            this.ManagedDiskId = "FETCH";
+            if(this.ManagedDiskId == null) {
+
+                this.ManagedDiskId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ManagedDiskId != null && ec.Excludes("managedDiskId",true))
+        {
+            this.ManagedDiskId = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AttachmentSpecsForVirtualMachine> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

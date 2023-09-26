@@ -101,46 +101,75 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? BrikId
         // GraphQL -> brikId: String! (scalar)
         if (this.BrikId != null) {
-            s += ind + "brikId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "brikId\n" ;
+            } else {
+                s += ind + "brikId\n" ;
+            }
         }
         //      C# -> System.Boolean? HasUnavailableDisks
         // GraphQL -> hasUnavailableDisks: Boolean (scalar)
         if (this.HasUnavailableDisks != null) {
-            s += ind + "hasUnavailableDisks\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hasUnavailableDisks\n" ;
+            } else {
+                s += ind + "hasUnavailableDisks\n" ;
+            }
         }
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String (scalar)
         if (this.Hostname != null) {
-            s += ind + "hostname\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostname\n" ;
+            } else {
+                s += ind + "hostname\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.String? IpAddress
         // GraphQL -> ipAddress: String (scalar)
         if (this.IpAddress != null) {
-            s += ind + "ipAddress\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "ipAddress\n" ;
+            } else {
+                s += ind + "ipAddress\n" ;
+            }
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         //      C# -> SupportTunnelInfo? SupportTunnel
         // GraphQL -> supportTunnel: SupportTunnelInfo (type)
         if (this.SupportTunnel != null) {
-            var fspec = this.SupportTunnel.AsFieldSpec(indent+1);
+            var fspec = this.SupportTunnel.AsFieldSpec(conf.Child("supportTunnel"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "supportTunnel {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "supportTunnel {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -152,46 +181,124 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? BrikId
         // GraphQL -> brikId: String! (scalar)
-        if (this.BrikId == null && ec.Includes("brikId",true))
+        if (ec.Includes("brikId",true))
         {
-            this.BrikId = "FETCH";
+            if(this.BrikId == null) {
+
+                this.BrikId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.BrikId != null && ec.Excludes("brikId",true))
+        {
+            this.BrikId = null;
         }
         //      C# -> System.Boolean? HasUnavailableDisks
         // GraphQL -> hasUnavailableDisks: Boolean (scalar)
-        if (this.HasUnavailableDisks == null && ec.Includes("hasUnavailableDisks",true))
+        if (ec.Includes("hasUnavailableDisks",true))
         {
-            this.HasUnavailableDisks = true;
+            if(this.HasUnavailableDisks == null) {
+
+                this.HasUnavailableDisks = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.HasUnavailableDisks != null && ec.Excludes("hasUnavailableDisks",true))
+        {
+            this.HasUnavailableDisks = null;
         }
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String (scalar)
-        if (this.Hostname == null && ec.Includes("hostname",true))
+        if (ec.Includes("hostname",true))
         {
-            this.Hostname = "FETCH";
+            if(this.Hostname == null) {
+
+                this.Hostname = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Hostname != null && ec.Excludes("hostname",true))
+        {
+            this.Hostname = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.String? IpAddress
         // GraphQL -> ipAddress: String (scalar)
-        if (this.IpAddress == null && ec.Includes("ipAddress",true))
+        if (ec.Includes("ipAddress",true))
         {
-            this.IpAddress = "FETCH";
+            if(this.IpAddress == null) {
+
+                this.IpAddress = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.IpAddress != null && ec.Excludes("ipAddress",true))
+        {
+            this.IpAddress = null;
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = "FETCH";
+            if(this.Status == null) {
+
+                this.Status = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
         //      C# -> SupportTunnelInfo? SupportTunnel
         // GraphQL -> supportTunnel: SupportTunnelInfo (type)
-        if (this.SupportTunnel == null && ec.Includes("supportTunnel",false))
+        if (ec.Includes("supportTunnel",false))
         {
-            this.SupportTunnel = new SupportTunnelInfo();
-            this.SupportTunnel.ApplyExploratoryFieldSpec(ec.NewChild("supportTunnel"));
+            if(this.SupportTunnel == null) {
+
+                this.SupportTunnel = new SupportTunnelInfo();
+                this.SupportTunnel.ApplyExploratoryFieldSpec(ec.NewChild("supportTunnel"));
+
+            } else {
+
+                this.SupportTunnel.ApplyExploratoryFieldSpec(ec.NewChild("supportTunnel"));
+
+            }
+        }
+        else if (this.SupportTunnel != null && ec.Excludes("supportTunnel",false))
+        {
+            this.SupportTunnel = null;
         }
     }
 
@@ -218,9 +325,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<NodeStatus> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

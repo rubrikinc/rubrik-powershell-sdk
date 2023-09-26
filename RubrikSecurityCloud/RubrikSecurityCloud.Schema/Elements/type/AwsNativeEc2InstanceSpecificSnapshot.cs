@@ -129,61 +129,102 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> SnapshotServiceConsistencyLevel? ConsistencyLevel
         // GraphQL -> consistencyLevel: SnapshotServiceConsistencyLevel! (enum)
         if (this.ConsistencyLevel != null) {
-            s += ind + "consistencyLevel\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "consistencyLevel\n" ;
+            } else {
+                s += ind + "consistencyLevel\n" ;
+            }
         }
         //      C# -> System.String? AwsNativeAccountId
         // GraphQL -> awsNativeAccountId: String! (scalar)
         if (this.AwsNativeAccountId != null) {
-            s += ind + "awsNativeAccountId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "awsNativeAccountId\n" ;
+            } else {
+                s += ind + "awsNativeAccountId\n" ;
+            }
         }
         //      C# -> System.String? IamInstanceProfileArn
         // GraphQL -> iamInstanceProfileArn: String! (scalar)
         if (this.IamInstanceProfileArn != null) {
-            s += ind + "iamInstanceProfileArn\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "iamInstanceProfileArn\n" ;
+            } else {
+                s += ind + "iamInstanceProfileArn\n" ;
+            }
         }
         //      C# -> System.String? InstanceType
         // GraphQL -> instanceType: String! (scalar)
         if (this.InstanceType != null) {
-            s += ind + "instanceType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "instanceType\n" ;
+            } else {
+                s += ind + "instanceType\n" ;
+            }
         }
         //      C# -> System.String? NativeId
         // GraphQL -> nativeId: String! (scalar)
         if (this.NativeId != null) {
-            s += ind + "nativeId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "nativeId\n" ;
+            } else {
+                s += ind + "nativeId\n" ;
+            }
         }
         //      C# -> System.String? NativeName
         // GraphQL -> nativeName: String! (scalar)
         if (this.NativeName != null) {
-            s += ind + "nativeName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "nativeName\n" ;
+            } else {
+                s += ind + "nativeName\n" ;
+            }
         }
         //      C# -> System.String? Region
         // GraphQL -> region: String! (scalar)
         if (this.Region != null) {
-            s += ind + "region\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "region\n" ;
+            } else {
+                s += ind + "region\n" ;
+            }
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: UUID! (scalar)
         if (this.SnapshotId != null) {
-            s += ind + "snapshotId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotId\n" ;
+            } else {
+                s += ind + "snapshotId\n" ;
+            }
         }
         //      C# -> List<System.String>? VolumeSnapshotsToExclude
         // GraphQL -> volumeSnapshotsToExclude: [String!]! (scalar)
         if (this.VolumeSnapshotsToExclude != null) {
-            s += ind + "volumeSnapshotsToExclude\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "volumeSnapshotsToExclude\n" ;
+            } else {
+                s += ind + "volumeSnapshotsToExclude\n" ;
+            }
         }
         //      C# -> DevicePathToVolumeSnapshotIdMap? DevicePathToVolumeSnapshotIdMap
         // GraphQL -> devicePathToVolumeSnapshotIdMap: DevicePathToVolumeSnapshotIdMap! (type)
         if (this.DevicePathToVolumeSnapshotIdMap != null) {
-            var fspec = this.DevicePathToVolumeSnapshotIdMap.AsFieldSpec(indent+1);
+            var fspec = this.DevicePathToVolumeSnapshotIdMap.AsFieldSpec(conf.Child("devicePathToVolumeSnapshotIdMap"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "devicePathToVolumeSnapshotIdMap {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "devicePathToVolumeSnapshotIdMap {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -195,64 +236,175 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> SnapshotServiceConsistencyLevel? ConsistencyLevel
         // GraphQL -> consistencyLevel: SnapshotServiceConsistencyLevel! (enum)
-        if (this.ConsistencyLevel == null && ec.Includes("consistencyLevel",true))
+        if (ec.Includes("consistencyLevel",true))
         {
-            this.ConsistencyLevel = new SnapshotServiceConsistencyLevel();
+            if(this.ConsistencyLevel == null) {
+
+                this.ConsistencyLevel = new SnapshotServiceConsistencyLevel();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ConsistencyLevel != null && ec.Excludes("consistencyLevel",true))
+        {
+            this.ConsistencyLevel = null;
         }
         //      C# -> System.String? AwsNativeAccountId
         // GraphQL -> awsNativeAccountId: String! (scalar)
-        if (this.AwsNativeAccountId == null && ec.Includes("awsNativeAccountId",true))
+        if (ec.Includes("awsNativeAccountId",true))
         {
-            this.AwsNativeAccountId = "FETCH";
+            if(this.AwsNativeAccountId == null) {
+
+                this.AwsNativeAccountId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AwsNativeAccountId != null && ec.Excludes("awsNativeAccountId",true))
+        {
+            this.AwsNativeAccountId = null;
         }
         //      C# -> System.String? IamInstanceProfileArn
         // GraphQL -> iamInstanceProfileArn: String! (scalar)
-        if (this.IamInstanceProfileArn == null && ec.Includes("iamInstanceProfileArn",true))
+        if (ec.Includes("iamInstanceProfileArn",true))
         {
-            this.IamInstanceProfileArn = "FETCH";
+            if(this.IamInstanceProfileArn == null) {
+
+                this.IamInstanceProfileArn = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.IamInstanceProfileArn != null && ec.Excludes("iamInstanceProfileArn",true))
+        {
+            this.IamInstanceProfileArn = null;
         }
         //      C# -> System.String? InstanceType
         // GraphQL -> instanceType: String! (scalar)
-        if (this.InstanceType == null && ec.Includes("instanceType",true))
+        if (ec.Includes("instanceType",true))
         {
-            this.InstanceType = "FETCH";
+            if(this.InstanceType == null) {
+
+                this.InstanceType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.InstanceType != null && ec.Excludes("instanceType",true))
+        {
+            this.InstanceType = null;
         }
         //      C# -> System.String? NativeId
         // GraphQL -> nativeId: String! (scalar)
-        if (this.NativeId == null && ec.Includes("nativeId",true))
+        if (ec.Includes("nativeId",true))
         {
-            this.NativeId = "FETCH";
+            if(this.NativeId == null) {
+
+                this.NativeId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NativeId != null && ec.Excludes("nativeId",true))
+        {
+            this.NativeId = null;
         }
         //      C# -> System.String? NativeName
         // GraphQL -> nativeName: String! (scalar)
-        if (this.NativeName == null && ec.Includes("nativeName",true))
+        if (ec.Includes("nativeName",true))
         {
-            this.NativeName = "FETCH";
+            if(this.NativeName == null) {
+
+                this.NativeName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NativeName != null && ec.Excludes("nativeName",true))
+        {
+            this.NativeName = null;
         }
         //      C# -> System.String? Region
         // GraphQL -> region: String! (scalar)
-        if (this.Region == null && ec.Includes("region",true))
+        if (ec.Includes("region",true))
         {
-            this.Region = "FETCH";
+            if(this.Region == null) {
+
+                this.Region = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Region != null && ec.Excludes("region",true))
+        {
+            this.Region = null;
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: UUID! (scalar)
-        if (this.SnapshotId == null && ec.Includes("snapshotId",true))
+        if (ec.Includes("snapshotId",true))
         {
-            this.SnapshotId = "FETCH";
+            if(this.SnapshotId == null) {
+
+                this.SnapshotId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotId != null && ec.Excludes("snapshotId",true))
+        {
+            this.SnapshotId = null;
         }
         //      C# -> List<System.String>? VolumeSnapshotsToExclude
         // GraphQL -> volumeSnapshotsToExclude: [String!]! (scalar)
-        if (this.VolumeSnapshotsToExclude == null && ec.Includes("volumeSnapshotsToExclude",true))
+        if (ec.Includes("volumeSnapshotsToExclude",true))
         {
-            this.VolumeSnapshotsToExclude = new List<System.String>();
+            if(this.VolumeSnapshotsToExclude == null) {
+
+                this.VolumeSnapshotsToExclude = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.VolumeSnapshotsToExclude != null && ec.Excludes("volumeSnapshotsToExclude",true))
+        {
+            this.VolumeSnapshotsToExclude = null;
         }
         //      C# -> DevicePathToVolumeSnapshotIdMap? DevicePathToVolumeSnapshotIdMap
         // GraphQL -> devicePathToVolumeSnapshotIdMap: DevicePathToVolumeSnapshotIdMap! (type)
-        if (this.DevicePathToVolumeSnapshotIdMap == null && ec.Includes("devicePathToVolumeSnapshotIdMap",false))
+        if (ec.Includes("devicePathToVolumeSnapshotIdMap",false))
         {
-            this.DevicePathToVolumeSnapshotIdMap = new DevicePathToVolumeSnapshotIdMap();
-            this.DevicePathToVolumeSnapshotIdMap.ApplyExploratoryFieldSpec(ec.NewChild("devicePathToVolumeSnapshotIdMap"));
+            if(this.DevicePathToVolumeSnapshotIdMap == null) {
+
+                this.DevicePathToVolumeSnapshotIdMap = new DevicePathToVolumeSnapshotIdMap();
+                this.DevicePathToVolumeSnapshotIdMap.ApplyExploratoryFieldSpec(ec.NewChild("devicePathToVolumeSnapshotIdMap"));
+
+            } else {
+
+                this.DevicePathToVolumeSnapshotIdMap.ApplyExploratoryFieldSpec(ec.NewChild("devicePathToVolumeSnapshotIdMap"));
+
+            }
+        }
+        else if (this.DevicePathToVolumeSnapshotIdMap != null && ec.Excludes("devicePathToVolumeSnapshotIdMap",false))
+        {
+            this.DevicePathToVolumeSnapshotIdMap = null;
         }
     }
 
@@ -279,9 +431,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AwsNativeEc2InstanceSpecificSnapshot> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

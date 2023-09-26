@@ -47,16 +47,21 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<DevicePathToVolumeSnapshotId>? DevicePathToVolumeSnapshotIdList
         // GraphQL -> devicePathToVolumeSnapshotIdList: [DevicePathToVolumeSnapshotId!]! (type)
         if (this.DevicePathToVolumeSnapshotIdList != null) {
-            var fspec = this.DevicePathToVolumeSnapshotIdList.AsFieldSpec(indent+1);
+            var fspec = this.DevicePathToVolumeSnapshotIdList.AsFieldSpec(conf.Child("devicePathToVolumeSnapshotIdList"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "devicePathToVolumeSnapshotIdList {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "devicePathToVolumeSnapshotIdList {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -68,10 +73,22 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<DevicePathToVolumeSnapshotId>? DevicePathToVolumeSnapshotIdList
         // GraphQL -> devicePathToVolumeSnapshotIdList: [DevicePathToVolumeSnapshotId!]! (type)
-        if (this.DevicePathToVolumeSnapshotIdList == null && ec.Includes("devicePathToVolumeSnapshotIdList",false))
+        if (ec.Includes("devicePathToVolumeSnapshotIdList",false))
         {
-            this.DevicePathToVolumeSnapshotIdList = new List<DevicePathToVolumeSnapshotId>();
-            this.DevicePathToVolumeSnapshotIdList.ApplyExploratoryFieldSpec(ec.NewChild("devicePathToVolumeSnapshotIdList"));
+            if(this.DevicePathToVolumeSnapshotIdList == null) {
+
+                this.DevicePathToVolumeSnapshotIdList = new List<DevicePathToVolumeSnapshotId>();
+                this.DevicePathToVolumeSnapshotIdList.ApplyExploratoryFieldSpec(ec.NewChild("devicePathToVolumeSnapshotIdList"));
+
+            } else {
+
+                this.DevicePathToVolumeSnapshotIdList.ApplyExploratoryFieldSpec(ec.NewChild("devicePathToVolumeSnapshotIdList"));
+
+            }
+        }
+        else if (this.DevicePathToVolumeSnapshotIdList != null && ec.Excludes("devicePathToVolumeSnapshotIdList",false))
+        {
+            this.DevicePathToVolumeSnapshotIdList = null;
         }
     }
 
@@ -98,9 +115,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<DevicePathToVolumeSnapshotIdMap> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

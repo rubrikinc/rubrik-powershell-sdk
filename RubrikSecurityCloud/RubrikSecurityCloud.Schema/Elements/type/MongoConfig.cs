@@ -56,24 +56,33 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> Duration? LogFrequency
         // GraphQL -> logFrequency: Duration (type)
         if (this.LogFrequency != null) {
-            var fspec = this.LogFrequency.AsFieldSpec(indent+1);
+            var fspec = this.LogFrequency.AsFieldSpec(conf.Child("logFrequency"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "logFrequency {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "logFrequency {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> Duration? LogRetention
         // GraphQL -> logRetention: Duration (type)
         if (this.LogRetention != null) {
-            var fspec = this.LogRetention.AsFieldSpec(indent+1);
+            var fspec = this.LogRetention.AsFieldSpec(conf.Child("logRetention"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "logRetention {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "logRetention {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -85,17 +94,41 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> Duration? LogFrequency
         // GraphQL -> logFrequency: Duration (type)
-        if (this.LogFrequency == null && ec.Includes("logFrequency",false))
+        if (ec.Includes("logFrequency",false))
         {
-            this.LogFrequency = new Duration();
-            this.LogFrequency.ApplyExploratoryFieldSpec(ec.NewChild("logFrequency"));
+            if(this.LogFrequency == null) {
+
+                this.LogFrequency = new Duration();
+                this.LogFrequency.ApplyExploratoryFieldSpec(ec.NewChild("logFrequency"));
+
+            } else {
+
+                this.LogFrequency.ApplyExploratoryFieldSpec(ec.NewChild("logFrequency"));
+
+            }
+        }
+        else if (this.LogFrequency != null && ec.Excludes("logFrequency",false))
+        {
+            this.LogFrequency = null;
         }
         //      C# -> Duration? LogRetention
         // GraphQL -> logRetention: Duration (type)
-        if (this.LogRetention == null && ec.Includes("logRetention",false))
+        if (ec.Includes("logRetention",false))
         {
-            this.LogRetention = new Duration();
-            this.LogRetention.ApplyExploratoryFieldSpec(ec.NewChild("logRetention"));
+            if(this.LogRetention == null) {
+
+                this.LogRetention = new Duration();
+                this.LogRetention.ApplyExploratoryFieldSpec(ec.NewChild("logRetention"));
+
+            } else {
+
+                this.LogRetention.ApplyExploratoryFieldSpec(ec.NewChild("logRetention"));
+
+            }
+        }
+        else if (this.LogRetention != null && ec.Excludes("logRetention",false))
+        {
+            this.LogRetention = null;
         }
     }
 
@@ -122,9 +155,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<MongoConfig> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

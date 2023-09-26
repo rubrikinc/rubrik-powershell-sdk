@@ -1,10 +1,14 @@
 ﻿using System;
+using System.IO;
 using System.Collections;
 using System.Management.Automation;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using RubrikSecurityCloud;
 using RubrikSecurityCloud.PowerShell.Private;
+
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
 
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
@@ -72,8 +76,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         )]
         public Hashtable Var { get; set; }
 
-    #pragma warning disable 1591 // ignore warning 'Missing XML comment'
-    
         public Invoke_Rsc(): base(retrieveConnection: true)
         {
         }
@@ -107,6 +109,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             }
             if (Query is string sQuery)
             {
+                if(string.IsNullOrEmpty(sQuery))
+                {
+                    throw new ArgumentException("No GQL query provided");
+                }
+                var _asPathString = Path.GetFullPath(sQuery);
+                if(File.Exists(_asPathString))
+                {
+                    sQuery = File.ReadAllText(_asPathString);
+                }
+
                 GqlQuery = sQuery;
                 ProcessRecord_NativeGQL();
                 return;
@@ -115,6 +127,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 query.Var.Finalize();
                 this.SendGqlRequest(query.GqlRequest());
+                return;
+            }
+            if (Query is RscGqlRequest gqlRequest)
+            {
+                this.SendGqlRequest(gqlRequest);
                 return;
             }
             throw new ArgumentException($"Invalid query type {Query.GetType().Name}");

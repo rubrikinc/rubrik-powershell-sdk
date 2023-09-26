@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Boolean? Available
         // GraphQL -> available: Boolean! (scalar)
         if (this.Available != null) {
-            s += ind + "available\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "available\n" ;
+            } else {
+                s += ind + "available\n" ;
+            }
         }
         //      C# -> System.String? Reason
         // GraphQL -> reason: String! (scalar)
         if (this.Reason != null) {
-            s += ind + "reason\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "reason\n" ;
+            } else {
+                s += ind + "reason\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Boolean? Available
         // GraphQL -> available: Boolean! (scalar)
-        if (this.Available == null && ec.Includes("available",true))
+        if (ec.Includes("available",true))
         {
-            this.Available = true;
+            if(this.Available == null) {
+
+                this.Available = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Available != null && ec.Excludes("available",true))
+        {
+            this.Available = null;
         }
         //      C# -> System.String? Reason
         // GraphQL -> reason: String! (scalar)
-        if (this.Reason == null && ec.Includes("reason",true))
+        if (ec.Includes("reason",true))
         {
-            this.Reason = "FETCH";
+            if(this.Reason == null) {
+
+                this.Reason = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Reason != null && ec.Excludes("reason",true))
+        {
+            this.Reason = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AzureResourceAvailabilityResp> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

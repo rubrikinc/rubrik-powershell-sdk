@@ -65,26 +65,39 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<System.String>? Vips
         // GraphQL -> vips: [String!]! (scalar)
         if (this.Vips != null) {
-            s += ind + "vips\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "vips\n" ;
+            } else {
+                s += ind + "vips\n" ;
+            }
         }
         //      C# -> List<System.String>? VirtualIps
         // GraphQL -> virtualIps: [String!]! (scalar)
         if (this.VirtualIps != null) {
-            s += ind + "virtualIps\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "virtualIps\n" ;
+            } else {
+                s += ind + "virtualIps\n" ;
+            }
         }
         //      C# -> List<FailoverClusterNodeOrder>? NodeOrders
         // GraphQL -> nodeOrders: [FailoverClusterNodeOrder!]! (type)
         if (this.NodeOrders != null) {
-            var fspec = this.NodeOrders.AsFieldSpec(indent+1);
+            var fspec = this.NodeOrders.AsFieldSpec(conf.Child("nodeOrders"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "nodeOrders {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "nodeOrders {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -96,22 +109,56 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<System.String>? Vips
         // GraphQL -> vips: [String!]! (scalar)
-        if (this.Vips == null && ec.Includes("vips",true))
+        if (ec.Includes("vips",true))
         {
-            this.Vips = new List<System.String>();
+            if(this.Vips == null) {
+
+                this.Vips = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Vips != null && ec.Excludes("vips",true))
+        {
+            this.Vips = null;
         }
         //      C# -> List<System.String>? VirtualIps
         // GraphQL -> virtualIps: [String!]! (scalar)
-        if (this.VirtualIps == null && ec.Includes("virtualIps",true))
+        if (ec.Includes("virtualIps",true))
         {
-            this.VirtualIps = new List<System.String>();
+            if(this.VirtualIps == null) {
+
+                this.VirtualIps = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.VirtualIps != null && ec.Excludes("virtualIps",true))
+        {
+            this.VirtualIps = null;
         }
         //      C# -> List<FailoverClusterNodeOrder>? NodeOrders
         // GraphQL -> nodeOrders: [FailoverClusterNodeOrder!]! (type)
-        if (this.NodeOrders == null && ec.Includes("nodeOrders",false))
+        if (ec.Includes("nodeOrders",false))
         {
-            this.NodeOrders = new List<FailoverClusterNodeOrder>();
-            this.NodeOrders.ApplyExploratoryFieldSpec(ec.NewChild("nodeOrders"));
+            if(this.NodeOrders == null) {
+
+                this.NodeOrders = new List<FailoverClusterNodeOrder>();
+                this.NodeOrders.ApplyExploratoryFieldSpec(ec.NewChild("nodeOrders"));
+
+            } else {
+
+                this.NodeOrders.ApplyExploratoryFieldSpec(ec.NewChild("nodeOrders"));
+
+            }
+        }
+        else if (this.NodeOrders != null && ec.Excludes("nodeOrders",false))
+        {
+            this.NodeOrders = null;
         }
     }
 
@@ -138,9 +185,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<FailoverClusterAppSource> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

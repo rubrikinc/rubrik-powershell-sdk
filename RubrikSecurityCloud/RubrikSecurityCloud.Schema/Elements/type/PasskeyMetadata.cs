@@ -56,21 +56,30 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Boolean? IsPasskeyEnabled
         // GraphQL -> isPasskeyEnabled: Boolean! (scalar)
         if (this.IsPasskeyEnabled != null) {
-            s += ind + "isPasskeyEnabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isPasskeyEnabled\n" ;
+            } else {
+                s += ind + "isPasskeyEnabled\n" ;
+            }
         }
         //      C# -> List<PasskeyCredentialMetadata>? CredentialsMetadata
         // GraphQL -> credentialsMetadata: [PasskeyCredentialMetadata!]! (type)
         if (this.CredentialsMetadata != null) {
-            var fspec = this.CredentialsMetadata.AsFieldSpec(indent+1);
+            var fspec = this.CredentialsMetadata.AsFieldSpec(conf.Child("credentialsMetadata"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "credentialsMetadata {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "credentialsMetadata {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -82,16 +91,39 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Boolean? IsPasskeyEnabled
         // GraphQL -> isPasskeyEnabled: Boolean! (scalar)
-        if (this.IsPasskeyEnabled == null && ec.Includes("isPasskeyEnabled",true))
+        if (ec.Includes("isPasskeyEnabled",true))
         {
-            this.IsPasskeyEnabled = true;
+            if(this.IsPasskeyEnabled == null) {
+
+                this.IsPasskeyEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsPasskeyEnabled != null && ec.Excludes("isPasskeyEnabled",true))
+        {
+            this.IsPasskeyEnabled = null;
         }
         //      C# -> List<PasskeyCredentialMetadata>? CredentialsMetadata
         // GraphQL -> credentialsMetadata: [PasskeyCredentialMetadata!]! (type)
-        if (this.CredentialsMetadata == null && ec.Includes("credentialsMetadata",false))
+        if (ec.Includes("credentialsMetadata",false))
         {
-            this.CredentialsMetadata = new List<PasskeyCredentialMetadata>();
-            this.CredentialsMetadata.ApplyExploratoryFieldSpec(ec.NewChild("credentialsMetadata"));
+            if(this.CredentialsMetadata == null) {
+
+                this.CredentialsMetadata = new List<PasskeyCredentialMetadata>();
+                this.CredentialsMetadata.ApplyExploratoryFieldSpec(ec.NewChild("credentialsMetadata"));
+
+            } else {
+
+                this.CredentialsMetadata.ApplyExploratoryFieldSpec(ec.NewChild("credentialsMetadata"));
+
+            }
+        }
+        else if (this.CredentialsMetadata != null && ec.Excludes("credentialsMetadata",false))
+        {
+            this.CredentialsMetadata = null;
         }
     }
 
@@ -118,9 +150,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<PasskeyMetadata> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

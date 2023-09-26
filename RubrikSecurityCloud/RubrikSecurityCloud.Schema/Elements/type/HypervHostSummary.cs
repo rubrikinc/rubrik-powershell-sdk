@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
         if (this.Hostname != null) {
-            s += ind + "hostname\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostname\n" ;
+            } else {
+                s += ind + "hostname\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.String? PrimaryClusterId
         // GraphQL -> primaryClusterId: String! (scalar)
         if (this.PrimaryClusterId != null) {
-            s += ind + "primaryClusterId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "primaryClusterId\n" ;
+            } else {
+                s += ind + "primaryClusterId\n" ;
+            }
         }
         //      C# -> System.String? ServerName
         // GraphQL -> serverName: String! (scalar)
         if (this.ServerName != null) {
-            s += ind + "serverName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "serverName\n" ;
+            } else {
+                s += ind + "serverName\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
-        if (this.Hostname == null && ec.Includes("hostname",true))
+        if (ec.Includes("hostname",true))
         {
-            this.Hostname = "FETCH";
+            if(this.Hostname == null) {
+
+                this.Hostname = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Hostname != null && ec.Excludes("hostname",true))
+        {
+            this.Hostname = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.String? PrimaryClusterId
         // GraphQL -> primaryClusterId: String! (scalar)
-        if (this.PrimaryClusterId == null && ec.Includes("primaryClusterId",true))
+        if (ec.Includes("primaryClusterId",true))
         {
-            this.PrimaryClusterId = "FETCH";
+            if(this.PrimaryClusterId == null) {
+
+                this.PrimaryClusterId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PrimaryClusterId != null && ec.Excludes("primaryClusterId",true))
+        {
+            this.PrimaryClusterId = null;
         }
         //      C# -> System.String? ServerName
         // GraphQL -> serverName: String! (scalar)
-        if (this.ServerName == null && ec.Includes("serverName",true))
+        if (ec.Includes("serverName",true))
         {
-            this.ServerName = "FETCH";
+            if(this.ServerName == null) {
+
+                this.ServerName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ServerName != null && ec.Excludes("serverName",true))
+        {
+            this.ServerName = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<HypervHostSummary> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

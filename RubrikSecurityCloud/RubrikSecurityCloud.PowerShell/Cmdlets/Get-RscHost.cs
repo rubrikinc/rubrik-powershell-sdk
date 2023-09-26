@@ -101,6 +101,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         [ValidateSet("ASC", "DESC")]
         public string SortOrder { get; set; }
 
+        /// <summary>
+        /// Indicates whether request is bulk policy assignment flow.
+        /// </summary>
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "Query",
+            Position = 7)]
+        public bool IsBulkPolicyAssignmentFlow { get; set; } = false;
 
         /// <summary>
         /// Get a physical host using its ID
@@ -175,7 +183,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                             $"$after: String, " +
                             $"$sortBy: HierarchySortByField, " +
                             $"$sortOrder: SortOrder, " +
-                            $"$filter: [Filter!]" +
+                            $"$filter: [Filter!], " +
+                            $"$isBulkPolicyAssignmentFlow: Boolean" +
                             $"){{\n" +
                             $"{Query.PhysicalHosts(hostListQuery)}" +
                             $"\n}}";
@@ -218,6 +227,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                                 }
                             });
                         }
+
+                        vars.Variables.Add("isBulkPolicyAssignmentFlow", IsBulkPolicyAssignmentFlow);
 
                         filters.Add(new Filter
                         {

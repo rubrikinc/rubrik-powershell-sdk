@@ -14,7 +14,7 @@ namespace RubrikSecurityCloud.Types
         internal BaseType? _next = null;
 
         // IFieldSpec interface:
-        public abstract string AsFieldSpec(int indent = 0);
+        public abstract string AsFieldSpec(FieldSpecConfig? conf=null);
         public abstract void ApplyExploratoryFieldSpec(ExplorationContext ec);
         public void SelectForRetrieval()
         {
@@ -32,13 +32,18 @@ namespace RubrikSecurityCloud.Types
     public static class ListBaseTypeExtensions
     {
         public static string AsFieldSpec(this List<BaseType> list,
-                                         int indent = 0)
+                                         FieldSpecConfig? conf=null)
         {
-            string ind = new string(' ', indent * 2);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            string ind = conf.IndentStr();
             StringBuilder sb = new StringBuilder();
             foreach (BaseType item in list)
             {
-                sb.Append(ind + " ... on " + item.GetType().Name + " {\n" + item.AsFieldSpec(indent + 1) + ind + "}\n");
+                if(conf.Flat) {
+                    sb.Append(item.AsFieldSpec(conf.Child()));
+                } else {
+                    sb.Append(ind + " ... on " + item.GetType().Name + " {\n" + item.AsFieldSpec(conf.Child()) + ind + "}\n");
+                }
             }
             return sb.ToString();
         }

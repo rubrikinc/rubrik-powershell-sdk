@@ -1,6 +1,6 @@
-& "$PSScriptRoot\..\..\Utils\import.ps1"
-. "$PSScriptRoot\..\serviceaccount.ps1"
-
+BeforeAll {
+    . "$PSScriptRoot\..\..\Toolkit\Utils\E2eTestInit.ps1"
+}
 Describe 'Get-RscType' {
     Context 'When called with the -ListAvailable parameter' {
         It 'Should return a list of valid Rsc types' {

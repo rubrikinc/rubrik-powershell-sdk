@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<System.Int32>? FailureVlanIds
         // GraphQL -> failureVlanIds: [Int!]! (scalar)
         if (this.FailureVlanIds != null) {
-            s += ind + "failureVlanIds\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "failureVlanIds\n" ;
+            } else {
+                s += ind + "failureVlanIds\n" ;
+            }
         }
         //      C# -> List<System.Int32>? SuccessVlanIds
         // GraphQL -> successVlanIds: [Int!]! (scalar)
         if (this.SuccessVlanIds != null) {
-            s += ind + "successVlanIds\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "successVlanIds\n" ;
+            } else {
+                s += ind + "successVlanIds\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<System.Int32>? FailureVlanIds
         // GraphQL -> failureVlanIds: [Int!]! (scalar)
-        if (this.FailureVlanIds == null && ec.Includes("failureVlanIds",true))
+        if (ec.Includes("failureVlanIds",true))
         {
-            this.FailureVlanIds = new List<System.Int32>();
+            if(this.FailureVlanIds == null) {
+
+                this.FailureVlanIds = new List<System.Int32>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.FailureVlanIds != null && ec.Excludes("failureVlanIds",true))
+        {
+            this.FailureVlanIds = null;
         }
         //      C# -> List<System.Int32>? SuccessVlanIds
         // GraphQL -> successVlanIds: [Int!]! (scalar)
-        if (this.SuccessVlanIds == null && ec.Includes("successVlanIds",true))
+        if (ec.Includes("successVlanIds",true))
         {
-            this.SuccessVlanIds = new List<System.Int32>();
+            if(this.SuccessVlanIds == null) {
+
+                this.SuccessVlanIds = new List<System.Int32>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SuccessVlanIds != null && ec.Excludes("successVlanIds",true))
+        {
+            this.SuccessVlanIds = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<RemoveVlansReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> RiskLevelType? Risk
         // GraphQL -> risk: RiskLevelType! (enum)
         if (this.Risk != null) {
-            s += ind + "risk\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "risk\n" ;
+            } else {
+                s += ind + "risk\n" ;
+            }
         }
         //      C# -> System.String? AnalyzerId
         // GraphQL -> analyzerId: String! (scalar)
         if (this.AnalyzerId != null) {
-            s += ind + "analyzerId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "analyzerId\n" ;
+            } else {
+                s += ind + "analyzerId\n" ;
+            }
         }
         //      C# -> System.Int32? RiskVersion
         // GraphQL -> riskVersion: Int! (scalar)
         if (this.RiskVersion != null) {
-            s += ind + "riskVersion\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "riskVersion\n" ;
+            } else {
+                s += ind + "riskVersion\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> RiskLevelType? Risk
         // GraphQL -> risk: RiskLevelType! (enum)
-        if (this.Risk == null && ec.Includes("risk",true))
+        if (ec.Includes("risk",true))
         {
-            this.Risk = new RiskLevelType();
+            if(this.Risk == null) {
+
+                this.Risk = new RiskLevelType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Risk != null && ec.Excludes("risk",true))
+        {
+            this.Risk = null;
         }
         //      C# -> System.String? AnalyzerId
         // GraphQL -> analyzerId: String! (scalar)
-        if (this.AnalyzerId == null && ec.Includes("analyzerId",true))
+        if (ec.Includes("analyzerId",true))
         {
-            this.AnalyzerId = "FETCH";
+            if(this.AnalyzerId == null) {
+
+                this.AnalyzerId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AnalyzerId != null && ec.Excludes("analyzerId",true))
+        {
+            this.AnalyzerId = null;
         }
         //      C# -> System.Int32? RiskVersion
         // GraphQL -> riskVersion: Int! (scalar)
-        if (this.RiskVersion == null && ec.Includes("riskVersion",true))
+        if (ec.Includes("riskVersion",true))
         {
-            this.RiskVersion = Int32.MinValue;
+            if(this.RiskVersion == null) {
+
+                this.RiskVersion = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.RiskVersion != null && ec.Excludes("riskVersion",true))
+        {
+            this.RiskVersion = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AnalyzerRiskInstance> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

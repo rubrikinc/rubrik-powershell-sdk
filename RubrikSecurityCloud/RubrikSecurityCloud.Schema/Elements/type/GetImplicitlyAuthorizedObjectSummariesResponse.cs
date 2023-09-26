@@ -47,16 +47,21 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<ObjectSummary>? ObjectSummaries
         // GraphQL -> objectSummaries: [ObjectSummary!]! (type)
         if (this.ObjectSummaries != null) {
-            var fspec = this.ObjectSummaries.AsFieldSpec(indent+1);
+            var fspec = this.ObjectSummaries.AsFieldSpec(conf.Child("objectSummaries"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "objectSummaries {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "objectSummaries {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -68,10 +73,22 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<ObjectSummary>? ObjectSummaries
         // GraphQL -> objectSummaries: [ObjectSummary!]! (type)
-        if (this.ObjectSummaries == null && ec.Includes("objectSummaries",false))
+        if (ec.Includes("objectSummaries",false))
         {
-            this.ObjectSummaries = new List<ObjectSummary>();
-            this.ObjectSummaries.ApplyExploratoryFieldSpec(ec.NewChild("objectSummaries"));
+            if(this.ObjectSummaries == null) {
+
+                this.ObjectSummaries = new List<ObjectSummary>();
+                this.ObjectSummaries.ApplyExploratoryFieldSpec(ec.NewChild("objectSummaries"));
+
+            } else {
+
+                this.ObjectSummaries.ApplyExploratoryFieldSpec(ec.NewChild("objectSummaries"));
+
+            }
+        }
+        else if (this.ObjectSummaries != null && ec.Excludes("objectSummaries",false))
+        {
+            this.ObjectSummaries = null;
         }
     }
 
@@ -98,9 +115,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<GetImplicitlyAuthorizedObjectSummariesResponse> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

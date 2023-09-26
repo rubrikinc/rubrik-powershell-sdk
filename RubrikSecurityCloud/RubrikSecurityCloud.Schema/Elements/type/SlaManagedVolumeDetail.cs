@@ -119,71 +119,108 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<System.String>? ChannelHostMountPaths
         // GraphQL -> channelHostMountPaths: [String!]! (scalar)
         if (this.ChannelHostMountPaths != null) {
-            s += ind + "channelHostMountPaths\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "channelHostMountPaths\n" ;
+            } else {
+                s += ind + "channelHostMountPaths\n" ;
+            }
         }
         //      C# -> System.Boolean? IsLogExportEnabled
         // GraphQL -> isLogExportEnabled: Boolean (scalar)
         if (this.IsLogExportEnabled != null) {
-            s += ind + "isLogExportEnabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isLogExportEnabled\n" ;
+            } else {
+                s += ind + "isLogExportEnabled\n" ;
+            }
         }
         //      C# -> System.Boolean? ShouldCancelBackupOnPreBackupScriptFailure
         // GraphQL -> shouldCancelBackupOnPreBackupScriptFailure: Boolean (scalar)
         if (this.ShouldCancelBackupOnPreBackupScriptFailure != null) {
-            s += ind + "shouldCancelBackupOnPreBackupScriptFailure\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "shouldCancelBackupOnPreBackupScriptFailure\n" ;
+            } else {
+                s += ind + "shouldCancelBackupOnPreBackupScriptFailure\n" ;
+            }
         }
         //      C# -> SlaManagedVolumeScriptSummary? BackupScriptDetails
         // GraphQL -> backupScriptDetails: SlaManagedVolumeScriptSummary (type)
         if (this.BackupScriptDetails != null) {
-            var fspec = this.BackupScriptDetails.AsFieldSpec(indent+1);
+            var fspec = this.BackupScriptDetails.AsFieldSpec(conf.Child("backupScriptDetails"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "backupScriptDetails {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "backupScriptDetails {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> SlaManagedVolumeHostSummary? HostDetails
         // GraphQL -> hostDetails: SlaManagedVolumeHostSummary (type)
         if (this.HostDetails != null) {
-            var fspec = this.HostDetails.AsFieldSpec(indent+1);
+            var fspec = this.HostDetails.AsFieldSpec(conf.Child("hostDetails"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "hostDetails {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "hostDetails {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> SlaManagedVolumeLogExportSummary? LogExportSummary
         // GraphQL -> logExportSummary: SlaManagedVolumeLogExportSummary (type)
         if (this.LogExportSummary != null) {
-            var fspec = this.LogExportSummary.AsFieldSpec(indent+1);
+            var fspec = this.LogExportSummary.AsFieldSpec(conf.Child("logExportSummary"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "logExportSummary {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "logExportSummary {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> SlaManagedVolumeScriptSummary? PostBackupScriptOnBackupFailureDetails
         // GraphQL -> postBackupScriptOnBackupFailureDetails: SlaManagedVolumeScriptSummary (type)
         if (this.PostBackupScriptOnBackupFailureDetails != null) {
-            var fspec = this.PostBackupScriptOnBackupFailureDetails.AsFieldSpec(indent+1);
+            var fspec = this.PostBackupScriptOnBackupFailureDetails.AsFieldSpec(conf.Child("postBackupScriptOnBackupFailureDetails"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "postBackupScriptOnBackupFailureDetails {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "postBackupScriptOnBackupFailureDetails {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> SlaManagedVolumeScriptSummary? PostBackupScriptOnBackupSuccessDetails
         // GraphQL -> postBackupScriptOnBackupSuccessDetails: SlaManagedVolumeScriptSummary (type)
         if (this.PostBackupScriptOnBackupSuccessDetails != null) {
-            var fspec = this.PostBackupScriptOnBackupSuccessDetails.AsFieldSpec(indent+1);
+            var fspec = this.PostBackupScriptOnBackupSuccessDetails.AsFieldSpec(conf.Child("postBackupScriptOnBackupSuccessDetails"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "postBackupScriptOnBackupSuccessDetails {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "postBackupScriptOnBackupSuccessDetails {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> SlaManagedVolumeScriptSummary? PreBackupScriptDetails
         // GraphQL -> preBackupScriptDetails: SlaManagedVolumeScriptSummary (type)
         if (this.PreBackupScriptDetails != null) {
-            var fspec = this.PreBackupScriptDetails.AsFieldSpec(indent+1);
+            var fspec = this.PreBackupScriptDetails.AsFieldSpec(conf.Child("preBackupScriptDetails"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "preBackupScriptDetails {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "preBackupScriptDetails {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -195,63 +232,168 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<System.String>? ChannelHostMountPaths
         // GraphQL -> channelHostMountPaths: [String!]! (scalar)
-        if (this.ChannelHostMountPaths == null && ec.Includes("channelHostMountPaths",true))
+        if (ec.Includes("channelHostMountPaths",true))
         {
-            this.ChannelHostMountPaths = new List<System.String>();
+            if(this.ChannelHostMountPaths == null) {
+
+                this.ChannelHostMountPaths = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ChannelHostMountPaths != null && ec.Excludes("channelHostMountPaths",true))
+        {
+            this.ChannelHostMountPaths = null;
         }
         //      C# -> System.Boolean? IsLogExportEnabled
         // GraphQL -> isLogExportEnabled: Boolean (scalar)
-        if (this.IsLogExportEnabled == null && ec.Includes("isLogExportEnabled",true))
+        if (ec.Includes("isLogExportEnabled",true))
         {
-            this.IsLogExportEnabled = true;
+            if(this.IsLogExportEnabled == null) {
+
+                this.IsLogExportEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsLogExportEnabled != null && ec.Excludes("isLogExportEnabled",true))
+        {
+            this.IsLogExportEnabled = null;
         }
         //      C# -> System.Boolean? ShouldCancelBackupOnPreBackupScriptFailure
         // GraphQL -> shouldCancelBackupOnPreBackupScriptFailure: Boolean (scalar)
-        if (this.ShouldCancelBackupOnPreBackupScriptFailure == null && ec.Includes("shouldCancelBackupOnPreBackupScriptFailure",true))
+        if (ec.Includes("shouldCancelBackupOnPreBackupScriptFailure",true))
         {
-            this.ShouldCancelBackupOnPreBackupScriptFailure = true;
+            if(this.ShouldCancelBackupOnPreBackupScriptFailure == null) {
+
+                this.ShouldCancelBackupOnPreBackupScriptFailure = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShouldCancelBackupOnPreBackupScriptFailure != null && ec.Excludes("shouldCancelBackupOnPreBackupScriptFailure",true))
+        {
+            this.ShouldCancelBackupOnPreBackupScriptFailure = null;
         }
         //      C# -> SlaManagedVolumeScriptSummary? BackupScriptDetails
         // GraphQL -> backupScriptDetails: SlaManagedVolumeScriptSummary (type)
-        if (this.BackupScriptDetails == null && ec.Includes("backupScriptDetails",false))
+        if (ec.Includes("backupScriptDetails",false))
         {
-            this.BackupScriptDetails = new SlaManagedVolumeScriptSummary();
-            this.BackupScriptDetails.ApplyExploratoryFieldSpec(ec.NewChild("backupScriptDetails"));
+            if(this.BackupScriptDetails == null) {
+
+                this.BackupScriptDetails = new SlaManagedVolumeScriptSummary();
+                this.BackupScriptDetails.ApplyExploratoryFieldSpec(ec.NewChild("backupScriptDetails"));
+
+            } else {
+
+                this.BackupScriptDetails.ApplyExploratoryFieldSpec(ec.NewChild("backupScriptDetails"));
+
+            }
+        }
+        else if (this.BackupScriptDetails != null && ec.Excludes("backupScriptDetails",false))
+        {
+            this.BackupScriptDetails = null;
         }
         //      C# -> SlaManagedVolumeHostSummary? HostDetails
         // GraphQL -> hostDetails: SlaManagedVolumeHostSummary (type)
-        if (this.HostDetails == null && ec.Includes("hostDetails",false))
+        if (ec.Includes("hostDetails",false))
         {
-            this.HostDetails = new SlaManagedVolumeHostSummary();
-            this.HostDetails.ApplyExploratoryFieldSpec(ec.NewChild("hostDetails"));
+            if(this.HostDetails == null) {
+
+                this.HostDetails = new SlaManagedVolumeHostSummary();
+                this.HostDetails.ApplyExploratoryFieldSpec(ec.NewChild("hostDetails"));
+
+            } else {
+
+                this.HostDetails.ApplyExploratoryFieldSpec(ec.NewChild("hostDetails"));
+
+            }
+        }
+        else if (this.HostDetails != null && ec.Excludes("hostDetails",false))
+        {
+            this.HostDetails = null;
         }
         //      C# -> SlaManagedVolumeLogExportSummary? LogExportSummary
         // GraphQL -> logExportSummary: SlaManagedVolumeLogExportSummary (type)
-        if (this.LogExportSummary == null && ec.Includes("logExportSummary",false))
+        if (ec.Includes("logExportSummary",false))
         {
-            this.LogExportSummary = new SlaManagedVolumeLogExportSummary();
-            this.LogExportSummary.ApplyExploratoryFieldSpec(ec.NewChild("logExportSummary"));
+            if(this.LogExportSummary == null) {
+
+                this.LogExportSummary = new SlaManagedVolumeLogExportSummary();
+                this.LogExportSummary.ApplyExploratoryFieldSpec(ec.NewChild("logExportSummary"));
+
+            } else {
+
+                this.LogExportSummary.ApplyExploratoryFieldSpec(ec.NewChild("logExportSummary"));
+
+            }
+        }
+        else if (this.LogExportSummary != null && ec.Excludes("logExportSummary",false))
+        {
+            this.LogExportSummary = null;
         }
         //      C# -> SlaManagedVolumeScriptSummary? PostBackupScriptOnBackupFailureDetails
         // GraphQL -> postBackupScriptOnBackupFailureDetails: SlaManagedVolumeScriptSummary (type)
-        if (this.PostBackupScriptOnBackupFailureDetails == null && ec.Includes("postBackupScriptOnBackupFailureDetails",false))
+        if (ec.Includes("postBackupScriptOnBackupFailureDetails",false))
         {
-            this.PostBackupScriptOnBackupFailureDetails = new SlaManagedVolumeScriptSummary();
-            this.PostBackupScriptOnBackupFailureDetails.ApplyExploratoryFieldSpec(ec.NewChild("postBackupScriptOnBackupFailureDetails"));
+            if(this.PostBackupScriptOnBackupFailureDetails == null) {
+
+                this.PostBackupScriptOnBackupFailureDetails = new SlaManagedVolumeScriptSummary();
+                this.PostBackupScriptOnBackupFailureDetails.ApplyExploratoryFieldSpec(ec.NewChild("postBackupScriptOnBackupFailureDetails"));
+
+            } else {
+
+                this.PostBackupScriptOnBackupFailureDetails.ApplyExploratoryFieldSpec(ec.NewChild("postBackupScriptOnBackupFailureDetails"));
+
+            }
+        }
+        else if (this.PostBackupScriptOnBackupFailureDetails != null && ec.Excludes("postBackupScriptOnBackupFailureDetails",false))
+        {
+            this.PostBackupScriptOnBackupFailureDetails = null;
         }
         //      C# -> SlaManagedVolumeScriptSummary? PostBackupScriptOnBackupSuccessDetails
         // GraphQL -> postBackupScriptOnBackupSuccessDetails: SlaManagedVolumeScriptSummary (type)
-        if (this.PostBackupScriptOnBackupSuccessDetails == null && ec.Includes("postBackupScriptOnBackupSuccessDetails",false))
+        if (ec.Includes("postBackupScriptOnBackupSuccessDetails",false))
         {
-            this.PostBackupScriptOnBackupSuccessDetails = new SlaManagedVolumeScriptSummary();
-            this.PostBackupScriptOnBackupSuccessDetails.ApplyExploratoryFieldSpec(ec.NewChild("postBackupScriptOnBackupSuccessDetails"));
+            if(this.PostBackupScriptOnBackupSuccessDetails == null) {
+
+                this.PostBackupScriptOnBackupSuccessDetails = new SlaManagedVolumeScriptSummary();
+                this.PostBackupScriptOnBackupSuccessDetails.ApplyExploratoryFieldSpec(ec.NewChild("postBackupScriptOnBackupSuccessDetails"));
+
+            } else {
+
+                this.PostBackupScriptOnBackupSuccessDetails.ApplyExploratoryFieldSpec(ec.NewChild("postBackupScriptOnBackupSuccessDetails"));
+
+            }
+        }
+        else if (this.PostBackupScriptOnBackupSuccessDetails != null && ec.Excludes("postBackupScriptOnBackupSuccessDetails",false))
+        {
+            this.PostBackupScriptOnBackupSuccessDetails = null;
         }
         //      C# -> SlaManagedVolumeScriptSummary? PreBackupScriptDetails
         // GraphQL -> preBackupScriptDetails: SlaManagedVolumeScriptSummary (type)
-        if (this.PreBackupScriptDetails == null && ec.Includes("preBackupScriptDetails",false))
+        if (ec.Includes("preBackupScriptDetails",false))
         {
-            this.PreBackupScriptDetails = new SlaManagedVolumeScriptSummary();
-            this.PreBackupScriptDetails.ApplyExploratoryFieldSpec(ec.NewChild("preBackupScriptDetails"));
+            if(this.PreBackupScriptDetails == null) {
+
+                this.PreBackupScriptDetails = new SlaManagedVolumeScriptSummary();
+                this.PreBackupScriptDetails.ApplyExploratoryFieldSpec(ec.NewChild("preBackupScriptDetails"));
+
+            } else {
+
+                this.PreBackupScriptDetails.ApplyExploratoryFieldSpec(ec.NewChild("preBackupScriptDetails"));
+
+            }
+        }
+        else if (this.PreBackupScriptDetails != null && ec.Excludes("preBackupScriptDetails",false))
+        {
+            this.PreBackupScriptDetails = null;
         }
     }
 
@@ -278,9 +420,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SlaManagedVolumeDetail> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

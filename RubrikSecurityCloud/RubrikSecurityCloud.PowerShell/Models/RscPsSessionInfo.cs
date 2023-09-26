@@ -1,6 +1,9 @@
 ﻿using System;
 using RubrikSecurityCloud.NetSDK.Client.Models.Authentication;
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
+
 namespace RubrikSecurityCloud.PowerShell.Models
 {
 	public class RscPsSessionInfo

@@ -128,67 +128,108 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> AwsCloudAccountRegion? Region
         // GraphQL -> region: AwsCloudAccountRegion! (enum)
         if (this.Region != null) {
-            s += ind + "region\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "region\n" ;
+            } else {
+                s += ind + "region\n" ;
+            }
         }
         //      C# -> System.Boolean? AreSecurityGroupsRscManaged
         // GraphQL -> areSecurityGroupsRscManaged: Boolean! (scalar)
         if (this.AreSecurityGroupsRscManaged != null) {
-            s += ind + "areSecurityGroupsRscManaged\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "areSecurityGroupsRscManaged\n" ;
+            } else {
+                s += ind + "areSecurityGroupsRscManaged\n" ;
+            }
         }
         //      C# -> System.String? ClusterSecurityGroupId
         // GraphQL -> clusterSecurityGroupId: String! (scalar)
         if (this.ClusterSecurityGroupId != null) {
-            s += ind + "clusterSecurityGroupId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterSecurityGroupId\n" ;
+            } else {
+                s += ind + "clusterSecurityGroupId\n" ;
+            }
         }
         //      C# -> System.String? ConfigUuid
         // GraphQL -> configUuid: String! (scalar)
         if (this.ConfigUuid != null) {
-            s += ind + "configUuid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "configUuid\n" ;
+            } else {
+                s += ind + "configUuid\n" ;
+            }
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
         if (this.Message != null) {
-            s += ind + "message\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "message\n" ;
+            } else {
+                s += ind + "message\n" ;
+            }
         }
         //      C# -> System.String? NodeSecurityGroupId
         // GraphQL -> nodeSecurityGroupId: String! (scalar)
         if (this.NodeSecurityGroupId != null) {
-            s += ind + "nodeSecurityGroupId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "nodeSecurityGroupId\n" ;
+            } else {
+                s += ind + "nodeSecurityGroupId\n" ;
+            }
         }
         //      C# -> System.String? VpcId
         // GraphQL -> vpcId: String! (scalar)
         if (this.VpcId != null) {
-            s += ind + "vpcId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "vpcId\n" ;
+            } else {
+                s += ind + "vpcId\n" ;
+            }
         }
         //      C# -> ExocomputeHealthCheckStatus? HealthCheckStatus
         // GraphQL -> healthCheckStatus: ExocomputeHealthCheckStatus! (type)
         if (this.HealthCheckStatus != null) {
-            var fspec = this.HealthCheckStatus.AsFieldSpec(indent+1);
+            var fspec = this.HealthCheckStatus.AsFieldSpec(conf.Child("healthCheckStatus"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "healthCheckStatus {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "healthCheckStatus {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> AwsExocomputeSubnetType? Subnet1
         // GraphQL -> subnet1: AwsExocomputeSubnetType! (type)
         if (this.Subnet1 != null) {
-            var fspec = this.Subnet1.AsFieldSpec(indent+1);
+            var fspec = this.Subnet1.AsFieldSpec(conf.Child("subnet1"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "subnet1 {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "subnet1 {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> AwsExocomputeSubnetType? Subnet2
         // GraphQL -> subnet2: AwsExocomputeSubnetType! (type)
         if (this.Subnet2 != null) {
-            var fspec = this.Subnet2.AsFieldSpec(indent+1);
+            var fspec = this.Subnet2.AsFieldSpec(conf.Child("subnet2"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "subnet2 {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "subnet2 {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -200,66 +241,179 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> AwsCloudAccountRegion? Region
         // GraphQL -> region: AwsCloudAccountRegion! (enum)
-        if (this.Region == null && ec.Includes("region",true))
+        if (ec.Includes("region",true))
         {
-            this.Region = new AwsCloudAccountRegion();
+            if(this.Region == null) {
+
+                this.Region = new AwsCloudAccountRegion();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Region != null && ec.Excludes("region",true))
+        {
+            this.Region = null;
         }
         //      C# -> System.Boolean? AreSecurityGroupsRscManaged
         // GraphQL -> areSecurityGroupsRscManaged: Boolean! (scalar)
-        if (this.AreSecurityGroupsRscManaged == null && ec.Includes("areSecurityGroupsRscManaged",true))
+        if (ec.Includes("areSecurityGroupsRscManaged",true))
         {
-            this.AreSecurityGroupsRscManaged = true;
+            if(this.AreSecurityGroupsRscManaged == null) {
+
+                this.AreSecurityGroupsRscManaged = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.AreSecurityGroupsRscManaged != null && ec.Excludes("areSecurityGroupsRscManaged",true))
+        {
+            this.AreSecurityGroupsRscManaged = null;
         }
         //      C# -> System.String? ClusterSecurityGroupId
         // GraphQL -> clusterSecurityGroupId: String! (scalar)
-        if (this.ClusterSecurityGroupId == null && ec.Includes("clusterSecurityGroupId",true))
+        if (ec.Includes("clusterSecurityGroupId",true))
         {
-            this.ClusterSecurityGroupId = "FETCH";
+            if(this.ClusterSecurityGroupId == null) {
+
+                this.ClusterSecurityGroupId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterSecurityGroupId != null && ec.Excludes("clusterSecurityGroupId",true))
+        {
+            this.ClusterSecurityGroupId = null;
         }
         //      C# -> System.String? ConfigUuid
         // GraphQL -> configUuid: String! (scalar)
-        if (this.ConfigUuid == null && ec.Includes("configUuid",true))
+        if (ec.Includes("configUuid",true))
         {
-            this.ConfigUuid = "FETCH";
+            if(this.ConfigUuid == null) {
+
+                this.ConfigUuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ConfigUuid != null && ec.Excludes("configUuid",true))
+        {
+            this.ConfigUuid = null;
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
-        if (this.Message == null && ec.Includes("message",true))
+        if (ec.Includes("message",true))
         {
-            this.Message = "FETCH";
+            if(this.Message == null) {
+
+                this.Message = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Message != null && ec.Excludes("message",true))
+        {
+            this.Message = null;
         }
         //      C# -> System.String? NodeSecurityGroupId
         // GraphQL -> nodeSecurityGroupId: String! (scalar)
-        if (this.NodeSecurityGroupId == null && ec.Includes("nodeSecurityGroupId",true))
+        if (ec.Includes("nodeSecurityGroupId",true))
         {
-            this.NodeSecurityGroupId = "FETCH";
+            if(this.NodeSecurityGroupId == null) {
+
+                this.NodeSecurityGroupId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NodeSecurityGroupId != null && ec.Excludes("nodeSecurityGroupId",true))
+        {
+            this.NodeSecurityGroupId = null;
         }
         //      C# -> System.String? VpcId
         // GraphQL -> vpcId: String! (scalar)
-        if (this.VpcId == null && ec.Includes("vpcId",true))
+        if (ec.Includes("vpcId",true))
         {
-            this.VpcId = "FETCH";
+            if(this.VpcId == null) {
+
+                this.VpcId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.VpcId != null && ec.Excludes("vpcId",true))
+        {
+            this.VpcId = null;
         }
         //      C# -> ExocomputeHealthCheckStatus? HealthCheckStatus
         // GraphQL -> healthCheckStatus: ExocomputeHealthCheckStatus! (type)
-        if (this.HealthCheckStatus == null && ec.Includes("healthCheckStatus",false))
+        if (ec.Includes("healthCheckStatus",false))
         {
-            this.HealthCheckStatus = new ExocomputeHealthCheckStatus();
-            this.HealthCheckStatus.ApplyExploratoryFieldSpec(ec.NewChild("healthCheckStatus"));
+            if(this.HealthCheckStatus == null) {
+
+                this.HealthCheckStatus = new ExocomputeHealthCheckStatus();
+                this.HealthCheckStatus.ApplyExploratoryFieldSpec(ec.NewChild("healthCheckStatus"));
+
+            } else {
+
+                this.HealthCheckStatus.ApplyExploratoryFieldSpec(ec.NewChild("healthCheckStatus"));
+
+            }
+        }
+        else if (this.HealthCheckStatus != null && ec.Excludes("healthCheckStatus",false))
+        {
+            this.HealthCheckStatus = null;
         }
         //      C# -> AwsExocomputeSubnetType? Subnet1
         // GraphQL -> subnet1: AwsExocomputeSubnetType! (type)
-        if (this.Subnet1 == null && ec.Includes("subnet1",false))
+        if (ec.Includes("subnet1",false))
         {
-            this.Subnet1 = new AwsExocomputeSubnetType();
-            this.Subnet1.ApplyExploratoryFieldSpec(ec.NewChild("subnet1"));
+            if(this.Subnet1 == null) {
+
+                this.Subnet1 = new AwsExocomputeSubnetType();
+                this.Subnet1.ApplyExploratoryFieldSpec(ec.NewChild("subnet1"));
+
+            } else {
+
+                this.Subnet1.ApplyExploratoryFieldSpec(ec.NewChild("subnet1"));
+
+            }
+        }
+        else if (this.Subnet1 != null && ec.Excludes("subnet1",false))
+        {
+            this.Subnet1 = null;
         }
         //      C# -> AwsExocomputeSubnetType? Subnet2
         // GraphQL -> subnet2: AwsExocomputeSubnetType! (type)
-        if (this.Subnet2 == null && ec.Includes("subnet2",false))
+        if (ec.Includes("subnet2",false))
         {
-            this.Subnet2 = new AwsExocomputeSubnetType();
-            this.Subnet2.ApplyExploratoryFieldSpec(ec.NewChild("subnet2"));
+            if(this.Subnet2 == null) {
+
+                this.Subnet2 = new AwsExocomputeSubnetType();
+                this.Subnet2.ApplyExploratoryFieldSpec(ec.NewChild("subnet2"));
+
+            } else {
+
+                this.Subnet2.ApplyExploratoryFieldSpec(ec.NewChild("subnet2"));
+
+            }
+        }
+        else if (this.Subnet2 != null && ec.Excludes("subnet2",false))
+        {
+            this.Subnet2 = null;
         }
     }
 
@@ -286,9 +440,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AwsExocomputeGetConfigResponse> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

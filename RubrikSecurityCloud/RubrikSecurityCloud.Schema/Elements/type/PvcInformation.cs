@@ -110,49 +110,82 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? AccessMode
         // GraphQL -> accessMode: String! (scalar)
         if (this.AccessMode != null) {
-            s += ind + "accessMode\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "accessMode\n" ;
+            } else {
+                s += ind + "accessMode\n" ;
+            }
         }
         //      C# -> System.String? Capacity
         // GraphQL -> capacity: String! (scalar)
         if (this.Capacity != null) {
-            s += ind + "capacity\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "capacity\n" ;
+            } else {
+                s += ind + "capacity\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.String? Labels
         // GraphQL -> labels: String! (scalar)
         if (this.Labels != null) {
-            s += ind + "labels\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "labels\n" ;
+            } else {
+                s += ind + "labels\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.String? Phase
         // GraphQL -> phase: String! (scalar)
         if (this.Phase != null) {
-            s += ind + "phase\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "phase\n" ;
+            } else {
+                s += ind + "phase\n" ;
+            }
         }
         //      C# -> System.String? StorageClass
         // GraphQL -> storageClass: String! (scalar)
         if (this.StorageClass != null) {
-            s += ind + "storageClass\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "storageClass\n" ;
+            } else {
+                s += ind + "storageClass\n" ;
+            }
         }
         //      C# -> System.String? Volume
         // GraphQL -> volume: String! (scalar)
         if (this.Volume != null) {
-            s += ind + "volume\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "volume\n" ;
+            } else {
+                s += ind + "volume\n" ;
+            }
         }
         return s;
     }
@@ -163,51 +196,139 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? AccessMode
         // GraphQL -> accessMode: String! (scalar)
-        if (this.AccessMode == null && ec.Includes("accessMode",true))
+        if (ec.Includes("accessMode",true))
         {
-            this.AccessMode = "FETCH";
+            if(this.AccessMode == null) {
+
+                this.AccessMode = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AccessMode != null && ec.Excludes("accessMode",true))
+        {
+            this.AccessMode = null;
         }
         //      C# -> System.String? Capacity
         // GraphQL -> capacity: String! (scalar)
-        if (this.Capacity == null && ec.Includes("capacity",true))
+        if (ec.Includes("capacity",true))
         {
-            this.Capacity = "FETCH";
+            if(this.Capacity == null) {
+
+                this.Capacity = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Capacity != null && ec.Excludes("capacity",true))
+        {
+            this.Capacity = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.String? Labels
         // GraphQL -> labels: String! (scalar)
-        if (this.Labels == null && ec.Includes("labels",true))
+        if (ec.Includes("labels",true))
         {
-            this.Labels = "FETCH";
+            if(this.Labels == null) {
+
+                this.Labels = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Labels != null && ec.Excludes("labels",true))
+        {
+            this.Labels = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.String? Phase
         // GraphQL -> phase: String! (scalar)
-        if (this.Phase == null && ec.Includes("phase",true))
+        if (ec.Includes("phase",true))
         {
-            this.Phase = "FETCH";
+            if(this.Phase == null) {
+
+                this.Phase = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Phase != null && ec.Excludes("phase",true))
+        {
+            this.Phase = null;
         }
         //      C# -> System.String? StorageClass
         // GraphQL -> storageClass: String! (scalar)
-        if (this.StorageClass == null && ec.Includes("storageClass",true))
+        if (ec.Includes("storageClass",true))
         {
-            this.StorageClass = "FETCH";
+            if(this.StorageClass == null) {
+
+                this.StorageClass = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.StorageClass != null && ec.Excludes("storageClass",true))
+        {
+            this.StorageClass = null;
         }
         //      C# -> System.String? Volume
         // GraphQL -> volume: String! (scalar)
-        if (this.Volume == null && ec.Includes("volume",true))
+        if (ec.Includes("volume",true))
         {
-            this.Volume = "FETCH";
+            if(this.Volume == null) {
+
+                this.Volume = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Volume != null && ec.Excludes("volume",true))
+        {
+            this.Volume = null;
         }
     }
 
@@ -234,9 +355,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<PvcInformation> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

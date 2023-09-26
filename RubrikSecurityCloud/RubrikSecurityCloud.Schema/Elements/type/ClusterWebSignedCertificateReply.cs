@@ -56,21 +56,30 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Boolean? WebServerConfiguredWithCaSignedCertificate
         // GraphQL -> webServerConfiguredWithCaSignedCertificate: Boolean! (scalar)
         if (this.WebServerConfiguredWithCaSignedCertificate != null) {
-            s += ind + "webServerConfiguredWithCaSignedCertificate\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "webServerConfiguredWithCaSignedCertificate\n" ;
+            } else {
+                s += ind + "webServerConfiguredWithCaSignedCertificate\n" ;
+            }
         }
         //      C# -> AddClusterCertificateReply? Cert
         // GraphQL -> cert: AddClusterCertificateReply (type)
         if (this.Cert != null) {
-            var fspec = this.Cert.AsFieldSpec(indent+1);
+            var fspec = this.Cert.AsFieldSpec(conf.Child("cert"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "cert {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cert {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -82,16 +91,39 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Boolean? WebServerConfiguredWithCaSignedCertificate
         // GraphQL -> webServerConfiguredWithCaSignedCertificate: Boolean! (scalar)
-        if (this.WebServerConfiguredWithCaSignedCertificate == null && ec.Includes("webServerConfiguredWithCaSignedCertificate",true))
+        if (ec.Includes("webServerConfiguredWithCaSignedCertificate",true))
         {
-            this.WebServerConfiguredWithCaSignedCertificate = true;
+            if(this.WebServerConfiguredWithCaSignedCertificate == null) {
+
+                this.WebServerConfiguredWithCaSignedCertificate = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.WebServerConfiguredWithCaSignedCertificate != null && ec.Excludes("webServerConfiguredWithCaSignedCertificate",true))
+        {
+            this.WebServerConfiguredWithCaSignedCertificate = null;
         }
         //      C# -> AddClusterCertificateReply? Cert
         // GraphQL -> cert: AddClusterCertificateReply (type)
-        if (this.Cert == null && ec.Includes("cert",false))
+        if (ec.Includes("cert",false))
         {
-            this.Cert = new AddClusterCertificateReply();
-            this.Cert.ApplyExploratoryFieldSpec(ec.NewChild("cert"));
+            if(this.Cert == null) {
+
+                this.Cert = new AddClusterCertificateReply();
+                this.Cert.ApplyExploratoryFieldSpec(ec.NewChild("cert"));
+
+            } else {
+
+                this.Cert.ApplyExploratoryFieldSpec(ec.NewChild("cert"));
+
+            }
+        }
+        else if (this.Cert != null && ec.Excludes("cert",false))
+        {
+            this.Cert = null;
         }
     }
 
@@ -118,9 +150,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ClusterWebSignedCertificateReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -83,34 +83,55 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Bucket
         // GraphQL -> bucket: String (scalar)
         if (this.Bucket != null) {
-            s += ind + "bucket\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "bucket\n" ;
+            } else {
+                s += ind + "bucket\n" ;
+            }
         }
         //      C# -> System.String? EncryptionType
         // GraphQL -> encryptionType: String (scalar)
         if (this.EncryptionType != null) {
-            s += ind + "encryptionType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "encryptionType\n" ;
+            } else {
+                s += ind + "encryptionType\n" ;
+            }
         }
         //      C# -> System.String? Endpoint
         // GraphQL -> endpoint: String (scalar)
         if (this.Endpoint != null) {
-            s += ind + "endpoint\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "endpoint\n" ;
+            } else {
+                s += ind + "endpoint\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.Int64? NumBuckets
         // GraphQL -> numBuckets: Long (scalar)
         if (this.NumBuckets != null) {
-            s += ind + "numBuckets\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "numBuckets\n" ;
+            } else {
+                s += ind + "numBuckets\n" ;
+            }
         }
         return s;
     }
@@ -121,33 +142,88 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Bucket
         // GraphQL -> bucket: String (scalar)
-        if (this.Bucket == null && ec.Includes("bucket",true))
+        if (ec.Includes("bucket",true))
         {
-            this.Bucket = "FETCH";
+            if(this.Bucket == null) {
+
+                this.Bucket = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Bucket != null && ec.Excludes("bucket",true))
+        {
+            this.Bucket = null;
         }
         //      C# -> System.String? EncryptionType
         // GraphQL -> encryptionType: String (scalar)
-        if (this.EncryptionType == null && ec.Includes("encryptionType",true))
+        if (ec.Includes("encryptionType",true))
         {
-            this.EncryptionType = "FETCH";
+            if(this.EncryptionType == null) {
+
+                this.EncryptionType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.EncryptionType != null && ec.Excludes("encryptionType",true))
+        {
+            this.EncryptionType = null;
         }
         //      C# -> System.String? Endpoint
         // GraphQL -> endpoint: String (scalar)
-        if (this.Endpoint == null && ec.Includes("endpoint",true))
+        if (ec.Includes("endpoint",true))
         {
-            this.Endpoint = "FETCH";
+            if(this.Endpoint == null) {
+
+                this.Endpoint = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Endpoint != null && ec.Excludes("endpoint",true))
+        {
+            this.Endpoint = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.Int64? NumBuckets
         // GraphQL -> numBuckets: Long (scalar)
-        if (this.NumBuckets == null && ec.Includes("numBuckets",true))
+        if (ec.Includes("numBuckets",true))
         {
-            this.NumBuckets = new System.Int64();
+            if(this.NumBuckets == null) {
+
+                this.NumBuckets = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.NumBuckets != null && ec.Excludes("numBuckets",true))
+        {
+            this.NumBuckets = null;
         }
     }
 
@@ -174,9 +250,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<RestoreFormConfigurationObjectStoreArchivalLocation> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

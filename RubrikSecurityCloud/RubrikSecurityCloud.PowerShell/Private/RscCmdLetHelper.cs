@@ -5,6 +5,9 @@ using System.Linq;
 using System.Reflection;
 using Newtonsoft.Json.Linq;
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
+
 namespace RubrikSecurityCloud.PowerShell.Private
 {
     internal class RscCmdletHelper

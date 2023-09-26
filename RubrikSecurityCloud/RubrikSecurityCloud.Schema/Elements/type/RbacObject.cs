@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> WorkloadLevelHierarchy? WorkloadHierarchy
         // GraphQL -> workloadHierarchy: WorkloadLevelHierarchy! (enum)
         if (this.WorkloadHierarchy != null) {
-            s += ind + "workloadHierarchy\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "workloadHierarchy\n" ;
+            } else {
+                s += ind + "workloadHierarchy\n" ;
+            }
         }
         //      C# -> System.String? ClusterId
         // GraphQL -> clusterId: String! (scalar)
         if (this.ClusterId != null) {
-            s += ind + "clusterId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterId\n" ;
+            } else {
+                s += ind + "clusterId\n" ;
+            }
         }
         //      C# -> System.String? ObjectId
         // GraphQL -> objectId: String! (scalar)
         if (this.ObjectId != null) {
-            s += ind + "objectId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "objectId\n" ;
+            } else {
+                s += ind + "objectId\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> WorkloadLevelHierarchy? WorkloadHierarchy
         // GraphQL -> workloadHierarchy: WorkloadLevelHierarchy! (enum)
-        if (this.WorkloadHierarchy == null && ec.Includes("workloadHierarchy",true))
+        if (ec.Includes("workloadHierarchy",true))
         {
-            this.WorkloadHierarchy = new WorkloadLevelHierarchy();
+            if(this.WorkloadHierarchy == null) {
+
+                this.WorkloadHierarchy = new WorkloadLevelHierarchy();
+
+            } else {
+
+
+            }
+        }
+        else if (this.WorkloadHierarchy != null && ec.Excludes("workloadHierarchy",true))
+        {
+            this.WorkloadHierarchy = null;
         }
         //      C# -> System.String? ClusterId
         // GraphQL -> clusterId: String! (scalar)
-        if (this.ClusterId == null && ec.Includes("clusterId",true))
+        if (ec.Includes("clusterId",true))
         {
-            this.ClusterId = "FETCH";
+            if(this.ClusterId == null) {
+
+                this.ClusterId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterId != null && ec.Excludes("clusterId",true))
+        {
+            this.ClusterId = null;
         }
         //      C# -> System.String? ObjectId
         // GraphQL -> objectId: String! (scalar)
-        if (this.ObjectId == null && ec.Includes("objectId",true))
+        if (ec.Includes("objectId",true))
         {
-            this.ObjectId = "FETCH";
+            if(this.ObjectId == null) {
+
+                this.ObjectId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ObjectId != null && ec.Excludes("objectId",true))
+        {
+            this.ObjectId = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<RbacObject> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? AppClientId
         // GraphQL -> appClientId: String! (scalar)
         if (this.AppClientId != null) {
-            s += ind + "appClientId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "appClientId\n" ;
+            } else {
+                s += ind + "appClientId\n" ;
+            }
         }
         //      C# -> System.String? CsrfToken
         // GraphQL -> csrfToken: String! (scalar)
         if (this.CsrfToken != null) {
-            s += ind + "csrfToken\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "csrfToken\n" ;
+            } else {
+                s += ind + "csrfToken\n" ;
+            }
         }
         //      C# -> System.String? TenantId
         // GraphQL -> tenantId: String! (scalar)
         if (this.TenantId != null) {
-            s += ind + "tenantId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "tenantId\n" ;
+            } else {
+                s += ind + "tenantId\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? AppClientId
         // GraphQL -> appClientId: String! (scalar)
-        if (this.AppClientId == null && ec.Includes("appClientId",true))
+        if (ec.Includes("appClientId",true))
         {
-            this.AppClientId = "FETCH";
+            if(this.AppClientId == null) {
+
+                this.AppClientId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AppClientId != null && ec.Excludes("appClientId",true))
+        {
+            this.AppClientId = null;
         }
         //      C# -> System.String? CsrfToken
         // GraphQL -> csrfToken: String! (scalar)
-        if (this.CsrfToken == null && ec.Includes("csrfToken",true))
+        if (ec.Includes("csrfToken",true))
         {
-            this.CsrfToken = "FETCH";
+            if(this.CsrfToken == null) {
+
+                this.CsrfToken = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CsrfToken != null && ec.Excludes("csrfToken",true))
+        {
+            this.CsrfToken = null;
         }
         //      C# -> System.String? TenantId
         // GraphQL -> tenantId: String! (scalar)
-        if (this.TenantId == null && ec.Includes("tenantId",true))
+        if (ec.Includes("tenantId",true))
         {
-            this.TenantId = "FETCH";
+            if(this.TenantId == null) {
+
+                this.TenantId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TenantId != null && ec.Excludes("tenantId",true))
+        {
+            this.TenantId = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<O365OauthConsentKickoffReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

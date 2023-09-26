@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> DateTime? Deadline
         // GraphQL -> deadline: DateTime (scalar)
         if (this.Deadline != null) {
-            s += ind + "deadline\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "deadline\n" ;
+            } else {
+                s += ind + "deadline\n" ;
+            }
         }
         //      C# -> System.Int32? NewCount
         // GraphQL -> newCount: Int! (scalar)
         if (this.NewCount != null) {
-            s += ind + "newCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "newCount\n" ;
+            } else {
+                s += ind + "newCount\n" ;
+            }
         }
         //      C# -> System.Int32? OldCount
         // GraphQL -> oldCount: Int! (scalar)
         if (this.OldCount != null) {
-            s += ind + "oldCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "oldCount\n" ;
+            } else {
+                s += ind + "oldCount\n" ;
+            }
         }
         //      C# -> System.String? TaskchainUuid
         // GraphQL -> taskchainUuid: String! (scalar)
         if (this.TaskchainUuid != null) {
-            s += ind + "taskchainUuid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "taskchainUuid\n" ;
+            } else {
+                s += ind + "taskchainUuid\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> DateTime? Deadline
         // GraphQL -> deadline: DateTime (scalar)
-        if (this.Deadline == null && ec.Includes("deadline",true))
+        if (ec.Includes("deadline",true))
         {
-            this.Deadline = new DateTime();
+            if(this.Deadline == null) {
+
+                this.Deadline = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Deadline != null && ec.Excludes("deadline",true))
+        {
+            this.Deadline = null;
         }
         //      C# -> System.Int32? NewCount
         // GraphQL -> newCount: Int! (scalar)
-        if (this.NewCount == null && ec.Includes("newCount",true))
+        if (ec.Includes("newCount",true))
         {
-            this.NewCount = Int32.MinValue;
+            if(this.NewCount == null) {
+
+                this.NewCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.NewCount != null && ec.Excludes("newCount",true))
+        {
+            this.NewCount = null;
         }
         //      C# -> System.Int32? OldCount
         // GraphQL -> oldCount: Int! (scalar)
-        if (this.OldCount == null && ec.Includes("oldCount",true))
+        if (ec.Includes("oldCount",true))
         {
-            this.OldCount = Int32.MinValue;
+            if(this.OldCount == null) {
+
+                this.OldCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.OldCount != null && ec.Excludes("oldCount",true))
+        {
+            this.OldCount = null;
         }
         //      C# -> System.String? TaskchainUuid
         // GraphQL -> taskchainUuid: String! (scalar)
-        if (this.TaskchainUuid == null && ec.Includes("taskchainUuid",true))
+        if (ec.Includes("taskchainUuid",true))
         {
-            this.TaskchainUuid = "FETCH";
+            if(this.TaskchainUuid == null) {
+
+                this.TaskchainUuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TaskchainUuid != null && ec.Excludes("taskchainUuid",true))
+        {
+            this.TaskchainUuid = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ScaleRuntime> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

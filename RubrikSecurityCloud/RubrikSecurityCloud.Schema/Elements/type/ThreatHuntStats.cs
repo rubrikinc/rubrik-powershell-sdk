@@ -92,39 +92,64 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? TotalAffectedObjects
         // GraphQL -> totalAffectedObjects: Long! (scalar)
         if (this.TotalAffectedObjects != null) {
-            s += ind + "totalAffectedObjects\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "totalAffectedObjects\n" ;
+            } else {
+                s += ind + "totalAffectedObjects\n" ;
+            }
         }
         //      C# -> System.Int64? TotalAffectedSnapshots
         // GraphQL -> totalAffectedSnapshots: Long! (scalar)
         if (this.TotalAffectedSnapshots != null) {
-            s += ind + "totalAffectedSnapshots\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "totalAffectedSnapshots\n" ;
+            } else {
+                s += ind + "totalAffectedSnapshots\n" ;
+            }
         }
         //      C# -> System.Int64? TotalSnapshotsScanned
         // GraphQL -> totalSnapshotsScanned: Long! (scalar)
         if (this.TotalSnapshotsScanned != null) {
-            s += ind + "totalSnapshotsScanned\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "totalSnapshotsScanned\n" ;
+            } else {
+                s += ind + "totalSnapshotsScanned\n" ;
+            }
         }
         //      C# -> System.Int64? TotalSucceededScans
         // GraphQL -> totalSucceededScans: Long! (scalar)
         if (this.TotalSucceededScans != null) {
-            s += ind + "totalSucceededScans\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "totalSucceededScans\n" ;
+            } else {
+                s += ind + "totalSucceededScans\n" ;
+            }
         }
         //      C# -> System.Int64? TotalUniqueMatchedPaths
         // GraphQL -> totalUniqueMatchedPaths: Long! (scalar)
         if (this.TotalUniqueMatchedPaths != null) {
-            s += ind + "totalUniqueMatchedPaths\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "totalUniqueMatchedPaths\n" ;
+            } else {
+                s += ind + "totalUniqueMatchedPaths\n" ;
+            }
         }
         //      C# -> System.Int64? TotalUniqueQuarantinedPaths
         // GraphQL -> totalUniqueQuarantinedPaths: Long! (scalar)
         if (this.TotalUniqueQuarantinedPaths != null) {
-            s += ind + "totalUniqueQuarantinedPaths\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "totalUniqueQuarantinedPaths\n" ;
+            } else {
+                s += ind + "totalUniqueQuarantinedPaths\n" ;
+            }
         }
         return s;
     }
@@ -135,39 +160,105 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? TotalAffectedObjects
         // GraphQL -> totalAffectedObjects: Long! (scalar)
-        if (this.TotalAffectedObjects == null && ec.Includes("totalAffectedObjects",true))
+        if (ec.Includes("totalAffectedObjects",true))
         {
-            this.TotalAffectedObjects = new System.Int64();
+            if(this.TotalAffectedObjects == null) {
+
+                this.TotalAffectedObjects = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalAffectedObjects != null && ec.Excludes("totalAffectedObjects",true))
+        {
+            this.TotalAffectedObjects = null;
         }
         //      C# -> System.Int64? TotalAffectedSnapshots
         // GraphQL -> totalAffectedSnapshots: Long! (scalar)
-        if (this.TotalAffectedSnapshots == null && ec.Includes("totalAffectedSnapshots",true))
+        if (ec.Includes("totalAffectedSnapshots",true))
         {
-            this.TotalAffectedSnapshots = new System.Int64();
+            if(this.TotalAffectedSnapshots == null) {
+
+                this.TotalAffectedSnapshots = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalAffectedSnapshots != null && ec.Excludes("totalAffectedSnapshots",true))
+        {
+            this.TotalAffectedSnapshots = null;
         }
         //      C# -> System.Int64? TotalSnapshotsScanned
         // GraphQL -> totalSnapshotsScanned: Long! (scalar)
-        if (this.TotalSnapshotsScanned == null && ec.Includes("totalSnapshotsScanned",true))
+        if (ec.Includes("totalSnapshotsScanned",true))
         {
-            this.TotalSnapshotsScanned = new System.Int64();
+            if(this.TotalSnapshotsScanned == null) {
+
+                this.TotalSnapshotsScanned = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalSnapshotsScanned != null && ec.Excludes("totalSnapshotsScanned",true))
+        {
+            this.TotalSnapshotsScanned = null;
         }
         //      C# -> System.Int64? TotalSucceededScans
         // GraphQL -> totalSucceededScans: Long! (scalar)
-        if (this.TotalSucceededScans == null && ec.Includes("totalSucceededScans",true))
+        if (ec.Includes("totalSucceededScans",true))
         {
-            this.TotalSucceededScans = new System.Int64();
+            if(this.TotalSucceededScans == null) {
+
+                this.TotalSucceededScans = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalSucceededScans != null && ec.Excludes("totalSucceededScans",true))
+        {
+            this.TotalSucceededScans = null;
         }
         //      C# -> System.Int64? TotalUniqueMatchedPaths
         // GraphQL -> totalUniqueMatchedPaths: Long! (scalar)
-        if (this.TotalUniqueMatchedPaths == null && ec.Includes("totalUniqueMatchedPaths",true))
+        if (ec.Includes("totalUniqueMatchedPaths",true))
         {
-            this.TotalUniqueMatchedPaths = new System.Int64();
+            if(this.TotalUniqueMatchedPaths == null) {
+
+                this.TotalUniqueMatchedPaths = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalUniqueMatchedPaths != null && ec.Excludes("totalUniqueMatchedPaths",true))
+        {
+            this.TotalUniqueMatchedPaths = null;
         }
         //      C# -> System.Int64? TotalUniqueQuarantinedPaths
         // GraphQL -> totalUniqueQuarantinedPaths: Long! (scalar)
-        if (this.TotalUniqueQuarantinedPaths == null && ec.Includes("totalUniqueQuarantinedPaths",true))
+        if (ec.Includes("totalUniqueQuarantinedPaths",true))
         {
-            this.TotalUniqueQuarantinedPaths = new System.Int64();
+            if(this.TotalUniqueQuarantinedPaths == null) {
+
+                this.TotalUniqueQuarantinedPaths = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalUniqueQuarantinedPaths != null && ec.Excludes("totalUniqueQuarantinedPaths",true))
+        {
+            this.TotalUniqueQuarantinedPaths = null;
         }
     }
 
@@ -194,9 +285,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ThreatHuntStats> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

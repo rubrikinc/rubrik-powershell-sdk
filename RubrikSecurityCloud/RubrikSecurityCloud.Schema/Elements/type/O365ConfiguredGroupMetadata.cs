@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int32? SharepointObjects
         // GraphQL -> sharepointObjects: Int (scalar)
         if (this.SharepointObjects != null) {
-            s += ind + "sharepointObjects\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sharepointObjects\n" ;
+            } else {
+                s += ind + "sharepointObjects\n" ;
+            }
         }
         //      C# -> System.Int32? TeamsObjects
         // GraphQL -> teamsObjects: Int (scalar)
         if (this.TeamsObjects != null) {
-            s += ind + "teamsObjects\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "teamsObjects\n" ;
+            } else {
+                s += ind + "teamsObjects\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int32? SharepointObjects
         // GraphQL -> sharepointObjects: Int (scalar)
-        if (this.SharepointObjects == null && ec.Includes("sharepointObjects",true))
+        if (ec.Includes("sharepointObjects",true))
         {
-            this.SharepointObjects = Int32.MinValue;
+            if(this.SharepointObjects == null) {
+
+                this.SharepointObjects = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.SharepointObjects != null && ec.Excludes("sharepointObjects",true))
+        {
+            this.SharepointObjects = null;
         }
         //      C# -> System.Int32? TeamsObjects
         // GraphQL -> teamsObjects: Int (scalar)
-        if (this.TeamsObjects == null && ec.Includes("teamsObjects",true))
+        if (ec.Includes("teamsObjects",true))
         {
-            this.TeamsObjects = Int32.MinValue;
+            if(this.TeamsObjects == null) {
+
+                this.TeamsObjects = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.TeamsObjects != null && ec.Excludes("teamsObjects",true))
+        {
+            this.TeamsObjects = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<O365ConfiguredGroupMetadata> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

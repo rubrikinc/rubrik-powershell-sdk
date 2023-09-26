@@ -92,41 +92,66 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Availability
         // GraphQL -> availability: String! (scalar)
         if (this.Availability != null) {
-            s += ind + "availability\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "availability\n" ;
+            } else {
+                s += ind + "availability\n" ;
+            }
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
         if (this.Description != null) {
-            s += ind + "description\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "description\n" ;
+            } else {
+                s += ind + "description\n" ;
+            }
         }
         //      C# -> System.String? Md5Sum
         // GraphQL -> md5Sum: String! (scalar)
         if (this.Md5Sum != null) {
-            s += ind + "md5Sum\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "md5Sum\n" ;
+            } else {
+                s += ind + "md5Sum\n" ;
+            }
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long! (scalar)
         if (this.Size != null) {
-            s += ind + "size\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "size\n" ;
+            } else {
+                s += ind + "size\n" ;
+            }
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String! (scalar)
         if (this.Version != null) {
-            s += ind + "version\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "version\n" ;
+            } else {
+                s += ind + "version\n" ;
+            }
         }
         //      C# -> DownloadJobInfo? DownloadJobInfo
         // GraphQL -> downloadJobInfo: DownloadJobInfo (type)
         if (this.DownloadJobInfo != null) {
-            var fspec = this.DownloadJobInfo.AsFieldSpec(indent+1);
+            var fspec = this.DownloadJobInfo.AsFieldSpec(conf.Child("downloadJobInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "downloadJobInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "downloadJobInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -138,40 +163,107 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Availability
         // GraphQL -> availability: String! (scalar)
-        if (this.Availability == null && ec.Includes("availability",true))
+        if (ec.Includes("availability",true))
         {
-            this.Availability = "FETCH";
+            if(this.Availability == null) {
+
+                this.Availability = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Availability != null && ec.Excludes("availability",true))
+        {
+            this.Availability = null;
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
-        if (this.Description == null && ec.Includes("description",true))
+        if (ec.Includes("description",true))
         {
-            this.Description = "FETCH";
+            if(this.Description == null) {
+
+                this.Description = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Description != null && ec.Excludes("description",true))
+        {
+            this.Description = null;
         }
         //      C# -> System.String? Md5Sum
         // GraphQL -> md5Sum: String! (scalar)
-        if (this.Md5Sum == null && ec.Includes("md5Sum",true))
+        if (ec.Includes("md5Sum",true))
         {
-            this.Md5Sum = "FETCH";
+            if(this.Md5Sum == null) {
+
+                this.Md5Sum = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Md5Sum != null && ec.Excludes("md5Sum",true))
+        {
+            this.Md5Sum = null;
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long! (scalar)
-        if (this.Size == null && ec.Includes("size",true))
+        if (ec.Includes("size",true))
         {
-            this.Size = new System.Int64();
+            if(this.Size == null) {
+
+                this.Size = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Size != null && ec.Excludes("size",true))
+        {
+            this.Size = null;
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String! (scalar)
-        if (this.Version == null && ec.Includes("version",true))
+        if (ec.Includes("version",true))
         {
-            this.Version = "FETCH";
+            if(this.Version == null) {
+
+                this.Version = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Version != null && ec.Excludes("version",true))
+        {
+            this.Version = null;
         }
         //      C# -> DownloadJobInfo? DownloadJobInfo
         // GraphQL -> downloadJobInfo: DownloadJobInfo (type)
-        if (this.DownloadJobInfo == null && ec.Includes("downloadJobInfo",false))
+        if (ec.Includes("downloadJobInfo",false))
         {
-            this.DownloadJobInfo = new DownloadJobInfo();
-            this.DownloadJobInfo.ApplyExploratoryFieldSpec(ec.NewChild("downloadJobInfo"));
+            if(this.DownloadJobInfo == null) {
+
+                this.DownloadJobInfo = new DownloadJobInfo();
+                this.DownloadJobInfo.ApplyExploratoryFieldSpec(ec.NewChild("downloadJobInfo"));
+
+            } else {
+
+                this.DownloadJobInfo.ApplyExploratoryFieldSpec(ec.NewChild("downloadJobInfo"));
+
+            }
+        }
+        else if (this.DownloadJobInfo != null && ec.Excludes("downloadJobInfo",false))
+        {
+            this.DownloadJobInfo = null;
         }
     }
 
@@ -198,9 +290,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<DownloadPackageStatusReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

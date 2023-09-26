@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> SnmpSecurityLevel? SecurityLevel
         // GraphQL -> securityLevel: SnmpSecurityLevel (enum)
         if (this.SecurityLevel != null) {
-            s += ind + "securityLevel\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "securityLevel\n" ;
+            } else {
+                s += ind + "securityLevel\n" ;
+            }
         }
         //      C# -> System.String? Address
         // GraphQL -> address: String! (scalar)
         if (this.Address != null) {
-            s += ind + "address\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "address\n" ;
+            } else {
+                s += ind + "address\n" ;
+            }
         }
         //      C# -> System.Int32? Port
         // GraphQL -> port: Int! (scalar)
         if (this.Port != null) {
-            s += ind + "port\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "port\n" ;
+            } else {
+                s += ind + "port\n" ;
+            }
         }
         //      C# -> System.String? User
         // GraphQL -> user: String (scalar)
         if (this.User != null) {
-            s += ind + "user\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "user\n" ;
+            } else {
+                s += ind + "user\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> SnmpSecurityLevel? SecurityLevel
         // GraphQL -> securityLevel: SnmpSecurityLevel (enum)
-        if (this.SecurityLevel == null && ec.Includes("securityLevel",true))
+        if (ec.Includes("securityLevel",true))
         {
-            this.SecurityLevel = new SnmpSecurityLevel();
+            if(this.SecurityLevel == null) {
+
+                this.SecurityLevel = new SnmpSecurityLevel();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SecurityLevel != null && ec.Excludes("securityLevel",true))
+        {
+            this.SecurityLevel = null;
         }
         //      C# -> System.String? Address
         // GraphQL -> address: String! (scalar)
-        if (this.Address == null && ec.Includes("address",true))
+        if (ec.Includes("address",true))
         {
-            this.Address = "FETCH";
+            if(this.Address == null) {
+
+                this.Address = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Address != null && ec.Excludes("address",true))
+        {
+            this.Address = null;
         }
         //      C# -> System.Int32? Port
         // GraphQL -> port: Int! (scalar)
-        if (this.Port == null && ec.Includes("port",true))
+        if (ec.Includes("port",true))
         {
-            this.Port = Int32.MinValue;
+            if(this.Port == null) {
+
+                this.Port = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Port != null && ec.Excludes("port",true))
+        {
+            this.Port = null;
         }
         //      C# -> System.String? User
         // GraphQL -> user: String (scalar)
-        if (this.User == null && ec.Includes("user",true))
+        if (ec.Includes("user",true))
         {
-            this.User = "FETCH";
+            if(this.User == null) {
+
+                this.User = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.User != null && ec.Excludes("user",true))
+        {
+            this.User = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SnmpTrapReceiverConfig> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

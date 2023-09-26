@@ -56,21 +56,30 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? TenantId
         // GraphQL -> tenantId: String! (scalar)
         if (this.TenantId != null) {
-            s += ind + "tenantId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "tenantId\n" ;
+            } else {
+                s += ind + "tenantId\n" ;
+            }
         }
         //      C# -> List<AddAzureCloudAccountStatus>? Status
         // GraphQL -> status: [AddAzureCloudAccountStatus!]! (type)
         if (this.Status != null) {
-            var fspec = this.Status.AsFieldSpec(indent+1);
+            var fspec = this.Status.AsFieldSpec(conf.Child("status"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "status {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "status {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -82,16 +91,39 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? TenantId
         // GraphQL -> tenantId: String! (scalar)
-        if (this.TenantId == null && ec.Includes("tenantId",true))
+        if (ec.Includes("tenantId",true))
         {
-            this.TenantId = "FETCH";
+            if(this.TenantId == null) {
+
+                this.TenantId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TenantId != null && ec.Excludes("tenantId",true))
+        {
+            this.TenantId = null;
         }
         //      C# -> List<AddAzureCloudAccountStatus>? Status
         // GraphQL -> status: [AddAzureCloudAccountStatus!]! (type)
-        if (this.Status == null && ec.Includes("status",false))
+        if (ec.Includes("status",false))
         {
-            this.Status = new List<AddAzureCloudAccountStatus>();
-            this.Status.ApplyExploratoryFieldSpec(ec.NewChild("status"));
+            if(this.Status == null) {
+
+                this.Status = new List<AddAzureCloudAccountStatus>();
+                this.Status.ApplyExploratoryFieldSpec(ec.NewChild("status"));
+
+            } else {
+
+                this.Status.ApplyExploratoryFieldSpec(ec.NewChild("status"));
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",false))
+        {
+            this.Status = null;
         }
     }
 
@@ -118,9 +150,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AddAzureCloudAccountReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

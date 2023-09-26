@@ -56,24 +56,33 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<BlackoutWindow>? GlobalBlackoutWindows
         // GraphQL -> globalBlackoutWindows: [BlackoutWindow!]! (type)
         if (this.GlobalBlackoutWindows != null) {
-            var fspec = this.GlobalBlackoutWindows.AsFieldSpec(indent+1);
+            var fspec = this.GlobalBlackoutWindows.AsFieldSpec(conf.Child("globalBlackoutWindows"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "globalBlackoutWindows {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "globalBlackoutWindows {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<BlackoutWindow>? SnappableBlackoutWindows
         // GraphQL -> snappableBlackoutWindows: [BlackoutWindow!]! (type)
         if (this.SnappableBlackoutWindows != null) {
-            var fspec = this.SnappableBlackoutWindows.AsFieldSpec(indent+1);
+            var fspec = this.SnappableBlackoutWindows.AsFieldSpec(conf.Child("snappableBlackoutWindows"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "snappableBlackoutWindows {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "snappableBlackoutWindows {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -85,17 +94,41 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<BlackoutWindow>? GlobalBlackoutWindows
         // GraphQL -> globalBlackoutWindows: [BlackoutWindow!]! (type)
-        if (this.GlobalBlackoutWindows == null && ec.Includes("globalBlackoutWindows",false))
+        if (ec.Includes("globalBlackoutWindows",false))
         {
-            this.GlobalBlackoutWindows = new List<BlackoutWindow>();
-            this.GlobalBlackoutWindows.ApplyExploratoryFieldSpec(ec.NewChild("globalBlackoutWindows"));
+            if(this.GlobalBlackoutWindows == null) {
+
+                this.GlobalBlackoutWindows = new List<BlackoutWindow>();
+                this.GlobalBlackoutWindows.ApplyExploratoryFieldSpec(ec.NewChild("globalBlackoutWindows"));
+
+            } else {
+
+                this.GlobalBlackoutWindows.ApplyExploratoryFieldSpec(ec.NewChild("globalBlackoutWindows"));
+
+            }
+        }
+        else if (this.GlobalBlackoutWindows != null && ec.Excludes("globalBlackoutWindows",false))
+        {
+            this.GlobalBlackoutWindows = null;
         }
         //      C# -> List<BlackoutWindow>? SnappableBlackoutWindows
         // GraphQL -> snappableBlackoutWindows: [BlackoutWindow!]! (type)
-        if (this.SnappableBlackoutWindows == null && ec.Includes("snappableBlackoutWindows",false))
+        if (ec.Includes("snappableBlackoutWindows",false))
         {
-            this.SnappableBlackoutWindows = new List<BlackoutWindow>();
-            this.SnappableBlackoutWindows.ApplyExploratoryFieldSpec(ec.NewChild("snappableBlackoutWindows"));
+            if(this.SnappableBlackoutWindows == null) {
+
+                this.SnappableBlackoutWindows = new List<BlackoutWindow>();
+                this.SnappableBlackoutWindows.ApplyExploratoryFieldSpec(ec.NewChild("snappableBlackoutWindows"));
+
+            } else {
+
+                this.SnappableBlackoutWindows.ApplyExploratoryFieldSpec(ec.NewChild("snappableBlackoutWindows"));
+
+            }
+        }
+        else if (this.SnappableBlackoutWindows != null && ec.Excludes("snappableBlackoutWindows",false))
+        {
+            this.SnappableBlackoutWindows = null;
         }
     }
 
@@ -122,9 +155,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<BlackoutWindows> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

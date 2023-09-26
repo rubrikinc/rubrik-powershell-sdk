@@ -128,64 +128,105 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> FileModeEnum? FileMode
         // GraphQL -> fileMode: FileModeEnum! (enum)
         if (this.FileMode != null) {
-            s += ind + "fileMode\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "fileMode\n" ;
+            } else {
+                s += ind + "fileMode\n" ;
+            }
         }
         //      C# -> System.String? AbsolutePath
         // GraphQL -> absolutePath: String! (scalar)
         if (this.AbsolutePath != null) {
-            s += ind + "absolutePath\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "absolutePath\n" ;
+            } else {
+                s += ind + "absolutePath\n" ;
+            }
         }
         //      C# -> System.String? DisplayPath
         // GraphQL -> displayPath: String! (scalar)
         if (this.DisplayPath != null) {
-            s += ind + "displayPath\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "displayPath\n" ;
+            } else {
+                s += ind + "displayPath\n" ;
+            }
         }
         //      C# -> System.String? Filename
         // GraphQL -> filename: String! (scalar)
         if (this.Filename != null) {
-            s += ind + "filename\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "filename\n" ;
+            } else {
+                s += ind + "filename\n" ;
+            }
         }
         //      C# -> DateTime? LastModified
         // GraphQL -> lastModified: DateTime! (scalar)
         if (this.LastModified != null) {
-            s += ind + "lastModified\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "lastModified\n" ;
+            } else {
+                s += ind + "lastModified\n" ;
+            }
         }
         //      C# -> System.String? Path
         // GraphQL -> path: String! (scalar)
         if (this.Path != null) {
-            s += ind + "path\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "path\n" ;
+            } else {
+                s += ind + "path\n" ;
+            }
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long! (scalar)
         if (this.Size != null) {
-            s += ind + "size\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "size\n" ;
+            } else {
+                s += ind + "size\n" ;
+            }
         }
         //      C# -> System.String? StatusMessage
         // GraphQL -> statusMessage: String! (scalar)
         if (this.StatusMessage != null) {
-            s += ind + "statusMessage\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "statusMessage\n" ;
+            } else {
+                s += ind + "statusMessage\n" ;
+            }
         }
         //      C# -> QuarantineInfo? QuarantineInfo
         // GraphQL -> quarantineInfo: QuarantineInfo (type)
         if (this.QuarantineInfo != null) {
-            var fspec = this.QuarantineInfo.AsFieldSpec(indent+1);
+            var fspec = this.QuarantineInfo.AsFieldSpec(conf.Child("quarantineInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "quarantineInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "quarantineInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> WorkloadFields? WorkloadFields
         // GraphQL -> workloadFields: WorkloadFields (type)
         if (this.WorkloadFields != null) {
-            var fspec = this.WorkloadFields.AsFieldSpec(indent+1);
+            var fspec = this.WorkloadFields.AsFieldSpec(conf.Child("workloadFields"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "workloadFields {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "workloadFields {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -197,65 +238,177 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> FileModeEnum? FileMode
         // GraphQL -> fileMode: FileModeEnum! (enum)
-        if (this.FileMode == null && ec.Includes("fileMode",true))
+        if (ec.Includes("fileMode",true))
         {
-            this.FileMode = new FileModeEnum();
+            if(this.FileMode == null) {
+
+                this.FileMode = new FileModeEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.FileMode != null && ec.Excludes("fileMode",true))
+        {
+            this.FileMode = null;
         }
         //      C# -> System.String? AbsolutePath
         // GraphQL -> absolutePath: String! (scalar)
-        if (this.AbsolutePath == null && ec.Includes("absolutePath",true))
+        if (ec.Includes("absolutePath",true))
         {
-            this.AbsolutePath = "FETCH";
+            if(this.AbsolutePath == null) {
+
+                this.AbsolutePath = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AbsolutePath != null && ec.Excludes("absolutePath",true))
+        {
+            this.AbsolutePath = null;
         }
         //      C# -> System.String? DisplayPath
         // GraphQL -> displayPath: String! (scalar)
-        if (this.DisplayPath == null && ec.Includes("displayPath",true))
+        if (ec.Includes("displayPath",true))
         {
-            this.DisplayPath = "FETCH";
+            if(this.DisplayPath == null) {
+
+                this.DisplayPath = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DisplayPath != null && ec.Excludes("displayPath",true))
+        {
+            this.DisplayPath = null;
         }
         //      C# -> System.String? Filename
         // GraphQL -> filename: String! (scalar)
-        if (this.Filename == null && ec.Includes("filename",true))
+        if (ec.Includes("filename",true))
         {
-            this.Filename = "FETCH";
+            if(this.Filename == null) {
+
+                this.Filename = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Filename != null && ec.Excludes("filename",true))
+        {
+            this.Filename = null;
         }
         //      C# -> DateTime? LastModified
         // GraphQL -> lastModified: DateTime! (scalar)
-        if (this.LastModified == null && ec.Includes("lastModified",true))
+        if (ec.Includes("lastModified",true))
         {
-            this.LastModified = new DateTime();
+            if(this.LastModified == null) {
+
+                this.LastModified = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastModified != null && ec.Excludes("lastModified",true))
+        {
+            this.LastModified = null;
         }
         //      C# -> System.String? Path
         // GraphQL -> path: String! (scalar)
-        if (this.Path == null && ec.Includes("path",true))
+        if (ec.Includes("path",true))
         {
-            this.Path = "FETCH";
+            if(this.Path == null) {
+
+                this.Path = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Path != null && ec.Excludes("path",true))
+        {
+            this.Path = null;
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long! (scalar)
-        if (this.Size == null && ec.Includes("size",true))
+        if (ec.Includes("size",true))
         {
-            this.Size = new System.Int64();
+            if(this.Size == null) {
+
+                this.Size = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Size != null && ec.Excludes("size",true))
+        {
+            this.Size = null;
         }
         //      C# -> System.String? StatusMessage
         // GraphQL -> statusMessage: String! (scalar)
-        if (this.StatusMessage == null && ec.Includes("statusMessage",true))
+        if (ec.Includes("statusMessage",true))
         {
-            this.StatusMessage = "FETCH";
+            if(this.StatusMessage == null) {
+
+                this.StatusMessage = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.StatusMessage != null && ec.Excludes("statusMessage",true))
+        {
+            this.StatusMessage = null;
         }
         //      C# -> QuarantineInfo? QuarantineInfo
         // GraphQL -> quarantineInfo: QuarantineInfo (type)
-        if (this.QuarantineInfo == null && ec.Includes("quarantineInfo",false))
+        if (ec.Includes("quarantineInfo",false))
         {
-            this.QuarantineInfo = new QuarantineInfo();
-            this.QuarantineInfo.ApplyExploratoryFieldSpec(ec.NewChild("quarantineInfo"));
+            if(this.QuarantineInfo == null) {
+
+                this.QuarantineInfo = new QuarantineInfo();
+                this.QuarantineInfo.ApplyExploratoryFieldSpec(ec.NewChild("quarantineInfo"));
+
+            } else {
+
+                this.QuarantineInfo.ApplyExploratoryFieldSpec(ec.NewChild("quarantineInfo"));
+
+            }
+        }
+        else if (this.QuarantineInfo != null && ec.Excludes("quarantineInfo",false))
+        {
+            this.QuarantineInfo = null;
         }
         //      C# -> WorkloadFields? WorkloadFields
         // GraphQL -> workloadFields: WorkloadFields (type)
-        if (this.WorkloadFields == null && ec.Includes("workloadFields",false))
+        if (ec.Includes("workloadFields",false))
         {
-            this.WorkloadFields = new WorkloadFields();
-            this.WorkloadFields.ApplyExploratoryFieldSpec(ec.NewChild("workloadFields"));
+            if(this.WorkloadFields == null) {
+
+                this.WorkloadFields = new WorkloadFields();
+                this.WorkloadFields.ApplyExploratoryFieldSpec(ec.NewChild("workloadFields"));
+
+            } else {
+
+                this.WorkloadFields.ApplyExploratoryFieldSpec(ec.NewChild("workloadFields"));
+
+            }
+        }
+        else if (this.WorkloadFields != null && ec.Excludes("workloadFields",false))
+        {
+            this.WorkloadFields = null;
         }
     }
 
@@ -282,9 +435,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SnapshotFile> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? ObjectId
         // GraphQL -> objectId: String! (scalar)
         if (this.ObjectId != null) {
-            s += ind + "objectId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "objectId\n" ;
+            } else {
+                s += ind + "objectId\n" ;
+            }
         }
         //      C# -> List<System.String>? SnapshotIds
         // GraphQL -> snapshotIds: [String!]! (scalar)
         if (this.SnapshotIds != null) {
-            s += ind + "snapshotIds\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotIds\n" ;
+            } else {
+                s += ind + "snapshotIds\n" ;
+            }
         }
         //      C# -> List<DateTime>? SnapshotTimestamps
         // GraphQL -> snapshotTimestamps: [DateTime!]! (scalar)
         if (this.SnapshotTimestamps != null) {
-            s += ind + "snapshotTimestamps\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotTimestamps\n" ;
+            } else {
+                s += ind + "snapshotTimestamps\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? ObjectId
         // GraphQL -> objectId: String! (scalar)
-        if (this.ObjectId == null && ec.Includes("objectId",true))
+        if (ec.Includes("objectId",true))
         {
-            this.ObjectId = "FETCH";
+            if(this.ObjectId == null) {
+
+                this.ObjectId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ObjectId != null && ec.Excludes("objectId",true))
+        {
+            this.ObjectId = null;
         }
         //      C# -> List<System.String>? SnapshotIds
         // GraphQL -> snapshotIds: [String!]! (scalar)
-        if (this.SnapshotIds == null && ec.Includes("snapshotIds",true))
+        if (ec.Includes("snapshotIds",true))
         {
-            this.SnapshotIds = new List<System.String>();
+            if(this.SnapshotIds == null) {
+
+                this.SnapshotIds = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotIds != null && ec.Excludes("snapshotIds",true))
+        {
+            this.SnapshotIds = null;
         }
         //      C# -> List<DateTime>? SnapshotTimestamps
         // GraphQL -> snapshotTimestamps: [DateTime!]! (scalar)
-        if (this.SnapshotTimestamps == null && ec.Includes("snapshotTimestamps",true))
+        if (ec.Includes("snapshotTimestamps",true))
         {
-            this.SnapshotTimestamps = new List<DateTime>();
+            if(this.SnapshotTimestamps == null) {
+
+                this.SnapshotTimestamps = new List<DateTime>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotTimestamps != null && ec.Excludes("snapshotTimestamps",true))
+        {
+            this.SnapshotTimestamps = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<WorkloadIdToSnapshotIds> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

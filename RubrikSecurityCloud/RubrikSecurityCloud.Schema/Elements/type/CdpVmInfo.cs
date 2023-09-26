@@ -128,59 +128,100 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> CdpLocalStatus? CdpLocalStatus
         // GraphQL -> cdpLocalStatus: CdpLocalStatus (enum)
         if (this.CdpLocalStatus != null) {
-            s += ind + "cdpLocalStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cdpLocalStatus\n" ;
+            } else {
+                s += ind + "cdpLocalStatus\n" ;
+            }
         }
         //      C# -> CdpReplicationStatus? CdpReplicationStatus
         // GraphQL -> cdpReplicationStatus: CdpReplicationStatus (enum)
         if (this.CdpReplicationStatus != null) {
-            s += ind + "cdpReplicationStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cdpReplicationStatus\n" ;
+            } else {
+                s += ind + "cdpReplicationStatus\n" ;
+            }
         }
         //      C# -> IoFilterStatus? IoFilterStatus
         // GraphQL -> ioFilterStatus: IoFilterStatus (enum)
         if (this.IoFilterStatus != null) {
-            s += ind + "ioFilterStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "ioFilterStatus\n" ;
+            } else {
+                s += ind + "ioFilterStatus\n" ;
+            }
         }
         //      C# -> DateTime? LatestSnapshotTime
         // GraphQL -> latestSnapshotTime: DateTime (scalar)
         if (this.LatestSnapshotTime != null) {
-            s += ind + "latestSnapshotTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "latestSnapshotTime\n" ;
+            } else {
+                s += ind + "latestSnapshotTime\n" ;
+            }
         }
         //      C# -> System.String? ReplicationTarget
         // GraphQL -> replicationTarget: String! (scalar)
         if (this.ReplicationTarget != null) {
-            s += ind + "replicationTarget\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "replicationTarget\n" ;
+            } else {
+                s += ind + "replicationTarget\n" ;
+            }
         }
         //      C# -> System.String? SlaDomainName
         // GraphQL -> slaDomainName: String! (scalar)
         if (this.SlaDomainName != null) {
-            s += ind + "slaDomainName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "slaDomainName\n" ;
+            } else {
+                s += ind + "slaDomainName\n" ;
+            }
         }
         //      C# -> System.String? SourceCluster
         // GraphQL -> sourceCluster: String! (scalar)
         if (this.SourceCluster != null) {
-            s += ind + "sourceCluster\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sourceCluster\n" ;
+            } else {
+                s += ind + "sourceCluster\n" ;
+            }
         }
         //      C# -> System.String? VmId
         // GraphQL -> vmId: String! (scalar)
         if (this.VmId != null) {
-            s += ind + "vmId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "vmId\n" ;
+            } else {
+                s += ind + "vmId\n" ;
+            }
         }
         //      C# -> System.String? VmLocation
         // GraphQL -> vmLocation: String! (scalar)
         if (this.VmLocation != null) {
-            s += ind + "vmLocation\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "vmLocation\n" ;
+            } else {
+                s += ind + "vmLocation\n" ;
+            }
         }
         //      C# -> System.String? VmName
         // GraphQL -> vmName: String! (scalar)
         if (this.VmName != null) {
-            s += ind + "vmName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "vmName\n" ;
+            } else {
+                s += ind + "vmName\n" ;
+            }
         }
         return s;
     }
@@ -191,63 +232,173 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> CdpLocalStatus? CdpLocalStatus
         // GraphQL -> cdpLocalStatus: CdpLocalStatus (enum)
-        if (this.CdpLocalStatus == null && ec.Includes("cdpLocalStatus",true))
+        if (ec.Includes("cdpLocalStatus",true))
         {
-            this.CdpLocalStatus = new CdpLocalStatus();
+            if(this.CdpLocalStatus == null) {
+
+                this.CdpLocalStatus = new CdpLocalStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CdpLocalStatus != null && ec.Excludes("cdpLocalStatus",true))
+        {
+            this.CdpLocalStatus = null;
         }
         //      C# -> CdpReplicationStatus? CdpReplicationStatus
         // GraphQL -> cdpReplicationStatus: CdpReplicationStatus (enum)
-        if (this.CdpReplicationStatus == null && ec.Includes("cdpReplicationStatus",true))
+        if (ec.Includes("cdpReplicationStatus",true))
         {
-            this.CdpReplicationStatus = new CdpReplicationStatus();
+            if(this.CdpReplicationStatus == null) {
+
+                this.CdpReplicationStatus = new CdpReplicationStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CdpReplicationStatus != null && ec.Excludes("cdpReplicationStatus",true))
+        {
+            this.CdpReplicationStatus = null;
         }
         //      C# -> IoFilterStatus? IoFilterStatus
         // GraphQL -> ioFilterStatus: IoFilterStatus (enum)
-        if (this.IoFilterStatus == null && ec.Includes("ioFilterStatus",true))
+        if (ec.Includes("ioFilterStatus",true))
         {
-            this.IoFilterStatus = new IoFilterStatus();
+            if(this.IoFilterStatus == null) {
+
+                this.IoFilterStatus = new IoFilterStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.IoFilterStatus != null && ec.Excludes("ioFilterStatus",true))
+        {
+            this.IoFilterStatus = null;
         }
         //      C# -> DateTime? LatestSnapshotTime
         // GraphQL -> latestSnapshotTime: DateTime (scalar)
-        if (this.LatestSnapshotTime == null && ec.Includes("latestSnapshotTime",true))
+        if (ec.Includes("latestSnapshotTime",true))
         {
-            this.LatestSnapshotTime = new DateTime();
+            if(this.LatestSnapshotTime == null) {
+
+                this.LatestSnapshotTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LatestSnapshotTime != null && ec.Excludes("latestSnapshotTime",true))
+        {
+            this.LatestSnapshotTime = null;
         }
         //      C# -> System.String? ReplicationTarget
         // GraphQL -> replicationTarget: String! (scalar)
-        if (this.ReplicationTarget == null && ec.Includes("replicationTarget",true))
+        if (ec.Includes("replicationTarget",true))
         {
-            this.ReplicationTarget = "FETCH";
+            if(this.ReplicationTarget == null) {
+
+                this.ReplicationTarget = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ReplicationTarget != null && ec.Excludes("replicationTarget",true))
+        {
+            this.ReplicationTarget = null;
         }
         //      C# -> System.String? SlaDomainName
         // GraphQL -> slaDomainName: String! (scalar)
-        if (this.SlaDomainName == null && ec.Includes("slaDomainName",true))
+        if (ec.Includes("slaDomainName",true))
         {
-            this.SlaDomainName = "FETCH";
+            if(this.SlaDomainName == null) {
+
+                this.SlaDomainName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SlaDomainName != null && ec.Excludes("slaDomainName",true))
+        {
+            this.SlaDomainName = null;
         }
         //      C# -> System.String? SourceCluster
         // GraphQL -> sourceCluster: String! (scalar)
-        if (this.SourceCluster == null && ec.Includes("sourceCluster",true))
+        if (ec.Includes("sourceCluster",true))
         {
-            this.SourceCluster = "FETCH";
+            if(this.SourceCluster == null) {
+
+                this.SourceCluster = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SourceCluster != null && ec.Excludes("sourceCluster",true))
+        {
+            this.SourceCluster = null;
         }
         //      C# -> System.String? VmId
         // GraphQL -> vmId: String! (scalar)
-        if (this.VmId == null && ec.Includes("vmId",true))
+        if (ec.Includes("vmId",true))
         {
-            this.VmId = "FETCH";
+            if(this.VmId == null) {
+
+                this.VmId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.VmId != null && ec.Excludes("vmId",true))
+        {
+            this.VmId = null;
         }
         //      C# -> System.String? VmLocation
         // GraphQL -> vmLocation: String! (scalar)
-        if (this.VmLocation == null && ec.Includes("vmLocation",true))
+        if (ec.Includes("vmLocation",true))
         {
-            this.VmLocation = "FETCH";
+            if(this.VmLocation == null) {
+
+                this.VmLocation = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.VmLocation != null && ec.Excludes("vmLocation",true))
+        {
+            this.VmLocation = null;
         }
         //      C# -> System.String? VmName
         // GraphQL -> vmName: String! (scalar)
-        if (this.VmName == null && ec.Includes("vmName",true))
+        if (ec.Includes("vmName",true))
         {
-            this.VmName = "FETCH";
+            if(this.VmName == null) {
+
+                this.VmName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.VmName != null && ec.Excludes("vmName",true))
+        {
+            this.VmName = null;
         }
     }
 
@@ -274,9 +425,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CdpVmInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

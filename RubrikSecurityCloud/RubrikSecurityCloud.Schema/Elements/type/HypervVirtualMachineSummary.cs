@@ -128,73 +128,114 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Boolean? ForceFull
         // GraphQL -> forceFull: Boolean (scalar)
         if (this.ForceFull != null) {
-            s += ind + "forceFull\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "forceFull\n" ;
+            } else {
+                s += ind + "forceFull\n" ;
+            }
         }
         //      C# -> System.String? HostId
         // GraphQL -> hostId: String! (scalar)
         if (this.HostId != null) {
-            s += ind + "hostId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostId\n" ;
+            } else {
+                s += ind + "hostId\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
         if (this.IsRelic != null) {
-            s += ind + "isRelic\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isRelic\n" ;
+            } else {
+                s += ind + "isRelic\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> CdmAgentStatus? AgentStatus
         // GraphQL -> agentStatus: CdmAgentStatus (type)
         if (this.AgentStatus != null) {
-            var fspec = this.AgentStatus.AsFieldSpec(indent+1);
+            var fspec = this.AgentStatus.AsFieldSpec(conf.Child("agentStatus"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "agentStatus {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "agentStatus {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> CloudInstantiationSpec? CloudInstantiationSpec
         // GraphQL -> cloudInstantiationSpec: CloudInstantiationSpec (type)
         if (this.CloudInstantiationSpec != null) {
-            var fspec = this.CloudInstantiationSpec.AsFieldSpec(indent+1);
+            var fspec = this.CloudInstantiationSpec.AsFieldSpec(conf.Child("cloudInstantiationSpec"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "cloudInstantiationSpec {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cloudInstantiationSpec {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<ManagedHierarchyObjectAncestor>? InfraPath
         // GraphQL -> infraPath: [ManagedHierarchyObjectAncestor!]! (type)
         if (this.InfraPath != null) {
-            var fspec = this.InfraPath.AsFieldSpec(indent+1);
+            var fspec = this.InfraPath.AsFieldSpec(conf.Child("infraPath"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "infraPath {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "infraPath {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> ManagedObjectPendingSlaInfo? PendingSlaDomain
         // GraphQL -> pendingSlaDomain: ManagedObjectPendingSlaInfo (type)
         if (this.PendingSlaDomain != null) {
-            var fspec = this.PendingSlaDomain.AsFieldSpec(indent+1);
+            var fspec = this.PendingSlaDomain.AsFieldSpec(conf.Child("pendingSlaDomain"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "pendingSlaDomain {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "pendingSlaDomain {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> CdmWorkload? Snappable
         // GraphQL -> snappable: CdmWorkload (type)
         if (this.Snappable != null) {
-            var fspec = this.Snappable.AsFieldSpec(indent+1);
+            var fspec = this.Snappable.AsFieldSpec(conf.Child("snappable"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "snappable {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "snappable {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -206,68 +247,183 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Boolean? ForceFull
         // GraphQL -> forceFull: Boolean (scalar)
-        if (this.ForceFull == null && ec.Includes("forceFull",true))
+        if (ec.Includes("forceFull",true))
         {
-            this.ForceFull = true;
+            if(this.ForceFull == null) {
+
+                this.ForceFull = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ForceFull != null && ec.Excludes("forceFull",true))
+        {
+            this.ForceFull = null;
         }
         //      C# -> System.String? HostId
         // GraphQL -> hostId: String! (scalar)
-        if (this.HostId == null && ec.Includes("hostId",true))
+        if (ec.Includes("hostId",true))
         {
-            this.HostId = "FETCH";
+            if(this.HostId == null) {
+
+                this.HostId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.HostId != null && ec.Excludes("hostId",true))
+        {
+            this.HostId = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
-        if (this.IsRelic == null && ec.Includes("isRelic",true))
+        if (ec.Includes("isRelic",true))
         {
-            this.IsRelic = true;
+            if(this.IsRelic == null) {
+
+                this.IsRelic = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsRelic != null && ec.Excludes("isRelic",true))
+        {
+            this.IsRelic = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> CdmAgentStatus? AgentStatus
         // GraphQL -> agentStatus: CdmAgentStatus (type)
-        if (this.AgentStatus == null && ec.Includes("agentStatus",false))
+        if (ec.Includes("agentStatus",false))
         {
-            this.AgentStatus = new CdmAgentStatus();
-            this.AgentStatus.ApplyExploratoryFieldSpec(ec.NewChild("agentStatus"));
+            if(this.AgentStatus == null) {
+
+                this.AgentStatus = new CdmAgentStatus();
+                this.AgentStatus.ApplyExploratoryFieldSpec(ec.NewChild("agentStatus"));
+
+            } else {
+
+                this.AgentStatus.ApplyExploratoryFieldSpec(ec.NewChild("agentStatus"));
+
+            }
+        }
+        else if (this.AgentStatus != null && ec.Excludes("agentStatus",false))
+        {
+            this.AgentStatus = null;
         }
         //      C# -> CloudInstantiationSpec? CloudInstantiationSpec
         // GraphQL -> cloudInstantiationSpec: CloudInstantiationSpec (type)
-        if (this.CloudInstantiationSpec == null && ec.Includes("cloudInstantiationSpec",false))
+        if (ec.Includes("cloudInstantiationSpec",false))
         {
-            this.CloudInstantiationSpec = new CloudInstantiationSpec();
-            this.CloudInstantiationSpec.ApplyExploratoryFieldSpec(ec.NewChild("cloudInstantiationSpec"));
+            if(this.CloudInstantiationSpec == null) {
+
+                this.CloudInstantiationSpec = new CloudInstantiationSpec();
+                this.CloudInstantiationSpec.ApplyExploratoryFieldSpec(ec.NewChild("cloudInstantiationSpec"));
+
+            } else {
+
+                this.CloudInstantiationSpec.ApplyExploratoryFieldSpec(ec.NewChild("cloudInstantiationSpec"));
+
+            }
+        }
+        else if (this.CloudInstantiationSpec != null && ec.Excludes("cloudInstantiationSpec",false))
+        {
+            this.CloudInstantiationSpec = null;
         }
         //      C# -> List<ManagedHierarchyObjectAncestor>? InfraPath
         // GraphQL -> infraPath: [ManagedHierarchyObjectAncestor!]! (type)
-        if (this.InfraPath == null && ec.Includes("infraPath",false))
+        if (ec.Includes("infraPath",false))
         {
-            this.InfraPath = new List<ManagedHierarchyObjectAncestor>();
-            this.InfraPath.ApplyExploratoryFieldSpec(ec.NewChild("infraPath"));
+            if(this.InfraPath == null) {
+
+                this.InfraPath = new List<ManagedHierarchyObjectAncestor>();
+                this.InfraPath.ApplyExploratoryFieldSpec(ec.NewChild("infraPath"));
+
+            } else {
+
+                this.InfraPath.ApplyExploratoryFieldSpec(ec.NewChild("infraPath"));
+
+            }
+        }
+        else if (this.InfraPath != null && ec.Excludes("infraPath",false))
+        {
+            this.InfraPath = null;
         }
         //      C# -> ManagedObjectPendingSlaInfo? PendingSlaDomain
         // GraphQL -> pendingSlaDomain: ManagedObjectPendingSlaInfo (type)
-        if (this.PendingSlaDomain == null && ec.Includes("pendingSlaDomain",false))
+        if (ec.Includes("pendingSlaDomain",false))
         {
-            this.PendingSlaDomain = new ManagedObjectPendingSlaInfo();
-            this.PendingSlaDomain.ApplyExploratoryFieldSpec(ec.NewChild("pendingSlaDomain"));
+            if(this.PendingSlaDomain == null) {
+
+                this.PendingSlaDomain = new ManagedObjectPendingSlaInfo();
+                this.PendingSlaDomain.ApplyExploratoryFieldSpec(ec.NewChild("pendingSlaDomain"));
+
+            } else {
+
+                this.PendingSlaDomain.ApplyExploratoryFieldSpec(ec.NewChild("pendingSlaDomain"));
+
+            }
+        }
+        else if (this.PendingSlaDomain != null && ec.Excludes("pendingSlaDomain",false))
+        {
+            this.PendingSlaDomain = null;
         }
         //      C# -> CdmWorkload? Snappable
         // GraphQL -> snappable: CdmWorkload (type)
-        if (this.Snappable == null && ec.Includes("snappable",false))
+        if (ec.Includes("snappable",false))
         {
-            this.Snappable = new CdmWorkload();
-            this.Snappable.ApplyExploratoryFieldSpec(ec.NewChild("snappable"));
+            if(this.Snappable == null) {
+
+                this.Snappable = new CdmWorkload();
+                this.Snappable.ApplyExploratoryFieldSpec(ec.NewChild("snappable"));
+
+            } else {
+
+                this.Snappable.ApplyExploratoryFieldSpec(ec.NewChild("snappable"));
+
+            }
+        }
+        else if (this.Snappable != null && ec.Excludes("snappable",false))
+        {
+            this.Snappable = null;
         }
     }
 
@@ -294,9 +450,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<HypervVirtualMachineSummary> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

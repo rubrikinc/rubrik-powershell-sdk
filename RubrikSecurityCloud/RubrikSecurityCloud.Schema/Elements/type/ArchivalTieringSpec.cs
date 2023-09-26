@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> ColdStorageClass? ColdStorageClass
         // GraphQL -> coldStorageClass: ColdStorageClass! (enum)
         if (this.ColdStorageClass != null) {
-            s += ind + "coldStorageClass\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "coldStorageClass\n" ;
+            } else {
+                s += ind + "coldStorageClass\n" ;
+            }
         }
         //      C# -> System.Boolean? IsInstantTieringEnabled
         // GraphQL -> isInstantTieringEnabled: Boolean! (scalar)
         if (this.IsInstantTieringEnabled != null) {
-            s += ind + "isInstantTieringEnabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isInstantTieringEnabled\n" ;
+            } else {
+                s += ind + "isInstantTieringEnabled\n" ;
+            }
         }
         //      C# -> System.Int64? MinAccessibleDurationInSeconds
         // GraphQL -> minAccessibleDurationInSeconds: Long! (scalar)
         if (this.MinAccessibleDurationInSeconds != null) {
-            s += ind + "minAccessibleDurationInSeconds\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "minAccessibleDurationInSeconds\n" ;
+            } else {
+                s += ind + "minAccessibleDurationInSeconds\n" ;
+            }
         }
         //      C# -> System.Boolean? ShouldTierExistingSnapshots
         // GraphQL -> shouldTierExistingSnapshots: Boolean! (scalar)
         if (this.ShouldTierExistingSnapshots != null) {
-            s += ind + "shouldTierExistingSnapshots\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "shouldTierExistingSnapshots\n" ;
+            } else {
+                s += ind + "shouldTierExistingSnapshots\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> ColdStorageClass? ColdStorageClass
         // GraphQL -> coldStorageClass: ColdStorageClass! (enum)
-        if (this.ColdStorageClass == null && ec.Includes("coldStorageClass",true))
+        if (ec.Includes("coldStorageClass",true))
         {
-            this.ColdStorageClass = new ColdStorageClass();
+            if(this.ColdStorageClass == null) {
+
+                this.ColdStorageClass = new ColdStorageClass();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ColdStorageClass != null && ec.Excludes("coldStorageClass",true))
+        {
+            this.ColdStorageClass = null;
         }
         //      C# -> System.Boolean? IsInstantTieringEnabled
         // GraphQL -> isInstantTieringEnabled: Boolean! (scalar)
-        if (this.IsInstantTieringEnabled == null && ec.Includes("isInstantTieringEnabled",true))
+        if (ec.Includes("isInstantTieringEnabled",true))
         {
-            this.IsInstantTieringEnabled = true;
+            if(this.IsInstantTieringEnabled == null) {
+
+                this.IsInstantTieringEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsInstantTieringEnabled != null && ec.Excludes("isInstantTieringEnabled",true))
+        {
+            this.IsInstantTieringEnabled = null;
         }
         //      C# -> System.Int64? MinAccessibleDurationInSeconds
         // GraphQL -> minAccessibleDurationInSeconds: Long! (scalar)
-        if (this.MinAccessibleDurationInSeconds == null && ec.Includes("minAccessibleDurationInSeconds",true))
+        if (ec.Includes("minAccessibleDurationInSeconds",true))
         {
-            this.MinAccessibleDurationInSeconds = new System.Int64();
+            if(this.MinAccessibleDurationInSeconds == null) {
+
+                this.MinAccessibleDurationInSeconds = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.MinAccessibleDurationInSeconds != null && ec.Excludes("minAccessibleDurationInSeconds",true))
+        {
+            this.MinAccessibleDurationInSeconds = null;
         }
         //      C# -> System.Boolean? ShouldTierExistingSnapshots
         // GraphQL -> shouldTierExistingSnapshots: Boolean! (scalar)
-        if (this.ShouldTierExistingSnapshots == null && ec.Includes("shouldTierExistingSnapshots",true))
+        if (ec.Includes("shouldTierExistingSnapshots",true))
         {
-            this.ShouldTierExistingSnapshots = true;
+            if(this.ShouldTierExistingSnapshots == null) {
+
+                this.ShouldTierExistingSnapshots = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShouldTierExistingSnapshots != null && ec.Excludes("shouldTierExistingSnapshots",true))
+        {
+            this.ShouldTierExistingSnapshots = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ArchivalTieringSpec> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

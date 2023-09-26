@@ -146,77 +146,126 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? ArchiveStorage
         // GraphQL -> archiveStorage: Long (scalar)
         if (this.ArchiveStorage != null) {
-            s += ind + "archiveStorage\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "archiveStorage\n" ;
+            } else {
+                s += ind + "archiveStorage\n" ;
+            }
         }
         //      C# -> System.Int32? ArchivedSnapshotCount
         // GraphQL -> archivedSnapshotCount: Int (scalar)
         if (this.ArchivedSnapshotCount != null) {
-            s += ind + "archivedSnapshotCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "archivedSnapshotCount\n" ;
+            } else {
+                s += ind + "archivedSnapshotCount\n" ;
+            }
         }
         //      C# -> System.String? BackupScriptErrorHandling
         // GraphQL -> backupScriptErrorHandling: String (scalar)
         if (this.BackupScriptErrorHandling != null) {
-            s += ind + "backupScriptErrorHandling\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "backupScriptErrorHandling\n" ;
+            } else {
+                s += ind + "backupScriptErrorHandling\n" ;
+            }
         }
         //      C# -> System.Int64? BackupScriptTimeout
         // GraphQL -> backupScriptTimeout: Long (scalar)
         if (this.BackupScriptTimeout != null) {
-            s += ind + "backupScriptTimeout\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "backupScriptTimeout\n" ;
+            } else {
+                s += ind + "backupScriptTimeout\n" ;
+            }
         }
         //      C# -> System.Int64? LocalStorage
         // GraphQL -> localStorage: Long (scalar)
         if (this.LocalStorage != null) {
-            s += ind + "localStorage\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "localStorage\n" ;
+            } else {
+                s += ind + "localStorage\n" ;
+            }
         }
         //      C# -> System.String? PostBackupScript
         // GraphQL -> postBackupScript: String (scalar)
         if (this.PostBackupScript != null) {
-            s += ind + "postBackupScript\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "postBackupScript\n" ;
+            } else {
+                s += ind + "postBackupScript\n" ;
+            }
         }
         //      C# -> System.String? PreBackupScript
         // GraphQL -> preBackupScript: String (scalar)
         if (this.PreBackupScript != null) {
-            s += ind + "preBackupScript\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "preBackupScript\n" ;
+            } else {
+                s += ind + "preBackupScript\n" ;
+            }
         }
         //      C# -> DateTime? ProtectionDate
         // GraphQL -> protectionDate: DateTime (scalar)
         if (this.ProtectionDate != null) {
-            s += ind + "protectionDate\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "protectionDate\n" ;
+            } else {
+                s += ind + "protectionDate\n" ;
+            }
         }
         //      C# -> System.Int32? SnapshotCount
         // GraphQL -> snapshotCount: Int! (scalar)
         if (this.SnapshotCount != null) {
-            s += ind + "snapshotCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotCount\n" ;
+            } else {
+                s += ind + "snapshotCount\n" ;
+            }
         }
         //      C# -> FilesetSummary? FilesetSummary
         // GraphQL -> filesetSummary: FilesetSummary (type)
         if (this.FilesetSummary != null) {
-            var fspec = this.FilesetSummary.AsFieldSpec(indent+1);
+            var fspec = this.FilesetSummary.AsFieldSpec(conf.Child("filesetSummary"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "filesetSummary {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "filesetSummary {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> FilesetUpdate? FilesetUpdate
         // GraphQL -> filesetUpdate: FilesetUpdate (type)
         if (this.FilesetUpdate != null) {
-            var fspec = this.FilesetUpdate.AsFieldSpec(indent+1);
+            var fspec = this.FilesetUpdate.AsFieldSpec(conf.Child("filesetUpdate"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "filesetUpdate {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "filesetUpdate {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<FilesetSnapshotSummary>? Snapshots
         // GraphQL -> snapshots: [FilesetSnapshotSummary!]! (type)
         if (this.Snapshots != null) {
-            var fspec = this.Snapshots.AsFieldSpec(indent+1);
+            var fspec = this.Snapshots.AsFieldSpec(conf.Child("snapshots"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "snapshots {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "snapshots {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -228,78 +277,213 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? ArchiveStorage
         // GraphQL -> archiveStorage: Long (scalar)
-        if (this.ArchiveStorage == null && ec.Includes("archiveStorage",true))
+        if (ec.Includes("archiveStorage",true))
         {
-            this.ArchiveStorage = new System.Int64();
+            if(this.ArchiveStorage == null) {
+
+                this.ArchiveStorage = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ArchiveStorage != null && ec.Excludes("archiveStorage",true))
+        {
+            this.ArchiveStorage = null;
         }
         //      C# -> System.Int32? ArchivedSnapshotCount
         // GraphQL -> archivedSnapshotCount: Int (scalar)
-        if (this.ArchivedSnapshotCount == null && ec.Includes("archivedSnapshotCount",true))
+        if (ec.Includes("archivedSnapshotCount",true))
         {
-            this.ArchivedSnapshotCount = Int32.MinValue;
+            if(this.ArchivedSnapshotCount == null) {
+
+                this.ArchivedSnapshotCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ArchivedSnapshotCount != null && ec.Excludes("archivedSnapshotCount",true))
+        {
+            this.ArchivedSnapshotCount = null;
         }
         //      C# -> System.String? BackupScriptErrorHandling
         // GraphQL -> backupScriptErrorHandling: String (scalar)
-        if (this.BackupScriptErrorHandling == null && ec.Includes("backupScriptErrorHandling",true))
+        if (ec.Includes("backupScriptErrorHandling",true))
         {
-            this.BackupScriptErrorHandling = "FETCH";
+            if(this.BackupScriptErrorHandling == null) {
+
+                this.BackupScriptErrorHandling = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.BackupScriptErrorHandling != null && ec.Excludes("backupScriptErrorHandling",true))
+        {
+            this.BackupScriptErrorHandling = null;
         }
         //      C# -> System.Int64? BackupScriptTimeout
         // GraphQL -> backupScriptTimeout: Long (scalar)
-        if (this.BackupScriptTimeout == null && ec.Includes("backupScriptTimeout",true))
+        if (ec.Includes("backupScriptTimeout",true))
         {
-            this.BackupScriptTimeout = new System.Int64();
+            if(this.BackupScriptTimeout == null) {
+
+                this.BackupScriptTimeout = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.BackupScriptTimeout != null && ec.Excludes("backupScriptTimeout",true))
+        {
+            this.BackupScriptTimeout = null;
         }
         //      C# -> System.Int64? LocalStorage
         // GraphQL -> localStorage: Long (scalar)
-        if (this.LocalStorage == null && ec.Includes("localStorage",true))
+        if (ec.Includes("localStorage",true))
         {
-            this.LocalStorage = new System.Int64();
+            if(this.LocalStorage == null) {
+
+                this.LocalStorage = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LocalStorage != null && ec.Excludes("localStorage",true))
+        {
+            this.LocalStorage = null;
         }
         //      C# -> System.String? PostBackupScript
         // GraphQL -> postBackupScript: String (scalar)
-        if (this.PostBackupScript == null && ec.Includes("postBackupScript",true))
+        if (ec.Includes("postBackupScript",true))
         {
-            this.PostBackupScript = "FETCH";
+            if(this.PostBackupScript == null) {
+
+                this.PostBackupScript = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PostBackupScript != null && ec.Excludes("postBackupScript",true))
+        {
+            this.PostBackupScript = null;
         }
         //      C# -> System.String? PreBackupScript
         // GraphQL -> preBackupScript: String (scalar)
-        if (this.PreBackupScript == null && ec.Includes("preBackupScript",true))
+        if (ec.Includes("preBackupScript",true))
         {
-            this.PreBackupScript = "FETCH";
+            if(this.PreBackupScript == null) {
+
+                this.PreBackupScript = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PreBackupScript != null && ec.Excludes("preBackupScript",true))
+        {
+            this.PreBackupScript = null;
         }
         //      C# -> DateTime? ProtectionDate
         // GraphQL -> protectionDate: DateTime (scalar)
-        if (this.ProtectionDate == null && ec.Includes("protectionDate",true))
+        if (ec.Includes("protectionDate",true))
         {
-            this.ProtectionDate = new DateTime();
+            if(this.ProtectionDate == null) {
+
+                this.ProtectionDate = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProtectionDate != null && ec.Excludes("protectionDate",true))
+        {
+            this.ProtectionDate = null;
         }
         //      C# -> System.Int32? SnapshotCount
         // GraphQL -> snapshotCount: Int! (scalar)
-        if (this.SnapshotCount == null && ec.Includes("snapshotCount",true))
+        if (ec.Includes("snapshotCount",true))
         {
-            this.SnapshotCount = Int32.MinValue;
+            if(this.SnapshotCount == null) {
+
+                this.SnapshotCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotCount != null && ec.Excludes("snapshotCount",true))
+        {
+            this.SnapshotCount = null;
         }
         //      C# -> FilesetSummary? FilesetSummary
         // GraphQL -> filesetSummary: FilesetSummary (type)
-        if (this.FilesetSummary == null && ec.Includes("filesetSummary",false))
+        if (ec.Includes("filesetSummary",false))
         {
-            this.FilesetSummary = new FilesetSummary();
-            this.FilesetSummary.ApplyExploratoryFieldSpec(ec.NewChild("filesetSummary"));
+            if(this.FilesetSummary == null) {
+
+                this.FilesetSummary = new FilesetSummary();
+                this.FilesetSummary.ApplyExploratoryFieldSpec(ec.NewChild("filesetSummary"));
+
+            } else {
+
+                this.FilesetSummary.ApplyExploratoryFieldSpec(ec.NewChild("filesetSummary"));
+
+            }
+        }
+        else if (this.FilesetSummary != null && ec.Excludes("filesetSummary",false))
+        {
+            this.FilesetSummary = null;
         }
         //      C# -> FilesetUpdate? FilesetUpdate
         // GraphQL -> filesetUpdate: FilesetUpdate (type)
-        if (this.FilesetUpdate == null && ec.Includes("filesetUpdate",false))
+        if (ec.Includes("filesetUpdate",false))
         {
-            this.FilesetUpdate = new FilesetUpdate();
-            this.FilesetUpdate.ApplyExploratoryFieldSpec(ec.NewChild("filesetUpdate"));
+            if(this.FilesetUpdate == null) {
+
+                this.FilesetUpdate = new FilesetUpdate();
+                this.FilesetUpdate.ApplyExploratoryFieldSpec(ec.NewChild("filesetUpdate"));
+
+            } else {
+
+                this.FilesetUpdate.ApplyExploratoryFieldSpec(ec.NewChild("filesetUpdate"));
+
+            }
+        }
+        else if (this.FilesetUpdate != null && ec.Excludes("filesetUpdate",false))
+        {
+            this.FilesetUpdate = null;
         }
         //      C# -> List<FilesetSnapshotSummary>? Snapshots
         // GraphQL -> snapshots: [FilesetSnapshotSummary!]! (type)
-        if (this.Snapshots == null && ec.Includes("snapshots",false))
+        if (ec.Includes("snapshots",false))
         {
-            this.Snapshots = new List<FilesetSnapshotSummary>();
-            this.Snapshots.ApplyExploratoryFieldSpec(ec.NewChild("snapshots"));
+            if(this.Snapshots == null) {
+
+                this.Snapshots = new List<FilesetSnapshotSummary>();
+                this.Snapshots.ApplyExploratoryFieldSpec(ec.NewChild("snapshots"));
+
+            } else {
+
+                this.Snapshots.ApplyExploratoryFieldSpec(ec.NewChild("snapshots"));
+
+            }
+        }
+        else if (this.Snapshots != null && ec.Excludes("snapshots",false))
+        {
+            this.Snapshots = null;
         }
     }
 
@@ -326,9 +510,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<FilesetDetail> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

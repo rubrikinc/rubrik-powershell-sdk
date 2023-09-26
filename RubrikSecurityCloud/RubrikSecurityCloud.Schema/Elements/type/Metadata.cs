@@ -56,22 +56,31 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> Value? Value
         // GraphQL -> value: Value (interface)
         if (this.Value != null) {
-                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.Value).AsFieldSpec(indent+1);
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.Value).AsFieldSpec(conf.Child("value"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "value {\n" + fspec + ind + "}\n";
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "value {\n" + fspec + ind + "}\n";
+                }
             }
         }
         //      C# -> System.String? Key
         // GraphQL -> key: String! (scalar)
         if (this.Key != null) {
-            s += ind + "key\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "key\n" ;
+            } else {
+                s += ind + "key\n" ;
+            }
         }
         return s;
     }
@@ -82,17 +91,44 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> Value? Value
         // GraphQL -> value: Value (interface)
-        if (this.Value == null && ec.Includes("value",false))
+        if (ec.Includes("value",false))
         {
-            var impls = new List<Value>();
-            impls.ApplyExploratoryFieldSpec(ec.NewChild("value"));
-            this.Value = (Value)InterfaceHelper.MakeCompositeFromList(impls);
+            if(this.Value == null) {
+
+                var impls = new List<Value>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("value"));
+                this.Value = (Value)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<Value>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("value"));
+                this.Value = (Value)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.Value != null && ec.Excludes("value",false))
+        {
+            this.Value = null;
         }
         //      C# -> System.String? Key
         // GraphQL -> key: String! (scalar)
-        if (this.Key == null && ec.Includes("key",true))
+        if (ec.Includes("key",true))
         {
-            this.Key = "FETCH";
+            if(this.Key == null) {
+
+                this.Key = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Key != null && ec.Excludes("key",true))
+        {
+            this.Key = null;
         }
     }
 
@@ -119,9 +155,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<Metadata> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

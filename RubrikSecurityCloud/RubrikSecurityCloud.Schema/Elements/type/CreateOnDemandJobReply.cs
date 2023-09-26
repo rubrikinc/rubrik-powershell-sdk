@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? JobId
         // GraphQL -> jobId: Long! (scalar)
         if (this.JobId != null) {
-            s += ind + "jobId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "jobId\n" ;
+            } else {
+                s += ind + "jobId\n" ;
+            }
         }
         //      C# -> System.String? TaskchainId
         // GraphQL -> taskchainId: String! (scalar)
         if (this.TaskchainId != null) {
-            s += ind + "taskchainId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "taskchainId\n" ;
+            } else {
+                s += ind + "taskchainId\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? JobId
         // GraphQL -> jobId: Long! (scalar)
-        if (this.JobId == null && ec.Includes("jobId",true))
+        if (ec.Includes("jobId",true))
         {
-            this.JobId = new System.Int64();
+            if(this.JobId == null) {
+
+                this.JobId = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.JobId != null && ec.Excludes("jobId",true))
+        {
+            this.JobId = null;
         }
         //      C# -> System.String? TaskchainId
         // GraphQL -> taskchainId: String! (scalar)
-        if (this.TaskchainId == null && ec.Includes("taskchainId",true))
+        if (ec.Includes("taskchainId",true))
         {
-            this.TaskchainId = "FETCH";
+            if(this.TaskchainId == null) {
+
+                this.TaskchainId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TaskchainId != null && ec.Excludes("taskchainId",true))
+        {
+            this.TaskchainId = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CreateOnDemandJobReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

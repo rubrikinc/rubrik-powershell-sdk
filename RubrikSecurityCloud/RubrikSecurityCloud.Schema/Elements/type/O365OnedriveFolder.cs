@@ -174,84 +174,145 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> ChannelMembershipType? ChannelMembershipType
         // GraphQL -> channelMembershipType: ChannelMembershipType (enum)
         if (this.ChannelMembershipType != null) {
-            s += ind + "channelMembershipType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "channelMembershipType\n" ;
+            } else {
+                s += ind + "channelMembershipType\n" ;
+            }
         }
         //      C# -> SharePointDescendantType? ObjectType
         // GraphQL -> objectType: SharePointDescendantType (enum)
         if (this.ObjectType != null) {
-            s += ind + "objectType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "objectType\n" ;
+            } else {
+                s += ind + "objectType\n" ;
+            }
         }
         //      C# -> System.String? ChannelFolderName
         // GraphQL -> channelFolderName: String (scalar)
         if (this.ChannelFolderName != null) {
-            s += ind + "channelFolderName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "channelFolderName\n" ;
+            } else {
+                s += ind + "channelFolderName\n" ;
+            }
         }
         //      C# -> System.String? ChannelId
         // GraphQL -> channelId: String (scalar)
         if (this.ChannelId != null) {
-            s += ind + "channelId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "channelId\n" ;
+            } else {
+                s += ind + "channelId\n" ;
+            }
         }
         //      C# -> System.String? ChannelName
         // GraphQL -> channelName: String (scalar)
         if (this.ChannelName != null) {
-            s += ind + "channelName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "channelName\n" ;
+            } else {
+                s += ind + "channelName\n" ;
+            }
         }
         //      C# -> DateTime? CreateTime
         // GraphQL -> createTime: DateTime (scalar)
         if (this.CreateTime != null) {
-            s += ind + "createTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "createTime\n" ;
+            } else {
+                s += ind + "createTime\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.Int32? ItemCount
         // GraphQL -> itemCount: Int (scalar)
         if (this.ItemCount != null) {
-            s += ind + "itemCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "itemCount\n" ;
+            } else {
+                s += ind + "itemCount\n" ;
+            }
         }
         //      C# -> DateTime? ModifiedTime
         // GraphQL -> modifiedTime: DateTime (scalar)
         if (this.ModifiedTime != null) {
-            s += ind + "modifiedTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "modifiedTime\n" ;
+            } else {
+                s += ind + "modifiedTime\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.String? ParentFolderId
         // GraphQL -> parentFolderId: String (scalar)
         if (this.ParentFolderId != null) {
-            s += ind + "parentFolderId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "parentFolderId\n" ;
+            } else {
+                s += ind + "parentFolderId\n" ;
+            }
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long (scalar)
         if (this.Size != null) {
-            s += ind + "size\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "size\n" ;
+            } else {
+                s += ind + "size\n" ;
+            }
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: UUID (scalar)
         if (this.SnapshotId != null) {
-            s += ind + "snapshotId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotId\n" ;
+            } else {
+                s += ind + "snapshotId\n" ;
+            }
         }
         //      C# -> System.Int32? SnapshotNum
         // GraphQL -> snapshotNum: Int (scalar)
         if (this.SnapshotNum != null) {
-            s += ind + "snapshotNum\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotNum\n" ;
+            } else {
+                s += ind + "snapshotNum\n" ;
+            }
         }
         //      C# -> DateTime? SnapshotTime
         // GraphQL -> snapshotTime: DateTime (scalar)
         if (this.SnapshotTime != null) {
-            s += ind + "snapshotTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotTime\n" ;
+            } else {
+                s += ind + "snapshotTime\n" ;
+            }
         }
         return s;
     }
@@ -262,93 +323,258 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> ChannelMembershipType? ChannelMembershipType
         // GraphQL -> channelMembershipType: ChannelMembershipType (enum)
-        if (this.ChannelMembershipType == null && ec.Includes("channelMembershipType",true))
+        if (ec.Includes("channelMembershipType",true))
         {
-            this.ChannelMembershipType = new ChannelMembershipType();
+            if(this.ChannelMembershipType == null) {
+
+                this.ChannelMembershipType = new ChannelMembershipType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ChannelMembershipType != null && ec.Excludes("channelMembershipType",true))
+        {
+            this.ChannelMembershipType = null;
         }
         //      C# -> SharePointDescendantType? ObjectType
         // GraphQL -> objectType: SharePointDescendantType (enum)
-        if (this.ObjectType == null && ec.Includes("objectType",true))
+        if (ec.Includes("objectType",true))
         {
-            this.ObjectType = new SharePointDescendantType();
+            if(this.ObjectType == null) {
+
+                this.ObjectType = new SharePointDescendantType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ObjectType != null && ec.Excludes("objectType",true))
+        {
+            this.ObjectType = null;
         }
         //      C# -> System.String? ChannelFolderName
         // GraphQL -> channelFolderName: String (scalar)
-        if (this.ChannelFolderName == null && ec.Includes("channelFolderName",true))
+        if (ec.Includes("channelFolderName",true))
         {
-            this.ChannelFolderName = "FETCH";
+            if(this.ChannelFolderName == null) {
+
+                this.ChannelFolderName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ChannelFolderName != null && ec.Excludes("channelFolderName",true))
+        {
+            this.ChannelFolderName = null;
         }
         //      C# -> System.String? ChannelId
         // GraphQL -> channelId: String (scalar)
-        if (this.ChannelId == null && ec.Includes("channelId",true))
+        if (ec.Includes("channelId",true))
         {
-            this.ChannelId = "FETCH";
+            if(this.ChannelId == null) {
+
+                this.ChannelId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ChannelId != null && ec.Excludes("channelId",true))
+        {
+            this.ChannelId = null;
         }
         //      C# -> System.String? ChannelName
         // GraphQL -> channelName: String (scalar)
-        if (this.ChannelName == null && ec.Includes("channelName",true))
+        if (ec.Includes("channelName",true))
         {
-            this.ChannelName = "FETCH";
+            if(this.ChannelName == null) {
+
+                this.ChannelName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ChannelName != null && ec.Excludes("channelName",true))
+        {
+            this.ChannelName = null;
         }
         //      C# -> DateTime? CreateTime
         // GraphQL -> createTime: DateTime (scalar)
-        if (this.CreateTime == null && ec.Includes("createTime",true))
+        if (ec.Includes("createTime",true))
         {
-            this.CreateTime = new DateTime();
+            if(this.CreateTime == null) {
+
+                this.CreateTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CreateTime != null && ec.Excludes("createTime",true))
+        {
+            this.CreateTime = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.Int32? ItemCount
         // GraphQL -> itemCount: Int (scalar)
-        if (this.ItemCount == null && ec.Includes("itemCount",true))
+        if (ec.Includes("itemCount",true))
         {
-            this.ItemCount = Int32.MinValue;
+            if(this.ItemCount == null) {
+
+                this.ItemCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ItemCount != null && ec.Excludes("itemCount",true))
+        {
+            this.ItemCount = null;
         }
         //      C# -> DateTime? ModifiedTime
         // GraphQL -> modifiedTime: DateTime (scalar)
-        if (this.ModifiedTime == null && ec.Includes("modifiedTime",true))
+        if (ec.Includes("modifiedTime",true))
         {
-            this.ModifiedTime = new DateTime();
+            if(this.ModifiedTime == null) {
+
+                this.ModifiedTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ModifiedTime != null && ec.Excludes("modifiedTime",true))
+        {
+            this.ModifiedTime = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.String? ParentFolderId
         // GraphQL -> parentFolderId: String (scalar)
-        if (this.ParentFolderId == null && ec.Includes("parentFolderId",true))
+        if (ec.Includes("parentFolderId",true))
         {
-            this.ParentFolderId = "FETCH";
+            if(this.ParentFolderId == null) {
+
+                this.ParentFolderId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ParentFolderId != null && ec.Excludes("parentFolderId",true))
+        {
+            this.ParentFolderId = null;
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long (scalar)
-        if (this.Size == null && ec.Includes("size",true))
+        if (ec.Includes("size",true))
         {
-            this.Size = new System.Int64();
+            if(this.Size == null) {
+
+                this.Size = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Size != null && ec.Excludes("size",true))
+        {
+            this.Size = null;
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: UUID (scalar)
-        if (this.SnapshotId == null && ec.Includes("snapshotId",true))
+        if (ec.Includes("snapshotId",true))
         {
-            this.SnapshotId = "FETCH";
+            if(this.SnapshotId == null) {
+
+                this.SnapshotId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotId != null && ec.Excludes("snapshotId",true))
+        {
+            this.SnapshotId = null;
         }
         //      C# -> System.Int32? SnapshotNum
         // GraphQL -> snapshotNum: Int (scalar)
-        if (this.SnapshotNum == null && ec.Includes("snapshotNum",true))
+        if (ec.Includes("snapshotNum",true))
         {
-            this.SnapshotNum = Int32.MinValue;
+            if(this.SnapshotNum == null) {
+
+                this.SnapshotNum = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotNum != null && ec.Excludes("snapshotNum",true))
+        {
+            this.SnapshotNum = null;
         }
         //      C# -> DateTime? SnapshotTime
         // GraphQL -> snapshotTime: DateTime (scalar)
-        if (this.SnapshotTime == null && ec.Includes("snapshotTime",true))
+        if (ec.Includes("snapshotTime",true))
         {
-            this.SnapshotTime = new DateTime();
+            if(this.SnapshotTime == null) {
+
+                this.SnapshotTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotTime != null && ec.Excludes("snapshotTime",true))
+        {
+            this.SnapshotTime = null;
         }
     }
 
@@ -375,9 +601,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<O365OnedriveFolder> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

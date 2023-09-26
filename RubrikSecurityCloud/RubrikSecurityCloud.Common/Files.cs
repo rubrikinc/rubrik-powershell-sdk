@@ -35,7 +35,7 @@ namespace RubrikSecurityCloud
         }
 
         public static void WriteFile(
-            string filePath, 
+            string filePath,
             string fileContents,
             bool backupIfExists = true)
         {

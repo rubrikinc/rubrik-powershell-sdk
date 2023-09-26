@@ -92,41 +92,66 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> IntegrationType? IntegrationType
         // GraphQL -> integrationType: IntegrationType! (enum)
         if (this.IntegrationType != null) {
-            s += ind + "integrationType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "integrationType\n" ;
+            } else {
+                s += ind + "integrationType\n" ;
+            }
         }
         //      C# -> DateTime? CreatedAt
         // GraphQL -> createdAt: DateTime! (scalar)
         if (this.CreatedAt != null) {
-            s += ind + "createdAt\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "createdAt\n" ;
+            } else {
+                s += ind + "createdAt\n" ;
+            }
         }
         //      C# -> System.Int64? Id
         // GraphQL -> id: Long! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> DateTime? UpdatedAt
         // GraphQL -> updatedAt: DateTime! (scalar)
         if (this.UpdatedAt != null) {
-            s += ind + "updatedAt\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "updatedAt\n" ;
+            } else {
+                s += ind + "updatedAt\n" ;
+            }
         }
         //      C# -> IntegrationConfig? Config
         // GraphQL -> config: IntegrationConfig! (type)
         if (this.Config != null) {
-            var fspec = this.Config.AsFieldSpec(indent+1);
+            var fspec = this.Config.AsFieldSpec(conf.Child("config"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "config {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "config {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -138,40 +163,107 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> IntegrationType? IntegrationType
         // GraphQL -> integrationType: IntegrationType! (enum)
-        if (this.IntegrationType == null && ec.Includes("integrationType",true))
+        if (ec.Includes("integrationType",true))
         {
-            this.IntegrationType = new IntegrationType();
+            if(this.IntegrationType == null) {
+
+                this.IntegrationType = new IntegrationType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.IntegrationType != null && ec.Excludes("integrationType",true))
+        {
+            this.IntegrationType = null;
         }
         //      C# -> DateTime? CreatedAt
         // GraphQL -> createdAt: DateTime! (scalar)
-        if (this.CreatedAt == null && ec.Includes("createdAt",true))
+        if (ec.Includes("createdAt",true))
         {
-            this.CreatedAt = new DateTime();
+            if(this.CreatedAt == null) {
+
+                this.CreatedAt = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CreatedAt != null && ec.Excludes("createdAt",true))
+        {
+            this.CreatedAt = null;
         }
         //      C# -> System.Int64? Id
         // GraphQL -> id: Long! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = new System.Int64();
+            if(this.Id == null) {
+
+                this.Id = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> DateTime? UpdatedAt
         // GraphQL -> updatedAt: DateTime! (scalar)
-        if (this.UpdatedAt == null && ec.Includes("updatedAt",true))
+        if (ec.Includes("updatedAt",true))
         {
-            this.UpdatedAt = new DateTime();
+            if(this.UpdatedAt == null) {
+
+                this.UpdatedAt = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UpdatedAt != null && ec.Excludes("updatedAt",true))
+        {
+            this.UpdatedAt = null;
         }
         //      C# -> IntegrationConfig? Config
         // GraphQL -> config: IntegrationConfig! (type)
-        if (this.Config == null && ec.Includes("config",false))
+        if (ec.Includes("config",false))
         {
-            this.Config = new IntegrationConfig();
-            this.Config.ApplyExploratoryFieldSpec(ec.NewChild("config"));
+            if(this.Config == null) {
+
+                this.Config = new IntegrationConfig();
+                this.Config.ApplyExploratoryFieldSpec(ec.NewChild("config"));
+
+            } else {
+
+                this.Config.ApplyExploratoryFieldSpec(ec.NewChild("config"));
+
+            }
+        }
+        else if (this.Config != null && ec.Excludes("config",false))
+        {
+            this.Config = null;
         }
     }
 
@@ -198,9 +290,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<Integration> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

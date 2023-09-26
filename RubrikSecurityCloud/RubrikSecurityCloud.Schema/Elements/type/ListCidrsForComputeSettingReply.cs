@@ -47,16 +47,21 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<ClusterInfCidrs>? ClusterInterfaceCidrs
         // GraphQL -> clusterInterfaceCidrs: [ClusterInfCidrs!]! (type)
         if (this.ClusterInterfaceCidrs != null) {
-            var fspec = this.ClusterInterfaceCidrs.AsFieldSpec(indent+1);
+            var fspec = this.ClusterInterfaceCidrs.AsFieldSpec(conf.Child("clusterInterfaceCidrs"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "clusterInterfaceCidrs {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "clusterInterfaceCidrs {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -68,10 +73,22 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<ClusterInfCidrs>? ClusterInterfaceCidrs
         // GraphQL -> clusterInterfaceCidrs: [ClusterInfCidrs!]! (type)
-        if (this.ClusterInterfaceCidrs == null && ec.Includes("clusterInterfaceCidrs",false))
+        if (ec.Includes("clusterInterfaceCidrs",false))
         {
-            this.ClusterInterfaceCidrs = new List<ClusterInfCidrs>();
-            this.ClusterInterfaceCidrs.ApplyExploratoryFieldSpec(ec.NewChild("clusterInterfaceCidrs"));
+            if(this.ClusterInterfaceCidrs == null) {
+
+                this.ClusterInterfaceCidrs = new List<ClusterInfCidrs>();
+                this.ClusterInterfaceCidrs.ApplyExploratoryFieldSpec(ec.NewChild("clusterInterfaceCidrs"));
+
+            } else {
+
+                this.ClusterInterfaceCidrs.ApplyExploratoryFieldSpec(ec.NewChild("clusterInterfaceCidrs"));
+
+            }
+        }
+        else if (this.ClusterInterfaceCidrs != null && ec.Excludes("clusterInterfaceCidrs",false))
+        {
+            this.ClusterInterfaceCidrs = null;
         }
     }
 
@@ -98,9 +115,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ListCidrsForComputeSettingReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

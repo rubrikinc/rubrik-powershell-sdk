@@ -336,203 +336,336 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<Operation>? AuthorizedOperations
         // GraphQL -> authorizedOperations: [Operation!]! (enum)
         if (this.AuthorizedOperations != null) {
-            s += ind + "authorizedOperations\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "authorizedOperations\n" ;
+            } else {
+                s += ind + "authorizedOperations\n" ;
+            }
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         if (this.ObjectType != null) {
-            s += ind + "objectType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "objectType\n" ;
+            } else {
+                s += ind + "objectType\n" ;
+            }
         }
         //      C# -> SlaAssignmentTypeEnum? SlaAssignment
         // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
         if (this.SlaAssignment != null) {
-            s += ind + "slaAssignment\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "slaAssignment\n" ;
+            } else {
+                s += ind + "slaAssignment\n" ;
+            }
         }
         //      C# -> OrgStatus? Status
         // GraphQL -> status: OrgStatus! (enum)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         //      C# -> SlaDomain? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
         if (this.ConfiguredSlaDomain != null) {
-                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.ConfiguredSlaDomain).AsFieldSpec(indent+1);
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.ConfiguredSlaDomain).AsFieldSpec(conf.Child("configuredSlaDomain"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "configuredSlaDomain {\n" + fspec + ind + "}\n";
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "configuredSlaDomain {\n" + fspec + ind + "}\n";
+                }
             }
         }
         //      C# -> SlaDomain? EffectiveRetentionSlaDomain
         // GraphQL -> effectiveRetentionSlaDomain: SlaDomain (interface)
         if (this.EffectiveRetentionSlaDomain != null) {
-                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.EffectiveRetentionSlaDomain).AsFieldSpec(indent+1);
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.EffectiveRetentionSlaDomain).AsFieldSpec(conf.Child("effectiveRetentionSlaDomain"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "effectiveRetentionSlaDomain {\n" + fspec + ind + "}\n";
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "effectiveRetentionSlaDomain {\n" + fspec + ind + "}\n";
+                }
             }
         }
         //      C# -> SlaDomain? EffectiveSlaDomain
         // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
         if (this.EffectiveSlaDomain != null) {
-                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.EffectiveSlaDomain).AsFieldSpec(indent+1);
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.EffectiveSlaDomain).AsFieldSpec(conf.Child("effectiveSlaDomain"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "effectiveSlaDomain {\n" + fspec + ind + "}\n";
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "effectiveSlaDomain {\n" + fspec + ind + "}\n";
+                }
             }
         }
         //      C# -> System.String? ExocomputeId
         // GraphQL -> exocomputeId: String! (scalar)
         if (this.ExocomputeId != null) {
-            s += ind + "exocomputeId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "exocomputeId\n" ;
+            } else {
+                s += ind + "exocomputeId\n" ;
+            }
         }
         //      C# -> System.Boolean? HasSharePointLegacySnapshots
         // GraphQL -> hasSharePointLegacySnapshots: Boolean! (scalar)
         if (this.HasSharePointLegacySnapshots != null) {
-            s += ind + "hasSharePointLegacySnapshots\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hasSharePointLegacySnapshots\n" ;
+            } else {
+                s += ind + "hasSharePointLegacySnapshots\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         if (this.NumWorkloadDescendants != null) {
-            s += ind + "numWorkloadDescendants\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "numWorkloadDescendants\n" ;
+            } else {
+                s += ind + "numWorkloadDescendants\n" ;
+            }
         }
         //      C# -> System.Int32? Past1DayMailboxComplianceCount
         // GraphQL -> past1DayMailboxComplianceCount: Int! (scalar)
         if (this.Past1DayMailboxComplianceCount != null) {
-            s += ind + "past1DayMailboxComplianceCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "past1DayMailboxComplianceCount\n" ;
+            } else {
+                s += ind + "past1DayMailboxComplianceCount\n" ;
+            }
         }
         //      C# -> System.Int32? Past1DayMailboxOutOfComplianceCount
         // GraphQL -> past1DayMailboxOutOfComplianceCount: Int! (scalar)
         if (this.Past1DayMailboxOutOfComplianceCount != null) {
-            s += ind + "past1DayMailboxOutOfComplianceCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "past1DayMailboxOutOfComplianceCount\n" ;
+            } else {
+                s += ind + "past1DayMailboxOutOfComplianceCount\n" ;
+            }
         }
         //      C# -> System.Int32? Past1DayOnedriveComplianceCount
         // GraphQL -> past1DayOnedriveComplianceCount: Int! (scalar)
         if (this.Past1DayOnedriveComplianceCount != null) {
-            s += ind + "past1DayOnedriveComplianceCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "past1DayOnedriveComplianceCount\n" ;
+            } else {
+                s += ind + "past1DayOnedriveComplianceCount\n" ;
+            }
         }
         //      C# -> System.Int32? Past1DayOnedriveOutOfComplianceCount
         // GraphQL -> past1DayOnedriveOutOfComplianceCount: Int! (scalar)
         if (this.Past1DayOnedriveOutOfComplianceCount != null) {
-            s += ind + "past1DayOnedriveOutOfComplianceCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "past1DayOnedriveOutOfComplianceCount\n" ;
+            } else {
+                s += ind + "past1DayOnedriveOutOfComplianceCount\n" ;
+            }
         }
         //      C# -> System.Int32? Past1DaySharepointComplianceCount
         // GraphQL -> past1DaySharepointComplianceCount: Int! (scalar)
         if (this.Past1DaySharepointComplianceCount != null) {
-            s += ind + "past1DaySharepointComplianceCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "past1DaySharepointComplianceCount\n" ;
+            } else {
+                s += ind + "past1DaySharepointComplianceCount\n" ;
+            }
         }
         //      C# -> System.Int32? Past1DaySharepointOutOfComplianceCount
         // GraphQL -> past1DaySharepointOutOfComplianceCount: Int! (scalar)
         if (this.Past1DaySharepointOutOfComplianceCount != null) {
-            s += ind + "past1DaySharepointOutOfComplianceCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "past1DaySharepointOutOfComplianceCount\n" ;
+            } else {
+                s += ind + "past1DaySharepointOutOfComplianceCount\n" ;
+            }
         }
         //      C# -> System.Int32? Past1DaySpListComplianceCount
         // GraphQL -> past1DaySpListComplianceCount: Int! (scalar)
         if (this.Past1DaySpListComplianceCount != null) {
-            s += ind + "past1DaySpListComplianceCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "past1DaySpListComplianceCount\n" ;
+            } else {
+                s += ind + "past1DaySpListComplianceCount\n" ;
+            }
         }
         //      C# -> System.Int32? Past1DaySpListOutOfComplianceCount
         // GraphQL -> past1DaySpListOutOfComplianceCount: Int! (scalar)
         if (this.Past1DaySpListOutOfComplianceCount != null) {
-            s += ind + "past1DaySpListOutOfComplianceCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "past1DaySpListOutOfComplianceCount\n" ;
+            } else {
+                s += ind + "past1DaySpListOutOfComplianceCount\n" ;
+            }
         }
         //      C# -> System.Int32? Past1DaySpSiteCollectionComplianceCount
         // GraphQL -> past1DaySpSiteCollectionComplianceCount: Int! (scalar)
         if (this.Past1DaySpSiteCollectionComplianceCount != null) {
-            s += ind + "past1DaySpSiteCollectionComplianceCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "past1DaySpSiteCollectionComplianceCount\n" ;
+            } else {
+                s += ind + "past1DaySpSiteCollectionComplianceCount\n" ;
+            }
         }
         //      C# -> System.Int32? Past1DaySpSiteCollectionOutOfComplianceCount
         // GraphQL -> past1DaySpSiteCollectionOutOfComplianceCount: Int! (scalar)
         if (this.Past1DaySpSiteCollectionOutOfComplianceCount != null) {
-            s += ind + "past1DaySpSiteCollectionOutOfComplianceCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "past1DaySpSiteCollectionOutOfComplianceCount\n" ;
+            } else {
+                s += ind + "past1DaySpSiteCollectionOutOfComplianceCount\n" ;
+            }
         }
         //      C# -> System.Int32? Past1DayTeamsComplianceCount
         // GraphQL -> past1DayTeamsComplianceCount: Int! (scalar)
         if (this.Past1DayTeamsComplianceCount != null) {
-            s += ind + "past1DayTeamsComplianceCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "past1DayTeamsComplianceCount\n" ;
+            } else {
+                s += ind + "past1DayTeamsComplianceCount\n" ;
+            }
         }
         //      C# -> System.Int32? Past1DayTeamsOutOfComplianceCount
         // GraphQL -> past1DayTeamsOutOfComplianceCount: Int! (scalar)
         if (this.Past1DayTeamsOutOfComplianceCount != null) {
-            s += ind + "past1DayTeamsOutOfComplianceCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "past1DayTeamsOutOfComplianceCount\n" ;
+            } else {
+                s += ind + "past1DayTeamsOutOfComplianceCount\n" ;
+            }
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
         if (this.SlaPauseStatus != null) {
-            s += ind + "slaPauseStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "slaPauseStatus\n" ;
+            } else {
+                s += ind + "slaPauseStatus\n" ;
+            }
         }
         //      C# -> System.Int32? UnprotectedUsersCount
         // GraphQL -> unprotectedUsersCount: Int! (scalar)
         if (this.UnprotectedUsersCount != null) {
-            s += ind + "unprotectedUsersCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "unprotectedUsersCount\n" ;
+            } else {
+                s += ind + "unprotectedUsersCount\n" ;
+            }
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
         if (this.AllOrgs != null) {
-            var fspec = this.AllOrgs.AsFieldSpec(indent+1);
+            var fspec = this.AllOrgs.AsFieldSpec(conf.Child("allOrgs"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "allOrgs {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "allOrgs {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> O365UserConnection? ChildConnection
         // GraphQL -> childConnection: O365UserConnection! (type)
         if (this.ChildConnection != null) {
-            var fspec = this.ChildConnection.AsFieldSpec(indent+1);
+            var fspec = this.ChildConnection.AsFieldSpec(conf.Child("childConnection"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "childConnection {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "childConnection {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
         if (this.EffectiveSlaSourceObject != null) {
-            var fspec = this.EffectiveSlaSourceObject.AsFieldSpec(indent+1);
+            var fspec = this.EffectiveSlaSourceObject.AsFieldSpec(conf.Child("effectiveSlaSourceObject"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "effectiveSlaSourceObject {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "effectiveSlaSourceObject {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
         if (this.LogicalPath != null) {
-            var fspec = this.LogicalPath.AsFieldSpec(indent+1);
+            var fspec = this.LogicalPath.AsFieldSpec(conf.Child("logicalPath"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "logicalPath {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "logicalPath {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<PathNode>? PhysicalPath
         // GraphQL -> physicalPath: [PathNode!]! (type)
         if (this.PhysicalPath != null) {
-            var fspec = this.PhysicalPath.AsFieldSpec(indent+1);
+            var fspec = this.PhysicalPath.AsFieldSpec(conf.Child("physicalPath"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "physicalPath {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "physicalPath {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> O365OrgDescendantConnection? SearchDescendantConnection
         // GraphQL -> searchDescendantConnection: O365OrgDescendantConnection! (type)
         if (this.SearchDescendantConnection != null) {
-            var fspec = this.SearchDescendantConnection.AsFieldSpec(indent+1);
+            var fspec = this.SearchDescendantConnection.AsFieldSpec(conf.Child("searchDescendantConnection"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "searchDescendantConnection {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "searchDescendantConnection {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
         if (this.SnapshotDistribution != null) {
-            var fspec = this.SnapshotDistribution.AsFieldSpec(indent+1);
+            var fspec = this.SnapshotDistribution.AsFieldSpec(conf.Child("snapshotDistribution"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "snapshotDistribution {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "snapshotDistribution {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -544,214 +677,599 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<Operation>? AuthorizedOperations
         // GraphQL -> authorizedOperations: [Operation!]! (enum)
-        if (this.AuthorizedOperations == null && ec.Includes("authorizedOperations",true))
+        if (ec.Includes("authorizedOperations",true))
         {
-            this.AuthorizedOperations = new List<Operation>();
+            if(this.AuthorizedOperations == null) {
+
+                this.AuthorizedOperations = new List<Operation>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AuthorizedOperations != null && ec.Excludes("authorizedOperations",true))
+        {
+            this.AuthorizedOperations = null;
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
-        if (this.ObjectType == null && ec.Includes("objectType",true))
+        if (ec.Includes("objectType",true))
         {
-            this.ObjectType = new HierarchyObjectTypeEnum();
+            if(this.ObjectType == null) {
+
+                this.ObjectType = new HierarchyObjectTypeEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ObjectType != null && ec.Excludes("objectType",true))
+        {
+            this.ObjectType = null;
         }
         //      C# -> SlaAssignmentTypeEnum? SlaAssignment
         // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
-        if (this.SlaAssignment == null && ec.Includes("slaAssignment",true))
+        if (ec.Includes("slaAssignment",true))
         {
-            this.SlaAssignment = new SlaAssignmentTypeEnum();
+            if(this.SlaAssignment == null) {
+
+                this.SlaAssignment = new SlaAssignmentTypeEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SlaAssignment != null && ec.Excludes("slaAssignment",true))
+        {
+            this.SlaAssignment = null;
         }
         //      C# -> OrgStatus? Status
         // GraphQL -> status: OrgStatus! (enum)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = new OrgStatus();
+            if(this.Status == null) {
+
+                this.Status = new OrgStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
         //      C# -> SlaDomain? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
-        if (this.ConfiguredSlaDomain == null && ec.Includes("configuredSlaDomain",false))
+        if (ec.Includes("configuredSlaDomain",false))
         {
-            var impls = new List<SlaDomain>();
-            impls.ApplyExploratoryFieldSpec(ec.NewChild("configuredSlaDomain"));
-            this.ConfiguredSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+            if(this.ConfiguredSlaDomain == null) {
+
+                var impls = new List<SlaDomain>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("configuredSlaDomain"));
+                this.ConfiguredSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<SlaDomain>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("configuredSlaDomain"));
+                this.ConfiguredSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.ConfiguredSlaDomain != null && ec.Excludes("configuredSlaDomain",false))
+        {
+            this.ConfiguredSlaDomain = null;
         }
         //      C# -> SlaDomain? EffectiveRetentionSlaDomain
         // GraphQL -> effectiveRetentionSlaDomain: SlaDomain (interface)
-        if (this.EffectiveRetentionSlaDomain == null && ec.Includes("effectiveRetentionSlaDomain",false))
+        if (ec.Includes("effectiveRetentionSlaDomain",false))
         {
-            var impls = new List<SlaDomain>();
-            impls.ApplyExploratoryFieldSpec(ec.NewChild("effectiveRetentionSlaDomain"));
-            this.EffectiveRetentionSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+            if(this.EffectiveRetentionSlaDomain == null) {
+
+                var impls = new List<SlaDomain>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("effectiveRetentionSlaDomain"));
+                this.EffectiveRetentionSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<SlaDomain>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("effectiveRetentionSlaDomain"));
+                this.EffectiveRetentionSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.EffectiveRetentionSlaDomain != null && ec.Excludes("effectiveRetentionSlaDomain",false))
+        {
+            this.EffectiveRetentionSlaDomain = null;
         }
         //      C# -> SlaDomain? EffectiveSlaDomain
         // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
-        if (this.EffectiveSlaDomain == null && ec.Includes("effectiveSlaDomain",false))
+        if (ec.Includes("effectiveSlaDomain",false))
         {
-            var impls = new List<SlaDomain>();
-            impls.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaDomain"));
-            this.EffectiveSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+            if(this.EffectiveSlaDomain == null) {
+
+                var impls = new List<SlaDomain>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaDomain"));
+                this.EffectiveSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<SlaDomain>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaDomain"));
+                this.EffectiveSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.EffectiveSlaDomain != null && ec.Excludes("effectiveSlaDomain",false))
+        {
+            this.EffectiveSlaDomain = null;
         }
         //      C# -> System.String? ExocomputeId
         // GraphQL -> exocomputeId: String! (scalar)
-        if (this.ExocomputeId == null && ec.Includes("exocomputeId",true))
+        if (ec.Includes("exocomputeId",true))
         {
-            this.ExocomputeId = "FETCH";
+            if(this.ExocomputeId == null) {
+
+                this.ExocomputeId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExocomputeId != null && ec.Excludes("exocomputeId",true))
+        {
+            this.ExocomputeId = null;
         }
         //      C# -> System.Boolean? HasSharePointLegacySnapshots
         // GraphQL -> hasSharePointLegacySnapshots: Boolean! (scalar)
-        if (this.HasSharePointLegacySnapshots == null && ec.Includes("hasSharePointLegacySnapshots",true))
+        if (ec.Includes("hasSharePointLegacySnapshots",true))
         {
-            this.HasSharePointLegacySnapshots = true;
+            if(this.HasSharePointLegacySnapshots == null) {
+
+                this.HasSharePointLegacySnapshots = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.HasSharePointLegacySnapshots != null && ec.Excludes("hasSharePointLegacySnapshots",true))
+        {
+            this.HasSharePointLegacySnapshots = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
-        if (this.NumWorkloadDescendants == null && ec.Includes("numWorkloadDescendants",true))
+        if (ec.Includes("numWorkloadDescendants",true))
         {
-            this.NumWorkloadDescendants = Int32.MinValue;
+            if(this.NumWorkloadDescendants == null) {
+
+                this.NumWorkloadDescendants = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.NumWorkloadDescendants != null && ec.Excludes("numWorkloadDescendants",true))
+        {
+            this.NumWorkloadDescendants = null;
         }
         //      C# -> System.Int32? Past1DayMailboxComplianceCount
         // GraphQL -> past1DayMailboxComplianceCount: Int! (scalar)
-        if (this.Past1DayMailboxComplianceCount == null && ec.Includes("past1DayMailboxComplianceCount",true))
+        if (ec.Includes("past1DayMailboxComplianceCount",true))
         {
-            this.Past1DayMailboxComplianceCount = Int32.MinValue;
+            if(this.Past1DayMailboxComplianceCount == null) {
+
+                this.Past1DayMailboxComplianceCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Past1DayMailboxComplianceCount != null && ec.Excludes("past1DayMailboxComplianceCount",true))
+        {
+            this.Past1DayMailboxComplianceCount = null;
         }
         //      C# -> System.Int32? Past1DayMailboxOutOfComplianceCount
         // GraphQL -> past1DayMailboxOutOfComplianceCount: Int! (scalar)
-        if (this.Past1DayMailboxOutOfComplianceCount == null && ec.Includes("past1DayMailboxOutOfComplianceCount",true))
+        if (ec.Includes("past1DayMailboxOutOfComplianceCount",true))
         {
-            this.Past1DayMailboxOutOfComplianceCount = Int32.MinValue;
+            if(this.Past1DayMailboxOutOfComplianceCount == null) {
+
+                this.Past1DayMailboxOutOfComplianceCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Past1DayMailboxOutOfComplianceCount != null && ec.Excludes("past1DayMailboxOutOfComplianceCount",true))
+        {
+            this.Past1DayMailboxOutOfComplianceCount = null;
         }
         //      C# -> System.Int32? Past1DayOnedriveComplianceCount
         // GraphQL -> past1DayOnedriveComplianceCount: Int! (scalar)
-        if (this.Past1DayOnedriveComplianceCount == null && ec.Includes("past1DayOnedriveComplianceCount",true))
+        if (ec.Includes("past1DayOnedriveComplianceCount",true))
         {
-            this.Past1DayOnedriveComplianceCount = Int32.MinValue;
+            if(this.Past1DayOnedriveComplianceCount == null) {
+
+                this.Past1DayOnedriveComplianceCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Past1DayOnedriveComplianceCount != null && ec.Excludes("past1DayOnedriveComplianceCount",true))
+        {
+            this.Past1DayOnedriveComplianceCount = null;
         }
         //      C# -> System.Int32? Past1DayOnedriveOutOfComplianceCount
         // GraphQL -> past1DayOnedriveOutOfComplianceCount: Int! (scalar)
-        if (this.Past1DayOnedriveOutOfComplianceCount == null && ec.Includes("past1DayOnedriveOutOfComplianceCount",true))
+        if (ec.Includes("past1DayOnedriveOutOfComplianceCount",true))
         {
-            this.Past1DayOnedriveOutOfComplianceCount = Int32.MinValue;
+            if(this.Past1DayOnedriveOutOfComplianceCount == null) {
+
+                this.Past1DayOnedriveOutOfComplianceCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Past1DayOnedriveOutOfComplianceCount != null && ec.Excludes("past1DayOnedriveOutOfComplianceCount",true))
+        {
+            this.Past1DayOnedriveOutOfComplianceCount = null;
         }
         //      C# -> System.Int32? Past1DaySharepointComplianceCount
         // GraphQL -> past1DaySharepointComplianceCount: Int! (scalar)
-        if (this.Past1DaySharepointComplianceCount == null && ec.Includes("past1DaySharepointComplianceCount",true))
+        if (ec.Includes("past1DaySharepointComplianceCount",true))
         {
-            this.Past1DaySharepointComplianceCount = Int32.MinValue;
+            if(this.Past1DaySharepointComplianceCount == null) {
+
+                this.Past1DaySharepointComplianceCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Past1DaySharepointComplianceCount != null && ec.Excludes("past1DaySharepointComplianceCount",true))
+        {
+            this.Past1DaySharepointComplianceCount = null;
         }
         //      C# -> System.Int32? Past1DaySharepointOutOfComplianceCount
         // GraphQL -> past1DaySharepointOutOfComplianceCount: Int! (scalar)
-        if (this.Past1DaySharepointOutOfComplianceCount == null && ec.Includes("past1DaySharepointOutOfComplianceCount",true))
+        if (ec.Includes("past1DaySharepointOutOfComplianceCount",true))
         {
-            this.Past1DaySharepointOutOfComplianceCount = Int32.MinValue;
+            if(this.Past1DaySharepointOutOfComplianceCount == null) {
+
+                this.Past1DaySharepointOutOfComplianceCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Past1DaySharepointOutOfComplianceCount != null && ec.Excludes("past1DaySharepointOutOfComplianceCount",true))
+        {
+            this.Past1DaySharepointOutOfComplianceCount = null;
         }
         //      C# -> System.Int32? Past1DaySpListComplianceCount
         // GraphQL -> past1DaySpListComplianceCount: Int! (scalar)
-        if (this.Past1DaySpListComplianceCount == null && ec.Includes("past1DaySpListComplianceCount",true))
+        if (ec.Includes("past1DaySpListComplianceCount",true))
         {
-            this.Past1DaySpListComplianceCount = Int32.MinValue;
+            if(this.Past1DaySpListComplianceCount == null) {
+
+                this.Past1DaySpListComplianceCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Past1DaySpListComplianceCount != null && ec.Excludes("past1DaySpListComplianceCount",true))
+        {
+            this.Past1DaySpListComplianceCount = null;
         }
         //      C# -> System.Int32? Past1DaySpListOutOfComplianceCount
         // GraphQL -> past1DaySpListOutOfComplianceCount: Int! (scalar)
-        if (this.Past1DaySpListOutOfComplianceCount == null && ec.Includes("past1DaySpListOutOfComplianceCount",true))
+        if (ec.Includes("past1DaySpListOutOfComplianceCount",true))
         {
-            this.Past1DaySpListOutOfComplianceCount = Int32.MinValue;
+            if(this.Past1DaySpListOutOfComplianceCount == null) {
+
+                this.Past1DaySpListOutOfComplianceCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Past1DaySpListOutOfComplianceCount != null && ec.Excludes("past1DaySpListOutOfComplianceCount",true))
+        {
+            this.Past1DaySpListOutOfComplianceCount = null;
         }
         //      C# -> System.Int32? Past1DaySpSiteCollectionComplianceCount
         // GraphQL -> past1DaySpSiteCollectionComplianceCount: Int! (scalar)
-        if (this.Past1DaySpSiteCollectionComplianceCount == null && ec.Includes("past1DaySpSiteCollectionComplianceCount",true))
+        if (ec.Includes("past1DaySpSiteCollectionComplianceCount",true))
         {
-            this.Past1DaySpSiteCollectionComplianceCount = Int32.MinValue;
+            if(this.Past1DaySpSiteCollectionComplianceCount == null) {
+
+                this.Past1DaySpSiteCollectionComplianceCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Past1DaySpSiteCollectionComplianceCount != null && ec.Excludes("past1DaySpSiteCollectionComplianceCount",true))
+        {
+            this.Past1DaySpSiteCollectionComplianceCount = null;
         }
         //      C# -> System.Int32? Past1DaySpSiteCollectionOutOfComplianceCount
         // GraphQL -> past1DaySpSiteCollectionOutOfComplianceCount: Int! (scalar)
-        if (this.Past1DaySpSiteCollectionOutOfComplianceCount == null && ec.Includes("past1DaySpSiteCollectionOutOfComplianceCount",true))
+        if (ec.Includes("past1DaySpSiteCollectionOutOfComplianceCount",true))
         {
-            this.Past1DaySpSiteCollectionOutOfComplianceCount = Int32.MinValue;
+            if(this.Past1DaySpSiteCollectionOutOfComplianceCount == null) {
+
+                this.Past1DaySpSiteCollectionOutOfComplianceCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Past1DaySpSiteCollectionOutOfComplianceCount != null && ec.Excludes("past1DaySpSiteCollectionOutOfComplianceCount",true))
+        {
+            this.Past1DaySpSiteCollectionOutOfComplianceCount = null;
         }
         //      C# -> System.Int32? Past1DayTeamsComplianceCount
         // GraphQL -> past1DayTeamsComplianceCount: Int! (scalar)
-        if (this.Past1DayTeamsComplianceCount == null && ec.Includes("past1DayTeamsComplianceCount",true))
+        if (ec.Includes("past1DayTeamsComplianceCount",true))
         {
-            this.Past1DayTeamsComplianceCount = Int32.MinValue;
+            if(this.Past1DayTeamsComplianceCount == null) {
+
+                this.Past1DayTeamsComplianceCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Past1DayTeamsComplianceCount != null && ec.Excludes("past1DayTeamsComplianceCount",true))
+        {
+            this.Past1DayTeamsComplianceCount = null;
         }
         //      C# -> System.Int32? Past1DayTeamsOutOfComplianceCount
         // GraphQL -> past1DayTeamsOutOfComplianceCount: Int! (scalar)
-        if (this.Past1DayTeamsOutOfComplianceCount == null && ec.Includes("past1DayTeamsOutOfComplianceCount",true))
+        if (ec.Includes("past1DayTeamsOutOfComplianceCount",true))
         {
-            this.Past1DayTeamsOutOfComplianceCount = Int32.MinValue;
+            if(this.Past1DayTeamsOutOfComplianceCount == null) {
+
+                this.Past1DayTeamsOutOfComplianceCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Past1DayTeamsOutOfComplianceCount != null && ec.Excludes("past1DayTeamsOutOfComplianceCount",true))
+        {
+            this.Past1DayTeamsOutOfComplianceCount = null;
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
-        if (this.SlaPauseStatus == null && ec.Includes("slaPauseStatus",true))
+        if (ec.Includes("slaPauseStatus",true))
         {
-            this.SlaPauseStatus = true;
+            if(this.SlaPauseStatus == null) {
+
+                this.SlaPauseStatus = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.SlaPauseStatus != null && ec.Excludes("slaPauseStatus",true))
+        {
+            this.SlaPauseStatus = null;
         }
         //      C# -> System.Int32? UnprotectedUsersCount
         // GraphQL -> unprotectedUsersCount: Int! (scalar)
-        if (this.UnprotectedUsersCount == null && ec.Includes("unprotectedUsersCount",true))
+        if (ec.Includes("unprotectedUsersCount",true))
         {
-            this.UnprotectedUsersCount = Int32.MinValue;
+            if(this.UnprotectedUsersCount == null) {
+
+                this.UnprotectedUsersCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.UnprotectedUsersCount != null && ec.Excludes("unprotectedUsersCount",true))
+        {
+            this.UnprotectedUsersCount = null;
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
-        if (this.AllOrgs == null && ec.Includes("allOrgs",false))
+        if (ec.Includes("allOrgs",false))
         {
-            this.AllOrgs = new List<Org>();
-            this.AllOrgs.ApplyExploratoryFieldSpec(ec.NewChild("allOrgs"));
+            if(this.AllOrgs == null) {
+
+                this.AllOrgs = new List<Org>();
+                this.AllOrgs.ApplyExploratoryFieldSpec(ec.NewChild("allOrgs"));
+
+            } else {
+
+                this.AllOrgs.ApplyExploratoryFieldSpec(ec.NewChild("allOrgs"));
+
+            }
+        }
+        else if (this.AllOrgs != null && ec.Excludes("allOrgs",false))
+        {
+            this.AllOrgs = null;
         }
         //      C# -> O365UserConnection? ChildConnection
         // GraphQL -> childConnection: O365UserConnection! (type)
-        if (this.ChildConnection == null && ec.Includes("childConnection",false))
+        if (ec.Includes("childConnection",false))
         {
-            this.ChildConnection = new O365UserConnection();
-            this.ChildConnection.ApplyExploratoryFieldSpec(ec.NewChild("childConnection"));
+            if(this.ChildConnection == null) {
+
+                this.ChildConnection = new O365UserConnection();
+                this.ChildConnection.ApplyExploratoryFieldSpec(ec.NewChild("childConnection"));
+
+            } else {
+
+                this.ChildConnection.ApplyExploratoryFieldSpec(ec.NewChild("childConnection"));
+
+            }
+        }
+        else if (this.ChildConnection != null && ec.Excludes("childConnection",false))
+        {
+            this.ChildConnection = null;
         }
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
-        if (this.EffectiveSlaSourceObject == null && ec.Includes("effectiveSlaSourceObject",false))
+        if (ec.Includes("effectiveSlaSourceObject",false))
         {
-            this.EffectiveSlaSourceObject = new PathNode();
-            this.EffectiveSlaSourceObject.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaSourceObject"));
+            if(this.EffectiveSlaSourceObject == null) {
+
+                this.EffectiveSlaSourceObject = new PathNode();
+                this.EffectiveSlaSourceObject.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaSourceObject"));
+
+            } else {
+
+                this.EffectiveSlaSourceObject.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaSourceObject"));
+
+            }
+        }
+        else if (this.EffectiveSlaSourceObject != null && ec.Excludes("effectiveSlaSourceObject",false))
+        {
+            this.EffectiveSlaSourceObject = null;
         }
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
-        if (this.LogicalPath == null && ec.Includes("logicalPath",false))
+        if (ec.Includes("logicalPath",false))
         {
-            this.LogicalPath = new List<PathNode>();
-            this.LogicalPath.ApplyExploratoryFieldSpec(ec.NewChild("logicalPath"));
+            if(this.LogicalPath == null) {
+
+                this.LogicalPath = new List<PathNode>();
+                this.LogicalPath.ApplyExploratoryFieldSpec(ec.NewChild("logicalPath"));
+
+            } else {
+
+                this.LogicalPath.ApplyExploratoryFieldSpec(ec.NewChild("logicalPath"));
+
+            }
+        }
+        else if (this.LogicalPath != null && ec.Excludes("logicalPath",false))
+        {
+            this.LogicalPath = null;
         }
         //      C# -> List<PathNode>? PhysicalPath
         // GraphQL -> physicalPath: [PathNode!]! (type)
-        if (this.PhysicalPath == null && ec.Includes("physicalPath",false))
+        if (ec.Includes("physicalPath",false))
         {
-            this.PhysicalPath = new List<PathNode>();
-            this.PhysicalPath.ApplyExploratoryFieldSpec(ec.NewChild("physicalPath"));
+            if(this.PhysicalPath == null) {
+
+                this.PhysicalPath = new List<PathNode>();
+                this.PhysicalPath.ApplyExploratoryFieldSpec(ec.NewChild("physicalPath"));
+
+            } else {
+
+                this.PhysicalPath.ApplyExploratoryFieldSpec(ec.NewChild("physicalPath"));
+
+            }
+        }
+        else if (this.PhysicalPath != null && ec.Excludes("physicalPath",false))
+        {
+            this.PhysicalPath = null;
         }
         //      C# -> O365OrgDescendantConnection? SearchDescendantConnection
         // GraphQL -> searchDescendantConnection: O365OrgDescendantConnection! (type)
-        if (this.SearchDescendantConnection == null && ec.Includes("searchDescendantConnection",false))
+        if (ec.Includes("searchDescendantConnection",false))
         {
-            this.SearchDescendantConnection = new O365OrgDescendantConnection();
-            this.SearchDescendantConnection.ApplyExploratoryFieldSpec(ec.NewChild("searchDescendantConnection"));
+            if(this.SearchDescendantConnection == null) {
+
+                this.SearchDescendantConnection = new O365OrgDescendantConnection();
+                this.SearchDescendantConnection.ApplyExploratoryFieldSpec(ec.NewChild("searchDescendantConnection"));
+
+            } else {
+
+                this.SearchDescendantConnection.ApplyExploratoryFieldSpec(ec.NewChild("searchDescendantConnection"));
+
+            }
+        }
+        else if (this.SearchDescendantConnection != null && ec.Excludes("searchDescendantConnection",false))
+        {
+            this.SearchDescendantConnection = null;
         }
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
-        if (this.SnapshotDistribution == null && ec.Includes("snapshotDistribution",false))
+        if (ec.Includes("snapshotDistribution",false))
         {
-            this.SnapshotDistribution = new SnapshotDistribution();
-            this.SnapshotDistribution.ApplyExploratoryFieldSpec(ec.NewChild("snapshotDistribution"));
+            if(this.SnapshotDistribution == null) {
+
+                this.SnapshotDistribution = new SnapshotDistribution();
+                this.SnapshotDistribution.ApplyExploratoryFieldSpec(ec.NewChild("snapshotDistribution"));
+
+            } else {
+
+                this.SnapshotDistribution.ApplyExploratoryFieldSpec(ec.NewChild("snapshotDistribution"));
+
+            }
+        }
+        else if (this.SnapshotDistribution != null && ec.Excludes("snapshotDistribution",false))
+        {
+            this.SnapshotDistribution = null;
         }
     }
 
@@ -778,9 +1296,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<O365Org> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

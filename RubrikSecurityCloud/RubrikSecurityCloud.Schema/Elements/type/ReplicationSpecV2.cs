@@ -119,74 +119,111 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? AwsRegion
         // GraphQL -> awsRegion: String! (scalar)
         if (this.AwsRegion != null) {
-            s += ind + "awsRegion\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "awsRegion\n" ;
+            } else {
+                s += ind + "awsRegion\n" ;
+            }
         }
         //      C# -> System.String? AzureRegion
         // GraphQL -> azureRegion: String! (scalar)
         if (this.AzureRegion != null) {
-            s += ind + "azureRegion\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "azureRegion\n" ;
+            } else {
+                s += ind + "azureRegion\n" ;
+            }
         }
         //      C# -> AwsReplicationTarget? AwsTarget
         // GraphQL -> awsTarget: AwsReplicationTarget! (type)
         if (this.AwsTarget != null) {
-            var fspec = this.AwsTarget.AsFieldSpec(indent+1);
+            var fspec = this.AwsTarget.AsFieldSpec(conf.Child("awsTarget"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "awsTarget {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "awsTarget {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> AzureReplicationTarget? AzureTarget
         // GraphQL -> azureTarget: AzureReplicationTarget! (type)
         if (this.AzureTarget != null) {
-            var fspec = this.AzureTarget.AsFieldSpec(indent+1);
+            var fspec = this.AzureTarget.AsFieldSpec(conf.Child("azureTarget"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "azureTarget {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "azureTarget {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<CascadingArchivalSpec>? CascadingArchivalSpecs
         // GraphQL -> cascadingArchivalSpecs: [CascadingArchivalSpec!]! (type)
         if (this.CascadingArchivalSpecs != null) {
-            var fspec = this.CascadingArchivalSpecs.AsFieldSpec(indent+1);
+            var fspec = this.CascadingArchivalSpecs.AsFieldSpec(conf.Child("cascadingArchivalSpecs"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "cascadingArchivalSpecs {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cascadingArchivalSpecs {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> SlaReplicationCluster? Cluster
         // GraphQL -> cluster: SlaReplicationCluster (type)
         if (this.Cluster != null) {
-            var fspec = this.Cluster.AsFieldSpec(indent+1);
+            var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> Duration? ReplicationLocalRetentionDuration
         // GraphQL -> replicationLocalRetentionDuration: Duration (type)
         if (this.ReplicationLocalRetentionDuration != null) {
-            var fspec = this.ReplicationLocalRetentionDuration.AsFieldSpec(indent+1);
+            var fspec = this.ReplicationLocalRetentionDuration.AsFieldSpec(conf.Child("replicationLocalRetentionDuration"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "replicationLocalRetentionDuration {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "replicationLocalRetentionDuration {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> Duration? RetentionDuration
         // GraphQL -> retentionDuration: Duration (type)
         if (this.RetentionDuration != null) {
-            var fspec = this.RetentionDuration.AsFieldSpec(indent+1);
+            var fspec = this.RetentionDuration.AsFieldSpec(conf.Child("retentionDuration"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "retentionDuration {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "retentionDuration {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> TargetMapping? TargetMapping
         // GraphQL -> targetMapping: TargetMapping (type)
         if (this.TargetMapping != null) {
-            var fspec = this.TargetMapping.AsFieldSpec(indent+1);
+            var fspec = this.TargetMapping.AsFieldSpec(conf.Child("targetMapping"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "targetMapping {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "targetMapping {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -198,64 +235,170 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? AwsRegion
         // GraphQL -> awsRegion: String! (scalar)
-        if (this.AwsRegion == null && ec.Includes("awsRegion",true))
+        if (ec.Includes("awsRegion",true))
         {
-            this.AwsRegion = "FETCH";
+            if(this.AwsRegion == null) {
+
+                this.AwsRegion = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AwsRegion != null && ec.Excludes("awsRegion",true))
+        {
+            this.AwsRegion = null;
         }
         //      C# -> System.String? AzureRegion
         // GraphQL -> azureRegion: String! (scalar)
-        if (this.AzureRegion == null && ec.Includes("azureRegion",true))
+        if (ec.Includes("azureRegion",true))
         {
-            this.AzureRegion = "FETCH";
+            if(this.AzureRegion == null) {
+
+                this.AzureRegion = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AzureRegion != null && ec.Excludes("azureRegion",true))
+        {
+            this.AzureRegion = null;
         }
         //      C# -> AwsReplicationTarget? AwsTarget
         // GraphQL -> awsTarget: AwsReplicationTarget! (type)
-        if (this.AwsTarget == null && ec.Includes("awsTarget",false))
+        if (ec.Includes("awsTarget",false))
         {
-            this.AwsTarget = new AwsReplicationTarget();
-            this.AwsTarget.ApplyExploratoryFieldSpec(ec.NewChild("awsTarget"));
+            if(this.AwsTarget == null) {
+
+                this.AwsTarget = new AwsReplicationTarget();
+                this.AwsTarget.ApplyExploratoryFieldSpec(ec.NewChild("awsTarget"));
+
+            } else {
+
+                this.AwsTarget.ApplyExploratoryFieldSpec(ec.NewChild("awsTarget"));
+
+            }
+        }
+        else if (this.AwsTarget != null && ec.Excludes("awsTarget",false))
+        {
+            this.AwsTarget = null;
         }
         //      C# -> AzureReplicationTarget? AzureTarget
         // GraphQL -> azureTarget: AzureReplicationTarget! (type)
-        if (this.AzureTarget == null && ec.Includes("azureTarget",false))
+        if (ec.Includes("azureTarget",false))
         {
-            this.AzureTarget = new AzureReplicationTarget();
-            this.AzureTarget.ApplyExploratoryFieldSpec(ec.NewChild("azureTarget"));
+            if(this.AzureTarget == null) {
+
+                this.AzureTarget = new AzureReplicationTarget();
+                this.AzureTarget.ApplyExploratoryFieldSpec(ec.NewChild("azureTarget"));
+
+            } else {
+
+                this.AzureTarget.ApplyExploratoryFieldSpec(ec.NewChild("azureTarget"));
+
+            }
+        }
+        else if (this.AzureTarget != null && ec.Excludes("azureTarget",false))
+        {
+            this.AzureTarget = null;
         }
         //      C# -> List<CascadingArchivalSpec>? CascadingArchivalSpecs
         // GraphQL -> cascadingArchivalSpecs: [CascadingArchivalSpec!]! (type)
-        if (this.CascadingArchivalSpecs == null && ec.Includes("cascadingArchivalSpecs",false))
+        if (ec.Includes("cascadingArchivalSpecs",false))
         {
-            this.CascadingArchivalSpecs = new List<CascadingArchivalSpec>();
-            this.CascadingArchivalSpecs.ApplyExploratoryFieldSpec(ec.NewChild("cascadingArchivalSpecs"));
+            if(this.CascadingArchivalSpecs == null) {
+
+                this.CascadingArchivalSpecs = new List<CascadingArchivalSpec>();
+                this.CascadingArchivalSpecs.ApplyExploratoryFieldSpec(ec.NewChild("cascadingArchivalSpecs"));
+
+            } else {
+
+                this.CascadingArchivalSpecs.ApplyExploratoryFieldSpec(ec.NewChild("cascadingArchivalSpecs"));
+
+            }
+        }
+        else if (this.CascadingArchivalSpecs != null && ec.Excludes("cascadingArchivalSpecs",false))
+        {
+            this.CascadingArchivalSpecs = null;
         }
         //      C# -> SlaReplicationCluster? Cluster
         // GraphQL -> cluster: SlaReplicationCluster (type)
-        if (this.Cluster == null && ec.Includes("cluster",false))
+        if (ec.Includes("cluster",false))
         {
-            this.Cluster = new SlaReplicationCluster();
-            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+            if(this.Cluster == null) {
+
+                this.Cluster = new SlaReplicationCluster();
+                this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+
+            } else {
+
+                this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+
+            }
+        }
+        else if (this.Cluster != null && ec.Excludes("cluster",false))
+        {
+            this.Cluster = null;
         }
         //      C# -> Duration? ReplicationLocalRetentionDuration
         // GraphQL -> replicationLocalRetentionDuration: Duration (type)
-        if (this.ReplicationLocalRetentionDuration == null && ec.Includes("replicationLocalRetentionDuration",false))
+        if (ec.Includes("replicationLocalRetentionDuration",false))
         {
-            this.ReplicationLocalRetentionDuration = new Duration();
-            this.ReplicationLocalRetentionDuration.ApplyExploratoryFieldSpec(ec.NewChild("replicationLocalRetentionDuration"));
+            if(this.ReplicationLocalRetentionDuration == null) {
+
+                this.ReplicationLocalRetentionDuration = new Duration();
+                this.ReplicationLocalRetentionDuration.ApplyExploratoryFieldSpec(ec.NewChild("replicationLocalRetentionDuration"));
+
+            } else {
+
+                this.ReplicationLocalRetentionDuration.ApplyExploratoryFieldSpec(ec.NewChild("replicationLocalRetentionDuration"));
+
+            }
+        }
+        else if (this.ReplicationLocalRetentionDuration != null && ec.Excludes("replicationLocalRetentionDuration",false))
+        {
+            this.ReplicationLocalRetentionDuration = null;
         }
         //      C# -> Duration? RetentionDuration
         // GraphQL -> retentionDuration: Duration (type)
-        if (this.RetentionDuration == null && ec.Includes("retentionDuration",false))
+        if (ec.Includes("retentionDuration",false))
         {
-            this.RetentionDuration = new Duration();
-            this.RetentionDuration.ApplyExploratoryFieldSpec(ec.NewChild("retentionDuration"));
+            if(this.RetentionDuration == null) {
+
+                this.RetentionDuration = new Duration();
+                this.RetentionDuration.ApplyExploratoryFieldSpec(ec.NewChild("retentionDuration"));
+
+            } else {
+
+                this.RetentionDuration.ApplyExploratoryFieldSpec(ec.NewChild("retentionDuration"));
+
+            }
+        }
+        else if (this.RetentionDuration != null && ec.Excludes("retentionDuration",false))
+        {
+            this.RetentionDuration = null;
         }
         //      C# -> TargetMapping? TargetMapping
         // GraphQL -> targetMapping: TargetMapping (type)
-        if (this.TargetMapping == null && ec.Includes("targetMapping",false))
+        if (ec.Includes("targetMapping",false))
         {
-            this.TargetMapping = new TargetMapping();
-            this.TargetMapping.ApplyExploratoryFieldSpec(ec.NewChild("targetMapping"));
+            if(this.TargetMapping == null) {
+
+                this.TargetMapping = new TargetMapping();
+                this.TargetMapping.ApplyExploratoryFieldSpec(ec.NewChild("targetMapping"));
+
+            } else {
+
+                this.TargetMapping.ApplyExploratoryFieldSpec(ec.NewChild("targetMapping"));
+
+            }
+        }
+        else if (this.TargetMapping != null && ec.Excludes("targetMapping",false))
+        {
+            this.TargetMapping = null;
         }
     }
 
@@ -282,9 +425,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ReplicationSpecV2> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

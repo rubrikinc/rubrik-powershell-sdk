@@ -83,42 +83,63 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? GroupId
         // GraphQL -> groupId: String! (scalar)
         if (this.GroupId != null) {
-            s += ind + "groupId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "groupId\n" ;
+            } else {
+                s += ind + "groupId\n" ;
+            }
         }
         //      C# -> System.String? GroupName
         // GraphQL -> groupName: String! (scalar)
         if (this.GroupName != null) {
-            s += ind + "groupName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "groupName\n" ;
+            } else {
+                s += ind + "groupName\n" ;
+            }
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
         if (this.AllOrgs != null) {
-            var fspec = this.AllOrgs.AsFieldSpec(indent+1);
+            var fspec = this.AllOrgs.AsFieldSpec(conf.Child("allOrgs"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "allOrgs {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "allOrgs {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<Role>? Roles
         // GraphQL -> roles: [Role!]! (type)
         if (this.Roles != null) {
-            var fspec = this.Roles.AsFieldSpec(indent+1);
+            var fspec = this.Roles.AsFieldSpec(conf.Child("roles"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "roles {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "roles {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<User>? Users
         // GraphQL -> users: [User!]! (type)
         if (this.Users != null) {
-            var fspec = this.Users.AsFieldSpec(indent+1);
+            var fspec = this.Users.AsFieldSpec(conf.Child("users"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "users {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "users {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -130,36 +151,94 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? GroupId
         // GraphQL -> groupId: String! (scalar)
-        if (this.GroupId == null && ec.Includes("groupId",true))
+        if (ec.Includes("groupId",true))
         {
-            this.GroupId = "FETCH";
+            if(this.GroupId == null) {
+
+                this.GroupId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.GroupId != null && ec.Excludes("groupId",true))
+        {
+            this.GroupId = null;
         }
         //      C# -> System.String? GroupName
         // GraphQL -> groupName: String! (scalar)
-        if (this.GroupName == null && ec.Includes("groupName",true))
+        if (ec.Includes("groupName",true))
         {
-            this.GroupName = "FETCH";
+            if(this.GroupName == null) {
+
+                this.GroupName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.GroupName != null && ec.Excludes("groupName",true))
+        {
+            this.GroupName = null;
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
-        if (this.AllOrgs == null && ec.Includes("allOrgs",false))
+        if (ec.Includes("allOrgs",false))
         {
-            this.AllOrgs = new List<Org>();
-            this.AllOrgs.ApplyExploratoryFieldSpec(ec.NewChild("allOrgs"));
+            if(this.AllOrgs == null) {
+
+                this.AllOrgs = new List<Org>();
+                this.AllOrgs.ApplyExploratoryFieldSpec(ec.NewChild("allOrgs"));
+
+            } else {
+
+                this.AllOrgs.ApplyExploratoryFieldSpec(ec.NewChild("allOrgs"));
+
+            }
+        }
+        else if (this.AllOrgs != null && ec.Excludes("allOrgs",false))
+        {
+            this.AllOrgs = null;
         }
         //      C# -> List<Role>? Roles
         // GraphQL -> roles: [Role!]! (type)
-        if (this.Roles == null && ec.Includes("roles",false))
+        if (ec.Includes("roles",false))
         {
-            this.Roles = new List<Role>();
-            this.Roles.ApplyExploratoryFieldSpec(ec.NewChild("roles"));
+            if(this.Roles == null) {
+
+                this.Roles = new List<Role>();
+                this.Roles.ApplyExploratoryFieldSpec(ec.NewChild("roles"));
+
+            } else {
+
+                this.Roles.ApplyExploratoryFieldSpec(ec.NewChild("roles"));
+
+            }
+        }
+        else if (this.Roles != null && ec.Excludes("roles",false))
+        {
+            this.Roles = null;
         }
         //      C# -> List<User>? Users
         // GraphQL -> users: [User!]! (type)
-        if (this.Users == null && ec.Includes("users",false))
+        if (ec.Includes("users",false))
         {
-            this.Users = new List<User>();
-            this.Users.ApplyExploratoryFieldSpec(ec.NewChild("users"));
+            if(this.Users == null) {
+
+                this.Users = new List<User>();
+                this.Users.ApplyExploratoryFieldSpec(ec.NewChild("users"));
+
+            } else {
+
+                this.Users.ApplyExploratoryFieldSpec(ec.NewChild("users"));
+
+            }
+        }
+        else if (this.Users != null && ec.Excludes("users",false))
+        {
+            this.Users = null;
         }
     }
 
@@ -186,9 +265,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<Group> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -47,16 +47,21 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<CloudNativeFileRecoveryFeasibility>? SnapshotFileRecoveryFeasibility
         // GraphQL -> snapshotFileRecoveryFeasibility: [CloudNativeFileRecoveryFeasibility!]! (type)
         if (this.SnapshotFileRecoveryFeasibility != null) {
-            var fspec = this.SnapshotFileRecoveryFeasibility.AsFieldSpec(indent+1);
+            var fspec = this.SnapshotFileRecoveryFeasibility.AsFieldSpec(conf.Child("snapshotFileRecoveryFeasibility"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "snapshotFileRecoveryFeasibility {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "snapshotFileRecoveryFeasibility {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -68,10 +73,22 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<CloudNativeFileRecoveryFeasibility>? SnapshotFileRecoveryFeasibility
         // GraphQL -> snapshotFileRecoveryFeasibility: [CloudNativeFileRecoveryFeasibility!]! (type)
-        if (this.SnapshotFileRecoveryFeasibility == null && ec.Includes("snapshotFileRecoveryFeasibility",false))
+        if (ec.Includes("snapshotFileRecoveryFeasibility",false))
         {
-            this.SnapshotFileRecoveryFeasibility = new List<CloudNativeFileRecoveryFeasibility>();
-            this.SnapshotFileRecoveryFeasibility.ApplyExploratoryFieldSpec(ec.NewChild("snapshotFileRecoveryFeasibility"));
+            if(this.SnapshotFileRecoveryFeasibility == null) {
+
+                this.SnapshotFileRecoveryFeasibility = new List<CloudNativeFileRecoveryFeasibility>();
+                this.SnapshotFileRecoveryFeasibility.ApplyExploratoryFieldSpec(ec.NewChild("snapshotFileRecoveryFeasibility"));
+
+            } else {
+
+                this.SnapshotFileRecoveryFeasibility.ApplyExploratoryFieldSpec(ec.NewChild("snapshotFileRecoveryFeasibility"));
+
+            }
+        }
+        else if (this.SnapshotFileRecoveryFeasibility != null && ec.Excludes("snapshotFileRecoveryFeasibility",false))
+        {
+            this.SnapshotFileRecoveryFeasibility = null;
         }
     }
 
@@ -98,9 +115,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ValidateCloudNativeFileRecoveryFeasibilityReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

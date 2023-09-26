@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int32? DayOfMonth
         // GraphQL -> dayOfMonth: Int! (scalar)
         if (this.DayOfMonth != null) {
-            s += ind + "dayOfMonth\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "dayOfMonth\n" ;
+            } else {
+                s += ind + "dayOfMonth\n" ;
+            }
         }
         //      C# -> System.String? Month
         // GraphQL -> month: String! (scalar)
         if (this.Month != null) {
-            s += ind + "month\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "month\n" ;
+            } else {
+                s += ind + "month\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int32? DayOfMonth
         // GraphQL -> dayOfMonth: Int! (scalar)
-        if (this.DayOfMonth == null && ec.Includes("dayOfMonth",true))
+        if (ec.Includes("dayOfMonth",true))
         {
-            this.DayOfMonth = Int32.MinValue;
+            if(this.DayOfMonth == null) {
+
+                this.DayOfMonth = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.DayOfMonth != null && ec.Excludes("dayOfMonth",true))
+        {
+            this.DayOfMonth = null;
         }
         //      C# -> System.String? Month
         // GraphQL -> month: String! (scalar)
-        if (this.Month == null && ec.Includes("month",true))
+        if (ec.Includes("month",true))
         {
-            this.Month = "FETCH";
+            if(this.Month == null) {
+
+                this.Month = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Month != null && ec.Excludes("month",true))
+        {
+            this.Month = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AbsoluteYearlyRecurrencePattern> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

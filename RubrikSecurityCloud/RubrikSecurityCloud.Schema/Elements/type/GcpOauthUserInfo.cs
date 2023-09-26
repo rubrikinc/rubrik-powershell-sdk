@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Domain
         // GraphQL -> domain: String! (scalar)
         if (this.Domain != null) {
-            s += ind + "domain\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "domain\n" ;
+            } else {
+                s += ind + "domain\n" ;
+            }
         }
         //      C# -> System.String? EmailId
         // GraphQL -> emailId: String! (scalar)
         if (this.EmailId != null) {
-            s += ind + "emailId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "emailId\n" ;
+            } else {
+                s += ind + "emailId\n" ;
+            }
         }
         //      C# -> System.String? FirstName
         // GraphQL -> firstName: String! (scalar)
         if (this.FirstName != null) {
-            s += ind + "firstName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "firstName\n" ;
+            } else {
+                s += ind + "firstName\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Domain
         // GraphQL -> domain: String! (scalar)
-        if (this.Domain == null && ec.Includes("domain",true))
+        if (ec.Includes("domain",true))
         {
-            this.Domain = "FETCH";
+            if(this.Domain == null) {
+
+                this.Domain = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Domain != null && ec.Excludes("domain",true))
+        {
+            this.Domain = null;
         }
         //      C# -> System.String? EmailId
         // GraphQL -> emailId: String! (scalar)
-        if (this.EmailId == null && ec.Includes("emailId",true))
+        if (ec.Includes("emailId",true))
         {
-            this.EmailId = "FETCH";
+            if(this.EmailId == null) {
+
+                this.EmailId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.EmailId != null && ec.Excludes("emailId",true))
+        {
+            this.EmailId = null;
         }
         //      C# -> System.String? FirstName
         // GraphQL -> firstName: String! (scalar)
-        if (this.FirstName == null && ec.Includes("firstName",true))
+        if (ec.Includes("firstName",true))
         {
-            this.FirstName = "FETCH";
+            if(this.FirstName == null) {
+
+                this.FirstName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.FirstName != null && ec.Excludes("firstName",true))
+        {
+            this.FirstName = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<GcpOauthUserInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

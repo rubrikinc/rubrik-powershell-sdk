@@ -83,34 +83,55 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<SnapshotCustomization>? Customizations
         // GraphQL -> customizations: [SnapshotCustomization!]! (enum)
         if (this.Customizations != null) {
-            s += ind + "customizations\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "customizations\n" ;
+            } else {
+                s += ind + "customizations\n" ;
+            }
         }
         //      C# -> SnapshotTypeEnum? Type
         // GraphQL -> type: SnapshotTypeEnum! (enum)
         if (this.Type != null) {
-            s += ind + "type\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "type\n" ;
+            } else {
+                s += ind + "type\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> DateTime? LegalHoldTime
         // GraphQL -> legalHoldTime: DateTime (scalar)
         if (this.LegalHoldTime != null) {
-            s += ind + "legalHoldTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "legalHoldTime\n" ;
+            } else {
+                s += ind + "legalHoldTime\n" ;
+            }
         }
         //      C# -> DateTime? SnapshotTime
         // GraphQL -> snapshotTime: DateTime (scalar)
         if (this.SnapshotTime != null) {
-            s += ind + "snapshotTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotTime\n" ;
+            } else {
+                s += ind + "snapshotTime\n" ;
+            }
         }
         return s;
     }
@@ -121,33 +142,88 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<SnapshotCustomization>? Customizations
         // GraphQL -> customizations: [SnapshotCustomization!]! (enum)
-        if (this.Customizations == null && ec.Includes("customizations",true))
+        if (ec.Includes("customizations",true))
         {
-            this.Customizations = new List<SnapshotCustomization>();
+            if(this.Customizations == null) {
+
+                this.Customizations = new List<SnapshotCustomization>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Customizations != null && ec.Excludes("customizations",true))
+        {
+            this.Customizations = null;
         }
         //      C# -> SnapshotTypeEnum? Type
         // GraphQL -> type: SnapshotTypeEnum! (enum)
-        if (this.Type == null && ec.Includes("type",true))
+        if (ec.Includes("type",true))
         {
-            this.Type = new SnapshotTypeEnum();
+            if(this.Type == null) {
+
+                this.Type = new SnapshotTypeEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Type != null && ec.Excludes("type",true))
+        {
+            this.Type = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> DateTime? LegalHoldTime
         // GraphQL -> legalHoldTime: DateTime (scalar)
-        if (this.LegalHoldTime == null && ec.Includes("legalHoldTime",true))
+        if (ec.Includes("legalHoldTime",true))
         {
-            this.LegalHoldTime = new DateTime();
+            if(this.LegalHoldTime == null) {
+
+                this.LegalHoldTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LegalHoldTime != null && ec.Excludes("legalHoldTime",true))
+        {
+            this.LegalHoldTime = null;
         }
         //      C# -> DateTime? SnapshotTime
         // GraphQL -> snapshotTime: DateTime (scalar)
-        if (this.SnapshotTime == null && ec.Includes("snapshotTime",true))
+        if (ec.Includes("snapshotTime",true))
         {
-            this.SnapshotTime = new DateTime();
+            if(this.SnapshotTime == null) {
+
+                this.SnapshotTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotTime != null && ec.Excludes("snapshotTime",true))
+        {
+            this.SnapshotTime = null;
         }
     }
 
@@ -174,9 +250,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<LegalHoldSnapshotDetail> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

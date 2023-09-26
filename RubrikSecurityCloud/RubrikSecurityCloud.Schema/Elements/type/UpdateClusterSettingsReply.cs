@@ -128,64 +128,105 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> RegisteredMode? RegisteredMode
         // GraphQL -> registeredMode: RegisteredMode! (enum)
         if (this.RegisteredMode != null) {
-            s += ind + "registeredMode\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "registeredMode\n" ;
+            } else {
+                s += ind + "registeredMode\n" ;
+            }
         }
         //      C# -> System.String? AcceptedEulaVersion
         // GraphQL -> acceptedEulaVersion: String! (scalar)
         if (this.AcceptedEulaVersion != null) {
-            s += ind + "acceptedEulaVersion\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "acceptedEulaVersion\n" ;
+            } else {
+                s += ind + "acceptedEulaVersion\n" ;
+            }
         }
         //      C# -> System.String? ApiVersion
         // GraphQL -> apiVersion: String! (scalar)
         if (this.ApiVersion != null) {
-            s += ind + "apiVersion\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "apiVersion\n" ;
+            } else {
+                s += ind + "apiVersion\n" ;
+            }
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
         if (this.ClusterUuid != null) {
-            s += ind + "clusterUuid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterUuid\n" ;
+            } else {
+                s += ind + "clusterUuid\n" ;
+            }
         }
         //      C# -> System.String? LatestEulaVersion
         // GraphQL -> latestEulaVersion: String! (scalar)
         if (this.LatestEulaVersion != null) {
-            s += ind + "latestEulaVersion\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "latestEulaVersion\n" ;
+            } else {
+                s += ind + "latestEulaVersion\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.String? RubrikUrl
         // GraphQL -> rubrikUrl: URL! (scalar)
         if (this.RubrikUrl != null) {
-            s += ind + "rubrikUrl\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "rubrikUrl\n" ;
+            } else {
+                s += ind + "rubrikUrl\n" ;
+            }
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String! (scalar)
         if (this.Version != null) {
-            s += ind + "version\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "version\n" ;
+            } else {
+                s += ind + "version\n" ;
+            }
         }
         //      C# -> ClusterGeolocation? Geolocation
         // GraphQL -> geolocation: ClusterGeolocation (type)
         if (this.Geolocation != null) {
-            var fspec = this.Geolocation.AsFieldSpec(indent+1);
+            var fspec = this.Geolocation.AsFieldSpec(conf.Child("geolocation"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "geolocation {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "geolocation {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> ClusterTimezone? Timezone
         // GraphQL -> timezone: ClusterTimezone (type)
         if (this.Timezone != null) {
-            var fspec = this.Timezone.AsFieldSpec(indent+1);
+            var fspec = this.Timezone.AsFieldSpec(conf.Child("timezone"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "timezone {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "timezone {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -197,65 +238,177 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> RegisteredMode? RegisteredMode
         // GraphQL -> registeredMode: RegisteredMode! (enum)
-        if (this.RegisteredMode == null && ec.Includes("registeredMode",true))
+        if (ec.Includes("registeredMode",true))
         {
-            this.RegisteredMode = new RegisteredMode();
+            if(this.RegisteredMode == null) {
+
+                this.RegisteredMode = new RegisteredMode();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RegisteredMode != null && ec.Excludes("registeredMode",true))
+        {
+            this.RegisteredMode = null;
         }
         //      C# -> System.String? AcceptedEulaVersion
         // GraphQL -> acceptedEulaVersion: String! (scalar)
-        if (this.AcceptedEulaVersion == null && ec.Includes("acceptedEulaVersion",true))
+        if (ec.Includes("acceptedEulaVersion",true))
         {
-            this.AcceptedEulaVersion = "FETCH";
+            if(this.AcceptedEulaVersion == null) {
+
+                this.AcceptedEulaVersion = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AcceptedEulaVersion != null && ec.Excludes("acceptedEulaVersion",true))
+        {
+            this.AcceptedEulaVersion = null;
         }
         //      C# -> System.String? ApiVersion
         // GraphQL -> apiVersion: String! (scalar)
-        if (this.ApiVersion == null && ec.Includes("apiVersion",true))
+        if (ec.Includes("apiVersion",true))
         {
-            this.ApiVersion = "FETCH";
+            if(this.ApiVersion == null) {
+
+                this.ApiVersion = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ApiVersion != null && ec.Excludes("apiVersion",true))
+        {
+            this.ApiVersion = null;
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
-        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
+        if (ec.Includes("clusterUuid",true))
         {
-            this.ClusterUuid = "FETCH";
+            if(this.ClusterUuid == null) {
+
+                this.ClusterUuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterUuid != null && ec.Excludes("clusterUuid",true))
+        {
+            this.ClusterUuid = null;
         }
         //      C# -> System.String? LatestEulaVersion
         // GraphQL -> latestEulaVersion: String! (scalar)
-        if (this.LatestEulaVersion == null && ec.Includes("latestEulaVersion",true))
+        if (ec.Includes("latestEulaVersion",true))
         {
-            this.LatestEulaVersion = "FETCH";
+            if(this.LatestEulaVersion == null) {
+
+                this.LatestEulaVersion = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.LatestEulaVersion != null && ec.Excludes("latestEulaVersion",true))
+        {
+            this.LatestEulaVersion = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.String? RubrikUrl
         // GraphQL -> rubrikUrl: URL! (scalar)
-        if (this.RubrikUrl == null && ec.Includes("rubrikUrl",true))
+        if (ec.Includes("rubrikUrl",true))
         {
-            this.RubrikUrl = "FETCH";
+            if(this.RubrikUrl == null) {
+
+                this.RubrikUrl = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RubrikUrl != null && ec.Excludes("rubrikUrl",true))
+        {
+            this.RubrikUrl = null;
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String! (scalar)
-        if (this.Version == null && ec.Includes("version",true))
+        if (ec.Includes("version",true))
         {
-            this.Version = "FETCH";
+            if(this.Version == null) {
+
+                this.Version = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Version != null && ec.Excludes("version",true))
+        {
+            this.Version = null;
         }
         //      C# -> ClusterGeolocation? Geolocation
         // GraphQL -> geolocation: ClusterGeolocation (type)
-        if (this.Geolocation == null && ec.Includes("geolocation",false))
+        if (ec.Includes("geolocation",false))
         {
-            this.Geolocation = new ClusterGeolocation();
-            this.Geolocation.ApplyExploratoryFieldSpec(ec.NewChild("geolocation"));
+            if(this.Geolocation == null) {
+
+                this.Geolocation = new ClusterGeolocation();
+                this.Geolocation.ApplyExploratoryFieldSpec(ec.NewChild("geolocation"));
+
+            } else {
+
+                this.Geolocation.ApplyExploratoryFieldSpec(ec.NewChild("geolocation"));
+
+            }
+        }
+        else if (this.Geolocation != null && ec.Excludes("geolocation",false))
+        {
+            this.Geolocation = null;
         }
         //      C# -> ClusterTimezone? Timezone
         // GraphQL -> timezone: ClusterTimezone (type)
-        if (this.Timezone == null && ec.Includes("timezone",false))
+        if (ec.Includes("timezone",false))
         {
-            this.Timezone = new ClusterTimezone();
-            this.Timezone.ApplyExploratoryFieldSpec(ec.NewChild("timezone"));
+            if(this.Timezone == null) {
+
+                this.Timezone = new ClusterTimezone();
+                this.Timezone.ApplyExploratoryFieldSpec(ec.NewChild("timezone"));
+
+            } else {
+
+                this.Timezone.ApplyExploratoryFieldSpec(ec.NewChild("timezone"));
+
+            }
+        }
+        else if (this.Timezone != null && ec.Excludes("timezone",false))
+        {
+            this.Timezone = null;
         }
     }
 
@@ -282,9 +435,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<UpdateClusterSettingsReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

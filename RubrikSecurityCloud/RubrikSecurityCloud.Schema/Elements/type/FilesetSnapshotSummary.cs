@@ -83,36 +83,57 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? ErrorsCollected
         // GraphQL -> errorsCollected: Long (scalar)
         if (this.ErrorsCollected != null) {
-            s += ind + "errorsCollected\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "errorsCollected\n" ;
+            } else {
+                s += ind + "errorsCollected\n" ;
+            }
         }
         //      C# -> System.Int64? FileCount
         // GraphQL -> fileCount: Long (scalar)
         if (this.FileCount != null) {
-            s += ind + "fileCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "fileCount\n" ;
+            } else {
+                s += ind + "fileCount\n" ;
+            }
         }
         //      C# -> System.String? FilesetName
         // GraphQL -> filesetName: String! (scalar)
         if (this.FilesetName != null) {
-            s += ind + "filesetName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "filesetName\n" ;
+            } else {
+                s += ind + "filesetName\n" ;
+            }
         }
         //      C# -> System.Boolean? SnapdiffUsed
         // GraphQL -> snapdiffUsed: Boolean (scalar)
         if (this.SnapdiffUsed != null) {
-            s += ind + "snapdiffUsed\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapdiffUsed\n" ;
+            } else {
+                s += ind + "snapdiffUsed\n" ;
+            }
         }
         //      C# -> BaseSnapshotSummary? BaseSnapshotSummary
         // GraphQL -> baseSnapshotSummary: BaseSnapshotSummary (type)
         if (this.BaseSnapshotSummary != null) {
-            var fspec = this.BaseSnapshotSummary.AsFieldSpec(indent+1);
+            var fspec = this.BaseSnapshotSummary.AsFieldSpec(conf.Child("baseSnapshotSummary"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "baseSnapshotSummary {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "baseSnapshotSummary {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -124,34 +145,90 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? ErrorsCollected
         // GraphQL -> errorsCollected: Long (scalar)
-        if (this.ErrorsCollected == null && ec.Includes("errorsCollected",true))
+        if (ec.Includes("errorsCollected",true))
         {
-            this.ErrorsCollected = new System.Int64();
+            if(this.ErrorsCollected == null) {
+
+                this.ErrorsCollected = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ErrorsCollected != null && ec.Excludes("errorsCollected",true))
+        {
+            this.ErrorsCollected = null;
         }
         //      C# -> System.Int64? FileCount
         // GraphQL -> fileCount: Long (scalar)
-        if (this.FileCount == null && ec.Includes("fileCount",true))
+        if (ec.Includes("fileCount",true))
         {
-            this.FileCount = new System.Int64();
+            if(this.FileCount == null) {
+
+                this.FileCount = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.FileCount != null && ec.Excludes("fileCount",true))
+        {
+            this.FileCount = null;
         }
         //      C# -> System.String? FilesetName
         // GraphQL -> filesetName: String! (scalar)
-        if (this.FilesetName == null && ec.Includes("filesetName",true))
+        if (ec.Includes("filesetName",true))
         {
-            this.FilesetName = "FETCH";
+            if(this.FilesetName == null) {
+
+                this.FilesetName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.FilesetName != null && ec.Excludes("filesetName",true))
+        {
+            this.FilesetName = null;
         }
         //      C# -> System.Boolean? SnapdiffUsed
         // GraphQL -> snapdiffUsed: Boolean (scalar)
-        if (this.SnapdiffUsed == null && ec.Includes("snapdiffUsed",true))
+        if (ec.Includes("snapdiffUsed",true))
         {
-            this.SnapdiffUsed = true;
+            if(this.SnapdiffUsed == null) {
+
+                this.SnapdiffUsed = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapdiffUsed != null && ec.Excludes("snapdiffUsed",true))
+        {
+            this.SnapdiffUsed = null;
         }
         //      C# -> BaseSnapshotSummary? BaseSnapshotSummary
         // GraphQL -> baseSnapshotSummary: BaseSnapshotSummary (type)
-        if (this.BaseSnapshotSummary == null && ec.Includes("baseSnapshotSummary",false))
+        if (ec.Includes("baseSnapshotSummary",false))
         {
-            this.BaseSnapshotSummary = new BaseSnapshotSummary();
-            this.BaseSnapshotSummary.ApplyExploratoryFieldSpec(ec.NewChild("baseSnapshotSummary"));
+            if(this.BaseSnapshotSummary == null) {
+
+                this.BaseSnapshotSummary = new BaseSnapshotSummary();
+                this.BaseSnapshotSummary.ApplyExploratoryFieldSpec(ec.NewChild("baseSnapshotSummary"));
+
+            } else {
+
+                this.BaseSnapshotSummary.ApplyExploratoryFieldSpec(ec.NewChild("baseSnapshotSummary"));
+
+            }
+        }
+        else if (this.BaseSnapshotSummary != null && ec.Excludes("baseSnapshotSummary",false))
+        {
+            this.BaseSnapshotSummary = null;
         }
     }
 
@@ -178,9 +255,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<FilesetSnapshotSummary> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? Fatal
         // GraphQL -> fatal: Long! (scalar)
         if (this.Fatal != null) {
-            s += ind + "fatal\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "fatal\n" ;
+            } else {
+                s += ind + "fatal\n" ;
+            }
         }
         //      C# -> System.Int64? Ok
         // GraphQL -> ok: Long! (scalar)
         if (this.Ok != null) {
-            s += ind + "ok\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "ok\n" ;
+            } else {
+                s += ind + "ok\n" ;
+            }
         }
         //      C# -> System.Int64? Warning
         // GraphQL -> warning: Long! (scalar)
         if (this.Warning != null) {
-            s += ind + "warning\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "warning\n" ;
+            } else {
+                s += ind + "warning\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? Fatal
         // GraphQL -> fatal: Long! (scalar)
-        if (this.Fatal == null && ec.Includes("fatal",true))
+        if (ec.Includes("fatal",true))
         {
-            this.Fatal = new System.Int64();
+            if(this.Fatal == null) {
+
+                this.Fatal = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Fatal != null && ec.Excludes("fatal",true))
+        {
+            this.Fatal = null;
         }
         //      C# -> System.Int64? Ok
         // GraphQL -> ok: Long! (scalar)
-        if (this.Ok == null && ec.Includes("ok",true))
+        if (ec.Includes("ok",true))
         {
-            this.Ok = new System.Int64();
+            if(this.Ok == null) {
+
+                this.Ok = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Ok != null && ec.Excludes("ok",true))
+        {
+            this.Ok = null;
         }
         //      C# -> System.Int64? Warning
         // GraphQL -> warning: Long! (scalar)
-        if (this.Warning == null && ec.Includes("warning",true))
+        if (ec.Includes("warning",true))
         {
-            this.Warning = new System.Int64();
+            if(this.Warning == null) {
+
+                this.Warning = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Warning != null && ec.Excludes("warning",true))
+        {
+            this.Warning = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ClusterHealthAggregation> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -56,24 +56,33 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> RoleStatus? GlobalAdministrator
         // GraphQL -> globalAdministrator: RoleStatus (type)
         if (this.GlobalAdministrator != null) {
-            var fspec = this.GlobalAdministrator.AsFieldSpec(indent+1);
+            var fspec = this.GlobalAdministrator.AsFieldSpec(conf.Child("globalAdministrator"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "globalAdministrator {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "globalAdministrator {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> RoleStatus? SubscriptionOwner
         // GraphQL -> subscriptionOwner: RoleStatus (type)
         if (this.SubscriptionOwner != null) {
-            var fspec = this.SubscriptionOwner.AsFieldSpec(indent+1);
+            var fspec = this.SubscriptionOwner.AsFieldSpec(conf.Child("subscriptionOwner"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "subscriptionOwner {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "subscriptionOwner {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -85,17 +94,41 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> RoleStatus? GlobalAdministrator
         // GraphQL -> globalAdministrator: RoleStatus (type)
-        if (this.GlobalAdministrator == null && ec.Includes("globalAdministrator",false))
+        if (ec.Includes("globalAdministrator",false))
         {
-            this.GlobalAdministrator = new RoleStatus();
-            this.GlobalAdministrator.ApplyExploratoryFieldSpec(ec.NewChild("globalAdministrator"));
+            if(this.GlobalAdministrator == null) {
+
+                this.GlobalAdministrator = new RoleStatus();
+                this.GlobalAdministrator.ApplyExploratoryFieldSpec(ec.NewChild("globalAdministrator"));
+
+            } else {
+
+                this.GlobalAdministrator.ApplyExploratoryFieldSpec(ec.NewChild("globalAdministrator"));
+
+            }
+        }
+        else if (this.GlobalAdministrator != null && ec.Excludes("globalAdministrator",false))
+        {
+            this.GlobalAdministrator = null;
         }
         //      C# -> RoleStatus? SubscriptionOwner
         // GraphQL -> subscriptionOwner: RoleStatus (type)
-        if (this.SubscriptionOwner == null && ec.Includes("subscriptionOwner",false))
+        if (ec.Includes("subscriptionOwner",false))
         {
-            this.SubscriptionOwner = new RoleStatus();
-            this.SubscriptionOwner.ApplyExploratoryFieldSpec(ec.NewChild("subscriptionOwner"));
+            if(this.SubscriptionOwner == null) {
+
+                this.SubscriptionOwner = new RoleStatus();
+                this.SubscriptionOwner.ApplyExploratoryFieldSpec(ec.NewChild("subscriptionOwner"));
+
+            } else {
+
+                this.SubscriptionOwner.ApplyExploratoryFieldSpec(ec.NewChild("subscriptionOwner"));
+
+            }
+        }
+        else if (this.SubscriptionOwner != null && ec.Excludes("subscriptionOwner",false))
+        {
+            this.SubscriptionOwner = null;
         }
     }
 
@@ -122,9 +155,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AzureUserRoleResp> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

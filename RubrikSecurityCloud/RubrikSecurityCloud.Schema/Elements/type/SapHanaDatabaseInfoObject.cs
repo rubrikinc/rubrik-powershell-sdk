@@ -119,54 +119,91 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? ApproxDbSizeInMb
         // GraphQL -> approxDbSizeInMb: Long! (scalar)
         if (this.ApproxDbSizeInMb != null) {
-            s += ind + "approxDbSizeInMb\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "approxDbSizeInMb\n" ;
+            } else {
+                s += ind + "approxDbSizeInMb\n" ;
+            }
         }
         //      C# -> System.String? BackintPath
         // GraphQL -> backintPath: String! (scalar)
         if (this.BackintPath != null) {
-            s += ind + "backintPath\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "backintPath\n" ;
+            } else {
+                s += ind + "backintPath\n" ;
+            }
         }
         //      C# -> System.String? DatabaseType
         // GraphQL -> databaseType: String! (scalar)
         if (this.DatabaseType != null) {
-            s += ind + "databaseType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "databaseType\n" ;
+            } else {
+                s += ind + "databaseType\n" ;
+            }
         }
         //      C# -> System.Int32? LogBackupIntervalSecs
         // GraphQL -> logBackupIntervalSecs: Int! (scalar)
         if (this.LogBackupIntervalSecs != null) {
-            s += ind + "logBackupIntervalSecs\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "logBackupIntervalSecs\n" ;
+            } else {
+                s += ind + "logBackupIntervalSecs\n" ;
+            }
         }
         //      C# -> System.String? LogMode
         // GraphQL -> logMode: String! (scalar)
         if (this.LogMode != null) {
-            s += ind + "logMode\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "logMode\n" ;
+            } else {
+                s += ind + "logMode\n" ;
+            }
         }
         //      C# -> System.Int32? NumChannels
         // GraphQL -> numChannels: Int! (scalar)
         if (this.NumChannels != null) {
-            s += ind + "numChannels\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "numChannels\n" ;
+            } else {
+                s += ind + "numChannels\n" ;
+            }
         }
         //      C# -> System.String? ParamFilePath
         // GraphQL -> paramFilePath: String! (scalar)
         if (this.ParamFilePath != null) {
-            s += ind + "paramFilePath\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "paramFilePath\n" ;
+            } else {
+                s += ind + "paramFilePath\n" ;
+            }
         }
         //      C# -> System.String? RestoreConfiguredSrcDatabaseId
         // GraphQL -> restoreConfiguredSrcDatabaseId: String! (scalar)
         if (this.RestoreConfiguredSrcDatabaseId != null) {
-            s += ind + "restoreConfiguredSrcDatabaseId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "restoreConfiguredSrcDatabaseId\n" ;
+            } else {
+                s += ind + "restoreConfiguredSrcDatabaseId\n" ;
+            }
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         return s;
     }
@@ -177,57 +214,156 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? ApproxDbSizeInMb
         // GraphQL -> approxDbSizeInMb: Long! (scalar)
-        if (this.ApproxDbSizeInMb == null && ec.Includes("approxDbSizeInMb",true))
+        if (ec.Includes("approxDbSizeInMb",true))
         {
-            this.ApproxDbSizeInMb = new System.Int64();
+            if(this.ApproxDbSizeInMb == null) {
+
+                this.ApproxDbSizeInMb = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ApproxDbSizeInMb != null && ec.Excludes("approxDbSizeInMb",true))
+        {
+            this.ApproxDbSizeInMb = null;
         }
         //      C# -> System.String? BackintPath
         // GraphQL -> backintPath: String! (scalar)
-        if (this.BackintPath == null && ec.Includes("backintPath",true))
+        if (ec.Includes("backintPath",true))
         {
-            this.BackintPath = "FETCH";
+            if(this.BackintPath == null) {
+
+                this.BackintPath = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.BackintPath != null && ec.Excludes("backintPath",true))
+        {
+            this.BackintPath = null;
         }
         //      C# -> System.String? DatabaseType
         // GraphQL -> databaseType: String! (scalar)
-        if (this.DatabaseType == null && ec.Includes("databaseType",true))
+        if (ec.Includes("databaseType",true))
         {
-            this.DatabaseType = "FETCH";
+            if(this.DatabaseType == null) {
+
+                this.DatabaseType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DatabaseType != null && ec.Excludes("databaseType",true))
+        {
+            this.DatabaseType = null;
         }
         //      C# -> System.Int32? LogBackupIntervalSecs
         // GraphQL -> logBackupIntervalSecs: Int! (scalar)
-        if (this.LogBackupIntervalSecs == null && ec.Includes("logBackupIntervalSecs",true))
+        if (ec.Includes("logBackupIntervalSecs",true))
         {
-            this.LogBackupIntervalSecs = Int32.MinValue;
+            if(this.LogBackupIntervalSecs == null) {
+
+                this.LogBackupIntervalSecs = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LogBackupIntervalSecs != null && ec.Excludes("logBackupIntervalSecs",true))
+        {
+            this.LogBackupIntervalSecs = null;
         }
         //      C# -> System.String? LogMode
         // GraphQL -> logMode: String! (scalar)
-        if (this.LogMode == null && ec.Includes("logMode",true))
+        if (ec.Includes("logMode",true))
         {
-            this.LogMode = "FETCH";
+            if(this.LogMode == null) {
+
+                this.LogMode = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.LogMode != null && ec.Excludes("logMode",true))
+        {
+            this.LogMode = null;
         }
         //      C# -> System.Int32? NumChannels
         // GraphQL -> numChannels: Int! (scalar)
-        if (this.NumChannels == null && ec.Includes("numChannels",true))
+        if (ec.Includes("numChannels",true))
         {
-            this.NumChannels = Int32.MinValue;
+            if(this.NumChannels == null) {
+
+                this.NumChannels = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.NumChannels != null && ec.Excludes("numChannels",true))
+        {
+            this.NumChannels = null;
         }
         //      C# -> System.String? ParamFilePath
         // GraphQL -> paramFilePath: String! (scalar)
-        if (this.ParamFilePath == null && ec.Includes("paramFilePath",true))
+        if (ec.Includes("paramFilePath",true))
         {
-            this.ParamFilePath = "FETCH";
+            if(this.ParamFilePath == null) {
+
+                this.ParamFilePath = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ParamFilePath != null && ec.Excludes("paramFilePath",true))
+        {
+            this.ParamFilePath = null;
         }
         //      C# -> System.String? RestoreConfiguredSrcDatabaseId
         // GraphQL -> restoreConfiguredSrcDatabaseId: String! (scalar)
-        if (this.RestoreConfiguredSrcDatabaseId == null && ec.Includes("restoreConfiguredSrcDatabaseId",true))
+        if (ec.Includes("restoreConfiguredSrcDatabaseId",true))
         {
-            this.RestoreConfiguredSrcDatabaseId = "FETCH";
+            if(this.RestoreConfiguredSrcDatabaseId == null) {
+
+                this.RestoreConfiguredSrcDatabaseId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RestoreConfiguredSrcDatabaseId != null && ec.Excludes("restoreConfiguredSrcDatabaseId",true))
+        {
+            this.RestoreConfiguredSrcDatabaseId = null;
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = "FETCH";
+            if(this.Status == null) {
+
+                this.Status = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
     }
 
@@ -254,9 +390,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SapHanaDatabaseInfoObject> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

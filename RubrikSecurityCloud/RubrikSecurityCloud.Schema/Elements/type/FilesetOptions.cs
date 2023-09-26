@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Boolean? AllowBackupHiddenFoldersInNetworkMounts
         // GraphQL -> allowBackupHiddenFoldersInNetworkMounts: Boolean (scalar)
         if (this.AllowBackupHiddenFoldersInNetworkMounts != null) {
-            s += ind + "allowBackupHiddenFoldersInNetworkMounts\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "allowBackupHiddenFoldersInNetworkMounts\n" ;
+            } else {
+                s += ind + "allowBackupHiddenFoldersInNetworkMounts\n" ;
+            }
         }
         //      C# -> System.Boolean? AllowBackupNetworkMounts
         // GraphQL -> allowBackupNetworkMounts: Boolean (scalar)
         if (this.AllowBackupNetworkMounts != null) {
-            s += ind + "allowBackupNetworkMounts\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "allowBackupNetworkMounts\n" ;
+            } else {
+                s += ind + "allowBackupNetworkMounts\n" ;
+            }
         }
         //      C# -> System.Boolean? UseWindowsVss
         // GraphQL -> useWindowsVss: Boolean (scalar)
         if (this.UseWindowsVss != null) {
-            s += ind + "useWindowsVss\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "useWindowsVss\n" ;
+            } else {
+                s += ind + "useWindowsVss\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Boolean? AllowBackupHiddenFoldersInNetworkMounts
         // GraphQL -> allowBackupHiddenFoldersInNetworkMounts: Boolean (scalar)
-        if (this.AllowBackupHiddenFoldersInNetworkMounts == null && ec.Includes("allowBackupHiddenFoldersInNetworkMounts",true))
+        if (ec.Includes("allowBackupHiddenFoldersInNetworkMounts",true))
         {
-            this.AllowBackupHiddenFoldersInNetworkMounts = true;
+            if(this.AllowBackupHiddenFoldersInNetworkMounts == null) {
+
+                this.AllowBackupHiddenFoldersInNetworkMounts = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.AllowBackupHiddenFoldersInNetworkMounts != null && ec.Excludes("allowBackupHiddenFoldersInNetworkMounts",true))
+        {
+            this.AllowBackupHiddenFoldersInNetworkMounts = null;
         }
         //      C# -> System.Boolean? AllowBackupNetworkMounts
         // GraphQL -> allowBackupNetworkMounts: Boolean (scalar)
-        if (this.AllowBackupNetworkMounts == null && ec.Includes("allowBackupNetworkMounts",true))
+        if (ec.Includes("allowBackupNetworkMounts",true))
         {
-            this.AllowBackupNetworkMounts = true;
+            if(this.AllowBackupNetworkMounts == null) {
+
+                this.AllowBackupNetworkMounts = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.AllowBackupNetworkMounts != null && ec.Excludes("allowBackupNetworkMounts",true))
+        {
+            this.AllowBackupNetworkMounts = null;
         }
         //      C# -> System.Boolean? UseWindowsVss
         // GraphQL -> useWindowsVss: Boolean (scalar)
-        if (this.UseWindowsVss == null && ec.Includes("useWindowsVss",true))
+        if (ec.Includes("useWindowsVss",true))
         {
-            this.UseWindowsVss = true;
+            if(this.UseWindowsVss == null) {
+
+                this.UseWindowsVss = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.UseWindowsVss != null && ec.Excludes("useWindowsVss",true))
+        {
+            this.UseWindowsVss = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<FilesetOptions> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

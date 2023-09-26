@@ -74,40 +74,57 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> SummaryCount? HighRiskFileCount
         // GraphQL -> highRiskFileCount: SummaryCount (type)
         if (this.HighRiskFileCount != null) {
-            var fspec = this.HighRiskFileCount.AsFieldSpec(indent+1);
+            var fspec = this.HighRiskFileCount.AsFieldSpec(conf.Child("highRiskFileCount"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "highRiskFileCount {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "highRiskFileCount {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> SummaryCount? LowRiskFileCount
         // GraphQL -> lowRiskFileCount: SummaryCount (type)
         if (this.LowRiskFileCount != null) {
-            var fspec = this.LowRiskFileCount.AsFieldSpec(indent+1);
+            var fspec = this.LowRiskFileCount.AsFieldSpec(conf.Child("lowRiskFileCount"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "lowRiskFileCount {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "lowRiskFileCount {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> SummaryCount? MediumRiskFileCount
         // GraphQL -> mediumRiskFileCount: SummaryCount (type)
         if (this.MediumRiskFileCount != null) {
-            var fspec = this.MediumRiskFileCount.AsFieldSpec(indent+1);
+            var fspec = this.MediumRiskFileCount.AsFieldSpec(conf.Child("mediumRiskFileCount"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "mediumRiskFileCount {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "mediumRiskFileCount {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> SummaryCount? TotalFileCount
         // GraphQL -> totalFileCount: SummaryCount (type)
         if (this.TotalFileCount != null) {
-            var fspec = this.TotalFileCount.AsFieldSpec(indent+1);
+            var fspec = this.TotalFileCount.AsFieldSpec(conf.Child("totalFileCount"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "totalFileCount {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "totalFileCount {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -119,31 +136,79 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> SummaryCount? HighRiskFileCount
         // GraphQL -> highRiskFileCount: SummaryCount (type)
-        if (this.HighRiskFileCount == null && ec.Includes("highRiskFileCount",false))
+        if (ec.Includes("highRiskFileCount",false))
         {
-            this.HighRiskFileCount = new SummaryCount();
-            this.HighRiskFileCount.ApplyExploratoryFieldSpec(ec.NewChild("highRiskFileCount"));
+            if(this.HighRiskFileCount == null) {
+
+                this.HighRiskFileCount = new SummaryCount();
+                this.HighRiskFileCount.ApplyExploratoryFieldSpec(ec.NewChild("highRiskFileCount"));
+
+            } else {
+
+                this.HighRiskFileCount.ApplyExploratoryFieldSpec(ec.NewChild("highRiskFileCount"));
+
+            }
+        }
+        else if (this.HighRiskFileCount != null && ec.Excludes("highRiskFileCount",false))
+        {
+            this.HighRiskFileCount = null;
         }
         //      C# -> SummaryCount? LowRiskFileCount
         // GraphQL -> lowRiskFileCount: SummaryCount (type)
-        if (this.LowRiskFileCount == null && ec.Includes("lowRiskFileCount",false))
+        if (ec.Includes("lowRiskFileCount",false))
         {
-            this.LowRiskFileCount = new SummaryCount();
-            this.LowRiskFileCount.ApplyExploratoryFieldSpec(ec.NewChild("lowRiskFileCount"));
+            if(this.LowRiskFileCount == null) {
+
+                this.LowRiskFileCount = new SummaryCount();
+                this.LowRiskFileCount.ApplyExploratoryFieldSpec(ec.NewChild("lowRiskFileCount"));
+
+            } else {
+
+                this.LowRiskFileCount.ApplyExploratoryFieldSpec(ec.NewChild("lowRiskFileCount"));
+
+            }
+        }
+        else if (this.LowRiskFileCount != null && ec.Excludes("lowRiskFileCount",false))
+        {
+            this.LowRiskFileCount = null;
         }
         //      C# -> SummaryCount? MediumRiskFileCount
         // GraphQL -> mediumRiskFileCount: SummaryCount (type)
-        if (this.MediumRiskFileCount == null && ec.Includes("mediumRiskFileCount",false))
+        if (ec.Includes("mediumRiskFileCount",false))
         {
-            this.MediumRiskFileCount = new SummaryCount();
-            this.MediumRiskFileCount.ApplyExploratoryFieldSpec(ec.NewChild("mediumRiskFileCount"));
+            if(this.MediumRiskFileCount == null) {
+
+                this.MediumRiskFileCount = new SummaryCount();
+                this.MediumRiskFileCount.ApplyExploratoryFieldSpec(ec.NewChild("mediumRiskFileCount"));
+
+            } else {
+
+                this.MediumRiskFileCount.ApplyExploratoryFieldSpec(ec.NewChild("mediumRiskFileCount"));
+
+            }
+        }
+        else if (this.MediumRiskFileCount != null && ec.Excludes("mediumRiskFileCount",false))
+        {
+            this.MediumRiskFileCount = null;
         }
         //      C# -> SummaryCount? TotalFileCount
         // GraphQL -> totalFileCount: SummaryCount (type)
-        if (this.TotalFileCount == null && ec.Includes("totalFileCount",false))
+        if (ec.Includes("totalFileCount",false))
         {
-            this.TotalFileCount = new SummaryCount();
-            this.TotalFileCount.ApplyExploratoryFieldSpec(ec.NewChild("totalFileCount"));
+            if(this.TotalFileCount == null) {
+
+                this.TotalFileCount = new SummaryCount();
+                this.TotalFileCount.ApplyExploratoryFieldSpec(ec.NewChild("totalFileCount"));
+
+            } else {
+
+                this.TotalFileCount.ApplyExploratoryFieldSpec(ec.NewChild("totalFileCount"));
+
+            }
+        }
+        else if (this.TotalFileCount != null && ec.Excludes("totalFileCount",false))
+        {
+            this.TotalFileCount = null;
         }
     }
 
@@ -170,9 +235,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SensitiveFiles> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

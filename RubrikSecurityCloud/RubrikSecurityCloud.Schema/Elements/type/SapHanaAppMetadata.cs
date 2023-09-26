@@ -146,71 +146,120 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? BackupId
         // GraphQL -> backupId: Long (scalar)
         if (this.BackupId != null) {
-            s += ind + "backupId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "backupId\n" ;
+            } else {
+                s += ind + "backupId\n" ;
+            }
         }
         //      C# -> System.String? BackupPrefix
         // GraphQL -> backupPrefix: String (scalar)
         if (this.BackupPrefix != null) {
-            s += ind + "backupPrefix\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "backupPrefix\n" ;
+            } else {
+                s += ind + "backupPrefix\n" ;
+            }
         }
         //      C# -> System.Int64? BaseBackupId
         // GraphQL -> baseBackupId: Long (scalar)
         if (this.BaseBackupId != null) {
-            s += ind + "baseBackupId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "baseBackupId\n" ;
+            } else {
+                s += ind + "baseBackupId\n" ;
+            }
         }
         //      C# -> System.String? BaseFullSnapshotId
         // GraphQL -> baseFullSnapshotId: String (scalar)
         if (this.BaseFullSnapshotId != null) {
-            s += ind + "baseFullSnapshotId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "baseFullSnapshotId\n" ;
+            } else {
+                s += ind + "baseFullSnapshotId\n" ;
+            }
         }
         //      C# -> System.Boolean? IsExternalBackup
         // GraphQL -> isExternalBackup: Boolean (scalar)
         if (this.IsExternalBackup != null) {
-            s += ind + "isExternalBackup\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isExternalBackup\n" ;
+            } else {
+                s += ind + "isExternalBackup\n" ;
+            }
         }
         //      C# -> System.Boolean? IsRubrikTriggeredOnDemandBackup
         // GraphQL -> isRubrikTriggeredOnDemandBackup: Boolean (scalar)
         if (this.IsRubrikTriggeredOnDemandBackup != null) {
-            s += ind + "isRubrikTriggeredOnDemandBackup\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isRubrikTriggeredOnDemandBackup\n" ;
+            } else {
+                s += ind + "isRubrikTriggeredOnDemandBackup\n" ;
+            }
         }
         //      C# -> DateTime? RubrikSnapshotEndTime
         // GraphQL -> rubrikSnapshotEndTime: DateTime (scalar)
         if (this.RubrikSnapshotEndTime != null) {
-            s += ind + "rubrikSnapshotEndTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "rubrikSnapshotEndTime\n" ;
+            } else {
+                s += ind + "rubrikSnapshotEndTime\n" ;
+            }
         }
         //      C# -> DateTime? RubrikSnapshotStartTime
         // GraphQL -> rubrikSnapshotStartTime: DateTime (scalar)
         if (this.RubrikSnapshotStartTime != null) {
-            s += ind + "rubrikSnapshotStartTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "rubrikSnapshotStartTime\n" ;
+            } else {
+                s += ind + "rubrikSnapshotStartTime\n" ;
+            }
         }
         //      C# -> DateTime? SapHanaEndTime
         // GraphQL -> sapHanaEndTime: DateTime (scalar)
         if (this.SapHanaEndTime != null) {
-            s += ind + "sapHanaEndTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sapHanaEndTime\n" ;
+            } else {
+                s += ind + "sapHanaEndTime\n" ;
+            }
         }
         //      C# -> DateTime? SapHanaStartTime
         // GraphQL -> sapHanaStartTime: DateTime (scalar)
         if (this.SapHanaStartTime != null) {
-            s += ind + "sapHanaStartTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sapHanaStartTime\n" ;
+            } else {
+                s += ind + "sapHanaStartTime\n" ;
+            }
         }
         //      C# -> System.String? SnapshotType
         // GraphQL -> snapshotType: String (scalar)
         if (this.SnapshotType != null) {
-            s += ind + "snapshotType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotType\n" ;
+            } else {
+                s += ind + "snapshotType\n" ;
+            }
         }
         //      C# -> List<SapHanaDataBackupFile>? Files
         // GraphQL -> files: [SapHanaDataBackupFile!] (type)
         if (this.Files != null) {
-            var fspec = this.Files.AsFieldSpec(indent+1);
+            var fspec = this.Files.AsFieldSpec(conf.Child("files"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "files {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "files {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -222,76 +271,209 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? BackupId
         // GraphQL -> backupId: Long (scalar)
-        if (this.BackupId == null && ec.Includes("backupId",true))
+        if (ec.Includes("backupId",true))
         {
-            this.BackupId = new System.Int64();
+            if(this.BackupId == null) {
+
+                this.BackupId = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.BackupId != null && ec.Excludes("backupId",true))
+        {
+            this.BackupId = null;
         }
         //      C# -> System.String? BackupPrefix
         // GraphQL -> backupPrefix: String (scalar)
-        if (this.BackupPrefix == null && ec.Includes("backupPrefix",true))
+        if (ec.Includes("backupPrefix",true))
         {
-            this.BackupPrefix = "FETCH";
+            if(this.BackupPrefix == null) {
+
+                this.BackupPrefix = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.BackupPrefix != null && ec.Excludes("backupPrefix",true))
+        {
+            this.BackupPrefix = null;
         }
         //      C# -> System.Int64? BaseBackupId
         // GraphQL -> baseBackupId: Long (scalar)
-        if (this.BaseBackupId == null && ec.Includes("baseBackupId",true))
+        if (ec.Includes("baseBackupId",true))
         {
-            this.BaseBackupId = new System.Int64();
+            if(this.BaseBackupId == null) {
+
+                this.BaseBackupId = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.BaseBackupId != null && ec.Excludes("baseBackupId",true))
+        {
+            this.BaseBackupId = null;
         }
         //      C# -> System.String? BaseFullSnapshotId
         // GraphQL -> baseFullSnapshotId: String (scalar)
-        if (this.BaseFullSnapshotId == null && ec.Includes("baseFullSnapshotId",true))
+        if (ec.Includes("baseFullSnapshotId",true))
         {
-            this.BaseFullSnapshotId = "FETCH";
+            if(this.BaseFullSnapshotId == null) {
+
+                this.BaseFullSnapshotId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.BaseFullSnapshotId != null && ec.Excludes("baseFullSnapshotId",true))
+        {
+            this.BaseFullSnapshotId = null;
         }
         //      C# -> System.Boolean? IsExternalBackup
         // GraphQL -> isExternalBackup: Boolean (scalar)
-        if (this.IsExternalBackup == null && ec.Includes("isExternalBackup",true))
+        if (ec.Includes("isExternalBackup",true))
         {
-            this.IsExternalBackup = true;
+            if(this.IsExternalBackup == null) {
+
+                this.IsExternalBackup = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsExternalBackup != null && ec.Excludes("isExternalBackup",true))
+        {
+            this.IsExternalBackup = null;
         }
         //      C# -> System.Boolean? IsRubrikTriggeredOnDemandBackup
         // GraphQL -> isRubrikTriggeredOnDemandBackup: Boolean (scalar)
-        if (this.IsRubrikTriggeredOnDemandBackup == null && ec.Includes("isRubrikTriggeredOnDemandBackup",true))
+        if (ec.Includes("isRubrikTriggeredOnDemandBackup",true))
         {
-            this.IsRubrikTriggeredOnDemandBackup = true;
+            if(this.IsRubrikTriggeredOnDemandBackup == null) {
+
+                this.IsRubrikTriggeredOnDemandBackup = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsRubrikTriggeredOnDemandBackup != null && ec.Excludes("isRubrikTriggeredOnDemandBackup",true))
+        {
+            this.IsRubrikTriggeredOnDemandBackup = null;
         }
         //      C# -> DateTime? RubrikSnapshotEndTime
         // GraphQL -> rubrikSnapshotEndTime: DateTime (scalar)
-        if (this.RubrikSnapshotEndTime == null && ec.Includes("rubrikSnapshotEndTime",true))
+        if (ec.Includes("rubrikSnapshotEndTime",true))
         {
-            this.RubrikSnapshotEndTime = new DateTime();
+            if(this.RubrikSnapshotEndTime == null) {
+
+                this.RubrikSnapshotEndTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RubrikSnapshotEndTime != null && ec.Excludes("rubrikSnapshotEndTime",true))
+        {
+            this.RubrikSnapshotEndTime = null;
         }
         //      C# -> DateTime? RubrikSnapshotStartTime
         // GraphQL -> rubrikSnapshotStartTime: DateTime (scalar)
-        if (this.RubrikSnapshotStartTime == null && ec.Includes("rubrikSnapshotStartTime",true))
+        if (ec.Includes("rubrikSnapshotStartTime",true))
         {
-            this.RubrikSnapshotStartTime = new DateTime();
+            if(this.RubrikSnapshotStartTime == null) {
+
+                this.RubrikSnapshotStartTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RubrikSnapshotStartTime != null && ec.Excludes("rubrikSnapshotStartTime",true))
+        {
+            this.RubrikSnapshotStartTime = null;
         }
         //      C# -> DateTime? SapHanaEndTime
         // GraphQL -> sapHanaEndTime: DateTime (scalar)
-        if (this.SapHanaEndTime == null && ec.Includes("sapHanaEndTime",true))
+        if (ec.Includes("sapHanaEndTime",true))
         {
-            this.SapHanaEndTime = new DateTime();
+            if(this.SapHanaEndTime == null) {
+
+                this.SapHanaEndTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SapHanaEndTime != null && ec.Excludes("sapHanaEndTime",true))
+        {
+            this.SapHanaEndTime = null;
         }
         //      C# -> DateTime? SapHanaStartTime
         // GraphQL -> sapHanaStartTime: DateTime (scalar)
-        if (this.SapHanaStartTime == null && ec.Includes("sapHanaStartTime",true))
+        if (ec.Includes("sapHanaStartTime",true))
         {
-            this.SapHanaStartTime = new DateTime();
+            if(this.SapHanaStartTime == null) {
+
+                this.SapHanaStartTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SapHanaStartTime != null && ec.Excludes("sapHanaStartTime",true))
+        {
+            this.SapHanaStartTime = null;
         }
         //      C# -> System.String? SnapshotType
         // GraphQL -> snapshotType: String (scalar)
-        if (this.SnapshotType == null && ec.Includes("snapshotType",true))
+        if (ec.Includes("snapshotType",true))
         {
-            this.SnapshotType = "FETCH";
+            if(this.SnapshotType == null) {
+
+                this.SnapshotType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotType != null && ec.Excludes("snapshotType",true))
+        {
+            this.SnapshotType = null;
         }
         //      C# -> List<SapHanaDataBackupFile>? Files
         // GraphQL -> files: [SapHanaDataBackupFile!] (type)
-        if (this.Files == null && ec.Includes("files",false))
+        if (ec.Includes("files",false))
         {
-            this.Files = new List<SapHanaDataBackupFile>();
-            this.Files.ApplyExploratoryFieldSpec(ec.NewChild("files"));
+            if(this.Files == null) {
+
+                this.Files = new List<SapHanaDataBackupFile>();
+                this.Files.ApplyExploratoryFieldSpec(ec.NewChild("files"));
+
+            } else {
+
+                this.Files.ApplyExploratoryFieldSpec(ec.NewChild("files"));
+
+            }
+        }
+        else if (this.Files != null && ec.Excludes("files",false))
+        {
+            this.Files = null;
         }
     }
 
@@ -318,9 +500,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SapHanaAppMetadata> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

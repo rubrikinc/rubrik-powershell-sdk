@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? EarliestTimestamp
         // GraphQL -> earliestTimestamp: String (scalar)
         if (this.EarliestTimestamp != null) {
-            s += ind + "earliestTimestamp\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "earliestTimestamp\n" ;
+            } else {
+                s += ind + "earliestTimestamp\n" ;
+            }
         }
         //      C# -> System.String? LatestTimestamp
         // GraphQL -> latestTimestamp: String (scalar)
         if (this.LatestTimestamp != null) {
-            s += ind + "latestTimestamp\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "latestTimestamp\n" ;
+            } else {
+                s += ind + "latestTimestamp\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? EarliestTimestamp
         // GraphQL -> earliestTimestamp: String (scalar)
-        if (this.EarliestTimestamp == null && ec.Includes("earliestTimestamp",true))
+        if (ec.Includes("earliestTimestamp",true))
         {
-            this.EarliestTimestamp = "FETCH";
+            if(this.EarliestTimestamp == null) {
+
+                this.EarliestTimestamp = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.EarliestTimestamp != null && ec.Excludes("earliestTimestamp",true))
+        {
+            this.EarliestTimestamp = null;
         }
         //      C# -> System.String? LatestTimestamp
         // GraphQL -> latestTimestamp: String (scalar)
-        if (this.LatestTimestamp == null && ec.Includes("latestTimestamp",true))
+        if (ec.Includes("latestTimestamp",true))
         {
-            this.LatestTimestamp = "FETCH";
+            if(this.LatestTimestamp == null) {
+
+                this.LatestTimestamp = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.LatestTimestamp != null && ec.Excludes("latestTimestamp",true))
+        {
+            this.LatestTimestamp = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<MosaicRecoverableRangeObject> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

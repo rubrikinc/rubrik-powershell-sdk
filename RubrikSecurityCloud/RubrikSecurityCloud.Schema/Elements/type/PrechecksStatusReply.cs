@@ -83,39 +83,60 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? EndTime
         // GraphQL -> endTime: Long! (scalar)
         if (this.EndTime != null) {
-            s += ind + "endTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "endTime\n" ;
+            } else {
+                s += ind + "endTime\n" ;
+            }
         }
         //      C# -> System.Int32? NumPrechecks
         // GraphQL -> numPrechecks: Int! (scalar)
         if (this.NumPrechecks != null) {
-            s += ind + "numPrechecks\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "numPrechecks\n" ;
+            } else {
+                s += ind + "numPrechecks\n" ;
+            }
         }
         //      C# -> System.Int32? RunPeriodInMinutes
         // GraphQL -> runPeriodInMinutes: Int! (scalar)
         if (this.RunPeriodInMinutes != null) {
-            s += ind + "runPeriodInMinutes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "runPeriodInMinutes\n" ;
+            } else {
+                s += ind + "runPeriodInMinutes\n" ;
+            }
         }
         //      C# -> List<PrecheckFailure>? FailureResults
         // GraphQL -> failureResults: [PrecheckFailure!]! (type)
         if (this.FailureResults != null) {
-            var fspec = this.FailureResults.AsFieldSpec(indent+1);
+            var fspec = this.FailureResults.AsFieldSpec(conf.Child("failureResults"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "failureResults {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "failureResults {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> PrecheckStatusNextRunInfo? NextRunInfo
         // GraphQL -> nextRunInfo: PrecheckStatusNextRunInfo (type)
         if (this.NextRunInfo != null) {
-            var fspec = this.NextRunInfo.AsFieldSpec(indent+1);
+            var fspec = this.NextRunInfo.AsFieldSpec(conf.Child("nextRunInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "nextRunInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "nextRunInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -127,35 +148,92 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? EndTime
         // GraphQL -> endTime: Long! (scalar)
-        if (this.EndTime == null && ec.Includes("endTime",true))
+        if (ec.Includes("endTime",true))
         {
-            this.EndTime = new System.Int64();
+            if(this.EndTime == null) {
+
+                this.EndTime = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EndTime != null && ec.Excludes("endTime",true))
+        {
+            this.EndTime = null;
         }
         //      C# -> System.Int32? NumPrechecks
         // GraphQL -> numPrechecks: Int! (scalar)
-        if (this.NumPrechecks == null && ec.Includes("numPrechecks",true))
+        if (ec.Includes("numPrechecks",true))
         {
-            this.NumPrechecks = Int32.MinValue;
+            if(this.NumPrechecks == null) {
+
+                this.NumPrechecks = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.NumPrechecks != null && ec.Excludes("numPrechecks",true))
+        {
+            this.NumPrechecks = null;
         }
         //      C# -> System.Int32? RunPeriodInMinutes
         // GraphQL -> runPeriodInMinutes: Int! (scalar)
-        if (this.RunPeriodInMinutes == null && ec.Includes("runPeriodInMinutes",true))
+        if (ec.Includes("runPeriodInMinutes",true))
         {
-            this.RunPeriodInMinutes = Int32.MinValue;
+            if(this.RunPeriodInMinutes == null) {
+
+                this.RunPeriodInMinutes = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.RunPeriodInMinutes != null && ec.Excludes("runPeriodInMinutes",true))
+        {
+            this.RunPeriodInMinutes = null;
         }
         //      C# -> List<PrecheckFailure>? FailureResults
         // GraphQL -> failureResults: [PrecheckFailure!]! (type)
-        if (this.FailureResults == null && ec.Includes("failureResults",false))
+        if (ec.Includes("failureResults",false))
         {
-            this.FailureResults = new List<PrecheckFailure>();
-            this.FailureResults.ApplyExploratoryFieldSpec(ec.NewChild("failureResults"));
+            if(this.FailureResults == null) {
+
+                this.FailureResults = new List<PrecheckFailure>();
+                this.FailureResults.ApplyExploratoryFieldSpec(ec.NewChild("failureResults"));
+
+            } else {
+
+                this.FailureResults.ApplyExploratoryFieldSpec(ec.NewChild("failureResults"));
+
+            }
+        }
+        else if (this.FailureResults != null && ec.Excludes("failureResults",false))
+        {
+            this.FailureResults = null;
         }
         //      C# -> PrecheckStatusNextRunInfo? NextRunInfo
         // GraphQL -> nextRunInfo: PrecheckStatusNextRunInfo (type)
-        if (this.NextRunInfo == null && ec.Includes("nextRunInfo",false))
+        if (ec.Includes("nextRunInfo",false))
         {
-            this.NextRunInfo = new PrecheckStatusNextRunInfo();
-            this.NextRunInfo.ApplyExploratoryFieldSpec(ec.NewChild("nextRunInfo"));
+            if(this.NextRunInfo == null) {
+
+                this.NextRunInfo = new PrecheckStatusNextRunInfo();
+                this.NextRunInfo.ApplyExploratoryFieldSpec(ec.NewChild("nextRunInfo"));
+
+            } else {
+
+                this.NextRunInfo.ApplyExploratoryFieldSpec(ec.NewChild("nextRunInfo"));
+
+            }
+        }
+        else if (this.NextRunInfo != null && ec.Excludes("nextRunInfo",false))
+        {
+            this.NextRunInfo = null;
         }
     }
 
@@ -182,9 +260,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<PrechecksStatusReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

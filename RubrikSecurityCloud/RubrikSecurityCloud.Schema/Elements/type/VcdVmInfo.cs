@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Boolean? IsExcludedFromSnapshot
         // GraphQL -> isExcludedFromSnapshot: Boolean! (scalar)
         if (this.IsExcludedFromSnapshot != null) {
-            s += ind + "isExcludedFromSnapshot\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isExcludedFromSnapshot\n" ;
+            } else {
+                s += ind + "isExcludedFromSnapshot\n" ;
+            }
         }
         //      C# -> System.String? VcdVmMoid
         // GraphQL -> vcdVmMoid: String! (scalar)
         if (this.VcdVmMoid != null) {
-            s += ind + "vcdVmMoid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "vcdVmMoid\n" ;
+            } else {
+                s += ind + "vcdVmMoid\n" ;
+            }
         }
         //      C# -> System.String? VcdVmName
         // GraphQL -> vcdVmName: String! (scalar)
         if (this.VcdVmName != null) {
-            s += ind + "vcdVmName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "vcdVmName\n" ;
+            } else {
+                s += ind + "vcdVmName\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Boolean? IsExcludedFromSnapshot
         // GraphQL -> isExcludedFromSnapshot: Boolean! (scalar)
-        if (this.IsExcludedFromSnapshot == null && ec.Includes("isExcludedFromSnapshot",true))
+        if (ec.Includes("isExcludedFromSnapshot",true))
         {
-            this.IsExcludedFromSnapshot = true;
+            if(this.IsExcludedFromSnapshot == null) {
+
+                this.IsExcludedFromSnapshot = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsExcludedFromSnapshot != null && ec.Excludes("isExcludedFromSnapshot",true))
+        {
+            this.IsExcludedFromSnapshot = null;
         }
         //      C# -> System.String? VcdVmMoid
         // GraphQL -> vcdVmMoid: String! (scalar)
-        if (this.VcdVmMoid == null && ec.Includes("vcdVmMoid",true))
+        if (ec.Includes("vcdVmMoid",true))
         {
-            this.VcdVmMoid = "FETCH";
+            if(this.VcdVmMoid == null) {
+
+                this.VcdVmMoid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.VcdVmMoid != null && ec.Excludes("vcdVmMoid",true))
+        {
+            this.VcdVmMoid = null;
         }
         //      C# -> System.String? VcdVmName
         // GraphQL -> vcdVmName: String! (scalar)
-        if (this.VcdVmName == null && ec.Includes("vcdVmName",true))
+        if (ec.Includes("vcdVmName",true))
         {
-            this.VcdVmName = "FETCH";
+            if(this.VcdVmName == null) {
+
+                this.VcdVmName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.VcdVmName != null && ec.Excludes("vcdVmName",true))
+        {
+            this.VcdVmName = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<VcdVmInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

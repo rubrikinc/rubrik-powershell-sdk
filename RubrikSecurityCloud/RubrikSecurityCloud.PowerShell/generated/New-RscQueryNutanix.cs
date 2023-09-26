@@ -16,68 +16,827 @@ using RubrikSecurityCloud.Types;
 using RubrikSecurityCloud.NetSDK.Client;
 using RubrikSecurityCloud.PowerShell.Private;
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
+
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Queries for the 'Nutanix' API domain.
+    /// Create a new RscQuery object for any of the 18
+    /// operations in the 'Nutanix' API domain:
+    /// BrowseSnapshot, Category, CategoryValue, Cluster, ClusterAsyncRequestStatus, ClusterContainers, ClusterNetworks, Clusters, Mounts, PrismCentral, PrismCentrals, SearchVm, SnapshotDetail, TopLevelDescendants, Vm, VmAsyncRequestStatus, VmMissedSnapshots, or Vms.
     /// </summary>
     /// <description>
-    /// New-RscQueryNutanix is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
+    /// New-RscQueryNutanix creates a new
+    /// query object for operations
+    /// in the 'Nutanix' API domain. It only creates a data structure,
+    /// it does not execute the operation. This cmdlet does not need a
+    /// connection to run. To execute the operation, either call Invoke()
+    /// on the object returned by this cmdlet, or pass the object to
+    /// Invoke-Rsc.
+    /// There are 18 operations
+    /// in the 'Nutanix' API domain. Select the operation this
+    /// query is for by specifying the appropriate switch parameter;
+    /// one of: -BrowseSnapshot, -Category, -CategoryValue, -Cluster, -ClusterAsyncRequestStatus, -ClusterContainers, -ClusterNetworks, -Clusters, -Mounts, -PrismCentral, -PrismCentrals, -SearchVm, -SnapshotDetail, -TopLevelDescendants, -Vm, -VmAsyncRequestStatus, -VmMissedSnapshots, -Vms.
+    /// Alternatively, you can specify the operation by setting the
+    /// -Op parameter, for example: -Op BrowseSnapshot,
+    /// which is equivalent to specifying -BrowseSnapshot.
+    /// Each operation has its own set of variables that can be set with
+    /// the -Var parameter. For more info about the variables, 
+    /// call Info() on the object returned by this cmdlet, for example:
+    /// (New-RscQueryNutanix -BrowseSnapshot).Info().
+    /// Each operation also has its own set of fields that can be
+    /// selected for retrieval. If you do not specify any fields,
+    /// a set of default fields will be selected. The selection is
+    /// rule-based, and tries to select the most commonly used fields.
+    /// For example if a field is named 'id' or 'name', 
+    /// it will be selected. If you give -FieldProfile DETAIL, then
+    /// another set of rules will be used to select more fields on top
+    /// of the default fields. The set of rules for selecting fields
+    /// is called a field profile. You can specify a field profile
+    /// with the -FieldProfile parameter. You can add or remove fields
+    /// from the field profile with the -AddField and -RemoveField
+    /// parameters. If you end up with too many -AddField and -RemoveField
+    /// parameters, you can list them in a text file, one per line,
+    /// with a '+' or '-' prefix, and pass the file name to the
+    /// -FilePatch parameter. Profiles and Patches are one way to
+    /// customize the fields that are selected. Another way is to
+    /// specify the fields by passing the -Field parameter an object
+    /// that contains the fields you want to select as properties.
+    /// Any property that is not null in that object is interpreted
+    /// as a field to select
+    /// (and the actual values they are set to do not matter).
+    /// The [RubrikSecurityCloud.Types] namespace
+    /// contains a set of classes that you can use to specify fields.
+    /// To know what [RubrikSecurityCloud.Types] object to use
+    /// for a specific operation,
+    /// call Info() on the object returned by this cmdlet, for example:
+    /// (New-RscQueryNutanix -BrowseSnapshot).Info().
+    /// You can combine a -Field parameter with patching parameters.
+    /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
+    ///
     /// </description>
+    ///
     /// <example>
-    /// <code>New-RscQueryNutanix -TopLevelDescendants [-Arg ..] [-Field ..]</code>
+    /// Runs the BrowseSnapshot operation
+    /// of the 'Nutanix' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Nutanix
+    /// # API Operation: BrowseSnapshot
+    /// 
+    /// $query = New-RscQueryNutanix -BrowseSnapshot
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	limit = $someInt
+    /// 	# OPTIONAL
+    /// 	offset = $someInt
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	path = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: BrowseResponseListResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryNutanix -Cluster [-Arg ..] [-Field ..]</code>
+    /// Runs the Category operation
+    /// of the 'Nutanix' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Nutanix
+    /// # API Operation: Category
+    /// 
+    /// $query = New-RscQueryNutanix -Category
+    /// 
+    /// # REQUIRED
+    /// $query.Var.fid = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: NutanixCategory
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryNutanix -Clusters [-Arg ..] [-Field ..]</code>
+    /// Runs the CategoryValue operation
+    /// of the 'Nutanix' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Nutanix
+    /// # API Operation: CategoryValue
+    /// 
+    /// $query = New-RscQueryNutanix -CategoryValue
+    /// 
+    /// # REQUIRED
+    /// $query.Var.fid = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: NutanixCategoryValue
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryNutanix -PrismCentrals [-Arg ..] [-Field ..]</code>
+    /// Runs the Cluster operation
+    /// of the 'Nutanix' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Nutanix
+    /// # API Operation: Cluster
+    /// 
+    /// $query = New-RscQueryNutanix -Cluster
+    /// 
+    /// # REQUIRED
+    /// $query.Var.fid = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: NutanixCluster
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryNutanix -PrismCentral [-Arg ..] [-Field ..]</code>
+    /// Runs the ClusterAsyncRequestStatus operation
+    /// of the 'Nutanix' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Nutanix
+    /// # API Operation: ClusterAsyncRequestStatus
+    /// 
+    /// $query = New-RscQueryNutanix -ClusterAsyncRequestStatus
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryNutanix -Category [-Arg ..] [-Field ..]</code>
+    /// Runs the ClusterContainers operation
+    /// of the 'Nutanix' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Nutanix
+    /// # API Operation: ClusterContainers
+    /// 
+    /// $query = New-RscQueryNutanix -ClusterContainers
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: NutanixContainerListResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryNutanix -CategoryValue [-Arg ..] [-Field ..]</code>
+    /// Runs the ClusterNetworks operation
+    /// of the 'Nutanix' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Nutanix
+    /// # API Operation: ClusterNetworks
+    /// 
+    /// $query = New-RscQueryNutanix -ClusterNetworks
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: NutanixNetworkListResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryNutanix -Vm [-Arg ..] [-Field ..]</code>
+    /// Runs the Clusters operation
+    /// of the 'Nutanix' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Nutanix
+    /// # API Operation: Clusters
+    /// 
+    /// $query = New-RscQueryNutanix -Clusters
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.filter = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		texts = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		tagFilterParams = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+    /// 				# OPTIONAL
+    /// 				tagKey = $someString
+    /// 				# OPTIONAL
+    /// 				tagValue = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		objectTypeFilterParams = @(
+    /// 			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		awsNativeProtectionFeatureNames = @(
+    /// 			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		isNegative = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isSlowSearchEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		azureNativeProtectionFeatureNames = @(
+    /// 			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		unmanagedObjectAvailabilityFilter = @(
+    /// 			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+    /// 		)
+    /// }
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: NutanixClusterConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryNutanix -Vms [-Arg ..] [-Field ..]</code>
+    /// Runs the Mounts operation
+    /// of the 'Nutanix' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Nutanix
+    /// # API Operation: Mounts
+    /// 
+    /// $query = New-RscQueryNutanix -Mounts
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.filters = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		field = $someNutanixLiveMountFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NutanixLiveMountFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		texts = @(
+    /// 			$someString
+    /// 		)
+    /// }
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.sortBy = @{
+    /// 	# OPTIONAL
+    /// 	field = $someNutanixLiveMountSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NutanixLiveMountSortByField]) for enum values.
+    /// 	# OPTIONAL
+    /// 	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: NutanixLiveMountConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryNutanix -Mounts [-Arg ..] [-Field ..]</code>
+    /// Runs the PrismCentral operation
+    /// of the 'Nutanix' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Nutanix
+    /// # API Operation: PrismCentral
+    /// 
+    /// $query = New-RscQueryNutanix -PrismCentral
+    /// 
+    /// # REQUIRED
+    /// $query.Var.fid = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: NutanixPrismCentral
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryNutanix -ClusterContainers [-Arg ..] [-Field ..]</code>
+    /// Runs the PrismCentrals operation
+    /// of the 'Nutanix' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Nutanix
+    /// # API Operation: PrismCentrals
+    /// 
+    /// $query = New-RscQueryNutanix -PrismCentrals
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.filter = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		texts = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		tagFilterParams = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+    /// 				# OPTIONAL
+    /// 				tagKey = $someString
+    /// 				# OPTIONAL
+    /// 				tagValue = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		objectTypeFilterParams = @(
+    /// 			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		awsNativeProtectionFeatureNames = @(
+    /// 			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		isNegative = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isSlowSearchEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		azureNativeProtectionFeatureNames = @(
+    /// 			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		unmanagedObjectAvailabilityFilter = @(
+    /// 			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+    /// 		)
+    /// }
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: NutanixPrismCentralConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryNutanix -ClusterNetworks [-Arg ..] [-Field ..]</code>
+    /// Runs the SearchVm operation
+    /// of the 'Nutanix' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Nutanix
+    /// # API Operation: SearchVm
+    /// 
+    /// $query = New-RscQueryNutanix -SearchVm
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	cursor = $someString
+    /// 	# OPTIONAL
+    /// 	limit = $someInt
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	path = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: SearchResponseListResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryNutanix -ClusterAsyncRequestStatus [-Arg ..] [-Field ..]</code>
+    /// Runs the SnapshotDetail operation
+    /// of the 'Nutanix' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Nutanix
+    /// # API Operation: SnapshotDetail
+    /// 
+    /// $query = New-RscQueryNutanix -SnapshotDetail
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: NutanixVmSnapshotDetail
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryNutanix -VmAsyncRequestStatus [-Arg ..] [-Field ..]</code>
+    /// Runs the TopLevelDescendants operation
+    /// of the 'Nutanix' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Nutanix
+    /// # API Operation: TopLevelDescendants
+    /// 
+    /// $query = New-RscQueryNutanix -TopLevelDescendants
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.typeFilter = @(
+    /// 	$someHierarchyObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.filter = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		texts = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		tagFilterParams = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+    /// 				# OPTIONAL
+    /// 				tagKey = $someString
+    /// 				# OPTIONAL
+    /// 				tagValue = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		objectTypeFilterParams = @(
+    /// 			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		awsNativeProtectionFeatureNames = @(
+    /// 			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		isNegative = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isSlowSearchEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		azureNativeProtectionFeatureNames = @(
+    /// 			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		unmanagedObjectAvailabilityFilter = @(
+    /// 			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+    /// 		)
+    /// }
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CdmHierarchyObjectConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryNutanix -SearchVm [-Arg ..] [-Field ..]</code>
+    /// Runs the Vm operation
+    /// of the 'Nutanix' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Nutanix
+    /// # API Operation: Vm
+    /// 
+    /// $query = New-RscQueryNutanix -Vm
+    /// 
+    /// # REQUIRED
+    /// $query.Var.fid = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: NutanixVm
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryNutanix -VmMissedSnapshots [-Arg ..] [-Field ..]</code>
+    /// Runs the VmAsyncRequestStatus operation
+    /// of the 'Nutanix' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Nutanix
+    /// # API Operation: VmAsyncRequestStatus
+    /// 
+    /// $query = New-RscQueryNutanix -VmAsyncRequestStatus
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryNutanix -BrowseSnapshot [-Arg ..] [-Field ..]</code>
+    /// Runs the VmMissedSnapshots operation
+    /// of the 'Nutanix' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Nutanix
+    /// # API Operation: VmMissedSnapshots
+    /// 
+    /// $query = New-RscQueryNutanix -VmMissedSnapshots
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: MissedSnapshotListResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryNutanix -SnapshotDetail [-Arg ..] [-Field ..]</code>
+    /// Runs the Vms operation
+    /// of the 'Nutanix' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Nutanix
+    /// # API Operation: Vms
+    /// 
+    /// $query = New-RscQueryNutanix -Vms
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.filter = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		texts = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		tagFilterParams = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+    /// 				# OPTIONAL
+    /// 				tagKey = $someString
+    /// 				# OPTIONAL
+    /// 				tagValue = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		objectTypeFilterParams = @(
+    /// 			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		awsNativeProtectionFeatureNames = @(
+    /// 			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		isNegative = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isSlowSearchEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		azureNativeProtectionFeatureNames = @(
+    /// 			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		unmanagedObjectAvailabilityFilter = @(
+    /// 			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+    /// 		)
+    /// }
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: NutanixVmConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -87,381 +846,332 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     public class New_RscQueryNutanix : RscGqlPSCmdlet
     {
         
-        /// <summary>
-        /// TopLevelDescendants parameter set
-        ///
-        /// [GraphQL: nutanixTopLevelDescendants]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "TopLevelDescendants",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Paginated list of the highest-level Nutanix Objects accessible by the current user.
-[GraphQL: nutanixTopLevelDescendants]",
-            Position = 0
-        )]
-        public SwitchParameter TopLevelDescendants { get; set; }
-
-        
-        /// <summary>
-        /// Cluster parameter set
-        ///
-        /// [GraphQL: nutanixCluster]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "Cluster",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"A Nutanix Cluster.
-[GraphQL: nutanixCluster]",
-            Position = 0
-        )]
-        public SwitchParameter Cluster { get; set; }
-
-        
-        /// <summary>
-        /// Clusters parameter set
-        ///
-        /// [GraphQL: nutanixClusters]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "Clusters",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Paginated list of Nutanix Clusters.
-[GraphQL: nutanixClusters]",
-            Position = 0
-        )]
-        public SwitchParameter Clusters { get; set; }
-
-        
-        /// <summary>
-        /// PrismCentrals parameter set
-        ///
-        /// [GraphQL: nutanixPrismCentrals]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "PrismCentrals",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Paginated list of Nutanix Prism Central objects.
-[GraphQL: nutanixPrismCentrals]",
-            Position = 0
-        )]
-        public SwitchParameter PrismCentrals { get; set; }
-
-        
-        /// <summary>
-        /// PrismCentral parameter set
-        ///
-        /// [GraphQL: nutanixPrismCentral]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "PrismCentral",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Details of the given Prism Central.
-[GraphQL: nutanixPrismCentral]",
-            Position = 0
-        )]
-        public SwitchParameter PrismCentral { get; set; }
-
-        
-        /// <summary>
-        /// Category parameter set
-        ///
-        /// [GraphQL: nutanixCategory]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "Category",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Details of the given category.
-[GraphQL: nutanixCategory]",
-            Position = 0
-        )]
-        public SwitchParameter Category { get; set; }
-
-        
-        /// <summary>
-        /// CategoryValue parameter set
-        ///
-        /// [GraphQL: nutanixCategoryValue]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "CategoryValue",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Details of the given category value.
-[GraphQL: nutanixCategoryValue]",
-            Position = 0
-        )]
-        public SwitchParameter CategoryValue { get; set; }
-
-        
-        /// <summary>
-        /// Vm parameter set
-        ///
-        /// [GraphQL: nutanixVm]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "Vm",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"A Nutanix Virtual Machine.
-[GraphQL: nutanixVm]",
-            Position = 0
-        )]
-        public SwitchParameter Vm { get; set; }
-
-        
-        /// <summary>
-        /// Vms parameter set
-        ///
-        /// [GraphQL: nutanixVms]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "Vms",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Paginated list of Nutanix Virtual Machines.
-[GraphQL: nutanixVms]",
-            Position = 0
-        )]
-        public SwitchParameter Vms { get; set; }
-
-        
-        /// <summary>
-        /// Mounts parameter set
-        ///
-        /// [GraphQL: nutanixMounts]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "Mounts",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Nutanix Live Mount Connection.
-[GraphQL: nutanixMounts]",
-            Position = 0
-        )]
-        public SwitchParameter Mounts { get; set; }
-
-        
-        /// <summary>
-        /// ClusterContainers parameter set
-        ///
-        /// [GraphQL: nutanixClusterContainers]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "ClusterContainers",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Get list of containers on this cluster
-
-Supported in v5.0+
-Query the nutanix cluster to get the list of containers, used for export purposes.
-[GraphQL: nutanixClusterContainers]",
-            Position = 0
-        )]
-        public SwitchParameter ClusterContainers { get; set; }
-
-        
-        /// <summary>
-        /// ClusterNetworks parameter set
-        ///
-        /// [GraphQL: nutanixClusterNetworks]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "ClusterNetworks",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Get list of networks on this cluster
-
-Supported in v8.1+
-Retrieves the list of networks by querying the Nutanix cluster. The list of networks is used for restore purposes.
-[GraphQL: nutanixClusterNetworks]",
-            Position = 0
-        )]
-        public SwitchParameter ClusterNetworks { get; set; }
-
-        
-        /// <summary>
-        /// ClusterAsyncRequestStatus parameter set
-        ///
-        /// [GraphQL: nutanixClusterAsyncRequestStatus]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "ClusterAsyncRequestStatus",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Get Nutanix cluster async request
-
-Supported in v5.0+
-Get details about a Nutanix cluster-related async request.
-[GraphQL: nutanixClusterAsyncRequestStatus]",
-            Position = 0
-        )]
-        public SwitchParameter ClusterAsyncRequestStatus { get; set; }
-
-        
-        /// <summary>
-        /// VmAsyncRequestStatus parameter set
-        ///
-        /// [GraphQL: nutanixVmAsyncRequestStatus]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "VmAsyncRequestStatus",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"v5.0-v8.0: Get VM async request details
-v8.1+: Get virtual machine async request details
-
-Supported in v5.0+
-v5.0-v8.0: Get details about a Nutanix VM-related async request.
-v8.1+: Get details about a Nutanix virtual machine-related async request.
-[GraphQL: nutanixVmAsyncRequestStatus]",
-            Position = 0
-        )]
-        public SwitchParameter VmAsyncRequestStatus { get; set; }
-
-        
-        /// <summary>
-        /// SearchVm parameter set
-        ///
-        /// [GraphQL: searchNutanixVm]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "SearchVm",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"v5.0-v8.0: Search for file in Nutanix VM
-v8.1+: Search for file in Nutanix virtual machine
-
-Supported in v5.0+
-Search for a file within the Nutanix Virtual Machine. Search via full path prefix or filename prefix.
-[GraphQL: searchNutanixVm]",
-            Position = 0
-        )]
-        public SwitchParameter SearchVm { get; set; }
-
-        
-        /// <summary>
-        /// VmMissedSnapshots parameter set
-        ///
-        /// [GraphQL: nutanixVmMissedSnapshots]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "VmMissedSnapshots",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"v5.0-v8.0: Get details about missed snapshots for a VM
-v8.1+: Get details about missed snapshots for a virtual machine
-
-Supported in v5.0+
-v5.0-v8.0: Retrieve the time of the day when the snapshots were missed specific to a vm.
-v8.1+: Retrieve the time of the day when the snapshots were missed specific to a virtual machine.
-[GraphQL: nutanixVmMissedSnapshots]",
-            Position = 0
-        )]
-        public SwitchParameter VmMissedSnapshots { get; set; }
-
-        
-        /// <summary>
-        /// BrowseSnapshot parameter set
-        ///
-        /// [GraphQL: nutanixBrowseSnapshot]
-        /// </summary>
         [Parameter(
             ParameterSetName = "BrowseSnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"v5.0-v8.0: Lists all files in VM snapshot
+@"Create a query object for the 'BrowseSnapshot' operation
+in the 'Nutanix' API domain.
+Description of the operation:
+v5.0-v8.0: Lists all files in VM snapshot
 v8.1+: Lists all files in virtual machine snapshot
 
 Supported in v5.0+
 Lists all files and directories in a given path.
-[GraphQL: nutanixBrowseSnapshot]",
-            Position = 0
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nutanixbrowsesnapshot.doc.html]"
+            // No Position -> named parameter only.
         )]
         public SwitchParameter BrowseSnapshot { get; set; }
 
         
-        /// <summary>
-        /// SnapshotDetail parameter set
-        ///
-        /// [GraphQL: nutanixSnapshotDetail]
-        /// </summary>
+        [Parameter(
+            ParameterSetName = "Category",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'Category' operation
+in the 'Nutanix' API domain.
+Description of the operation:
+Details of the given category.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nutanixcategory.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter Category { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "CategoryValue",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'CategoryValue' operation
+in the 'Nutanix' API domain.
+Description of the operation:
+Details of the given category value.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nutanixcategoryvalue.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter CategoryValue { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "Cluster",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'Cluster' operation
+in the 'Nutanix' API domain.
+Description of the operation:
+A Nutanix Cluster.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nutanixcluster.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter Cluster { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "ClusterAsyncRequestStatus",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'ClusterAsyncRequestStatus' operation
+in the 'Nutanix' API domain.
+Description of the operation:
+Get Nutanix cluster async request
+
+Supported in v5.0+
+Get details about a Nutanix cluster-related async request.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nutanixclusterasyncrequeststatus.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter ClusterAsyncRequestStatus { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "ClusterContainers",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'ClusterContainers' operation
+in the 'Nutanix' API domain.
+Description of the operation:
+Get list of containers on this cluster
+
+Supported in v5.0+
+Query the nutanix cluster to get the list of containers, used for export purposes.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nutanixclustercontainers.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter ClusterContainers { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "ClusterNetworks",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'ClusterNetworks' operation
+in the 'Nutanix' API domain.
+Description of the operation:
+Get list of networks on this cluster
+
+Supported in v8.1+
+Retrieves the list of networks by querying the Nutanix cluster. The list of networks is used for restore purposes.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nutanixclusternetworks.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter ClusterNetworks { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "Clusters",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'Clusters' operation
+in the 'Nutanix' API domain.
+Description of the operation:
+Paginated list of Nutanix Clusters.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nutanixclusters.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter Clusters { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "Mounts",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'Mounts' operation
+in the 'Nutanix' API domain.
+Description of the operation:
+Nutanix Live Mount Connection.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nutanixmounts.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter Mounts { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "PrismCentral",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'PrismCentral' operation
+in the 'Nutanix' API domain.
+Description of the operation:
+Details of the given Prism Central.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nutanixprismcentral.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter PrismCentral { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "PrismCentrals",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'PrismCentrals' operation
+in the 'Nutanix' API domain.
+Description of the operation:
+Paginated list of Nutanix Prism Central objects.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nutanixprismcentrals.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter PrismCentrals { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "SearchVm",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'SearchVm' operation
+in the 'Nutanix' API domain.
+Description of the operation:
+v5.0-v8.0: Search for file in Nutanix VM
+v8.1+: Search for file in Nutanix virtual machine
+
+Supported in v5.0+
+Search for a file within the Nutanix Virtual Machine. Search via full path prefix or filename prefix.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/searchnutanixvm.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter SearchVm { get; set; }
+
+        
         [Parameter(
             ParameterSetName = "SnapshotDetail",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Supported in v5.0+. Get Nutanix virtual machine snapshot details.
+@"Create a query object for the 'SnapshotDetail' operation
+in the 'Nutanix' API domain.
+Description of the operation:
+Supported in v5.0+. Get Nutanix virtual machine snapshot details.
  Retrieve detailed information about a snapshot.
-[GraphQL: nutanixSnapshotDetail]",
-            Position = 0
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nutanixsnapshotdetail.doc.html]"
+            // No Position -> named parameter only.
         )]
         public SwitchParameter SnapshotDetail { get; set; }
 
+        
+        [Parameter(
+            ParameterSetName = "TopLevelDescendants",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'TopLevelDescendants' operation
+in the 'Nutanix' API domain.
+Description of the operation:
+Paginated list of the highest-level Nutanix Objects accessible by the current user.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nutanixtopleveldescendants.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter TopLevelDescendants { get; set; }
 
-// ignore warning 'Missing XML comment'
-#pragma warning disable 1591
+        
+        [Parameter(
+            ParameterSetName = "Vm",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'Vm' operation
+in the 'Nutanix' API domain.
+Description of the operation:
+A Nutanix Virtual Machine.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nutanixvm.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter Vm { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "VmAsyncRequestStatus",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'VmAsyncRequestStatus' operation
+in the 'Nutanix' API domain.
+Description of the operation:
+v5.0-v8.0: Get VM async request details
+v8.1+: Get virtual machine async request details
+
+Supported in v5.0+
+v5.0-v8.0: Get details about a Nutanix VM-related async request.
+v8.1+: Get details about a Nutanix virtual machine-related async request.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nutanixvmasyncrequeststatus.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter VmAsyncRequestStatus { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "VmMissedSnapshots",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'VmMissedSnapshots' operation
+in the 'Nutanix' API domain.
+Description of the operation:
+v5.0-v8.0: Get details about missed snapshots for a VM
+v8.1+: Get details about missed snapshots for a virtual machine
+
+Supported in v5.0+
+v5.0-v8.0: Retrieve the time of the day when the snapshots were missed specific to a vm.
+v8.1+: Retrieve the time of the day when the snapshots were missed specific to a virtual machine.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nutanixvmmissedsnapshots.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter VmMissedSnapshots { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "Vms",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'Vms' operation
+in the 'Nutanix' API domain.
+Description of the operation:
+Paginated list of Nutanix Virtual Machines.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/nutanixvms.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter Vms { get; set; }
+
+
+
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
             try
             {
-                switch(Op)
+                switch(this.GetOp().OpName())
                 {
-                    case "TopLevelDescendants":
-                        this.ProcessRecord_TopLevelDescendants();
-                        break;
-                    case "Cluster":
-                        this.ProcessRecord_Cluster();
-                        break;
-                    case "Clusters":
-                        this.ProcessRecord_Clusters();
-                        break;
-                    case "PrismCentrals":
-                        this.ProcessRecord_PrismCentrals();
-                        break;
-                    case "PrismCentral":
-                        this.ProcessRecord_PrismCentral();
+                    case "BrowseSnapshot":
+                        this.ProcessRecord_BrowseSnapshot();
                         break;
                     case "Category":
                         this.ProcessRecord_Category();
@@ -469,14 +1179,11 @@ Lists all files and directories in a given path.
                     case "CategoryValue":
                         this.ProcessRecord_CategoryValue();
                         break;
-                    case "Vm":
-                        this.ProcessRecord_Vm();
+                    case "Cluster":
+                        this.ProcessRecord_Cluster();
                         break;
-                    case "Vms":
-                        this.ProcessRecord_Vms();
-                        break;
-                    case "Mounts":
-                        this.ProcessRecord_Mounts();
+                    case "ClusterAsyncRequestStatus":
+                        this.ProcessRecord_ClusterAsyncRequestStatus();
                         break;
                     case "ClusterContainers":
                         this.ProcessRecord_ClusterContainers();
@@ -484,26 +1191,41 @@ Lists all files and directories in a given path.
                     case "ClusterNetworks":
                         this.ProcessRecord_ClusterNetworks();
                         break;
-                    case "ClusterAsyncRequestStatus":
-                        this.ProcessRecord_ClusterAsyncRequestStatus();
+                    case "Clusters":
+                        this.ProcessRecord_Clusters();
                         break;
-                    case "VmAsyncRequestStatus":
-                        this.ProcessRecord_VmAsyncRequestStatus();
+                    case "Mounts":
+                        this.ProcessRecord_Mounts();
+                        break;
+                    case "PrismCentral":
+                        this.ProcessRecord_PrismCentral();
+                        break;
+                    case "PrismCentrals":
+                        this.ProcessRecord_PrismCentrals();
                         break;
                     case "SearchVm":
                         this.ProcessRecord_SearchVm();
                         break;
-                    case "VmMissedSnapshots":
-                        this.ProcessRecord_VmMissedSnapshots();
-                        break;
-                    case "BrowseSnapshot":
-                        this.ProcessRecord_BrowseSnapshot();
-                        break;
                     case "SnapshotDetail":
                         this.ProcessRecord_SnapshotDetail();
                         break;
+                    case "TopLevelDescendants":
+                        this.ProcessRecord_TopLevelDescendants();
+                        break;
+                    case "Vm":
+                        this.ProcessRecord_Vm();
+                        break;
+                    case "VmAsyncRequestStatus":
+                        this.ProcessRecord_VmAsyncRequestStatus();
+                        break;
+                    case "VmMissedSnapshots":
+                        this.ProcessRecord_VmMissedSnapshots();
+                        break;
+                    case "Vms":
+                        this.ProcessRecord_Vms();
+                        break;
                     default:
-                        throw new Exception("Unknown Operation " + Op);
+                        throw new Exception("Unknown Operation " + this.GetOp().OpName());
                 }
            }
            catch (Exception ex)
@@ -511,51 +1233,14 @@ Lists all files and directories in a given path.
                 ThrowTerminatingException(ex);
            }
         }
-#pragma warning restore 1591
 
         // This parameter set invokes a single graphql operation:
-        // nutanixTopLevelDescendants.
-        internal void ProcessRecord_TopLevelDescendants()
+        // nutanixBrowseSnapshot.
+        internal void ProcessRecord_BrowseSnapshot()
         {
-            this._logger.name += " -TopLevelDescendants";
-            // Create new graphql operation nutanixTopLevelDescendants
-            InitQueryNutanixTopLevelDescendants();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // nutanixCluster.
-        internal void ProcessRecord_Cluster()
-        {
-            this._logger.name += " -Cluster";
-            // Create new graphql operation nutanixCluster
-            InitQueryNutanixCluster();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // nutanixClusters.
-        internal void ProcessRecord_Clusters()
-        {
-            this._logger.name += " -Clusters";
-            // Create new graphql operation nutanixClusters
-            InitQueryNutanixClusters();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // nutanixPrismCentrals.
-        internal void ProcessRecord_PrismCentrals()
-        {
-            this._logger.name += " -PrismCentrals";
-            // Create new graphql operation nutanixPrismCentrals
-            InitQueryNutanixPrismCentrals();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // nutanixPrismCentral.
-        internal void ProcessRecord_PrismCentral()
-        {
-            this._logger.name += " -PrismCentral";
-            // Create new graphql operation nutanixPrismCentral
-            InitQueryNutanixPrismCentral();
+            this._logger.name += " -BrowseSnapshot";
+            // Create new graphql operation nutanixBrowseSnapshot
+            InitQueryNutanixBrowseSnapshot();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -577,30 +1262,21 @@ Lists all files and directories in a given path.
         }
 
         // This parameter set invokes a single graphql operation:
-        // nutanixVm.
-        internal void ProcessRecord_Vm()
+        // nutanixCluster.
+        internal void ProcessRecord_Cluster()
         {
-            this._logger.name += " -Vm";
-            // Create new graphql operation nutanixVm
-            InitQueryNutanixVm();
+            this._logger.name += " -Cluster";
+            // Create new graphql operation nutanixCluster
+            InitQueryNutanixCluster();
         }
 
         // This parameter set invokes a single graphql operation:
-        // nutanixVms.
-        internal void ProcessRecord_Vms()
+        // nutanixClusterAsyncRequestStatus.
+        internal void ProcessRecord_ClusterAsyncRequestStatus()
         {
-            this._logger.name += " -Vms";
-            // Create new graphql operation nutanixVms
-            InitQueryNutanixVms();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // nutanixMounts.
-        internal void ProcessRecord_Mounts()
-        {
-            this._logger.name += " -Mounts";
-            // Create new graphql operation nutanixMounts
-            InitQueryNutanixMounts();
+            this._logger.name += " -ClusterAsyncRequestStatus";
+            // Create new graphql operation nutanixClusterAsyncRequestStatus
+            InitQueryNutanixClusterAsyncRequestStatus();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -622,21 +1298,39 @@ Lists all files and directories in a given path.
         }
 
         // This parameter set invokes a single graphql operation:
-        // nutanixClusterAsyncRequestStatus.
-        internal void ProcessRecord_ClusterAsyncRequestStatus()
+        // nutanixClusters.
+        internal void ProcessRecord_Clusters()
         {
-            this._logger.name += " -ClusterAsyncRequestStatus";
-            // Create new graphql operation nutanixClusterAsyncRequestStatus
-            InitQueryNutanixClusterAsyncRequestStatus();
+            this._logger.name += " -Clusters";
+            // Create new graphql operation nutanixClusters
+            InitQueryNutanixClusters();
         }
 
         // This parameter set invokes a single graphql operation:
-        // nutanixVmAsyncRequestStatus.
-        internal void ProcessRecord_VmAsyncRequestStatus()
+        // nutanixMounts.
+        internal void ProcessRecord_Mounts()
         {
-            this._logger.name += " -VmAsyncRequestStatus";
-            // Create new graphql operation nutanixVmAsyncRequestStatus
-            InitQueryNutanixVmAsyncRequestStatus();
+            this._logger.name += " -Mounts";
+            // Create new graphql operation nutanixMounts
+            InitQueryNutanixMounts();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // nutanixPrismCentral.
+        internal void ProcessRecord_PrismCentral()
+        {
+            this._logger.name += " -PrismCentral";
+            // Create new graphql operation nutanixPrismCentral
+            InitQueryNutanixPrismCentral();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // nutanixPrismCentrals.
+        internal void ProcessRecord_PrismCentrals()
+        {
+            this._logger.name += " -PrismCentrals";
+            // Create new graphql operation nutanixPrismCentrals
+            InitQueryNutanixPrismCentrals();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -649,6 +1343,42 @@ Lists all files and directories in a given path.
         }
 
         // This parameter set invokes a single graphql operation:
+        // nutanixSnapshotDetail.
+        internal void ProcessRecord_SnapshotDetail()
+        {
+            this._logger.name += " -SnapshotDetail";
+            // Create new graphql operation nutanixSnapshotDetail
+            InitQueryNutanixSnapshotDetail();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // nutanixTopLevelDescendants.
+        internal void ProcessRecord_TopLevelDescendants()
+        {
+            this._logger.name += " -TopLevelDescendants";
+            // Create new graphql operation nutanixTopLevelDescendants
+            InitQueryNutanixTopLevelDescendants();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // nutanixVm.
+        internal void ProcessRecord_Vm()
+        {
+            this._logger.name += " -Vm";
+            // Create new graphql operation nutanixVm
+            InitQueryNutanixVm();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // nutanixVmAsyncRequestStatus.
+        internal void ProcessRecord_VmAsyncRequestStatus()
+        {
+            this._logger.name += " -VmAsyncRequestStatus";
+            // Create new graphql operation nutanixVmAsyncRequestStatus
+            InitQueryNutanixVmAsyncRequestStatus();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // nutanixVmMissedSnapshots.
         internal void ProcessRecord_VmMissedSnapshots()
         {
@@ -658,105 +1388,81 @@ Lists all files and directories in a given path.
         }
 
         // This parameter set invokes a single graphql operation:
-        // nutanixBrowseSnapshot.
-        internal void ProcessRecord_BrowseSnapshot()
+        // nutanixVms.
+        internal void ProcessRecord_Vms()
         {
-            this._logger.name += " -BrowseSnapshot";
-            // Create new graphql operation nutanixBrowseSnapshot
-            InitQueryNutanixBrowseSnapshot();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // nutanixSnapshotDetail.
-        internal void ProcessRecord_SnapshotDetail()
-        {
-            this._logger.name += " -SnapshotDetail";
-            // Create new graphql operation nutanixSnapshotDetail
-            InitQueryNutanixSnapshotDetail();
+            this._logger.name += " -Vms";
+            // Create new graphql operation nutanixVms
+            InitQueryNutanixVms();
         }
 
 
         // Create new GraphQL Query:
-        // nutanixTopLevelDescendants(
-        //     first: Int
-        //     after: String
-        //     sortBy: HierarchySortByField
-        //     sortOrder: SortOrder
-        //     typeFilter: [HierarchyObjectTypeEnum!]
-        //     filter: [Filter!]
-        //   ): CdmHierarchyObjectConnection!
-        internal void InitQueryNutanixTopLevelDescendants()
+        // nutanixBrowseSnapshot(input: BrowseNutanixSnapshotInput!): BrowseResponseListResponse!
+        internal void InitQueryNutanixBrowseSnapshot()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("sortBy", "HierarchySortByField"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),
-                Tuple.Create("filter", "[Filter!]"),
+                Tuple.Create("input", "BrowseNutanixSnapshotInput!"),
             };
             Initialize(
                 argDefs,
                 "query",
-                "QueryNutanixTopLevelDescendants",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!],$filter: [Filter!])",
-                "CdmHierarchyObjectConnection",
-                Query.NutanixTopLevelDescendants_ObjectFieldSpec,
-                Query.NutanixTopLevelDescendantsFieldSpec,
-                @"# OPTIONAL
-$inputs.Var.first = <System.Int32>
-# OPTIONAL
-$inputs.Var.after = <System.String>
-# OPTIONAL
-$inputs.Var.sortBy = <HierarchySortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
-# OPTIONAL
-$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$inputs.Var.typeFilter = @(
-	<HierarchyObjectTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
-)
-# OPTIONAL
-$inputs.Var.filter = @(
-	@{
-		# OPTIONAL
-		field = <HierarchyFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
-		# OPTIONAL
-		texts = @(
-			<System.String>
-		)
-		# OPTIONAL
-		tagFilterParams = @(
-			@{
-				# OPTIONAL
-				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-				# OPTIONAL
-				tagKey = <System.String>
-				# OPTIONAL
-				tagValue = <System.String>
-			}
-		)
-		# OPTIONAL
-		objectTypeFilterParams = @(
-			<ManagedObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
-		)
-		# OPTIONAL
-		awsNativeProtectionFeatureNames = @(
-			<AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		isNegative = <System.Boolean>
-		# OPTIONAL
-		isSlowSearchEnabled = <System.Boolean>
-		# OPTIONAL
-		azureNativeProtectionFeatureNames = @(
-			<AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		unmanagedObjectAvailabilityFilter = @(
-			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
-		)
-}
-)"
+                "QueryNutanixBrowseSnapshot",
+                "($input: BrowseNutanixSnapshotInput!)",
+                "BrowseResponseListResponse",
+                Query.NutanixBrowseSnapshot_ObjectFieldSpec,
+                Query.NutanixBrowseSnapshotFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	limit = $someInt
+	# OPTIONAL
+	offset = $someInt
+	# REQUIRED
+	id = $someString
+	# REQUIRED
+	path = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // nutanixCategory(fid: UUID!): NutanixCategory!
+        internal void InitQueryNutanixCategory()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("fid", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryNutanixCategory",
+                "($fid: UUID!)",
+                "NutanixCategory",
+                Query.NutanixCategory_ObjectFieldSpec,
+                Query.NutanixCategoryFieldSpec,
+                @"# REQUIRED
+$query.Var.fid = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // nutanixCategoryValue(fid: UUID!): NutanixCategoryValue!
+        internal void InitQueryNutanixCategoryValue()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("fid", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryNutanixCategoryValue",
+                "($fid: UUID!)",
+                "NutanixCategoryValue",
+                Query.NutanixCategoryValue_ObjectFieldSpec,
+                Query.NutanixCategoryValueFieldSpec,
+                @"# REQUIRED
+$query.Var.fid = $someString"
             );
         }
 
@@ -776,7 +1482,78 @@ $inputs.Var.filter = @(
                 Query.NutanixCluster_ObjectFieldSpec,
                 Query.NutanixClusterFieldSpec,
                 @"# REQUIRED
-$inputs.Var.fid = <System.String>"
+$query.Var.fid = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // nutanixClusterAsyncRequestStatus(input: GetNutanixClusterAsyncRequestStatusInput!): AsyncRequestStatus!
+        internal void InitQueryNutanixClusterAsyncRequestStatus()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "GetNutanixClusterAsyncRequestStatusInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryNutanixClusterAsyncRequestStatus",
+                "($input: GetNutanixClusterAsyncRequestStatusInput!)",
+                "AsyncRequestStatus",
+                Query.NutanixClusterAsyncRequestStatus_ObjectFieldSpec,
+                Query.NutanixClusterAsyncRequestStatusFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // nutanixClusterContainers(input: GetContainersInput!): NutanixContainerListResponse!
+        internal void InitQueryNutanixClusterContainers()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "GetContainersInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryNutanixClusterContainers",
+                "($input: GetContainersInput!)",
+                "NutanixContainerListResponse",
+                Query.NutanixClusterContainers_ObjectFieldSpec,
+                Query.NutanixClusterContainersFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // nutanixClusterNetworks(input: GetNutanixNetworksInput!): NutanixNetworkListResponse!
+        internal void InitQueryNutanixClusterNetworks()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "GetNutanixNetworksInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryNutanixClusterNetworks",
+                "($input: GetNutanixNetworksInput!)",
+                "NutanixNetworkListResponse",
+                Query.NutanixClusterNetworks_ObjectFieldSpec,
+                Query.NutanixClusterNetworksFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+}"
             );
         }
 
@@ -806,288 +1583,52 @@ $inputs.Var.fid = <System.String>"
                 Query.NutanixClusters_ObjectFieldSpec,
                 Query.NutanixClustersFieldSpec,
                 @"# OPTIONAL
-$inputs.Var.first = <System.Int32>
+$query.Var.first = $someInt
 # OPTIONAL
-$inputs.Var.after = <System.String>
+$query.Var.after = $someString
 # OPTIONAL
-$inputs.Var.sortBy = <HierarchySortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
 # OPTIONAL
-$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
 # OPTIONAL
-$inputs.Var.filter = @(
+$query.Var.filter = @(
 	@{
 		# OPTIONAL
-		field = <HierarchyFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
 		# OPTIONAL
 		texts = @(
-			<System.String>
+			$someString
 		)
 		# OPTIONAL
 		tagFilterParams = @(
 			@{
 				# OPTIONAL
-				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
 				# OPTIONAL
-				tagKey = <System.String>
+				tagKey = $someString
 				# OPTIONAL
-				tagValue = <System.String>
+				tagValue = $someString
 			}
 		)
 		# OPTIONAL
 		objectTypeFilterParams = @(
-			<ManagedObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
 		)
 		# OPTIONAL
 		awsNativeProtectionFeatureNames = @(
-			<AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
 		)
 		# OPTIONAL
-		isNegative = <System.Boolean>
+		isNegative = $someBoolean
 		# OPTIONAL
-		isSlowSearchEnabled = <System.Boolean>
+		isSlowSearchEnabled = $someBoolean
 		# OPTIONAL
 		azureNativeProtectionFeatureNames = @(
-			<AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
 		)
 		# OPTIONAL
 		unmanagedObjectAvailabilityFilter = @(
-			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
-		)
-}
-)"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // nutanixPrismCentrals(
-        //     first: Int
-        //     after: String
-        //     sortBy: HierarchySortByField
-        //     sortOrder: SortOrder
-        //     filter: [Filter!]
-        //   ): NutanixPrismCentralConnection!
-        internal void InitQueryNutanixPrismCentrals()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("sortBy", "HierarchySortByField"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("filter", "[Filter!]"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryNutanixPrismCentrals",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                "NutanixPrismCentralConnection",
-                Query.NutanixPrismCentrals_ObjectFieldSpec,
-                Query.NutanixPrismCentralsFieldSpec,
-                @"# OPTIONAL
-$inputs.Var.first = <System.Int32>
-# OPTIONAL
-$inputs.Var.after = <System.String>
-# OPTIONAL
-$inputs.Var.sortBy = <HierarchySortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
-# OPTIONAL
-$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$inputs.Var.filter = @(
-	@{
-		# OPTIONAL
-		field = <HierarchyFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
-		# OPTIONAL
-		texts = @(
-			<System.String>
-		)
-		# OPTIONAL
-		tagFilterParams = @(
-			@{
-				# OPTIONAL
-				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-				# OPTIONAL
-				tagKey = <System.String>
-				# OPTIONAL
-				tagValue = <System.String>
-			}
-		)
-		# OPTIONAL
-		objectTypeFilterParams = @(
-			<ManagedObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
-		)
-		# OPTIONAL
-		awsNativeProtectionFeatureNames = @(
-			<AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		isNegative = <System.Boolean>
-		# OPTIONAL
-		isSlowSearchEnabled = <System.Boolean>
-		# OPTIONAL
-		azureNativeProtectionFeatureNames = @(
-			<AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		unmanagedObjectAvailabilityFilter = @(
-			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
-		)
-}
-)"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // nutanixPrismCentral(fid: UUID!): NutanixPrismCentral!
-        internal void InitQueryNutanixPrismCentral()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("fid", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryNutanixPrismCentral",
-                "($fid: UUID!)",
-                "NutanixPrismCentral",
-                Query.NutanixPrismCentral_ObjectFieldSpec,
-                Query.NutanixPrismCentralFieldSpec,
-                @"# REQUIRED
-$inputs.Var.fid = <System.String>"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // nutanixCategory(fid: UUID!): NutanixCategory!
-        internal void InitQueryNutanixCategory()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("fid", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryNutanixCategory",
-                "($fid: UUID!)",
-                "NutanixCategory",
-                Query.NutanixCategory_ObjectFieldSpec,
-                Query.NutanixCategoryFieldSpec,
-                @"# REQUIRED
-$inputs.Var.fid = <System.String>"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // nutanixCategoryValue(fid: UUID!): NutanixCategoryValue!
-        internal void InitQueryNutanixCategoryValue()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("fid", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryNutanixCategoryValue",
-                "($fid: UUID!)",
-                "NutanixCategoryValue",
-                Query.NutanixCategoryValue_ObjectFieldSpec,
-                Query.NutanixCategoryValueFieldSpec,
-                @"# REQUIRED
-$inputs.Var.fid = <System.String>"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // nutanixVm(fid: UUID!): NutanixVm!
-        internal void InitQueryNutanixVm()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("fid", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryNutanixVm",
-                "($fid: UUID!)",
-                "NutanixVm",
-                Query.NutanixVm_ObjectFieldSpec,
-                Query.NutanixVmFieldSpec,
-                @"# REQUIRED
-$inputs.Var.fid = <System.String>"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // nutanixVms(
-        //     first: Int
-        //     after: String
-        //     sortBy: HierarchySortByField
-        //     sortOrder: SortOrder
-        //     filter: [Filter!]
-        //   ): NutanixVmConnection!
-        internal void InitQueryNutanixVms()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("sortBy", "HierarchySortByField"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("filter", "[Filter!]"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryNutanixVms",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                "NutanixVmConnection",
-                Query.NutanixVms_ObjectFieldSpec,
-                Query.NutanixVmsFieldSpec,
-                @"# OPTIONAL
-$inputs.Var.first = <System.Int32>
-# OPTIONAL
-$inputs.Var.after = <System.String>
-# OPTIONAL
-$inputs.Var.sortBy = <HierarchySortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
-# OPTIONAL
-$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$inputs.Var.filter = @(
-	@{
-		# OPTIONAL
-		field = <HierarchyFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
-		# OPTIONAL
-		texts = @(
-			<System.String>
-		)
-		# OPTIONAL
-		tagFilterParams = @(
-			@{
-				# OPTIONAL
-				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-				# OPTIONAL
-				tagKey = <System.String>
-				# OPTIONAL
-				tagValue = <System.String>
-			}
-		)
-		# OPTIONAL
-		objectTypeFilterParams = @(
-			<ManagedObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
-		)
-		# OPTIONAL
-		awsNativeProtectionFeatureNames = @(
-			<AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		isNegative = <System.Boolean>
-		# OPTIONAL
-		isSlowSearchEnabled = <System.Boolean>
-		# OPTIONAL
-		azureNativeProtectionFeatureNames = @(
-			<AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		unmanagedObjectAvailabilityFilter = @(
-			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
 		)
 }
 )"
@@ -1118,123 +1659,125 @@ $inputs.Var.filter = @(
                 Query.NutanixMounts_ObjectFieldSpec,
                 Query.NutanixMountsFieldSpec,
                 @"# OPTIONAL
-$inputs.Var.first = <System.Int32>
+$query.Var.first = $someInt
 # OPTIONAL
-$inputs.Var.after = <System.String>
+$query.Var.after = $someString
 # OPTIONAL
-$inputs.Var.filters = @(
+$query.Var.filters = @(
 	@{
 		# OPTIONAL
-		field = <NutanixLiveMountFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NutanixLiveMountFilterField]) for enum values.
+		field = $someNutanixLiveMountFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NutanixLiveMountFilterField]) for enum values.
 		# OPTIONAL
 		texts = @(
-			<System.String>
+			$someString
 		)
 }
 )
 # OPTIONAL
-$inputs.Var.sortBy = @{
+$query.Var.sortBy = @{
 	# OPTIONAL
-	field = <NutanixLiveMountSortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NutanixLiveMountSortByField]) for enum values.
+	field = $someNutanixLiveMountSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NutanixLiveMountSortByField]) for enum values.
 	# OPTIONAL
-	sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
 }"
             );
         }
 
         // Create new GraphQL Query:
-        // nutanixClusterContainers(input: GetContainersInput!): NutanixContainerListResponse!
-        internal void InitQueryNutanixClusterContainers()
+        // nutanixPrismCentral(fid: UUID!): NutanixPrismCentral!
+        internal void InitQueryNutanixPrismCentral()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "GetContainersInput!"),
+                Tuple.Create("fid", "UUID!"),
             };
             Initialize(
                 argDefs,
                 "query",
-                "QueryNutanixClusterContainers",
-                "($input: GetContainersInput!)",
-                "NutanixContainerListResponse",
-                Query.NutanixClusterContainers_ObjectFieldSpec,
-                Query.NutanixClusterContainersFieldSpec,
+                "QueryNutanixPrismCentral",
+                "($fid: UUID!)",
+                "NutanixPrismCentral",
+                Query.NutanixPrismCentral_ObjectFieldSpec,
+                Query.NutanixPrismCentralFieldSpec,
                 @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	id = <System.String>
-}"
+$query.Var.fid = $someString"
             );
         }
 
         // Create new GraphQL Query:
-        // nutanixClusterNetworks(input: GetNutanixNetworksInput!): NutanixNetworkListResponse!
-        internal void InitQueryNutanixClusterNetworks()
+        // nutanixPrismCentrals(
+        //     first: Int
+        //     after: String
+        //     sortBy: HierarchySortByField
+        //     sortOrder: SortOrder
+        //     filter: [Filter!]
+        //   ): NutanixPrismCentralConnection!
+        internal void InitQueryNutanixPrismCentrals()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "GetNutanixNetworksInput!"),
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("sortBy", "HierarchySortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("filter", "[Filter!]"),
             };
             Initialize(
                 argDefs,
                 "query",
-                "QueryNutanixClusterNetworks",
-                "($input: GetNutanixNetworksInput!)",
-                "NutanixNetworkListResponse",
-                Query.NutanixClusterNetworks_ObjectFieldSpec,
-                Query.NutanixClusterNetworksFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	id = <System.String>
-}"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // nutanixClusterAsyncRequestStatus(input: GetNutanixClusterAsyncRequestStatusInput!): AsyncRequestStatus!
-        internal void InitQueryNutanixClusterAsyncRequestStatus()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "GetNutanixClusterAsyncRequestStatusInput!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryNutanixClusterAsyncRequestStatus",
-                "($input: GetNutanixClusterAsyncRequestStatusInput!)",
-                "AsyncRequestStatus",
-                Query.NutanixClusterAsyncRequestStatus_ObjectFieldSpec,
-                Query.NutanixClusterAsyncRequestStatusFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	clusterUuid = <System.String>
-	# REQUIRED
-	id = <System.String>
-}"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // nutanixVmAsyncRequestStatus(input: GetNutanixVmAsyncRequestStatusInput!): AsyncRequestStatus!
-        internal void InitQueryNutanixVmAsyncRequestStatus()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "GetNutanixVmAsyncRequestStatusInput!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryNutanixVmAsyncRequestStatus",
-                "($input: GetNutanixVmAsyncRequestStatusInput!)",
-                "AsyncRequestStatus",
-                Query.NutanixVmAsyncRequestStatus_ObjectFieldSpec,
-                Query.NutanixVmAsyncRequestStatusFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	clusterUuid = <System.String>
-	# REQUIRED
-	id = <System.String>
-}"
+                "QueryNutanixPrismCentrals",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                "NutanixPrismCentralConnection",
+                Query.NutanixPrismCentrals_ObjectFieldSpec,
+                Query.NutanixPrismCentralsFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			$someString
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = $someString
+				# OPTIONAL
+				tagValue = $someString
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = $someBoolean
+		# OPTIONAL
+		isSlowSearchEnabled = $someBoolean
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+}
+)"
             );
         }
 
@@ -1254,67 +1797,15 @@ $inputs.Var.input = @{
                 Query.SearchNutanixVm_ObjectFieldSpec,
                 Query.SearchNutanixVmFieldSpec,
                 @"# REQUIRED
-$inputs.Var.input = @{
+$query.Var.input = @{
 	# OPTIONAL
-	cursor = <System.String>
+	cursor = $someString
 	# OPTIONAL
-	limit = <System.Int32>
+	limit = $someInt
 	# REQUIRED
-	id = <System.String>
+	id = $someString
 	# REQUIRED
-	path = <System.String>
-}"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // nutanixVmMissedSnapshots(input: NutanixMissedSnapshotsInput!): MissedSnapshotListResponse!
-        internal void InitQueryNutanixVmMissedSnapshots()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "NutanixMissedSnapshotsInput!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryNutanixVmMissedSnapshots",
-                "($input: NutanixMissedSnapshotsInput!)",
-                "MissedSnapshotListResponse",
-                Query.NutanixVmMissedSnapshots_ObjectFieldSpec,
-                Query.NutanixVmMissedSnapshotsFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	id = <System.String>
-}"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // nutanixBrowseSnapshot(input: BrowseNutanixSnapshotInput!): BrowseResponseListResponse!
-        internal void InitQueryNutanixBrowseSnapshot()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "BrowseNutanixSnapshotInput!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryNutanixBrowseSnapshot",
-                "($input: BrowseNutanixSnapshotInput!)",
-                "BrowseResponseListResponse",
-                Query.NutanixBrowseSnapshot_ObjectFieldSpec,
-                Query.NutanixBrowseSnapshotFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# OPTIONAL
-	limit = <System.Int32>
-	# OPTIONAL
-	offset = <System.Int32>
-	# REQUIRED
-	id = <System.String>
-	# REQUIRED
-	path = <System.String>
+	path = $someString
 }"
             );
         }
@@ -1335,10 +1826,240 @@ $inputs.Var.input = @{
                 Query.NutanixSnapshotDetail_ObjectFieldSpec,
                 Query.NutanixSnapshotDetailFieldSpec,
                 @"# REQUIRED
-$inputs.Var.input = @{
+$query.Var.input = @{
 	# REQUIRED
-	id = <System.String>
+	id = $someString
 }"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // nutanixTopLevelDescendants(
+        //     first: Int
+        //     after: String
+        //     sortBy: HierarchySortByField
+        //     sortOrder: SortOrder
+        //     typeFilter: [HierarchyObjectTypeEnum!]
+        //     filter: [Filter!]
+        //   ): CdmHierarchyObjectConnection!
+        internal void InitQueryNutanixTopLevelDescendants()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("sortBy", "HierarchySortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),
+                Tuple.Create("filter", "[Filter!]"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryNutanixTopLevelDescendants",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!],$filter: [Filter!])",
+                "CdmHierarchyObjectConnection",
+                Query.NutanixTopLevelDescendants_ObjectFieldSpec,
+                Query.NutanixTopLevelDescendantsFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.typeFilter = @(
+	$someHierarchyObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
+)
+# OPTIONAL
+$query.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			$someString
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = $someString
+				# OPTIONAL
+				tagValue = $someString
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = $someBoolean
+		# OPTIONAL
+		isSlowSearchEnabled = $someBoolean
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+}
+)"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // nutanixVm(fid: UUID!): NutanixVm!
+        internal void InitQueryNutanixVm()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("fid", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryNutanixVm",
+                "($fid: UUID!)",
+                "NutanixVm",
+                Query.NutanixVm_ObjectFieldSpec,
+                Query.NutanixVmFieldSpec,
+                @"# REQUIRED
+$query.Var.fid = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // nutanixVmAsyncRequestStatus(input: GetNutanixVmAsyncRequestStatusInput!): AsyncRequestStatus!
+        internal void InitQueryNutanixVmAsyncRequestStatus()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "GetNutanixVmAsyncRequestStatusInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryNutanixVmAsyncRequestStatus",
+                "($input: GetNutanixVmAsyncRequestStatusInput!)",
+                "AsyncRequestStatus",
+                Query.NutanixVmAsyncRequestStatus_ObjectFieldSpec,
+                Query.NutanixVmAsyncRequestStatusFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // nutanixVmMissedSnapshots(input: NutanixMissedSnapshotsInput!): MissedSnapshotListResponse!
+        internal void InitQueryNutanixVmMissedSnapshots()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "NutanixMissedSnapshotsInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryNutanixVmMissedSnapshots",
+                "($input: NutanixMissedSnapshotsInput!)",
+                "MissedSnapshotListResponse",
+                Query.NutanixVmMissedSnapshots_ObjectFieldSpec,
+                Query.NutanixVmMissedSnapshotsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // nutanixVms(
+        //     first: Int
+        //     after: String
+        //     sortBy: HierarchySortByField
+        //     sortOrder: SortOrder
+        //     filter: [Filter!]
+        //   ): NutanixVmConnection!
+        internal void InitQueryNutanixVms()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("sortBy", "HierarchySortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("filter", "[Filter!]"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryNutanixVms",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                "NutanixVmConnection",
+                Query.NutanixVms_ObjectFieldSpec,
+                Query.NutanixVmsFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			$someString
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = $someString
+				# OPTIONAL
+				tagValue = $someString
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = $someBoolean
+		# OPTIONAL
+		isSlowSearchEnabled = $someBoolean
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+}
+)"
             );
         }
 

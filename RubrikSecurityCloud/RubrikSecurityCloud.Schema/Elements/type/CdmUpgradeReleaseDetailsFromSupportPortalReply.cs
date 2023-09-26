@@ -65,26 +65,39 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? CompatibilityMatrixLink
         // GraphQL -> compatibilityMatrixLink: String! (scalar)
         if (this.CompatibilityMatrixLink != null) {
-            s += ind + "compatibilityMatrixLink\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "compatibilityMatrixLink\n" ;
+            } else {
+                s += ind + "compatibilityMatrixLink\n" ;
+            }
         }
         //      C# -> System.String? SupportSoftwareLink
         // GraphQL -> supportSoftwareLink: String! (scalar)
         if (this.SupportSoftwareLink != null) {
-            s += ind + "supportSoftwareLink\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "supportSoftwareLink\n" ;
+            } else {
+                s += ind + "supportSoftwareLink\n" ;
+            }
         }
         //      C# -> List<CdmUpgradeReleaseDetail>? ReleaseDetails
         // GraphQL -> releaseDetails: [CdmUpgradeReleaseDetail!]! (type)
         if (this.ReleaseDetails != null) {
-            var fspec = this.ReleaseDetails.AsFieldSpec(indent+1);
+            var fspec = this.ReleaseDetails.AsFieldSpec(conf.Child("releaseDetails"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "releaseDetails {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "releaseDetails {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -96,22 +109,56 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? CompatibilityMatrixLink
         // GraphQL -> compatibilityMatrixLink: String! (scalar)
-        if (this.CompatibilityMatrixLink == null && ec.Includes("compatibilityMatrixLink",true))
+        if (ec.Includes("compatibilityMatrixLink",true))
         {
-            this.CompatibilityMatrixLink = "FETCH";
+            if(this.CompatibilityMatrixLink == null) {
+
+                this.CompatibilityMatrixLink = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CompatibilityMatrixLink != null && ec.Excludes("compatibilityMatrixLink",true))
+        {
+            this.CompatibilityMatrixLink = null;
         }
         //      C# -> System.String? SupportSoftwareLink
         // GraphQL -> supportSoftwareLink: String! (scalar)
-        if (this.SupportSoftwareLink == null && ec.Includes("supportSoftwareLink",true))
+        if (ec.Includes("supportSoftwareLink",true))
         {
-            this.SupportSoftwareLink = "FETCH";
+            if(this.SupportSoftwareLink == null) {
+
+                this.SupportSoftwareLink = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SupportSoftwareLink != null && ec.Excludes("supportSoftwareLink",true))
+        {
+            this.SupportSoftwareLink = null;
         }
         //      C# -> List<CdmUpgradeReleaseDetail>? ReleaseDetails
         // GraphQL -> releaseDetails: [CdmUpgradeReleaseDetail!]! (type)
-        if (this.ReleaseDetails == null && ec.Includes("releaseDetails",false))
+        if (ec.Includes("releaseDetails",false))
         {
-            this.ReleaseDetails = new List<CdmUpgradeReleaseDetail>();
-            this.ReleaseDetails.ApplyExploratoryFieldSpec(ec.NewChild("releaseDetails"));
+            if(this.ReleaseDetails == null) {
+
+                this.ReleaseDetails = new List<CdmUpgradeReleaseDetail>();
+                this.ReleaseDetails.ApplyExploratoryFieldSpec(ec.NewChild("releaseDetails"));
+
+            } else {
+
+                this.ReleaseDetails.ApplyExploratoryFieldSpec(ec.NewChild("releaseDetails"));
+
+            }
+        }
+        else if (this.ReleaseDetails != null && ec.Excludes("releaseDetails",false))
+        {
+            this.ReleaseDetails = null;
         }
     }
 
@@ -138,9 +185,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CdmUpgradeReleaseDetailsFromSupportPortalReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

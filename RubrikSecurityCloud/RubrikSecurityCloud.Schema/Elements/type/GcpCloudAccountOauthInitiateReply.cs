@@ -83,34 +83,55 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? ClientId
         // GraphQL -> clientId: String! (scalar)
         if (this.ClientId != null) {
-            s += ind + "clientId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "clientId\n" ;
+            } else {
+                s += ind + "clientId\n" ;
+            }
         }
         //      C# -> System.String? RedirectUrl
         // GraphQL -> redirectUrl: String! (scalar)
         if (this.RedirectUrl != null) {
-            s += ind + "redirectUrl\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "redirectUrl\n" ;
+            } else {
+                s += ind + "redirectUrl\n" ;
+            }
         }
         //      C# -> List<System.String>? Scope
         // GraphQL -> scope: [String!]! (scalar)
         if (this.Scope != null) {
-            s += ind + "scope\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "scope\n" ;
+            } else {
+                s += ind + "scope\n" ;
+            }
         }
         //      C# -> System.String? SessionId
         // GraphQL -> sessionId: String! (scalar)
         if (this.SessionId != null) {
-            s += ind + "sessionId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sessionId\n" ;
+            } else {
+                s += ind + "sessionId\n" ;
+            }
         }
         //      C# -> System.String? State
         // GraphQL -> state: String! (scalar)
         if (this.State != null) {
-            s += ind + "state\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "state\n" ;
+            } else {
+                s += ind + "state\n" ;
+            }
         }
         return s;
     }
@@ -121,33 +142,88 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? ClientId
         // GraphQL -> clientId: String! (scalar)
-        if (this.ClientId == null && ec.Includes("clientId",true))
+        if (ec.Includes("clientId",true))
         {
-            this.ClientId = "FETCH";
+            if(this.ClientId == null) {
+
+                this.ClientId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClientId != null && ec.Excludes("clientId",true))
+        {
+            this.ClientId = null;
         }
         //      C# -> System.String? RedirectUrl
         // GraphQL -> redirectUrl: String! (scalar)
-        if (this.RedirectUrl == null && ec.Includes("redirectUrl",true))
+        if (ec.Includes("redirectUrl",true))
         {
-            this.RedirectUrl = "FETCH";
+            if(this.RedirectUrl == null) {
+
+                this.RedirectUrl = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RedirectUrl != null && ec.Excludes("redirectUrl",true))
+        {
+            this.RedirectUrl = null;
         }
         //      C# -> List<System.String>? Scope
         // GraphQL -> scope: [String!]! (scalar)
-        if (this.Scope == null && ec.Includes("scope",true))
+        if (ec.Includes("scope",true))
         {
-            this.Scope = new List<System.String>();
+            if(this.Scope == null) {
+
+                this.Scope = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Scope != null && ec.Excludes("scope",true))
+        {
+            this.Scope = null;
         }
         //      C# -> System.String? SessionId
         // GraphQL -> sessionId: String! (scalar)
-        if (this.SessionId == null && ec.Includes("sessionId",true))
+        if (ec.Includes("sessionId",true))
         {
-            this.SessionId = "FETCH";
+            if(this.SessionId == null) {
+
+                this.SessionId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SessionId != null && ec.Excludes("sessionId",true))
+        {
+            this.SessionId = null;
         }
         //      C# -> System.String? State
         // GraphQL -> state: String! (scalar)
-        if (this.State == null && ec.Includes("state",true))
+        if (ec.Includes("state",true))
         {
-            this.State = "FETCH";
+            if(this.State == null) {
+
+                this.State = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.State != null && ec.Excludes("state",true))
+        {
+            this.State = null;
         }
     }
 
@@ -174,9 +250,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<GcpCloudAccountOauthInitiateReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

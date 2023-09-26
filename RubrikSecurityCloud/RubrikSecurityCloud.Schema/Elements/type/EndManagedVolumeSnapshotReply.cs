@@ -56,24 +56,33 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> AsyncRequestStatus? AsyncRequestStatus
         // GraphQL -> asyncRequestStatus: AsyncRequestStatus (type)
         if (this.AsyncRequestStatus != null) {
-            var fspec = this.AsyncRequestStatus.AsFieldSpec(indent+1);
+            var fspec = this.AsyncRequestStatus.AsFieldSpec(conf.Child("asyncRequestStatus"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "asyncRequestStatus {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "asyncRequestStatus {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> ManagedVolumeSnapshotSummary? ManagedVolumeSnapshotSummary
         // GraphQL -> managedVolumeSnapshotSummary: ManagedVolumeSnapshotSummary (type)
         if (this.ManagedVolumeSnapshotSummary != null) {
-            var fspec = this.ManagedVolumeSnapshotSummary.AsFieldSpec(indent+1);
+            var fspec = this.ManagedVolumeSnapshotSummary.AsFieldSpec(conf.Child("managedVolumeSnapshotSummary"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "managedVolumeSnapshotSummary {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "managedVolumeSnapshotSummary {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -85,17 +94,41 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> AsyncRequestStatus? AsyncRequestStatus
         // GraphQL -> asyncRequestStatus: AsyncRequestStatus (type)
-        if (this.AsyncRequestStatus == null && ec.Includes("asyncRequestStatus",false))
+        if (ec.Includes("asyncRequestStatus",false))
         {
-            this.AsyncRequestStatus = new AsyncRequestStatus();
-            this.AsyncRequestStatus.ApplyExploratoryFieldSpec(ec.NewChild("asyncRequestStatus"));
+            if(this.AsyncRequestStatus == null) {
+
+                this.AsyncRequestStatus = new AsyncRequestStatus();
+                this.AsyncRequestStatus.ApplyExploratoryFieldSpec(ec.NewChild("asyncRequestStatus"));
+
+            } else {
+
+                this.AsyncRequestStatus.ApplyExploratoryFieldSpec(ec.NewChild("asyncRequestStatus"));
+
+            }
+        }
+        else if (this.AsyncRequestStatus != null && ec.Excludes("asyncRequestStatus",false))
+        {
+            this.AsyncRequestStatus = null;
         }
         //      C# -> ManagedVolumeSnapshotSummary? ManagedVolumeSnapshotSummary
         // GraphQL -> managedVolumeSnapshotSummary: ManagedVolumeSnapshotSummary (type)
-        if (this.ManagedVolumeSnapshotSummary == null && ec.Includes("managedVolumeSnapshotSummary",false))
+        if (ec.Includes("managedVolumeSnapshotSummary",false))
         {
-            this.ManagedVolumeSnapshotSummary = new ManagedVolumeSnapshotSummary();
-            this.ManagedVolumeSnapshotSummary.ApplyExploratoryFieldSpec(ec.NewChild("managedVolumeSnapshotSummary"));
+            if(this.ManagedVolumeSnapshotSummary == null) {
+
+                this.ManagedVolumeSnapshotSummary = new ManagedVolumeSnapshotSummary();
+                this.ManagedVolumeSnapshotSummary.ApplyExploratoryFieldSpec(ec.NewChild("managedVolumeSnapshotSummary"));
+
+            } else {
+
+                this.ManagedVolumeSnapshotSummary.ApplyExploratoryFieldSpec(ec.NewChild("managedVolumeSnapshotSummary"));
+
+            }
+        }
+        else if (this.ManagedVolumeSnapshotSummary != null && ec.Excludes("managedVolumeSnapshotSummary",false))
+        {
+            this.ManagedVolumeSnapshotSummary = null;
         }
     }
 
@@ -122,9 +155,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<EndManagedVolumeSnapshotReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

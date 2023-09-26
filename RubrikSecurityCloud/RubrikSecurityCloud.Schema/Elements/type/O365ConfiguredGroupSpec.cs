@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<System.String>? Pdls
         // GraphQL -> pdls: [String!]! (scalar)
         if (this.Pdls != null) {
-            s += ind + "pdls\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "pdls\n" ;
+            } else {
+                s += ind + "pdls\n" ;
+            }
         }
         //      C# -> System.String? Wildcard
         // GraphQL -> wildcard: String! (scalar)
         if (this.Wildcard != null) {
-            s += ind + "wildcard\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "wildcard\n" ;
+            } else {
+                s += ind + "wildcard\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<System.String>? Pdls
         // GraphQL -> pdls: [String!]! (scalar)
-        if (this.Pdls == null && ec.Includes("pdls",true))
+        if (ec.Includes("pdls",true))
         {
-            this.Pdls = new List<System.String>();
+            if(this.Pdls == null) {
+
+                this.Pdls = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Pdls != null && ec.Excludes("pdls",true))
+        {
+            this.Pdls = null;
         }
         //      C# -> System.String? Wildcard
         // GraphQL -> wildcard: String! (scalar)
-        if (this.Wildcard == null && ec.Includes("wildcard",true))
+        if (ec.Includes("wildcard",true))
         {
-            this.Wildcard = "FETCH";
+            if(this.Wildcard == null) {
+
+                this.Wildcard = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Wildcard != null && ec.Excludes("wildcard",true))
+        {
+            this.Wildcard = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<O365ConfiguredGroupSpec> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

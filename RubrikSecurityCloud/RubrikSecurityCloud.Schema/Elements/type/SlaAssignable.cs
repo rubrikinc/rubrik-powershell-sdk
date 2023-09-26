@@ -110,49 +110,82 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> ConfiguredSlaType? ConfiguredSlaDomainType
         // GraphQL -> configuredSlaDomainType: ConfiguredSlaType (enum)
         if (this.ConfiguredSlaDomainType != null) {
-            s += ind + "configuredSlaDomainType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "configuredSlaDomainType\n" ;
+            } else {
+                s += ind + "configuredSlaDomainType\n" ;
+            }
         }
         //      C# -> System.String? ConfiguredSlaDomainId
         // GraphQL -> configuredSlaDomainId: String! (scalar)
         if (this.ConfiguredSlaDomainId != null) {
-            s += ind + "configuredSlaDomainId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "configuredSlaDomainId\n" ;
+            } else {
+                s += ind + "configuredSlaDomainId\n" ;
+            }
         }
         //      C# -> System.String? ConfiguredSlaDomainName
         // GraphQL -> configuredSlaDomainName: String! (scalar)
         if (this.ConfiguredSlaDomainName != null) {
-            s += ind + "configuredSlaDomainName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "configuredSlaDomainName\n" ;
+            } else {
+                s += ind + "configuredSlaDomainName\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.Boolean? IsConfiguredSlaDomainRetentionLocked
         // GraphQL -> isConfiguredSlaDomainRetentionLocked: Boolean (scalar)
         if (this.IsConfiguredSlaDomainRetentionLocked != null) {
-            s += ind + "isConfiguredSlaDomainRetentionLocked\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isConfiguredSlaDomainRetentionLocked\n" ;
+            } else {
+                s += ind + "isConfiguredSlaDomainRetentionLocked\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.String? PrimaryClusterId
         // GraphQL -> primaryClusterId: String! (scalar)
         if (this.PrimaryClusterId != null) {
-            s += ind + "primaryClusterId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "primaryClusterId\n" ;
+            } else {
+                s += ind + "primaryClusterId\n" ;
+            }
         }
         //      C# -> DateTime? SlaLastUpdateTime
         // GraphQL -> slaLastUpdateTime: DateTime (scalar)
         if (this.SlaLastUpdateTime != null) {
-            s += ind + "slaLastUpdateTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "slaLastUpdateTime\n" ;
+            } else {
+                s += ind + "slaLastUpdateTime\n" ;
+            }
         }
         return s;
     }
@@ -163,51 +196,139 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> ConfiguredSlaType? ConfiguredSlaDomainType
         // GraphQL -> configuredSlaDomainType: ConfiguredSlaType (enum)
-        if (this.ConfiguredSlaDomainType == null && ec.Includes("configuredSlaDomainType",true))
+        if (ec.Includes("configuredSlaDomainType",true))
         {
-            this.ConfiguredSlaDomainType = new ConfiguredSlaType();
+            if(this.ConfiguredSlaDomainType == null) {
+
+                this.ConfiguredSlaDomainType = new ConfiguredSlaType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ConfiguredSlaDomainType != null && ec.Excludes("configuredSlaDomainType",true))
+        {
+            this.ConfiguredSlaDomainType = null;
         }
         //      C# -> System.String? ConfiguredSlaDomainId
         // GraphQL -> configuredSlaDomainId: String! (scalar)
-        if (this.ConfiguredSlaDomainId == null && ec.Includes("configuredSlaDomainId",true))
+        if (ec.Includes("configuredSlaDomainId",true))
         {
-            this.ConfiguredSlaDomainId = "FETCH";
+            if(this.ConfiguredSlaDomainId == null) {
+
+                this.ConfiguredSlaDomainId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ConfiguredSlaDomainId != null && ec.Excludes("configuredSlaDomainId",true))
+        {
+            this.ConfiguredSlaDomainId = null;
         }
         //      C# -> System.String? ConfiguredSlaDomainName
         // GraphQL -> configuredSlaDomainName: String! (scalar)
-        if (this.ConfiguredSlaDomainName == null && ec.Includes("configuredSlaDomainName",true))
+        if (ec.Includes("configuredSlaDomainName",true))
         {
-            this.ConfiguredSlaDomainName = "FETCH";
+            if(this.ConfiguredSlaDomainName == null) {
+
+                this.ConfiguredSlaDomainName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ConfiguredSlaDomainName != null && ec.Excludes("configuredSlaDomainName",true))
+        {
+            this.ConfiguredSlaDomainName = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.Boolean? IsConfiguredSlaDomainRetentionLocked
         // GraphQL -> isConfiguredSlaDomainRetentionLocked: Boolean (scalar)
-        if (this.IsConfiguredSlaDomainRetentionLocked == null && ec.Includes("isConfiguredSlaDomainRetentionLocked",true))
+        if (ec.Includes("isConfiguredSlaDomainRetentionLocked",true))
         {
-            this.IsConfiguredSlaDomainRetentionLocked = true;
+            if(this.IsConfiguredSlaDomainRetentionLocked == null) {
+
+                this.IsConfiguredSlaDomainRetentionLocked = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsConfiguredSlaDomainRetentionLocked != null && ec.Excludes("isConfiguredSlaDomainRetentionLocked",true))
+        {
+            this.IsConfiguredSlaDomainRetentionLocked = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.String? PrimaryClusterId
         // GraphQL -> primaryClusterId: String! (scalar)
-        if (this.PrimaryClusterId == null && ec.Includes("primaryClusterId",true))
+        if (ec.Includes("primaryClusterId",true))
         {
-            this.PrimaryClusterId = "FETCH";
+            if(this.PrimaryClusterId == null) {
+
+                this.PrimaryClusterId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PrimaryClusterId != null && ec.Excludes("primaryClusterId",true))
+        {
+            this.PrimaryClusterId = null;
         }
         //      C# -> DateTime? SlaLastUpdateTime
         // GraphQL -> slaLastUpdateTime: DateTime (scalar)
-        if (this.SlaLastUpdateTime == null && ec.Includes("slaLastUpdateTime",true))
+        if (ec.Includes("slaLastUpdateTime",true))
         {
-            this.SlaLastUpdateTime = new DateTime();
+            if(this.SlaLastUpdateTime == null) {
+
+                this.SlaLastUpdateTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SlaLastUpdateTime != null && ec.Excludes("slaLastUpdateTime",true))
+        {
+            this.SlaLastUpdateTime = null;
         }
     }
 
@@ -234,9 +355,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SlaAssignable> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

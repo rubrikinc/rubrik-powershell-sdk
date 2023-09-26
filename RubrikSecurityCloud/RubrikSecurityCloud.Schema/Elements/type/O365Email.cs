@@ -120,54 +120,91 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? From
         // GraphQL -> from: String (scalar)
         if (this.From != null) {
-            s += ind + "from\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "from\n" ;
+            } else {
+                s += ind + "from\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.String? ParentFolderId
         // GraphQL -> parentFolderId: String (scalar)
         if (this.ParentFolderId != null) {
-            s += ind + "parentFolderId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "parentFolderId\n" ;
+            } else {
+                s += ind + "parentFolderId\n" ;
+            }
         }
         //      C# -> DateTime? ReceivedDateTime
         // GraphQL -> receivedDateTime: DateTime (scalar)
         if (this.ReceivedDateTime != null) {
-            s += ind + "receivedDateTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "receivedDateTime\n" ;
+            } else {
+                s += ind + "receivedDateTime\n" ;
+            }
         }
         //      C# -> DateTime? SentDateTime
         // GraphQL -> sentDateTime: DateTime (scalar)
         if (this.SentDateTime != null) {
-            s += ind + "sentDateTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sentDateTime\n" ;
+            } else {
+                s += ind + "sentDateTime\n" ;
+            }
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: UUID (scalar)
         if (this.SnapshotId != null) {
-            s += ind + "snapshotId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotId\n" ;
+            } else {
+                s += ind + "snapshotId\n" ;
+            }
         }
         //      C# -> System.Int32? SnapshotNum
         // GraphQL -> snapshotNum: Int (scalar)
         if (this.SnapshotNum != null) {
-            s += ind + "snapshotNum\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotNum\n" ;
+            } else {
+                s += ind + "snapshotNum\n" ;
+            }
         }
         //      C# -> System.String? Subject
         // GraphQL -> subject: String (scalar)
         if (this.Subject != null) {
-            s += ind + "subject\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "subject\n" ;
+            } else {
+                s += ind + "subject\n" ;
+            }
         }
         //      C# -> List<System.String>? ToRecipients
         // GraphQL -> toRecipients: [String!]! (scalar)
         if (this.ToRecipients != null) {
-            s += ind + "toRecipients\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "toRecipients\n" ;
+            } else {
+                s += ind + "toRecipients\n" ;
+            }
         }
         return s;
     }
@@ -178,57 +215,156 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? From
         // GraphQL -> from: String (scalar)
-        if (this.From == null && ec.Includes("from",true))
+        if (ec.Includes("from",true))
         {
-            this.From = "FETCH";
+            if(this.From == null) {
+
+                this.From = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.From != null && ec.Excludes("from",true))
+        {
+            this.From = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.String? ParentFolderId
         // GraphQL -> parentFolderId: String (scalar)
-        if (this.ParentFolderId == null && ec.Includes("parentFolderId",true))
+        if (ec.Includes("parentFolderId",true))
         {
-            this.ParentFolderId = "FETCH";
+            if(this.ParentFolderId == null) {
+
+                this.ParentFolderId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ParentFolderId != null && ec.Excludes("parentFolderId",true))
+        {
+            this.ParentFolderId = null;
         }
         //      C# -> DateTime? ReceivedDateTime
         // GraphQL -> receivedDateTime: DateTime (scalar)
-        if (this.ReceivedDateTime == null && ec.Includes("receivedDateTime",true))
+        if (ec.Includes("receivedDateTime",true))
         {
-            this.ReceivedDateTime = new DateTime();
+            if(this.ReceivedDateTime == null) {
+
+                this.ReceivedDateTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ReceivedDateTime != null && ec.Excludes("receivedDateTime",true))
+        {
+            this.ReceivedDateTime = null;
         }
         //      C# -> DateTime? SentDateTime
         // GraphQL -> sentDateTime: DateTime (scalar)
-        if (this.SentDateTime == null && ec.Includes("sentDateTime",true))
+        if (ec.Includes("sentDateTime",true))
         {
-            this.SentDateTime = new DateTime();
+            if(this.SentDateTime == null) {
+
+                this.SentDateTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SentDateTime != null && ec.Excludes("sentDateTime",true))
+        {
+            this.SentDateTime = null;
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: UUID (scalar)
-        if (this.SnapshotId == null && ec.Includes("snapshotId",true))
+        if (ec.Includes("snapshotId",true))
         {
-            this.SnapshotId = "FETCH";
+            if(this.SnapshotId == null) {
+
+                this.SnapshotId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotId != null && ec.Excludes("snapshotId",true))
+        {
+            this.SnapshotId = null;
         }
         //      C# -> System.Int32? SnapshotNum
         // GraphQL -> snapshotNum: Int (scalar)
-        if (this.SnapshotNum == null && ec.Includes("snapshotNum",true))
+        if (ec.Includes("snapshotNum",true))
         {
-            this.SnapshotNum = Int32.MinValue;
+            if(this.SnapshotNum == null) {
+
+                this.SnapshotNum = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotNum != null && ec.Excludes("snapshotNum",true))
+        {
+            this.SnapshotNum = null;
         }
         //      C# -> System.String? Subject
         // GraphQL -> subject: String (scalar)
-        if (this.Subject == null && ec.Includes("subject",true))
+        if (ec.Includes("subject",true))
         {
-            this.Subject = "FETCH";
+            if(this.Subject == null) {
+
+                this.Subject = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Subject != null && ec.Excludes("subject",true))
+        {
+            this.Subject = null;
         }
         //      C# -> List<System.String>? ToRecipients
         // GraphQL -> toRecipients: [String!]! (scalar)
-        if (this.ToRecipients == null && ec.Includes("toRecipients",true))
+        if (ec.Includes("toRecipients",true))
         {
-            this.ToRecipients = new List<System.String>();
+            if(this.ToRecipients == null) {
+
+                this.ToRecipients = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ToRecipients != null && ec.Excludes("toRecipients",true))
+        {
+            this.ToRecipients = null;
         }
     }
 
@@ -255,9 +391,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<O365Email> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -128,73 +128,114 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<CdmHierarchySnappableNew>? Objects
         // GraphQL -> objects: [CdmHierarchySnappableNew!]! (interface)
         if (this.Objects != null) {
-                var fspec = this.Objects.AsFieldSpec(indent+1);
+                var fspec = this.Objects.AsFieldSpec(conf.Child("objects"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "objects {\n" + fspec + ind + "}\n";
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "objects {\n" + fspec + ind + "}\n";
+                }
             }
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
         if (this.ClusterUuid != null) {
-            s += ind + "clusterUuid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterUuid\n" ;
+            } else {
+                s += ind + "clusterUuid\n" ;
+            }
         }
         //      C# -> System.Int32? MaxMatchesPerSnapshot
         // GraphQL -> maxMatchesPerSnapshot: Int (scalar)
         if (this.MaxMatchesPerSnapshot != null) {
-            s += ind + "maxMatchesPerSnapshot\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "maxMatchesPerSnapshot\n" ;
+            } else {
+                s += ind + "maxMatchesPerSnapshot\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.String? Notes
         // GraphQL -> notes: String! (scalar)
         if (this.Notes != null) {
-            s += ind + "notes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "notes\n" ;
+            } else {
+                s += ind + "notes\n" ;
+            }
         }
         //      C# -> System.Boolean? ShouldTrustFilesystemTimeInfo
         // GraphQL -> shouldTrustFilesystemTimeInfo: Boolean! (scalar)
         if (this.ShouldTrustFilesystemTimeInfo != null) {
-            s += ind + "shouldTrustFilesystemTimeInfo\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "shouldTrustFilesystemTimeInfo\n" ;
+            } else {
+                s += ind + "shouldTrustFilesystemTimeInfo\n" ;
+            }
         }
         //      C# -> MalwareScanFileCriteria? FileScanCriteria
         // GraphQL -> fileScanCriteria: MalwareScanFileCriteria (type)
         if (this.FileScanCriteria != null) {
-            var fspec = this.FileScanCriteria.AsFieldSpec(indent+1);
+            var fspec = this.FileScanCriteria.AsFieldSpec(conf.Child("fileScanCriteria"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "fileScanCriteria {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "fileScanCriteria {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<IndicatorOfCompromise>? IndicatorsOfCompromise
         // GraphQL -> indicatorsOfCompromise: [IndicatorOfCompromise!]! (type)
         if (this.IndicatorsOfCompromise != null) {
-            var fspec = this.IndicatorsOfCompromise.AsFieldSpec(indent+1);
+            var fspec = this.IndicatorsOfCompromise.AsFieldSpec(conf.Child("indicatorsOfCompromise"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "indicatorsOfCompromise {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "indicatorsOfCompromise {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> RequestedMatchDetails? RequestedMatchDetails
         // GraphQL -> requestedMatchDetails: RequestedMatchDetails (type)
         if (this.RequestedMatchDetails != null) {
-            var fspec = this.RequestedMatchDetails.AsFieldSpec(indent+1);
+            var fspec = this.RequestedMatchDetails.AsFieldSpec(conf.Child("requestedMatchDetails"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "requestedMatchDetails {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "requestedMatchDetails {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> MalwareScanSnapshotLimit? SnapshotScanLimit
         // GraphQL -> snapshotScanLimit: MalwareScanSnapshotLimit (type)
         if (this.SnapshotScanLimit != null) {
-            var fspec = this.SnapshotScanLimit.AsFieldSpec(indent+1);
+            var fspec = this.SnapshotScanLimit.AsFieldSpec(conf.Child("snapshotScanLimit"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "snapshotScanLimit {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "snapshotScanLimit {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -206,68 +247,183 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<CdmHierarchySnappableNew>? Objects
         // GraphQL -> objects: [CdmHierarchySnappableNew!]! (interface)
-        if (this.Objects == null && ec.Includes("objects",false))
+        if (ec.Includes("objects",false))
         {
-            this.Objects = new List<CdmHierarchySnappableNew>();
-            this.Objects.ApplyExploratoryFieldSpec(ec.NewChild("objects"));
+            if(this.Objects == null) {
+
+                this.Objects = new List<CdmHierarchySnappableNew>();
+                this.Objects.ApplyExploratoryFieldSpec(ec.NewChild("objects"));
+
+            } else {
+
+                this.Objects.ApplyExploratoryFieldSpec(ec.NewChild("objects"));
+
+            }
+        }
+        else if (this.Objects != null && ec.Excludes("objects",false))
+        {
+            this.Objects = null;
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
-        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
+        if (ec.Includes("clusterUuid",true))
         {
-            this.ClusterUuid = "FETCH";
+            if(this.ClusterUuid == null) {
+
+                this.ClusterUuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterUuid != null && ec.Excludes("clusterUuid",true))
+        {
+            this.ClusterUuid = null;
         }
         //      C# -> System.Int32? MaxMatchesPerSnapshot
         // GraphQL -> maxMatchesPerSnapshot: Int (scalar)
-        if (this.MaxMatchesPerSnapshot == null && ec.Includes("maxMatchesPerSnapshot",true))
+        if (ec.Includes("maxMatchesPerSnapshot",true))
         {
-            this.MaxMatchesPerSnapshot = Int32.MinValue;
+            if(this.MaxMatchesPerSnapshot == null) {
+
+                this.MaxMatchesPerSnapshot = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.MaxMatchesPerSnapshot != null && ec.Excludes("maxMatchesPerSnapshot",true))
+        {
+            this.MaxMatchesPerSnapshot = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.String? Notes
         // GraphQL -> notes: String! (scalar)
-        if (this.Notes == null && ec.Includes("notes",true))
+        if (ec.Includes("notes",true))
         {
-            this.Notes = "FETCH";
+            if(this.Notes == null) {
+
+                this.Notes = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Notes != null && ec.Excludes("notes",true))
+        {
+            this.Notes = null;
         }
         //      C# -> System.Boolean? ShouldTrustFilesystemTimeInfo
         // GraphQL -> shouldTrustFilesystemTimeInfo: Boolean! (scalar)
-        if (this.ShouldTrustFilesystemTimeInfo == null && ec.Includes("shouldTrustFilesystemTimeInfo",true))
+        if (ec.Includes("shouldTrustFilesystemTimeInfo",true))
         {
-            this.ShouldTrustFilesystemTimeInfo = true;
+            if(this.ShouldTrustFilesystemTimeInfo == null) {
+
+                this.ShouldTrustFilesystemTimeInfo = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShouldTrustFilesystemTimeInfo != null && ec.Excludes("shouldTrustFilesystemTimeInfo",true))
+        {
+            this.ShouldTrustFilesystemTimeInfo = null;
         }
         //      C# -> MalwareScanFileCriteria? FileScanCriteria
         // GraphQL -> fileScanCriteria: MalwareScanFileCriteria (type)
-        if (this.FileScanCriteria == null && ec.Includes("fileScanCriteria",false))
+        if (ec.Includes("fileScanCriteria",false))
         {
-            this.FileScanCriteria = new MalwareScanFileCriteria();
-            this.FileScanCriteria.ApplyExploratoryFieldSpec(ec.NewChild("fileScanCriteria"));
+            if(this.FileScanCriteria == null) {
+
+                this.FileScanCriteria = new MalwareScanFileCriteria();
+                this.FileScanCriteria.ApplyExploratoryFieldSpec(ec.NewChild("fileScanCriteria"));
+
+            } else {
+
+                this.FileScanCriteria.ApplyExploratoryFieldSpec(ec.NewChild("fileScanCriteria"));
+
+            }
+        }
+        else if (this.FileScanCriteria != null && ec.Excludes("fileScanCriteria",false))
+        {
+            this.FileScanCriteria = null;
         }
         //      C# -> List<IndicatorOfCompromise>? IndicatorsOfCompromise
         // GraphQL -> indicatorsOfCompromise: [IndicatorOfCompromise!]! (type)
-        if (this.IndicatorsOfCompromise == null && ec.Includes("indicatorsOfCompromise",false))
+        if (ec.Includes("indicatorsOfCompromise",false))
         {
-            this.IndicatorsOfCompromise = new List<IndicatorOfCompromise>();
-            this.IndicatorsOfCompromise.ApplyExploratoryFieldSpec(ec.NewChild("indicatorsOfCompromise"));
+            if(this.IndicatorsOfCompromise == null) {
+
+                this.IndicatorsOfCompromise = new List<IndicatorOfCompromise>();
+                this.IndicatorsOfCompromise.ApplyExploratoryFieldSpec(ec.NewChild("indicatorsOfCompromise"));
+
+            } else {
+
+                this.IndicatorsOfCompromise.ApplyExploratoryFieldSpec(ec.NewChild("indicatorsOfCompromise"));
+
+            }
+        }
+        else if (this.IndicatorsOfCompromise != null && ec.Excludes("indicatorsOfCompromise",false))
+        {
+            this.IndicatorsOfCompromise = null;
         }
         //      C# -> RequestedMatchDetails? RequestedMatchDetails
         // GraphQL -> requestedMatchDetails: RequestedMatchDetails (type)
-        if (this.RequestedMatchDetails == null && ec.Includes("requestedMatchDetails",false))
+        if (ec.Includes("requestedMatchDetails",false))
         {
-            this.RequestedMatchDetails = new RequestedMatchDetails();
-            this.RequestedMatchDetails.ApplyExploratoryFieldSpec(ec.NewChild("requestedMatchDetails"));
+            if(this.RequestedMatchDetails == null) {
+
+                this.RequestedMatchDetails = new RequestedMatchDetails();
+                this.RequestedMatchDetails.ApplyExploratoryFieldSpec(ec.NewChild("requestedMatchDetails"));
+
+            } else {
+
+                this.RequestedMatchDetails.ApplyExploratoryFieldSpec(ec.NewChild("requestedMatchDetails"));
+
+            }
+        }
+        else if (this.RequestedMatchDetails != null && ec.Excludes("requestedMatchDetails",false))
+        {
+            this.RequestedMatchDetails = null;
         }
         //      C# -> MalwareScanSnapshotLimit? SnapshotScanLimit
         // GraphQL -> snapshotScanLimit: MalwareScanSnapshotLimit (type)
-        if (this.SnapshotScanLimit == null && ec.Includes("snapshotScanLimit",false))
+        if (ec.Includes("snapshotScanLimit",false))
         {
-            this.SnapshotScanLimit = new MalwareScanSnapshotLimit();
-            this.SnapshotScanLimit.ApplyExploratoryFieldSpec(ec.NewChild("snapshotScanLimit"));
+            if(this.SnapshotScanLimit == null) {
+
+                this.SnapshotScanLimit = new MalwareScanSnapshotLimit();
+                this.SnapshotScanLimit.ApplyExploratoryFieldSpec(ec.NewChild("snapshotScanLimit"));
+
+            } else {
+
+                this.SnapshotScanLimit.ApplyExploratoryFieldSpec(ec.NewChild("snapshotScanLimit"));
+
+            }
+        }
+        else if (this.SnapshotScanLimit != null && ec.Excludes("snapshotScanLimit",false))
+        {
+            this.SnapshotScanLimit = null;
         }
     }
 
@@ -294,9 +450,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ThreatHuntConfig> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

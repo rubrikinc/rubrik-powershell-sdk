@@ -47,16 +47,21 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> NutanixVmSnapshotSummary? NutanixVmSnapshotSummary
         // GraphQL -> nutanixVmSnapshotSummary: NutanixVmSnapshotSummary (type)
         if (this.NutanixVmSnapshotSummary != null) {
-            var fspec = this.NutanixVmSnapshotSummary.AsFieldSpec(indent+1);
+            var fspec = this.NutanixVmSnapshotSummary.AsFieldSpec(conf.Child("nutanixVmSnapshotSummary"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "nutanixVmSnapshotSummary {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "nutanixVmSnapshotSummary {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -68,10 +73,22 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> NutanixVmSnapshotSummary? NutanixVmSnapshotSummary
         // GraphQL -> nutanixVmSnapshotSummary: NutanixVmSnapshotSummary (type)
-        if (this.NutanixVmSnapshotSummary == null && ec.Includes("nutanixVmSnapshotSummary",false))
+        if (ec.Includes("nutanixVmSnapshotSummary",false))
         {
-            this.NutanixVmSnapshotSummary = new NutanixVmSnapshotSummary();
-            this.NutanixVmSnapshotSummary.ApplyExploratoryFieldSpec(ec.NewChild("nutanixVmSnapshotSummary"));
+            if(this.NutanixVmSnapshotSummary == null) {
+
+                this.NutanixVmSnapshotSummary = new NutanixVmSnapshotSummary();
+                this.NutanixVmSnapshotSummary.ApplyExploratoryFieldSpec(ec.NewChild("nutanixVmSnapshotSummary"));
+
+            } else {
+
+                this.NutanixVmSnapshotSummary.ApplyExploratoryFieldSpec(ec.NewChild("nutanixVmSnapshotSummary"));
+
+            }
+        }
+        else if (this.NutanixVmSnapshotSummary != null && ec.Excludes("nutanixVmSnapshotSummary",false))
+        {
+            this.NutanixVmSnapshotSummary = null;
         }
     }
 
@@ -98,9 +115,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<NutanixVmSnapshotDetail> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

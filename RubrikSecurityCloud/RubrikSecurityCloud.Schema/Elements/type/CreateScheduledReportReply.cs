@@ -47,16 +47,21 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> ScheduledReport? ScheduledReport
         // GraphQL -> scheduledReport: ScheduledReport! (type)
         if (this.ScheduledReport != null) {
-            var fspec = this.ScheduledReport.AsFieldSpec(indent+1);
+            var fspec = this.ScheduledReport.AsFieldSpec(conf.Child("scheduledReport"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "scheduledReport {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "scheduledReport {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -68,10 +73,22 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> ScheduledReport? ScheduledReport
         // GraphQL -> scheduledReport: ScheduledReport! (type)
-        if (this.ScheduledReport == null && ec.Includes("scheduledReport",false))
+        if (ec.Includes("scheduledReport",false))
         {
-            this.ScheduledReport = new ScheduledReport();
-            this.ScheduledReport.ApplyExploratoryFieldSpec(ec.NewChild("scheduledReport"));
+            if(this.ScheduledReport == null) {
+
+                this.ScheduledReport = new ScheduledReport();
+                this.ScheduledReport.ApplyExploratoryFieldSpec(ec.NewChild("scheduledReport"));
+
+            } else {
+
+                this.ScheduledReport.ApplyExploratoryFieldSpec(ec.NewChild("scheduledReport"));
+
+            }
+        }
+        else if (this.ScheduledReport != null && ec.Excludes("scheduledReport",false))
+        {
+            this.ScheduledReport = null;
         }
     }
 
@@ -98,9 +115,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CreateScheduledReportReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

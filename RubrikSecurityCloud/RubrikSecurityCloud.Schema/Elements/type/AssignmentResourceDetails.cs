@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> DataGovObjectType? ResourceType
         // GraphQL -> resourceType: DataGovObjectType! (enum)
         if (this.ResourceType != null) {
-            s += ind + "resourceType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "resourceType\n" ;
+            } else {
+                s += ind + "resourceType\n" ;
+            }
         }
         //      C# -> System.Boolean? IsHigherLevelResource
         // GraphQL -> isHigherLevelResource: Boolean! (scalar)
         if (this.IsHigherLevelResource != null) {
-            s += ind + "isHigherLevelResource\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isHigherLevelResource\n" ;
+            } else {
+                s += ind + "isHigherLevelResource\n" ;
+            }
         }
         //      C# -> System.String? ResourceId
         // GraphQL -> resourceId: String! (scalar)
         if (this.ResourceId != null) {
-            s += ind + "resourceId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "resourceId\n" ;
+            } else {
+                s += ind + "resourceId\n" ;
+            }
         }
         //      C# -> System.String? ResourceName
         // GraphQL -> resourceName: String! (scalar)
         if (this.ResourceName != null) {
-            s += ind + "resourceName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "resourceName\n" ;
+            } else {
+                s += ind + "resourceName\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> DataGovObjectType? ResourceType
         // GraphQL -> resourceType: DataGovObjectType! (enum)
-        if (this.ResourceType == null && ec.Includes("resourceType",true))
+        if (ec.Includes("resourceType",true))
         {
-            this.ResourceType = new DataGovObjectType();
+            if(this.ResourceType == null) {
+
+                this.ResourceType = new DataGovObjectType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ResourceType != null && ec.Excludes("resourceType",true))
+        {
+            this.ResourceType = null;
         }
         //      C# -> System.Boolean? IsHigherLevelResource
         // GraphQL -> isHigherLevelResource: Boolean! (scalar)
-        if (this.IsHigherLevelResource == null && ec.Includes("isHigherLevelResource",true))
+        if (ec.Includes("isHigherLevelResource",true))
         {
-            this.IsHigherLevelResource = true;
+            if(this.IsHigherLevelResource == null) {
+
+                this.IsHigherLevelResource = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsHigherLevelResource != null && ec.Excludes("isHigherLevelResource",true))
+        {
+            this.IsHigherLevelResource = null;
         }
         //      C# -> System.String? ResourceId
         // GraphQL -> resourceId: String! (scalar)
-        if (this.ResourceId == null && ec.Includes("resourceId",true))
+        if (ec.Includes("resourceId",true))
         {
-            this.ResourceId = "FETCH";
+            if(this.ResourceId == null) {
+
+                this.ResourceId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ResourceId != null && ec.Excludes("resourceId",true))
+        {
+            this.ResourceId = null;
         }
         //      C# -> System.String? ResourceName
         // GraphQL -> resourceName: String! (scalar)
-        if (this.ResourceName == null && ec.Includes("resourceName",true))
+        if (ec.Includes("resourceName",true))
         {
-            this.ResourceName = "FETCH";
+            if(this.ResourceName == null) {
+
+                this.ResourceName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ResourceName != null && ec.Excludes("resourceName",true))
+        {
+            this.ResourceName = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AssignmentResourceDetails> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

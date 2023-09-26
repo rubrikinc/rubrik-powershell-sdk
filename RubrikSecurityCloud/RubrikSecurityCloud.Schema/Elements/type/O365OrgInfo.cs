@@ -173,84 +173,145 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> ProvisionStatus? Status
         // GraphQL -> status: ProvisionStatus! (enum)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         //      C# -> System.Boolean? ExchangeOnColossus
         // GraphQL -> exchangeOnColossus: Boolean! (scalar)
         if (this.ExchangeOnColossus != null) {
-            s += ind + "exchangeOnColossus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "exchangeOnColossus\n" ;
+            } else {
+                s += ind + "exchangeOnColossus\n" ;
+            }
         }
         //      C# -> System.String? OrgId
         // GraphQL -> orgId: String! (scalar)
         if (this.OrgId != null) {
-            s += ind + "orgId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "orgId\n" ;
+            } else {
+                s += ind + "orgId\n" ;
+            }
         }
         //      C# -> System.Int32? Past1DayMailboxComplianceCount
         // GraphQL -> past1DayMailboxComplianceCount: Int! (scalar)
         if (this.Past1DayMailboxComplianceCount != null) {
-            s += ind + "past1DayMailboxComplianceCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "past1DayMailboxComplianceCount\n" ;
+            } else {
+                s += ind + "past1DayMailboxComplianceCount\n" ;
+            }
         }
         //      C# -> System.Int32? Past1DayMailboxOutOfComplianceCount
         // GraphQL -> past1DayMailboxOutOfComplianceCount: Int! (scalar)
         if (this.Past1DayMailboxOutOfComplianceCount != null) {
-            s += ind + "past1DayMailboxOutOfComplianceCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "past1DayMailboxOutOfComplianceCount\n" ;
+            } else {
+                s += ind + "past1DayMailboxOutOfComplianceCount\n" ;
+            }
         }
         //      C# -> System.Int32? Past1DayOnedriveComplianceCount
         // GraphQL -> past1DayOnedriveComplianceCount: Int! (scalar)
         if (this.Past1DayOnedriveComplianceCount != null) {
-            s += ind + "past1DayOnedriveComplianceCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "past1DayOnedriveComplianceCount\n" ;
+            } else {
+                s += ind + "past1DayOnedriveComplianceCount\n" ;
+            }
         }
         //      C# -> System.Int32? Past1DayOnedriveOutOfComplianceCount
         // GraphQL -> past1DayOnedriveOutOfComplianceCount: Int! (scalar)
         if (this.Past1DayOnedriveOutOfComplianceCount != null) {
-            s += ind + "past1DayOnedriveOutOfComplianceCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "past1DayOnedriveOutOfComplianceCount\n" ;
+            } else {
+                s += ind + "past1DayOnedriveOutOfComplianceCount\n" ;
+            }
         }
         //      C# -> System.Int32? Past1DaySharepointComplianceCount
         // GraphQL -> past1DaySharepointComplianceCount: Int! (scalar)
         if (this.Past1DaySharepointComplianceCount != null) {
-            s += ind + "past1DaySharepointComplianceCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "past1DaySharepointComplianceCount\n" ;
+            } else {
+                s += ind + "past1DaySharepointComplianceCount\n" ;
+            }
         }
         //      C# -> System.Int32? Past1DaySharepointOutOfComplianceCount
         // GraphQL -> past1DaySharepointOutOfComplianceCount: Int! (scalar)
         if (this.Past1DaySharepointOutOfComplianceCount != null) {
-            s += ind + "past1DaySharepointOutOfComplianceCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "past1DaySharepointOutOfComplianceCount\n" ;
+            } else {
+                s += ind + "past1DaySharepointOutOfComplianceCount\n" ;
+            }
         }
         //      C# -> System.Int32? Past1DaySpListComplianceCount
         // GraphQL -> past1DaySpListComplianceCount: Int! (scalar)
         if (this.Past1DaySpListComplianceCount != null) {
-            s += ind + "past1DaySpListComplianceCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "past1DaySpListComplianceCount\n" ;
+            } else {
+                s += ind + "past1DaySpListComplianceCount\n" ;
+            }
         }
         //      C# -> System.Int32? Past1DaySpListOutOfComplianceCount
         // GraphQL -> past1DaySpListOutOfComplianceCount: Int! (scalar)
         if (this.Past1DaySpListOutOfComplianceCount != null) {
-            s += ind + "past1DaySpListOutOfComplianceCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "past1DaySpListOutOfComplianceCount\n" ;
+            } else {
+                s += ind + "past1DaySpListOutOfComplianceCount\n" ;
+            }
         }
         //      C# -> System.Int32? Past1DaySpSiteCollectionComplianceCount
         // GraphQL -> past1DaySpSiteCollectionComplianceCount: Int! (scalar)
         if (this.Past1DaySpSiteCollectionComplianceCount != null) {
-            s += ind + "past1DaySpSiteCollectionComplianceCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "past1DaySpSiteCollectionComplianceCount\n" ;
+            } else {
+                s += ind + "past1DaySpSiteCollectionComplianceCount\n" ;
+            }
         }
         //      C# -> System.Int32? Past1DaySpSiteCollectionOutOfComplianceCount
         // GraphQL -> past1DaySpSiteCollectionOutOfComplianceCount: Int! (scalar)
         if (this.Past1DaySpSiteCollectionOutOfComplianceCount != null) {
-            s += ind + "past1DaySpSiteCollectionOutOfComplianceCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "past1DaySpSiteCollectionOutOfComplianceCount\n" ;
+            } else {
+                s += ind + "past1DaySpSiteCollectionOutOfComplianceCount\n" ;
+            }
         }
         //      C# -> System.Int32? Past1DayTeamsComplianceCount
         // GraphQL -> past1DayTeamsComplianceCount: Int! (scalar)
         if (this.Past1DayTeamsComplianceCount != null) {
-            s += ind + "past1DayTeamsComplianceCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "past1DayTeamsComplianceCount\n" ;
+            } else {
+                s += ind + "past1DayTeamsComplianceCount\n" ;
+            }
         }
         //      C# -> System.Int32? Past1DayTeamsOutOfComplianceCount
         // GraphQL -> past1DayTeamsOutOfComplianceCount: Int! (scalar)
         if (this.Past1DayTeamsOutOfComplianceCount != null) {
-            s += ind + "past1DayTeamsOutOfComplianceCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "past1DayTeamsOutOfComplianceCount\n" ;
+            } else {
+                s += ind + "past1DayTeamsOutOfComplianceCount\n" ;
+            }
         }
         return s;
     }
@@ -261,93 +322,258 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> ProvisionStatus? Status
         // GraphQL -> status: ProvisionStatus! (enum)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = new ProvisionStatus();
+            if(this.Status == null) {
+
+                this.Status = new ProvisionStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
         //      C# -> System.Boolean? ExchangeOnColossus
         // GraphQL -> exchangeOnColossus: Boolean! (scalar)
-        if (this.ExchangeOnColossus == null && ec.Includes("exchangeOnColossus",true))
+        if (ec.Includes("exchangeOnColossus",true))
         {
-            this.ExchangeOnColossus = true;
+            if(this.ExchangeOnColossus == null) {
+
+                this.ExchangeOnColossus = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExchangeOnColossus != null && ec.Excludes("exchangeOnColossus",true))
+        {
+            this.ExchangeOnColossus = null;
         }
         //      C# -> System.String? OrgId
         // GraphQL -> orgId: String! (scalar)
-        if (this.OrgId == null && ec.Includes("orgId",true))
+        if (ec.Includes("orgId",true))
         {
-            this.OrgId = "FETCH";
+            if(this.OrgId == null) {
+
+                this.OrgId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OrgId != null && ec.Excludes("orgId",true))
+        {
+            this.OrgId = null;
         }
         //      C# -> System.Int32? Past1DayMailboxComplianceCount
         // GraphQL -> past1DayMailboxComplianceCount: Int! (scalar)
-        if (this.Past1DayMailboxComplianceCount == null && ec.Includes("past1DayMailboxComplianceCount",true))
+        if (ec.Includes("past1DayMailboxComplianceCount",true))
         {
-            this.Past1DayMailboxComplianceCount = Int32.MinValue;
+            if(this.Past1DayMailboxComplianceCount == null) {
+
+                this.Past1DayMailboxComplianceCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Past1DayMailboxComplianceCount != null && ec.Excludes("past1DayMailboxComplianceCount",true))
+        {
+            this.Past1DayMailboxComplianceCount = null;
         }
         //      C# -> System.Int32? Past1DayMailboxOutOfComplianceCount
         // GraphQL -> past1DayMailboxOutOfComplianceCount: Int! (scalar)
-        if (this.Past1DayMailboxOutOfComplianceCount == null && ec.Includes("past1DayMailboxOutOfComplianceCount",true))
+        if (ec.Includes("past1DayMailboxOutOfComplianceCount",true))
         {
-            this.Past1DayMailboxOutOfComplianceCount = Int32.MinValue;
+            if(this.Past1DayMailboxOutOfComplianceCount == null) {
+
+                this.Past1DayMailboxOutOfComplianceCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Past1DayMailboxOutOfComplianceCount != null && ec.Excludes("past1DayMailboxOutOfComplianceCount",true))
+        {
+            this.Past1DayMailboxOutOfComplianceCount = null;
         }
         //      C# -> System.Int32? Past1DayOnedriveComplianceCount
         // GraphQL -> past1DayOnedriveComplianceCount: Int! (scalar)
-        if (this.Past1DayOnedriveComplianceCount == null && ec.Includes("past1DayOnedriveComplianceCount",true))
+        if (ec.Includes("past1DayOnedriveComplianceCount",true))
         {
-            this.Past1DayOnedriveComplianceCount = Int32.MinValue;
+            if(this.Past1DayOnedriveComplianceCount == null) {
+
+                this.Past1DayOnedriveComplianceCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Past1DayOnedriveComplianceCount != null && ec.Excludes("past1DayOnedriveComplianceCount",true))
+        {
+            this.Past1DayOnedriveComplianceCount = null;
         }
         //      C# -> System.Int32? Past1DayOnedriveOutOfComplianceCount
         // GraphQL -> past1DayOnedriveOutOfComplianceCount: Int! (scalar)
-        if (this.Past1DayOnedriveOutOfComplianceCount == null && ec.Includes("past1DayOnedriveOutOfComplianceCount",true))
+        if (ec.Includes("past1DayOnedriveOutOfComplianceCount",true))
         {
-            this.Past1DayOnedriveOutOfComplianceCount = Int32.MinValue;
+            if(this.Past1DayOnedriveOutOfComplianceCount == null) {
+
+                this.Past1DayOnedriveOutOfComplianceCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Past1DayOnedriveOutOfComplianceCount != null && ec.Excludes("past1DayOnedriveOutOfComplianceCount",true))
+        {
+            this.Past1DayOnedriveOutOfComplianceCount = null;
         }
         //      C# -> System.Int32? Past1DaySharepointComplianceCount
         // GraphQL -> past1DaySharepointComplianceCount: Int! (scalar)
-        if (this.Past1DaySharepointComplianceCount == null && ec.Includes("past1DaySharepointComplianceCount",true))
+        if (ec.Includes("past1DaySharepointComplianceCount",true))
         {
-            this.Past1DaySharepointComplianceCount = Int32.MinValue;
+            if(this.Past1DaySharepointComplianceCount == null) {
+
+                this.Past1DaySharepointComplianceCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Past1DaySharepointComplianceCount != null && ec.Excludes("past1DaySharepointComplianceCount",true))
+        {
+            this.Past1DaySharepointComplianceCount = null;
         }
         //      C# -> System.Int32? Past1DaySharepointOutOfComplianceCount
         // GraphQL -> past1DaySharepointOutOfComplianceCount: Int! (scalar)
-        if (this.Past1DaySharepointOutOfComplianceCount == null && ec.Includes("past1DaySharepointOutOfComplianceCount",true))
+        if (ec.Includes("past1DaySharepointOutOfComplianceCount",true))
         {
-            this.Past1DaySharepointOutOfComplianceCount = Int32.MinValue;
+            if(this.Past1DaySharepointOutOfComplianceCount == null) {
+
+                this.Past1DaySharepointOutOfComplianceCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Past1DaySharepointOutOfComplianceCount != null && ec.Excludes("past1DaySharepointOutOfComplianceCount",true))
+        {
+            this.Past1DaySharepointOutOfComplianceCount = null;
         }
         //      C# -> System.Int32? Past1DaySpListComplianceCount
         // GraphQL -> past1DaySpListComplianceCount: Int! (scalar)
-        if (this.Past1DaySpListComplianceCount == null && ec.Includes("past1DaySpListComplianceCount",true))
+        if (ec.Includes("past1DaySpListComplianceCount",true))
         {
-            this.Past1DaySpListComplianceCount = Int32.MinValue;
+            if(this.Past1DaySpListComplianceCount == null) {
+
+                this.Past1DaySpListComplianceCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Past1DaySpListComplianceCount != null && ec.Excludes("past1DaySpListComplianceCount",true))
+        {
+            this.Past1DaySpListComplianceCount = null;
         }
         //      C# -> System.Int32? Past1DaySpListOutOfComplianceCount
         // GraphQL -> past1DaySpListOutOfComplianceCount: Int! (scalar)
-        if (this.Past1DaySpListOutOfComplianceCount == null && ec.Includes("past1DaySpListOutOfComplianceCount",true))
+        if (ec.Includes("past1DaySpListOutOfComplianceCount",true))
         {
-            this.Past1DaySpListOutOfComplianceCount = Int32.MinValue;
+            if(this.Past1DaySpListOutOfComplianceCount == null) {
+
+                this.Past1DaySpListOutOfComplianceCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Past1DaySpListOutOfComplianceCount != null && ec.Excludes("past1DaySpListOutOfComplianceCount",true))
+        {
+            this.Past1DaySpListOutOfComplianceCount = null;
         }
         //      C# -> System.Int32? Past1DaySpSiteCollectionComplianceCount
         // GraphQL -> past1DaySpSiteCollectionComplianceCount: Int! (scalar)
-        if (this.Past1DaySpSiteCollectionComplianceCount == null && ec.Includes("past1DaySpSiteCollectionComplianceCount",true))
+        if (ec.Includes("past1DaySpSiteCollectionComplianceCount",true))
         {
-            this.Past1DaySpSiteCollectionComplianceCount = Int32.MinValue;
+            if(this.Past1DaySpSiteCollectionComplianceCount == null) {
+
+                this.Past1DaySpSiteCollectionComplianceCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Past1DaySpSiteCollectionComplianceCount != null && ec.Excludes("past1DaySpSiteCollectionComplianceCount",true))
+        {
+            this.Past1DaySpSiteCollectionComplianceCount = null;
         }
         //      C# -> System.Int32? Past1DaySpSiteCollectionOutOfComplianceCount
         // GraphQL -> past1DaySpSiteCollectionOutOfComplianceCount: Int! (scalar)
-        if (this.Past1DaySpSiteCollectionOutOfComplianceCount == null && ec.Includes("past1DaySpSiteCollectionOutOfComplianceCount",true))
+        if (ec.Includes("past1DaySpSiteCollectionOutOfComplianceCount",true))
         {
-            this.Past1DaySpSiteCollectionOutOfComplianceCount = Int32.MinValue;
+            if(this.Past1DaySpSiteCollectionOutOfComplianceCount == null) {
+
+                this.Past1DaySpSiteCollectionOutOfComplianceCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Past1DaySpSiteCollectionOutOfComplianceCount != null && ec.Excludes("past1DaySpSiteCollectionOutOfComplianceCount",true))
+        {
+            this.Past1DaySpSiteCollectionOutOfComplianceCount = null;
         }
         //      C# -> System.Int32? Past1DayTeamsComplianceCount
         // GraphQL -> past1DayTeamsComplianceCount: Int! (scalar)
-        if (this.Past1DayTeamsComplianceCount == null && ec.Includes("past1DayTeamsComplianceCount",true))
+        if (ec.Includes("past1DayTeamsComplianceCount",true))
         {
-            this.Past1DayTeamsComplianceCount = Int32.MinValue;
+            if(this.Past1DayTeamsComplianceCount == null) {
+
+                this.Past1DayTeamsComplianceCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Past1DayTeamsComplianceCount != null && ec.Excludes("past1DayTeamsComplianceCount",true))
+        {
+            this.Past1DayTeamsComplianceCount = null;
         }
         //      C# -> System.Int32? Past1DayTeamsOutOfComplianceCount
         // GraphQL -> past1DayTeamsOutOfComplianceCount: Int! (scalar)
-        if (this.Past1DayTeamsOutOfComplianceCount == null && ec.Includes("past1DayTeamsOutOfComplianceCount",true))
+        if (ec.Includes("past1DayTeamsOutOfComplianceCount",true))
         {
-            this.Past1DayTeamsOutOfComplianceCount = Int32.MinValue;
+            if(this.Past1DayTeamsOutOfComplianceCount == null) {
+
+                this.Past1DayTeamsOutOfComplianceCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Past1DayTeamsOutOfComplianceCount != null && ec.Excludes("past1DayTeamsOutOfComplianceCount",true))
+        {
+            this.Past1DayTeamsOutOfComplianceCount = null;
         }
     }
 
@@ -374,9 +600,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<O365OrgInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

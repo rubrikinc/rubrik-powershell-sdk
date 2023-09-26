@@ -110,49 +110,82 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? EntityId
         // GraphQL -> entityId: String! (scalar)
         if (this.EntityId != null) {
-            s += ind + "entityId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "entityId\n" ;
+            } else {
+                s += ind + "entityId\n" ;
+            }
         }
         //      C# -> DateTime? ExpirationDate
         // GraphQL -> expirationDate: DateTime (scalar)
         if (this.ExpirationDate != null) {
-            s += ind + "expirationDate\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "expirationDate\n" ;
+            } else {
+                s += ind + "expirationDate\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.String? OwnerOrgId
         // GraphQL -> ownerOrgId: String! (scalar)
         if (this.OwnerOrgId != null) {
-            s += ind + "ownerOrgId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "ownerOrgId\n" ;
+            } else {
+                s += ind + "ownerOrgId\n" ;
+            }
         }
         //      C# -> System.String? SignInUrl
         // GraphQL -> signInUrl: String! (scalar)
         if (this.SignInUrl != null) {
-            s += ind + "signInUrl\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "signInUrl\n" ;
+            } else {
+                s += ind + "signInUrl\n" ;
+            }
         }
         //      C# -> System.String? SignOutUrl
         // GraphQL -> signOutUrl: String! (scalar)
         if (this.SignOutUrl != null) {
-            s += ind + "signOutUrl\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "signOutUrl\n" ;
+            } else {
+                s += ind + "signOutUrl\n" ;
+            }
         }
         //      C# -> System.String? SpInitiatedSignInUrl
         // GraphQL -> spInitiatedSignInUrl: String! (scalar)
         if (this.SpInitiatedSignInUrl != null) {
-            s += ind + "spInitiatedSignInUrl\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "spInitiatedSignInUrl\n" ;
+            } else {
+                s += ind + "spInitiatedSignInUrl\n" ;
+            }
         }
         //      C# -> System.String? SpInitiatedTestUrl
         // GraphQL -> spInitiatedTestUrl: String! (scalar)
         if (this.SpInitiatedTestUrl != null) {
-            s += ind + "spInitiatedTestUrl\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "spInitiatedTestUrl\n" ;
+            } else {
+                s += ind + "spInitiatedTestUrl\n" ;
+            }
         }
         return s;
     }
@@ -163,51 +196,139 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? EntityId
         // GraphQL -> entityId: String! (scalar)
-        if (this.EntityId == null && ec.Includes("entityId",true))
+        if (ec.Includes("entityId",true))
         {
-            this.EntityId = "FETCH";
+            if(this.EntityId == null) {
+
+                this.EntityId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.EntityId != null && ec.Excludes("entityId",true))
+        {
+            this.EntityId = null;
         }
         //      C# -> DateTime? ExpirationDate
         // GraphQL -> expirationDate: DateTime (scalar)
-        if (this.ExpirationDate == null && ec.Includes("expirationDate",true))
+        if (ec.Includes("expirationDate",true))
         {
-            this.ExpirationDate = new DateTime();
+            if(this.ExpirationDate == null) {
+
+                this.ExpirationDate = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExpirationDate != null && ec.Excludes("expirationDate",true))
+        {
+            this.ExpirationDate = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.String? OwnerOrgId
         // GraphQL -> ownerOrgId: String! (scalar)
-        if (this.OwnerOrgId == null && ec.Includes("ownerOrgId",true))
+        if (ec.Includes("ownerOrgId",true))
         {
-            this.OwnerOrgId = "FETCH";
+            if(this.OwnerOrgId == null) {
+
+                this.OwnerOrgId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OwnerOrgId != null && ec.Excludes("ownerOrgId",true))
+        {
+            this.OwnerOrgId = null;
         }
         //      C# -> System.String? SignInUrl
         // GraphQL -> signInUrl: String! (scalar)
-        if (this.SignInUrl == null && ec.Includes("signInUrl",true))
+        if (ec.Includes("signInUrl",true))
         {
-            this.SignInUrl = "FETCH";
+            if(this.SignInUrl == null) {
+
+                this.SignInUrl = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SignInUrl != null && ec.Excludes("signInUrl",true))
+        {
+            this.SignInUrl = null;
         }
         //      C# -> System.String? SignOutUrl
         // GraphQL -> signOutUrl: String! (scalar)
-        if (this.SignOutUrl == null && ec.Includes("signOutUrl",true))
+        if (ec.Includes("signOutUrl",true))
         {
-            this.SignOutUrl = "FETCH";
+            if(this.SignOutUrl == null) {
+
+                this.SignOutUrl = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SignOutUrl != null && ec.Excludes("signOutUrl",true))
+        {
+            this.SignOutUrl = null;
         }
         //      C# -> System.String? SpInitiatedSignInUrl
         // GraphQL -> spInitiatedSignInUrl: String! (scalar)
-        if (this.SpInitiatedSignInUrl == null && ec.Includes("spInitiatedSignInUrl",true))
+        if (ec.Includes("spInitiatedSignInUrl",true))
         {
-            this.SpInitiatedSignInUrl = "FETCH";
+            if(this.SpInitiatedSignInUrl == null) {
+
+                this.SpInitiatedSignInUrl = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SpInitiatedSignInUrl != null && ec.Excludes("spInitiatedSignInUrl",true))
+        {
+            this.SpInitiatedSignInUrl = null;
         }
         //      C# -> System.String? SpInitiatedTestUrl
         // GraphQL -> spInitiatedTestUrl: String! (scalar)
-        if (this.SpInitiatedTestUrl == null && ec.Includes("spInitiatedTestUrl",true))
+        if (ec.Includes("spInitiatedTestUrl",true))
         {
-            this.SpInitiatedTestUrl = "FETCH";
+            if(this.SpInitiatedTestUrl == null) {
+
+                this.SpInitiatedTestUrl = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SpInitiatedTestUrl != null && ec.Excludes("spInitiatedTestUrl",true))
+        {
+            this.SpInitiatedTestUrl = null;
         }
     }
 
@@ -234,9 +355,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<IdentityProvider> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

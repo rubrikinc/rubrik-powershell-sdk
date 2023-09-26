@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> Product? Product
         // GraphQL -> product: Product! (enum)
         if (this.Product != null) {
-            s += ind + "product\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "product\n" ;
+            } else {
+                s += ind + "product\n" ;
+            }
         }
         //      C# -> System.Single? RegisteredCapacityBytes
         // GraphQL -> registeredCapacityBytes: Float! (scalar)
         if (this.RegisteredCapacityBytes != null) {
-            s += ind + "registeredCapacityBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "registeredCapacityBytes\n" ;
+            } else {
+                s += ind + "registeredCapacityBytes\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> Product? Product
         // GraphQL -> product: Product! (enum)
-        if (this.Product == null && ec.Includes("product",true))
+        if (ec.Includes("product",true))
         {
-            this.Product = new Product();
+            if(this.Product == null) {
+
+                this.Product = new Product();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Product != null && ec.Excludes("product",true))
+        {
+            this.Product = null;
         }
         //      C# -> System.Single? RegisteredCapacityBytes
         // GraphQL -> registeredCapacityBytes: Float! (scalar)
-        if (this.RegisteredCapacityBytes == null && ec.Includes("registeredCapacityBytes",true))
+        if (ec.Includes("registeredCapacityBytes",true))
         {
-            this.RegisteredCapacityBytes = new System.Single();
+            if(this.RegisteredCapacityBytes == null) {
+
+                this.RegisteredCapacityBytes = new System.Single();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RegisteredCapacityBytes != null && ec.Excludes("registeredCapacityBytes",true))
+        {
+            this.RegisteredCapacityBytes = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CapacityContribution> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

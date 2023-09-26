@@ -65,26 +65,39 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? PreviousSnapshotDate
         // GraphQL -> previousSnapshotDate: Long! (scalar)
         if (this.PreviousSnapshotDate != null) {
-            s += ind + "previousSnapshotDate\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "previousSnapshotDate\n" ;
+            } else {
+                s += ind + "previousSnapshotDate\n" ;
+            }
         }
         //      C# -> System.String? PreviousSnapshotId
         // GraphQL -> previousSnapshotId: String! (scalar)
         if (this.PreviousSnapshotId != null) {
-            s += ind + "previousSnapshotId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "previousSnapshotId\n" ;
+            } else {
+                s += ind + "previousSnapshotId\n" ;
+            }
         }
         //      C# -> List<DiffData>? Data
         // GraphQL -> data: [DiffData!]! (type)
         if (this.Data != null) {
-            var fspec = this.Data.AsFieldSpec(indent+1);
+            var fspec = this.Data.AsFieldSpec(conf.Child("data"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "data {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "data {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -96,22 +109,56 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? PreviousSnapshotDate
         // GraphQL -> previousSnapshotDate: Long! (scalar)
-        if (this.PreviousSnapshotDate == null && ec.Includes("previousSnapshotDate",true))
+        if (ec.Includes("previousSnapshotDate",true))
         {
-            this.PreviousSnapshotDate = new System.Int64();
+            if(this.PreviousSnapshotDate == null) {
+
+                this.PreviousSnapshotDate = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.PreviousSnapshotDate != null && ec.Excludes("previousSnapshotDate",true))
+        {
+            this.PreviousSnapshotDate = null;
         }
         //      C# -> System.String? PreviousSnapshotId
         // GraphQL -> previousSnapshotId: String! (scalar)
-        if (this.PreviousSnapshotId == null && ec.Includes("previousSnapshotId",true))
+        if (ec.Includes("previousSnapshotId",true))
         {
-            this.PreviousSnapshotId = "FETCH";
+            if(this.PreviousSnapshotId == null) {
+
+                this.PreviousSnapshotId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PreviousSnapshotId != null && ec.Excludes("previousSnapshotId",true))
+        {
+            this.PreviousSnapshotId = null;
         }
         //      C# -> List<DiffData>? Data
         // GraphQL -> data: [DiffData!]! (type)
-        if (this.Data == null && ec.Includes("data",false))
+        if (ec.Includes("data",false))
         {
-            this.Data = new List<DiffData>();
-            this.Data.ApplyExploratoryFieldSpec(ec.NewChild("data"));
+            if(this.Data == null) {
+
+                this.Data = new List<DiffData>();
+                this.Data.ApplyExploratoryFieldSpec(ec.NewChild("data"));
+
+            } else {
+
+                this.Data.ApplyExploratoryFieldSpec(ec.NewChild("data"));
+
+            }
+        }
+        else if (this.Data != null && ec.Excludes("data",false))
+        {
+            this.Data = null;
         }
     }
 
@@ -138,9 +185,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<DiffResult> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

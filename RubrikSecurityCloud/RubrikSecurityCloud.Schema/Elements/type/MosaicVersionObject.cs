@@ -164,79 +164,136 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> MosaicVersionObjectVersionState? VersionState
         // GraphQL -> versionState: MosaicVersionObjectVersionState (enum)
         if (this.VersionState != null) {
-            s += ind + "versionState\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "versionState\n" ;
+            } else {
+                s += ind + "versionState\n" ;
+            }
         }
         //      C# -> System.String? DbInfo
         // GraphQL -> dbInfo: String (scalar)
         if (this.DbInfo != null) {
-            s += ind + "dbInfo\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "dbInfo\n" ;
+            } else {
+                s += ind + "dbInfo\n" ;
+            }
         }
         //      C# -> System.Int32? ExpirationTime
         // GraphQL -> expirationTime: Int (scalar)
         if (this.ExpirationTime != null) {
-            s += ind + "expirationTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "expirationTime\n" ;
+            } else {
+                s += ind + "expirationTime\n" ;
+            }
         }
         //      C# -> System.String? GroupPolicyId
         // GraphQL -> groupPolicyId: String (scalar)
         if (this.GroupPolicyId != null) {
-            s += ind + "groupPolicyId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "groupPolicyId\n" ;
+            } else {
+                s += ind + "groupPolicyId\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.Int32? IntervalType
         // GraphQL -> intervalType: Int (scalar)
         if (this.IntervalType != null) {
-            s += ind + "intervalType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "intervalType\n" ;
+            } else {
+                s += ind + "intervalType\n" ;
+            }
         }
         //      C# -> System.Int32? JobDuration
         // GraphQL -> jobDuration: Int (scalar)
         if (this.JobDuration != null) {
-            s += ind + "jobDuration\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "jobDuration\n" ;
+            } else {
+                s += ind + "jobDuration\n" ;
+            }
         }
         //      C# -> System.String? NeedSstableLoaderStr
         // GraphQL -> needSstableLoaderStr: String (scalar)
         if (this.NeedSstableLoaderStr != null) {
-            s += ind + "needSstableLoaderStr\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "needSstableLoaderStr\n" ;
+            } else {
+                s += ind + "needSstableLoaderStr\n" ;
+            }
         }
         //      C# -> System.String? RsList
         // GraphQL -> rsList: String (scalar)
         if (this.RsList != null) {
-            s += ind + "rsList\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "rsList\n" ;
+            } else {
+                s += ind + "rsList\n" ;
+            }
         }
         //      C# -> System.String? SourceMgmtObj
         // GraphQL -> sourceMgmtObj: String (scalar)
         if (this.SourceMgmtObj != null) {
-            s += ind + "sourceMgmtObj\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sourceMgmtObj\n" ;
+            } else {
+                s += ind + "sourceMgmtObj\n" ;
+            }
         }
         //      C# -> System.String? SourceName
         // GraphQL -> sourceName: String (scalar)
         if (this.SourceName != null) {
-            s += ind + "sourceName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sourceName\n" ;
+            } else {
+                s += ind + "sourceName\n" ;
+            }
         }
         //      C# -> System.String? SourceType
         // GraphQL -> sourceType: String (scalar)
         if (this.SourceType != null) {
-            s += ind + "sourceType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sourceType\n" ;
+            } else {
+                s += ind + "sourceType\n" ;
+            }
         }
         //      C# -> System.String? SystemPolicyId
         // GraphQL -> systemPolicyId: String (scalar)
         if (this.SystemPolicyId != null) {
-            s += ind + "systemPolicyId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "systemPolicyId\n" ;
+            } else {
+                s += ind + "systemPolicyId\n" ;
+            }
         }
         //      C# -> System.Int32? Timestamp
         // GraphQL -> timestamp: Int (scalar)
         if (this.Timestamp != null) {
-            s += ind + "timestamp\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "timestamp\n" ;
+            } else {
+                s += ind + "timestamp\n" ;
+            }
         }
         return s;
     }
@@ -247,87 +304,241 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> MosaicVersionObjectVersionState? VersionState
         // GraphQL -> versionState: MosaicVersionObjectVersionState (enum)
-        if (this.VersionState == null && ec.Includes("versionState",true))
+        if (ec.Includes("versionState",true))
         {
-            this.VersionState = new MosaicVersionObjectVersionState();
+            if(this.VersionState == null) {
+
+                this.VersionState = new MosaicVersionObjectVersionState();
+
+            } else {
+
+
+            }
+        }
+        else if (this.VersionState != null && ec.Excludes("versionState",true))
+        {
+            this.VersionState = null;
         }
         //      C# -> System.String? DbInfo
         // GraphQL -> dbInfo: String (scalar)
-        if (this.DbInfo == null && ec.Includes("dbInfo",true))
+        if (ec.Includes("dbInfo",true))
         {
-            this.DbInfo = "FETCH";
+            if(this.DbInfo == null) {
+
+                this.DbInfo = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DbInfo != null && ec.Excludes("dbInfo",true))
+        {
+            this.DbInfo = null;
         }
         //      C# -> System.Int32? ExpirationTime
         // GraphQL -> expirationTime: Int (scalar)
-        if (this.ExpirationTime == null && ec.Includes("expirationTime",true))
+        if (ec.Includes("expirationTime",true))
         {
-            this.ExpirationTime = Int32.MinValue;
+            if(this.ExpirationTime == null) {
+
+                this.ExpirationTime = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExpirationTime != null && ec.Excludes("expirationTime",true))
+        {
+            this.ExpirationTime = null;
         }
         //      C# -> System.String? GroupPolicyId
         // GraphQL -> groupPolicyId: String (scalar)
-        if (this.GroupPolicyId == null && ec.Includes("groupPolicyId",true))
+        if (ec.Includes("groupPolicyId",true))
         {
-            this.GroupPolicyId = "FETCH";
+            if(this.GroupPolicyId == null) {
+
+                this.GroupPolicyId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.GroupPolicyId != null && ec.Excludes("groupPolicyId",true))
+        {
+            this.GroupPolicyId = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.Int32? IntervalType
         // GraphQL -> intervalType: Int (scalar)
-        if (this.IntervalType == null && ec.Includes("intervalType",true))
+        if (ec.Includes("intervalType",true))
         {
-            this.IntervalType = Int32.MinValue;
+            if(this.IntervalType == null) {
+
+                this.IntervalType = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IntervalType != null && ec.Excludes("intervalType",true))
+        {
+            this.IntervalType = null;
         }
         //      C# -> System.Int32? JobDuration
         // GraphQL -> jobDuration: Int (scalar)
-        if (this.JobDuration == null && ec.Includes("jobDuration",true))
+        if (ec.Includes("jobDuration",true))
         {
-            this.JobDuration = Int32.MinValue;
+            if(this.JobDuration == null) {
+
+                this.JobDuration = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.JobDuration != null && ec.Excludes("jobDuration",true))
+        {
+            this.JobDuration = null;
         }
         //      C# -> System.String? NeedSstableLoaderStr
         // GraphQL -> needSstableLoaderStr: String (scalar)
-        if (this.NeedSstableLoaderStr == null && ec.Includes("needSstableLoaderStr",true))
+        if (ec.Includes("needSstableLoaderStr",true))
         {
-            this.NeedSstableLoaderStr = "FETCH";
+            if(this.NeedSstableLoaderStr == null) {
+
+                this.NeedSstableLoaderStr = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NeedSstableLoaderStr != null && ec.Excludes("needSstableLoaderStr",true))
+        {
+            this.NeedSstableLoaderStr = null;
         }
         //      C# -> System.String? RsList
         // GraphQL -> rsList: String (scalar)
-        if (this.RsList == null && ec.Includes("rsList",true))
+        if (ec.Includes("rsList",true))
         {
-            this.RsList = "FETCH";
+            if(this.RsList == null) {
+
+                this.RsList = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RsList != null && ec.Excludes("rsList",true))
+        {
+            this.RsList = null;
         }
         //      C# -> System.String? SourceMgmtObj
         // GraphQL -> sourceMgmtObj: String (scalar)
-        if (this.SourceMgmtObj == null && ec.Includes("sourceMgmtObj",true))
+        if (ec.Includes("sourceMgmtObj",true))
         {
-            this.SourceMgmtObj = "FETCH";
+            if(this.SourceMgmtObj == null) {
+
+                this.SourceMgmtObj = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SourceMgmtObj != null && ec.Excludes("sourceMgmtObj",true))
+        {
+            this.SourceMgmtObj = null;
         }
         //      C# -> System.String? SourceName
         // GraphQL -> sourceName: String (scalar)
-        if (this.SourceName == null && ec.Includes("sourceName",true))
+        if (ec.Includes("sourceName",true))
         {
-            this.SourceName = "FETCH";
+            if(this.SourceName == null) {
+
+                this.SourceName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SourceName != null && ec.Excludes("sourceName",true))
+        {
+            this.SourceName = null;
         }
         //      C# -> System.String? SourceType
         // GraphQL -> sourceType: String (scalar)
-        if (this.SourceType == null && ec.Includes("sourceType",true))
+        if (ec.Includes("sourceType",true))
         {
-            this.SourceType = "FETCH";
+            if(this.SourceType == null) {
+
+                this.SourceType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SourceType != null && ec.Excludes("sourceType",true))
+        {
+            this.SourceType = null;
         }
         //      C# -> System.String? SystemPolicyId
         // GraphQL -> systemPolicyId: String (scalar)
-        if (this.SystemPolicyId == null && ec.Includes("systemPolicyId",true))
+        if (ec.Includes("systemPolicyId",true))
         {
-            this.SystemPolicyId = "FETCH";
+            if(this.SystemPolicyId == null) {
+
+                this.SystemPolicyId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SystemPolicyId != null && ec.Excludes("systemPolicyId",true))
+        {
+            this.SystemPolicyId = null;
         }
         //      C# -> System.Int32? Timestamp
         // GraphQL -> timestamp: Int (scalar)
-        if (this.Timestamp == null && ec.Includes("timestamp",true))
+        if (ec.Includes("timestamp",true))
         {
-            this.Timestamp = Int32.MinValue;
+            if(this.Timestamp == null) {
+
+                this.Timestamp = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Timestamp != null && ec.Excludes("timestamp",true))
+        {
+            this.Timestamp = null;
         }
     }
 
@@ -354,9 +565,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<MosaicVersionObject> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

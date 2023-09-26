@@ -101,44 +101,73 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<System.String>? EmailAddresses
         // GraphQL -> emailAddresses: [String!]! (scalar)
         if (this.EmailAddresses != null) {
-            s += ind + "emailAddresses\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "emailAddresses\n" ;
+            } else {
+                s += ind + "emailAddresses\n" ;
+            }
         }
         //      C# -> List<System.String>? EventTypes
         // GraphQL -> eventTypes: [String!]! (scalar)
         if (this.EventTypes != null) {
-            s += ind + "eventTypes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "eventTypes\n" ;
+            } else {
+                s += ind + "eventTypes\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> List<System.String>? ObjectTypes
         // GraphQL -> objectTypes: [String!]! (scalar)
         if (this.ObjectTypes != null) {
-            s += ind + "objectTypes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "objectTypes\n" ;
+            } else {
+                s += ind + "objectTypes\n" ;
+            }
         }
         //      C# -> List<System.String>? Severity
         // GraphQL -> severity: [String!]! (scalar)
         if (this.Severity != null) {
-            s += ind + "severity\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "severity\n" ;
+            } else {
+                s += ind + "severity\n" ;
+            }
         }
         //      C# -> System.Boolean? ShouldSendToSyslog
         // GraphQL -> shouldSendToSyslog: Boolean! (scalar)
         if (this.ShouldSendToSyslog != null) {
-            s += ind + "shouldSendToSyslog\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "shouldSendToSyslog\n" ;
+            } else {
+                s += ind + "shouldSendToSyslog\n" ;
+            }
         }
         //      C# -> List<System.String>? SnmpAddresses
         // GraphQL -> snmpAddresses: [String!]! (scalar)
         if (this.SnmpAddresses != null) {
-            s += ind + "snmpAddresses\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snmpAddresses\n" ;
+            } else {
+                s += ind + "snmpAddresses\n" ;
+            }
         }
         return s;
     }
@@ -149,45 +178,122 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<System.String>? EmailAddresses
         // GraphQL -> emailAddresses: [String!]! (scalar)
-        if (this.EmailAddresses == null && ec.Includes("emailAddresses",true))
+        if (ec.Includes("emailAddresses",true))
         {
-            this.EmailAddresses = new List<System.String>();
+            if(this.EmailAddresses == null) {
+
+                this.EmailAddresses = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EmailAddresses != null && ec.Excludes("emailAddresses",true))
+        {
+            this.EmailAddresses = null;
         }
         //      C# -> List<System.String>? EventTypes
         // GraphQL -> eventTypes: [String!]! (scalar)
-        if (this.EventTypes == null && ec.Includes("eventTypes",true))
+        if (ec.Includes("eventTypes",true))
         {
-            this.EventTypes = new List<System.String>();
+            if(this.EventTypes == null) {
+
+                this.EventTypes = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EventTypes != null && ec.Excludes("eventTypes",true))
+        {
+            this.EventTypes = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> List<System.String>? ObjectTypes
         // GraphQL -> objectTypes: [String!]! (scalar)
-        if (this.ObjectTypes == null && ec.Includes("objectTypes",true))
+        if (ec.Includes("objectTypes",true))
         {
-            this.ObjectTypes = new List<System.String>();
+            if(this.ObjectTypes == null) {
+
+                this.ObjectTypes = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ObjectTypes != null && ec.Excludes("objectTypes",true))
+        {
+            this.ObjectTypes = null;
         }
         //      C# -> List<System.String>? Severity
         // GraphQL -> severity: [String!]! (scalar)
-        if (this.Severity == null && ec.Includes("severity",true))
+        if (ec.Includes("severity",true))
         {
-            this.Severity = new List<System.String>();
+            if(this.Severity == null) {
+
+                this.Severity = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Severity != null && ec.Excludes("severity",true))
+        {
+            this.Severity = null;
         }
         //      C# -> System.Boolean? ShouldSendToSyslog
         // GraphQL -> shouldSendToSyslog: Boolean! (scalar)
-        if (this.ShouldSendToSyslog == null && ec.Includes("shouldSendToSyslog",true))
+        if (ec.Includes("shouldSendToSyslog",true))
         {
-            this.ShouldSendToSyslog = true;
+            if(this.ShouldSendToSyslog == null) {
+
+                this.ShouldSendToSyslog = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShouldSendToSyslog != null && ec.Excludes("shouldSendToSyslog",true))
+        {
+            this.ShouldSendToSyslog = null;
         }
         //      C# -> List<System.String>? SnmpAddresses
         // GraphQL -> snmpAddresses: [String!]! (scalar)
-        if (this.SnmpAddresses == null && ec.Includes("snmpAddresses",true))
+        if (ec.Includes("snmpAddresses",true))
         {
-            this.SnmpAddresses = new List<System.String>();
+            if(this.SnmpAddresses == null) {
+
+                this.SnmpAddresses = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnmpAddresses != null && ec.Excludes("snmpAddresses",true))
+        {
+            this.SnmpAddresses = null;
         }
     }
 
@@ -214,9 +320,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<NotificationSettingSummary> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

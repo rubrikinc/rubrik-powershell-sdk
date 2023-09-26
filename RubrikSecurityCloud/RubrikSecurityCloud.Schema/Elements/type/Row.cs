@@ -56,24 +56,33 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<Metadata>? Metadata
         // GraphQL -> metadata: [Metadata!]! (type)
         if (this.Metadata != null) {
-            var fspec = this.Metadata.AsFieldSpec(indent+1);
+            var fspec = this.Metadata.AsFieldSpec(conf.Child("metadata"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "metadata {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "metadata {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<CellData>? Values
         // GraphQL -> values: [CellData!]! (type)
         if (this.Values != null) {
-            var fspec = this.Values.AsFieldSpec(indent+1);
+            var fspec = this.Values.AsFieldSpec(conf.Child("values"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "values {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "values {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -85,17 +94,41 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<Metadata>? Metadata
         // GraphQL -> metadata: [Metadata!]! (type)
-        if (this.Metadata == null && ec.Includes("metadata",false))
+        if (ec.Includes("metadata",false))
         {
-            this.Metadata = new List<Metadata>();
-            this.Metadata.ApplyExploratoryFieldSpec(ec.NewChild("metadata"));
+            if(this.Metadata == null) {
+
+                this.Metadata = new List<Metadata>();
+                this.Metadata.ApplyExploratoryFieldSpec(ec.NewChild("metadata"));
+
+            } else {
+
+                this.Metadata.ApplyExploratoryFieldSpec(ec.NewChild("metadata"));
+
+            }
+        }
+        else if (this.Metadata != null && ec.Excludes("metadata",false))
+        {
+            this.Metadata = null;
         }
         //      C# -> List<CellData>? Values
         // GraphQL -> values: [CellData!]! (type)
-        if (this.Values == null && ec.Includes("values",false))
+        if (ec.Includes("values",false))
         {
-            this.Values = new List<CellData>();
-            this.Values.ApplyExploratoryFieldSpec(ec.NewChild("values"));
+            if(this.Values == null) {
+
+                this.Values = new List<CellData>();
+                this.Values.ApplyExploratoryFieldSpec(ec.NewChild("values"));
+
+            } else {
+
+                this.Values.ApplyExploratoryFieldSpec(ec.NewChild("values"));
+
+            }
+        }
+        else if (this.Values != null && ec.Excludes("values",false))
+        {
+            this.Values = null;
         }
     }
 
@@ -122,9 +155,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<Row> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -83,34 +83,55 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> ProductName? Name
         // GraphQL -> name: ProductName! (enum)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> ProductState? State
         // GraphQL -> state: ProductState! (enum)
         if (this.State != null) {
-            s += ind + "state\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "state\n" ;
+            } else {
+                s += ind + "state\n" ;
+            }
         }
         //      C# -> ProductType? Type
         // GraphQL -> type: ProductType! (enum)
         if (this.Type != null) {
-            s += ind + "type\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "type\n" ;
+            } else {
+                s += ind + "type\n" ;
+            }
         }
         //      C# -> System.String? Account
         // GraphQL -> account: String! (scalar)
         if (this.Account != null) {
-            s += ind + "account\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "account\n" ;
+            } else {
+                s += ind + "account\n" ;
+            }
         }
         //      C# -> DateTime? ExpirationDate
         // GraphQL -> expirationDate: DateTime! (scalar)
         if (this.ExpirationDate != null) {
-            s += ind + "expirationDate\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "expirationDate\n" ;
+            } else {
+                s += ind + "expirationDate\n" ;
+            }
         }
         return s;
     }
@@ -121,33 +142,88 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> ProductName? Name
         // GraphQL -> name: ProductName! (enum)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = new ProductName();
+            if(this.Name == null) {
+
+                this.Name = new ProductName();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> ProductState? State
         // GraphQL -> state: ProductState! (enum)
-        if (this.State == null && ec.Includes("state",true))
+        if (ec.Includes("state",true))
         {
-            this.State = new ProductState();
+            if(this.State == null) {
+
+                this.State = new ProductState();
+
+            } else {
+
+
+            }
+        }
+        else if (this.State != null && ec.Excludes("state",true))
+        {
+            this.State = null;
         }
         //      C# -> ProductType? Type
         // GraphQL -> type: ProductType! (enum)
-        if (this.Type == null && ec.Includes("type",true))
+        if (ec.Includes("type",true))
         {
-            this.Type = new ProductType();
+            if(this.Type == null) {
+
+                this.Type = new ProductType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Type != null && ec.Excludes("type",true))
+        {
+            this.Type = null;
         }
         //      C# -> System.String? Account
         // GraphQL -> account: String! (scalar)
-        if (this.Account == null && ec.Includes("account",true))
+        if (ec.Includes("account",true))
         {
-            this.Account = "FETCH";
+            if(this.Account == null) {
+
+                this.Account = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Account != null && ec.Excludes("account",true))
+        {
+            this.Account = null;
         }
         //      C# -> DateTime? ExpirationDate
         // GraphQL -> expirationDate: DateTime! (scalar)
-        if (this.ExpirationDate == null && ec.Includes("expirationDate",true))
+        if (ec.Includes("expirationDate",true))
         {
-            this.ExpirationDate = new DateTime();
+            if(this.ExpirationDate == null) {
+
+                this.ExpirationDate = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExpirationDate != null && ec.Excludes("expirationDate",true))
+        {
+            this.ExpirationDate = null;
         }
     }
 
@@ -174,9 +250,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AccountProduct> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

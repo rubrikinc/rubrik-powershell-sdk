@@ -92,39 +92,64 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> AwsCloudType? CloudType
         // GraphQL -> cloudType: AwsCloudType! (enum)
         if (this.CloudType != null) {
-            s += ind + "cloudType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cloudType\n" ;
+            } else {
+                s += ind + "cloudType\n" ;
+            }
         }
         //      C# -> System.String? AccountName
         // GraphQL -> accountName: String! (scalar)
         if (this.AccountName != null) {
-            s += ind + "accountName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "accountName\n" ;
+            } else {
+                s += ind + "accountName\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
         if (this.Message != null) {
-            s += ind + "message\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "message\n" ;
+            } else {
+                s += ind + "message\n" ;
+            }
         }
         //      C# -> System.String? NativeId
         // GraphQL -> nativeId: String! (scalar)
         if (this.NativeId != null) {
-            s += ind + "nativeId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "nativeId\n" ;
+            } else {
+                s += ind + "nativeId\n" ;
+            }
         }
         //      C# -> System.Boolean? SeamlessFlowEnabled
         // GraphQL -> seamlessFlowEnabled: Boolean! (scalar)
         if (this.SeamlessFlowEnabled != null) {
-            s += ind + "seamlessFlowEnabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "seamlessFlowEnabled\n" ;
+            } else {
+                s += ind + "seamlessFlowEnabled\n" ;
+            }
         }
         return s;
     }
@@ -135,39 +160,105 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> AwsCloudType? CloudType
         // GraphQL -> cloudType: AwsCloudType! (enum)
-        if (this.CloudType == null && ec.Includes("cloudType",true))
+        if (ec.Includes("cloudType",true))
         {
-            this.CloudType = new AwsCloudType();
+            if(this.CloudType == null) {
+
+                this.CloudType = new AwsCloudType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CloudType != null && ec.Excludes("cloudType",true))
+        {
+            this.CloudType = null;
         }
         //      C# -> System.String? AccountName
         // GraphQL -> accountName: String! (scalar)
-        if (this.AccountName == null && ec.Includes("accountName",true))
+        if (ec.Includes("accountName",true))
         {
-            this.AccountName = "FETCH";
+            if(this.AccountName == null) {
+
+                this.AccountName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AccountName != null && ec.Excludes("accountName",true))
+        {
+            this.AccountName = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
-        if (this.Message == null && ec.Includes("message",true))
+        if (ec.Includes("message",true))
         {
-            this.Message = "FETCH";
+            if(this.Message == null) {
+
+                this.Message = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Message != null && ec.Excludes("message",true))
+        {
+            this.Message = null;
         }
         //      C# -> System.String? NativeId
         // GraphQL -> nativeId: String! (scalar)
-        if (this.NativeId == null && ec.Includes("nativeId",true))
+        if (ec.Includes("nativeId",true))
         {
-            this.NativeId = "FETCH";
+            if(this.NativeId == null) {
+
+                this.NativeId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NativeId != null && ec.Excludes("nativeId",true))
+        {
+            this.NativeId = null;
         }
         //      C# -> System.Boolean? SeamlessFlowEnabled
         // GraphQL -> seamlessFlowEnabled: Boolean! (scalar)
-        if (this.SeamlessFlowEnabled == null && ec.Includes("seamlessFlowEnabled",true))
+        if (ec.Includes("seamlessFlowEnabled",true))
         {
-            this.SeamlessFlowEnabled = true;
+            if(this.SeamlessFlowEnabled == null) {
+
+                this.SeamlessFlowEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.SeamlessFlowEnabled != null && ec.Excludes("seamlessFlowEnabled",true))
+        {
+            this.SeamlessFlowEnabled = null;
         }
     }
 
@@ -194,9 +285,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AwsCloudAccount> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

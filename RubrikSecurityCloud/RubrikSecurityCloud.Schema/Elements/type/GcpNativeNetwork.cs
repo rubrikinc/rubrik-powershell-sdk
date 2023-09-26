@@ -74,34 +74,51 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.String? NativeProjectId
         // GraphQL -> nativeProjectId: String! (scalar)
         if (this.NativeProjectId != null) {
-            s += ind + "nativeProjectId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "nativeProjectId\n" ;
+            } else {
+                s += ind + "nativeProjectId\n" ;
+            }
         }
         //      C# -> List<GcpNativeFirewallRule>? FirewallRules
         // GraphQL -> firewallRules: [GcpNativeFirewallRule!]! (type)
         if (this.FirewallRules != null) {
-            var fspec = this.FirewallRules.AsFieldSpec(indent+1);
+            var fspec = this.FirewallRules.AsFieldSpec(conf.Child("firewallRules"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "firewallRules {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "firewallRules {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<GcpNativeSubnetwork>? Subnetworks
         // GraphQL -> subnetworks: [GcpNativeSubnetwork!]! (type)
         if (this.Subnetworks != null) {
-            var fspec = this.Subnetworks.AsFieldSpec(indent+1);
+            var fspec = this.Subnetworks.AsFieldSpec(conf.Child("subnetworks"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "subnetworks {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "subnetworks {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -113,29 +130,75 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.String? NativeProjectId
         // GraphQL -> nativeProjectId: String! (scalar)
-        if (this.NativeProjectId == null && ec.Includes("nativeProjectId",true))
+        if (ec.Includes("nativeProjectId",true))
         {
-            this.NativeProjectId = "FETCH";
+            if(this.NativeProjectId == null) {
+
+                this.NativeProjectId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NativeProjectId != null && ec.Excludes("nativeProjectId",true))
+        {
+            this.NativeProjectId = null;
         }
         //      C# -> List<GcpNativeFirewallRule>? FirewallRules
         // GraphQL -> firewallRules: [GcpNativeFirewallRule!]! (type)
-        if (this.FirewallRules == null && ec.Includes("firewallRules",false))
+        if (ec.Includes("firewallRules",false))
         {
-            this.FirewallRules = new List<GcpNativeFirewallRule>();
-            this.FirewallRules.ApplyExploratoryFieldSpec(ec.NewChild("firewallRules"));
+            if(this.FirewallRules == null) {
+
+                this.FirewallRules = new List<GcpNativeFirewallRule>();
+                this.FirewallRules.ApplyExploratoryFieldSpec(ec.NewChild("firewallRules"));
+
+            } else {
+
+                this.FirewallRules.ApplyExploratoryFieldSpec(ec.NewChild("firewallRules"));
+
+            }
+        }
+        else if (this.FirewallRules != null && ec.Excludes("firewallRules",false))
+        {
+            this.FirewallRules = null;
         }
         //      C# -> List<GcpNativeSubnetwork>? Subnetworks
         // GraphQL -> subnetworks: [GcpNativeSubnetwork!]! (type)
-        if (this.Subnetworks == null && ec.Includes("subnetworks",false))
+        if (ec.Includes("subnetworks",false))
         {
-            this.Subnetworks = new List<GcpNativeSubnetwork>();
-            this.Subnetworks.ApplyExploratoryFieldSpec(ec.NewChild("subnetworks"));
+            if(this.Subnetworks == null) {
+
+                this.Subnetworks = new List<GcpNativeSubnetwork>();
+                this.Subnetworks.ApplyExploratoryFieldSpec(ec.NewChild("subnetworks"));
+
+            } else {
+
+                this.Subnetworks.ApplyExploratoryFieldSpec(ec.NewChild("subnetworks"));
+
+            }
+        }
+        else if (this.Subnetworks != null && ec.Excludes("subnetworks",false))
+        {
+            this.Subnetworks = null;
         }
     }
 
@@ -162,9 +225,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<GcpNativeNetwork> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

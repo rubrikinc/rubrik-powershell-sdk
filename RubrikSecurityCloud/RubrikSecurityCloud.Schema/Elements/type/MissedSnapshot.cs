@@ -65,26 +65,39 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<System.String>? ArchivalLocationType
         // GraphQL -> archivalLocationType: [String!]! (scalar)
         if (this.ArchivalLocationType != null) {
-            s += ind + "archivalLocationType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "archivalLocationType\n" ;
+            } else {
+                s += ind + "archivalLocationType\n" ;
+            }
         }
         //      C# -> DateTime? MissedSnapshotTime
         // GraphQL -> missedSnapshotTime: DateTime (scalar)
         if (this.MissedSnapshotTime != null) {
-            s += ind + "missedSnapshotTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "missedSnapshotTime\n" ;
+            } else {
+                s += ind + "missedSnapshotTime\n" ;
+            }
         }
         //      C# -> List<MissedSnapshotTimeUnitConfig>? MissedSnapshotTimeUnits
         // GraphQL -> missedSnapshotTimeUnits: [MissedSnapshotTimeUnitConfig!]! (type)
         if (this.MissedSnapshotTimeUnits != null) {
-            var fspec = this.MissedSnapshotTimeUnits.AsFieldSpec(indent+1);
+            var fspec = this.MissedSnapshotTimeUnits.AsFieldSpec(conf.Child("missedSnapshotTimeUnits"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "missedSnapshotTimeUnits {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "missedSnapshotTimeUnits {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -96,22 +109,56 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<System.String>? ArchivalLocationType
         // GraphQL -> archivalLocationType: [String!]! (scalar)
-        if (this.ArchivalLocationType == null && ec.Includes("archivalLocationType",true))
+        if (ec.Includes("archivalLocationType",true))
         {
-            this.ArchivalLocationType = new List<System.String>();
+            if(this.ArchivalLocationType == null) {
+
+                this.ArchivalLocationType = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ArchivalLocationType != null && ec.Excludes("archivalLocationType",true))
+        {
+            this.ArchivalLocationType = null;
         }
         //      C# -> DateTime? MissedSnapshotTime
         // GraphQL -> missedSnapshotTime: DateTime (scalar)
-        if (this.MissedSnapshotTime == null && ec.Includes("missedSnapshotTime",true))
+        if (ec.Includes("missedSnapshotTime",true))
         {
-            this.MissedSnapshotTime = new DateTime();
+            if(this.MissedSnapshotTime == null) {
+
+                this.MissedSnapshotTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.MissedSnapshotTime != null && ec.Excludes("missedSnapshotTime",true))
+        {
+            this.MissedSnapshotTime = null;
         }
         //      C# -> List<MissedSnapshotTimeUnitConfig>? MissedSnapshotTimeUnits
         // GraphQL -> missedSnapshotTimeUnits: [MissedSnapshotTimeUnitConfig!]! (type)
-        if (this.MissedSnapshotTimeUnits == null && ec.Includes("missedSnapshotTimeUnits",false))
+        if (ec.Includes("missedSnapshotTimeUnits",false))
         {
-            this.MissedSnapshotTimeUnits = new List<MissedSnapshotTimeUnitConfig>();
-            this.MissedSnapshotTimeUnits.ApplyExploratoryFieldSpec(ec.NewChild("missedSnapshotTimeUnits"));
+            if(this.MissedSnapshotTimeUnits == null) {
+
+                this.MissedSnapshotTimeUnits = new List<MissedSnapshotTimeUnitConfig>();
+                this.MissedSnapshotTimeUnits.ApplyExploratoryFieldSpec(ec.NewChild("missedSnapshotTimeUnits"));
+
+            } else {
+
+                this.MissedSnapshotTimeUnits.ApplyExploratoryFieldSpec(ec.NewChild("missedSnapshotTimeUnits"));
+
+            }
+        }
+        else if (this.MissedSnapshotTimeUnits != null && ec.Excludes("missedSnapshotTimeUnits",false))
+        {
+            this.MissedSnapshotTimeUnits = null;
         }
     }
 
@@ -138,9 +185,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<MissedSnapshot> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Boolean? IsReachable
         // GraphQL -> isReachable: Boolean! (scalar)
         if (this.IsReachable != null) {
-            s += ind + "isReachable\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isReachable\n" ;
+            } else {
+                s += ind + "isReachable\n" ;
+            }
         }
         //      C# -> System.String? Url
         // GraphQL -> url: String! (scalar)
         if (this.Url != null) {
-            s += ind + "url\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "url\n" ;
+            } else {
+                s += ind + "url\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Boolean? IsReachable
         // GraphQL -> isReachable: Boolean! (scalar)
-        if (this.IsReachable == null && ec.Includes("isReachable",true))
+        if (ec.Includes("isReachable",true))
         {
-            this.IsReachable = true;
+            if(this.IsReachable == null) {
+
+                this.IsReachable = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsReachable != null && ec.Excludes("isReachable",true))
+        {
+            this.IsReachable = null;
         }
         //      C# -> System.String? Url
         // GraphQL -> url: String! (scalar)
-        if (this.Url == null && ec.Includes("url",true))
+        if (ec.Includes("url",true))
         {
-            this.Url = "FETCH";
+            if(this.Url == null) {
+
+                this.Url = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Url != null && ec.Excludes("url",true))
+        {
+            this.Url = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<GlobalManagerUrl> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

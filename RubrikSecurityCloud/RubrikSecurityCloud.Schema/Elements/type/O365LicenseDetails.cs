@@ -83,34 +83,55 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> AzureHostType? AllowedHost
         // GraphQL -> allowedHost: AzureHostType! (enum)
         if (this.AllowedHost != null) {
-            s += ind + "allowedHost\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "allowedHost\n" ;
+            } else {
+                s += ind + "allowedHost\n" ;
+            }
         }
         //      C# -> M365Cloud? M365Cloud
         // GraphQL -> m365Cloud: M365Cloud! (enum)
         if (this.M365Cloud != null) {
-            s += ind + "m365Cloud\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "m365Cloud\n" ;
+            } else {
+                s += ind + "m365Cloud\n" ;
+            }
         }
         //      C# -> O365AzureCloudType? RubrikSaasCloud
         // GraphQL -> rubrikSaasCloud: O365AzureCloudType! (enum)
         if (this.RubrikSaasCloud != null) {
-            s += ind + "rubrikSaasCloud\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "rubrikSaasCloud\n" ;
+            } else {
+                s += ind + "rubrikSaasCloud\n" ;
+            }
         }
         //      C# -> System.Int32? AllowedO365UserCount
         // GraphQL -> allowedO365UserCount: Int! (scalar)
         if (this.AllowedO365UserCount != null) {
-            s += ind + "allowedO365UserCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "allowedO365UserCount\n" ;
+            } else {
+                s += ind + "allowedO365UserCount\n" ;
+            }
         }
         //      C# -> System.Boolean? DisableLicense
         // GraphQL -> disableLicense: Boolean! (scalar)
         if (this.DisableLicense != null) {
-            s += ind + "disableLicense\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "disableLicense\n" ;
+            } else {
+                s += ind + "disableLicense\n" ;
+            }
         }
         return s;
     }
@@ -121,33 +142,88 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> AzureHostType? AllowedHost
         // GraphQL -> allowedHost: AzureHostType! (enum)
-        if (this.AllowedHost == null && ec.Includes("allowedHost",true))
+        if (ec.Includes("allowedHost",true))
         {
-            this.AllowedHost = new AzureHostType();
+            if(this.AllowedHost == null) {
+
+                this.AllowedHost = new AzureHostType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AllowedHost != null && ec.Excludes("allowedHost",true))
+        {
+            this.AllowedHost = null;
         }
         //      C# -> M365Cloud? M365Cloud
         // GraphQL -> m365Cloud: M365Cloud! (enum)
-        if (this.M365Cloud == null && ec.Includes("m365Cloud",true))
+        if (ec.Includes("m365Cloud",true))
         {
-            this.M365Cloud = new M365Cloud();
+            if(this.M365Cloud == null) {
+
+                this.M365Cloud = new M365Cloud();
+
+            } else {
+
+
+            }
+        }
+        else if (this.M365Cloud != null && ec.Excludes("m365Cloud",true))
+        {
+            this.M365Cloud = null;
         }
         //      C# -> O365AzureCloudType? RubrikSaasCloud
         // GraphQL -> rubrikSaasCloud: O365AzureCloudType! (enum)
-        if (this.RubrikSaasCloud == null && ec.Includes("rubrikSaasCloud",true))
+        if (ec.Includes("rubrikSaasCloud",true))
         {
-            this.RubrikSaasCloud = new O365AzureCloudType();
+            if(this.RubrikSaasCloud == null) {
+
+                this.RubrikSaasCloud = new O365AzureCloudType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RubrikSaasCloud != null && ec.Excludes("rubrikSaasCloud",true))
+        {
+            this.RubrikSaasCloud = null;
         }
         //      C# -> System.Int32? AllowedO365UserCount
         // GraphQL -> allowedO365UserCount: Int! (scalar)
-        if (this.AllowedO365UserCount == null && ec.Includes("allowedO365UserCount",true))
+        if (ec.Includes("allowedO365UserCount",true))
         {
-            this.AllowedO365UserCount = Int32.MinValue;
+            if(this.AllowedO365UserCount == null) {
+
+                this.AllowedO365UserCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.AllowedO365UserCount != null && ec.Excludes("allowedO365UserCount",true))
+        {
+            this.AllowedO365UserCount = null;
         }
         //      C# -> System.Boolean? DisableLicense
         // GraphQL -> disableLicense: Boolean! (scalar)
-        if (this.DisableLicense == null && ec.Includes("disableLicense",true))
+        if (ec.Includes("disableLicense",true))
         {
-            this.DisableLicense = true;
+            if(this.DisableLicense == null) {
+
+                this.DisableLicense = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.DisableLicense != null && ec.Excludes("disableLicense",true))
+        {
+            this.DisableLicense = null;
         }
     }
 
@@ -174,9 +250,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<O365LicenseDetails> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -119,54 +119,91 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
         if (this.ClusterUuid != null) {
-            s += ind + "clusterUuid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterUuid\n" ;
+            } else {
+                s += ind + "clusterUuid\n" ;
+            }
         }
         //      C# -> System.Single? EncryptionProbability
         // GraphQL -> encryptionProbability: Float! (scalar)
         if (this.EncryptionProbability != null) {
-            s += ind + "encryptionProbability\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "encryptionProbability\n" ;
+            } else {
+                s += ind + "encryptionProbability\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.Boolean? IsEncrypted
         // GraphQL -> isEncrypted: Boolean! (scalar)
         if (this.IsEncrypted != null) {
-            s += ind + "isEncrypted\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isEncrypted\n" ;
+            } else {
+                s += ind + "isEncrypted\n" ;
+            }
         }
         //      C# -> System.String? ManagedId
         // GraphQL -> managedId: String! (scalar)
         if (this.ManagedId != null) {
-            s += ind + "managedId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "managedId\n" ;
+            } else {
+                s += ind + "managedId\n" ;
+            }
         }
         //      C# -> DateTime? SnapshotData
         // GraphQL -> snapshotData: DateTime! (scalar)
         if (this.SnapshotData != null) {
-            s += ind + "snapshotData\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotData\n" ;
+            } else {
+                s += ind + "snapshotData\n" ;
+            }
         }
         //      C# -> System.String? SnapshotFid
         // GraphQL -> snapshotFid: String! (scalar)
         if (this.SnapshotFid != null) {
-            s += ind + "snapshotFid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotFid\n" ;
+            } else {
+                s += ind + "snapshotFid\n" ;
+            }
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String! (scalar)
         if (this.SnapshotId != null) {
-            s += ind + "snapshotId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotId\n" ;
+            } else {
+                s += ind + "snapshotId\n" ;
+            }
         }
         //      C# -> System.String? WorkloadId
         // GraphQL -> workloadId: String! (scalar)
         if (this.WorkloadId != null) {
-            s += ind + "workloadId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "workloadId\n" ;
+            } else {
+                s += ind + "workloadId\n" ;
+            }
         }
         return s;
     }
@@ -177,57 +214,156 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
-        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
+        if (ec.Includes("clusterUuid",true))
         {
-            this.ClusterUuid = "FETCH";
+            if(this.ClusterUuid == null) {
+
+                this.ClusterUuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterUuid != null && ec.Excludes("clusterUuid",true))
+        {
+            this.ClusterUuid = null;
         }
         //      C# -> System.Single? EncryptionProbability
         // GraphQL -> encryptionProbability: Float! (scalar)
-        if (this.EncryptionProbability == null && ec.Includes("encryptionProbability",true))
+        if (ec.Includes("encryptionProbability",true))
         {
-            this.EncryptionProbability = new System.Single();
+            if(this.EncryptionProbability == null) {
+
+                this.EncryptionProbability = new System.Single();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EncryptionProbability != null && ec.Excludes("encryptionProbability",true))
+        {
+            this.EncryptionProbability = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.Boolean? IsEncrypted
         // GraphQL -> isEncrypted: Boolean! (scalar)
-        if (this.IsEncrypted == null && ec.Includes("isEncrypted",true))
+        if (ec.Includes("isEncrypted",true))
         {
-            this.IsEncrypted = true;
+            if(this.IsEncrypted == null) {
+
+                this.IsEncrypted = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsEncrypted != null && ec.Excludes("isEncrypted",true))
+        {
+            this.IsEncrypted = null;
         }
         //      C# -> System.String? ManagedId
         // GraphQL -> managedId: String! (scalar)
-        if (this.ManagedId == null && ec.Includes("managedId",true))
+        if (ec.Includes("managedId",true))
         {
-            this.ManagedId = "FETCH";
+            if(this.ManagedId == null) {
+
+                this.ManagedId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ManagedId != null && ec.Excludes("managedId",true))
+        {
+            this.ManagedId = null;
         }
         //      C# -> DateTime? SnapshotData
         // GraphQL -> snapshotData: DateTime! (scalar)
-        if (this.SnapshotData == null && ec.Includes("snapshotData",true))
+        if (ec.Includes("snapshotData",true))
         {
-            this.SnapshotData = new DateTime();
+            if(this.SnapshotData == null) {
+
+                this.SnapshotData = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotData != null && ec.Excludes("snapshotData",true))
+        {
+            this.SnapshotData = null;
         }
         //      C# -> System.String? SnapshotFid
         // GraphQL -> snapshotFid: String! (scalar)
-        if (this.SnapshotFid == null && ec.Includes("snapshotFid",true))
+        if (ec.Includes("snapshotFid",true))
         {
-            this.SnapshotFid = "FETCH";
+            if(this.SnapshotFid == null) {
+
+                this.SnapshotFid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotFid != null && ec.Excludes("snapshotFid",true))
+        {
+            this.SnapshotFid = null;
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String! (scalar)
-        if (this.SnapshotId == null && ec.Includes("snapshotId",true))
+        if (ec.Includes("snapshotId",true))
         {
-            this.SnapshotId = "FETCH";
+            if(this.SnapshotId == null) {
+
+                this.SnapshotId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotId != null && ec.Excludes("snapshotId",true))
+        {
+            this.SnapshotId = null;
         }
         //      C# -> System.String? WorkloadId
         // GraphQL -> workloadId: String! (scalar)
-        if (this.WorkloadId == null && ec.Includes("workloadId",true))
+        if (ec.Includes("workloadId",true))
         {
-            this.WorkloadId = "FETCH";
+            if(this.WorkloadId == null) {
+
+                this.WorkloadId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.WorkloadId != null && ec.Excludes("workloadId",true))
+        {
+            this.WorkloadId = null;
         }
     }
 
@@ -254,9 +390,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<RansomwareResult> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

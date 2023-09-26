@@ -83,34 +83,55 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? CdmRecoveryJobId
         // GraphQL -> cdmRecoveryJobId: String! (scalar)
         if (this.CdmRecoveryJobId != null) {
-            s += ind + "cdmRecoveryJobId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cdmRecoveryJobId\n" ;
+            } else {
+                s += ind + "cdmRecoveryJobId\n" ;
+            }
         }
         //      C# -> System.String? JobStatus
         // GraphQL -> jobStatus: String! (scalar)
         if (this.JobStatus != null) {
-            s += ind + "jobStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "jobStatus\n" ;
+            } else {
+                s += ind + "jobStatus\n" ;
+            }
         }
         //      C# -> System.String? VmId
         // GraphQL -> vmId: String! (scalar)
         if (this.VmId != null) {
-            s += ind + "vmId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "vmId\n" ;
+            } else {
+                s += ind + "vmId\n" ;
+            }
         }
         //      C# -> System.String? VmName
         // GraphQL -> vmName: String! (scalar)
         if (this.VmName != null) {
-            s += ind + "vmName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "vmName\n" ;
+            } else {
+                s += ind + "vmName\n" ;
+            }
         }
         //      C# -> System.Int64? VmSizeInKbs
         // GraphQL -> vmSizeInKbs: Long! (scalar)
         if (this.VmSizeInKbs != null) {
-            s += ind + "vmSizeInKbs\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "vmSizeInKbs\n" ;
+            } else {
+                s += ind + "vmSizeInKbs\n" ;
+            }
         }
         return s;
     }
@@ -121,33 +142,88 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? CdmRecoveryJobId
         // GraphQL -> cdmRecoveryJobId: String! (scalar)
-        if (this.CdmRecoveryJobId == null && ec.Includes("cdmRecoveryJobId",true))
+        if (ec.Includes("cdmRecoveryJobId",true))
         {
-            this.CdmRecoveryJobId = "FETCH";
+            if(this.CdmRecoveryJobId == null) {
+
+                this.CdmRecoveryJobId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CdmRecoveryJobId != null && ec.Excludes("cdmRecoveryJobId",true))
+        {
+            this.CdmRecoveryJobId = null;
         }
         //      C# -> System.String? JobStatus
         // GraphQL -> jobStatus: String! (scalar)
-        if (this.JobStatus == null && ec.Includes("jobStatus",true))
+        if (ec.Includes("jobStatus",true))
         {
-            this.JobStatus = "FETCH";
+            if(this.JobStatus == null) {
+
+                this.JobStatus = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.JobStatus != null && ec.Excludes("jobStatus",true))
+        {
+            this.JobStatus = null;
         }
         //      C# -> System.String? VmId
         // GraphQL -> vmId: String! (scalar)
-        if (this.VmId == null && ec.Includes("vmId",true))
+        if (ec.Includes("vmId",true))
         {
-            this.VmId = "FETCH";
+            if(this.VmId == null) {
+
+                this.VmId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.VmId != null && ec.Excludes("vmId",true))
+        {
+            this.VmId = null;
         }
         //      C# -> System.String? VmName
         // GraphQL -> vmName: String! (scalar)
-        if (this.VmName == null && ec.Includes("vmName",true))
+        if (ec.Includes("vmName",true))
         {
-            this.VmName = "FETCH";
+            if(this.VmName == null) {
+
+                this.VmName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.VmName != null && ec.Excludes("vmName",true))
+        {
+            this.VmName = null;
         }
         //      C# -> System.Int64? VmSizeInKbs
         // GraphQL -> vmSizeInKbs: Long! (scalar)
-        if (this.VmSizeInKbs == null && ec.Includes("vmSizeInKbs",true))
+        if (ec.Includes("vmSizeInKbs",true))
         {
-            this.VmSizeInKbs = new System.Int64();
+            if(this.VmSizeInKbs == null) {
+
+                this.VmSizeInKbs = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.VmSizeInKbs != null && ec.Excludes("vmSizeInKbs",true))
+        {
+            this.VmSizeInKbs = null;
         }
     }
 
@@ -174,9 +250,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<VmRecoveryJobInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

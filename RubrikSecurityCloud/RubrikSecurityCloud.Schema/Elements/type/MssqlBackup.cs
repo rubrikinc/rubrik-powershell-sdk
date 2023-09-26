@@ -101,44 +101,73 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> MssqlBackupType? BackupType
         // GraphQL -> backupType: MssqlBackupType! (enum)
         if (this.BackupType != null) {
-            s += ind + "backupType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "backupType\n" ;
+            } else {
+                s += ind + "backupType\n" ;
+            }
         }
         //      C# -> System.String? BackupId
         // GraphQL -> backupId: String! (scalar)
         if (this.BackupId != null) {
-            s += ind + "backupId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "backupId\n" ;
+            } else {
+                s += ind + "backupId\n" ;
+            }
         }
         //      C# -> System.Int64? BackupSize
         // GraphQL -> backupSize: Long! (scalar)
         if (this.BackupSize != null) {
-            s += ind + "backupSize\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "backupSize\n" ;
+            } else {
+                s += ind + "backupSize\n" ;
+            }
         }
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime (scalar)
         if (this.Date != null) {
-            s += ind + "date\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "date\n" ;
+            } else {
+                s += ind + "date\n" ;
+            }
         }
         //      C# -> System.String? Lsn
         // GraphQL -> lsn: String! (scalar)
         if (this.Lsn != null) {
-            s += ind + "lsn\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "lsn\n" ;
+            } else {
+                s += ind + "lsn\n" ;
+            }
         }
         //      C# -> System.String? Path
         // GraphQL -> path: String! (scalar)
         if (this.Path != null) {
-            s += ind + "path\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "path\n" ;
+            } else {
+                s += ind + "path\n" ;
+            }
         }
         //      C# -> System.String? RecoveryForkGuid
         // GraphQL -> recoveryForkGuid: String! (scalar)
         if (this.RecoveryForkGuid != null) {
-            s += ind + "recoveryForkGuid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "recoveryForkGuid\n" ;
+            } else {
+                s += ind + "recoveryForkGuid\n" ;
+            }
         }
         return s;
     }
@@ -149,45 +178,122 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> MssqlBackupType? BackupType
         // GraphQL -> backupType: MssqlBackupType! (enum)
-        if (this.BackupType == null && ec.Includes("backupType",true))
+        if (ec.Includes("backupType",true))
         {
-            this.BackupType = new MssqlBackupType();
+            if(this.BackupType == null) {
+
+                this.BackupType = new MssqlBackupType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.BackupType != null && ec.Excludes("backupType",true))
+        {
+            this.BackupType = null;
         }
         //      C# -> System.String? BackupId
         // GraphQL -> backupId: String! (scalar)
-        if (this.BackupId == null && ec.Includes("backupId",true))
+        if (ec.Includes("backupId",true))
         {
-            this.BackupId = "FETCH";
+            if(this.BackupId == null) {
+
+                this.BackupId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.BackupId != null && ec.Excludes("backupId",true))
+        {
+            this.BackupId = null;
         }
         //      C# -> System.Int64? BackupSize
         // GraphQL -> backupSize: Long! (scalar)
-        if (this.BackupSize == null && ec.Includes("backupSize",true))
+        if (ec.Includes("backupSize",true))
         {
-            this.BackupSize = new System.Int64();
+            if(this.BackupSize == null) {
+
+                this.BackupSize = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.BackupSize != null && ec.Excludes("backupSize",true))
+        {
+            this.BackupSize = null;
         }
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime (scalar)
-        if (this.Date == null && ec.Includes("date",true))
+        if (ec.Includes("date",true))
         {
-            this.Date = new DateTime();
+            if(this.Date == null) {
+
+                this.Date = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Date != null && ec.Excludes("date",true))
+        {
+            this.Date = null;
         }
         //      C# -> System.String? Lsn
         // GraphQL -> lsn: String! (scalar)
-        if (this.Lsn == null && ec.Includes("lsn",true))
+        if (ec.Includes("lsn",true))
         {
-            this.Lsn = "FETCH";
+            if(this.Lsn == null) {
+
+                this.Lsn = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Lsn != null && ec.Excludes("lsn",true))
+        {
+            this.Lsn = null;
         }
         //      C# -> System.String? Path
         // GraphQL -> path: String! (scalar)
-        if (this.Path == null && ec.Includes("path",true))
+        if (ec.Includes("path",true))
         {
-            this.Path = "FETCH";
+            if(this.Path == null) {
+
+                this.Path = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Path != null && ec.Excludes("path",true))
+        {
+            this.Path = null;
         }
         //      C# -> System.String? RecoveryForkGuid
         // GraphQL -> recoveryForkGuid: String! (scalar)
-        if (this.RecoveryForkGuid == null && ec.Includes("recoveryForkGuid",true))
+        if (ec.Includes("recoveryForkGuid",true))
         {
-            this.RecoveryForkGuid = "FETCH";
+            if(this.RecoveryForkGuid == null) {
+
+                this.RecoveryForkGuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RecoveryForkGuid != null && ec.Excludes("recoveryForkGuid",true))
+        {
+            this.RecoveryForkGuid = null;
         }
     }
 
@@ -214,9 +320,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<MssqlBackup> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

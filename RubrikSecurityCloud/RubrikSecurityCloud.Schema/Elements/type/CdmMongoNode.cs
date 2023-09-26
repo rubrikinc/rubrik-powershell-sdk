@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Host
         // GraphQL -> host: String! (scalar)
         if (this.Host != null) {
-            s += ind + "host\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "host\n" ;
+            } else {
+                s += ind + "host\n" ;
+            }
         }
         //      C# -> System.String? HostFid
         // GraphQL -> hostFid: UUID! (scalar)
         if (this.HostFid != null) {
-            s += ind + "hostFid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostFid\n" ;
+            } else {
+                s += ind + "hostFid\n" ;
+            }
         }
         //      C# -> System.Int32? Port
         // GraphQL -> port: Int! (scalar)
         if (this.Port != null) {
-            s += ind + "port\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "port\n" ;
+            } else {
+                s += ind + "port\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Host
         // GraphQL -> host: String! (scalar)
-        if (this.Host == null && ec.Includes("host",true))
+        if (ec.Includes("host",true))
         {
-            this.Host = "FETCH";
+            if(this.Host == null) {
+
+                this.Host = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Host != null && ec.Excludes("host",true))
+        {
+            this.Host = null;
         }
         //      C# -> System.String? HostFid
         // GraphQL -> hostFid: UUID! (scalar)
-        if (this.HostFid == null && ec.Includes("hostFid",true))
+        if (ec.Includes("hostFid",true))
         {
-            this.HostFid = "FETCH";
+            if(this.HostFid == null) {
+
+                this.HostFid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.HostFid != null && ec.Excludes("hostFid",true))
+        {
+            this.HostFid = null;
         }
         //      C# -> System.Int32? Port
         // GraphQL -> port: Int! (scalar)
-        if (this.Port == null && ec.Includes("port",true))
+        if (ec.Includes("port",true))
         {
-            this.Port = Int32.MinValue;
+            if(this.Port == null) {
+
+                this.Port = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Port != null && ec.Excludes("port",true))
+        {
+            this.Port = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CdmMongoNode> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

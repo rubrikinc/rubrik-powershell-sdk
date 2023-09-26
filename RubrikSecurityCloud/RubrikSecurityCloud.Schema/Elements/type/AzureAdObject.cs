@@ -65,26 +65,39 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> AzureAdObjectType? Type
         // GraphQL -> type: AzureAdObjectType! (enum)
         if (this.Type != null) {
-            s += ind + "type\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "type\n" ;
+            } else {
+                s += ind + "type\n" ;
+            }
         }
         //      C# -> System.String? ObjectId
         // GraphQL -> objectId: String! (scalar)
         if (this.ObjectId != null) {
-            s += ind + "objectId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "objectId\n" ;
+            } else {
+                s += ind + "objectId\n" ;
+            }
         }
         //      C# -> AzureAdObjects? AzureAdObjects
         // GraphQL -> azureAdObjects: AzureAdObjects! (type)
         if (this.AzureAdObjects != null) {
-            var fspec = this.AzureAdObjects.AsFieldSpec(indent+1);
+            var fspec = this.AzureAdObjects.AsFieldSpec(conf.Child("azureAdObjects"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "azureAdObjects {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "azureAdObjects {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -96,22 +109,56 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> AzureAdObjectType? Type
         // GraphQL -> type: AzureAdObjectType! (enum)
-        if (this.Type == null && ec.Includes("type",true))
+        if (ec.Includes("type",true))
         {
-            this.Type = new AzureAdObjectType();
+            if(this.Type == null) {
+
+                this.Type = new AzureAdObjectType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Type != null && ec.Excludes("type",true))
+        {
+            this.Type = null;
         }
         //      C# -> System.String? ObjectId
         // GraphQL -> objectId: String! (scalar)
-        if (this.ObjectId == null && ec.Includes("objectId",true))
+        if (ec.Includes("objectId",true))
         {
-            this.ObjectId = "FETCH";
+            if(this.ObjectId == null) {
+
+                this.ObjectId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ObjectId != null && ec.Excludes("objectId",true))
+        {
+            this.ObjectId = null;
         }
         //      C# -> AzureAdObjects? AzureAdObjects
         // GraphQL -> azureAdObjects: AzureAdObjects! (type)
-        if (this.AzureAdObjects == null && ec.Includes("azureAdObjects",false))
+        if (ec.Includes("azureAdObjects",false))
         {
-            this.AzureAdObjects = new AzureAdObjects();
-            this.AzureAdObjects.ApplyExploratoryFieldSpec(ec.NewChild("azureAdObjects"));
+            if(this.AzureAdObjects == null) {
+
+                this.AzureAdObjects = new AzureAdObjects();
+                this.AzureAdObjects.ApplyExploratoryFieldSpec(ec.NewChild("azureAdObjects"));
+
+            } else {
+
+                this.AzureAdObjects.ApplyExploratoryFieldSpec(ec.NewChild("azureAdObjects"));
+
+            }
+        }
+        else if (this.AzureAdObjects != null && ec.Excludes("azureAdObjects",false))
+        {
+            this.AzureAdObjects = null;
         }
     }
 
@@ -138,9 +185,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AzureAdObject> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

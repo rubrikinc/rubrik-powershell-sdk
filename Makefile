@@ -13,15 +13,16 @@ build-debug:
 	@echo "Building SDK. Mode: Debug, Docs: Yes"
 	rm -rf $(PROJ_OUTPUT)
 	dotnet build /p:GeneratePSDocs=true $(PROJ_DIR)
-	rm -rf $(OUTPUT) && cp -va $(PROJ_OUTPUT) $(OUTPUT)
-	cp -v $(OUTPUT)/net6.0/RubrikSecurityCloud.PowerShell.dll-Help.xml $(OUTPUT)/net472
+	rm -rf $(OUTPUT) && cp -a $(PROJ_OUTPUT) $(OUTPUT)
+	cp $(OUTPUT)/net6.0/RubrikSecurityCloud.PowerShell.dll-Help.xml $(OUTPUT)/net472
 
 build-release:
 	@echo "Building SDK. Mode: Release, Docs: Yes"
 	rm -rf $(PROJ_OUTPUT_RELEASE)
 	dotnet build --configuration Release /p:GeneratePSDocs=true $(PROJ_DIR)
-	rm -rf $(OUTPUT_RELEASE) && cp -va $(PROJ_OUTPUT_RELEASE) $(OUTPUT_RELEASE)
-	cp -v $(OUTPUT_RELEASE)/net6.0/RubrikSecurityCloud.PowerShell.dll-Help.xml $(OUTPUT_RELEASE)/net472
+	rm -rf $(OUTPUT_RELEASE)
+	cp -a $(PROJ_OUTPUT_RELEASE) $(OUTPUT_RELEASE)
+	cp $(OUTPUT_RELEASE)/net6.0/RubrikSecurityCloud.PowerShell.dll-Help.xml $(OUTPUT_RELEASE)/net472
 
 build-nodocs:
 	@echo "Building SDK. Mode: Debug, Docs: No"

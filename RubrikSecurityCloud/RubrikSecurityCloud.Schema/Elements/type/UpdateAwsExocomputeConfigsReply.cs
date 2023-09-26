@@ -56,24 +56,33 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<AwsExocomputeGetConfigResponse>? Configs
         // GraphQL -> configs: [AwsExocomputeGetConfigResponse!]! (type)
         if (this.Configs != null) {
-            var fspec = this.Configs.AsFieldSpec(indent+1);
+            var fspec = this.Configs.AsFieldSpec(conf.Child("configs"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "configs {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "configs {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<AwsExocomputeConfigsDeletionStatusType>? DeleteStatus
         // GraphQL -> deleteStatus: [AwsExocomputeConfigsDeletionStatusType!]! (type)
         if (this.DeleteStatus != null) {
-            var fspec = this.DeleteStatus.AsFieldSpec(indent+1);
+            var fspec = this.DeleteStatus.AsFieldSpec(conf.Child("deleteStatus"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "deleteStatus {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "deleteStatus {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -85,17 +94,41 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<AwsExocomputeGetConfigResponse>? Configs
         // GraphQL -> configs: [AwsExocomputeGetConfigResponse!]! (type)
-        if (this.Configs == null && ec.Includes("configs",false))
+        if (ec.Includes("configs",false))
         {
-            this.Configs = new List<AwsExocomputeGetConfigResponse>();
-            this.Configs.ApplyExploratoryFieldSpec(ec.NewChild("configs"));
+            if(this.Configs == null) {
+
+                this.Configs = new List<AwsExocomputeGetConfigResponse>();
+                this.Configs.ApplyExploratoryFieldSpec(ec.NewChild("configs"));
+
+            } else {
+
+                this.Configs.ApplyExploratoryFieldSpec(ec.NewChild("configs"));
+
+            }
+        }
+        else if (this.Configs != null && ec.Excludes("configs",false))
+        {
+            this.Configs = null;
         }
         //      C# -> List<AwsExocomputeConfigsDeletionStatusType>? DeleteStatus
         // GraphQL -> deleteStatus: [AwsExocomputeConfigsDeletionStatusType!]! (type)
-        if (this.DeleteStatus == null && ec.Includes("deleteStatus",false))
+        if (ec.Includes("deleteStatus",false))
         {
-            this.DeleteStatus = new List<AwsExocomputeConfigsDeletionStatusType>();
-            this.DeleteStatus.ApplyExploratoryFieldSpec(ec.NewChild("deleteStatus"));
+            if(this.DeleteStatus == null) {
+
+                this.DeleteStatus = new List<AwsExocomputeConfigsDeletionStatusType>();
+                this.DeleteStatus.ApplyExploratoryFieldSpec(ec.NewChild("deleteStatus"));
+
+            } else {
+
+                this.DeleteStatus.ApplyExploratoryFieldSpec(ec.NewChild("deleteStatus"));
+
+            }
+        }
+        else if (this.DeleteStatus != null && ec.Excludes("deleteStatus",false))
+        {
+            this.DeleteStatus = null;
         }
     }
 
@@ -122,9 +155,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<UpdateAwsExocomputeConfigsReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

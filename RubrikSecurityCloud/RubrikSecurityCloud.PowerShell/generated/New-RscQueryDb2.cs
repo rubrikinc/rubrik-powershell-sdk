@@ -16,38 +16,441 @@ using RubrikSecurityCloud.Types;
 using RubrikSecurityCloud.NetSDK.Client;
 using RubrikSecurityCloud.PowerShell.Private;
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
+
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Queries for the 'Db2' API domain.
+    /// Create a new RscQuery object for any of the 8
+    /// operations in the 'Db2' API domain:
+    /// Database, Databases, Instance, Instances, LogSnapshot, LogSnapshots, RecoverableRange, or RecoverableRanges.
     /// </summary>
     /// <description>
-    /// New-RscQueryDb2 is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
+    /// New-RscQueryDb2 creates a new
+    /// query object for operations
+    /// in the 'Db2' API domain. It only creates a data structure,
+    /// it does not execute the operation. This cmdlet does not need a
+    /// connection to run. To execute the operation, either call Invoke()
+    /// on the object returned by this cmdlet, or pass the object to
+    /// Invoke-Rsc.
+    /// There are 8 operations
+    /// in the 'Db2' API domain. Select the operation this
+    /// query is for by specifying the appropriate switch parameter;
+    /// one of: -Database, -Databases, -Instance, -Instances, -LogSnapshot, -LogSnapshots, -RecoverableRange, -RecoverableRanges.
+    /// Alternatively, you can specify the operation by setting the
+    /// -Op parameter, for example: -Op Database,
+    /// which is equivalent to specifying -Database.
+    /// Each operation has its own set of variables that can be set with
+    /// the -Var parameter. For more info about the variables, 
+    /// call Info() on the object returned by this cmdlet, for example:
+    /// (New-RscQueryDb2 -Database).Info().
+    /// Each operation also has its own set of fields that can be
+    /// selected for retrieval. If you do not specify any fields,
+    /// a set of default fields will be selected. The selection is
+    /// rule-based, and tries to select the most commonly used fields.
+    /// For example if a field is named 'id' or 'name', 
+    /// it will be selected. If you give -FieldProfile DETAIL, then
+    /// another set of rules will be used to select more fields on top
+    /// of the default fields. The set of rules for selecting fields
+    /// is called a field profile. You can specify a field profile
+    /// with the -FieldProfile parameter. You can add or remove fields
+    /// from the field profile with the -AddField and -RemoveField
+    /// parameters. If you end up with too many -AddField and -RemoveField
+    /// parameters, you can list them in a text file, one per line,
+    /// with a '+' or '-' prefix, and pass the file name to the
+    /// -FilePatch parameter. Profiles and Patches are one way to
+    /// customize the fields that are selected. Another way is to
+    /// specify the fields by passing the -Field parameter an object
+    /// that contains the fields you want to select as properties.
+    /// Any property that is not null in that object is interpreted
+    /// as a field to select
+    /// (and the actual values they are set to do not matter).
+    /// The [RubrikSecurityCloud.Types] namespace
+    /// contains a set of classes that you can use to specify fields.
+    /// To know what [RubrikSecurityCloud.Types] object to use
+    /// for a specific operation,
+    /// call Info() on the object returned by this cmdlet, for example:
+    /// (New-RscQueryDb2 -Database).Info().
+    /// You can combine a -Field parameter with patching parameters.
+    /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
+    ///
     /// </description>
+    ///
     /// <example>
-    /// <code>New-RscQueryDb2 -Instances [-Arg ..] [-Field ..]</code>
+    /// Runs the Database operation
+    /// of the 'Db2' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Db2
+    /// # API Operation: Database
+    /// 
+    /// $query = New-RscQueryDb2 -Database
+    /// 
+    /// # REQUIRED
+    /// $query.Var.fid = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: Db2Database
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryDb2 -Instance [-Arg ..] [-Field ..]</code>
+    /// Runs the Databases operation
+    /// of the 'Db2' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Db2
+    /// # API Operation: Databases
+    /// 
+    /// $query = New-RscQueryDb2 -Databases
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.filter = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		texts = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		tagFilterParams = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+    /// 				# OPTIONAL
+    /// 				tagKey = $someString
+    /// 				# OPTIONAL
+    /// 				tagValue = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		objectTypeFilterParams = @(
+    /// 			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		awsNativeProtectionFeatureNames = @(
+    /// 			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		isNegative = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isSlowSearchEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		azureNativeProtectionFeatureNames = @(
+    /// 			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		unmanagedObjectAvailabilityFilter = @(
+    /// 			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+    /// 		)
+    /// }
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: Db2DatabaseConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryDb2 -Database [-Arg ..] [-Field ..]</code>
+    /// Runs the Instance operation
+    /// of the 'Db2' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Db2
+    /// # API Operation: Instance
+    /// 
+    /// $query = New-RscQueryDb2 -Instance
+    /// 
+    /// # REQUIRED
+    /// $query.Var.id = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: Db2Instance
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryDb2 -Databases [-Arg ..] [-Field ..]</code>
+    /// Runs the Instances operation
+    /// of the 'Db2' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Db2
+    /// # API Operation: Instances
+    /// 
+    /// $query = New-RscQueryDb2 -Instances
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.filter = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		texts = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		tagFilterParams = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+    /// 				# OPTIONAL
+    /// 				tagKey = $someString
+    /// 				# OPTIONAL
+    /// 				tagValue = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		objectTypeFilterParams = @(
+    /// 			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		awsNativeProtectionFeatureNames = @(
+    /// 			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		isNegative = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isSlowSearchEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		azureNativeProtectionFeatureNames = @(
+    /// 			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		unmanagedObjectAvailabilityFilter = @(
+    /// 			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+    /// 		)
+    /// }
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: Db2InstanceConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryDb2 -RecoverableRange [-Arg ..] [-Field ..]</code>
+    /// Runs the LogSnapshot operation
+    /// of the 'Db2' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Db2
+    /// # API Operation: LogSnapshot
+    /// 
+    /// $query = New-RscQueryDb2 -LogSnapshot
+    /// 
+    /// # REQUIRED
+    /// $query.Var.db2LogSnapshotFid = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: Db2LogSnapshot
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryDb2 -RecoverableRanges [-Arg ..] [-Field ..]</code>
+    /// Runs the LogSnapshots operation
+    /// of the 'Db2' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Db2
+    /// # API Operation: LogSnapshots
+    /// 
+    /// $query = New-RscQueryDb2 -LogSnapshots
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someDb2LogSnapshotSortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Db2LogSnapshotSortBy]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.filter = @{
+    /// 	# OPTIONAL
+    /// 	workloadId = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	clusterUuid = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	fromTime = $someDateTime
+    /// 	# OPTIONAL
+    /// 	toTime = $someDateTime
+    /// 	# OPTIONAL
+    /// 	isArchived = $someBoolean
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: Db2LogSnapshotConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryDb2 -LogSnapshot [-Arg ..] [-Field ..]</code>
+    /// Runs the RecoverableRange operation
+    /// of the 'Db2' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Db2
+    /// # API Operation: RecoverableRange
+    /// 
+    /// $query = New-RscQueryDb2 -RecoverableRange
+    /// 
+    /// # REQUIRED
+    /// $query.Var.db2RecoverableRangeFid = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: Db2RecoverableRange
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryDb2 -LogSnapshots [-Arg ..] [-Field ..]</code>
+    /// Runs the RecoverableRanges operation
+    /// of the 'Db2' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Db2
+    /// # API Operation: RecoverableRanges
+    /// 
+    /// $query = New-RscQueryDb2 -RecoverableRanges
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someDb2RecoverableRangeSortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Db2RecoverableRangeSortBy]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.filter = @{
+    /// 	# OPTIONAL
+    /// 	clusterUuid = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	databaseId = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	fromTime = $someDateTime
+    /// 	# OPTIONAL
+    /// 	toTime = $someDateTime
+    /// 	# OPTIONAL
+    /// 	isArchived = $someBoolean
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: Db2RecoverableRangeConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -57,176 +460,153 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     public class New_RscQueryDb2 : RscGqlPSCmdlet
     {
         
-        /// <summary>
-        /// Instances parameter set
-        ///
-        /// [GraphQL: db2Instances]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "Instances",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Connection of filtered db2 instances based on specific filters.
-[GraphQL: db2Instances]",
-            Position = 0
-        )]
-        public SwitchParameter Instances { get; set; }
-
-        
-        /// <summary>
-        /// Instance parameter set
-        ///
-        /// [GraphQL: db2Instance]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "Instance",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Details of a db2 instance for a given fid.
-[GraphQL: db2Instance]",
-            Position = 0
-        )]
-        public SwitchParameter Instance { get; set; }
-
-        
-        /// <summary>
-        /// Database parameter set
-        ///
-        /// [GraphQL: db2Database]
-        /// </summary>
         [Parameter(
             ParameterSetName = "Database",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Details of a db2 database for a given fid.
-[GraphQL: db2Database]",
-            Position = 0
+@"Create a query object for the 'Database' operation
+in the 'Db2' API domain.
+Description of the operation:
+Details of a db2 database for a given fid.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/db2database.doc.html]"
+            // No Position -> named parameter only.
         )]
         public SwitchParameter Database { get; set; }
 
         
-        /// <summary>
-        /// Databases parameter set
-        ///
-        /// [GraphQL: db2Databases]
-        /// </summary>
         [Parameter(
             ParameterSetName = "Databases",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Connection of filtered db2 databases based on specific filters.
-[GraphQL: db2Databases]",
-            Position = 0
+@"Create a query object for the 'Databases' operation
+in the 'Db2' API domain.
+Description of the operation:
+Connection of filtered db2 databases based on specific filters.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/db2databases.doc.html]"
+            // No Position -> named parameter only.
         )]
         public SwitchParameter Databases { get; set; }
 
         
-        /// <summary>
-        /// RecoverableRange parameter set
-        ///
-        /// [GraphQL: db2RecoverableRange]
-        /// </summary>
         [Parameter(
-            ParameterSetName = "RecoverableRange",
+            ParameterSetName = "Instance",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Details of a Db2 recoverable range for a given fid.
-[GraphQL: db2RecoverableRange]",
-            Position = 0
+@"Create a query object for the 'Instance' operation
+in the 'Db2' API domain.
+Description of the operation:
+Details of a db2 instance for a given fid.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/db2instance.doc.html]"
+            // No Position -> named parameter only.
         )]
-        public SwitchParameter RecoverableRange { get; set; }
+        public SwitchParameter Instance { get; set; }
 
         
-        /// <summary>
-        /// RecoverableRanges parameter set
-        ///
-        /// [GraphQL: db2RecoverableRanges]
-        /// </summary>
         [Parameter(
-            ParameterSetName = "RecoverableRanges",
+            ParameterSetName = "Instances",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Connection of all recoverable ranges for Db2.
-[GraphQL: db2RecoverableRanges]",
-            Position = 0
+@"Create a query object for the 'Instances' operation
+in the 'Db2' API domain.
+Description of the operation:
+Connection of filtered db2 instances based on specific filters.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/db2instances.doc.html]"
+            // No Position -> named parameter only.
         )]
-        public SwitchParameter RecoverableRanges { get; set; }
+        public SwitchParameter Instances { get; set; }
 
         
-        /// <summary>
-        /// LogSnapshot parameter set
-        ///
-        /// [GraphQL: db2LogSnapshot]
-        /// </summary>
         [Parameter(
             ParameterSetName = "LogSnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Details of a Db2 log snapshot for a given fid.
-[GraphQL: db2LogSnapshot]",
-            Position = 0
+@"Create a query object for the 'LogSnapshot' operation
+in the 'Db2' API domain.
+Description of the operation:
+Details of a Db2 log snapshot for a given fid.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/db2logsnapshot.doc.html]"
+            // No Position -> named parameter only.
         )]
         public SwitchParameter LogSnapshot { get; set; }
 
         
-        /// <summary>
-        /// LogSnapshots parameter set
-        ///
-        /// [GraphQL: db2LogSnapshots]
-        /// </summary>
         [Parameter(
             ParameterSetName = "LogSnapshots",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Connection of all log snapshots for Db2.
-[GraphQL: db2LogSnapshots]",
-            Position = 0
+@"Create a query object for the 'LogSnapshots' operation
+in the 'Db2' API domain.
+Description of the operation:
+Connection of all log snapshots for Db2.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/db2logsnapshots.doc.html]"
+            // No Position -> named parameter only.
         )]
         public SwitchParameter LogSnapshots { get; set; }
 
+        
+        [Parameter(
+            ParameterSetName = "RecoverableRange",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'RecoverableRange' operation
+in the 'Db2' API domain.
+Description of the operation:
+Details of a Db2 recoverable range for a given fid.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/db2recoverablerange.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter RecoverableRange { get; set; }
 
-// ignore warning 'Missing XML comment'
-#pragma warning disable 1591
+        
+        [Parameter(
+            ParameterSetName = "RecoverableRanges",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'RecoverableRanges' operation
+in the 'Db2' API domain.
+Description of the operation:
+Connection of all recoverable ranges for Db2.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/db2recoverableranges.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter RecoverableRanges { get; set; }
+
+
+
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
             try
             {
-                switch(Op)
+                switch(this.GetOp().OpName())
                 {
-                    case "Instances":
-                        this.ProcessRecord_Instances();
-                        break;
-                    case "Instance":
-                        this.ProcessRecord_Instance();
-                        break;
                     case "Database":
                         this.ProcessRecord_Database();
                         break;
                     case "Databases":
                         this.ProcessRecord_Databases();
                         break;
-                    case "RecoverableRange":
-                        this.ProcessRecord_RecoverableRange();
+                    case "Instance":
+                        this.ProcessRecord_Instance();
                         break;
-                    case "RecoverableRanges":
-                        this.ProcessRecord_RecoverableRanges();
+                    case "Instances":
+                        this.ProcessRecord_Instances();
                         break;
                     case "LogSnapshot":
                         this.ProcessRecord_LogSnapshot();
@@ -234,33 +614,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "LogSnapshots":
                         this.ProcessRecord_LogSnapshots();
                         break;
+                    case "RecoverableRange":
+                        this.ProcessRecord_RecoverableRange();
+                        break;
+                    case "RecoverableRanges":
+                        this.ProcessRecord_RecoverableRanges();
+                        break;
                     default:
-                        throw new Exception("Unknown Operation " + Op);
+                        throw new Exception("Unknown Operation " + this.GetOp().OpName());
                 }
            }
            catch (Exception ex)
            {
                 ThrowTerminatingException(ex);
            }
-        }
-#pragma warning restore 1591
-
-        // This parameter set invokes a single graphql operation:
-        // db2Instances.
-        internal void ProcessRecord_Instances()
-        {
-            this._logger.name += " -Instances";
-            // Create new graphql operation db2Instances
-            InitQueryDb2Instances();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // db2Instance.
-        internal void ProcessRecord_Instance()
-        {
-            this._logger.name += " -Instance";
-            // Create new graphql operation db2Instance
-            InitQueryDb2Instance();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -282,21 +649,21 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // db2RecoverableRange.
-        internal void ProcessRecord_RecoverableRange()
+        // db2Instance.
+        internal void ProcessRecord_Instance()
         {
-            this._logger.name += " -RecoverableRange";
-            // Create new graphql operation db2RecoverableRange
-            InitQueryDb2RecoverableRange();
+            this._logger.name += " -Instance";
+            // Create new graphql operation db2Instance
+            InitQueryDb2Instance();
         }
 
         // This parameter set invokes a single graphql operation:
-        // db2RecoverableRanges.
-        internal void ProcessRecord_RecoverableRanges()
+        // db2Instances.
+        internal void ProcessRecord_Instances()
         {
-            this._logger.name += " -RecoverableRanges";
-            // Create new graphql operation db2RecoverableRanges
-            InitQueryDb2RecoverableRanges();
+            this._logger.name += " -Instances";
+            // Create new graphql operation db2Instances
+            InitQueryDb2Instances();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -317,104 +684,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             InitQueryDb2LogSnapshots();
         }
 
-
-        // Create new GraphQL Query:
-        // db2Instances(
-        //     first: Int
-        //     after: String
-        //     sortBy: HierarchySortByField
-        //     sortOrder: SortOrder
-        //     filter: [Filter!]
-        //   ): Db2InstanceConnection!
-        internal void InitQueryDb2Instances()
+        // This parameter set invokes a single graphql operation:
+        // db2RecoverableRange.
+        internal void ProcessRecord_RecoverableRange()
         {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("sortBy", "HierarchySortByField"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("filter", "[Filter!]"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryDb2Instances",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                "Db2InstanceConnection",
-                Query.Db2Instances_ObjectFieldSpec,
-                Query.Db2InstancesFieldSpec,
-                @"# OPTIONAL
-$inputs.Var.first = <System.Int32>
-# OPTIONAL
-$inputs.Var.after = <System.String>
-# OPTIONAL
-$inputs.Var.sortBy = <HierarchySortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
-# OPTIONAL
-$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$inputs.Var.filter = @(
-	@{
-		# OPTIONAL
-		field = <HierarchyFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
-		# OPTIONAL
-		texts = @(
-			<System.String>
-		)
-		# OPTIONAL
-		tagFilterParams = @(
-			@{
-				# OPTIONAL
-				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-				# OPTIONAL
-				tagKey = <System.String>
-				# OPTIONAL
-				tagValue = <System.String>
-			}
-		)
-		# OPTIONAL
-		objectTypeFilterParams = @(
-			<ManagedObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
-		)
-		# OPTIONAL
-		awsNativeProtectionFeatureNames = @(
-			<AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		isNegative = <System.Boolean>
-		# OPTIONAL
-		isSlowSearchEnabled = <System.Boolean>
-		# OPTIONAL
-		azureNativeProtectionFeatureNames = @(
-			<AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		unmanagedObjectAvailabilityFilter = @(
-			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
-		)
-}
-)"
-            );
+            this._logger.name += " -RecoverableRange";
+            // Create new graphql operation db2RecoverableRange
+            InitQueryDb2RecoverableRange();
         }
 
-        // Create new GraphQL Query:
-        // db2Instance(id: UUID!): Db2Instance!
-        internal void InitQueryDb2Instance()
+        // This parameter set invokes a single graphql operation:
+        // db2RecoverableRanges.
+        internal void ProcessRecord_RecoverableRanges()
         {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("id", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryDb2Instance",
-                "($id: UUID!)",
-                "Db2Instance",
-                Query.Db2Instance_ObjectFieldSpec,
-                Query.Db2InstanceFieldSpec,
-                @"# REQUIRED
-$inputs.Var.id = <System.String>"
-            );
+            this._logger.name += " -RecoverableRanges";
+            // Create new graphql operation db2RecoverableRanges
+            InitQueryDb2RecoverableRanges();
         }
+
 
         // Create new GraphQL Query:
         // db2Database(fid: UUID!): Db2Database!
@@ -432,7 +719,7 @@ $inputs.Var.id = <System.String>"
                 Query.Db2Database_ObjectFieldSpec,
                 Query.Db2DatabaseFieldSpec,
                 @"# REQUIRED
-$inputs.Var.fid = <System.String>"
+$query.Var.fid = $someString"
             );
         }
 
@@ -462,52 +749,52 @@ $inputs.Var.fid = <System.String>"
                 Query.Db2Databases_ObjectFieldSpec,
                 Query.Db2DatabasesFieldSpec,
                 @"# OPTIONAL
-$inputs.Var.first = <System.Int32>
+$query.Var.first = $someInt
 # OPTIONAL
-$inputs.Var.after = <System.String>
+$query.Var.after = $someString
 # OPTIONAL
-$inputs.Var.sortBy = <HierarchySortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
 # OPTIONAL
-$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
 # OPTIONAL
-$inputs.Var.filter = @(
+$query.Var.filter = @(
 	@{
 		# OPTIONAL
-		field = <HierarchyFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
 		# OPTIONAL
 		texts = @(
-			<System.String>
+			$someString
 		)
 		# OPTIONAL
 		tagFilterParams = @(
 			@{
 				# OPTIONAL
-				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
 				# OPTIONAL
-				tagKey = <System.String>
+				tagKey = $someString
 				# OPTIONAL
-				tagValue = <System.String>
+				tagValue = $someString
 			}
 		)
 		# OPTIONAL
 		objectTypeFilterParams = @(
-			<ManagedObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
 		)
 		# OPTIONAL
 		awsNativeProtectionFeatureNames = @(
-			<AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
 		)
 		# OPTIONAL
-		isNegative = <System.Boolean>
+		isNegative = $someBoolean
 		# OPTIONAL
-		isSlowSearchEnabled = <System.Boolean>
+		isSlowSearchEnabled = $someBoolean
 		# OPTIONAL
 		azureNativeProtectionFeatureNames = @(
-			<AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
 		)
 		# OPTIONAL
 		unmanagedObjectAvailabilityFilter = @(
-			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
 		)
 }
 )"
@@ -515,83 +802,100 @@ $inputs.Var.filter = @(
         }
 
         // Create new GraphQL Query:
-        // db2RecoverableRange(db2RecoverableRangeFid: UUID!): Db2RecoverableRange!
-        internal void InitQueryDb2RecoverableRange()
+        // db2Instance(id: UUID!): Db2Instance!
+        internal void InitQueryDb2Instance()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("db2RecoverableRangeFid", "UUID!"),
+                Tuple.Create("id", "UUID!"),
             };
             Initialize(
                 argDefs,
                 "query",
-                "QueryDb2RecoverableRange",
-                "($db2RecoverableRangeFid: UUID!)",
-                "Db2RecoverableRange",
-                Query.Db2RecoverableRange_ObjectFieldSpec,
-                Query.Db2RecoverableRangeFieldSpec,
+                "QueryDb2Instance",
+                "($id: UUID!)",
+                "Db2Instance",
+                Query.Db2Instance_ObjectFieldSpec,
+                Query.Db2InstanceFieldSpec,
                 @"# REQUIRED
-$inputs.Var.db2RecoverableRangeFid = <System.String>"
+$query.Var.id = $someString"
             );
         }
 
         // Create new GraphQL Query:
-        // db2RecoverableRanges(
+        // db2Instances(
         //     first: Int
         //     after: String
-        //     last: Int
-        //     before: String
+        //     sortBy: HierarchySortByField
         //     sortOrder: SortOrder
-        //     sortBy: Db2RecoverableRangeSortBy
-        //     filter: Db2RecoverableRangeFilterInput
-        //   ): Db2RecoverableRangeConnection!
-        internal void InitQueryDb2RecoverableRanges()
+        //     filter: [Filter!]
+        //   ): Db2InstanceConnection!
+        internal void InitQueryDb2Instances()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
-                Tuple.Create("last", "Int"),
-                Tuple.Create("before", "String"),
+                Tuple.Create("sortBy", "HierarchySortByField"),
                 Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("sortBy", "Db2RecoverableRangeSortBy"),
-                Tuple.Create("filter", "Db2RecoverableRangeFilterInput"),
+                Tuple.Create("filter", "[Filter!]"),
             };
             Initialize(
                 argDefs,
                 "query",
-                "QueryDb2RecoverableRanges",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: Db2RecoverableRangeSortBy,$filter: Db2RecoverableRangeFilterInput)",
-                "Db2RecoverableRangeConnection",
-                Query.Db2RecoverableRanges_ObjectFieldSpec,
-                Query.Db2RecoverableRangesFieldSpec,
+                "QueryDb2Instances",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                "Db2InstanceConnection",
+                Query.Db2Instances_ObjectFieldSpec,
+                Query.Db2InstancesFieldSpec,
                 @"# OPTIONAL
-$inputs.Var.first = <System.Int32>
+$query.Var.first = $someInt
 # OPTIONAL
-$inputs.Var.after = <System.String>
+$query.Var.after = $someString
 # OPTIONAL
-$inputs.Var.last = <System.Int32>
+$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
 # OPTIONAL
-$inputs.Var.before = <System.String>
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
 # OPTIONAL
-$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$inputs.Var.sortBy = <Db2RecoverableRangeSortBy> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Db2RecoverableRangeSortBy]) for enum values.
-# OPTIONAL
-$inputs.Var.filter = @{
-	# OPTIONAL
-	clusterUuid = @(
-		<System.String>
-	)
-	# OPTIONAL
-	databaseId = @(
-		<System.String>
-	)
-	# OPTIONAL
-	fromTime = <DateTime>
-	# OPTIONAL
-	toTime = <DateTime>
-	# OPTIONAL
-	isArchived = <System.Boolean>
-}"
+$query.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			$someString
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = $someString
+				# OPTIONAL
+				tagValue = $someString
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = $someBoolean
+		# OPTIONAL
+		isSlowSearchEnabled = $someBoolean
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+}
+)"
             );
         }
 
@@ -611,7 +915,7 @@ $inputs.Var.filter = @{
                 Query.Db2LogSnapshot_ObjectFieldSpec,
                 Query.Db2LogSnapshotFieldSpec,
                 @"# REQUIRED
-$inputs.Var.db2LogSnapshotFid = <System.String>"
+$query.Var.db2LogSnapshotFid = $someString"
             );
         }
 
@@ -645,33 +949,114 @@ $inputs.Var.db2LogSnapshotFid = <System.String>"
                 Query.Db2LogSnapshots_ObjectFieldSpec,
                 Query.Db2LogSnapshotsFieldSpec,
                 @"# OPTIONAL
-$inputs.Var.first = <System.Int32>
+$query.Var.first = $someInt
 # OPTIONAL
-$inputs.Var.after = <System.String>
+$query.Var.after = $someString
 # OPTIONAL
-$inputs.Var.last = <System.Int32>
+$query.Var.last = $someInt
 # OPTIONAL
-$inputs.Var.before = <System.String>
+$query.Var.before = $someString
 # OPTIONAL
-$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
 # OPTIONAL
-$inputs.Var.sortBy = <Db2LogSnapshotSortBy> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Db2LogSnapshotSortBy]) for enum values.
+$query.Var.sortBy = $someDb2LogSnapshotSortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Db2LogSnapshotSortBy]) for enum values.
 # OPTIONAL
-$inputs.Var.filter = @{
+$query.Var.filter = @{
 	# OPTIONAL
 	workloadId = @(
-		<System.String>
+		$someString
 	)
 	# OPTIONAL
 	clusterUuid = @(
-		<System.String>
+		$someString
 	)
 	# OPTIONAL
-	fromTime = <DateTime>
+	fromTime = $someDateTime
 	# OPTIONAL
-	toTime = <DateTime>
+	toTime = $someDateTime
 	# OPTIONAL
-	isArchived = <System.Boolean>
+	isArchived = $someBoolean
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // db2RecoverableRange(db2RecoverableRangeFid: UUID!): Db2RecoverableRange!
+        internal void InitQueryDb2RecoverableRange()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("db2RecoverableRangeFid", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryDb2RecoverableRange",
+                "($db2RecoverableRangeFid: UUID!)",
+                "Db2RecoverableRange",
+                Query.Db2RecoverableRange_ObjectFieldSpec,
+                Query.Db2RecoverableRangeFieldSpec,
+                @"# REQUIRED
+$query.Var.db2RecoverableRangeFid = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // db2RecoverableRanges(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     sortOrder: SortOrder
+        //     sortBy: Db2RecoverableRangeSortBy
+        //     filter: Db2RecoverableRangeFilterInput
+        //   ): Db2RecoverableRangeConnection!
+        internal void InitQueryDb2RecoverableRanges()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("sortBy", "Db2RecoverableRangeSortBy"),
+                Tuple.Create("filter", "Db2RecoverableRangeFilterInput"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryDb2RecoverableRanges",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: Db2RecoverableRangeSortBy,$filter: Db2RecoverableRangeFilterInput)",
+                "Db2RecoverableRangeConnection",
+                Query.Db2RecoverableRanges_ObjectFieldSpec,
+                Query.Db2RecoverableRangesFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.sortBy = $someDb2RecoverableRangeSortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Db2RecoverableRangeSortBy]) for enum values.
+# OPTIONAL
+$query.Var.filter = @{
+	# OPTIONAL
+	clusterUuid = @(
+		$someString
+	)
+	# OPTIONAL
+	databaseId = @(
+		$someString
+	)
+	# OPTIONAL
+	fromTime = $someDateTime
+	# OPTIONAL
+	toTime = $someDateTime
+	# OPTIONAL
+	isArchived = $someBoolean
 }"
             );
         }

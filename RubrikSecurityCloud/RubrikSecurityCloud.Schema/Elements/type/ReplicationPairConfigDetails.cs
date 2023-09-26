@@ -65,29 +65,42 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? SetupType
         // GraphQL -> setupType: String! (scalar)
         if (this.SetupType != null) {
-            s += ind + "setupType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "setupType\n" ;
+            } else {
+                s += ind + "setupType\n" ;
+            }
         }
         //      C# -> GatewayInfo? SourceGateway
         // GraphQL -> sourceGateway: GatewayInfo (type)
         if (this.SourceGateway != null) {
-            var fspec = this.SourceGateway.AsFieldSpec(indent+1);
+            var fspec = this.SourceGateway.AsFieldSpec(conf.Child("sourceGateway"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "sourceGateway {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "sourceGateway {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> GatewayInfo? TargetGateway
         // GraphQL -> targetGateway: GatewayInfo (type)
         if (this.TargetGateway != null) {
-            var fspec = this.TargetGateway.AsFieldSpec(indent+1);
+            var fspec = this.TargetGateway.AsFieldSpec(conf.Child("targetGateway"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "targetGateway {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "targetGateway {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -99,23 +112,58 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? SetupType
         // GraphQL -> setupType: String! (scalar)
-        if (this.SetupType == null && ec.Includes("setupType",true))
+        if (ec.Includes("setupType",true))
         {
-            this.SetupType = "FETCH";
+            if(this.SetupType == null) {
+
+                this.SetupType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SetupType != null && ec.Excludes("setupType",true))
+        {
+            this.SetupType = null;
         }
         //      C# -> GatewayInfo? SourceGateway
         // GraphQL -> sourceGateway: GatewayInfo (type)
-        if (this.SourceGateway == null && ec.Includes("sourceGateway",false))
+        if (ec.Includes("sourceGateway",false))
         {
-            this.SourceGateway = new GatewayInfo();
-            this.SourceGateway.ApplyExploratoryFieldSpec(ec.NewChild("sourceGateway"));
+            if(this.SourceGateway == null) {
+
+                this.SourceGateway = new GatewayInfo();
+                this.SourceGateway.ApplyExploratoryFieldSpec(ec.NewChild("sourceGateway"));
+
+            } else {
+
+                this.SourceGateway.ApplyExploratoryFieldSpec(ec.NewChild("sourceGateway"));
+
+            }
+        }
+        else if (this.SourceGateway != null && ec.Excludes("sourceGateway",false))
+        {
+            this.SourceGateway = null;
         }
         //      C# -> GatewayInfo? TargetGateway
         // GraphQL -> targetGateway: GatewayInfo (type)
-        if (this.TargetGateway == null && ec.Includes("targetGateway",false))
+        if (ec.Includes("targetGateway",false))
         {
-            this.TargetGateway = new GatewayInfo();
-            this.TargetGateway.ApplyExploratoryFieldSpec(ec.NewChild("targetGateway"));
+            if(this.TargetGateway == null) {
+
+                this.TargetGateway = new GatewayInfo();
+                this.TargetGateway.ApplyExploratoryFieldSpec(ec.NewChild("targetGateway"));
+
+            } else {
+
+                this.TargetGateway.ApplyExploratoryFieldSpec(ec.NewChild("targetGateway"));
+
+            }
+        }
+        else if (this.TargetGateway != null && ec.Excludes("targetGateway",false))
+        {
+            this.TargetGateway = null;
         }
     }
 
@@ -142,9 +190,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ReplicationPairConfigDetails> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

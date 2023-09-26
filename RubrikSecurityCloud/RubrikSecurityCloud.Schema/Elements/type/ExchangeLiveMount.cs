@@ -110,57 +110,90 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: UUID! (scalar)
         if (this.CdmId != null) {
-            s += ind + "cdmId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cdmId\n" ;
+            } else {
+                s += ind + "cdmId\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.Boolean? IsReady
         // GraphQL -> isReady: Boolean! (scalar)
         if (this.IsReady != null) {
-            s += ind + "isReady\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isReady\n" ;
+            } else {
+                s += ind + "isReady\n" ;
+            }
         }
         //      C# -> System.String? NodeCompositeId
         // GraphQL -> nodeCompositeId: String! (scalar)
         if (this.NodeCompositeId != null) {
-            s += ind + "nodeCompositeId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "nodeCompositeId\n" ;
+            } else {
+                s += ind + "nodeCompositeId\n" ;
+            }
         }
         //      C# -> System.String? NodeIp
         // GraphQL -> nodeIp: String! (scalar)
         if (this.NodeIp != null) {
-            s += ind + "nodeIp\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "nodeIp\n" ;
+            } else {
+                s += ind + "nodeIp\n" ;
+            }
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
         if (this.Cluster != null) {
-            var fspec = this.Cluster.AsFieldSpec(indent+1);
+            var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> ExchangeDatabase? SourceDatabase
         // GraphQL -> sourceDatabase: ExchangeDatabase (type)
         if (this.SourceDatabase != null) {
-            var fspec = this.SourceDatabase.AsFieldSpec(indent+1);
+            var fspec = this.SourceDatabase.AsFieldSpec(conf.Child("sourceDatabase"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "sourceDatabase {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "sourceDatabase {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> CdmSnapshot? SourceSnapshot
         // GraphQL -> sourceSnapshot: CdmSnapshot! (type)
         if (this.SourceSnapshot != null) {
-            var fspec = this.SourceSnapshot.AsFieldSpec(indent+1);
+            var fspec = this.SourceSnapshot.AsFieldSpec(conf.Child("sourceSnapshot"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "sourceSnapshot {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "sourceSnapshot {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -172,54 +205,145 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: UUID! (scalar)
-        if (this.CdmId == null && ec.Includes("cdmId",true))
+        if (ec.Includes("cdmId",true))
         {
-            this.CdmId = "FETCH";
+            if(this.CdmId == null) {
+
+                this.CdmId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CdmId != null && ec.Excludes("cdmId",true))
+        {
+            this.CdmId = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.Boolean? IsReady
         // GraphQL -> isReady: Boolean! (scalar)
-        if (this.IsReady == null && ec.Includes("isReady",true))
+        if (ec.Includes("isReady",true))
         {
-            this.IsReady = true;
+            if(this.IsReady == null) {
+
+                this.IsReady = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsReady != null && ec.Excludes("isReady",true))
+        {
+            this.IsReady = null;
         }
         //      C# -> System.String? NodeCompositeId
         // GraphQL -> nodeCompositeId: String! (scalar)
-        if (this.NodeCompositeId == null && ec.Includes("nodeCompositeId",true))
+        if (ec.Includes("nodeCompositeId",true))
         {
-            this.NodeCompositeId = "FETCH";
+            if(this.NodeCompositeId == null) {
+
+                this.NodeCompositeId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NodeCompositeId != null && ec.Excludes("nodeCompositeId",true))
+        {
+            this.NodeCompositeId = null;
         }
         //      C# -> System.String? NodeIp
         // GraphQL -> nodeIp: String! (scalar)
-        if (this.NodeIp == null && ec.Includes("nodeIp",true))
+        if (ec.Includes("nodeIp",true))
         {
-            this.NodeIp = "FETCH";
+            if(this.NodeIp == null) {
+
+                this.NodeIp = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NodeIp != null && ec.Excludes("nodeIp",true))
+        {
+            this.NodeIp = null;
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
-        if (this.Cluster == null && ec.Includes("cluster",false))
+        if (ec.Includes("cluster",false))
         {
-            this.Cluster = new Cluster();
-            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+            if(this.Cluster == null) {
+
+                this.Cluster = new Cluster();
+                this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+
+            } else {
+
+                this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+
+            }
+        }
+        else if (this.Cluster != null && ec.Excludes("cluster",false))
+        {
+            this.Cluster = null;
         }
         //      C# -> ExchangeDatabase? SourceDatabase
         // GraphQL -> sourceDatabase: ExchangeDatabase (type)
-        if (this.SourceDatabase == null && ec.Includes("sourceDatabase",false))
+        if (ec.Includes("sourceDatabase",false))
         {
-            this.SourceDatabase = new ExchangeDatabase();
-            this.SourceDatabase.ApplyExploratoryFieldSpec(ec.NewChild("sourceDatabase"));
+            if(this.SourceDatabase == null) {
+
+                this.SourceDatabase = new ExchangeDatabase();
+                this.SourceDatabase.ApplyExploratoryFieldSpec(ec.NewChild("sourceDatabase"));
+
+            } else {
+
+                this.SourceDatabase.ApplyExploratoryFieldSpec(ec.NewChild("sourceDatabase"));
+
+            }
+        }
+        else if (this.SourceDatabase != null && ec.Excludes("sourceDatabase",false))
+        {
+            this.SourceDatabase = null;
         }
         //      C# -> CdmSnapshot? SourceSnapshot
         // GraphQL -> sourceSnapshot: CdmSnapshot! (type)
-        if (this.SourceSnapshot == null && ec.Includes("sourceSnapshot",false))
+        if (ec.Includes("sourceSnapshot",false))
         {
-            this.SourceSnapshot = new CdmSnapshot();
-            this.SourceSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("sourceSnapshot"));
+            if(this.SourceSnapshot == null) {
+
+                this.SourceSnapshot = new CdmSnapshot();
+                this.SourceSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("sourceSnapshot"));
+
+            } else {
+
+                this.SourceSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("sourceSnapshot"));
+
+            }
+        }
+        else if (this.SourceSnapshot != null && ec.Excludes("sourceSnapshot",false))
+        {
+            this.SourceSnapshot = null;
         }
     }
 
@@ -246,9 +370,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ExchangeLiveMount> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

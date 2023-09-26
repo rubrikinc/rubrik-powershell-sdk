@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> ClusterConnectionStatus? SourceAndRubrik
         // GraphQL -> sourceAndRubrik: ClusterConnectionStatus! (enum)
         if (this.SourceAndRubrik != null) {
-            s += ind + "sourceAndRubrik\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sourceAndRubrik\n" ;
+            } else {
+                s += ind + "sourceAndRubrik\n" ;
+            }
         }
         //      C# -> ConnectionStatusType? SourceAndTarget
         // GraphQL -> sourceAndTarget: ConnectionStatusType! (enum)
         if (this.SourceAndTarget != null) {
-            s += ind + "sourceAndTarget\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sourceAndTarget\n" ;
+            } else {
+                s += ind + "sourceAndTarget\n" ;
+            }
         }
         //      C# -> ClusterConnectionStatus? TargetAndRubrik
         // GraphQL -> targetAndRubrik: ClusterConnectionStatus! (enum)
         if (this.TargetAndRubrik != null) {
-            s += ind + "targetAndRubrik\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "targetAndRubrik\n" ;
+            } else {
+                s += ind + "targetAndRubrik\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> ClusterConnectionStatus? SourceAndRubrik
         // GraphQL -> sourceAndRubrik: ClusterConnectionStatus! (enum)
-        if (this.SourceAndRubrik == null && ec.Includes("sourceAndRubrik",true))
+        if (ec.Includes("sourceAndRubrik",true))
         {
-            this.SourceAndRubrik = new ClusterConnectionStatus();
+            if(this.SourceAndRubrik == null) {
+
+                this.SourceAndRubrik = new ClusterConnectionStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SourceAndRubrik != null && ec.Excludes("sourceAndRubrik",true))
+        {
+            this.SourceAndRubrik = null;
         }
         //      C# -> ConnectionStatusType? SourceAndTarget
         // GraphQL -> sourceAndTarget: ConnectionStatusType! (enum)
-        if (this.SourceAndTarget == null && ec.Includes("sourceAndTarget",true))
+        if (ec.Includes("sourceAndTarget",true))
         {
-            this.SourceAndTarget = new ConnectionStatusType();
+            if(this.SourceAndTarget == null) {
+
+                this.SourceAndTarget = new ConnectionStatusType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SourceAndTarget != null && ec.Excludes("sourceAndTarget",true))
+        {
+            this.SourceAndTarget = null;
         }
         //      C# -> ClusterConnectionStatus? TargetAndRubrik
         // GraphQL -> targetAndRubrik: ClusterConnectionStatus! (enum)
-        if (this.TargetAndRubrik == null && ec.Includes("targetAndRubrik",true))
+        if (ec.Includes("targetAndRubrik",true))
         {
-            this.TargetAndRubrik = new ClusterConnectionStatus();
+            if(this.TargetAndRubrik == null) {
+
+                this.TargetAndRubrik = new ClusterConnectionStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TargetAndRubrik != null && ec.Excludes("targetAndRubrik",true))
+        {
+            this.TargetAndRubrik = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ConnectionStatusDetails> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -56,21 +56,30 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Single? UsedCapacity
         // GraphQL -> usedCapacity: Float! (scalar)
         if (this.UsedCapacity != null) {
-            s += ind + "usedCapacity\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "usedCapacity\n" ;
+            } else {
+                s += ind + "usedCapacity\n" ;
+            }
         }
         //      C# -> RcvEntitlement? Entitlement
         // GraphQL -> entitlement: RcvEntitlement (type)
         if (this.Entitlement != null) {
-            var fspec = this.Entitlement.AsFieldSpec(indent+1);
+            var fspec = this.Entitlement.AsFieldSpec(conf.Child("entitlement"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "entitlement {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "entitlement {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -82,16 +91,39 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Single? UsedCapacity
         // GraphQL -> usedCapacity: Float! (scalar)
-        if (this.UsedCapacity == null && ec.Includes("usedCapacity",true))
+        if (ec.Includes("usedCapacity",true))
         {
-            this.UsedCapacity = new System.Single();
+            if(this.UsedCapacity == null) {
+
+                this.UsedCapacity = new System.Single();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UsedCapacity != null && ec.Excludes("usedCapacity",true))
+        {
+            this.UsedCapacity = null;
         }
         //      C# -> RcvEntitlement? Entitlement
         // GraphQL -> entitlement: RcvEntitlement (type)
-        if (this.Entitlement == null && ec.Includes("entitlement",false))
+        if (ec.Includes("entitlement",false))
         {
-            this.Entitlement = new RcvEntitlement();
-            this.Entitlement.ApplyExploratoryFieldSpec(ec.NewChild("entitlement"));
+            if(this.Entitlement == null) {
+
+                this.Entitlement = new RcvEntitlement();
+                this.Entitlement.ApplyExploratoryFieldSpec(ec.NewChild("entitlement"));
+
+            } else {
+
+                this.Entitlement.ApplyExploratoryFieldSpec(ec.NewChild("entitlement"));
+
+            }
+        }
+        else if (this.Entitlement != null && ec.Excludes("entitlement",false))
+        {
+            this.Entitlement = null;
         }
     }
 
@@ -118,9 +150,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<RcvEntitlementsUsageDetails> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

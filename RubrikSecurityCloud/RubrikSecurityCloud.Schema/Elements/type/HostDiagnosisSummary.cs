@@ -47,16 +47,21 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<HostConnectivitySummary>? Connectivity
         // GraphQL -> connectivity: [HostConnectivitySummary!]! (type)
         if (this.Connectivity != null) {
-            var fspec = this.Connectivity.AsFieldSpec(indent+1);
+            var fspec = this.Connectivity.AsFieldSpec(conf.Child("connectivity"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "connectivity {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "connectivity {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -68,10 +73,22 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<HostConnectivitySummary>? Connectivity
         // GraphQL -> connectivity: [HostConnectivitySummary!]! (type)
-        if (this.Connectivity == null && ec.Includes("connectivity",false))
+        if (ec.Includes("connectivity",false))
         {
-            this.Connectivity = new List<HostConnectivitySummary>();
-            this.Connectivity.ApplyExploratoryFieldSpec(ec.NewChild("connectivity"));
+            if(this.Connectivity == null) {
+
+                this.Connectivity = new List<HostConnectivitySummary>();
+                this.Connectivity.ApplyExploratoryFieldSpec(ec.NewChild("connectivity"));
+
+            } else {
+
+                this.Connectivity.ApplyExploratoryFieldSpec(ec.NewChild("connectivity"));
+
+            }
+        }
+        else if (this.Connectivity != null && ec.Excludes("connectivity",false))
+        {
+            this.Connectivity = null;
         }
     }
 
@@ -98,9 +115,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<HostDiagnosisSummary> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

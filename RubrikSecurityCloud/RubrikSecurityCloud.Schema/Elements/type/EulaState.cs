@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Boolean? IsAccepted
         // GraphQL -> isAccepted: Boolean! (scalar)
         if (this.IsAccepted != null) {
-            s += ind + "isAccepted\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isAccepted\n" ;
+            } else {
+                s += ind + "isAccepted\n" ;
+            }
         }
         //      C# -> System.Boolean? IsPactsafeEnabled
         // GraphQL -> isPactsafeEnabled: Boolean! (scalar)
         if (this.IsPactsafeEnabled != null) {
-            s += ind + "isPactsafeEnabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isPactsafeEnabled\n" ;
+            } else {
+                s += ind + "isPactsafeEnabled\n" ;
+            }
         }
         //      C# -> System.Boolean? IsPactsafeV2Enabled
         // GraphQL -> isPactsafeV2Enabled: Boolean! (scalar)
         if (this.IsPactsafeV2Enabled != null) {
-            s += ind + "isPactsafeV2Enabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isPactsafeV2Enabled\n" ;
+            } else {
+                s += ind + "isPactsafeV2Enabled\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Boolean? IsAccepted
         // GraphQL -> isAccepted: Boolean! (scalar)
-        if (this.IsAccepted == null && ec.Includes("isAccepted",true))
+        if (ec.Includes("isAccepted",true))
         {
-            this.IsAccepted = true;
+            if(this.IsAccepted == null) {
+
+                this.IsAccepted = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAccepted != null && ec.Excludes("isAccepted",true))
+        {
+            this.IsAccepted = null;
         }
         //      C# -> System.Boolean? IsPactsafeEnabled
         // GraphQL -> isPactsafeEnabled: Boolean! (scalar)
-        if (this.IsPactsafeEnabled == null && ec.Includes("isPactsafeEnabled",true))
+        if (ec.Includes("isPactsafeEnabled",true))
         {
-            this.IsPactsafeEnabled = true;
+            if(this.IsPactsafeEnabled == null) {
+
+                this.IsPactsafeEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsPactsafeEnabled != null && ec.Excludes("isPactsafeEnabled",true))
+        {
+            this.IsPactsafeEnabled = null;
         }
         //      C# -> System.Boolean? IsPactsafeV2Enabled
         // GraphQL -> isPactsafeV2Enabled: Boolean! (scalar)
-        if (this.IsPactsafeV2Enabled == null && ec.Includes("isPactsafeV2Enabled",true))
+        if (ec.Includes("isPactsafeV2Enabled",true))
         {
-            this.IsPactsafeV2Enabled = true;
+            if(this.IsPactsafeV2Enabled == null) {
+
+                this.IsPactsafeV2Enabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsPactsafeV2Enabled != null && ec.Excludes("isPactsafeV2Enabled",true))
+        {
+            this.IsPactsafeV2Enabled = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<EulaState> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

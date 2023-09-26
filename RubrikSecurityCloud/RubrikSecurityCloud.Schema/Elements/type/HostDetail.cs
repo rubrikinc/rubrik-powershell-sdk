@@ -155,76 +155,129 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> HostVfdState? HostVfdDriverState
         // GraphQL -> hostVfdDriverState: HostVfdState! (enum)
         if (this.HostVfdDriverState != null) {
-            s += ind + "hostVfdDriverState\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostVfdDriverState\n" ;
+            } else {
+                s += ind + "hostVfdDriverState\n" ;
+            }
         }
         //      C# -> HostVfdInstallConfig? HostVfdEnabled
         // GraphQL -> hostVfdEnabled: HostVfdInstallConfig (enum)
         if (this.HostVfdEnabled != null) {
-            s += ind + "hostVfdEnabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostVfdEnabled\n" ;
+            } else {
+                s += ind + "hostVfdEnabled\n" ;
+            }
         }
         //      C# -> System.String? AgentId
         // GraphQL -> agentId: String (scalar)
         if (this.AgentId != null) {
-            s += ind + "agentId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "agentId\n" ;
+            } else {
+                s += ind + "agentId\n" ;
+            }
         }
         //      C# -> System.Boolean? CompressionEnabled
         // GraphQL -> compressionEnabled: Boolean (scalar)
         if (this.CompressionEnabled != null) {
-            s += ind + "compressionEnabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "compressionEnabled\n" ;
+            } else {
+                s += ind + "compressionEnabled\n" ;
+            }
         }
         //      C# -> System.String? HostDomainId
         // GraphQL -> hostDomainId: String (scalar)
         if (this.HostDomainId != null) {
-            s += ind + "hostDomainId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostDomainId\n" ;
+            } else {
+                s += ind + "hostDomainId\n" ;
+            }
         }
         //      C# -> System.String? HostDomainName
         // GraphQL -> hostDomainName: String (scalar)
         if (this.HostDomainName != null) {
-            s += ind + "hostDomainName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostDomainName\n" ;
+            } else {
+                s += ind + "hostDomainName\n" ;
+            }
         }
         //      C# -> System.Boolean? IsOracleHost
         // GraphQL -> isOracleHost: Boolean (scalar)
         if (this.IsOracleHost != null) {
-            s += ind + "isOracleHost\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isOracleHost\n" ;
+            } else {
+                s += ind + "isOracleHost\n" ;
+            }
         }
         //      C# -> System.Boolean? IsRefreshPaused
         // GraphQL -> isRefreshPaused: Boolean (scalar)
         if (this.IsRefreshPaused != null) {
-            s += ind + "isRefreshPaused\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isRefreshPaused\n" ;
+            } else {
+                s += ind + "isRefreshPaused\n" ;
+            }
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
         if (this.IsRelic != null) {
-            s += ind + "isRelic\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isRelic\n" ;
+            } else {
+                s += ind + "isRelic\n" ;
+            }
         }
         //      C# -> System.Boolean? MssqlCbtDriverInstalled
         // GraphQL -> mssqlCbtDriverInstalled: Boolean! (scalar)
         if (this.MssqlCbtDriverInstalled != null) {
-            s += ind + "mssqlCbtDriverInstalled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "mssqlCbtDriverInstalled\n" ;
+            } else {
+                s += ind + "mssqlCbtDriverInstalled\n" ;
+            }
         }
         //      C# -> System.String? OracleQueryUser
         // GraphQL -> oracleQueryUser: String (scalar)
         if (this.OracleQueryUser != null) {
-            s += ind + "oracleQueryUser\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "oracleQueryUser\n" ;
+            } else {
+                s += ind + "oracleQueryUser\n" ;
+            }
         }
         //      C# -> System.String? OracleSysDbaUser
         // GraphQL -> oracleSysDbaUser: String (scalar)
         if (this.OracleSysDbaUser != null) {
-            s += ind + "oracleSysDbaUser\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "oracleSysDbaUser\n" ;
+            } else {
+                s += ind + "oracleSysDbaUser\n" ;
+            }
         }
         //      C# -> HostSummary? HostSummary
         // GraphQL -> hostSummary: HostSummary (type)
         if (this.HostSummary != null) {
-            var fspec = this.HostSummary.AsFieldSpec(indent+1);
+            var fspec = this.HostSummary.AsFieldSpec(conf.Child("hostSummary"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "hostSummary {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "hostSummary {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -236,82 +289,226 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> HostVfdState? HostVfdDriverState
         // GraphQL -> hostVfdDriverState: HostVfdState! (enum)
-        if (this.HostVfdDriverState == null && ec.Includes("hostVfdDriverState",true))
+        if (ec.Includes("hostVfdDriverState",true))
         {
-            this.HostVfdDriverState = new HostVfdState();
+            if(this.HostVfdDriverState == null) {
+
+                this.HostVfdDriverState = new HostVfdState();
+
+            } else {
+
+
+            }
+        }
+        else if (this.HostVfdDriverState != null && ec.Excludes("hostVfdDriverState",true))
+        {
+            this.HostVfdDriverState = null;
         }
         //      C# -> HostVfdInstallConfig? HostVfdEnabled
         // GraphQL -> hostVfdEnabled: HostVfdInstallConfig (enum)
-        if (this.HostVfdEnabled == null && ec.Includes("hostVfdEnabled",true))
+        if (ec.Includes("hostVfdEnabled",true))
         {
-            this.HostVfdEnabled = new HostVfdInstallConfig();
+            if(this.HostVfdEnabled == null) {
+
+                this.HostVfdEnabled = new HostVfdInstallConfig();
+
+            } else {
+
+
+            }
+        }
+        else if (this.HostVfdEnabled != null && ec.Excludes("hostVfdEnabled",true))
+        {
+            this.HostVfdEnabled = null;
         }
         //      C# -> System.String? AgentId
         // GraphQL -> agentId: String (scalar)
-        if (this.AgentId == null && ec.Includes("agentId",true))
+        if (ec.Includes("agentId",true))
         {
-            this.AgentId = "FETCH";
+            if(this.AgentId == null) {
+
+                this.AgentId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AgentId != null && ec.Excludes("agentId",true))
+        {
+            this.AgentId = null;
         }
         //      C# -> System.Boolean? CompressionEnabled
         // GraphQL -> compressionEnabled: Boolean (scalar)
-        if (this.CompressionEnabled == null && ec.Includes("compressionEnabled",true))
+        if (ec.Includes("compressionEnabled",true))
         {
-            this.CompressionEnabled = true;
+            if(this.CompressionEnabled == null) {
+
+                this.CompressionEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.CompressionEnabled != null && ec.Excludes("compressionEnabled",true))
+        {
+            this.CompressionEnabled = null;
         }
         //      C# -> System.String? HostDomainId
         // GraphQL -> hostDomainId: String (scalar)
-        if (this.HostDomainId == null && ec.Includes("hostDomainId",true))
+        if (ec.Includes("hostDomainId",true))
         {
-            this.HostDomainId = "FETCH";
+            if(this.HostDomainId == null) {
+
+                this.HostDomainId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.HostDomainId != null && ec.Excludes("hostDomainId",true))
+        {
+            this.HostDomainId = null;
         }
         //      C# -> System.String? HostDomainName
         // GraphQL -> hostDomainName: String (scalar)
-        if (this.HostDomainName == null && ec.Includes("hostDomainName",true))
+        if (ec.Includes("hostDomainName",true))
         {
-            this.HostDomainName = "FETCH";
+            if(this.HostDomainName == null) {
+
+                this.HostDomainName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.HostDomainName != null && ec.Excludes("hostDomainName",true))
+        {
+            this.HostDomainName = null;
         }
         //      C# -> System.Boolean? IsOracleHost
         // GraphQL -> isOracleHost: Boolean (scalar)
-        if (this.IsOracleHost == null && ec.Includes("isOracleHost",true))
+        if (ec.Includes("isOracleHost",true))
         {
-            this.IsOracleHost = true;
+            if(this.IsOracleHost == null) {
+
+                this.IsOracleHost = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsOracleHost != null && ec.Excludes("isOracleHost",true))
+        {
+            this.IsOracleHost = null;
         }
         //      C# -> System.Boolean? IsRefreshPaused
         // GraphQL -> isRefreshPaused: Boolean (scalar)
-        if (this.IsRefreshPaused == null && ec.Includes("isRefreshPaused",true))
+        if (ec.Includes("isRefreshPaused",true))
         {
-            this.IsRefreshPaused = true;
+            if(this.IsRefreshPaused == null) {
+
+                this.IsRefreshPaused = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsRefreshPaused != null && ec.Excludes("isRefreshPaused",true))
+        {
+            this.IsRefreshPaused = null;
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
-        if (this.IsRelic == null && ec.Includes("isRelic",true))
+        if (ec.Includes("isRelic",true))
         {
-            this.IsRelic = true;
+            if(this.IsRelic == null) {
+
+                this.IsRelic = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsRelic != null && ec.Excludes("isRelic",true))
+        {
+            this.IsRelic = null;
         }
         //      C# -> System.Boolean? MssqlCbtDriverInstalled
         // GraphQL -> mssqlCbtDriverInstalled: Boolean! (scalar)
-        if (this.MssqlCbtDriverInstalled == null && ec.Includes("mssqlCbtDriverInstalled",true))
+        if (ec.Includes("mssqlCbtDriverInstalled",true))
         {
-            this.MssqlCbtDriverInstalled = true;
+            if(this.MssqlCbtDriverInstalled == null) {
+
+                this.MssqlCbtDriverInstalled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.MssqlCbtDriverInstalled != null && ec.Excludes("mssqlCbtDriverInstalled",true))
+        {
+            this.MssqlCbtDriverInstalled = null;
         }
         //      C# -> System.String? OracleQueryUser
         // GraphQL -> oracleQueryUser: String (scalar)
-        if (this.OracleQueryUser == null && ec.Includes("oracleQueryUser",true))
+        if (ec.Includes("oracleQueryUser",true))
         {
-            this.OracleQueryUser = "FETCH";
+            if(this.OracleQueryUser == null) {
+
+                this.OracleQueryUser = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OracleQueryUser != null && ec.Excludes("oracleQueryUser",true))
+        {
+            this.OracleQueryUser = null;
         }
         //      C# -> System.String? OracleSysDbaUser
         // GraphQL -> oracleSysDbaUser: String (scalar)
-        if (this.OracleSysDbaUser == null && ec.Includes("oracleSysDbaUser",true))
+        if (ec.Includes("oracleSysDbaUser",true))
         {
-            this.OracleSysDbaUser = "FETCH";
+            if(this.OracleSysDbaUser == null) {
+
+                this.OracleSysDbaUser = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OracleSysDbaUser != null && ec.Excludes("oracleSysDbaUser",true))
+        {
+            this.OracleSysDbaUser = null;
         }
         //      C# -> HostSummary? HostSummary
         // GraphQL -> hostSummary: HostSummary (type)
-        if (this.HostSummary == null && ec.Includes("hostSummary",false))
+        if (ec.Includes("hostSummary",false))
         {
-            this.HostSummary = new HostSummary();
-            this.HostSummary.ApplyExploratoryFieldSpec(ec.NewChild("hostSummary"));
+            if(this.HostSummary == null) {
+
+                this.HostSummary = new HostSummary();
+                this.HostSummary.ApplyExploratoryFieldSpec(ec.NewChild("hostSummary"));
+
+            } else {
+
+                this.HostSummary.ApplyExploratoryFieldSpec(ec.NewChild("hostSummary"));
+
+            }
+        }
+        else if (this.HostSummary != null && ec.Excludes("hostSummary",false))
+        {
+            this.HostSummary = null;
         }
     }
 
@@ -338,9 +535,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<HostDetail> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

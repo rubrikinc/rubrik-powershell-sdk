@@ -128,61 +128,102 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? BackupId
         // GraphQL -> backupId: Long (scalar)
         if (this.BackupId != null) {
-            s += ind + "backupId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "backupId\n" ;
+            } else {
+                s += ind + "backupId\n" ;
+            }
         }
         //      C# -> System.Int64? BackupSizeInBytes
         // GraphQL -> backupSizeInBytes: Long (scalar)
         if (this.BackupSizeInBytes != null) {
-            s += ind + "backupSizeInBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "backupSizeInBytes\n" ;
+            } else {
+                s += ind + "backupSizeInBytes\n" ;
+            }
         }
         //      C# -> System.String? DestinationPath
         // GraphQL -> destinationPath: String (scalar)
         if (this.DestinationPath != null) {
-            s += ind + "destinationPath\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "destinationPath\n" ;
+            } else {
+                s += ind + "destinationPath\n" ;
+            }
         }
         //      C# -> System.String? DestinationType
         // GraphQL -> destinationType: String (scalar)
         if (this.DestinationType != null) {
-            s += ind + "destinationType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "destinationType\n" ;
+            } else {
+                s += ind + "destinationType\n" ;
+            }
         }
         //      C# -> System.String? ExternalBackupId
         // GraphQL -> externalBackupId: String (scalar)
         if (this.ExternalBackupId != null) {
-            s += ind + "externalBackupId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "externalBackupId\n" ;
+            } else {
+                s += ind + "externalBackupId\n" ;
+            }
         }
         //      C# -> System.String? HostName
         // GraphQL -> hostName: String (scalar)
         if (this.HostName != null) {
-            s += ind + "hostName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostName\n" ;
+            } else {
+                s += ind + "hostName\n" ;
+            }
         }
         //      C# -> System.String? ServiceTypeName
         // GraphQL -> serviceTypeName: String (scalar)
         if (this.ServiceTypeName != null) {
-            s += ind + "serviceTypeName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "serviceTypeName\n" ;
+            } else {
+                s += ind + "serviceTypeName\n" ;
+            }
         }
         //      C# -> System.Int64? SourceId
         // GraphQL -> sourceId: Long (scalar)
         if (this.SourceId != null) {
-            s += ind + "sourceId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sourceId\n" ;
+            } else {
+                s += ind + "sourceId\n" ;
+            }
         }
         //      C# -> System.String? SourceTypeName
         // GraphQL -> sourceTypeName: String (scalar)
         if (this.SourceTypeName != null) {
-            s += ind + "sourceTypeName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sourceTypeName\n" ;
+            } else {
+                s += ind + "sourceTypeName\n" ;
+            }
         }
         //      C# -> SapHanaLogPositionInterval? LogPositionInterval
         // GraphQL -> logPositionInterval: SapHanaLogPositionInterval (type)
         if (this.LogPositionInterval != null) {
-            var fspec = this.LogPositionInterval.AsFieldSpec(indent+1);
+            var fspec = this.LogPositionInterval.AsFieldSpec(conf.Child("logPositionInterval"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "logPositionInterval {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "logPositionInterval {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -194,64 +235,175 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? BackupId
         // GraphQL -> backupId: Long (scalar)
-        if (this.BackupId == null && ec.Includes("backupId",true))
+        if (ec.Includes("backupId",true))
         {
-            this.BackupId = new System.Int64();
+            if(this.BackupId == null) {
+
+                this.BackupId = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.BackupId != null && ec.Excludes("backupId",true))
+        {
+            this.BackupId = null;
         }
         //      C# -> System.Int64? BackupSizeInBytes
         // GraphQL -> backupSizeInBytes: Long (scalar)
-        if (this.BackupSizeInBytes == null && ec.Includes("backupSizeInBytes",true))
+        if (ec.Includes("backupSizeInBytes",true))
         {
-            this.BackupSizeInBytes = new System.Int64();
+            if(this.BackupSizeInBytes == null) {
+
+                this.BackupSizeInBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.BackupSizeInBytes != null && ec.Excludes("backupSizeInBytes",true))
+        {
+            this.BackupSizeInBytes = null;
         }
         //      C# -> System.String? DestinationPath
         // GraphQL -> destinationPath: String (scalar)
-        if (this.DestinationPath == null && ec.Includes("destinationPath",true))
+        if (ec.Includes("destinationPath",true))
         {
-            this.DestinationPath = "FETCH";
+            if(this.DestinationPath == null) {
+
+                this.DestinationPath = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DestinationPath != null && ec.Excludes("destinationPath",true))
+        {
+            this.DestinationPath = null;
         }
         //      C# -> System.String? DestinationType
         // GraphQL -> destinationType: String (scalar)
-        if (this.DestinationType == null && ec.Includes("destinationType",true))
+        if (ec.Includes("destinationType",true))
         {
-            this.DestinationType = "FETCH";
+            if(this.DestinationType == null) {
+
+                this.DestinationType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DestinationType != null && ec.Excludes("destinationType",true))
+        {
+            this.DestinationType = null;
         }
         //      C# -> System.String? ExternalBackupId
         // GraphQL -> externalBackupId: String (scalar)
-        if (this.ExternalBackupId == null && ec.Includes("externalBackupId",true))
+        if (ec.Includes("externalBackupId",true))
         {
-            this.ExternalBackupId = "FETCH";
+            if(this.ExternalBackupId == null) {
+
+                this.ExternalBackupId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExternalBackupId != null && ec.Excludes("externalBackupId",true))
+        {
+            this.ExternalBackupId = null;
         }
         //      C# -> System.String? HostName
         // GraphQL -> hostName: String (scalar)
-        if (this.HostName == null && ec.Includes("hostName",true))
+        if (ec.Includes("hostName",true))
         {
-            this.HostName = "FETCH";
+            if(this.HostName == null) {
+
+                this.HostName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.HostName != null && ec.Excludes("hostName",true))
+        {
+            this.HostName = null;
         }
         //      C# -> System.String? ServiceTypeName
         // GraphQL -> serviceTypeName: String (scalar)
-        if (this.ServiceTypeName == null && ec.Includes("serviceTypeName",true))
+        if (ec.Includes("serviceTypeName",true))
         {
-            this.ServiceTypeName = "FETCH";
+            if(this.ServiceTypeName == null) {
+
+                this.ServiceTypeName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ServiceTypeName != null && ec.Excludes("serviceTypeName",true))
+        {
+            this.ServiceTypeName = null;
         }
         //      C# -> System.Int64? SourceId
         // GraphQL -> sourceId: Long (scalar)
-        if (this.SourceId == null && ec.Includes("sourceId",true))
+        if (ec.Includes("sourceId",true))
         {
-            this.SourceId = new System.Int64();
+            if(this.SourceId == null) {
+
+                this.SourceId = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SourceId != null && ec.Excludes("sourceId",true))
+        {
+            this.SourceId = null;
         }
         //      C# -> System.String? SourceTypeName
         // GraphQL -> sourceTypeName: String (scalar)
-        if (this.SourceTypeName == null && ec.Includes("sourceTypeName",true))
+        if (ec.Includes("sourceTypeName",true))
         {
-            this.SourceTypeName = "FETCH";
+            if(this.SourceTypeName == null) {
+
+                this.SourceTypeName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SourceTypeName != null && ec.Excludes("sourceTypeName",true))
+        {
+            this.SourceTypeName = null;
         }
         //      C# -> SapHanaLogPositionInterval? LogPositionInterval
         // GraphQL -> logPositionInterval: SapHanaLogPositionInterval (type)
-        if (this.LogPositionInterval == null && ec.Includes("logPositionInterval",false))
+        if (ec.Includes("logPositionInterval",false))
         {
-            this.LogPositionInterval = new SapHanaLogPositionInterval();
-            this.LogPositionInterval.ApplyExploratoryFieldSpec(ec.NewChild("logPositionInterval"));
+            if(this.LogPositionInterval == null) {
+
+                this.LogPositionInterval = new SapHanaLogPositionInterval();
+                this.LogPositionInterval.ApplyExploratoryFieldSpec(ec.NewChild("logPositionInterval"));
+
+            } else {
+
+                this.LogPositionInterval.ApplyExploratoryFieldSpec(ec.NewChild("logPositionInterval"));
+
+            }
+        }
+        else if (this.LogPositionInterval != null && ec.Excludes("logPositionInterval",false))
+        {
+            this.LogPositionInterval = null;
         }
     }
 
@@ -278,9 +430,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SapHanaLogBackupFiles> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

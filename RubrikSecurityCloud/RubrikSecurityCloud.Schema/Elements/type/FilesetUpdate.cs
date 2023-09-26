@@ -83,34 +83,55 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? ConfiguredSlaDomainId
         // GraphQL -> configuredSlaDomainId: String (scalar)
         if (this.ConfiguredSlaDomainId != null) {
-            s += ind + "configuredSlaDomainId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "configuredSlaDomainId\n" ;
+            } else {
+                s += ind + "configuredSlaDomainId\n" ;
+            }
         }
         //      C# -> System.Boolean? ForceFull
         // GraphQL -> forceFull: Boolean (scalar)
         if (this.ForceFull != null) {
-            s += ind + "forceFull\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "forceFull\n" ;
+            } else {
+                s += ind + "forceFull\n" ;
+            }
         }
         //      C# -> List<System.Int32>? ForceFullPartitionIds
         // GraphQL -> forceFullPartitionIds: [Int!]! (scalar)
         if (this.ForceFullPartitionIds != null) {
-            s += ind + "forceFullPartitionIds\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "forceFullPartitionIds\n" ;
+            } else {
+                s += ind + "forceFullPartitionIds\n" ;
+            }
         }
         //      C# -> System.String? SnapMirrorLabelForFullBackup
         // GraphQL -> snapMirrorLabelForFullBackup: String (scalar)
         if (this.SnapMirrorLabelForFullBackup != null) {
-            s += ind + "snapMirrorLabelForFullBackup\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapMirrorLabelForFullBackup\n" ;
+            } else {
+                s += ind + "snapMirrorLabelForFullBackup\n" ;
+            }
         }
         //      C# -> System.String? SnapMirrorLabelForIncrementalBackup
         // GraphQL -> snapMirrorLabelForIncrementalBackup: String (scalar)
         if (this.SnapMirrorLabelForIncrementalBackup != null) {
-            s += ind + "snapMirrorLabelForIncrementalBackup\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapMirrorLabelForIncrementalBackup\n" ;
+            } else {
+                s += ind + "snapMirrorLabelForIncrementalBackup\n" ;
+            }
         }
         return s;
     }
@@ -121,33 +142,88 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? ConfiguredSlaDomainId
         // GraphQL -> configuredSlaDomainId: String (scalar)
-        if (this.ConfiguredSlaDomainId == null && ec.Includes("configuredSlaDomainId",true))
+        if (ec.Includes("configuredSlaDomainId",true))
         {
-            this.ConfiguredSlaDomainId = "FETCH";
+            if(this.ConfiguredSlaDomainId == null) {
+
+                this.ConfiguredSlaDomainId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ConfiguredSlaDomainId != null && ec.Excludes("configuredSlaDomainId",true))
+        {
+            this.ConfiguredSlaDomainId = null;
         }
         //      C# -> System.Boolean? ForceFull
         // GraphQL -> forceFull: Boolean (scalar)
-        if (this.ForceFull == null && ec.Includes("forceFull",true))
+        if (ec.Includes("forceFull",true))
         {
-            this.ForceFull = true;
+            if(this.ForceFull == null) {
+
+                this.ForceFull = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ForceFull != null && ec.Excludes("forceFull",true))
+        {
+            this.ForceFull = null;
         }
         //      C# -> List<System.Int32>? ForceFullPartitionIds
         // GraphQL -> forceFullPartitionIds: [Int!]! (scalar)
-        if (this.ForceFullPartitionIds == null && ec.Includes("forceFullPartitionIds",true))
+        if (ec.Includes("forceFullPartitionIds",true))
         {
-            this.ForceFullPartitionIds = new List<System.Int32>();
+            if(this.ForceFullPartitionIds == null) {
+
+                this.ForceFullPartitionIds = new List<System.Int32>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ForceFullPartitionIds != null && ec.Excludes("forceFullPartitionIds",true))
+        {
+            this.ForceFullPartitionIds = null;
         }
         //      C# -> System.String? SnapMirrorLabelForFullBackup
         // GraphQL -> snapMirrorLabelForFullBackup: String (scalar)
-        if (this.SnapMirrorLabelForFullBackup == null && ec.Includes("snapMirrorLabelForFullBackup",true))
+        if (ec.Includes("snapMirrorLabelForFullBackup",true))
         {
-            this.SnapMirrorLabelForFullBackup = "FETCH";
+            if(this.SnapMirrorLabelForFullBackup == null) {
+
+                this.SnapMirrorLabelForFullBackup = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapMirrorLabelForFullBackup != null && ec.Excludes("snapMirrorLabelForFullBackup",true))
+        {
+            this.SnapMirrorLabelForFullBackup = null;
         }
         //      C# -> System.String? SnapMirrorLabelForIncrementalBackup
         // GraphQL -> snapMirrorLabelForIncrementalBackup: String (scalar)
-        if (this.SnapMirrorLabelForIncrementalBackup == null && ec.Includes("snapMirrorLabelForIncrementalBackup",true))
+        if (ec.Includes("snapMirrorLabelForIncrementalBackup",true))
         {
-            this.SnapMirrorLabelForIncrementalBackup = "FETCH";
+            if(this.SnapMirrorLabelForIncrementalBackup == null) {
+
+                this.SnapMirrorLabelForIncrementalBackup = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapMirrorLabelForIncrementalBackup != null && ec.Excludes("snapMirrorLabelForIncrementalBackup",true))
+        {
+            this.SnapMirrorLabelForIncrementalBackup = null;
         }
     }
 
@@ -174,9 +250,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<FilesetUpdate> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

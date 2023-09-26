@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<System.String>? ApplicationPdbs
         // GraphQL -> applicationPdbs: [String!]! (scalar)
         if (this.ApplicationPdbs != null) {
-            s += ind + "applicationPdbs\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "applicationPdbs\n" ;
+            } else {
+                s += ind + "applicationPdbs\n" ;
+            }
         }
         //      C# -> System.String? ApplicationRoot
         // GraphQL -> applicationRoot: String! (scalar)
         if (this.ApplicationRoot != null) {
-            s += ind + "applicationRoot\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "applicationRoot\n" ;
+            } else {
+                s += ind + "applicationRoot\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<System.String>? ApplicationPdbs
         // GraphQL -> applicationPdbs: [String!]! (scalar)
-        if (this.ApplicationPdbs == null && ec.Includes("applicationPdbs",true))
+        if (ec.Includes("applicationPdbs",true))
         {
-            this.ApplicationPdbs = new List<System.String>();
+            if(this.ApplicationPdbs == null) {
+
+                this.ApplicationPdbs = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ApplicationPdbs != null && ec.Excludes("applicationPdbs",true))
+        {
+            this.ApplicationPdbs = null;
         }
         //      C# -> System.String? ApplicationRoot
         // GraphQL -> applicationRoot: String! (scalar)
-        if (this.ApplicationRoot == null && ec.Includes("applicationRoot",true))
+        if (ec.Includes("applicationRoot",true))
         {
-            this.ApplicationRoot = "FETCH";
+            if(this.ApplicationRoot == null) {
+
+                this.ApplicationRoot = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ApplicationRoot != null && ec.Excludes("applicationRoot",true))
+        {
+            this.ApplicationRoot = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<OraclePdbApplicationContainer> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

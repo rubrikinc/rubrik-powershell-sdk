@@ -119,62 +119,99 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> FailoverClusterConnectionStatus? ConnectionStatus
         // GraphQL -> connectionStatus: FailoverClusterConnectionStatus! (enum)
         if (this.ConnectionStatus != null) {
-            s += ind + "connectionStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "connectionStatus\n" ;
+            } else {
+                s += ind + "connectionStatus\n" ;
+            }
         }
         //      C# -> FailoverClusterOsType? OperatingSystemType
         // GraphQL -> operatingSystemType: FailoverClusterOsType (enum)
         if (this.OperatingSystemType != null) {
-            s += ind + "operatingSystemType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "operatingSystemType\n" ;
+            } else {
+                s += ind + "operatingSystemType\n" ;
+            }
         }
         //      C# -> SlaAssignment? SlaAssignment
         // GraphQL -> slaAssignment: SlaAssignment (enum)
         if (this.SlaAssignment != null) {
-            s += ind + "slaAssignment\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "slaAssignment\n" ;
+            } else {
+                s += ind + "slaAssignment\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.String? PrimaryClusterId
         // GraphQL -> primaryClusterId: String! (scalar)
         if (this.PrimaryClusterId != null) {
-            s += ind + "primaryClusterId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "primaryClusterId\n" ;
+            } else {
+                s += ind + "primaryClusterId\n" ;
+            }
         }
         //      C# -> EffectiveSlaHolder? EffectiveSlaHolder
         // GraphQL -> effectiveSlaHolder: EffectiveSlaHolder (type)
         if (this.EffectiveSlaHolder != null) {
-            var fspec = this.EffectiveSlaHolder.AsFieldSpec(indent+1);
+            var fspec = this.EffectiveSlaHolder.AsFieldSpec(conf.Child("effectiveSlaHolder"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "effectiveSlaHolder {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "effectiveSlaHolder {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<FailoverClusterNode>? Nodes
         // GraphQL -> nodes: [FailoverClusterNode!]! (type)
         if (this.Nodes != null) {
-            var fspec = this.Nodes.AsFieldSpec(indent+1);
+            var fspec = this.Nodes.AsFieldSpec(conf.Child("nodes"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "nodes {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "nodes {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> SlaAssignable? SlaAssignable
         // GraphQL -> slaAssignable: SlaAssignable (type)
         if (this.SlaAssignable != null) {
-            var fspec = this.SlaAssignable.AsFieldSpec(indent+1);
+            var fspec = this.SlaAssignable.AsFieldSpec(conf.Child("slaAssignable"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "slaAssignable {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "slaAssignable {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -186,60 +223,162 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> FailoverClusterConnectionStatus? ConnectionStatus
         // GraphQL -> connectionStatus: FailoverClusterConnectionStatus! (enum)
-        if (this.ConnectionStatus == null && ec.Includes("connectionStatus",true))
+        if (ec.Includes("connectionStatus",true))
         {
-            this.ConnectionStatus = new FailoverClusterConnectionStatus();
+            if(this.ConnectionStatus == null) {
+
+                this.ConnectionStatus = new FailoverClusterConnectionStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ConnectionStatus != null && ec.Excludes("connectionStatus",true))
+        {
+            this.ConnectionStatus = null;
         }
         //      C# -> FailoverClusterOsType? OperatingSystemType
         // GraphQL -> operatingSystemType: FailoverClusterOsType (enum)
-        if (this.OperatingSystemType == null && ec.Includes("operatingSystemType",true))
+        if (ec.Includes("operatingSystemType",true))
         {
-            this.OperatingSystemType = new FailoverClusterOsType();
+            if(this.OperatingSystemType == null) {
+
+                this.OperatingSystemType = new FailoverClusterOsType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.OperatingSystemType != null && ec.Excludes("operatingSystemType",true))
+        {
+            this.OperatingSystemType = null;
         }
         //      C# -> SlaAssignment? SlaAssignment
         // GraphQL -> slaAssignment: SlaAssignment (enum)
-        if (this.SlaAssignment == null && ec.Includes("slaAssignment",true))
+        if (ec.Includes("slaAssignment",true))
         {
-            this.SlaAssignment = new SlaAssignment();
+            if(this.SlaAssignment == null) {
+
+                this.SlaAssignment = new SlaAssignment();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SlaAssignment != null && ec.Excludes("slaAssignment",true))
+        {
+            this.SlaAssignment = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.String? PrimaryClusterId
         // GraphQL -> primaryClusterId: String! (scalar)
-        if (this.PrimaryClusterId == null && ec.Includes("primaryClusterId",true))
+        if (ec.Includes("primaryClusterId",true))
         {
-            this.PrimaryClusterId = "FETCH";
+            if(this.PrimaryClusterId == null) {
+
+                this.PrimaryClusterId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PrimaryClusterId != null && ec.Excludes("primaryClusterId",true))
+        {
+            this.PrimaryClusterId = null;
         }
         //      C# -> EffectiveSlaHolder? EffectiveSlaHolder
         // GraphQL -> effectiveSlaHolder: EffectiveSlaHolder (type)
-        if (this.EffectiveSlaHolder == null && ec.Includes("effectiveSlaHolder",false))
+        if (ec.Includes("effectiveSlaHolder",false))
         {
-            this.EffectiveSlaHolder = new EffectiveSlaHolder();
-            this.EffectiveSlaHolder.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaHolder"));
+            if(this.EffectiveSlaHolder == null) {
+
+                this.EffectiveSlaHolder = new EffectiveSlaHolder();
+                this.EffectiveSlaHolder.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaHolder"));
+
+            } else {
+
+                this.EffectiveSlaHolder.ApplyExploratoryFieldSpec(ec.NewChild("effectiveSlaHolder"));
+
+            }
+        }
+        else if (this.EffectiveSlaHolder != null && ec.Excludes("effectiveSlaHolder",false))
+        {
+            this.EffectiveSlaHolder = null;
         }
         //      C# -> List<FailoverClusterNode>? Nodes
         // GraphQL -> nodes: [FailoverClusterNode!]! (type)
-        if (this.Nodes == null && ec.Includes("nodes",false))
+        if (ec.Includes("nodes",false))
         {
-            this.Nodes = new List<FailoverClusterNode>();
-            this.Nodes.ApplyExploratoryFieldSpec(ec.NewChild("nodes"));
+            if(this.Nodes == null) {
+
+                this.Nodes = new List<FailoverClusterNode>();
+                this.Nodes.ApplyExploratoryFieldSpec(ec.NewChild("nodes"));
+
+            } else {
+
+                this.Nodes.ApplyExploratoryFieldSpec(ec.NewChild("nodes"));
+
+            }
+        }
+        else if (this.Nodes != null && ec.Excludes("nodes",false))
+        {
+            this.Nodes = null;
         }
         //      C# -> SlaAssignable? SlaAssignable
         // GraphQL -> slaAssignable: SlaAssignable (type)
-        if (this.SlaAssignable == null && ec.Includes("slaAssignable",false))
+        if (ec.Includes("slaAssignable",false))
         {
-            this.SlaAssignable = new SlaAssignable();
-            this.SlaAssignable.ApplyExploratoryFieldSpec(ec.NewChild("slaAssignable"));
+            if(this.SlaAssignable == null) {
+
+                this.SlaAssignable = new SlaAssignable();
+                this.SlaAssignable.ApplyExploratoryFieldSpec(ec.NewChild("slaAssignable"));
+
+            } else {
+
+                this.SlaAssignable.ApplyExploratoryFieldSpec(ec.NewChild("slaAssignable"));
+
+            }
+        }
+        else if (this.SlaAssignable != null && ec.Excludes("slaAssignable",false))
+        {
+            this.SlaAssignable = null;
         }
     }
 
@@ -266,9 +405,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<FailoverClusterSummary> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

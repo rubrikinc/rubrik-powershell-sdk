@@ -12,6 +12,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 using GraphQL;
 using System.Management.Automation.Runspaces;
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
+
 // namespace is RubrikSecurityCloud (and not private)
 // because this class is used by the public cmdlets
 // and is visible to the user
@@ -31,7 +34,28 @@ namespace RubrikSecurityCloud
         internal IRscLogger Logger = null;
         internal string OperationsDir = null;
         internal string CustomOperationsDir = null;
+
+        /// <summary>
+        /// Method that returns the query document as a string.
+        /// It does not explore. It takes a field object as input,
+        /// and returns the query document as a string.
+        /// "query document": the text of the operation: 
+        /// the operation name, the operation arguments,
+        /// and the fields to select for retrieval. For example in
+        /// the final query, it's all the text inside
+        /// query QueryClusterConnection($first: Int ...) {
+        ///         -- query document --
+        /// }
+        /// So it's: the query name, the query arguments, and 
+        /// the field spec.
+        /// </summary>
         internal QueryDocMethod queryDocMethod = null;
+
+        /// <summary>
+        /// Method that builds the field object for this query
+        /// using exploration. It takes for input an exploration context,
+        /// and returns the field object.
+        /// </summary>
         internal QueryFieldSpecMethod queryFieldSpecMethod = null;
 
         /// <summary>
@@ -64,6 +88,13 @@ namespace RubrikSecurityCloud
             this.Logger?.Debug("RscQuery.Init: " + this.ToString());
         }
 
+        /// <summary>
+        /// Invoke the GraphQL query (send it to the API server)
+        /// and return the result as a PowerShell object of
+        /// the appropriate schema type.
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public object Invoke()
         {
             var request = this.GqlRequest();
@@ -83,19 +114,15 @@ namespace RubrikSecurityCloud
         /// <summary>
         /// The name of the underlying GQL operation.
         /// </summary>
-        public RscGqlOperation GqlOperation()
+        internal RscGqlOperation GqlOperation()
         {
             return _gqlOperation;
         }
 
         /// <summary>
-        /// Return documentation links for the Field object.
+        /// Return the flattened list of fields in the Field object.
         /// </summary>
-        public string FieldInfo()
-        {
-            return StringUtils.DocLinkForGqlType(_gqlOperation.ReturnType);
-        }
-
+        /// <returns></returns>
         public List<string> FlattenField()
         {
             return ReflectionUtils.FlattenField(this._gqlOperation.ReturnType);
@@ -106,24 +133,28 @@ namespace RubrikSecurityCloud
         /// </summary>
         public List<VarInfo> Info()
         {
-            List<VarInfo> info = this.Var.Info();
+            List<VarInfo> info = this.Var.Info().Select(v => new VarInfo(
+                "Var." + v.Name, v.Type, v.Description)).ToList();
             info.Add(new VarInfo(
                 "Field",
                 StringUtils.GqlTypeToType(_gqlOperation.ReturnType),
-                FieldInfo()
+                StringUtils.DocLinkForGqlType(_gqlOperation.ReturnType)
             ));
             return info;
         }
 
-        public void VarTemplate()
+        /// <summary>
+        /// Return an example of how the variables can be initialized.
+        /// </summary>
+        public string VarTemplate()
         {
-            Console.WriteLine(this.Var.Example());
+            return this.Var.Example();
         }
 
         /// <summary>
         /// Build the GraphQL request
         /// </summary>
-        public RscGqlRequest GqlRequest()
+        public RscGqlRequest GqlRequest(bool verifyQuery = true)
         {
             _gqlOperation.FieldSpec = this.queryDocMethod(this.Field);
 
@@ -131,7 +162,7 @@ namespace RubrikSecurityCloud
             OperationVariableSet gqlVars = new OperationVariableSet();
             if (this.Var != null && this.Var.Count > 0)
             {
-                gqlVars.Variables = this.Var.Finalize();
+                gqlVars.Variables = verifyQuery ? this.Var.Finalize() : this.Var;
             }
 
             //  GQL override file

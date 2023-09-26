@@ -65,29 +65,42 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<System.String>? AcoParameterErrors
         // GraphQL -> acoParameterErrors: [String!]! (scalar)
         if (this.AcoParameterErrors != null) {
-            s += ind + "acoParameterErrors\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "acoParameterErrors\n" ;
+            } else {
+                s += ind + "acoParameterErrors\n" ;
+            }
         }
         //      C# -> List<OracleAcoParameterDetail>? AcoMap
         // GraphQL -> acoMap: [OracleAcoParameterDetail!]! (type)
         if (this.AcoMap != null) {
-            var fspec = this.AcoMap.AsFieldSpec(indent+1);
+            var fspec = this.AcoMap.AsFieldSpec(conf.Child("acoMap"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "acoMap {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "acoMap {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<OracleAcoValueErrorDetail>? AcoValueValidationErrors
         // GraphQL -> acoValueValidationErrors: [OracleAcoValueErrorDetail!]! (type)
         if (this.AcoValueValidationErrors != null) {
-            var fspec = this.AcoValueValidationErrors.AsFieldSpec(indent+1);
+            var fspec = this.AcoValueValidationErrors.AsFieldSpec(conf.Child("acoValueValidationErrors"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "acoValueValidationErrors {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "acoValueValidationErrors {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -99,23 +112,58 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<System.String>? AcoParameterErrors
         // GraphQL -> acoParameterErrors: [String!]! (scalar)
-        if (this.AcoParameterErrors == null && ec.Includes("acoParameterErrors",true))
+        if (ec.Includes("acoParameterErrors",true))
         {
-            this.AcoParameterErrors = new List<System.String>();
+            if(this.AcoParameterErrors == null) {
+
+                this.AcoParameterErrors = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AcoParameterErrors != null && ec.Excludes("acoParameterErrors",true))
+        {
+            this.AcoParameterErrors = null;
         }
         //      C# -> List<OracleAcoParameterDetail>? AcoMap
         // GraphQL -> acoMap: [OracleAcoParameterDetail!]! (type)
-        if (this.AcoMap == null && ec.Includes("acoMap",false))
+        if (ec.Includes("acoMap",false))
         {
-            this.AcoMap = new List<OracleAcoParameterDetail>();
-            this.AcoMap.ApplyExploratoryFieldSpec(ec.NewChild("acoMap"));
+            if(this.AcoMap == null) {
+
+                this.AcoMap = new List<OracleAcoParameterDetail>();
+                this.AcoMap.ApplyExploratoryFieldSpec(ec.NewChild("acoMap"));
+
+            } else {
+
+                this.AcoMap.ApplyExploratoryFieldSpec(ec.NewChild("acoMap"));
+
+            }
+        }
+        else if (this.AcoMap != null && ec.Excludes("acoMap",false))
+        {
+            this.AcoMap = null;
         }
         //      C# -> List<OracleAcoValueErrorDetail>? AcoValueValidationErrors
         // GraphQL -> acoValueValidationErrors: [OracleAcoValueErrorDetail!]! (type)
-        if (this.AcoValueValidationErrors == null && ec.Includes("acoValueValidationErrors",false))
+        if (ec.Includes("acoValueValidationErrors",false))
         {
-            this.AcoValueValidationErrors = new List<OracleAcoValueErrorDetail>();
-            this.AcoValueValidationErrors.ApplyExploratoryFieldSpec(ec.NewChild("acoValueValidationErrors"));
+            if(this.AcoValueValidationErrors == null) {
+
+                this.AcoValueValidationErrors = new List<OracleAcoValueErrorDetail>();
+                this.AcoValueValidationErrors.ApplyExploratoryFieldSpec(ec.NewChild("acoValueValidationErrors"));
+
+            } else {
+
+                this.AcoValueValidationErrors.ApplyExploratoryFieldSpec(ec.NewChild("acoValueValidationErrors"));
+
+            }
+        }
+        else if (this.AcoValueValidationErrors != null && ec.Excludes("acoValueValidationErrors",false))
+        {
+            this.AcoValueValidationErrors = null;
         }
     }
 
@@ -142,9 +190,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ValidateOracleAcoFileReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

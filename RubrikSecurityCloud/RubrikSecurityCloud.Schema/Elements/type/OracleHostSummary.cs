@@ -119,59 +119,96 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Boolean? HasLogConfigFromSla
         // GraphQL -> hasLogConfigFromSla: Boolean (scalar)
         if (this.HasLogConfigFromSla != null) {
-            s += ind + "hasLogConfigFromSla\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hasLogConfigFromSla\n" ;
+            } else {
+                s += ind + "hasLogConfigFromSla\n" ;
+            }
         }
         //      C# -> System.String? HostId
         // GraphQL -> hostId: String (scalar)
         if (this.HostId != null) {
-            s += ind + "hostId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostId\n" ;
+            } else {
+                s += ind + "hostId\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.Int32? NumDbs
         // GraphQL -> numDbs: Int! (scalar)
         if (this.NumDbs != null) {
-            s += ind + "numDbs\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "numDbs\n" ;
+            } else {
+                s += ind + "numDbs\n" ;
+            }
         }
         //      C# -> System.String? PrimaryClusterId
         // GraphQL -> primaryClusterId: String! (scalar)
         if (this.PrimaryClusterId != null) {
-            s += ind + "primaryClusterId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "primaryClusterId\n" ;
+            } else {
+                s += ind + "primaryClusterId\n" ;
+            }
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         //      C# -> List<ManagedHierarchyObjectAncestor>? InfraPath
         // GraphQL -> infraPath: [ManagedHierarchyObjectAncestor!]! (type)
         if (this.InfraPath != null) {
-            var fspec = this.InfraPath.AsFieldSpec(indent+1);
+            var fspec = this.InfraPath.AsFieldSpec(conf.Child("infraPath"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "infraPath {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "infraPath {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> SlaAssignable? SlaAssignable
         // GraphQL -> slaAssignable: SlaAssignable (type)
         if (this.SlaAssignable != null) {
-            var fspec = this.SlaAssignable.AsFieldSpec(indent+1);
+            var fspec = this.SlaAssignable.AsFieldSpec(conf.Child("slaAssignable"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "slaAssignable {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "slaAssignable {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -183,59 +220,160 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Boolean? HasLogConfigFromSla
         // GraphQL -> hasLogConfigFromSla: Boolean (scalar)
-        if (this.HasLogConfigFromSla == null && ec.Includes("hasLogConfigFromSla",true))
+        if (ec.Includes("hasLogConfigFromSla",true))
         {
-            this.HasLogConfigFromSla = true;
+            if(this.HasLogConfigFromSla == null) {
+
+                this.HasLogConfigFromSla = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.HasLogConfigFromSla != null && ec.Excludes("hasLogConfigFromSla",true))
+        {
+            this.HasLogConfigFromSla = null;
         }
         //      C# -> System.String? HostId
         // GraphQL -> hostId: String (scalar)
-        if (this.HostId == null && ec.Includes("hostId",true))
+        if (ec.Includes("hostId",true))
         {
-            this.HostId = "FETCH";
+            if(this.HostId == null) {
+
+                this.HostId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.HostId != null && ec.Excludes("hostId",true))
+        {
+            this.HostId = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.Int32? NumDbs
         // GraphQL -> numDbs: Int! (scalar)
-        if (this.NumDbs == null && ec.Includes("numDbs",true))
+        if (ec.Includes("numDbs",true))
         {
-            this.NumDbs = Int32.MinValue;
+            if(this.NumDbs == null) {
+
+                this.NumDbs = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.NumDbs != null && ec.Excludes("numDbs",true))
+        {
+            this.NumDbs = null;
         }
         //      C# -> System.String? PrimaryClusterId
         // GraphQL -> primaryClusterId: String! (scalar)
-        if (this.PrimaryClusterId == null && ec.Includes("primaryClusterId",true))
+        if (ec.Includes("primaryClusterId",true))
         {
-            this.PrimaryClusterId = "FETCH";
+            if(this.PrimaryClusterId == null) {
+
+                this.PrimaryClusterId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PrimaryClusterId != null && ec.Excludes("primaryClusterId",true))
+        {
+            this.PrimaryClusterId = null;
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = "FETCH";
+            if(this.Status == null) {
+
+                this.Status = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
         //      C# -> List<ManagedHierarchyObjectAncestor>? InfraPath
         // GraphQL -> infraPath: [ManagedHierarchyObjectAncestor!]! (type)
-        if (this.InfraPath == null && ec.Includes("infraPath",false))
+        if (ec.Includes("infraPath",false))
         {
-            this.InfraPath = new List<ManagedHierarchyObjectAncestor>();
-            this.InfraPath.ApplyExploratoryFieldSpec(ec.NewChild("infraPath"));
+            if(this.InfraPath == null) {
+
+                this.InfraPath = new List<ManagedHierarchyObjectAncestor>();
+                this.InfraPath.ApplyExploratoryFieldSpec(ec.NewChild("infraPath"));
+
+            } else {
+
+                this.InfraPath.ApplyExploratoryFieldSpec(ec.NewChild("infraPath"));
+
+            }
+        }
+        else if (this.InfraPath != null && ec.Excludes("infraPath",false))
+        {
+            this.InfraPath = null;
         }
         //      C# -> SlaAssignable? SlaAssignable
         // GraphQL -> slaAssignable: SlaAssignable (type)
-        if (this.SlaAssignable == null && ec.Includes("slaAssignable",false))
+        if (ec.Includes("slaAssignable",false))
         {
-            this.SlaAssignable = new SlaAssignable();
-            this.SlaAssignable.ApplyExploratoryFieldSpec(ec.NewChild("slaAssignable"));
+            if(this.SlaAssignable == null) {
+
+                this.SlaAssignable = new SlaAssignable();
+                this.SlaAssignable.ApplyExploratoryFieldSpec(ec.NewChild("slaAssignable"));
+
+            } else {
+
+                this.SlaAssignable.ApplyExploratoryFieldSpec(ec.NewChild("slaAssignable"));
+
+            }
+        }
+        else if (this.SlaAssignable != null && ec.Excludes("slaAssignable",false))
+        {
+            this.SlaAssignable = null;
         }
     }
 
@@ -262,9 +400,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<OracleHostSummary> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

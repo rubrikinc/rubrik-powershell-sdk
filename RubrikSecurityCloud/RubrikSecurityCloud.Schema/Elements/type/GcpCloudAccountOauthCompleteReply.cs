@@ -47,16 +47,21 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> GcpOauthUserInfo? UserInfo
         // GraphQL -> userInfo: GcpOauthUserInfo (type)
         if (this.UserInfo != null) {
-            var fspec = this.UserInfo.AsFieldSpec(indent+1);
+            var fspec = this.UserInfo.AsFieldSpec(conf.Child("userInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "userInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "userInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -68,10 +73,22 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> GcpOauthUserInfo? UserInfo
         // GraphQL -> userInfo: GcpOauthUserInfo (type)
-        if (this.UserInfo == null && ec.Includes("userInfo",false))
+        if (ec.Includes("userInfo",false))
         {
-            this.UserInfo = new GcpOauthUserInfo();
-            this.UserInfo.ApplyExploratoryFieldSpec(ec.NewChild("userInfo"));
+            if(this.UserInfo == null) {
+
+                this.UserInfo = new GcpOauthUserInfo();
+                this.UserInfo.ApplyExploratoryFieldSpec(ec.NewChild("userInfo"));
+
+            } else {
+
+                this.UserInfo.ApplyExploratoryFieldSpec(ec.NewChild("userInfo"));
+
+            }
+        }
+        else if (this.UserInfo != null && ec.Excludes("userInfo",false))
+        {
+            this.UserInfo = null;
         }
     }
 
@@ -98,9 +115,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<GcpCloudAccountOauthCompleteReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

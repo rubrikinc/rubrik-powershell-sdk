@@ -47,16 +47,21 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<ClusterHostGroupInfo>? ClusterHostGroupInfo
         // GraphQL -> clusterHostGroupInfo: [ClusterHostGroupInfo!]! (type)
         if (this.ClusterHostGroupInfo != null) {
-            var fspec = this.ClusterHostGroupInfo.AsFieldSpec(indent+1);
+            var fspec = this.ClusterHostGroupInfo.AsFieldSpec(conf.Child("clusterHostGroupInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "clusterHostGroupInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "clusterHostGroupInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -68,10 +73,22 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<ClusterHostGroupInfo>? ClusterHostGroupInfo
         // GraphQL -> clusterHostGroupInfo: [ClusterHostGroupInfo!]! (type)
-        if (this.ClusterHostGroupInfo == null && ec.Includes("clusterHostGroupInfo",false))
+        if (ec.Includes("clusterHostGroupInfo",false))
         {
-            this.ClusterHostGroupInfo = new List<ClusterHostGroupInfo>();
-            this.ClusterHostGroupInfo.ApplyExploratoryFieldSpec(ec.NewChild("clusterHostGroupInfo"));
+            if(this.ClusterHostGroupInfo == null) {
+
+                this.ClusterHostGroupInfo = new List<ClusterHostGroupInfo>();
+                this.ClusterHostGroupInfo.ApplyExploratoryFieldSpec(ec.NewChild("clusterHostGroupInfo"));
+
+            } else {
+
+                this.ClusterHostGroupInfo.ApplyExploratoryFieldSpec(ec.NewChild("clusterHostGroupInfo"));
+
+            }
+        }
+        else if (this.ClusterHostGroupInfo != null && ec.Excludes("clusterHostGroupInfo",false))
+        {
+            this.ClusterHostGroupInfo = null;
         }
     }
 
@@ -98,9 +115,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<VcenterPreAddInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

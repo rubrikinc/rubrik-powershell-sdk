@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> Product? Product
         // GraphQL -> product: Product! (enum)
         if (this.Product != null) {
-            s += ind + "product\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "product\n" ;
+            } else {
+                s += ind + "product\n" ;
+            }
         }
         //      C# -> System.Single? Quantity
         // GraphQL -> quantity: Float! (scalar)
         if (this.Quantity != null) {
-            s += ind + "quantity\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "quantity\n" ;
+            } else {
+                s += ind + "quantity\n" ;
+            }
         }
         //      C# -> DateTime? TermEndDate
         // GraphQL -> termEndDate: DateTime (scalar)
         if (this.TermEndDate != null) {
-            s += ind + "termEndDate\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "termEndDate\n" ;
+            } else {
+                s += ind + "termEndDate\n" ;
+            }
         }
         //      C# -> DateTime? TermStartDate
         // GraphQL -> termStartDate: DateTime (scalar)
         if (this.TermStartDate != null) {
-            s += ind + "termStartDate\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "termStartDate\n" ;
+            } else {
+                s += ind + "termStartDate\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> Product? Product
         // GraphQL -> product: Product! (enum)
-        if (this.Product == null && ec.Includes("product",true))
+        if (ec.Includes("product",true))
         {
-            this.Product = new Product();
+            if(this.Product == null) {
+
+                this.Product = new Product();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Product != null && ec.Excludes("product",true))
+        {
+            this.Product = null;
         }
         //      C# -> System.Single? Quantity
         // GraphQL -> quantity: Float! (scalar)
-        if (this.Quantity == null && ec.Includes("quantity",true))
+        if (ec.Includes("quantity",true))
         {
-            this.Quantity = new System.Single();
+            if(this.Quantity == null) {
+
+                this.Quantity = new System.Single();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Quantity != null && ec.Excludes("quantity",true))
+        {
+            this.Quantity = null;
         }
         //      C# -> DateTime? TermEndDate
         // GraphQL -> termEndDate: DateTime (scalar)
-        if (this.TermEndDate == null && ec.Includes("termEndDate",true))
+        if (ec.Includes("termEndDate",true))
         {
-            this.TermEndDate = new DateTime();
+            if(this.TermEndDate == null) {
+
+                this.TermEndDate = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TermEndDate != null && ec.Excludes("termEndDate",true))
+        {
+            this.TermEndDate = null;
         }
         //      C# -> DateTime? TermStartDate
         // GraphQL -> termStartDate: DateTime (scalar)
-        if (this.TermStartDate == null && ec.Includes("termStartDate",true))
+        if (ec.Includes("termStartDate",true))
         {
-            this.TermStartDate = new DateTime();
+            if(this.TermStartDate == null) {
+
+                this.TermStartDate = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TermStartDate != null && ec.Excludes("termStartDate",true))
+        {
+            this.TermStartDate = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<License> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

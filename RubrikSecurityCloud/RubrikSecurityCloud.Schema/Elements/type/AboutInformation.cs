@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? ApiType
         // GraphQL -> apiType: String! (scalar)
         if (this.ApiType != null) {
-            s += ind + "apiType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "apiType\n" ;
+            } else {
+                s += ind + "apiType\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.String? OsType
         // GraphQL -> osType: String! (scalar)
         if (this.OsType != null) {
-            s += ind + "osType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "osType\n" ;
+            } else {
+                s += ind + "osType\n" ;
+            }
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String! (scalar)
         if (this.Version != null) {
-            s += ind + "version\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "version\n" ;
+            } else {
+                s += ind + "version\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? ApiType
         // GraphQL -> apiType: String! (scalar)
-        if (this.ApiType == null && ec.Includes("apiType",true))
+        if (ec.Includes("apiType",true))
         {
-            this.ApiType = "FETCH";
+            if(this.ApiType == null) {
+
+                this.ApiType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ApiType != null && ec.Excludes("apiType",true))
+        {
+            this.ApiType = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.String? OsType
         // GraphQL -> osType: String! (scalar)
-        if (this.OsType == null && ec.Includes("osType",true))
+        if (ec.Includes("osType",true))
         {
-            this.OsType = "FETCH";
+            if(this.OsType == null) {
+
+                this.OsType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OsType != null && ec.Excludes("osType",true))
+        {
+            this.OsType = null;
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String! (scalar)
-        if (this.Version == null && ec.Includes("version",true))
+        if (ec.Includes("version",true))
         {
-            this.Version = "FETCH";
+            if(this.Version == null) {
+
+                this.Version = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Version != null && ec.Excludes("version",true))
+        {
+            this.Version = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AboutInformation> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -56,21 +56,30 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> CloudAccountFeature? Feature
         // GraphQL -> feature: CloudAccountFeature! (enum)
         if (this.Feature != null) {
-            s += ind + "feature\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "feature\n" ;
+            } else {
+                s += ind + "feature\n" ;
+            }
         }
         //      C# -> List<ExternalArtifactMapReply>? ArtifactsToDeleteField
         // GraphQL -> artifactsToDelete: [ExternalArtifactMapReply!]! (type)
         if (this.ArtifactsToDeleteField != null) {
-            var fspec = this.ArtifactsToDeleteField.AsFieldSpec(indent+1);
+            var fspec = this.ArtifactsToDeleteField.AsFieldSpec(conf.Child("artifactsToDelete"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "artifactsToDelete {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "artifactsToDelete {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -82,16 +91,39 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> CloudAccountFeature? Feature
         // GraphQL -> feature: CloudAccountFeature! (enum)
-        if (this.Feature == null && ec.Includes("feature",true))
+        if (ec.Includes("feature",true))
         {
-            this.Feature = new CloudAccountFeature();
+            if(this.Feature == null) {
+
+                this.Feature = new CloudAccountFeature();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Feature != null && ec.Excludes("feature",true))
+        {
+            this.Feature = null;
         }
         //      C# -> List<ExternalArtifactMapReply>? ArtifactsToDeleteField
         // GraphQL -> artifactsToDelete: [ExternalArtifactMapReply!]! (type)
-        if (this.ArtifactsToDeleteField == null && ec.Includes("artifactsToDelete",false))
+        if (ec.Includes("artifactsToDelete",false))
         {
-            this.ArtifactsToDeleteField = new List<ExternalArtifactMapReply>();
-            this.ArtifactsToDeleteField.ApplyExploratoryFieldSpec(ec.NewChild("artifactsToDelete"));
+            if(this.ArtifactsToDeleteField == null) {
+
+                this.ArtifactsToDeleteField = new List<ExternalArtifactMapReply>();
+                this.ArtifactsToDeleteField.ApplyExploratoryFieldSpec(ec.NewChild("artifactsToDelete"));
+
+            } else {
+
+                this.ArtifactsToDeleteField.ApplyExploratoryFieldSpec(ec.NewChild("artifactsToDelete"));
+
+            }
+        }
+        else if (this.ArtifactsToDeleteField != null && ec.Excludes("artifactsToDelete",false))
+        {
+            this.ArtifactsToDeleteField = null;
         }
     }
 
@@ -118,9 +150,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ArtifactsToDelete> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

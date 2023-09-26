@@ -65,32 +65,45 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> ClusterConnection? ClusterConnection
         // GraphQL -> clusterConnection: ClusterConnection! (type)
         if (this.ClusterConnection != null) {
-            var fspec = this.ClusterConnection.AsFieldSpec(indent+1);
+            var fspec = this.ClusterConnection.AsFieldSpec(conf.Child("clusterConnection"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "clusterConnection {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "clusterConnection {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<ClusterGroupBy>? ClusterGroupByField
         // GraphQL -> clusterGroupBy: [ClusterGroupBy!]! (type)
         if (this.ClusterGroupByField != null) {
-            var fspec = this.ClusterGroupByField.AsFieldSpec(indent+1);
+            var fspec = this.ClusterGroupByField.AsFieldSpec(conf.Child("clusterGroupBy"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "clusterGroupBy {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "clusterGroupBy {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> ClusterGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: ClusterGroupByInfo! (union)
         if (this.GroupByInfo != null) {
-            var fspec = this.GroupByInfo.AsFieldSpec(indent+1);
+            var fspec = this.GroupByInfo.AsFieldSpec(conf.Child("groupByInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -102,25 +115,65 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> ClusterConnection? ClusterConnection
         // GraphQL -> clusterConnection: ClusterConnection! (type)
-        if (this.ClusterConnection == null && ec.Includes("clusterConnection",false))
+        if (ec.Includes("clusterConnection",false))
         {
-            this.ClusterConnection = new ClusterConnection();
-            this.ClusterConnection.ApplyExploratoryFieldSpec(ec.NewChild("clusterConnection"));
+            if(this.ClusterConnection == null) {
+
+                this.ClusterConnection = new ClusterConnection();
+                this.ClusterConnection.ApplyExploratoryFieldSpec(ec.NewChild("clusterConnection"));
+
+            } else {
+
+                this.ClusterConnection.ApplyExploratoryFieldSpec(ec.NewChild("clusterConnection"));
+
+            }
+        }
+        else if (this.ClusterConnection != null && ec.Excludes("clusterConnection",false))
+        {
+            this.ClusterConnection = null;
         }
         //      C# -> List<ClusterGroupBy>? ClusterGroupByField
         // GraphQL -> clusterGroupBy: [ClusterGroupBy!]! (type)
-        if (this.ClusterGroupByField == null && ec.Includes("clusterGroupBy",false))
+        if (ec.Includes("clusterGroupBy",false))
         {
-            this.ClusterGroupByField = new List<ClusterGroupBy>();
-            this.ClusterGroupByField.ApplyExploratoryFieldSpec(ec.NewChild("clusterGroupBy"));
+            if(this.ClusterGroupByField == null) {
+
+                this.ClusterGroupByField = new List<ClusterGroupBy>();
+                this.ClusterGroupByField.ApplyExploratoryFieldSpec(ec.NewChild("clusterGroupBy"));
+
+            } else {
+
+                this.ClusterGroupByField.ApplyExploratoryFieldSpec(ec.NewChild("clusterGroupBy"));
+
+            }
+        }
+        else if (this.ClusterGroupByField != null && ec.Excludes("clusterGroupBy",false))
+        {
+            this.ClusterGroupByField = null;
         }
         //      C# -> ClusterGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: ClusterGroupByInfo! (union)
-        if (this.GroupByInfo == null && ec.Includes("groupByInfo",false))
+        if (ec.Includes("groupByInfo",false))
         {
-            var impls = new List<ClusterGroupByInfo>();
-            impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
-            this.GroupByInfo = (ClusterGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+            if(this.GroupByInfo == null) {
+
+                var impls = new List<ClusterGroupByInfo>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
+                this.GroupByInfo = (ClusterGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<ClusterGroupByInfo>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
+                this.GroupByInfo = (ClusterGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.GroupByInfo != null && ec.Excludes("groupByInfo",false))
+        {
+            this.GroupByInfo = null;
         }
     }
 
@@ -147,9 +200,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ClusterGroupBy> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

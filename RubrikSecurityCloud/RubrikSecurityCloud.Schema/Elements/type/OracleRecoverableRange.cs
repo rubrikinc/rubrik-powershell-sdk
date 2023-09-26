@@ -74,31 +74,48 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> DateTime? BeginTime
         // GraphQL -> beginTime: DateTime (scalar)
         if (this.BeginTime != null) {
-            s += ind + "beginTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "beginTime\n" ;
+            } else {
+                s += ind + "beginTime\n" ;
+            }
         }
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime (scalar)
         if (this.EndTime != null) {
-            s += ind + "endTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "endTime\n" ;
+            } else {
+                s += ind + "endTime\n" ;
+            }
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         //      C# -> List<OracleDbSnapshotSummary>? DbSnapshotSummaries
         // GraphQL -> dbSnapshotSummaries: [OracleDbSnapshotSummary!]! (type)
         if (this.DbSnapshotSummaries != null) {
-            var fspec = this.DbSnapshotSummaries.AsFieldSpec(indent+1);
+            var fspec = this.DbSnapshotSummaries.AsFieldSpec(conf.Child("dbSnapshotSummaries"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "dbSnapshotSummaries {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "dbSnapshotSummaries {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -110,28 +127,73 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> DateTime? BeginTime
         // GraphQL -> beginTime: DateTime (scalar)
-        if (this.BeginTime == null && ec.Includes("beginTime",true))
+        if (ec.Includes("beginTime",true))
         {
-            this.BeginTime = new DateTime();
+            if(this.BeginTime == null) {
+
+                this.BeginTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.BeginTime != null && ec.Excludes("beginTime",true))
+        {
+            this.BeginTime = null;
         }
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime (scalar)
-        if (this.EndTime == null && ec.Includes("endTime",true))
+        if (ec.Includes("endTime",true))
         {
-            this.EndTime = new DateTime();
+            if(this.EndTime == null) {
+
+                this.EndTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EndTime != null && ec.Excludes("endTime",true))
+        {
+            this.EndTime = null;
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = "FETCH";
+            if(this.Status == null) {
+
+                this.Status = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
         //      C# -> List<OracleDbSnapshotSummary>? DbSnapshotSummaries
         // GraphQL -> dbSnapshotSummaries: [OracleDbSnapshotSummary!]! (type)
-        if (this.DbSnapshotSummaries == null && ec.Includes("dbSnapshotSummaries",false))
+        if (ec.Includes("dbSnapshotSummaries",false))
         {
-            this.DbSnapshotSummaries = new List<OracleDbSnapshotSummary>();
-            this.DbSnapshotSummaries.ApplyExploratoryFieldSpec(ec.NewChild("dbSnapshotSummaries"));
+            if(this.DbSnapshotSummaries == null) {
+
+                this.DbSnapshotSummaries = new List<OracleDbSnapshotSummary>();
+                this.DbSnapshotSummaries.ApplyExploratoryFieldSpec(ec.NewChild("dbSnapshotSummaries"));
+
+            } else {
+
+                this.DbSnapshotSummaries.ApplyExploratoryFieldSpec(ec.NewChild("dbSnapshotSummaries"));
+
+            }
+        }
+        else if (this.DbSnapshotSummaries != null && ec.Excludes("dbSnapshotSummaries",false))
+        {
+            this.DbSnapshotSummaries = null;
         }
     }
 
@@ -158,9 +220,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<OracleRecoverableRange> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> RcvRegionBundle? Bundle
         // GraphQL -> bundle: RcvRegionBundle! (enum)
         if (this.Bundle != null) {
-            s += ind + "bundle\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "bundle\n" ;
+            } else {
+                s += ind + "bundle\n" ;
+            }
         }
         //      C# -> RcvTier? Tier
         // GraphQL -> tier: RcvTier! (enum)
         if (this.Tier != null) {
-            s += ind + "tier\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "tier\n" ;
+            } else {
+                s += ind + "tier\n" ;
+            }
         }
         //      C# -> System.Single? Capacity
         // GraphQL -> capacity: Float! (scalar)
         if (this.Capacity != null) {
-            s += ind + "capacity\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "capacity\n" ;
+            } else {
+                s += ind + "capacity\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> RcvRegionBundle? Bundle
         // GraphQL -> bundle: RcvRegionBundle! (enum)
-        if (this.Bundle == null && ec.Includes("bundle",true))
+        if (ec.Includes("bundle",true))
         {
-            this.Bundle = new RcvRegionBundle();
+            if(this.Bundle == null) {
+
+                this.Bundle = new RcvRegionBundle();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Bundle != null && ec.Excludes("bundle",true))
+        {
+            this.Bundle = null;
         }
         //      C# -> RcvTier? Tier
         // GraphQL -> tier: RcvTier! (enum)
-        if (this.Tier == null && ec.Includes("tier",true))
+        if (ec.Includes("tier",true))
         {
-            this.Tier = new RcvTier();
+            if(this.Tier == null) {
+
+                this.Tier = new RcvTier();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Tier != null && ec.Excludes("tier",true))
+        {
+            this.Tier = null;
         }
         //      C# -> System.Single? Capacity
         // GraphQL -> capacity: Float! (scalar)
-        if (this.Capacity == null && ec.Includes("capacity",true))
+        if (ec.Includes("capacity",true))
         {
-            this.Capacity = new System.Single();
+            if(this.Capacity == null) {
+
+                this.Capacity = new System.Single();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Capacity != null && ec.Excludes("capacity",true))
+        {
+            this.Capacity = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<RcvEntitlement> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

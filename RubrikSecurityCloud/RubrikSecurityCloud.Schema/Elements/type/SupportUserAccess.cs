@@ -110,54 +110,87 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> SupportUserAccessStatus? AccessStatus
         // GraphQL -> accessStatus: SupportUserAccessStatus! (enum)
         if (this.AccessStatus != null) {
-            s += ind + "accessStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "accessStatus\n" ;
+            } else {
+                s += ind + "accessStatus\n" ;
+            }
         }
         //      C# -> System.Int32? DurationInHours
         // GraphQL -> durationInHours: Int! (scalar)
         if (this.DurationInHours != null) {
-            s += ind + "durationInHours\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "durationInHours\n" ;
+            } else {
+                s += ind + "durationInHours\n" ;
+            }
         }
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime! (scalar)
         if (this.EndTime != null) {
-            s += ind + "endTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "endTime\n" ;
+            } else {
+                s += ind + "endTime\n" ;
+            }
         }
         //      C# -> System.Int32? Id
         // GraphQL -> id: Int! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime! (scalar)
         if (this.StartTime != null) {
-            s += ind + "startTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "startTime\n" ;
+            } else {
+                s += ind + "startTime\n" ;
+            }
         }
         //      C# -> System.String? TicketNumber
         // GraphQL -> ticketNumber: String! (scalar)
         if (this.TicketNumber != null) {
-            s += ind + "ticketNumber\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "ticketNumber\n" ;
+            } else {
+                s += ind + "ticketNumber\n" ;
+            }
         }
         //      C# -> User? AccessProviderUser
         // GraphQL -> accessProviderUser: User (type)
         if (this.AccessProviderUser != null) {
-            var fspec = this.AccessProviderUser.AsFieldSpec(indent+1);
+            var fspec = this.AccessProviderUser.AsFieldSpec(conf.Child("accessProviderUser"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "accessProviderUser {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "accessProviderUser {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> User? ImpersonatedUser
         // GraphQL -> impersonatedUser: User (type)
         if (this.ImpersonatedUser != null) {
-            var fspec = this.ImpersonatedUser.AsFieldSpec(indent+1);
+            var fspec = this.ImpersonatedUser.AsFieldSpec(conf.Child("impersonatedUser"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "impersonatedUser {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "impersonatedUser {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -169,53 +202,143 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> SupportUserAccessStatus? AccessStatus
         // GraphQL -> accessStatus: SupportUserAccessStatus! (enum)
-        if (this.AccessStatus == null && ec.Includes("accessStatus",true))
+        if (ec.Includes("accessStatus",true))
         {
-            this.AccessStatus = new SupportUserAccessStatus();
+            if(this.AccessStatus == null) {
+
+                this.AccessStatus = new SupportUserAccessStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AccessStatus != null && ec.Excludes("accessStatus",true))
+        {
+            this.AccessStatus = null;
         }
         //      C# -> System.Int32? DurationInHours
         // GraphQL -> durationInHours: Int! (scalar)
-        if (this.DurationInHours == null && ec.Includes("durationInHours",true))
+        if (ec.Includes("durationInHours",true))
         {
-            this.DurationInHours = Int32.MinValue;
+            if(this.DurationInHours == null) {
+
+                this.DurationInHours = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.DurationInHours != null && ec.Excludes("durationInHours",true))
+        {
+            this.DurationInHours = null;
         }
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime! (scalar)
-        if (this.EndTime == null && ec.Includes("endTime",true))
+        if (ec.Includes("endTime",true))
         {
-            this.EndTime = new DateTime();
+            if(this.EndTime == null) {
+
+                this.EndTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EndTime != null && ec.Excludes("endTime",true))
+        {
+            this.EndTime = null;
         }
         //      C# -> System.Int32? Id
         // GraphQL -> id: Int! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = Int32.MinValue;
+            if(this.Id == null) {
+
+                this.Id = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime! (scalar)
-        if (this.StartTime == null && ec.Includes("startTime",true))
+        if (ec.Includes("startTime",true))
         {
-            this.StartTime = new DateTime();
+            if(this.StartTime == null) {
+
+                this.StartTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.StartTime != null && ec.Excludes("startTime",true))
+        {
+            this.StartTime = null;
         }
         //      C# -> System.String? TicketNumber
         // GraphQL -> ticketNumber: String! (scalar)
-        if (this.TicketNumber == null && ec.Includes("ticketNumber",true))
+        if (ec.Includes("ticketNumber",true))
         {
-            this.TicketNumber = "FETCH";
+            if(this.TicketNumber == null) {
+
+                this.TicketNumber = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TicketNumber != null && ec.Excludes("ticketNumber",true))
+        {
+            this.TicketNumber = null;
         }
         //      C# -> User? AccessProviderUser
         // GraphQL -> accessProviderUser: User (type)
-        if (this.AccessProviderUser == null && ec.Includes("accessProviderUser",false))
+        if (ec.Includes("accessProviderUser",false))
         {
-            this.AccessProviderUser = new User();
-            this.AccessProviderUser.ApplyExploratoryFieldSpec(ec.NewChild("accessProviderUser"));
+            if(this.AccessProviderUser == null) {
+
+                this.AccessProviderUser = new User();
+                this.AccessProviderUser.ApplyExploratoryFieldSpec(ec.NewChild("accessProviderUser"));
+
+            } else {
+
+                this.AccessProviderUser.ApplyExploratoryFieldSpec(ec.NewChild("accessProviderUser"));
+
+            }
+        }
+        else if (this.AccessProviderUser != null && ec.Excludes("accessProviderUser",false))
+        {
+            this.AccessProviderUser = null;
         }
         //      C# -> User? ImpersonatedUser
         // GraphQL -> impersonatedUser: User (type)
-        if (this.ImpersonatedUser == null && ec.Includes("impersonatedUser",false))
+        if (ec.Includes("impersonatedUser",false))
         {
-            this.ImpersonatedUser = new User();
-            this.ImpersonatedUser.ApplyExploratoryFieldSpec(ec.NewChild("impersonatedUser"));
+            if(this.ImpersonatedUser == null) {
+
+                this.ImpersonatedUser = new User();
+                this.ImpersonatedUser.ApplyExploratoryFieldSpec(ec.NewChild("impersonatedUser"));
+
+            } else {
+
+                this.ImpersonatedUser.ApplyExploratoryFieldSpec(ec.NewChild("impersonatedUser"));
+
+            }
+        }
+        else if (this.ImpersonatedUser != null && ec.Excludes("impersonatedUser",false))
+        {
+            this.ImpersonatedUser = null;
         }
     }
 
@@ -242,9 +365,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SupportUserAccess> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

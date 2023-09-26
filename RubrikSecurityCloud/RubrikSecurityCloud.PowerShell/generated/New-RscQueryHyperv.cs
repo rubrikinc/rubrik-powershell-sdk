@@ -16,56 +16,704 @@ using RubrikSecurityCloud.Types;
 using RubrikSecurityCloud.NetSDK.Client;
 using RubrikSecurityCloud.PowerShell.Private;
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
+
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Queries for the 'Hyperv' API domain.
+    /// Create a new RscQuery object for any of the 14
+    /// operations in the 'Hyperv' API domain:
+    /// Cluster, HostAsyncRequestStatus, Mounts, Scvmm, ScvmmAsyncRequestStatus, Scvmms, Server, Servers, TopLevelDescendants, UniqueServersCount, VirtualMachine, VirtualMachineAsyncRequestStatus, VirtualMachines, or VmDetail.
     /// </summary>
     /// <description>
-    /// New-RscQueryHyperv is the cmdlet to work with operations in the {self.noun} API domain. It is a dynamic cmdlet that accepts any {self.noun} API operation as its first parameter:  {sc_names}.
+    /// New-RscQueryHyperv creates a new
+    /// query object for operations
+    /// in the 'Hyperv' API domain. It only creates a data structure,
+    /// it does not execute the operation. This cmdlet does not need a
+    /// connection to run. To execute the operation, either call Invoke()
+    /// on the object returned by this cmdlet, or pass the object to
+    /// Invoke-Rsc.
+    /// There are 14 operations
+    /// in the 'Hyperv' API domain. Select the operation this
+    /// query is for by specifying the appropriate switch parameter;
+    /// one of: -Cluster, -HostAsyncRequestStatus, -Mounts, -Scvmm, -ScvmmAsyncRequestStatus, -Scvmms, -Server, -Servers, -TopLevelDescendants, -UniqueServersCount, -VirtualMachine, -VirtualMachineAsyncRequestStatus, -VirtualMachines, -VmDetail.
+    /// Alternatively, you can specify the operation by setting the
+    /// -Op parameter, for example: -Op Cluster,
+    /// which is equivalent to specifying -Cluster.
+    /// Each operation has its own set of variables that can be set with
+    /// the -Var parameter. For more info about the variables, 
+    /// call Info() on the object returned by this cmdlet, for example:
+    /// (New-RscQueryHyperv -Cluster).Info().
+    /// Each operation also has its own set of fields that can be
+    /// selected for retrieval. If you do not specify any fields,
+    /// a set of default fields will be selected. The selection is
+    /// rule-based, and tries to select the most commonly used fields.
+    /// For example if a field is named 'id' or 'name', 
+    /// it will be selected. If you give -FieldProfile DETAIL, then
+    /// another set of rules will be used to select more fields on top
+    /// of the default fields. The set of rules for selecting fields
+    /// is called a field profile. You can specify a field profile
+    /// with the -FieldProfile parameter. You can add or remove fields
+    /// from the field profile with the -AddField and -RemoveField
+    /// parameters. If you end up with too many -AddField and -RemoveField
+    /// parameters, you can list them in a text file, one per line,
+    /// with a '+' or '-' prefix, and pass the file name to the
+    /// -FilePatch parameter. Profiles and Patches are one way to
+    /// customize the fields that are selected. Another way is to
+    /// specify the fields by passing the -Field parameter an object
+    /// that contains the fields you want to select as properties.
+    /// Any property that is not null in that object is interpreted
+    /// as a field to select
+    /// (and the actual values they are set to do not matter).
+    /// The [RubrikSecurityCloud.Types] namespace
+    /// contains a set of classes that you can use to specify fields.
+    /// To know what [RubrikSecurityCloud.Types] object to use
+    /// for a specific operation,
+    /// call Info() on the object returned by this cmdlet, for example:
+    /// (New-RscQueryHyperv -Cluster).Info().
+    /// You can combine a -Field parameter with patching parameters.
+    /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
+    ///
     /// </description>
+    ///
     /// <example>
-    /// <code>New-RscQueryHyperv -TopLevelDescendants [-Arg ..] [-Field ..]</code>
+    /// Runs the Cluster operation
+    /// of the 'Hyperv' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Hyperv
+    /// # API Operation: Cluster
+    /// 
+    /// $query = New-RscQueryHyperv -Cluster
+    /// 
+    /// # REQUIRED
+    /// $query.Var.fid = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: HyperVcluster
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryHyperv -VirtualMachines [-Arg ..] [-Field ..]</code>
+    /// Runs the HostAsyncRequestStatus operation
+    /// of the 'Hyperv' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Hyperv
+    /// # API Operation: HostAsyncRequestStatus
+    /// 
+    /// $query = New-RscQueryHyperv -HostAsyncRequestStatus
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryHyperv -Scvmm [-Arg ..] [-Field ..]</code>
+    /// Runs the Mounts operation
+    /// of the 'Hyperv' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Hyperv
+    /// # API Operation: Mounts
+    /// 
+    /// $query = New-RscQueryHyperv -Mounts
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.filters = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		field = $someHypervLiveMountFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HypervLiveMountFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		texts = @(
+    /// 			$someString
+    /// 		)
+    /// }
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.sortBy = @{
+    /// 	# OPTIONAL
+    /// 	field = $someHypervLiveMountSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HypervLiveMountSortByField]) for enum values.
+    /// 	# OPTIONAL
+    /// 	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: HyperVliveMountConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryHyperv -Cluster [-Arg ..] [-Field ..]</code>
+    /// Runs the Scvmm operation
+    /// of the 'Hyperv' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Hyperv
+    /// # API Operation: Scvmm
+    /// 
+    /// $query = New-RscQueryHyperv -Scvmm
+    /// 
+    /// # REQUIRED
+    /// $query.Var.fid = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: HyperVscvmm
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryHyperv -Server [-Arg ..] [-Field ..]</code>
+    /// Runs the ScvmmAsyncRequestStatus operation
+    /// of the 'Hyperv' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Hyperv
+    /// # API Operation: ScvmmAsyncRequestStatus
+    /// 
+    /// $query = New-RscQueryHyperv -ScvmmAsyncRequestStatus
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryHyperv -VirtualMachine [-Arg ..] [-Field ..]</code>
+    /// Runs the Scvmms operation
+    /// of the 'Hyperv' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Hyperv
+    /// # API Operation: Scvmms
+    /// 
+    /// $query = New-RscQueryHyperv -Scvmms
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.filter = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		texts = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		tagFilterParams = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+    /// 				# OPTIONAL
+    /// 				tagKey = $someString
+    /// 				# OPTIONAL
+    /// 				tagValue = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		objectTypeFilterParams = @(
+    /// 			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		awsNativeProtectionFeatureNames = @(
+    /// 			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		isNegative = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isSlowSearchEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		azureNativeProtectionFeatureNames = @(
+    /// 			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		unmanagedObjectAvailabilityFilter = @(
+    /// 			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+    /// 		)
+    /// }
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: HyperVscvmmConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryHyperv -UniqueServersCount [-Arg ..] [-Field ..]</code>
+    /// Runs the Server operation
+    /// of the 'Hyperv' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Hyperv
+    /// # API Operation: Server
+    /// 
+    /// $query = New-RscQueryHyperv -Server
+    /// 
+    /// # REQUIRED
+    /// $query.Var.fid = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: HypervServer
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryHyperv -Scvmms [-Arg ..] [-Field ..]</code>
+    /// Runs the Servers operation
+    /// of the 'Hyperv' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Hyperv
+    /// # API Operation: Servers
+    /// 
+    /// $query = New-RscQueryHyperv -Servers
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	effectiveSlaDomainId = $someString
+    /// 	# OPTIONAL
+    /// 	limit = $someInt
+    /// 	# OPTIONAL
+    /// 	name = $someString
+    /// 	# OPTIONAL
+    /// 	offset = $someInt
+    /// 	# OPTIONAL
+    /// 	primaryClusterId = $someString
+    /// 	# OPTIONAL
+    /// 	slaAssignment = $someInternalQueryHypervHostRequestSlaAssignment # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InternalQueryHypervHostRequestSlaAssignment]) for enum values.
+    /// 	# OPTIONAL
+    /// 	sortBy = $someInternalQueryHypervHostRequestSortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InternalQueryHypervHostRequestSortBy]) for enum values.
+    /// 	# OPTIONAL
+    /// 	sortOrder = $someInternalQueryHypervHostRequestSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InternalQueryHypervHostRequestSortOrder]) for enum values.
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: HypervHostSummaryListResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryHyperv -Servers [-Arg ..] [-Field ..]</code>
+    /// Runs the TopLevelDescendants operation
+    /// of the 'Hyperv' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Hyperv
+    /// # API Operation: TopLevelDescendants
+    /// 
+    /// $query = New-RscQueryHyperv -TopLevelDescendants
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.typeFilter = @(
+    /// 	$someHierarchyObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.filter = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		texts = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		tagFilterParams = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+    /// 				# OPTIONAL
+    /// 				tagKey = $someString
+    /// 				# OPTIONAL
+    /// 				tagValue = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		objectTypeFilterParams = @(
+    /// 			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		awsNativeProtectionFeatureNames = @(
+    /// 			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		isNegative = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isSlowSearchEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		azureNativeProtectionFeatureNames = @(
+    /// 			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		unmanagedObjectAvailabilityFilter = @(
+    /// 			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+    /// 		)
+    /// }
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: HypervTopLevelDescendantTypeConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryHyperv -Mounts [-Arg ..] [-Field ..]</code>
+    /// Runs the UniqueServersCount operation
+    /// of the 'Hyperv' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Hyperv
+    /// # API Operation: UniqueServersCount
+    /// 
+    /// $query = New-RscQueryHyperv -UniqueServersCount
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.filter = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		texts = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		tagFilterParams = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+    /// 				# OPTIONAL
+    /// 				tagKey = $someString
+    /// 				# OPTIONAL
+    /// 				tagValue = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		objectTypeFilterParams = @(
+    /// 			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		awsNativeProtectionFeatureNames = @(
+    /// 			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		isNegative = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isSlowSearchEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		azureNativeProtectionFeatureNames = @(
+    /// 			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		unmanagedObjectAvailabilityFilter = @(
+    /// 			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+    /// 		)
+    /// }
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.Int32
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryHyperv -VmDetail [-Arg ..] [-Field ..]</code>
+    /// Runs the VirtualMachine operation
+    /// of the 'Hyperv' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Hyperv
+    /// # API Operation: VirtualMachine
+    /// 
+    /// $query = New-RscQueryHyperv -VirtualMachine
+    /// 
+    /// # REQUIRED
+    /// $query.Var.fid = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: HyperVvirtualMachine
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryHyperv -HostAsyncRequestStatus [-Arg ..] [-Field ..]</code>
+    /// Runs the VirtualMachineAsyncRequestStatus operation
+    /// of the 'Hyperv' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Hyperv
+    /// # API Operation: VirtualMachineAsyncRequestStatus
+    /// 
+    /// $query = New-RscQueryHyperv -VirtualMachineAsyncRequestStatus
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryHyperv -ScvmmAsyncRequestStatus [-Arg ..] [-Field ..]</code>
+    /// Runs the VirtualMachines operation
+    /// of the 'Hyperv' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Hyperv
+    /// # API Operation: VirtualMachines
+    /// 
+    /// $query = New-RscQueryHyperv -VirtualMachines
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.filter = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		texts = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		tagFilterParams = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+    /// 				# OPTIONAL
+    /// 				tagKey = $someString
+    /// 				# OPTIONAL
+    /// 				tagValue = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		objectTypeFilterParams = @(
+    /// 			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		awsNativeProtectionFeatureNames = @(
+    /// 			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		isNegative = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isSlowSearchEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		azureNativeProtectionFeatureNames = @(
+    /// 			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		unmanagedObjectAvailabilityFilter = @(
+    /// 			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+    /// 		)
+    /// }
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: HyperVvirtualMachineConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     /// <example>
-    /// <code>New-RscQueryHyperv -VirtualMachineAsyncRequestStatus [-Arg ..] [-Field ..]</code>
+    /// Runs the VmDetail operation
+    /// of the 'Hyperv' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Hyperv
+    /// # API Operation: VmDetail
+    /// 
+    /// $query = New-RscQueryHyperv -VmDetail
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: HypervVirtualMachineDetail
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
     /// </example>
+    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -75,357 +723,300 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     public class New_RscQueryHyperv : RscGqlPSCmdlet
     {
         
-        /// <summary>
-        /// TopLevelDescendants parameter set
-        ///
-        /// [GraphQL: hypervTopLevelDescendants]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "TopLevelDescendants",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Paginated list of the highest-level HyperV Objects accessible by the current user.
-[GraphQL: hypervTopLevelDescendants]",
-            Position = 0
-        )]
-        public SwitchParameter TopLevelDescendants { get; set; }
-
-        
-        /// <summary>
-        /// VirtualMachines parameter set
-        ///
-        /// [GraphQL: hypervVirtualMachines]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "VirtualMachines",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Paginated list of HyperV Virtual Machines.
-[GraphQL: hypervVirtualMachines]",
-            Position = 0
-        )]
-        public SwitchParameter VirtualMachines { get; set; }
-
-        
-        /// <summary>
-        /// Scvmm parameter set
-        ///
-        /// [GraphQL: hypervScvmm]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "Scvmm",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Details of the given Hyper-V SCVMM.
-[GraphQL: hypervScvmm]",
-            Position = 0
-        )]
-        public SwitchParameter Scvmm { get; set; }
-
-        
-        /// <summary>
-        /// Cluster parameter set
-        ///
-        /// [GraphQL: hypervCluster]
-        /// </summary>
         [Parameter(
             ParameterSetName = "Cluster",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Details of the given Hyper-V Cluster.
-[GraphQL: hypervCluster]",
-            Position = 0
+@"Create a query object for the 'Cluster' operation
+in the 'Hyperv' API domain.
+Description of the operation:
+Details of the given Hyper-V Cluster.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hypervcluster.doc.html]"
+            // No Position -> named parameter only.
         )]
         public SwitchParameter Cluster { get; set; }
 
         
-        /// <summary>
-        /// Server parameter set
-        ///
-        /// [GraphQL: hypervServer]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "Server",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Details of the given Hyper-V Server.
-[GraphQL: hypervServer]",
-            Position = 0
-        )]
-        public SwitchParameter Server { get; set; }
-
-        
-        /// <summary>
-        /// VirtualMachine parameter set
-        ///
-        /// [GraphQL: hypervVirtualMachine]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "VirtualMachine",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Details of the given Hyper-V Virtual Machine.
-[GraphQL: hypervVirtualMachine]",
-            Position = 0
-        )]
-        public SwitchParameter VirtualMachine { get; set; }
-
-        
-        /// <summary>
-        /// UniqueServersCount parameter set
-        ///
-        /// [GraphQL: uniqueHypervServersCount]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "UniqueServersCount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Count of unique HyperV Servers.
-[GraphQL: uniqueHypervServersCount]",
-            Position = 0
-        )]
-        public SwitchParameter UniqueServersCount { get; set; }
-
-        
-        /// <summary>
-        /// Scvmms parameter set
-        ///
-        /// [GraphQL: hypervScvmms]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "Scvmms",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Paginated list of HyperV SCVMMs.
-[GraphQL: hypervScvmms]",
-            Position = 0
-        )]
-        public SwitchParameter Scvmms { get; set; }
-
-        
-        /// <summary>
-        /// Servers parameter set
-        ///
-        /// [GraphQL: hypervServers]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "Servers",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Get summary of all the Hyper-V hosts
-
-Supported in v5.0+
-Get summary of all the Hyper-V hosts.
-[GraphQL: hypervServers]",
-            Position = 0
-        )]
-        public SwitchParameter Servers { get; set; }
-
-        
-        /// <summary>
-        /// Mounts parameter set
-        ///
-        /// [GraphQL: hypervMounts]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "Mounts",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"HyperV Live Mount Connection.
-[GraphQL: hypervMounts]",
-            Position = 0
-        )]
-        public SwitchParameter Mounts { get; set; }
-
-        
-        /// <summary>
-        /// VmDetail parameter set
-        ///
-        /// [GraphQL: hypervVmDetail]
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "VmDetail",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"HyperV Virtual Machine detail from CDM.
-[GraphQL: hypervVmDetail]",
-            Position = 0
-        )]
-        public SwitchParameter VmDetail { get; set; }
-
-        
-        /// <summary>
-        /// HostAsyncRequestStatus parameter set
-        ///
-        /// [GraphQL: hypervHostAsyncRequestStatus]
-        /// </summary>
         [Parameter(
             ParameterSetName = "HostAsyncRequestStatus",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Get Hyper-V host async request
+@"Create a query object for the 'HostAsyncRequestStatus' operation
+in the 'Hyperv' API domain.
+Description of the operation:
+Get Hyper-V host async request
 
 Supported in v5.0+
 Get details about a Hyper-V host related async request.
-[GraphQL: hypervHostAsyncRequestStatus]",
-            Position = 0
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hypervhostasyncrequeststatus.doc.html]"
+            // No Position -> named parameter only.
         )]
         public SwitchParameter HostAsyncRequestStatus { get; set; }
 
         
-        /// <summary>
-        /// ScvmmAsyncRequestStatus parameter set
-        ///
-        /// [GraphQL: hypervScvmmAsyncRequestStatus]
-        /// </summary>
+        [Parameter(
+            ParameterSetName = "Mounts",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'Mounts' operation
+in the 'Hyperv' API domain.
+Description of the operation:
+HyperV Live Mount Connection.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hypervmounts.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter Mounts { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "Scvmm",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'Scvmm' operation
+in the 'Hyperv' API domain.
+Description of the operation:
+Details of the given Hyper-V SCVMM.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hypervscvmm.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter Scvmm { get; set; }
+
+        
         [Parameter(
             ParameterSetName = "ScvmmAsyncRequestStatus",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Get Hyper-V SCVMM async request
+@"Create a query object for the 'ScvmmAsyncRequestStatus' operation
+in the 'Hyperv' API domain.
+Description of the operation:
+Get Hyper-V SCVMM async request
 
 Supported in v5.0+
 Get details about a Hyper-V SCVMM related async request.
-[GraphQL: hypervScvmmAsyncRequestStatus]",
-            Position = 0
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hypervscvmmasyncrequeststatus.doc.html]"
+            // No Position -> named parameter only.
         )]
         public SwitchParameter ScvmmAsyncRequestStatus { get; set; }
 
         
-        /// <summary>
-        /// VirtualMachineAsyncRequestStatus parameter set
-        ///
-        /// [GraphQL: hypervVirtualMachineAsyncRequestStatus]
-        /// </summary>
+        [Parameter(
+            ParameterSetName = "Scvmms",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'Scvmms' operation
+in the 'Hyperv' API domain.
+Description of the operation:
+Paginated list of HyperV SCVMMs.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hypervscvmms.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter Scvmms { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "Server",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'Server' operation
+in the 'Hyperv' API domain.
+Description of the operation:
+Details of the given Hyper-V Server.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hypervserver.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter Server { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "Servers",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'Servers' operation
+in the 'Hyperv' API domain.
+Description of the operation:
+Get summary of all the Hyper-V hosts
+
+Supported in v5.0+
+Get summary of all the Hyper-V hosts.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hypervservers.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter Servers { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "TopLevelDescendants",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'TopLevelDescendants' operation
+in the 'Hyperv' API domain.
+Description of the operation:
+Paginated list of the highest-level HyperV Objects accessible by the current user.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hypervtopleveldescendants.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter TopLevelDescendants { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "UniqueServersCount",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'UniqueServersCount' operation
+in the 'Hyperv' API domain.
+Description of the operation:
+Count of unique HyperV Servers.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/uniquehypervserverscount.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter UniqueServersCount { get; set; }
+
+        
+        [Parameter(
+            ParameterSetName = "VirtualMachine",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'VirtualMachine' operation
+in the 'Hyperv' API domain.
+Description of the operation:
+Details of the given Hyper-V Virtual Machine.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hypervvirtualmachine.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter VirtualMachine { get; set; }
+
+        
         [Parameter(
             ParameterSetName = "VirtualMachineAsyncRequestStatus",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-@"Get VM async request details
+@"Create a query object for the 'VirtualMachineAsyncRequestStatus' operation
+in the 'Hyperv' API domain.
+Description of the operation:
+Get VM async request details
 
 Supported in v5.0+
 Get details about a Hyper-V vm related async request.
-[GraphQL: hypervVirtualMachineAsyncRequestStatus]",
-            Position = 0
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hypervvirtualmachineasyncrequeststatus.doc.html]"
+            // No Position -> named parameter only.
         )]
         public SwitchParameter VirtualMachineAsyncRequestStatus { get; set; }
 
+        
+        [Parameter(
+            ParameterSetName = "VirtualMachines",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'VirtualMachines' operation
+in the 'Hyperv' API domain.
+Description of the operation:
+Paginated list of HyperV Virtual Machines.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hypervvirtualmachines.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter VirtualMachines { get; set; }
 
-// ignore warning 'Missing XML comment'
-#pragma warning disable 1591
+        
+        [Parameter(
+            ParameterSetName = "VmDetail",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Create a query object for the 'VmDetail' operation
+in the 'Hyperv' API domain.
+Description of the operation:
+HyperV Virtual Machine detail from CDM.
+[GraphQL: https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/hypervvmdetail.doc.html]"
+            // No Position -> named parameter only.
+        )]
+        public SwitchParameter VmDetail { get; set; }
+
+
+
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
             try
             {
-                switch(Op)
+                switch(this.GetOp().OpName())
                 {
-                    case "TopLevelDescendants":
-                        this.ProcessRecord_TopLevelDescendants();
-                        break;
-                    case "VirtualMachines":
-                        this.ProcessRecord_VirtualMachines();
-                        break;
-                    case "Scvmm":
-                        this.ProcessRecord_Scvmm();
-                        break;
                     case "Cluster":
                         this.ProcessRecord_Cluster();
-                        break;
-                    case "Server":
-                        this.ProcessRecord_Server();
-                        break;
-                    case "VirtualMachine":
-                        this.ProcessRecord_VirtualMachine();
-                        break;
-                    case "UniqueServersCount":
-                        this.ProcessRecord_UniqueServersCount();
-                        break;
-                    case "Scvmms":
-                        this.ProcessRecord_Scvmms();
-                        break;
-                    case "Servers":
-                        this.ProcessRecord_Servers();
-                        break;
-                    case "Mounts":
-                        this.ProcessRecord_Mounts();
-                        break;
-                    case "VmDetail":
-                        this.ProcessRecord_VmDetail();
                         break;
                     case "HostAsyncRequestStatus":
                         this.ProcessRecord_HostAsyncRequestStatus();
                         break;
+                    case "Mounts":
+                        this.ProcessRecord_Mounts();
+                        break;
+                    case "Scvmm":
+                        this.ProcessRecord_Scvmm();
+                        break;
                     case "ScvmmAsyncRequestStatus":
                         this.ProcessRecord_ScvmmAsyncRequestStatus();
+                        break;
+                    case "Scvmms":
+                        this.ProcessRecord_Scvmms();
+                        break;
+                    case "Server":
+                        this.ProcessRecord_Server();
+                        break;
+                    case "Servers":
+                        this.ProcessRecord_Servers();
+                        break;
+                    case "TopLevelDescendants":
+                        this.ProcessRecord_TopLevelDescendants();
+                        break;
+                    case "UniqueServersCount":
+                        this.ProcessRecord_UniqueServersCount();
+                        break;
+                    case "VirtualMachine":
+                        this.ProcessRecord_VirtualMachine();
                         break;
                     case "VirtualMachineAsyncRequestStatus":
                         this.ProcessRecord_VirtualMachineAsyncRequestStatus();
                         break;
+                    case "VirtualMachines":
+                        this.ProcessRecord_VirtualMachines();
+                        break;
+                    case "VmDetail":
+                        this.ProcessRecord_VmDetail();
+                        break;
                     default:
-                        throw new Exception("Unknown Operation " + Op);
+                        throw new Exception("Unknown Operation " + this.GetOp().OpName());
                 }
            }
            catch (Exception ex)
            {
                 ThrowTerminatingException(ex);
            }
-        }
-#pragma warning restore 1591
-
-        // This parameter set invokes a single graphql operation:
-        // hypervTopLevelDescendants.
-        internal void ProcessRecord_TopLevelDescendants()
-        {
-            this._logger.name += " -TopLevelDescendants";
-            // Create new graphql operation hypervTopLevelDescendants
-            InitQueryHypervTopLevelDescendants();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // hypervVirtualMachines.
-        internal void ProcessRecord_VirtualMachines()
-        {
-            this._logger.name += " -VirtualMachines";
-            // Create new graphql operation hypervVirtualMachines
-            InitQueryHypervVirtualMachines();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // hypervScvmm.
-        internal void ProcessRecord_Scvmm()
-        {
-            this._logger.name += " -Scvmm";
-            // Create new graphql operation hypervScvmm
-            InitQueryHypervScvmm();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -438,48 +1029,12 @@ Get details about a Hyper-V vm related async request.
         }
 
         // This parameter set invokes a single graphql operation:
-        // hypervServer.
-        internal void ProcessRecord_Server()
+        // hypervHostAsyncRequestStatus.
+        internal void ProcessRecord_HostAsyncRequestStatus()
         {
-            this._logger.name += " -Server";
-            // Create new graphql operation hypervServer
-            InitQueryHypervServer();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // hypervVirtualMachine.
-        internal void ProcessRecord_VirtualMachine()
-        {
-            this._logger.name += " -VirtualMachine";
-            // Create new graphql operation hypervVirtualMachine
-            InitQueryHypervVirtualMachine();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // uniqueHypervServersCount.
-        internal void ProcessRecord_UniqueServersCount()
-        {
-            this._logger.name += " -UniqueServersCount";
-            // Create new graphql operation uniqueHypervServersCount
-            InitQueryUniqueHypervServersCount();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // hypervScvmms.
-        internal void ProcessRecord_Scvmms()
-        {
-            this._logger.name += " -Scvmms";
-            // Create new graphql operation hypervScvmms
-            InitQueryHypervScvmms();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // hypervServers.
-        internal void ProcessRecord_Servers()
-        {
-            this._logger.name += " -Servers";
-            // Create new graphql operation hypervServers
-            InitQueryHypervServers();
+            this._logger.name += " -HostAsyncRequestStatus";
+            // Create new graphql operation hypervHostAsyncRequestStatus
+            InitQueryHypervHostAsyncRequestStatus();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -492,21 +1047,12 @@ Get details about a Hyper-V vm related async request.
         }
 
         // This parameter set invokes a single graphql operation:
-        // hypervVmDetail.
-        internal void ProcessRecord_VmDetail()
+        // hypervScvmm.
+        internal void ProcessRecord_Scvmm()
         {
-            this._logger.name += " -VmDetail";
-            // Create new graphql operation hypervVmDetail
-            InitQueryHypervVmDetail();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // hypervHostAsyncRequestStatus.
-        internal void ProcessRecord_HostAsyncRequestStatus()
-        {
-            this._logger.name += " -HostAsyncRequestStatus";
-            // Create new graphql operation hypervHostAsyncRequestStatus
-            InitQueryHypervHostAsyncRequestStatus();
+            this._logger.name += " -Scvmm";
+            // Create new graphql operation hypervScvmm
+            InitQueryHypervScvmm();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -519,6 +1065,60 @@ Get details about a Hyper-V vm related async request.
         }
 
         // This parameter set invokes a single graphql operation:
+        // hypervScvmms.
+        internal void ProcessRecord_Scvmms()
+        {
+            this._logger.name += " -Scvmms";
+            // Create new graphql operation hypervScvmms
+            InitQueryHypervScvmms();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // hypervServer.
+        internal void ProcessRecord_Server()
+        {
+            this._logger.name += " -Server";
+            // Create new graphql operation hypervServer
+            InitQueryHypervServer();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // hypervServers.
+        internal void ProcessRecord_Servers()
+        {
+            this._logger.name += " -Servers";
+            // Create new graphql operation hypervServers
+            InitQueryHypervServers();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // hypervTopLevelDescendants.
+        internal void ProcessRecord_TopLevelDescendants()
+        {
+            this._logger.name += " -TopLevelDescendants";
+            // Create new graphql operation hypervTopLevelDescendants
+            InitQueryHypervTopLevelDescendants();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // uniqueHypervServersCount.
+        internal void ProcessRecord_UniqueServersCount()
+        {
+            this._logger.name += " -UniqueServersCount";
+            // Create new graphql operation uniqueHypervServersCount
+            InitQueryUniqueHypervServersCount();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // hypervVirtualMachine.
+        internal void ProcessRecord_VirtualMachine()
+        {
+            this._logger.name += " -VirtualMachine";
+            // Create new graphql operation hypervVirtualMachine
+            InitQueryHypervVirtualMachine();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // hypervVirtualMachineAsyncRequestStatus.
         internal void ProcessRecord_VirtualMachineAsyncRequestStatus()
         {
@@ -527,166 +1127,115 @@ Get details about a Hyper-V vm related async request.
             InitQueryHypervVirtualMachineAsyncRequestStatus();
         }
 
+        // This parameter set invokes a single graphql operation:
+        // hypervVirtualMachines.
+        internal void ProcessRecord_VirtualMachines()
+        {
+            this._logger.name += " -VirtualMachines";
+            // Create new graphql operation hypervVirtualMachines
+            InitQueryHypervVirtualMachines();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // hypervVmDetail.
+        internal void ProcessRecord_VmDetail()
+        {
+            this._logger.name += " -VmDetail";
+            // Create new graphql operation hypervVmDetail
+            InitQueryHypervVmDetail();
+        }
+
 
         // Create new GraphQL Query:
-        // hypervTopLevelDescendants(
-        //     first: Int
-        //     after: String
-        //     sortBy: HierarchySortByField
-        //     sortOrder: SortOrder
-        //     typeFilter: [HierarchyObjectTypeEnum!]
-        //     filter: [Filter!]
-        //   ): HypervTopLevelDescendantTypeConnection!
-        internal void InitQueryHypervTopLevelDescendants()
+        // hypervCluster(fid: UUID!): HyperVCluster!
+        internal void InitQueryHypervCluster()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("sortBy", "HierarchySortByField"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),
-                Tuple.Create("filter", "[Filter!]"),
+                Tuple.Create("fid", "UUID!"),
             };
             Initialize(
                 argDefs,
                 "query",
-                "QueryHypervTopLevelDescendants",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!],$filter: [Filter!])",
-                "HypervTopLevelDescendantTypeConnection",
-                Query.HypervTopLevelDescendants_ObjectFieldSpec,
-                Query.HypervTopLevelDescendantsFieldSpec,
-                @"# OPTIONAL
-$inputs.Var.first = <System.Int32>
-# OPTIONAL
-$inputs.Var.after = <System.String>
-# OPTIONAL
-$inputs.Var.sortBy = <HierarchySortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
-# OPTIONAL
-$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$inputs.Var.typeFilter = @(
-	<HierarchyObjectTypeEnum> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
-)
-# OPTIONAL
-$inputs.Var.filter = @(
-	@{
-		# OPTIONAL
-		field = <HierarchyFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
-		# OPTIONAL
-		texts = @(
-			<System.String>
-		)
-		# OPTIONAL
-		tagFilterParams = @(
-			@{
-				# OPTIONAL
-				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-				# OPTIONAL
-				tagKey = <System.String>
-				# OPTIONAL
-				tagValue = <System.String>
-			}
-		)
-		# OPTIONAL
-		objectTypeFilterParams = @(
-			<ManagedObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
-		)
-		# OPTIONAL
-		awsNativeProtectionFeatureNames = @(
-			<AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		isNegative = <System.Boolean>
-		# OPTIONAL
-		isSlowSearchEnabled = <System.Boolean>
-		# OPTIONAL
-		azureNativeProtectionFeatureNames = @(
-			<AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		unmanagedObjectAvailabilityFilter = @(
-			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
-		)
-}
-)"
+                "QueryHypervCluster",
+                "($fid: UUID!)",
+                "HyperVcluster",
+                Query.HypervCluster_ObjectFieldSpec,
+                Query.HypervClusterFieldSpec,
+                @"# REQUIRED
+$query.Var.fid = $someString"
             );
         }
 
         // Create new GraphQL Query:
-        // hypervVirtualMachines(
-        //     first: Int
-        //     after: String
-        //     sortBy: HierarchySortByField
-        //     sortOrder: SortOrder
-        //     filter: [Filter!]
-        //   ): HyperVVirtualMachineConnection!
-        internal void InitQueryHypervVirtualMachines()
+        // hypervHostAsyncRequestStatus(input: GetHypervHostAsyncRequestStatusInput!): AsyncRequestStatus!
+        internal void InitQueryHypervHostAsyncRequestStatus()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("sortBy", "HierarchySortByField"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("filter", "[Filter!]"),
+                Tuple.Create("input", "GetHypervHostAsyncRequestStatusInput!"),
             };
             Initialize(
                 argDefs,
                 "query",
-                "QueryHypervVirtualMachines",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
-                "HyperVvirtualMachineConnection",
-                Query.HypervVirtualMachines_ObjectFieldSpec,
-                Query.HypervVirtualMachinesFieldSpec,
+                "QueryHypervHostAsyncRequestStatus",
+                "($input: GetHypervHostAsyncRequestStatusInput!)",
+                "AsyncRequestStatus",
+                Query.HypervHostAsyncRequestStatus_ObjectFieldSpec,
+                Query.HypervHostAsyncRequestStatusFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // hypervMounts(
+        //     first: Int
+        //     after: String
+        //     filters: [HypervLiveMountFilterInput!]
+        //     sortBy: HypervLiveMountSortByInput
+        //   ): HyperVLiveMountConnection!
+        internal void InitQueryHypervMounts()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("filters", "[HypervLiveMountFilterInput!]"),
+                Tuple.Create("sortBy", "HypervLiveMountSortByInput"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryHypervMounts",
+                "($first: Int,$after: String,$filters: [HypervLiveMountFilterInput!],$sortBy: HypervLiveMountSortByInput)",
+                "HyperVliveMountConnection",
+                Query.HypervMounts_ObjectFieldSpec,
+                Query.HypervMountsFieldSpec,
                 @"# OPTIONAL
-$inputs.Var.first = <System.Int32>
+$query.Var.first = $someInt
 # OPTIONAL
-$inputs.Var.after = <System.String>
+$query.Var.after = $someString
 # OPTIONAL
-$inputs.Var.sortBy = <HierarchySortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
-# OPTIONAL
-$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$inputs.Var.filter = @(
+$query.Var.filters = @(
 	@{
 		# OPTIONAL
-		field = <HierarchyFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		field = $someHypervLiveMountFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HypervLiveMountFilterField]) for enum values.
 		# OPTIONAL
 		texts = @(
-			<System.String>
-		)
-		# OPTIONAL
-		tagFilterParams = @(
-			@{
-				# OPTIONAL
-				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-				# OPTIONAL
-				tagKey = <System.String>
-				# OPTIONAL
-				tagValue = <System.String>
-			}
-		)
-		# OPTIONAL
-		objectTypeFilterParams = @(
-			<ManagedObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
-		)
-		# OPTIONAL
-		awsNativeProtectionFeatureNames = @(
-			<AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		isNegative = <System.Boolean>
-		# OPTIONAL
-		isSlowSearchEnabled = <System.Boolean>
-		# OPTIONAL
-		azureNativeProtectionFeatureNames = @(
-			<AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		unmanagedObjectAvailabilityFilter = @(
-			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+			$someString
 		)
 }
-)"
+)
+# OPTIONAL
+$query.Var.sortBy = @{
+	# OPTIONAL
+	field = $someHypervLiveMountSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HypervLiveMountSortByField]) for enum values.
+	# OPTIONAL
+	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+}"
             );
         }
 
@@ -706,127 +1255,32 @@ $inputs.Var.filter = @(
                 Query.HypervScvmm_ObjectFieldSpec,
                 Query.HypervScvmmFieldSpec,
                 @"# REQUIRED
-$inputs.Var.fid = <System.String>"
+$query.Var.fid = $someString"
             );
         }
 
         // Create new GraphQL Query:
-        // hypervCluster(fid: UUID!): HyperVCluster!
-        internal void InitQueryHypervCluster()
+        // hypervScvmmAsyncRequestStatus(input: GetHypervScvmmAsyncRequestStatusInput!): AsyncRequestStatus!
+        internal void InitQueryHypervScvmmAsyncRequestStatus()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("fid", "UUID!"),
+                Tuple.Create("input", "GetHypervScvmmAsyncRequestStatusInput!"),
             };
             Initialize(
                 argDefs,
                 "query",
-                "QueryHypervCluster",
-                "($fid: UUID!)",
-                "HyperVcluster",
-                Query.HypervCluster_ObjectFieldSpec,
-                Query.HypervClusterFieldSpec,
+                "QueryHypervScvmmAsyncRequestStatus",
+                "($input: GetHypervScvmmAsyncRequestStatusInput!)",
+                "AsyncRequestStatus",
+                Query.HypervScvmmAsyncRequestStatus_ObjectFieldSpec,
+                Query.HypervScvmmAsyncRequestStatusFieldSpec,
                 @"# REQUIRED
-$inputs.Var.fid = <System.String>"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // hypervServer(fid: UUID!): HypervServer!
-        internal void InitQueryHypervServer()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("fid", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryHypervServer",
-                "($fid: UUID!)",
-                "HypervServer",
-                Query.HypervServer_ObjectFieldSpec,
-                Query.HypervServerFieldSpec,
-                @"# REQUIRED
-$inputs.Var.fid = <System.String>"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // hypervVirtualMachine(fid: UUID!): HyperVVirtualMachine!
-        internal void InitQueryHypervVirtualMachine()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("fid", "UUID!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryHypervVirtualMachine",
-                "($fid: UUID!)",
-                "HyperVvirtualMachine",
-                Query.HypervVirtualMachine_ObjectFieldSpec,
-                Query.HypervVirtualMachineFieldSpec,
-                @"# REQUIRED
-$inputs.Var.fid = <System.String>"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // uniqueHypervServersCount(filter: [Filter!]): Int!
-        internal void InitQueryUniqueHypervServersCount()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("filter", "[Filter!]"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryUniqueHypervServersCount",
-                "($filter: [Filter!])",
-                "System.Int32",
-                Query.UniqueHypervServersCount_ObjectFieldSpec,
-                Query.UniqueHypervServersCountFieldSpec,
-                @"# OPTIONAL
-$inputs.Var.filter = @(
-	@{
-		# OPTIONAL
-		field = <HierarchyFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
-		# OPTIONAL
-		texts = @(
-			<System.String>
-		)
-		# OPTIONAL
-		tagFilterParams = @(
-			@{
-				# OPTIONAL
-				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
-				# OPTIONAL
-				tagKey = <System.String>
-				# OPTIONAL
-				tagValue = <System.String>
-			}
-		)
-		# OPTIONAL
-		objectTypeFilterParams = @(
-			<ManagedObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
-		)
-		# OPTIONAL
-		awsNativeProtectionFeatureNames = @(
-			<AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		isNegative = <System.Boolean>
-		# OPTIONAL
-		isSlowSearchEnabled = <System.Boolean>
-		# OPTIONAL
-		azureNativeProtectionFeatureNames = @(
-			<AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
-		)
-		# OPTIONAL
-		unmanagedObjectAvailabilityFilter = @(
-			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
-		)
-}
-)"
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	id = $someString
+}"
             );
         }
 
@@ -856,55 +1310,75 @@ $inputs.Var.filter = @(
                 Query.HypervScvmms_ObjectFieldSpec,
                 Query.HypervScvmmsFieldSpec,
                 @"# OPTIONAL
-$inputs.Var.first = <System.Int32>
+$query.Var.first = $someInt
 # OPTIONAL
-$inputs.Var.after = <System.String>
+$query.Var.after = $someString
 # OPTIONAL
-$inputs.Var.sortBy = <HierarchySortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
 # OPTIONAL
-$inputs.Var.sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
 # OPTIONAL
-$inputs.Var.filter = @(
+$query.Var.filter = @(
 	@{
 		# OPTIONAL
-		field = <HierarchyFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
 		# OPTIONAL
 		texts = @(
-			<System.String>
+			$someString
 		)
 		# OPTIONAL
 		tagFilterParams = @(
 			@{
 				# OPTIONAL
-				filterType = <TagFilterType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
 				# OPTIONAL
-				tagKey = <System.String>
+				tagKey = $someString
 				# OPTIONAL
-				tagValue = <System.String>
+				tagValue = $someString
 			}
 		)
 		# OPTIONAL
 		objectTypeFilterParams = @(
-			<ManagedObjectType> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
 		)
 		# OPTIONAL
 		awsNativeProtectionFeatureNames = @(
-			<AwsNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
 		)
 		# OPTIONAL
-		isNegative = <System.Boolean>
+		isNegative = $someBoolean
 		# OPTIONAL
-		isSlowSearchEnabled = <System.Boolean>
+		isSlowSearchEnabled = $someBoolean
 		# OPTIONAL
 		azureNativeProtectionFeatureNames = @(
-			<AzureNativeProtectionFeature> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
 		)
 		# OPTIONAL
 		unmanagedObjectAvailabilityFilter = @(
-			<UnmanagedObjectAvailabilityFilter> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
 		)
 }
 )"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // hypervServer(fid: UUID!): HypervServer!
+        internal void InitQueryHypervServer()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("fid", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryHypervServer",
+                "($fid: UUID!)",
+                "HypervServer",
+                Query.HypervServer_ObjectFieldSpec,
+                Query.HypervServerFieldSpec,
+                @"# REQUIRED
+$query.Var.fid = $someString"
             );
         }
 
@@ -924,147 +1398,190 @@ $inputs.Var.filter = @(
                 Query.HypervServers_ObjectFieldSpec,
                 Query.HypervServersFieldSpec,
                 @"# REQUIRED
-$inputs.Var.input = @{
+$query.Var.input = @{
 	# OPTIONAL
-	effectiveSlaDomainId = <System.String>
+	effectiveSlaDomainId = $someString
 	# OPTIONAL
-	limit = <System.Int32>
+	limit = $someInt
 	# OPTIONAL
-	name = <System.String>
+	name = $someString
 	# OPTIONAL
-	offset = <System.Int32>
+	offset = $someInt
 	# OPTIONAL
-	primaryClusterId = <System.String>
+	primaryClusterId = $someString
 	# OPTIONAL
-	slaAssignment = <InternalQueryHypervHostRequestSlaAssignment> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InternalQueryHypervHostRequestSlaAssignment]) for enum values.
+	slaAssignment = $someInternalQueryHypervHostRequestSlaAssignment # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InternalQueryHypervHostRequestSlaAssignment]) for enum values.
 	# OPTIONAL
-	sortBy = <InternalQueryHypervHostRequestSortBy> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InternalQueryHypervHostRequestSortBy]) for enum values.
+	sortBy = $someInternalQueryHypervHostRequestSortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InternalQueryHypervHostRequestSortBy]) for enum values.
 	# OPTIONAL
-	sortOrder = <InternalQueryHypervHostRequestSortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InternalQueryHypervHostRequestSortOrder]) for enum values.
+	sortOrder = $someInternalQueryHypervHostRequestSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InternalQueryHypervHostRequestSortOrder]) for enum values.
 	# REQUIRED
-	clusterUuid = <System.String>
+	clusterUuid = $someString
 }"
             );
         }
 
         // Create new GraphQL Query:
-        // hypervMounts(
+        // hypervTopLevelDescendants(
         //     first: Int
         //     after: String
-        //     filters: [HypervLiveMountFilterInput!]
-        //     sortBy: HypervLiveMountSortByInput
-        //   ): HyperVLiveMountConnection!
-        internal void InitQueryHypervMounts()
+        //     sortBy: HierarchySortByField
+        //     sortOrder: SortOrder
+        //     typeFilter: [HierarchyObjectTypeEnum!]
+        //     filter: [Filter!]
+        //   ): HypervTopLevelDescendantTypeConnection!
+        internal void InitQueryHypervTopLevelDescendants()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
-                Tuple.Create("filters", "[HypervLiveMountFilterInput!]"),
-                Tuple.Create("sortBy", "HypervLiveMountSortByInput"),
+                Tuple.Create("sortBy", "HierarchySortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),
+                Tuple.Create("filter", "[Filter!]"),
             };
             Initialize(
                 argDefs,
                 "query",
-                "QueryHypervMounts",
-                "($first: Int,$after: String,$filters: [HypervLiveMountFilterInput!],$sortBy: HypervLiveMountSortByInput)",
-                "HyperVliveMountConnection",
-                Query.HypervMounts_ObjectFieldSpec,
-                Query.HypervMountsFieldSpec,
+                "QueryHypervTopLevelDescendants",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!],$filter: [Filter!])",
+                "HypervTopLevelDescendantTypeConnection",
+                Query.HypervTopLevelDescendants_ObjectFieldSpec,
+                Query.HypervTopLevelDescendantsFieldSpec,
                 @"# OPTIONAL
-$inputs.Var.first = <System.Int32>
+$query.Var.first = $someInt
 # OPTIONAL
-$inputs.Var.after = <System.String>
+$query.Var.after = $someString
 # OPTIONAL
-$inputs.Var.filters = @(
-	@{
-		# OPTIONAL
-		field = <HypervLiveMountFilterField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HypervLiveMountFilterField]) for enum values.
-		# OPTIONAL
-		texts = @(
-			<System.String>
-		)
-}
+$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.typeFilter = @(
+	$someHierarchyObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
 )
 # OPTIONAL
-$inputs.Var.sortBy = @{
-	# OPTIONAL
-	field = <HypervLiveMountSortByField> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HypervLiveMountSortByField]) for enum values.
-	# OPTIONAL
-	sortOrder = <SortOrder> # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-}"
+$query.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			$someString
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = $someString
+				# OPTIONAL
+				tagValue = $someString
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = $someBoolean
+		# OPTIONAL
+		isSlowSearchEnabled = $someBoolean
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+}
+)"
             );
         }
 
         // Create new GraphQL Query:
-        // hypervVmDetail(input: GetHypervVirtualMachineInput!): HypervVirtualMachineDetail!
-        internal void InitQueryHypervVmDetail()
+        // uniqueHypervServersCount(filter: [Filter!]): Int!
+        internal void InitQueryUniqueHypervServersCount()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "GetHypervVirtualMachineInput!"),
+                Tuple.Create("filter", "[Filter!]"),
             };
             Initialize(
                 argDefs,
                 "query",
-                "QueryHypervVmDetail",
-                "($input: GetHypervVirtualMachineInput!)",
-                "HypervVirtualMachineDetail",
-                Query.HypervVmDetail_ObjectFieldSpec,
-                Query.HypervVmDetailFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	id = <System.String>
-}"
+                "QueryUniqueHypervServersCount",
+                "($filter: [Filter!])",
+                "System.Int32",
+                Query.UniqueHypervServersCount_ObjectFieldSpec,
+                Query.UniqueHypervServersCountFieldSpec,
+                @"# OPTIONAL
+$query.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			$someString
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = $someString
+				# OPTIONAL
+				tagValue = $someString
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = $someBoolean
+		# OPTIONAL
+		isSlowSearchEnabled = $someBoolean
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+}
+)"
             );
         }
 
         // Create new GraphQL Query:
-        // hypervHostAsyncRequestStatus(input: GetHypervHostAsyncRequestStatusInput!): AsyncRequestStatus!
-        internal void InitQueryHypervHostAsyncRequestStatus()
+        // hypervVirtualMachine(fid: UUID!): HyperVVirtualMachine!
+        internal void InitQueryHypervVirtualMachine()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "GetHypervHostAsyncRequestStatusInput!"),
+                Tuple.Create("fid", "UUID!"),
             };
             Initialize(
                 argDefs,
                 "query",
-                "QueryHypervHostAsyncRequestStatus",
-                "($input: GetHypervHostAsyncRequestStatusInput!)",
-                "AsyncRequestStatus",
-                Query.HypervHostAsyncRequestStatus_ObjectFieldSpec,
-                Query.HypervHostAsyncRequestStatusFieldSpec,
+                "QueryHypervVirtualMachine",
+                "($fid: UUID!)",
+                "HyperVvirtualMachine",
+                Query.HypervVirtualMachine_ObjectFieldSpec,
+                Query.HypervVirtualMachineFieldSpec,
                 @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	clusterUuid = <System.String>
-	# REQUIRED
-	id = <System.String>
-}"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // hypervScvmmAsyncRequestStatus(input: GetHypervScvmmAsyncRequestStatusInput!): AsyncRequestStatus!
-        internal void InitQueryHypervScvmmAsyncRequestStatus()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "GetHypervScvmmAsyncRequestStatusInput!"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryHypervScvmmAsyncRequestStatus",
-                "($input: GetHypervScvmmAsyncRequestStatusInput!)",
-                "AsyncRequestStatus",
-                Query.HypervScvmmAsyncRequestStatus_ObjectFieldSpec,
-                Query.HypervScvmmAsyncRequestStatusFieldSpec,
-                @"# REQUIRED
-$inputs.Var.input = @{
-	# REQUIRED
-	clusterUuid = <System.String>
-	# REQUIRED
-	id = <System.String>
-}"
+$query.Var.fid = $someString"
             );
         }
 
@@ -1084,11 +1601,112 @@ $inputs.Var.input = @{
                 Query.HypervVirtualMachineAsyncRequestStatus_ObjectFieldSpec,
                 Query.HypervVirtualMachineAsyncRequestStatusFieldSpec,
                 @"# REQUIRED
-$inputs.Var.input = @{
+$query.Var.input = @{
 	# REQUIRED
-	clusterUuid = <System.String>
+	clusterUuid = $someString
 	# REQUIRED
-	id = <System.String>
+	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // hypervVirtualMachines(
+        //     first: Int
+        //     after: String
+        //     sortBy: HierarchySortByField
+        //     sortOrder: SortOrder
+        //     filter: [Filter!]
+        //   ): HyperVVirtualMachineConnection!
+        internal void InitQueryHypervVirtualMachines()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("sortBy", "HierarchySortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("filter", "[Filter!]"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryHypervVirtualMachines",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                "HyperVvirtualMachineConnection",
+                Query.HypervVirtualMachines_ObjectFieldSpec,
+                Query.HypervVirtualMachinesFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			$someString
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = $someString
+				# OPTIONAL
+				tagValue = $someString
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = $someBoolean
+		# OPTIONAL
+		isSlowSearchEnabled = $someBoolean
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+}
+)"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // hypervVmDetail(input: GetHypervVirtualMachineInput!): HypervVirtualMachineDetail!
+        internal void InitQueryHypervVmDetail()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "GetHypervVirtualMachineInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryHypervVmDetail",
+                "($input: GetHypervVirtualMachineInput!)",
+                "HypervVirtualMachineDetail",
+                Query.HypervVmDetail_ObjectFieldSpec,
+                Query.HypervVmDetailFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
 }"
             );
         }

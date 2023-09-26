@@ -164,84 +164,141 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> ClusterNodePlatformType? PlatformType
         // GraphQL -> platformType: ClusterNodePlatformType (enum)
         if (this.PlatformType != null) {
-            s += ind + "platformType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "platformType\n" ;
+            } else {
+                s += ind + "platformType\n" ;
+            }
         }
         //      C# -> ClusterNodePosition? Position
         // GraphQL -> position: ClusterNodePosition (enum)
         if (this.Position != null) {
-            s += ind + "position\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "position\n" ;
+            } else {
+                s += ind + "position\n" ;
+            }
         }
         //      C# -> ClusterNodeStatus? Status
         // GraphQL -> status: ClusterNodeStatus (enum)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         //      C# -> System.String? BrikId
         // GraphQL -> brikId: String! (scalar)
         if (this.BrikId != null) {
-            s += ind + "brikId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "brikId\n" ;
+            } else {
+                s += ind + "brikId\n" ;
+            }
         }
         //      C# -> System.String? ClusterId
         // GraphQL -> clusterId: UUID! (scalar)
         if (this.ClusterId != null) {
-            s += ind + "clusterId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterId\n" ;
+            } else {
+                s += ind + "clusterId\n" ;
+            }
         }
         //      C# -> System.Int32? CpuCores
         // GraphQL -> cpuCores: Int (scalar)
         if (this.CpuCores != null) {
-            s += ind + "cpuCores\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cpuCores\n" ;
+            } else {
+                s += ind + "cpuCores\n" ;
+            }
         }
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String (scalar)
         if (this.Hostname != null) {
-            s += ind + "hostname\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostname\n" ;
+            } else {
+                s += ind + "hostname\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.String? IpAddress
         // GraphQL -> ipAddress: String (scalar)
         if (this.IpAddress != null) {
-            s += ind + "ipAddress\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "ipAddress\n" ;
+            } else {
+                s += ind + "ipAddress\n" ;
+            }
         }
         //      C# -> System.Boolean? NeedsInspection
         // GraphQL -> needsInspection: Boolean (scalar)
         if (this.NeedsInspection != null) {
-            s += ind + "needsInspection\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "needsInspection\n" ;
+            } else {
+                s += ind + "needsInspection\n" ;
+            }
         }
         //      C# -> System.String? NetworkSpeed
         // GraphQL -> networkSpeed: String (scalar)
         if (this.NetworkSpeed != null) {
-            s += ind + "networkSpeed\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "networkSpeed\n" ;
+            } else {
+                s += ind + "networkSpeed\n" ;
+            }
         }
         //      C# -> System.Int64? Ram
         // GraphQL -> ram: Long (scalar)
         if (this.Ram != null) {
-            s += ind + "ram\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "ram\n" ;
+            } else {
+                s += ind + "ram\n" ;
+            }
         }
         //      C# -> List<HealthPolicyStatus>? HardwareHealth
         // GraphQL -> hardwareHealth: [HealthPolicyStatus!] (type)
         if (this.HardwareHealth != null) {
-            var fspec = this.HardwareHealth.AsFieldSpec(indent+1);
+            var fspec = this.HardwareHealth.AsFieldSpec(conf.Child("hardwareHealth"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "hardwareHealth {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "hardwareHealth {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<ClusterNodeInterfaceCidr>? InterfaceCidrs
         // GraphQL -> interfaceCidrs: [ClusterNodeInterfaceCidr!] (type)
         if (this.InterfaceCidrs != null) {
-            var fspec = this.InterfaceCidrs.AsFieldSpec(indent+1);
+            var fspec = this.InterfaceCidrs.AsFieldSpec(conf.Child("interfaceCidrs"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "interfaceCidrs {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "interfaceCidrs {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -253,89 +310,245 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> ClusterNodePlatformType? PlatformType
         // GraphQL -> platformType: ClusterNodePlatformType (enum)
-        if (this.PlatformType == null && ec.Includes("platformType",true))
+        if (ec.Includes("platformType",true))
         {
-            this.PlatformType = new ClusterNodePlatformType();
+            if(this.PlatformType == null) {
+
+                this.PlatformType = new ClusterNodePlatformType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.PlatformType != null && ec.Excludes("platformType",true))
+        {
+            this.PlatformType = null;
         }
         //      C# -> ClusterNodePosition? Position
         // GraphQL -> position: ClusterNodePosition (enum)
-        if (this.Position == null && ec.Includes("position",true))
+        if (ec.Includes("position",true))
         {
-            this.Position = new ClusterNodePosition();
+            if(this.Position == null) {
+
+                this.Position = new ClusterNodePosition();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Position != null && ec.Excludes("position",true))
+        {
+            this.Position = null;
         }
         //      C# -> ClusterNodeStatus? Status
         // GraphQL -> status: ClusterNodeStatus (enum)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = new ClusterNodeStatus();
+            if(this.Status == null) {
+
+                this.Status = new ClusterNodeStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
         //      C# -> System.String? BrikId
         // GraphQL -> brikId: String! (scalar)
-        if (this.BrikId == null && ec.Includes("brikId",true))
+        if (ec.Includes("brikId",true))
         {
-            this.BrikId = "FETCH";
+            if(this.BrikId == null) {
+
+                this.BrikId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.BrikId != null && ec.Excludes("brikId",true))
+        {
+            this.BrikId = null;
         }
         //      C# -> System.String? ClusterId
         // GraphQL -> clusterId: UUID! (scalar)
-        if (this.ClusterId == null && ec.Includes("clusterId",true))
+        if (ec.Includes("clusterId",true))
         {
-            this.ClusterId = "FETCH";
+            if(this.ClusterId == null) {
+
+                this.ClusterId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterId != null && ec.Excludes("clusterId",true))
+        {
+            this.ClusterId = null;
         }
         //      C# -> System.Int32? CpuCores
         // GraphQL -> cpuCores: Int (scalar)
-        if (this.CpuCores == null && ec.Includes("cpuCores",true))
+        if (ec.Includes("cpuCores",true))
         {
-            this.CpuCores = Int32.MinValue;
+            if(this.CpuCores == null) {
+
+                this.CpuCores = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.CpuCores != null && ec.Excludes("cpuCores",true))
+        {
+            this.CpuCores = null;
         }
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String (scalar)
-        if (this.Hostname == null && ec.Includes("hostname",true))
+        if (ec.Includes("hostname",true))
         {
-            this.Hostname = "FETCH";
+            if(this.Hostname == null) {
+
+                this.Hostname = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Hostname != null && ec.Excludes("hostname",true))
+        {
+            this.Hostname = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.String? IpAddress
         // GraphQL -> ipAddress: String (scalar)
-        if (this.IpAddress == null && ec.Includes("ipAddress",true))
+        if (ec.Includes("ipAddress",true))
         {
-            this.IpAddress = "FETCH";
+            if(this.IpAddress == null) {
+
+                this.IpAddress = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.IpAddress != null && ec.Excludes("ipAddress",true))
+        {
+            this.IpAddress = null;
         }
         //      C# -> System.Boolean? NeedsInspection
         // GraphQL -> needsInspection: Boolean (scalar)
-        if (this.NeedsInspection == null && ec.Includes("needsInspection",true))
+        if (ec.Includes("needsInspection",true))
         {
-            this.NeedsInspection = true;
+            if(this.NeedsInspection == null) {
+
+                this.NeedsInspection = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.NeedsInspection != null && ec.Excludes("needsInspection",true))
+        {
+            this.NeedsInspection = null;
         }
         //      C# -> System.String? NetworkSpeed
         // GraphQL -> networkSpeed: String (scalar)
-        if (this.NetworkSpeed == null && ec.Includes("networkSpeed",true))
+        if (ec.Includes("networkSpeed",true))
         {
-            this.NetworkSpeed = "FETCH";
+            if(this.NetworkSpeed == null) {
+
+                this.NetworkSpeed = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NetworkSpeed != null && ec.Excludes("networkSpeed",true))
+        {
+            this.NetworkSpeed = null;
         }
         //      C# -> System.Int64? Ram
         // GraphQL -> ram: Long (scalar)
-        if (this.Ram == null && ec.Includes("ram",true))
+        if (ec.Includes("ram",true))
         {
-            this.Ram = new System.Int64();
+            if(this.Ram == null) {
+
+                this.Ram = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Ram != null && ec.Excludes("ram",true))
+        {
+            this.Ram = null;
         }
         //      C# -> List<HealthPolicyStatus>? HardwareHealth
         // GraphQL -> hardwareHealth: [HealthPolicyStatus!] (type)
-        if (this.HardwareHealth == null && ec.Includes("hardwareHealth",false))
+        if (ec.Includes("hardwareHealth",false))
         {
-            this.HardwareHealth = new List<HealthPolicyStatus>();
-            this.HardwareHealth.ApplyExploratoryFieldSpec(ec.NewChild("hardwareHealth"));
+            if(this.HardwareHealth == null) {
+
+                this.HardwareHealth = new List<HealthPolicyStatus>();
+                this.HardwareHealth.ApplyExploratoryFieldSpec(ec.NewChild("hardwareHealth"));
+
+            } else {
+
+                this.HardwareHealth.ApplyExploratoryFieldSpec(ec.NewChild("hardwareHealth"));
+
+            }
+        }
+        else if (this.HardwareHealth != null && ec.Excludes("hardwareHealth",false))
+        {
+            this.HardwareHealth = null;
         }
         //      C# -> List<ClusterNodeInterfaceCidr>? InterfaceCidrs
         // GraphQL -> interfaceCidrs: [ClusterNodeInterfaceCidr!] (type)
-        if (this.InterfaceCidrs == null && ec.Includes("interfaceCidrs",false))
+        if (ec.Includes("interfaceCidrs",false))
         {
-            this.InterfaceCidrs = new List<ClusterNodeInterfaceCidr>();
-            this.InterfaceCidrs.ApplyExploratoryFieldSpec(ec.NewChild("interfaceCidrs"));
+            if(this.InterfaceCidrs == null) {
+
+                this.InterfaceCidrs = new List<ClusterNodeInterfaceCidr>();
+                this.InterfaceCidrs.ApplyExploratoryFieldSpec(ec.NewChild("interfaceCidrs"));
+
+            } else {
+
+                this.InterfaceCidrs.ApplyExploratoryFieldSpec(ec.NewChild("interfaceCidrs"));
+
+            }
+        }
+        else if (this.InterfaceCidrs != null && ec.Excludes("interfaceCidrs",false))
+        {
+            this.InterfaceCidrs = null;
         }
     }
 
@@ -362,9 +575,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ClusterNode> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

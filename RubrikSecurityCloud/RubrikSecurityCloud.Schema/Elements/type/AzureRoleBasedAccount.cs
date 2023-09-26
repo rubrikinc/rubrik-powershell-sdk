@@ -93,41 +93,66 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> CloudAccountType? CloudProvider
         // GraphQL -> cloudProvider: CloudAccountType! (enum)
         if (this.CloudProvider != null) {
-            s += ind + "cloudProvider\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cloudProvider\n" ;
+            } else {
+                s += ind + "cloudProvider\n" ;
+            }
         }
         //      C# -> ConnectionStatusType? ConnectionStatus
         // GraphQL -> connectionStatus: ConnectionStatusType! (enum)
         if (this.ConnectionStatus != null) {
-            s += ind + "connectionStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "connectionStatus\n" ;
+            } else {
+                s += ind + "connectionStatus\n" ;
+            }
         }
         //      C# -> System.String? CloudAccountId
         // GraphQL -> cloudAccountId: String! (scalar)
         if (this.CloudAccountId != null) {
-            s += ind + "cloudAccountId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cloudAccountId\n" ;
+            } else {
+                s += ind + "cloudAccountId\n" ;
+            }
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String (scalar)
         if (this.Description != null) {
-            s += ind + "description\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "description\n" ;
+            } else {
+                s += ind + "description\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> AzureSubscriptionWithFeaturesType? SubscriptionWithFeatures
         // GraphQL -> subscriptionWithFeatures: AzureSubscriptionWithFeaturesType! (type)
         if (this.SubscriptionWithFeatures != null) {
-            var fspec = this.SubscriptionWithFeatures.AsFieldSpec(indent+1);
+            var fspec = this.SubscriptionWithFeatures.AsFieldSpec(conf.Child("subscriptionWithFeatures"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "subscriptionWithFeatures {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "subscriptionWithFeatures {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -139,40 +164,107 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> CloudAccountType? CloudProvider
         // GraphQL -> cloudProvider: CloudAccountType! (enum)
-        if (this.CloudProvider == null && ec.Includes("cloudProvider",true))
+        if (ec.Includes("cloudProvider",true))
         {
-            this.CloudProvider = new CloudAccountType();
+            if(this.CloudProvider == null) {
+
+                this.CloudProvider = new CloudAccountType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CloudProvider != null && ec.Excludes("cloudProvider",true))
+        {
+            this.CloudProvider = null;
         }
         //      C# -> ConnectionStatusType? ConnectionStatus
         // GraphQL -> connectionStatus: ConnectionStatusType! (enum)
-        if (this.ConnectionStatus == null && ec.Includes("connectionStatus",true))
+        if (ec.Includes("connectionStatus",true))
         {
-            this.ConnectionStatus = new ConnectionStatusType();
+            if(this.ConnectionStatus == null) {
+
+                this.ConnectionStatus = new ConnectionStatusType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ConnectionStatus != null && ec.Excludes("connectionStatus",true))
+        {
+            this.ConnectionStatus = null;
         }
         //      C# -> System.String? CloudAccountId
         // GraphQL -> cloudAccountId: String! (scalar)
-        if (this.CloudAccountId == null && ec.Includes("cloudAccountId",true))
+        if (ec.Includes("cloudAccountId",true))
         {
-            this.CloudAccountId = "FETCH";
+            if(this.CloudAccountId == null) {
+
+                this.CloudAccountId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CloudAccountId != null && ec.Excludes("cloudAccountId",true))
+        {
+            this.CloudAccountId = null;
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String (scalar)
-        if (this.Description == null && ec.Includes("description",true))
+        if (ec.Includes("description",true))
         {
-            this.Description = "FETCH";
+            if(this.Description == null) {
+
+                this.Description = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Description != null && ec.Excludes("description",true))
+        {
+            this.Description = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> AzureSubscriptionWithFeaturesType? SubscriptionWithFeatures
         // GraphQL -> subscriptionWithFeatures: AzureSubscriptionWithFeaturesType! (type)
-        if (this.SubscriptionWithFeatures == null && ec.Includes("subscriptionWithFeatures",false))
+        if (ec.Includes("subscriptionWithFeatures",false))
         {
-            this.SubscriptionWithFeatures = new AzureSubscriptionWithFeaturesType();
-            this.SubscriptionWithFeatures.ApplyExploratoryFieldSpec(ec.NewChild("subscriptionWithFeatures"));
+            if(this.SubscriptionWithFeatures == null) {
+
+                this.SubscriptionWithFeatures = new AzureSubscriptionWithFeaturesType();
+                this.SubscriptionWithFeatures.ApplyExploratoryFieldSpec(ec.NewChild("subscriptionWithFeatures"));
+
+            } else {
+
+                this.SubscriptionWithFeatures.ApplyExploratoryFieldSpec(ec.NewChild("subscriptionWithFeatures"));
+
+            }
+        }
+        else if (this.SubscriptionWithFeatures != null && ec.Excludes("subscriptionWithFeatures",false))
+        {
+            this.SubscriptionWithFeatures = null;
         }
     }
 
@@ -199,9 +291,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AzureRoleBasedAccount> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

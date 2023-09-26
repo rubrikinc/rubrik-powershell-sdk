@@ -6,20 +6,16 @@ function Get-RscAccount {
 
     .DESCRIPTION
     Combines the output of 2 queries:
-    - accountId : to retrieve the account id
-    - allAccountOwners: to retrieve the account owners
+    - New-RscQueryAccount -Id    : to retrieve the account id
+    - New-RscQueryAccount -Owner : to retrieve the account owner
 
-    By default, responses contain a minimal set of fields.
-    To get more details, use the `-Detail` parameter.
-
-    Note that in the output, 
-    `AccountId` is the account ID, and `Id` is the user ID.
+    Not all account owner fields are returned.
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
-    The User type:
+    The User type (returned by New-RscQueryAccount -Owner)
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/user.doc.html
     
     #>
@@ -27,33 +23,41 @@ function Get-RscAccount {
     [CmdletBinding(
     )]
     Param(
-        [Parameter(
-            Mandatory = $false, 
-            ValueFromPipelineByPropertyName = $true
-        )]
-        [Switch]$Detail
     )
     
     Process {
         # Re-use existing connection, or create a new one:
         Connect-Rsc -ErrorAction Stop | Out-Null
 
-        # Determine field profile
-        $fieldProfile = "DEFAULT"
-        if ( $Detail -eq $true ) {
-            $fieldProfile = "DETAIL"
+        $outputObj = @{}
+        
+        # Add Account Id:
+        $outputObj["AccountId"] = (New-RscQueryAccount -Id).Invoke()
+
+        $owner = (New-RscQueryAccount -Owner -FieldProfile FULL).Invoke()
+
+
+        $owner | Get-Member -MemberType Properties | ForEach-Object {
+            $propName = $_.Name
+            $propValue = $owner.$propName
+            if ($propName -eq "PasskeyMetadata") {
+                $outputObj["AccountOwnerIsPasskeyEnabled"] = $propValue.IsPasskeyEnabled
+            }
+            elseif ( $propName -eq "LockoutState") {
+                $outputObj["AccountOwnerIsLocked"] = $propValue.IsLocked
+            }
+            # We do not go down into the composite types;
+            # composite types renders their ToString() method to
+            # their type name, like "RubrikSecurityCloud.Types.TotpStatus"
+            # so we skip them.
+            elseif ( $null -ne $propValue -and -not $propValue.ToString().StartsWith("RubrikSecurityCloud.Types")) {
+                $outputObj["AccountOwner$propName"] = $propValue
+            }
         }
 
-        # Invoke GraphQL operations 
-        #     and collect results into a PSObject:
-        $result = New-Object -TypeName PSObject
-        $accountId = (New-RscQueryAccount -FieldProfile $fieldProfile).Invoke()
-        $result | Add-Member -MemberType NoteProperty -Name "AccountId" -Value $accountId
-        $accountOwner = (New-RscQueryAccount -Owner -FieldProfile $fieldProfile).Invoke()
-        $accountOwner.PSObject.Properties | ForEach-Object {
-            $result | Add-Member -MemberType NoteProperty -Name $_.Name -Value $_.Value }
-        
-        # Filter out null values:
-        $result | Remove-NullProperties
+        # Convert the hashtable to PSCustomObject and return
+        [PSCustomObject]$outputObj
     } 
+
+    
 }

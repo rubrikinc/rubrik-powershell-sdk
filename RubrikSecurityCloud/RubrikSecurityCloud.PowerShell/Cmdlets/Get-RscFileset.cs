@@ -329,7 +329,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         string queryText =
                             $"query FilesetByIdQuery($fid: UUID!){{\n" +
                             $"{queryName}(fid: $fid){{\n" +
-                            $"{requestFields.PhysicalChildConnection.Nodes[0].AsFieldSpec(1)}\n" +
+                            $"{requestFields.PhysicalChildConnection.Nodes[0].AsFieldSpec(new FieldSpecConfig() { Indent=1 })}\n" +
                             $"}}\n}}";
 
                         // Initialize the variableset

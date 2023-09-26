@@ -56,24 +56,33 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> Analyzer? Analyzer
         // GraphQL -> analyzer: Analyzer! (type)
         if (this.Analyzer != null) {
-            var fspec = this.Analyzer.AsFieldSpec(indent+1);
+            var fspec = this.Analyzer.AsFieldSpec(conf.Child("analyzer"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "analyzer {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "analyzer {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> Hits? Hits
         // GraphQL -> hits: Hits! (type)
         if (this.Hits != null) {
-            var fspec = this.Hits.AsFieldSpec(indent+1);
+            var fspec = this.Hits.AsFieldSpec(conf.Child("hits"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "hits {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "hits {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -85,17 +94,41 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> Analyzer? Analyzer
         // GraphQL -> analyzer: Analyzer! (type)
-        if (this.Analyzer == null && ec.Includes("analyzer",false))
+        if (ec.Includes("analyzer",false))
         {
-            this.Analyzer = new Analyzer();
-            this.Analyzer.ApplyExploratoryFieldSpec(ec.NewChild("analyzer"));
+            if(this.Analyzer == null) {
+
+                this.Analyzer = new Analyzer();
+                this.Analyzer.ApplyExploratoryFieldSpec(ec.NewChild("analyzer"));
+
+            } else {
+
+                this.Analyzer.ApplyExploratoryFieldSpec(ec.NewChild("analyzer"));
+
+            }
+        }
+        else if (this.Analyzer != null && ec.Excludes("analyzer",false))
+        {
+            this.Analyzer = null;
         }
         //      C# -> Hits? Hits
         // GraphQL -> hits: Hits! (type)
-        if (this.Hits == null && ec.Includes("hits",false))
+        if (ec.Includes("hits",false))
         {
-            this.Hits = new Hits();
-            this.Hits.ApplyExploratoryFieldSpec(ec.NewChild("hits"));
+            if(this.Hits == null) {
+
+                this.Hits = new Hits();
+                this.Hits.ApplyExploratoryFieldSpec(ec.NewChild("hits"));
+
+            } else {
+
+                this.Hits.ApplyExploratoryFieldSpec(ec.NewChild("hits"));
+
+            }
+        }
+        else if (this.Hits != null && ec.Excludes("hits",false))
+        {
+            this.Hits = null;
         }
     }
 
@@ -122,9 +155,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AnalyzerResult> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

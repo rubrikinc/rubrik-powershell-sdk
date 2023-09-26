@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> ArchivalLocationStatus? Status
         // GraphQL -> status: ArchivalLocationStatus! (enum)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         //      C# -> System.String? LocationId
         // GraphQL -> locationId: String! (scalar)
         if (this.LocationId != null) {
-            s += ind + "locationId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "locationId\n" ;
+            } else {
+                s += ind + "locationId\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> ArchivalLocationStatus? Status
         // GraphQL -> status: ArchivalLocationStatus! (enum)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = new ArchivalLocationStatus();
+            if(this.Status == null) {
+
+                this.Status = new ArchivalLocationStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
         //      C# -> System.String? LocationId
         // GraphQL -> locationId: String! (scalar)
-        if (this.LocationId == null && ec.Includes("locationId",true))
+        if (ec.Includes("locationId",true))
         {
-            this.LocationId = "FETCH";
+            if(this.LocationId == null) {
+
+                this.LocationId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.LocationId != null && ec.Excludes("locationId",true))
+        {
+            this.LocationId = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<EnableTargetReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

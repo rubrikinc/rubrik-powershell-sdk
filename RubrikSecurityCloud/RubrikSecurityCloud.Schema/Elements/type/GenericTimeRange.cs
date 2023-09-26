@@ -56,24 +56,33 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> TimeRange? AbsoluteTimeRange
         // GraphQL -> absoluteTimeRange: TimeRange (type)
         if (this.AbsoluteTimeRange != null) {
-            var fspec = this.AbsoluteTimeRange.AsFieldSpec(indent+1);
+            var fspec = this.AbsoluteTimeRange.AsFieldSpec(conf.Child("absoluteTimeRange"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "absoluteTimeRange {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "absoluteTimeRange {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> RelativeTimeRange? RelativeTimeRange
         // GraphQL -> relativeTimeRange: RelativeTimeRange (type)
         if (this.RelativeTimeRange != null) {
-            var fspec = this.RelativeTimeRange.AsFieldSpec(indent+1);
+            var fspec = this.RelativeTimeRange.AsFieldSpec(conf.Child("relativeTimeRange"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "relativeTimeRange {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "relativeTimeRange {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -85,17 +94,41 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> TimeRange? AbsoluteTimeRange
         // GraphQL -> absoluteTimeRange: TimeRange (type)
-        if (this.AbsoluteTimeRange == null && ec.Includes("absoluteTimeRange",false))
+        if (ec.Includes("absoluteTimeRange",false))
         {
-            this.AbsoluteTimeRange = new TimeRange();
-            this.AbsoluteTimeRange.ApplyExploratoryFieldSpec(ec.NewChild("absoluteTimeRange"));
+            if(this.AbsoluteTimeRange == null) {
+
+                this.AbsoluteTimeRange = new TimeRange();
+                this.AbsoluteTimeRange.ApplyExploratoryFieldSpec(ec.NewChild("absoluteTimeRange"));
+
+            } else {
+
+                this.AbsoluteTimeRange.ApplyExploratoryFieldSpec(ec.NewChild("absoluteTimeRange"));
+
+            }
+        }
+        else if (this.AbsoluteTimeRange != null && ec.Excludes("absoluteTimeRange",false))
+        {
+            this.AbsoluteTimeRange = null;
         }
         //      C# -> RelativeTimeRange? RelativeTimeRange
         // GraphQL -> relativeTimeRange: RelativeTimeRange (type)
-        if (this.RelativeTimeRange == null && ec.Includes("relativeTimeRange",false))
+        if (ec.Includes("relativeTimeRange",false))
         {
-            this.RelativeTimeRange = new RelativeTimeRange();
-            this.RelativeTimeRange.ApplyExploratoryFieldSpec(ec.NewChild("relativeTimeRange"));
+            if(this.RelativeTimeRange == null) {
+
+                this.RelativeTimeRange = new RelativeTimeRange();
+                this.RelativeTimeRange.ApplyExploratoryFieldSpec(ec.NewChild("relativeTimeRange"));
+
+            } else {
+
+                this.RelativeTimeRange.ApplyExploratoryFieldSpec(ec.NewChild("relativeTimeRange"));
+
+            }
+        }
+        else if (this.RelativeTimeRange != null && ec.Excludes("relativeTimeRange",false))
+        {
+            this.RelativeTimeRange = null;
         }
     }
 
@@ -122,9 +155,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<GenericTimeRange> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

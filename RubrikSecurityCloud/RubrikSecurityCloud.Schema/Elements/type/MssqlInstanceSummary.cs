@@ -335,185 +335,318 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? ClusterInstanceAddress
         // GraphQL -> clusterInstanceAddress: String (scalar)
         if (this.ClusterInstanceAddress != null) {
-            s += ind + "clusterInstanceAddress\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterInstanceAddress\n" ;
+            } else {
+                s += ind + "clusterInstanceAddress\n" ;
+            }
         }
         //      C# -> System.String? ConfiguredSlaDomainId
         // GraphQL -> configuredSlaDomainId: String (scalar)
         if (this.ConfiguredSlaDomainId != null) {
-            s += ind + "configuredSlaDomainId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "configuredSlaDomainId\n" ;
+            } else {
+                s += ind + "configuredSlaDomainId\n" ;
+            }
         }
         //      C# -> System.String? ConfiguredSlaDomainName
         // GraphQL -> configuredSlaDomainName: String (scalar)
         if (this.ConfiguredSlaDomainName != null) {
-            s += ind + "configuredSlaDomainName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "configuredSlaDomainName\n" ;
+            } else {
+                s += ind + "configuredSlaDomainName\n" ;
+            }
         }
         //      C# -> System.String? ConfiguredSlaDomainType
         // GraphQL -> configuredSlaDomainType: String (scalar)
         if (this.ConfiguredSlaDomainType != null) {
-            s += ind + "configuredSlaDomainType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "configuredSlaDomainType\n" ;
+            } else {
+                s += ind + "configuredSlaDomainType\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.Int64? InternalTimestamp
         // GraphQL -> internalTimestamp: Long (scalar)
         if (this.InternalTimestamp != null) {
-            s += ind + "internalTimestamp\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "internalTimestamp\n" ;
+            } else {
+                s += ind + "internalTimestamp\n" ;
+            }
         }
         //      C# -> System.Boolean? IsRetentionLocked
         // GraphQL -> isRetentionLocked: Boolean (scalar)
         if (this.IsRetentionLocked != null) {
-            s += ind + "isRetentionLocked\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isRetentionLocked\n" ;
+            } else {
+                s += ind + "isRetentionLocked\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.String? PrimaryClusterId
         // GraphQL -> primaryClusterId: String! (scalar)
         if (this.PrimaryClusterId != null) {
-            s += ind + "primaryClusterId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "primaryClusterId\n" ;
+            } else {
+                s += ind + "primaryClusterId\n" ;
+            }
         }
         //      C# -> System.String? ProtectionDateV50
         // GraphQL -> protectionDateV50: String (scalar)
         if (this.ProtectionDateV50 != null) {
-            s += ind + "protectionDateV50\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "protectionDateV50\n" ;
+            } else {
+                s += ind + "protectionDateV50\n" ;
+            }
         }
         //      C# -> System.String? ProtectionDateV51
         // GraphQL -> protectionDateV51: String (scalar)
         if (this.ProtectionDateV51 != null) {
-            s += ind + "protectionDateV51\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "protectionDateV51\n" ;
+            } else {
+                s += ind + "protectionDateV51\n" ;
+            }
         }
         //      C# -> System.String? ProtectionDateV52
         // GraphQL -> protectionDateV52: String (scalar)
         if (this.ProtectionDateV52 != null) {
-            s += ind + "protectionDateV52\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "protectionDateV52\n" ;
+            } else {
+                s += ind + "protectionDateV52\n" ;
+            }
         }
         //      C# -> System.String? ProtectionDateV53
         // GraphQL -> protectionDateV53: String (scalar)
         if (this.ProtectionDateV53 != null) {
-            s += ind + "protectionDateV53\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "protectionDateV53\n" ;
+            } else {
+                s += ind + "protectionDateV53\n" ;
+            }
         }
         //      C# -> DateTime? ProtectionDateV60
         // GraphQL -> protectionDateV60: DateTime (scalar)
         if (this.ProtectionDateV60 != null) {
-            s += ind + "protectionDateV60\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "protectionDateV60\n" ;
+            } else {
+                s += ind + "protectionDateV60\n" ;
+            }
         }
         //      C# -> DateTime? ProtectionDateV70
         // GraphQL -> protectionDateV70: DateTime (scalar)
         if (this.ProtectionDateV70 != null) {
-            s += ind + "protectionDateV70\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "protectionDateV70\n" ;
+            } else {
+                s += ind + "protectionDateV70\n" ;
+            }
         }
         //      C# -> DateTime? ProtectionDateV80
         // GraphQL -> protectionDateV80: DateTime (scalar)
         if (this.ProtectionDateV80 != null) {
-            s += ind + "protectionDateV80\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "protectionDateV80\n" ;
+            } else {
+                s += ind + "protectionDateV80\n" ;
+            }
         }
         //      C# -> DateTime? ProtectionDateV81
         // GraphQL -> protectionDateV81: DateTime (scalar)
         if (this.ProtectionDateV81 != null) {
-            s += ind + "protectionDateV81\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "protectionDateV81\n" ;
+            } else {
+                s += ind + "protectionDateV81\n" ;
+            }
         }
         //      C# -> DateTime? ProtectionDateV90
         // GraphQL -> protectionDateV90: DateTime (scalar)
         if (this.ProtectionDateV90 != null) {
-            s += ind + "protectionDateV90\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "protectionDateV90\n" ;
+            } else {
+                s += ind + "protectionDateV90\n" ;
+            }
         }
         //      C# -> DateTime? ProtectionDateV91
         // GraphQL -> protectionDateV91: DateTime (scalar)
         if (this.ProtectionDateV91 != null) {
-            s += ind + "protectionDateV91\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "protectionDateV91\n" ;
+            } else {
+                s += ind + "protectionDateV91\n" ;
+            }
         }
         //      C# -> List<System.String>? UnprotectableReasonsV51
         // GraphQL -> unprotectableReasonsV51: [String!]! (scalar)
         if (this.UnprotectableReasonsV51 != null) {
-            s += ind + "unprotectableReasonsV51\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "unprotectableReasonsV51\n" ;
+            } else {
+                s += ind + "unprotectableReasonsV51\n" ;
+            }
         }
         //      C# -> List<System.String>? UnprotectableReasonsV52
         // GraphQL -> unprotectableReasonsV52: [String!]! (scalar)
         if (this.UnprotectableReasonsV52 != null) {
-            s += ind + "unprotectableReasonsV52\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "unprotectableReasonsV52\n" ;
+            } else {
+                s += ind + "unprotectableReasonsV52\n" ;
+            }
         }
         //      C# -> List<System.String>? UnprotectableReasonsV53
         // GraphQL -> unprotectableReasonsV53: [String!]! (scalar)
         if (this.UnprotectableReasonsV53 != null) {
-            s += ind + "unprotectableReasonsV53\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "unprotectableReasonsV53\n" ;
+            } else {
+                s += ind + "unprotectableReasonsV53\n" ;
+            }
         }
         //      C# -> List<System.String>? UnprotectableReasonsV60
         // GraphQL -> unprotectableReasonsV60: [String!]! (scalar)
         if (this.UnprotectableReasonsV60 != null) {
-            s += ind + "unprotectableReasonsV60\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "unprotectableReasonsV60\n" ;
+            } else {
+                s += ind + "unprotectableReasonsV60\n" ;
+            }
         }
         //      C# -> List<System.String>? UnprotectableReasonsV70
         // GraphQL -> unprotectableReasonsV70: [String!]! (scalar)
         if (this.UnprotectableReasonsV70 != null) {
-            s += ind + "unprotectableReasonsV70\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "unprotectableReasonsV70\n" ;
+            } else {
+                s += ind + "unprotectableReasonsV70\n" ;
+            }
         }
         //      C# -> List<System.String>? UnprotectableReasonsV80
         // GraphQL -> unprotectableReasonsV80: [String!]! (scalar)
         if (this.UnprotectableReasonsV80 != null) {
-            s += ind + "unprotectableReasonsV80\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "unprotectableReasonsV80\n" ;
+            } else {
+                s += ind + "unprotectableReasonsV80\n" ;
+            }
         }
         //      C# -> List<System.String>? UnprotectableReasonsV81
         // GraphQL -> unprotectableReasonsV81: [String!]! (scalar)
         if (this.UnprotectableReasonsV81 != null) {
-            s += ind + "unprotectableReasonsV81\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "unprotectableReasonsV81\n" ;
+            } else {
+                s += ind + "unprotectableReasonsV81\n" ;
+            }
         }
         //      C# -> List<System.String>? UnprotectableReasonsV90
         // GraphQL -> unprotectableReasonsV90: [String!]! (scalar)
         if (this.UnprotectableReasonsV90 != null) {
-            s += ind + "unprotectableReasonsV90\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "unprotectableReasonsV90\n" ;
+            } else {
+                s += ind + "unprotectableReasonsV90\n" ;
+            }
         }
         //      C# -> List<System.String>? UnprotectableReasonsV91
         // GraphQL -> unprotectableReasonsV91: [String!]! (scalar)
         if (this.UnprotectableReasonsV91 != null) {
-            s += ind + "unprotectableReasonsV91\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "unprotectableReasonsV91\n" ;
+            } else {
+                s += ind + "unprotectableReasonsV91\n" ;
+            }
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String (scalar)
         if (this.Version != null) {
-            s += ind + "version\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "version\n" ;
+            } else {
+                s += ind + "version\n" ;
+            }
         }
         //      C# -> MssqlNonSlaProperties? MssqlNonSlaProperties
         // GraphQL -> mssqlNonSlaProperties: MssqlNonSlaProperties (type)
         if (this.MssqlNonSlaProperties != null) {
-            var fspec = this.MssqlNonSlaProperties.AsFieldSpec(indent+1);
+            var fspec = this.MssqlNonSlaProperties.AsFieldSpec(conf.Child("mssqlNonSlaProperties"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "mssqlNonSlaProperties {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "mssqlNonSlaProperties {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> MssqlSlaRelatedProperties? MssqlSlaRelatedProperties
         // GraphQL -> mssqlSlaRelatedProperties: MssqlSlaRelatedProperties (type)
         if (this.MssqlSlaRelatedProperties != null) {
-            var fspec = this.MssqlSlaRelatedProperties.AsFieldSpec(indent+1);
+            var fspec = this.MssqlSlaRelatedProperties.AsFieldSpec(conf.Child("mssqlSlaRelatedProperties"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "mssqlSlaRelatedProperties {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "mssqlSlaRelatedProperties {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> MssqlRootProperties? RootProperties
         // GraphQL -> rootProperties: MssqlRootProperties (type)
         if (this.RootProperties != null) {
-            var fspec = this.RootProperties.AsFieldSpec(indent+1);
+            var fspec = this.RootProperties.AsFieldSpec(conf.Child("rootProperties"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "rootProperties {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "rootProperties {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<MssqlUnprotectableReason>? UnprotectableReasonsV50
         // GraphQL -> unprotectableReasonsV50: [MssqlUnprotectableReason!]! (type)
         if (this.UnprotectableReasonsV50 != null) {
-            var fspec = this.UnprotectableReasonsV50.AsFieldSpec(indent+1);
+            var fspec = this.UnprotectableReasonsV50.AsFieldSpec(conf.Child("unprotectableReasonsV50"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "unprotectableReasonsV50 {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "unprotectableReasonsV50 {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -525,205 +658,572 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? ClusterInstanceAddress
         // GraphQL -> clusterInstanceAddress: String (scalar)
-        if (this.ClusterInstanceAddress == null && ec.Includes("clusterInstanceAddress",true))
+        if (ec.Includes("clusterInstanceAddress",true))
         {
-            this.ClusterInstanceAddress = "FETCH";
+            if(this.ClusterInstanceAddress == null) {
+
+                this.ClusterInstanceAddress = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterInstanceAddress != null && ec.Excludes("clusterInstanceAddress",true))
+        {
+            this.ClusterInstanceAddress = null;
         }
         //      C# -> System.String? ConfiguredSlaDomainId
         // GraphQL -> configuredSlaDomainId: String (scalar)
-        if (this.ConfiguredSlaDomainId == null && ec.Includes("configuredSlaDomainId",true))
+        if (ec.Includes("configuredSlaDomainId",true))
         {
-            this.ConfiguredSlaDomainId = "FETCH";
+            if(this.ConfiguredSlaDomainId == null) {
+
+                this.ConfiguredSlaDomainId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ConfiguredSlaDomainId != null && ec.Excludes("configuredSlaDomainId",true))
+        {
+            this.ConfiguredSlaDomainId = null;
         }
         //      C# -> System.String? ConfiguredSlaDomainName
         // GraphQL -> configuredSlaDomainName: String (scalar)
-        if (this.ConfiguredSlaDomainName == null && ec.Includes("configuredSlaDomainName",true))
+        if (ec.Includes("configuredSlaDomainName",true))
         {
-            this.ConfiguredSlaDomainName = "FETCH";
+            if(this.ConfiguredSlaDomainName == null) {
+
+                this.ConfiguredSlaDomainName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ConfiguredSlaDomainName != null && ec.Excludes("configuredSlaDomainName",true))
+        {
+            this.ConfiguredSlaDomainName = null;
         }
         //      C# -> System.String? ConfiguredSlaDomainType
         // GraphQL -> configuredSlaDomainType: String (scalar)
-        if (this.ConfiguredSlaDomainType == null && ec.Includes("configuredSlaDomainType",true))
+        if (ec.Includes("configuredSlaDomainType",true))
         {
-            this.ConfiguredSlaDomainType = "FETCH";
+            if(this.ConfiguredSlaDomainType == null) {
+
+                this.ConfiguredSlaDomainType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ConfiguredSlaDomainType != null && ec.Excludes("configuredSlaDomainType",true))
+        {
+            this.ConfiguredSlaDomainType = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.Int64? InternalTimestamp
         // GraphQL -> internalTimestamp: Long (scalar)
-        if (this.InternalTimestamp == null && ec.Includes("internalTimestamp",true))
+        if (ec.Includes("internalTimestamp",true))
         {
-            this.InternalTimestamp = new System.Int64();
+            if(this.InternalTimestamp == null) {
+
+                this.InternalTimestamp = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.InternalTimestamp != null && ec.Excludes("internalTimestamp",true))
+        {
+            this.InternalTimestamp = null;
         }
         //      C# -> System.Boolean? IsRetentionLocked
         // GraphQL -> isRetentionLocked: Boolean (scalar)
-        if (this.IsRetentionLocked == null && ec.Includes("isRetentionLocked",true))
+        if (ec.Includes("isRetentionLocked",true))
         {
-            this.IsRetentionLocked = true;
+            if(this.IsRetentionLocked == null) {
+
+                this.IsRetentionLocked = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsRetentionLocked != null && ec.Excludes("isRetentionLocked",true))
+        {
+            this.IsRetentionLocked = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.String? PrimaryClusterId
         // GraphQL -> primaryClusterId: String! (scalar)
-        if (this.PrimaryClusterId == null && ec.Includes("primaryClusterId",true))
+        if (ec.Includes("primaryClusterId",true))
         {
-            this.PrimaryClusterId = "FETCH";
+            if(this.PrimaryClusterId == null) {
+
+                this.PrimaryClusterId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PrimaryClusterId != null && ec.Excludes("primaryClusterId",true))
+        {
+            this.PrimaryClusterId = null;
         }
         //      C# -> System.String? ProtectionDateV50
         // GraphQL -> protectionDateV50: String (scalar)
-        if (this.ProtectionDateV50 == null && ec.Includes("protectionDateV50",true))
+        if (ec.Includes("protectionDateV50",true))
         {
-            this.ProtectionDateV50 = "FETCH";
+            if(this.ProtectionDateV50 == null) {
+
+                this.ProtectionDateV50 = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProtectionDateV50 != null && ec.Excludes("protectionDateV50",true))
+        {
+            this.ProtectionDateV50 = null;
         }
         //      C# -> System.String? ProtectionDateV51
         // GraphQL -> protectionDateV51: String (scalar)
-        if (this.ProtectionDateV51 == null && ec.Includes("protectionDateV51",true))
+        if (ec.Includes("protectionDateV51",true))
         {
-            this.ProtectionDateV51 = "FETCH";
+            if(this.ProtectionDateV51 == null) {
+
+                this.ProtectionDateV51 = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProtectionDateV51 != null && ec.Excludes("protectionDateV51",true))
+        {
+            this.ProtectionDateV51 = null;
         }
         //      C# -> System.String? ProtectionDateV52
         // GraphQL -> protectionDateV52: String (scalar)
-        if (this.ProtectionDateV52 == null && ec.Includes("protectionDateV52",true))
+        if (ec.Includes("protectionDateV52",true))
         {
-            this.ProtectionDateV52 = "FETCH";
+            if(this.ProtectionDateV52 == null) {
+
+                this.ProtectionDateV52 = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProtectionDateV52 != null && ec.Excludes("protectionDateV52",true))
+        {
+            this.ProtectionDateV52 = null;
         }
         //      C# -> System.String? ProtectionDateV53
         // GraphQL -> protectionDateV53: String (scalar)
-        if (this.ProtectionDateV53 == null && ec.Includes("protectionDateV53",true))
+        if (ec.Includes("protectionDateV53",true))
         {
-            this.ProtectionDateV53 = "FETCH";
+            if(this.ProtectionDateV53 == null) {
+
+                this.ProtectionDateV53 = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProtectionDateV53 != null && ec.Excludes("protectionDateV53",true))
+        {
+            this.ProtectionDateV53 = null;
         }
         //      C# -> DateTime? ProtectionDateV60
         // GraphQL -> protectionDateV60: DateTime (scalar)
-        if (this.ProtectionDateV60 == null && ec.Includes("protectionDateV60",true))
+        if (ec.Includes("protectionDateV60",true))
         {
-            this.ProtectionDateV60 = new DateTime();
+            if(this.ProtectionDateV60 == null) {
+
+                this.ProtectionDateV60 = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProtectionDateV60 != null && ec.Excludes("protectionDateV60",true))
+        {
+            this.ProtectionDateV60 = null;
         }
         //      C# -> DateTime? ProtectionDateV70
         // GraphQL -> protectionDateV70: DateTime (scalar)
-        if (this.ProtectionDateV70 == null && ec.Includes("protectionDateV70",true))
+        if (ec.Includes("protectionDateV70",true))
         {
-            this.ProtectionDateV70 = new DateTime();
+            if(this.ProtectionDateV70 == null) {
+
+                this.ProtectionDateV70 = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProtectionDateV70 != null && ec.Excludes("protectionDateV70",true))
+        {
+            this.ProtectionDateV70 = null;
         }
         //      C# -> DateTime? ProtectionDateV80
         // GraphQL -> protectionDateV80: DateTime (scalar)
-        if (this.ProtectionDateV80 == null && ec.Includes("protectionDateV80",true))
+        if (ec.Includes("protectionDateV80",true))
         {
-            this.ProtectionDateV80 = new DateTime();
+            if(this.ProtectionDateV80 == null) {
+
+                this.ProtectionDateV80 = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProtectionDateV80 != null && ec.Excludes("protectionDateV80",true))
+        {
+            this.ProtectionDateV80 = null;
         }
         //      C# -> DateTime? ProtectionDateV81
         // GraphQL -> protectionDateV81: DateTime (scalar)
-        if (this.ProtectionDateV81 == null && ec.Includes("protectionDateV81",true))
+        if (ec.Includes("protectionDateV81",true))
         {
-            this.ProtectionDateV81 = new DateTime();
+            if(this.ProtectionDateV81 == null) {
+
+                this.ProtectionDateV81 = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProtectionDateV81 != null && ec.Excludes("protectionDateV81",true))
+        {
+            this.ProtectionDateV81 = null;
         }
         //      C# -> DateTime? ProtectionDateV90
         // GraphQL -> protectionDateV90: DateTime (scalar)
-        if (this.ProtectionDateV90 == null && ec.Includes("protectionDateV90",true))
+        if (ec.Includes("protectionDateV90",true))
         {
-            this.ProtectionDateV90 = new DateTime();
+            if(this.ProtectionDateV90 == null) {
+
+                this.ProtectionDateV90 = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProtectionDateV90 != null && ec.Excludes("protectionDateV90",true))
+        {
+            this.ProtectionDateV90 = null;
         }
         //      C# -> DateTime? ProtectionDateV91
         // GraphQL -> protectionDateV91: DateTime (scalar)
-        if (this.ProtectionDateV91 == null && ec.Includes("protectionDateV91",true))
+        if (ec.Includes("protectionDateV91",true))
         {
-            this.ProtectionDateV91 = new DateTime();
+            if(this.ProtectionDateV91 == null) {
+
+                this.ProtectionDateV91 = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProtectionDateV91 != null && ec.Excludes("protectionDateV91",true))
+        {
+            this.ProtectionDateV91 = null;
         }
         //      C# -> List<System.String>? UnprotectableReasonsV51
         // GraphQL -> unprotectableReasonsV51: [String!]! (scalar)
-        if (this.UnprotectableReasonsV51 == null && ec.Includes("unprotectableReasonsV51",true))
+        if (ec.Includes("unprotectableReasonsV51",true))
         {
-            this.UnprotectableReasonsV51 = new List<System.String>();
+            if(this.UnprotectableReasonsV51 == null) {
+
+                this.UnprotectableReasonsV51 = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UnprotectableReasonsV51 != null && ec.Excludes("unprotectableReasonsV51",true))
+        {
+            this.UnprotectableReasonsV51 = null;
         }
         //      C# -> List<System.String>? UnprotectableReasonsV52
         // GraphQL -> unprotectableReasonsV52: [String!]! (scalar)
-        if (this.UnprotectableReasonsV52 == null && ec.Includes("unprotectableReasonsV52",true))
+        if (ec.Includes("unprotectableReasonsV52",true))
         {
-            this.UnprotectableReasonsV52 = new List<System.String>();
+            if(this.UnprotectableReasonsV52 == null) {
+
+                this.UnprotectableReasonsV52 = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UnprotectableReasonsV52 != null && ec.Excludes("unprotectableReasonsV52",true))
+        {
+            this.UnprotectableReasonsV52 = null;
         }
         //      C# -> List<System.String>? UnprotectableReasonsV53
         // GraphQL -> unprotectableReasonsV53: [String!]! (scalar)
-        if (this.UnprotectableReasonsV53 == null && ec.Includes("unprotectableReasonsV53",true))
+        if (ec.Includes("unprotectableReasonsV53",true))
         {
-            this.UnprotectableReasonsV53 = new List<System.String>();
+            if(this.UnprotectableReasonsV53 == null) {
+
+                this.UnprotectableReasonsV53 = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UnprotectableReasonsV53 != null && ec.Excludes("unprotectableReasonsV53",true))
+        {
+            this.UnprotectableReasonsV53 = null;
         }
         //      C# -> List<System.String>? UnprotectableReasonsV60
         // GraphQL -> unprotectableReasonsV60: [String!]! (scalar)
-        if (this.UnprotectableReasonsV60 == null && ec.Includes("unprotectableReasonsV60",true))
+        if (ec.Includes("unprotectableReasonsV60",true))
         {
-            this.UnprotectableReasonsV60 = new List<System.String>();
+            if(this.UnprotectableReasonsV60 == null) {
+
+                this.UnprotectableReasonsV60 = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UnprotectableReasonsV60 != null && ec.Excludes("unprotectableReasonsV60",true))
+        {
+            this.UnprotectableReasonsV60 = null;
         }
         //      C# -> List<System.String>? UnprotectableReasonsV70
         // GraphQL -> unprotectableReasonsV70: [String!]! (scalar)
-        if (this.UnprotectableReasonsV70 == null && ec.Includes("unprotectableReasonsV70",true))
+        if (ec.Includes("unprotectableReasonsV70",true))
         {
-            this.UnprotectableReasonsV70 = new List<System.String>();
+            if(this.UnprotectableReasonsV70 == null) {
+
+                this.UnprotectableReasonsV70 = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UnprotectableReasonsV70 != null && ec.Excludes("unprotectableReasonsV70",true))
+        {
+            this.UnprotectableReasonsV70 = null;
         }
         //      C# -> List<System.String>? UnprotectableReasonsV80
         // GraphQL -> unprotectableReasonsV80: [String!]! (scalar)
-        if (this.UnprotectableReasonsV80 == null && ec.Includes("unprotectableReasonsV80",true))
+        if (ec.Includes("unprotectableReasonsV80",true))
         {
-            this.UnprotectableReasonsV80 = new List<System.String>();
+            if(this.UnprotectableReasonsV80 == null) {
+
+                this.UnprotectableReasonsV80 = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UnprotectableReasonsV80 != null && ec.Excludes("unprotectableReasonsV80",true))
+        {
+            this.UnprotectableReasonsV80 = null;
         }
         //      C# -> List<System.String>? UnprotectableReasonsV81
         // GraphQL -> unprotectableReasonsV81: [String!]! (scalar)
-        if (this.UnprotectableReasonsV81 == null && ec.Includes("unprotectableReasonsV81",true))
+        if (ec.Includes("unprotectableReasonsV81",true))
         {
-            this.UnprotectableReasonsV81 = new List<System.String>();
+            if(this.UnprotectableReasonsV81 == null) {
+
+                this.UnprotectableReasonsV81 = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UnprotectableReasonsV81 != null && ec.Excludes("unprotectableReasonsV81",true))
+        {
+            this.UnprotectableReasonsV81 = null;
         }
         //      C# -> List<System.String>? UnprotectableReasonsV90
         // GraphQL -> unprotectableReasonsV90: [String!]! (scalar)
-        if (this.UnprotectableReasonsV90 == null && ec.Includes("unprotectableReasonsV90",true))
+        if (ec.Includes("unprotectableReasonsV90",true))
         {
-            this.UnprotectableReasonsV90 = new List<System.String>();
+            if(this.UnprotectableReasonsV90 == null) {
+
+                this.UnprotectableReasonsV90 = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UnprotectableReasonsV90 != null && ec.Excludes("unprotectableReasonsV90",true))
+        {
+            this.UnprotectableReasonsV90 = null;
         }
         //      C# -> List<System.String>? UnprotectableReasonsV91
         // GraphQL -> unprotectableReasonsV91: [String!]! (scalar)
-        if (this.UnprotectableReasonsV91 == null && ec.Includes("unprotectableReasonsV91",true))
+        if (ec.Includes("unprotectableReasonsV91",true))
         {
-            this.UnprotectableReasonsV91 = new List<System.String>();
+            if(this.UnprotectableReasonsV91 == null) {
+
+                this.UnprotectableReasonsV91 = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UnprotectableReasonsV91 != null && ec.Excludes("unprotectableReasonsV91",true))
+        {
+            this.UnprotectableReasonsV91 = null;
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String (scalar)
-        if (this.Version == null && ec.Includes("version",true))
+        if (ec.Includes("version",true))
         {
-            this.Version = "FETCH";
+            if(this.Version == null) {
+
+                this.Version = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Version != null && ec.Excludes("version",true))
+        {
+            this.Version = null;
         }
         //      C# -> MssqlNonSlaProperties? MssqlNonSlaProperties
         // GraphQL -> mssqlNonSlaProperties: MssqlNonSlaProperties (type)
-        if (this.MssqlNonSlaProperties == null && ec.Includes("mssqlNonSlaProperties",false))
+        if (ec.Includes("mssqlNonSlaProperties",false))
         {
-            this.MssqlNonSlaProperties = new MssqlNonSlaProperties();
-            this.MssqlNonSlaProperties.ApplyExploratoryFieldSpec(ec.NewChild("mssqlNonSlaProperties"));
+            if(this.MssqlNonSlaProperties == null) {
+
+                this.MssqlNonSlaProperties = new MssqlNonSlaProperties();
+                this.MssqlNonSlaProperties.ApplyExploratoryFieldSpec(ec.NewChild("mssqlNonSlaProperties"));
+
+            } else {
+
+                this.MssqlNonSlaProperties.ApplyExploratoryFieldSpec(ec.NewChild("mssqlNonSlaProperties"));
+
+            }
+        }
+        else if (this.MssqlNonSlaProperties != null && ec.Excludes("mssqlNonSlaProperties",false))
+        {
+            this.MssqlNonSlaProperties = null;
         }
         //      C# -> MssqlSlaRelatedProperties? MssqlSlaRelatedProperties
         // GraphQL -> mssqlSlaRelatedProperties: MssqlSlaRelatedProperties (type)
-        if (this.MssqlSlaRelatedProperties == null && ec.Includes("mssqlSlaRelatedProperties",false))
+        if (ec.Includes("mssqlSlaRelatedProperties",false))
         {
-            this.MssqlSlaRelatedProperties = new MssqlSlaRelatedProperties();
-            this.MssqlSlaRelatedProperties.ApplyExploratoryFieldSpec(ec.NewChild("mssqlSlaRelatedProperties"));
+            if(this.MssqlSlaRelatedProperties == null) {
+
+                this.MssqlSlaRelatedProperties = new MssqlSlaRelatedProperties();
+                this.MssqlSlaRelatedProperties.ApplyExploratoryFieldSpec(ec.NewChild("mssqlSlaRelatedProperties"));
+
+            } else {
+
+                this.MssqlSlaRelatedProperties.ApplyExploratoryFieldSpec(ec.NewChild("mssqlSlaRelatedProperties"));
+
+            }
+        }
+        else if (this.MssqlSlaRelatedProperties != null && ec.Excludes("mssqlSlaRelatedProperties",false))
+        {
+            this.MssqlSlaRelatedProperties = null;
         }
         //      C# -> MssqlRootProperties? RootProperties
         // GraphQL -> rootProperties: MssqlRootProperties (type)
-        if (this.RootProperties == null && ec.Includes("rootProperties",false))
+        if (ec.Includes("rootProperties",false))
         {
-            this.RootProperties = new MssqlRootProperties();
-            this.RootProperties.ApplyExploratoryFieldSpec(ec.NewChild("rootProperties"));
+            if(this.RootProperties == null) {
+
+                this.RootProperties = new MssqlRootProperties();
+                this.RootProperties.ApplyExploratoryFieldSpec(ec.NewChild("rootProperties"));
+
+            } else {
+
+                this.RootProperties.ApplyExploratoryFieldSpec(ec.NewChild("rootProperties"));
+
+            }
+        }
+        else if (this.RootProperties != null && ec.Excludes("rootProperties",false))
+        {
+            this.RootProperties = null;
         }
         //      C# -> List<MssqlUnprotectableReason>? UnprotectableReasonsV50
         // GraphQL -> unprotectableReasonsV50: [MssqlUnprotectableReason!]! (type)
-        if (this.UnprotectableReasonsV50 == null && ec.Includes("unprotectableReasonsV50",false))
+        if (ec.Includes("unprotectableReasonsV50",false))
         {
-            this.UnprotectableReasonsV50 = new List<MssqlUnprotectableReason>();
-            this.UnprotectableReasonsV50.ApplyExploratoryFieldSpec(ec.NewChild("unprotectableReasonsV50"));
+            if(this.UnprotectableReasonsV50 == null) {
+
+                this.UnprotectableReasonsV50 = new List<MssqlUnprotectableReason>();
+                this.UnprotectableReasonsV50.ApplyExploratoryFieldSpec(ec.NewChild("unprotectableReasonsV50"));
+
+            } else {
+
+                this.UnprotectableReasonsV50.ApplyExploratoryFieldSpec(ec.NewChild("unprotectableReasonsV50"));
+
+            }
+        }
+        else if (this.UnprotectableReasonsV50 != null && ec.Excludes("unprotectableReasonsV50",false))
+        {
+            this.UnprotectableReasonsV50 = null;
         }
     }
 
@@ -750,9 +1250,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<MssqlInstanceSummary> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

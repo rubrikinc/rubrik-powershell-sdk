@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> DeltaType? DeltaType
         // GraphQL -> deltaType: DeltaType! (enum)
         if (this.DeltaType != null) {
-            s += ind + "deltaType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "deltaType\n" ;
+            } else {
+                s += ind + "deltaType\n" ;
+            }
         }
         //      C# -> System.Int64? DeltaAmount
         // GraphQL -> deltaAmount: Long! (scalar)
         if (this.DeltaAmount != null) {
-            s += ind + "deltaAmount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "deltaAmount\n" ;
+            } else {
+                s += ind + "deltaAmount\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> DeltaType? DeltaType
         // GraphQL -> deltaType: DeltaType! (enum)
-        if (this.DeltaType == null && ec.Includes("deltaType",true))
+        if (ec.Includes("deltaType",true))
         {
-            this.DeltaType = new DeltaType();
+            if(this.DeltaType == null) {
+
+                this.DeltaType = new DeltaType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DeltaType != null && ec.Excludes("deltaType",true))
+        {
+            this.DeltaType = null;
         }
         //      C# -> System.Int64? DeltaAmount
         // GraphQL -> deltaAmount: Long! (scalar)
-        if (this.DeltaAmount == null && ec.Includes("deltaAmount",true))
+        if (ec.Includes("deltaAmount",true))
         {
-            this.DeltaAmount = new System.Int64();
+            if(this.DeltaAmount == null) {
+
+                this.DeltaAmount = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DeltaAmount != null && ec.Excludes("deltaAmount",true))
+        {
+            this.DeltaAmount = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SnapshotDelta> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

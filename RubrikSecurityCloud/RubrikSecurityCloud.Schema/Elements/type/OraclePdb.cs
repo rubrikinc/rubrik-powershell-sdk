@@ -101,44 +101,73 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> OraclePdbOpenMode? OpenMode
         // GraphQL -> openMode: OraclePdbOpenMode! (enum)
         if (this.OpenMode != null) {
-            s += ind + "openMode\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "openMode\n" ;
+            } else {
+                s += ind + "openMode\n" ;
+            }
         }
         //      C# -> System.Int64? ApplicationRootContainerId
         // GraphQL -> applicationRootContainerId: Long! (scalar)
         if (this.ApplicationRootContainerId != null) {
-            s += ind + "applicationRootContainerId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "applicationRootContainerId\n" ;
+            } else {
+                s += ind + "applicationRootContainerId\n" ;
+            }
         }
         //      C# -> System.Int64? DbId
         // GraphQL -> dbId: Long! (scalar)
         if (this.DbId != null) {
-            s += ind + "dbId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "dbId\n" ;
+            } else {
+                s += ind + "dbId\n" ;
+            }
         }
         //      C# -> System.Int64? Id
         // GraphQL -> id: Long! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.Boolean? IsApplicationPdb
         // GraphQL -> isApplicationPdb: Boolean! (scalar)
         if (this.IsApplicationPdb != null) {
-            s += ind + "isApplicationPdb\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isApplicationPdb\n" ;
+            } else {
+                s += ind + "isApplicationPdb\n" ;
+            }
         }
         //      C# -> System.Boolean? IsApplicationRoot
         // GraphQL -> isApplicationRoot: Boolean! (scalar)
         if (this.IsApplicationRoot != null) {
-            s += ind + "isApplicationRoot\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isApplicationRoot\n" ;
+            } else {
+                s += ind + "isApplicationRoot\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         return s;
     }
@@ -149,45 +178,122 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> OraclePdbOpenMode? OpenMode
         // GraphQL -> openMode: OraclePdbOpenMode! (enum)
-        if (this.OpenMode == null && ec.Includes("openMode",true))
+        if (ec.Includes("openMode",true))
         {
-            this.OpenMode = new OraclePdbOpenMode();
+            if(this.OpenMode == null) {
+
+                this.OpenMode = new OraclePdbOpenMode();
+
+            } else {
+
+
+            }
+        }
+        else if (this.OpenMode != null && ec.Excludes("openMode",true))
+        {
+            this.OpenMode = null;
         }
         //      C# -> System.Int64? ApplicationRootContainerId
         // GraphQL -> applicationRootContainerId: Long! (scalar)
-        if (this.ApplicationRootContainerId == null && ec.Includes("applicationRootContainerId",true))
+        if (ec.Includes("applicationRootContainerId",true))
         {
-            this.ApplicationRootContainerId = new System.Int64();
+            if(this.ApplicationRootContainerId == null) {
+
+                this.ApplicationRootContainerId = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ApplicationRootContainerId != null && ec.Excludes("applicationRootContainerId",true))
+        {
+            this.ApplicationRootContainerId = null;
         }
         //      C# -> System.Int64? DbId
         // GraphQL -> dbId: Long! (scalar)
-        if (this.DbId == null && ec.Includes("dbId",true))
+        if (ec.Includes("dbId",true))
         {
-            this.DbId = new System.Int64();
+            if(this.DbId == null) {
+
+                this.DbId = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DbId != null && ec.Excludes("dbId",true))
+        {
+            this.DbId = null;
         }
         //      C# -> System.Int64? Id
         // GraphQL -> id: Long! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = new System.Int64();
+            if(this.Id == null) {
+
+                this.Id = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.Boolean? IsApplicationPdb
         // GraphQL -> isApplicationPdb: Boolean! (scalar)
-        if (this.IsApplicationPdb == null && ec.Includes("isApplicationPdb",true))
+        if (ec.Includes("isApplicationPdb",true))
         {
-            this.IsApplicationPdb = true;
+            if(this.IsApplicationPdb == null) {
+
+                this.IsApplicationPdb = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsApplicationPdb != null && ec.Excludes("isApplicationPdb",true))
+        {
+            this.IsApplicationPdb = null;
         }
         //      C# -> System.Boolean? IsApplicationRoot
         // GraphQL -> isApplicationRoot: Boolean! (scalar)
-        if (this.IsApplicationRoot == null && ec.Includes("isApplicationRoot",true))
+        if (ec.Includes("isApplicationRoot",true))
         {
-            this.IsApplicationRoot = true;
+            if(this.IsApplicationRoot == null) {
+
+                this.IsApplicationRoot = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsApplicationRoot != null && ec.Excludes("isApplicationRoot",true))
+        {
+            this.IsApplicationRoot = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
     }
 
@@ -214,9 +320,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<OraclePdb> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

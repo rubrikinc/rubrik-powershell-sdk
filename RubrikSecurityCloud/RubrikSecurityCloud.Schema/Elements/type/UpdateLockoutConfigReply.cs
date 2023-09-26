@@ -101,44 +101,73 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int32? AccountAutoUnlockDurationInMins
         // GraphQL -> accountAutoUnlockDurationInMins: Int! (scalar)
         if (this.AccountAutoUnlockDurationInMins != null) {
-            s += ind + "accountAutoUnlockDurationInMins\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "accountAutoUnlockDurationInMins\n" ;
+            } else {
+                s += ind + "accountAutoUnlockDurationInMins\n" ;
+            }
         }
         //      C# -> System.Boolean? IsAutoUnlockFeatureEnabled
         // GraphQL -> isAutoUnlockFeatureEnabled: Boolean! (scalar)
         if (this.IsAutoUnlockFeatureEnabled != null) {
-            s += ind + "isAutoUnlockFeatureEnabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isAutoUnlockFeatureEnabled\n" ;
+            } else {
+                s += ind + "isAutoUnlockFeatureEnabled\n" ;
+            }
         }
         //      C# -> System.Boolean? IsBruteForceLockoutEnabled
         // GraphQL -> isBruteForceLockoutEnabled: Boolean! (scalar)
         if (this.IsBruteForceLockoutEnabled != null) {
-            s += ind + "isBruteForceLockoutEnabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isBruteForceLockoutEnabled\n" ;
+            } else {
+                s += ind + "isBruteForceLockoutEnabled\n" ;
+            }
         }
         //      C# -> System.Boolean? IsSelfServiceEnabled
         // GraphQL -> isSelfServiceEnabled: Boolean! (scalar)
         if (this.IsSelfServiceEnabled != null) {
-            s += ind + "isSelfServiceEnabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isSelfServiceEnabled\n" ;
+            } else {
+                s += ind + "isSelfServiceEnabled\n" ;
+            }
         }
         //      C# -> System.Int32? LoginAttemptsLimit
         // GraphQL -> loginAttemptsLimit: Int! (scalar)
         if (this.LoginAttemptsLimit != null) {
-            s += ind + "loginAttemptsLimit\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "loginAttemptsLimit\n" ;
+            } else {
+                s += ind + "loginAttemptsLimit\n" ;
+            }
         }
         //      C# -> System.Int32? SelfServiceAttemptsLimit
         // GraphQL -> selfServiceAttemptsLimit: Int! (scalar)
         if (this.SelfServiceAttemptsLimit != null) {
-            s += ind + "selfServiceAttemptsLimit\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "selfServiceAttemptsLimit\n" ;
+            } else {
+                s += ind + "selfServiceAttemptsLimit\n" ;
+            }
         }
         //      C# -> System.Int32? SelfServiceTokenValidityInMins
         // GraphQL -> selfServiceTokenValidityInMins: Int! (scalar)
         if (this.SelfServiceTokenValidityInMins != null) {
-            s += ind + "selfServiceTokenValidityInMins\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "selfServiceTokenValidityInMins\n" ;
+            } else {
+                s += ind + "selfServiceTokenValidityInMins\n" ;
+            }
         }
         return s;
     }
@@ -149,45 +178,122 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int32? AccountAutoUnlockDurationInMins
         // GraphQL -> accountAutoUnlockDurationInMins: Int! (scalar)
-        if (this.AccountAutoUnlockDurationInMins == null && ec.Includes("accountAutoUnlockDurationInMins",true))
+        if (ec.Includes("accountAutoUnlockDurationInMins",true))
         {
-            this.AccountAutoUnlockDurationInMins = Int32.MinValue;
+            if(this.AccountAutoUnlockDurationInMins == null) {
+
+                this.AccountAutoUnlockDurationInMins = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.AccountAutoUnlockDurationInMins != null && ec.Excludes("accountAutoUnlockDurationInMins",true))
+        {
+            this.AccountAutoUnlockDurationInMins = null;
         }
         //      C# -> System.Boolean? IsAutoUnlockFeatureEnabled
         // GraphQL -> isAutoUnlockFeatureEnabled: Boolean! (scalar)
-        if (this.IsAutoUnlockFeatureEnabled == null && ec.Includes("isAutoUnlockFeatureEnabled",true))
+        if (ec.Includes("isAutoUnlockFeatureEnabled",true))
         {
-            this.IsAutoUnlockFeatureEnabled = true;
+            if(this.IsAutoUnlockFeatureEnabled == null) {
+
+                this.IsAutoUnlockFeatureEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAutoUnlockFeatureEnabled != null && ec.Excludes("isAutoUnlockFeatureEnabled",true))
+        {
+            this.IsAutoUnlockFeatureEnabled = null;
         }
         //      C# -> System.Boolean? IsBruteForceLockoutEnabled
         // GraphQL -> isBruteForceLockoutEnabled: Boolean! (scalar)
-        if (this.IsBruteForceLockoutEnabled == null && ec.Includes("isBruteForceLockoutEnabled",true))
+        if (ec.Includes("isBruteForceLockoutEnabled",true))
         {
-            this.IsBruteForceLockoutEnabled = true;
+            if(this.IsBruteForceLockoutEnabled == null) {
+
+                this.IsBruteForceLockoutEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsBruteForceLockoutEnabled != null && ec.Excludes("isBruteForceLockoutEnabled",true))
+        {
+            this.IsBruteForceLockoutEnabled = null;
         }
         //      C# -> System.Boolean? IsSelfServiceEnabled
         // GraphQL -> isSelfServiceEnabled: Boolean! (scalar)
-        if (this.IsSelfServiceEnabled == null && ec.Includes("isSelfServiceEnabled",true))
+        if (ec.Includes("isSelfServiceEnabled",true))
         {
-            this.IsSelfServiceEnabled = true;
+            if(this.IsSelfServiceEnabled == null) {
+
+                this.IsSelfServiceEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsSelfServiceEnabled != null && ec.Excludes("isSelfServiceEnabled",true))
+        {
+            this.IsSelfServiceEnabled = null;
         }
         //      C# -> System.Int32? LoginAttemptsLimit
         // GraphQL -> loginAttemptsLimit: Int! (scalar)
-        if (this.LoginAttemptsLimit == null && ec.Includes("loginAttemptsLimit",true))
+        if (ec.Includes("loginAttemptsLimit",true))
         {
-            this.LoginAttemptsLimit = Int32.MinValue;
+            if(this.LoginAttemptsLimit == null) {
+
+                this.LoginAttemptsLimit = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LoginAttemptsLimit != null && ec.Excludes("loginAttemptsLimit",true))
+        {
+            this.LoginAttemptsLimit = null;
         }
         //      C# -> System.Int32? SelfServiceAttemptsLimit
         // GraphQL -> selfServiceAttemptsLimit: Int! (scalar)
-        if (this.SelfServiceAttemptsLimit == null && ec.Includes("selfServiceAttemptsLimit",true))
+        if (ec.Includes("selfServiceAttemptsLimit",true))
         {
-            this.SelfServiceAttemptsLimit = Int32.MinValue;
+            if(this.SelfServiceAttemptsLimit == null) {
+
+                this.SelfServiceAttemptsLimit = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.SelfServiceAttemptsLimit != null && ec.Excludes("selfServiceAttemptsLimit",true))
+        {
+            this.SelfServiceAttemptsLimit = null;
         }
         //      C# -> System.Int32? SelfServiceTokenValidityInMins
         // GraphQL -> selfServiceTokenValidityInMins: Int! (scalar)
-        if (this.SelfServiceTokenValidityInMins == null && ec.Includes("selfServiceTokenValidityInMins",true))
+        if (ec.Includes("selfServiceTokenValidityInMins",true))
         {
-            this.SelfServiceTokenValidityInMins = Int32.MinValue;
+            if(this.SelfServiceTokenValidityInMins == null) {
+
+                this.SelfServiceTokenValidityInMins = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.SelfServiceTokenValidityInMins != null && ec.Excludes("selfServiceTokenValidityInMins",true))
+        {
+            this.SelfServiceTokenValidityInMins = null;
         }
     }
 
@@ -214,9 +320,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<UpdateLockoutConfigReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

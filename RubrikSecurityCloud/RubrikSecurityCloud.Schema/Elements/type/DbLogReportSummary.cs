@@ -137,64 +137,109 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> DatabaseType? DatabaseType
         // GraphQL -> databaseType: DatabaseType! (enum)
         if (this.DatabaseType != null) {
-            s += ind + "databaseType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "databaseType\n" ;
+            } else {
+                s += ind + "databaseType\n" ;
+            }
         }
         //      C# -> System.String? EffectiveSlaDomainId
         // GraphQL -> effectiveSlaDomainId: String! (scalar)
         if (this.EffectiveSlaDomainId != null) {
-            s += ind + "effectiveSlaDomainId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "effectiveSlaDomainId\n" ;
+            } else {
+                s += ind + "effectiveSlaDomainId\n" ;
+            }
         }
         //      C# -> System.String? EffectiveSlaDomainName
         // GraphQL -> effectiveSlaDomainName: String! (scalar)
         if (this.EffectiveSlaDomainName != null) {
-            s += ind + "effectiveSlaDomainName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "effectiveSlaDomainName\n" ;
+            } else {
+                s += ind + "effectiveSlaDomainName\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> DateTime? LastSnapshotTime
         // GraphQL -> lastSnapshotTime: DateTime (scalar)
         if (this.LastSnapshotTime != null) {
-            s += ind + "lastSnapshotTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "lastSnapshotTime\n" ;
+            } else {
+                s += ind + "lastSnapshotTime\n" ;
+            }
         }
         //      C# -> DateTime? LatestRecoveryTime
         // GraphQL -> latestRecoveryTime: DateTime (scalar)
         if (this.LatestRecoveryTime != null) {
-            s += ind + "latestRecoveryTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "latestRecoveryTime\n" ;
+            } else {
+                s += ind + "latestRecoveryTime\n" ;
+            }
         }
         //      C# -> System.String? Location
         // GraphQL -> location: String! (scalar)
         if (this.Location != null) {
-            s += ind + "location\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "location\n" ;
+            } else {
+                s += ind + "location\n" ;
+            }
         }
         //      C# -> System.Int64? LogBackupDelay
         // GraphQL -> logBackupDelay: Long (scalar)
         if (this.LogBackupDelay != null) {
-            s += ind + "logBackupDelay\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "logBackupDelay\n" ;
+            } else {
+                s += ind + "logBackupDelay\n" ;
+            }
         }
         //      C# -> System.Int32? LogBackupFrequency
         // GraphQL -> logBackupFrequency: Int (scalar)
         if (this.LogBackupFrequency != null) {
-            s += ind + "logBackupFrequency\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "logBackupFrequency\n" ;
+            } else {
+                s += ind + "logBackupFrequency\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.String? PrimaryClusterId
         // GraphQL -> primaryClusterId: String! (scalar)
         if (this.PrimaryClusterId != null) {
-            s += ind + "primaryClusterId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "primaryClusterId\n" ;
+            } else {
+                s += ind + "primaryClusterId\n" ;
+            }
         }
         return s;
     }
@@ -205,69 +250,190 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> DatabaseType? DatabaseType
         // GraphQL -> databaseType: DatabaseType! (enum)
-        if (this.DatabaseType == null && ec.Includes("databaseType",true))
+        if (ec.Includes("databaseType",true))
         {
-            this.DatabaseType = new DatabaseType();
+            if(this.DatabaseType == null) {
+
+                this.DatabaseType = new DatabaseType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DatabaseType != null && ec.Excludes("databaseType",true))
+        {
+            this.DatabaseType = null;
         }
         //      C# -> System.String? EffectiveSlaDomainId
         // GraphQL -> effectiveSlaDomainId: String! (scalar)
-        if (this.EffectiveSlaDomainId == null && ec.Includes("effectiveSlaDomainId",true))
+        if (ec.Includes("effectiveSlaDomainId",true))
         {
-            this.EffectiveSlaDomainId = "FETCH";
+            if(this.EffectiveSlaDomainId == null) {
+
+                this.EffectiveSlaDomainId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.EffectiveSlaDomainId != null && ec.Excludes("effectiveSlaDomainId",true))
+        {
+            this.EffectiveSlaDomainId = null;
         }
         //      C# -> System.String? EffectiveSlaDomainName
         // GraphQL -> effectiveSlaDomainName: String! (scalar)
-        if (this.EffectiveSlaDomainName == null && ec.Includes("effectiveSlaDomainName",true))
+        if (ec.Includes("effectiveSlaDomainName",true))
         {
-            this.EffectiveSlaDomainName = "FETCH";
+            if(this.EffectiveSlaDomainName == null) {
+
+                this.EffectiveSlaDomainName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.EffectiveSlaDomainName != null && ec.Excludes("effectiveSlaDomainName",true))
+        {
+            this.EffectiveSlaDomainName = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> DateTime? LastSnapshotTime
         // GraphQL -> lastSnapshotTime: DateTime (scalar)
-        if (this.LastSnapshotTime == null && ec.Includes("lastSnapshotTime",true))
+        if (ec.Includes("lastSnapshotTime",true))
         {
-            this.LastSnapshotTime = new DateTime();
+            if(this.LastSnapshotTime == null) {
+
+                this.LastSnapshotTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastSnapshotTime != null && ec.Excludes("lastSnapshotTime",true))
+        {
+            this.LastSnapshotTime = null;
         }
         //      C# -> DateTime? LatestRecoveryTime
         // GraphQL -> latestRecoveryTime: DateTime (scalar)
-        if (this.LatestRecoveryTime == null && ec.Includes("latestRecoveryTime",true))
+        if (ec.Includes("latestRecoveryTime",true))
         {
-            this.LatestRecoveryTime = new DateTime();
+            if(this.LatestRecoveryTime == null) {
+
+                this.LatestRecoveryTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LatestRecoveryTime != null && ec.Excludes("latestRecoveryTime",true))
+        {
+            this.LatestRecoveryTime = null;
         }
         //      C# -> System.String? Location
         // GraphQL -> location: String! (scalar)
-        if (this.Location == null && ec.Includes("location",true))
+        if (ec.Includes("location",true))
         {
-            this.Location = "FETCH";
+            if(this.Location == null) {
+
+                this.Location = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Location != null && ec.Excludes("location",true))
+        {
+            this.Location = null;
         }
         //      C# -> System.Int64? LogBackupDelay
         // GraphQL -> logBackupDelay: Long (scalar)
-        if (this.LogBackupDelay == null && ec.Includes("logBackupDelay",true))
+        if (ec.Includes("logBackupDelay",true))
         {
-            this.LogBackupDelay = new System.Int64();
+            if(this.LogBackupDelay == null) {
+
+                this.LogBackupDelay = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LogBackupDelay != null && ec.Excludes("logBackupDelay",true))
+        {
+            this.LogBackupDelay = null;
         }
         //      C# -> System.Int32? LogBackupFrequency
         // GraphQL -> logBackupFrequency: Int (scalar)
-        if (this.LogBackupFrequency == null && ec.Includes("logBackupFrequency",true))
+        if (ec.Includes("logBackupFrequency",true))
         {
-            this.LogBackupFrequency = Int32.MinValue;
+            if(this.LogBackupFrequency == null) {
+
+                this.LogBackupFrequency = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LogBackupFrequency != null && ec.Excludes("logBackupFrequency",true))
+        {
+            this.LogBackupFrequency = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.String? PrimaryClusterId
         // GraphQL -> primaryClusterId: String! (scalar)
-        if (this.PrimaryClusterId == null && ec.Includes("primaryClusterId",true))
+        if (ec.Includes("primaryClusterId",true))
         {
-            this.PrimaryClusterId = "FETCH";
+            if(this.PrimaryClusterId == null) {
+
+                this.PrimaryClusterId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PrimaryClusterId != null && ec.Excludes("primaryClusterId",true))
+        {
+            this.PrimaryClusterId = null;
         }
     }
 
@@ -294,9 +460,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<DbLogReportSummary> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

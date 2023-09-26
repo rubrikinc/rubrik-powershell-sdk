@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Data
         // GraphQL -> data: String (scalar)
         if (this.Data != null) {
-            s += ind + "data\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "data\n" ;
+            } else {
+                s += ind + "data\n" ;
+            }
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String (scalar)
         if (this.Message != null) {
-            s += ind + "message\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "message\n" ;
+            } else {
+                s += ind + "message\n" ;
+            }
         }
         //      C# -> System.Int64? ReturnCode
         // GraphQL -> returnCode: Long (scalar)
         if (this.ReturnCode != null) {
-            s += ind + "returnCode\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "returnCode\n" ;
+            } else {
+                s += ind + "returnCode\n" ;
+            }
         }
         //      C# -> System.Boolean? Status
         // GraphQL -> status: Boolean (scalar)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Data
         // GraphQL -> data: String (scalar)
-        if (this.Data == null && ec.Includes("data",true))
+        if (ec.Includes("data",true))
         {
-            this.Data = "FETCH";
+            if(this.Data == null) {
+
+                this.Data = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Data != null && ec.Excludes("data",true))
+        {
+            this.Data = null;
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String (scalar)
-        if (this.Message == null && ec.Includes("message",true))
+        if (ec.Includes("message",true))
         {
-            this.Message = "FETCH";
+            if(this.Message == null) {
+
+                this.Message = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Message != null && ec.Excludes("message",true))
+        {
+            this.Message = null;
         }
         //      C# -> System.Int64? ReturnCode
         // GraphQL -> returnCode: Long (scalar)
-        if (this.ReturnCode == null && ec.Includes("returnCode",true))
+        if (ec.Includes("returnCode",true))
         {
-            this.ReturnCode = new System.Int64();
+            if(this.ReturnCode == null) {
+
+                this.ReturnCode = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ReturnCode != null && ec.Excludes("returnCode",true))
+        {
+            this.ReturnCode = null;
         }
         //      C# -> System.Boolean? Status
         // GraphQL -> status: Boolean (scalar)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = true;
+            if(this.Status == null) {
+
+                this.Status = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<MosaicAsyncResponse> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

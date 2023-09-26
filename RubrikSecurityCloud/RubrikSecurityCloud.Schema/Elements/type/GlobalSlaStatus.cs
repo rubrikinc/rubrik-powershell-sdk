@@ -65,26 +65,39 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> PauseStatus? PauseStatus
         // GraphQL -> pauseStatus: PauseStatus! (enum)
         if (this.PauseStatus != null) {
-            s += ind + "pauseStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "pauseStatus\n" ;
+            } else {
+                s += ind + "pauseStatus\n" ;
+            }
         }
         //      C# -> SlaSyncStatus? SyncStatus
         // GraphQL -> syncStatus: SlaSyncStatus! (enum)
         if (this.SyncStatus != null) {
-            s += ind + "syncStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "syncStatus\n" ;
+            } else {
+                s += ind + "syncStatus\n" ;
+            }
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster (type)
         if (this.Cluster != null) {
-            var fspec = this.Cluster.AsFieldSpec(indent+1);
+            var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -96,22 +109,56 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> PauseStatus? PauseStatus
         // GraphQL -> pauseStatus: PauseStatus! (enum)
-        if (this.PauseStatus == null && ec.Includes("pauseStatus",true))
+        if (ec.Includes("pauseStatus",true))
         {
-            this.PauseStatus = new PauseStatus();
+            if(this.PauseStatus == null) {
+
+                this.PauseStatus = new PauseStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.PauseStatus != null && ec.Excludes("pauseStatus",true))
+        {
+            this.PauseStatus = null;
         }
         //      C# -> SlaSyncStatus? SyncStatus
         // GraphQL -> syncStatus: SlaSyncStatus! (enum)
-        if (this.SyncStatus == null && ec.Includes("syncStatus",true))
+        if (ec.Includes("syncStatus",true))
         {
-            this.SyncStatus = new SlaSyncStatus();
+            if(this.SyncStatus == null) {
+
+                this.SyncStatus = new SlaSyncStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SyncStatus != null && ec.Excludes("syncStatus",true))
+        {
+            this.SyncStatus = null;
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster (type)
-        if (this.Cluster == null && ec.Includes("cluster",false))
+        if (ec.Includes("cluster",false))
         {
-            this.Cluster = new Cluster();
-            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+            if(this.Cluster == null) {
+
+                this.Cluster = new Cluster();
+                this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+
+            } else {
+
+                this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+
+            }
+        }
+        else if (this.Cluster != null && ec.Excludes("cluster",false))
+        {
+            this.Cluster = null;
         }
     }
 
@@ -138,9 +185,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<GlobalSlaStatus> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

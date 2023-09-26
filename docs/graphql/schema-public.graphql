@@ -10913,7 +10913,7 @@ type Mutation {
   # Exclude or include virtual disks during snapshot.
   vsphereExcludeVmDisks(
     # Input to include/exclude disk for taking snapshot.
-    input: [VsphereExcludeVmDisksInput!]!): RequestSuccess!
+    input: [VsphereExcludeVmDisksInput!]!): RequestSuccess! @deprecated(reason: "Deprecated. Use excludeVmDisks instead.")
 
   # Export snapshot of a virtual machine to standalone ESXi server.
   vsphereExportSnapshotToStandaloneHostV2(
@@ -11039,7 +11039,7 @@ type Mutation {
   # Restores multiple files/directories from snapshot.
   vsphereVmRecoverFiles(
     # Vsphere recover files input.
-    input: VsphereVmRecoverFilesInput!): VsphereAsyncRequestStatus!
+    input: VsphereVmRecoverFilesInput!): VsphereAsyncRequestStatus! @deprecated(reason: "Deprecated. Use vsphereVmRecoverFilesNew instead.")
 
   # Restores multiple files/directories from snapshot.
   vsphereVmRecoverFilesNew(
@@ -11576,6 +11576,9 @@ enum ActivityObjectTypeEnum {
 
   # Specifies that the activity object type is O365 Team.
   O365Team
+
+  # Specifies that the activity object type is OAuth Token.
+  OAUTH_TOKEN
 
   # Specifies that the activity object type is Object Protection.
   ObjectProtection
@@ -23600,6 +23603,9 @@ input AzureVnetReq {
 input BackupAzureAdDirectoryInput {
   # Workload FIDs of the Azure AD directories to back up.
   workloadFids: [UUID!]!
+
+  # SLA Domain ID required for snapshot retention.
+  snapshotRetentionSlaId: UUID
 }
 # Represents the status of the backup for a specific M365 snapshot.
 type BackupEventStatus {
@@ -24156,6 +24162,10 @@ type BootstrappableNodeInfoListResponse {
   # Supported in v5.0+
   # Total list responses.
   total: Long
+
+  # Supported in v9.0+
+  # Cursor to fetch the next set of results.
+  nextCursor: String
 }
 input BrowseDirectoryFiltersInput {
   analyzerGroupIds: [String!] = []
@@ -24233,6 +24243,10 @@ type BrowseResponseListResponse {
   # Supported in v5.0+
   # Total list responses.
   total: Long
+
+  # Supported in v9.0+
+  # Cursor to fetch the next set of results.
+  nextCursor: String
 }
 # Input for getting web certificate and IPMI information for multiple clusters.
 input BulkClusterWebCertAndIpmiInput {
@@ -24260,6 +24274,10 @@ type BulkCreateFilesetTemplatesReply {
   # Supported in v5.0+
   # Total list responses.
   total: Long
+
+  # Supported in v9.0+
+  # Cursor to fetch the next set of results.
+  nextCursor: String
 }
 # Input for creating multiple filesets.
 input BulkCreateFilesetsInput {
@@ -24282,6 +24300,10 @@ type BulkCreateFilesetsReply {
   # Supported in v5.0+
   # Total list responses.
   total: Long
+
+  # Supported in v9.0+
+  # Cursor to fetch the next set of results.
+  nextCursor: String
 }
 # Supported in v7.0+
 input BulkCreateNasFilesetInput {
@@ -24459,6 +24481,10 @@ type BulkRegisterHostReply {
   # Supported in v5.0+
   # Total list responses.
   total: Long
+
+  # Supported in v9.0+
+  # Cursor to fetch the next set of results.
+  nextCursor: String
 }
 # Input to initiate bulk tiering of existing archived snapshots.
 input BulkTierExistingSnapshotsInput {
@@ -27777,6 +27803,10 @@ type CertificateSummaryListResponse {
   # Supported in v5.1+
   # Total list responses.
   total: Long
+
+  # Supported in v9.0+
+  # Cursor to fetch the next set of results.
+  nextCursor: String
 }
 input ChangePasswordInput {
   # Email of user performing reset.
@@ -35505,6 +35535,10 @@ type DbLogReportSummaryListReply {
   # Total list responses.
   total: Int
 
+  # Supported in v9.0+
+  # Cursor to fetch the next set of results.
+  nextCursor: String
+
   # Supported in v5.3+
   # If there is more.
   hasMore: Boolean
@@ -37815,6 +37849,9 @@ enum EventObjectType {
 
   # O365 Team object.
   O365_TEAM
+
+  # OAuth token.
+  OAUTH_TOKEN
 
   # Object protection.
   OBJECT_PROTECTION
@@ -40839,6 +40876,10 @@ input FilesetDownloadSnapshotFilesInput {
 # Supported in v5.0+
 input FilesetExportFilesJobConfigInput {
   # Supported in v5.0+
+  # Host ID.
+  hostId: String
+
+  # Supported in v5.0+
   # Optional Boolean value that determines whether or not to ignore errors during an export. By default, this value is set to False. Set this value to True to ignore errors.
   ignoreErrors: Boolean
 
@@ -40849,10 +40890,6 @@ input FilesetExportFilesJobConfigInput {
   # Required. Supported in v5.0+
   # Pairs of source path and destination path.
   exportPathPairs: [FilesetExportPathPairInput!]!
-
-  # Required. Supported in v5.0+
-  # Host ID.
-  hostId: String!
 }
 # Supported in v5.0+
 input FilesetExportPathPairInput {
@@ -41717,6 +41754,10 @@ type FilterPreviewResultListResponse {
   # Supported in v7.0+
   # Total list responses.
   total: Int
+
+  # Supported in v9.0+
+  # Cursor to fetch the next set of results.
+  nextCursor: String
 }
 # Input to process and finalize deletion of AWS cloud account.
 input FinalizeAwsCloudAccountDeletionInput {
@@ -44138,6 +44179,10 @@ type GlobalFileSearchReply {
   # Supported in v5.1+
   # Total list responses.
   total: Long
+
+  # Supported in v9.0+
+  # Cursor to fetch the next set of results.
+  nextCursor: String
 }
 # Global manager connectivity status.
 type GlobalManagerConnectivity {
@@ -44607,6 +44652,10 @@ type GuestCredentialDetailListResponse {
   # Supported in v5.0+
   # Total list responses.
   total: Long
+
+  # Supported in v9.0+
+  # Cursor to fetch the next set of results.
+  nextCursor: String
 }
 # Guest OS Credential.
 type GuestOsCredential {
@@ -46763,9 +46812,7 @@ input HostRegisterInput {
 
   # Supported in v5.0+
   # v5.0-v8.0: The ID of the organization to which the host is assigned.
-  # v8.1: The ID of the CDM organization to which the host is assigned. For RSC driven host registration, this field should be set to None, and host will be added to CDM global org. For CDM driven host registration, this field should be set to the Org the host belongs to.
-  # v9.0: The ID of the organization to which the host is assigned.
-  # v9.1: The ID of the CDM organization to which the host is assigned. For RSC driven host registration, this field should be set to None, and host will be added to CDM global org. For CDM driven host registration, this field should be set to the Org the host belongs to.
+  # v8.1+: The ID of the CDM organization to which the host is assigned. For RSC driven host registration, this field should be set to None, and host will be added to CDM global org. For CDM driven host registration, this field should be set to the Org the host belongs to.
   organizationId: String
 
   # Supported in v5.1+
@@ -46779,9 +46826,8 @@ input HostRegisterInput {
   # A Boolean that specifies whether to discover Oracle information at registration. A value of 'true' discovers Oracle information at registration.
   isOracleHost: Boolean
 
-  # Supported in v8.1, v9.1
-  # v8.1: The ID of the RSC orgNetwork to which the host is assigned. This field should only be set when the host registration is called by RSC and the host belongs to a RSC orgNetwork. This field should always be set to None in other cases. 1) The call is from CDM; or 2) the call is from RSC but the host does not belong to an orgNetwork.
-  # v9.1: The ID of the RSC orgNetwork to which the host is assigned. This field should only be set when the host registration is called by RSC and the host belongs to a RSC orgNetwork. This field should always be set to None in other cases. 1) The call is from CDM; or 2) the call is from RSC but the host does not belong to an orgNetwork.
+  # Supported in v8.1+
+  # The ID of the RSC orgNetwork to which the host is assigned. This field should only be set when the host registration is called by RSC and the host belongs to a RSC orgNetwork. This field should always be set to None in other cases. 1) The call is from CDM; or 2) the call is from RSC but the host does not belong to an orgNetwork.
   orgNetworkId: String
 
   # Required. Supported in v5.0+
@@ -47414,6 +47460,10 @@ type HotAddProxyVmInfoListResponse {
   # Supported in v5.3+
   # Total list responses.
   total: Int
+
+  # Supported in v9.0+
+  # Cursor to fetch the next set of results.
+  nextCursor: String
 }
 # Supported in v5.3+
 # The type of the HotAdd proxy virtual machine.
@@ -48547,6 +48597,7 @@ type HypervHostSummaryListResponse {
   # Supported in v5.0+
   # Total list responses.
   total: Long
+  nextCursor: String
 }
 # Supported in v7.0+
 input HypervInstantRecoverConfigForBatchInput {
@@ -54436,6 +54487,10 @@ type MissedSnapshotListResponse {
   # Supported in v5.0+
   # Total list responses.
   total: Long
+
+  # Supported in v9.0+
+  # Cursor to fetch the next set of results.
+  nextCursor: String
 }
 enum MissedSnapshotSortByEnum {
   Date
@@ -55510,9 +55565,11 @@ input MongoRecoveryRequestConfigInput {
   # Timestamp of the snapshot version to be used for restore.
   versionTime: DateTime
 
+  # Supported in v9.0+
   # Rate limit restore data ingestion on target MongoDB cluster.
   restoreThrottleInBytesPerSecond: Long
 
+  # Supported in v9.0+
   # Boolean flag to restore MongoDB collections with index.
   isRestoreWithIndex: Boolean
 
@@ -57715,7 +57772,7 @@ input MountOracleDbConfigInput {
   pdbsToLiveMount: [String!] = []
 
   # Supported in v9.0+
-  # List of RAC host IDs to recover the database during the Live Mount.
+  # List of RAC host simple IDs to recover the database during the Live Mount.
   targetRacHostIds: [String!] = []
 
   # Supported in v9.0+
@@ -57723,7 +57780,7 @@ input MountOracleDbConfigInput {
   lmDbName: String
 
   # Supported in v9.0+
-  # Specifies the host ID for the primary RAC node, which will be used for recovery. The provided host ID must be among the list of host IDs specified in targetRacHostIds.
+  # Specifies the host simple ID for the primary RAC node, which will be used for recovery. The provided host simple ID must be among the list of host simple IDs specified in `targetRacHostIds`.
   targetRacPrimaryHostId: String
 
   # Supported in v9.0+
@@ -59498,6 +59555,10 @@ type MssqlInstanceSummaryListResponse {
   # Supported in v5.0+
   # Total list responses.
   total: Long
+
+  # Supported in v9.0+
+  # Cursor to fetch the next set of results.
+  nextCursor: String
 }
 # Supported in v5.0+
 input MssqlLogShippingCreateConfigInput {
@@ -59657,6 +59718,10 @@ type MssqlLogShippingSummaryV2ListResponse {
   # Supported in v5.3+
   # Total list responses.
   total: Int
+
+  # Supported in v9.0+
+  # Cursor to fetch the next set of results.
+  nextCursor: String
 }
 # SQL Server log shipping target.
 type MssqlLogShippingTarget {
@@ -59834,6 +59899,10 @@ type MssqlMissedRecoverableRangeListResponse {
   # Supported in v5.0+
   # Total list responses.
   total: Long
+
+  # Supported in v9.0+
+  # Cursor to fetch the next set of results.
+  nextCursor: String
 }
 # Supported in v5.0
 type MssqlNonSlaProperties {
@@ -59890,6 +59959,10 @@ type MssqlRecoverableRangeListResponse {
   # Supported in v5.0+
   # Total list responses.
   total: Long
+
+  # Supported in v9.0+
+  # Cursor to fetch the next set of results.
+  nextCursor: String
 }
 # Supported in v5.0+
 input MssqlRecoveryPointInput {
@@ -62118,6 +62191,10 @@ type NetworkInfoListResponse {
   # Supported in v5.3+
   # Total list responses.
   total: Int
+
+  # Supported in v9.0+
+  # Cursor to fetch the next set of results.
+  nextCursor: String
 }
 # Supported in v5.0+
 type NetworkInterface {
@@ -62164,6 +62241,10 @@ type NetworkInterfaceListResponse {
   # Supported in v5.0+
   # Total list responses.
   total: Long
+
+  # Supported in v9.0+
+  # Cursor to fetch the next set of results.
+  nextCursor: String
 }
 # Supported in v5.0+
 # Type of network interfaces.
@@ -62269,6 +62350,10 @@ type NetworkThrottleSummaryListResponse {
   # Supported in v5.0+
   # Total list responses.
   total: Long
+
+  # Supported in v9.0+
+  # Cursor to fetch the next set of results.
+  nextCursor: String
 }
 # Supported in v5.0+
 input NetworkThrottleUpdateInput {
@@ -62600,6 +62685,10 @@ type NodeStatusListResponse {
   # Supported in v5.0+
   # Total list responses.
   total: Long
+
+  # Supported in v9.0+
+  # Cursor to fetch the next set of results.
+  nextCursor: String
 }
 # Request parameters for getting the ID of the node to replace on a Rubrik cluster.
 input NodeToReplaceInput {
@@ -62657,6 +62746,7 @@ type NotificationSettingSummaryListResponse {
 
   # Number of notification settings.
   total: Long
+  nextCursor: String
 }
 # Supported in v5.0+
 type NtpServerConfiguration {
@@ -62689,6 +62779,10 @@ type NtpServerConfigurationListResponse {
   # Supported in v5.0+
   # Total list responses.
   total: Long
+
+  # Supported in v9.0+
+  # Cursor to fetch the next set of results.
+  nextCursor: String
 }
 # Supported in v5.0+
 type NtpSymmKeyConfiguration {
@@ -63827,6 +63921,10 @@ type NutanixContainerListResponse {
   # Supported in v5.0+
   # Total list responses.
   total: Long
+
+  # Supported in v9.0+
+  # Cursor to fetch the next set of results.
+  nextCursor: String
 }
 # Supported in v5.0+
 input NutanixDownloadFilesJobConfigInput {
@@ -64078,6 +64176,10 @@ type NutanixNetworkListResponse {
   # Supported in v8.1+
   # Total list responses.
   total: Int
+
+  # Supported in v9.0+
+  # Cursor to fetch the next set of results.
+  nextCursor: String
 }
 # Supported in v9.0+
 # Job configuration object for mass on-demand snapshots of Nutanix virtual machines.
@@ -64979,6 +65081,14 @@ input NutanixVmMountSnapshotJobConfigInput {
   # Specifies whether the migration option should not be enabled for the live mount. When set to true, the Rubrik cluster will serve as the external repository for the mounted virtual machine, and storage migration to the Nutanix cluster will be not be enabled. When set to false, a storage container on the Nutanix cluster must be specified, and a storage migration otion will be available for the live mount when it succeeds.
   shouldDisableMigration: Boolean!
 }
+# Specifies the Live Mount status.
+enum NutanixVmMountStatus {
+  NUTANIX_VM_MOUNT_STATUS_DELETING
+  NUTANIX_VM_MOUNT_STATUS_MIGRATING
+  NUTANIX_VM_MOUNT_STATUS_MOUNTING
+  NUTANIX_VM_MOUNT_STATUS_POWERED_OFF
+  NUTANIX_VM_MOUNT_STATUS_POWERED_ON
+}
 # Supported in v6.0+
 type NutanixVmMountSummary {
   # Required. Supported in v6.0+
@@ -65044,9 +65154,7 @@ type NutanixVmMountSummary {
   # Supported in v7.0+
   # The status of the migration job for the mounted virtual machine. Valid values are 'REQUESTED', 'RUNNING', 'SUCCEEDED', and 'FAILED'. An unspecified value indicates that no migration job has been initiated for the mounted virtual machine.
   migrationStatus: String
-
-  # Specifies the Live Mount status.
-  mountStatus: String
+  mountStatus: NutanixVmMountStatus
 }
 # Supported in v5.0+
 input NutanixVmPatchInput {
@@ -65090,6 +65198,9 @@ type NutanixVmSnapshotSummary {
   # Supported in v8.1+
   # Number of NICs present in the snapshot app metadata.
   nicsInSnapshot: Int
+
+  # List of all UUIDs for the networks connected to the virtual machine when snapshot was taken.
+  snapshotNetworkUuids: [String!]!
 
   # This field contains the base information of a snapshot which are common across other workloads.
   baseSnapshotSummary: BaseSnapshotSummary
@@ -68347,6 +68458,9 @@ enum Operation {
   CATEGORY_RECOVERY
   CATEGORY_VIEW_DATA_SOURCE
   CONFIGURE_DATA_CLASS_GLOBAL
+
+  # Configure the database log reporting properties for a cluster.
+  CONFIGURE_DB_LOG_REPORT_PROPERTIES
   CREATE_REPORT
   CREATE_SLA
   CREATE_THREAT_HUNT
@@ -68496,6 +68610,9 @@ enum Operation {
 
   # View account-wide data security risk metrics, scores, and recommendations.
   VIEW_DATA_SECURITY_DETAILS
+
+  # View the database log reporting properties for a cluster.
+  VIEW_DB_LOG_REPORT_PROPERTIES
 
   # View event cluster settings.
   VIEW_EVENT_CLUSTER_SETTING
@@ -69106,6 +69223,10 @@ input OracleDataGuardGroupUpdateInput {
   # Value that indicates whether to backup from the PRIMARY member only, or from any available member.
   shouldBackupFromPrimaryOnly: Boolean
   oracleUpdateCommon: OracleUpdateCommonInput
+
+  # Supported in v9.0+
+  # Boolean value specifying whether to use SEPS wallet to connect to the primary database to perform some operations during backup from the standby database.
+  shouldUseSepsWallet: Boolean
 }
 type OracleDatabase implements HierarchyObject , CdmHierarchyObject , CdmHierarchySnappableNew , OracleTopLevelDescendantType , OracleHostDescendantType , OracleHostLogicalChildType , OracleRacDescendantType , OracleRacLogicalChildType , OracleDataGuardGroupDescendantType , OracleDataGuardGroupLogicalChildType {
   # CDM ID of the Oracle database.
@@ -70244,6 +70365,10 @@ type OracleMissedRecoverableRangeListResponse {
   # Supported in v5.0+
   # Total list responses.
   total: Long
+
+  # Supported in v9.0+
+  # Cursor to fetch the next set of results.
+  nextCursor: String
 }
 # Supported in v5.0+
 type OracleNodeOrder {
@@ -70776,6 +70901,10 @@ type OracleRecoverableRangeListResponse {
   # Supported in v5.0+
   # Total list responses.
   total: Long
+
+  # Supported in v9.0+
+  # Cursor to fetch the next set of results.
+  nextCursor: String
 }
 # Supported in v5.0+
 input OracleRecoveryPointInput {
@@ -78868,6 +78997,10 @@ type SearchResponseListResponse {
   # Supported in v5.0+
   # Total list responses.
   total: Long
+
+  # Supported in v9.0+
+  # Cursor to fetch the next set of results.
+  nextCursor: String
 }
 type SecurityGroup {
   id: String!
@@ -78933,6 +79066,9 @@ input SendScheduledReportAsyncInput {
 
   # Email addresses of non-Rubrik user recipients of the report.
   nonRubrikUserEmails: [String!]
+
+  # Report attachment types, which can be CSV, PDF, both, or none.
+  attachmentTypes: [ReportAttachmentType!]
 }
 # Sensitive files for different risk categories.
 type SensitiveFiles {
@@ -80923,15 +81059,22 @@ enum SnapshotCloudState {
 # Supported in v5.1+
 # v5.1-v5.2: The current cloud storage tier of a snapshot. A snapshot's cloud storage tier determines how the cloud provider will determine storage and retrieval costs, as well as retrieval latency. Accepted values are Hot, Cool, and Cold.
 # 
-# v5.3+: The current cloud storage tier of a snapshot. A snapshot's cloud storage tier determines how the cloud provider will determine storage and retrieval costs, as well as retrieval latency. Accepted values are Hot, Cool, AzureArchive (with Azure locations), Glacier, and GlacierDeepArchive (for AWS S3 locations). The value Cold has been deprecated in favor of AzureArchive, which is the recommended replacement value.
+# v5.3-v8.1: The current cloud storage tier of a snapshot. A snapshot's cloud storage tier determines how the cloud provider will determine storage and retrieval costs, as well as retrieval latency. Accepted values are Hot, Cool, AzureArchive (with Azure locations), Glacier, and GlacierDeepArchive (for AWS S3 locations). The value Cold has been deprecated in favor of AzureArchive, which is the recommended replacement value.
+# 
+# v9.0+: The current cloud storage tier of a snapshot. A snapshot's cloud storage tier determines how the cloud provider will determine storage and retrieval costs, as well as retrieval latency. Accepted values are Hot (for AWS S3 and Azure), StandardIA, OneZoneIA, GlacierIR, Glacier, and GlacierDeepArchive (for AWS S3), and AzureCool, AzureCold, and AzureArchive (for Azure). The value Cold has been deprecated in favor of AzureArchive, Glacier, and GlacierDeepArchive. The value Cool has been deprecated in favor of StandardIA, OneZoneIA, GlacierIR, AzureCool, and AzureCold.
 # 
 enum SnapshotCloudStorageTier {
   SNAPSHOT_CLOUD_STORAGE_TIER_AZURE_ARCHIVE
+  SNAPSHOT_CLOUD_STORAGE_TIER_AZURE_COLD
+  SNAPSHOT_CLOUD_STORAGE_TIER_AZURE_COOL
   SNAPSHOT_CLOUD_STORAGE_TIER_COLD
   SNAPSHOT_CLOUD_STORAGE_TIER_COOL
   SNAPSHOT_CLOUD_STORAGE_TIER_GLACIER
   SNAPSHOT_CLOUD_STORAGE_TIER_GLACIER_DEEP_ARCHIVE
+  SNAPSHOT_CLOUD_STORAGE_TIER_GLACIER_IR
   SNAPSHOT_CLOUD_STORAGE_TIER_HOT
+  SNAPSHOT_CLOUD_STORAGE_TIER_ONE_ZONE_IA
+  SNAPSHOT_CLOUD_STORAGE_TIER_STANDARD_IA
 }
 enum SnapshotConsistencyLevel {
   SNAPSHOT_APP_CONSISTENT
@@ -83430,6 +83573,10 @@ type SyslogExportRuleSummaryListResponse {
   # Supported in v5.1+
   # Total list responses.
   total: Long
+
+  # Supported in v9.0+
+  # Cursor to fetch the next set of results.
+  nextCursor: String
 }
 # Input for updating a syslog export rule.
 input SyslogExportRuleUpdateInput {
@@ -90233,9 +90380,8 @@ input VcenterConfigV2Input {
   # A Boolean value that determines whether to enable HotAdd transport mode for On-Premise vCenter. When this value is `true`, VMware virtual machines can use HotAdd proxy to transport virtual disk data in addition to NBD(SSL). When this value is `false`, VMware virtual machines can ONLY usee NBD(SSL) to transport virtual disk data. Default value is `false`.
   shouldEnableHotAddProxyForOnPrem: Boolean
 
-  # Supported in v8.1, v9.1
-  # v8.1: The managed ID of the organization network to which the vCenter Server is assigned.
-  # v9.1: The managed ID of the organization network to which the vCenter Server is assigned.
+  # Supported in v8.1+
+  # The managed ID of the organization network to which the vCenter Server is assigned.
   orgNetworkId: String
 
   # Supported in v5.3+
@@ -90484,6 +90630,10 @@ type VirtualMachineFilesReply {
   # Supported in v9.0+
   # Total list responses.
   total: Int
+
+  # Supported in v9.0+
+  # Cursor to fetch the next set of results.
+  nextCursor: String
 }
 # Supported in v5.0+
 type VirtualMachineScriptDetail {
@@ -90695,6 +90845,10 @@ type VlanConfigListResponse {
   # Supported in v5.0+
   # Total list responses.
   total: Long
+
+  # Supported in v9.0+
+  # Cursor to fetch the next set of results.
+  nextCursor: String
 }
 # Details of VLAN IP.
 input VlanIpInput {
@@ -95743,6 +95897,10 @@ type VsphereVmListEsxiDatastoresReply {
   # Supported in v5.0+
   # Total list responses.
   total: Long
+
+  # Supported in v9.0+
+  # Cursor to fetch the next set of results.
+  nextCursor: String
 }
 # Input for relocating vSphere mount.
 input VsphereVmMountRelocateInput {

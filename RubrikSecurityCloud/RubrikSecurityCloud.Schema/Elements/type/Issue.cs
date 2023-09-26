@@ -119,65 +119,102 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.Int64? OpenTime
         // GraphQL -> openTime: Long! (scalar)
         if (this.OpenTime != null) {
-            s += ind + "openTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "openTime\n" ;
+            } else {
+                s += ind + "openTime\n" ;
+            }
         }
         //      C# -> System.String? PaginationId
         // GraphQL -> paginationId: String! (scalar)
         if (this.PaginationId != null) {
-            s += ind + "paginationId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "paginationId\n" ;
+            } else {
+                s += ind + "paginationId\n" ;
+            }
         }
         //      C# -> System.Int64? ResolvedTime
         // GraphQL -> resolvedTime: Long! (scalar)
         if (this.ResolvedTime != null) {
-            s += ind + "resolvedTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "resolvedTime\n" ;
+            } else {
+                s += ind + "resolvedTime\n" ;
+            }
         }
         //      C# -> System.Int32? Violations
         // GraphQL -> violations: Int! (scalar)
         if (this.Violations != null) {
-            s += ind + "violations\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "violations\n" ;
+            } else {
+                s += ind + "violations\n" ;
+            }
         }
         //      C# -> List<IssueEvent>? Events
         // GraphQL -> events: [IssueEvent!]! (type)
         if (this.Events != null) {
-            var fspec = this.Events.AsFieldSpec(indent+1);
+            var fspec = this.Events.AsFieldSpec(conf.Child("events"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "events {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "events {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> FileResult? FileResult
         // GraphQL -> fileResult: FileResult! (type)
         if (this.FileResult != null) {
-            var fspec = this.FileResult.AsFieldSpec(indent+1);
+            var fspec = this.FileResult.AsFieldSpec(conf.Child("fileResult"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "fileResult {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "fileResult {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> PolicyObj? LatestPolicyObj
         // GraphQL -> latestPolicyObj: PolicyObj! (type)
         if (this.LatestPolicyObj != null) {
-            var fspec = this.LatestPolicyObj.AsFieldSpec(indent+1);
+            var fspec = this.LatestPolicyObj.AsFieldSpec(conf.Child("latestPolicyObj"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "latestPolicyObj {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "latestPolicyObj {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<ClassificationPolicySummary>? Policies
         // GraphQL -> policies: [ClassificationPolicySummary!]! (type)
         if (this.Policies != null) {
-            var fspec = this.Policies.AsFieldSpec(indent+1);
+            var fspec = this.Policies.AsFieldSpec(conf.Child("policies"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "policies {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "policies {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -189,61 +226,164 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.Int64? OpenTime
         // GraphQL -> openTime: Long! (scalar)
-        if (this.OpenTime == null && ec.Includes("openTime",true))
+        if (ec.Includes("openTime",true))
         {
-            this.OpenTime = new System.Int64();
+            if(this.OpenTime == null) {
+
+                this.OpenTime = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.OpenTime != null && ec.Excludes("openTime",true))
+        {
+            this.OpenTime = null;
         }
         //      C# -> System.String? PaginationId
         // GraphQL -> paginationId: String! (scalar)
-        if (this.PaginationId == null && ec.Includes("paginationId",true))
+        if (ec.Includes("paginationId",true))
         {
-            this.PaginationId = "FETCH";
+            if(this.PaginationId == null) {
+
+                this.PaginationId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PaginationId != null && ec.Excludes("paginationId",true))
+        {
+            this.PaginationId = null;
         }
         //      C# -> System.Int64? ResolvedTime
         // GraphQL -> resolvedTime: Long! (scalar)
-        if (this.ResolvedTime == null && ec.Includes("resolvedTime",true))
+        if (ec.Includes("resolvedTime",true))
         {
-            this.ResolvedTime = new System.Int64();
+            if(this.ResolvedTime == null) {
+
+                this.ResolvedTime = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ResolvedTime != null && ec.Excludes("resolvedTime",true))
+        {
+            this.ResolvedTime = null;
         }
         //      C# -> System.Int32? Violations
         // GraphQL -> violations: Int! (scalar)
-        if (this.Violations == null && ec.Includes("violations",true))
+        if (ec.Includes("violations",true))
         {
-            this.Violations = Int32.MinValue;
+            if(this.Violations == null) {
+
+                this.Violations = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Violations != null && ec.Excludes("violations",true))
+        {
+            this.Violations = null;
         }
         //      C# -> List<IssueEvent>? Events
         // GraphQL -> events: [IssueEvent!]! (type)
-        if (this.Events == null && ec.Includes("events",false))
+        if (ec.Includes("events",false))
         {
-            this.Events = new List<IssueEvent>();
-            this.Events.ApplyExploratoryFieldSpec(ec.NewChild("events"));
+            if(this.Events == null) {
+
+                this.Events = new List<IssueEvent>();
+                this.Events.ApplyExploratoryFieldSpec(ec.NewChild("events"));
+
+            } else {
+
+                this.Events.ApplyExploratoryFieldSpec(ec.NewChild("events"));
+
+            }
+        }
+        else if (this.Events != null && ec.Excludes("events",false))
+        {
+            this.Events = null;
         }
         //      C# -> FileResult? FileResult
         // GraphQL -> fileResult: FileResult! (type)
-        if (this.FileResult == null && ec.Includes("fileResult",false))
+        if (ec.Includes("fileResult",false))
         {
-            this.FileResult = new FileResult();
-            this.FileResult.ApplyExploratoryFieldSpec(ec.NewChild("fileResult"));
+            if(this.FileResult == null) {
+
+                this.FileResult = new FileResult();
+                this.FileResult.ApplyExploratoryFieldSpec(ec.NewChild("fileResult"));
+
+            } else {
+
+                this.FileResult.ApplyExploratoryFieldSpec(ec.NewChild("fileResult"));
+
+            }
+        }
+        else if (this.FileResult != null && ec.Excludes("fileResult",false))
+        {
+            this.FileResult = null;
         }
         //      C# -> PolicyObj? LatestPolicyObj
         // GraphQL -> latestPolicyObj: PolicyObj! (type)
-        if (this.LatestPolicyObj == null && ec.Includes("latestPolicyObj",false))
+        if (ec.Includes("latestPolicyObj",false))
         {
-            this.LatestPolicyObj = new PolicyObj();
-            this.LatestPolicyObj.ApplyExploratoryFieldSpec(ec.NewChild("latestPolicyObj"));
+            if(this.LatestPolicyObj == null) {
+
+                this.LatestPolicyObj = new PolicyObj();
+                this.LatestPolicyObj.ApplyExploratoryFieldSpec(ec.NewChild("latestPolicyObj"));
+
+            } else {
+
+                this.LatestPolicyObj.ApplyExploratoryFieldSpec(ec.NewChild("latestPolicyObj"));
+
+            }
+        }
+        else if (this.LatestPolicyObj != null && ec.Excludes("latestPolicyObj",false))
+        {
+            this.LatestPolicyObj = null;
         }
         //      C# -> List<ClassificationPolicySummary>? Policies
         // GraphQL -> policies: [ClassificationPolicySummary!]! (type)
-        if (this.Policies == null && ec.Includes("policies",false))
+        if (ec.Includes("policies",false))
         {
-            this.Policies = new List<ClassificationPolicySummary>();
-            this.Policies.ApplyExploratoryFieldSpec(ec.NewChild("policies"));
+            if(this.Policies == null) {
+
+                this.Policies = new List<ClassificationPolicySummary>();
+                this.Policies.ApplyExploratoryFieldSpec(ec.NewChild("policies"));
+
+            } else {
+
+                this.Policies.ApplyExploratoryFieldSpec(ec.NewChild("policies"));
+
+            }
+        }
+        else if (this.Policies != null && ec.Excludes("policies",false))
+        {
+            this.Policies = null;
         }
     }
 
@@ -270,9 +410,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<Issue> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -101,55 +101,84 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> CloudAccountFeature? Feature
         // GraphQL -> feature: CloudAccountFeature! (enum)
         if (this.Feature != null) {
-            s += ind + "feature\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "feature\n" ;
+            } else {
+                s += ind + "feature\n" ;
+            }
         }
         //      C# -> List<AzureCloudAccountRegion>? Regions
         // GraphQL -> regions: [AzureCloudAccountRegion!]! (enum)
         if (this.Regions != null) {
-            s += ind + "regions\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "regions\n" ;
+            } else {
+                s += ind + "regions\n" ;
+            }
         }
         //      C# -> CloudAccountStatus? Status
         // GraphQL -> status: CloudAccountStatus! (enum)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         //      C# -> PersistentStorage? PersistentStorage
         // GraphQL -> persistentStorage: PersistentStorage (type)
         if (this.PersistentStorage != null) {
-            var fspec = this.PersistentStorage.AsFieldSpec(indent+1);
+            var fspec = this.PersistentStorage.AsFieldSpec(conf.Child("persistentStorage"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "persistentStorage {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "persistentStorage {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> AzureResourceGroup? ResourceGroup
         // GraphQL -> resourceGroup: AzureResourceGroup! (type)
         if (this.ResourceGroup != null) {
-            var fspec = this.ResourceGroup.AsFieldSpec(indent+1);
+            var fspec = this.ResourceGroup.AsFieldSpec(conf.Child("resourceGroup"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "resourceGroup {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "resourceGroup {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> AzureRole? Role
         // GraphQL -> role: AzureRole! (type)
         if (this.Role != null) {
-            var fspec = this.Role.AsFieldSpec(indent+1);
+            var fspec = this.Role.AsFieldSpec(conf.Child("role"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "role {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "role {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> AzureUserAssignedManagedIdentity? UserAssignedManagedIdentity
         // GraphQL -> userAssignedManagedIdentity: AzureUserAssignedManagedIdentity (type)
         if (this.UserAssignedManagedIdentity != null) {
-            var fspec = this.UserAssignedManagedIdentity.AsFieldSpec(indent+1);
+            var fspec = this.UserAssignedManagedIdentity.AsFieldSpec(conf.Child("userAssignedManagedIdentity"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "userAssignedManagedIdentity {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "userAssignedManagedIdentity {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -161,49 +190,130 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> CloudAccountFeature? Feature
         // GraphQL -> feature: CloudAccountFeature! (enum)
-        if (this.Feature == null && ec.Includes("feature",true))
+        if (ec.Includes("feature",true))
         {
-            this.Feature = new CloudAccountFeature();
+            if(this.Feature == null) {
+
+                this.Feature = new CloudAccountFeature();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Feature != null && ec.Excludes("feature",true))
+        {
+            this.Feature = null;
         }
         //      C# -> List<AzureCloudAccountRegion>? Regions
         // GraphQL -> regions: [AzureCloudAccountRegion!]! (enum)
-        if (this.Regions == null && ec.Includes("regions",true))
+        if (ec.Includes("regions",true))
         {
-            this.Regions = new List<AzureCloudAccountRegion>();
+            if(this.Regions == null) {
+
+                this.Regions = new List<AzureCloudAccountRegion>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Regions != null && ec.Excludes("regions",true))
+        {
+            this.Regions = null;
         }
         //      C# -> CloudAccountStatus? Status
         // GraphQL -> status: CloudAccountStatus! (enum)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = new CloudAccountStatus();
+            if(this.Status == null) {
+
+                this.Status = new CloudAccountStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
         //      C# -> PersistentStorage? PersistentStorage
         // GraphQL -> persistentStorage: PersistentStorage (type)
-        if (this.PersistentStorage == null && ec.Includes("persistentStorage",false))
+        if (ec.Includes("persistentStorage",false))
         {
-            this.PersistentStorage = new PersistentStorage();
-            this.PersistentStorage.ApplyExploratoryFieldSpec(ec.NewChild("persistentStorage"));
+            if(this.PersistentStorage == null) {
+
+                this.PersistentStorage = new PersistentStorage();
+                this.PersistentStorage.ApplyExploratoryFieldSpec(ec.NewChild("persistentStorage"));
+
+            } else {
+
+                this.PersistentStorage.ApplyExploratoryFieldSpec(ec.NewChild("persistentStorage"));
+
+            }
+        }
+        else if (this.PersistentStorage != null && ec.Excludes("persistentStorage",false))
+        {
+            this.PersistentStorage = null;
         }
         //      C# -> AzureResourceGroup? ResourceGroup
         // GraphQL -> resourceGroup: AzureResourceGroup! (type)
-        if (this.ResourceGroup == null && ec.Includes("resourceGroup",false))
+        if (ec.Includes("resourceGroup",false))
         {
-            this.ResourceGroup = new AzureResourceGroup();
-            this.ResourceGroup.ApplyExploratoryFieldSpec(ec.NewChild("resourceGroup"));
+            if(this.ResourceGroup == null) {
+
+                this.ResourceGroup = new AzureResourceGroup();
+                this.ResourceGroup.ApplyExploratoryFieldSpec(ec.NewChild("resourceGroup"));
+
+            } else {
+
+                this.ResourceGroup.ApplyExploratoryFieldSpec(ec.NewChild("resourceGroup"));
+
+            }
+        }
+        else if (this.ResourceGroup != null && ec.Excludes("resourceGroup",false))
+        {
+            this.ResourceGroup = null;
         }
         //      C# -> AzureRole? Role
         // GraphQL -> role: AzureRole! (type)
-        if (this.Role == null && ec.Includes("role",false))
+        if (ec.Includes("role",false))
         {
-            this.Role = new AzureRole();
-            this.Role.ApplyExploratoryFieldSpec(ec.NewChild("role"));
+            if(this.Role == null) {
+
+                this.Role = new AzureRole();
+                this.Role.ApplyExploratoryFieldSpec(ec.NewChild("role"));
+
+            } else {
+
+                this.Role.ApplyExploratoryFieldSpec(ec.NewChild("role"));
+
+            }
+        }
+        else if (this.Role != null && ec.Excludes("role",false))
+        {
+            this.Role = null;
         }
         //      C# -> AzureUserAssignedManagedIdentity? UserAssignedManagedIdentity
         // GraphQL -> userAssignedManagedIdentity: AzureUserAssignedManagedIdentity (type)
-        if (this.UserAssignedManagedIdentity == null && ec.Includes("userAssignedManagedIdentity",false))
+        if (ec.Includes("userAssignedManagedIdentity",false))
         {
-            this.UserAssignedManagedIdentity = new AzureUserAssignedManagedIdentity();
-            this.UserAssignedManagedIdentity.ApplyExploratoryFieldSpec(ec.NewChild("userAssignedManagedIdentity"));
+            if(this.UserAssignedManagedIdentity == null) {
+
+                this.UserAssignedManagedIdentity = new AzureUserAssignedManagedIdentity();
+                this.UserAssignedManagedIdentity.ApplyExploratoryFieldSpec(ec.NewChild("userAssignedManagedIdentity"));
+
+            } else {
+
+                this.UserAssignedManagedIdentity.ApplyExploratoryFieldSpec(ec.NewChild("userAssignedManagedIdentity"));
+
+            }
+        }
+        else if (this.UserAssignedManagedIdentity != null && ec.Excludes("userAssignedManagedIdentity",false))
+        {
+            this.UserAssignedManagedIdentity = null;
         }
     }
 
@@ -230,9 +340,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AzureCloudAccountFeatureDetail> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

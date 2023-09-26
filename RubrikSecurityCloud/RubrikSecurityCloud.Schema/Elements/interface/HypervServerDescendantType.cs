@@ -154,13 +154,14 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<HypervServerDescendantType> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            string ind = new string(' ', indent*2);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            string ind = conf.IndentStr();
             string fieldspecs = "";
             foreach (HypervServerDescendantType item in list) 
             {
-                var fspec = item.AsFieldSpec(indent+1);
+                var fspec = item.AsFieldSpec(conf.Child());
                 string typename;
                 if (item is BaseType bt) {
                     typename = bt.GetGqlTypeName();
@@ -168,7 +169,11 @@ namespace RubrikSecurityCloud.Types
                     typename = item.GetType().Name;
                 }
                 if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                    fieldspecs += ind + " ... on " + typename + " {\n" + fspec + ind + "}\n";
+                    if ( conf.Flat ) {
+                        fieldspecs += conf.Prefix + fspec;
+                    } else {
+                        fieldspecs += ind + " ... on " + typename + " {\n" + fspec + ind + "}\n";
+                    }
                 }
             }
             return fieldspecs;

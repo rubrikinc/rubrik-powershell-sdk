@@ -65,26 +65,39 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int32? NicsInSnapshot
         // GraphQL -> nicsInSnapshot: Int (scalar)
         if (this.NicsInSnapshot != null) {
-            s += ind + "nicsInSnapshot\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "nicsInSnapshot\n" ;
+            } else {
+                s += ind + "nicsInSnapshot\n" ;
+            }
         }
         //      C# -> System.String? VmName
         // GraphQL -> vmName: String! (scalar)
         if (this.VmName != null) {
-            s += ind + "vmName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "vmName\n" ;
+            } else {
+                s += ind + "vmName\n" ;
+            }
         }
         //      C# -> BaseSnapshotSummary? BaseSnapshotSummary
         // GraphQL -> baseSnapshotSummary: BaseSnapshotSummary (type)
         if (this.BaseSnapshotSummary != null) {
-            var fspec = this.BaseSnapshotSummary.AsFieldSpec(indent+1);
+            var fspec = this.BaseSnapshotSummary.AsFieldSpec(conf.Child("baseSnapshotSummary"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "baseSnapshotSummary {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "baseSnapshotSummary {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -96,22 +109,56 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int32? NicsInSnapshot
         // GraphQL -> nicsInSnapshot: Int (scalar)
-        if (this.NicsInSnapshot == null && ec.Includes("nicsInSnapshot",true))
+        if (ec.Includes("nicsInSnapshot",true))
         {
-            this.NicsInSnapshot = Int32.MinValue;
+            if(this.NicsInSnapshot == null) {
+
+                this.NicsInSnapshot = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.NicsInSnapshot != null && ec.Excludes("nicsInSnapshot",true))
+        {
+            this.NicsInSnapshot = null;
         }
         //      C# -> System.String? VmName
         // GraphQL -> vmName: String! (scalar)
-        if (this.VmName == null && ec.Includes("vmName",true))
+        if (ec.Includes("vmName",true))
         {
-            this.VmName = "FETCH";
+            if(this.VmName == null) {
+
+                this.VmName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.VmName != null && ec.Excludes("vmName",true))
+        {
+            this.VmName = null;
         }
         //      C# -> BaseSnapshotSummary? BaseSnapshotSummary
         // GraphQL -> baseSnapshotSummary: BaseSnapshotSummary (type)
-        if (this.BaseSnapshotSummary == null && ec.Includes("baseSnapshotSummary",false))
+        if (ec.Includes("baseSnapshotSummary",false))
         {
-            this.BaseSnapshotSummary = new BaseSnapshotSummary();
-            this.BaseSnapshotSummary.ApplyExploratoryFieldSpec(ec.NewChild("baseSnapshotSummary"));
+            if(this.BaseSnapshotSummary == null) {
+
+                this.BaseSnapshotSummary = new BaseSnapshotSummary();
+                this.BaseSnapshotSummary.ApplyExploratoryFieldSpec(ec.NewChild("baseSnapshotSummary"));
+
+            } else {
+
+                this.BaseSnapshotSummary.ApplyExploratoryFieldSpec(ec.NewChild("baseSnapshotSummary"));
+
+            }
+        }
+        else if (this.BaseSnapshotSummary != null && ec.Excludes("baseSnapshotSummary",false))
+        {
+            this.BaseSnapshotSummary = null;
         }
     }
 
@@ -138,9 +185,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<NutanixVmSnapshotSummary> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

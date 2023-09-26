@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? GroupCount
         // GraphQL -> groupCount: Long! (scalar)
         if (this.GroupCount != null) {
-            s += ind + "groupCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "groupCount\n" ;
+            } else {
+                s += ind + "groupCount\n" ;
+            }
         }
         //      C# -> System.Int64? UserCount
         // GraphQL -> userCount: Long! (scalar)
         if (this.UserCount != null) {
-            s += ind + "userCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "userCount\n" ;
+            } else {
+                s += ind + "userCount\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? GroupCount
         // GraphQL -> groupCount: Long! (scalar)
-        if (this.GroupCount == null && ec.Includes("groupCount",true))
+        if (ec.Includes("groupCount",true))
         {
-            this.GroupCount = new System.Int64();
+            if(this.GroupCount == null) {
+
+                this.GroupCount = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.GroupCount != null && ec.Excludes("groupCount",true))
+        {
+            this.GroupCount = null;
         }
         //      C# -> System.Int64? UserCount
         // GraphQL -> userCount: Long! (scalar)
-        if (this.UserCount == null && ec.Includes("userCount",true))
+        if (ec.Includes("userCount",true))
         {
-            this.UserCount = new System.Int64();
+            if(this.UserCount == null) {
+
+                this.UserCount = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UserCount != null && ec.Excludes("userCount",true))
+        {
+            this.UserCount = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<PrincipalAccessInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

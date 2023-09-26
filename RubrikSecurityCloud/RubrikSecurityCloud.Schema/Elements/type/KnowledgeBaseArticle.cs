@@ -119,68 +119,105 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? ArticleNumber
         // GraphQL -> articleNumber: String! (scalar)
         if (this.ArticleNumber != null) {
-            s += ind + "articleNumber\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "articleNumber\n" ;
+            } else {
+                s += ind + "articleNumber\n" ;
+            }
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
         if (this.Description != null) {
-            s += ind + "description\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "description\n" ;
+            } else {
+                s += ind + "description\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.String? Title
         // GraphQL -> title: String! (scalar)
         if (this.Title != null) {
-            s += ind + "title\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "title\n" ;
+            } else {
+                s += ind + "title\n" ;
+            }
         }
         //      C# -> List<ContentNode>? Cause
         // GraphQL -> cause: [ContentNode!]! (type)
         if (this.Cause != null) {
-            var fspec = this.Cause.AsFieldSpec(indent+1);
+            var fspec = this.Cause.AsFieldSpec(conf.Child("cause"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "cause {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cause {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<ContentNode>? Environment
         // GraphQL -> environment: [ContentNode!]! (type)
         if (this.Environment != null) {
-            var fspec = this.Environment.AsFieldSpec(indent+1);
+            var fspec = this.Environment.AsFieldSpec(conf.Child("environment"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "environment {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "environment {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<ContentNode>? Notes
         // GraphQL -> notes: [ContentNode!]! (type)
         if (this.Notes != null) {
-            var fspec = this.Notes.AsFieldSpec(indent+1);
+            var fspec = this.Notes.AsFieldSpec(conf.Child("notes"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "notes {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "notes {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<ContentNode>? Resolution
         // GraphQL -> resolution: [ContentNode!]! (type)
         if (this.Resolution != null) {
-            var fspec = this.Resolution.AsFieldSpec(indent+1);
+            var fspec = this.Resolution.AsFieldSpec(conf.Child("resolution"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "resolution {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "resolution {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<ContentNode>? Summary
         // GraphQL -> summary: [ContentNode!]! (type)
         if (this.Summary != null) {
-            var fspec = this.Summary.AsFieldSpec(indent+1);
+            var fspec = this.Summary.AsFieldSpec(conf.Child("summary"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "summary {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "summary {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -192,62 +229,166 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? ArticleNumber
         // GraphQL -> articleNumber: String! (scalar)
-        if (this.ArticleNumber == null && ec.Includes("articleNumber",true))
+        if (ec.Includes("articleNumber",true))
         {
-            this.ArticleNumber = "FETCH";
+            if(this.ArticleNumber == null) {
+
+                this.ArticleNumber = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ArticleNumber != null && ec.Excludes("articleNumber",true))
+        {
+            this.ArticleNumber = null;
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
-        if (this.Description == null && ec.Includes("description",true))
+        if (ec.Includes("description",true))
         {
-            this.Description = "FETCH";
+            if(this.Description == null) {
+
+                this.Description = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Description != null && ec.Excludes("description",true))
+        {
+            this.Description = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.String? Title
         // GraphQL -> title: String! (scalar)
-        if (this.Title == null && ec.Includes("title",true))
+        if (ec.Includes("title",true))
         {
-            this.Title = "FETCH";
+            if(this.Title == null) {
+
+                this.Title = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Title != null && ec.Excludes("title",true))
+        {
+            this.Title = null;
         }
         //      C# -> List<ContentNode>? Cause
         // GraphQL -> cause: [ContentNode!]! (type)
-        if (this.Cause == null && ec.Includes("cause",false))
+        if (ec.Includes("cause",false))
         {
-            this.Cause = new List<ContentNode>();
-            this.Cause.ApplyExploratoryFieldSpec(ec.NewChild("cause"));
+            if(this.Cause == null) {
+
+                this.Cause = new List<ContentNode>();
+                this.Cause.ApplyExploratoryFieldSpec(ec.NewChild("cause"));
+
+            } else {
+
+                this.Cause.ApplyExploratoryFieldSpec(ec.NewChild("cause"));
+
+            }
+        }
+        else if (this.Cause != null && ec.Excludes("cause",false))
+        {
+            this.Cause = null;
         }
         //      C# -> List<ContentNode>? Environment
         // GraphQL -> environment: [ContentNode!]! (type)
-        if (this.Environment == null && ec.Includes("environment",false))
+        if (ec.Includes("environment",false))
         {
-            this.Environment = new List<ContentNode>();
-            this.Environment.ApplyExploratoryFieldSpec(ec.NewChild("environment"));
+            if(this.Environment == null) {
+
+                this.Environment = new List<ContentNode>();
+                this.Environment.ApplyExploratoryFieldSpec(ec.NewChild("environment"));
+
+            } else {
+
+                this.Environment.ApplyExploratoryFieldSpec(ec.NewChild("environment"));
+
+            }
+        }
+        else if (this.Environment != null && ec.Excludes("environment",false))
+        {
+            this.Environment = null;
         }
         //      C# -> List<ContentNode>? Notes
         // GraphQL -> notes: [ContentNode!]! (type)
-        if (this.Notes == null && ec.Includes("notes",false))
+        if (ec.Includes("notes",false))
         {
-            this.Notes = new List<ContentNode>();
-            this.Notes.ApplyExploratoryFieldSpec(ec.NewChild("notes"));
+            if(this.Notes == null) {
+
+                this.Notes = new List<ContentNode>();
+                this.Notes.ApplyExploratoryFieldSpec(ec.NewChild("notes"));
+
+            } else {
+
+                this.Notes.ApplyExploratoryFieldSpec(ec.NewChild("notes"));
+
+            }
+        }
+        else if (this.Notes != null && ec.Excludes("notes",false))
+        {
+            this.Notes = null;
         }
         //      C# -> List<ContentNode>? Resolution
         // GraphQL -> resolution: [ContentNode!]! (type)
-        if (this.Resolution == null && ec.Includes("resolution",false))
+        if (ec.Includes("resolution",false))
         {
-            this.Resolution = new List<ContentNode>();
-            this.Resolution.ApplyExploratoryFieldSpec(ec.NewChild("resolution"));
+            if(this.Resolution == null) {
+
+                this.Resolution = new List<ContentNode>();
+                this.Resolution.ApplyExploratoryFieldSpec(ec.NewChild("resolution"));
+
+            } else {
+
+                this.Resolution.ApplyExploratoryFieldSpec(ec.NewChild("resolution"));
+
+            }
+        }
+        else if (this.Resolution != null && ec.Excludes("resolution",false))
+        {
+            this.Resolution = null;
         }
         //      C# -> List<ContentNode>? Summary
         // GraphQL -> summary: [ContentNode!]! (type)
-        if (this.Summary == null && ec.Includes("summary",false))
+        if (ec.Includes("summary",false))
         {
-            this.Summary = new List<ContentNode>();
-            this.Summary.ApplyExploratoryFieldSpec(ec.NewChild("summary"));
+            if(this.Summary == null) {
+
+                this.Summary = new List<ContentNode>();
+                this.Summary.ApplyExploratoryFieldSpec(ec.NewChild("summary"));
+
+            } else {
+
+                this.Summary.ApplyExploratoryFieldSpec(ec.NewChild("summary"));
+
+            }
+        }
+        else if (this.Summary != null && ec.Excludes("summary",false))
+        {
+            this.Summary = null;
         }
     }
 
@@ -274,9 +415,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<KnowledgeBaseArticle> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

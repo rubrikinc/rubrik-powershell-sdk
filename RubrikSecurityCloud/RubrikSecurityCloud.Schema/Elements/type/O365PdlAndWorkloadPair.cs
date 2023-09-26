@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> WorkloadLevelHierarchy? Workload
         // GraphQL -> workload: WorkloadLevelHierarchy! (enum)
         if (this.Workload != null) {
-            s += ind + "workload\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "workload\n" ;
+            } else {
+                s += ind + "workload\n" ;
+            }
         }
         //      C# -> System.String? Pdl
         // GraphQL -> pdl: String! (scalar)
         if (this.Pdl != null) {
-            s += ind + "pdl\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "pdl\n" ;
+            } else {
+                s += ind + "pdl\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> WorkloadLevelHierarchy? Workload
         // GraphQL -> workload: WorkloadLevelHierarchy! (enum)
-        if (this.Workload == null && ec.Includes("workload",true))
+        if (ec.Includes("workload",true))
         {
-            this.Workload = new WorkloadLevelHierarchy();
+            if(this.Workload == null) {
+
+                this.Workload = new WorkloadLevelHierarchy();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Workload != null && ec.Excludes("workload",true))
+        {
+            this.Workload = null;
         }
         //      C# -> System.String? Pdl
         // GraphQL -> pdl: String! (scalar)
-        if (this.Pdl == null && ec.Includes("pdl",true))
+        if (ec.Includes("pdl",true))
         {
-            this.Pdl = "FETCH";
+            if(this.Pdl == null) {
+
+                this.Pdl = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Pdl != null && ec.Excludes("pdl",true))
+        {
+            this.Pdl = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<O365PdlAndWorkloadPair> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

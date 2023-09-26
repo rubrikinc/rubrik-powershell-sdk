@@ -110,51 +110,84 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<AwsCloudAccountRegion>? AwsRegions
         // GraphQL -> awsRegions: [AwsCloudAccountRegion!] (enum)
         if (this.AwsRegions != null) {
-            s += ind + "awsRegions\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "awsRegions\n" ;
+            } else {
+                s += ind + "awsRegions\n" ;
+            }
         }
         //      C# -> System.String? CloudFormationUrl
         // GraphQL -> cloudFormationUrl: String! (scalar)
         if (this.CloudFormationUrl != null) {
-            s += ind + "cloudFormationUrl\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cloudFormationUrl\n" ;
+            } else {
+                s += ind + "cloudFormationUrl\n" ;
+            }
         }
         //      C# -> System.String? ExternalId
         // GraphQL -> externalId: String! (scalar)
         if (this.ExternalId != null) {
-            s += ind + "externalId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "externalId\n" ;
+            } else {
+                s += ind + "externalId\n" ;
+            }
         }
         //      C# -> System.String? RoleArn
         // GraphQL -> roleArn: String! (scalar)
         if (this.RoleArn != null) {
-            s += ind + "roleArn\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "roleArn\n" ;
+            } else {
+                s += ind + "roleArn\n" ;
+            }
         }
         //      C# -> System.String? StackName
         // GraphQL -> stackName: String (scalar)
         if (this.StackName != null) {
-            s += ind + "stackName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "stackName\n" ;
+            } else {
+                s += ind + "stackName\n" ;
+            }
         }
         //      C# -> System.String? StackSetName
         // GraphQL -> stackSetName: String (scalar)
         if (this.StackSetName != null) {
-            s += ind + "stackSetName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "stackSetName\n" ;
+            } else {
+                s += ind + "stackSetName\n" ;
+            }
         }
         //      C# -> System.String? TemplateUrl
         // GraphQL -> templateUrl: String! (scalar)
         if (this.TemplateUrl != null) {
-            s += ind + "templateUrl\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "templateUrl\n" ;
+            } else {
+                s += ind + "templateUrl\n" ;
+            }
         }
         //      C# -> List<AwsCloudAccountFeatureVersion>? FeatureVersions
         // GraphQL -> featureVersions: [AwsCloudAccountFeatureVersion!]! (type)
         if (this.FeatureVersions != null) {
-            var fspec = this.FeatureVersions.AsFieldSpec(indent+1);
+            var fspec = this.FeatureVersions.AsFieldSpec(conf.Child("featureVersions"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "featureVersions {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "featureVersions {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -166,52 +199,141 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<AwsCloudAccountRegion>? AwsRegions
         // GraphQL -> awsRegions: [AwsCloudAccountRegion!] (enum)
-        if (this.AwsRegions == null && ec.Includes("awsRegions",true))
+        if (ec.Includes("awsRegions",true))
         {
-            this.AwsRegions = new List<AwsCloudAccountRegion>();
+            if(this.AwsRegions == null) {
+
+                this.AwsRegions = new List<AwsCloudAccountRegion>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AwsRegions != null && ec.Excludes("awsRegions",true))
+        {
+            this.AwsRegions = null;
         }
         //      C# -> System.String? CloudFormationUrl
         // GraphQL -> cloudFormationUrl: String! (scalar)
-        if (this.CloudFormationUrl == null && ec.Includes("cloudFormationUrl",true))
+        if (ec.Includes("cloudFormationUrl",true))
         {
-            this.CloudFormationUrl = "FETCH";
+            if(this.CloudFormationUrl == null) {
+
+                this.CloudFormationUrl = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CloudFormationUrl != null && ec.Excludes("cloudFormationUrl",true))
+        {
+            this.CloudFormationUrl = null;
         }
         //      C# -> System.String? ExternalId
         // GraphQL -> externalId: String! (scalar)
-        if (this.ExternalId == null && ec.Includes("externalId",true))
+        if (ec.Includes("externalId",true))
         {
-            this.ExternalId = "FETCH";
+            if(this.ExternalId == null) {
+
+                this.ExternalId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExternalId != null && ec.Excludes("externalId",true))
+        {
+            this.ExternalId = null;
         }
         //      C# -> System.String? RoleArn
         // GraphQL -> roleArn: String! (scalar)
-        if (this.RoleArn == null && ec.Includes("roleArn",true))
+        if (ec.Includes("roleArn",true))
         {
-            this.RoleArn = "FETCH";
+            if(this.RoleArn == null) {
+
+                this.RoleArn = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RoleArn != null && ec.Excludes("roleArn",true))
+        {
+            this.RoleArn = null;
         }
         //      C# -> System.String? StackName
         // GraphQL -> stackName: String (scalar)
-        if (this.StackName == null && ec.Includes("stackName",true))
+        if (ec.Includes("stackName",true))
         {
-            this.StackName = "FETCH";
+            if(this.StackName == null) {
+
+                this.StackName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.StackName != null && ec.Excludes("stackName",true))
+        {
+            this.StackName = null;
         }
         //      C# -> System.String? StackSetName
         // GraphQL -> stackSetName: String (scalar)
-        if (this.StackSetName == null && ec.Includes("stackSetName",true))
+        if (ec.Includes("stackSetName",true))
         {
-            this.StackSetName = "FETCH";
+            if(this.StackSetName == null) {
+
+                this.StackSetName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.StackSetName != null && ec.Excludes("stackSetName",true))
+        {
+            this.StackSetName = null;
         }
         //      C# -> System.String? TemplateUrl
         // GraphQL -> templateUrl: String! (scalar)
-        if (this.TemplateUrl == null && ec.Includes("templateUrl",true))
+        if (ec.Includes("templateUrl",true))
         {
-            this.TemplateUrl = "FETCH";
+            if(this.TemplateUrl == null) {
+
+                this.TemplateUrl = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TemplateUrl != null && ec.Excludes("templateUrl",true))
+        {
+            this.TemplateUrl = null;
         }
         //      C# -> List<AwsCloudAccountFeatureVersion>? FeatureVersions
         // GraphQL -> featureVersions: [AwsCloudAccountFeatureVersion!]! (type)
-        if (this.FeatureVersions == null && ec.Includes("featureVersions",false))
+        if (ec.Includes("featureVersions",false))
         {
-            this.FeatureVersions = new List<AwsCloudAccountFeatureVersion>();
-            this.FeatureVersions.ApplyExploratoryFieldSpec(ec.NewChild("featureVersions"));
+            if(this.FeatureVersions == null) {
+
+                this.FeatureVersions = new List<AwsCloudAccountFeatureVersion>();
+                this.FeatureVersions.ApplyExploratoryFieldSpec(ec.NewChild("featureVersions"));
+
+            } else {
+
+                this.FeatureVersions.ApplyExploratoryFieldSpec(ec.NewChild("featureVersions"));
+
+            }
+        }
+        else if (this.FeatureVersions != null && ec.Excludes("featureVersions",false))
+        {
+            this.FeatureVersions = null;
         }
     }
 
@@ -238,9 +360,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AwsCloudAccountCreateResponse> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

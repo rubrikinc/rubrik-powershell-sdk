@@ -47,14 +47,19 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<CloudAccountFeature>? Features
         // GraphQL -> features: [CloudAccountFeature!]! (enum)
         if (this.Features != null) {
-            s += ind + "features\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "features\n" ;
+            } else {
+                s += ind + "features\n" ;
+            }
         }
         return s;
     }
@@ -65,9 +70,20 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<CloudAccountFeature>? Features
         // GraphQL -> features: [CloudAccountFeature!]! (enum)
-        if (this.Features == null && ec.Includes("features",true))
+        if (ec.Includes("features",true))
         {
-            this.Features = new List<CloudAccountFeature>();
+            if(this.Features == null) {
+
+                this.Features = new List<CloudAccountFeature>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Features != null && ec.Excludes("features",true))
+        {
+            this.Features = null;
         }
     }
 
@@ -94,9 +110,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AllEnabledFeaturesForAccountReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

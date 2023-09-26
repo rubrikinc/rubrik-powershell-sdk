@@ -182,109 +182,174 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> OracleLiveMountStatus? Status
         // GraphQL -> status: OracleLiveMountStatus! (enum)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
         if (this.CdmId != null) {
-            s += ind + "cdmId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cdmId\n" ;
+            } else {
+                s += ind + "cdmId\n" ;
+            }
         }
         //      C# -> DateTime? CreationDate
         // GraphQL -> creationDate: DateTime (scalar)
         if (this.CreationDate != null) {
-            s += ind + "creationDate\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "creationDate\n" ;
+            } else {
+                s += ind + "creationDate\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.Boolean? IsFilesOnlyMount
         // GraphQL -> isFilesOnlyMount: Boolean! (scalar)
         if (this.IsFilesOnlyMount != null) {
-            s += ind + "isFilesOnlyMount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isFilesOnlyMount\n" ;
+            } else {
+                s += ind + "isFilesOnlyMount\n" ;
+            }
         }
         //      C# -> System.Boolean? IsInstantRecovered
         // GraphQL -> isInstantRecovered: Boolean! (scalar)
         if (this.IsInstantRecovered != null) {
-            s += ind + "isInstantRecovered\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isInstantRecovered\n" ;
+            } else {
+                s += ind + "isInstantRecovered\n" ;
+            }
         }
         //      C# -> System.Boolean? IsReady
         // GraphQL -> isReady: Boolean! (scalar)
         if (this.IsReady != null) {
-            s += ind + "isReady\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isReady\n" ;
+            } else {
+                s += ind + "isReady\n" ;
+            }
         }
         //      C# -> System.String? MountedDatabaseName
         // GraphQL -> mountedDatabaseName: String! (scalar)
         if (this.MountedDatabaseName != null) {
-            s += ind + "mountedDatabaseName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "mountedDatabaseName\n" ;
+            } else {
+                s += ind + "mountedDatabaseName\n" ;
+            }
         }
         //      C# -> System.String? TargetHostMount
         // GraphQL -> targetHostMount: String! (scalar)
         if (this.TargetHostMount != null) {
-            s += ind + "targetHostMount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "targetHostMount\n" ;
+            } else {
+                s += ind + "targetHostMount\n" ;
+            }
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
         if (this.Cluster != null) {
-            var fspec = this.Cluster.AsFieldSpec(indent+1);
+            var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> OracleDatabase? MountedDatabase
         // GraphQL -> mountedDatabase: OracleDatabase (type)
         if (this.MountedDatabase != null) {
-            var fspec = this.MountedDatabase.AsFieldSpec(indent+1);
+            var fspec = this.MountedDatabase.AsFieldSpec(conf.Child("mountedDatabase"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "mountedDatabase {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "mountedDatabase {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> User? Owner
         // GraphQL -> owner: User! (type)
         if (this.Owner != null) {
-            var fspec = this.Owner.AsFieldSpec(indent+1);
+            var fspec = this.Owner.AsFieldSpec(conf.Child("owner"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "owner {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "owner {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> OracleDatabase? SourceDatabase
         // GraphQL -> sourceDatabase: OracleDatabase (type)
         if (this.SourceDatabase != null) {
-            var fspec = this.SourceDatabase.AsFieldSpec(indent+1);
+            var fspec = this.SourceDatabase.AsFieldSpec(conf.Child("sourceDatabase"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "sourceDatabase {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "sourceDatabase {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> CdmSnapshot? SourceSnapshot
         // GraphQL -> sourceSnapshot: CdmSnapshot! (type)
         if (this.SourceSnapshot != null) {
-            var fspec = this.SourceSnapshot.AsFieldSpec(indent+1);
+            var fspec = this.SourceSnapshot.AsFieldSpec(conf.Child("sourceSnapshot"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "sourceSnapshot {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "sourceSnapshot {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> OracleHost? TargetOracleHost
         // GraphQL -> targetOracleHost: OracleHost (type)
         if (this.TargetOracleHost != null) {
-            var fspec = this.TargetOracleHost.AsFieldSpec(indent+1);
+            var fspec = this.TargetOracleHost.AsFieldSpec(conf.Child("targetOracleHost"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "targetOracleHost {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "targetOracleHost {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> OracleRac? TargetOracleRac
         // GraphQL -> targetOracleRac: OracleRac (type)
         if (this.TargetOracleRac != null) {
-            var fspec = this.TargetOracleRac.AsFieldSpec(indent+1);
+            var fspec = this.TargetOracleRac.AsFieldSpec(conf.Child("targetOracleRac"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "targetOracleRac {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "targetOracleRac {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -296,106 +361,289 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> OracleLiveMountStatus? Status
         // GraphQL -> status: OracleLiveMountStatus! (enum)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = new OracleLiveMountStatus();
+            if(this.Status == null) {
+
+                this.Status = new OracleLiveMountStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
-        if (this.CdmId == null && ec.Includes("cdmId",true))
+        if (ec.Includes("cdmId",true))
         {
-            this.CdmId = "FETCH";
+            if(this.CdmId == null) {
+
+                this.CdmId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CdmId != null && ec.Excludes("cdmId",true))
+        {
+            this.CdmId = null;
         }
         //      C# -> DateTime? CreationDate
         // GraphQL -> creationDate: DateTime (scalar)
-        if (this.CreationDate == null && ec.Includes("creationDate",true))
+        if (ec.Includes("creationDate",true))
         {
-            this.CreationDate = new DateTime();
+            if(this.CreationDate == null) {
+
+                this.CreationDate = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CreationDate != null && ec.Excludes("creationDate",true))
+        {
+            this.CreationDate = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.Boolean? IsFilesOnlyMount
         // GraphQL -> isFilesOnlyMount: Boolean! (scalar)
-        if (this.IsFilesOnlyMount == null && ec.Includes("isFilesOnlyMount",true))
+        if (ec.Includes("isFilesOnlyMount",true))
         {
-            this.IsFilesOnlyMount = true;
+            if(this.IsFilesOnlyMount == null) {
+
+                this.IsFilesOnlyMount = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsFilesOnlyMount != null && ec.Excludes("isFilesOnlyMount",true))
+        {
+            this.IsFilesOnlyMount = null;
         }
         //      C# -> System.Boolean? IsInstantRecovered
         // GraphQL -> isInstantRecovered: Boolean! (scalar)
-        if (this.IsInstantRecovered == null && ec.Includes("isInstantRecovered",true))
+        if (ec.Includes("isInstantRecovered",true))
         {
-            this.IsInstantRecovered = true;
+            if(this.IsInstantRecovered == null) {
+
+                this.IsInstantRecovered = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsInstantRecovered != null && ec.Excludes("isInstantRecovered",true))
+        {
+            this.IsInstantRecovered = null;
         }
         //      C# -> System.Boolean? IsReady
         // GraphQL -> isReady: Boolean! (scalar)
-        if (this.IsReady == null && ec.Includes("isReady",true))
+        if (ec.Includes("isReady",true))
         {
-            this.IsReady = true;
+            if(this.IsReady == null) {
+
+                this.IsReady = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsReady != null && ec.Excludes("isReady",true))
+        {
+            this.IsReady = null;
         }
         //      C# -> System.String? MountedDatabaseName
         // GraphQL -> mountedDatabaseName: String! (scalar)
-        if (this.MountedDatabaseName == null && ec.Includes("mountedDatabaseName",true))
+        if (ec.Includes("mountedDatabaseName",true))
         {
-            this.MountedDatabaseName = "FETCH";
+            if(this.MountedDatabaseName == null) {
+
+                this.MountedDatabaseName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.MountedDatabaseName != null && ec.Excludes("mountedDatabaseName",true))
+        {
+            this.MountedDatabaseName = null;
         }
         //      C# -> System.String? TargetHostMount
         // GraphQL -> targetHostMount: String! (scalar)
-        if (this.TargetHostMount == null && ec.Includes("targetHostMount",true))
+        if (ec.Includes("targetHostMount",true))
         {
-            this.TargetHostMount = "FETCH";
+            if(this.TargetHostMount == null) {
+
+                this.TargetHostMount = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TargetHostMount != null && ec.Excludes("targetHostMount",true))
+        {
+            this.TargetHostMount = null;
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
-        if (this.Cluster == null && ec.Includes("cluster",false))
+        if (ec.Includes("cluster",false))
         {
-            this.Cluster = new Cluster();
-            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+            if(this.Cluster == null) {
+
+                this.Cluster = new Cluster();
+                this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+
+            } else {
+
+                this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+
+            }
+        }
+        else if (this.Cluster != null && ec.Excludes("cluster",false))
+        {
+            this.Cluster = null;
         }
         //      C# -> OracleDatabase? MountedDatabase
         // GraphQL -> mountedDatabase: OracleDatabase (type)
-        if (this.MountedDatabase == null && ec.Includes("mountedDatabase",false))
+        if (ec.Includes("mountedDatabase",false))
         {
-            this.MountedDatabase = new OracleDatabase();
-            this.MountedDatabase.ApplyExploratoryFieldSpec(ec.NewChild("mountedDatabase"));
+            if(this.MountedDatabase == null) {
+
+                this.MountedDatabase = new OracleDatabase();
+                this.MountedDatabase.ApplyExploratoryFieldSpec(ec.NewChild("mountedDatabase"));
+
+            } else {
+
+                this.MountedDatabase.ApplyExploratoryFieldSpec(ec.NewChild("mountedDatabase"));
+
+            }
+        }
+        else if (this.MountedDatabase != null && ec.Excludes("mountedDatabase",false))
+        {
+            this.MountedDatabase = null;
         }
         //      C# -> User? Owner
         // GraphQL -> owner: User! (type)
-        if (this.Owner == null && ec.Includes("owner",false))
+        if (ec.Includes("owner",false))
         {
-            this.Owner = new User();
-            this.Owner.ApplyExploratoryFieldSpec(ec.NewChild("owner"));
+            if(this.Owner == null) {
+
+                this.Owner = new User();
+                this.Owner.ApplyExploratoryFieldSpec(ec.NewChild("owner"));
+
+            } else {
+
+                this.Owner.ApplyExploratoryFieldSpec(ec.NewChild("owner"));
+
+            }
+        }
+        else if (this.Owner != null && ec.Excludes("owner",false))
+        {
+            this.Owner = null;
         }
         //      C# -> OracleDatabase? SourceDatabase
         // GraphQL -> sourceDatabase: OracleDatabase (type)
-        if (this.SourceDatabase == null && ec.Includes("sourceDatabase",false))
+        if (ec.Includes("sourceDatabase",false))
         {
-            this.SourceDatabase = new OracleDatabase();
-            this.SourceDatabase.ApplyExploratoryFieldSpec(ec.NewChild("sourceDatabase"));
+            if(this.SourceDatabase == null) {
+
+                this.SourceDatabase = new OracleDatabase();
+                this.SourceDatabase.ApplyExploratoryFieldSpec(ec.NewChild("sourceDatabase"));
+
+            } else {
+
+                this.SourceDatabase.ApplyExploratoryFieldSpec(ec.NewChild("sourceDatabase"));
+
+            }
+        }
+        else if (this.SourceDatabase != null && ec.Excludes("sourceDatabase",false))
+        {
+            this.SourceDatabase = null;
         }
         //      C# -> CdmSnapshot? SourceSnapshot
         // GraphQL -> sourceSnapshot: CdmSnapshot! (type)
-        if (this.SourceSnapshot == null && ec.Includes("sourceSnapshot",false))
+        if (ec.Includes("sourceSnapshot",false))
         {
-            this.SourceSnapshot = new CdmSnapshot();
-            this.SourceSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("sourceSnapshot"));
+            if(this.SourceSnapshot == null) {
+
+                this.SourceSnapshot = new CdmSnapshot();
+                this.SourceSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("sourceSnapshot"));
+
+            } else {
+
+                this.SourceSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("sourceSnapshot"));
+
+            }
+        }
+        else if (this.SourceSnapshot != null && ec.Excludes("sourceSnapshot",false))
+        {
+            this.SourceSnapshot = null;
         }
         //      C# -> OracleHost? TargetOracleHost
         // GraphQL -> targetOracleHost: OracleHost (type)
-        if (this.TargetOracleHost == null && ec.Includes("targetOracleHost",false))
+        if (ec.Includes("targetOracleHost",false))
         {
-            this.TargetOracleHost = new OracleHost();
-            this.TargetOracleHost.ApplyExploratoryFieldSpec(ec.NewChild("targetOracleHost"));
+            if(this.TargetOracleHost == null) {
+
+                this.TargetOracleHost = new OracleHost();
+                this.TargetOracleHost.ApplyExploratoryFieldSpec(ec.NewChild("targetOracleHost"));
+
+            } else {
+
+                this.TargetOracleHost.ApplyExploratoryFieldSpec(ec.NewChild("targetOracleHost"));
+
+            }
+        }
+        else if (this.TargetOracleHost != null && ec.Excludes("targetOracleHost",false))
+        {
+            this.TargetOracleHost = null;
         }
         //      C# -> OracleRac? TargetOracleRac
         // GraphQL -> targetOracleRac: OracleRac (type)
-        if (this.TargetOracleRac == null && ec.Includes("targetOracleRac",false))
+        if (ec.Includes("targetOracleRac",false))
         {
-            this.TargetOracleRac = new OracleRac();
-            this.TargetOracleRac.ApplyExploratoryFieldSpec(ec.NewChild("targetOracleRac"));
+            if(this.TargetOracleRac == null) {
+
+                this.TargetOracleRac = new OracleRac();
+                this.TargetOracleRac.ApplyExploratoryFieldSpec(ec.NewChild("targetOracleRac"));
+
+            } else {
+
+                this.TargetOracleRac.ApplyExploratoryFieldSpec(ec.NewChild("targetOracleRac"));
+
+            }
+        }
+        else if (this.TargetOracleRac != null && ec.Excludes("targetOracleRac",false))
+        {
+            this.TargetOracleRac = null;
         }
     }
 
@@ -422,9 +670,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<OracleLiveMount> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

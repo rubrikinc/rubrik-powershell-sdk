@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> PendingActionStatus? Status
         // GraphQL -> status: PendingActionStatus! (enum)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         //      C# -> System.String? ObjectFid
         // GraphQL -> objectFid: UUID! (scalar)
         if (this.ObjectFid != null) {
-            s += ind + "objectFid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "objectFid\n" ;
+            } else {
+                s += ind + "objectFid\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> PendingActionStatus? Status
         // GraphQL -> status: PendingActionStatus! (enum)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = new PendingActionStatus();
+            if(this.Status == null) {
+
+                this.Status = new PendingActionStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
         //      C# -> System.String? ObjectFid
         // GraphQL -> objectFid: UUID! (scalar)
-        if (this.ObjectFid == null && ec.Includes("objectFid",true))
+        if (ec.Includes("objectFid",true))
         {
-            this.ObjectFid = "FETCH";
+            if(this.ObjectFid == null) {
+
+                this.ObjectFid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ObjectFid != null && ec.Excludes("objectFid",true))
+        {
+            this.ObjectFid = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<PendingSnapshotsOfObjectDeletion> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

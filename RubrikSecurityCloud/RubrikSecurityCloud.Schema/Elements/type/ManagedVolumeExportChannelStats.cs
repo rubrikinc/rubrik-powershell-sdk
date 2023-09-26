@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? TotalSize
         // GraphQL -> totalSize: Long! (scalar)
         if (this.TotalSize != null) {
-            s += ind + "totalSize\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "totalSize\n" ;
+            } else {
+                s += ind + "totalSize\n" ;
+            }
         }
         //      C# -> System.Int64? UsedSize
         // GraphQL -> usedSize: Long! (scalar)
         if (this.UsedSize != null) {
-            s += ind + "usedSize\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "usedSize\n" ;
+            } else {
+                s += ind + "usedSize\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? TotalSize
         // GraphQL -> totalSize: Long! (scalar)
-        if (this.TotalSize == null && ec.Includes("totalSize",true))
+        if (ec.Includes("totalSize",true))
         {
-            this.TotalSize = new System.Int64();
+            if(this.TotalSize == null) {
+
+                this.TotalSize = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalSize != null && ec.Excludes("totalSize",true))
+        {
+            this.TotalSize = null;
         }
         //      C# -> System.Int64? UsedSize
         // GraphQL -> usedSize: Long! (scalar)
-        if (this.UsedSize == null && ec.Includes("usedSize",true))
+        if (ec.Includes("usedSize",true))
         {
-            this.UsedSize = new System.Int64();
+            if(this.UsedSize == null) {
+
+                this.UsedSize = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UsedSize != null && ec.Excludes("usedSize",true))
+        {
+            this.UsedSize = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ManagedVolumeExportChannelStats> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

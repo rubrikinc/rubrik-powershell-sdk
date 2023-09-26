@@ -155,79 +155,132 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> Db2SnapshotType? BaseSnapshotType
         // GraphQL -> baseSnapshotType: Db2SnapshotType (enum)
         if (this.BaseSnapshotType != null) {
-            s += ind + "baseSnapshotType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "baseSnapshotType\n" ;
+            } else {
+                s += ind + "baseSnapshotType\n" ;
+            }
         }
         //      C# -> Db2SnapshotType? SnapshotType
         // GraphQL -> snapshotType: Db2SnapshotType (enum)
         if (this.SnapshotType != null) {
-            s += ind + "snapshotType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotType\n" ;
+            } else {
+                s += ind + "snapshotType\n" ;
+            }
         }
         //      C# -> System.Int64? ApproximateDbSizeBytes
         // GraphQL -> approximateDbSizeBytes: Long (scalar)
         if (this.ApproximateDbSizeBytes != null) {
-            s += ind + "approximateDbSizeBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "approximateDbSizeBytes\n" ;
+            } else {
+                s += ind + "approximateDbSizeBytes\n" ;
+            }
         }
         //      C# -> System.String? BackupId
         // GraphQL -> backupId: String (scalar)
         if (this.BackupId != null) {
-            s += ind + "backupId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "backupId\n" ;
+            } else {
+                s += ind + "backupId\n" ;
+            }
         }
         //      C# -> System.String? BaseBackupId
         // GraphQL -> baseBackupId: String (scalar)
         if (this.BaseBackupId != null) {
-            s += ind + "baseBackupId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "baseBackupId\n" ;
+            } else {
+                s += ind + "baseBackupId\n" ;
+            }
         }
         //      C# -> System.String? BaseSnapshotId
         // GraphQL -> baseSnapshotId: String (scalar)
         if (this.BaseSnapshotId != null) {
-            s += ind + "baseSnapshotId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "baseSnapshotId\n" ;
+            } else {
+                s += ind + "baseSnapshotId\n" ;
+            }
         }
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime (scalar)
         if (this.EndTime != null) {
-            s += ind + "endTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "endTime\n" ;
+            } else {
+                s += ind + "endTime\n" ;
+            }
         }
         //      C# -> System.Boolean? IsExternalBackup
         // GraphQL -> isExternalBackup: Boolean! (scalar)
         if (this.IsExternalBackup != null) {
-            s += ind + "isExternalBackup\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isExternalBackup\n" ;
+            } else {
+                s += ind + "isExternalBackup\n" ;
+            }
         }
         //      C# -> System.Boolean? IsRubrikTriggeredOnDemandBackup
         // GraphQL -> isRubrikTriggeredOnDemandBackup: Boolean! (scalar)
         if (this.IsRubrikTriggeredOnDemandBackup != null) {
-            s += ind + "isRubrikTriggeredOnDemandBackup\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isRubrikTriggeredOnDemandBackup\n" ;
+            } else {
+                s += ind + "isRubrikTriggeredOnDemandBackup\n" ;
+            }
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String (scalar)
         if (this.SnapshotId != null) {
-            s += ind + "snapshotId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotId\n" ;
+            } else {
+                s += ind + "snapshotId\n" ;
+            }
         }
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime (scalar)
         if (this.StartTime != null) {
-            s += ind + "startTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "startTime\n" ;
+            } else {
+                s += ind + "startTime\n" ;
+            }
         }
         //      C# -> Db2WorkloadDataSnapshotMetadata? Db2SnapshotMetadata
         // GraphQL -> db2SnapshotMetadata: Db2WorkloadDataSnapshotMetadata (type)
         if (this.Db2SnapshotMetadata != null) {
-            var fspec = this.Db2SnapshotMetadata.AsFieldSpec(indent+1);
+            var fspec = this.Db2SnapshotMetadata.AsFieldSpec(conf.Child("db2SnapshotMetadata"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "db2SnapshotMetadata {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "db2SnapshotMetadata {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<Db2DataBackupFile>? Files
         // GraphQL -> files: [Db2DataBackupFile!]! (type)
         if (this.Files != null) {
-            var fspec = this.Files.AsFieldSpec(indent+1);
+            var fspec = this.Files.AsFieldSpec(conf.Child("files"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "files {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "files {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -239,83 +292,228 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> Db2SnapshotType? BaseSnapshotType
         // GraphQL -> baseSnapshotType: Db2SnapshotType (enum)
-        if (this.BaseSnapshotType == null && ec.Includes("baseSnapshotType",true))
+        if (ec.Includes("baseSnapshotType",true))
         {
-            this.BaseSnapshotType = new Db2SnapshotType();
+            if(this.BaseSnapshotType == null) {
+
+                this.BaseSnapshotType = new Db2SnapshotType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.BaseSnapshotType != null && ec.Excludes("baseSnapshotType",true))
+        {
+            this.BaseSnapshotType = null;
         }
         //      C# -> Db2SnapshotType? SnapshotType
         // GraphQL -> snapshotType: Db2SnapshotType (enum)
-        if (this.SnapshotType == null && ec.Includes("snapshotType",true))
+        if (ec.Includes("snapshotType",true))
         {
-            this.SnapshotType = new Db2SnapshotType();
+            if(this.SnapshotType == null) {
+
+                this.SnapshotType = new Db2SnapshotType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotType != null && ec.Excludes("snapshotType",true))
+        {
+            this.SnapshotType = null;
         }
         //      C# -> System.Int64? ApproximateDbSizeBytes
         // GraphQL -> approximateDbSizeBytes: Long (scalar)
-        if (this.ApproximateDbSizeBytes == null && ec.Includes("approximateDbSizeBytes",true))
+        if (ec.Includes("approximateDbSizeBytes",true))
         {
-            this.ApproximateDbSizeBytes = new System.Int64();
+            if(this.ApproximateDbSizeBytes == null) {
+
+                this.ApproximateDbSizeBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ApproximateDbSizeBytes != null && ec.Excludes("approximateDbSizeBytes",true))
+        {
+            this.ApproximateDbSizeBytes = null;
         }
         //      C# -> System.String? BackupId
         // GraphQL -> backupId: String (scalar)
-        if (this.BackupId == null && ec.Includes("backupId",true))
+        if (ec.Includes("backupId",true))
         {
-            this.BackupId = "FETCH";
+            if(this.BackupId == null) {
+
+                this.BackupId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.BackupId != null && ec.Excludes("backupId",true))
+        {
+            this.BackupId = null;
         }
         //      C# -> System.String? BaseBackupId
         // GraphQL -> baseBackupId: String (scalar)
-        if (this.BaseBackupId == null && ec.Includes("baseBackupId",true))
+        if (ec.Includes("baseBackupId",true))
         {
-            this.BaseBackupId = "FETCH";
+            if(this.BaseBackupId == null) {
+
+                this.BaseBackupId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.BaseBackupId != null && ec.Excludes("baseBackupId",true))
+        {
+            this.BaseBackupId = null;
         }
         //      C# -> System.String? BaseSnapshotId
         // GraphQL -> baseSnapshotId: String (scalar)
-        if (this.BaseSnapshotId == null && ec.Includes("baseSnapshotId",true))
+        if (ec.Includes("baseSnapshotId",true))
         {
-            this.BaseSnapshotId = "FETCH";
+            if(this.BaseSnapshotId == null) {
+
+                this.BaseSnapshotId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.BaseSnapshotId != null && ec.Excludes("baseSnapshotId",true))
+        {
+            this.BaseSnapshotId = null;
         }
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime (scalar)
-        if (this.EndTime == null && ec.Includes("endTime",true))
+        if (ec.Includes("endTime",true))
         {
-            this.EndTime = new DateTime();
+            if(this.EndTime == null) {
+
+                this.EndTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EndTime != null && ec.Excludes("endTime",true))
+        {
+            this.EndTime = null;
         }
         //      C# -> System.Boolean? IsExternalBackup
         // GraphQL -> isExternalBackup: Boolean! (scalar)
-        if (this.IsExternalBackup == null && ec.Includes("isExternalBackup",true))
+        if (ec.Includes("isExternalBackup",true))
         {
-            this.IsExternalBackup = true;
+            if(this.IsExternalBackup == null) {
+
+                this.IsExternalBackup = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsExternalBackup != null && ec.Excludes("isExternalBackup",true))
+        {
+            this.IsExternalBackup = null;
         }
         //      C# -> System.Boolean? IsRubrikTriggeredOnDemandBackup
         // GraphQL -> isRubrikTriggeredOnDemandBackup: Boolean! (scalar)
-        if (this.IsRubrikTriggeredOnDemandBackup == null && ec.Includes("isRubrikTriggeredOnDemandBackup",true))
+        if (ec.Includes("isRubrikTriggeredOnDemandBackup",true))
         {
-            this.IsRubrikTriggeredOnDemandBackup = true;
+            if(this.IsRubrikTriggeredOnDemandBackup == null) {
+
+                this.IsRubrikTriggeredOnDemandBackup = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsRubrikTriggeredOnDemandBackup != null && ec.Excludes("isRubrikTriggeredOnDemandBackup",true))
+        {
+            this.IsRubrikTriggeredOnDemandBackup = null;
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String (scalar)
-        if (this.SnapshotId == null && ec.Includes("snapshotId",true))
+        if (ec.Includes("snapshotId",true))
         {
-            this.SnapshotId = "FETCH";
+            if(this.SnapshotId == null) {
+
+                this.SnapshotId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotId != null && ec.Excludes("snapshotId",true))
+        {
+            this.SnapshotId = null;
         }
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime (scalar)
-        if (this.StartTime == null && ec.Includes("startTime",true))
+        if (ec.Includes("startTime",true))
         {
-            this.StartTime = new DateTime();
+            if(this.StartTime == null) {
+
+                this.StartTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.StartTime != null && ec.Excludes("startTime",true))
+        {
+            this.StartTime = null;
         }
         //      C# -> Db2WorkloadDataSnapshotMetadata? Db2SnapshotMetadata
         // GraphQL -> db2SnapshotMetadata: Db2WorkloadDataSnapshotMetadata (type)
-        if (this.Db2SnapshotMetadata == null && ec.Includes("db2SnapshotMetadata",false))
+        if (ec.Includes("db2SnapshotMetadata",false))
         {
-            this.Db2SnapshotMetadata = new Db2WorkloadDataSnapshotMetadata();
-            this.Db2SnapshotMetadata.ApplyExploratoryFieldSpec(ec.NewChild("db2SnapshotMetadata"));
+            if(this.Db2SnapshotMetadata == null) {
+
+                this.Db2SnapshotMetadata = new Db2WorkloadDataSnapshotMetadata();
+                this.Db2SnapshotMetadata.ApplyExploratoryFieldSpec(ec.NewChild("db2SnapshotMetadata"));
+
+            } else {
+
+                this.Db2SnapshotMetadata.ApplyExploratoryFieldSpec(ec.NewChild("db2SnapshotMetadata"));
+
+            }
+        }
+        else if (this.Db2SnapshotMetadata != null && ec.Excludes("db2SnapshotMetadata",false))
+        {
+            this.Db2SnapshotMetadata = null;
         }
         //      C# -> List<Db2DataBackupFile>? Files
         // GraphQL -> files: [Db2DataBackupFile!]! (type)
-        if (this.Files == null && ec.Includes("files",false))
+        if (ec.Includes("files",false))
         {
-            this.Files = new List<Db2DataBackupFile>();
-            this.Files.ApplyExploratoryFieldSpec(ec.NewChild("files"));
+            if(this.Files == null) {
+
+                this.Files = new List<Db2DataBackupFile>();
+                this.Files.ApplyExploratoryFieldSpec(ec.NewChild("files"));
+
+            } else {
+
+                this.Files.ApplyExploratoryFieldSpec(ec.NewChild("files"));
+
+            }
+        }
+        else if (this.Files != null && ec.Excludes("files",false))
+        {
+            this.Files = null;
         }
     }
 
@@ -342,9 +540,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<Db2AppMetadata> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

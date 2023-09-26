@@ -92,50 +92,75 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? ConfiguredSlaDomainId
         // GraphQL -> configuredSlaDomainId: String! (scalar)
         if (this.ConfiguredSlaDomainId != null) {
-            s += ind + "configuredSlaDomainId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "configuredSlaDomainId\n" ;
+            } else {
+                s += ind + "configuredSlaDomainId\n" ;
+            }
         }
         //      C# -> System.Boolean? IsPaused
         // GraphQL -> isPaused: Boolean! (scalar)
         if (this.IsPaused != null) {
-            s += ind + "isPaused\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isPaused\n" ;
+            } else {
+                s += ind + "isPaused\n" ;
+            }
         }
         //      C# -> BlackoutWindowResponseInfo? BlackoutWindowResponseInfo
         // GraphQL -> blackoutWindowResponseInfo: BlackoutWindowResponseInfo (type)
         if (this.BlackoutWindowResponseInfo != null) {
-            var fspec = this.BlackoutWindowResponseInfo.AsFieldSpec(indent+1);
+            var fspec = this.BlackoutWindowResponseInfo.AsFieldSpec(conf.Child("blackoutWindowResponseInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "blackoutWindowResponseInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "blackoutWindowResponseInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> ManagedObjectPendingSlaInfo? PendingSlaDomain
         // GraphQL -> pendingSlaDomain: ManagedObjectPendingSlaInfo (type)
         if (this.PendingSlaDomain != null) {
-            var fspec = this.PendingSlaDomain.AsFieldSpec(indent+1);
+            var fspec = this.PendingSlaDomain.AsFieldSpec(conf.Child("pendingSlaDomain"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "pendingSlaDomain {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "pendingSlaDomain {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> VolumeGroupSummary? VolumeGroupSummary
         // GraphQL -> volumeGroupSummary: VolumeGroupSummary (type)
         if (this.VolumeGroupSummary != null) {
-            var fspec = this.VolumeGroupSummary.AsFieldSpec(indent+1);
+            var fspec = this.VolumeGroupSummary.AsFieldSpec(conf.Child("volumeGroupSummary"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "volumeGroupSummary {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "volumeGroupSummary {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<HostVolumeSummary>? Volumes
         // GraphQL -> volumes: [HostVolumeSummary!]! (type)
         if (this.Volumes != null) {
-            var fspec = this.Volumes.AsFieldSpec(indent+1);
+            var fspec = this.Volumes.AsFieldSpec(conf.Child("volumes"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "volumes {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "volumes {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -147,43 +172,113 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? ConfiguredSlaDomainId
         // GraphQL -> configuredSlaDomainId: String! (scalar)
-        if (this.ConfiguredSlaDomainId == null && ec.Includes("configuredSlaDomainId",true))
+        if (ec.Includes("configuredSlaDomainId",true))
         {
-            this.ConfiguredSlaDomainId = "FETCH";
+            if(this.ConfiguredSlaDomainId == null) {
+
+                this.ConfiguredSlaDomainId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ConfiguredSlaDomainId != null && ec.Excludes("configuredSlaDomainId",true))
+        {
+            this.ConfiguredSlaDomainId = null;
         }
         //      C# -> System.Boolean? IsPaused
         // GraphQL -> isPaused: Boolean! (scalar)
-        if (this.IsPaused == null && ec.Includes("isPaused",true))
+        if (ec.Includes("isPaused",true))
         {
-            this.IsPaused = true;
+            if(this.IsPaused == null) {
+
+                this.IsPaused = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsPaused != null && ec.Excludes("isPaused",true))
+        {
+            this.IsPaused = null;
         }
         //      C# -> BlackoutWindowResponseInfo? BlackoutWindowResponseInfo
         // GraphQL -> blackoutWindowResponseInfo: BlackoutWindowResponseInfo (type)
-        if (this.BlackoutWindowResponseInfo == null && ec.Includes("blackoutWindowResponseInfo",false))
+        if (ec.Includes("blackoutWindowResponseInfo",false))
         {
-            this.BlackoutWindowResponseInfo = new BlackoutWindowResponseInfo();
-            this.BlackoutWindowResponseInfo.ApplyExploratoryFieldSpec(ec.NewChild("blackoutWindowResponseInfo"));
+            if(this.BlackoutWindowResponseInfo == null) {
+
+                this.BlackoutWindowResponseInfo = new BlackoutWindowResponseInfo();
+                this.BlackoutWindowResponseInfo.ApplyExploratoryFieldSpec(ec.NewChild("blackoutWindowResponseInfo"));
+
+            } else {
+
+                this.BlackoutWindowResponseInfo.ApplyExploratoryFieldSpec(ec.NewChild("blackoutWindowResponseInfo"));
+
+            }
+        }
+        else if (this.BlackoutWindowResponseInfo != null && ec.Excludes("blackoutWindowResponseInfo",false))
+        {
+            this.BlackoutWindowResponseInfo = null;
         }
         //      C# -> ManagedObjectPendingSlaInfo? PendingSlaDomain
         // GraphQL -> pendingSlaDomain: ManagedObjectPendingSlaInfo (type)
-        if (this.PendingSlaDomain == null && ec.Includes("pendingSlaDomain",false))
+        if (ec.Includes("pendingSlaDomain",false))
         {
-            this.PendingSlaDomain = new ManagedObjectPendingSlaInfo();
-            this.PendingSlaDomain.ApplyExploratoryFieldSpec(ec.NewChild("pendingSlaDomain"));
+            if(this.PendingSlaDomain == null) {
+
+                this.PendingSlaDomain = new ManagedObjectPendingSlaInfo();
+                this.PendingSlaDomain.ApplyExploratoryFieldSpec(ec.NewChild("pendingSlaDomain"));
+
+            } else {
+
+                this.PendingSlaDomain.ApplyExploratoryFieldSpec(ec.NewChild("pendingSlaDomain"));
+
+            }
+        }
+        else if (this.PendingSlaDomain != null && ec.Excludes("pendingSlaDomain",false))
+        {
+            this.PendingSlaDomain = null;
         }
         //      C# -> VolumeGroupSummary? VolumeGroupSummary
         // GraphQL -> volumeGroupSummary: VolumeGroupSummary (type)
-        if (this.VolumeGroupSummary == null && ec.Includes("volumeGroupSummary",false))
+        if (ec.Includes("volumeGroupSummary",false))
         {
-            this.VolumeGroupSummary = new VolumeGroupSummary();
-            this.VolumeGroupSummary.ApplyExploratoryFieldSpec(ec.NewChild("volumeGroupSummary"));
+            if(this.VolumeGroupSummary == null) {
+
+                this.VolumeGroupSummary = new VolumeGroupSummary();
+                this.VolumeGroupSummary.ApplyExploratoryFieldSpec(ec.NewChild("volumeGroupSummary"));
+
+            } else {
+
+                this.VolumeGroupSummary.ApplyExploratoryFieldSpec(ec.NewChild("volumeGroupSummary"));
+
+            }
+        }
+        else if (this.VolumeGroupSummary != null && ec.Excludes("volumeGroupSummary",false))
+        {
+            this.VolumeGroupSummary = null;
         }
         //      C# -> List<HostVolumeSummary>? Volumes
         // GraphQL -> volumes: [HostVolumeSummary!]! (type)
-        if (this.Volumes == null && ec.Includes("volumes",false))
+        if (ec.Includes("volumes",false))
         {
-            this.Volumes = new List<HostVolumeSummary>();
-            this.Volumes.ApplyExploratoryFieldSpec(ec.NewChild("volumes"));
+            if(this.Volumes == null) {
+
+                this.Volumes = new List<HostVolumeSummary>();
+                this.Volumes.ApplyExploratoryFieldSpec(ec.NewChild("volumes"));
+
+            } else {
+
+                this.Volumes.ApplyExploratoryFieldSpec(ec.NewChild("volumes"));
+
+            }
+        }
+        else if (this.Volumes != null && ec.Excludes("volumes",false))
+        {
+            this.Volumes = null;
         }
     }
 
@@ -210,9 +305,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<UpdateVolumeGroupReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

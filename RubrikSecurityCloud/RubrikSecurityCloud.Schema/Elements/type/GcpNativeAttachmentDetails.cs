@@ -119,54 +119,91 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? DeviceName
         // GraphQL -> deviceName: String! (scalar)
         if (this.DeviceName != null) {
-            s += ind + "deviceName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "deviceName\n" ;
+            } else {
+                s += ind + "deviceName\n" ;
+            }
         }
         //      C# -> System.String? DiskId
         // GraphQL -> diskId: String! (scalar)
         if (this.DiskId != null) {
-            s += ind + "diskId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "diskId\n" ;
+            } else {
+                s += ind + "diskId\n" ;
+            }
         }
         //      C# -> System.String? DiskName
         // GraphQL -> diskName: String! (scalar)
         if (this.DiskName != null) {
-            s += ind + "diskName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "diskName\n" ;
+            } else {
+                s += ind + "diskName\n" ;
+            }
         }
         //      C# -> System.String? InstanceId
         // GraphQL -> instanceId: String! (scalar)
         if (this.InstanceId != null) {
-            s += ind + "instanceId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "instanceId\n" ;
+            } else {
+                s += ind + "instanceId\n" ;
+            }
         }
         //      C# -> System.String? InstanceName
         // GraphQL -> instanceName: String! (scalar)
         if (this.InstanceName != null) {
-            s += ind + "instanceName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "instanceName\n" ;
+            } else {
+                s += ind + "instanceName\n" ;
+            }
         }
         //      C# -> System.String? InstanceZone
         // GraphQL -> instanceZone: String! (scalar)
         if (this.InstanceZone != null) {
-            s += ind + "instanceZone\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "instanceZone\n" ;
+            } else {
+                s += ind + "instanceZone\n" ;
+            }
         }
         //      C# -> System.Boolean? IsBootDisk
         // GraphQL -> isBootDisk: Boolean! (scalar)
         if (this.IsBootDisk != null) {
-            s += ind + "isBootDisk\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isBootDisk\n" ;
+            } else {
+                s += ind + "isBootDisk\n" ;
+            }
         }
         //      C# -> System.Boolean? IsExcluded
         // GraphQL -> isExcluded: Boolean! (scalar)
         if (this.IsExcluded != null) {
-            s += ind + "isExcluded\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isExcluded\n" ;
+            } else {
+                s += ind + "isExcluded\n" ;
+            }
         }
         //      C# -> System.Int32? SizeInGiBs
         // GraphQL -> sizeInGiBs: Int! (scalar)
         if (this.SizeInGiBs != null) {
-            s += ind + "sizeInGiBs\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sizeInGiBs\n" ;
+            } else {
+                s += ind + "sizeInGiBs\n" ;
+            }
         }
         return s;
     }
@@ -177,57 +214,156 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? DeviceName
         // GraphQL -> deviceName: String! (scalar)
-        if (this.DeviceName == null && ec.Includes("deviceName",true))
+        if (ec.Includes("deviceName",true))
         {
-            this.DeviceName = "FETCH";
+            if(this.DeviceName == null) {
+
+                this.DeviceName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DeviceName != null && ec.Excludes("deviceName",true))
+        {
+            this.DeviceName = null;
         }
         //      C# -> System.String? DiskId
         // GraphQL -> diskId: String! (scalar)
-        if (this.DiskId == null && ec.Includes("diskId",true))
+        if (ec.Includes("diskId",true))
         {
-            this.DiskId = "FETCH";
+            if(this.DiskId == null) {
+
+                this.DiskId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DiskId != null && ec.Excludes("diskId",true))
+        {
+            this.DiskId = null;
         }
         //      C# -> System.String? DiskName
         // GraphQL -> diskName: String! (scalar)
-        if (this.DiskName == null && ec.Includes("diskName",true))
+        if (ec.Includes("diskName",true))
         {
-            this.DiskName = "FETCH";
+            if(this.DiskName == null) {
+
+                this.DiskName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DiskName != null && ec.Excludes("diskName",true))
+        {
+            this.DiskName = null;
         }
         //      C# -> System.String? InstanceId
         // GraphQL -> instanceId: String! (scalar)
-        if (this.InstanceId == null && ec.Includes("instanceId",true))
+        if (ec.Includes("instanceId",true))
         {
-            this.InstanceId = "FETCH";
+            if(this.InstanceId == null) {
+
+                this.InstanceId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.InstanceId != null && ec.Excludes("instanceId",true))
+        {
+            this.InstanceId = null;
         }
         //      C# -> System.String? InstanceName
         // GraphQL -> instanceName: String! (scalar)
-        if (this.InstanceName == null && ec.Includes("instanceName",true))
+        if (ec.Includes("instanceName",true))
         {
-            this.InstanceName = "FETCH";
+            if(this.InstanceName == null) {
+
+                this.InstanceName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.InstanceName != null && ec.Excludes("instanceName",true))
+        {
+            this.InstanceName = null;
         }
         //      C# -> System.String? InstanceZone
         // GraphQL -> instanceZone: String! (scalar)
-        if (this.InstanceZone == null && ec.Includes("instanceZone",true))
+        if (ec.Includes("instanceZone",true))
         {
-            this.InstanceZone = "FETCH";
+            if(this.InstanceZone == null) {
+
+                this.InstanceZone = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.InstanceZone != null && ec.Excludes("instanceZone",true))
+        {
+            this.InstanceZone = null;
         }
         //      C# -> System.Boolean? IsBootDisk
         // GraphQL -> isBootDisk: Boolean! (scalar)
-        if (this.IsBootDisk == null && ec.Includes("isBootDisk",true))
+        if (ec.Includes("isBootDisk",true))
         {
-            this.IsBootDisk = true;
+            if(this.IsBootDisk == null) {
+
+                this.IsBootDisk = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsBootDisk != null && ec.Excludes("isBootDisk",true))
+        {
+            this.IsBootDisk = null;
         }
         //      C# -> System.Boolean? IsExcluded
         // GraphQL -> isExcluded: Boolean! (scalar)
-        if (this.IsExcluded == null && ec.Includes("isExcluded",true))
+        if (ec.Includes("isExcluded",true))
         {
-            this.IsExcluded = true;
+            if(this.IsExcluded == null) {
+
+                this.IsExcluded = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsExcluded != null && ec.Excludes("isExcluded",true))
+        {
+            this.IsExcluded = null;
         }
         //      C# -> System.Int32? SizeInGiBs
         // GraphQL -> sizeInGiBs: Int! (scalar)
-        if (this.SizeInGiBs == null && ec.Includes("sizeInGiBs",true))
+        if (ec.Includes("sizeInGiBs",true))
         {
-            this.SizeInGiBs = Int32.MinValue;
+            if(this.SizeInGiBs == null) {
+
+                this.SizeInGiBs = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.SizeInGiBs != null && ec.Excludes("sizeInGiBs",true))
+        {
+            this.SizeInGiBs = null;
         }
     }
 
@@ -254,9 +390,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<GcpNativeAttachmentDetails> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

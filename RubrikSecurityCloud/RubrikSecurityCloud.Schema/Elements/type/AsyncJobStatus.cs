@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Error
         // GraphQL -> error: String! (scalar)
         if (this.Error != null) {
-            s += ind + "error\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "error\n" ;
+            } else {
+                s += ind + "error\n" ;
+            }
         }
         //      C# -> System.String? JobId
         // GraphQL -> jobId: String! (scalar)
         if (this.JobId != null) {
-            s += ind + "jobId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "jobId\n" ;
+            } else {
+                s += ind + "jobId\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Error
         // GraphQL -> error: String! (scalar)
-        if (this.Error == null && ec.Includes("error",true))
+        if (ec.Includes("error",true))
         {
-            this.Error = "FETCH";
+            if(this.Error == null) {
+
+                this.Error = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Error != null && ec.Excludes("error",true))
+        {
+            this.Error = null;
         }
         //      C# -> System.String? JobId
         // GraphQL -> jobId: String! (scalar)
-        if (this.JobId == null && ec.Includes("jobId",true))
+        if (ec.Includes("jobId",true))
         {
-            this.JobId = "FETCH";
+            if(this.JobId == null) {
+
+                this.JobId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.JobId != null && ec.Excludes("jobId",true))
+        {
+            this.JobId = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AsyncJobStatus> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

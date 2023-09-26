@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> DateTime? EarliestTime
         // GraphQL -> earliestTime: DateTime (scalar)
         if (this.EarliestTime != null) {
-            s += ind + "earliestTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "earliestTime\n" ;
+            } else {
+                s += ind + "earliestTime\n" ;
+            }
         }
         //      C# -> DateTime? LatestTime
         // GraphQL -> latestTime: DateTime (scalar)
         if (this.LatestTime != null) {
-            s += ind + "latestTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "latestTime\n" ;
+            } else {
+                s += ind + "latestTime\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> DateTime? EarliestTime
         // GraphQL -> earliestTime: DateTime (scalar)
-        if (this.EarliestTime == null && ec.Includes("earliestTime",true))
+        if (ec.Includes("earliestTime",true))
         {
-            this.EarliestTime = new DateTime();
+            if(this.EarliestTime == null) {
+
+                this.EarliestTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EarliestTime != null && ec.Excludes("earliestTime",true))
+        {
+            this.EarliestTime = null;
         }
         //      C# -> DateTime? LatestTime
         // GraphQL -> latestTime: DateTime (scalar)
-        if (this.LatestTime == null && ec.Includes("latestTime",true))
+        if (ec.Includes("latestTime",true))
         {
-            this.LatestTime = new DateTime();
+            if(this.LatestTime == null) {
+
+                this.LatestTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LatestTime != null && ec.Excludes("latestTime",true))
+        {
+            this.LatestTime = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AwsNativeRdsPointInTimeRestoreWindow> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

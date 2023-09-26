@@ -92,39 +92,64 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> PrincipalTypeEnum? PrincipalType
         // GraphQL -> principalType: PrincipalTypeEnum! (enum)
         if (this.PrincipalType != null) {
-            s += ind + "principalType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "principalType\n" ;
+            } else {
+                s += ind + "principalType\n" ;
+            }
         }
         //      C# -> System.String? AuthDomainId
         // GraphQL -> authDomainId: String! (scalar)
         if (this.AuthDomainId != null) {
-            s += ind + "authDomainId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "authDomainId\n" ;
+            } else {
+                s += ind + "authDomainId\n" ;
+            }
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String (scalar)
         if (this.Description != null) {
-            s += ind + "description\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "description\n" ;
+            } else {
+                s += ind + "description\n" ;
+            }
         }
         //      C# -> System.String? Email
         // GraphQL -> email: String (scalar)
         if (this.Email != null) {
-            s += ind + "email\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "email\n" ;
+            } else {
+                s += ind + "email\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         return s;
     }
@@ -135,39 +160,105 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> PrincipalTypeEnum? PrincipalType
         // GraphQL -> principalType: PrincipalTypeEnum! (enum)
-        if (this.PrincipalType == null && ec.Includes("principalType",true))
+        if (ec.Includes("principalType",true))
         {
-            this.PrincipalType = new PrincipalTypeEnum();
+            if(this.PrincipalType == null) {
+
+                this.PrincipalType = new PrincipalTypeEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.PrincipalType != null && ec.Excludes("principalType",true))
+        {
+            this.PrincipalType = null;
         }
         //      C# -> System.String? AuthDomainId
         // GraphQL -> authDomainId: String! (scalar)
-        if (this.AuthDomainId == null && ec.Includes("authDomainId",true))
+        if (ec.Includes("authDomainId",true))
         {
-            this.AuthDomainId = "FETCH";
+            if(this.AuthDomainId == null) {
+
+                this.AuthDomainId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AuthDomainId != null && ec.Excludes("authDomainId",true))
+        {
+            this.AuthDomainId = null;
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String (scalar)
-        if (this.Description == null && ec.Includes("description",true))
+        if (ec.Includes("description",true))
         {
-            this.Description = "FETCH";
+            if(this.Description == null) {
+
+                this.Description = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Description != null && ec.Excludes("description",true))
+        {
+            this.Description = null;
         }
         //      C# -> System.String? Email
         // GraphQL -> email: String (scalar)
-        if (this.Email == null && ec.Includes("email",true))
+        if (ec.Includes("email",true))
         {
-            this.Email = "FETCH";
+            if(this.Email == null) {
+
+                this.Email = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Email != null && ec.Excludes("email",true))
+        {
+            this.Email = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
     }
 
@@ -194,9 +285,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<Principal> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

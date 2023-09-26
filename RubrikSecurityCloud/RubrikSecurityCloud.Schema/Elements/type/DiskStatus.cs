@@ -92,39 +92,64 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? DiskType
         // GraphQL -> diskType: String! (scalar)
         if (this.DiskType != null) {
-            s += ind + "diskType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "diskType\n" ;
+            } else {
+                s += ind + "diskType\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.Boolean? IsDegraded
         // GraphQL -> isDegraded: Boolean! (scalar)
         if (this.IsDegraded != null) {
-            s += ind + "isDegraded\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isDegraded\n" ;
+            } else {
+                s += ind + "isDegraded\n" ;
+            }
         }
         //      C# -> System.Boolean? IsEncrypted
         // GraphQL -> isEncrypted: Boolean! (scalar)
         if (this.IsEncrypted != null) {
-            s += ind + "isEncrypted\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isEncrypted\n" ;
+            } else {
+                s += ind + "isEncrypted\n" ;
+            }
         }
         //      C# -> System.String? NodeId
         // GraphQL -> nodeId: String! (scalar)
         if (this.NodeId != null) {
-            s += ind + "nodeId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "nodeId\n" ;
+            } else {
+                s += ind + "nodeId\n" ;
+            }
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         return s;
     }
@@ -135,39 +160,105 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? DiskType
         // GraphQL -> diskType: String! (scalar)
-        if (this.DiskType == null && ec.Includes("diskType",true))
+        if (ec.Includes("diskType",true))
         {
-            this.DiskType = "FETCH";
+            if(this.DiskType == null) {
+
+                this.DiskType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DiskType != null && ec.Excludes("diskType",true))
+        {
+            this.DiskType = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.Boolean? IsDegraded
         // GraphQL -> isDegraded: Boolean! (scalar)
-        if (this.IsDegraded == null && ec.Includes("isDegraded",true))
+        if (ec.Includes("isDegraded",true))
         {
-            this.IsDegraded = true;
+            if(this.IsDegraded == null) {
+
+                this.IsDegraded = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsDegraded != null && ec.Excludes("isDegraded",true))
+        {
+            this.IsDegraded = null;
         }
         //      C# -> System.Boolean? IsEncrypted
         // GraphQL -> isEncrypted: Boolean! (scalar)
-        if (this.IsEncrypted == null && ec.Includes("isEncrypted",true))
+        if (ec.Includes("isEncrypted",true))
         {
-            this.IsEncrypted = true;
+            if(this.IsEncrypted == null) {
+
+                this.IsEncrypted = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsEncrypted != null && ec.Excludes("isEncrypted",true))
+        {
+            this.IsEncrypted = null;
         }
         //      C# -> System.String? NodeId
         // GraphQL -> nodeId: String! (scalar)
-        if (this.NodeId == null && ec.Includes("nodeId",true))
+        if (ec.Includes("nodeId",true))
         {
-            this.NodeId = "FETCH";
+            if(this.NodeId == null) {
+
+                this.NodeId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NodeId != null && ec.Excludes("nodeId",true))
+        {
+            this.NodeId = null;
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = "FETCH";
+            if(this.Status == null) {
+
+                this.Status = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
     }
 
@@ -194,9 +285,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<DiskStatus> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

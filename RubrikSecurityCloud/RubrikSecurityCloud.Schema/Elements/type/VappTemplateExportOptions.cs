@@ -56,21 +56,30 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? OrgVdcId
         // GraphQL -> orgVdcId: String! (scalar)
         if (this.OrgVdcId != null) {
-            s += ind + "orgVdcId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "orgVdcId\n" ;
+            } else {
+                s += ind + "orgVdcId\n" ;
+            }
         }
         //      C# -> List<VcdOrgVdcStorageProfile>? AvailableStoragePolicies
         // GraphQL -> availableStoragePolicies: [VcdOrgVdcStorageProfile!]! (type)
         if (this.AvailableStoragePolicies != null) {
-            var fspec = this.AvailableStoragePolicies.AsFieldSpec(indent+1);
+            var fspec = this.AvailableStoragePolicies.AsFieldSpec(conf.Child("availableStoragePolicies"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "availableStoragePolicies {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "availableStoragePolicies {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -82,16 +91,39 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? OrgVdcId
         // GraphQL -> orgVdcId: String! (scalar)
-        if (this.OrgVdcId == null && ec.Includes("orgVdcId",true))
+        if (ec.Includes("orgVdcId",true))
         {
-            this.OrgVdcId = "FETCH";
+            if(this.OrgVdcId == null) {
+
+                this.OrgVdcId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OrgVdcId != null && ec.Excludes("orgVdcId",true))
+        {
+            this.OrgVdcId = null;
         }
         //      C# -> List<VcdOrgVdcStorageProfile>? AvailableStoragePolicies
         // GraphQL -> availableStoragePolicies: [VcdOrgVdcStorageProfile!]! (type)
-        if (this.AvailableStoragePolicies == null && ec.Includes("availableStoragePolicies",false))
+        if (ec.Includes("availableStoragePolicies",false))
         {
-            this.AvailableStoragePolicies = new List<VcdOrgVdcStorageProfile>();
-            this.AvailableStoragePolicies.ApplyExploratoryFieldSpec(ec.NewChild("availableStoragePolicies"));
+            if(this.AvailableStoragePolicies == null) {
+
+                this.AvailableStoragePolicies = new List<VcdOrgVdcStorageProfile>();
+                this.AvailableStoragePolicies.ApplyExploratoryFieldSpec(ec.NewChild("availableStoragePolicies"));
+
+            } else {
+
+                this.AvailableStoragePolicies.ApplyExploratoryFieldSpec(ec.NewChild("availableStoragePolicies"));
+
+            }
+        }
+        else if (this.AvailableStoragePolicies != null && ec.Excludes("availableStoragePolicies",false))
+        {
+            this.AvailableStoragePolicies = null;
         }
     }
 
@@ -118,9 +150,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<VappTemplateExportOptions> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

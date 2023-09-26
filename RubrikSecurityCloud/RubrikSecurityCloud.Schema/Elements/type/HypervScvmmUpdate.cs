@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? ConfiguredSlaDomainId
         // GraphQL -> configuredSlaDomainId: String (scalar)
         if (this.ConfiguredSlaDomainId != null) {
-            s += ind + "configuredSlaDomainId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "configuredSlaDomainId\n" ;
+            } else {
+                s += ind + "configuredSlaDomainId\n" ;
+            }
         }
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String (scalar)
         if (this.Hostname != null) {
-            s += ind + "hostname\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostname\n" ;
+            } else {
+                s += ind + "hostname\n" ;
+            }
         }
         //      C# -> System.String? RunAsAccount
         // GraphQL -> runAsAccount: String (scalar)
         if (this.RunAsAccount != null) {
-            s += ind + "runAsAccount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "runAsAccount\n" ;
+            } else {
+                s += ind + "runAsAccount\n" ;
+            }
         }
         //      C# -> System.Boolean? ShouldDeployAgent
         // GraphQL -> shouldDeployAgent: Boolean (scalar)
         if (this.ShouldDeployAgent != null) {
-            s += ind + "shouldDeployAgent\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "shouldDeployAgent\n" ;
+            } else {
+                s += ind + "shouldDeployAgent\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? ConfiguredSlaDomainId
         // GraphQL -> configuredSlaDomainId: String (scalar)
-        if (this.ConfiguredSlaDomainId == null && ec.Includes("configuredSlaDomainId",true))
+        if (ec.Includes("configuredSlaDomainId",true))
         {
-            this.ConfiguredSlaDomainId = "FETCH";
+            if(this.ConfiguredSlaDomainId == null) {
+
+                this.ConfiguredSlaDomainId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ConfiguredSlaDomainId != null && ec.Excludes("configuredSlaDomainId",true))
+        {
+            this.ConfiguredSlaDomainId = null;
         }
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String (scalar)
-        if (this.Hostname == null && ec.Includes("hostname",true))
+        if (ec.Includes("hostname",true))
         {
-            this.Hostname = "FETCH";
+            if(this.Hostname == null) {
+
+                this.Hostname = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Hostname != null && ec.Excludes("hostname",true))
+        {
+            this.Hostname = null;
         }
         //      C# -> System.String? RunAsAccount
         // GraphQL -> runAsAccount: String (scalar)
-        if (this.RunAsAccount == null && ec.Includes("runAsAccount",true))
+        if (ec.Includes("runAsAccount",true))
         {
-            this.RunAsAccount = "FETCH";
+            if(this.RunAsAccount == null) {
+
+                this.RunAsAccount = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RunAsAccount != null && ec.Excludes("runAsAccount",true))
+        {
+            this.RunAsAccount = null;
         }
         //      C# -> System.Boolean? ShouldDeployAgent
         // GraphQL -> shouldDeployAgent: Boolean (scalar)
-        if (this.ShouldDeployAgent == null && ec.Includes("shouldDeployAgent",true))
+        if (ec.Includes("shouldDeployAgent",true))
         {
-            this.ShouldDeployAgent = true;
+            if(this.ShouldDeployAgent == null) {
+
+                this.ShouldDeployAgent = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShouldDeployAgent != null && ec.Excludes("shouldDeployAgent",true))
+        {
+            this.ShouldDeployAgent = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<HypervScvmmUpdate> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

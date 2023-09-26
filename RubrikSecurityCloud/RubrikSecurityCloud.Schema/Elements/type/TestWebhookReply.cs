@@ -56,21 +56,30 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Boolean? IsSuccessful
         // GraphQL -> isSuccessful: Boolean! (scalar)
         if (this.IsSuccessful != null) {
-            s += ind + "isSuccessful\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isSuccessful\n" ;
+            } else {
+                s += ind + "isSuccessful\n" ;
+            }
         }
         //      C# -> ErrorInfo? ErrorInfo
         // GraphQL -> errorInfo: ErrorInfo (type)
         if (this.ErrorInfo != null) {
-            var fspec = this.ErrorInfo.AsFieldSpec(indent+1);
+            var fspec = this.ErrorInfo.AsFieldSpec(conf.Child("errorInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "errorInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "errorInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -82,16 +91,39 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Boolean? IsSuccessful
         // GraphQL -> isSuccessful: Boolean! (scalar)
-        if (this.IsSuccessful == null && ec.Includes("isSuccessful",true))
+        if (ec.Includes("isSuccessful",true))
         {
-            this.IsSuccessful = true;
+            if(this.IsSuccessful == null) {
+
+                this.IsSuccessful = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsSuccessful != null && ec.Excludes("isSuccessful",true))
+        {
+            this.IsSuccessful = null;
         }
         //      C# -> ErrorInfo? ErrorInfo
         // GraphQL -> errorInfo: ErrorInfo (type)
-        if (this.ErrorInfo == null && ec.Includes("errorInfo",false))
+        if (ec.Includes("errorInfo",false))
         {
-            this.ErrorInfo = new ErrorInfo();
-            this.ErrorInfo.ApplyExploratoryFieldSpec(ec.NewChild("errorInfo"));
+            if(this.ErrorInfo == null) {
+
+                this.ErrorInfo = new ErrorInfo();
+                this.ErrorInfo.ApplyExploratoryFieldSpec(ec.NewChild("errorInfo"));
+
+            } else {
+
+                this.ErrorInfo.ApplyExploratoryFieldSpec(ec.NewChild("errorInfo"));
+
+            }
+        }
+        else if (this.ErrorInfo != null && ec.Excludes("errorInfo",false))
+        {
+            this.ErrorInfo = null;
         }
     }
 
@@ -118,9 +150,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<TestWebhookReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

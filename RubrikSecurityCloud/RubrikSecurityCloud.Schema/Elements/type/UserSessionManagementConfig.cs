@@ -137,64 +137,109 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? InactivityTimeoutInSeconds
         // GraphQL -> inactivityTimeoutInSeconds: Long! (scalar)
         if (this.InactivityTimeoutInSeconds != null) {
-            s += ind + "inactivityTimeoutInSeconds\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "inactivityTimeoutInSeconds\n" ;
+            } else {
+                s += ind + "inactivityTimeoutInSeconds\n" ;
+            }
         }
         //      C# -> System.Int64? InactivityTimeoutInSecondsMaxLimit
         // GraphQL -> inactivityTimeoutInSecondsMaxLimit: Long! (scalar)
         if (this.InactivityTimeoutInSecondsMaxLimit != null) {
-            s += ind + "inactivityTimeoutInSecondsMaxLimit\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "inactivityTimeoutInSecondsMaxLimit\n" ;
+            } else {
+                s += ind + "inactivityTimeoutInSecondsMaxLimit\n" ;
+            }
         }
         //      C# -> System.Int64? InactivityTimeoutInSecondsMinLimit
         // GraphQL -> inactivityTimeoutInSecondsMinLimit: Long! (scalar)
         if (this.InactivityTimeoutInSecondsMinLimit != null) {
-            s += ind + "inactivityTimeoutInSecondsMinLimit\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "inactivityTimeoutInSecondsMinLimit\n" ;
+            } else {
+                s += ind + "inactivityTimeoutInSecondsMinLimit\n" ;
+            }
         }
         //      C# -> System.Boolean? IsConcurrentSessionLimitationEnabled
         // GraphQL -> isConcurrentSessionLimitationEnabled: Boolean! (scalar)
         if (this.IsConcurrentSessionLimitationEnabled != null) {
-            s += ind + "isConcurrentSessionLimitationEnabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isConcurrentSessionLimitationEnabled\n" ;
+            } else {
+                s += ind + "isConcurrentSessionLimitationEnabled\n" ;
+            }
         }
         //      C# -> System.Boolean? IsGlobalPolicyEnforced
         // GraphQL -> isGlobalPolicyEnforced: Boolean! (scalar)
         if (this.IsGlobalPolicyEnforced != null) {
-            s += ind + "isGlobalPolicyEnforced\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isGlobalPolicyEnforced\n" ;
+            } else {
+                s += ind + "isGlobalPolicyEnforced\n" ;
+            }
         }
         //      C# -> System.Boolean? IsInactivityTimeoutEnabled
         // GraphQL -> isInactivityTimeoutEnabled: Boolean! (scalar)
         if (this.IsInactivityTimeoutEnabled != null) {
-            s += ind + "isInactivityTimeoutEnabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isInactivityTimeoutEnabled\n" ;
+            } else {
+                s += ind + "isInactivityTimeoutEnabled\n" ;
+            }
         }
         //      C# -> System.Int32? MaxConcurrentSessions
         // GraphQL -> maxConcurrentSessions: Int! (scalar)
         if (this.MaxConcurrentSessions != null) {
-            s += ind + "maxConcurrentSessions\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "maxConcurrentSessions\n" ;
+            } else {
+                s += ind + "maxConcurrentSessions\n" ;
+            }
         }
         //      C# -> System.Int32? MaxConcurrentSessionsMaxLimit
         // GraphQL -> maxConcurrentSessionsMaxLimit: Int! (scalar)
         if (this.MaxConcurrentSessionsMaxLimit != null) {
-            s += ind + "maxConcurrentSessionsMaxLimit\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "maxConcurrentSessionsMaxLimit\n" ;
+            } else {
+                s += ind + "maxConcurrentSessionsMaxLimit\n" ;
+            }
         }
         //      C# -> System.Int64? SessionTimeoutInSeconds
         // GraphQL -> sessionTimeoutInSeconds: Long! (scalar)
         if (this.SessionTimeoutInSeconds != null) {
-            s += ind + "sessionTimeoutInSeconds\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sessionTimeoutInSeconds\n" ;
+            } else {
+                s += ind + "sessionTimeoutInSeconds\n" ;
+            }
         }
         //      C# -> System.Int64? SessionTimeoutInSecondsMaxLimit
         // GraphQL -> sessionTimeoutInSecondsMaxLimit: Long! (scalar)
         if (this.SessionTimeoutInSecondsMaxLimit != null) {
-            s += ind + "sessionTimeoutInSecondsMaxLimit\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sessionTimeoutInSecondsMaxLimit\n" ;
+            } else {
+                s += ind + "sessionTimeoutInSecondsMaxLimit\n" ;
+            }
         }
         //      C# -> System.Int64? SessionTimeoutInSecondsMinLimit
         // GraphQL -> sessionTimeoutInSecondsMinLimit: Long! (scalar)
         if (this.SessionTimeoutInSecondsMinLimit != null) {
-            s += ind + "sessionTimeoutInSecondsMinLimit\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sessionTimeoutInSecondsMinLimit\n" ;
+            } else {
+                s += ind + "sessionTimeoutInSecondsMinLimit\n" ;
+            }
         }
         return s;
     }
@@ -205,69 +250,190 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? InactivityTimeoutInSeconds
         // GraphQL -> inactivityTimeoutInSeconds: Long! (scalar)
-        if (this.InactivityTimeoutInSeconds == null && ec.Includes("inactivityTimeoutInSeconds",true))
+        if (ec.Includes("inactivityTimeoutInSeconds",true))
         {
-            this.InactivityTimeoutInSeconds = new System.Int64();
+            if(this.InactivityTimeoutInSeconds == null) {
+
+                this.InactivityTimeoutInSeconds = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.InactivityTimeoutInSeconds != null && ec.Excludes("inactivityTimeoutInSeconds",true))
+        {
+            this.InactivityTimeoutInSeconds = null;
         }
         //      C# -> System.Int64? InactivityTimeoutInSecondsMaxLimit
         // GraphQL -> inactivityTimeoutInSecondsMaxLimit: Long! (scalar)
-        if (this.InactivityTimeoutInSecondsMaxLimit == null && ec.Includes("inactivityTimeoutInSecondsMaxLimit",true))
+        if (ec.Includes("inactivityTimeoutInSecondsMaxLimit",true))
         {
-            this.InactivityTimeoutInSecondsMaxLimit = new System.Int64();
+            if(this.InactivityTimeoutInSecondsMaxLimit == null) {
+
+                this.InactivityTimeoutInSecondsMaxLimit = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.InactivityTimeoutInSecondsMaxLimit != null && ec.Excludes("inactivityTimeoutInSecondsMaxLimit",true))
+        {
+            this.InactivityTimeoutInSecondsMaxLimit = null;
         }
         //      C# -> System.Int64? InactivityTimeoutInSecondsMinLimit
         // GraphQL -> inactivityTimeoutInSecondsMinLimit: Long! (scalar)
-        if (this.InactivityTimeoutInSecondsMinLimit == null && ec.Includes("inactivityTimeoutInSecondsMinLimit",true))
+        if (ec.Includes("inactivityTimeoutInSecondsMinLimit",true))
         {
-            this.InactivityTimeoutInSecondsMinLimit = new System.Int64();
+            if(this.InactivityTimeoutInSecondsMinLimit == null) {
+
+                this.InactivityTimeoutInSecondsMinLimit = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.InactivityTimeoutInSecondsMinLimit != null && ec.Excludes("inactivityTimeoutInSecondsMinLimit",true))
+        {
+            this.InactivityTimeoutInSecondsMinLimit = null;
         }
         //      C# -> System.Boolean? IsConcurrentSessionLimitationEnabled
         // GraphQL -> isConcurrentSessionLimitationEnabled: Boolean! (scalar)
-        if (this.IsConcurrentSessionLimitationEnabled == null && ec.Includes("isConcurrentSessionLimitationEnabled",true))
+        if (ec.Includes("isConcurrentSessionLimitationEnabled",true))
         {
-            this.IsConcurrentSessionLimitationEnabled = true;
+            if(this.IsConcurrentSessionLimitationEnabled == null) {
+
+                this.IsConcurrentSessionLimitationEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsConcurrentSessionLimitationEnabled != null && ec.Excludes("isConcurrentSessionLimitationEnabled",true))
+        {
+            this.IsConcurrentSessionLimitationEnabled = null;
         }
         //      C# -> System.Boolean? IsGlobalPolicyEnforced
         // GraphQL -> isGlobalPolicyEnforced: Boolean! (scalar)
-        if (this.IsGlobalPolicyEnforced == null && ec.Includes("isGlobalPolicyEnforced",true))
+        if (ec.Includes("isGlobalPolicyEnforced",true))
         {
-            this.IsGlobalPolicyEnforced = true;
+            if(this.IsGlobalPolicyEnforced == null) {
+
+                this.IsGlobalPolicyEnforced = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsGlobalPolicyEnforced != null && ec.Excludes("isGlobalPolicyEnforced",true))
+        {
+            this.IsGlobalPolicyEnforced = null;
         }
         //      C# -> System.Boolean? IsInactivityTimeoutEnabled
         // GraphQL -> isInactivityTimeoutEnabled: Boolean! (scalar)
-        if (this.IsInactivityTimeoutEnabled == null && ec.Includes("isInactivityTimeoutEnabled",true))
+        if (ec.Includes("isInactivityTimeoutEnabled",true))
         {
-            this.IsInactivityTimeoutEnabled = true;
+            if(this.IsInactivityTimeoutEnabled == null) {
+
+                this.IsInactivityTimeoutEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsInactivityTimeoutEnabled != null && ec.Excludes("isInactivityTimeoutEnabled",true))
+        {
+            this.IsInactivityTimeoutEnabled = null;
         }
         //      C# -> System.Int32? MaxConcurrentSessions
         // GraphQL -> maxConcurrentSessions: Int! (scalar)
-        if (this.MaxConcurrentSessions == null && ec.Includes("maxConcurrentSessions",true))
+        if (ec.Includes("maxConcurrentSessions",true))
         {
-            this.MaxConcurrentSessions = Int32.MinValue;
+            if(this.MaxConcurrentSessions == null) {
+
+                this.MaxConcurrentSessions = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.MaxConcurrentSessions != null && ec.Excludes("maxConcurrentSessions",true))
+        {
+            this.MaxConcurrentSessions = null;
         }
         //      C# -> System.Int32? MaxConcurrentSessionsMaxLimit
         // GraphQL -> maxConcurrentSessionsMaxLimit: Int! (scalar)
-        if (this.MaxConcurrentSessionsMaxLimit == null && ec.Includes("maxConcurrentSessionsMaxLimit",true))
+        if (ec.Includes("maxConcurrentSessionsMaxLimit",true))
         {
-            this.MaxConcurrentSessionsMaxLimit = Int32.MinValue;
+            if(this.MaxConcurrentSessionsMaxLimit == null) {
+
+                this.MaxConcurrentSessionsMaxLimit = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.MaxConcurrentSessionsMaxLimit != null && ec.Excludes("maxConcurrentSessionsMaxLimit",true))
+        {
+            this.MaxConcurrentSessionsMaxLimit = null;
         }
         //      C# -> System.Int64? SessionTimeoutInSeconds
         // GraphQL -> sessionTimeoutInSeconds: Long! (scalar)
-        if (this.SessionTimeoutInSeconds == null && ec.Includes("sessionTimeoutInSeconds",true))
+        if (ec.Includes("sessionTimeoutInSeconds",true))
         {
-            this.SessionTimeoutInSeconds = new System.Int64();
+            if(this.SessionTimeoutInSeconds == null) {
+
+                this.SessionTimeoutInSeconds = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SessionTimeoutInSeconds != null && ec.Excludes("sessionTimeoutInSeconds",true))
+        {
+            this.SessionTimeoutInSeconds = null;
         }
         //      C# -> System.Int64? SessionTimeoutInSecondsMaxLimit
         // GraphQL -> sessionTimeoutInSecondsMaxLimit: Long! (scalar)
-        if (this.SessionTimeoutInSecondsMaxLimit == null && ec.Includes("sessionTimeoutInSecondsMaxLimit",true))
+        if (ec.Includes("sessionTimeoutInSecondsMaxLimit",true))
         {
-            this.SessionTimeoutInSecondsMaxLimit = new System.Int64();
+            if(this.SessionTimeoutInSecondsMaxLimit == null) {
+
+                this.SessionTimeoutInSecondsMaxLimit = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SessionTimeoutInSecondsMaxLimit != null && ec.Excludes("sessionTimeoutInSecondsMaxLimit",true))
+        {
+            this.SessionTimeoutInSecondsMaxLimit = null;
         }
         //      C# -> System.Int64? SessionTimeoutInSecondsMinLimit
         // GraphQL -> sessionTimeoutInSecondsMinLimit: Long! (scalar)
-        if (this.SessionTimeoutInSecondsMinLimit == null && ec.Includes("sessionTimeoutInSecondsMinLimit",true))
+        if (ec.Includes("sessionTimeoutInSecondsMinLimit",true))
         {
-            this.SessionTimeoutInSecondsMinLimit = new System.Int64();
+            if(this.SessionTimeoutInSecondsMinLimit == null) {
+
+                this.SessionTimeoutInSecondsMinLimit = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SessionTimeoutInSecondsMinLimit != null && ec.Excludes("sessionTimeoutInSecondsMinLimit",true))
+        {
+            this.SessionTimeoutInSecondsMinLimit = null;
         }
     }
 
@@ -294,9 +460,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<UserSessionManagementConfig> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

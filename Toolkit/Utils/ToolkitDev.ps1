@@ -83,7 +83,10 @@ function Copy-ToolkitToOutputDir {
 
 function Update-RscToolkit {
     [CmdletBinding()] # To allow things like -Verbose
-    Param()
+    Param(
+        [switch]$SkipTest,
+        [switch]$RunE2eTests
+    )
 
     # Copy the toolkit files to the Output directory
     $copyCount = Copy-ToolkitToOutputDir
@@ -94,6 +97,13 @@ function Update-RscToolkit {
     Write-Output "Imported module from Output directory."
 
     Get-RscToolkitStatus -Brief
+
+    if ( ! $SkipTest ) {
+        . "$PSScriptRoot\..\Utils\Run-PesterTests.ps1" -TestPath "$PSScriptRoot\..\Tests\unit"
+        if ($RunE2eTests) {
+            . "$PSScriptRoot\..\Utils\Run-PesterTests.ps1" -TestPath "$PSScriptRoot\..\Tests\e2e"
+        }
+    }
 }
 
 function DetermineSystemInstalledToolkitLocation {
@@ -178,8 +188,8 @@ Note: the Toolkit dev workflow does not update the system-installed toolkit.
 
 function ToolkitDevInfo() {
     Get-RscToolkitStatus -Brief
-    Write-Host "`nToolkit development utilities:"
-    Write-Host "------------------------------ " -ForegroundColor Green
+    Write-Host "`n$([char]::ConvertFromUtf32(0x1F6E0))  Toolkit development utilities:"
+    Write-Host "--------------------------------- " -ForegroundColor Green
     Write-Host "`n-> Run " -NoNewline
     Write-Host "Update-RscToolkit" -ForegroundColor Green -NoNewline
     Write-Host " to update the Output directory and re-import the module."

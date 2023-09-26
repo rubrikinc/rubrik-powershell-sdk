@@ -182,89 +182,154 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> Db2InstanceSummaryStatus? Status
         // GraphQL -> status: Db2InstanceSummaryStatus! (enum)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         //      C# -> List<System.String>? DatabaseIds
         // GraphQL -> databaseIds: [String!]! (scalar)
         if (this.DatabaseIds != null) {
-            s += ind + "databaseIds\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "databaseIds\n" ;
+            } else {
+                s += ind + "databaseIds\n" ;
+            }
         }
         //      C# -> List<System.String>? HadrDatabaseIds
         // GraphQL -> hadrDatabaseIds: [String!]! (scalar)
         if (this.HadrDatabaseIds != null) {
-            s += ind + "hadrDatabaseIds\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hadrDatabaseIds\n" ;
+            } else {
+                s += ind + "hadrDatabaseIds\n" ;
+            }
         }
         //      C# -> List<System.String>? HostIds
         // GraphQL -> hostIds: [String!]! (scalar)
         if (this.HostIds != null) {
-            s += ind + "hostIds\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostIds\n" ;
+            } else {
+                s += ind + "hostIds\n" ;
+            }
         }
         //      C# -> List<System.String>? HostNames
         // GraphQL -> hostNames: [String!]! (scalar)
         if (this.HostNames != null) {
-            s += ind + "hostNames\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostNames\n" ;
+            } else {
+                s += ind + "hostNames\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean (scalar)
         if (this.IsArchived != null) {
-            s += ind + "isArchived\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isArchived\n" ;
+            } else {
+                s += ind + "isArchived\n" ;
+            }
         }
         //      C# -> System.String? LastRefreshTime
         // GraphQL -> lastRefreshTime: String! (scalar)
         if (this.LastRefreshTime != null) {
-            s += ind + "lastRefreshTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "lastRefreshTime\n" ;
+            } else {
+                s += ind + "lastRefreshTime\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.String? PrimaryClusterUuid
         // GraphQL -> primaryClusterUuid: String! (scalar)
         if (this.PrimaryClusterUuid != null) {
-            s += ind + "primaryClusterUuid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "primaryClusterUuid\n" ;
+            } else {
+                s += ind + "primaryClusterUuid\n" ;
+            }
         }
         //      C# -> System.String? ProtectionDate
         // GraphQL -> protectionDate: String! (scalar)
         if (this.ProtectionDate != null) {
-            s += ind + "protectionDate\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "protectionDate\n" ;
+            } else {
+                s += ind + "protectionDate\n" ;
+            }
         }
         //      C# -> List<System.String>? RelicDatabaseIds
         // GraphQL -> relicDatabaseIds: [String!]! (scalar)
         if (this.RelicDatabaseIds != null) {
-            s += ind + "relicDatabaseIds\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "relicDatabaseIds\n" ;
+            } else {
+                s += ind + "relicDatabaseIds\n" ;
+            }
         }
         //      C# -> System.String? SlaDomainId
         // GraphQL -> slaDomainId: String! (scalar)
         if (this.SlaDomainId != null) {
-            s += ind + "slaDomainId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "slaDomainId\n" ;
+            } else {
+                s += ind + "slaDomainId\n" ;
+            }
         }
         //      C# -> System.String? SlaType
         // GraphQL -> slaType: String! (scalar)
         if (this.SlaType != null) {
-            s += ind + "slaType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "slaType\n" ;
+            } else {
+                s += ind + "slaType\n" ;
+            }
         }
         //      C# -> System.String? StatusMessage
         // GraphQL -> statusMessage: String! (scalar)
         if (this.StatusMessage != null) {
-            s += ind + "statusMessage\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "statusMessage\n" ;
+            } else {
+                s += ind + "statusMessage\n" ;
+            }
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
         if (this.Username != null) {
-            s += ind + "username\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "username\n" ;
+            } else {
+                s += ind + "username\n" ;
+            }
         }
         return s;
     }
@@ -275,99 +340,275 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> Db2InstanceSummaryStatus? Status
         // GraphQL -> status: Db2InstanceSummaryStatus! (enum)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = new Db2InstanceSummaryStatus();
+            if(this.Status == null) {
+
+                this.Status = new Db2InstanceSummaryStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
         //      C# -> List<System.String>? DatabaseIds
         // GraphQL -> databaseIds: [String!]! (scalar)
-        if (this.DatabaseIds == null && ec.Includes("databaseIds",true))
+        if (ec.Includes("databaseIds",true))
         {
-            this.DatabaseIds = new List<System.String>();
+            if(this.DatabaseIds == null) {
+
+                this.DatabaseIds = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DatabaseIds != null && ec.Excludes("databaseIds",true))
+        {
+            this.DatabaseIds = null;
         }
         //      C# -> List<System.String>? HadrDatabaseIds
         // GraphQL -> hadrDatabaseIds: [String!]! (scalar)
-        if (this.HadrDatabaseIds == null && ec.Includes("hadrDatabaseIds",true))
+        if (ec.Includes("hadrDatabaseIds",true))
         {
-            this.HadrDatabaseIds = new List<System.String>();
+            if(this.HadrDatabaseIds == null) {
+
+                this.HadrDatabaseIds = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.HadrDatabaseIds != null && ec.Excludes("hadrDatabaseIds",true))
+        {
+            this.HadrDatabaseIds = null;
         }
         //      C# -> List<System.String>? HostIds
         // GraphQL -> hostIds: [String!]! (scalar)
-        if (this.HostIds == null && ec.Includes("hostIds",true))
+        if (ec.Includes("hostIds",true))
         {
-            this.HostIds = new List<System.String>();
+            if(this.HostIds == null) {
+
+                this.HostIds = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.HostIds != null && ec.Excludes("hostIds",true))
+        {
+            this.HostIds = null;
         }
         //      C# -> List<System.String>? HostNames
         // GraphQL -> hostNames: [String!]! (scalar)
-        if (this.HostNames == null && ec.Includes("hostNames",true))
+        if (ec.Includes("hostNames",true))
         {
-            this.HostNames = new List<System.String>();
+            if(this.HostNames == null) {
+
+                this.HostNames = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.HostNames != null && ec.Excludes("hostNames",true))
+        {
+            this.HostNames = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean (scalar)
-        if (this.IsArchived == null && ec.Includes("isArchived",true))
+        if (ec.Includes("isArchived",true))
         {
-            this.IsArchived = true;
+            if(this.IsArchived == null) {
+
+                this.IsArchived = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsArchived != null && ec.Excludes("isArchived",true))
+        {
+            this.IsArchived = null;
         }
         //      C# -> System.String? LastRefreshTime
         // GraphQL -> lastRefreshTime: String! (scalar)
-        if (this.LastRefreshTime == null && ec.Includes("lastRefreshTime",true))
+        if (ec.Includes("lastRefreshTime",true))
         {
-            this.LastRefreshTime = "FETCH";
+            if(this.LastRefreshTime == null) {
+
+                this.LastRefreshTime = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastRefreshTime != null && ec.Excludes("lastRefreshTime",true))
+        {
+            this.LastRefreshTime = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.String? PrimaryClusterUuid
         // GraphQL -> primaryClusterUuid: String! (scalar)
-        if (this.PrimaryClusterUuid == null && ec.Includes("primaryClusterUuid",true))
+        if (ec.Includes("primaryClusterUuid",true))
         {
-            this.PrimaryClusterUuid = "FETCH";
+            if(this.PrimaryClusterUuid == null) {
+
+                this.PrimaryClusterUuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PrimaryClusterUuid != null && ec.Excludes("primaryClusterUuid",true))
+        {
+            this.PrimaryClusterUuid = null;
         }
         //      C# -> System.String? ProtectionDate
         // GraphQL -> protectionDate: String! (scalar)
-        if (this.ProtectionDate == null && ec.Includes("protectionDate",true))
+        if (ec.Includes("protectionDate",true))
         {
-            this.ProtectionDate = "FETCH";
+            if(this.ProtectionDate == null) {
+
+                this.ProtectionDate = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProtectionDate != null && ec.Excludes("protectionDate",true))
+        {
+            this.ProtectionDate = null;
         }
         //      C# -> List<System.String>? RelicDatabaseIds
         // GraphQL -> relicDatabaseIds: [String!]! (scalar)
-        if (this.RelicDatabaseIds == null && ec.Includes("relicDatabaseIds",true))
+        if (ec.Includes("relicDatabaseIds",true))
         {
-            this.RelicDatabaseIds = new List<System.String>();
+            if(this.RelicDatabaseIds == null) {
+
+                this.RelicDatabaseIds = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RelicDatabaseIds != null && ec.Excludes("relicDatabaseIds",true))
+        {
+            this.RelicDatabaseIds = null;
         }
         //      C# -> System.String? SlaDomainId
         // GraphQL -> slaDomainId: String! (scalar)
-        if (this.SlaDomainId == null && ec.Includes("slaDomainId",true))
+        if (ec.Includes("slaDomainId",true))
         {
-            this.SlaDomainId = "FETCH";
+            if(this.SlaDomainId == null) {
+
+                this.SlaDomainId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SlaDomainId != null && ec.Excludes("slaDomainId",true))
+        {
+            this.SlaDomainId = null;
         }
         //      C# -> System.String? SlaType
         // GraphQL -> slaType: String! (scalar)
-        if (this.SlaType == null && ec.Includes("slaType",true))
+        if (ec.Includes("slaType",true))
         {
-            this.SlaType = "FETCH";
+            if(this.SlaType == null) {
+
+                this.SlaType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SlaType != null && ec.Excludes("slaType",true))
+        {
+            this.SlaType = null;
         }
         //      C# -> System.String? StatusMessage
         // GraphQL -> statusMessage: String! (scalar)
-        if (this.StatusMessage == null && ec.Includes("statusMessage",true))
+        if (ec.Includes("statusMessage",true))
         {
-            this.StatusMessage = "FETCH";
+            if(this.StatusMessage == null) {
+
+                this.StatusMessage = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.StatusMessage != null && ec.Excludes("statusMessage",true))
+        {
+            this.StatusMessage = null;
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
-        if (this.Username == null && ec.Includes("username",true))
+        if (ec.Includes("username",true))
         {
-            this.Username = "FETCH";
+            if(this.Username == null) {
+
+                this.Username = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Username != null && ec.Excludes("username",true))
+        {
+            this.Username = null;
         }
     }
 
@@ -394,9 +635,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<Db2InstanceSummary> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

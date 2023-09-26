@@ -137,75 +137,120 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
         if (this.Description != null) {
-            s += ind + "description\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "description\n" ;
+            } else {
+                s += ind + "description\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.Boolean? IsOrgAdmin
         // GraphQL -> isOrgAdmin: Boolean! (scalar)
         if (this.IsOrgAdmin != null) {
-            s += ind + "isOrgAdmin\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isOrgAdmin\n" ;
+            } else {
+                s += ind + "isOrgAdmin\n" ;
+            }
         }
         //      C# -> System.Boolean? IsReadOnly
         // GraphQL -> isReadOnly: Boolean! (scalar)
         if (this.IsReadOnly != null) {
-            s += ind + "isReadOnly\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isReadOnly\n" ;
+            } else {
+                s += ind + "isReadOnly\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.String? OrgId
         // GraphQL -> orgId: String! (scalar)
         if (this.OrgId != null) {
-            s += ind + "orgId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "orgId\n" ;
+            } else {
+                s += ind + "orgId\n" ;
+            }
         }
         //      C# -> List<System.String>? ProtectableClusters
         // GraphQL -> protectableClusters: [String!]! (scalar)
         if (this.ProtectableClusters != null) {
-            s += ind + "protectableClusters\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "protectableClusters\n" ;
+            } else {
+                s += ind + "protectableClusters\n" ;
+            }
         }
         //      C# -> List<Permission>? EffectivePermissions
         // GraphQL -> effectivePermissions: [Permission!]! (type)
         if (this.EffectivePermissions != null) {
-            var fspec = this.EffectivePermissions.AsFieldSpec(indent+1);
+            var fspec = this.EffectivePermissions.AsFieldSpec(conf.Child("effectivePermissions"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "effectivePermissions {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "effectivePermissions {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<RbacPermission>? EffectiveRbacPermissions
         // GraphQL -> effectiveRbacPermissions: [RbacPermission!]! (type)
         if (this.EffectiveRbacPermissions != null) {
-            var fspec = this.EffectiveRbacPermissions.AsFieldSpec(indent+1);
+            var fspec = this.EffectiveRbacPermissions.AsFieldSpec(conf.Child("effectiveRbacPermissions"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "effectiveRbacPermissions {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "effectiveRbacPermissions {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<Permission>? ExplicitlyAssignedPermissions
         // GraphQL -> explicitlyAssignedPermissions: [Permission!]! (type)
         if (this.ExplicitlyAssignedPermissions != null) {
-            var fspec = this.ExplicitlyAssignedPermissions.AsFieldSpec(indent+1);
+            var fspec = this.ExplicitlyAssignedPermissions.AsFieldSpec(conf.Child("explicitlyAssignedPermissions"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "explicitlyAssignedPermissions {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "explicitlyAssignedPermissions {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<Permission>? Permissions
         // GraphQL -> permissions: [Permission!]! (type)
         if (this.Permissions != null) {
-            var fspec = this.Permissions.AsFieldSpec(indent+1);
+            var fspec = this.Permissions.AsFieldSpec(conf.Child("permissions"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "permissions {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "permissions {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -217,73 +262,198 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
-        if (this.Description == null && ec.Includes("description",true))
+        if (ec.Includes("description",true))
         {
-            this.Description = "FETCH";
+            if(this.Description == null) {
+
+                this.Description = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Description != null && ec.Excludes("description",true))
+        {
+            this.Description = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.Boolean? IsOrgAdmin
         // GraphQL -> isOrgAdmin: Boolean! (scalar)
-        if (this.IsOrgAdmin == null && ec.Includes("isOrgAdmin",true))
+        if (ec.Includes("isOrgAdmin",true))
         {
-            this.IsOrgAdmin = true;
+            if(this.IsOrgAdmin == null) {
+
+                this.IsOrgAdmin = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsOrgAdmin != null && ec.Excludes("isOrgAdmin",true))
+        {
+            this.IsOrgAdmin = null;
         }
         //      C# -> System.Boolean? IsReadOnly
         // GraphQL -> isReadOnly: Boolean! (scalar)
-        if (this.IsReadOnly == null && ec.Includes("isReadOnly",true))
+        if (ec.Includes("isReadOnly",true))
         {
-            this.IsReadOnly = true;
+            if(this.IsReadOnly == null) {
+
+                this.IsReadOnly = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsReadOnly != null && ec.Excludes("isReadOnly",true))
+        {
+            this.IsReadOnly = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.String? OrgId
         // GraphQL -> orgId: String! (scalar)
-        if (this.OrgId == null && ec.Includes("orgId",true))
+        if (ec.Includes("orgId",true))
         {
-            this.OrgId = "FETCH";
+            if(this.OrgId == null) {
+
+                this.OrgId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OrgId != null && ec.Excludes("orgId",true))
+        {
+            this.OrgId = null;
         }
         //      C# -> List<System.String>? ProtectableClusters
         // GraphQL -> protectableClusters: [String!]! (scalar)
-        if (this.ProtectableClusters == null && ec.Includes("protectableClusters",true))
+        if (ec.Includes("protectableClusters",true))
         {
-            this.ProtectableClusters = new List<System.String>();
+            if(this.ProtectableClusters == null) {
+
+                this.ProtectableClusters = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProtectableClusters != null && ec.Excludes("protectableClusters",true))
+        {
+            this.ProtectableClusters = null;
         }
         //      C# -> List<Permission>? EffectivePermissions
         // GraphQL -> effectivePermissions: [Permission!]! (type)
-        if (this.EffectivePermissions == null && ec.Includes("effectivePermissions",false))
+        if (ec.Includes("effectivePermissions",false))
         {
-            this.EffectivePermissions = new List<Permission>();
-            this.EffectivePermissions.ApplyExploratoryFieldSpec(ec.NewChild("effectivePermissions"));
+            if(this.EffectivePermissions == null) {
+
+                this.EffectivePermissions = new List<Permission>();
+                this.EffectivePermissions.ApplyExploratoryFieldSpec(ec.NewChild("effectivePermissions"));
+
+            } else {
+
+                this.EffectivePermissions.ApplyExploratoryFieldSpec(ec.NewChild("effectivePermissions"));
+
+            }
+        }
+        else if (this.EffectivePermissions != null && ec.Excludes("effectivePermissions",false))
+        {
+            this.EffectivePermissions = null;
         }
         //      C# -> List<RbacPermission>? EffectiveRbacPermissions
         // GraphQL -> effectiveRbacPermissions: [RbacPermission!]! (type)
-        if (this.EffectiveRbacPermissions == null && ec.Includes("effectiveRbacPermissions",false))
+        if (ec.Includes("effectiveRbacPermissions",false))
         {
-            this.EffectiveRbacPermissions = new List<RbacPermission>();
-            this.EffectiveRbacPermissions.ApplyExploratoryFieldSpec(ec.NewChild("effectiveRbacPermissions"));
+            if(this.EffectiveRbacPermissions == null) {
+
+                this.EffectiveRbacPermissions = new List<RbacPermission>();
+                this.EffectiveRbacPermissions.ApplyExploratoryFieldSpec(ec.NewChild("effectiveRbacPermissions"));
+
+            } else {
+
+                this.EffectiveRbacPermissions.ApplyExploratoryFieldSpec(ec.NewChild("effectiveRbacPermissions"));
+
+            }
+        }
+        else if (this.EffectiveRbacPermissions != null && ec.Excludes("effectiveRbacPermissions",false))
+        {
+            this.EffectiveRbacPermissions = null;
         }
         //      C# -> List<Permission>? ExplicitlyAssignedPermissions
         // GraphQL -> explicitlyAssignedPermissions: [Permission!]! (type)
-        if (this.ExplicitlyAssignedPermissions == null && ec.Includes("explicitlyAssignedPermissions",false))
+        if (ec.Includes("explicitlyAssignedPermissions",false))
         {
-            this.ExplicitlyAssignedPermissions = new List<Permission>();
-            this.ExplicitlyAssignedPermissions.ApplyExploratoryFieldSpec(ec.NewChild("explicitlyAssignedPermissions"));
+            if(this.ExplicitlyAssignedPermissions == null) {
+
+                this.ExplicitlyAssignedPermissions = new List<Permission>();
+                this.ExplicitlyAssignedPermissions.ApplyExploratoryFieldSpec(ec.NewChild("explicitlyAssignedPermissions"));
+
+            } else {
+
+                this.ExplicitlyAssignedPermissions.ApplyExploratoryFieldSpec(ec.NewChild("explicitlyAssignedPermissions"));
+
+            }
+        }
+        else if (this.ExplicitlyAssignedPermissions != null && ec.Excludes("explicitlyAssignedPermissions",false))
+        {
+            this.ExplicitlyAssignedPermissions = null;
         }
         //      C# -> List<Permission>? Permissions
         // GraphQL -> permissions: [Permission!]! (type)
-        if (this.Permissions == null && ec.Includes("permissions",false))
+        if (ec.Includes("permissions",false))
         {
-            this.Permissions = new List<Permission>();
-            this.Permissions.ApplyExploratoryFieldSpec(ec.NewChild("permissions"));
+            if(this.Permissions == null) {
+
+                this.Permissions = new List<Permission>();
+                this.Permissions.ApplyExploratoryFieldSpec(ec.NewChild("permissions"));
+
+            } else {
+
+                this.Permissions.ApplyExploratoryFieldSpec(ec.NewChild("permissions"));
+
+            }
+        }
+        else if (this.Permissions != null && ec.Excludes("permissions",false))
+        {
+            this.Permissions = null;
         }
     }
 
@@ -310,9 +480,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<Role> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

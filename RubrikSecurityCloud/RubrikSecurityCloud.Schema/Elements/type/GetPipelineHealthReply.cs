@@ -92,39 +92,64 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? FailedAnalysis
         // GraphQL -> failedAnalysis: Long! (scalar)
         if (this.FailedAnalysis != null) {
-            s += ind + "failedAnalysis\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "failedAnalysis\n" ;
+            } else {
+                s += ind + "failedAnalysis\n" ;
+            }
         }
         //      C# -> System.Int64? FailedBackup
         // GraphQL -> failedBackup: Long! (scalar)
         if (this.FailedBackup != null) {
-            s += ind + "failedBackup\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "failedBackup\n" ;
+            } else {
+                s += ind + "failedBackup\n" ;
+            }
         }
         //      C# -> System.Int64? FailedIndexing
         // GraphQL -> failedIndexing: Long! (scalar)
         if (this.FailedIndexing != null) {
-            s += ind + "failedIndexing\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "failedIndexing\n" ;
+            } else {
+                s += ind + "failedIndexing\n" ;
+            }
         }
         //      C# -> System.Int64? TotalAnalysis
         // GraphQL -> totalAnalysis: Long! (scalar)
         if (this.TotalAnalysis != null) {
-            s += ind + "totalAnalysis\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "totalAnalysis\n" ;
+            } else {
+                s += ind + "totalAnalysis\n" ;
+            }
         }
         //      C# -> System.Int64? TotalBackup
         // GraphQL -> totalBackup: Long! (scalar)
         if (this.TotalBackup != null) {
-            s += ind + "totalBackup\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "totalBackup\n" ;
+            } else {
+                s += ind + "totalBackup\n" ;
+            }
         }
         //      C# -> System.Int64? TotalIndexing
         // GraphQL -> totalIndexing: Long! (scalar)
         if (this.TotalIndexing != null) {
-            s += ind + "totalIndexing\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "totalIndexing\n" ;
+            } else {
+                s += ind + "totalIndexing\n" ;
+            }
         }
         return s;
     }
@@ -135,39 +160,105 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? FailedAnalysis
         // GraphQL -> failedAnalysis: Long! (scalar)
-        if (this.FailedAnalysis == null && ec.Includes("failedAnalysis",true))
+        if (ec.Includes("failedAnalysis",true))
         {
-            this.FailedAnalysis = new System.Int64();
+            if(this.FailedAnalysis == null) {
+
+                this.FailedAnalysis = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.FailedAnalysis != null && ec.Excludes("failedAnalysis",true))
+        {
+            this.FailedAnalysis = null;
         }
         //      C# -> System.Int64? FailedBackup
         // GraphQL -> failedBackup: Long! (scalar)
-        if (this.FailedBackup == null && ec.Includes("failedBackup",true))
+        if (ec.Includes("failedBackup",true))
         {
-            this.FailedBackup = new System.Int64();
+            if(this.FailedBackup == null) {
+
+                this.FailedBackup = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.FailedBackup != null && ec.Excludes("failedBackup",true))
+        {
+            this.FailedBackup = null;
         }
         //      C# -> System.Int64? FailedIndexing
         // GraphQL -> failedIndexing: Long! (scalar)
-        if (this.FailedIndexing == null && ec.Includes("failedIndexing",true))
+        if (ec.Includes("failedIndexing",true))
         {
-            this.FailedIndexing = new System.Int64();
+            if(this.FailedIndexing == null) {
+
+                this.FailedIndexing = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.FailedIndexing != null && ec.Excludes("failedIndexing",true))
+        {
+            this.FailedIndexing = null;
         }
         //      C# -> System.Int64? TotalAnalysis
         // GraphQL -> totalAnalysis: Long! (scalar)
-        if (this.TotalAnalysis == null && ec.Includes("totalAnalysis",true))
+        if (ec.Includes("totalAnalysis",true))
         {
-            this.TotalAnalysis = new System.Int64();
+            if(this.TotalAnalysis == null) {
+
+                this.TotalAnalysis = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalAnalysis != null && ec.Excludes("totalAnalysis",true))
+        {
+            this.TotalAnalysis = null;
         }
         //      C# -> System.Int64? TotalBackup
         // GraphQL -> totalBackup: Long! (scalar)
-        if (this.TotalBackup == null && ec.Includes("totalBackup",true))
+        if (ec.Includes("totalBackup",true))
         {
-            this.TotalBackup = new System.Int64();
+            if(this.TotalBackup == null) {
+
+                this.TotalBackup = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalBackup != null && ec.Excludes("totalBackup",true))
+        {
+            this.TotalBackup = null;
         }
         //      C# -> System.Int64? TotalIndexing
         // GraphQL -> totalIndexing: Long! (scalar)
-        if (this.TotalIndexing == null && ec.Includes("totalIndexing",true))
+        if (ec.Includes("totalIndexing",true))
         {
-            this.TotalIndexing = new System.Int64();
+            if(this.TotalIndexing == null) {
+
+                this.TotalIndexing = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalIndexing != null && ec.Excludes("totalIndexing",true))
+        {
+            this.TotalIndexing = null;
         }
     }
 
@@ -194,9 +285,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<GetPipelineHealthReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

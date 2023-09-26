@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? ClusterId
         // GraphQL -> clusterId: UUID! (scalar)
         if (this.ClusterId != null) {
-            s += ind + "clusterId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterId\n" ;
+            } else {
+                s += ind + "clusterId\n" ;
+            }
         }
         //      C# -> System.String? DataIpAddress
         // GraphQL -> dataIpAddress: String! (scalar)
         if (this.DataIpAddress != null) {
-            s += ind + "dataIpAddress\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "dataIpAddress\n" ;
+            } else {
+                s += ind + "dataIpAddress\n" ;
+            }
         }
         //      C# -> System.String? IpmiIpAddress
         // GraphQL -> ipmiIpAddress: String (scalar)
         if (this.IpmiIpAddress != null) {
-            s += ind + "ipmiIpAddress\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "ipmiIpAddress\n" ;
+            } else {
+                s += ind + "ipmiIpAddress\n" ;
+            }
         }
         //      C# -> System.String? NodeId
         // GraphQL -> nodeId: String! (scalar)
         if (this.NodeId != null) {
-            s += ind + "nodeId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "nodeId\n" ;
+            } else {
+                s += ind + "nodeId\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? ClusterId
         // GraphQL -> clusterId: UUID! (scalar)
-        if (this.ClusterId == null && ec.Includes("clusterId",true))
+        if (ec.Includes("clusterId",true))
         {
-            this.ClusterId = "FETCH";
+            if(this.ClusterId == null) {
+
+                this.ClusterId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterId != null && ec.Excludes("clusterId",true))
+        {
+            this.ClusterId = null;
         }
         //      C# -> System.String? DataIpAddress
         // GraphQL -> dataIpAddress: String! (scalar)
-        if (this.DataIpAddress == null && ec.Includes("dataIpAddress",true))
+        if (ec.Includes("dataIpAddress",true))
         {
-            this.DataIpAddress = "FETCH";
+            if(this.DataIpAddress == null) {
+
+                this.DataIpAddress = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DataIpAddress != null && ec.Excludes("dataIpAddress",true))
+        {
+            this.DataIpAddress = null;
         }
         //      C# -> System.String? IpmiIpAddress
         // GraphQL -> ipmiIpAddress: String (scalar)
-        if (this.IpmiIpAddress == null && ec.Includes("ipmiIpAddress",true))
+        if (ec.Includes("ipmiIpAddress",true))
         {
-            this.IpmiIpAddress = "FETCH";
+            if(this.IpmiIpAddress == null) {
+
+                this.IpmiIpAddress = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.IpmiIpAddress != null && ec.Excludes("ipmiIpAddress",true))
+        {
+            this.IpmiIpAddress = null;
         }
         //      C# -> System.String? NodeId
         // GraphQL -> nodeId: String! (scalar)
-        if (this.NodeId == null && ec.Includes("nodeId",true))
+        if (ec.Includes("nodeId",true))
         {
-            this.NodeId = "FETCH";
+            if(this.NodeId == null) {
+
+                this.NodeId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NodeId != null && ec.Excludes("nodeId",true))
+        {
+            this.NodeId = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CdmNodeDetail> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

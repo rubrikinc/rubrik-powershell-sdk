@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<System.String>? ExcludedActions
         // GraphQL -> excludedActions: [String!]! (scalar)
         if (this.ExcludedActions != null) {
-            s += ind + "excludedActions\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "excludedActions\n" ;
+            } else {
+                s += ind + "excludedActions\n" ;
+            }
         }
         //      C# -> List<System.String>? ExcludedDataActions
         // GraphQL -> excludedDataActions: [String!]! (scalar)
         if (this.ExcludedDataActions != null) {
-            s += ind + "excludedDataActions\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "excludedDataActions\n" ;
+            } else {
+                s += ind + "excludedDataActions\n" ;
+            }
         }
         //      C# -> List<System.String>? IncludedActions
         // GraphQL -> includedActions: [String!]! (scalar)
         if (this.IncludedActions != null) {
-            s += ind + "includedActions\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "includedActions\n" ;
+            } else {
+                s += ind + "includedActions\n" ;
+            }
         }
         //      C# -> List<System.String>? IncludedDataActions
         // GraphQL -> includedDataActions: [String!]! (scalar)
         if (this.IncludedDataActions != null) {
-            s += ind + "includedDataActions\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "includedDataActions\n" ;
+            } else {
+                s += ind + "includedDataActions\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<System.String>? ExcludedActions
         // GraphQL -> excludedActions: [String!]! (scalar)
-        if (this.ExcludedActions == null && ec.Includes("excludedActions",true))
+        if (ec.Includes("excludedActions",true))
         {
-            this.ExcludedActions = new List<System.String>();
+            if(this.ExcludedActions == null) {
+
+                this.ExcludedActions = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExcludedActions != null && ec.Excludes("excludedActions",true))
+        {
+            this.ExcludedActions = null;
         }
         //      C# -> List<System.String>? ExcludedDataActions
         // GraphQL -> excludedDataActions: [String!]! (scalar)
-        if (this.ExcludedDataActions == null && ec.Includes("excludedDataActions",true))
+        if (ec.Includes("excludedDataActions",true))
         {
-            this.ExcludedDataActions = new List<System.String>();
+            if(this.ExcludedDataActions == null) {
+
+                this.ExcludedDataActions = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExcludedDataActions != null && ec.Excludes("excludedDataActions",true))
+        {
+            this.ExcludedDataActions = null;
         }
         //      C# -> List<System.String>? IncludedActions
         // GraphQL -> includedActions: [String!]! (scalar)
-        if (this.IncludedActions == null && ec.Includes("includedActions",true))
+        if (ec.Includes("includedActions",true))
         {
-            this.IncludedActions = new List<System.String>();
+            if(this.IncludedActions == null) {
+
+                this.IncludedActions = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.IncludedActions != null && ec.Excludes("includedActions",true))
+        {
+            this.IncludedActions = null;
         }
         //      C# -> List<System.String>? IncludedDataActions
         // GraphQL -> includedDataActions: [String!]! (scalar)
-        if (this.IncludedDataActions == null && ec.Includes("includedDataActions",true))
+        if (ec.Includes("includedDataActions",true))
         {
-            this.IncludedDataActions = new List<System.String>();
+            if(this.IncludedDataActions == null) {
+
+                this.IncludedDataActions = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.IncludedDataActions != null && ec.Excludes("includedDataActions",true))
+        {
+            this.IncludedDataActions = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AzureCloudAccountRolePermission> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

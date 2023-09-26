@@ -56,21 +56,30 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? NodeName
         // GraphQL -> nodeName: String! (scalar)
         if (this.NodeName != null) {
-            s += ind + "nodeName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "nodeName\n" ;
+            } else {
+                s += ind + "nodeName\n" ;
+            }
         }
         //      C# -> RollingUpgradeNodeInfo? RuNodeInfo
         // GraphQL -> ruNodeInfo: RollingUpgradeNodeInfo (type)
         if (this.RuNodeInfo != null) {
-            var fspec = this.RuNodeInfo.AsFieldSpec(indent+1);
+            var fspec = this.RuNodeInfo.AsFieldSpec(conf.Child("ruNodeInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "ruNodeInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "ruNodeInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -82,16 +91,39 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? NodeName
         // GraphQL -> nodeName: String! (scalar)
-        if (this.NodeName == null && ec.Includes("nodeName",true))
+        if (ec.Includes("nodeName",true))
         {
-            this.NodeName = "FETCH";
+            if(this.NodeName == null) {
+
+                this.NodeName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NodeName != null && ec.Excludes("nodeName",true))
+        {
+            this.NodeName = null;
         }
         //      C# -> RollingUpgradeNodeInfo? RuNodeInfo
         // GraphQL -> ruNodeInfo: RollingUpgradeNodeInfo (type)
-        if (this.RuNodeInfo == null && ec.Includes("ruNodeInfo",false))
+        if (ec.Includes("ruNodeInfo",false))
         {
-            this.RuNodeInfo = new RollingUpgradeNodeInfo();
-            this.RuNodeInfo.ApplyExploratoryFieldSpec(ec.NewChild("ruNodeInfo"));
+            if(this.RuNodeInfo == null) {
+
+                this.RuNodeInfo = new RollingUpgradeNodeInfo();
+                this.RuNodeInfo.ApplyExploratoryFieldSpec(ec.NewChild("ruNodeInfo"));
+
+            } else {
+
+                this.RuNodeInfo.ApplyExploratoryFieldSpec(ec.NewChild("ruNodeInfo"));
+
+            }
+        }
+        else if (this.RuNodeInfo != null && ec.Excludes("ruNodeInfo",false))
+        {
+            this.RuNodeInfo = null;
         }
     }
 
@@ -118,9 +150,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<RollingUpgradeNodeInfoEntry> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

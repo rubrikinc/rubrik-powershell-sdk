@@ -83,34 +83,55 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> O365ConfiguredGroupMemberType? ObjectType
         // GraphQL -> objectType: O365ConfiguredGroupMemberType! (enum)
         if (this.ObjectType != null) {
-            s += ind + "objectType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "objectType\n" ;
+            } else {
+                s += ind + "objectType\n" ;
+            }
         }
         //      C# -> System.String? DisplayName
         // GraphQL -> displayName: String! (scalar)
         if (this.DisplayName != null) {
-            s += ind + "displayName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "displayName\n" ;
+            } else {
+                s += ind + "displayName\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.String? Pdl
         // GraphQL -> pdl: String! (scalar)
         if (this.Pdl != null) {
-            s += ind + "pdl\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "pdl\n" ;
+            } else {
+                s += ind + "pdl\n" ;
+            }
         }
         //      C# -> System.String? Url
         // GraphQL -> url: String! (scalar)
         if (this.Url != null) {
-            s += ind + "url\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "url\n" ;
+            } else {
+                s += ind + "url\n" ;
+            }
         }
         return s;
     }
@@ -121,33 +142,88 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> O365ConfiguredGroupMemberType? ObjectType
         // GraphQL -> objectType: O365ConfiguredGroupMemberType! (enum)
-        if (this.ObjectType == null && ec.Includes("objectType",true))
+        if (ec.Includes("objectType",true))
         {
-            this.ObjectType = new O365ConfiguredGroupMemberType();
+            if(this.ObjectType == null) {
+
+                this.ObjectType = new O365ConfiguredGroupMemberType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ObjectType != null && ec.Excludes("objectType",true))
+        {
+            this.ObjectType = null;
         }
         //      C# -> System.String? DisplayName
         // GraphQL -> displayName: String! (scalar)
-        if (this.DisplayName == null && ec.Includes("displayName",true))
+        if (ec.Includes("displayName",true))
         {
-            this.DisplayName = "FETCH";
+            if(this.DisplayName == null) {
+
+                this.DisplayName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DisplayName != null && ec.Excludes("displayName",true))
+        {
+            this.DisplayName = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.String? Pdl
         // GraphQL -> pdl: String! (scalar)
-        if (this.Pdl == null && ec.Includes("pdl",true))
+        if (ec.Includes("pdl",true))
         {
-            this.Pdl = "FETCH";
+            if(this.Pdl == null) {
+
+                this.Pdl = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Pdl != null && ec.Excludes("pdl",true))
+        {
+            this.Pdl = null;
         }
         //      C# -> System.String? Url
         // GraphQL -> url: String! (scalar)
-        if (this.Url == null && ec.Includes("url",true))
+        if (ec.Includes("url",true))
         {
-            this.Url = "FETCH";
+            if(this.Url == null) {
+
+                this.Url = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Url != null && ec.Excludes("url",true))
+        {
+            this.Url = null;
         }
     }
 
@@ -174,9 +250,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<O365ConfiguredGroupMember> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

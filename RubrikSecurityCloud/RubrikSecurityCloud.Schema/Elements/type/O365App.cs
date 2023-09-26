@@ -120,54 +120,91 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> AppAuthStatus? AppAuthStatus
         // GraphQL -> appAuthStatus: AppAuthStatus! (enum)
         if (this.AppAuthStatus != null) {
-            s += ind + "appAuthStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "appAuthStatus\n" ;
+            } else {
+                s += ind + "appAuthStatus\n" ;
+            }
         }
         //      C# -> DateTime? AddedAt
         // GraphQL -> addedAt: DateTime! (scalar)
         if (this.AddedAt != null) {
-            s += ind + "addedAt\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "addedAt\n" ;
+            } else {
+                s += ind + "addedAt\n" ;
+            }
         }
         //      C# -> System.Int32? AppAuthVersion
         // GraphQL -> appAuthVersion: Int! (scalar)
         if (this.AppAuthVersion != null) {
-            s += ind + "appAuthVersion\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "appAuthVersion\n" ;
+            } else {
+                s += ind + "appAuthVersion\n" ;
+            }
         }
         //      C# -> System.String? AppId
         // GraphQL -> appId: String! (scalar)
         if (this.AppId != null) {
-            s += ind + "appId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "appId\n" ;
+            } else {
+                s += ind + "appId\n" ;
+            }
         }
         //      C# -> System.String? AppOwner
         // GraphQL -> appOwner: String! (scalar)
         if (this.AppOwner != null) {
-            s += ind + "appOwner\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "appOwner\n" ;
+            } else {
+                s += ind + "appOwner\n" ;
+            }
         }
         //      C# -> System.String? AppType
         // GraphQL -> appType: String! (scalar)
         if (this.AppType != null) {
-            s += ind + "appType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "appType\n" ;
+            } else {
+                s += ind + "appType\n" ;
+            }
         }
         //      C# -> System.Boolean? IsAuthenticated
         // GraphQL -> isAuthenticated: Boolean! (scalar)
         if (this.IsAuthenticated != null) {
-            s += ind + "isAuthenticated\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isAuthenticated\n" ;
+            } else {
+                s += ind + "isAuthenticated\n" ;
+            }
         }
         //      C# -> System.String? Subscription
         // GraphQL -> subscription: String! (scalar)
         if (this.Subscription != null) {
-            s += ind + "subscription\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "subscription\n" ;
+            } else {
+                s += ind + "subscription\n" ;
+            }
         }
         //      C# -> System.String? SubscriptionId
         // GraphQL -> subscriptionId: String! (scalar)
         if (this.SubscriptionId != null) {
-            s += ind + "subscriptionId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "subscriptionId\n" ;
+            } else {
+                s += ind + "subscriptionId\n" ;
+            }
         }
         return s;
     }
@@ -178,57 +215,156 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> AppAuthStatus? AppAuthStatus
         // GraphQL -> appAuthStatus: AppAuthStatus! (enum)
-        if (this.AppAuthStatus == null && ec.Includes("appAuthStatus",true))
+        if (ec.Includes("appAuthStatus",true))
         {
-            this.AppAuthStatus = new AppAuthStatus();
+            if(this.AppAuthStatus == null) {
+
+                this.AppAuthStatus = new AppAuthStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AppAuthStatus != null && ec.Excludes("appAuthStatus",true))
+        {
+            this.AppAuthStatus = null;
         }
         //      C# -> DateTime? AddedAt
         // GraphQL -> addedAt: DateTime! (scalar)
-        if (this.AddedAt == null && ec.Includes("addedAt",true))
+        if (ec.Includes("addedAt",true))
         {
-            this.AddedAt = new DateTime();
+            if(this.AddedAt == null) {
+
+                this.AddedAt = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AddedAt != null && ec.Excludes("addedAt",true))
+        {
+            this.AddedAt = null;
         }
         //      C# -> System.Int32? AppAuthVersion
         // GraphQL -> appAuthVersion: Int! (scalar)
-        if (this.AppAuthVersion == null && ec.Includes("appAuthVersion",true))
+        if (ec.Includes("appAuthVersion",true))
         {
-            this.AppAuthVersion = Int32.MinValue;
+            if(this.AppAuthVersion == null) {
+
+                this.AppAuthVersion = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.AppAuthVersion != null && ec.Excludes("appAuthVersion",true))
+        {
+            this.AppAuthVersion = null;
         }
         //      C# -> System.String? AppId
         // GraphQL -> appId: String! (scalar)
-        if (this.AppId == null && ec.Includes("appId",true))
+        if (ec.Includes("appId",true))
         {
-            this.AppId = "FETCH";
+            if(this.AppId == null) {
+
+                this.AppId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AppId != null && ec.Excludes("appId",true))
+        {
+            this.AppId = null;
         }
         //      C# -> System.String? AppOwner
         // GraphQL -> appOwner: String! (scalar)
-        if (this.AppOwner == null && ec.Includes("appOwner",true))
+        if (ec.Includes("appOwner",true))
         {
-            this.AppOwner = "FETCH";
+            if(this.AppOwner == null) {
+
+                this.AppOwner = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AppOwner != null && ec.Excludes("appOwner",true))
+        {
+            this.AppOwner = null;
         }
         //      C# -> System.String? AppType
         // GraphQL -> appType: String! (scalar)
-        if (this.AppType == null && ec.Includes("appType",true))
+        if (ec.Includes("appType",true))
         {
-            this.AppType = "FETCH";
+            if(this.AppType == null) {
+
+                this.AppType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AppType != null && ec.Excludes("appType",true))
+        {
+            this.AppType = null;
         }
         //      C# -> System.Boolean? IsAuthenticated
         // GraphQL -> isAuthenticated: Boolean! (scalar)
-        if (this.IsAuthenticated == null && ec.Includes("isAuthenticated",true))
+        if (ec.Includes("isAuthenticated",true))
         {
-            this.IsAuthenticated = true;
+            if(this.IsAuthenticated == null) {
+
+                this.IsAuthenticated = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAuthenticated != null && ec.Excludes("isAuthenticated",true))
+        {
+            this.IsAuthenticated = null;
         }
         //      C# -> System.String? Subscription
         // GraphQL -> subscription: String! (scalar)
-        if (this.Subscription == null && ec.Includes("subscription",true))
+        if (ec.Includes("subscription",true))
         {
-            this.Subscription = "FETCH";
+            if(this.Subscription == null) {
+
+                this.Subscription = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Subscription != null && ec.Excludes("subscription",true))
+        {
+            this.Subscription = null;
         }
         //      C# -> System.String? SubscriptionId
         // GraphQL -> subscriptionId: String! (scalar)
-        if (this.SubscriptionId == null && ec.Includes("subscriptionId",true))
+        if (ec.Includes("subscriptionId",true))
         {
-            this.SubscriptionId = "FETCH";
+            if(this.SubscriptionId == null) {
+
+                this.SubscriptionId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SubscriptionId != null && ec.Excludes("subscriptionId",true))
+        {
+            this.SubscriptionId = null;
         }
     }
 
@@ -255,9 +391,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<O365App> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -56,21 +56,30 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Boolean? IsAvailable
         // GraphQL -> isAvailable: Boolean! (scalar)
         if (this.IsAvailable != null) {
-            s += ind + "isAvailable\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isAvailable\n" ;
+            } else {
+                s += ind + "isAvailable\n" ;
+            }
         }
         //      C# -> IpmiAccess? Access
         // GraphQL -> access: IpmiAccess (type)
         if (this.Access != null) {
-            var fspec = this.Access.AsFieldSpec(indent+1);
+            var fspec = this.Access.AsFieldSpec(conf.Child("access"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "access {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "access {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -82,16 +91,39 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Boolean? IsAvailable
         // GraphQL -> isAvailable: Boolean! (scalar)
-        if (this.IsAvailable == null && ec.Includes("isAvailable",true))
+        if (ec.Includes("isAvailable",true))
         {
-            this.IsAvailable = true;
+            if(this.IsAvailable == null) {
+
+                this.IsAvailable = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAvailable != null && ec.Excludes("isAvailable",true))
+        {
+            this.IsAvailable = null;
         }
         //      C# -> IpmiAccess? Access
         // GraphQL -> access: IpmiAccess (type)
-        if (this.Access == null && ec.Includes("access",false))
+        if (ec.Includes("access",false))
         {
-            this.Access = new IpmiAccess();
-            this.Access.ApplyExploratoryFieldSpec(ec.NewChild("access"));
+            if(this.Access == null) {
+
+                this.Access = new IpmiAccess();
+                this.Access.ApplyExploratoryFieldSpec(ec.NewChild("access"));
+
+            } else {
+
+                this.Access.ApplyExploratoryFieldSpec(ec.NewChild("access"));
+
+            }
+        }
+        else if (this.Access != null && ec.Excludes("access",false))
+        {
+            this.Access = null;
         }
     }
 
@@ -118,9 +150,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ModifyIpmiReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

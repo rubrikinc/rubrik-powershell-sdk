@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? NotProtected
         // GraphQL -> notProtected: Long! (scalar)
         if (this.NotProtected != null) {
-            s += ind + "notProtected\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "notProtected\n" ;
+            } else {
+                s += ind + "notProtected\n" ;
+            }
         }
         //      C# -> System.Int64? Protected
         // GraphQL -> protected: Long! (scalar)
         if (this.Protected != null) {
-            s += ind + "protected\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "protected\n" ;
+            } else {
+                s += ind + "protected\n" ;
+            }
         }
         //      C# -> System.Int64? TotalSizeInBytes
         // GraphQL -> totalSizeInBytes: Long! (scalar)
         if (this.TotalSizeInBytes != null) {
-            s += ind + "totalSizeInBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "totalSizeInBytes\n" ;
+            } else {
+                s += ind + "totalSizeInBytes\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? NotProtected
         // GraphQL -> notProtected: Long! (scalar)
-        if (this.NotProtected == null && ec.Includes("notProtected",true))
+        if (ec.Includes("notProtected",true))
         {
-            this.NotProtected = new System.Int64();
+            if(this.NotProtected == null) {
+
+                this.NotProtected = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.NotProtected != null && ec.Excludes("notProtected",true))
+        {
+            this.NotProtected = null;
         }
         //      C# -> System.Int64? Protected
         // GraphQL -> protected: Long! (scalar)
-        if (this.Protected == null && ec.Includes("protected",true))
+        if (ec.Includes("protected",true))
         {
-            this.Protected = new System.Int64();
+            if(this.Protected == null) {
+
+                this.Protected = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Protected != null && ec.Excludes("protected",true))
+        {
+            this.Protected = null;
         }
         //      C# -> System.Int64? TotalSizeInBytes
         // GraphQL -> totalSizeInBytes: Long! (scalar)
-        if (this.TotalSizeInBytes == null && ec.Includes("totalSizeInBytes",true))
+        if (ec.Includes("totalSizeInBytes",true))
         {
-            this.TotalSizeInBytes = new System.Int64();
+            if(this.TotalSizeInBytes == null) {
+
+                this.TotalSizeInBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalSizeInBytes != null && ec.Excludes("totalSizeInBytes",true))
+        {
+            this.TotalSizeInBytes = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<NcdSharesObjectProtectionStatusData> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -101,46 +101,75 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.String? PrimaryClusterId
         // GraphQL -> primaryClusterId: String! (scalar)
         if (this.PrimaryClusterId != null) {
-            s += ind + "primaryClusterId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "primaryClusterId\n" ;
+            } else {
+                s += ind + "primaryClusterId\n" ;
+            }
         }
         //      C# -> System.String? RunAsAccount
         // GraphQL -> runAsAccount: String! (scalar)
         if (this.RunAsAccount != null) {
-            s += ind + "runAsAccount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "runAsAccount\n" ;
+            } else {
+                s += ind + "runAsAccount\n" ;
+            }
         }
         //      C# -> System.String? ScvmmVersion
         // GraphQL -> scvmmVersion: String (scalar)
         if (this.ScvmmVersion != null) {
-            s += ind + "scvmmVersion\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "scvmmVersion\n" ;
+            } else {
+                s += ind + "scvmmVersion\n" ;
+            }
         }
         //      C# -> System.Boolean? ShouldDeployAgent
         // GraphQL -> shouldDeployAgent: Boolean! (scalar)
         if (this.ShouldDeployAgent != null) {
-            s += ind + "shouldDeployAgent\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "shouldDeployAgent\n" ;
+            } else {
+                s += ind + "shouldDeployAgent\n" ;
+            }
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         //      C# -> SlaAssignable? SlaAssignable
         // GraphQL -> slaAssignable: SlaAssignable (type)
         if (this.SlaAssignable != null) {
-            var fspec = this.SlaAssignable.AsFieldSpec(indent+1);
+            var fspec = this.SlaAssignable.AsFieldSpec(conf.Child("slaAssignable"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "slaAssignable {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "slaAssignable {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -152,46 +181,124 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.String? PrimaryClusterId
         // GraphQL -> primaryClusterId: String! (scalar)
-        if (this.PrimaryClusterId == null && ec.Includes("primaryClusterId",true))
+        if (ec.Includes("primaryClusterId",true))
         {
-            this.PrimaryClusterId = "FETCH";
+            if(this.PrimaryClusterId == null) {
+
+                this.PrimaryClusterId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PrimaryClusterId != null && ec.Excludes("primaryClusterId",true))
+        {
+            this.PrimaryClusterId = null;
         }
         //      C# -> System.String? RunAsAccount
         // GraphQL -> runAsAccount: String! (scalar)
-        if (this.RunAsAccount == null && ec.Includes("runAsAccount",true))
+        if (ec.Includes("runAsAccount",true))
         {
-            this.RunAsAccount = "FETCH";
+            if(this.RunAsAccount == null) {
+
+                this.RunAsAccount = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RunAsAccount != null && ec.Excludes("runAsAccount",true))
+        {
+            this.RunAsAccount = null;
         }
         //      C# -> System.String? ScvmmVersion
         // GraphQL -> scvmmVersion: String (scalar)
-        if (this.ScvmmVersion == null && ec.Includes("scvmmVersion",true))
+        if (ec.Includes("scvmmVersion",true))
         {
-            this.ScvmmVersion = "FETCH";
+            if(this.ScvmmVersion == null) {
+
+                this.ScvmmVersion = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ScvmmVersion != null && ec.Excludes("scvmmVersion",true))
+        {
+            this.ScvmmVersion = null;
         }
         //      C# -> System.Boolean? ShouldDeployAgent
         // GraphQL -> shouldDeployAgent: Boolean! (scalar)
-        if (this.ShouldDeployAgent == null && ec.Includes("shouldDeployAgent",true))
+        if (ec.Includes("shouldDeployAgent",true))
         {
-            this.ShouldDeployAgent = true;
+            if(this.ShouldDeployAgent == null) {
+
+                this.ShouldDeployAgent = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShouldDeployAgent != null && ec.Excludes("shouldDeployAgent",true))
+        {
+            this.ShouldDeployAgent = null;
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = "FETCH";
+            if(this.Status == null) {
+
+                this.Status = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
         //      C# -> SlaAssignable? SlaAssignable
         // GraphQL -> slaAssignable: SlaAssignable (type)
-        if (this.SlaAssignable == null && ec.Includes("slaAssignable",false))
+        if (ec.Includes("slaAssignable",false))
         {
-            this.SlaAssignable = new SlaAssignable();
-            this.SlaAssignable.ApplyExploratoryFieldSpec(ec.NewChild("slaAssignable"));
+            if(this.SlaAssignable == null) {
+
+                this.SlaAssignable = new SlaAssignable();
+                this.SlaAssignable.ApplyExploratoryFieldSpec(ec.NewChild("slaAssignable"));
+
+            } else {
+
+                this.SlaAssignable.ApplyExploratoryFieldSpec(ec.NewChild("slaAssignable"));
+
+            }
+        }
+        else if (this.SlaAssignable != null && ec.Excludes("slaAssignable",false))
+        {
+            this.SlaAssignable = null;
         }
     }
 
@@ -218,9 +325,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<HypervScvmmSummary> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

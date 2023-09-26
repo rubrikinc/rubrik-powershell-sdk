@@ -56,21 +56,30 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? CloudAccountId
         // GraphQL -> cloudAccountId: String! (scalar)
         if (this.CloudAccountId != null) {
-            s += ind + "cloudAccountId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cloudAccountId\n" ;
+            } else {
+                s += ind + "cloudAccountId\n" ;
+            }
         }
         //      C# -> List<FeaturePermission>? FeaturePermissions
         // GraphQL -> featurePermissions: [FeaturePermission!]! (type)
         if (this.FeaturePermissions != null) {
-            var fspec = this.FeaturePermissions.AsFieldSpec(indent+1);
+            var fspec = this.FeaturePermissions.AsFieldSpec(conf.Child("featurePermissions"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "featurePermissions {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "featurePermissions {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -82,16 +91,39 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? CloudAccountId
         // GraphQL -> cloudAccountId: String! (scalar)
-        if (this.CloudAccountId == null && ec.Includes("cloudAccountId",true))
+        if (ec.Includes("cloudAccountId",true))
         {
-            this.CloudAccountId = "FETCH";
+            if(this.CloudAccountId == null) {
+
+                this.CloudAccountId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CloudAccountId != null && ec.Excludes("cloudAccountId",true))
+        {
+            this.CloudAccountId = null;
         }
         //      C# -> List<FeaturePermission>? FeaturePermissions
         // GraphQL -> featurePermissions: [FeaturePermission!]! (type)
-        if (this.FeaturePermissions == null && ec.Includes("featurePermissions",false))
+        if (ec.Includes("featurePermissions",false))
         {
-            this.FeaturePermissions = new List<FeaturePermission>();
-            this.FeaturePermissions.ApplyExploratoryFieldSpec(ec.NewChild("featurePermissions"));
+            if(this.FeaturePermissions == null) {
+
+                this.FeaturePermissions = new List<FeaturePermission>();
+                this.FeaturePermissions.ApplyExploratoryFieldSpec(ec.NewChild("featurePermissions"));
+
+            } else {
+
+                this.FeaturePermissions.ApplyExploratoryFieldSpec(ec.NewChild("featurePermissions"));
+
+            }
+        }
+        else if (this.FeaturePermissions != null && ec.Excludes("featurePermissions",false))
+        {
+            this.FeaturePermissions = null;
         }
     }
 
@@ -118,9 +150,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CloudAccountFeaturePermission> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

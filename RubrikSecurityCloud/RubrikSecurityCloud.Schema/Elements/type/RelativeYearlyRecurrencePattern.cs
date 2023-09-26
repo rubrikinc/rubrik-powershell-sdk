@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? DayOfWeekIndex
         // GraphQL -> dayOfWeekIndex: String! (scalar)
         if (this.DayOfWeekIndex != null) {
-            s += ind + "dayOfWeekIndex\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "dayOfWeekIndex\n" ;
+            } else {
+                s += ind + "dayOfWeekIndex\n" ;
+            }
         }
         //      C# -> List<System.String>? DaysOfWeek
         // GraphQL -> daysOfWeek: [String!]! (scalar)
         if (this.DaysOfWeek != null) {
-            s += ind + "daysOfWeek\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "daysOfWeek\n" ;
+            } else {
+                s += ind + "daysOfWeek\n" ;
+            }
         }
         //      C# -> System.String? Month
         // GraphQL -> month: String! (scalar)
         if (this.Month != null) {
-            s += ind + "month\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "month\n" ;
+            } else {
+                s += ind + "month\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? DayOfWeekIndex
         // GraphQL -> dayOfWeekIndex: String! (scalar)
-        if (this.DayOfWeekIndex == null && ec.Includes("dayOfWeekIndex",true))
+        if (ec.Includes("dayOfWeekIndex",true))
         {
-            this.DayOfWeekIndex = "FETCH";
+            if(this.DayOfWeekIndex == null) {
+
+                this.DayOfWeekIndex = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DayOfWeekIndex != null && ec.Excludes("dayOfWeekIndex",true))
+        {
+            this.DayOfWeekIndex = null;
         }
         //      C# -> List<System.String>? DaysOfWeek
         // GraphQL -> daysOfWeek: [String!]! (scalar)
-        if (this.DaysOfWeek == null && ec.Includes("daysOfWeek",true))
+        if (ec.Includes("daysOfWeek",true))
         {
-            this.DaysOfWeek = new List<System.String>();
+            if(this.DaysOfWeek == null) {
+
+                this.DaysOfWeek = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DaysOfWeek != null && ec.Excludes("daysOfWeek",true))
+        {
+            this.DaysOfWeek = null;
         }
         //      C# -> System.String? Month
         // GraphQL -> month: String! (scalar)
-        if (this.Month == null && ec.Includes("month",true))
+        if (ec.Includes("month",true))
         {
-            this.Month = "FETCH";
+            if(this.Month == null) {
+
+                this.Month = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Month != null && ec.Excludes("month",true))
+        {
+            this.Month = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<RelativeYearlyRecurrencePattern> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

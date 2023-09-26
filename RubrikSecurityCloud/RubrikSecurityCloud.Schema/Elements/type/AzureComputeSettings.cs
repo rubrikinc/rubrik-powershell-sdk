@@ -128,61 +128,102 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> AzureRegion? Region
         // GraphQL -> region: AzureRegion! (enum)
         if (this.Region != null) {
-            s += ind + "region\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "region\n" ;
+            } else {
+                s += ind + "region\n" ;
+            }
         }
         //      C# -> System.String? AppId
         // GraphQL -> appId: String! (scalar)
         if (this.AppId != null) {
-            s += ind + "appId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "appId\n" ;
+            } else {
+                s += ind + "appId\n" ;
+            }
         }
         //      C# -> System.String? CloudAccountId
         // GraphQL -> cloudAccountId: String! (scalar)
         if (this.CloudAccountId != null) {
-            s += ind + "cloudAccountId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cloudAccountId\n" ;
+            } else {
+                s += ind + "cloudAccountId\n" ;
+            }
         }
         //      C# -> System.String? GeneralPurposeStorageContainer
         // GraphQL -> generalPurposeStorageContainer: String! (scalar)
         if (this.GeneralPurposeStorageContainer != null) {
-            s += ind + "generalPurposeStorageContainer\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "generalPurposeStorageContainer\n" ;
+            } else {
+                s += ind + "generalPurposeStorageContainer\n" ;
+            }
         }
         //      C# -> System.String? GeneralPurposeStorageName
         // GraphQL -> generalPurposeStorageName: String! (scalar)
         if (this.GeneralPurposeStorageName != null) {
-            s += ind + "generalPurposeStorageName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "generalPurposeStorageName\n" ;
+            } else {
+                s += ind + "generalPurposeStorageName\n" ;
+            }
         }
         //      C# -> System.String? ResourceGroup
         // GraphQL -> resourceGroup: String! (scalar)
         if (this.ResourceGroup != null) {
-            s += ind + "resourceGroup\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "resourceGroup\n" ;
+            } else {
+                s += ind + "resourceGroup\n" ;
+            }
         }
         //      C# -> System.String? SecurityGroupId
         // GraphQL -> securityGroupId: String! (scalar)
         if (this.SecurityGroupId != null) {
-            s += ind + "securityGroupId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "securityGroupId\n" ;
+            } else {
+                s += ind + "securityGroupId\n" ;
+            }
         }
         //      C# -> System.String? SubnetId
         // GraphQL -> subnetId: String! (scalar)
         if (this.SubnetId != null) {
-            s += ind + "subnetId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "subnetId\n" ;
+            } else {
+                s += ind + "subnetId\n" ;
+            }
         }
         //      C# -> System.String? VirtualNetworkId
         // GraphQL -> virtualNetworkId: String! (scalar)
         if (this.VirtualNetworkId != null) {
-            s += ind + "virtualNetworkId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "virtualNetworkId\n" ;
+            } else {
+                s += ind + "virtualNetworkId\n" ;
+            }
         }
         //      C# -> ProxySettings? ComputeProxySettings
         // GraphQL -> computeProxySettings: ProxySettings (type)
         if (this.ComputeProxySettings != null) {
-            var fspec = this.ComputeProxySettings.AsFieldSpec(indent+1);
+            var fspec = this.ComputeProxySettings.AsFieldSpec(conf.Child("computeProxySettings"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "computeProxySettings {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "computeProxySettings {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -194,64 +235,175 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> AzureRegion? Region
         // GraphQL -> region: AzureRegion! (enum)
-        if (this.Region == null && ec.Includes("region",true))
+        if (ec.Includes("region",true))
         {
-            this.Region = new AzureRegion();
+            if(this.Region == null) {
+
+                this.Region = new AzureRegion();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Region != null && ec.Excludes("region",true))
+        {
+            this.Region = null;
         }
         //      C# -> System.String? AppId
         // GraphQL -> appId: String! (scalar)
-        if (this.AppId == null && ec.Includes("appId",true))
+        if (ec.Includes("appId",true))
         {
-            this.AppId = "FETCH";
+            if(this.AppId == null) {
+
+                this.AppId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AppId != null && ec.Excludes("appId",true))
+        {
+            this.AppId = null;
         }
         //      C# -> System.String? CloudAccountId
         // GraphQL -> cloudAccountId: String! (scalar)
-        if (this.CloudAccountId == null && ec.Includes("cloudAccountId",true))
+        if (ec.Includes("cloudAccountId",true))
         {
-            this.CloudAccountId = "FETCH";
+            if(this.CloudAccountId == null) {
+
+                this.CloudAccountId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CloudAccountId != null && ec.Excludes("cloudAccountId",true))
+        {
+            this.CloudAccountId = null;
         }
         //      C# -> System.String? GeneralPurposeStorageContainer
         // GraphQL -> generalPurposeStorageContainer: String! (scalar)
-        if (this.GeneralPurposeStorageContainer == null && ec.Includes("generalPurposeStorageContainer",true))
+        if (ec.Includes("generalPurposeStorageContainer",true))
         {
-            this.GeneralPurposeStorageContainer = "FETCH";
+            if(this.GeneralPurposeStorageContainer == null) {
+
+                this.GeneralPurposeStorageContainer = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.GeneralPurposeStorageContainer != null && ec.Excludes("generalPurposeStorageContainer",true))
+        {
+            this.GeneralPurposeStorageContainer = null;
         }
         //      C# -> System.String? GeneralPurposeStorageName
         // GraphQL -> generalPurposeStorageName: String! (scalar)
-        if (this.GeneralPurposeStorageName == null && ec.Includes("generalPurposeStorageName",true))
+        if (ec.Includes("generalPurposeStorageName",true))
         {
-            this.GeneralPurposeStorageName = "FETCH";
+            if(this.GeneralPurposeStorageName == null) {
+
+                this.GeneralPurposeStorageName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.GeneralPurposeStorageName != null && ec.Excludes("generalPurposeStorageName",true))
+        {
+            this.GeneralPurposeStorageName = null;
         }
         //      C# -> System.String? ResourceGroup
         // GraphQL -> resourceGroup: String! (scalar)
-        if (this.ResourceGroup == null && ec.Includes("resourceGroup",true))
+        if (ec.Includes("resourceGroup",true))
         {
-            this.ResourceGroup = "FETCH";
+            if(this.ResourceGroup == null) {
+
+                this.ResourceGroup = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ResourceGroup != null && ec.Excludes("resourceGroup",true))
+        {
+            this.ResourceGroup = null;
         }
         //      C# -> System.String? SecurityGroupId
         // GraphQL -> securityGroupId: String! (scalar)
-        if (this.SecurityGroupId == null && ec.Includes("securityGroupId",true))
+        if (ec.Includes("securityGroupId",true))
         {
-            this.SecurityGroupId = "FETCH";
+            if(this.SecurityGroupId == null) {
+
+                this.SecurityGroupId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SecurityGroupId != null && ec.Excludes("securityGroupId",true))
+        {
+            this.SecurityGroupId = null;
         }
         //      C# -> System.String? SubnetId
         // GraphQL -> subnetId: String! (scalar)
-        if (this.SubnetId == null && ec.Includes("subnetId",true))
+        if (ec.Includes("subnetId",true))
         {
-            this.SubnetId = "FETCH";
+            if(this.SubnetId == null) {
+
+                this.SubnetId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SubnetId != null && ec.Excludes("subnetId",true))
+        {
+            this.SubnetId = null;
         }
         //      C# -> System.String? VirtualNetworkId
         // GraphQL -> virtualNetworkId: String! (scalar)
-        if (this.VirtualNetworkId == null && ec.Includes("virtualNetworkId",true))
+        if (ec.Includes("virtualNetworkId",true))
         {
-            this.VirtualNetworkId = "FETCH";
+            if(this.VirtualNetworkId == null) {
+
+                this.VirtualNetworkId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.VirtualNetworkId != null && ec.Excludes("virtualNetworkId",true))
+        {
+            this.VirtualNetworkId = null;
         }
         //      C# -> ProxySettings? ComputeProxySettings
         // GraphQL -> computeProxySettings: ProxySettings (type)
-        if (this.ComputeProxySettings == null && ec.Includes("computeProxySettings",false))
+        if (ec.Includes("computeProxySettings",false))
         {
-            this.ComputeProxySettings = new ProxySettings();
-            this.ComputeProxySettings.ApplyExploratoryFieldSpec(ec.NewChild("computeProxySettings"));
+            if(this.ComputeProxySettings == null) {
+
+                this.ComputeProxySettings = new ProxySettings();
+                this.ComputeProxySettings.ApplyExploratoryFieldSpec(ec.NewChild("computeProxySettings"));
+
+            } else {
+
+                this.ComputeProxySettings.ApplyExploratoryFieldSpec(ec.NewChild("computeProxySettings"));
+
+            }
+        }
+        else if (this.ComputeProxySettings != null && ec.Excludes("computeProxySettings",false))
+        {
+            this.ComputeProxySettings = null;
         }
     }
 
@@ -278,9 +430,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AzureComputeSettings> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

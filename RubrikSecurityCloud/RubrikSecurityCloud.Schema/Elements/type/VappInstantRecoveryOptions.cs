@@ -56,24 +56,33 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<VappNetworkSummary>? AvailableVappNetworks
         // GraphQL -> availableVappNetworks: [VappNetworkSummary!]! (type)
         if (this.AvailableVappNetworks != null) {
-            var fspec = this.AvailableVappNetworks.AsFieldSpec(indent+1);
+            var fspec = this.AvailableVappNetworks.AsFieldSpec(conf.Child("availableVappNetworks"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "availableVappNetworks {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "availableVappNetworks {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<VappVmRestoreSpec>? RestorableVms
         // GraphQL -> restorableVms: [VappVmRestoreSpec!]! (type)
         if (this.RestorableVms != null) {
-            var fspec = this.RestorableVms.AsFieldSpec(indent+1);
+            var fspec = this.RestorableVms.AsFieldSpec(conf.Child("restorableVms"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "restorableVms {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "restorableVms {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -85,17 +94,41 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<VappNetworkSummary>? AvailableVappNetworks
         // GraphQL -> availableVappNetworks: [VappNetworkSummary!]! (type)
-        if (this.AvailableVappNetworks == null && ec.Includes("availableVappNetworks",false))
+        if (ec.Includes("availableVappNetworks",false))
         {
-            this.AvailableVappNetworks = new List<VappNetworkSummary>();
-            this.AvailableVappNetworks.ApplyExploratoryFieldSpec(ec.NewChild("availableVappNetworks"));
+            if(this.AvailableVappNetworks == null) {
+
+                this.AvailableVappNetworks = new List<VappNetworkSummary>();
+                this.AvailableVappNetworks.ApplyExploratoryFieldSpec(ec.NewChild("availableVappNetworks"));
+
+            } else {
+
+                this.AvailableVappNetworks.ApplyExploratoryFieldSpec(ec.NewChild("availableVappNetworks"));
+
+            }
+        }
+        else if (this.AvailableVappNetworks != null && ec.Excludes("availableVappNetworks",false))
+        {
+            this.AvailableVappNetworks = null;
         }
         //      C# -> List<VappVmRestoreSpec>? RestorableVms
         // GraphQL -> restorableVms: [VappVmRestoreSpec!]! (type)
-        if (this.RestorableVms == null && ec.Includes("restorableVms",false))
+        if (ec.Includes("restorableVms",false))
         {
-            this.RestorableVms = new List<VappVmRestoreSpec>();
-            this.RestorableVms.ApplyExploratoryFieldSpec(ec.NewChild("restorableVms"));
+            if(this.RestorableVms == null) {
+
+                this.RestorableVms = new List<VappVmRestoreSpec>();
+                this.RestorableVms.ApplyExploratoryFieldSpec(ec.NewChild("restorableVms"));
+
+            } else {
+
+                this.RestorableVms.ApplyExploratoryFieldSpec(ec.NewChild("restorableVms"));
+
+            }
+        }
+        else if (this.RestorableVms != null && ec.Excludes("restorableVms",false))
+        {
+            this.RestorableVms = null;
         }
     }
 
@@ -122,9 +155,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<VappInstantRecoveryOptions> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

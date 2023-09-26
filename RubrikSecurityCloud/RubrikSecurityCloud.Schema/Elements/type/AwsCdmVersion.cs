@@ -92,41 +92,66 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<AwsInstanceType>? SupportedInstanceTypes
         // GraphQL -> supportedInstanceTypes: [AwsInstanceType!]! (enum)
         if (this.SupportedInstanceTypes != null) {
-            s += ind + "supportedInstanceTypes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "supportedInstanceTypes\n" ;
+            } else {
+                s += ind + "supportedInstanceTypes\n" ;
+            }
         }
         //      C# -> System.String? ImageId
         // GraphQL -> imageId: String! (scalar)
         if (this.ImageId != null) {
-            s += ind + "imageId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "imageId\n" ;
+            } else {
+                s += ind + "imageId\n" ;
+            }
         }
         //      C# -> System.Boolean? IsLatest
         // GraphQL -> isLatest: Boolean! (scalar)
         if (this.IsLatest != null) {
-            s += ind + "isLatest\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isLatest\n" ;
+            } else {
+                s += ind + "isLatest\n" ;
+            }
         }
         //      C# -> List<System.String>? ProductCodes
         // GraphQL -> productCodes: [String!]! (scalar)
         if (this.ProductCodes != null) {
-            s += ind + "productCodes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "productCodes\n" ;
+            } else {
+                s += ind + "productCodes\n" ;
+            }
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String! (scalar)
         if (this.Version != null) {
-            s += ind + "version\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "version\n" ;
+            } else {
+                s += ind + "version\n" ;
+            }
         }
         //      C# -> List<AwsCdmVersionTag>? Tags
         // GraphQL -> tags: [AwsCdmVersionTag!]! (type)
         if (this.Tags != null) {
-            var fspec = this.Tags.AsFieldSpec(indent+1);
+            var fspec = this.Tags.AsFieldSpec(conf.Child("tags"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "tags {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "tags {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -138,40 +163,107 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<AwsInstanceType>? SupportedInstanceTypes
         // GraphQL -> supportedInstanceTypes: [AwsInstanceType!]! (enum)
-        if (this.SupportedInstanceTypes == null && ec.Includes("supportedInstanceTypes",true))
+        if (ec.Includes("supportedInstanceTypes",true))
         {
-            this.SupportedInstanceTypes = new List<AwsInstanceType>();
+            if(this.SupportedInstanceTypes == null) {
+
+                this.SupportedInstanceTypes = new List<AwsInstanceType>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SupportedInstanceTypes != null && ec.Excludes("supportedInstanceTypes",true))
+        {
+            this.SupportedInstanceTypes = null;
         }
         //      C# -> System.String? ImageId
         // GraphQL -> imageId: String! (scalar)
-        if (this.ImageId == null && ec.Includes("imageId",true))
+        if (ec.Includes("imageId",true))
         {
-            this.ImageId = "FETCH";
+            if(this.ImageId == null) {
+
+                this.ImageId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ImageId != null && ec.Excludes("imageId",true))
+        {
+            this.ImageId = null;
         }
         //      C# -> System.Boolean? IsLatest
         // GraphQL -> isLatest: Boolean! (scalar)
-        if (this.IsLatest == null && ec.Includes("isLatest",true))
+        if (ec.Includes("isLatest",true))
         {
-            this.IsLatest = true;
+            if(this.IsLatest == null) {
+
+                this.IsLatest = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsLatest != null && ec.Excludes("isLatest",true))
+        {
+            this.IsLatest = null;
         }
         //      C# -> List<System.String>? ProductCodes
         // GraphQL -> productCodes: [String!]! (scalar)
-        if (this.ProductCodes == null && ec.Includes("productCodes",true))
+        if (ec.Includes("productCodes",true))
         {
-            this.ProductCodes = new List<System.String>();
+            if(this.ProductCodes == null) {
+
+                this.ProductCodes = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProductCodes != null && ec.Excludes("productCodes",true))
+        {
+            this.ProductCodes = null;
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String! (scalar)
-        if (this.Version == null && ec.Includes("version",true))
+        if (ec.Includes("version",true))
         {
-            this.Version = "FETCH";
+            if(this.Version == null) {
+
+                this.Version = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Version != null && ec.Excludes("version",true))
+        {
+            this.Version = null;
         }
         //      C# -> List<AwsCdmVersionTag>? Tags
         // GraphQL -> tags: [AwsCdmVersionTag!]! (type)
-        if (this.Tags == null && ec.Includes("tags",false))
+        if (ec.Includes("tags",false))
         {
-            this.Tags = new List<AwsCdmVersionTag>();
-            this.Tags.ApplyExploratoryFieldSpec(ec.NewChild("tags"));
+            if(this.Tags == null) {
+
+                this.Tags = new List<AwsCdmVersionTag>();
+                this.Tags.ApplyExploratoryFieldSpec(ec.NewChild("tags"));
+
+            } else {
+
+                this.Tags.ApplyExploratoryFieldSpec(ec.NewChild("tags"));
+
+            }
+        }
+        else if (this.Tags != null && ec.Excludes("tags",false))
+        {
+            this.Tags = null;
         }
     }
 
@@ -198,9 +290,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AwsCdmVersion> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

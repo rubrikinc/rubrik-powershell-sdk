@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Boolean? IsEmailNotificationEnabled
         // GraphQL -> isEmailNotificationEnabled: Boolean (scalar)
         if (this.IsEmailNotificationEnabled != null) {
-            s += ind + "isEmailNotificationEnabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isEmailNotificationEnabled\n" ;
+            } else {
+                s += ind + "isEmailNotificationEnabled\n" ;
+            }
         }
         //      C# -> System.Boolean? IsEulaAccepted
         // GraphQL -> isEulaAccepted: Boolean (scalar)
         if (this.IsEulaAccepted != null) {
-            s += ind + "isEulaAccepted\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isEulaAccepted\n" ;
+            } else {
+                s += ind + "isEulaAccepted\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Boolean? IsEmailNotificationEnabled
         // GraphQL -> isEmailNotificationEnabled: Boolean (scalar)
-        if (this.IsEmailNotificationEnabled == null && ec.Includes("isEmailNotificationEnabled",true))
+        if (ec.Includes("isEmailNotificationEnabled",true))
         {
-            this.IsEmailNotificationEnabled = true;
+            if(this.IsEmailNotificationEnabled == null) {
+
+                this.IsEmailNotificationEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsEmailNotificationEnabled != null && ec.Excludes("isEmailNotificationEnabled",true))
+        {
+            this.IsEmailNotificationEnabled = null;
         }
         //      C# -> System.Boolean? IsEulaAccepted
         // GraphQL -> isEulaAccepted: Boolean (scalar)
-        if (this.IsEulaAccepted == null && ec.Includes("isEulaAccepted",true))
+        if (ec.Includes("isEulaAccepted",true))
         {
-            this.IsEulaAccepted = true;
+            if(this.IsEulaAccepted == null) {
+
+                this.IsEulaAccepted = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsEulaAccepted != null && ec.Excludes("isEulaAccepted",true))
+        {
+            this.IsEulaAccepted = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AccountSetting> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

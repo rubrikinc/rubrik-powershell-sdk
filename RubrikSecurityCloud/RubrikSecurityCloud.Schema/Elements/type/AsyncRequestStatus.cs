@@ -110,54 +110,87 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime (scalar)
         if (this.EndTime != null) {
-            s += ind + "endTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "endTime\n" ;
+            } else {
+                s += ind + "endTime\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.String? NodeId
         // GraphQL -> nodeId: String (scalar)
         if (this.NodeId != null) {
-            s += ind + "nodeId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "nodeId\n" ;
+            } else {
+                s += ind + "nodeId\n" ;
+            }
         }
         //      C# -> System.Single? Progress
         // GraphQL -> progress: Float (scalar)
         if (this.Progress != null) {
-            s += ind + "progress\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "progress\n" ;
+            } else {
+                s += ind + "progress\n" ;
+            }
         }
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime (scalar)
         if (this.StartTime != null) {
-            s += ind + "startTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "startTime\n" ;
+            } else {
+                s += ind + "startTime\n" ;
+            }
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         //      C# -> RequestErrorInfo? Error
         // GraphQL -> error: RequestErrorInfo (type)
         if (this.Error != null) {
-            var fspec = this.Error.AsFieldSpec(indent+1);
+            var fspec = this.Error.AsFieldSpec(conf.Child("error"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "error {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "error {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<Link>? Links
         // GraphQL -> links: [Link!]! (type)
         if (this.Links != null) {
-            var fspec = this.Links.AsFieldSpec(indent+1);
+            var fspec = this.Links.AsFieldSpec(conf.Child("links"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "links {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "links {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -169,53 +202,143 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime (scalar)
-        if (this.EndTime == null && ec.Includes("endTime",true))
+        if (ec.Includes("endTime",true))
         {
-            this.EndTime = new DateTime();
+            if(this.EndTime == null) {
+
+                this.EndTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EndTime != null && ec.Excludes("endTime",true))
+        {
+            this.EndTime = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.String? NodeId
         // GraphQL -> nodeId: String (scalar)
-        if (this.NodeId == null && ec.Includes("nodeId",true))
+        if (ec.Includes("nodeId",true))
         {
-            this.NodeId = "FETCH";
+            if(this.NodeId == null) {
+
+                this.NodeId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NodeId != null && ec.Excludes("nodeId",true))
+        {
+            this.NodeId = null;
         }
         //      C# -> System.Single? Progress
         // GraphQL -> progress: Float (scalar)
-        if (this.Progress == null && ec.Includes("progress",true))
+        if (ec.Includes("progress",true))
         {
-            this.Progress = new System.Single();
+            if(this.Progress == null) {
+
+                this.Progress = new System.Single();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Progress != null && ec.Excludes("progress",true))
+        {
+            this.Progress = null;
         }
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime (scalar)
-        if (this.StartTime == null && ec.Includes("startTime",true))
+        if (ec.Includes("startTime",true))
         {
-            this.StartTime = new DateTime();
+            if(this.StartTime == null) {
+
+                this.StartTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.StartTime != null && ec.Excludes("startTime",true))
+        {
+            this.StartTime = null;
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = "FETCH";
+            if(this.Status == null) {
+
+                this.Status = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
         //      C# -> RequestErrorInfo? Error
         // GraphQL -> error: RequestErrorInfo (type)
-        if (this.Error == null && ec.Includes("error",false))
+        if (ec.Includes("error",false))
         {
-            this.Error = new RequestErrorInfo();
-            this.Error.ApplyExploratoryFieldSpec(ec.NewChild("error"));
+            if(this.Error == null) {
+
+                this.Error = new RequestErrorInfo();
+                this.Error.ApplyExploratoryFieldSpec(ec.NewChild("error"));
+
+            } else {
+
+                this.Error.ApplyExploratoryFieldSpec(ec.NewChild("error"));
+
+            }
+        }
+        else if (this.Error != null && ec.Excludes("error",false))
+        {
+            this.Error = null;
         }
         //      C# -> List<Link>? Links
         // GraphQL -> links: [Link!]! (type)
-        if (this.Links == null && ec.Includes("links",false))
+        if (ec.Includes("links",false))
         {
-            this.Links = new List<Link>();
-            this.Links.ApplyExploratoryFieldSpec(ec.NewChild("links"));
+            if(this.Links == null) {
+
+                this.Links = new List<Link>();
+                this.Links.ApplyExploratoryFieldSpec(ec.NewChild("links"));
+
+            } else {
+
+                this.Links.ApplyExploratoryFieldSpec(ec.NewChild("links"));
+
+            }
+        }
+        else if (this.Links != null && ec.Excludes("links",false))
+        {
+            this.Links = null;
         }
     }
 
@@ -242,9 +365,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AsyncRequestStatus> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

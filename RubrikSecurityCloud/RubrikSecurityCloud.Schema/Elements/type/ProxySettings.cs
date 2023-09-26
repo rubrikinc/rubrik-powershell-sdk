@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int32? PortNumber
         // GraphQL -> portNumber: Int! (scalar)
         if (this.PortNumber != null) {
-            s += ind + "portNumber\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "portNumber\n" ;
+            } else {
+                s += ind + "portNumber\n" ;
+            }
         }
         //      C# -> System.String? Protocol
         // GraphQL -> protocol: String! (scalar)
         if (this.Protocol != null) {
-            s += ind + "protocol\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "protocol\n" ;
+            } else {
+                s += ind + "protocol\n" ;
+            }
         }
         //      C# -> System.String? ProxyServer
         // GraphQL -> proxyServer: String! (scalar)
         if (this.ProxyServer != null) {
-            s += ind + "proxyServer\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "proxyServer\n" ;
+            } else {
+                s += ind + "proxyServer\n" ;
+            }
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
         if (this.Username != null) {
-            s += ind + "username\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "username\n" ;
+            } else {
+                s += ind + "username\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int32? PortNumber
         // GraphQL -> portNumber: Int! (scalar)
-        if (this.PortNumber == null && ec.Includes("portNumber",true))
+        if (ec.Includes("portNumber",true))
         {
-            this.PortNumber = Int32.MinValue;
+            if(this.PortNumber == null) {
+
+                this.PortNumber = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.PortNumber != null && ec.Excludes("portNumber",true))
+        {
+            this.PortNumber = null;
         }
         //      C# -> System.String? Protocol
         // GraphQL -> protocol: String! (scalar)
-        if (this.Protocol == null && ec.Includes("protocol",true))
+        if (ec.Includes("protocol",true))
         {
-            this.Protocol = "FETCH";
+            if(this.Protocol == null) {
+
+                this.Protocol = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Protocol != null && ec.Excludes("protocol",true))
+        {
+            this.Protocol = null;
         }
         //      C# -> System.String? ProxyServer
         // GraphQL -> proxyServer: String! (scalar)
-        if (this.ProxyServer == null && ec.Includes("proxyServer",true))
+        if (ec.Includes("proxyServer",true))
         {
-            this.ProxyServer = "FETCH";
+            if(this.ProxyServer == null) {
+
+                this.ProxyServer = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProxyServer != null && ec.Excludes("proxyServer",true))
+        {
+            this.ProxyServer = null;
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
-        if (this.Username == null && ec.Includes("username",true))
+        if (ec.Includes("username",true))
         {
-            this.Username = "FETCH";
+            if(this.Username == null) {
+
+                this.Username = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Username != null && ec.Excludes("username",true))
+        {
+            this.Username = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ProxySettings> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

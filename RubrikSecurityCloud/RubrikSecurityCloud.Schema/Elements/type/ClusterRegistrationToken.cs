@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? ProductType
         // GraphQL -> productType: String! (scalar)
         if (this.ProductType != null) {
-            s += ind + "productType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "productType\n" ;
+            } else {
+                s += ind + "productType\n" ;
+            }
         }
         //      C# -> System.String? Pubkey
         // GraphQL -> pubkey: String! (scalar)
         if (this.Pubkey != null) {
-            s += ind + "pubkey\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "pubkey\n" ;
+            } else {
+                s += ind + "pubkey\n" ;
+            }
         }
         //      C# -> System.String? Token
         // GraphQL -> token: String! (scalar)
         if (this.Token != null) {
-            s += ind + "token\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "token\n" ;
+            } else {
+                s += ind + "token\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? ProductType
         // GraphQL -> productType: String! (scalar)
-        if (this.ProductType == null && ec.Includes("productType",true))
+        if (ec.Includes("productType",true))
         {
-            this.ProductType = "FETCH";
+            if(this.ProductType == null) {
+
+                this.ProductType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProductType != null && ec.Excludes("productType",true))
+        {
+            this.ProductType = null;
         }
         //      C# -> System.String? Pubkey
         // GraphQL -> pubkey: String! (scalar)
-        if (this.Pubkey == null && ec.Includes("pubkey",true))
+        if (ec.Includes("pubkey",true))
         {
-            this.Pubkey = "FETCH";
+            if(this.Pubkey == null) {
+
+                this.Pubkey = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Pubkey != null && ec.Excludes("pubkey",true))
+        {
+            this.Pubkey = null;
         }
         //      C# -> System.String? Token
         // GraphQL -> token: String! (scalar)
-        if (this.Token == null && ec.Includes("token",true))
+        if (ec.Includes("token",true))
         {
-            this.Token = "FETCH";
+            if(this.Token == null) {
+
+                this.Token = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Token != null && ec.Excludes("token",true))
+        {
+            this.Token = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ClusterRegistrationToken> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

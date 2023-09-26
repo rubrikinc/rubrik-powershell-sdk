@@ -101,64 +101,93 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<FilterOption>? ClusterLocation
         // GraphQL -> cluster_location: [FilterOption!]! (type)
         if (this.ClusterLocation != null) {
-            var fspec = this.ClusterLocation.AsFieldSpec(indent+1);
+            var fspec = this.ClusterLocation.AsFieldSpec(conf.Child("cluster_location"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "cluster_location {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cluster_location {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<FilterOption>? ClusterType
         // GraphQL -> cluster_type: [FilterOption!]! (type)
         if (this.ClusterType != null) {
-            var fspec = this.ClusterType.AsFieldSpec(indent+1);
+            var fspec = this.ClusterType.AsFieldSpec(conf.Child("cluster_type"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "cluster_type {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cluster_type {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<FilterOption>? ObjectType
         // GraphQL -> object_type: [FilterOption!]! (type)
         if (this.ObjectType != null) {
-            var fspec = this.ObjectType.AsFieldSpec(indent+1);
+            var fspec = this.ObjectType.AsFieldSpec(conf.Child("object_type"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "object_type {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "object_type {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<FilterOption>? ReplicationSource
         // GraphQL -> replication_source: [FilterOption!]! (type)
         if (this.ReplicationSource != null) {
-            var fspec = this.ReplicationSource.AsFieldSpec(indent+1);
+            var fspec = this.ReplicationSource.AsFieldSpec(conf.Child("replication_source"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "replication_source {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "replication_source {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<FilterOption>? Status
         // GraphQL -> status: [FilterOption!]! (type)
         if (this.Status != null) {
-            var fspec = this.Status.AsFieldSpec(indent+1);
+            var fspec = this.Status.AsFieldSpec(conf.Child("status"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "status {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "status {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<FilterOption>? TaskCategory
         // GraphQL -> task_category: [FilterOption!]! (type)
         if (this.TaskCategory != null) {
-            var fspec = this.TaskCategory.AsFieldSpec(indent+1);
+            var fspec = this.TaskCategory.AsFieldSpec(conf.Child("task_category"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "task_category {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "task_category {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<FilterOption>? TaskType
         // GraphQL -> task_type: [FilterOption!]! (type)
         if (this.TaskType != null) {
-            var fspec = this.TaskType.AsFieldSpec(indent+1);
+            var fspec = this.TaskType.AsFieldSpec(conf.Child("task_type"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "task_type {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "task_type {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -170,52 +199,136 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<FilterOption>? ClusterLocation
         // GraphQL -> cluster_location: [FilterOption!]! (type)
-        if (this.ClusterLocation == null && ec.Includes("cluster_location",false))
+        if (ec.Includes("cluster_location",false))
         {
-            this.ClusterLocation = new List<FilterOption>();
-            this.ClusterLocation.ApplyExploratoryFieldSpec(ec.NewChild("cluster_location"));
+            if(this.ClusterLocation == null) {
+
+                this.ClusterLocation = new List<FilterOption>();
+                this.ClusterLocation.ApplyExploratoryFieldSpec(ec.NewChild("cluster_location"));
+
+            } else {
+
+                this.ClusterLocation.ApplyExploratoryFieldSpec(ec.NewChild("cluster_location"));
+
+            }
+        }
+        else if (this.ClusterLocation != null && ec.Excludes("cluster_location",false))
+        {
+            this.ClusterLocation = null;
         }
         //      C# -> List<FilterOption>? ClusterType
         // GraphQL -> cluster_type: [FilterOption!]! (type)
-        if (this.ClusterType == null && ec.Includes("cluster_type",false))
+        if (ec.Includes("cluster_type",false))
         {
-            this.ClusterType = new List<FilterOption>();
-            this.ClusterType.ApplyExploratoryFieldSpec(ec.NewChild("cluster_type"));
+            if(this.ClusterType == null) {
+
+                this.ClusterType = new List<FilterOption>();
+                this.ClusterType.ApplyExploratoryFieldSpec(ec.NewChild("cluster_type"));
+
+            } else {
+
+                this.ClusterType.ApplyExploratoryFieldSpec(ec.NewChild("cluster_type"));
+
+            }
+        }
+        else if (this.ClusterType != null && ec.Excludes("cluster_type",false))
+        {
+            this.ClusterType = null;
         }
         //      C# -> List<FilterOption>? ObjectType
         // GraphQL -> object_type: [FilterOption!]! (type)
-        if (this.ObjectType == null && ec.Includes("object_type",false))
+        if (ec.Includes("object_type",false))
         {
-            this.ObjectType = new List<FilterOption>();
-            this.ObjectType.ApplyExploratoryFieldSpec(ec.NewChild("object_type"));
+            if(this.ObjectType == null) {
+
+                this.ObjectType = new List<FilterOption>();
+                this.ObjectType.ApplyExploratoryFieldSpec(ec.NewChild("object_type"));
+
+            } else {
+
+                this.ObjectType.ApplyExploratoryFieldSpec(ec.NewChild("object_type"));
+
+            }
+        }
+        else if (this.ObjectType != null && ec.Excludes("object_type",false))
+        {
+            this.ObjectType = null;
         }
         //      C# -> List<FilterOption>? ReplicationSource
         // GraphQL -> replication_source: [FilterOption!]! (type)
-        if (this.ReplicationSource == null && ec.Includes("replication_source",false))
+        if (ec.Includes("replication_source",false))
         {
-            this.ReplicationSource = new List<FilterOption>();
-            this.ReplicationSource.ApplyExploratoryFieldSpec(ec.NewChild("replication_source"));
+            if(this.ReplicationSource == null) {
+
+                this.ReplicationSource = new List<FilterOption>();
+                this.ReplicationSource.ApplyExploratoryFieldSpec(ec.NewChild("replication_source"));
+
+            } else {
+
+                this.ReplicationSource.ApplyExploratoryFieldSpec(ec.NewChild("replication_source"));
+
+            }
+        }
+        else if (this.ReplicationSource != null && ec.Excludes("replication_source",false))
+        {
+            this.ReplicationSource = null;
         }
         //      C# -> List<FilterOption>? Status
         // GraphQL -> status: [FilterOption!]! (type)
-        if (this.Status == null && ec.Includes("status",false))
+        if (ec.Includes("status",false))
         {
-            this.Status = new List<FilterOption>();
-            this.Status.ApplyExploratoryFieldSpec(ec.NewChild("status"));
+            if(this.Status == null) {
+
+                this.Status = new List<FilterOption>();
+                this.Status.ApplyExploratoryFieldSpec(ec.NewChild("status"));
+
+            } else {
+
+                this.Status.ApplyExploratoryFieldSpec(ec.NewChild("status"));
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",false))
+        {
+            this.Status = null;
         }
         //      C# -> List<FilterOption>? TaskCategory
         // GraphQL -> task_category: [FilterOption!]! (type)
-        if (this.TaskCategory == null && ec.Includes("task_category",false))
+        if (ec.Includes("task_category",false))
         {
-            this.TaskCategory = new List<FilterOption>();
-            this.TaskCategory.ApplyExploratoryFieldSpec(ec.NewChild("task_category"));
+            if(this.TaskCategory == null) {
+
+                this.TaskCategory = new List<FilterOption>();
+                this.TaskCategory.ApplyExploratoryFieldSpec(ec.NewChild("task_category"));
+
+            } else {
+
+                this.TaskCategory.ApplyExploratoryFieldSpec(ec.NewChild("task_category"));
+
+            }
+        }
+        else if (this.TaskCategory != null && ec.Excludes("task_category",false))
+        {
+            this.TaskCategory = null;
         }
         //      C# -> List<FilterOption>? TaskType
         // GraphQL -> task_type: [FilterOption!]! (type)
-        if (this.TaskType == null && ec.Includes("task_type",false))
+        if (ec.Includes("task_type",false))
         {
-            this.TaskType = new List<FilterOption>();
-            this.TaskType.ApplyExploratoryFieldSpec(ec.NewChild("task_type"));
+            if(this.TaskType == null) {
+
+                this.TaskType = new List<FilterOption>();
+                this.TaskType.ApplyExploratoryFieldSpec(ec.NewChild("task_type"));
+
+            } else {
+
+                this.TaskType.ApplyExploratoryFieldSpec(ec.NewChild("task_type"));
+
+            }
+        }
+        else if (this.TaskType != null && ec.Excludes("task_type",false))
+        {
+            this.TaskType = null;
         }
     }
 
@@ -242,9 +355,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ProtectionTaskDetailsTableFilter> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

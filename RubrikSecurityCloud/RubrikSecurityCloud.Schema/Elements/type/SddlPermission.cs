@@ -92,39 +92,64 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> AceQualifier? AccessType
         // GraphQL -> accessType: AceQualifier! (enum)
         if (this.AccessType != null) {
-            s += ind + "accessType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "accessType\n" ;
+            } else {
+                s += ind + "accessType\n" ;
+            }
         }
         //      C# -> List<AceFlags>? Flags
         // GraphQL -> flags: [AceFlags!]! (enum)
         if (this.Flags != null) {
-            s += ind + "flags\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "flags\n" ;
+            } else {
+                s += ind + "flags\n" ;
+            }
         }
         //      C# -> ResolutionType? ResolutionType
         // GraphQL -> resolutionType: ResolutionType! (enum)
         if (this.ResolutionType != null) {
-            s += ind + "resolutionType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "resolutionType\n" ;
+            } else {
+                s += ind + "resolutionType\n" ;
+            }
         }
         //      C# -> System.String? Access
         // GraphQL -> access: String! (scalar)
         if (this.Access != null) {
-            s += ind + "access\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "access\n" ;
+            } else {
+                s += ind + "access\n" ;
+            }
         }
         //      C# -> System.String? Cn
         // GraphQL -> cn: String! (scalar)
         if (this.Cn != null) {
-            s += ind + "cn\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cn\n" ;
+            } else {
+                s += ind + "cn\n" ;
+            }
         }
         //      C# -> System.String? Dn
         // GraphQL -> dn: String! (scalar)
         if (this.Dn != null) {
-            s += ind + "dn\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "dn\n" ;
+            } else {
+                s += ind + "dn\n" ;
+            }
         }
         return s;
     }
@@ -135,39 +160,105 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> AceQualifier? AccessType
         // GraphQL -> accessType: AceQualifier! (enum)
-        if (this.AccessType == null && ec.Includes("accessType",true))
+        if (ec.Includes("accessType",true))
         {
-            this.AccessType = new AceQualifier();
+            if(this.AccessType == null) {
+
+                this.AccessType = new AceQualifier();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AccessType != null && ec.Excludes("accessType",true))
+        {
+            this.AccessType = null;
         }
         //      C# -> List<AceFlags>? Flags
         // GraphQL -> flags: [AceFlags!]! (enum)
-        if (this.Flags == null && ec.Includes("flags",true))
+        if (ec.Includes("flags",true))
         {
-            this.Flags = new List<AceFlags>();
+            if(this.Flags == null) {
+
+                this.Flags = new List<AceFlags>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Flags != null && ec.Excludes("flags",true))
+        {
+            this.Flags = null;
         }
         //      C# -> ResolutionType? ResolutionType
         // GraphQL -> resolutionType: ResolutionType! (enum)
-        if (this.ResolutionType == null && ec.Includes("resolutionType",true))
+        if (ec.Includes("resolutionType",true))
         {
-            this.ResolutionType = new ResolutionType();
+            if(this.ResolutionType == null) {
+
+                this.ResolutionType = new ResolutionType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ResolutionType != null && ec.Excludes("resolutionType",true))
+        {
+            this.ResolutionType = null;
         }
         //      C# -> System.String? Access
         // GraphQL -> access: String! (scalar)
-        if (this.Access == null && ec.Includes("access",true))
+        if (ec.Includes("access",true))
         {
-            this.Access = "FETCH";
+            if(this.Access == null) {
+
+                this.Access = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Access != null && ec.Excludes("access",true))
+        {
+            this.Access = null;
         }
         //      C# -> System.String? Cn
         // GraphQL -> cn: String! (scalar)
-        if (this.Cn == null && ec.Includes("cn",true))
+        if (ec.Includes("cn",true))
         {
-            this.Cn = "FETCH";
+            if(this.Cn == null) {
+
+                this.Cn = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Cn != null && ec.Excludes("cn",true))
+        {
+            this.Cn = null;
         }
         //      C# -> System.String? Dn
         // GraphQL -> dn: String! (scalar)
-        if (this.Dn == null && ec.Includes("dn",true))
+        if (ec.Includes("dn",true))
         {
-            this.Dn = "FETCH";
+            if(this.Dn == null) {
+
+                this.Dn = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Dn != null && ec.Excludes("dn",true))
+        {
+            this.Dn = null;
         }
     }
 
@@ -194,9 +285,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SddlPermission> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -65,32 +65,45 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<MosaicSnapshotGroupByType>? AllSnapshotGroupBys
         // GraphQL -> allSnapshotGroupBys: [MosaicSnapshotGroupByType!]! (type)
         if (this.AllSnapshotGroupBys != null) {
-            var fspec = this.AllSnapshotGroupBys.AsFieldSpec(indent+1);
+            var fspec = this.AllSnapshotGroupBys.AsFieldSpec(conf.Child("allSnapshotGroupBys"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "allSnapshotGroupBys {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "allSnapshotGroupBys {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> MosaicSnapshotConnection? Snapshots
         // GraphQL -> snapshots: MosaicSnapshotConnection! (type)
         if (this.Snapshots != null) {
-            var fspec = this.Snapshots.AsFieldSpec(indent+1);
+            var fspec = this.Snapshots.AsFieldSpec(conf.Child("snapshots"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "snapshots {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "snapshots {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> MosaicSnapshotGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: MosaicSnapshotGroupByInfo! (union)
         if (this.GroupByInfo != null) {
-            var fspec = this.GroupByInfo.AsFieldSpec(indent+1);
+            var fspec = this.GroupByInfo.AsFieldSpec(conf.Child("groupByInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -102,25 +115,65 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<MosaicSnapshotGroupByType>? AllSnapshotGroupBys
         // GraphQL -> allSnapshotGroupBys: [MosaicSnapshotGroupByType!]! (type)
-        if (this.AllSnapshotGroupBys == null && ec.Includes("allSnapshotGroupBys",false))
+        if (ec.Includes("allSnapshotGroupBys",false))
         {
-            this.AllSnapshotGroupBys = new List<MosaicSnapshotGroupByType>();
-            this.AllSnapshotGroupBys.ApplyExploratoryFieldSpec(ec.NewChild("allSnapshotGroupBys"));
+            if(this.AllSnapshotGroupBys == null) {
+
+                this.AllSnapshotGroupBys = new List<MosaicSnapshotGroupByType>();
+                this.AllSnapshotGroupBys.ApplyExploratoryFieldSpec(ec.NewChild("allSnapshotGroupBys"));
+
+            } else {
+
+                this.AllSnapshotGroupBys.ApplyExploratoryFieldSpec(ec.NewChild("allSnapshotGroupBys"));
+
+            }
+        }
+        else if (this.AllSnapshotGroupBys != null && ec.Excludes("allSnapshotGroupBys",false))
+        {
+            this.AllSnapshotGroupBys = null;
         }
         //      C# -> MosaicSnapshotConnection? Snapshots
         // GraphQL -> snapshots: MosaicSnapshotConnection! (type)
-        if (this.Snapshots == null && ec.Includes("snapshots",false))
+        if (ec.Includes("snapshots",false))
         {
-            this.Snapshots = new MosaicSnapshotConnection();
-            this.Snapshots.ApplyExploratoryFieldSpec(ec.NewChild("snapshots"));
+            if(this.Snapshots == null) {
+
+                this.Snapshots = new MosaicSnapshotConnection();
+                this.Snapshots.ApplyExploratoryFieldSpec(ec.NewChild("snapshots"));
+
+            } else {
+
+                this.Snapshots.ApplyExploratoryFieldSpec(ec.NewChild("snapshots"));
+
+            }
+        }
+        else if (this.Snapshots != null && ec.Excludes("snapshots",false))
+        {
+            this.Snapshots = null;
         }
         //      C# -> MosaicSnapshotGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: MosaicSnapshotGroupByInfo! (union)
-        if (this.GroupByInfo == null && ec.Includes("groupByInfo",false))
+        if (ec.Includes("groupByInfo",false))
         {
-            var impls = new List<MosaicSnapshotGroupByInfo>();
-            impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
-            this.GroupByInfo = (MosaicSnapshotGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+            if(this.GroupByInfo == null) {
+
+                var impls = new List<MosaicSnapshotGroupByInfo>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
+                this.GroupByInfo = (MosaicSnapshotGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<MosaicSnapshotGroupByInfo>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
+                this.GroupByInfo = (MosaicSnapshotGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.GroupByInfo != null && ec.Excludes("groupByInfo",false))
+        {
+            this.GroupByInfo = null;
         }
     }
 
@@ -147,9 +200,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<MosaicSnapshotGroupByType> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

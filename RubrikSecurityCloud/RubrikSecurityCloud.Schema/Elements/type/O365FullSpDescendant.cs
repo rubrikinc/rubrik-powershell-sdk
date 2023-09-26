@@ -120,54 +120,91 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> SharePointDescendantType? ObjectType
         // GraphQL -> objectType: SharePointDescendantType! (enum)
         if (this.ObjectType != null) {
-            s += ind + "objectType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "objectType\n" ;
+            } else {
+                s += ind + "objectType\n" ;
+            }
         }
         //      C# -> DateTime? CreateTime
         // GraphQL -> createTime: DateTime (scalar)
         if (this.CreateTime != null) {
-            s += ind + "createTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "createTime\n" ;
+            } else {
+                s += ind + "createTime\n" ;
+            }
         }
         //      C# -> System.String? Fid
         // GraphQL -> fid: String! (scalar)
         if (this.Fid != null) {
-            s += ind + "fid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "fid\n" ;
+            } else {
+                s += ind + "fid\n" ;
+            }
         }
         //      C# -> DateTime? ModifiedTime
         // GraphQL -> modifiedTime: DateTime (scalar)
         if (this.ModifiedTime != null) {
-            s += ind + "modifiedTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "modifiedTime\n" ;
+            } else {
+                s += ind + "modifiedTime\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.String? ParentId
         // GraphQL -> parentId: String (scalar)
         if (this.ParentId != null) {
-            s += ind + "parentId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "parentId\n" ;
+            } else {
+                s += ind + "parentId\n" ;
+            }
         }
         //      C# -> System.String? SharepointId
         // GraphQL -> sharepointId: String! (scalar)
         if (this.SharepointId != null) {
-            s += ind + "sharepointId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sharepointId\n" ;
+            } else {
+                s += ind + "sharepointId\n" ;
+            }
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: UUID (scalar)
         if (this.SnapshotId != null) {
-            s += ind + "snapshotId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotId\n" ;
+            } else {
+                s += ind + "snapshotId\n" ;
+            }
         }
         //      C# -> System.Int32? SnapshotNum
         // GraphQL -> snapshotNum: Int (scalar)
         if (this.SnapshotNum != null) {
-            s += ind + "snapshotNum\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotNum\n" ;
+            } else {
+                s += ind + "snapshotNum\n" ;
+            }
         }
         return s;
     }
@@ -178,57 +215,156 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> SharePointDescendantType? ObjectType
         // GraphQL -> objectType: SharePointDescendantType! (enum)
-        if (this.ObjectType == null && ec.Includes("objectType",true))
+        if (ec.Includes("objectType",true))
         {
-            this.ObjectType = new SharePointDescendantType();
+            if(this.ObjectType == null) {
+
+                this.ObjectType = new SharePointDescendantType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ObjectType != null && ec.Excludes("objectType",true))
+        {
+            this.ObjectType = null;
         }
         //      C# -> DateTime? CreateTime
         // GraphQL -> createTime: DateTime (scalar)
-        if (this.CreateTime == null && ec.Includes("createTime",true))
+        if (ec.Includes("createTime",true))
         {
-            this.CreateTime = new DateTime();
+            if(this.CreateTime == null) {
+
+                this.CreateTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CreateTime != null && ec.Excludes("createTime",true))
+        {
+            this.CreateTime = null;
         }
         //      C# -> System.String? Fid
         // GraphQL -> fid: String! (scalar)
-        if (this.Fid == null && ec.Includes("fid",true))
+        if (ec.Includes("fid",true))
         {
-            this.Fid = "FETCH";
+            if(this.Fid == null) {
+
+                this.Fid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Fid != null && ec.Excludes("fid",true))
+        {
+            this.Fid = null;
         }
         //      C# -> DateTime? ModifiedTime
         // GraphQL -> modifiedTime: DateTime (scalar)
-        if (this.ModifiedTime == null && ec.Includes("modifiedTime",true))
+        if (ec.Includes("modifiedTime",true))
         {
-            this.ModifiedTime = new DateTime();
+            if(this.ModifiedTime == null) {
+
+                this.ModifiedTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ModifiedTime != null && ec.Excludes("modifiedTime",true))
+        {
+            this.ModifiedTime = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.String? ParentId
         // GraphQL -> parentId: String (scalar)
-        if (this.ParentId == null && ec.Includes("parentId",true))
+        if (ec.Includes("parentId",true))
         {
-            this.ParentId = "FETCH";
+            if(this.ParentId == null) {
+
+                this.ParentId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ParentId != null && ec.Excludes("parentId",true))
+        {
+            this.ParentId = null;
         }
         //      C# -> System.String? SharepointId
         // GraphQL -> sharepointId: String! (scalar)
-        if (this.SharepointId == null && ec.Includes("sharepointId",true))
+        if (ec.Includes("sharepointId",true))
         {
-            this.SharepointId = "FETCH";
+            if(this.SharepointId == null) {
+
+                this.SharepointId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SharepointId != null && ec.Excludes("sharepointId",true))
+        {
+            this.SharepointId = null;
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: UUID (scalar)
-        if (this.SnapshotId == null && ec.Includes("snapshotId",true))
+        if (ec.Includes("snapshotId",true))
         {
-            this.SnapshotId = "FETCH";
+            if(this.SnapshotId == null) {
+
+                this.SnapshotId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotId != null && ec.Excludes("snapshotId",true))
+        {
+            this.SnapshotId = null;
         }
         //      C# -> System.Int32? SnapshotNum
         // GraphQL -> snapshotNum: Int (scalar)
-        if (this.SnapshotNum == null && ec.Includes("snapshotNum",true))
+        if (ec.Includes("snapshotNum",true))
         {
-            this.SnapshotNum = Int32.MinValue;
+            if(this.SnapshotNum == null) {
+
+                this.SnapshotNum = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotNum != null && ec.Excludes("snapshotNum",true))
+        {
+            this.SnapshotNum = null;
         }
     }
 
@@ -255,9 +391,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<O365FullSpDescendant> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

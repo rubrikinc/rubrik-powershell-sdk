@@ -182,103 +182,168 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> ReportFocusEnum? Focus
         // GraphQL -> focus: ReportFocusEnum! (enum)
         if (this.Focus != null) {
-            s += ind + "focus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "focus\n" ;
+            } else {
+                s += ind + "focus\n" ;
+            }
         }
         //      C# -> DateTime? CreatedAt
         // GraphQL -> createdAt: DateTime! (scalar)
         if (this.CreatedAt != null) {
-            s += ind + "createdAt\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "createdAt\n" ;
+            } else {
+                s += ind + "createdAt\n" ;
+            }
         }
         //      C# -> System.Int32? Id
         // GraphQL -> id: Int! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.Boolean? IsHidden
         // GraphQL -> isHidden: Boolean! (scalar)
         if (this.IsHidden != null) {
-            s += ind + "isHidden\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isHidden\n" ;
+            } else {
+                s += ind + "isHidden\n" ;
+            }
         }
         //      C# -> System.Boolean? IsReadOnly
         // GraphQL -> isReadOnly: Boolean! (scalar)
         if (this.IsReadOnly != null) {
-            s += ind + "isReadOnly\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isReadOnly\n" ;
+            } else {
+                s += ind + "isReadOnly\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> DateTime? NewestSyncDate
         // GraphQL -> newestSyncDate: DateTime (scalar)
         if (this.NewestSyncDate != null) {
-            s += ind + "newestSyncDate\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "newestSyncDate\n" ;
+            } else {
+                s += ind + "newestSyncDate\n" ;
+            }
         }
         //      C# -> DateTime? OldestSyncDate
         // GraphQL -> oldestSyncDate: DateTime (scalar)
         if (this.OldestSyncDate != null) {
-            s += ind + "oldestSyncDate\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "oldestSyncDate\n" ;
+            } else {
+                s += ind + "oldestSyncDate\n" ;
+            }
         }
         //      C# -> System.String? Room
         // GraphQL -> room: String (scalar)
         if (this.Room != null) {
-            s += ind + "room\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "room\n" ;
+            } else {
+                s += ind + "room\n" ;
+            }
         }
         //      C# -> DateTime? UpdatedAt
         // GraphQL -> updatedAt: DateTime! (scalar)
         if (this.UpdatedAt != null) {
-            s += ind + "updatedAt\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "updatedAt\n" ;
+            } else {
+                s += ind + "updatedAt\n" ;
+            }
         }
         //      C# -> DateTime? ViewedAt
         // GraphQL -> viewedAt: DateTime! (scalar)
         if (this.ViewedAt != null) {
-            s += ind + "viewedAt\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "viewedAt\n" ;
+            } else {
+                s += ind + "viewedAt\n" ;
+            }
         }
         //      C# -> CustomReportFilters? Filters
         // GraphQL -> filters: CustomReportFilters! (type)
         if (this.Filters != null) {
-            var fspec = this.Filters.AsFieldSpec(indent+1);
+            var fspec = this.Filters.AsFieldSpec(conf.Child("filters"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "filters {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "filters {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> User? Owner
         // GraphQL -> owner: User! (type)
         if (this.Owner != null) {
-            var fspec = this.Owner.AsFieldSpec(indent+1);
+            var fspec = this.Owner.AsFieldSpec(conf.Child("owner"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "owner {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "owner {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> ScheduledReportConnection? ScheduledReportConnection
         // GraphQL -> scheduledReportConnection: ScheduledReportConnection! (type)
         if (this.ScheduledReportConnection != null) {
-            var fspec = this.ScheduledReportConnection.AsFieldSpec(indent+1);
+            var fspec = this.ScheduledReportConnection.AsFieldSpec(conf.Child("scheduledReportConnection"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "scheduledReportConnection {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "scheduledReportConnection {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<ReportChartType>? Charts
         // GraphQL -> charts: [ReportChartType!]! (union)
         if (this.Charts != null) {
-            var fspec = this.Charts.AsFieldSpec(indent+1);
+            var fspec = this.Charts.AsFieldSpec(conf.Child("charts"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "charts {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "charts {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<ReportTableType>? Tables
         // GraphQL -> tables: [ReportTableType!]! (union)
         if (this.Tables != null) {
-            var fspec = this.Tables.AsFieldSpec(indent+1);
+            var fspec = this.Tables.AsFieldSpec(conf.Child("tables"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "tables {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "tables {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -290,104 +355,285 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> ReportFocusEnum? Focus
         // GraphQL -> focus: ReportFocusEnum! (enum)
-        if (this.Focus == null && ec.Includes("focus",true))
+        if (ec.Includes("focus",true))
         {
-            this.Focus = new ReportFocusEnum();
+            if(this.Focus == null) {
+
+                this.Focus = new ReportFocusEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Focus != null && ec.Excludes("focus",true))
+        {
+            this.Focus = null;
         }
         //      C# -> DateTime? CreatedAt
         // GraphQL -> createdAt: DateTime! (scalar)
-        if (this.CreatedAt == null && ec.Includes("createdAt",true))
+        if (ec.Includes("createdAt",true))
         {
-            this.CreatedAt = new DateTime();
+            if(this.CreatedAt == null) {
+
+                this.CreatedAt = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CreatedAt != null && ec.Excludes("createdAt",true))
+        {
+            this.CreatedAt = null;
         }
         //      C# -> System.Int32? Id
         // GraphQL -> id: Int! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = Int32.MinValue;
+            if(this.Id == null) {
+
+                this.Id = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.Boolean? IsHidden
         // GraphQL -> isHidden: Boolean! (scalar)
-        if (this.IsHidden == null && ec.Includes("isHidden",true))
+        if (ec.Includes("isHidden",true))
         {
-            this.IsHidden = true;
+            if(this.IsHidden == null) {
+
+                this.IsHidden = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsHidden != null && ec.Excludes("isHidden",true))
+        {
+            this.IsHidden = null;
         }
         //      C# -> System.Boolean? IsReadOnly
         // GraphQL -> isReadOnly: Boolean! (scalar)
-        if (this.IsReadOnly == null && ec.Includes("isReadOnly",true))
+        if (ec.Includes("isReadOnly",true))
         {
-            this.IsReadOnly = true;
+            if(this.IsReadOnly == null) {
+
+                this.IsReadOnly = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsReadOnly != null && ec.Excludes("isReadOnly",true))
+        {
+            this.IsReadOnly = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> DateTime? NewestSyncDate
         // GraphQL -> newestSyncDate: DateTime (scalar)
-        if (this.NewestSyncDate == null && ec.Includes("newestSyncDate",true))
+        if (ec.Includes("newestSyncDate",true))
         {
-            this.NewestSyncDate = new DateTime();
+            if(this.NewestSyncDate == null) {
+
+                this.NewestSyncDate = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.NewestSyncDate != null && ec.Excludes("newestSyncDate",true))
+        {
+            this.NewestSyncDate = null;
         }
         //      C# -> DateTime? OldestSyncDate
         // GraphQL -> oldestSyncDate: DateTime (scalar)
-        if (this.OldestSyncDate == null && ec.Includes("oldestSyncDate",true))
+        if (ec.Includes("oldestSyncDate",true))
         {
-            this.OldestSyncDate = new DateTime();
+            if(this.OldestSyncDate == null) {
+
+                this.OldestSyncDate = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.OldestSyncDate != null && ec.Excludes("oldestSyncDate",true))
+        {
+            this.OldestSyncDate = null;
         }
         //      C# -> System.String? Room
         // GraphQL -> room: String (scalar)
-        if (this.Room == null && ec.Includes("room",true))
+        if (ec.Includes("room",true))
         {
-            this.Room = "FETCH";
+            if(this.Room == null) {
+
+                this.Room = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Room != null && ec.Excludes("room",true))
+        {
+            this.Room = null;
         }
         //      C# -> DateTime? UpdatedAt
         // GraphQL -> updatedAt: DateTime! (scalar)
-        if (this.UpdatedAt == null && ec.Includes("updatedAt",true))
+        if (ec.Includes("updatedAt",true))
         {
-            this.UpdatedAt = new DateTime();
+            if(this.UpdatedAt == null) {
+
+                this.UpdatedAt = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UpdatedAt != null && ec.Excludes("updatedAt",true))
+        {
+            this.UpdatedAt = null;
         }
         //      C# -> DateTime? ViewedAt
         // GraphQL -> viewedAt: DateTime! (scalar)
-        if (this.ViewedAt == null && ec.Includes("viewedAt",true))
+        if (ec.Includes("viewedAt",true))
         {
-            this.ViewedAt = new DateTime();
+            if(this.ViewedAt == null) {
+
+                this.ViewedAt = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ViewedAt != null && ec.Excludes("viewedAt",true))
+        {
+            this.ViewedAt = null;
         }
         //      C# -> CustomReportFilters? Filters
         // GraphQL -> filters: CustomReportFilters! (type)
-        if (this.Filters == null && ec.Includes("filters",false))
+        if (ec.Includes("filters",false))
         {
-            this.Filters = new CustomReportFilters();
-            this.Filters.ApplyExploratoryFieldSpec(ec.NewChild("filters"));
+            if(this.Filters == null) {
+
+                this.Filters = new CustomReportFilters();
+                this.Filters.ApplyExploratoryFieldSpec(ec.NewChild("filters"));
+
+            } else {
+
+                this.Filters.ApplyExploratoryFieldSpec(ec.NewChild("filters"));
+
+            }
+        }
+        else if (this.Filters != null && ec.Excludes("filters",false))
+        {
+            this.Filters = null;
         }
         //      C# -> User? Owner
         // GraphQL -> owner: User! (type)
-        if (this.Owner == null && ec.Includes("owner",false))
+        if (ec.Includes("owner",false))
         {
-            this.Owner = new User();
-            this.Owner.ApplyExploratoryFieldSpec(ec.NewChild("owner"));
+            if(this.Owner == null) {
+
+                this.Owner = new User();
+                this.Owner.ApplyExploratoryFieldSpec(ec.NewChild("owner"));
+
+            } else {
+
+                this.Owner.ApplyExploratoryFieldSpec(ec.NewChild("owner"));
+
+            }
+        }
+        else if (this.Owner != null && ec.Excludes("owner",false))
+        {
+            this.Owner = null;
         }
         //      C# -> ScheduledReportConnection? ScheduledReportConnection
         // GraphQL -> scheduledReportConnection: ScheduledReportConnection! (type)
-        if (this.ScheduledReportConnection == null && ec.Includes("scheduledReportConnection",false))
+        if (ec.Includes("scheduledReportConnection",false))
         {
-            this.ScheduledReportConnection = new ScheduledReportConnection();
-            this.ScheduledReportConnection.ApplyExploratoryFieldSpec(ec.NewChild("scheduledReportConnection"));
+            if(this.ScheduledReportConnection == null) {
+
+                this.ScheduledReportConnection = new ScheduledReportConnection();
+                this.ScheduledReportConnection.ApplyExploratoryFieldSpec(ec.NewChild("scheduledReportConnection"));
+
+            } else {
+
+                this.ScheduledReportConnection.ApplyExploratoryFieldSpec(ec.NewChild("scheduledReportConnection"));
+
+            }
+        }
+        else if (this.ScheduledReportConnection != null && ec.Excludes("scheduledReportConnection",false))
+        {
+            this.ScheduledReportConnection = null;
         }
         //      C# -> List<ReportChartType>? Charts
         // GraphQL -> charts: [ReportChartType!]! (union)
-        if (this.Charts == null && ec.Includes("charts",false))
+        if (ec.Includes("charts",false))
         {
-            this.Charts = new List<ReportChartType>();
-            this.Charts.ApplyExploratoryFieldSpec(ec.NewChild("charts"));
+            if(this.Charts == null) {
+
+                this.Charts = new List<ReportChartType>();
+                this.Charts.ApplyExploratoryFieldSpec(ec.NewChild("charts"));
+
+            } else {
+
+                this.Charts.ApplyExploratoryFieldSpec(ec.NewChild("charts"));
+
+            }
+        }
+        else if (this.Charts != null && ec.Excludes("charts",false))
+        {
+            this.Charts = null;
         }
         //      C# -> List<ReportTableType>? Tables
         // GraphQL -> tables: [ReportTableType!]! (union)
-        if (this.Tables == null && ec.Includes("tables",false))
+        if (ec.Includes("tables",false))
         {
-            this.Tables = new List<ReportTableType>();
-            this.Tables.ApplyExploratoryFieldSpec(ec.NewChild("tables"));
+            if(this.Tables == null) {
+
+                this.Tables = new List<ReportTableType>();
+                this.Tables.ApplyExploratoryFieldSpec(ec.NewChild("tables"));
+
+            } else {
+
+                this.Tables.ApplyExploratoryFieldSpec(ec.NewChild("tables"));
+
+            }
+        }
+        else if (this.Tables != null && ec.Excludes("tables",false))
+        {
+            this.Tables = null;
         }
     }
 
@@ -414,9 +660,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CreateCustomReportReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? AwsNativeEc2InstanceId
         // GraphQL -> awsNativeEc2InstanceId: String! (scalar)
         if (this.AwsNativeEc2InstanceId != null) {
-            s += ind + "awsNativeEc2InstanceId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "awsNativeEc2InstanceId\n" ;
+            } else {
+                s += ind + "awsNativeEc2InstanceId\n" ;
+            }
         }
         //      C# -> System.String? DevicePath
         // GraphQL -> devicePath: String! (scalar)
         if (this.DevicePath != null) {
-            s += ind + "devicePath\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "devicePath\n" ;
+            } else {
+                s += ind + "devicePath\n" ;
+            }
         }
         //      C# -> System.Boolean? IsExcludedFromSnapshot
         // GraphQL -> isExcludedFromSnapshot: Boolean! (scalar)
         if (this.IsExcludedFromSnapshot != null) {
-            s += ind + "isExcludedFromSnapshot\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isExcludedFromSnapshot\n" ;
+            } else {
+                s += ind + "isExcludedFromSnapshot\n" ;
+            }
         }
         //      C# -> System.Boolean? IsRootVolume
         // GraphQL -> isRootVolume: Boolean! (scalar)
         if (this.IsRootVolume != null) {
-            s += ind + "isRootVolume\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isRootVolume\n" ;
+            } else {
+                s += ind + "isRootVolume\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? AwsNativeEc2InstanceId
         // GraphQL -> awsNativeEc2InstanceId: String! (scalar)
-        if (this.AwsNativeEc2InstanceId == null && ec.Includes("awsNativeEc2InstanceId",true))
+        if (ec.Includes("awsNativeEc2InstanceId",true))
         {
-            this.AwsNativeEc2InstanceId = "FETCH";
+            if(this.AwsNativeEc2InstanceId == null) {
+
+                this.AwsNativeEc2InstanceId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AwsNativeEc2InstanceId != null && ec.Excludes("awsNativeEc2InstanceId",true))
+        {
+            this.AwsNativeEc2InstanceId = null;
         }
         //      C# -> System.String? DevicePath
         // GraphQL -> devicePath: String! (scalar)
-        if (this.DevicePath == null && ec.Includes("devicePath",true))
+        if (ec.Includes("devicePath",true))
         {
-            this.DevicePath = "FETCH";
+            if(this.DevicePath == null) {
+
+                this.DevicePath = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DevicePath != null && ec.Excludes("devicePath",true))
+        {
+            this.DevicePath = null;
         }
         //      C# -> System.Boolean? IsExcludedFromSnapshot
         // GraphQL -> isExcludedFromSnapshot: Boolean! (scalar)
-        if (this.IsExcludedFromSnapshot == null && ec.Includes("isExcludedFromSnapshot",true))
+        if (ec.Includes("isExcludedFromSnapshot",true))
         {
-            this.IsExcludedFromSnapshot = true;
+            if(this.IsExcludedFromSnapshot == null) {
+
+                this.IsExcludedFromSnapshot = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsExcludedFromSnapshot != null && ec.Excludes("isExcludedFromSnapshot",true))
+        {
+            this.IsExcludedFromSnapshot = null;
         }
         //      C# -> System.Boolean? IsRootVolume
         // GraphQL -> isRootVolume: Boolean! (scalar)
-        if (this.IsRootVolume == null && ec.Includes("isRootVolume",true))
+        if (ec.Includes("isRootVolume",true))
         {
-            this.IsRootVolume = true;
+            if(this.IsRootVolume == null) {
+
+                this.IsRootVolume = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsRootVolume != null && ec.Excludes("isRootVolume",true))
+        {
+            this.IsRootVolume = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AttachmentSpecForEbsVolume> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

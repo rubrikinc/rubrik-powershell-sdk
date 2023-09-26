@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? HashType
         // GraphQL -> hashType: String! (scalar)
         if (this.HashType != null) {
-            s += ind + "hashType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hashType\n" ;
+            } else {
+                s += ind + "hashType\n" ;
+            }
         }
         //      C# -> System.String? HashValue
         // GraphQL -> hashValue: String! (scalar)
         if (this.HashValue != null) {
-            s += ind + "hashValue\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hashValue\n" ;
+            } else {
+                s += ind + "hashValue\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? HashType
         // GraphQL -> hashType: String! (scalar)
-        if (this.HashType == null && ec.Includes("hashType",true))
+        if (ec.Includes("hashType",true))
         {
-            this.HashType = "FETCH";
+            if(this.HashType == null) {
+
+                this.HashType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.HashType != null && ec.Excludes("hashType",true))
+        {
+            this.HashType = null;
         }
         //      C# -> System.String? HashValue
         // GraphQL -> hashValue: String! (scalar)
-        if (this.HashValue == null && ec.Includes("hashValue",true))
+        if (ec.Includes("hashValue",true))
         {
-            this.HashValue = "FETCH";
+            if(this.HashValue == null) {
+
+                this.HashValue = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.HashValue != null && ec.Excludes("hashValue",true))
+        {
+            this.HashValue = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<HashDetail> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

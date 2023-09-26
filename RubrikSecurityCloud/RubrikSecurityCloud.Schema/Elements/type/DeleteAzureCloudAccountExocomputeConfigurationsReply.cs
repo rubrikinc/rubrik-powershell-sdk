@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<System.String>? DeletionFailedIds
         // GraphQL -> deletionFailedIds: [String!]! (scalar)
         if (this.DeletionFailedIds != null) {
-            s += ind + "deletionFailedIds\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "deletionFailedIds\n" ;
+            } else {
+                s += ind + "deletionFailedIds\n" ;
+            }
         }
         //      C# -> List<System.String>? DeletionSuccessIds
         // GraphQL -> deletionSuccessIds: [String!]! (scalar)
         if (this.DeletionSuccessIds != null) {
-            s += ind + "deletionSuccessIds\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "deletionSuccessIds\n" ;
+            } else {
+                s += ind + "deletionSuccessIds\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<System.String>? DeletionFailedIds
         // GraphQL -> deletionFailedIds: [String!]! (scalar)
-        if (this.DeletionFailedIds == null && ec.Includes("deletionFailedIds",true))
+        if (ec.Includes("deletionFailedIds",true))
         {
-            this.DeletionFailedIds = new List<System.String>();
+            if(this.DeletionFailedIds == null) {
+
+                this.DeletionFailedIds = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DeletionFailedIds != null && ec.Excludes("deletionFailedIds",true))
+        {
+            this.DeletionFailedIds = null;
         }
         //      C# -> List<System.String>? DeletionSuccessIds
         // GraphQL -> deletionSuccessIds: [String!]! (scalar)
-        if (this.DeletionSuccessIds == null && ec.Includes("deletionSuccessIds",true))
+        if (ec.Includes("deletionSuccessIds",true))
         {
-            this.DeletionSuccessIds = new List<System.String>();
+            if(this.DeletionSuccessIds == null) {
+
+                this.DeletionSuccessIds = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DeletionSuccessIds != null && ec.Excludes("deletionSuccessIds",true))
+        {
+            this.DeletionSuccessIds = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<DeleteAzureCloudAccountExocomputeConfigurationsReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? EndCursor
         // GraphQL -> endCursor: String! (scalar)
         if (this.EndCursor != null) {
-            s += ind + "endCursor\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "endCursor\n" ;
+            } else {
+                s += ind + "endCursor\n" ;
+            }
         }
         //      C# -> System.Boolean? HasNextPage
         // GraphQL -> hasNextPage: Boolean! (scalar)
         if (this.HasNextPage != null) {
-            s += ind + "hasNextPage\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hasNextPage\n" ;
+            } else {
+                s += ind + "hasNextPage\n" ;
+            }
         }
         //      C# -> System.Boolean? HasPreviousPage
         // GraphQL -> hasPreviousPage: Boolean! (scalar)
         if (this.HasPreviousPage != null) {
-            s += ind + "hasPreviousPage\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hasPreviousPage\n" ;
+            } else {
+                s += ind + "hasPreviousPage\n" ;
+            }
         }
         //      C# -> System.String? StartCursor
         // GraphQL -> startCursor: String! (scalar)
         if (this.StartCursor != null) {
-            s += ind + "startCursor\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "startCursor\n" ;
+            } else {
+                s += ind + "startCursor\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? EndCursor
         // GraphQL -> endCursor: String! (scalar)
-        if (this.EndCursor == null && ec.Includes("endCursor",true))
+        if (ec.Includes("endCursor",true))
         {
-            this.EndCursor = "FETCH";
+            if(this.EndCursor == null) {
+
+                this.EndCursor = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.EndCursor != null && ec.Excludes("endCursor",true))
+        {
+            this.EndCursor = null;
         }
         //      C# -> System.Boolean? HasNextPage
         // GraphQL -> hasNextPage: Boolean! (scalar)
-        if (this.HasNextPage == null && ec.Includes("hasNextPage",true))
+        if (ec.Includes("hasNextPage",true))
         {
-            this.HasNextPage = true;
+            if(this.HasNextPage == null) {
+
+                this.HasNextPage = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.HasNextPage != null && ec.Excludes("hasNextPage",true))
+        {
+            this.HasNextPage = null;
         }
         //      C# -> System.Boolean? HasPreviousPage
         // GraphQL -> hasPreviousPage: Boolean! (scalar)
-        if (this.HasPreviousPage == null && ec.Includes("hasPreviousPage",true))
+        if (ec.Includes("hasPreviousPage",true))
         {
-            this.HasPreviousPage = true;
+            if(this.HasPreviousPage == null) {
+
+                this.HasPreviousPage = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.HasPreviousPage != null && ec.Excludes("hasPreviousPage",true))
+        {
+            this.HasPreviousPage = null;
         }
         //      C# -> System.String? StartCursor
         // GraphQL -> startCursor: String! (scalar)
-        if (this.StartCursor == null && ec.Includes("startCursor",true))
+        if (ec.Includes("startCursor",true))
         {
-            this.StartCursor = "FETCH";
+            if(this.StartCursor == null) {
+
+                this.StartCursor = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.StartCursor != null && ec.Excludes("startCursor",true))
+        {
+            this.StartCursor = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<PageInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -65,26 +65,39 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> SnapshotSearchError? Error
         // GraphQL -> error: SnapshotSearchError (enum)
         if (this.Error != null) {
-            s += ind + "error\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "error\n" ;
+            } else {
+                s += ind + "error\n" ;
+            }
         }
         //      C# -> System.String? SnappableId
         // GraphQL -> snappableId: String! (scalar)
         if (this.SnappableId != null) {
-            s += ind + "snappableId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snappableId\n" ;
+            } else {
+                s += ind + "snappableId\n" ;
+            }
         }
         //      C# -> ClosestSnapshotDetail? Snapshot
         // GraphQL -> snapshot: ClosestSnapshotDetail (type)
         if (this.Snapshot != null) {
-            var fspec = this.Snapshot.AsFieldSpec(indent+1);
+            var fspec = this.Snapshot.AsFieldSpec(conf.Child("snapshot"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "snapshot {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "snapshot {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -96,22 +109,56 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> SnapshotSearchError? Error
         // GraphQL -> error: SnapshotSearchError (enum)
-        if (this.Error == null && ec.Includes("error",true))
+        if (ec.Includes("error",true))
         {
-            this.Error = new SnapshotSearchError();
+            if(this.Error == null) {
+
+                this.Error = new SnapshotSearchError();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Error != null && ec.Excludes("error",true))
+        {
+            this.Error = null;
         }
         //      C# -> System.String? SnappableId
         // GraphQL -> snappableId: String! (scalar)
-        if (this.SnappableId == null && ec.Includes("snappableId",true))
+        if (ec.Includes("snappableId",true))
         {
-            this.SnappableId = "FETCH";
+            if(this.SnappableId == null) {
+
+                this.SnappableId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnappableId != null && ec.Excludes("snappableId",true))
+        {
+            this.SnappableId = null;
         }
         //      C# -> ClosestSnapshotDetail? Snapshot
         // GraphQL -> snapshot: ClosestSnapshotDetail (type)
-        if (this.Snapshot == null && ec.Includes("snapshot",false))
+        if (ec.Includes("snapshot",false))
         {
-            this.Snapshot = new ClosestSnapshotDetail();
-            this.Snapshot.ApplyExploratoryFieldSpec(ec.NewChild("snapshot"));
+            if(this.Snapshot == null) {
+
+                this.Snapshot = new ClosestSnapshotDetail();
+                this.Snapshot.ApplyExploratoryFieldSpec(ec.NewChild("snapshot"));
+
+            } else {
+
+                this.Snapshot.ApplyExploratoryFieldSpec(ec.NewChild("snapshot"));
+
+            }
+        }
+        else if (this.Snapshot != null && ec.Excludes("snapshot",false))
+        {
+            this.Snapshot = null;
         }
     }
 
@@ -138,9 +185,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ClosestSnapshotSearchResult> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> AzureNativeRegionForReplication? Region
         // GraphQL -> region: AzureNativeRegionForReplication! (enum)
         if (this.Region != null) {
-            s += ind + "region\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "region\n" ;
+            } else {
+                s += ind + "region\n" ;
+            }
         }
         //      C# -> System.String? SubscriptionId
         // GraphQL -> subscriptionId: String! (scalar)
         if (this.SubscriptionId != null) {
-            s += ind + "subscriptionId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "subscriptionId\n" ;
+            } else {
+                s += ind + "subscriptionId\n" ;
+            }
         }
         //      C# -> System.String? SubscriptionName
         // GraphQL -> subscriptionName: String! (scalar)
         if (this.SubscriptionName != null) {
-            s += ind + "subscriptionName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "subscriptionName\n" ;
+            } else {
+                s += ind + "subscriptionName\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> AzureNativeRegionForReplication? Region
         // GraphQL -> region: AzureNativeRegionForReplication! (enum)
-        if (this.Region == null && ec.Includes("region",true))
+        if (ec.Includes("region",true))
         {
-            this.Region = new AzureNativeRegionForReplication();
+            if(this.Region == null) {
+
+                this.Region = new AzureNativeRegionForReplication();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Region != null && ec.Excludes("region",true))
+        {
+            this.Region = null;
         }
         //      C# -> System.String? SubscriptionId
         // GraphQL -> subscriptionId: String! (scalar)
-        if (this.SubscriptionId == null && ec.Includes("subscriptionId",true))
+        if (ec.Includes("subscriptionId",true))
         {
-            this.SubscriptionId = "FETCH";
+            if(this.SubscriptionId == null) {
+
+                this.SubscriptionId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SubscriptionId != null && ec.Excludes("subscriptionId",true))
+        {
+            this.SubscriptionId = null;
         }
         //      C# -> System.String? SubscriptionName
         // GraphQL -> subscriptionName: String! (scalar)
-        if (this.SubscriptionName == null && ec.Includes("subscriptionName",true))
+        if (ec.Includes("subscriptionName",true))
         {
-            this.SubscriptionName = "FETCH";
+            if(this.SubscriptionName == null) {
+
+                this.SubscriptionName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SubscriptionName != null && ec.Excludes("subscriptionName",true))
+        {
+            this.SubscriptionName = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AzureReplicationTarget> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

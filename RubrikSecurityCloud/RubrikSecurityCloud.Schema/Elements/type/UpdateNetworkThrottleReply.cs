@@ -92,41 +92,66 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> NetworkThrottleResourceId? ResourceId
         // GraphQL -> resourceId: NetworkThrottleResourceId! (enum)
         if (this.ResourceId != null) {
-            s += ind + "resourceId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "resourceId\n" ;
+            } else {
+                s += ind + "resourceId\n" ;
+            }
         }
         //      C# -> System.Int32? ArchivalThrottlePort
         // GraphQL -> archivalThrottlePort: Int (scalar)
         if (this.ArchivalThrottlePort != null) {
-            s += ind + "archivalThrottlePort\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "archivalThrottlePort\n" ;
+            } else {
+                s += ind + "archivalThrottlePort\n" ;
+            }
         }
         //      C# -> System.Single? DefaultThrottleLimit
         // GraphQL -> defaultThrottleLimit: Float (scalar)
         if (this.DefaultThrottleLimit != null) {
-            s += ind + "defaultThrottleLimit\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "defaultThrottleLimit\n" ;
+            } else {
+                s += ind + "defaultThrottleLimit\n" ;
+            }
         }
         //      C# -> System.Boolean? IsEnabled
         // GraphQL -> isEnabled: Boolean! (scalar)
         if (this.IsEnabled != null) {
-            s += ind + "isEnabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isEnabled\n" ;
+            } else {
+                s += ind + "isEnabled\n" ;
+            }
         }
         //      C# -> System.String? NetworkInterface
         // GraphQL -> networkInterface: String (scalar)
         if (this.NetworkInterface != null) {
-            s += ind + "networkInterface\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "networkInterface\n" ;
+            } else {
+                s += ind + "networkInterface\n" ;
+            }
         }
         //      C# -> List<NetworkThrottleScheduleSummary>? ScheduledThrottles
         // GraphQL -> scheduledThrottles: [NetworkThrottleScheduleSummary!]! (type)
         if (this.ScheduledThrottles != null) {
-            var fspec = this.ScheduledThrottles.AsFieldSpec(indent+1);
+            var fspec = this.ScheduledThrottles.AsFieldSpec(conf.Child("scheduledThrottles"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "scheduledThrottles {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "scheduledThrottles {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -138,40 +163,107 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> NetworkThrottleResourceId? ResourceId
         // GraphQL -> resourceId: NetworkThrottleResourceId! (enum)
-        if (this.ResourceId == null && ec.Includes("resourceId",true))
+        if (ec.Includes("resourceId",true))
         {
-            this.ResourceId = new NetworkThrottleResourceId();
+            if(this.ResourceId == null) {
+
+                this.ResourceId = new NetworkThrottleResourceId();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ResourceId != null && ec.Excludes("resourceId",true))
+        {
+            this.ResourceId = null;
         }
         //      C# -> System.Int32? ArchivalThrottlePort
         // GraphQL -> archivalThrottlePort: Int (scalar)
-        if (this.ArchivalThrottlePort == null && ec.Includes("archivalThrottlePort",true))
+        if (ec.Includes("archivalThrottlePort",true))
         {
-            this.ArchivalThrottlePort = Int32.MinValue;
+            if(this.ArchivalThrottlePort == null) {
+
+                this.ArchivalThrottlePort = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ArchivalThrottlePort != null && ec.Excludes("archivalThrottlePort",true))
+        {
+            this.ArchivalThrottlePort = null;
         }
         //      C# -> System.Single? DefaultThrottleLimit
         // GraphQL -> defaultThrottleLimit: Float (scalar)
-        if (this.DefaultThrottleLimit == null && ec.Includes("defaultThrottleLimit",true))
+        if (ec.Includes("defaultThrottleLimit",true))
         {
-            this.DefaultThrottleLimit = new System.Single();
+            if(this.DefaultThrottleLimit == null) {
+
+                this.DefaultThrottleLimit = new System.Single();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DefaultThrottleLimit != null && ec.Excludes("defaultThrottleLimit",true))
+        {
+            this.DefaultThrottleLimit = null;
         }
         //      C# -> System.Boolean? IsEnabled
         // GraphQL -> isEnabled: Boolean! (scalar)
-        if (this.IsEnabled == null && ec.Includes("isEnabled",true))
+        if (ec.Includes("isEnabled",true))
         {
-            this.IsEnabled = true;
+            if(this.IsEnabled == null) {
+
+                this.IsEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsEnabled != null && ec.Excludes("isEnabled",true))
+        {
+            this.IsEnabled = null;
         }
         //      C# -> System.String? NetworkInterface
         // GraphQL -> networkInterface: String (scalar)
-        if (this.NetworkInterface == null && ec.Includes("networkInterface",true))
+        if (ec.Includes("networkInterface",true))
         {
-            this.NetworkInterface = "FETCH";
+            if(this.NetworkInterface == null) {
+
+                this.NetworkInterface = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NetworkInterface != null && ec.Excludes("networkInterface",true))
+        {
+            this.NetworkInterface = null;
         }
         //      C# -> List<NetworkThrottleScheduleSummary>? ScheduledThrottles
         // GraphQL -> scheduledThrottles: [NetworkThrottleScheduleSummary!]! (type)
-        if (this.ScheduledThrottles == null && ec.Includes("scheduledThrottles",false))
+        if (ec.Includes("scheduledThrottles",false))
         {
-            this.ScheduledThrottles = new List<NetworkThrottleScheduleSummary>();
-            this.ScheduledThrottles.ApplyExploratoryFieldSpec(ec.NewChild("scheduledThrottles"));
+            if(this.ScheduledThrottles == null) {
+
+                this.ScheduledThrottles = new List<NetworkThrottleScheduleSummary>();
+                this.ScheduledThrottles.ApplyExploratoryFieldSpec(ec.NewChild("scheduledThrottles"));
+
+            } else {
+
+                this.ScheduledThrottles.ApplyExploratoryFieldSpec(ec.NewChild("scheduledThrottles"));
+
+            }
+        }
+        else if (this.ScheduledThrottles != null && ec.Excludes("scheduledThrottles",false))
+        {
+            this.ScheduledThrottles = null;
         }
     }
 
@@ -198,9 +290,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<UpdateNetworkThrottleReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

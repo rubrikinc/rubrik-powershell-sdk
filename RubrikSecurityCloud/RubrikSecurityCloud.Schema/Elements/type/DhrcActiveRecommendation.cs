@@ -101,46 +101,75 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> DhrcCategory? Category
         // GraphQL -> category: DhrcCategory! (enum)
         if (this.Category != null) {
-            s += ind + "category\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "category\n" ;
+            } else {
+                s += ind + "category\n" ;
+            }
         }
         //      C# -> DhrcRecommendationKey? Key
         // GraphQL -> key: DhrcRecommendationKey! (enum)
         if (this.Key != null) {
-            s += ind + "key\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "key\n" ;
+            } else {
+                s += ind + "key\n" ;
+            }
         }
         //      C# -> DateTime? CompiledAt
         // GraphQL -> compiledAt: DateTime (scalar)
         if (this.CompiledAt != null) {
-            s += ind + "compiledAt\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "compiledAt\n" ;
+            } else {
+                s += ind + "compiledAt\n" ;
+            }
         }
         //      C# -> DateTime? EarliestMetric
         // GraphQL -> earliestMetric: DateTime (scalar)
         if (this.EarliestMetric != null) {
-            s += ind + "earliestMetric\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "earliestMetric\n" ;
+            } else {
+                s += ind + "earliestMetric\n" ;
+            }
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
         if (this.Message != null) {
-            s += ind + "message\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "message\n" ;
+            } else {
+                s += ind + "message\n" ;
+            }
         }
         //      C# -> System.Single? Weight
         // GraphQL -> weight: Float! (scalar)
         if (this.Weight != null) {
-            s += ind + "weight\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "weight\n" ;
+            } else {
+                s += ind + "weight\n" ;
+            }
         }
         //      C# -> List<DhrcKeyValue>? TranslationArgs
         // GraphQL -> translationArgs: [DhrcKeyValue!]! (type)
         if (this.TranslationArgs != null) {
-            var fspec = this.TranslationArgs.AsFieldSpec(indent+1);
+            var fspec = this.TranslationArgs.AsFieldSpec(conf.Child("translationArgs"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "translationArgs {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "translationArgs {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -152,46 +181,124 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> DhrcCategory? Category
         // GraphQL -> category: DhrcCategory! (enum)
-        if (this.Category == null && ec.Includes("category",true))
+        if (ec.Includes("category",true))
         {
-            this.Category = new DhrcCategory();
+            if(this.Category == null) {
+
+                this.Category = new DhrcCategory();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Category != null && ec.Excludes("category",true))
+        {
+            this.Category = null;
         }
         //      C# -> DhrcRecommendationKey? Key
         // GraphQL -> key: DhrcRecommendationKey! (enum)
-        if (this.Key == null && ec.Includes("key",true))
+        if (ec.Includes("key",true))
         {
-            this.Key = new DhrcRecommendationKey();
+            if(this.Key == null) {
+
+                this.Key = new DhrcRecommendationKey();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Key != null && ec.Excludes("key",true))
+        {
+            this.Key = null;
         }
         //      C# -> DateTime? CompiledAt
         // GraphQL -> compiledAt: DateTime (scalar)
-        if (this.CompiledAt == null && ec.Includes("compiledAt",true))
+        if (ec.Includes("compiledAt",true))
         {
-            this.CompiledAt = new DateTime();
+            if(this.CompiledAt == null) {
+
+                this.CompiledAt = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CompiledAt != null && ec.Excludes("compiledAt",true))
+        {
+            this.CompiledAt = null;
         }
         //      C# -> DateTime? EarliestMetric
         // GraphQL -> earliestMetric: DateTime (scalar)
-        if (this.EarliestMetric == null && ec.Includes("earliestMetric",true))
+        if (ec.Includes("earliestMetric",true))
         {
-            this.EarliestMetric = new DateTime();
+            if(this.EarliestMetric == null) {
+
+                this.EarliestMetric = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EarliestMetric != null && ec.Excludes("earliestMetric",true))
+        {
+            this.EarliestMetric = null;
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
-        if (this.Message == null && ec.Includes("message",true))
+        if (ec.Includes("message",true))
         {
-            this.Message = "FETCH";
+            if(this.Message == null) {
+
+                this.Message = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Message != null && ec.Excludes("message",true))
+        {
+            this.Message = null;
         }
         //      C# -> System.Single? Weight
         // GraphQL -> weight: Float! (scalar)
-        if (this.Weight == null && ec.Includes("weight",true))
+        if (ec.Includes("weight",true))
         {
-            this.Weight = new System.Single();
+            if(this.Weight == null) {
+
+                this.Weight = new System.Single();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Weight != null && ec.Excludes("weight",true))
+        {
+            this.Weight = null;
         }
         //      C# -> List<DhrcKeyValue>? TranslationArgs
         // GraphQL -> translationArgs: [DhrcKeyValue!]! (type)
-        if (this.TranslationArgs == null && ec.Includes("translationArgs",false))
+        if (ec.Includes("translationArgs",false))
         {
-            this.TranslationArgs = new List<DhrcKeyValue>();
-            this.TranslationArgs.ApplyExploratoryFieldSpec(ec.NewChild("translationArgs"));
+            if(this.TranslationArgs == null) {
+
+                this.TranslationArgs = new List<DhrcKeyValue>();
+                this.TranslationArgs.ApplyExploratoryFieldSpec(ec.NewChild("translationArgs"));
+
+            } else {
+
+                this.TranslationArgs.ApplyExploratoryFieldSpec(ec.NewChild("translationArgs"));
+
+            }
+        }
+        else if (this.TranslationArgs != null && ec.Excludes("translationArgs",false))
+        {
+            this.TranslationArgs = null;
         }
     }
 
@@ -218,9 +325,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<DhrcActiveRecommendation> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

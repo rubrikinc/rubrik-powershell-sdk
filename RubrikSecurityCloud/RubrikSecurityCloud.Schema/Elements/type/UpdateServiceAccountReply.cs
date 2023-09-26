@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? ClientId
         // GraphQL -> clientId: String! (scalar)
         if (this.ClientId != null) {
-            s += ind + "clientId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "clientId\n" ;
+            } else {
+                s += ind + "clientId\n" ;
+            }
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
         if (this.Description != null) {
-            s += ind + "description\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "description\n" ;
+            } else {
+                s += ind + "description\n" ;
+            }
         }
         //      C# -> DateTime? LastLogin
         // GraphQL -> lastLogin: DateTime (scalar)
         if (this.LastLogin != null) {
-            s += ind + "lastLogin\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "lastLogin\n" ;
+            } else {
+                s += ind + "lastLogin\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? ClientId
         // GraphQL -> clientId: String! (scalar)
-        if (this.ClientId == null && ec.Includes("clientId",true))
+        if (ec.Includes("clientId",true))
         {
-            this.ClientId = "FETCH";
+            if(this.ClientId == null) {
+
+                this.ClientId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClientId != null && ec.Excludes("clientId",true))
+        {
+            this.ClientId = null;
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
-        if (this.Description == null && ec.Includes("description",true))
+        if (ec.Includes("description",true))
         {
-            this.Description = "FETCH";
+            if(this.Description == null) {
+
+                this.Description = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Description != null && ec.Excludes("description",true))
+        {
+            this.Description = null;
         }
         //      C# -> DateTime? LastLogin
         // GraphQL -> lastLogin: DateTime (scalar)
-        if (this.LastLogin == null && ec.Includes("lastLogin",true))
+        if (ec.Includes("lastLogin",true))
         {
-            this.LastLogin = new DateTime();
+            if(this.LastLogin == null) {
+
+                this.LastLogin = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastLogin != null && ec.Excludes("lastLogin",true))
+        {
+            this.LastLogin = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<UpdateServiceAccountReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Secret
         // GraphQL -> secret: String! (scalar)
         if (this.Secret != null) {
-            s += ind + "secret\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "secret\n" ;
+            } else {
+                s += ind + "secret\n" ;
+            }
         }
         //      C# -> System.String? SecretUri
         // GraphQL -> secretUri: String! (scalar)
         if (this.SecretUri != null) {
-            s += ind + "secretUri\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "secretUri\n" ;
+            } else {
+                s += ind + "secretUri\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Secret
         // GraphQL -> secret: String! (scalar)
-        if (this.Secret == null && ec.Includes("secret",true))
+        if (ec.Includes("secret",true))
         {
-            this.Secret = "FETCH";
+            if(this.Secret == null) {
+
+                this.Secret = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Secret != null && ec.Excludes("secret",true))
+        {
+            this.Secret = null;
         }
         //      C# -> System.String? SecretUri
         // GraphQL -> secretUri: String! (scalar)
-        if (this.SecretUri == null && ec.Includes("secretUri",true))
+        if (ec.Includes("secretUri",true))
         {
-            this.SecretUri = "FETCH";
+            if(this.SecretUri == null) {
+
+                this.SecretUri = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SecretUri != null && ec.Excludes("secretUri",true))
+        {
+            this.SecretUri = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<GenerateTotpSecretReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

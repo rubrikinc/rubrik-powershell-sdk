@@ -92,50 +92,75 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<AwsCloudAccountRegion>? ExocomputeEligibleRegions
         // GraphQL -> exocomputeEligibleRegions: [AwsCloudAccountRegion!]! (enum)
         if (this.ExocomputeEligibleRegions != null) {
-            s += ind + "exocomputeEligibleRegions\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "exocomputeEligibleRegions\n" ;
+            } else {
+                s += ind + "exocomputeEligibleRegions\n" ;
+            }
         }
         //      C# -> List<System.String>? MappedCloudAccountIds
         // GraphQL -> mappedCloudAccountIds: [UUID!]! (scalar)
         if (this.MappedCloudAccountIds != null) {
-            s += ind + "mappedCloudAccountIds\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "mappedCloudAccountIds\n" ;
+            } else {
+                s += ind + "mappedCloudAccountIds\n" ;
+            }
         }
         //      C# -> AwsCloudAccount? AwsCloudAccount
         // GraphQL -> awsCloudAccount: AwsCloudAccount! (type)
         if (this.AwsCloudAccount != null) {
-            var fspec = this.AwsCloudAccount.AsFieldSpec(indent+1);
+            var fspec = this.AwsCloudAccount.AsFieldSpec(conf.Child("awsCloudAccount"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "awsCloudAccount {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "awsCloudAccount {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<AwsExocomputeGetConfigResponse>? Configs
         // GraphQL -> configs: [AwsExocomputeGetConfigResponse!]! (type)
         if (this.Configs != null) {
-            var fspec = this.Configs.AsFieldSpec(indent+1);
+            var fspec = this.Configs.AsFieldSpec(conf.Child("configs"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "configs {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "configs {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> FeatureDetail? FeatureDetail
         // GraphQL -> featureDetail: FeatureDetail! (type)
         if (this.FeatureDetail != null) {
-            var fspec = this.FeatureDetail.AsFieldSpec(indent+1);
+            var fspec = this.FeatureDetail.AsFieldSpec(conf.Child("featureDetail"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "featureDetail {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "featureDetail {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<CloudAccountDetails>? MappedCloudAccounts
         // GraphQL -> mappedCloudAccounts: [CloudAccountDetails!]! (type)
         if (this.MappedCloudAccounts != null) {
-            var fspec = this.MappedCloudAccounts.AsFieldSpec(indent+1);
+            var fspec = this.MappedCloudAccounts.AsFieldSpec(conf.Child("mappedCloudAccounts"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "mappedCloudAccounts {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "mappedCloudAccounts {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -147,43 +172,113 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<AwsCloudAccountRegion>? ExocomputeEligibleRegions
         // GraphQL -> exocomputeEligibleRegions: [AwsCloudAccountRegion!]! (enum)
-        if (this.ExocomputeEligibleRegions == null && ec.Includes("exocomputeEligibleRegions",true))
+        if (ec.Includes("exocomputeEligibleRegions",true))
         {
-            this.ExocomputeEligibleRegions = new List<AwsCloudAccountRegion>();
+            if(this.ExocomputeEligibleRegions == null) {
+
+                this.ExocomputeEligibleRegions = new List<AwsCloudAccountRegion>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExocomputeEligibleRegions != null && ec.Excludes("exocomputeEligibleRegions",true))
+        {
+            this.ExocomputeEligibleRegions = null;
         }
         //      C# -> List<System.String>? MappedCloudAccountIds
         // GraphQL -> mappedCloudAccountIds: [UUID!]! (scalar)
-        if (this.MappedCloudAccountIds == null && ec.Includes("mappedCloudAccountIds",true))
+        if (ec.Includes("mappedCloudAccountIds",true))
         {
-            this.MappedCloudAccountIds = new List<System.String>();
+            if(this.MappedCloudAccountIds == null) {
+
+                this.MappedCloudAccountIds = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.MappedCloudAccountIds != null && ec.Excludes("mappedCloudAccountIds",true))
+        {
+            this.MappedCloudAccountIds = null;
         }
         //      C# -> AwsCloudAccount? AwsCloudAccount
         // GraphQL -> awsCloudAccount: AwsCloudAccount! (type)
-        if (this.AwsCloudAccount == null && ec.Includes("awsCloudAccount",false))
+        if (ec.Includes("awsCloudAccount",false))
         {
-            this.AwsCloudAccount = new AwsCloudAccount();
-            this.AwsCloudAccount.ApplyExploratoryFieldSpec(ec.NewChild("awsCloudAccount"));
+            if(this.AwsCloudAccount == null) {
+
+                this.AwsCloudAccount = new AwsCloudAccount();
+                this.AwsCloudAccount.ApplyExploratoryFieldSpec(ec.NewChild("awsCloudAccount"));
+
+            } else {
+
+                this.AwsCloudAccount.ApplyExploratoryFieldSpec(ec.NewChild("awsCloudAccount"));
+
+            }
+        }
+        else if (this.AwsCloudAccount != null && ec.Excludes("awsCloudAccount",false))
+        {
+            this.AwsCloudAccount = null;
         }
         //      C# -> List<AwsExocomputeGetConfigResponse>? Configs
         // GraphQL -> configs: [AwsExocomputeGetConfigResponse!]! (type)
-        if (this.Configs == null && ec.Includes("configs",false))
+        if (ec.Includes("configs",false))
         {
-            this.Configs = new List<AwsExocomputeGetConfigResponse>();
-            this.Configs.ApplyExploratoryFieldSpec(ec.NewChild("configs"));
+            if(this.Configs == null) {
+
+                this.Configs = new List<AwsExocomputeGetConfigResponse>();
+                this.Configs.ApplyExploratoryFieldSpec(ec.NewChild("configs"));
+
+            } else {
+
+                this.Configs.ApplyExploratoryFieldSpec(ec.NewChild("configs"));
+
+            }
+        }
+        else if (this.Configs != null && ec.Excludes("configs",false))
+        {
+            this.Configs = null;
         }
         //      C# -> FeatureDetail? FeatureDetail
         // GraphQL -> featureDetail: FeatureDetail! (type)
-        if (this.FeatureDetail == null && ec.Includes("featureDetail",false))
+        if (ec.Includes("featureDetail",false))
         {
-            this.FeatureDetail = new FeatureDetail();
-            this.FeatureDetail.ApplyExploratoryFieldSpec(ec.NewChild("featureDetail"));
+            if(this.FeatureDetail == null) {
+
+                this.FeatureDetail = new FeatureDetail();
+                this.FeatureDetail.ApplyExploratoryFieldSpec(ec.NewChild("featureDetail"));
+
+            } else {
+
+                this.FeatureDetail.ApplyExploratoryFieldSpec(ec.NewChild("featureDetail"));
+
+            }
+        }
+        else if (this.FeatureDetail != null && ec.Excludes("featureDetail",false))
+        {
+            this.FeatureDetail = null;
         }
         //      C# -> List<CloudAccountDetails>? MappedCloudAccounts
         // GraphQL -> mappedCloudAccounts: [CloudAccountDetails!]! (type)
-        if (this.MappedCloudAccounts == null && ec.Includes("mappedCloudAccounts",false))
+        if (ec.Includes("mappedCloudAccounts",false))
         {
-            this.MappedCloudAccounts = new List<CloudAccountDetails>();
-            this.MappedCloudAccounts.ApplyExploratoryFieldSpec(ec.NewChild("mappedCloudAccounts"));
+            if(this.MappedCloudAccounts == null) {
+
+                this.MappedCloudAccounts = new List<CloudAccountDetails>();
+                this.MappedCloudAccounts.ApplyExploratoryFieldSpec(ec.NewChild("mappedCloudAccounts"));
+
+            } else {
+
+                this.MappedCloudAccounts.ApplyExploratoryFieldSpec(ec.NewChild("mappedCloudAccounts"));
+
+            }
+        }
+        else if (this.MappedCloudAccounts != null && ec.Excludes("mappedCloudAccounts",false))
+        {
+            this.MappedCloudAccounts = null;
         }
     }
 
@@ -210,9 +305,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AwsExocomputeConfig> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

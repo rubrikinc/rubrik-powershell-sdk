@@ -65,26 +65,39 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> CdmClusterStatusTypeEnum? Status
         // GraphQL -> status: CdmClusterStatusTypeEnum! (enum)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String (scalar)
         if (this.Message != null) {
-            s += ind + "message\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "message\n" ;
+            } else {
+                s += ind + "message\n" ;
+            }
         }
         //      C# -> CdmClusterStatusInfo? StatusInfo
         // GraphQL -> statusInfo: CdmClusterStatusInfo (type)
         if (this.StatusInfo != null) {
-            var fspec = this.StatusInfo.AsFieldSpec(indent+1);
+            var fspec = this.StatusInfo.AsFieldSpec(conf.Child("statusInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "statusInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "statusInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -96,22 +109,56 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> CdmClusterStatusTypeEnum? Status
         // GraphQL -> status: CdmClusterStatusTypeEnum! (enum)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = new CdmClusterStatusTypeEnum();
+            if(this.Status == null) {
+
+                this.Status = new CdmClusterStatusTypeEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String (scalar)
-        if (this.Message == null && ec.Includes("message",true))
+        if (ec.Includes("message",true))
         {
-            this.Message = "FETCH";
+            if(this.Message == null) {
+
+                this.Message = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Message != null && ec.Excludes("message",true))
+        {
+            this.Message = null;
         }
         //      C# -> CdmClusterStatusInfo? StatusInfo
         // GraphQL -> statusInfo: CdmClusterStatusInfo (type)
-        if (this.StatusInfo == null && ec.Includes("statusInfo",false))
+        if (ec.Includes("statusInfo",false))
         {
-            this.StatusInfo = new CdmClusterStatusInfo();
-            this.StatusInfo.ApplyExploratoryFieldSpec(ec.NewChild("statusInfo"));
+            if(this.StatusInfo == null) {
+
+                this.StatusInfo = new CdmClusterStatusInfo();
+                this.StatusInfo.ApplyExploratoryFieldSpec(ec.NewChild("statusInfo"));
+
+            } else {
+
+                this.StatusInfo.ApplyExploratoryFieldSpec(ec.NewChild("statusInfo"));
+
+            }
+        }
+        else if (this.StatusInfo != null && ec.Excludes("statusInfo",false))
+        {
+            this.StatusInfo = null;
         }
     }
 
@@ -138,9 +185,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CdmClusterStatus> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

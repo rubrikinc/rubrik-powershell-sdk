@@ -83,34 +83,55 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> RubrikCloudVaultType? Type
         // GraphQL -> type: RubrikCloudVaultType! (enum)
         if (this.Type != null) {
-            s += ind + "type\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "type\n" ;
+            } else {
+                s += ind + "type\n" ;
+            }
         }
         //      C# -> System.String? ClusterName
         // GraphQL -> clusterName: String! (scalar)
         if (this.ClusterName != null) {
-            s += ind + "clusterName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterName\n" ;
+            } else {
+                s += ind + "clusterName\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> List<System.String>? SlaDomains
         // GraphQL -> slaDomains: [String!]! (scalar)
         if (this.SlaDomains != null) {
-            s += ind + "slaDomains\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "slaDomains\n" ;
+            } else {
+                s += ind + "slaDomains\n" ;
+            }
         }
         return s;
     }
@@ -121,33 +142,88 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> RubrikCloudVaultType? Type
         // GraphQL -> type: RubrikCloudVaultType! (enum)
-        if (this.Type == null && ec.Includes("type",true))
+        if (ec.Includes("type",true))
         {
-            this.Type = new RubrikCloudVaultType();
+            if(this.Type == null) {
+
+                this.Type = new RubrikCloudVaultType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Type != null && ec.Excludes("type",true))
+        {
+            this.Type = null;
         }
         //      C# -> System.String? ClusterName
         // GraphQL -> clusterName: String! (scalar)
-        if (this.ClusterName == null && ec.Includes("clusterName",true))
+        if (ec.Includes("clusterName",true))
         {
-            this.ClusterName = "FETCH";
+            if(this.ClusterName == null) {
+
+                this.ClusterName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterName != null && ec.Excludes("clusterName",true))
+        {
+            this.ClusterName = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> List<System.String>? SlaDomains
         // GraphQL -> slaDomains: [String!]! (scalar)
-        if (this.SlaDomains == null && ec.Includes("slaDomains",true))
+        if (ec.Includes("slaDomains",true))
         {
-            this.SlaDomains = new List<System.String>();
+            if(this.SlaDomains == null) {
+
+                this.SlaDomains = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SlaDomains != null && ec.Excludes("slaDomains",true))
+        {
+            this.SlaDomains = null;
         }
     }
 
@@ -174,9 +250,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<RubrikCloudVaultLocation> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

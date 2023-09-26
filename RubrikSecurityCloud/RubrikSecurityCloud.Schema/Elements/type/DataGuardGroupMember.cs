@@ -92,39 +92,64 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? DbUniqueName
         // GraphQL -> dbUniqueName: String! (scalar)
         if (this.DbUniqueName != null) {
-            s += ind + "dbUniqueName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "dbUniqueName\n" ;
+            } else {
+                s += ind + "dbUniqueName\n" ;
+            }
         }
         //      C# -> System.String? RacId
         // GraphQL -> racId: String (scalar)
         if (this.RacId != null) {
-            s += ind + "racId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "racId\n" ;
+            } else {
+                s += ind + "racId\n" ;
+            }
         }
         //      C# -> System.String? RacName
         // GraphQL -> racName: String (scalar)
         if (this.RacName != null) {
-            s += ind + "racName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "racName\n" ;
+            } else {
+                s += ind + "racName\n" ;
+            }
         }
         //      C# -> System.String? Role
         // GraphQL -> role: String! (scalar)
         if (this.Role != null) {
-            s += ind + "role\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "role\n" ;
+            } else {
+                s += ind + "role\n" ;
+            }
         }
         //      C# -> System.String? StandaloneHostId
         // GraphQL -> standaloneHostId: String (scalar)
         if (this.StandaloneHostId != null) {
-            s += ind + "standaloneHostId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "standaloneHostId\n" ;
+            } else {
+                s += ind + "standaloneHostId\n" ;
+            }
         }
         //      C# -> System.String? StandaloneHostName
         // GraphQL -> standaloneHostName: String (scalar)
         if (this.StandaloneHostName != null) {
-            s += ind + "standaloneHostName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "standaloneHostName\n" ;
+            } else {
+                s += ind + "standaloneHostName\n" ;
+            }
         }
         return s;
     }
@@ -135,39 +160,105 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? DbUniqueName
         // GraphQL -> dbUniqueName: String! (scalar)
-        if (this.DbUniqueName == null && ec.Includes("dbUniqueName",true))
+        if (ec.Includes("dbUniqueName",true))
         {
-            this.DbUniqueName = "FETCH";
+            if(this.DbUniqueName == null) {
+
+                this.DbUniqueName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DbUniqueName != null && ec.Excludes("dbUniqueName",true))
+        {
+            this.DbUniqueName = null;
         }
         //      C# -> System.String? RacId
         // GraphQL -> racId: String (scalar)
-        if (this.RacId == null && ec.Includes("racId",true))
+        if (ec.Includes("racId",true))
         {
-            this.RacId = "FETCH";
+            if(this.RacId == null) {
+
+                this.RacId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RacId != null && ec.Excludes("racId",true))
+        {
+            this.RacId = null;
         }
         //      C# -> System.String? RacName
         // GraphQL -> racName: String (scalar)
-        if (this.RacName == null && ec.Includes("racName",true))
+        if (ec.Includes("racName",true))
         {
-            this.RacName = "FETCH";
+            if(this.RacName == null) {
+
+                this.RacName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RacName != null && ec.Excludes("racName",true))
+        {
+            this.RacName = null;
         }
         //      C# -> System.String? Role
         // GraphQL -> role: String! (scalar)
-        if (this.Role == null && ec.Includes("role",true))
+        if (ec.Includes("role",true))
         {
-            this.Role = "FETCH";
+            if(this.Role == null) {
+
+                this.Role = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Role != null && ec.Excludes("role",true))
+        {
+            this.Role = null;
         }
         //      C# -> System.String? StandaloneHostId
         // GraphQL -> standaloneHostId: String (scalar)
-        if (this.StandaloneHostId == null && ec.Includes("standaloneHostId",true))
+        if (ec.Includes("standaloneHostId",true))
         {
-            this.StandaloneHostId = "FETCH";
+            if(this.StandaloneHostId == null) {
+
+                this.StandaloneHostId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.StandaloneHostId != null && ec.Excludes("standaloneHostId",true))
+        {
+            this.StandaloneHostId = null;
         }
         //      C# -> System.String? StandaloneHostName
         // GraphQL -> standaloneHostName: String (scalar)
-        if (this.StandaloneHostName == null && ec.Includes("standaloneHostName",true))
+        if (ec.Includes("standaloneHostName",true))
         {
-            this.StandaloneHostName = "FETCH";
+            if(this.StandaloneHostName == null) {
+
+                this.StandaloneHostName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.StandaloneHostName != null && ec.Excludes("standaloneHostName",true))
+        {
+            this.StandaloneHostName = null;
         }
     }
 
@@ -194,9 +285,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<DataGuardGroupMember> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -164,79 +164,136 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? CompletedNodes
         // GraphQL -> completedNodes: String (scalar)
         if (this.CompletedNodes != null) {
-            s += ind + "completedNodes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "completedNodes\n" ;
+            } else {
+                s += ind + "completedNodes\n" ;
+            }
         }
         //      C# -> System.String? CurrentNode
         // GraphQL -> currentNode: String (scalar)
         if (this.CurrentNode != null) {
-            s += ind + "currentNode\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "currentNode\n" ;
+            } else {
+                s += ind + "currentNode\n" ;
+            }
         }
         //      C# -> System.String? CurrentNodeState
         // GraphQL -> currentNodeState: String (scalar)
         if (this.CurrentNodeState != null) {
-            s += ind + "currentNodeState\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "currentNodeState\n" ;
+            } else {
+                s += ind + "currentNodeState\n" ;
+            }
         }
         //      C# -> System.String? CurrentState
         // GraphQL -> currentState: String (scalar)
         if (this.CurrentState != null) {
-            s += ind + "currentState\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "currentState\n" ;
+            } else {
+                s += ind + "currentState\n" ;
+            }
         }
         //      C# -> System.String? CurrentStateProgress
         // GraphQL -> currentStateProgress: String (scalar)
         if (this.CurrentStateProgress != null) {
-            s += ind + "currentStateProgress\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "currentStateProgress\n" ;
+            } else {
+                s += ind + "currentStateProgress\n" ;
+            }
         }
         //      C# -> System.String? CurrentTask
         // GraphQL -> currentTask: String (scalar)
         if (this.CurrentTask != null) {
-            s += ind + "currentTask\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "currentTask\n" ;
+            } else {
+                s += ind + "currentTask\n" ;
+            }
         }
         //      C# -> System.String? DownloadJobStatus
         // GraphQL -> downloadJobStatus: String (scalar)
         if (this.DownloadJobStatus != null) {
-            s += ind + "downloadJobStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "downloadJobStatus\n" ;
+            } else {
+                s += ind + "downloadJobStatus\n" ;
+            }
         }
         //      C# -> System.String? DownloadProgress
         // GraphQL -> downloadProgress: String (scalar)
         if (this.DownloadProgress != null) {
-            s += ind + "downloadProgress\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "downloadProgress\n" ;
+            } else {
+                s += ind + "downloadProgress\n" ;
+            }
         }
         //      C# -> System.String? DownloadRemainingTimeEstimateInSeconds
         // GraphQL -> downloadRemainingTimeEstimateInSeconds: String (scalar)
         if (this.DownloadRemainingTimeEstimateInSeconds != null) {
-            s += ind + "downloadRemainingTimeEstimateInSeconds\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "downloadRemainingTimeEstimateInSeconds\n" ;
+            } else {
+                s += ind + "downloadRemainingTimeEstimateInSeconds\n" ;
+            }
         }
         //      C# -> System.String? DownloadVersion
         // GraphQL -> downloadVersion: String (scalar)
         if (this.DownloadVersion != null) {
-            s += ind + "downloadVersion\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "downloadVersion\n" ;
+            } else {
+                s += ind + "downloadVersion\n" ;
+            }
         }
         //      C# -> System.String? FinishedStates
         // GraphQL -> finishedStates: String (scalar)
         if (this.FinishedStates != null) {
-            s += ind + "finishedStates\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "finishedStates\n" ;
+            } else {
+                s += ind + "finishedStates\n" ;
+            }
         }
         //      C# -> System.String? OverallProgress
         // GraphQL -> overallProgress: String (scalar)
         if (this.OverallProgress != null) {
-            s += ind + "overallProgress\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "overallProgress\n" ;
+            } else {
+                s += ind + "overallProgress\n" ;
+            }
         }
         //      C# -> System.String? PendingStates
         // GraphQL -> pendingStates: String (scalar)
         if (this.PendingStates != null) {
-            s += ind + "pendingStates\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "pendingStates\n" ;
+            } else {
+                s += ind + "pendingStates\n" ;
+            }
         }
         //      C# -> System.String? TotalNodes
         // GraphQL -> totalNodes: String (scalar)
         if (this.TotalNodes != null) {
-            s += ind + "totalNodes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "totalNodes\n" ;
+            } else {
+                s += ind + "totalNodes\n" ;
+            }
         }
         return s;
     }
@@ -247,87 +304,241 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? CompletedNodes
         // GraphQL -> completedNodes: String (scalar)
-        if (this.CompletedNodes == null && ec.Includes("completedNodes",true))
+        if (ec.Includes("completedNodes",true))
         {
-            this.CompletedNodes = "FETCH";
+            if(this.CompletedNodes == null) {
+
+                this.CompletedNodes = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CompletedNodes != null && ec.Excludes("completedNodes",true))
+        {
+            this.CompletedNodes = null;
         }
         //      C# -> System.String? CurrentNode
         // GraphQL -> currentNode: String (scalar)
-        if (this.CurrentNode == null && ec.Includes("currentNode",true))
+        if (ec.Includes("currentNode",true))
         {
-            this.CurrentNode = "FETCH";
+            if(this.CurrentNode == null) {
+
+                this.CurrentNode = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CurrentNode != null && ec.Excludes("currentNode",true))
+        {
+            this.CurrentNode = null;
         }
         //      C# -> System.String? CurrentNodeState
         // GraphQL -> currentNodeState: String (scalar)
-        if (this.CurrentNodeState == null && ec.Includes("currentNodeState",true))
+        if (ec.Includes("currentNodeState",true))
         {
-            this.CurrentNodeState = "FETCH";
+            if(this.CurrentNodeState == null) {
+
+                this.CurrentNodeState = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CurrentNodeState != null && ec.Excludes("currentNodeState",true))
+        {
+            this.CurrentNodeState = null;
         }
         //      C# -> System.String? CurrentState
         // GraphQL -> currentState: String (scalar)
-        if (this.CurrentState == null && ec.Includes("currentState",true))
+        if (ec.Includes("currentState",true))
         {
-            this.CurrentState = "FETCH";
+            if(this.CurrentState == null) {
+
+                this.CurrentState = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CurrentState != null && ec.Excludes("currentState",true))
+        {
+            this.CurrentState = null;
         }
         //      C# -> System.String? CurrentStateProgress
         // GraphQL -> currentStateProgress: String (scalar)
-        if (this.CurrentStateProgress == null && ec.Includes("currentStateProgress",true))
+        if (ec.Includes("currentStateProgress",true))
         {
-            this.CurrentStateProgress = "FETCH";
+            if(this.CurrentStateProgress == null) {
+
+                this.CurrentStateProgress = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CurrentStateProgress != null && ec.Excludes("currentStateProgress",true))
+        {
+            this.CurrentStateProgress = null;
         }
         //      C# -> System.String? CurrentTask
         // GraphQL -> currentTask: String (scalar)
-        if (this.CurrentTask == null && ec.Includes("currentTask",true))
+        if (ec.Includes("currentTask",true))
         {
-            this.CurrentTask = "FETCH";
+            if(this.CurrentTask == null) {
+
+                this.CurrentTask = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CurrentTask != null && ec.Excludes("currentTask",true))
+        {
+            this.CurrentTask = null;
         }
         //      C# -> System.String? DownloadJobStatus
         // GraphQL -> downloadJobStatus: String (scalar)
-        if (this.DownloadJobStatus == null && ec.Includes("downloadJobStatus",true))
+        if (ec.Includes("downloadJobStatus",true))
         {
-            this.DownloadJobStatus = "FETCH";
+            if(this.DownloadJobStatus == null) {
+
+                this.DownloadJobStatus = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DownloadJobStatus != null && ec.Excludes("downloadJobStatus",true))
+        {
+            this.DownloadJobStatus = null;
         }
         //      C# -> System.String? DownloadProgress
         // GraphQL -> downloadProgress: String (scalar)
-        if (this.DownloadProgress == null && ec.Includes("downloadProgress",true))
+        if (ec.Includes("downloadProgress",true))
         {
-            this.DownloadProgress = "FETCH";
+            if(this.DownloadProgress == null) {
+
+                this.DownloadProgress = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DownloadProgress != null && ec.Excludes("downloadProgress",true))
+        {
+            this.DownloadProgress = null;
         }
         //      C# -> System.String? DownloadRemainingTimeEstimateInSeconds
         // GraphQL -> downloadRemainingTimeEstimateInSeconds: String (scalar)
-        if (this.DownloadRemainingTimeEstimateInSeconds == null && ec.Includes("downloadRemainingTimeEstimateInSeconds",true))
+        if (ec.Includes("downloadRemainingTimeEstimateInSeconds",true))
         {
-            this.DownloadRemainingTimeEstimateInSeconds = "FETCH";
+            if(this.DownloadRemainingTimeEstimateInSeconds == null) {
+
+                this.DownloadRemainingTimeEstimateInSeconds = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DownloadRemainingTimeEstimateInSeconds != null && ec.Excludes("downloadRemainingTimeEstimateInSeconds",true))
+        {
+            this.DownloadRemainingTimeEstimateInSeconds = null;
         }
         //      C# -> System.String? DownloadVersion
         // GraphQL -> downloadVersion: String (scalar)
-        if (this.DownloadVersion == null && ec.Includes("downloadVersion",true))
+        if (ec.Includes("downloadVersion",true))
         {
-            this.DownloadVersion = "FETCH";
+            if(this.DownloadVersion == null) {
+
+                this.DownloadVersion = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DownloadVersion != null && ec.Excludes("downloadVersion",true))
+        {
+            this.DownloadVersion = null;
         }
         //      C# -> System.String? FinishedStates
         // GraphQL -> finishedStates: String (scalar)
-        if (this.FinishedStates == null && ec.Includes("finishedStates",true))
+        if (ec.Includes("finishedStates",true))
         {
-            this.FinishedStates = "FETCH";
+            if(this.FinishedStates == null) {
+
+                this.FinishedStates = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.FinishedStates != null && ec.Excludes("finishedStates",true))
+        {
+            this.FinishedStates = null;
         }
         //      C# -> System.String? OverallProgress
         // GraphQL -> overallProgress: String (scalar)
-        if (this.OverallProgress == null && ec.Includes("overallProgress",true))
+        if (ec.Includes("overallProgress",true))
         {
-            this.OverallProgress = "FETCH";
+            if(this.OverallProgress == null) {
+
+                this.OverallProgress = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OverallProgress != null && ec.Excludes("overallProgress",true))
+        {
+            this.OverallProgress = null;
         }
         //      C# -> System.String? PendingStates
         // GraphQL -> pendingStates: String (scalar)
-        if (this.PendingStates == null && ec.Includes("pendingStates",true))
+        if (ec.Includes("pendingStates",true))
         {
-            this.PendingStates = "FETCH";
+            if(this.PendingStates == null) {
+
+                this.PendingStates = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PendingStates != null && ec.Excludes("pendingStates",true))
+        {
+            this.PendingStates = null;
         }
         //      C# -> System.String? TotalNodes
         // GraphQL -> totalNodes: String (scalar)
-        if (this.TotalNodes == null && ec.Includes("totalNodes",true))
+        if (ec.Includes("totalNodes",true))
         {
-            this.TotalNodes = "FETCH";
+            if(this.TotalNodes == null) {
+
+                this.TotalNodes = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalNodes != null && ec.Excludes("totalNodes",true))
+        {
+            this.TotalNodes = null;
         }
     }
 
@@ -354,9 +565,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CdmClusterStatusInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

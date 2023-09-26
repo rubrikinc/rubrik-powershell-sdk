@@ -56,24 +56,33 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<AwsAccountValidationResponse>? InvalidAwsAccounts
         // GraphQL -> invalidAwsAccounts: [AwsAccountValidationResponse!]! (type)
         if (this.InvalidAwsAccounts != null) {
-            var fspec = this.InvalidAwsAccounts.AsFieldSpec(indent+1);
+            var fspec = this.InvalidAwsAccounts.AsFieldSpec(conf.Child("invalidAwsAccounts"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "invalidAwsAccounts {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "invalidAwsAccounts {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> AwsAccountValidationResponse? InvalidAwsAdminAccount
         // GraphQL -> invalidAwsAdminAccount: AwsAccountValidationResponse (type)
         if (this.InvalidAwsAdminAccount != null) {
-            var fspec = this.InvalidAwsAdminAccount.AsFieldSpec(indent+1);
+            var fspec = this.InvalidAwsAdminAccount.AsFieldSpec(conf.Child("invalidAwsAdminAccount"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "invalidAwsAdminAccount {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "invalidAwsAdminAccount {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -85,17 +94,41 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<AwsAccountValidationResponse>? InvalidAwsAccounts
         // GraphQL -> invalidAwsAccounts: [AwsAccountValidationResponse!]! (type)
-        if (this.InvalidAwsAccounts == null && ec.Includes("invalidAwsAccounts",false))
+        if (ec.Includes("invalidAwsAccounts",false))
         {
-            this.InvalidAwsAccounts = new List<AwsAccountValidationResponse>();
-            this.InvalidAwsAccounts.ApplyExploratoryFieldSpec(ec.NewChild("invalidAwsAccounts"));
+            if(this.InvalidAwsAccounts == null) {
+
+                this.InvalidAwsAccounts = new List<AwsAccountValidationResponse>();
+                this.InvalidAwsAccounts.ApplyExploratoryFieldSpec(ec.NewChild("invalidAwsAccounts"));
+
+            } else {
+
+                this.InvalidAwsAccounts.ApplyExploratoryFieldSpec(ec.NewChild("invalidAwsAccounts"));
+
+            }
+        }
+        else if (this.InvalidAwsAccounts != null && ec.Excludes("invalidAwsAccounts",false))
+        {
+            this.InvalidAwsAccounts = null;
         }
         //      C# -> AwsAccountValidationResponse? InvalidAwsAdminAccount
         // GraphQL -> invalidAwsAdminAccount: AwsAccountValidationResponse (type)
-        if (this.InvalidAwsAdminAccount == null && ec.Includes("invalidAwsAdminAccount",false))
+        if (ec.Includes("invalidAwsAdminAccount",false))
         {
-            this.InvalidAwsAdminAccount = new AwsAccountValidationResponse();
-            this.InvalidAwsAdminAccount.ApplyExploratoryFieldSpec(ec.NewChild("invalidAwsAdminAccount"));
+            if(this.InvalidAwsAdminAccount == null) {
+
+                this.InvalidAwsAdminAccount = new AwsAccountValidationResponse();
+                this.InvalidAwsAdminAccount.ApplyExploratoryFieldSpec(ec.NewChild("invalidAwsAdminAccount"));
+
+            } else {
+
+                this.InvalidAwsAdminAccount.ApplyExploratoryFieldSpec(ec.NewChild("invalidAwsAdminAccount"));
+
+            }
+        }
+        else if (this.InvalidAwsAdminAccount != null && ec.Excludes("invalidAwsAdminAccount",false))
+        {
+            this.InvalidAwsAdminAccount = null;
         }
     }
 
@@ -122,9 +155,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AwsCloudAccountValidateResponse> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

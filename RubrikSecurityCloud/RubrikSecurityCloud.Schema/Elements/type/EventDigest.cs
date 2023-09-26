@@ -128,59 +128,100 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Account
         // GraphQL -> account: String! (scalar)
         if (this.Account != null) {
-            s += ind + "account\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "account\n" ;
+            } else {
+                s += ind + "account\n" ;
+            }
         }
         //      C# -> List<System.String>? ClusterUuids
         // GraphQL -> clusterUuids: [UUID!]! (scalar)
         if (this.ClusterUuids != null) {
-            s += ind + "clusterUuids\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterUuids\n" ;
+            } else {
+                s += ind + "clusterUuids\n" ;
+            }
         }
         //      C# -> System.Int32? DigestId
         // GraphQL -> digestId: Int! (scalar)
         if (this.DigestId != null) {
-            s += ind + "digestId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "digestId\n" ;
+            } else {
+                s += ind + "digestId\n" ;
+            }
         }
         //      C# -> System.String? DigestName
         // GraphQL -> digestName: String! (scalar)
         if (this.DigestName != null) {
-            s += ind + "digestName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "digestName\n" ;
+            } else {
+                s += ind + "digestName\n" ;
+            }
         }
         //      C# -> System.String? EventDigestConfigJson
         // GraphQL -> eventDigestConfigJson: String! (scalar)
         if (this.EventDigestConfigJson != null) {
-            s += ind + "eventDigestConfigJson\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "eventDigestConfigJson\n" ;
+            } else {
+                s += ind + "eventDigestConfigJson\n" ;
+            }
         }
         //      C# -> System.Int32? Frequency
         // GraphQL -> frequency: Int! (scalar)
         if (this.Frequency != null) {
-            s += ind + "frequency\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "frequency\n" ;
+            } else {
+                s += ind + "frequency\n" ;
+            }
         }
         //      C# -> System.Boolean? IncludeAudits
         // GraphQL -> includeAudits: Boolean! (scalar)
         if (this.IncludeAudits != null) {
-            s += ind + "includeAudits\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "includeAudits\n" ;
+            } else {
+                s += ind + "includeAudits\n" ;
+            }
         }
         //      C# -> System.Boolean? IncludeEvents
         // GraphQL -> includeEvents: Boolean! (scalar)
         if (this.IncludeEvents != null) {
-            s += ind + "includeEvents\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "includeEvents\n" ;
+            } else {
+                s += ind + "includeEvents\n" ;
+            }
         }
         //      C# -> System.Boolean? IsImmediate
         // GraphQL -> isImmediate: Boolean! (scalar)
         if (this.IsImmediate != null) {
-            s += ind + "isImmediate\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isImmediate\n" ;
+            } else {
+                s += ind + "isImmediate\n" ;
+            }
         }
         //      C# -> System.String? RecipientUserId
         // GraphQL -> recipientUserId: String! (scalar)
         if (this.RecipientUserId != null) {
-            s += ind + "recipientUserId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "recipientUserId\n" ;
+            } else {
+                s += ind + "recipientUserId\n" ;
+            }
         }
         return s;
     }
@@ -191,63 +232,173 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Account
         // GraphQL -> account: String! (scalar)
-        if (this.Account == null && ec.Includes("account",true))
+        if (ec.Includes("account",true))
         {
-            this.Account = "FETCH";
+            if(this.Account == null) {
+
+                this.Account = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Account != null && ec.Excludes("account",true))
+        {
+            this.Account = null;
         }
         //      C# -> List<System.String>? ClusterUuids
         // GraphQL -> clusterUuids: [UUID!]! (scalar)
-        if (this.ClusterUuids == null && ec.Includes("clusterUuids",true))
+        if (ec.Includes("clusterUuids",true))
         {
-            this.ClusterUuids = new List<System.String>();
+            if(this.ClusterUuids == null) {
+
+                this.ClusterUuids = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterUuids != null && ec.Excludes("clusterUuids",true))
+        {
+            this.ClusterUuids = null;
         }
         //      C# -> System.Int32? DigestId
         // GraphQL -> digestId: Int! (scalar)
-        if (this.DigestId == null && ec.Includes("digestId",true))
+        if (ec.Includes("digestId",true))
         {
-            this.DigestId = Int32.MinValue;
+            if(this.DigestId == null) {
+
+                this.DigestId = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.DigestId != null && ec.Excludes("digestId",true))
+        {
+            this.DigestId = null;
         }
         //      C# -> System.String? DigestName
         // GraphQL -> digestName: String! (scalar)
-        if (this.DigestName == null && ec.Includes("digestName",true))
+        if (ec.Includes("digestName",true))
         {
-            this.DigestName = "FETCH";
+            if(this.DigestName == null) {
+
+                this.DigestName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DigestName != null && ec.Excludes("digestName",true))
+        {
+            this.DigestName = null;
         }
         //      C# -> System.String? EventDigestConfigJson
         // GraphQL -> eventDigestConfigJson: String! (scalar)
-        if (this.EventDigestConfigJson == null && ec.Includes("eventDigestConfigJson",true))
+        if (ec.Includes("eventDigestConfigJson",true))
         {
-            this.EventDigestConfigJson = "FETCH";
+            if(this.EventDigestConfigJson == null) {
+
+                this.EventDigestConfigJson = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.EventDigestConfigJson != null && ec.Excludes("eventDigestConfigJson",true))
+        {
+            this.EventDigestConfigJson = null;
         }
         //      C# -> System.Int32? Frequency
         // GraphQL -> frequency: Int! (scalar)
-        if (this.Frequency == null && ec.Includes("frequency",true))
+        if (ec.Includes("frequency",true))
         {
-            this.Frequency = Int32.MinValue;
+            if(this.Frequency == null) {
+
+                this.Frequency = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Frequency != null && ec.Excludes("frequency",true))
+        {
+            this.Frequency = null;
         }
         //      C# -> System.Boolean? IncludeAudits
         // GraphQL -> includeAudits: Boolean! (scalar)
-        if (this.IncludeAudits == null && ec.Includes("includeAudits",true))
+        if (ec.Includes("includeAudits",true))
         {
-            this.IncludeAudits = true;
+            if(this.IncludeAudits == null) {
+
+                this.IncludeAudits = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IncludeAudits != null && ec.Excludes("includeAudits",true))
+        {
+            this.IncludeAudits = null;
         }
         //      C# -> System.Boolean? IncludeEvents
         // GraphQL -> includeEvents: Boolean! (scalar)
-        if (this.IncludeEvents == null && ec.Includes("includeEvents",true))
+        if (ec.Includes("includeEvents",true))
         {
-            this.IncludeEvents = true;
+            if(this.IncludeEvents == null) {
+
+                this.IncludeEvents = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IncludeEvents != null && ec.Excludes("includeEvents",true))
+        {
+            this.IncludeEvents = null;
         }
         //      C# -> System.Boolean? IsImmediate
         // GraphQL -> isImmediate: Boolean! (scalar)
-        if (this.IsImmediate == null && ec.Includes("isImmediate",true))
+        if (ec.Includes("isImmediate",true))
         {
-            this.IsImmediate = true;
+            if(this.IsImmediate == null) {
+
+                this.IsImmediate = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsImmediate != null && ec.Excludes("isImmediate",true))
+        {
+            this.IsImmediate = null;
         }
         //      C# -> System.String? RecipientUserId
         // GraphQL -> recipientUserId: String! (scalar)
-        if (this.RecipientUserId == null && ec.Includes("recipientUserId",true))
+        if (ec.Includes("recipientUserId",true))
         {
-            this.RecipientUserId = "FETCH";
+            if(this.RecipientUserId == null) {
+
+                this.RecipientUserId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RecipientUserId != null && ec.Excludes("recipientUserId",true))
+        {
+            this.RecipientUserId = null;
         }
     }
 
@@ -274,9 +425,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<EventDigest> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -110,49 +110,82 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> DataTypeEnum? Type
         // GraphQL -> type: DataTypeEnum! (enum)
         if (this.Type != null) {
-            s += ind + "type\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "type\n" ;
+            } else {
+                s += ind + "type\n" ;
+            }
         }
         //      C# -> System.Boolean? Aggregate
         // GraphQL -> aggregate: Boolean! (scalar)
         if (this.Aggregate != null) {
-            s += ind + "aggregate\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "aggregate\n" ;
+            } else {
+                s += ind + "aggregate\n" ;
+            }
         }
         //      C# -> System.Boolean? Default
         // GraphQL -> default: Boolean! (scalar)
         if (this.Default != null) {
-            s += ind + "default\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "default\n" ;
+            } else {
+                s += ind + "default\n" ;
+            }
         }
         //      C# -> System.Boolean? Dimensional
         // GraphQL -> dimensional: Boolean! (scalar)
         if (this.Dimensional != null) {
-            s += ind + "dimensional\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "dimensional\n" ;
+            } else {
+                s += ind + "dimensional\n" ;
+            }
         }
         //      C# -> System.String? DisplayName
         // GraphQL -> displayName: String! (scalar)
         if (this.DisplayName != null) {
-            s += ind + "displayName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "displayName\n" ;
+            } else {
+                s += ind + "displayName\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.Boolean? Nullable
         // GraphQL -> nullable: Boolean! (scalar)
         if (this.Nullable != null) {
-            s += ind + "nullable\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "nullable\n" ;
+            } else {
+                s += ind + "nullable\n" ;
+            }
         }
         //      C# -> System.Boolean? Sortable
         // GraphQL -> sortable: Boolean! (scalar)
         if (this.Sortable != null) {
-            s += ind + "sortable\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sortable\n" ;
+            } else {
+                s += ind + "sortable\n" ;
+            }
         }
         return s;
     }
@@ -163,51 +196,139 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> DataTypeEnum? Type
         // GraphQL -> type: DataTypeEnum! (enum)
-        if (this.Type == null && ec.Includes("type",true))
+        if (ec.Includes("type",true))
         {
-            this.Type = new DataTypeEnum();
+            if(this.Type == null) {
+
+                this.Type = new DataTypeEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Type != null && ec.Excludes("type",true))
+        {
+            this.Type = null;
         }
         //      C# -> System.Boolean? Aggregate
         // GraphQL -> aggregate: Boolean! (scalar)
-        if (this.Aggregate == null && ec.Includes("aggregate",true))
+        if (ec.Includes("aggregate",true))
         {
-            this.Aggregate = true;
+            if(this.Aggregate == null) {
+
+                this.Aggregate = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Aggregate != null && ec.Excludes("aggregate",true))
+        {
+            this.Aggregate = null;
         }
         //      C# -> System.Boolean? Default
         // GraphQL -> default: Boolean! (scalar)
-        if (this.Default == null && ec.Includes("default",true))
+        if (ec.Includes("default",true))
         {
-            this.Default = true;
+            if(this.Default == null) {
+
+                this.Default = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Default != null && ec.Excludes("default",true))
+        {
+            this.Default = null;
         }
         //      C# -> System.Boolean? Dimensional
         // GraphQL -> dimensional: Boolean! (scalar)
-        if (this.Dimensional == null && ec.Includes("dimensional",true))
+        if (ec.Includes("dimensional",true))
         {
-            this.Dimensional = true;
+            if(this.Dimensional == null) {
+
+                this.Dimensional = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Dimensional != null && ec.Excludes("dimensional",true))
+        {
+            this.Dimensional = null;
         }
         //      C# -> System.String? DisplayName
         // GraphQL -> displayName: String! (scalar)
-        if (this.DisplayName == null && ec.Includes("displayName",true))
+        if (ec.Includes("displayName",true))
         {
-            this.DisplayName = "FETCH";
+            if(this.DisplayName == null) {
+
+                this.DisplayName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DisplayName != null && ec.Excludes("displayName",true))
+        {
+            this.DisplayName = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.Boolean? Nullable
         // GraphQL -> nullable: Boolean! (scalar)
-        if (this.Nullable == null && ec.Includes("nullable",true))
+        if (ec.Includes("nullable",true))
         {
-            this.Nullable = true;
+            if(this.Nullable == null) {
+
+                this.Nullable = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Nullable != null && ec.Excludes("nullable",true))
+        {
+            this.Nullable = null;
         }
         //      C# -> System.Boolean? Sortable
         // GraphQL -> sortable: Boolean! (scalar)
-        if (this.Sortable == null && ec.Includes("sortable",true))
+        if (ec.Includes("sortable",true))
         {
-            this.Sortable = true;
+            if(this.Sortable == null) {
+
+                this.Sortable = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Sortable != null && ec.Excludes("sortable",true))
+        {
+            this.Sortable = null;
         }
     }
 
@@ -234,9 +355,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<Column> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

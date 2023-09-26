@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<System.Int32>? DaysOfWeek
         // GraphQL -> daysOfWeek: [Int!]! (scalar)
         if (this.DaysOfWeek != null) {
-            s += ind + "daysOfWeek\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "daysOfWeek\n" ;
+            } else {
+                s += ind + "daysOfWeek\n" ;
+            }
         }
         //      C# -> System.Int64? EndTime
         // GraphQL -> endTime: Long! (scalar)
         if (this.EndTime != null) {
-            s += ind + "endTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "endTime\n" ;
+            } else {
+                s += ind + "endTime\n" ;
+            }
         }
         //      C# -> System.Int64? StartTime
         // GraphQL -> startTime: Long! (scalar)
         if (this.StartTime != null) {
-            s += ind + "startTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "startTime\n" ;
+            } else {
+                s += ind + "startTime\n" ;
+            }
         }
         //      C# -> System.Single? ThrottleLimit
         // GraphQL -> throttleLimit: Float! (scalar)
         if (this.ThrottleLimit != null) {
-            s += ind + "throttleLimit\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "throttleLimit\n" ;
+            } else {
+                s += ind + "throttleLimit\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<System.Int32>? DaysOfWeek
         // GraphQL -> daysOfWeek: [Int!]! (scalar)
-        if (this.DaysOfWeek == null && ec.Includes("daysOfWeek",true))
+        if (ec.Includes("daysOfWeek",true))
         {
-            this.DaysOfWeek = new List<System.Int32>();
+            if(this.DaysOfWeek == null) {
+
+                this.DaysOfWeek = new List<System.Int32>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DaysOfWeek != null && ec.Excludes("daysOfWeek",true))
+        {
+            this.DaysOfWeek = null;
         }
         //      C# -> System.Int64? EndTime
         // GraphQL -> endTime: Long! (scalar)
-        if (this.EndTime == null && ec.Includes("endTime",true))
+        if (ec.Includes("endTime",true))
         {
-            this.EndTime = new System.Int64();
+            if(this.EndTime == null) {
+
+                this.EndTime = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EndTime != null && ec.Excludes("endTime",true))
+        {
+            this.EndTime = null;
         }
         //      C# -> System.Int64? StartTime
         // GraphQL -> startTime: Long! (scalar)
-        if (this.StartTime == null && ec.Includes("startTime",true))
+        if (ec.Includes("startTime",true))
         {
-            this.StartTime = new System.Int64();
+            if(this.StartTime == null) {
+
+                this.StartTime = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.StartTime != null && ec.Excludes("startTime",true))
+        {
+            this.StartTime = null;
         }
         //      C# -> System.Single? ThrottleLimit
         // GraphQL -> throttleLimit: Float! (scalar)
-        if (this.ThrottleLimit == null && ec.Includes("throttleLimit",true))
+        if (ec.Includes("throttleLimit",true))
         {
-            this.ThrottleLimit = new System.Single();
+            if(this.ThrottleLimit == null) {
+
+                this.ThrottleLimit = new System.Single();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ThrottleLimit != null && ec.Excludes("throttleLimit",true))
+        {
+            this.ThrottleLimit = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<NetworkThrottleScheduleSummary> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

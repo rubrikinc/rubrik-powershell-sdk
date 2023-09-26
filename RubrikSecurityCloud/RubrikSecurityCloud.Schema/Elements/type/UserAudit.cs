@@ -164,81 +164,138 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> UserAuditTypeEnum? AuditType
         // GraphQL -> auditType: UserAuditTypeEnum (enum)
         if (this.AuditType != null) {
-            s += ind + "auditType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "auditType\n" ;
+            } else {
+                s += ind + "auditType\n" ;
+            }
         }
         //      C# -> UserAuditObjectTypeEnum? ObjectType
         // GraphQL -> objectType: UserAuditObjectTypeEnum! (enum)
         if (this.ObjectType != null) {
-            s += ind + "objectType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "objectType\n" ;
+            } else {
+                s += ind + "objectType\n" ;
+            }
         }
         //      C# -> UserAuditSeverityEnum? Severity
         // GraphQL -> severity: UserAuditSeverityEnum (enum)
         if (this.Severity != null) {
-            s += ind + "severity\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "severity\n" ;
+            } else {
+                s += ind + "severity\n" ;
+            }
         }
         //      C# -> UserAuditStatusEnum? Status
         // GraphQL -> status: UserAuditStatusEnum! (enum)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: ID! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
         if (this.Message != null) {
-            s += ind + "message\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "message\n" ;
+            } else {
+                s += ind + "message\n" ;
+            }
         }
         //      C# -> System.String? ObjectId
         // GraphQL -> objectId: String! (scalar)
         if (this.ObjectId != null) {
-            s += ind + "objectId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "objectId\n" ;
+            } else {
+                s += ind + "objectId\n" ;
+            }
         }
         //      C# -> System.String? ObjectName
         // GraphQL -> objectName: String (scalar)
         if (this.ObjectName != null) {
-            s += ind + "objectName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "objectName\n" ;
+            } else {
+                s += ind + "objectName\n" ;
+            }
         }
         //      C# -> System.String? OrgId
         // GraphQL -> orgId: String! (scalar)
         if (this.OrgId != null) {
-            s += ind + "orgId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "orgId\n" ;
+            } else {
+                s += ind + "orgId\n" ;
+            }
         }
         //      C# -> System.String? OrgName
         // GraphQL -> orgName: String (scalar)
         if (this.OrgName != null) {
-            s += ind + "orgName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "orgName\n" ;
+            } else {
+                s += ind + "orgName\n" ;
+            }
         }
         //      C# -> DateTime? Time
         // GraphQL -> time: DateTime! (scalar)
         if (this.Time != null) {
-            s += ind + "time\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "time\n" ;
+            } else {
+                s += ind + "time\n" ;
+            }
         }
         //      C# -> System.String? UserName
         // GraphQL -> userName: String (scalar)
         if (this.UserName != null) {
-            s += ind + "userName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "userName\n" ;
+            } else {
+                s += ind + "userName\n" ;
+            }
         }
         //      C# -> System.String? UserNote
         // GraphQL -> userNote: String (scalar)
         if (this.UserNote != null) {
-            s += ind + "userNote\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "userNote\n" ;
+            } else {
+                s += ind + "userNote\n" ;
+            }
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster (type)
         if (this.Cluster != null) {
-            var fspec = this.Cluster.AsFieldSpec(indent+1);
+            var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -250,88 +307,243 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> UserAuditTypeEnum? AuditType
         // GraphQL -> auditType: UserAuditTypeEnum (enum)
-        if (this.AuditType == null && ec.Includes("auditType",true))
+        if (ec.Includes("auditType",true))
         {
-            this.AuditType = new UserAuditTypeEnum();
+            if(this.AuditType == null) {
+
+                this.AuditType = new UserAuditTypeEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AuditType != null && ec.Excludes("auditType",true))
+        {
+            this.AuditType = null;
         }
         //      C# -> UserAuditObjectTypeEnum? ObjectType
         // GraphQL -> objectType: UserAuditObjectTypeEnum! (enum)
-        if (this.ObjectType == null && ec.Includes("objectType",true))
+        if (ec.Includes("objectType",true))
         {
-            this.ObjectType = new UserAuditObjectTypeEnum();
+            if(this.ObjectType == null) {
+
+                this.ObjectType = new UserAuditObjectTypeEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ObjectType != null && ec.Excludes("objectType",true))
+        {
+            this.ObjectType = null;
         }
         //      C# -> UserAuditSeverityEnum? Severity
         // GraphQL -> severity: UserAuditSeverityEnum (enum)
-        if (this.Severity == null && ec.Includes("severity",true))
+        if (ec.Includes("severity",true))
         {
-            this.Severity = new UserAuditSeverityEnum();
+            if(this.Severity == null) {
+
+                this.Severity = new UserAuditSeverityEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Severity != null && ec.Excludes("severity",true))
+        {
+            this.Severity = null;
         }
         //      C# -> UserAuditStatusEnum? Status
         // GraphQL -> status: UserAuditStatusEnum! (enum)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = new UserAuditStatusEnum();
+            if(this.Status == null) {
+
+                this.Status = new UserAuditStatusEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: ID! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
-        if (this.Message == null && ec.Includes("message",true))
+        if (ec.Includes("message",true))
         {
-            this.Message = "FETCH";
+            if(this.Message == null) {
+
+                this.Message = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Message != null && ec.Excludes("message",true))
+        {
+            this.Message = null;
         }
         //      C# -> System.String? ObjectId
         // GraphQL -> objectId: String! (scalar)
-        if (this.ObjectId == null && ec.Includes("objectId",true))
+        if (ec.Includes("objectId",true))
         {
-            this.ObjectId = "FETCH";
+            if(this.ObjectId == null) {
+
+                this.ObjectId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ObjectId != null && ec.Excludes("objectId",true))
+        {
+            this.ObjectId = null;
         }
         //      C# -> System.String? ObjectName
         // GraphQL -> objectName: String (scalar)
-        if (this.ObjectName == null && ec.Includes("objectName",true))
+        if (ec.Includes("objectName",true))
         {
-            this.ObjectName = "FETCH";
+            if(this.ObjectName == null) {
+
+                this.ObjectName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ObjectName != null && ec.Excludes("objectName",true))
+        {
+            this.ObjectName = null;
         }
         //      C# -> System.String? OrgId
         // GraphQL -> orgId: String! (scalar)
-        if (this.OrgId == null && ec.Includes("orgId",true))
+        if (ec.Includes("orgId",true))
         {
-            this.OrgId = "FETCH";
+            if(this.OrgId == null) {
+
+                this.OrgId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OrgId != null && ec.Excludes("orgId",true))
+        {
+            this.OrgId = null;
         }
         //      C# -> System.String? OrgName
         // GraphQL -> orgName: String (scalar)
-        if (this.OrgName == null && ec.Includes("orgName",true))
+        if (ec.Includes("orgName",true))
         {
-            this.OrgName = "FETCH";
+            if(this.OrgName == null) {
+
+                this.OrgName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OrgName != null && ec.Excludes("orgName",true))
+        {
+            this.OrgName = null;
         }
         //      C# -> DateTime? Time
         // GraphQL -> time: DateTime! (scalar)
-        if (this.Time == null && ec.Includes("time",true))
+        if (ec.Includes("time",true))
         {
-            this.Time = new DateTime();
+            if(this.Time == null) {
+
+                this.Time = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Time != null && ec.Excludes("time",true))
+        {
+            this.Time = null;
         }
         //      C# -> System.String? UserName
         // GraphQL -> userName: String (scalar)
-        if (this.UserName == null && ec.Includes("userName",true))
+        if (ec.Includes("userName",true))
         {
-            this.UserName = "FETCH";
+            if(this.UserName == null) {
+
+                this.UserName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.UserName != null && ec.Excludes("userName",true))
+        {
+            this.UserName = null;
         }
         //      C# -> System.String? UserNote
         // GraphQL -> userNote: String (scalar)
-        if (this.UserNote == null && ec.Includes("userNote",true))
+        if (ec.Includes("userNote",true))
         {
-            this.UserNote = "FETCH";
+            if(this.UserNote == null) {
+
+                this.UserNote = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.UserNote != null && ec.Excludes("userNote",true))
+        {
+            this.UserNote = null;
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster (type)
-        if (this.Cluster == null && ec.Includes("cluster",false))
+        if (ec.Includes("cluster",false))
         {
-            this.Cluster = new Cluster();
-            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+            if(this.Cluster == null) {
+
+                this.Cluster = new Cluster();
+                this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+
+            } else {
+
+                this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+
+            }
+        }
+        else if (this.Cluster != null && ec.Excludes("cluster",false))
+        {
+            this.Cluster = null;
         }
     }
 
@@ -358,9 +570,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<UserAudit> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

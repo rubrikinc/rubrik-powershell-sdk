@@ -9,6 +9,9 @@ using RubrikSecurityCloud.Types;
 using RubrikSecurityCloud.PowerShell.Private;
 using Newtonsoft.Json;
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
+
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     public class GqlTypeName
@@ -85,8 +88,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = false,
             ValueFromPipeline = false)]
         public string ClusterUUID { get; set; }
-
-#pragma warning disable 1591 // ignore warning 'Missing XML comment'
 
         public Get_RscSnapshot() : base(retrieveConnection: true)
         {

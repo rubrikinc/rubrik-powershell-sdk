@@ -164,79 +164,136 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int32? AttachingDiskCount
         // GraphQL -> attachingDiskCount: Int (scalar)
         if (this.AttachingDiskCount != null) {
-            s += ind + "attachingDiskCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "attachingDiskCount\n" ;
+            } else {
+                s += ind + "attachingDiskCount\n" ;
+            }
         }
         //      C# -> System.Boolean? CreateDatastoreOnlyMount
         // GraphQL -> createDatastoreOnlyMount: Boolean (scalar)
         if (this.CreateDatastoreOnlyMount != null) {
-            s += ind + "createDatastoreOnlyMount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "createDatastoreOnlyMount\n" ;
+            } else {
+                s += ind + "createDatastoreOnlyMount\n" ;
+            }
         }
         //      C# -> System.String? DatastoreName
         // GraphQL -> datastoreName: String (scalar)
         if (this.DatastoreName != null) {
-            s += ind + "datastoreName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "datastoreName\n" ;
+            } else {
+                s += ind + "datastoreName\n" ;
+            }
         }
         //      C# -> System.Boolean? DatastoreReady
         // GraphQL -> datastoreReady: Boolean (scalar)
         if (this.DatastoreReady != null) {
-            s += ind + "datastoreReady\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "datastoreReady\n" ;
+            } else {
+                s += ind + "datastoreReady\n" ;
+            }
         }
         //      C# -> System.Boolean? HasAttachingDisk
         // GraphQL -> hasAttachingDisk: Boolean (scalar)
         if (this.HasAttachingDisk != null) {
-            s += ind + "hasAttachingDisk\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hasAttachingDisk\n" ;
+            } else {
+                s += ind + "hasAttachingDisk\n" ;
+            }
         }
         //      C# -> System.String? HostId
         // GraphQL -> hostId: String (scalar)
         if (this.HostId != null) {
-            s += ind + "hostId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostId\n" ;
+            } else {
+                s += ind + "hostId\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.Boolean? IsReady
         // GraphQL -> isReady: Boolean! (scalar)
         if (this.IsReady != null) {
-            s += ind + "isReady\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isReady\n" ;
+            } else {
+                s += ind + "isReady\n" ;
+            }
         }
         //      C# -> System.String? MountRequestId
         // GraphQL -> mountRequestId: String (scalar)
         if (this.MountRequestId != null) {
-            s += ind + "mountRequestId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "mountRequestId\n" ;
+            } else {
+                s += ind + "mountRequestId\n" ;
+            }
         }
         //      C# -> DateTime? MountTimestamp
         // GraphQL -> mountTimestamp: DateTime (scalar)
         if (this.MountTimestamp != null) {
-            s += ind + "mountTimestamp\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "mountTimestamp\n" ;
+            } else {
+                s += ind + "mountTimestamp\n" ;
+            }
         }
         //      C# -> System.String? MountedVmId
         // GraphQL -> mountedVmId: String (scalar)
         if (this.MountedVmId != null) {
-            s += ind + "mountedVmId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "mountedVmId\n" ;
+            } else {
+                s += ind + "mountedVmId\n" ;
+            }
         }
         //      C# -> DateTime? SnapshotDate
         // GraphQL -> snapshotDate: DateTime (scalar)
         if (this.SnapshotDate != null) {
-            s += ind + "snapshotDate\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotDate\n" ;
+            } else {
+                s += ind + "snapshotDate\n" ;
+            }
         }
         //      C# -> System.String? UnmountRequestId
         // GraphQL -> unmountRequestId: String (scalar)
         if (this.UnmountRequestId != null) {
-            s += ind + "unmountRequestId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "unmountRequestId\n" ;
+            } else {
+                s += ind + "unmountRequestId\n" ;
+            }
         }
         //      C# -> System.String? VmId
         // GraphQL -> vmId: String! (scalar)
         if (this.VmId != null) {
-            s += ind + "vmId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "vmId\n" ;
+            } else {
+                s += ind + "vmId\n" ;
+            }
         }
         return s;
     }
@@ -247,87 +304,241 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int32? AttachingDiskCount
         // GraphQL -> attachingDiskCount: Int (scalar)
-        if (this.AttachingDiskCount == null && ec.Includes("attachingDiskCount",true))
+        if (ec.Includes("attachingDiskCount",true))
         {
-            this.AttachingDiskCount = Int32.MinValue;
+            if(this.AttachingDiskCount == null) {
+
+                this.AttachingDiskCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.AttachingDiskCount != null && ec.Excludes("attachingDiskCount",true))
+        {
+            this.AttachingDiskCount = null;
         }
         //      C# -> System.Boolean? CreateDatastoreOnlyMount
         // GraphQL -> createDatastoreOnlyMount: Boolean (scalar)
-        if (this.CreateDatastoreOnlyMount == null && ec.Includes("createDatastoreOnlyMount",true))
+        if (ec.Includes("createDatastoreOnlyMount",true))
         {
-            this.CreateDatastoreOnlyMount = true;
+            if(this.CreateDatastoreOnlyMount == null) {
+
+                this.CreateDatastoreOnlyMount = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.CreateDatastoreOnlyMount != null && ec.Excludes("createDatastoreOnlyMount",true))
+        {
+            this.CreateDatastoreOnlyMount = null;
         }
         //      C# -> System.String? DatastoreName
         // GraphQL -> datastoreName: String (scalar)
-        if (this.DatastoreName == null && ec.Includes("datastoreName",true))
+        if (ec.Includes("datastoreName",true))
         {
-            this.DatastoreName = "FETCH";
+            if(this.DatastoreName == null) {
+
+                this.DatastoreName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DatastoreName != null && ec.Excludes("datastoreName",true))
+        {
+            this.DatastoreName = null;
         }
         //      C# -> System.Boolean? DatastoreReady
         // GraphQL -> datastoreReady: Boolean (scalar)
-        if (this.DatastoreReady == null && ec.Includes("datastoreReady",true))
+        if (ec.Includes("datastoreReady",true))
         {
-            this.DatastoreReady = true;
+            if(this.DatastoreReady == null) {
+
+                this.DatastoreReady = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.DatastoreReady != null && ec.Excludes("datastoreReady",true))
+        {
+            this.DatastoreReady = null;
         }
         //      C# -> System.Boolean? HasAttachingDisk
         // GraphQL -> hasAttachingDisk: Boolean (scalar)
-        if (this.HasAttachingDisk == null && ec.Includes("hasAttachingDisk",true))
+        if (ec.Includes("hasAttachingDisk",true))
         {
-            this.HasAttachingDisk = true;
+            if(this.HasAttachingDisk == null) {
+
+                this.HasAttachingDisk = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.HasAttachingDisk != null && ec.Excludes("hasAttachingDisk",true))
+        {
+            this.HasAttachingDisk = null;
         }
         //      C# -> System.String? HostId
         // GraphQL -> hostId: String (scalar)
-        if (this.HostId == null && ec.Includes("hostId",true))
+        if (ec.Includes("hostId",true))
         {
-            this.HostId = "FETCH";
+            if(this.HostId == null) {
+
+                this.HostId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.HostId != null && ec.Excludes("hostId",true))
+        {
+            this.HostId = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.Boolean? IsReady
         // GraphQL -> isReady: Boolean! (scalar)
-        if (this.IsReady == null && ec.Includes("isReady",true))
+        if (ec.Includes("isReady",true))
         {
-            this.IsReady = true;
+            if(this.IsReady == null) {
+
+                this.IsReady = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsReady != null && ec.Excludes("isReady",true))
+        {
+            this.IsReady = null;
         }
         //      C# -> System.String? MountRequestId
         // GraphQL -> mountRequestId: String (scalar)
-        if (this.MountRequestId == null && ec.Includes("mountRequestId",true))
+        if (ec.Includes("mountRequestId",true))
         {
-            this.MountRequestId = "FETCH";
+            if(this.MountRequestId == null) {
+
+                this.MountRequestId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.MountRequestId != null && ec.Excludes("mountRequestId",true))
+        {
+            this.MountRequestId = null;
         }
         //      C# -> DateTime? MountTimestamp
         // GraphQL -> mountTimestamp: DateTime (scalar)
-        if (this.MountTimestamp == null && ec.Includes("mountTimestamp",true))
+        if (ec.Includes("mountTimestamp",true))
         {
-            this.MountTimestamp = new DateTime();
+            if(this.MountTimestamp == null) {
+
+                this.MountTimestamp = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.MountTimestamp != null && ec.Excludes("mountTimestamp",true))
+        {
+            this.MountTimestamp = null;
         }
         //      C# -> System.String? MountedVmId
         // GraphQL -> mountedVmId: String (scalar)
-        if (this.MountedVmId == null && ec.Includes("mountedVmId",true))
+        if (ec.Includes("mountedVmId",true))
         {
-            this.MountedVmId = "FETCH";
+            if(this.MountedVmId == null) {
+
+                this.MountedVmId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.MountedVmId != null && ec.Excludes("mountedVmId",true))
+        {
+            this.MountedVmId = null;
         }
         //      C# -> DateTime? SnapshotDate
         // GraphQL -> snapshotDate: DateTime (scalar)
-        if (this.SnapshotDate == null && ec.Includes("snapshotDate",true))
+        if (ec.Includes("snapshotDate",true))
         {
-            this.SnapshotDate = new DateTime();
+            if(this.SnapshotDate == null) {
+
+                this.SnapshotDate = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotDate != null && ec.Excludes("snapshotDate",true))
+        {
+            this.SnapshotDate = null;
         }
         //      C# -> System.String? UnmountRequestId
         // GraphQL -> unmountRequestId: String (scalar)
-        if (this.UnmountRequestId == null && ec.Includes("unmountRequestId",true))
+        if (ec.Includes("unmountRequestId",true))
         {
-            this.UnmountRequestId = "FETCH";
+            if(this.UnmountRequestId == null) {
+
+                this.UnmountRequestId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.UnmountRequestId != null && ec.Excludes("unmountRequestId",true))
+        {
+            this.UnmountRequestId = null;
         }
         //      C# -> System.String? VmId
         // GraphQL -> vmId: String! (scalar)
-        if (this.VmId == null && ec.Includes("vmId",true))
+        if (ec.Includes("vmId",true))
         {
-            this.VmId = "FETCH";
+            if(this.VmId == null) {
+
+                this.VmId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.VmId != null && ec.Excludes("vmId",true))
+        {
+            this.VmId = null;
         }
     }
 
@@ -354,9 +565,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<VmwareVmMountSummaryV1> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

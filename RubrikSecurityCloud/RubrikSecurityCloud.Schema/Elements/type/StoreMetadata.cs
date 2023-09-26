@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? S3Bucket
         // GraphQL -> s3Bucket: String (scalar)
         if (this.S3Bucket != null) {
-            s += ind + "s3Bucket\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "s3Bucket\n" ;
+            } else {
+                s += ind + "s3Bucket\n" ;
+            }
         }
         //      C# -> System.String? S3Region
         // GraphQL -> s3Region: String (scalar)
         if (this.S3Region != null) {
-            s += ind + "s3Region\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "s3Region\n" ;
+            } else {
+                s += ind + "s3Region\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? S3Bucket
         // GraphQL -> s3Bucket: String (scalar)
-        if (this.S3Bucket == null && ec.Includes("s3Bucket",true))
+        if (ec.Includes("s3Bucket",true))
         {
-            this.S3Bucket = "FETCH";
+            if(this.S3Bucket == null) {
+
+                this.S3Bucket = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.S3Bucket != null && ec.Excludes("s3Bucket",true))
+        {
+            this.S3Bucket = null;
         }
         //      C# -> System.String? S3Region
         // GraphQL -> s3Region: String (scalar)
-        if (this.S3Region == null && ec.Includes("s3Region",true))
+        if (ec.Includes("s3Region",true))
         {
-            this.S3Region = "FETCH";
+            if(this.S3Region == null) {
+
+                this.S3Region = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.S3Region != null && ec.Excludes("s3Region",true))
+        {
+            this.S3Region = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<StoreMetadata> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

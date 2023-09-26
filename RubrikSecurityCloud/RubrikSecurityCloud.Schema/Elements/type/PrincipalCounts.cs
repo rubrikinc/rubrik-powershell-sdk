@@ -74,40 +74,57 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> SummaryCount? HighRiskCount
         // GraphQL -> highRiskCount: SummaryCount (type)
         if (this.HighRiskCount != null) {
-            var fspec = this.HighRiskCount.AsFieldSpec(indent+1);
+            var fspec = this.HighRiskCount.AsFieldSpec(conf.Child("highRiskCount"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "highRiskCount {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "highRiskCount {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> SummaryCount? LowRiskCount
         // GraphQL -> lowRiskCount: SummaryCount (type)
         if (this.LowRiskCount != null) {
-            var fspec = this.LowRiskCount.AsFieldSpec(indent+1);
+            var fspec = this.LowRiskCount.AsFieldSpec(conf.Child("lowRiskCount"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "lowRiskCount {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "lowRiskCount {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> SummaryCount? MediumRiskCount
         // GraphQL -> mediumRiskCount: SummaryCount (type)
         if (this.MediumRiskCount != null) {
-            var fspec = this.MediumRiskCount.AsFieldSpec(indent+1);
+            var fspec = this.MediumRiskCount.AsFieldSpec(conf.Child("mediumRiskCount"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "mediumRiskCount {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "mediumRiskCount {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> SummaryCount? TotalCount
         // GraphQL -> totalCount: SummaryCount (type)
         if (this.TotalCount != null) {
-            var fspec = this.TotalCount.AsFieldSpec(indent+1);
+            var fspec = this.TotalCount.AsFieldSpec(conf.Child("totalCount"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "totalCount {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "totalCount {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -119,31 +136,79 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> SummaryCount? HighRiskCount
         // GraphQL -> highRiskCount: SummaryCount (type)
-        if (this.HighRiskCount == null && ec.Includes("highRiskCount",false))
+        if (ec.Includes("highRiskCount",false))
         {
-            this.HighRiskCount = new SummaryCount();
-            this.HighRiskCount.ApplyExploratoryFieldSpec(ec.NewChild("highRiskCount"));
+            if(this.HighRiskCount == null) {
+
+                this.HighRiskCount = new SummaryCount();
+                this.HighRiskCount.ApplyExploratoryFieldSpec(ec.NewChild("highRiskCount"));
+
+            } else {
+
+                this.HighRiskCount.ApplyExploratoryFieldSpec(ec.NewChild("highRiskCount"));
+
+            }
+        }
+        else if (this.HighRiskCount != null && ec.Excludes("highRiskCount",false))
+        {
+            this.HighRiskCount = null;
         }
         //      C# -> SummaryCount? LowRiskCount
         // GraphQL -> lowRiskCount: SummaryCount (type)
-        if (this.LowRiskCount == null && ec.Includes("lowRiskCount",false))
+        if (ec.Includes("lowRiskCount",false))
         {
-            this.LowRiskCount = new SummaryCount();
-            this.LowRiskCount.ApplyExploratoryFieldSpec(ec.NewChild("lowRiskCount"));
+            if(this.LowRiskCount == null) {
+
+                this.LowRiskCount = new SummaryCount();
+                this.LowRiskCount.ApplyExploratoryFieldSpec(ec.NewChild("lowRiskCount"));
+
+            } else {
+
+                this.LowRiskCount.ApplyExploratoryFieldSpec(ec.NewChild("lowRiskCount"));
+
+            }
+        }
+        else if (this.LowRiskCount != null && ec.Excludes("lowRiskCount",false))
+        {
+            this.LowRiskCount = null;
         }
         //      C# -> SummaryCount? MediumRiskCount
         // GraphQL -> mediumRiskCount: SummaryCount (type)
-        if (this.MediumRiskCount == null && ec.Includes("mediumRiskCount",false))
+        if (ec.Includes("mediumRiskCount",false))
         {
-            this.MediumRiskCount = new SummaryCount();
-            this.MediumRiskCount.ApplyExploratoryFieldSpec(ec.NewChild("mediumRiskCount"));
+            if(this.MediumRiskCount == null) {
+
+                this.MediumRiskCount = new SummaryCount();
+                this.MediumRiskCount.ApplyExploratoryFieldSpec(ec.NewChild("mediumRiskCount"));
+
+            } else {
+
+                this.MediumRiskCount.ApplyExploratoryFieldSpec(ec.NewChild("mediumRiskCount"));
+
+            }
+        }
+        else if (this.MediumRiskCount != null && ec.Excludes("mediumRiskCount",false))
+        {
+            this.MediumRiskCount = null;
         }
         //      C# -> SummaryCount? TotalCount
         // GraphQL -> totalCount: SummaryCount (type)
-        if (this.TotalCount == null && ec.Includes("totalCount",false))
+        if (ec.Includes("totalCount",false))
         {
-            this.TotalCount = new SummaryCount();
-            this.TotalCount.ApplyExploratoryFieldSpec(ec.NewChild("totalCount"));
+            if(this.TotalCount == null) {
+
+                this.TotalCount = new SummaryCount();
+                this.TotalCount.ApplyExploratoryFieldSpec(ec.NewChild("totalCount"));
+
+            } else {
+
+                this.TotalCount.ApplyExploratoryFieldSpec(ec.NewChild("totalCount"));
+
+            }
+        }
+        else if (this.TotalCount != null && ec.Excludes("totalCount",false))
+        {
+            this.TotalCount = null;
         }
     }
 
@@ -170,9 +235,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<PrincipalCounts> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

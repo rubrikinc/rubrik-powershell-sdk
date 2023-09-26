@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> RetentionUnit? RetentionUnit
         // GraphQL -> retentionUnit: RetentionUnit! (enum)
         if (this.RetentionUnit != null) {
-            s += ind + "retentionUnit\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "retentionUnit\n" ;
+            } else {
+                s += ind + "retentionUnit\n" ;
+            }
         }
         //      C# -> System.Int32? Frequency
         // GraphQL -> frequency: Int! (scalar)
         if (this.Frequency != null) {
-            s += ind + "frequency\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "frequency\n" ;
+            } else {
+                s += ind + "frequency\n" ;
+            }
         }
         //      C# -> System.Int32? Retention
         // GraphQL -> retention: Int! (scalar)
         if (this.Retention != null) {
-            s += ind + "retention\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "retention\n" ;
+            } else {
+                s += ind + "retention\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> RetentionUnit? RetentionUnit
         // GraphQL -> retentionUnit: RetentionUnit! (enum)
-        if (this.RetentionUnit == null && ec.Includes("retentionUnit",true))
+        if (ec.Includes("retentionUnit",true))
         {
-            this.RetentionUnit = new RetentionUnit();
+            if(this.RetentionUnit == null) {
+
+                this.RetentionUnit = new RetentionUnit();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RetentionUnit != null && ec.Excludes("retentionUnit",true))
+        {
+            this.RetentionUnit = null;
         }
         //      C# -> System.Int32? Frequency
         // GraphQL -> frequency: Int! (scalar)
-        if (this.Frequency == null && ec.Includes("frequency",true))
+        if (ec.Includes("frequency",true))
         {
-            this.Frequency = Int32.MinValue;
+            if(this.Frequency == null) {
+
+                this.Frequency = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Frequency != null && ec.Excludes("frequency",true))
+        {
+            this.Frequency = null;
         }
         //      C# -> System.Int32? Retention
         // GraphQL -> retention: Int! (scalar)
-        if (this.Retention == null && ec.Includes("retention",true))
+        if (ec.Includes("retention",true))
         {
-            this.Retention = Int32.MinValue;
+            if(this.Retention == null) {
+
+                this.Retention = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Retention != null && ec.Excludes("retention",true))
+        {
+            this.Retention = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<BasicSnapshotSchedule> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

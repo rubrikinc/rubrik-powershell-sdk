@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> InventorySubHierarchyRootEnum? InventoryRoot
         // GraphQL -> inventoryRoot: InventorySubHierarchyRootEnum! (enum)
         if (this.InventoryRoot != null) {
-            s += ind + "inventoryRoot\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "inventoryRoot\n" ;
+            } else {
+                s += ind + "inventoryRoot\n" ;
+            }
         }
         //      C# -> WorkloadLevelHierarchy? InventoryWorkloadType
         // GraphQL -> inventoryWorkloadType: WorkloadLevelHierarchy! (enum)
         if (this.InventoryWorkloadType != null) {
-            s += ind + "inventoryWorkloadType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "inventoryWorkloadType\n" ;
+            } else {
+                s += ind + "inventoryWorkloadType\n" ;
+            }
         }
         //      C# -> List<Operation>? Operations
         // GraphQL -> operations: [Operation!]! (enum)
         if (this.Operations != null) {
-            s += ind + "operations\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "operations\n" ;
+            } else {
+                s += ind + "operations\n" ;
+            }
         }
         //      C# -> System.String? HierarchyRoot
         // GraphQL -> hierarchyRoot: String! (scalar)
         if (this.HierarchyRoot != null) {
-            s += ind + "hierarchyRoot\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hierarchyRoot\n" ;
+            } else {
+                s += ind + "hierarchyRoot\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> InventorySubHierarchyRootEnum? InventoryRoot
         // GraphQL -> inventoryRoot: InventorySubHierarchyRootEnum! (enum)
-        if (this.InventoryRoot == null && ec.Includes("inventoryRoot",true))
+        if (ec.Includes("inventoryRoot",true))
         {
-            this.InventoryRoot = new InventorySubHierarchyRootEnum();
+            if(this.InventoryRoot == null) {
+
+                this.InventoryRoot = new InventorySubHierarchyRootEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.InventoryRoot != null && ec.Excludes("inventoryRoot",true))
+        {
+            this.InventoryRoot = null;
         }
         //      C# -> WorkloadLevelHierarchy? InventoryWorkloadType
         // GraphQL -> inventoryWorkloadType: WorkloadLevelHierarchy! (enum)
-        if (this.InventoryWorkloadType == null && ec.Includes("inventoryWorkloadType",true))
+        if (ec.Includes("inventoryWorkloadType",true))
         {
-            this.InventoryWorkloadType = new WorkloadLevelHierarchy();
+            if(this.InventoryWorkloadType == null) {
+
+                this.InventoryWorkloadType = new WorkloadLevelHierarchy();
+
+            } else {
+
+
+            }
+        }
+        else if (this.InventoryWorkloadType != null && ec.Excludes("inventoryWorkloadType",true))
+        {
+            this.InventoryWorkloadType = null;
         }
         //      C# -> List<Operation>? Operations
         // GraphQL -> operations: [Operation!]! (enum)
-        if (this.Operations == null && ec.Includes("operations",true))
+        if (ec.Includes("operations",true))
         {
-            this.Operations = new List<Operation>();
+            if(this.Operations == null) {
+
+                this.Operations = new List<Operation>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Operations != null && ec.Excludes("operations",true))
+        {
+            this.Operations = null;
         }
         //      C# -> System.String? HierarchyRoot
         // GraphQL -> hierarchyRoot: String! (scalar)
-        if (this.HierarchyRoot == null && ec.Includes("hierarchyRoot",true))
+        if (ec.Includes("hierarchyRoot",true))
         {
-            this.HierarchyRoot = "FETCH";
+            if(this.HierarchyRoot == null) {
+
+                this.HierarchyRoot = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.HierarchyRoot != null && ec.Excludes("hierarchyRoot",true))
+        {
+            this.HierarchyRoot = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SelfServicePermission> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

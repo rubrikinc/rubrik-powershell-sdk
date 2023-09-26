@@ -137,72 +137,117 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> AwsRegion? Region
         // GraphQL -> region: AwsRegion! (enum)
         if (this.Region != null) {
-            s += ind + "region\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "region\n" ;
+            } else {
+                s += ind + "region\n" ;
+            }
         }
         //      C# -> CloudAccount? CloudAccount
         // GraphQL -> cloudAccount: CloudAccount (interface)
         if (this.CloudAccount != null) {
-                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.CloudAccount).AsFieldSpec(indent+1);
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.CloudAccount).AsFieldSpec(conf.Child("cloudAccount"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "cloudAccount {\n" + fspec + ind + "}\n";
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cloudAccount {\n" + fspec + ind + "}\n";
+                }
             }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean! (scalar)
         if (this.IsArchived != null) {
-            s += ind + "isArchived\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isArchived\n" ;
+            } else {
+                s += ind + "isArchived\n" ;
+            }
         }
         //      C# -> System.Boolean? IsRscManaged
         // GraphQL -> isRscManaged: Boolean! (scalar)
         if (this.IsRscManaged != null) {
-            s += ind + "isRscManaged\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isRscManaged\n" ;
+            } else {
+                s += ind + "isRscManaged\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.String? SecurityGroupId
         // GraphQL -> securityGroupId: String! (scalar)
         if (this.SecurityGroupId != null) {
-            s += ind + "securityGroupId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "securityGroupId\n" ;
+            } else {
+                s += ind + "securityGroupId\n" ;
+            }
         }
         //      C# -> System.String? SubnetId
         // GraphQL -> subnetId: String! (scalar)
         if (this.SubnetId != null) {
-            s += ind + "subnetId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "subnetId\n" ;
+            } else {
+                s += ind + "subnetId\n" ;
+            }
         }
         //      C# -> System.String? VpcId
         // GraphQL -> vpcId: String! (scalar)
         if (this.VpcId != null) {
-            s += ind + "vpcId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "vpcId\n" ;
+            } else {
+                s += ind + "vpcId\n" ;
+            }
         }
         //      C# -> List<ClusterInfCidrs>? ClusterInterfaceCidrs
         // GraphQL -> clusterInterfaceCidrs: [ClusterInfCidrs!]! (type)
         if (this.ClusterInterfaceCidrs != null) {
-            var fspec = this.ClusterInterfaceCidrs.AsFieldSpec(indent+1);
+            var fspec = this.ClusterInterfaceCidrs.AsFieldSpec(conf.Child("clusterInterfaceCidrs"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "clusterInterfaceCidrs {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "clusterInterfaceCidrs {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> ProxySettings? ProxySettings
         // GraphQL -> proxySettings: ProxySettings (type)
         if (this.ProxySettings != null) {
-            var fspec = this.ProxySettings.AsFieldSpec(indent+1);
+            var fspec = this.ProxySettings.AsFieldSpec(conf.Child("proxySettings"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "proxySettings {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "proxySettings {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -214,73 +259,201 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> AwsRegion? Region
         // GraphQL -> region: AwsRegion! (enum)
-        if (this.Region == null && ec.Includes("region",true))
+        if (ec.Includes("region",true))
         {
-            this.Region = new AwsRegion();
+            if(this.Region == null) {
+
+                this.Region = new AwsRegion();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Region != null && ec.Excludes("region",true))
+        {
+            this.Region = null;
         }
         //      C# -> CloudAccount? CloudAccount
         // GraphQL -> cloudAccount: CloudAccount (interface)
-        if (this.CloudAccount == null && ec.Includes("cloudAccount",false))
+        if (ec.Includes("cloudAccount",false))
         {
-            var impls = new List<CloudAccount>();
-            impls.ApplyExploratoryFieldSpec(ec.NewChild("cloudAccount"));
-            this.CloudAccount = (CloudAccount)InterfaceHelper.MakeCompositeFromList(impls);
+            if(this.CloudAccount == null) {
+
+                var impls = new List<CloudAccount>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("cloudAccount"));
+                this.CloudAccount = (CloudAccount)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<CloudAccount>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("cloudAccount"));
+                this.CloudAccount = (CloudAccount)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.CloudAccount != null && ec.Excludes("cloudAccount",false))
+        {
+            this.CloudAccount = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean! (scalar)
-        if (this.IsArchived == null && ec.Includes("isArchived",true))
+        if (ec.Includes("isArchived",true))
         {
-            this.IsArchived = true;
+            if(this.IsArchived == null) {
+
+                this.IsArchived = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsArchived != null && ec.Excludes("isArchived",true))
+        {
+            this.IsArchived = null;
         }
         //      C# -> System.Boolean? IsRscManaged
         // GraphQL -> isRscManaged: Boolean! (scalar)
-        if (this.IsRscManaged == null && ec.Includes("isRscManaged",true))
+        if (ec.Includes("isRscManaged",true))
         {
-            this.IsRscManaged = true;
+            if(this.IsRscManaged == null) {
+
+                this.IsRscManaged = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsRscManaged != null && ec.Excludes("isRscManaged",true))
+        {
+            this.IsRscManaged = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.String? SecurityGroupId
         // GraphQL -> securityGroupId: String! (scalar)
-        if (this.SecurityGroupId == null && ec.Includes("securityGroupId",true))
+        if (ec.Includes("securityGroupId",true))
         {
-            this.SecurityGroupId = "FETCH";
+            if(this.SecurityGroupId == null) {
+
+                this.SecurityGroupId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SecurityGroupId != null && ec.Excludes("securityGroupId",true))
+        {
+            this.SecurityGroupId = null;
         }
         //      C# -> System.String? SubnetId
         // GraphQL -> subnetId: String! (scalar)
-        if (this.SubnetId == null && ec.Includes("subnetId",true))
+        if (ec.Includes("subnetId",true))
         {
-            this.SubnetId = "FETCH";
+            if(this.SubnetId == null) {
+
+                this.SubnetId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SubnetId != null && ec.Excludes("subnetId",true))
+        {
+            this.SubnetId = null;
         }
         //      C# -> System.String? VpcId
         // GraphQL -> vpcId: String! (scalar)
-        if (this.VpcId == null && ec.Includes("vpcId",true))
+        if (ec.Includes("vpcId",true))
         {
-            this.VpcId = "FETCH";
+            if(this.VpcId == null) {
+
+                this.VpcId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.VpcId != null && ec.Excludes("vpcId",true))
+        {
+            this.VpcId = null;
         }
         //      C# -> List<ClusterInfCidrs>? ClusterInterfaceCidrs
         // GraphQL -> clusterInterfaceCidrs: [ClusterInfCidrs!]! (type)
-        if (this.ClusterInterfaceCidrs == null && ec.Includes("clusterInterfaceCidrs",false))
+        if (ec.Includes("clusterInterfaceCidrs",false))
         {
-            this.ClusterInterfaceCidrs = new List<ClusterInfCidrs>();
-            this.ClusterInterfaceCidrs.ApplyExploratoryFieldSpec(ec.NewChild("clusterInterfaceCidrs"));
+            if(this.ClusterInterfaceCidrs == null) {
+
+                this.ClusterInterfaceCidrs = new List<ClusterInfCidrs>();
+                this.ClusterInterfaceCidrs.ApplyExploratoryFieldSpec(ec.NewChild("clusterInterfaceCidrs"));
+
+            } else {
+
+                this.ClusterInterfaceCidrs.ApplyExploratoryFieldSpec(ec.NewChild("clusterInterfaceCidrs"));
+
+            }
+        }
+        else if (this.ClusterInterfaceCidrs != null && ec.Excludes("clusterInterfaceCidrs",false))
+        {
+            this.ClusterInterfaceCidrs = null;
         }
         //      C# -> ProxySettings? ProxySettings
         // GraphQL -> proxySettings: ProxySettings (type)
-        if (this.ProxySettings == null && ec.Includes("proxySettings",false))
+        if (ec.Includes("proxySettings",false))
         {
-            this.ProxySettings = new ProxySettings();
-            this.ProxySettings.ApplyExploratoryFieldSpec(ec.NewChild("proxySettings"));
+            if(this.ProxySettings == null) {
+
+                this.ProxySettings = new ProxySettings();
+                this.ProxySettings.ApplyExploratoryFieldSpec(ec.NewChild("proxySettings"));
+
+            } else {
+
+                this.ProxySettings.ApplyExploratoryFieldSpec(ec.NewChild("proxySettings"));
+
+            }
+        }
+        else if (this.ProxySettings != null && ec.Excludes("proxySettings",false))
+        {
+            this.ProxySettings = null;
         }
     }
 
@@ -307,9 +480,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AwsComputeSettings> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

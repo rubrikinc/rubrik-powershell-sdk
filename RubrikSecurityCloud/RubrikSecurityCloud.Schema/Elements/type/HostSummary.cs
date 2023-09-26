@@ -182,94 +182,159 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> MssqlCbtEffectiveStatusType? MssqlCbtEffectiveStatus
         // GraphQL -> mssqlCbtEffectiveStatus: MssqlCbtEffectiveStatusType (enum)
         if (this.MssqlCbtEffectiveStatus != null) {
-            s += ind + "mssqlCbtEffectiveStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "mssqlCbtEffectiveStatus\n" ;
+            } else {
+                s += ind + "mssqlCbtEffectiveStatus\n" ;
+            }
         }
         //      C# -> MssqlCbtStatusType? MssqlCbtEnabled
         // GraphQL -> mssqlCbtEnabled: MssqlCbtStatusType (enum)
         if (this.MssqlCbtEnabled != null) {
-            s += ind + "mssqlCbtEnabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "mssqlCbtEnabled\n" ;
+            } else {
+                s += ind + "mssqlCbtEnabled\n" ;
+            }
         }
         //      C# -> System.String? Alias
         // GraphQL -> alias: String (scalar)
         if (this.Alias != null) {
-            s += ind + "alias\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "alias\n" ;
+            } else {
+                s += ind + "alias\n" ;
+            }
         }
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
         if (this.Hostname != null) {
-            s += ind + "hostname\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostname\n" ;
+            } else {
+                s += ind + "hostname\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.Boolean? IsRefreshPaused
         // GraphQL -> isRefreshPaused: Boolean (scalar)
         if (this.IsRefreshPaused != null) {
-            s += ind + "isRefreshPaused\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isRefreshPaused\n" ;
+            } else {
+                s += ind + "isRefreshPaused\n" ;
+            }
         }
         //      C# -> System.Int64? LastRefreshTimeStamp
         // GraphQL -> lastRefreshTimeStamp: Long (scalar)
         if (this.LastRefreshTimeStamp != null) {
-            s += ind + "lastRefreshTimeStamp\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "lastRefreshTimeStamp\n" ;
+            } else {
+                s += ind + "lastRefreshTimeStamp\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.String? OperatingSystem
         // GraphQL -> operatingSystem: String (scalar)
         if (this.OperatingSystem != null) {
-            s += ind + "operatingSystem\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "operatingSystem\n" ;
+            } else {
+                s += ind + "operatingSystem\n" ;
+            }
         }
         //      C# -> System.String? OperatingSystemType
         // GraphQL -> operatingSystemType: String (scalar)
         if (this.OperatingSystemType != null) {
-            s += ind + "operatingSystemType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "operatingSystemType\n" ;
+            } else {
+                s += ind + "operatingSystemType\n" ;
+            }
         }
         //      C# -> System.String? OrganizationId
         // GraphQL -> organizationId: String (scalar)
         if (this.OrganizationId != null) {
-            s += ind + "organizationId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "organizationId\n" ;
+            } else {
+                s += ind + "organizationId\n" ;
+            }
         }
         //      C# -> System.String? OrganizationName
         // GraphQL -> organizationName: String (scalar)
         if (this.OrganizationName != null) {
-            s += ind + "organizationName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "organizationName\n" ;
+            } else {
+                s += ind + "organizationName\n" ;
+            }
         }
         //      C# -> System.String? PrimaryClusterId
         // GraphQL -> primaryClusterId: String (scalar)
         if (this.PrimaryClusterId != null) {
-            s += ind + "primaryClusterId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "primaryClusterId\n" ;
+            } else {
+                s += ind + "primaryClusterId\n" ;
+            }
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String (scalar)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         //      C# -> HdfsBaseConfig? HdfsBaseConfig
         // GraphQL -> hdfsBaseConfig: HdfsBaseConfig (type)
         if (this.HdfsBaseConfig != null) {
-            var fspec = this.HdfsBaseConfig.AsFieldSpec(indent+1);
+            var fspec = this.HdfsBaseConfig.AsFieldSpec(conf.Child("hdfsBaseConfig"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "hdfsBaseConfig {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "hdfsBaseConfig {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> NasBaseConfig? NasBaseConfig
         // GraphQL -> nasBaseConfig: NasBaseConfig (type)
         if (this.NasBaseConfig != null) {
-            var fspec = this.NasBaseConfig.AsFieldSpec(indent+1);
+            var fspec = this.NasBaseConfig.AsFieldSpec(conf.Child("nasBaseConfig"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "nasBaseConfig {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "nasBaseConfig {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -281,101 +346,279 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> MssqlCbtEffectiveStatusType? MssqlCbtEffectiveStatus
         // GraphQL -> mssqlCbtEffectiveStatus: MssqlCbtEffectiveStatusType (enum)
-        if (this.MssqlCbtEffectiveStatus == null && ec.Includes("mssqlCbtEffectiveStatus",true))
+        if (ec.Includes("mssqlCbtEffectiveStatus",true))
         {
-            this.MssqlCbtEffectiveStatus = new MssqlCbtEffectiveStatusType();
+            if(this.MssqlCbtEffectiveStatus == null) {
+
+                this.MssqlCbtEffectiveStatus = new MssqlCbtEffectiveStatusType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.MssqlCbtEffectiveStatus != null && ec.Excludes("mssqlCbtEffectiveStatus",true))
+        {
+            this.MssqlCbtEffectiveStatus = null;
         }
         //      C# -> MssqlCbtStatusType? MssqlCbtEnabled
         // GraphQL -> mssqlCbtEnabled: MssqlCbtStatusType (enum)
-        if (this.MssqlCbtEnabled == null && ec.Includes("mssqlCbtEnabled",true))
+        if (ec.Includes("mssqlCbtEnabled",true))
         {
-            this.MssqlCbtEnabled = new MssqlCbtStatusType();
+            if(this.MssqlCbtEnabled == null) {
+
+                this.MssqlCbtEnabled = new MssqlCbtStatusType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.MssqlCbtEnabled != null && ec.Excludes("mssqlCbtEnabled",true))
+        {
+            this.MssqlCbtEnabled = null;
         }
         //      C# -> System.String? Alias
         // GraphQL -> alias: String (scalar)
-        if (this.Alias == null && ec.Includes("alias",true))
+        if (ec.Includes("alias",true))
         {
-            this.Alias = "FETCH";
+            if(this.Alias == null) {
+
+                this.Alias = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Alias != null && ec.Excludes("alias",true))
+        {
+            this.Alias = null;
         }
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
-        if (this.Hostname == null && ec.Includes("hostname",true))
+        if (ec.Includes("hostname",true))
         {
-            this.Hostname = "FETCH";
+            if(this.Hostname == null) {
+
+                this.Hostname = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Hostname != null && ec.Excludes("hostname",true))
+        {
+            this.Hostname = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.Boolean? IsRefreshPaused
         // GraphQL -> isRefreshPaused: Boolean (scalar)
-        if (this.IsRefreshPaused == null && ec.Includes("isRefreshPaused",true))
+        if (ec.Includes("isRefreshPaused",true))
         {
-            this.IsRefreshPaused = true;
+            if(this.IsRefreshPaused == null) {
+
+                this.IsRefreshPaused = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsRefreshPaused != null && ec.Excludes("isRefreshPaused",true))
+        {
+            this.IsRefreshPaused = null;
         }
         //      C# -> System.Int64? LastRefreshTimeStamp
         // GraphQL -> lastRefreshTimeStamp: Long (scalar)
-        if (this.LastRefreshTimeStamp == null && ec.Includes("lastRefreshTimeStamp",true))
+        if (ec.Includes("lastRefreshTimeStamp",true))
         {
-            this.LastRefreshTimeStamp = new System.Int64();
+            if(this.LastRefreshTimeStamp == null) {
+
+                this.LastRefreshTimeStamp = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastRefreshTimeStamp != null && ec.Excludes("lastRefreshTimeStamp",true))
+        {
+            this.LastRefreshTimeStamp = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.String? OperatingSystem
         // GraphQL -> operatingSystem: String (scalar)
-        if (this.OperatingSystem == null && ec.Includes("operatingSystem",true))
+        if (ec.Includes("operatingSystem",true))
         {
-            this.OperatingSystem = "FETCH";
+            if(this.OperatingSystem == null) {
+
+                this.OperatingSystem = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OperatingSystem != null && ec.Excludes("operatingSystem",true))
+        {
+            this.OperatingSystem = null;
         }
         //      C# -> System.String? OperatingSystemType
         // GraphQL -> operatingSystemType: String (scalar)
-        if (this.OperatingSystemType == null && ec.Includes("operatingSystemType",true))
+        if (ec.Includes("operatingSystemType",true))
         {
-            this.OperatingSystemType = "FETCH";
+            if(this.OperatingSystemType == null) {
+
+                this.OperatingSystemType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OperatingSystemType != null && ec.Excludes("operatingSystemType",true))
+        {
+            this.OperatingSystemType = null;
         }
         //      C# -> System.String? OrganizationId
         // GraphQL -> organizationId: String (scalar)
-        if (this.OrganizationId == null && ec.Includes("organizationId",true))
+        if (ec.Includes("organizationId",true))
         {
-            this.OrganizationId = "FETCH";
+            if(this.OrganizationId == null) {
+
+                this.OrganizationId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OrganizationId != null && ec.Excludes("organizationId",true))
+        {
+            this.OrganizationId = null;
         }
         //      C# -> System.String? OrganizationName
         // GraphQL -> organizationName: String (scalar)
-        if (this.OrganizationName == null && ec.Includes("organizationName",true))
+        if (ec.Includes("organizationName",true))
         {
-            this.OrganizationName = "FETCH";
+            if(this.OrganizationName == null) {
+
+                this.OrganizationName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OrganizationName != null && ec.Excludes("organizationName",true))
+        {
+            this.OrganizationName = null;
         }
         //      C# -> System.String? PrimaryClusterId
         // GraphQL -> primaryClusterId: String (scalar)
-        if (this.PrimaryClusterId == null && ec.Includes("primaryClusterId",true))
+        if (ec.Includes("primaryClusterId",true))
         {
-            this.PrimaryClusterId = "FETCH";
+            if(this.PrimaryClusterId == null) {
+
+                this.PrimaryClusterId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PrimaryClusterId != null && ec.Excludes("primaryClusterId",true))
+        {
+            this.PrimaryClusterId = null;
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String (scalar)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = "FETCH";
+            if(this.Status == null) {
+
+                this.Status = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
         //      C# -> HdfsBaseConfig? HdfsBaseConfig
         // GraphQL -> hdfsBaseConfig: HdfsBaseConfig (type)
-        if (this.HdfsBaseConfig == null && ec.Includes("hdfsBaseConfig",false))
+        if (ec.Includes("hdfsBaseConfig",false))
         {
-            this.HdfsBaseConfig = new HdfsBaseConfig();
-            this.HdfsBaseConfig.ApplyExploratoryFieldSpec(ec.NewChild("hdfsBaseConfig"));
+            if(this.HdfsBaseConfig == null) {
+
+                this.HdfsBaseConfig = new HdfsBaseConfig();
+                this.HdfsBaseConfig.ApplyExploratoryFieldSpec(ec.NewChild("hdfsBaseConfig"));
+
+            } else {
+
+                this.HdfsBaseConfig.ApplyExploratoryFieldSpec(ec.NewChild("hdfsBaseConfig"));
+
+            }
+        }
+        else if (this.HdfsBaseConfig != null && ec.Excludes("hdfsBaseConfig",false))
+        {
+            this.HdfsBaseConfig = null;
         }
         //      C# -> NasBaseConfig? NasBaseConfig
         // GraphQL -> nasBaseConfig: NasBaseConfig (type)
-        if (this.NasBaseConfig == null && ec.Includes("nasBaseConfig",false))
+        if (ec.Includes("nasBaseConfig",false))
         {
-            this.NasBaseConfig = new NasBaseConfig();
-            this.NasBaseConfig.ApplyExploratoryFieldSpec(ec.NewChild("nasBaseConfig"));
+            if(this.NasBaseConfig == null) {
+
+                this.NasBaseConfig = new NasBaseConfig();
+                this.NasBaseConfig.ApplyExploratoryFieldSpec(ec.NewChild("nasBaseConfig"));
+
+            } else {
+
+                this.NasBaseConfig.ApplyExploratoryFieldSpec(ec.NewChild("nasBaseConfig"));
+
+            }
+        }
+        else if (this.NasBaseConfig != null && ec.Excludes("nasBaseConfig",false))
+        {
+            this.NasBaseConfig = null;
         }
     }
 
@@ -402,9 +645,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<HostSummary> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

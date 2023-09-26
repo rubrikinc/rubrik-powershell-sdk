@@ -137,64 +137,109 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? AvailableCapacity
         // GraphQL -> availableCapacity: Long! (scalar)
         if (this.AvailableCapacity != null) {
-            s += ind + "availableCapacity\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "availableCapacity\n" ;
+            } else {
+                s += ind + "availableCapacity\n" ;
+            }
         }
         //      C# -> System.Int64? IngestedArchivalStorage
         // GraphQL -> ingestedArchivalStorage: Long! (scalar)
         if (this.IngestedArchivalStorage != null) {
-            s += ind + "ingestedArchivalStorage\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "ingestedArchivalStorage\n" ;
+            } else {
+                s += ind + "ingestedArchivalStorage\n" ;
+            }
         }
         //      C# -> System.Int64? IngestedSnapshotStorage
         // GraphQL -> ingestedSnapshotStorage: Long! (scalar)
         if (this.IngestedSnapshotStorage != null) {
-            s += ind + "ingestedSnapshotStorage\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "ingestedSnapshotStorage\n" ;
+            } else {
+                s += ind + "ingestedSnapshotStorage\n" ;
+            }
         }
         //      C# -> DateTime? LastUpdateTime
         // GraphQL -> lastUpdateTime: DateTime! (scalar)
         if (this.LastUpdateTime != null) {
-            s += ind + "lastUpdateTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "lastUpdateTime\n" ;
+            } else {
+                s += ind + "lastUpdateTime\n" ;
+            }
         }
         //      C# -> System.Int64? LiveMountCapacity
         // GraphQL -> liveMountCapacity: Long! (scalar)
         if (this.LiveMountCapacity != null) {
-            s += ind + "liveMountCapacity\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "liveMountCapacity\n" ;
+            } else {
+                s += ind + "liveMountCapacity\n" ;
+            }
         }
         //      C# -> System.Int64? MiscellaneousCapacity
         // GraphQL -> miscellaneousCapacity: Long! (scalar)
         if (this.MiscellaneousCapacity != null) {
-            s += ind + "miscellaneousCapacity\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "miscellaneousCapacity\n" ;
+            } else {
+                s += ind + "miscellaneousCapacity\n" ;
+            }
         }
         //      C# -> System.Int64? PhysicalArchivalStorage
         // GraphQL -> physicalArchivalStorage: Long! (scalar)
         if (this.PhysicalArchivalStorage != null) {
-            s += ind + "physicalArchivalStorage\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "physicalArchivalStorage\n" ;
+            } else {
+                s += ind + "physicalArchivalStorage\n" ;
+            }
         }
         //      C# -> System.Int64? PhysicalSnapshotStorage
         // GraphQL -> physicalSnapshotStorage: Long! (scalar)
         if (this.PhysicalSnapshotStorage != null) {
-            s += ind + "physicalSnapshotStorage\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "physicalSnapshotStorage\n" ;
+            } else {
+                s += ind + "physicalSnapshotStorage\n" ;
+            }
         }
         //      C# -> System.Int64? SnapshotCapacity
         // GraphQL -> snapshotCapacity: Long! (scalar)
         if (this.SnapshotCapacity != null) {
-            s += ind + "snapshotCapacity\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotCapacity\n" ;
+            } else {
+                s += ind + "snapshotCapacity\n" ;
+            }
         }
         //      C# -> System.Int64? TotalCapacity
         // GraphQL -> totalCapacity: Long! (scalar)
         if (this.TotalCapacity != null) {
-            s += ind + "totalCapacity\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "totalCapacity\n" ;
+            } else {
+                s += ind + "totalCapacity\n" ;
+            }
         }
         //      C# -> System.Int64? UsedCapacity
         // GraphQL -> usedCapacity: Long! (scalar)
         if (this.UsedCapacity != null) {
-            s += ind + "usedCapacity\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "usedCapacity\n" ;
+            } else {
+                s += ind + "usedCapacity\n" ;
+            }
         }
         return s;
     }
@@ -205,69 +250,190 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? AvailableCapacity
         // GraphQL -> availableCapacity: Long! (scalar)
-        if (this.AvailableCapacity == null && ec.Includes("availableCapacity",true))
+        if (ec.Includes("availableCapacity",true))
         {
-            this.AvailableCapacity = new System.Int64();
+            if(this.AvailableCapacity == null) {
+
+                this.AvailableCapacity = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AvailableCapacity != null && ec.Excludes("availableCapacity",true))
+        {
+            this.AvailableCapacity = null;
         }
         //      C# -> System.Int64? IngestedArchivalStorage
         // GraphQL -> ingestedArchivalStorage: Long! (scalar)
-        if (this.IngestedArchivalStorage == null && ec.Includes("ingestedArchivalStorage",true))
+        if (ec.Includes("ingestedArchivalStorage",true))
         {
-            this.IngestedArchivalStorage = new System.Int64();
+            if(this.IngestedArchivalStorage == null) {
+
+                this.IngestedArchivalStorage = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.IngestedArchivalStorage != null && ec.Excludes("ingestedArchivalStorage",true))
+        {
+            this.IngestedArchivalStorage = null;
         }
         //      C# -> System.Int64? IngestedSnapshotStorage
         // GraphQL -> ingestedSnapshotStorage: Long! (scalar)
-        if (this.IngestedSnapshotStorage == null && ec.Includes("ingestedSnapshotStorage",true))
+        if (ec.Includes("ingestedSnapshotStorage",true))
         {
-            this.IngestedSnapshotStorage = new System.Int64();
+            if(this.IngestedSnapshotStorage == null) {
+
+                this.IngestedSnapshotStorage = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.IngestedSnapshotStorage != null && ec.Excludes("ingestedSnapshotStorage",true))
+        {
+            this.IngestedSnapshotStorage = null;
         }
         //      C# -> DateTime? LastUpdateTime
         // GraphQL -> lastUpdateTime: DateTime! (scalar)
-        if (this.LastUpdateTime == null && ec.Includes("lastUpdateTime",true))
+        if (ec.Includes("lastUpdateTime",true))
         {
-            this.LastUpdateTime = new DateTime();
+            if(this.LastUpdateTime == null) {
+
+                this.LastUpdateTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastUpdateTime != null && ec.Excludes("lastUpdateTime",true))
+        {
+            this.LastUpdateTime = null;
         }
         //      C# -> System.Int64? LiveMountCapacity
         // GraphQL -> liveMountCapacity: Long! (scalar)
-        if (this.LiveMountCapacity == null && ec.Includes("liveMountCapacity",true))
+        if (ec.Includes("liveMountCapacity",true))
         {
-            this.LiveMountCapacity = new System.Int64();
+            if(this.LiveMountCapacity == null) {
+
+                this.LiveMountCapacity = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LiveMountCapacity != null && ec.Excludes("liveMountCapacity",true))
+        {
+            this.LiveMountCapacity = null;
         }
         //      C# -> System.Int64? MiscellaneousCapacity
         // GraphQL -> miscellaneousCapacity: Long! (scalar)
-        if (this.MiscellaneousCapacity == null && ec.Includes("miscellaneousCapacity",true))
+        if (ec.Includes("miscellaneousCapacity",true))
         {
-            this.MiscellaneousCapacity = new System.Int64();
+            if(this.MiscellaneousCapacity == null) {
+
+                this.MiscellaneousCapacity = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.MiscellaneousCapacity != null && ec.Excludes("miscellaneousCapacity",true))
+        {
+            this.MiscellaneousCapacity = null;
         }
         //      C# -> System.Int64? PhysicalArchivalStorage
         // GraphQL -> physicalArchivalStorage: Long! (scalar)
-        if (this.PhysicalArchivalStorage == null && ec.Includes("physicalArchivalStorage",true))
+        if (ec.Includes("physicalArchivalStorage",true))
         {
-            this.PhysicalArchivalStorage = new System.Int64();
+            if(this.PhysicalArchivalStorage == null) {
+
+                this.PhysicalArchivalStorage = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.PhysicalArchivalStorage != null && ec.Excludes("physicalArchivalStorage",true))
+        {
+            this.PhysicalArchivalStorage = null;
         }
         //      C# -> System.Int64? PhysicalSnapshotStorage
         // GraphQL -> physicalSnapshotStorage: Long! (scalar)
-        if (this.PhysicalSnapshotStorage == null && ec.Includes("physicalSnapshotStorage",true))
+        if (ec.Includes("physicalSnapshotStorage",true))
         {
-            this.PhysicalSnapshotStorage = new System.Int64();
+            if(this.PhysicalSnapshotStorage == null) {
+
+                this.PhysicalSnapshotStorage = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.PhysicalSnapshotStorage != null && ec.Excludes("physicalSnapshotStorage",true))
+        {
+            this.PhysicalSnapshotStorage = null;
         }
         //      C# -> System.Int64? SnapshotCapacity
         // GraphQL -> snapshotCapacity: Long! (scalar)
-        if (this.SnapshotCapacity == null && ec.Includes("snapshotCapacity",true))
+        if (ec.Includes("snapshotCapacity",true))
         {
-            this.SnapshotCapacity = new System.Int64();
+            if(this.SnapshotCapacity == null) {
+
+                this.SnapshotCapacity = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotCapacity != null && ec.Excludes("snapshotCapacity",true))
+        {
+            this.SnapshotCapacity = null;
         }
         //      C# -> System.Int64? TotalCapacity
         // GraphQL -> totalCapacity: Long! (scalar)
-        if (this.TotalCapacity == null && ec.Includes("totalCapacity",true))
+        if (ec.Includes("totalCapacity",true))
         {
-            this.TotalCapacity = new System.Int64();
+            if(this.TotalCapacity == null) {
+
+                this.TotalCapacity = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalCapacity != null && ec.Excludes("totalCapacity",true))
+        {
+            this.TotalCapacity = null;
         }
         //      C# -> System.Int64? UsedCapacity
         // GraphQL -> usedCapacity: Long! (scalar)
-        if (this.UsedCapacity == null && ec.Includes("usedCapacity",true))
+        if (ec.Includes("usedCapacity",true))
         {
-            this.UsedCapacity = new System.Int64();
+            if(this.UsedCapacity == null) {
+
+                this.UsedCapacity = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UsedCapacity != null && ec.Excludes("usedCapacity",true))
+        {
+            this.UsedCapacity = null;
         }
     }
 
@@ -294,9 +460,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ClusterMetric> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -317,172 +317,297 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<ActivityObjectTypeEnum>? ActivityObjectType
         // GraphQL -> activityObjectType: [ActivityObjectTypeEnum!] (enum)
         if (this.ActivityObjectType != null) {
-            s += ind + "activityObjectType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "activityObjectType\n" ;
+            } else {
+                s += ind + "activityObjectType\n" ;
+            }
         }
         //      C# -> List<ClusterTypeEnum>? ClusterType
         // GraphQL -> clusterType: [ClusterTypeEnum!] (enum)
         if (this.ClusterType != null) {
-            s += ind + "clusterType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterType\n" ;
+            } else {
+                s += ind + "clusterType\n" ;
+            }
         }
         //      C# -> List<ComplianceStatusEnum>? ComplianceStatus
         // GraphQL -> complianceStatus: [ComplianceStatusEnum!] (enum)
         if (this.ComplianceStatus != null) {
-            s += ind + "complianceStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "complianceStatus\n" ;
+            } else {
+                s += ind + "complianceStatus\n" ;
+            }
         }
         //      C# -> List<FailoverStatusEnum>? FailoverStatus
         // GraphQL -> failoverStatus: [FailoverStatusEnum!] (enum)
         if (this.FailoverStatus != null) {
-            s += ind + "failoverStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "failoverStatus\n" ;
+            } else {
+                s += ind + "failoverStatus\n" ;
+            }
         }
         //      C# -> FailoverTypeEnum? FailoverType
         // GraphQL -> failoverType: FailoverTypeEnum (enum)
         if (this.FailoverType != null) {
-            s += ind + "failoverType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "failoverType\n" ;
+            } else {
+                s += ind + "failoverType\n" ;
+            }
         }
         //      C# -> List<ActivityStatusEnum>? LastActivityStatus
         // GraphQL -> lastActivityStatus: [ActivityStatusEnum!] (enum)
         if (this.LastActivityStatus != null) {
-            s += ind + "lastActivityStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "lastActivityStatus\n" ;
+            } else {
+                s += ind + "lastActivityStatus\n" ;
+            }
         }
         //      C# -> List<ActivityTypeEnum>? LastActivityType
         // GraphQL -> lastActivityType: [ActivityTypeEnum!] (enum)
         if (this.LastActivityType != null) {
-            s += ind + "lastActivityType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "lastActivityType\n" ;
+            } else {
+                s += ind + "lastActivityType\n" ;
+            }
         }
         //      C# -> List<ObjectTypeEnum>? ObjectType
         // GraphQL -> objectType: [ObjectTypeEnum!] (enum)
         if (this.ObjectType != null) {
-            s += ind + "objectType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "objectType\n" ;
+            } else {
+                s += ind + "objectType\n" ;
+            }
         }
         //      C# -> List<ProtectionStatusEnum>? ProtectionStatus
         // GraphQL -> protectionStatus: [ProtectionStatusEnum!] (enum)
         if (this.ProtectionStatus != null) {
-            s += ind + "protectionStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "protectionStatus\n" ;
+            } else {
+                s += ind + "protectionStatus\n" ;
+            }
         }
         //      C# -> SlaComplianceTimeRange? SlaTimeRange
         // GraphQL -> slaTimeRange: SlaComplianceTimeRange (enum)
         if (this.SlaTimeRange != null) {
-            s += ind + "slaTimeRange\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "slaTimeRange\n" ;
+            } else {
+                s += ind + "slaTimeRange\n" ;
+            }
         }
         //      C# -> List<HierarchyObjectTypeEnum>? SonarObjectTypes
         // GraphQL -> sonarObjectTypes: [HierarchyObjectTypeEnum!] (enum)
         if (this.SonarObjectTypes != null) {
-            s += ind + "sonarObjectTypes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sonarObjectTypes\n" ;
+            } else {
+                s += ind + "sonarObjectTypes\n" ;
+            }
         }
         //      C# -> List<UserAuditObjectTypeEnum>? UserAuditObjectType
         // GraphQL -> userAuditObjectType: [UserAuditObjectTypeEnum!] (enum)
         if (this.UserAuditObjectType != null) {
-            s += ind + "userAuditObjectType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "userAuditObjectType\n" ;
+            } else {
+                s += ind + "userAuditObjectType\n" ;
+            }
         }
         //      C# -> List<UserAuditStatusEnum>? UserAuditStatus
         // GraphQL -> userAuditStatus: [UserAuditStatusEnum!] (enum)
         if (this.UserAuditStatus != null) {
-            s += ind + "userAuditStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "userAuditStatus\n" ;
+            } else {
+                s += ind + "userAuditStatus\n" ;
+            }
         }
         //      C# -> List<UserAuditTypeEnum>? UserAuditType
         // GraphQL -> userAuditType: [UserAuditTypeEnum!] (enum)
         if (this.UserAuditType != null) {
-            s += ind + "userAuditType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "userAuditType\n" ;
+            } else {
+                s += ind + "userAuditType\n" ;
+            }
         }
         //      C# -> List<SlaDomain>? SlaDomain
         // GraphQL -> slaDomain: [SlaDomain!] (interface)
         if (this.SlaDomain != null) {
-                var fspec = this.SlaDomain.AsFieldSpec(indent+1);
+                var fspec = this.SlaDomain.AsFieldSpec(conf.Child("slaDomain"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "slaDomain {\n" + fspec + ind + "}\n";
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "slaDomain {\n" + fspec + ind + "}\n";
+                }
             }
         }
         //      C# -> List<System.String>? ClusterLocation
         // GraphQL -> clusterLocation: [String!] (scalar)
         if (this.ClusterLocation != null) {
-            s += ind + "clusterLocation\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterLocation\n" ;
+            } else {
+                s += ind + "clusterLocation\n" ;
+            }
         }
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime (scalar)
         if (this.Date != null) {
-            s += ind + "date\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "date\n" ;
+            } else {
+                s += ind + "date\n" ;
+            }
         }
         //      C# -> System.Boolean? IsAnomaly
         // GraphQL -> isAnomaly: Boolean (scalar)
         if (this.IsAnomaly != null) {
-            s += ind + "isAnomaly\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isAnomaly\n" ;
+            } else {
+                s += ind + "isAnomaly\n" ;
+            }
         }
         //      C# -> List<System.String>? ManagedId
         // GraphQL -> managedId: [String!] (scalar)
         if (this.ManagedId != null) {
-            s += ind + "managedId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "managedId\n" ;
+            } else {
+                s += ind + "managedId\n" ;
+            }
         }
         //      C# -> List<System.String>? OrgId
         // GraphQL -> orgId: [String!] (scalar)
         if (this.OrgId != null) {
-            s += ind + "orgId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "orgId\n" ;
+            } else {
+                s += ind + "orgId\n" ;
+            }
         }
         //      C# -> List<System.String>? PolicyId
         // GraphQL -> policyId: [String!] (scalar)
         if (this.PolicyId != null) {
-            s += ind + "policyId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "policyId\n" ;
+            } else {
+                s += ind + "policyId\n" ;
+            }
         }
         //      C# -> List<System.String>? ReplicationSource
         // GraphQL -> replicationSource: [String!] (scalar)
         if (this.ReplicationSource != null) {
-            s += ind + "replicationSource\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "replicationSource\n" ;
+            } else {
+                s += ind + "replicationSource\n" ;
+            }
         }
         //      C# -> System.String? SearchTerm
         // GraphQL -> searchTerm: String (scalar)
         if (this.SearchTerm != null) {
-            s += ind + "searchTerm\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "searchTerm\n" ;
+            } else {
+                s += ind + "searchTerm\n" ;
+            }
         }
         //      C# -> System.Boolean? ShouldApplyWhitelists
         // GraphQL -> shouldApplyWhitelists: Boolean! (scalar)
         if (this.ShouldApplyWhitelists != null) {
-            s += ind + "shouldApplyWhitelists\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "shouldApplyWhitelists\n" ;
+            } else {
+                s += ind + "shouldApplyWhitelists\n" ;
+            }
         }
         //      C# -> List<System.String>? Source
         // GraphQL -> source: [String!] (scalar)
         if (this.Source != null) {
-            s += ind + "source\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "source\n" ;
+            } else {
+                s += ind + "source\n" ;
+            }
         }
         //      C# -> List<System.String>? TargetSite
         // GraphQL -> targetSite: [String!] (scalar)
         if (this.TargetSite != null) {
-            s += ind + "targetSite\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "targetSite\n" ;
+            } else {
+                s += ind + "targetSite\n" ;
+            }
         }
         //      C# -> List<System.String>? TaskCategory
         // GraphQL -> taskCategory: [String!] (scalar)
         if (this.TaskCategory != null) {
-            s += ind + "taskCategory\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "taskCategory\n" ;
+            } else {
+                s += ind + "taskCategory\n" ;
+            }
         }
         //      C# -> List<System.String>? TaskStatus
         // GraphQL -> taskStatus: [String!] (scalar)
         if (this.TaskStatus != null) {
-            s += ind + "taskStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "taskStatus\n" ;
+            } else {
+                s += ind + "taskStatus\n" ;
+            }
         }
         //      C# -> List<System.String>? TaskType
         // GraphQL -> taskType: [String!] (scalar)
         if (this.TaskType != null) {
-            s += ind + "taskType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "taskType\n" ;
+            } else {
+                s += ind + "taskType\n" ;
+            }
         }
         //      C# -> List<Cluster>? Cluster
         // GraphQL -> cluster: [Cluster!] (type)
         if (this.Cluster != null) {
-            var fspec = this.Cluster.AsFieldSpec(indent+1);
+            var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> GenericTimeRange? TimeRange
         // GraphQL -> timeRange: GenericTimeRange (type)
         if (this.TimeRange != null) {
-            var fspec = this.TimeRange.AsFieldSpec(indent+1);
+            var fspec = this.TimeRange.AsFieldSpec(conf.Child("timeRange"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "timeRange {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "timeRange {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -494,192 +619,536 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<ActivityObjectTypeEnum>? ActivityObjectType
         // GraphQL -> activityObjectType: [ActivityObjectTypeEnum!] (enum)
-        if (this.ActivityObjectType == null && ec.Includes("activityObjectType",true))
+        if (ec.Includes("activityObjectType",true))
         {
-            this.ActivityObjectType = new List<ActivityObjectTypeEnum>();
+            if(this.ActivityObjectType == null) {
+
+                this.ActivityObjectType = new List<ActivityObjectTypeEnum>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ActivityObjectType != null && ec.Excludes("activityObjectType",true))
+        {
+            this.ActivityObjectType = null;
         }
         //      C# -> List<ClusterTypeEnum>? ClusterType
         // GraphQL -> clusterType: [ClusterTypeEnum!] (enum)
-        if (this.ClusterType == null && ec.Includes("clusterType",true))
+        if (ec.Includes("clusterType",true))
         {
-            this.ClusterType = new List<ClusterTypeEnum>();
+            if(this.ClusterType == null) {
+
+                this.ClusterType = new List<ClusterTypeEnum>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterType != null && ec.Excludes("clusterType",true))
+        {
+            this.ClusterType = null;
         }
         //      C# -> List<ComplianceStatusEnum>? ComplianceStatus
         // GraphQL -> complianceStatus: [ComplianceStatusEnum!] (enum)
-        if (this.ComplianceStatus == null && ec.Includes("complianceStatus",true))
+        if (ec.Includes("complianceStatus",true))
         {
-            this.ComplianceStatus = new List<ComplianceStatusEnum>();
+            if(this.ComplianceStatus == null) {
+
+                this.ComplianceStatus = new List<ComplianceStatusEnum>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ComplianceStatus != null && ec.Excludes("complianceStatus",true))
+        {
+            this.ComplianceStatus = null;
         }
         //      C# -> List<FailoverStatusEnum>? FailoverStatus
         // GraphQL -> failoverStatus: [FailoverStatusEnum!] (enum)
-        if (this.FailoverStatus == null && ec.Includes("failoverStatus",true))
+        if (ec.Includes("failoverStatus",true))
         {
-            this.FailoverStatus = new List<FailoverStatusEnum>();
+            if(this.FailoverStatus == null) {
+
+                this.FailoverStatus = new List<FailoverStatusEnum>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.FailoverStatus != null && ec.Excludes("failoverStatus",true))
+        {
+            this.FailoverStatus = null;
         }
         //      C# -> FailoverTypeEnum? FailoverType
         // GraphQL -> failoverType: FailoverTypeEnum (enum)
-        if (this.FailoverType == null && ec.Includes("failoverType",true))
+        if (ec.Includes("failoverType",true))
         {
-            this.FailoverType = new FailoverTypeEnum();
+            if(this.FailoverType == null) {
+
+                this.FailoverType = new FailoverTypeEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.FailoverType != null && ec.Excludes("failoverType",true))
+        {
+            this.FailoverType = null;
         }
         //      C# -> List<ActivityStatusEnum>? LastActivityStatus
         // GraphQL -> lastActivityStatus: [ActivityStatusEnum!] (enum)
-        if (this.LastActivityStatus == null && ec.Includes("lastActivityStatus",true))
+        if (ec.Includes("lastActivityStatus",true))
         {
-            this.LastActivityStatus = new List<ActivityStatusEnum>();
+            if(this.LastActivityStatus == null) {
+
+                this.LastActivityStatus = new List<ActivityStatusEnum>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastActivityStatus != null && ec.Excludes("lastActivityStatus",true))
+        {
+            this.LastActivityStatus = null;
         }
         //      C# -> List<ActivityTypeEnum>? LastActivityType
         // GraphQL -> lastActivityType: [ActivityTypeEnum!] (enum)
-        if (this.LastActivityType == null && ec.Includes("lastActivityType",true))
+        if (ec.Includes("lastActivityType",true))
         {
-            this.LastActivityType = new List<ActivityTypeEnum>();
+            if(this.LastActivityType == null) {
+
+                this.LastActivityType = new List<ActivityTypeEnum>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastActivityType != null && ec.Excludes("lastActivityType",true))
+        {
+            this.LastActivityType = null;
         }
         //      C# -> List<ObjectTypeEnum>? ObjectType
         // GraphQL -> objectType: [ObjectTypeEnum!] (enum)
-        if (this.ObjectType == null && ec.Includes("objectType",true))
+        if (ec.Includes("objectType",true))
         {
-            this.ObjectType = new List<ObjectTypeEnum>();
+            if(this.ObjectType == null) {
+
+                this.ObjectType = new List<ObjectTypeEnum>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ObjectType != null && ec.Excludes("objectType",true))
+        {
+            this.ObjectType = null;
         }
         //      C# -> List<ProtectionStatusEnum>? ProtectionStatus
         // GraphQL -> protectionStatus: [ProtectionStatusEnum!] (enum)
-        if (this.ProtectionStatus == null && ec.Includes("protectionStatus",true))
+        if (ec.Includes("protectionStatus",true))
         {
-            this.ProtectionStatus = new List<ProtectionStatusEnum>();
+            if(this.ProtectionStatus == null) {
+
+                this.ProtectionStatus = new List<ProtectionStatusEnum>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProtectionStatus != null && ec.Excludes("protectionStatus",true))
+        {
+            this.ProtectionStatus = null;
         }
         //      C# -> SlaComplianceTimeRange? SlaTimeRange
         // GraphQL -> slaTimeRange: SlaComplianceTimeRange (enum)
-        if (this.SlaTimeRange == null && ec.Includes("slaTimeRange",true))
+        if (ec.Includes("slaTimeRange",true))
         {
-            this.SlaTimeRange = new SlaComplianceTimeRange();
+            if(this.SlaTimeRange == null) {
+
+                this.SlaTimeRange = new SlaComplianceTimeRange();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SlaTimeRange != null && ec.Excludes("slaTimeRange",true))
+        {
+            this.SlaTimeRange = null;
         }
         //      C# -> List<HierarchyObjectTypeEnum>? SonarObjectTypes
         // GraphQL -> sonarObjectTypes: [HierarchyObjectTypeEnum!] (enum)
-        if (this.SonarObjectTypes == null && ec.Includes("sonarObjectTypes",true))
+        if (ec.Includes("sonarObjectTypes",true))
         {
-            this.SonarObjectTypes = new List<HierarchyObjectTypeEnum>();
+            if(this.SonarObjectTypes == null) {
+
+                this.SonarObjectTypes = new List<HierarchyObjectTypeEnum>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SonarObjectTypes != null && ec.Excludes("sonarObjectTypes",true))
+        {
+            this.SonarObjectTypes = null;
         }
         //      C# -> List<UserAuditObjectTypeEnum>? UserAuditObjectType
         // GraphQL -> userAuditObjectType: [UserAuditObjectTypeEnum!] (enum)
-        if (this.UserAuditObjectType == null && ec.Includes("userAuditObjectType",true))
+        if (ec.Includes("userAuditObjectType",true))
         {
-            this.UserAuditObjectType = new List<UserAuditObjectTypeEnum>();
+            if(this.UserAuditObjectType == null) {
+
+                this.UserAuditObjectType = new List<UserAuditObjectTypeEnum>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UserAuditObjectType != null && ec.Excludes("userAuditObjectType",true))
+        {
+            this.UserAuditObjectType = null;
         }
         //      C# -> List<UserAuditStatusEnum>? UserAuditStatus
         // GraphQL -> userAuditStatus: [UserAuditStatusEnum!] (enum)
-        if (this.UserAuditStatus == null && ec.Includes("userAuditStatus",true))
+        if (ec.Includes("userAuditStatus",true))
         {
-            this.UserAuditStatus = new List<UserAuditStatusEnum>();
+            if(this.UserAuditStatus == null) {
+
+                this.UserAuditStatus = new List<UserAuditStatusEnum>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UserAuditStatus != null && ec.Excludes("userAuditStatus",true))
+        {
+            this.UserAuditStatus = null;
         }
         //      C# -> List<UserAuditTypeEnum>? UserAuditType
         // GraphQL -> userAuditType: [UserAuditTypeEnum!] (enum)
-        if (this.UserAuditType == null && ec.Includes("userAuditType",true))
+        if (ec.Includes("userAuditType",true))
         {
-            this.UserAuditType = new List<UserAuditTypeEnum>();
+            if(this.UserAuditType == null) {
+
+                this.UserAuditType = new List<UserAuditTypeEnum>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UserAuditType != null && ec.Excludes("userAuditType",true))
+        {
+            this.UserAuditType = null;
         }
         //      C# -> List<SlaDomain>? SlaDomain
         // GraphQL -> slaDomain: [SlaDomain!] (interface)
-        if (this.SlaDomain == null && ec.Includes("slaDomain",false))
+        if (ec.Includes("slaDomain",false))
         {
-            this.SlaDomain = new List<SlaDomain>();
-            this.SlaDomain.ApplyExploratoryFieldSpec(ec.NewChild("slaDomain"));
+            if(this.SlaDomain == null) {
+
+                this.SlaDomain = new List<SlaDomain>();
+                this.SlaDomain.ApplyExploratoryFieldSpec(ec.NewChild("slaDomain"));
+
+            } else {
+
+                this.SlaDomain.ApplyExploratoryFieldSpec(ec.NewChild("slaDomain"));
+
+            }
+        }
+        else if (this.SlaDomain != null && ec.Excludes("slaDomain",false))
+        {
+            this.SlaDomain = null;
         }
         //      C# -> List<System.String>? ClusterLocation
         // GraphQL -> clusterLocation: [String!] (scalar)
-        if (this.ClusterLocation == null && ec.Includes("clusterLocation",true))
+        if (ec.Includes("clusterLocation",true))
         {
-            this.ClusterLocation = new List<System.String>();
+            if(this.ClusterLocation == null) {
+
+                this.ClusterLocation = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterLocation != null && ec.Excludes("clusterLocation",true))
+        {
+            this.ClusterLocation = null;
         }
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime (scalar)
-        if (this.Date == null && ec.Includes("date",true))
+        if (ec.Includes("date",true))
         {
-            this.Date = new DateTime();
+            if(this.Date == null) {
+
+                this.Date = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Date != null && ec.Excludes("date",true))
+        {
+            this.Date = null;
         }
         //      C# -> System.Boolean? IsAnomaly
         // GraphQL -> isAnomaly: Boolean (scalar)
-        if (this.IsAnomaly == null && ec.Includes("isAnomaly",true))
+        if (ec.Includes("isAnomaly",true))
         {
-            this.IsAnomaly = true;
+            if(this.IsAnomaly == null) {
+
+                this.IsAnomaly = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAnomaly != null && ec.Excludes("isAnomaly",true))
+        {
+            this.IsAnomaly = null;
         }
         //      C# -> List<System.String>? ManagedId
         // GraphQL -> managedId: [String!] (scalar)
-        if (this.ManagedId == null && ec.Includes("managedId",true))
+        if (ec.Includes("managedId",true))
         {
-            this.ManagedId = new List<System.String>();
+            if(this.ManagedId == null) {
+
+                this.ManagedId = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ManagedId != null && ec.Excludes("managedId",true))
+        {
+            this.ManagedId = null;
         }
         //      C# -> List<System.String>? OrgId
         // GraphQL -> orgId: [String!] (scalar)
-        if (this.OrgId == null && ec.Includes("orgId",true))
+        if (ec.Includes("orgId",true))
         {
-            this.OrgId = new List<System.String>();
+            if(this.OrgId == null) {
+
+                this.OrgId = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.OrgId != null && ec.Excludes("orgId",true))
+        {
+            this.OrgId = null;
         }
         //      C# -> List<System.String>? PolicyId
         // GraphQL -> policyId: [String!] (scalar)
-        if (this.PolicyId == null && ec.Includes("policyId",true))
+        if (ec.Includes("policyId",true))
         {
-            this.PolicyId = new List<System.String>();
+            if(this.PolicyId == null) {
+
+                this.PolicyId = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.PolicyId != null && ec.Excludes("policyId",true))
+        {
+            this.PolicyId = null;
         }
         //      C# -> List<System.String>? ReplicationSource
         // GraphQL -> replicationSource: [String!] (scalar)
-        if (this.ReplicationSource == null && ec.Includes("replicationSource",true))
+        if (ec.Includes("replicationSource",true))
         {
-            this.ReplicationSource = new List<System.String>();
+            if(this.ReplicationSource == null) {
+
+                this.ReplicationSource = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ReplicationSource != null && ec.Excludes("replicationSource",true))
+        {
+            this.ReplicationSource = null;
         }
         //      C# -> System.String? SearchTerm
         // GraphQL -> searchTerm: String (scalar)
-        if (this.SearchTerm == null && ec.Includes("searchTerm",true))
+        if (ec.Includes("searchTerm",true))
         {
-            this.SearchTerm = "FETCH";
+            if(this.SearchTerm == null) {
+
+                this.SearchTerm = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SearchTerm != null && ec.Excludes("searchTerm",true))
+        {
+            this.SearchTerm = null;
         }
         //      C# -> System.Boolean? ShouldApplyWhitelists
         // GraphQL -> shouldApplyWhitelists: Boolean! (scalar)
-        if (this.ShouldApplyWhitelists == null && ec.Includes("shouldApplyWhitelists",true))
+        if (ec.Includes("shouldApplyWhitelists",true))
         {
-            this.ShouldApplyWhitelists = true;
+            if(this.ShouldApplyWhitelists == null) {
+
+                this.ShouldApplyWhitelists = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShouldApplyWhitelists != null && ec.Excludes("shouldApplyWhitelists",true))
+        {
+            this.ShouldApplyWhitelists = null;
         }
         //      C# -> List<System.String>? Source
         // GraphQL -> source: [String!] (scalar)
-        if (this.Source == null && ec.Includes("source",true))
+        if (ec.Includes("source",true))
         {
-            this.Source = new List<System.String>();
+            if(this.Source == null) {
+
+                this.Source = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Source != null && ec.Excludes("source",true))
+        {
+            this.Source = null;
         }
         //      C# -> List<System.String>? TargetSite
         // GraphQL -> targetSite: [String!] (scalar)
-        if (this.TargetSite == null && ec.Includes("targetSite",true))
+        if (ec.Includes("targetSite",true))
         {
-            this.TargetSite = new List<System.String>();
+            if(this.TargetSite == null) {
+
+                this.TargetSite = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TargetSite != null && ec.Excludes("targetSite",true))
+        {
+            this.TargetSite = null;
         }
         //      C# -> List<System.String>? TaskCategory
         // GraphQL -> taskCategory: [String!] (scalar)
-        if (this.TaskCategory == null && ec.Includes("taskCategory",true))
+        if (ec.Includes("taskCategory",true))
         {
-            this.TaskCategory = new List<System.String>();
+            if(this.TaskCategory == null) {
+
+                this.TaskCategory = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TaskCategory != null && ec.Excludes("taskCategory",true))
+        {
+            this.TaskCategory = null;
         }
         //      C# -> List<System.String>? TaskStatus
         // GraphQL -> taskStatus: [String!] (scalar)
-        if (this.TaskStatus == null && ec.Includes("taskStatus",true))
+        if (ec.Includes("taskStatus",true))
         {
-            this.TaskStatus = new List<System.String>();
+            if(this.TaskStatus == null) {
+
+                this.TaskStatus = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TaskStatus != null && ec.Excludes("taskStatus",true))
+        {
+            this.TaskStatus = null;
         }
         //      C# -> List<System.String>? TaskType
         // GraphQL -> taskType: [String!] (scalar)
-        if (this.TaskType == null && ec.Includes("taskType",true))
+        if (ec.Includes("taskType",true))
         {
-            this.TaskType = new List<System.String>();
+            if(this.TaskType == null) {
+
+                this.TaskType = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TaskType != null && ec.Excludes("taskType",true))
+        {
+            this.TaskType = null;
         }
         //      C# -> List<Cluster>? Cluster
         // GraphQL -> cluster: [Cluster!] (type)
-        if (this.Cluster == null && ec.Includes("cluster",false))
+        if (ec.Includes("cluster",false))
         {
-            this.Cluster = new List<Cluster>();
-            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+            if(this.Cluster == null) {
+
+                this.Cluster = new List<Cluster>();
+                this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+
+            } else {
+
+                this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+
+            }
+        }
+        else if (this.Cluster != null && ec.Excludes("cluster",false))
+        {
+            this.Cluster = null;
         }
         //      C# -> GenericTimeRange? TimeRange
         // GraphQL -> timeRange: GenericTimeRange (type)
-        if (this.TimeRange == null && ec.Includes("timeRange",false))
+        if (ec.Includes("timeRange",false))
         {
-            this.TimeRange = new GenericTimeRange();
-            this.TimeRange.ApplyExploratoryFieldSpec(ec.NewChild("timeRange"));
+            if(this.TimeRange == null) {
+
+                this.TimeRange = new GenericTimeRange();
+                this.TimeRange.ApplyExploratoryFieldSpec(ec.NewChild("timeRange"));
+
+            } else {
+
+                this.TimeRange.ApplyExploratoryFieldSpec(ec.NewChild("timeRange"));
+
+            }
+        }
+        else if (this.TimeRange != null && ec.Excludes("timeRange",false))
+        {
+            this.TimeRange = null;
         }
     }
 
@@ -706,9 +1175,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CustomReportFilters> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

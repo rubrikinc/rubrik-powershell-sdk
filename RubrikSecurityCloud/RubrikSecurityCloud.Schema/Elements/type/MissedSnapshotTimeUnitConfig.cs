@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> MissedSnapshotDayOfTimeUnit? DayOfTime
         // GraphQL -> dayOfTime: MissedSnapshotDayOfTimeUnit (enum)
         if (this.DayOfTime != null) {
-            s += ind + "dayOfTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "dayOfTime\n" ;
+            } else {
+                s += ind + "dayOfTime\n" ;
+            }
         }
         //      C# -> SlaTimeUnit? TimeUnit
         // GraphQL -> timeUnit: SlaTimeUnit! (enum)
         if (this.TimeUnit != null) {
-            s += ind + "timeUnit\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "timeUnit\n" ;
+            } else {
+                s += ind + "timeUnit\n" ;
+            }
         }
         //      C# -> System.Int32? Frequency
         // GraphQL -> frequency: Int! (scalar)
         if (this.Frequency != null) {
-            s += ind + "frequency\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "frequency\n" ;
+            } else {
+                s += ind + "frequency\n" ;
+            }
         }
         //      C# -> System.Int32? Retention
         // GraphQL -> retention: Int! (scalar)
         if (this.Retention != null) {
-            s += ind + "retention\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "retention\n" ;
+            } else {
+                s += ind + "retention\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> MissedSnapshotDayOfTimeUnit? DayOfTime
         // GraphQL -> dayOfTime: MissedSnapshotDayOfTimeUnit (enum)
-        if (this.DayOfTime == null && ec.Includes("dayOfTime",true))
+        if (ec.Includes("dayOfTime",true))
         {
-            this.DayOfTime = new MissedSnapshotDayOfTimeUnit();
+            if(this.DayOfTime == null) {
+
+                this.DayOfTime = new MissedSnapshotDayOfTimeUnit();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DayOfTime != null && ec.Excludes("dayOfTime",true))
+        {
+            this.DayOfTime = null;
         }
         //      C# -> SlaTimeUnit? TimeUnit
         // GraphQL -> timeUnit: SlaTimeUnit! (enum)
-        if (this.TimeUnit == null && ec.Includes("timeUnit",true))
+        if (ec.Includes("timeUnit",true))
         {
-            this.TimeUnit = new SlaTimeUnit();
+            if(this.TimeUnit == null) {
+
+                this.TimeUnit = new SlaTimeUnit();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TimeUnit != null && ec.Excludes("timeUnit",true))
+        {
+            this.TimeUnit = null;
         }
         //      C# -> System.Int32? Frequency
         // GraphQL -> frequency: Int! (scalar)
-        if (this.Frequency == null && ec.Includes("frequency",true))
+        if (ec.Includes("frequency",true))
         {
-            this.Frequency = Int32.MinValue;
+            if(this.Frequency == null) {
+
+                this.Frequency = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Frequency != null && ec.Excludes("frequency",true))
+        {
+            this.Frequency = null;
         }
         //      C# -> System.Int32? Retention
         // GraphQL -> retention: Int! (scalar)
-        if (this.Retention == null && ec.Includes("retention",true))
+        if (ec.Includes("retention",true))
         {
-            this.Retention = Int32.MinValue;
+            if(this.Retention == null) {
+
+                this.Retention = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Retention != null && ec.Excludes("retention",true))
+        {
+            this.Retention = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<MissedSnapshotTimeUnitConfig> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

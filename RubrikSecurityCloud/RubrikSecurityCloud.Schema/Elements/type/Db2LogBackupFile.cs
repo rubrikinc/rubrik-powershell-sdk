@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? BackupFileSizeInBytes
         // GraphQL -> backupFileSizeInBytes: Long (scalar)
         if (this.BackupFileSizeInBytes != null) {
-            s += ind + "backupFileSizeInBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "backupFileSizeInBytes\n" ;
+            } else {
+                s += ind + "backupFileSizeInBytes\n" ;
+            }
         }
         //      C# -> System.String? BackupId
         // GraphQL -> backupId: String (scalar)
         if (this.BackupId != null) {
-            s += ind + "backupId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "backupId\n" ;
+            } else {
+                s += ind + "backupId\n" ;
+            }
         }
         //      C# -> System.String? DestinationPath
         // GraphQL -> destinationPath: String (scalar)
         if (this.DestinationPath != null) {
-            s += ind + "destinationPath\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "destinationPath\n" ;
+            } else {
+                s += ind + "destinationPath\n" ;
+            }
         }
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime (scalar)
         if (this.EndTime != null) {
-            s += ind + "endTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "endTime\n" ;
+            } else {
+                s += ind + "endTime\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? BackupFileSizeInBytes
         // GraphQL -> backupFileSizeInBytes: Long (scalar)
-        if (this.BackupFileSizeInBytes == null && ec.Includes("backupFileSizeInBytes",true))
+        if (ec.Includes("backupFileSizeInBytes",true))
         {
-            this.BackupFileSizeInBytes = new System.Int64();
+            if(this.BackupFileSizeInBytes == null) {
+
+                this.BackupFileSizeInBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.BackupFileSizeInBytes != null && ec.Excludes("backupFileSizeInBytes",true))
+        {
+            this.BackupFileSizeInBytes = null;
         }
         //      C# -> System.String? BackupId
         // GraphQL -> backupId: String (scalar)
-        if (this.BackupId == null && ec.Includes("backupId",true))
+        if (ec.Includes("backupId",true))
         {
-            this.BackupId = "FETCH";
+            if(this.BackupId == null) {
+
+                this.BackupId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.BackupId != null && ec.Excludes("backupId",true))
+        {
+            this.BackupId = null;
         }
         //      C# -> System.String? DestinationPath
         // GraphQL -> destinationPath: String (scalar)
-        if (this.DestinationPath == null && ec.Includes("destinationPath",true))
+        if (ec.Includes("destinationPath",true))
         {
-            this.DestinationPath = "FETCH";
+            if(this.DestinationPath == null) {
+
+                this.DestinationPath = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DestinationPath != null && ec.Excludes("destinationPath",true))
+        {
+            this.DestinationPath = null;
         }
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime (scalar)
-        if (this.EndTime == null && ec.Includes("endTime",true))
+        if (ec.Includes("endTime",true))
         {
-            this.EndTime = new DateTime();
+            if(this.EndTime == null) {
+
+                this.EndTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EndTime != null && ec.Excludes("endTime",true))
+        {
+            this.EndTime = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<Db2LogBackupFile> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

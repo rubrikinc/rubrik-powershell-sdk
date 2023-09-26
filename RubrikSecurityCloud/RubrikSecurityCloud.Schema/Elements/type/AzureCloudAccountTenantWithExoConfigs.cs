@@ -110,51 +110,84 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> AzureCloudType? CloudType
         // GraphQL -> cloudType: AzureCloudType! (enum)
         if (this.CloudType != null) {
-            s += ind + "cloudType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cloudType\n" ;
+            } else {
+                s += ind + "cloudType\n" ;
+            }
         }
         //      C# -> System.String? AppName
         // GraphQL -> appName: String! (scalar)
         if (this.AppName != null) {
-            s += ind + "appName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "appName\n" ;
+            } else {
+                s += ind + "appName\n" ;
+            }
         }
         //      C# -> System.String? ClientId
         // GraphQL -> clientId: String! (scalar)
         if (this.ClientId != null) {
-            s += ind + "clientId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "clientId\n" ;
+            } else {
+                s += ind + "clientId\n" ;
+            }
         }
         //      C# -> System.String? DomainName
         // GraphQL -> domainName: String! (scalar)
         if (this.DomainName != null) {
-            s += ind + "domainName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "domainName\n" ;
+            } else {
+                s += ind + "domainName\n" ;
+            }
         }
         //      C# -> System.Boolean? IsAppRubrikManaged
         // GraphQL -> isAppRubrikManaged: Boolean! (scalar)
         if (this.IsAppRubrikManaged != null) {
-            s += ind + "isAppRubrikManaged\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isAppRubrikManaged\n" ;
+            } else {
+                s += ind + "isAppRubrikManaged\n" ;
+            }
         }
         //      C# -> System.String? RubrikId
         // GraphQL -> rubrikId: String! (scalar)
         if (this.RubrikId != null) {
-            s += ind + "rubrikId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "rubrikId\n" ;
+            } else {
+                s += ind + "rubrikId\n" ;
+            }
         }
         //      C# -> System.Int32? SubscriptionCount
         // GraphQL -> subscriptionCount: Int! (scalar)
         if (this.SubscriptionCount != null) {
-            s += ind + "subscriptionCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "subscriptionCount\n" ;
+            } else {
+                s += ind + "subscriptionCount\n" ;
+            }
         }
         //      C# -> List<AzureSubscriptionWithExoConfigs>? Subscriptions
         // GraphQL -> subscriptions: [AzureSubscriptionWithExoConfigs!]! (type)
         if (this.Subscriptions != null) {
-            var fspec = this.Subscriptions.AsFieldSpec(indent+1);
+            var fspec = this.Subscriptions.AsFieldSpec(conf.Child("subscriptions"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "subscriptions {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "subscriptions {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -166,52 +199,141 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> AzureCloudType? CloudType
         // GraphQL -> cloudType: AzureCloudType! (enum)
-        if (this.CloudType == null && ec.Includes("cloudType",true))
+        if (ec.Includes("cloudType",true))
         {
-            this.CloudType = new AzureCloudType();
+            if(this.CloudType == null) {
+
+                this.CloudType = new AzureCloudType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CloudType != null && ec.Excludes("cloudType",true))
+        {
+            this.CloudType = null;
         }
         //      C# -> System.String? AppName
         // GraphQL -> appName: String! (scalar)
-        if (this.AppName == null && ec.Includes("appName",true))
+        if (ec.Includes("appName",true))
         {
-            this.AppName = "FETCH";
+            if(this.AppName == null) {
+
+                this.AppName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AppName != null && ec.Excludes("appName",true))
+        {
+            this.AppName = null;
         }
         //      C# -> System.String? ClientId
         // GraphQL -> clientId: String! (scalar)
-        if (this.ClientId == null && ec.Includes("clientId",true))
+        if (ec.Includes("clientId",true))
         {
-            this.ClientId = "FETCH";
+            if(this.ClientId == null) {
+
+                this.ClientId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClientId != null && ec.Excludes("clientId",true))
+        {
+            this.ClientId = null;
         }
         //      C# -> System.String? DomainName
         // GraphQL -> domainName: String! (scalar)
-        if (this.DomainName == null && ec.Includes("domainName",true))
+        if (ec.Includes("domainName",true))
         {
-            this.DomainName = "FETCH";
+            if(this.DomainName == null) {
+
+                this.DomainName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DomainName != null && ec.Excludes("domainName",true))
+        {
+            this.DomainName = null;
         }
         //      C# -> System.Boolean? IsAppRubrikManaged
         // GraphQL -> isAppRubrikManaged: Boolean! (scalar)
-        if (this.IsAppRubrikManaged == null && ec.Includes("isAppRubrikManaged",true))
+        if (ec.Includes("isAppRubrikManaged",true))
         {
-            this.IsAppRubrikManaged = true;
+            if(this.IsAppRubrikManaged == null) {
+
+                this.IsAppRubrikManaged = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAppRubrikManaged != null && ec.Excludes("isAppRubrikManaged",true))
+        {
+            this.IsAppRubrikManaged = null;
         }
         //      C# -> System.String? RubrikId
         // GraphQL -> rubrikId: String! (scalar)
-        if (this.RubrikId == null && ec.Includes("rubrikId",true))
+        if (ec.Includes("rubrikId",true))
         {
-            this.RubrikId = "FETCH";
+            if(this.RubrikId == null) {
+
+                this.RubrikId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RubrikId != null && ec.Excludes("rubrikId",true))
+        {
+            this.RubrikId = null;
         }
         //      C# -> System.Int32? SubscriptionCount
         // GraphQL -> subscriptionCount: Int! (scalar)
-        if (this.SubscriptionCount == null && ec.Includes("subscriptionCount",true))
+        if (ec.Includes("subscriptionCount",true))
         {
-            this.SubscriptionCount = Int32.MinValue;
+            if(this.SubscriptionCount == null) {
+
+                this.SubscriptionCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.SubscriptionCount != null && ec.Excludes("subscriptionCount",true))
+        {
+            this.SubscriptionCount = null;
         }
         //      C# -> List<AzureSubscriptionWithExoConfigs>? Subscriptions
         // GraphQL -> subscriptions: [AzureSubscriptionWithExoConfigs!]! (type)
-        if (this.Subscriptions == null && ec.Includes("subscriptions",false))
+        if (ec.Includes("subscriptions",false))
         {
-            this.Subscriptions = new List<AzureSubscriptionWithExoConfigs>();
-            this.Subscriptions.ApplyExploratoryFieldSpec(ec.NewChild("subscriptions"));
+            if(this.Subscriptions == null) {
+
+                this.Subscriptions = new List<AzureSubscriptionWithExoConfigs>();
+                this.Subscriptions.ApplyExploratoryFieldSpec(ec.NewChild("subscriptions"));
+
+            } else {
+
+                this.Subscriptions.ApplyExploratoryFieldSpec(ec.NewChild("subscriptions"));
+
+            }
+        }
+        else if (this.Subscriptions != null && ec.Excludes("subscriptions",false))
+        {
+            this.Subscriptions = null;
         }
     }
 
@@ -238,9 +360,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AzureCloudAccountTenantWithExoConfigs> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

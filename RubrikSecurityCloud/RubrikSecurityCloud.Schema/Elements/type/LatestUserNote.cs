@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? ObjectId
         // GraphQL -> objectId: String! (scalar)
         if (this.ObjectId != null) {
-            s += ind + "objectId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "objectId\n" ;
+            } else {
+                s += ind + "objectId\n" ;
+            }
         }
         //      C# -> DateTime? Time
         // GraphQL -> time: DateTime! (scalar)
         if (this.Time != null) {
-            s += ind + "time\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "time\n" ;
+            } else {
+                s += ind + "time\n" ;
+            }
         }
         //      C# -> System.String? UserName
         // GraphQL -> userName: String (scalar)
         if (this.UserName != null) {
-            s += ind + "userName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "userName\n" ;
+            } else {
+                s += ind + "userName\n" ;
+            }
         }
         //      C# -> System.String? UserNote
         // GraphQL -> userNote: String (scalar)
         if (this.UserNote != null) {
-            s += ind + "userNote\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "userNote\n" ;
+            } else {
+                s += ind + "userNote\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? ObjectId
         // GraphQL -> objectId: String! (scalar)
-        if (this.ObjectId == null && ec.Includes("objectId",true))
+        if (ec.Includes("objectId",true))
         {
-            this.ObjectId = "FETCH";
+            if(this.ObjectId == null) {
+
+                this.ObjectId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ObjectId != null && ec.Excludes("objectId",true))
+        {
+            this.ObjectId = null;
         }
         //      C# -> DateTime? Time
         // GraphQL -> time: DateTime! (scalar)
-        if (this.Time == null && ec.Includes("time",true))
+        if (ec.Includes("time",true))
         {
-            this.Time = new DateTime();
+            if(this.Time == null) {
+
+                this.Time = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Time != null && ec.Excludes("time",true))
+        {
+            this.Time = null;
         }
         //      C# -> System.String? UserName
         // GraphQL -> userName: String (scalar)
-        if (this.UserName == null && ec.Includes("userName",true))
+        if (ec.Includes("userName",true))
         {
-            this.UserName = "FETCH";
+            if(this.UserName == null) {
+
+                this.UserName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.UserName != null && ec.Excludes("userName",true))
+        {
+            this.UserName = null;
         }
         //      C# -> System.String? UserNote
         // GraphQL -> userNote: String (scalar)
-        if (this.UserNote == null && ec.Includes("userNote",true))
+        if (ec.Includes("userNote",true))
         {
-            this.UserNote = "FETCH";
+            if(this.UserNote == null) {
+
+                this.UserNote = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.UserNote != null && ec.Excludes("userNote",true))
+        {
+            this.UserNote = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<LatestUserNote> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

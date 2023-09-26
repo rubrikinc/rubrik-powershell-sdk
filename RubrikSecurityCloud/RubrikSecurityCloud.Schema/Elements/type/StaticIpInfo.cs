@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<System.String>? DnsServers
         // GraphQL -> dnsServers: [String!]! (scalar)
         if (this.DnsServers != null) {
-            s += ind + "dnsServers\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "dnsServers\n" ;
+            } else {
+                s += ind + "dnsServers\n" ;
+            }
         }
         //      C# -> System.String? Gateway
         // GraphQL -> gateway: String (scalar)
         if (this.Gateway != null) {
-            s += ind + "gateway\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "gateway\n" ;
+            } else {
+                s += ind + "gateway\n" ;
+            }
         }
         //      C# -> List<System.String>? IpAddresses
         // GraphQL -> ipAddresses: [String!]! (scalar)
         if (this.IpAddresses != null) {
-            s += ind + "ipAddresses\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "ipAddresses\n" ;
+            } else {
+                s += ind + "ipAddresses\n" ;
+            }
         }
         //      C# -> System.String? SubnetMask
         // GraphQL -> subnetMask: String! (scalar)
         if (this.SubnetMask != null) {
-            s += ind + "subnetMask\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "subnetMask\n" ;
+            } else {
+                s += ind + "subnetMask\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<System.String>? DnsServers
         // GraphQL -> dnsServers: [String!]! (scalar)
-        if (this.DnsServers == null && ec.Includes("dnsServers",true))
+        if (ec.Includes("dnsServers",true))
         {
-            this.DnsServers = new List<System.String>();
+            if(this.DnsServers == null) {
+
+                this.DnsServers = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DnsServers != null && ec.Excludes("dnsServers",true))
+        {
+            this.DnsServers = null;
         }
         //      C# -> System.String? Gateway
         // GraphQL -> gateway: String (scalar)
-        if (this.Gateway == null && ec.Includes("gateway",true))
+        if (ec.Includes("gateway",true))
         {
-            this.Gateway = "FETCH";
+            if(this.Gateway == null) {
+
+                this.Gateway = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Gateway != null && ec.Excludes("gateway",true))
+        {
+            this.Gateway = null;
         }
         //      C# -> List<System.String>? IpAddresses
         // GraphQL -> ipAddresses: [String!]! (scalar)
-        if (this.IpAddresses == null && ec.Includes("ipAddresses",true))
+        if (ec.Includes("ipAddresses",true))
         {
-            this.IpAddresses = new List<System.String>();
+            if(this.IpAddresses == null) {
+
+                this.IpAddresses = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.IpAddresses != null && ec.Excludes("ipAddresses",true))
+        {
+            this.IpAddresses = null;
         }
         //      C# -> System.String? SubnetMask
         // GraphQL -> subnetMask: String! (scalar)
-        if (this.SubnetMask == null && ec.Includes("subnetMask",true))
+        if (ec.Includes("subnetMask",true))
         {
-            this.SubnetMask = "FETCH";
+            if(this.SubnetMask == null) {
+
+                this.SubnetMask = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SubnetMask != null && ec.Excludes("subnetMask",true))
+        {
+            this.SubnetMask = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<StaticIpInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

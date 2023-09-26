@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Href
         // GraphQL -> href: String! (scalar)
         if (this.Href != null) {
-            s += ind + "href\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "href\n" ;
+            } else {
+                s += ind + "href\n" ;
+            }
         }
         //      C# -> System.String? Rel
         // GraphQL -> rel: String! (scalar)
         if (this.Rel != null) {
-            s += ind + "rel\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "rel\n" ;
+            } else {
+                s += ind + "rel\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Href
         // GraphQL -> href: String! (scalar)
-        if (this.Href == null && ec.Includes("href",true))
+        if (ec.Includes("href",true))
         {
-            this.Href = "FETCH";
+            if(this.Href == null) {
+
+                this.Href = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Href != null && ec.Excludes("href",true))
+        {
+            this.Href = null;
         }
         //      C# -> System.String? Rel
         // GraphQL -> rel: String! (scalar)
-        if (this.Rel == null && ec.Includes("rel",true))
+        if (ec.Includes("rel",true))
         {
-            this.Rel = "FETCH";
+            if(this.Rel == null) {
+
+                this.Rel = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Rel != null && ec.Excludes("rel",true))
+        {
+            this.Rel = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<Link> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

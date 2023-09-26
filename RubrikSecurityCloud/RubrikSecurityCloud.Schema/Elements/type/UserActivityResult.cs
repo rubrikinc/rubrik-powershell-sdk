@@ -74,34 +74,51 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? NumActivities
         // GraphQL -> numActivities: Long! (scalar)
         if (this.NumActivities != null) {
-            s += ind + "numActivities\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "numActivities\n" ;
+            } else {
+                s += ind + "numActivities\n" ;
+            }
         }
         //      C# -> System.String? PaginationId
         // GraphQL -> paginationId: String! (scalar)
         if (this.PaginationId != null) {
-            s += ind + "paginationId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "paginationId\n" ;
+            } else {
+                s += ind + "paginationId\n" ;
+            }
         }
         //      C# -> List<ActivityResult>? NumActivitiesBreakdown
         // GraphQL -> numActivitiesBreakdown: [ActivityResult!]! (type)
         if (this.NumActivitiesBreakdown != null) {
-            var fspec = this.NumActivitiesBreakdown.AsFieldSpec(indent+1);
+            var fspec = this.NumActivitiesBreakdown.AsFieldSpec(conf.Child("numActivitiesBreakdown"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "numActivitiesBreakdown {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "numActivitiesBreakdown {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> AccessUser? User
         // GraphQL -> user: AccessUser (type)
         if (this.User != null) {
-            var fspec = this.User.AsFieldSpec(indent+1);
+            var fspec = this.User.AsFieldSpec(conf.Child("user"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "user {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "user {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -113,29 +130,75 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? NumActivities
         // GraphQL -> numActivities: Long! (scalar)
-        if (this.NumActivities == null && ec.Includes("numActivities",true))
+        if (ec.Includes("numActivities",true))
         {
-            this.NumActivities = new System.Int64();
+            if(this.NumActivities == null) {
+
+                this.NumActivities = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.NumActivities != null && ec.Excludes("numActivities",true))
+        {
+            this.NumActivities = null;
         }
         //      C# -> System.String? PaginationId
         // GraphQL -> paginationId: String! (scalar)
-        if (this.PaginationId == null && ec.Includes("paginationId",true))
+        if (ec.Includes("paginationId",true))
         {
-            this.PaginationId = "FETCH";
+            if(this.PaginationId == null) {
+
+                this.PaginationId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PaginationId != null && ec.Excludes("paginationId",true))
+        {
+            this.PaginationId = null;
         }
         //      C# -> List<ActivityResult>? NumActivitiesBreakdown
         // GraphQL -> numActivitiesBreakdown: [ActivityResult!]! (type)
-        if (this.NumActivitiesBreakdown == null && ec.Includes("numActivitiesBreakdown",false))
+        if (ec.Includes("numActivitiesBreakdown",false))
         {
-            this.NumActivitiesBreakdown = new List<ActivityResult>();
-            this.NumActivitiesBreakdown.ApplyExploratoryFieldSpec(ec.NewChild("numActivitiesBreakdown"));
+            if(this.NumActivitiesBreakdown == null) {
+
+                this.NumActivitiesBreakdown = new List<ActivityResult>();
+                this.NumActivitiesBreakdown.ApplyExploratoryFieldSpec(ec.NewChild("numActivitiesBreakdown"));
+
+            } else {
+
+                this.NumActivitiesBreakdown.ApplyExploratoryFieldSpec(ec.NewChild("numActivitiesBreakdown"));
+
+            }
+        }
+        else if (this.NumActivitiesBreakdown != null && ec.Excludes("numActivitiesBreakdown",false))
+        {
+            this.NumActivitiesBreakdown = null;
         }
         //      C# -> AccessUser? User
         // GraphQL -> user: AccessUser (type)
-        if (this.User == null && ec.Includes("user",false))
+        if (ec.Includes("user",false))
         {
-            this.User = new AccessUser();
-            this.User.ApplyExploratoryFieldSpec(ec.NewChild("user"));
+            if(this.User == null) {
+
+                this.User = new AccessUser();
+                this.User.ApplyExploratoryFieldSpec(ec.NewChild("user"));
+
+            } else {
+
+                this.User.ApplyExploratoryFieldSpec(ec.NewChild("user"));
+
+            }
+        }
+        else if (this.User != null && ec.Excludes("user",false))
+        {
+            this.User = null;
         }
     }
 
@@ -162,9 +225,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<UserActivityResult> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

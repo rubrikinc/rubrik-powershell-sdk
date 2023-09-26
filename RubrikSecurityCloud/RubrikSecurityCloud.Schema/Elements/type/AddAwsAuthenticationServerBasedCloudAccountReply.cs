@@ -56,21 +56,30 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Message
         // GraphQL -> message: String (scalar)
         if (this.Message != null) {
-            s += ind + "message\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "message\n" ;
+            } else {
+                s += ind + "message\n" ;
+            }
         }
         //      C# -> AwsCloudAccount? AwsAccount
         // GraphQL -> awsAccount: AwsCloudAccount (type)
         if (this.AwsAccount != null) {
-            var fspec = this.AwsAccount.AsFieldSpec(indent+1);
+            var fspec = this.AwsAccount.AsFieldSpec(conf.Child("awsAccount"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "awsAccount {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "awsAccount {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -82,16 +91,39 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Message
         // GraphQL -> message: String (scalar)
-        if (this.Message == null && ec.Includes("message",true))
+        if (ec.Includes("message",true))
         {
-            this.Message = "FETCH";
+            if(this.Message == null) {
+
+                this.Message = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Message != null && ec.Excludes("message",true))
+        {
+            this.Message = null;
         }
         //      C# -> AwsCloudAccount? AwsAccount
         // GraphQL -> awsAccount: AwsCloudAccount (type)
-        if (this.AwsAccount == null && ec.Includes("awsAccount",false))
+        if (ec.Includes("awsAccount",false))
         {
-            this.AwsAccount = new AwsCloudAccount();
-            this.AwsAccount.ApplyExploratoryFieldSpec(ec.NewChild("awsAccount"));
+            if(this.AwsAccount == null) {
+
+                this.AwsAccount = new AwsCloudAccount();
+                this.AwsAccount.ApplyExploratoryFieldSpec(ec.NewChild("awsAccount"));
+
+            } else {
+
+                this.AwsAccount.ApplyExploratoryFieldSpec(ec.NewChild("awsAccount"));
+
+            }
+        }
+        else if (this.AwsAccount != null && ec.Excludes("awsAccount",false))
+        {
+            this.AwsAccount = null;
         }
     }
 
@@ -118,9 +150,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AddAwsAuthenticationServerBasedCloudAccountReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

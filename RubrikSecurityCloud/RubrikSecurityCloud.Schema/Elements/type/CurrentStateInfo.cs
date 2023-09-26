@@ -101,46 +101,75 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<System.String>? CompletedStates
         // GraphQL -> completedStates: [String!]! (scalar)
         if (this.CompletedStates != null) {
-            s += ind + "completedStates\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "completedStates\n" ;
+            } else {
+                s += ind + "completedStates\n" ;
+            }
         }
         //      C# -> System.String? CurrentState
         // GraphQL -> currentState: String! (scalar)
         if (this.CurrentState != null) {
-            s += ind + "currentState\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "currentState\n" ;
+            } else {
+                s += ind + "currentState\n" ;
+            }
         }
         //      C# -> System.String? CurrentTaskIndex
         // GraphQL -> currentTaskIndex: String! (scalar)
         if (this.CurrentTaskIndex != null) {
-            s += ind + "currentTaskIndex\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "currentTaskIndex\n" ;
+            } else {
+                s += ind + "currentTaskIndex\n" ;
+            }
         }
         //      C# -> System.String? CurrentTaskName
         // GraphQL -> currentTaskName: String! (scalar)
         if (this.CurrentTaskName != null) {
-            s += ind + "currentTaskName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "currentTaskName\n" ;
+            } else {
+                s += ind + "currentTaskName\n" ;
+            }
         }
         //      C# -> List<System.String>? PendingStates
         // GraphQL -> pendingStates: [String!]! (scalar)
         if (this.PendingStates != null) {
-            s += ind + "pendingStates\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "pendingStates\n" ;
+            } else {
+                s += ind + "pendingStates\n" ;
+            }
         }
         //      C# -> System.String? Result
         // GraphQL -> result: String! (scalar)
         if (this.Result != null) {
-            s += ind + "result\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "result\n" ;
+            } else {
+                s += ind + "result\n" ;
+            }
         }
         //      C# -> StatusResponse? Status
         // GraphQL -> status: StatusResponse (type)
         if (this.Status != null) {
-            var fspec = this.Status.AsFieldSpec(indent+1);
+            var fspec = this.Status.AsFieldSpec(conf.Child("status"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "status {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "status {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -152,46 +181,124 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<System.String>? CompletedStates
         // GraphQL -> completedStates: [String!]! (scalar)
-        if (this.CompletedStates == null && ec.Includes("completedStates",true))
+        if (ec.Includes("completedStates",true))
         {
-            this.CompletedStates = new List<System.String>();
+            if(this.CompletedStates == null) {
+
+                this.CompletedStates = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CompletedStates != null && ec.Excludes("completedStates",true))
+        {
+            this.CompletedStates = null;
         }
         //      C# -> System.String? CurrentState
         // GraphQL -> currentState: String! (scalar)
-        if (this.CurrentState == null && ec.Includes("currentState",true))
+        if (ec.Includes("currentState",true))
         {
-            this.CurrentState = "FETCH";
+            if(this.CurrentState == null) {
+
+                this.CurrentState = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CurrentState != null && ec.Excludes("currentState",true))
+        {
+            this.CurrentState = null;
         }
         //      C# -> System.String? CurrentTaskIndex
         // GraphQL -> currentTaskIndex: String! (scalar)
-        if (this.CurrentTaskIndex == null && ec.Includes("currentTaskIndex",true))
+        if (ec.Includes("currentTaskIndex",true))
         {
-            this.CurrentTaskIndex = "FETCH";
+            if(this.CurrentTaskIndex == null) {
+
+                this.CurrentTaskIndex = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CurrentTaskIndex != null && ec.Excludes("currentTaskIndex",true))
+        {
+            this.CurrentTaskIndex = null;
         }
         //      C# -> System.String? CurrentTaskName
         // GraphQL -> currentTaskName: String! (scalar)
-        if (this.CurrentTaskName == null && ec.Includes("currentTaskName",true))
+        if (ec.Includes("currentTaskName",true))
         {
-            this.CurrentTaskName = "FETCH";
+            if(this.CurrentTaskName == null) {
+
+                this.CurrentTaskName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CurrentTaskName != null && ec.Excludes("currentTaskName",true))
+        {
+            this.CurrentTaskName = null;
         }
         //      C# -> List<System.String>? PendingStates
         // GraphQL -> pendingStates: [String!]! (scalar)
-        if (this.PendingStates == null && ec.Includes("pendingStates",true))
+        if (ec.Includes("pendingStates",true))
         {
-            this.PendingStates = new List<System.String>();
+            if(this.PendingStates == null) {
+
+                this.PendingStates = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.PendingStates != null && ec.Excludes("pendingStates",true))
+        {
+            this.PendingStates = null;
         }
         //      C# -> System.String? Result
         // GraphQL -> result: String! (scalar)
-        if (this.Result == null && ec.Includes("result",true))
+        if (ec.Includes("result",true))
         {
-            this.Result = "FETCH";
+            if(this.Result == null) {
+
+                this.Result = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Result != null && ec.Excludes("result",true))
+        {
+            this.Result = null;
         }
         //      C# -> StatusResponse? Status
         // GraphQL -> status: StatusResponse (type)
-        if (this.Status == null && ec.Includes("status",false))
+        if (ec.Includes("status",false))
         {
-            this.Status = new StatusResponse();
-            this.Status.ApplyExploratoryFieldSpec(ec.NewChild("status"));
+            if(this.Status == null) {
+
+                this.Status = new StatusResponse();
+                this.Status.ApplyExploratoryFieldSpec(ec.NewChild("status"));
+
+            } else {
+
+                this.Status.ApplyExploratoryFieldSpec(ec.NewChild("status"));
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",false))
+        {
+            this.Status = null;
         }
     }
 
@@ -218,9 +325,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CurrentStateInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

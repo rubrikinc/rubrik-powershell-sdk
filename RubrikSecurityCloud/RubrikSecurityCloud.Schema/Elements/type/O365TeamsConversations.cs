@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? ChannelId
         // GraphQL -> channelId: String! (scalar)
         if (this.ChannelId != null) {
-            s += ind + "channelId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "channelId\n" ;
+            } else {
+                s += ind + "channelId\n" ;
+            }
         }
         //      C# -> System.String? ChannelName
         // GraphQL -> channelName: String (scalar)
         if (this.ChannelName != null) {
-            s += ind + "channelName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "channelName\n" ;
+            } else {
+                s += ind + "channelName\n" ;
+            }
         }
         //      C# -> System.Int32? ChannelPostCount
         // GraphQL -> channelPostCount: Int! (scalar)
         if (this.ChannelPostCount != null) {
-            s += ind + "channelPostCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "channelPostCount\n" ;
+            } else {
+                s += ind + "channelPostCount\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? ChannelId
         // GraphQL -> channelId: String! (scalar)
-        if (this.ChannelId == null && ec.Includes("channelId",true))
+        if (ec.Includes("channelId",true))
         {
-            this.ChannelId = "FETCH";
+            if(this.ChannelId == null) {
+
+                this.ChannelId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ChannelId != null && ec.Excludes("channelId",true))
+        {
+            this.ChannelId = null;
         }
         //      C# -> System.String? ChannelName
         // GraphQL -> channelName: String (scalar)
-        if (this.ChannelName == null && ec.Includes("channelName",true))
+        if (ec.Includes("channelName",true))
         {
-            this.ChannelName = "FETCH";
+            if(this.ChannelName == null) {
+
+                this.ChannelName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ChannelName != null && ec.Excludes("channelName",true))
+        {
+            this.ChannelName = null;
         }
         //      C# -> System.Int32? ChannelPostCount
         // GraphQL -> channelPostCount: Int! (scalar)
-        if (this.ChannelPostCount == null && ec.Includes("channelPostCount",true))
+        if (ec.Includes("channelPostCount",true))
         {
-            this.ChannelPostCount = Int32.MinValue;
+            if(this.ChannelPostCount == null) {
+
+                this.ChannelPostCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ChannelPostCount != null && ec.Excludes("channelPostCount",true))
+        {
+            this.ChannelPostCount = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<O365TeamsConversations> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

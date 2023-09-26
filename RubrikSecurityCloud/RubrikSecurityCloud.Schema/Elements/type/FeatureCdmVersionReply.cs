@@ -47,14 +47,19 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Boolean? IsSupported
         // GraphQL -> isSupported: Boolean! (scalar)
         if (this.IsSupported != null) {
-            s += ind + "isSupported\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isSupported\n" ;
+            } else {
+                s += ind + "isSupported\n" ;
+            }
         }
         return s;
     }
@@ -65,9 +70,20 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Boolean? IsSupported
         // GraphQL -> isSupported: Boolean! (scalar)
-        if (this.IsSupported == null && ec.Includes("isSupported",true))
+        if (ec.Includes("isSupported",true))
         {
-            this.IsSupported = true;
+            if(this.IsSupported == null) {
+
+                this.IsSupported = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsSupported != null && ec.Excludes("isSupported",true))
+        {
+            this.IsSupported = null;
         }
     }
 
@@ -94,9 +110,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<FeatureCdmVersionReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

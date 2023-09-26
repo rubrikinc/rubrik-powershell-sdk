@@ -65,29 +65,42 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? CaCerts
         // GraphQL -> caCerts: String! (scalar)
         if (this.CaCerts != null) {
-            s += ind + "caCerts\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "caCerts\n" ;
+            } else {
+                s += ind + "caCerts\n" ;
+            }
         }
         //      C# -> RefreshableObjectConnectionStatus? ConnectionStatus
         // GraphQL -> connectionStatus: RefreshableObjectConnectionStatus (type)
         if (this.ConnectionStatus != null) {
-            var fspec = this.ConnectionStatus.AsFieldSpec(indent+1);
+            var fspec = this.ConnectionStatus.AsFieldSpec(conf.Child("connectionStatus"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "connectionStatus {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "connectionStatus {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> NutanixClusterSummary? NutanixClusterSummary
         // GraphQL -> nutanixClusterSummary: NutanixClusterSummary (type)
         if (this.NutanixClusterSummary != null) {
-            var fspec = this.NutanixClusterSummary.AsFieldSpec(indent+1);
+            var fspec = this.NutanixClusterSummary.AsFieldSpec(conf.Child("nutanixClusterSummary"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "nutanixClusterSummary {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "nutanixClusterSummary {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -99,23 +112,58 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? CaCerts
         // GraphQL -> caCerts: String! (scalar)
-        if (this.CaCerts == null && ec.Includes("caCerts",true))
+        if (ec.Includes("caCerts",true))
         {
-            this.CaCerts = "FETCH";
+            if(this.CaCerts == null) {
+
+                this.CaCerts = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CaCerts != null && ec.Excludes("caCerts",true))
+        {
+            this.CaCerts = null;
         }
         //      C# -> RefreshableObjectConnectionStatus? ConnectionStatus
         // GraphQL -> connectionStatus: RefreshableObjectConnectionStatus (type)
-        if (this.ConnectionStatus == null && ec.Includes("connectionStatus",false))
+        if (ec.Includes("connectionStatus",false))
         {
-            this.ConnectionStatus = new RefreshableObjectConnectionStatus();
-            this.ConnectionStatus.ApplyExploratoryFieldSpec(ec.NewChild("connectionStatus"));
+            if(this.ConnectionStatus == null) {
+
+                this.ConnectionStatus = new RefreshableObjectConnectionStatus();
+                this.ConnectionStatus.ApplyExploratoryFieldSpec(ec.NewChild("connectionStatus"));
+
+            } else {
+
+                this.ConnectionStatus.ApplyExploratoryFieldSpec(ec.NewChild("connectionStatus"));
+
+            }
+        }
+        else if (this.ConnectionStatus != null && ec.Excludes("connectionStatus",false))
+        {
+            this.ConnectionStatus = null;
         }
         //      C# -> NutanixClusterSummary? NutanixClusterSummary
         // GraphQL -> nutanixClusterSummary: NutanixClusterSummary (type)
-        if (this.NutanixClusterSummary == null && ec.Includes("nutanixClusterSummary",false))
+        if (ec.Includes("nutanixClusterSummary",false))
         {
-            this.NutanixClusterSummary = new NutanixClusterSummary();
-            this.NutanixClusterSummary.ApplyExploratoryFieldSpec(ec.NewChild("nutanixClusterSummary"));
+            if(this.NutanixClusterSummary == null) {
+
+                this.NutanixClusterSummary = new NutanixClusterSummary();
+                this.NutanixClusterSummary.ApplyExploratoryFieldSpec(ec.NewChild("nutanixClusterSummary"));
+
+            } else {
+
+                this.NutanixClusterSummary.ApplyExploratoryFieldSpec(ec.NewChild("nutanixClusterSummary"));
+
+            }
+        }
+        else if (this.NutanixClusterSummary != null && ec.Excludes("nutanixClusterSummary",false))
+        {
+            this.NutanixClusterSummary = null;
         }
     }
 
@@ -142,9 +190,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<UpdateNutanixClusterReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

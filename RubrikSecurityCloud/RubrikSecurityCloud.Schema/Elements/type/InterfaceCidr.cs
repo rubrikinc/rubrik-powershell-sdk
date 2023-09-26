@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> InterfaceType? InterfaceType
         // GraphQL -> interfaceType: InterfaceType! (enum)
         if (this.InterfaceType != null) {
-            s += ind + "interfaceType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "interfaceType\n" ;
+            } else {
+                s += ind + "interfaceType\n" ;
+            }
         }
         //      C# -> System.String? Cidr
         // GraphQL -> cidr: String! (scalar)
         if (this.Cidr != null) {
-            s += ind + "cidr\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cidr\n" ;
+            } else {
+                s += ind + "cidr\n" ;
+            }
         }
         //      C# -> System.Boolean? Selected
         // GraphQL -> selected: Boolean! (scalar)
         if (this.Selected != null) {
-            s += ind + "selected\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "selected\n" ;
+            } else {
+                s += ind + "selected\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> InterfaceType? InterfaceType
         // GraphQL -> interfaceType: InterfaceType! (enum)
-        if (this.InterfaceType == null && ec.Includes("interfaceType",true))
+        if (ec.Includes("interfaceType",true))
         {
-            this.InterfaceType = new InterfaceType();
+            if(this.InterfaceType == null) {
+
+                this.InterfaceType = new InterfaceType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.InterfaceType != null && ec.Excludes("interfaceType",true))
+        {
+            this.InterfaceType = null;
         }
         //      C# -> System.String? Cidr
         // GraphQL -> cidr: String! (scalar)
-        if (this.Cidr == null && ec.Includes("cidr",true))
+        if (ec.Includes("cidr",true))
         {
-            this.Cidr = "FETCH";
+            if(this.Cidr == null) {
+
+                this.Cidr = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Cidr != null && ec.Excludes("cidr",true))
+        {
+            this.Cidr = null;
         }
         //      C# -> System.Boolean? Selected
         // GraphQL -> selected: Boolean! (scalar)
-        if (this.Selected == null && ec.Includes("selected",true))
+        if (ec.Includes("selected",true))
         {
-            this.Selected = true;
+            if(this.Selected == null) {
+
+                this.Selected = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Selected != null && ec.Excludes("selected",true))
+        {
+            this.Selected = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<InterfaceCidr> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

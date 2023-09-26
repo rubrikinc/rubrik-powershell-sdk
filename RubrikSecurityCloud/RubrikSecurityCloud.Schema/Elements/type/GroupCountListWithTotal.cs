@@ -56,21 +56,30 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int32? TotalCount
         // GraphQL -> totalCount: Int! (scalar)
         if (this.TotalCount != null) {
-            s += ind + "totalCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "totalCount\n" ;
+            } else {
+                s += ind + "totalCount\n" ;
+            }
         }
         //      C# -> List<GroupCount>? GroupList
         // GraphQL -> groupList: [GroupCount!]! (type)
         if (this.GroupList != null) {
-            var fspec = this.GroupList.AsFieldSpec(indent+1);
+            var fspec = this.GroupList.AsFieldSpec(conf.Child("groupList"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "groupList {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "groupList {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -82,16 +91,39 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int32? TotalCount
         // GraphQL -> totalCount: Int! (scalar)
-        if (this.TotalCount == null && ec.Includes("totalCount",true))
+        if (ec.Includes("totalCount",true))
         {
-            this.TotalCount = Int32.MinValue;
+            if(this.TotalCount == null) {
+
+                this.TotalCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalCount != null && ec.Excludes("totalCount",true))
+        {
+            this.TotalCount = null;
         }
         //      C# -> List<GroupCount>? GroupList
         // GraphQL -> groupList: [GroupCount!]! (type)
-        if (this.GroupList == null && ec.Includes("groupList",false))
+        if (ec.Includes("groupList",false))
         {
-            this.GroupList = new List<GroupCount>();
-            this.GroupList.ApplyExploratoryFieldSpec(ec.NewChild("groupList"));
+            if(this.GroupList == null) {
+
+                this.GroupList = new List<GroupCount>();
+                this.GroupList.ApplyExploratoryFieldSpec(ec.NewChild("groupList"));
+
+            } else {
+
+                this.GroupList.ApplyExploratoryFieldSpec(ec.NewChild("groupList"));
+
+            }
+        }
+        else if (this.GroupList != null && ec.Excludes("groupList",false))
+        {
+            this.GroupList = null;
         }
     }
 
@@ -118,9 +150,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<GroupCountListWithTotal> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

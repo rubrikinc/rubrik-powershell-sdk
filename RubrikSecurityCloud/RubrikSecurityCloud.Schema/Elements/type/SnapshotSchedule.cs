@@ -101,64 +101,93 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> DailySnapshotSchedule? Daily
         // GraphQL -> daily: DailySnapshotSchedule (type)
         if (this.Daily != null) {
-            var fspec = this.Daily.AsFieldSpec(indent+1);
+            var fspec = this.Daily.AsFieldSpec(conf.Child("daily"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "daily {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "daily {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> HourlySnapshotSchedule? Hourly
         // GraphQL -> hourly: HourlySnapshotSchedule (type)
         if (this.Hourly != null) {
-            var fspec = this.Hourly.AsFieldSpec(indent+1);
+            var fspec = this.Hourly.AsFieldSpec(conf.Child("hourly"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "hourly {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "hourly {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> MinuteSnapshotSchedule? Minute
         // GraphQL -> minute: MinuteSnapshotSchedule (type)
         if (this.Minute != null) {
-            var fspec = this.Minute.AsFieldSpec(indent+1);
+            var fspec = this.Minute.AsFieldSpec(conf.Child("minute"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "minute {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "minute {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> MonthlySnapshotSchedule? Monthly
         // GraphQL -> monthly: MonthlySnapshotSchedule (type)
         if (this.Monthly != null) {
-            var fspec = this.Monthly.AsFieldSpec(indent+1);
+            var fspec = this.Monthly.AsFieldSpec(conf.Child("monthly"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "monthly {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "monthly {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> QuarterlySnapshotSchedule? Quarterly
         // GraphQL -> quarterly: QuarterlySnapshotSchedule (type)
         if (this.Quarterly != null) {
-            var fspec = this.Quarterly.AsFieldSpec(indent+1);
+            var fspec = this.Quarterly.AsFieldSpec(conf.Child("quarterly"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "quarterly {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "quarterly {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> WeeklySnapshotSchedule? Weekly
         // GraphQL -> weekly: WeeklySnapshotSchedule (type)
         if (this.Weekly != null) {
-            var fspec = this.Weekly.AsFieldSpec(indent+1);
+            var fspec = this.Weekly.AsFieldSpec(conf.Child("weekly"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "weekly {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "weekly {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> YearlySnapshotSchedule? Yearly
         // GraphQL -> yearly: YearlySnapshotSchedule (type)
         if (this.Yearly != null) {
-            var fspec = this.Yearly.AsFieldSpec(indent+1);
+            var fspec = this.Yearly.AsFieldSpec(conf.Child("yearly"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "yearly {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "yearly {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -170,52 +199,136 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> DailySnapshotSchedule? Daily
         // GraphQL -> daily: DailySnapshotSchedule (type)
-        if (this.Daily == null && ec.Includes("daily",false))
+        if (ec.Includes("daily",false))
         {
-            this.Daily = new DailySnapshotSchedule();
-            this.Daily.ApplyExploratoryFieldSpec(ec.NewChild("daily"));
+            if(this.Daily == null) {
+
+                this.Daily = new DailySnapshotSchedule();
+                this.Daily.ApplyExploratoryFieldSpec(ec.NewChild("daily"));
+
+            } else {
+
+                this.Daily.ApplyExploratoryFieldSpec(ec.NewChild("daily"));
+
+            }
+        }
+        else if (this.Daily != null && ec.Excludes("daily",false))
+        {
+            this.Daily = null;
         }
         //      C# -> HourlySnapshotSchedule? Hourly
         // GraphQL -> hourly: HourlySnapshotSchedule (type)
-        if (this.Hourly == null && ec.Includes("hourly",false))
+        if (ec.Includes("hourly",false))
         {
-            this.Hourly = new HourlySnapshotSchedule();
-            this.Hourly.ApplyExploratoryFieldSpec(ec.NewChild("hourly"));
+            if(this.Hourly == null) {
+
+                this.Hourly = new HourlySnapshotSchedule();
+                this.Hourly.ApplyExploratoryFieldSpec(ec.NewChild("hourly"));
+
+            } else {
+
+                this.Hourly.ApplyExploratoryFieldSpec(ec.NewChild("hourly"));
+
+            }
+        }
+        else if (this.Hourly != null && ec.Excludes("hourly",false))
+        {
+            this.Hourly = null;
         }
         //      C# -> MinuteSnapshotSchedule? Minute
         // GraphQL -> minute: MinuteSnapshotSchedule (type)
-        if (this.Minute == null && ec.Includes("minute",false))
+        if (ec.Includes("minute",false))
         {
-            this.Minute = new MinuteSnapshotSchedule();
-            this.Minute.ApplyExploratoryFieldSpec(ec.NewChild("minute"));
+            if(this.Minute == null) {
+
+                this.Minute = new MinuteSnapshotSchedule();
+                this.Minute.ApplyExploratoryFieldSpec(ec.NewChild("minute"));
+
+            } else {
+
+                this.Minute.ApplyExploratoryFieldSpec(ec.NewChild("minute"));
+
+            }
+        }
+        else if (this.Minute != null && ec.Excludes("minute",false))
+        {
+            this.Minute = null;
         }
         //      C# -> MonthlySnapshotSchedule? Monthly
         // GraphQL -> monthly: MonthlySnapshotSchedule (type)
-        if (this.Monthly == null && ec.Includes("monthly",false))
+        if (ec.Includes("monthly",false))
         {
-            this.Monthly = new MonthlySnapshotSchedule();
-            this.Monthly.ApplyExploratoryFieldSpec(ec.NewChild("monthly"));
+            if(this.Monthly == null) {
+
+                this.Monthly = new MonthlySnapshotSchedule();
+                this.Monthly.ApplyExploratoryFieldSpec(ec.NewChild("monthly"));
+
+            } else {
+
+                this.Monthly.ApplyExploratoryFieldSpec(ec.NewChild("monthly"));
+
+            }
+        }
+        else if (this.Monthly != null && ec.Excludes("monthly",false))
+        {
+            this.Monthly = null;
         }
         //      C# -> QuarterlySnapshotSchedule? Quarterly
         // GraphQL -> quarterly: QuarterlySnapshotSchedule (type)
-        if (this.Quarterly == null && ec.Includes("quarterly",false))
+        if (ec.Includes("quarterly",false))
         {
-            this.Quarterly = new QuarterlySnapshotSchedule();
-            this.Quarterly.ApplyExploratoryFieldSpec(ec.NewChild("quarterly"));
+            if(this.Quarterly == null) {
+
+                this.Quarterly = new QuarterlySnapshotSchedule();
+                this.Quarterly.ApplyExploratoryFieldSpec(ec.NewChild("quarterly"));
+
+            } else {
+
+                this.Quarterly.ApplyExploratoryFieldSpec(ec.NewChild("quarterly"));
+
+            }
+        }
+        else if (this.Quarterly != null && ec.Excludes("quarterly",false))
+        {
+            this.Quarterly = null;
         }
         //      C# -> WeeklySnapshotSchedule? Weekly
         // GraphQL -> weekly: WeeklySnapshotSchedule (type)
-        if (this.Weekly == null && ec.Includes("weekly",false))
+        if (ec.Includes("weekly",false))
         {
-            this.Weekly = new WeeklySnapshotSchedule();
-            this.Weekly.ApplyExploratoryFieldSpec(ec.NewChild("weekly"));
+            if(this.Weekly == null) {
+
+                this.Weekly = new WeeklySnapshotSchedule();
+                this.Weekly.ApplyExploratoryFieldSpec(ec.NewChild("weekly"));
+
+            } else {
+
+                this.Weekly.ApplyExploratoryFieldSpec(ec.NewChild("weekly"));
+
+            }
+        }
+        else if (this.Weekly != null && ec.Excludes("weekly",false))
+        {
+            this.Weekly = null;
         }
         //      C# -> YearlySnapshotSchedule? Yearly
         // GraphQL -> yearly: YearlySnapshotSchedule (type)
-        if (this.Yearly == null && ec.Includes("yearly",false))
+        if (ec.Includes("yearly",false))
         {
-            this.Yearly = new YearlySnapshotSchedule();
-            this.Yearly.ApplyExploratoryFieldSpec(ec.NewChild("yearly"));
+            if(this.Yearly == null) {
+
+                this.Yearly = new YearlySnapshotSchedule();
+                this.Yearly.ApplyExploratoryFieldSpec(ec.NewChild("yearly"));
+
+            } else {
+
+                this.Yearly.ApplyExploratoryFieldSpec(ec.NewChild("yearly"));
+
+            }
+        }
+        else if (this.Yearly != null && ec.Excludes("yearly",false))
+        {
+            this.Yearly = null;
         }
     }
 
@@ -242,9 +355,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SnapshotSchedule> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

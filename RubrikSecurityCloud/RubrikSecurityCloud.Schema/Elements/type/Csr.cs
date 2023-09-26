@@ -173,84 +173,145 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? City
         // GraphQL -> city: String! (scalar)
         if (this.City != null) {
-            s += ind + "city\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "city\n" ;
+            } else {
+                s += ind + "city\n" ;
+            }
         }
         //      C# -> System.String? Country
         // GraphQL -> country: String! (scalar)
         if (this.Country != null) {
-            s += ind + "country\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "country\n" ;
+            } else {
+                s += ind + "country\n" ;
+            }
         }
         //      C# -> DateTime? CreatedAt
         // GraphQL -> createdAt: DateTime (scalar)
         if (this.CreatedAt != null) {
-            s += ind + "createdAt\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "createdAt\n" ;
+            } else {
+                s += ind + "createdAt\n" ;
+            }
         }
         //      C# -> System.String? CreatorEmail
         // GraphQL -> creatorEmail: String! (scalar)
         if (this.CreatorEmail != null) {
-            s += ind + "creatorEmail\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "creatorEmail\n" ;
+            } else {
+                s += ind + "creatorEmail\n" ;
+            }
         }
         //      C# -> System.String? CsrField
         // GraphQL -> csr: String! (scalar)
         if (this.CsrField != null) {
-            s += ind + "csr\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "csr\n" ;
+            } else {
+                s += ind + "csr\n" ;
+            }
         }
         //      C# -> System.String? CsrFid
         // GraphQL -> csrFid: UUID! (scalar)
         if (this.CsrFid != null) {
-            s += ind + "csrFid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "csrFid\n" ;
+            } else {
+                s += ind + "csrFid\n" ;
+            }
         }
         //      C# -> System.Int64? CsrId
         // GraphQL -> csrId: Long! (scalar)
         if (this.CsrId != null) {
-            s += ind + "csrId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "csrId\n" ;
+            } else {
+                s += ind + "csrId\n" ;
+            }
         }
         //      C# -> System.String? Email
         // GraphQL -> email: String! (scalar)
         if (this.Email != null) {
-            s += ind + "email\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "email\n" ;
+            } else {
+                s += ind + "email\n" ;
+            }
         }
         //      C# -> List<System.String>? Hostnames
         // GraphQL -> hostnames: [String!]! (scalar)
         if (this.Hostnames != null) {
-            s += ind + "hostnames\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostnames\n" ;
+            } else {
+                s += ind + "hostnames\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.String? Organization
         // GraphQL -> organization: String! (scalar)
         if (this.Organization != null) {
-            s += ind + "organization\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "organization\n" ;
+            } else {
+                s += ind + "organization\n" ;
+            }
         }
         //      C# -> System.String? OrganizationUnit
         // GraphQL -> organizationUnit: String! (scalar)
         if (this.OrganizationUnit != null) {
-            s += ind + "organizationUnit\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "organizationUnit\n" ;
+            } else {
+                s += ind + "organizationUnit\n" ;
+            }
         }
         //      C# -> System.String? State
         // GraphQL -> state: String! (scalar)
         if (this.State != null) {
-            s += ind + "state\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "state\n" ;
+            } else {
+                s += ind + "state\n" ;
+            }
         }
         //      C# -> System.String? Surname
         // GraphQL -> surname: String! (scalar)
         if (this.Surname != null) {
-            s += ind + "surname\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "surname\n" ;
+            } else {
+                s += ind + "surname\n" ;
+            }
         }
         //      C# -> System.String? UserId
         // GraphQL -> userId: String! (scalar)
         if (this.UserId != null) {
-            s += ind + "userId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "userId\n" ;
+            } else {
+                s += ind + "userId\n" ;
+            }
         }
         return s;
     }
@@ -261,93 +322,258 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? City
         // GraphQL -> city: String! (scalar)
-        if (this.City == null && ec.Includes("city",true))
+        if (ec.Includes("city",true))
         {
-            this.City = "FETCH";
+            if(this.City == null) {
+
+                this.City = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.City != null && ec.Excludes("city",true))
+        {
+            this.City = null;
         }
         //      C# -> System.String? Country
         // GraphQL -> country: String! (scalar)
-        if (this.Country == null && ec.Includes("country",true))
+        if (ec.Includes("country",true))
         {
-            this.Country = "FETCH";
+            if(this.Country == null) {
+
+                this.Country = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Country != null && ec.Excludes("country",true))
+        {
+            this.Country = null;
         }
         //      C# -> DateTime? CreatedAt
         // GraphQL -> createdAt: DateTime (scalar)
-        if (this.CreatedAt == null && ec.Includes("createdAt",true))
+        if (ec.Includes("createdAt",true))
         {
-            this.CreatedAt = new DateTime();
+            if(this.CreatedAt == null) {
+
+                this.CreatedAt = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CreatedAt != null && ec.Excludes("createdAt",true))
+        {
+            this.CreatedAt = null;
         }
         //      C# -> System.String? CreatorEmail
         // GraphQL -> creatorEmail: String! (scalar)
-        if (this.CreatorEmail == null && ec.Includes("creatorEmail",true))
+        if (ec.Includes("creatorEmail",true))
         {
-            this.CreatorEmail = "FETCH";
+            if(this.CreatorEmail == null) {
+
+                this.CreatorEmail = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CreatorEmail != null && ec.Excludes("creatorEmail",true))
+        {
+            this.CreatorEmail = null;
         }
         //      C# -> System.String? CsrField
         // GraphQL -> csr: String! (scalar)
-        if (this.CsrField == null && ec.Includes("csr",true))
+        if (ec.Includes("csr",true))
         {
-            this.CsrField = "FETCH";
+            if(this.CsrField == null) {
+
+                this.CsrField = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CsrField != null && ec.Excludes("csr",true))
+        {
+            this.CsrField = null;
         }
         //      C# -> System.String? CsrFid
         // GraphQL -> csrFid: UUID! (scalar)
-        if (this.CsrFid == null && ec.Includes("csrFid",true))
+        if (ec.Includes("csrFid",true))
         {
-            this.CsrFid = "FETCH";
+            if(this.CsrFid == null) {
+
+                this.CsrFid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CsrFid != null && ec.Excludes("csrFid",true))
+        {
+            this.CsrFid = null;
         }
         //      C# -> System.Int64? CsrId
         // GraphQL -> csrId: Long! (scalar)
-        if (this.CsrId == null && ec.Includes("csrId",true))
+        if (ec.Includes("csrId",true))
         {
-            this.CsrId = new System.Int64();
+            if(this.CsrId == null) {
+
+                this.CsrId = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CsrId != null && ec.Excludes("csrId",true))
+        {
+            this.CsrId = null;
         }
         //      C# -> System.String? Email
         // GraphQL -> email: String! (scalar)
-        if (this.Email == null && ec.Includes("email",true))
+        if (ec.Includes("email",true))
         {
-            this.Email = "FETCH";
+            if(this.Email == null) {
+
+                this.Email = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Email != null && ec.Excludes("email",true))
+        {
+            this.Email = null;
         }
         //      C# -> List<System.String>? Hostnames
         // GraphQL -> hostnames: [String!]! (scalar)
-        if (this.Hostnames == null && ec.Includes("hostnames",true))
+        if (ec.Includes("hostnames",true))
         {
-            this.Hostnames = new List<System.String>();
+            if(this.Hostnames == null) {
+
+                this.Hostnames = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Hostnames != null && ec.Excludes("hostnames",true))
+        {
+            this.Hostnames = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.String? Organization
         // GraphQL -> organization: String! (scalar)
-        if (this.Organization == null && ec.Includes("organization",true))
+        if (ec.Includes("organization",true))
         {
-            this.Organization = "FETCH";
+            if(this.Organization == null) {
+
+                this.Organization = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Organization != null && ec.Excludes("organization",true))
+        {
+            this.Organization = null;
         }
         //      C# -> System.String? OrganizationUnit
         // GraphQL -> organizationUnit: String! (scalar)
-        if (this.OrganizationUnit == null && ec.Includes("organizationUnit",true))
+        if (ec.Includes("organizationUnit",true))
         {
-            this.OrganizationUnit = "FETCH";
+            if(this.OrganizationUnit == null) {
+
+                this.OrganizationUnit = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OrganizationUnit != null && ec.Excludes("organizationUnit",true))
+        {
+            this.OrganizationUnit = null;
         }
         //      C# -> System.String? State
         // GraphQL -> state: String! (scalar)
-        if (this.State == null && ec.Includes("state",true))
+        if (ec.Includes("state",true))
         {
-            this.State = "FETCH";
+            if(this.State == null) {
+
+                this.State = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.State != null && ec.Excludes("state",true))
+        {
+            this.State = null;
         }
         //      C# -> System.String? Surname
         // GraphQL -> surname: String! (scalar)
-        if (this.Surname == null && ec.Includes("surname",true))
+        if (ec.Includes("surname",true))
         {
-            this.Surname = "FETCH";
+            if(this.Surname == null) {
+
+                this.Surname = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Surname != null && ec.Excludes("surname",true))
+        {
+            this.Surname = null;
         }
         //      C# -> System.String? UserId
         // GraphQL -> userId: String! (scalar)
-        if (this.UserId == null && ec.Includes("userId",true))
+        if (ec.Includes("userId",true))
         {
-            this.UserId = "FETCH";
+            if(this.UserId == null) {
+
+                this.UserId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.UserId != null && ec.Excludes("userId",true))
+        {
+            this.UserId = null;
         }
     }
 
@@ -374,9 +600,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<Csr> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -47,16 +47,21 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> FailoverClusterAppSummary? Output
         // GraphQL -> output: FailoverClusterAppSummary (type)
         if (this.Output != null) {
-            var fspec = this.Output.AsFieldSpec(indent+1);
+            var fspec = this.Output.AsFieldSpec(conf.Child("output"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "output {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "output {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -68,10 +73,22 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> FailoverClusterAppSummary? Output
         // GraphQL -> output: FailoverClusterAppSummary (type)
-        if (this.Output == null && ec.Includes("output",false))
+        if (ec.Includes("output",false))
         {
-            this.Output = new FailoverClusterAppSummary();
-            this.Output.ApplyExploratoryFieldSpec(ec.NewChild("output"));
+            if(this.Output == null) {
+
+                this.Output = new FailoverClusterAppSummary();
+                this.Output.ApplyExploratoryFieldSpec(ec.NewChild("output"));
+
+            } else {
+
+                this.Output.ApplyExploratoryFieldSpec(ec.NewChild("output"));
+
+            }
+        }
+        else if (this.Output != null && ec.Excludes("output",false))
+        {
+            this.Output = null;
         }
     }
 
@@ -98,9 +115,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CreateFailoverClusterAppReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

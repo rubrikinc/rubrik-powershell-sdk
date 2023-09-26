@@ -92,41 +92,66 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<System.String>? FolderIdsTillRoot
         // GraphQL -> folderIdsTillRoot: [String!]! (scalar)
         if (this.FolderIdsTillRoot != null) {
-            s += ind + "folderIdsTillRoot\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "folderIdsTillRoot\n" ;
+            } else {
+                s += ind + "folderIdsTillRoot\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.String? ParentFolderId
         // GraphQL -> parentFolderId: String (scalar)
         if (this.ParentFolderId != null) {
-            s += ind + "parentFolderId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "parentFolderId\n" ;
+            } else {
+                s += ind + "parentFolderId\n" ;
+            }
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String (scalar)
         if (this.SnapshotId != null) {
-            s += ind + "snapshotId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotId\n" ;
+            } else {
+                s += ind + "snapshotId\n" ;
+            }
         }
         //      C# -> System.Int32? SnapshotNum
         // GraphQL -> snapshotNum: Int (scalar)
         if (this.SnapshotNum != null) {
-            s += ind + "snapshotNum\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotNum\n" ;
+            } else {
+                s += ind + "snapshotNum\n" ;
+            }
         }
         //      C# -> O365ReplyFields? O365ReplyFields
         // GraphQL -> o365ReplyFields: O365ReplyFields! (type)
         if (this.O365ReplyFields != null) {
-            var fspec = this.O365ReplyFields.AsFieldSpec(indent+1);
+            var fspec = this.O365ReplyFields.AsFieldSpec(conf.Child("o365ReplyFields"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "o365ReplyFields {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "o365ReplyFields {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -138,40 +163,107 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<System.String>? FolderIdsTillRoot
         // GraphQL -> folderIdsTillRoot: [String!]! (scalar)
-        if (this.FolderIdsTillRoot == null && ec.Includes("folderIdsTillRoot",true))
+        if (ec.Includes("folderIdsTillRoot",true))
         {
-            this.FolderIdsTillRoot = new List<System.String>();
+            if(this.FolderIdsTillRoot == null) {
+
+                this.FolderIdsTillRoot = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.FolderIdsTillRoot != null && ec.Excludes("folderIdsTillRoot",true))
+        {
+            this.FolderIdsTillRoot = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.String? ParentFolderId
         // GraphQL -> parentFolderId: String (scalar)
-        if (this.ParentFolderId == null && ec.Includes("parentFolderId",true))
+        if (ec.Includes("parentFolderId",true))
         {
-            this.ParentFolderId = "FETCH";
+            if(this.ParentFolderId == null) {
+
+                this.ParentFolderId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ParentFolderId != null && ec.Excludes("parentFolderId",true))
+        {
+            this.ParentFolderId = null;
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String (scalar)
-        if (this.SnapshotId == null && ec.Includes("snapshotId",true))
+        if (ec.Includes("snapshotId",true))
         {
-            this.SnapshotId = "FETCH";
+            if(this.SnapshotId == null) {
+
+                this.SnapshotId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotId != null && ec.Excludes("snapshotId",true))
+        {
+            this.SnapshotId = null;
         }
         //      C# -> System.Int32? SnapshotNum
         // GraphQL -> snapshotNum: Int (scalar)
-        if (this.SnapshotNum == null && ec.Includes("snapshotNum",true))
+        if (ec.Includes("snapshotNum",true))
         {
-            this.SnapshotNum = Int32.MinValue;
+            if(this.SnapshotNum == null) {
+
+                this.SnapshotNum = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotNum != null && ec.Excludes("snapshotNum",true))
+        {
+            this.SnapshotNum = null;
         }
         //      C# -> O365ReplyFields? O365ReplyFields
         // GraphQL -> o365ReplyFields: O365ReplyFields! (type)
-        if (this.O365ReplyFields == null && ec.Includes("o365ReplyFields",false))
+        if (ec.Includes("o365ReplyFields",false))
         {
-            this.O365ReplyFields = new O365ReplyFields();
-            this.O365ReplyFields.ApplyExploratoryFieldSpec(ec.NewChild("o365ReplyFields"));
+            if(this.O365ReplyFields == null) {
+
+                this.O365ReplyFields = new O365ReplyFields();
+                this.O365ReplyFields.ApplyExploratoryFieldSpec(ec.NewChild("o365ReplyFields"));
+
+            } else {
+
+                this.O365ReplyFields.ApplyExploratoryFieldSpec(ec.NewChild("o365ReplyFields"));
+
+            }
+        }
+        else if (this.O365ReplyFields != null && ec.Excludes("o365ReplyFields",false))
+        {
+            this.O365ReplyFields = null;
         }
     }
 
@@ -198,9 +290,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<O365SnapshotItemInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

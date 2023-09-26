@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? AwsCloudAccountId
         // GraphQL -> awsCloudAccountId: String! (scalar)
         if (this.AwsCloudAccountId != null) {
-            s += ind + "awsCloudAccountId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "awsCloudAccountId\n" ;
+            } else {
+                s += ind + "awsCloudAccountId\n" ;
+            }
         }
         //      C# -> System.String? AwsNativeId
         // GraphQL -> awsNativeId: String! (scalar)
         if (this.AwsNativeId != null) {
-            s += ind + "awsNativeId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "awsNativeId\n" ;
+            } else {
+                s += ind + "awsNativeId\n" ;
+            }
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
         if (this.Message != null) {
-            s += ind + "message\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "message\n" ;
+            } else {
+                s += ind + "message\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? AwsCloudAccountId
         // GraphQL -> awsCloudAccountId: String! (scalar)
-        if (this.AwsCloudAccountId == null && ec.Includes("awsCloudAccountId",true))
+        if (ec.Includes("awsCloudAccountId",true))
         {
-            this.AwsCloudAccountId = "FETCH";
+            if(this.AwsCloudAccountId == null) {
+
+                this.AwsCloudAccountId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AwsCloudAccountId != null && ec.Excludes("awsCloudAccountId",true))
+        {
+            this.AwsCloudAccountId = null;
         }
         //      C# -> System.String? AwsNativeId
         // GraphQL -> awsNativeId: String! (scalar)
-        if (this.AwsNativeId == null && ec.Includes("awsNativeId",true))
+        if (ec.Includes("awsNativeId",true))
         {
-            this.AwsNativeId = "FETCH";
+            if(this.AwsNativeId == null) {
+
+                this.AwsNativeId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AwsNativeId != null && ec.Excludes("awsNativeId",true))
+        {
+            this.AwsNativeId = null;
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
-        if (this.Message == null && ec.Includes("message",true))
+        if (ec.Includes("message",true))
         {
-            this.Message = "FETCH";
+            if(this.Message == null) {
+
+                this.Message = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Message != null && ec.Excludes("message",true))
+        {
+            this.Message = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AwsRscAccountDetails> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

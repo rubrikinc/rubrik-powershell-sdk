@@ -101,49 +101,78 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
         if (this.ClusterUuid != null) {
-            s += ind + "clusterUuid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterUuid\n" ;
+            } else {
+                s += ind + "clusterUuid\n" ;
+            }
         }
         //      C# -> System.String? HostName
         // GraphQL -> hostName: String! (scalar)
         if (this.HostName != null) {
-            s += ind + "hostName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostName\n" ;
+            } else {
+                s += ind + "hostName\n" ;
+            }
         }
         //      C# -> System.String? HostType
         // GraphQL -> hostType: String! (scalar)
         if (this.HostType != null) {
-            s += ind + "hostType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostType\n" ;
+            } else {
+                s += ind + "hostType\n" ;
+            }
         }
         //      C# -> System.String? HostUuid
         // GraphQL -> hostUuid: String! (scalar)
         if (this.HostUuid != null) {
-            s += ind + "hostUuid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostUuid\n" ;
+            } else {
+                s += ind + "hostUuid\n" ;
+            }
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         //      C# -> PhysicalHost? Host
         // GraphQL -> host: PhysicalHost! (type)
         if (this.Host != null) {
-            var fspec = this.Host.AsFieldSpec(indent+1);
+            var fspec = this.Host.AsFieldSpec(conf.Child("host"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "host {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "host {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> PhysicalHost? SystemHost
         // GraphQL -> systemHost: PhysicalHost (type)
         if (this.SystemHost != null) {
-            var fspec = this.SystemHost.AsFieldSpec(indent+1);
+            var fspec = this.SystemHost.AsFieldSpec(conf.Child("systemHost"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "systemHost {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "systemHost {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -155,47 +184,126 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
-        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
+        if (ec.Includes("clusterUuid",true))
         {
-            this.ClusterUuid = "FETCH";
+            if(this.ClusterUuid == null) {
+
+                this.ClusterUuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterUuid != null && ec.Excludes("clusterUuid",true))
+        {
+            this.ClusterUuid = null;
         }
         //      C# -> System.String? HostName
         // GraphQL -> hostName: String! (scalar)
-        if (this.HostName == null && ec.Includes("hostName",true))
+        if (ec.Includes("hostName",true))
         {
-            this.HostName = "FETCH";
+            if(this.HostName == null) {
+
+                this.HostName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.HostName != null && ec.Excludes("hostName",true))
+        {
+            this.HostName = null;
         }
         //      C# -> System.String? HostType
         // GraphQL -> hostType: String! (scalar)
-        if (this.HostType == null && ec.Includes("hostType",true))
+        if (ec.Includes("hostType",true))
         {
-            this.HostType = "FETCH";
+            if(this.HostType == null) {
+
+                this.HostType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.HostType != null && ec.Excludes("hostType",true))
+        {
+            this.HostType = null;
         }
         //      C# -> System.String? HostUuid
         // GraphQL -> hostUuid: String! (scalar)
-        if (this.HostUuid == null && ec.Includes("hostUuid",true))
+        if (ec.Includes("hostUuid",true))
         {
-            this.HostUuid = "FETCH";
+            if(this.HostUuid == null) {
+
+                this.HostUuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.HostUuid != null && ec.Excludes("hostUuid",true))
+        {
+            this.HostUuid = null;
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = "FETCH";
+            if(this.Status == null) {
+
+                this.Status = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
         //      C# -> PhysicalHost? Host
         // GraphQL -> host: PhysicalHost! (type)
-        if (this.Host == null && ec.Includes("host",false))
+        if (ec.Includes("host",false))
         {
-            this.Host = new PhysicalHost();
-            this.Host.ApplyExploratoryFieldSpec(ec.NewChild("host"));
+            if(this.Host == null) {
+
+                this.Host = new PhysicalHost();
+                this.Host.ApplyExploratoryFieldSpec(ec.NewChild("host"));
+
+            } else {
+
+                this.Host.ApplyExploratoryFieldSpec(ec.NewChild("host"));
+
+            }
+        }
+        else if (this.Host != null && ec.Excludes("host",false))
+        {
+            this.Host = null;
         }
         //      C# -> PhysicalHost? SystemHost
         // GraphQL -> systemHost: PhysicalHost (type)
-        if (this.SystemHost == null && ec.Includes("systemHost",false))
+        if (ec.Includes("systemHost",false))
         {
-            this.SystemHost = new PhysicalHost();
-            this.SystemHost.ApplyExploratoryFieldSpec(ec.NewChild("systemHost"));
+            if(this.SystemHost == null) {
+
+                this.SystemHost = new PhysicalHost();
+                this.SystemHost.ApplyExploratoryFieldSpec(ec.NewChild("systemHost"));
+
+            } else {
+
+                this.SystemHost.ApplyExploratoryFieldSpec(ec.NewChild("systemHost"));
+
+            }
+        }
+        else if (this.SystemHost != null && ec.Excludes("systemHost",false))
+        {
+            this.SystemHost = null;
         }
     }
 
@@ -222,9 +330,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SapHanaHostObject> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

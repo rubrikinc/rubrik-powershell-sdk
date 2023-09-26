@@ -66,6 +66,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         DefaultParameterSetName = "IfNeeded")]
     public class Connect_Rsc : RscBasePSCmdlet
     {
+        /// <summary>
+        /// Connect if there is no existing connection
+        /// </summary>
         [Parameter(
             ParameterSetName = "IfNeeded",
             Mandatory = false,

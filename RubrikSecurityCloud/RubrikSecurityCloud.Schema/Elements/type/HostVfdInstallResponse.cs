@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> HostVfdState? HostVfdDriverState
         // GraphQL -> hostVfdDriverState: HostVfdState! (enum)
         if (this.HostVfdDriverState != null) {
-            s += ind + "hostVfdDriverState\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostVfdDriverState\n" ;
+            } else {
+                s += ind + "hostVfdDriverState\n" ;
+            }
         }
         //      C# -> System.String? ErrorInfo
         // GraphQL -> errorInfo: String (scalar)
         if (this.ErrorInfo != null) {
-            s += ind + "errorInfo\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "errorInfo\n" ;
+            } else {
+                s += ind + "errorInfo\n" ;
+            }
         }
         //      C# -> System.String? HostId
         // GraphQL -> hostId: String! (scalar)
         if (this.HostId != null) {
-            s += ind + "hostId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostId\n" ;
+            } else {
+                s += ind + "hostId\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> HostVfdState? HostVfdDriverState
         // GraphQL -> hostVfdDriverState: HostVfdState! (enum)
-        if (this.HostVfdDriverState == null && ec.Includes("hostVfdDriverState",true))
+        if (ec.Includes("hostVfdDriverState",true))
         {
-            this.HostVfdDriverState = new HostVfdState();
+            if(this.HostVfdDriverState == null) {
+
+                this.HostVfdDriverState = new HostVfdState();
+
+            } else {
+
+
+            }
+        }
+        else if (this.HostVfdDriverState != null && ec.Excludes("hostVfdDriverState",true))
+        {
+            this.HostVfdDriverState = null;
         }
         //      C# -> System.String? ErrorInfo
         // GraphQL -> errorInfo: String (scalar)
-        if (this.ErrorInfo == null && ec.Includes("errorInfo",true))
+        if (ec.Includes("errorInfo",true))
         {
-            this.ErrorInfo = "FETCH";
+            if(this.ErrorInfo == null) {
+
+                this.ErrorInfo = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ErrorInfo != null && ec.Excludes("errorInfo",true))
+        {
+            this.ErrorInfo = null;
         }
         //      C# -> System.String? HostId
         // GraphQL -> hostId: String! (scalar)
-        if (this.HostId == null && ec.Includes("hostId",true))
+        if (ec.Includes("hostId",true))
         {
-            this.HostId = "FETCH";
+            if(this.HostId == null) {
+
+                this.HostId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.HostId != null && ec.Excludes("hostId",true))
+        {
+            this.HostId = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<HostVfdInstallResponse> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

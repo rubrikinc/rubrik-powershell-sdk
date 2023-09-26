@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<UserAuditSeverityEnum>? AuditSeverities
         // GraphQL -> auditSeverities: [UserAuditSeverityEnum!]! (enum)
         if (this.AuditSeverities != null) {
-            s += ind + "auditSeverities\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "auditSeverities\n" ;
+            } else {
+                s += ind + "auditSeverities\n" ;
+            }
         }
         //      C# -> List<ActivitySeverityEnum>? EventSeverities
         // GraphQL -> eventSeverities: [ActivitySeverityEnum!]! (enum)
         if (this.EventSeverities != null) {
-            s += ind + "eventSeverities\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "eventSeverities\n" ;
+            } else {
+                s += ind + "eventSeverities\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<UserAuditSeverityEnum>? AuditSeverities
         // GraphQL -> auditSeverities: [UserAuditSeverityEnum!]! (enum)
-        if (this.AuditSeverities == null && ec.Includes("auditSeverities",true))
+        if (ec.Includes("auditSeverities",true))
         {
-            this.AuditSeverities = new List<UserAuditSeverityEnum>();
+            if(this.AuditSeverities == null) {
+
+                this.AuditSeverities = new List<UserAuditSeverityEnum>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AuditSeverities != null && ec.Excludes("auditSeverities",true))
+        {
+            this.AuditSeverities = null;
         }
         //      C# -> List<ActivitySeverityEnum>? EventSeverities
         // GraphQL -> eventSeverities: [ActivitySeverityEnum!]! (enum)
-        if (this.EventSeverities == null && ec.Includes("eventSeverities",true))
+        if (ec.Includes("eventSeverities",true))
         {
-            this.EventSeverities = new List<ActivitySeverityEnum>();
+            if(this.EventSeverities == null) {
+
+                this.EventSeverities = new List<ActivitySeverityEnum>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EventSeverities != null && ec.Excludes("eventSeverities",true))
+        {
+            this.EventSeverities = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SubscriptionSeverity> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

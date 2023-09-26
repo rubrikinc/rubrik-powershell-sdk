@@ -66,24 +66,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> SnapshotServiceBackupStatus? BackupStatus
         // GraphQL -> backupStatus: SnapshotServiceBackupStatus! (enum)
         if (this.BackupStatus != null) {
-            s += ind + "backupStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "backupStatus\n" ;
+            } else {
+                s += ind + "backupStatus\n" ;
+            }
         }
         //      C# -> System.Int32? PercentOfObjectsSkipped
         // GraphQL -> percentOfObjectsSkipped: Int! (scalar)
         if (this.PercentOfObjectsSkipped != null) {
-            s += ind + "percentOfObjectsSkipped\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "percentOfObjectsSkipped\n" ;
+            } else {
+                s += ind + "percentOfObjectsSkipped\n" ;
+            }
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: UUID! (scalar)
         if (this.SnapshotId != null) {
-            s += ind + "snapshotId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotId\n" ;
+            } else {
+                s += ind + "snapshotId\n" ;
+            }
         }
         return s;
     }
@@ -94,21 +107,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> SnapshotServiceBackupStatus? BackupStatus
         // GraphQL -> backupStatus: SnapshotServiceBackupStatus! (enum)
-        if (this.BackupStatus == null && ec.Includes("backupStatus",true))
+        if (ec.Includes("backupStatus",true))
         {
-            this.BackupStatus = new SnapshotServiceBackupStatus();
+            if(this.BackupStatus == null) {
+
+                this.BackupStatus = new SnapshotServiceBackupStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.BackupStatus != null && ec.Excludes("backupStatus",true))
+        {
+            this.BackupStatus = null;
         }
         //      C# -> System.Int32? PercentOfObjectsSkipped
         // GraphQL -> percentOfObjectsSkipped: Int! (scalar)
-        if (this.PercentOfObjectsSkipped == null && ec.Includes("percentOfObjectsSkipped",true))
+        if (ec.Includes("percentOfObjectsSkipped",true))
         {
-            this.PercentOfObjectsSkipped = Int32.MinValue;
+            if(this.PercentOfObjectsSkipped == null) {
+
+                this.PercentOfObjectsSkipped = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.PercentOfObjectsSkipped != null && ec.Excludes("percentOfObjectsSkipped",true))
+        {
+            this.PercentOfObjectsSkipped = null;
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: UUID! (scalar)
-        if (this.SnapshotId == null && ec.Includes("snapshotId",true))
+        if (ec.Includes("snapshotId",true))
         {
-            this.SnapshotId = "FETCH";
+            if(this.SnapshotId == null) {
+
+                this.SnapshotId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotId != null && ec.Excludes("snapshotId",true))
+        {
+            this.SnapshotId = null;
         }
     }
 
@@ -135,9 +181,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<O365SiteSpecificSnapshot> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

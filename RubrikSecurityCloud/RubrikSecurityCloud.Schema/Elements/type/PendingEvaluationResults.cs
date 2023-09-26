@@ -137,64 +137,109 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
         if (this.ClusterUuid != null) {
-            s += ind + "clusterUuid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterUuid\n" ;
+            } else {
+                s += ind + "clusterUuid\n" ;
+            }
         }
         //      C# -> DateTime? CreatedAt
         // GraphQL -> createdAt: DateTime (scalar)
         if (this.CreatedAt != null) {
-            s += ind + "createdAt\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "createdAt\n" ;
+            } else {
+                s += ind + "createdAt\n" ;
+            }
         }
         //      C# -> System.String? Info
         // GraphQL -> info: String! (scalar)
         if (this.Info != null) {
-            s += ind + "info\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "info\n" ;
+            } else {
+                s += ind + "info\n" ;
+            }
         }
         //      C# -> System.Boolean? IsCompleted
         // GraphQL -> isCompleted: Boolean! (scalar)
         if (this.IsCompleted != null) {
-            s += ind + "isCompleted\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isCompleted\n" ;
+            } else {
+                s += ind + "isCompleted\n" ;
+            }
         }
         //      C# -> System.String? ManagedId
         // GraphQL -> managedId: String! (scalar)
         if (this.ManagedId != null) {
-            s += ind + "managedId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "managedId\n" ;
+            } else {
+                s += ind + "managedId\n" ;
+            }
         }
         //      C# -> DateTime? SnapshotDate
         // GraphQL -> snapshotDate: DateTime (scalar)
         if (this.SnapshotDate != null) {
-            s += ind + "snapshotDate\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotDate\n" ;
+            } else {
+                s += ind + "snapshotDate\n" ;
+            }
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String! (scalar)
         if (this.SnapshotId != null) {
-            s += ind + "snapshotId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotId\n" ;
+            } else {
+                s += ind + "snapshotId\n" ;
+            }
         }
         //      C# -> DateTime? UpdatedAt
         // GraphQL -> updatedAt: DateTime (scalar)
         if (this.UpdatedAt != null) {
-            s += ind + "updatedAt\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "updatedAt\n" ;
+            } else {
+                s += ind + "updatedAt\n" ;
+            }
         }
         //      C# -> System.String? WorkloadId
         // GraphQL -> workloadId: String! (scalar)
         if (this.WorkloadId != null) {
-            s += ind + "workloadId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "workloadId\n" ;
+            } else {
+                s += ind + "workloadId\n" ;
+            }
         }
         //      C# -> System.String? WorkloadName
         // GraphQL -> workloadName: String! (scalar)
         if (this.WorkloadName != null) {
-            s += ind + "workloadName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "workloadName\n" ;
+            } else {
+                s += ind + "workloadName\n" ;
+            }
         }
         //      C# -> System.String? WorkloadType
         // GraphQL -> workloadType: String! (scalar)
         if (this.WorkloadType != null) {
-            s += ind + "workloadType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "workloadType\n" ;
+            } else {
+                s += ind + "workloadType\n" ;
+            }
         }
         return s;
     }
@@ -205,69 +250,190 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
-        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
+        if (ec.Includes("clusterUuid",true))
         {
-            this.ClusterUuid = "FETCH";
+            if(this.ClusterUuid == null) {
+
+                this.ClusterUuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterUuid != null && ec.Excludes("clusterUuid",true))
+        {
+            this.ClusterUuid = null;
         }
         //      C# -> DateTime? CreatedAt
         // GraphQL -> createdAt: DateTime (scalar)
-        if (this.CreatedAt == null && ec.Includes("createdAt",true))
+        if (ec.Includes("createdAt",true))
         {
-            this.CreatedAt = new DateTime();
+            if(this.CreatedAt == null) {
+
+                this.CreatedAt = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CreatedAt != null && ec.Excludes("createdAt",true))
+        {
+            this.CreatedAt = null;
         }
         //      C# -> System.String? Info
         // GraphQL -> info: String! (scalar)
-        if (this.Info == null && ec.Includes("info",true))
+        if (ec.Includes("info",true))
         {
-            this.Info = "FETCH";
+            if(this.Info == null) {
+
+                this.Info = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Info != null && ec.Excludes("info",true))
+        {
+            this.Info = null;
         }
         //      C# -> System.Boolean? IsCompleted
         // GraphQL -> isCompleted: Boolean! (scalar)
-        if (this.IsCompleted == null && ec.Includes("isCompleted",true))
+        if (ec.Includes("isCompleted",true))
         {
-            this.IsCompleted = true;
+            if(this.IsCompleted == null) {
+
+                this.IsCompleted = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsCompleted != null && ec.Excludes("isCompleted",true))
+        {
+            this.IsCompleted = null;
         }
         //      C# -> System.String? ManagedId
         // GraphQL -> managedId: String! (scalar)
-        if (this.ManagedId == null && ec.Includes("managedId",true))
+        if (ec.Includes("managedId",true))
         {
-            this.ManagedId = "FETCH";
+            if(this.ManagedId == null) {
+
+                this.ManagedId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ManagedId != null && ec.Excludes("managedId",true))
+        {
+            this.ManagedId = null;
         }
         //      C# -> DateTime? SnapshotDate
         // GraphQL -> snapshotDate: DateTime (scalar)
-        if (this.SnapshotDate == null && ec.Includes("snapshotDate",true))
+        if (ec.Includes("snapshotDate",true))
         {
-            this.SnapshotDate = new DateTime();
+            if(this.SnapshotDate == null) {
+
+                this.SnapshotDate = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotDate != null && ec.Excludes("snapshotDate",true))
+        {
+            this.SnapshotDate = null;
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String! (scalar)
-        if (this.SnapshotId == null && ec.Includes("snapshotId",true))
+        if (ec.Includes("snapshotId",true))
         {
-            this.SnapshotId = "FETCH";
+            if(this.SnapshotId == null) {
+
+                this.SnapshotId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotId != null && ec.Excludes("snapshotId",true))
+        {
+            this.SnapshotId = null;
         }
         //      C# -> DateTime? UpdatedAt
         // GraphQL -> updatedAt: DateTime (scalar)
-        if (this.UpdatedAt == null && ec.Includes("updatedAt",true))
+        if (ec.Includes("updatedAt",true))
         {
-            this.UpdatedAt = new DateTime();
+            if(this.UpdatedAt == null) {
+
+                this.UpdatedAt = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UpdatedAt != null && ec.Excludes("updatedAt",true))
+        {
+            this.UpdatedAt = null;
         }
         //      C# -> System.String? WorkloadId
         // GraphQL -> workloadId: String! (scalar)
-        if (this.WorkloadId == null && ec.Includes("workloadId",true))
+        if (ec.Includes("workloadId",true))
         {
-            this.WorkloadId = "FETCH";
+            if(this.WorkloadId == null) {
+
+                this.WorkloadId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.WorkloadId != null && ec.Excludes("workloadId",true))
+        {
+            this.WorkloadId = null;
         }
         //      C# -> System.String? WorkloadName
         // GraphQL -> workloadName: String! (scalar)
-        if (this.WorkloadName == null && ec.Includes("workloadName",true))
+        if (ec.Includes("workloadName",true))
         {
-            this.WorkloadName = "FETCH";
+            if(this.WorkloadName == null) {
+
+                this.WorkloadName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.WorkloadName != null && ec.Excludes("workloadName",true))
+        {
+            this.WorkloadName = null;
         }
         //      C# -> System.String? WorkloadType
         // GraphQL -> workloadType: String! (scalar)
-        if (this.WorkloadType == null && ec.Includes("workloadType",true))
+        if (ec.Includes("workloadType",true))
         {
-            this.WorkloadType = "FETCH";
+            if(this.WorkloadType == null) {
+
+                this.WorkloadType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.WorkloadType != null && ec.Excludes("workloadType",true))
+        {
+            this.WorkloadType = null;
         }
     }
 
@@ -294,9 +460,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<PendingEvaluationResults> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -110,49 +110,82 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? CertId
         // GraphQL -> certId: String! (scalar)
         if (this.CertId != null) {
-            s += ind + "certId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "certId\n" ;
+            } else {
+                s += ind + "certId\n" ;
+            }
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String (scalar)
         if (this.Description != null) {
-            s += ind + "description\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "description\n" ;
+            } else {
+                s += ind + "description\n" ;
+            }
         }
         //      C# -> DateTime? Expiration
         // GraphQL -> expiration: DateTime (scalar)
         if (this.Expiration != null) {
-            s += ind + "expiration\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "expiration\n" ;
+            } else {
+                s += ind + "expiration\n" ;
+            }
         }
         //      C# -> System.Boolean? HasKey
         // GraphQL -> hasKey: Boolean! (scalar)
         if (this.HasKey != null) {
-            s += ind + "hasKey\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hasKey\n" ;
+            } else {
+                s += ind + "hasKey\n" ;
+            }
         }
         //      C# -> System.Boolean? IsTrusted
         // GraphQL -> isTrusted: Boolean (scalar)
         if (this.IsTrusted != null) {
-            s += ind + "isTrusted\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isTrusted\n" ;
+            } else {
+                s += ind + "isTrusted\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.String? PemFile
         // GraphQL -> pemFile: String! (scalar)
         if (this.PemFile != null) {
-            s += ind + "pemFile\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "pemFile\n" ;
+            } else {
+                s += ind + "pemFile\n" ;
+            }
         }
         //      C# -> System.String? UsedBy
         // GraphQL -> usedBy: String! (scalar)
         if (this.UsedBy != null) {
-            s += ind + "usedBy\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "usedBy\n" ;
+            } else {
+                s += ind + "usedBy\n" ;
+            }
         }
         return s;
     }
@@ -163,51 +196,139 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? CertId
         // GraphQL -> certId: String! (scalar)
-        if (this.CertId == null && ec.Includes("certId",true))
+        if (ec.Includes("certId",true))
         {
-            this.CertId = "FETCH";
+            if(this.CertId == null) {
+
+                this.CertId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CertId != null && ec.Excludes("certId",true))
+        {
+            this.CertId = null;
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String (scalar)
-        if (this.Description == null && ec.Includes("description",true))
+        if (ec.Includes("description",true))
         {
-            this.Description = "FETCH";
+            if(this.Description == null) {
+
+                this.Description = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Description != null && ec.Excludes("description",true))
+        {
+            this.Description = null;
         }
         //      C# -> DateTime? Expiration
         // GraphQL -> expiration: DateTime (scalar)
-        if (this.Expiration == null && ec.Includes("expiration",true))
+        if (ec.Includes("expiration",true))
         {
-            this.Expiration = new DateTime();
+            if(this.Expiration == null) {
+
+                this.Expiration = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Expiration != null && ec.Excludes("expiration",true))
+        {
+            this.Expiration = null;
         }
         //      C# -> System.Boolean? HasKey
         // GraphQL -> hasKey: Boolean! (scalar)
-        if (this.HasKey == null && ec.Includes("hasKey",true))
+        if (ec.Includes("hasKey",true))
         {
-            this.HasKey = true;
+            if(this.HasKey == null) {
+
+                this.HasKey = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.HasKey != null && ec.Excludes("hasKey",true))
+        {
+            this.HasKey = null;
         }
         //      C# -> System.Boolean? IsTrusted
         // GraphQL -> isTrusted: Boolean (scalar)
-        if (this.IsTrusted == null && ec.Includes("isTrusted",true))
+        if (ec.Includes("isTrusted",true))
         {
-            this.IsTrusted = true;
+            if(this.IsTrusted == null) {
+
+                this.IsTrusted = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsTrusted != null && ec.Excludes("isTrusted",true))
+        {
+            this.IsTrusted = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.String? PemFile
         // GraphQL -> pemFile: String! (scalar)
-        if (this.PemFile == null && ec.Includes("pemFile",true))
+        if (ec.Includes("pemFile",true))
         {
-            this.PemFile = "FETCH";
+            if(this.PemFile == null) {
+
+                this.PemFile = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PemFile != null && ec.Excludes("pemFile",true))
+        {
+            this.PemFile = null;
         }
         //      C# -> System.String? UsedBy
         // GraphQL -> usedBy: String! (scalar)
-        if (this.UsedBy == null && ec.Includes("usedBy",true))
+        if (ec.Includes("usedBy",true))
         {
-            this.UsedBy = "FETCH";
+            if(this.UsedBy == null) {
+
+                this.UsedBy = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.UsedBy != null && ec.Excludes("usedBy",true))
+        {
+            this.UsedBy = null;
         }
     }
 
@@ -234,9 +355,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AddClusterCertificateReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

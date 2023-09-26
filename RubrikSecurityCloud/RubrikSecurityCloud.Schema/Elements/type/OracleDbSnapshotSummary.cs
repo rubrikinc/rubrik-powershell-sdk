@@ -92,41 +92,66 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? DatabaseName
         // GraphQL -> databaseName: String! (scalar)
         if (this.DatabaseName != null) {
-            s += ind + "databaseName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "databaseName\n" ;
+            } else {
+                s += ind + "databaseName\n" ;
+            }
         }
         //      C# -> System.String? HostOrRacManagedId
         // GraphQL -> hostOrRacManagedId: String (scalar)
         if (this.HostOrRacManagedId != null) {
-            s += ind + "hostOrRacManagedId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostOrRacManagedId\n" ;
+            } else {
+                s += ind + "hostOrRacManagedId\n" ;
+            }
         }
         //      C# -> System.String? HostOrRacName
         // GraphQL -> hostOrRacName: String (scalar)
         if (this.HostOrRacName != null) {
-            s += ind + "hostOrRacName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostOrRacName\n" ;
+            } else {
+                s += ind + "hostOrRacName\n" ;
+            }
         }
         //      C# -> System.Boolean? IsValid
         // GraphQL -> isValid: Boolean (scalar)
         if (this.IsValid != null) {
-            s += ind + "isValid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isValid\n" ;
+            } else {
+                s += ind + "isValid\n" ;
+            }
         }
         //      C# -> List<System.String>? Tablespaces
         // GraphQL -> tablespaces: [String!]! (scalar)
         if (this.Tablespaces != null) {
-            s += ind + "tablespaces\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "tablespaces\n" ;
+            } else {
+                s += ind + "tablespaces\n" ;
+            }
         }
         //      C# -> BaseSnapshotSummary? BaseSnapshotSummary
         // GraphQL -> baseSnapshotSummary: BaseSnapshotSummary (type)
         if (this.BaseSnapshotSummary != null) {
-            var fspec = this.BaseSnapshotSummary.AsFieldSpec(indent+1);
+            var fspec = this.BaseSnapshotSummary.AsFieldSpec(conf.Child("baseSnapshotSummary"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "baseSnapshotSummary {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "baseSnapshotSummary {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -138,40 +163,107 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? DatabaseName
         // GraphQL -> databaseName: String! (scalar)
-        if (this.DatabaseName == null && ec.Includes("databaseName",true))
+        if (ec.Includes("databaseName",true))
         {
-            this.DatabaseName = "FETCH";
+            if(this.DatabaseName == null) {
+
+                this.DatabaseName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DatabaseName != null && ec.Excludes("databaseName",true))
+        {
+            this.DatabaseName = null;
         }
         //      C# -> System.String? HostOrRacManagedId
         // GraphQL -> hostOrRacManagedId: String (scalar)
-        if (this.HostOrRacManagedId == null && ec.Includes("hostOrRacManagedId",true))
+        if (ec.Includes("hostOrRacManagedId",true))
         {
-            this.HostOrRacManagedId = "FETCH";
+            if(this.HostOrRacManagedId == null) {
+
+                this.HostOrRacManagedId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.HostOrRacManagedId != null && ec.Excludes("hostOrRacManagedId",true))
+        {
+            this.HostOrRacManagedId = null;
         }
         //      C# -> System.String? HostOrRacName
         // GraphQL -> hostOrRacName: String (scalar)
-        if (this.HostOrRacName == null && ec.Includes("hostOrRacName",true))
+        if (ec.Includes("hostOrRacName",true))
         {
-            this.HostOrRacName = "FETCH";
+            if(this.HostOrRacName == null) {
+
+                this.HostOrRacName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.HostOrRacName != null && ec.Excludes("hostOrRacName",true))
+        {
+            this.HostOrRacName = null;
         }
         //      C# -> System.Boolean? IsValid
         // GraphQL -> isValid: Boolean (scalar)
-        if (this.IsValid == null && ec.Includes("isValid",true))
+        if (ec.Includes("isValid",true))
         {
-            this.IsValid = true;
+            if(this.IsValid == null) {
+
+                this.IsValid = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsValid != null && ec.Excludes("isValid",true))
+        {
+            this.IsValid = null;
         }
         //      C# -> List<System.String>? Tablespaces
         // GraphQL -> tablespaces: [String!]! (scalar)
-        if (this.Tablespaces == null && ec.Includes("tablespaces",true))
+        if (ec.Includes("tablespaces",true))
         {
-            this.Tablespaces = new List<System.String>();
+            if(this.Tablespaces == null) {
+
+                this.Tablespaces = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Tablespaces != null && ec.Excludes("tablespaces",true))
+        {
+            this.Tablespaces = null;
         }
         //      C# -> BaseSnapshotSummary? BaseSnapshotSummary
         // GraphQL -> baseSnapshotSummary: BaseSnapshotSummary (type)
-        if (this.BaseSnapshotSummary == null && ec.Includes("baseSnapshotSummary",false))
+        if (ec.Includes("baseSnapshotSummary",false))
         {
-            this.BaseSnapshotSummary = new BaseSnapshotSummary();
-            this.BaseSnapshotSummary.ApplyExploratoryFieldSpec(ec.NewChild("baseSnapshotSummary"));
+            if(this.BaseSnapshotSummary == null) {
+
+                this.BaseSnapshotSummary = new BaseSnapshotSummary();
+                this.BaseSnapshotSummary.ApplyExploratoryFieldSpec(ec.NewChild("baseSnapshotSummary"));
+
+            } else {
+
+                this.BaseSnapshotSummary.ApplyExploratoryFieldSpec(ec.NewChild("baseSnapshotSummary"));
+
+            }
+        }
+        else if (this.BaseSnapshotSummary != null && ec.Excludes("baseSnapshotSummary",false))
+        {
+            this.BaseSnapshotSummary = null;
         }
     }
 
@@ -198,9 +290,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<OracleDbSnapshotSummary> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

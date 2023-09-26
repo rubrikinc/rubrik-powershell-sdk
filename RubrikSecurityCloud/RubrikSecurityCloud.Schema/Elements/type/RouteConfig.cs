@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Device
         // GraphQL -> device: String! (scalar)
         if (this.Device != null) {
-            s += ind + "device\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "device\n" ;
+            } else {
+                s += ind + "device\n" ;
+            }
         }
         //      C# -> System.String? Gateway
         // GraphQL -> gateway: String! (scalar)
         if (this.Gateway != null) {
-            s += ind + "gateway\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "gateway\n" ;
+            } else {
+                s += ind + "gateway\n" ;
+            }
         }
         //      C# -> System.String? Netmask
         // GraphQL -> netmask: String! (scalar)
         if (this.Netmask != null) {
-            s += ind + "netmask\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "netmask\n" ;
+            } else {
+                s += ind + "netmask\n" ;
+            }
         }
         //      C# -> System.String? Network
         // GraphQL -> network: String! (scalar)
         if (this.Network != null) {
-            s += ind + "network\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "network\n" ;
+            } else {
+                s += ind + "network\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Device
         // GraphQL -> device: String! (scalar)
-        if (this.Device == null && ec.Includes("device",true))
+        if (ec.Includes("device",true))
         {
-            this.Device = "FETCH";
+            if(this.Device == null) {
+
+                this.Device = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Device != null && ec.Excludes("device",true))
+        {
+            this.Device = null;
         }
         //      C# -> System.String? Gateway
         // GraphQL -> gateway: String! (scalar)
-        if (this.Gateway == null && ec.Includes("gateway",true))
+        if (ec.Includes("gateway",true))
         {
-            this.Gateway = "FETCH";
+            if(this.Gateway == null) {
+
+                this.Gateway = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Gateway != null && ec.Excludes("gateway",true))
+        {
+            this.Gateway = null;
         }
         //      C# -> System.String? Netmask
         // GraphQL -> netmask: String! (scalar)
-        if (this.Netmask == null && ec.Includes("netmask",true))
+        if (ec.Includes("netmask",true))
         {
-            this.Netmask = "FETCH";
+            if(this.Netmask == null) {
+
+                this.Netmask = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Netmask != null && ec.Excludes("netmask",true))
+        {
+            this.Netmask = null;
         }
         //      C# -> System.String? Network
         // GraphQL -> network: String! (scalar)
-        if (this.Network == null && ec.Includes("network",true))
+        if (ec.Includes("network",true))
         {
-            this.Network = "FETCH";
+            if(this.Network == null) {
+
+                this.Network = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Network != null && ec.Excludes("network",true))
+        {
+            this.Network = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<RouteConfig> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

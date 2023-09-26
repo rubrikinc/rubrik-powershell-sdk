@@ -57,19 +57,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? SerializedValue
         // GraphQL -> serializedValue: String! (scalar)
         if (this.SerializedValue != null) {
-            s += ind + "serializedValue\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "serializedValue\n" ;
+            } else {
+                s += ind + "serializedValue\n" ;
+            }
         }
         //      C# -> System.Int64? Value
         // GraphQL -> value: Long (scalar)
         if (this.Value != null) {
-            s += ind + "value\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "value\n" ;
+            } else {
+                s += ind + "value\n" ;
+            }
         }
         return s;
     }
@@ -80,15 +89,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? SerializedValue
         // GraphQL -> serializedValue: String! (scalar)
-        if (this.SerializedValue == null && ec.Includes("serializedValue",true))
+        if (ec.Includes("serializedValue",true))
         {
-            this.SerializedValue = "FETCH";
+            if(this.SerializedValue == null) {
+
+                this.SerializedValue = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SerializedValue != null && ec.Excludes("serializedValue",true))
+        {
+            this.SerializedValue = null;
         }
         //      C# -> System.Int64? Value
         // GraphQL -> value: Long (scalar)
-        if (this.Value == null && ec.Includes("value",true))
+        if (ec.Includes("value",true))
         {
-            this.Value = new System.Int64();
+            if(this.Value == null) {
+
+                this.Value = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Value != null && ec.Excludes("value",true))
+        {
+            this.Value = null;
         }
     }
 
@@ -115,9 +146,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ValueLong> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

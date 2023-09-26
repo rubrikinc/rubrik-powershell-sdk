@@ -101,44 +101,73 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> SnapshotFrequency? SnapshotFrequency
         // GraphQL -> snapshotFrequency: SnapshotFrequency! (enum)
         if (this.SnapshotFrequency != null) {
-            s += ind + "snapshotFrequency\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotFrequency\n" ;
+            } else {
+                s += ind + "snapshotFrequency\n" ;
+            }
         }
         //      C# -> DateTime? ExpirationTime
         // GraphQL -> expirationTime: DateTime (scalar)
         if (this.ExpirationTime != null) {
-            s += ind + "expirationTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "expirationTime\n" ;
+            } else {
+                s += ind + "expirationTime\n" ;
+            }
         }
         //      C# -> System.Boolean? IsExpirationDateCalculated
         // GraphQL -> isExpirationDateCalculated: Boolean! (scalar)
         if (this.IsExpirationDateCalculated != null) {
-            s += ind + "isExpirationDateCalculated\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isExpirationDateCalculated\n" ;
+            } else {
+                s += ind + "isExpirationDateCalculated\n" ;
+            }
         }
         //      C# -> System.Boolean? IsExpirationInformationUnavailable
         // GraphQL -> isExpirationInformationUnavailable: Boolean! (scalar)
         if (this.IsExpirationInformationUnavailable != null) {
-            s += ind + "isExpirationInformationUnavailable\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isExpirationInformationUnavailable\n" ;
+            } else {
+                s += ind + "isExpirationInformationUnavailable\n" ;
+            }
         }
         //      C# -> System.Boolean? IsSnapshotPresent
         // GraphQL -> isSnapshotPresent: Boolean! (scalar)
         if (this.IsSnapshotPresent != null) {
-            s += ind + "isSnapshotPresent\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isSnapshotPresent\n" ;
+            } else {
+                s += ind + "isSnapshotPresent\n" ;
+            }
         }
         //      C# -> System.String? LocationId
         // GraphQL -> locationId: String! (scalar)
         if (this.LocationId != null) {
-            s += ind + "locationId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "locationId\n" ;
+            } else {
+                s += ind + "locationId\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         return s;
     }
@@ -149,45 +178,122 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> SnapshotFrequency? SnapshotFrequency
         // GraphQL -> snapshotFrequency: SnapshotFrequency! (enum)
-        if (this.SnapshotFrequency == null && ec.Includes("snapshotFrequency",true))
+        if (ec.Includes("snapshotFrequency",true))
         {
-            this.SnapshotFrequency = new SnapshotFrequency();
+            if(this.SnapshotFrequency == null) {
+
+                this.SnapshotFrequency = new SnapshotFrequency();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotFrequency != null && ec.Excludes("snapshotFrequency",true))
+        {
+            this.SnapshotFrequency = null;
         }
         //      C# -> DateTime? ExpirationTime
         // GraphQL -> expirationTime: DateTime (scalar)
-        if (this.ExpirationTime == null && ec.Includes("expirationTime",true))
+        if (ec.Includes("expirationTime",true))
         {
-            this.ExpirationTime = new DateTime();
+            if(this.ExpirationTime == null) {
+
+                this.ExpirationTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExpirationTime != null && ec.Excludes("expirationTime",true))
+        {
+            this.ExpirationTime = null;
         }
         //      C# -> System.Boolean? IsExpirationDateCalculated
         // GraphQL -> isExpirationDateCalculated: Boolean! (scalar)
-        if (this.IsExpirationDateCalculated == null && ec.Includes("isExpirationDateCalculated",true))
+        if (ec.Includes("isExpirationDateCalculated",true))
         {
-            this.IsExpirationDateCalculated = true;
+            if(this.IsExpirationDateCalculated == null) {
+
+                this.IsExpirationDateCalculated = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsExpirationDateCalculated != null && ec.Excludes("isExpirationDateCalculated",true))
+        {
+            this.IsExpirationDateCalculated = null;
         }
         //      C# -> System.Boolean? IsExpirationInformationUnavailable
         // GraphQL -> isExpirationInformationUnavailable: Boolean! (scalar)
-        if (this.IsExpirationInformationUnavailable == null && ec.Includes("isExpirationInformationUnavailable",true))
+        if (ec.Includes("isExpirationInformationUnavailable",true))
         {
-            this.IsExpirationInformationUnavailable = true;
+            if(this.IsExpirationInformationUnavailable == null) {
+
+                this.IsExpirationInformationUnavailable = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsExpirationInformationUnavailable != null && ec.Excludes("isExpirationInformationUnavailable",true))
+        {
+            this.IsExpirationInformationUnavailable = null;
         }
         //      C# -> System.Boolean? IsSnapshotPresent
         // GraphQL -> isSnapshotPresent: Boolean! (scalar)
-        if (this.IsSnapshotPresent == null && ec.Includes("isSnapshotPresent",true))
+        if (ec.Includes("isSnapshotPresent",true))
         {
-            this.IsSnapshotPresent = true;
+            if(this.IsSnapshotPresent == null) {
+
+                this.IsSnapshotPresent = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsSnapshotPresent != null && ec.Excludes("isSnapshotPresent",true))
+        {
+            this.IsSnapshotPresent = null;
         }
         //      C# -> System.String? LocationId
         // GraphQL -> locationId: String! (scalar)
-        if (this.LocationId == null && ec.Includes("locationId",true))
+        if (ec.Includes("locationId",true))
         {
-            this.LocationId = "FETCH";
+            if(this.LocationId == null) {
+
+                this.LocationId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.LocationId != null && ec.Excludes("locationId",true))
+        {
+            this.LocationId = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
     }
 
@@ -214,9 +320,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CdmSnapshotLocationRetentionInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

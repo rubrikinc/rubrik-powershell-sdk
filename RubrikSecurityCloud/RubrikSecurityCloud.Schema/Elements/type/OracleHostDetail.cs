@@ -56,24 +56,33 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> OracleHostSummary? OracleHostSummary
         // GraphQL -> oracleHostSummary: OracleHostSummary (type)
         if (this.OracleHostSummary != null) {
-            var fspec = this.OracleHostSummary.AsFieldSpec(indent+1);
+            var fspec = this.OracleHostSummary.AsFieldSpec(conf.Child("oracleHostSummary"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "oracleHostSummary {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "oracleHostSummary {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> OracleNonSlaProperties? OracleNonSlaProperties
         // GraphQL -> oracleNonSlaProperties: OracleNonSlaProperties (type)
         if (this.OracleNonSlaProperties != null) {
-            var fspec = this.OracleNonSlaProperties.AsFieldSpec(indent+1);
+            var fspec = this.OracleNonSlaProperties.AsFieldSpec(conf.Child("oracleNonSlaProperties"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "oracleNonSlaProperties {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "oracleNonSlaProperties {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -85,17 +94,41 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> OracleHostSummary? OracleHostSummary
         // GraphQL -> oracleHostSummary: OracleHostSummary (type)
-        if (this.OracleHostSummary == null && ec.Includes("oracleHostSummary",false))
+        if (ec.Includes("oracleHostSummary",false))
         {
-            this.OracleHostSummary = new OracleHostSummary();
-            this.OracleHostSummary.ApplyExploratoryFieldSpec(ec.NewChild("oracleHostSummary"));
+            if(this.OracleHostSummary == null) {
+
+                this.OracleHostSummary = new OracleHostSummary();
+                this.OracleHostSummary.ApplyExploratoryFieldSpec(ec.NewChild("oracleHostSummary"));
+
+            } else {
+
+                this.OracleHostSummary.ApplyExploratoryFieldSpec(ec.NewChild("oracleHostSummary"));
+
+            }
+        }
+        else if (this.OracleHostSummary != null && ec.Excludes("oracleHostSummary",false))
+        {
+            this.OracleHostSummary = null;
         }
         //      C# -> OracleNonSlaProperties? OracleNonSlaProperties
         // GraphQL -> oracleNonSlaProperties: OracleNonSlaProperties (type)
-        if (this.OracleNonSlaProperties == null && ec.Includes("oracleNonSlaProperties",false))
+        if (ec.Includes("oracleNonSlaProperties",false))
         {
-            this.OracleNonSlaProperties = new OracleNonSlaProperties();
-            this.OracleNonSlaProperties.ApplyExploratoryFieldSpec(ec.NewChild("oracleNonSlaProperties"));
+            if(this.OracleNonSlaProperties == null) {
+
+                this.OracleNonSlaProperties = new OracleNonSlaProperties();
+                this.OracleNonSlaProperties.ApplyExploratoryFieldSpec(ec.NewChild("oracleNonSlaProperties"));
+
+            } else {
+
+                this.OracleNonSlaProperties.ApplyExploratoryFieldSpec(ec.NewChild("oracleNonSlaProperties"));
+
+            }
+        }
+        else if (this.OracleNonSlaProperties != null && ec.Excludes("oracleNonSlaProperties",false))
+        {
+            this.OracleNonSlaProperties = null;
         }
     }
 
@@ -122,9 +155,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<OracleHostDetail> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

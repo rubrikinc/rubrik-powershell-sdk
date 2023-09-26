@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? CustomName
         // GraphQL -> customName: String! (scalar)
         if (this.CustomName != null) {
-            s += ind + "customName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "customName\n" ;
+            } else {
+                s += ind + "customName\n" ;
+            }
         }
         //      C# -> System.String? OrgUuid
         // GraphQL -> orgUuid: UUID! (scalar)
         if (this.OrgUuid != null) {
-            s += ind + "orgUuid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "orgUuid\n" ;
+            } else {
+                s += ind + "orgUuid\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? CustomName
         // GraphQL -> customName: String! (scalar)
-        if (this.CustomName == null && ec.Includes("customName",true))
+        if (ec.Includes("customName",true))
         {
-            this.CustomName = "FETCH";
+            if(this.CustomName == null) {
+
+                this.CustomName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CustomName != null && ec.Excludes("customName",true))
+        {
+            this.CustomName = null;
         }
         //      C# -> System.String? OrgUuid
         // GraphQL -> orgUuid: UUID! (scalar)
-        if (this.OrgUuid == null && ec.Includes("orgUuid",true))
+        if (ec.Includes("orgUuid",true))
         {
-            this.OrgUuid = "FETCH";
+            if(this.OrgUuid == null) {
+
+                this.OrgUuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OrgUuid != null && ec.Excludes("orgUuid",true))
+        {
+            this.OrgUuid = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<UpdateO365OrgCustomNameReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

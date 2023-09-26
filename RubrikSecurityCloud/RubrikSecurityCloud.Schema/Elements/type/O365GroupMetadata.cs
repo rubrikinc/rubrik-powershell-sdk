@@ -47,16 +47,21 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> O365ConfiguredGroupMetadata? ConfiguredGroupMetadata
         // GraphQL -> configuredGroupMetadata: O365ConfiguredGroupMetadata (type)
         if (this.ConfiguredGroupMetadata != null) {
-            var fspec = this.ConfiguredGroupMetadata.AsFieldSpec(indent+1);
+            var fspec = this.ConfiguredGroupMetadata.AsFieldSpec(conf.Child("configuredGroupMetadata"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "configuredGroupMetadata {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "configuredGroupMetadata {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -68,10 +73,22 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> O365ConfiguredGroupMetadata? ConfiguredGroupMetadata
         // GraphQL -> configuredGroupMetadata: O365ConfiguredGroupMetadata (type)
-        if (this.ConfiguredGroupMetadata == null && ec.Includes("configuredGroupMetadata",false))
+        if (ec.Includes("configuredGroupMetadata",false))
         {
-            this.ConfiguredGroupMetadata = new O365ConfiguredGroupMetadata();
-            this.ConfiguredGroupMetadata.ApplyExploratoryFieldSpec(ec.NewChild("configuredGroupMetadata"));
+            if(this.ConfiguredGroupMetadata == null) {
+
+                this.ConfiguredGroupMetadata = new O365ConfiguredGroupMetadata();
+                this.ConfiguredGroupMetadata.ApplyExploratoryFieldSpec(ec.NewChild("configuredGroupMetadata"));
+
+            } else {
+
+                this.ConfiguredGroupMetadata.ApplyExploratoryFieldSpec(ec.NewChild("configuredGroupMetadata"));
+
+            }
+        }
+        else if (this.ConfiguredGroupMetadata != null && ec.Excludes("configuredGroupMetadata",false))
+        {
+            this.ConfiguredGroupMetadata = null;
         }
     }
 
@@ -98,9 +115,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<O365GroupMetadata> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

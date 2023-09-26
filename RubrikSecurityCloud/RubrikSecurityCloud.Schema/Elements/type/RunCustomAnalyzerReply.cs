@@ -47,16 +47,21 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<CustomAnalyzerMatch>? Matches
         // GraphQL -> matches: [CustomAnalyzerMatch!]! (type)
         if (this.Matches != null) {
-            var fspec = this.Matches.AsFieldSpec(indent+1);
+            var fspec = this.Matches.AsFieldSpec(conf.Child("matches"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "matches {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "matches {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -68,10 +73,22 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<CustomAnalyzerMatch>? Matches
         // GraphQL -> matches: [CustomAnalyzerMatch!]! (type)
-        if (this.Matches == null && ec.Includes("matches",false))
+        if (ec.Includes("matches",false))
         {
-            this.Matches = new List<CustomAnalyzerMatch>();
-            this.Matches.ApplyExploratoryFieldSpec(ec.NewChild("matches"));
+            if(this.Matches == null) {
+
+                this.Matches = new List<CustomAnalyzerMatch>();
+                this.Matches.ApplyExploratoryFieldSpec(ec.NewChild("matches"));
+
+            } else {
+
+                this.Matches.ApplyExploratoryFieldSpec(ec.NewChild("matches"));
+
+            }
+        }
+        else if (this.Matches != null && ec.Excludes("matches",false))
+        {
+            this.Matches = null;
         }
     }
 
@@ -98,9 +115,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<RunCustomAnalyzerReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

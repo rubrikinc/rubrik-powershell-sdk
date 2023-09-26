@@ -137,69 +137,114 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> MssqlDbReplicaRecoveryModel? RecoveryModel
         // GraphQL -> recoveryModel: MssqlDbReplicaRecoveryModel! (enum)
         if (this.RecoveryModel != null) {
-            s += ind + "recoveryModel\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "recoveryModel\n" ;
+            } else {
+                s += ind + "recoveryModel\n" ;
+            }
         }
         //      C# -> System.Boolean? HasPermissions
         // GraphQL -> hasPermissions: Boolean! (scalar)
         if (this.HasPermissions != null) {
-            s += ind + "hasPermissions\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hasPermissions\n" ;
+            } else {
+                s += ind + "hasPermissions\n" ;
+            }
         }
         //      C# -> System.String? InstanceId
         // GraphQL -> instanceId: String! (scalar)
         if (this.InstanceId != null) {
-            s += ind + "instanceId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "instanceId\n" ;
+            } else {
+                s += ind + "instanceId\n" ;
+            }
         }
         //      C# -> System.String? InstanceName
         // GraphQL -> instanceName: String! (scalar)
         if (this.InstanceName != null) {
-            s += ind + "instanceName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "instanceName\n" ;
+            } else {
+                s += ind + "instanceName\n" ;
+            }
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean! (scalar)
         if (this.IsArchived != null) {
-            s += ind + "isArchived\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isArchived\n" ;
+            } else {
+                s += ind + "isArchived\n" ;
+            }
         }
         //      C# -> System.Boolean? IsDeleted
         // GraphQL -> isDeleted: Boolean! (scalar)
         if (this.IsDeleted != null) {
-            s += ind + "isDeleted\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isDeleted\n" ;
+            } else {
+                s += ind + "isDeleted\n" ;
+            }
         }
         //      C# -> System.Boolean? IsStandby
         // GraphQL -> isStandby: Boolean! (scalar)
         if (this.IsStandby != null) {
-            s += ind + "isStandby\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isStandby\n" ;
+            } else {
+                s += ind + "isStandby\n" ;
+            }
         }
         //      C# -> System.String? RecoveryForkGuid
         // GraphQL -> recoveryForkGuid: String (scalar)
         if (this.RecoveryForkGuid != null) {
-            s += ind + "recoveryForkGuid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "recoveryForkGuid\n" ;
+            } else {
+                s += ind + "recoveryForkGuid\n" ;
+            }
         }
         //      C# -> System.String? State
         // GraphQL -> state: String! (scalar)
         if (this.State != null) {
-            s += ind + "state\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "state\n" ;
+            } else {
+                s += ind + "state\n" ;
+            }
         }
         //      C# -> MssqlDbReplicaAvailabilityInfo? AvailabilityInfo
         // GraphQL -> availabilityInfo: MssqlDbReplicaAvailabilityInfo (type)
         if (this.AvailabilityInfo != null) {
-            var fspec = this.AvailabilityInfo.AsFieldSpec(indent+1);
+            var fspec = this.AvailabilityInfo.AsFieldSpec(conf.Child("availabilityInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "availabilityInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "availabilityInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> MssqlRootProperties? RootProperties
         // GraphQL -> rootProperties: MssqlRootProperties (type)
         if (this.RootProperties != null) {
-            var fspec = this.RootProperties.AsFieldSpec(indent+1);
+            var fspec = this.RootProperties.AsFieldSpec(conf.Child("rootProperties"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "rootProperties {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "rootProperties {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -211,71 +256,194 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> MssqlDbReplicaRecoveryModel? RecoveryModel
         // GraphQL -> recoveryModel: MssqlDbReplicaRecoveryModel! (enum)
-        if (this.RecoveryModel == null && ec.Includes("recoveryModel",true))
+        if (ec.Includes("recoveryModel",true))
         {
-            this.RecoveryModel = new MssqlDbReplicaRecoveryModel();
+            if(this.RecoveryModel == null) {
+
+                this.RecoveryModel = new MssqlDbReplicaRecoveryModel();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RecoveryModel != null && ec.Excludes("recoveryModel",true))
+        {
+            this.RecoveryModel = null;
         }
         //      C# -> System.Boolean? HasPermissions
         // GraphQL -> hasPermissions: Boolean! (scalar)
-        if (this.HasPermissions == null && ec.Includes("hasPermissions",true))
+        if (ec.Includes("hasPermissions",true))
         {
-            this.HasPermissions = true;
+            if(this.HasPermissions == null) {
+
+                this.HasPermissions = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.HasPermissions != null && ec.Excludes("hasPermissions",true))
+        {
+            this.HasPermissions = null;
         }
         //      C# -> System.String? InstanceId
         // GraphQL -> instanceId: String! (scalar)
-        if (this.InstanceId == null && ec.Includes("instanceId",true))
+        if (ec.Includes("instanceId",true))
         {
-            this.InstanceId = "FETCH";
+            if(this.InstanceId == null) {
+
+                this.InstanceId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.InstanceId != null && ec.Excludes("instanceId",true))
+        {
+            this.InstanceId = null;
         }
         //      C# -> System.String? InstanceName
         // GraphQL -> instanceName: String! (scalar)
-        if (this.InstanceName == null && ec.Includes("instanceName",true))
+        if (ec.Includes("instanceName",true))
         {
-            this.InstanceName = "FETCH";
+            if(this.InstanceName == null) {
+
+                this.InstanceName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.InstanceName != null && ec.Excludes("instanceName",true))
+        {
+            this.InstanceName = null;
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean! (scalar)
-        if (this.IsArchived == null && ec.Includes("isArchived",true))
+        if (ec.Includes("isArchived",true))
         {
-            this.IsArchived = true;
+            if(this.IsArchived == null) {
+
+                this.IsArchived = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsArchived != null && ec.Excludes("isArchived",true))
+        {
+            this.IsArchived = null;
         }
         //      C# -> System.Boolean? IsDeleted
         // GraphQL -> isDeleted: Boolean! (scalar)
-        if (this.IsDeleted == null && ec.Includes("isDeleted",true))
+        if (ec.Includes("isDeleted",true))
         {
-            this.IsDeleted = true;
+            if(this.IsDeleted == null) {
+
+                this.IsDeleted = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsDeleted != null && ec.Excludes("isDeleted",true))
+        {
+            this.IsDeleted = null;
         }
         //      C# -> System.Boolean? IsStandby
         // GraphQL -> isStandby: Boolean! (scalar)
-        if (this.IsStandby == null && ec.Includes("isStandby",true))
+        if (ec.Includes("isStandby",true))
         {
-            this.IsStandby = true;
+            if(this.IsStandby == null) {
+
+                this.IsStandby = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsStandby != null && ec.Excludes("isStandby",true))
+        {
+            this.IsStandby = null;
         }
         //      C# -> System.String? RecoveryForkGuid
         // GraphQL -> recoveryForkGuid: String (scalar)
-        if (this.RecoveryForkGuid == null && ec.Includes("recoveryForkGuid",true))
+        if (ec.Includes("recoveryForkGuid",true))
         {
-            this.RecoveryForkGuid = "FETCH";
+            if(this.RecoveryForkGuid == null) {
+
+                this.RecoveryForkGuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RecoveryForkGuid != null && ec.Excludes("recoveryForkGuid",true))
+        {
+            this.RecoveryForkGuid = null;
         }
         //      C# -> System.String? State
         // GraphQL -> state: String! (scalar)
-        if (this.State == null && ec.Includes("state",true))
+        if (ec.Includes("state",true))
         {
-            this.State = "FETCH";
+            if(this.State == null) {
+
+                this.State = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.State != null && ec.Excludes("state",true))
+        {
+            this.State = null;
         }
         //      C# -> MssqlDbReplicaAvailabilityInfo? AvailabilityInfo
         // GraphQL -> availabilityInfo: MssqlDbReplicaAvailabilityInfo (type)
-        if (this.AvailabilityInfo == null && ec.Includes("availabilityInfo",false))
+        if (ec.Includes("availabilityInfo",false))
         {
-            this.AvailabilityInfo = new MssqlDbReplicaAvailabilityInfo();
-            this.AvailabilityInfo.ApplyExploratoryFieldSpec(ec.NewChild("availabilityInfo"));
+            if(this.AvailabilityInfo == null) {
+
+                this.AvailabilityInfo = new MssqlDbReplicaAvailabilityInfo();
+                this.AvailabilityInfo.ApplyExploratoryFieldSpec(ec.NewChild("availabilityInfo"));
+
+            } else {
+
+                this.AvailabilityInfo.ApplyExploratoryFieldSpec(ec.NewChild("availabilityInfo"));
+
+            }
+        }
+        else if (this.AvailabilityInfo != null && ec.Excludes("availabilityInfo",false))
+        {
+            this.AvailabilityInfo = null;
         }
         //      C# -> MssqlRootProperties? RootProperties
         // GraphQL -> rootProperties: MssqlRootProperties (type)
-        if (this.RootProperties == null && ec.Includes("rootProperties",false))
+        if (ec.Includes("rootProperties",false))
         {
-            this.RootProperties = new MssqlRootProperties();
-            this.RootProperties.ApplyExploratoryFieldSpec(ec.NewChild("rootProperties"));
+            if(this.RootProperties == null) {
+
+                this.RootProperties = new MssqlRootProperties();
+                this.RootProperties.ApplyExploratoryFieldSpec(ec.NewChild("rootProperties"));
+
+            } else {
+
+                this.RootProperties.ApplyExploratoryFieldSpec(ec.NewChild("rootProperties"));
+
+            }
+        }
+        else if (this.RootProperties != null && ec.Excludes("rootProperties",false))
+        {
+            this.RootProperties = null;
         }
     }
 
@@ -302,9 +470,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<MssqlDbReplica> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

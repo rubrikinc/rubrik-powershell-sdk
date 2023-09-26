@@ -101,44 +101,73 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? AccountId
         // GraphQL -> accountId: String! (scalar)
         if (this.AccountId != null) {
-            s += ind + "accountId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "accountId\n" ;
+            } else {
+                s += ind + "accountId\n" ;
+            }
         }
         //      C# -> System.String? ClusterId
         // GraphQL -> clusterId: String! (scalar)
         if (this.ClusterId != null) {
-            s += ind + "clusterId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterId\n" ;
+            } else {
+                s += ind + "clusterId\n" ;
+            }
         }
         //      C# -> System.String? DefaultDiffFmdUploadPrefix
         // GraphQL -> defaultDiffFmdUploadPrefix: String! (scalar)
         if (this.DefaultDiffFmdUploadPrefix != null) {
-            s += ind + "defaultDiffFmdUploadPrefix\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "defaultDiffFmdUploadPrefix\n" ;
+            } else {
+                s += ind + "defaultDiffFmdUploadPrefix\n" ;
+            }
         }
         //      C# -> System.Boolean? EnableAutomaticFmdUpload
         // GraphQL -> enableAutomaticFmdUpload: Boolean! (scalar)
         if (this.EnableAutomaticFmdUpload != null) {
-            s += ind + "enableAutomaticFmdUpload\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "enableAutomaticFmdUpload\n" ;
+            } else {
+                s += ind + "enableAutomaticFmdUpload\n" ;
+            }
         }
         //      C# -> System.Boolean? EnableFmdUploadForAllResources
         // GraphQL -> enableFmdUploadForAllResources: Boolean! (scalar)
         if (this.EnableFmdUploadForAllResources != null) {
-            s += ind + "enableFmdUploadForAllResources\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "enableFmdUploadForAllResources\n" ;
+            } else {
+                s += ind + "enableFmdUploadForAllResources\n" ;
+            }
         }
         //      C# -> System.Boolean? IsThreatMonitoringEnabled
         // GraphQL -> isThreatMonitoringEnabled: Boolean! (scalar)
         if (this.IsThreatMonitoringEnabled != null) {
-            s += ind + "isThreatMonitoringEnabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isThreatMonitoringEnabled\n" ;
+            } else {
+                s += ind + "isThreatMonitoringEnabled\n" ;
+            }
         }
         //      C# -> System.Int32? MaxSnapshotsToUploadAutomatically
         // GraphQL -> maxSnapshotsToUploadAutomatically: Int! (scalar)
         if (this.MaxSnapshotsToUploadAutomatically != null) {
-            s += ind + "maxSnapshotsToUploadAutomatically\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "maxSnapshotsToUploadAutomatically\n" ;
+            } else {
+                s += ind + "maxSnapshotsToUploadAutomatically\n" ;
+            }
         }
         return s;
     }
@@ -149,45 +178,122 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? AccountId
         // GraphQL -> accountId: String! (scalar)
-        if (this.AccountId == null && ec.Includes("accountId",true))
+        if (ec.Includes("accountId",true))
         {
-            this.AccountId = "FETCH";
+            if(this.AccountId == null) {
+
+                this.AccountId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AccountId != null && ec.Excludes("accountId",true))
+        {
+            this.AccountId = null;
         }
         //      C# -> System.String? ClusterId
         // GraphQL -> clusterId: String! (scalar)
-        if (this.ClusterId == null && ec.Includes("clusterId",true))
+        if (ec.Includes("clusterId",true))
         {
-            this.ClusterId = "FETCH";
+            if(this.ClusterId == null) {
+
+                this.ClusterId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterId != null && ec.Excludes("clusterId",true))
+        {
+            this.ClusterId = null;
         }
         //      C# -> System.String? DefaultDiffFmdUploadPrefix
         // GraphQL -> defaultDiffFmdUploadPrefix: String! (scalar)
-        if (this.DefaultDiffFmdUploadPrefix == null && ec.Includes("defaultDiffFmdUploadPrefix",true))
+        if (ec.Includes("defaultDiffFmdUploadPrefix",true))
         {
-            this.DefaultDiffFmdUploadPrefix = "FETCH";
+            if(this.DefaultDiffFmdUploadPrefix == null) {
+
+                this.DefaultDiffFmdUploadPrefix = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DefaultDiffFmdUploadPrefix != null && ec.Excludes("defaultDiffFmdUploadPrefix",true))
+        {
+            this.DefaultDiffFmdUploadPrefix = null;
         }
         //      C# -> System.Boolean? EnableAutomaticFmdUpload
         // GraphQL -> enableAutomaticFmdUpload: Boolean! (scalar)
-        if (this.EnableAutomaticFmdUpload == null && ec.Includes("enableAutomaticFmdUpload",true))
+        if (ec.Includes("enableAutomaticFmdUpload",true))
         {
-            this.EnableAutomaticFmdUpload = true;
+            if(this.EnableAutomaticFmdUpload == null) {
+
+                this.EnableAutomaticFmdUpload = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.EnableAutomaticFmdUpload != null && ec.Excludes("enableAutomaticFmdUpload",true))
+        {
+            this.EnableAutomaticFmdUpload = null;
         }
         //      C# -> System.Boolean? EnableFmdUploadForAllResources
         // GraphQL -> enableFmdUploadForAllResources: Boolean! (scalar)
-        if (this.EnableFmdUploadForAllResources == null && ec.Includes("enableFmdUploadForAllResources",true))
+        if (ec.Includes("enableFmdUploadForAllResources",true))
         {
-            this.EnableFmdUploadForAllResources = true;
+            if(this.EnableFmdUploadForAllResources == null) {
+
+                this.EnableFmdUploadForAllResources = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.EnableFmdUploadForAllResources != null && ec.Excludes("enableFmdUploadForAllResources",true))
+        {
+            this.EnableFmdUploadForAllResources = null;
         }
         //      C# -> System.Boolean? IsThreatMonitoringEnabled
         // GraphQL -> isThreatMonitoringEnabled: Boolean! (scalar)
-        if (this.IsThreatMonitoringEnabled == null && ec.Includes("isThreatMonitoringEnabled",true))
+        if (ec.Includes("isThreatMonitoringEnabled",true))
         {
-            this.IsThreatMonitoringEnabled = true;
+            if(this.IsThreatMonitoringEnabled == null) {
+
+                this.IsThreatMonitoringEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsThreatMonitoringEnabled != null && ec.Excludes("isThreatMonitoringEnabled",true))
+        {
+            this.IsThreatMonitoringEnabled = null;
         }
         //      C# -> System.Int32? MaxSnapshotsToUploadAutomatically
         // GraphQL -> maxSnapshotsToUploadAutomatically: Int! (scalar)
-        if (this.MaxSnapshotsToUploadAutomatically == null && ec.Includes("maxSnapshotsToUploadAutomatically",true))
+        if (ec.Includes("maxSnapshotsToUploadAutomatically",true))
         {
-            this.MaxSnapshotsToUploadAutomatically = Int32.MinValue;
+            if(this.MaxSnapshotsToUploadAutomatically == null) {
+
+                this.MaxSnapshotsToUploadAutomatically = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.MaxSnapshotsToUploadAutomatically != null && ec.Excludes("maxSnapshotsToUploadAutomatically",true))
+        {
+            this.MaxSnapshotsToUploadAutomatically = null;
         }
     }
 
@@ -214,9 +320,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<GetLambdaConfigReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

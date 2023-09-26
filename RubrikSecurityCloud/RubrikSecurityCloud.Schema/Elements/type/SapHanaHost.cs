@@ -83,34 +83,55 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> SapHanaHostHostType? HostType
         // GraphQL -> hostType: SapHanaHostHostType (enum)
         if (this.HostType != null) {
-            s += ind + "hostType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostType\n" ;
+            } else {
+                s += ind + "hostType\n" ;
+            }
         }
         //      C# -> System.String? HostName
         // GraphQL -> hostName: String! (scalar)
         if (this.HostName != null) {
-            s += ind + "hostName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostName\n" ;
+            } else {
+                s += ind + "hostName\n" ;
+            }
         }
         //      C# -> System.String? HostUuid
         // GraphQL -> hostUuid: String! (scalar)
         if (this.HostUuid != null) {
-            s += ind + "hostUuid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostUuid\n" ;
+            } else {
+                s += ind + "hostUuid\n" ;
+            }
         }
         //      C# -> System.String? SapHanaHostName
         // GraphQL -> sapHanaHostName: String (scalar)
         if (this.SapHanaHostName != null) {
-            s += ind + "sapHanaHostName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sapHanaHostName\n" ;
+            } else {
+                s += ind + "sapHanaHostName\n" ;
+            }
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         return s;
     }
@@ -121,33 +142,88 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> SapHanaHostHostType? HostType
         // GraphQL -> hostType: SapHanaHostHostType (enum)
-        if (this.HostType == null && ec.Includes("hostType",true))
+        if (ec.Includes("hostType",true))
         {
-            this.HostType = new SapHanaHostHostType();
+            if(this.HostType == null) {
+
+                this.HostType = new SapHanaHostHostType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.HostType != null && ec.Excludes("hostType",true))
+        {
+            this.HostType = null;
         }
         //      C# -> System.String? HostName
         // GraphQL -> hostName: String! (scalar)
-        if (this.HostName == null && ec.Includes("hostName",true))
+        if (ec.Includes("hostName",true))
         {
-            this.HostName = "FETCH";
+            if(this.HostName == null) {
+
+                this.HostName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.HostName != null && ec.Excludes("hostName",true))
+        {
+            this.HostName = null;
         }
         //      C# -> System.String? HostUuid
         // GraphQL -> hostUuid: String! (scalar)
-        if (this.HostUuid == null && ec.Includes("hostUuid",true))
+        if (ec.Includes("hostUuid",true))
         {
-            this.HostUuid = "FETCH";
+            if(this.HostUuid == null) {
+
+                this.HostUuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.HostUuid != null && ec.Excludes("hostUuid",true))
+        {
+            this.HostUuid = null;
         }
         //      C# -> System.String? SapHanaHostName
         // GraphQL -> sapHanaHostName: String (scalar)
-        if (this.SapHanaHostName == null && ec.Includes("sapHanaHostName",true))
+        if (ec.Includes("sapHanaHostName",true))
         {
-            this.SapHanaHostName = "FETCH";
+            if(this.SapHanaHostName == null) {
+
+                this.SapHanaHostName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SapHanaHostName != null && ec.Excludes("sapHanaHostName",true))
+        {
+            this.SapHanaHostName = null;
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = "FETCH";
+            if(this.Status == null) {
+
+                this.Status = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
     }
 
@@ -174,9 +250,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SapHanaHost> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

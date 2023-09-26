@@ -128,67 +128,108 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> CdmHierarchySnappableNew? Object
         // GraphQL -> object: CdmHierarchySnappableNew (interface)
         if (this.Object != null) {
-                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.Object).AsFieldSpec(indent+1);
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.Object).AsFieldSpec(conf.Child("object"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "object {\n" + fspec + ind + "}\n";
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "object {\n" + fspec + ind + "}\n";
+                }
             }
         }
         //      C# -> DateTime? EarliestMatchedSnapshotDate
         // GraphQL -> earliestMatchedSnapshotDate: DateTime (scalar)
         if (this.EarliestMatchedSnapshotDate != null) {
-            s += ind + "earliestMatchedSnapshotDate\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "earliestMatchedSnapshotDate\n" ;
+            } else {
+                s += ind + "earliestMatchedSnapshotDate\n" ;
+            }
         }
         //      C# -> DateTime? LatestMatchedSnapshotDate
         // GraphQL -> latestMatchedSnapshotDate: DateTime (scalar)
         if (this.LatestMatchedSnapshotDate != null) {
-            s += ind + "latestMatchedSnapshotDate\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "latestMatchedSnapshotDate\n" ;
+            } else {
+                s += ind + "latestMatchedSnapshotDate\n" ;
+            }
         }
         //      C# -> DateTime? LatestSnapshotWithoutMatchDate
         // GraphQL -> latestSnapshotWithoutMatchDate: DateTime (scalar)
         if (this.LatestSnapshotWithoutMatchDate != null) {
-            s += ind + "latestSnapshotWithoutMatchDate\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "latestSnapshotWithoutMatchDate\n" ;
+            } else {
+                s += ind + "latestSnapshotWithoutMatchDate\n" ;
+            }
         }
         //      C# -> System.String? Location
         // GraphQL -> location: String! (scalar)
         if (this.Location != null) {
-            s += ind + "location\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "location\n" ;
+            } else {
+                s += ind + "location\n" ;
+            }
         }
         //      C# -> System.Int64? TotalMatchedPaths
         // GraphQL -> totalMatchedPaths: Long! (scalar)
         if (this.TotalMatchedPaths != null) {
-            s += ind + "totalMatchedPaths\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "totalMatchedPaths\n" ;
+            } else {
+                s += ind + "totalMatchedPaths\n" ;
+            }
         }
         //      C# -> System.Int32? TotalMatchedSnapshots
         // GraphQL -> totalMatchedSnapshots: Int! (scalar)
         if (this.TotalMatchedSnapshots != null) {
-            s += ind + "totalMatchedSnapshots\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "totalMatchedSnapshots\n" ;
+            } else {
+                s += ind + "totalMatchedSnapshots\n" ;
+            }
         }
         //      C# -> System.Int64? TotalUniqueMatchedPaths
         // GraphQL -> totalUniqueMatchedPaths: Long! (scalar)
         if (this.TotalUniqueMatchedPaths != null) {
-            s += ind + "totalUniqueMatchedPaths\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "totalUniqueMatchedPaths\n" ;
+            } else {
+                s += ind + "totalUniqueMatchedPaths\n" ;
+            }
         }
         //      C# -> List<IndicatorOfCompromise>? MatchTypes
         // GraphQL -> matchTypes: [IndicatorOfCompromise!]! (type)
         if (this.MatchTypes != null) {
-            var fspec = this.MatchTypes.AsFieldSpec(indent+1);
+            var fspec = this.MatchTypes.AsFieldSpec(conf.Child("matchTypes"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "matchTypes {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "matchTypes {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<ThreatHuntResultSnapshotStats>? SnapshotsStats
         // GraphQL -> snapshotsStats: [ThreatHuntResultSnapshotStats!]! (type)
         if (this.SnapshotsStats != null) {
-            var fspec = this.SnapshotsStats.AsFieldSpec(indent+1);
+            var fspec = this.SnapshotsStats.AsFieldSpec(conf.Child("snapshotsStats"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "snapshotsStats {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "snapshotsStats {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -200,67 +241,184 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> CdmHierarchySnappableNew? Object
         // GraphQL -> object: CdmHierarchySnappableNew (interface)
-        if (this.Object == null && ec.Includes("object",false))
+        if (ec.Includes("object",false))
         {
-            var impls = new List<CdmHierarchySnappableNew>();
-            impls.ApplyExploratoryFieldSpec(ec.NewChild("object"));
-            this.Object = (CdmHierarchySnappableNew)InterfaceHelper.MakeCompositeFromList(impls);
+            if(this.Object == null) {
+
+                var impls = new List<CdmHierarchySnappableNew>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("object"));
+                this.Object = (CdmHierarchySnappableNew)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<CdmHierarchySnappableNew>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("object"));
+                this.Object = (CdmHierarchySnappableNew)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.Object != null && ec.Excludes("object",false))
+        {
+            this.Object = null;
         }
         //      C# -> DateTime? EarliestMatchedSnapshotDate
         // GraphQL -> earliestMatchedSnapshotDate: DateTime (scalar)
-        if (this.EarliestMatchedSnapshotDate == null && ec.Includes("earliestMatchedSnapshotDate",true))
+        if (ec.Includes("earliestMatchedSnapshotDate",true))
         {
-            this.EarliestMatchedSnapshotDate = new DateTime();
+            if(this.EarliestMatchedSnapshotDate == null) {
+
+                this.EarliestMatchedSnapshotDate = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EarliestMatchedSnapshotDate != null && ec.Excludes("earliestMatchedSnapshotDate",true))
+        {
+            this.EarliestMatchedSnapshotDate = null;
         }
         //      C# -> DateTime? LatestMatchedSnapshotDate
         // GraphQL -> latestMatchedSnapshotDate: DateTime (scalar)
-        if (this.LatestMatchedSnapshotDate == null && ec.Includes("latestMatchedSnapshotDate",true))
+        if (ec.Includes("latestMatchedSnapshotDate",true))
         {
-            this.LatestMatchedSnapshotDate = new DateTime();
+            if(this.LatestMatchedSnapshotDate == null) {
+
+                this.LatestMatchedSnapshotDate = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LatestMatchedSnapshotDate != null && ec.Excludes("latestMatchedSnapshotDate",true))
+        {
+            this.LatestMatchedSnapshotDate = null;
         }
         //      C# -> DateTime? LatestSnapshotWithoutMatchDate
         // GraphQL -> latestSnapshotWithoutMatchDate: DateTime (scalar)
-        if (this.LatestSnapshotWithoutMatchDate == null && ec.Includes("latestSnapshotWithoutMatchDate",true))
+        if (ec.Includes("latestSnapshotWithoutMatchDate",true))
         {
-            this.LatestSnapshotWithoutMatchDate = new DateTime();
+            if(this.LatestSnapshotWithoutMatchDate == null) {
+
+                this.LatestSnapshotWithoutMatchDate = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LatestSnapshotWithoutMatchDate != null && ec.Excludes("latestSnapshotWithoutMatchDate",true))
+        {
+            this.LatestSnapshotWithoutMatchDate = null;
         }
         //      C# -> System.String? Location
         // GraphQL -> location: String! (scalar)
-        if (this.Location == null && ec.Includes("location",true))
+        if (ec.Includes("location",true))
         {
-            this.Location = "FETCH";
+            if(this.Location == null) {
+
+                this.Location = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Location != null && ec.Excludes("location",true))
+        {
+            this.Location = null;
         }
         //      C# -> System.Int64? TotalMatchedPaths
         // GraphQL -> totalMatchedPaths: Long! (scalar)
-        if (this.TotalMatchedPaths == null && ec.Includes("totalMatchedPaths",true))
+        if (ec.Includes("totalMatchedPaths",true))
         {
-            this.TotalMatchedPaths = new System.Int64();
+            if(this.TotalMatchedPaths == null) {
+
+                this.TotalMatchedPaths = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalMatchedPaths != null && ec.Excludes("totalMatchedPaths",true))
+        {
+            this.TotalMatchedPaths = null;
         }
         //      C# -> System.Int32? TotalMatchedSnapshots
         // GraphQL -> totalMatchedSnapshots: Int! (scalar)
-        if (this.TotalMatchedSnapshots == null && ec.Includes("totalMatchedSnapshots",true))
+        if (ec.Includes("totalMatchedSnapshots",true))
         {
-            this.TotalMatchedSnapshots = Int32.MinValue;
+            if(this.TotalMatchedSnapshots == null) {
+
+                this.TotalMatchedSnapshots = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalMatchedSnapshots != null && ec.Excludes("totalMatchedSnapshots",true))
+        {
+            this.TotalMatchedSnapshots = null;
         }
         //      C# -> System.Int64? TotalUniqueMatchedPaths
         // GraphQL -> totalUniqueMatchedPaths: Long! (scalar)
-        if (this.TotalUniqueMatchedPaths == null && ec.Includes("totalUniqueMatchedPaths",true))
+        if (ec.Includes("totalUniqueMatchedPaths",true))
         {
-            this.TotalUniqueMatchedPaths = new System.Int64();
+            if(this.TotalUniqueMatchedPaths == null) {
+
+                this.TotalUniqueMatchedPaths = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalUniqueMatchedPaths != null && ec.Excludes("totalUniqueMatchedPaths",true))
+        {
+            this.TotalUniqueMatchedPaths = null;
         }
         //      C# -> List<IndicatorOfCompromise>? MatchTypes
         // GraphQL -> matchTypes: [IndicatorOfCompromise!]! (type)
-        if (this.MatchTypes == null && ec.Includes("matchTypes",false))
+        if (ec.Includes("matchTypes",false))
         {
-            this.MatchTypes = new List<IndicatorOfCompromise>();
-            this.MatchTypes.ApplyExploratoryFieldSpec(ec.NewChild("matchTypes"));
+            if(this.MatchTypes == null) {
+
+                this.MatchTypes = new List<IndicatorOfCompromise>();
+                this.MatchTypes.ApplyExploratoryFieldSpec(ec.NewChild("matchTypes"));
+
+            } else {
+
+                this.MatchTypes.ApplyExploratoryFieldSpec(ec.NewChild("matchTypes"));
+
+            }
+        }
+        else if (this.MatchTypes != null && ec.Excludes("matchTypes",false))
+        {
+            this.MatchTypes = null;
         }
         //      C# -> List<ThreatHuntResultSnapshotStats>? SnapshotsStats
         // GraphQL -> snapshotsStats: [ThreatHuntResultSnapshotStats!]! (type)
-        if (this.SnapshotsStats == null && ec.Includes("snapshotsStats",false))
+        if (ec.Includes("snapshotsStats",false))
         {
-            this.SnapshotsStats = new List<ThreatHuntResultSnapshotStats>();
-            this.SnapshotsStats.ApplyExploratoryFieldSpec(ec.NewChild("snapshotsStats"));
+            if(this.SnapshotsStats == null) {
+
+                this.SnapshotsStats = new List<ThreatHuntResultSnapshotStats>();
+                this.SnapshotsStats.ApplyExploratoryFieldSpec(ec.NewChild("snapshotsStats"));
+
+            } else {
+
+                this.SnapshotsStats.ApplyExploratoryFieldSpec(ec.NewChild("snapshotsStats"));
+
+            }
+        }
+        else if (this.SnapshotsStats != null && ec.Excludes("snapshotsStats",false))
+        {
+            this.SnapshotsStats = null;
         }
     }
 
@@ -287,9 +445,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ThreatHuntResultObjectsSummary> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

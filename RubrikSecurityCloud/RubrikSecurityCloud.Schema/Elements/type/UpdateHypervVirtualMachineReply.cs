@@ -101,52 +101,81 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> HypervVirtualMachineDetailGuestOsType? GuestOsType
         // GraphQL -> guestOsType: HypervVirtualMachineDetailGuestOsType! (enum)
         if (this.GuestOsType != null) {
-            s += ind + "guestOsType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "guestOsType\n" ;
+            } else {
+                s += ind + "guestOsType\n" ;
+            }
         }
         //      C# -> HypervVirtualMachineDetailOperatingSystemType? OperatingSystemType
         // GraphQL -> operatingSystemType: HypervVirtualMachineDetailOperatingSystemType (enum)
         if (this.OperatingSystemType != null) {
-            s += ind + "operatingSystemType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "operatingSystemType\n" ;
+            } else {
+                s += ind + "operatingSystemType\n" ;
+            }
         }
         //      C# -> System.Boolean? IsAgentRegistered
         // GraphQL -> isAgentRegistered: Boolean (scalar)
         if (this.IsAgentRegistered != null) {
-            s += ind + "isAgentRegistered\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isAgentRegistered\n" ;
+            } else {
+                s += ind + "isAgentRegistered\n" ;
+            }
         }
         //      C# -> System.String? NaturalId
         // GraphQL -> naturalId: String (scalar)
         if (this.NaturalId != null) {
-            s += ind + "naturalId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "naturalId\n" ;
+            } else {
+                s += ind + "naturalId\n" ;
+            }
         }
         //      C# -> HypervVirtualMachineSummary? HypervVirtualMachineSummary
         // GraphQL -> hypervVirtualMachineSummary: HypervVirtualMachineSummary! (type)
         if (this.HypervVirtualMachineSummary != null) {
-            var fspec = this.HypervVirtualMachineSummary.AsFieldSpec(indent+1);
+            var fspec = this.HypervVirtualMachineSummary.AsFieldSpec(conf.Child("hypervVirtualMachineSummary"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "hypervVirtualMachineSummary {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "hypervVirtualMachineSummary {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> HypervVirtualMachineUpdate? HypervVirtualMachineUpdate
         // GraphQL -> hypervVirtualMachineUpdate: HypervVirtualMachineUpdate! (type)
         if (this.HypervVirtualMachineUpdate != null) {
-            var fspec = this.HypervVirtualMachineUpdate.AsFieldSpec(indent+1);
+            var fspec = this.HypervVirtualMachineUpdate.AsFieldSpec(conf.Child("hypervVirtualMachineUpdate"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "hypervVirtualMachineUpdate {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "hypervVirtualMachineUpdate {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<HypervVirtualDiskInfo>? VirtualDiskInfo
         // GraphQL -> virtualDiskInfo: [HypervVirtualDiskInfo!]! (type)
         if (this.VirtualDiskInfo != null) {
-            var fspec = this.VirtualDiskInfo.AsFieldSpec(indent+1);
+            var fspec = this.VirtualDiskInfo.AsFieldSpec(conf.Child("virtualDiskInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "virtualDiskInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "virtualDiskInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -158,48 +187,128 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> HypervVirtualMachineDetailGuestOsType? GuestOsType
         // GraphQL -> guestOsType: HypervVirtualMachineDetailGuestOsType! (enum)
-        if (this.GuestOsType == null && ec.Includes("guestOsType",true))
+        if (ec.Includes("guestOsType",true))
         {
-            this.GuestOsType = new HypervVirtualMachineDetailGuestOsType();
+            if(this.GuestOsType == null) {
+
+                this.GuestOsType = new HypervVirtualMachineDetailGuestOsType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.GuestOsType != null && ec.Excludes("guestOsType",true))
+        {
+            this.GuestOsType = null;
         }
         //      C# -> HypervVirtualMachineDetailOperatingSystemType? OperatingSystemType
         // GraphQL -> operatingSystemType: HypervVirtualMachineDetailOperatingSystemType (enum)
-        if (this.OperatingSystemType == null && ec.Includes("operatingSystemType",true))
+        if (ec.Includes("operatingSystemType",true))
         {
-            this.OperatingSystemType = new HypervVirtualMachineDetailOperatingSystemType();
+            if(this.OperatingSystemType == null) {
+
+                this.OperatingSystemType = new HypervVirtualMachineDetailOperatingSystemType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.OperatingSystemType != null && ec.Excludes("operatingSystemType",true))
+        {
+            this.OperatingSystemType = null;
         }
         //      C# -> System.Boolean? IsAgentRegistered
         // GraphQL -> isAgentRegistered: Boolean (scalar)
-        if (this.IsAgentRegistered == null && ec.Includes("isAgentRegistered",true))
+        if (ec.Includes("isAgentRegistered",true))
         {
-            this.IsAgentRegistered = true;
+            if(this.IsAgentRegistered == null) {
+
+                this.IsAgentRegistered = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAgentRegistered != null && ec.Excludes("isAgentRegistered",true))
+        {
+            this.IsAgentRegistered = null;
         }
         //      C# -> System.String? NaturalId
         // GraphQL -> naturalId: String (scalar)
-        if (this.NaturalId == null && ec.Includes("naturalId",true))
+        if (ec.Includes("naturalId",true))
         {
-            this.NaturalId = "FETCH";
+            if(this.NaturalId == null) {
+
+                this.NaturalId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NaturalId != null && ec.Excludes("naturalId",true))
+        {
+            this.NaturalId = null;
         }
         //      C# -> HypervVirtualMachineSummary? HypervVirtualMachineSummary
         // GraphQL -> hypervVirtualMachineSummary: HypervVirtualMachineSummary! (type)
-        if (this.HypervVirtualMachineSummary == null && ec.Includes("hypervVirtualMachineSummary",false))
+        if (ec.Includes("hypervVirtualMachineSummary",false))
         {
-            this.HypervVirtualMachineSummary = new HypervVirtualMachineSummary();
-            this.HypervVirtualMachineSummary.ApplyExploratoryFieldSpec(ec.NewChild("hypervVirtualMachineSummary"));
+            if(this.HypervVirtualMachineSummary == null) {
+
+                this.HypervVirtualMachineSummary = new HypervVirtualMachineSummary();
+                this.HypervVirtualMachineSummary.ApplyExploratoryFieldSpec(ec.NewChild("hypervVirtualMachineSummary"));
+
+            } else {
+
+                this.HypervVirtualMachineSummary.ApplyExploratoryFieldSpec(ec.NewChild("hypervVirtualMachineSummary"));
+
+            }
+        }
+        else if (this.HypervVirtualMachineSummary != null && ec.Excludes("hypervVirtualMachineSummary",false))
+        {
+            this.HypervVirtualMachineSummary = null;
         }
         //      C# -> HypervVirtualMachineUpdate? HypervVirtualMachineUpdate
         // GraphQL -> hypervVirtualMachineUpdate: HypervVirtualMachineUpdate! (type)
-        if (this.HypervVirtualMachineUpdate == null && ec.Includes("hypervVirtualMachineUpdate",false))
+        if (ec.Includes("hypervVirtualMachineUpdate",false))
         {
-            this.HypervVirtualMachineUpdate = new HypervVirtualMachineUpdate();
-            this.HypervVirtualMachineUpdate.ApplyExploratoryFieldSpec(ec.NewChild("hypervVirtualMachineUpdate"));
+            if(this.HypervVirtualMachineUpdate == null) {
+
+                this.HypervVirtualMachineUpdate = new HypervVirtualMachineUpdate();
+                this.HypervVirtualMachineUpdate.ApplyExploratoryFieldSpec(ec.NewChild("hypervVirtualMachineUpdate"));
+
+            } else {
+
+                this.HypervVirtualMachineUpdate.ApplyExploratoryFieldSpec(ec.NewChild("hypervVirtualMachineUpdate"));
+
+            }
+        }
+        else if (this.HypervVirtualMachineUpdate != null && ec.Excludes("hypervVirtualMachineUpdate",false))
+        {
+            this.HypervVirtualMachineUpdate = null;
         }
         //      C# -> List<HypervVirtualDiskInfo>? VirtualDiskInfo
         // GraphQL -> virtualDiskInfo: [HypervVirtualDiskInfo!]! (type)
-        if (this.VirtualDiskInfo == null && ec.Includes("virtualDiskInfo",false))
+        if (ec.Includes("virtualDiskInfo",false))
         {
-            this.VirtualDiskInfo = new List<HypervVirtualDiskInfo>();
-            this.VirtualDiskInfo.ApplyExploratoryFieldSpec(ec.NewChild("virtualDiskInfo"));
+            if(this.VirtualDiskInfo == null) {
+
+                this.VirtualDiskInfo = new List<HypervVirtualDiskInfo>();
+                this.VirtualDiskInfo.ApplyExploratoryFieldSpec(ec.NewChild("virtualDiskInfo"));
+
+            } else {
+
+                this.VirtualDiskInfo.ApplyExploratoryFieldSpec(ec.NewChild("virtualDiskInfo"));
+
+            }
+        }
+        else if (this.VirtualDiskInfo != null && ec.Excludes("virtualDiskInfo",false))
+        {
+            this.VirtualDiskInfo = null;
         }
     }
 
@@ -226,9 +335,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<UpdateHypervVirtualMachineReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

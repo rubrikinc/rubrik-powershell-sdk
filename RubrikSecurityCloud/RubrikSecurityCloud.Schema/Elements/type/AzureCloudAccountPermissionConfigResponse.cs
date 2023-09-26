@@ -56,21 +56,30 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int32? PermissionVersion
         // GraphQL -> permissionVersion: Int! (scalar)
         if (this.PermissionVersion != null) {
-            s += ind + "permissionVersion\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "permissionVersion\n" ;
+            } else {
+                s += ind + "permissionVersion\n" ;
+            }
         }
         //      C# -> List<AzureCloudAccountRolePermission>? RolePermissions
         // GraphQL -> rolePermissions: [AzureCloudAccountRolePermission!]! (type)
         if (this.RolePermissions != null) {
-            var fspec = this.RolePermissions.AsFieldSpec(indent+1);
+            var fspec = this.RolePermissions.AsFieldSpec(conf.Child("rolePermissions"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "rolePermissions {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "rolePermissions {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -82,16 +91,39 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int32? PermissionVersion
         // GraphQL -> permissionVersion: Int! (scalar)
-        if (this.PermissionVersion == null && ec.Includes("permissionVersion",true))
+        if (ec.Includes("permissionVersion",true))
         {
-            this.PermissionVersion = Int32.MinValue;
+            if(this.PermissionVersion == null) {
+
+                this.PermissionVersion = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.PermissionVersion != null && ec.Excludes("permissionVersion",true))
+        {
+            this.PermissionVersion = null;
         }
         //      C# -> List<AzureCloudAccountRolePermission>? RolePermissions
         // GraphQL -> rolePermissions: [AzureCloudAccountRolePermission!]! (type)
-        if (this.RolePermissions == null && ec.Includes("rolePermissions",false))
+        if (ec.Includes("rolePermissions",false))
         {
-            this.RolePermissions = new List<AzureCloudAccountRolePermission>();
-            this.RolePermissions.ApplyExploratoryFieldSpec(ec.NewChild("rolePermissions"));
+            if(this.RolePermissions == null) {
+
+                this.RolePermissions = new List<AzureCloudAccountRolePermission>();
+                this.RolePermissions.ApplyExploratoryFieldSpec(ec.NewChild("rolePermissions"));
+
+            } else {
+
+                this.RolePermissions.ApplyExploratoryFieldSpec(ec.NewChild("rolePermissions"));
+
+            }
+        }
+        else if (this.RolePermissions != null && ec.Excludes("rolePermissions",false))
+        {
+            this.RolePermissions = null;
         }
     }
 
@@ -118,9 +150,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AzureCloudAccountPermissionConfigResponse> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

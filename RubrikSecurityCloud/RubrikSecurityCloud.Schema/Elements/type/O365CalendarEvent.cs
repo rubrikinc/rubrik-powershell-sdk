@@ -147,71 +147,120 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> CalendarEventType? EventType
         // GraphQL -> eventType: CalendarEventType! (enum)
         if (this.EventType != null) {
-            s += ind + "eventType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "eventType\n" ;
+            } else {
+                s += ind + "eventType\n" ;
+            }
         }
         //      C# -> List<System.String>? Attendees
         // GraphQL -> attendees: [String!]! (scalar)
         if (this.Attendees != null) {
-            s += ind + "attendees\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "attendees\n" ;
+            } else {
+                s += ind + "attendees\n" ;
+            }
         }
         //      C# -> DateTime? EndDateTime
         // GraphQL -> endDateTime: DateTime (scalar)
         if (this.EndDateTime != null) {
-            s += ind + "endDateTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "endDateTime\n" ;
+            } else {
+                s += ind + "endDateTime\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.String? Organizer
         // GraphQL -> organizer: String (scalar)
         if (this.Organizer != null) {
-            s += ind + "organizer\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "organizer\n" ;
+            } else {
+                s += ind + "organizer\n" ;
+            }
         }
         //      C# -> System.String? ParentFolderId
         // GraphQL -> parentFolderId: String (scalar)
         if (this.ParentFolderId != null) {
-            s += ind + "parentFolderId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "parentFolderId\n" ;
+            } else {
+                s += ind + "parentFolderId\n" ;
+            }
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: UUID (scalar)
         if (this.SnapshotId != null) {
-            s += ind + "snapshotId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotId\n" ;
+            } else {
+                s += ind + "snapshotId\n" ;
+            }
         }
         //      C# -> DateTime? SnapshotTime
         // GraphQL -> snapshotTime: DateTime (scalar)
         if (this.SnapshotTime != null) {
-            s += ind + "snapshotTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotTime\n" ;
+            } else {
+                s += ind + "snapshotTime\n" ;
+            }
         }
         //      C# -> DateTime? StartDateTime
         // GraphQL -> startDateTime: DateTime (scalar)
         if (this.StartDateTime != null) {
-            s += ind + "startDateTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "startDateTime\n" ;
+            } else {
+                s += ind + "startDateTime\n" ;
+            }
         }
         //      C# -> System.String? VersionStartSnapshotId
         // GraphQL -> versionStartSnapshotId: UUID (scalar)
         if (this.VersionStartSnapshotId != null) {
-            s += ind + "versionStartSnapshotId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "versionStartSnapshotId\n" ;
+            } else {
+                s += ind + "versionStartSnapshotId\n" ;
+            }
         }
         //      C# -> O365CalendarEventRecurrence? Recurrence
         // GraphQL -> recurrence: O365CalendarEventRecurrence (type)
         if (this.Recurrence != null) {
-            var fspec = this.Recurrence.AsFieldSpec(indent+1);
+            var fspec = this.Recurrence.AsFieldSpec(conf.Child("recurrence"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "recurrence {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "recurrence {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -223,76 +272,209 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> CalendarEventType? EventType
         // GraphQL -> eventType: CalendarEventType! (enum)
-        if (this.EventType == null && ec.Includes("eventType",true))
+        if (ec.Includes("eventType",true))
         {
-            this.EventType = new CalendarEventType();
+            if(this.EventType == null) {
+
+                this.EventType = new CalendarEventType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EventType != null && ec.Excludes("eventType",true))
+        {
+            this.EventType = null;
         }
         //      C# -> List<System.String>? Attendees
         // GraphQL -> attendees: [String!]! (scalar)
-        if (this.Attendees == null && ec.Includes("attendees",true))
+        if (ec.Includes("attendees",true))
         {
-            this.Attendees = new List<System.String>();
+            if(this.Attendees == null) {
+
+                this.Attendees = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Attendees != null && ec.Excludes("attendees",true))
+        {
+            this.Attendees = null;
         }
         //      C# -> DateTime? EndDateTime
         // GraphQL -> endDateTime: DateTime (scalar)
-        if (this.EndDateTime == null && ec.Includes("endDateTime",true))
+        if (ec.Includes("endDateTime",true))
         {
-            this.EndDateTime = new DateTime();
+            if(this.EndDateTime == null) {
+
+                this.EndDateTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EndDateTime != null && ec.Excludes("endDateTime",true))
+        {
+            this.EndDateTime = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.String? Organizer
         // GraphQL -> organizer: String (scalar)
-        if (this.Organizer == null && ec.Includes("organizer",true))
+        if (ec.Includes("organizer",true))
         {
-            this.Organizer = "FETCH";
+            if(this.Organizer == null) {
+
+                this.Organizer = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Organizer != null && ec.Excludes("organizer",true))
+        {
+            this.Organizer = null;
         }
         //      C# -> System.String? ParentFolderId
         // GraphQL -> parentFolderId: String (scalar)
-        if (this.ParentFolderId == null && ec.Includes("parentFolderId",true))
+        if (ec.Includes("parentFolderId",true))
         {
-            this.ParentFolderId = "FETCH";
+            if(this.ParentFolderId == null) {
+
+                this.ParentFolderId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ParentFolderId != null && ec.Excludes("parentFolderId",true))
+        {
+            this.ParentFolderId = null;
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: UUID (scalar)
-        if (this.SnapshotId == null && ec.Includes("snapshotId",true))
+        if (ec.Includes("snapshotId",true))
         {
-            this.SnapshotId = "FETCH";
+            if(this.SnapshotId == null) {
+
+                this.SnapshotId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotId != null && ec.Excludes("snapshotId",true))
+        {
+            this.SnapshotId = null;
         }
         //      C# -> DateTime? SnapshotTime
         // GraphQL -> snapshotTime: DateTime (scalar)
-        if (this.SnapshotTime == null && ec.Includes("snapshotTime",true))
+        if (ec.Includes("snapshotTime",true))
         {
-            this.SnapshotTime = new DateTime();
+            if(this.SnapshotTime == null) {
+
+                this.SnapshotTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotTime != null && ec.Excludes("snapshotTime",true))
+        {
+            this.SnapshotTime = null;
         }
         //      C# -> DateTime? StartDateTime
         // GraphQL -> startDateTime: DateTime (scalar)
-        if (this.StartDateTime == null && ec.Includes("startDateTime",true))
+        if (ec.Includes("startDateTime",true))
         {
-            this.StartDateTime = new DateTime();
+            if(this.StartDateTime == null) {
+
+                this.StartDateTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.StartDateTime != null && ec.Excludes("startDateTime",true))
+        {
+            this.StartDateTime = null;
         }
         //      C# -> System.String? VersionStartSnapshotId
         // GraphQL -> versionStartSnapshotId: UUID (scalar)
-        if (this.VersionStartSnapshotId == null && ec.Includes("versionStartSnapshotId",true))
+        if (ec.Includes("versionStartSnapshotId",true))
         {
-            this.VersionStartSnapshotId = "FETCH";
+            if(this.VersionStartSnapshotId == null) {
+
+                this.VersionStartSnapshotId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.VersionStartSnapshotId != null && ec.Excludes("versionStartSnapshotId",true))
+        {
+            this.VersionStartSnapshotId = null;
         }
         //      C# -> O365CalendarEventRecurrence? Recurrence
         // GraphQL -> recurrence: O365CalendarEventRecurrence (type)
-        if (this.Recurrence == null && ec.Includes("recurrence",false))
+        if (ec.Includes("recurrence",false))
         {
-            this.Recurrence = new O365CalendarEventRecurrence();
-            this.Recurrence.ApplyExploratoryFieldSpec(ec.NewChild("recurrence"));
+            if(this.Recurrence == null) {
+
+                this.Recurrence = new O365CalendarEventRecurrence();
+                this.Recurrence.ApplyExploratoryFieldSpec(ec.NewChild("recurrence"));
+
+            } else {
+
+                this.Recurrence.ApplyExploratoryFieldSpec(ec.NewChild("recurrence"));
+
+            }
+        }
+        else if (this.Recurrence != null && ec.Excludes("recurrence",false))
+        {
+            this.Recurrence = null;
         }
     }
 
@@ -319,9 +501,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<O365CalendarEvent> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? NfsServer
         // GraphQL -> nfsServer: String! (scalar)
         if (this.NfsServer != null) {
-            s += ind + "nfsServer\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "nfsServer\n" ;
+            } else {
+                s += ind + "nfsServer\n" ;
+            }
         }
         //      C# -> System.String? NfsServerMountPath
         // GraphQL -> nfsServerMountPath: String! (scalar)
         if (this.NfsServerMountPath != null) {
-            s += ind + "nfsServerMountPath\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "nfsServerMountPath\n" ;
+            } else {
+                s += ind + "nfsServerMountPath\n" ;
+            }
         }
         //      C# -> System.String? StoreUrl
         // GraphQL -> storeUrl: String! (scalar)
         if (this.StoreUrl != null) {
-            s += ind + "storeUrl\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "storeUrl\n" ;
+            } else {
+                s += ind + "storeUrl\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? NfsServer
         // GraphQL -> nfsServer: String! (scalar)
-        if (this.NfsServer == null && ec.Includes("nfsServer",true))
+        if (ec.Includes("nfsServer",true))
         {
-            this.NfsServer = "FETCH";
+            if(this.NfsServer == null) {
+
+                this.NfsServer = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NfsServer != null && ec.Excludes("nfsServer",true))
+        {
+            this.NfsServer = null;
         }
         //      C# -> System.String? NfsServerMountPath
         // GraphQL -> nfsServerMountPath: String! (scalar)
-        if (this.NfsServerMountPath == null && ec.Includes("nfsServerMountPath",true))
+        if (ec.Includes("nfsServerMountPath",true))
         {
-            this.NfsServerMountPath = "FETCH";
+            if(this.NfsServerMountPath == null) {
+
+                this.NfsServerMountPath = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NfsServerMountPath != null && ec.Excludes("nfsServerMountPath",true))
+        {
+            this.NfsServerMountPath = null;
         }
         //      C# -> System.String? StoreUrl
         // GraphQL -> storeUrl: String! (scalar)
-        if (this.StoreUrl == null && ec.Includes("storeUrl",true))
+        if (ec.Includes("storeUrl",true))
         {
-            this.StoreUrl = "FETCH";
+            if(this.StoreUrl == null) {
+
+                this.StoreUrl = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.StoreUrl != null && ec.Excludes("storeUrl",true))
+        {
+            this.StoreUrl = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<MosaicStoreConnectionParameters> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

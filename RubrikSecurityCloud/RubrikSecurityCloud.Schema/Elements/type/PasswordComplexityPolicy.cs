@@ -101,64 +101,93 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> PasswordComplexityPolicyTemplate? LengthPolicy
         // GraphQL -> lengthPolicy: PasswordComplexityPolicyTemplate (type)
         if (this.LengthPolicy != null) {
-            var fspec = this.LengthPolicy.AsFieldSpec(indent+1);
+            var fspec = this.LengthPolicy.AsFieldSpec(conf.Child("lengthPolicy"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "lengthPolicy {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "lengthPolicy {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> PasswordComplexityPolicyTemplate? LowercasePolicy
         // GraphQL -> lowercasePolicy: PasswordComplexityPolicyTemplate (type)
         if (this.LowercasePolicy != null) {
-            var fspec = this.LowercasePolicy.AsFieldSpec(indent+1);
+            var fspec = this.LowercasePolicy.AsFieldSpec(conf.Child("lowercasePolicy"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "lowercasePolicy {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "lowercasePolicy {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> PasswordComplexityPolicyTemplate? NumericPolicy
         // GraphQL -> numericPolicy: PasswordComplexityPolicyTemplate (type)
         if (this.NumericPolicy != null) {
-            var fspec = this.NumericPolicy.AsFieldSpec(indent+1);
+            var fspec = this.NumericPolicy.AsFieldSpec(conf.Child("numericPolicy"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "numericPolicy {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "numericPolicy {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> PasswordComplexityPolicyTemplate? PasswordExpirationPolicy
         // GraphQL -> passwordExpirationPolicy: PasswordComplexityPolicyTemplate (type)
         if (this.PasswordExpirationPolicy != null) {
-            var fspec = this.PasswordExpirationPolicy.AsFieldSpec(indent+1);
+            var fspec = this.PasswordExpirationPolicy.AsFieldSpec(conf.Child("passwordExpirationPolicy"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "passwordExpirationPolicy {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "passwordExpirationPolicy {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> PasswordComplexityPolicyTemplate? PasswordReusePolicy
         // GraphQL -> passwordReusePolicy: PasswordComplexityPolicyTemplate (type)
         if (this.PasswordReusePolicy != null) {
-            var fspec = this.PasswordReusePolicy.AsFieldSpec(indent+1);
+            var fspec = this.PasswordReusePolicy.AsFieldSpec(conf.Child("passwordReusePolicy"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "passwordReusePolicy {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "passwordReusePolicy {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> PasswordComplexityPolicyTemplate? SpecialCharsPolicy
         // GraphQL -> specialCharsPolicy: PasswordComplexityPolicyTemplate (type)
         if (this.SpecialCharsPolicy != null) {
-            var fspec = this.SpecialCharsPolicy.AsFieldSpec(indent+1);
+            var fspec = this.SpecialCharsPolicy.AsFieldSpec(conf.Child("specialCharsPolicy"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "specialCharsPolicy {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "specialCharsPolicy {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> PasswordComplexityPolicyTemplate? UppercasePolicy
         // GraphQL -> uppercasePolicy: PasswordComplexityPolicyTemplate (type)
         if (this.UppercasePolicy != null) {
-            var fspec = this.UppercasePolicy.AsFieldSpec(indent+1);
+            var fspec = this.UppercasePolicy.AsFieldSpec(conf.Child("uppercasePolicy"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "uppercasePolicy {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "uppercasePolicy {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -170,52 +199,136 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> PasswordComplexityPolicyTemplate? LengthPolicy
         // GraphQL -> lengthPolicy: PasswordComplexityPolicyTemplate (type)
-        if (this.LengthPolicy == null && ec.Includes("lengthPolicy",false))
+        if (ec.Includes("lengthPolicy",false))
         {
-            this.LengthPolicy = new PasswordComplexityPolicyTemplate();
-            this.LengthPolicy.ApplyExploratoryFieldSpec(ec.NewChild("lengthPolicy"));
+            if(this.LengthPolicy == null) {
+
+                this.LengthPolicy = new PasswordComplexityPolicyTemplate();
+                this.LengthPolicy.ApplyExploratoryFieldSpec(ec.NewChild("lengthPolicy"));
+
+            } else {
+
+                this.LengthPolicy.ApplyExploratoryFieldSpec(ec.NewChild("lengthPolicy"));
+
+            }
+        }
+        else if (this.LengthPolicy != null && ec.Excludes("lengthPolicy",false))
+        {
+            this.LengthPolicy = null;
         }
         //      C# -> PasswordComplexityPolicyTemplate? LowercasePolicy
         // GraphQL -> lowercasePolicy: PasswordComplexityPolicyTemplate (type)
-        if (this.LowercasePolicy == null && ec.Includes("lowercasePolicy",false))
+        if (ec.Includes("lowercasePolicy",false))
         {
-            this.LowercasePolicy = new PasswordComplexityPolicyTemplate();
-            this.LowercasePolicy.ApplyExploratoryFieldSpec(ec.NewChild("lowercasePolicy"));
+            if(this.LowercasePolicy == null) {
+
+                this.LowercasePolicy = new PasswordComplexityPolicyTemplate();
+                this.LowercasePolicy.ApplyExploratoryFieldSpec(ec.NewChild("lowercasePolicy"));
+
+            } else {
+
+                this.LowercasePolicy.ApplyExploratoryFieldSpec(ec.NewChild("lowercasePolicy"));
+
+            }
+        }
+        else if (this.LowercasePolicy != null && ec.Excludes("lowercasePolicy",false))
+        {
+            this.LowercasePolicy = null;
         }
         //      C# -> PasswordComplexityPolicyTemplate? NumericPolicy
         // GraphQL -> numericPolicy: PasswordComplexityPolicyTemplate (type)
-        if (this.NumericPolicy == null && ec.Includes("numericPolicy",false))
+        if (ec.Includes("numericPolicy",false))
         {
-            this.NumericPolicy = new PasswordComplexityPolicyTemplate();
-            this.NumericPolicy.ApplyExploratoryFieldSpec(ec.NewChild("numericPolicy"));
+            if(this.NumericPolicy == null) {
+
+                this.NumericPolicy = new PasswordComplexityPolicyTemplate();
+                this.NumericPolicy.ApplyExploratoryFieldSpec(ec.NewChild("numericPolicy"));
+
+            } else {
+
+                this.NumericPolicy.ApplyExploratoryFieldSpec(ec.NewChild("numericPolicy"));
+
+            }
+        }
+        else if (this.NumericPolicy != null && ec.Excludes("numericPolicy",false))
+        {
+            this.NumericPolicy = null;
         }
         //      C# -> PasswordComplexityPolicyTemplate? PasswordExpirationPolicy
         // GraphQL -> passwordExpirationPolicy: PasswordComplexityPolicyTemplate (type)
-        if (this.PasswordExpirationPolicy == null && ec.Includes("passwordExpirationPolicy",false))
+        if (ec.Includes("passwordExpirationPolicy",false))
         {
-            this.PasswordExpirationPolicy = new PasswordComplexityPolicyTemplate();
-            this.PasswordExpirationPolicy.ApplyExploratoryFieldSpec(ec.NewChild("passwordExpirationPolicy"));
+            if(this.PasswordExpirationPolicy == null) {
+
+                this.PasswordExpirationPolicy = new PasswordComplexityPolicyTemplate();
+                this.PasswordExpirationPolicy.ApplyExploratoryFieldSpec(ec.NewChild("passwordExpirationPolicy"));
+
+            } else {
+
+                this.PasswordExpirationPolicy.ApplyExploratoryFieldSpec(ec.NewChild("passwordExpirationPolicy"));
+
+            }
+        }
+        else if (this.PasswordExpirationPolicy != null && ec.Excludes("passwordExpirationPolicy",false))
+        {
+            this.PasswordExpirationPolicy = null;
         }
         //      C# -> PasswordComplexityPolicyTemplate? PasswordReusePolicy
         // GraphQL -> passwordReusePolicy: PasswordComplexityPolicyTemplate (type)
-        if (this.PasswordReusePolicy == null && ec.Includes("passwordReusePolicy",false))
+        if (ec.Includes("passwordReusePolicy",false))
         {
-            this.PasswordReusePolicy = new PasswordComplexityPolicyTemplate();
-            this.PasswordReusePolicy.ApplyExploratoryFieldSpec(ec.NewChild("passwordReusePolicy"));
+            if(this.PasswordReusePolicy == null) {
+
+                this.PasswordReusePolicy = new PasswordComplexityPolicyTemplate();
+                this.PasswordReusePolicy.ApplyExploratoryFieldSpec(ec.NewChild("passwordReusePolicy"));
+
+            } else {
+
+                this.PasswordReusePolicy.ApplyExploratoryFieldSpec(ec.NewChild("passwordReusePolicy"));
+
+            }
+        }
+        else if (this.PasswordReusePolicy != null && ec.Excludes("passwordReusePolicy",false))
+        {
+            this.PasswordReusePolicy = null;
         }
         //      C# -> PasswordComplexityPolicyTemplate? SpecialCharsPolicy
         // GraphQL -> specialCharsPolicy: PasswordComplexityPolicyTemplate (type)
-        if (this.SpecialCharsPolicy == null && ec.Includes("specialCharsPolicy",false))
+        if (ec.Includes("specialCharsPolicy",false))
         {
-            this.SpecialCharsPolicy = new PasswordComplexityPolicyTemplate();
-            this.SpecialCharsPolicy.ApplyExploratoryFieldSpec(ec.NewChild("specialCharsPolicy"));
+            if(this.SpecialCharsPolicy == null) {
+
+                this.SpecialCharsPolicy = new PasswordComplexityPolicyTemplate();
+                this.SpecialCharsPolicy.ApplyExploratoryFieldSpec(ec.NewChild("specialCharsPolicy"));
+
+            } else {
+
+                this.SpecialCharsPolicy.ApplyExploratoryFieldSpec(ec.NewChild("specialCharsPolicy"));
+
+            }
+        }
+        else if (this.SpecialCharsPolicy != null && ec.Excludes("specialCharsPolicy",false))
+        {
+            this.SpecialCharsPolicy = null;
         }
         //      C# -> PasswordComplexityPolicyTemplate? UppercasePolicy
         // GraphQL -> uppercasePolicy: PasswordComplexityPolicyTemplate (type)
-        if (this.UppercasePolicy == null && ec.Includes("uppercasePolicy",false))
+        if (ec.Includes("uppercasePolicy",false))
         {
-            this.UppercasePolicy = new PasswordComplexityPolicyTemplate();
-            this.UppercasePolicy.ApplyExploratoryFieldSpec(ec.NewChild("uppercasePolicy"));
+            if(this.UppercasePolicy == null) {
+
+                this.UppercasePolicy = new PasswordComplexityPolicyTemplate();
+                this.UppercasePolicy.ApplyExploratoryFieldSpec(ec.NewChild("uppercasePolicy"));
+
+            } else {
+
+                this.UppercasePolicy.ApplyExploratoryFieldSpec(ec.NewChild("uppercasePolicy"));
+
+            }
+        }
+        else if (this.UppercasePolicy != null && ec.Excludes("uppercasePolicy",false))
+        {
+            this.UppercasePolicy = null;
         }
     }
 
@@ -242,9 +355,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<PasswordComplexityPolicy> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

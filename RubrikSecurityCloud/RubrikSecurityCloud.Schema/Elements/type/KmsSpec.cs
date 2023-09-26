@@ -101,44 +101,73 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> O365AzureCloudType? CloudType
         // GraphQL -> cloudType: O365AzureCloudType! (enum)
         if (this.CloudType != null) {
-            s += ind + "cloudType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cloudType\n" ;
+            } else {
+                s += ind + "cloudType\n" ;
+            }
         }
         //      C# -> System.String? AppId
         // GraphQL -> appId: String! (scalar)
         if (this.AppId != null) {
-            s += ind + "appId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "appId\n" ;
+            } else {
+                s += ind + "appId\n" ;
+            }
         }
         //      C# -> System.String? AppSecret
         // GraphQL -> appSecret: String! (scalar)
         if (this.AppSecret != null) {
-            s += ind + "appSecret\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "appSecret\n" ;
+            } else {
+                s += ind + "appSecret\n" ;
+            }
         }
         //      C# -> System.String? KekNameColossus
         // GraphQL -> kekNameColossus: String! (scalar)
         if (this.KekNameColossus != null) {
-            s += ind + "kekNameColossus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "kekNameColossus\n" ;
+            } else {
+                s += ind + "kekNameColossus\n" ;
+            }
         }
         //      C# -> System.String? KeyName
         // GraphQL -> keyName: String! (scalar)
         if (this.KeyName != null) {
-            s += ind + "keyName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "keyName\n" ;
+            } else {
+                s += ind + "keyName\n" ;
+            }
         }
         //      C# -> System.String? KmsId
         // GraphQL -> kmsId: String! (scalar)
         if (this.KmsId != null) {
-            s += ind + "kmsId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "kmsId\n" ;
+            } else {
+                s += ind + "kmsId\n" ;
+            }
         }
         //      C# -> System.String? TenantId
         // GraphQL -> tenantId: String! (scalar)
         if (this.TenantId != null) {
-            s += ind + "tenantId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "tenantId\n" ;
+            } else {
+                s += ind + "tenantId\n" ;
+            }
         }
         return s;
     }
@@ -149,45 +178,122 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> O365AzureCloudType? CloudType
         // GraphQL -> cloudType: O365AzureCloudType! (enum)
-        if (this.CloudType == null && ec.Includes("cloudType",true))
+        if (ec.Includes("cloudType",true))
         {
-            this.CloudType = new O365AzureCloudType();
+            if(this.CloudType == null) {
+
+                this.CloudType = new O365AzureCloudType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CloudType != null && ec.Excludes("cloudType",true))
+        {
+            this.CloudType = null;
         }
         //      C# -> System.String? AppId
         // GraphQL -> appId: String! (scalar)
-        if (this.AppId == null && ec.Includes("appId",true))
+        if (ec.Includes("appId",true))
         {
-            this.AppId = "FETCH";
+            if(this.AppId == null) {
+
+                this.AppId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AppId != null && ec.Excludes("appId",true))
+        {
+            this.AppId = null;
         }
         //      C# -> System.String? AppSecret
         // GraphQL -> appSecret: String! (scalar)
-        if (this.AppSecret == null && ec.Includes("appSecret",true))
+        if (ec.Includes("appSecret",true))
         {
-            this.AppSecret = "FETCH";
+            if(this.AppSecret == null) {
+
+                this.AppSecret = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AppSecret != null && ec.Excludes("appSecret",true))
+        {
+            this.AppSecret = null;
         }
         //      C# -> System.String? KekNameColossus
         // GraphQL -> kekNameColossus: String! (scalar)
-        if (this.KekNameColossus == null && ec.Includes("kekNameColossus",true))
+        if (ec.Includes("kekNameColossus",true))
         {
-            this.KekNameColossus = "FETCH";
+            if(this.KekNameColossus == null) {
+
+                this.KekNameColossus = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.KekNameColossus != null && ec.Excludes("kekNameColossus",true))
+        {
+            this.KekNameColossus = null;
         }
         //      C# -> System.String? KeyName
         // GraphQL -> keyName: String! (scalar)
-        if (this.KeyName == null && ec.Includes("keyName",true))
+        if (ec.Includes("keyName",true))
         {
-            this.KeyName = "FETCH";
+            if(this.KeyName == null) {
+
+                this.KeyName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.KeyName != null && ec.Excludes("keyName",true))
+        {
+            this.KeyName = null;
         }
         //      C# -> System.String? KmsId
         // GraphQL -> kmsId: String! (scalar)
-        if (this.KmsId == null && ec.Includes("kmsId",true))
+        if (ec.Includes("kmsId",true))
         {
-            this.KmsId = "FETCH";
+            if(this.KmsId == null) {
+
+                this.KmsId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.KmsId != null && ec.Excludes("kmsId",true))
+        {
+            this.KmsId = null;
         }
         //      C# -> System.String? TenantId
         // GraphQL -> tenantId: String! (scalar)
-        if (this.TenantId == null && ec.Includes("tenantId",true))
+        if (ec.Includes("tenantId",true))
         {
-            this.TenantId = "FETCH";
+            if(this.TenantId == null) {
+
+                this.TenantId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TenantId != null && ec.Excludes("tenantId",true))
+        {
+            this.TenantId = null;
         }
     }
 
@@ -214,9 +320,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<KmsSpec> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

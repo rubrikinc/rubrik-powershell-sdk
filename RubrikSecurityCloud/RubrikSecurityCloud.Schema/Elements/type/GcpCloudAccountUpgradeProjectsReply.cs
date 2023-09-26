@@ -47,16 +47,21 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<GcpCloudAccountProjectUpgradeStatus>? GcpProjectUpgradeStatuses
         // GraphQL -> gcpProjectUpgradeStatuses: [GcpCloudAccountProjectUpgradeStatus!]! (type)
         if (this.GcpProjectUpgradeStatuses != null) {
-            var fspec = this.GcpProjectUpgradeStatuses.AsFieldSpec(indent+1);
+            var fspec = this.GcpProjectUpgradeStatuses.AsFieldSpec(conf.Child("gcpProjectUpgradeStatuses"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "gcpProjectUpgradeStatuses {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "gcpProjectUpgradeStatuses {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -68,10 +73,22 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<GcpCloudAccountProjectUpgradeStatus>? GcpProjectUpgradeStatuses
         // GraphQL -> gcpProjectUpgradeStatuses: [GcpCloudAccountProjectUpgradeStatus!]! (type)
-        if (this.GcpProjectUpgradeStatuses == null && ec.Includes("gcpProjectUpgradeStatuses",false))
+        if (ec.Includes("gcpProjectUpgradeStatuses",false))
         {
-            this.GcpProjectUpgradeStatuses = new List<GcpCloudAccountProjectUpgradeStatus>();
-            this.GcpProjectUpgradeStatuses.ApplyExploratoryFieldSpec(ec.NewChild("gcpProjectUpgradeStatuses"));
+            if(this.GcpProjectUpgradeStatuses == null) {
+
+                this.GcpProjectUpgradeStatuses = new List<GcpCloudAccountProjectUpgradeStatus>();
+                this.GcpProjectUpgradeStatuses.ApplyExploratoryFieldSpec(ec.NewChild("gcpProjectUpgradeStatuses"));
+
+            } else {
+
+                this.GcpProjectUpgradeStatuses.ApplyExploratoryFieldSpec(ec.NewChild("gcpProjectUpgradeStatuses"));
+
+            }
+        }
+        else if (this.GcpProjectUpgradeStatuses != null && ec.Excludes("gcpProjectUpgradeStatuses",false))
+        {
+            this.GcpProjectUpgradeStatuses = null;
         }
     }
 
@@ -98,9 +115,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<GcpCloudAccountUpgradeProjectsReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

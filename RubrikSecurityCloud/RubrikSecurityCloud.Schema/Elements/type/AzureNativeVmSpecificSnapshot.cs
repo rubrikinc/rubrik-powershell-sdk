@@ -66,29 +66,42 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: UUID! (scalar)
         if (this.SnapshotId != null) {
-            s += ind + "snapshotId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotId\n" ;
+            } else {
+                s += ind + "snapshotId\n" ;
+            }
         }
         //      C# -> List<AzureNativeAttachedDiskSpecificSnapshot>? DataDiskSnapshots
         // GraphQL -> dataDiskSnapshots: [AzureNativeAttachedDiskSpecificSnapshot!]! (type)
         if (this.DataDiskSnapshots != null) {
-            var fspec = this.DataDiskSnapshots.AsFieldSpec(indent+1);
+            var fspec = this.DataDiskSnapshots.AsFieldSpec(conf.Child("dataDiskSnapshots"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "dataDiskSnapshots {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "dataDiskSnapshots {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> AzureNativeAttachedDiskSpecificSnapshot? OsDiskSnapshot
         // GraphQL -> osDiskSnapshot: AzureNativeAttachedDiskSpecificSnapshot (type)
         if (this.OsDiskSnapshot != null) {
-            var fspec = this.OsDiskSnapshot.AsFieldSpec(indent+1);
+            var fspec = this.OsDiskSnapshot.AsFieldSpec(conf.Child("osDiskSnapshot"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "osDiskSnapshot {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "osDiskSnapshot {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -100,23 +113,58 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: UUID! (scalar)
-        if (this.SnapshotId == null && ec.Includes("snapshotId",true))
+        if (ec.Includes("snapshotId",true))
         {
-            this.SnapshotId = "FETCH";
+            if(this.SnapshotId == null) {
+
+                this.SnapshotId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotId != null && ec.Excludes("snapshotId",true))
+        {
+            this.SnapshotId = null;
         }
         //      C# -> List<AzureNativeAttachedDiskSpecificSnapshot>? DataDiskSnapshots
         // GraphQL -> dataDiskSnapshots: [AzureNativeAttachedDiskSpecificSnapshot!]! (type)
-        if (this.DataDiskSnapshots == null && ec.Includes("dataDiskSnapshots",false))
+        if (ec.Includes("dataDiskSnapshots",false))
         {
-            this.DataDiskSnapshots = new List<AzureNativeAttachedDiskSpecificSnapshot>();
-            this.DataDiskSnapshots.ApplyExploratoryFieldSpec(ec.NewChild("dataDiskSnapshots"));
+            if(this.DataDiskSnapshots == null) {
+
+                this.DataDiskSnapshots = new List<AzureNativeAttachedDiskSpecificSnapshot>();
+                this.DataDiskSnapshots.ApplyExploratoryFieldSpec(ec.NewChild("dataDiskSnapshots"));
+
+            } else {
+
+                this.DataDiskSnapshots.ApplyExploratoryFieldSpec(ec.NewChild("dataDiskSnapshots"));
+
+            }
+        }
+        else if (this.DataDiskSnapshots != null && ec.Excludes("dataDiskSnapshots",false))
+        {
+            this.DataDiskSnapshots = null;
         }
         //      C# -> AzureNativeAttachedDiskSpecificSnapshot? OsDiskSnapshot
         // GraphQL -> osDiskSnapshot: AzureNativeAttachedDiskSpecificSnapshot (type)
-        if (this.OsDiskSnapshot == null && ec.Includes("osDiskSnapshot",false))
+        if (ec.Includes("osDiskSnapshot",false))
         {
-            this.OsDiskSnapshot = new AzureNativeAttachedDiskSpecificSnapshot();
-            this.OsDiskSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("osDiskSnapshot"));
+            if(this.OsDiskSnapshot == null) {
+
+                this.OsDiskSnapshot = new AzureNativeAttachedDiskSpecificSnapshot();
+                this.OsDiskSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("osDiskSnapshot"));
+
+            } else {
+
+                this.OsDiskSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("osDiskSnapshot"));
+
+            }
+        }
+        else if (this.OsDiskSnapshot != null && ec.Excludes("osDiskSnapshot",false))
+        {
+            this.OsDiskSnapshot = null;
         }
     }
 
@@ -143,9 +191,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AzureNativeVmSpecificSnapshot> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

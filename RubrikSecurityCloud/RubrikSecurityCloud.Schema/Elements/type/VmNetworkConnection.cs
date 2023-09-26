@@ -101,46 +101,75 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> VmNetworkAddressingMode? IpAddressingMode
         // GraphQL -> ipAddressingMode: VmNetworkAddressingMode! (enum)
         if (this.IpAddressingMode != null) {
-            s += ind + "ipAddressingMode\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "ipAddressingMode\n" ;
+            } else {
+                s += ind + "ipAddressingMode\n" ;
+            }
         }
         //      C# -> System.String? AdapterType
         // GraphQL -> adapterType: String (scalar)
         if (this.AdapterType != null) {
-            s += ind + "adapterType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "adapterType\n" ;
+            } else {
+                s += ind + "adapterType\n" ;
+            }
         }
         //      C# -> System.Boolean? IsConnected
         // GraphQL -> isConnected: Boolean! (scalar)
         if (this.IsConnected != null) {
-            s += ind + "isConnected\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isConnected\n" ;
+            } else {
+                s += ind + "isConnected\n" ;
+            }
         }
         //      C# -> System.String? MacAddress
         // GraphQL -> macAddress: String (scalar)
         if (this.MacAddress != null) {
-            s += ind + "macAddress\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "macAddress\n" ;
+            } else {
+                s += ind + "macAddress\n" ;
+            }
         }
         //      C# -> System.String? NetworkName
         // GraphQL -> networkName: String (scalar)
         if (this.NetworkName != null) {
-            s += ind + "networkName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "networkName\n" ;
+            } else {
+                s += ind + "networkName\n" ;
+            }
         }
         //      C# -> System.Int32? NicIndex
         // GraphQL -> nicIndex: Int! (scalar)
         if (this.NicIndex != null) {
-            s += ind + "nicIndex\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "nicIndex\n" ;
+            } else {
+                s += ind + "nicIndex\n" ;
+            }
         }
         //      C# -> PageInfo? PageInfo
         // GraphQL -> pageInfo: PageInfo! (type)
         if (this.PageInfo != null) {
-            var fspec = this.PageInfo.AsFieldSpec(indent+1);
+            var fspec = this.PageInfo.AsFieldSpec(conf.Child("pageInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "pageInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "pageInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -152,46 +181,124 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> VmNetworkAddressingMode? IpAddressingMode
         // GraphQL -> ipAddressingMode: VmNetworkAddressingMode! (enum)
-        if (this.IpAddressingMode == null && ec.Includes("ipAddressingMode",true))
+        if (ec.Includes("ipAddressingMode",true))
         {
-            this.IpAddressingMode = new VmNetworkAddressingMode();
+            if(this.IpAddressingMode == null) {
+
+                this.IpAddressingMode = new VmNetworkAddressingMode();
+
+            } else {
+
+
+            }
+        }
+        else if (this.IpAddressingMode != null && ec.Excludes("ipAddressingMode",true))
+        {
+            this.IpAddressingMode = null;
         }
         //      C# -> System.String? AdapterType
         // GraphQL -> adapterType: String (scalar)
-        if (this.AdapterType == null && ec.Includes("adapterType",true))
+        if (ec.Includes("adapterType",true))
         {
-            this.AdapterType = "FETCH";
+            if(this.AdapterType == null) {
+
+                this.AdapterType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AdapterType != null && ec.Excludes("adapterType",true))
+        {
+            this.AdapterType = null;
         }
         //      C# -> System.Boolean? IsConnected
         // GraphQL -> isConnected: Boolean! (scalar)
-        if (this.IsConnected == null && ec.Includes("isConnected",true))
+        if (ec.Includes("isConnected",true))
         {
-            this.IsConnected = true;
+            if(this.IsConnected == null) {
+
+                this.IsConnected = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsConnected != null && ec.Excludes("isConnected",true))
+        {
+            this.IsConnected = null;
         }
         //      C# -> System.String? MacAddress
         // GraphQL -> macAddress: String (scalar)
-        if (this.MacAddress == null && ec.Includes("macAddress",true))
+        if (ec.Includes("macAddress",true))
         {
-            this.MacAddress = "FETCH";
+            if(this.MacAddress == null) {
+
+                this.MacAddress = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.MacAddress != null && ec.Excludes("macAddress",true))
+        {
+            this.MacAddress = null;
         }
         //      C# -> System.String? NetworkName
         // GraphQL -> networkName: String (scalar)
-        if (this.NetworkName == null && ec.Includes("networkName",true))
+        if (ec.Includes("networkName",true))
         {
-            this.NetworkName = "FETCH";
+            if(this.NetworkName == null) {
+
+                this.NetworkName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NetworkName != null && ec.Excludes("networkName",true))
+        {
+            this.NetworkName = null;
         }
         //      C# -> System.Int32? NicIndex
         // GraphQL -> nicIndex: Int! (scalar)
-        if (this.NicIndex == null && ec.Includes("nicIndex",true))
+        if (ec.Includes("nicIndex",true))
         {
-            this.NicIndex = Int32.MinValue;
+            if(this.NicIndex == null) {
+
+                this.NicIndex = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.NicIndex != null && ec.Excludes("nicIndex",true))
+        {
+            this.NicIndex = null;
         }
         //      C# -> PageInfo? PageInfo
         // GraphQL -> pageInfo: PageInfo! (type)
-        if (this.PageInfo == null && ec.Includes("pageInfo",false))
+        if (ec.Includes("pageInfo",false))
         {
-            this.PageInfo = new PageInfo();
-            this.PageInfo.ApplyExploratoryFieldSpec(ec.NewChild("pageInfo"));
+            if(this.PageInfo == null) {
+
+                this.PageInfo = new PageInfo();
+                this.PageInfo.ApplyExploratoryFieldSpec(ec.NewChild("pageInfo"));
+
+            } else {
+
+                this.PageInfo.ApplyExploratoryFieldSpec(ec.NewChild("pageInfo"));
+
+            }
+        }
+        else if (this.PageInfo != null && ec.Excludes("pageInfo",false))
+        {
+            this.PageInfo = null;
         }
     }
 
@@ -218,9 +325,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<VmNetworkConnection> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

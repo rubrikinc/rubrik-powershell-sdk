@@ -83,37 +83,58 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> HierarchyObject? Snappable
         // GraphQL -> snappable: HierarchyObject! (interface)
         if (this.Snappable != null) {
-                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.Snappable).AsFieldSpec(indent+1);
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.Snappable).AsFieldSpec(conf.Child("snappable"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "snappable {\n" + fspec + ind + "}\n";
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "snappable {\n" + fspec + ind + "}\n";
+                }
             }
         }
         //      C# -> System.String? NativePath
         // GraphQL -> nativePath: String! (scalar)
         if (this.NativePath != null) {
-            s += ind + "nativePath\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "nativePath\n" ;
+            } else {
+                s += ind + "nativePath\n" ;
+            }
         }
         //      C# -> System.String? StdPath
         // GraphQL -> stdPath: String! (scalar)
         if (this.StdPath != null) {
-            s += ind + "stdPath\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "stdPath\n" ;
+            } else {
+                s += ind + "stdPath\n" ;
+            }
         }
         //      C# -> System.Int64? UpdateTs
         // GraphQL -> updateTs: Long! (scalar)
         if (this.UpdateTs != null) {
-            s += ind + "updateTs\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "updateTs\n" ;
+            } else {
+                s += ind + "updateTs\n" ;
+            }
         }
         //      C# -> System.String? UpdateUsername
         // GraphQL -> updateUsername: String! (scalar)
         if (this.UpdateUsername != null) {
-            s += ind + "updateUsername\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "updateUsername\n" ;
+            } else {
+                s += ind + "updateUsername\n" ;
+            }
         }
         return s;
     }
@@ -124,35 +145,95 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> HierarchyObject? Snappable
         // GraphQL -> snappable: HierarchyObject! (interface)
-        if (this.Snappable == null && ec.Includes("snappable",false))
+        if (ec.Includes("snappable",false))
         {
-            var impls = new List<HierarchyObject>();
-            impls.ApplyExploratoryFieldSpec(ec.NewChild("snappable"));
-            this.Snappable = (HierarchyObject)InterfaceHelper.MakeCompositeFromList(impls);
+            if(this.Snappable == null) {
+
+                var impls = new List<HierarchyObject>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("snappable"));
+                this.Snappable = (HierarchyObject)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<HierarchyObject>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("snappable"));
+                this.Snappable = (HierarchyObject)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.Snappable != null && ec.Excludes("snappable",false))
+        {
+            this.Snappable = null;
         }
         //      C# -> System.String? NativePath
         // GraphQL -> nativePath: String! (scalar)
-        if (this.NativePath == null && ec.Includes("nativePath",true))
+        if (ec.Includes("nativePath",true))
         {
-            this.NativePath = "FETCH";
+            if(this.NativePath == null) {
+
+                this.NativePath = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NativePath != null && ec.Excludes("nativePath",true))
+        {
+            this.NativePath = null;
         }
         //      C# -> System.String? StdPath
         // GraphQL -> stdPath: String! (scalar)
-        if (this.StdPath == null && ec.Includes("stdPath",true))
+        if (ec.Includes("stdPath",true))
         {
-            this.StdPath = "FETCH";
+            if(this.StdPath == null) {
+
+                this.StdPath = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.StdPath != null && ec.Excludes("stdPath",true))
+        {
+            this.StdPath = null;
         }
         //      C# -> System.Int64? UpdateTs
         // GraphQL -> updateTs: Long! (scalar)
-        if (this.UpdateTs == null && ec.Includes("updateTs",true))
+        if (ec.Includes("updateTs",true))
         {
-            this.UpdateTs = new System.Int64();
+            if(this.UpdateTs == null) {
+
+                this.UpdateTs = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UpdateTs != null && ec.Excludes("updateTs",true))
+        {
+            this.UpdateTs = null;
         }
         //      C# -> System.String? UpdateUsername
         // GraphQL -> updateUsername: String! (scalar)
-        if (this.UpdateUsername == null && ec.Includes("updateUsername",true))
+        if (ec.Includes("updateUsername",true))
         {
-            this.UpdateUsername = "FETCH";
+            if(this.UpdateUsername == null) {
+
+                this.UpdateUsername = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.UpdateUsername != null && ec.Excludes("updateUsername",true))
+        {
+            this.UpdateUsername = null;
         }
     }
 
@@ -179,9 +260,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ClassificationPolicyWhitelistDetailedEntry> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

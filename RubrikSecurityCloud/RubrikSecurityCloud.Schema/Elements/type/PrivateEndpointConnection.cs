@@ -65,26 +65,39 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> PrivateEndpointConnectionStatus? PrivateEndpointConnectionStatus
         // GraphQL -> privateEndpointConnectionStatus: PrivateEndpointConnectionStatus! (enum)
         if (this.PrivateEndpointConnectionStatus != null) {
-            s += ind + "privateEndpointConnectionStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "privateEndpointConnectionStatus\n" ;
+            } else {
+                s += ind + "privateEndpointConnectionStatus\n" ;
+            }
         }
         //      C# -> System.String? PrivateEndpointId
         // GraphQL -> privateEndpointId: String! (scalar)
         if (this.PrivateEndpointId != null) {
-            s += ind + "privateEndpointId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "privateEndpointId\n" ;
+            } else {
+                s += ind + "privateEndpointId\n" ;
+            }
         }
         //      C# -> PageInfo? PageInfo
         // GraphQL -> pageInfo: PageInfo! (type)
         if (this.PageInfo != null) {
-            var fspec = this.PageInfo.AsFieldSpec(indent+1);
+            var fspec = this.PageInfo.AsFieldSpec(conf.Child("pageInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "pageInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "pageInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -96,22 +109,56 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> PrivateEndpointConnectionStatus? PrivateEndpointConnectionStatus
         // GraphQL -> privateEndpointConnectionStatus: PrivateEndpointConnectionStatus! (enum)
-        if (this.PrivateEndpointConnectionStatus == null && ec.Includes("privateEndpointConnectionStatus",true))
+        if (ec.Includes("privateEndpointConnectionStatus",true))
         {
-            this.PrivateEndpointConnectionStatus = new PrivateEndpointConnectionStatus();
+            if(this.PrivateEndpointConnectionStatus == null) {
+
+                this.PrivateEndpointConnectionStatus = new PrivateEndpointConnectionStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.PrivateEndpointConnectionStatus != null && ec.Excludes("privateEndpointConnectionStatus",true))
+        {
+            this.PrivateEndpointConnectionStatus = null;
         }
         //      C# -> System.String? PrivateEndpointId
         // GraphQL -> privateEndpointId: String! (scalar)
-        if (this.PrivateEndpointId == null && ec.Includes("privateEndpointId",true))
+        if (ec.Includes("privateEndpointId",true))
         {
-            this.PrivateEndpointId = "FETCH";
+            if(this.PrivateEndpointId == null) {
+
+                this.PrivateEndpointId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PrivateEndpointId != null && ec.Excludes("privateEndpointId",true))
+        {
+            this.PrivateEndpointId = null;
         }
         //      C# -> PageInfo? PageInfo
         // GraphQL -> pageInfo: PageInfo! (type)
-        if (this.PageInfo == null && ec.Includes("pageInfo",false))
+        if (ec.Includes("pageInfo",false))
         {
-            this.PageInfo = new PageInfo();
-            this.PageInfo.ApplyExploratoryFieldSpec(ec.NewChild("pageInfo"));
+            if(this.PageInfo == null) {
+
+                this.PageInfo = new PageInfo();
+                this.PageInfo.ApplyExploratoryFieldSpec(ec.NewChild("pageInfo"));
+
+            } else {
+
+                this.PageInfo.ApplyExploratoryFieldSpec(ec.NewChild("pageInfo"));
+
+            }
+        }
+        else if (this.PageInfo != null && ec.Excludes("pageInfo",false))
+        {
+            this.PageInfo = null;
         }
     }
 
@@ -138,9 +185,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<PrivateEndpointConnection> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

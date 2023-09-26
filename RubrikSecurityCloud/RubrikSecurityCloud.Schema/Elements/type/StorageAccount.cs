@@ -119,59 +119,96 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> StorageAccountTier? AccessTier
         // GraphQL -> accessTier: StorageAccountTier! (enum)
         if (this.AccessTier != null) {
-            s += ind + "accessTier\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "accessTier\n" ;
+            } else {
+                s += ind + "accessTier\n" ;
+            }
         }
         //      C# -> StorageAccountSku? Sku
         // GraphQL -> sku: StorageAccountSku! (enum)
         if (this.Sku != null) {
-            s += ind + "sku\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sku\n" ;
+            } else {
+                s += ind + "sku\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.Boolean? IsVersioningEnabled
         // GraphQL -> isVersioningEnabled: Boolean! (scalar)
         if (this.IsVersioningEnabled != null) {
-            s += ind + "isVersioningEnabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isVersioningEnabled\n" ;
+            } else {
+                s += ind + "isVersioningEnabled\n" ;
+            }
         }
         //      C# -> System.String? Kind
         // GraphQL -> kind: String! (scalar)
         if (this.Kind != null) {
-            s += ind + "kind\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "kind\n" ;
+            } else {
+                s += ind + "kind\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.String? RegionName
         // GraphQL -> regionName: String! (scalar)
         if (this.RegionName != null) {
-            s += ind + "regionName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "regionName\n" ;
+            } else {
+                s += ind + "regionName\n" ;
+            }
         }
         //      C# -> NetworkRuleSet? NetworkRuleSet
         // GraphQL -> networkRuleSet: NetworkRuleSet (type)
         if (this.NetworkRuleSet != null) {
-            var fspec = this.NetworkRuleSet.AsFieldSpec(indent+1);
+            var fspec = this.NetworkRuleSet.AsFieldSpec(conf.Child("networkRuleSet"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "networkRuleSet {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "networkRuleSet {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> ResourceGroup? ResourceGroup
         // GraphQL -> resourceGroup: ResourceGroup (type)
         if (this.ResourceGroup != null) {
-            var fspec = this.ResourceGroup.AsFieldSpec(indent+1);
+            var fspec = this.ResourceGroup.AsFieldSpec(conf.Child("resourceGroup"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "resourceGroup {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "resourceGroup {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -183,59 +220,160 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> StorageAccountTier? AccessTier
         // GraphQL -> accessTier: StorageAccountTier! (enum)
-        if (this.AccessTier == null && ec.Includes("accessTier",true))
+        if (ec.Includes("accessTier",true))
         {
-            this.AccessTier = new StorageAccountTier();
+            if(this.AccessTier == null) {
+
+                this.AccessTier = new StorageAccountTier();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AccessTier != null && ec.Excludes("accessTier",true))
+        {
+            this.AccessTier = null;
         }
         //      C# -> StorageAccountSku? Sku
         // GraphQL -> sku: StorageAccountSku! (enum)
-        if (this.Sku == null && ec.Includes("sku",true))
+        if (ec.Includes("sku",true))
         {
-            this.Sku = new StorageAccountSku();
+            if(this.Sku == null) {
+
+                this.Sku = new StorageAccountSku();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Sku != null && ec.Excludes("sku",true))
+        {
+            this.Sku = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.Boolean? IsVersioningEnabled
         // GraphQL -> isVersioningEnabled: Boolean! (scalar)
-        if (this.IsVersioningEnabled == null && ec.Includes("isVersioningEnabled",true))
+        if (ec.Includes("isVersioningEnabled",true))
         {
-            this.IsVersioningEnabled = true;
+            if(this.IsVersioningEnabled == null) {
+
+                this.IsVersioningEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsVersioningEnabled != null && ec.Excludes("isVersioningEnabled",true))
+        {
+            this.IsVersioningEnabled = null;
         }
         //      C# -> System.String? Kind
         // GraphQL -> kind: String! (scalar)
-        if (this.Kind == null && ec.Includes("kind",true))
+        if (ec.Includes("kind",true))
         {
-            this.Kind = "FETCH";
+            if(this.Kind == null) {
+
+                this.Kind = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Kind != null && ec.Excludes("kind",true))
+        {
+            this.Kind = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.String? RegionName
         // GraphQL -> regionName: String! (scalar)
-        if (this.RegionName == null && ec.Includes("regionName",true))
+        if (ec.Includes("regionName",true))
         {
-            this.RegionName = "FETCH";
+            if(this.RegionName == null) {
+
+                this.RegionName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RegionName != null && ec.Excludes("regionName",true))
+        {
+            this.RegionName = null;
         }
         //      C# -> NetworkRuleSet? NetworkRuleSet
         // GraphQL -> networkRuleSet: NetworkRuleSet (type)
-        if (this.NetworkRuleSet == null && ec.Includes("networkRuleSet",false))
+        if (ec.Includes("networkRuleSet",false))
         {
-            this.NetworkRuleSet = new NetworkRuleSet();
-            this.NetworkRuleSet.ApplyExploratoryFieldSpec(ec.NewChild("networkRuleSet"));
+            if(this.NetworkRuleSet == null) {
+
+                this.NetworkRuleSet = new NetworkRuleSet();
+                this.NetworkRuleSet.ApplyExploratoryFieldSpec(ec.NewChild("networkRuleSet"));
+
+            } else {
+
+                this.NetworkRuleSet.ApplyExploratoryFieldSpec(ec.NewChild("networkRuleSet"));
+
+            }
+        }
+        else if (this.NetworkRuleSet != null && ec.Excludes("networkRuleSet",false))
+        {
+            this.NetworkRuleSet = null;
         }
         //      C# -> ResourceGroup? ResourceGroup
         // GraphQL -> resourceGroup: ResourceGroup (type)
-        if (this.ResourceGroup == null && ec.Includes("resourceGroup",false))
+        if (ec.Includes("resourceGroup",false))
         {
-            this.ResourceGroup = new ResourceGroup();
-            this.ResourceGroup.ApplyExploratoryFieldSpec(ec.NewChild("resourceGroup"));
+            if(this.ResourceGroup == null) {
+
+                this.ResourceGroup = new ResourceGroup();
+                this.ResourceGroup.ApplyExploratoryFieldSpec(ec.NewChild("resourceGroup"));
+
+            } else {
+
+                this.ResourceGroup.ApplyExploratoryFieldSpec(ec.NewChild("resourceGroup"));
+
+            }
+        }
+        else if (this.ResourceGroup != null && ec.Excludes("resourceGroup",false))
+        {
+            this.ResourceGroup = null;
         }
     }
 
@@ -262,9 +400,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<StorageAccount> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

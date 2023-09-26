@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int32? Authenticated
         // GraphQL -> authenticated: Int! (scalar)
         if (this.Authenticated != null) {
-            s += ind + "authenticated\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "authenticated\n" ;
+            } else {
+                s += ind + "authenticated\n" ;
+            }
         }
         //      C# -> System.Int32? PartiallyAuthenticated
         // GraphQL -> partiallyAuthenticated: Int! (scalar)
         if (this.PartiallyAuthenticated != null) {
-            s += ind + "partiallyAuthenticated\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "partiallyAuthenticated\n" ;
+            } else {
+                s += ind + "partiallyAuthenticated\n" ;
+            }
         }
         //      C# -> System.Int32? Unauthenticated
         // GraphQL -> unauthenticated: Int! (scalar)
         if (this.Unauthenticated != null) {
-            s += ind + "unauthenticated\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "unauthenticated\n" ;
+            } else {
+                s += ind + "unauthenticated\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int32? Authenticated
         // GraphQL -> authenticated: Int! (scalar)
-        if (this.Authenticated == null && ec.Includes("authenticated",true))
+        if (ec.Includes("authenticated",true))
         {
-            this.Authenticated = Int32.MinValue;
+            if(this.Authenticated == null) {
+
+                this.Authenticated = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Authenticated != null && ec.Excludes("authenticated",true))
+        {
+            this.Authenticated = null;
         }
         //      C# -> System.Int32? PartiallyAuthenticated
         // GraphQL -> partiallyAuthenticated: Int! (scalar)
-        if (this.PartiallyAuthenticated == null && ec.Includes("partiallyAuthenticated",true))
+        if (ec.Includes("partiallyAuthenticated",true))
         {
-            this.PartiallyAuthenticated = Int32.MinValue;
+            if(this.PartiallyAuthenticated == null) {
+
+                this.PartiallyAuthenticated = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.PartiallyAuthenticated != null && ec.Excludes("partiallyAuthenticated",true))
+        {
+            this.PartiallyAuthenticated = null;
         }
         //      C# -> System.Int32? Unauthenticated
         // GraphQL -> unauthenticated: Int! (scalar)
-        if (this.Unauthenticated == null && ec.Includes("unauthenticated",true))
+        if (ec.Includes("unauthenticated",true))
         {
-            this.Unauthenticated = Int32.MinValue;
+            if(this.Unauthenticated == null) {
+
+                this.Unauthenticated = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Unauthenticated != null && ec.Excludes("unauthenticated",true))
+        {
+            this.Unauthenticated = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AuthCounts> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

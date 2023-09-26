@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> RiskLevelType? Risk
         // GraphQL -> risk: RiskLevelType! (enum)
         if (this.Risk != null) {
-            s += ind + "risk\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "risk\n" ;
+            } else {
+                s += ind + "risk\n" ;
+            }
         }
         //      C# -> System.String? Location
         // GraphQL -> location: String! (scalar)
         if (this.Location != null) {
-            s += ind + "location\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "location\n" ;
+            } else {
+                s += ind + "location\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.Int32? NumFilesAccessible
         // GraphQL -> numFilesAccessible: Int! (scalar)
         if (this.NumFilesAccessible != null) {
-            s += ind + "numFilesAccessible\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "numFilesAccessible\n" ;
+            } else {
+                s += ind + "numFilesAccessible\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> RiskLevelType? Risk
         // GraphQL -> risk: RiskLevelType! (enum)
-        if (this.Risk == null && ec.Includes("risk",true))
+        if (ec.Includes("risk",true))
         {
-            this.Risk = new RiskLevelType();
+            if(this.Risk == null) {
+
+                this.Risk = new RiskLevelType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Risk != null && ec.Excludes("risk",true))
+        {
+            this.Risk = null;
         }
         //      C# -> System.String? Location
         // GraphQL -> location: String! (scalar)
-        if (this.Location == null && ec.Includes("location",true))
+        if (ec.Includes("location",true))
         {
-            this.Location = "FETCH";
+            if(this.Location == null) {
+
+                this.Location = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Location != null && ec.Excludes("location",true))
+        {
+            this.Location = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.Int32? NumFilesAccessible
         // GraphQL -> numFilesAccessible: Int! (scalar)
-        if (this.NumFilesAccessible == null && ec.Includes("numFilesAccessible",true))
+        if (ec.Includes("numFilesAccessible",true))
         {
-            this.NumFilesAccessible = Int32.MinValue;
+            if(this.NumFilesAccessible == null) {
+
+                this.NumFilesAccessible = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.NumFilesAccessible != null && ec.Excludes("numFilesAccessible",true))
+        {
+            this.NumFilesAccessible = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<GetUserDetailReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

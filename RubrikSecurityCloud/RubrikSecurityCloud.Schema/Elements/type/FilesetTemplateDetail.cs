@@ -101,46 +101,75 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int32? HostCount
         // GraphQL -> hostCount: Int (scalar)
         if (this.HostCount != null) {
-            s += ind + "hostCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostCount\n" ;
+            } else {
+                s += ind + "hostCount\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean (scalar)
         if (this.IsArchived != null) {
-            s += ind + "isArchived\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isArchived\n" ;
+            } else {
+                s += ind + "isArchived\n" ;
+            }
         }
         //      C# -> System.Boolean? IsCreatedByKupr
         // GraphQL -> isCreatedByKupr: Boolean (scalar)
         if (this.IsCreatedByKupr != null) {
-            s += ind + "isCreatedByKupr\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isCreatedByKupr\n" ;
+            } else {
+                s += ind + "isCreatedByKupr\n" ;
+            }
         }
         //      C# -> System.String? PrimaryClusterId
         // GraphQL -> primaryClusterId: String! (scalar)
         if (this.PrimaryClusterId != null) {
-            s += ind + "primaryClusterId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "primaryClusterId\n" ;
+            } else {
+                s += ind + "primaryClusterId\n" ;
+            }
         }
         //      C# -> System.Int32? ShareCount
         // GraphQL -> shareCount: Int (scalar)
         if (this.ShareCount != null) {
-            s += ind + "shareCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "shareCount\n" ;
+            } else {
+                s += ind + "shareCount\n" ;
+            }
         }
         //      C# -> FilesetTemplateCreate? FilesetTemplateCreate
         // GraphQL -> filesetTemplateCreate: FilesetTemplateCreate (type)
         if (this.FilesetTemplateCreate != null) {
-            var fspec = this.FilesetTemplateCreate.AsFieldSpec(indent+1);
+            var fspec = this.FilesetTemplateCreate.AsFieldSpec(conf.Child("filesetTemplateCreate"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "filesetTemplateCreate {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "filesetTemplateCreate {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -152,46 +181,124 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int32? HostCount
         // GraphQL -> hostCount: Int (scalar)
-        if (this.HostCount == null && ec.Includes("hostCount",true))
+        if (ec.Includes("hostCount",true))
         {
-            this.HostCount = Int32.MinValue;
+            if(this.HostCount == null) {
+
+                this.HostCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.HostCount != null && ec.Excludes("hostCount",true))
+        {
+            this.HostCount = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean (scalar)
-        if (this.IsArchived == null && ec.Includes("isArchived",true))
+        if (ec.Includes("isArchived",true))
         {
-            this.IsArchived = true;
+            if(this.IsArchived == null) {
+
+                this.IsArchived = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsArchived != null && ec.Excludes("isArchived",true))
+        {
+            this.IsArchived = null;
         }
         //      C# -> System.Boolean? IsCreatedByKupr
         // GraphQL -> isCreatedByKupr: Boolean (scalar)
-        if (this.IsCreatedByKupr == null && ec.Includes("isCreatedByKupr",true))
+        if (ec.Includes("isCreatedByKupr",true))
         {
-            this.IsCreatedByKupr = true;
+            if(this.IsCreatedByKupr == null) {
+
+                this.IsCreatedByKupr = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsCreatedByKupr != null && ec.Excludes("isCreatedByKupr",true))
+        {
+            this.IsCreatedByKupr = null;
         }
         //      C# -> System.String? PrimaryClusterId
         // GraphQL -> primaryClusterId: String! (scalar)
-        if (this.PrimaryClusterId == null && ec.Includes("primaryClusterId",true))
+        if (ec.Includes("primaryClusterId",true))
         {
-            this.PrimaryClusterId = "FETCH";
+            if(this.PrimaryClusterId == null) {
+
+                this.PrimaryClusterId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PrimaryClusterId != null && ec.Excludes("primaryClusterId",true))
+        {
+            this.PrimaryClusterId = null;
         }
         //      C# -> System.Int32? ShareCount
         // GraphQL -> shareCount: Int (scalar)
-        if (this.ShareCount == null && ec.Includes("shareCount",true))
+        if (ec.Includes("shareCount",true))
         {
-            this.ShareCount = Int32.MinValue;
+            if(this.ShareCount == null) {
+
+                this.ShareCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShareCount != null && ec.Excludes("shareCount",true))
+        {
+            this.ShareCount = null;
         }
         //      C# -> FilesetTemplateCreate? FilesetTemplateCreate
         // GraphQL -> filesetTemplateCreate: FilesetTemplateCreate (type)
-        if (this.FilesetTemplateCreate == null && ec.Includes("filesetTemplateCreate",false))
+        if (ec.Includes("filesetTemplateCreate",false))
         {
-            this.FilesetTemplateCreate = new FilesetTemplateCreate();
-            this.FilesetTemplateCreate.ApplyExploratoryFieldSpec(ec.NewChild("filesetTemplateCreate"));
+            if(this.FilesetTemplateCreate == null) {
+
+                this.FilesetTemplateCreate = new FilesetTemplateCreate();
+                this.FilesetTemplateCreate.ApplyExploratoryFieldSpec(ec.NewChild("filesetTemplateCreate"));
+
+            } else {
+
+                this.FilesetTemplateCreate.ApplyExploratoryFieldSpec(ec.NewChild("filesetTemplateCreate"));
+
+            }
+        }
+        else if (this.FilesetTemplateCreate != null && ec.Excludes("filesetTemplateCreate",false))
+        {
+            this.FilesetTemplateCreate = null;
         }
     }
 
@@ -218,9 +325,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<FilesetTemplateDetail> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

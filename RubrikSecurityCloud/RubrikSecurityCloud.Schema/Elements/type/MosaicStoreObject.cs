@@ -92,41 +92,66 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> MosaicStoreObjectStoreType? StoreType
         // GraphQL -> storeType: MosaicStoreObjectStoreType! (enum)
         if (this.StoreType != null) {
-            s += ind + "storeType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "storeType\n" ;
+            } else {
+                s += ind + "storeType\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.String? StoreName
         // GraphQL -> storeName: String! (scalar)
         if (this.StoreName != null) {
-            s += ind + "storeName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "storeName\n" ;
+            } else {
+                s += ind + "storeName\n" ;
+            }
         }
         //      C# -> System.String? StoreUrl
         // GraphQL -> storeUrl: String! (scalar)
         if (this.StoreUrl != null) {
-            s += ind + "storeUrl\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "storeUrl\n" ;
+            } else {
+                s += ind + "storeUrl\n" ;
+            }
         }
         //      C# -> System.String? SurlNfs
         // GraphQL -> surlNfs: String (scalar)
         if (this.SurlNfs != null) {
-            s += ind + "surlNfs\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "surlNfs\n" ;
+            } else {
+                s += ind + "surlNfs\n" ;
+            }
         }
         //      C# -> StoreMetadata? StoreMetadata
         // GraphQL -> storeMetadata: StoreMetadata (type)
         if (this.StoreMetadata != null) {
-            var fspec = this.StoreMetadata.AsFieldSpec(indent+1);
+            var fspec = this.StoreMetadata.AsFieldSpec(conf.Child("storeMetadata"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "storeMetadata {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "storeMetadata {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -138,40 +163,107 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> MosaicStoreObjectStoreType? StoreType
         // GraphQL -> storeType: MosaicStoreObjectStoreType! (enum)
-        if (this.StoreType == null && ec.Includes("storeType",true))
+        if (ec.Includes("storeType",true))
         {
-            this.StoreType = new MosaicStoreObjectStoreType();
+            if(this.StoreType == null) {
+
+                this.StoreType = new MosaicStoreObjectStoreType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.StoreType != null && ec.Excludes("storeType",true))
+        {
+            this.StoreType = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.String? StoreName
         // GraphQL -> storeName: String! (scalar)
-        if (this.StoreName == null && ec.Includes("storeName",true))
+        if (ec.Includes("storeName",true))
         {
-            this.StoreName = "FETCH";
+            if(this.StoreName == null) {
+
+                this.StoreName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.StoreName != null && ec.Excludes("storeName",true))
+        {
+            this.StoreName = null;
         }
         //      C# -> System.String? StoreUrl
         // GraphQL -> storeUrl: String! (scalar)
-        if (this.StoreUrl == null && ec.Includes("storeUrl",true))
+        if (ec.Includes("storeUrl",true))
         {
-            this.StoreUrl = "FETCH";
+            if(this.StoreUrl == null) {
+
+                this.StoreUrl = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.StoreUrl != null && ec.Excludes("storeUrl",true))
+        {
+            this.StoreUrl = null;
         }
         //      C# -> System.String? SurlNfs
         // GraphQL -> surlNfs: String (scalar)
-        if (this.SurlNfs == null && ec.Includes("surlNfs",true))
+        if (ec.Includes("surlNfs",true))
         {
-            this.SurlNfs = "FETCH";
+            if(this.SurlNfs == null) {
+
+                this.SurlNfs = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SurlNfs != null && ec.Excludes("surlNfs",true))
+        {
+            this.SurlNfs = null;
         }
         //      C# -> StoreMetadata? StoreMetadata
         // GraphQL -> storeMetadata: StoreMetadata (type)
-        if (this.StoreMetadata == null && ec.Includes("storeMetadata",false))
+        if (ec.Includes("storeMetadata",false))
         {
-            this.StoreMetadata = new StoreMetadata();
-            this.StoreMetadata.ApplyExploratoryFieldSpec(ec.NewChild("storeMetadata"));
+            if(this.StoreMetadata == null) {
+
+                this.StoreMetadata = new StoreMetadata();
+                this.StoreMetadata.ApplyExploratoryFieldSpec(ec.NewChild("storeMetadata"));
+
+            } else {
+
+                this.StoreMetadata.ApplyExploratoryFieldSpec(ec.NewChild("storeMetadata"));
+
+            }
+        }
+        else if (this.StoreMetadata != null && ec.Excludes("storeMetadata",false))
+        {
+            this.StoreMetadata = null;
         }
     }
 
@@ -198,9 +290,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<MosaicStoreObject> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

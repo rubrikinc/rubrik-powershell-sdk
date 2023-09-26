@@ -74,37 +74,54 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Moid
         // GraphQL -> moid: String! (scalar)
         if (this.Moid != null) {
-            s += ind + "moid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "moid\n" ;
+            } else {
+                s += ind + "moid\n" ;
+            }
         }
         //      C# -> ComputeClusterSummary? ComputeClusterSummary
         // GraphQL -> computeClusterSummary: ComputeClusterSummary (type)
         if (this.ComputeClusterSummary != null) {
-            var fspec = this.ComputeClusterSummary.AsFieldSpec(indent+1);
+            var fspec = this.ComputeClusterSummary.AsFieldSpec(conf.Child("computeClusterSummary"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "computeClusterSummary {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "computeClusterSummary {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<VmwareHostSummary>? Hosts
         // GraphQL -> hosts: [VmwareHostSummary!]! (type)
         if (this.Hosts != null) {
-            var fspec = this.Hosts.AsFieldSpec(indent+1);
+            var fspec = this.Hosts.AsFieldSpec(conf.Child("hosts"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "hosts {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "hosts {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<VirtualMachineSummary>? VirtualMachines
         // GraphQL -> virtualMachines: [VirtualMachineSummary!]! (type)
         if (this.VirtualMachines != null) {
-            var fspec = this.VirtualMachines.AsFieldSpec(indent+1);
+            var fspec = this.VirtualMachines.AsFieldSpec(conf.Child("virtualMachines"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "virtualMachines {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "virtualMachines {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -116,30 +133,77 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Moid
         // GraphQL -> moid: String! (scalar)
-        if (this.Moid == null && ec.Includes("moid",true))
+        if (ec.Includes("moid",true))
         {
-            this.Moid = "FETCH";
+            if(this.Moid == null) {
+
+                this.Moid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Moid != null && ec.Excludes("moid",true))
+        {
+            this.Moid = null;
         }
         //      C# -> ComputeClusterSummary? ComputeClusterSummary
         // GraphQL -> computeClusterSummary: ComputeClusterSummary (type)
-        if (this.ComputeClusterSummary == null && ec.Includes("computeClusterSummary",false))
+        if (ec.Includes("computeClusterSummary",false))
         {
-            this.ComputeClusterSummary = new ComputeClusterSummary();
-            this.ComputeClusterSummary.ApplyExploratoryFieldSpec(ec.NewChild("computeClusterSummary"));
+            if(this.ComputeClusterSummary == null) {
+
+                this.ComputeClusterSummary = new ComputeClusterSummary();
+                this.ComputeClusterSummary.ApplyExploratoryFieldSpec(ec.NewChild("computeClusterSummary"));
+
+            } else {
+
+                this.ComputeClusterSummary.ApplyExploratoryFieldSpec(ec.NewChild("computeClusterSummary"));
+
+            }
+        }
+        else if (this.ComputeClusterSummary != null && ec.Excludes("computeClusterSummary",false))
+        {
+            this.ComputeClusterSummary = null;
         }
         //      C# -> List<VmwareHostSummary>? Hosts
         // GraphQL -> hosts: [VmwareHostSummary!]! (type)
-        if (this.Hosts == null && ec.Includes("hosts",false))
+        if (ec.Includes("hosts",false))
         {
-            this.Hosts = new List<VmwareHostSummary>();
-            this.Hosts.ApplyExploratoryFieldSpec(ec.NewChild("hosts"));
+            if(this.Hosts == null) {
+
+                this.Hosts = new List<VmwareHostSummary>();
+                this.Hosts.ApplyExploratoryFieldSpec(ec.NewChild("hosts"));
+
+            } else {
+
+                this.Hosts.ApplyExploratoryFieldSpec(ec.NewChild("hosts"));
+
+            }
+        }
+        else if (this.Hosts != null && ec.Excludes("hosts",false))
+        {
+            this.Hosts = null;
         }
         //      C# -> List<VirtualMachineSummary>? VirtualMachines
         // GraphQL -> virtualMachines: [VirtualMachineSummary!]! (type)
-        if (this.VirtualMachines == null && ec.Includes("virtualMachines",false))
+        if (ec.Includes("virtualMachines",false))
         {
-            this.VirtualMachines = new List<VirtualMachineSummary>();
-            this.VirtualMachines.ApplyExploratoryFieldSpec(ec.NewChild("virtualMachines"));
+            if(this.VirtualMachines == null) {
+
+                this.VirtualMachines = new List<VirtualMachineSummary>();
+                this.VirtualMachines.ApplyExploratoryFieldSpec(ec.NewChild("virtualMachines"));
+
+            } else {
+
+                this.VirtualMachines.ApplyExploratoryFieldSpec(ec.NewChild("virtualMachines"));
+
+            }
+        }
+        else if (this.VirtualMachines != null && ec.Excludes("virtualMachines",false))
+        {
+            this.VirtualMachines = null;
         }
     }
 
@@ -166,9 +230,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ComputeClusterDetail> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

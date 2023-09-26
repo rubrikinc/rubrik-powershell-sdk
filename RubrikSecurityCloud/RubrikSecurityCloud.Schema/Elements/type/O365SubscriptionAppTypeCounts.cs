@@ -83,45 +83,66 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? SubscriptionId
         // GraphQL -> subscriptionId: UUID! (scalar)
         if (this.SubscriptionId != null) {
-            s += ind + "subscriptionId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "subscriptionId\n" ;
+            } else {
+                s += ind + "subscriptionId\n" ;
+            }
         }
         //      C# -> AuthCounts? ExchangeAppCounts
         // GraphQL -> exchangeAppCounts: AuthCounts! (type)
         if (this.ExchangeAppCounts != null) {
-            var fspec = this.ExchangeAppCounts.AsFieldSpec(indent+1);
+            var fspec = this.ExchangeAppCounts.AsFieldSpec(conf.Child("exchangeAppCounts"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "exchangeAppCounts {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "exchangeAppCounts {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> AuthCounts? OnedriveAppCounts
         // GraphQL -> onedriveAppCounts: AuthCounts! (type)
         if (this.OnedriveAppCounts != null) {
-            var fspec = this.OnedriveAppCounts.AsFieldSpec(indent+1);
+            var fspec = this.OnedriveAppCounts.AsFieldSpec(conf.Child("onedriveAppCounts"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "onedriveAppCounts {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "onedriveAppCounts {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> AuthCounts? SharepointAppCounts
         // GraphQL -> sharepointAppCounts: AuthCounts! (type)
         if (this.SharepointAppCounts != null) {
-            var fspec = this.SharepointAppCounts.AsFieldSpec(indent+1);
+            var fspec = this.SharepointAppCounts.AsFieldSpec(conf.Child("sharepointAppCounts"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "sharepointAppCounts {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "sharepointAppCounts {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> AuthCounts? TeamsAppCounts
         // GraphQL -> teamsAppCounts: AuthCounts! (type)
         if (this.TeamsAppCounts != null) {
-            var fspec = this.TeamsAppCounts.AsFieldSpec(indent+1);
+            var fspec = this.TeamsAppCounts.AsFieldSpec(conf.Child("teamsAppCounts"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "teamsAppCounts {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "teamsAppCounts {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -133,37 +154,96 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? SubscriptionId
         // GraphQL -> subscriptionId: UUID! (scalar)
-        if (this.SubscriptionId == null && ec.Includes("subscriptionId",true))
+        if (ec.Includes("subscriptionId",true))
         {
-            this.SubscriptionId = "FETCH";
+            if(this.SubscriptionId == null) {
+
+                this.SubscriptionId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SubscriptionId != null && ec.Excludes("subscriptionId",true))
+        {
+            this.SubscriptionId = null;
         }
         //      C# -> AuthCounts? ExchangeAppCounts
         // GraphQL -> exchangeAppCounts: AuthCounts! (type)
-        if (this.ExchangeAppCounts == null && ec.Includes("exchangeAppCounts",false))
+        if (ec.Includes("exchangeAppCounts",false))
         {
-            this.ExchangeAppCounts = new AuthCounts();
-            this.ExchangeAppCounts.ApplyExploratoryFieldSpec(ec.NewChild("exchangeAppCounts"));
+            if(this.ExchangeAppCounts == null) {
+
+                this.ExchangeAppCounts = new AuthCounts();
+                this.ExchangeAppCounts.ApplyExploratoryFieldSpec(ec.NewChild("exchangeAppCounts"));
+
+            } else {
+
+                this.ExchangeAppCounts.ApplyExploratoryFieldSpec(ec.NewChild("exchangeAppCounts"));
+
+            }
+        }
+        else if (this.ExchangeAppCounts != null && ec.Excludes("exchangeAppCounts",false))
+        {
+            this.ExchangeAppCounts = null;
         }
         //      C# -> AuthCounts? OnedriveAppCounts
         // GraphQL -> onedriveAppCounts: AuthCounts! (type)
-        if (this.OnedriveAppCounts == null && ec.Includes("onedriveAppCounts",false))
+        if (ec.Includes("onedriveAppCounts",false))
         {
-            this.OnedriveAppCounts = new AuthCounts();
-            this.OnedriveAppCounts.ApplyExploratoryFieldSpec(ec.NewChild("onedriveAppCounts"));
+            if(this.OnedriveAppCounts == null) {
+
+                this.OnedriveAppCounts = new AuthCounts();
+                this.OnedriveAppCounts.ApplyExploratoryFieldSpec(ec.NewChild("onedriveAppCounts"));
+
+            } else {
+
+                this.OnedriveAppCounts.ApplyExploratoryFieldSpec(ec.NewChild("onedriveAppCounts"));
+
+            }
+        }
+        else if (this.OnedriveAppCounts != null && ec.Excludes("onedriveAppCounts",false))
+        {
+            this.OnedriveAppCounts = null;
         }
         //      C# -> AuthCounts? SharepointAppCounts
         // GraphQL -> sharepointAppCounts: AuthCounts! (type)
-        if (this.SharepointAppCounts == null && ec.Includes("sharepointAppCounts",false))
+        if (ec.Includes("sharepointAppCounts",false))
         {
-            this.SharepointAppCounts = new AuthCounts();
-            this.SharepointAppCounts.ApplyExploratoryFieldSpec(ec.NewChild("sharepointAppCounts"));
+            if(this.SharepointAppCounts == null) {
+
+                this.SharepointAppCounts = new AuthCounts();
+                this.SharepointAppCounts.ApplyExploratoryFieldSpec(ec.NewChild("sharepointAppCounts"));
+
+            } else {
+
+                this.SharepointAppCounts.ApplyExploratoryFieldSpec(ec.NewChild("sharepointAppCounts"));
+
+            }
+        }
+        else if (this.SharepointAppCounts != null && ec.Excludes("sharepointAppCounts",false))
+        {
+            this.SharepointAppCounts = null;
         }
         //      C# -> AuthCounts? TeamsAppCounts
         // GraphQL -> teamsAppCounts: AuthCounts! (type)
-        if (this.TeamsAppCounts == null && ec.Includes("teamsAppCounts",false))
+        if (ec.Includes("teamsAppCounts",false))
         {
-            this.TeamsAppCounts = new AuthCounts();
-            this.TeamsAppCounts.ApplyExploratoryFieldSpec(ec.NewChild("teamsAppCounts"));
+            if(this.TeamsAppCounts == null) {
+
+                this.TeamsAppCounts = new AuthCounts();
+                this.TeamsAppCounts.ApplyExploratoryFieldSpec(ec.NewChild("teamsAppCounts"));
+
+            } else {
+
+                this.TeamsAppCounts.ApplyExploratoryFieldSpec(ec.NewChild("teamsAppCounts"));
+
+            }
+        }
+        else if (this.TeamsAppCounts != null && ec.Excludes("teamsAppCounts",false))
+        {
+            this.TeamsAppCounts = null;
         }
     }
 
@@ -190,9 +270,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<O365SubscriptionAppTypeCounts> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Single? AnomalyThreshold
         // GraphQL -> anomalyThreshold: Float (scalar)
         if (this.AnomalyThreshold != null) {
-            s += ind + "anomalyThreshold\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "anomalyThreshold\n" ;
+            } else {
+                s += ind + "anomalyThreshold\n" ;
+            }
         }
         //      C# -> System.Boolean? IsAnomalyAlertEnabled
         // GraphQL -> isAnomalyAlertEnabled: Boolean (scalar)
         if (this.IsAnomalyAlertEnabled != null) {
-            s += ind + "isAnomalyAlertEnabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isAnomalyAlertEnabled\n" ;
+            } else {
+                s += ind + "isAnomalyAlertEnabled\n" ;
+            }
         }
         //      C# -> System.Single? RansomwareThreshold
         // GraphQL -> ransomwareThreshold: Float (scalar)
         if (this.RansomwareThreshold != null) {
-            s += ind + "ransomwareThreshold\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "ransomwareThreshold\n" ;
+            } else {
+                s += ind + "ransomwareThreshold\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Single? AnomalyThreshold
         // GraphQL -> anomalyThreshold: Float (scalar)
-        if (this.AnomalyThreshold == null && ec.Includes("anomalyThreshold",true))
+        if (ec.Includes("anomalyThreshold",true))
         {
-            this.AnomalyThreshold = new System.Single();
+            if(this.AnomalyThreshold == null) {
+
+                this.AnomalyThreshold = new System.Single();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AnomalyThreshold != null && ec.Excludes("anomalyThreshold",true))
+        {
+            this.AnomalyThreshold = null;
         }
         //      C# -> System.Boolean? IsAnomalyAlertEnabled
         // GraphQL -> isAnomalyAlertEnabled: Boolean (scalar)
-        if (this.IsAnomalyAlertEnabled == null && ec.Includes("isAnomalyAlertEnabled",true))
+        if (ec.Includes("isAnomalyAlertEnabled",true))
         {
-            this.IsAnomalyAlertEnabled = true;
+            if(this.IsAnomalyAlertEnabled == null) {
+
+                this.IsAnomalyAlertEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAnomalyAlertEnabled != null && ec.Excludes("isAnomalyAlertEnabled",true))
+        {
+            this.IsAnomalyAlertEnabled = null;
         }
         //      C# -> System.Single? RansomwareThreshold
         // GraphQL -> ransomwareThreshold: Float (scalar)
-        if (this.RansomwareThreshold == null && ec.Includes("ransomwareThreshold",true))
+        if (ec.Includes("ransomwareThreshold",true))
         {
-            this.RansomwareThreshold = new System.Single();
+            if(this.RansomwareThreshold == null) {
+
+                this.RansomwareThreshold = new System.Single();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RansomwareThreshold != null && ec.Excludes("ransomwareThreshold",true))
+        {
+            this.RansomwareThreshold = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<LambdaSettings> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

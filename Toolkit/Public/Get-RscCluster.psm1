@@ -94,18 +94,29 @@ function Get-RscCluster {
             ValueFromPipelineByPropertyName = $true
         )]
         [Switch]$List,
+
         [Parameter(
             ParameterSetName = "List",
             Mandatory = $false, 
             ValueFromPipelineByPropertyName = $true
         )]
         [Int]$First = 1000,
-
-        # Common parameter to all parameter sets:
-        # To see more fields in the response
+        
         [Parameter(
-            Mandatory = $false, 
-            ValueFromPipelineByPropertyName = $true
+            ParameterSetName = "Count",
+            Mandatory = $false,
+            HelpMessage = "Return only the number of clusters"
+        )]
+        [Switch]$Count,
+
+        # Available for -List and -Id
+        [Parameter(
+            ParameterSetName = "List",
+            Mandatory = $false 
+        )]
+        [Parameter(
+            ParameterSetName = "Id",
+            Mandatory = $false
         )]
         [Switch]$Detail
     )
@@ -113,6 +124,14 @@ function Get-RscCluster {
     Process {
         # Re-use existing connection, or create a new one
         Connect-Rsc -ErrorAction Stop | Out-Null
+
+        if ( $PSCmdlet.ParameterSetName -eq "Count" ) {
+            $r = (New-RscQueryCluster -List -RemoveField Nodes).Invoke()
+            # Object's 'Count' property is hidden by the 'Count' method
+            # so we can't do `$r.Count`
+            $clusterCount = $r | Select-Object -ExpandProperty Count
+            return $clusterCount
+        }
 
         # Pick a field profile
         # (that says what fields to select for retrieval)

@@ -7,6 +7,9 @@ using System.Text.RegularExpressions;
 using System.Management.Automation;
 using RubrikSecurityCloud.Types;
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
+
 namespace RubrikSecurityCloud
 {
     public static class JsonUtils

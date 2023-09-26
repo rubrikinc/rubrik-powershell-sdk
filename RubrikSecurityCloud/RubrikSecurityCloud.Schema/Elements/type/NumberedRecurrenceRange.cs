@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int32? NumberOfOccurrences
         // GraphQL -> numberOfOccurrences: Int! (scalar)
         if (this.NumberOfOccurrences != null) {
-            s += ind + "numberOfOccurrences\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "numberOfOccurrences\n" ;
+            } else {
+                s += ind + "numberOfOccurrences\n" ;
+            }
         }
         //      C# -> DateTime? StartDate
         // GraphQL -> startDate: DateTime! (scalar)
         if (this.StartDate != null) {
-            s += ind + "startDate\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "startDate\n" ;
+            } else {
+                s += ind + "startDate\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int32? NumberOfOccurrences
         // GraphQL -> numberOfOccurrences: Int! (scalar)
-        if (this.NumberOfOccurrences == null && ec.Includes("numberOfOccurrences",true))
+        if (ec.Includes("numberOfOccurrences",true))
         {
-            this.NumberOfOccurrences = Int32.MinValue;
+            if(this.NumberOfOccurrences == null) {
+
+                this.NumberOfOccurrences = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.NumberOfOccurrences != null && ec.Excludes("numberOfOccurrences",true))
+        {
+            this.NumberOfOccurrences = null;
         }
         //      C# -> DateTime? StartDate
         // GraphQL -> startDate: DateTime! (scalar)
-        if (this.StartDate == null && ec.Includes("startDate",true))
+        if (ec.Includes("startDate",true))
         {
-            this.StartDate = new DateTime();
+            if(this.StartDate == null) {
+
+                this.StartDate = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.StartDate != null && ec.Excludes("startDate",true))
+        {
+            this.StartDate = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<NumberedRecurrenceRange> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

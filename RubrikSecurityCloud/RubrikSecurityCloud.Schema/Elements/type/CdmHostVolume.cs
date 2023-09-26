@@ -101,44 +101,73 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
         if (this.CdmId != null) {
-            s += ind + "cdmId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cdmId\n" ;
+            } else {
+                s += ind + "cdmId\n" ;
+            }
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
         if (this.ClusterUuid != null) {
-            s += ind + "clusterUuid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterUuid\n" ;
+            } else {
+                s += ind + "clusterUuid\n" ;
+            }
         }
         //      C# -> System.String? FileSystemType
         // GraphQL -> fileSystemType: String (scalar)
         if (this.FileSystemType != null) {
-            s += ind + "fileSystemType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "fileSystemType\n" ;
+            } else {
+                s += ind + "fileSystemType\n" ;
+            }
         }
         //      C# -> List<System.String>? MountPoints
         // GraphQL -> mountPoints: [String!]! (scalar)
         if (this.MountPoints != null) {
-            s += ind + "mountPoints\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "mountPoints\n" ;
+            } else {
+                s += ind + "mountPoints\n" ;
+            }
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long (scalar)
         if (this.Size != null) {
-            s += ind + "size\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "size\n" ;
+            } else {
+                s += ind + "size\n" ;
+            }
         }
         //      C# -> System.String? VolumeGroupId
         // GraphQL -> volumeGroupId: String (scalar)
         if (this.VolumeGroupId != null) {
-            s += ind + "volumeGroupId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "volumeGroupId\n" ;
+            } else {
+                s += ind + "volumeGroupId\n" ;
+            }
         }
         //      C# -> System.String? VolumeId
         // GraphQL -> volumeId: String! (scalar)
         if (this.VolumeId != null) {
-            s += ind + "volumeId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "volumeId\n" ;
+            } else {
+                s += ind + "volumeId\n" ;
+            }
         }
         return s;
     }
@@ -149,45 +178,122 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
-        if (this.CdmId == null && ec.Includes("cdmId",true))
+        if (ec.Includes("cdmId",true))
         {
-            this.CdmId = "FETCH";
+            if(this.CdmId == null) {
+
+                this.CdmId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CdmId != null && ec.Excludes("cdmId",true))
+        {
+            this.CdmId = null;
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
-        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
+        if (ec.Includes("clusterUuid",true))
         {
-            this.ClusterUuid = "FETCH";
+            if(this.ClusterUuid == null) {
+
+                this.ClusterUuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterUuid != null && ec.Excludes("clusterUuid",true))
+        {
+            this.ClusterUuid = null;
         }
         //      C# -> System.String? FileSystemType
         // GraphQL -> fileSystemType: String (scalar)
-        if (this.FileSystemType == null && ec.Includes("fileSystemType",true))
+        if (ec.Includes("fileSystemType",true))
         {
-            this.FileSystemType = "FETCH";
+            if(this.FileSystemType == null) {
+
+                this.FileSystemType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.FileSystemType != null && ec.Excludes("fileSystemType",true))
+        {
+            this.FileSystemType = null;
         }
         //      C# -> List<System.String>? MountPoints
         // GraphQL -> mountPoints: [String!]! (scalar)
-        if (this.MountPoints == null && ec.Includes("mountPoints",true))
+        if (ec.Includes("mountPoints",true))
         {
-            this.MountPoints = new List<System.String>();
+            if(this.MountPoints == null) {
+
+                this.MountPoints = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.MountPoints != null && ec.Excludes("mountPoints",true))
+        {
+            this.MountPoints = null;
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long (scalar)
-        if (this.Size == null && ec.Includes("size",true))
+        if (ec.Includes("size",true))
         {
-            this.Size = new System.Int64();
+            if(this.Size == null) {
+
+                this.Size = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Size != null && ec.Excludes("size",true))
+        {
+            this.Size = null;
         }
         //      C# -> System.String? VolumeGroupId
         // GraphQL -> volumeGroupId: String (scalar)
-        if (this.VolumeGroupId == null && ec.Includes("volumeGroupId",true))
+        if (ec.Includes("volumeGroupId",true))
         {
-            this.VolumeGroupId = "FETCH";
+            if(this.VolumeGroupId == null) {
+
+                this.VolumeGroupId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.VolumeGroupId != null && ec.Excludes("volumeGroupId",true))
+        {
+            this.VolumeGroupId = null;
         }
         //      C# -> System.String? VolumeId
         // GraphQL -> volumeId: String! (scalar)
-        if (this.VolumeId == null && ec.Includes("volumeId",true))
+        if (ec.Includes("volumeId",true))
         {
-            this.VolumeId = "FETCH";
+            if(this.VolumeId == null) {
+
+                this.VolumeId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.VolumeId != null && ec.Excludes("volumeId",true))
+        {
+            this.VolumeId = null;
         }
     }
 
@@ -214,9 +320,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CdmHostVolume> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

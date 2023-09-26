@@ -137,66 +137,111 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.Int64? LagTime
         // GraphQL -> lagTime: Long (scalar)
         if (this.LagTime != null) {
-            s += ind + "lagTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "lagTime\n" ;
+            } else {
+                s += ind + "lagTime\n" ;
+            }
         }
         //      C# -> DateTime? LastAppliedPoint
         // GraphQL -> lastAppliedPoint: DateTime (scalar)
         if (this.LastAppliedPoint != null) {
-            s += ind + "lastAppliedPoint\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "lastAppliedPoint\n" ;
+            } else {
+                s += ind + "lastAppliedPoint\n" ;
+            }
         }
         //      C# -> System.String? Location
         // GraphQL -> location: String! (scalar)
         if (this.Location != null) {
-            s += ind + "location\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "location\n" ;
+            } else {
+                s += ind + "location\n" ;
+            }
         }
         //      C# -> System.String? PrimaryDatabaseId
         // GraphQL -> primaryDatabaseId: String! (scalar)
         if (this.PrimaryDatabaseId != null) {
-            s += ind + "primaryDatabaseId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "primaryDatabaseId\n" ;
+            } else {
+                s += ind + "primaryDatabaseId\n" ;
+            }
         }
         //      C# -> System.Int64? PrimaryDatabaseLogBackupFrequency
         // GraphQL -> primaryDatabaseLogBackupFrequency: Long (scalar)
         if (this.PrimaryDatabaseLogBackupFrequency != null) {
-            s += ind + "primaryDatabaseLogBackupFrequency\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "primaryDatabaseLogBackupFrequency\n" ;
+            } else {
+                s += ind + "primaryDatabaseLogBackupFrequency\n" ;
+            }
         }
         //      C# -> System.String? PrimaryDatabaseName
         // GraphQL -> primaryDatabaseName: String! (scalar)
         if (this.PrimaryDatabaseName != null) {
-            s += ind + "primaryDatabaseName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "primaryDatabaseName\n" ;
+            } else {
+                s += ind + "primaryDatabaseName\n" ;
+            }
         }
         //      C# -> System.String? SecondaryDatabaseId
         // GraphQL -> secondaryDatabaseId: String (scalar)
         if (this.SecondaryDatabaseId != null) {
-            s += ind + "secondaryDatabaseId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "secondaryDatabaseId\n" ;
+            } else {
+                s += ind + "secondaryDatabaseId\n" ;
+            }
         }
         //      C# -> System.String? SecondaryDatabaseName
         // GraphQL -> secondaryDatabaseName: String! (scalar)
         if (this.SecondaryDatabaseName != null) {
-            s += ind + "secondaryDatabaseName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "secondaryDatabaseName\n" ;
+            } else {
+                s += ind + "secondaryDatabaseName\n" ;
+            }
         }
         //      C# -> System.String? State
         // GraphQL -> state: String (scalar)
         if (this.State != null) {
-            s += ind + "state\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "state\n" ;
+            } else {
+                s += ind + "state\n" ;
+            }
         }
         //      C# -> MssqlLogShippingStatusInfo? Status
         // GraphQL -> status: MssqlLogShippingStatusInfo (type)
         if (this.Status != null) {
-            var fspec = this.Status.AsFieldSpec(indent+1);
+            var fspec = this.Status.AsFieldSpec(conf.Child("status"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "status {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "status {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -208,70 +253,192 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.Int64? LagTime
         // GraphQL -> lagTime: Long (scalar)
-        if (this.LagTime == null && ec.Includes("lagTime",true))
+        if (ec.Includes("lagTime",true))
         {
-            this.LagTime = new System.Int64();
+            if(this.LagTime == null) {
+
+                this.LagTime = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LagTime != null && ec.Excludes("lagTime",true))
+        {
+            this.LagTime = null;
         }
         //      C# -> DateTime? LastAppliedPoint
         // GraphQL -> lastAppliedPoint: DateTime (scalar)
-        if (this.LastAppliedPoint == null && ec.Includes("lastAppliedPoint",true))
+        if (ec.Includes("lastAppliedPoint",true))
         {
-            this.LastAppliedPoint = new DateTime();
+            if(this.LastAppliedPoint == null) {
+
+                this.LastAppliedPoint = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastAppliedPoint != null && ec.Excludes("lastAppliedPoint",true))
+        {
+            this.LastAppliedPoint = null;
         }
         //      C# -> System.String? Location
         // GraphQL -> location: String! (scalar)
-        if (this.Location == null && ec.Includes("location",true))
+        if (ec.Includes("location",true))
         {
-            this.Location = "FETCH";
+            if(this.Location == null) {
+
+                this.Location = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Location != null && ec.Excludes("location",true))
+        {
+            this.Location = null;
         }
         //      C# -> System.String? PrimaryDatabaseId
         // GraphQL -> primaryDatabaseId: String! (scalar)
-        if (this.PrimaryDatabaseId == null && ec.Includes("primaryDatabaseId",true))
+        if (ec.Includes("primaryDatabaseId",true))
         {
-            this.PrimaryDatabaseId = "FETCH";
+            if(this.PrimaryDatabaseId == null) {
+
+                this.PrimaryDatabaseId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PrimaryDatabaseId != null && ec.Excludes("primaryDatabaseId",true))
+        {
+            this.PrimaryDatabaseId = null;
         }
         //      C# -> System.Int64? PrimaryDatabaseLogBackupFrequency
         // GraphQL -> primaryDatabaseLogBackupFrequency: Long (scalar)
-        if (this.PrimaryDatabaseLogBackupFrequency == null && ec.Includes("primaryDatabaseLogBackupFrequency",true))
+        if (ec.Includes("primaryDatabaseLogBackupFrequency",true))
         {
-            this.PrimaryDatabaseLogBackupFrequency = new System.Int64();
+            if(this.PrimaryDatabaseLogBackupFrequency == null) {
+
+                this.PrimaryDatabaseLogBackupFrequency = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.PrimaryDatabaseLogBackupFrequency != null && ec.Excludes("primaryDatabaseLogBackupFrequency",true))
+        {
+            this.PrimaryDatabaseLogBackupFrequency = null;
         }
         //      C# -> System.String? PrimaryDatabaseName
         // GraphQL -> primaryDatabaseName: String! (scalar)
-        if (this.PrimaryDatabaseName == null && ec.Includes("primaryDatabaseName",true))
+        if (ec.Includes("primaryDatabaseName",true))
         {
-            this.PrimaryDatabaseName = "FETCH";
+            if(this.PrimaryDatabaseName == null) {
+
+                this.PrimaryDatabaseName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PrimaryDatabaseName != null && ec.Excludes("primaryDatabaseName",true))
+        {
+            this.PrimaryDatabaseName = null;
         }
         //      C# -> System.String? SecondaryDatabaseId
         // GraphQL -> secondaryDatabaseId: String (scalar)
-        if (this.SecondaryDatabaseId == null && ec.Includes("secondaryDatabaseId",true))
+        if (ec.Includes("secondaryDatabaseId",true))
         {
-            this.SecondaryDatabaseId = "FETCH";
+            if(this.SecondaryDatabaseId == null) {
+
+                this.SecondaryDatabaseId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SecondaryDatabaseId != null && ec.Excludes("secondaryDatabaseId",true))
+        {
+            this.SecondaryDatabaseId = null;
         }
         //      C# -> System.String? SecondaryDatabaseName
         // GraphQL -> secondaryDatabaseName: String! (scalar)
-        if (this.SecondaryDatabaseName == null && ec.Includes("secondaryDatabaseName",true))
+        if (ec.Includes("secondaryDatabaseName",true))
         {
-            this.SecondaryDatabaseName = "FETCH";
+            if(this.SecondaryDatabaseName == null) {
+
+                this.SecondaryDatabaseName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SecondaryDatabaseName != null && ec.Excludes("secondaryDatabaseName",true))
+        {
+            this.SecondaryDatabaseName = null;
         }
         //      C# -> System.String? State
         // GraphQL -> state: String (scalar)
-        if (this.State == null && ec.Includes("state",true))
+        if (ec.Includes("state",true))
         {
-            this.State = "FETCH";
+            if(this.State == null) {
+
+                this.State = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.State != null && ec.Excludes("state",true))
+        {
+            this.State = null;
         }
         //      C# -> MssqlLogShippingStatusInfo? Status
         // GraphQL -> status: MssqlLogShippingStatusInfo (type)
-        if (this.Status == null && ec.Includes("status",false))
+        if (ec.Includes("status",false))
         {
-            this.Status = new MssqlLogShippingStatusInfo();
-            this.Status.ApplyExploratoryFieldSpec(ec.NewChild("status"));
+            if(this.Status == null) {
+
+                this.Status = new MssqlLogShippingStatusInfo();
+                this.Status.ApplyExploratoryFieldSpec(ec.NewChild("status"));
+
+            } else {
+
+                this.Status.ApplyExploratoryFieldSpec(ec.NewChild("status"));
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",false))
+        {
+            this.Status = null;
         }
     }
 
@@ -298,9 +465,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<MssqlLogShippingSummary> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

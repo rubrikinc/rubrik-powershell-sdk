@@ -101,44 +101,73 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? Computers
         // GraphQL -> computers: Long (scalar)
         if (this.Computers != null) {
-            s += ind + "computers\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "computers\n" ;
+            } else {
+                s += ind + "computers\n" ;
+            }
         }
         //      C# -> System.Int64? Contacts
         // GraphQL -> contacts: Long (scalar)
         if (this.Contacts != null) {
-            s += ind + "contacts\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "contacts\n" ;
+            } else {
+                s += ind + "contacts\n" ;
+            }
         }
         //      C# -> System.Int64? Containers
         // GraphQL -> containers: Long (scalar)
         if (this.Containers != null) {
-            s += ind + "containers\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "containers\n" ;
+            } else {
+                s += ind + "containers\n" ;
+            }
         }
         //      C# -> System.Int64? Gpos
         // GraphQL -> gpos: Long (scalar)
         if (this.Gpos != null) {
-            s += ind + "gpos\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "gpos\n" ;
+            } else {
+                s += ind + "gpos\n" ;
+            }
         }
         //      C# -> System.Int64? Groups
         // GraphQL -> groups: Long (scalar)
         if (this.Groups != null) {
-            s += ind + "groups\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "groups\n" ;
+            } else {
+                s += ind + "groups\n" ;
+            }
         }
         //      C# -> System.Int64? OrganizationalUnits
         // GraphQL -> organizationalUnits: Long (scalar)
         if (this.OrganizationalUnits != null) {
-            s += ind + "organizationalUnits\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "organizationalUnits\n" ;
+            } else {
+                s += ind + "organizationalUnits\n" ;
+            }
         }
         //      C# -> System.Int64? Users
         // GraphQL -> users: Long (scalar)
         if (this.Users != null) {
-            s += ind + "users\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "users\n" ;
+            } else {
+                s += ind + "users\n" ;
+            }
         }
         return s;
     }
@@ -149,45 +178,122 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? Computers
         // GraphQL -> computers: Long (scalar)
-        if (this.Computers == null && ec.Includes("computers",true))
+        if (ec.Includes("computers",true))
         {
-            this.Computers = new System.Int64();
+            if(this.Computers == null) {
+
+                this.Computers = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Computers != null && ec.Excludes("computers",true))
+        {
+            this.Computers = null;
         }
         //      C# -> System.Int64? Contacts
         // GraphQL -> contacts: Long (scalar)
-        if (this.Contacts == null && ec.Includes("contacts",true))
+        if (ec.Includes("contacts",true))
         {
-            this.Contacts = new System.Int64();
+            if(this.Contacts == null) {
+
+                this.Contacts = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Contacts != null && ec.Excludes("contacts",true))
+        {
+            this.Contacts = null;
         }
         //      C# -> System.Int64? Containers
         // GraphQL -> containers: Long (scalar)
-        if (this.Containers == null && ec.Includes("containers",true))
+        if (ec.Includes("containers",true))
         {
-            this.Containers = new System.Int64();
+            if(this.Containers == null) {
+
+                this.Containers = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Containers != null && ec.Excludes("containers",true))
+        {
+            this.Containers = null;
         }
         //      C# -> System.Int64? Gpos
         // GraphQL -> gpos: Long (scalar)
-        if (this.Gpos == null && ec.Includes("gpos",true))
+        if (ec.Includes("gpos",true))
         {
-            this.Gpos = new System.Int64();
+            if(this.Gpos == null) {
+
+                this.Gpos = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Gpos != null && ec.Excludes("gpos",true))
+        {
+            this.Gpos = null;
         }
         //      C# -> System.Int64? Groups
         // GraphQL -> groups: Long (scalar)
-        if (this.Groups == null && ec.Includes("groups",true))
+        if (ec.Includes("groups",true))
         {
-            this.Groups = new System.Int64();
+            if(this.Groups == null) {
+
+                this.Groups = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Groups != null && ec.Excludes("groups",true))
+        {
+            this.Groups = null;
         }
         //      C# -> System.Int64? OrganizationalUnits
         // GraphQL -> organizationalUnits: Long (scalar)
-        if (this.OrganizationalUnits == null && ec.Includes("organizationalUnits",true))
+        if (ec.Includes("organizationalUnits",true))
         {
-            this.OrganizationalUnits = new System.Int64();
+            if(this.OrganizationalUnits == null) {
+
+                this.OrganizationalUnits = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.OrganizationalUnits != null && ec.Excludes("organizationalUnits",true))
+        {
+            this.OrganizationalUnits = null;
         }
         //      C# -> System.Int64? Users
         // GraphQL -> users: Long (scalar)
-        if (this.Users == null && ec.Includes("users",true))
+        if (ec.Includes("users",true))
         {
-            this.Users = new System.Int64();
+            if(this.Users == null) {
+
+                this.Users = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Users != null && ec.Excludes("users",true))
+        {
+            this.Users = null;
         }
     }
 
@@ -214,9 +320,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ActiveDirectoryObjectsCount> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

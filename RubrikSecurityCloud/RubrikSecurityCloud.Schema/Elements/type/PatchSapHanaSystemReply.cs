@@ -56,24 +56,33 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> AsyncRequestStatus? AsyncRequestStatus
         // GraphQL -> asyncRequestStatus: AsyncRequestStatus (type)
         if (this.AsyncRequestStatus != null) {
-            var fspec = this.AsyncRequestStatus.AsFieldSpec(indent+1);
+            var fspec = this.AsyncRequestStatus.AsFieldSpec(conf.Child("asyncRequestStatus"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "asyncRequestStatus {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "asyncRequestStatus {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> SapHanaSystemSummary? SystemSummary
         // GraphQL -> systemSummary: SapHanaSystemSummary (type)
         if (this.SystemSummary != null) {
-            var fspec = this.SystemSummary.AsFieldSpec(indent+1);
+            var fspec = this.SystemSummary.AsFieldSpec(conf.Child("systemSummary"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "systemSummary {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "systemSummary {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -85,17 +94,41 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> AsyncRequestStatus? AsyncRequestStatus
         // GraphQL -> asyncRequestStatus: AsyncRequestStatus (type)
-        if (this.AsyncRequestStatus == null && ec.Includes("asyncRequestStatus",false))
+        if (ec.Includes("asyncRequestStatus",false))
         {
-            this.AsyncRequestStatus = new AsyncRequestStatus();
-            this.AsyncRequestStatus.ApplyExploratoryFieldSpec(ec.NewChild("asyncRequestStatus"));
+            if(this.AsyncRequestStatus == null) {
+
+                this.AsyncRequestStatus = new AsyncRequestStatus();
+                this.AsyncRequestStatus.ApplyExploratoryFieldSpec(ec.NewChild("asyncRequestStatus"));
+
+            } else {
+
+                this.AsyncRequestStatus.ApplyExploratoryFieldSpec(ec.NewChild("asyncRequestStatus"));
+
+            }
+        }
+        else if (this.AsyncRequestStatus != null && ec.Excludes("asyncRequestStatus",false))
+        {
+            this.AsyncRequestStatus = null;
         }
         //      C# -> SapHanaSystemSummary? SystemSummary
         // GraphQL -> systemSummary: SapHanaSystemSummary (type)
-        if (this.SystemSummary == null && ec.Includes("systemSummary",false))
+        if (ec.Includes("systemSummary",false))
         {
-            this.SystemSummary = new SapHanaSystemSummary();
-            this.SystemSummary.ApplyExploratoryFieldSpec(ec.NewChild("systemSummary"));
+            if(this.SystemSummary == null) {
+
+                this.SystemSummary = new SapHanaSystemSummary();
+                this.SystemSummary.ApplyExploratoryFieldSpec(ec.NewChild("systemSummary"));
+
+            } else {
+
+                this.SystemSummary.ApplyExploratoryFieldSpec(ec.NewChild("systemSummary"));
+
+            }
+        }
+        else if (this.SystemSummary != null && ec.Excludes("systemSummary",false))
+        {
+            this.SystemSummary = null;
         }
     }
 
@@ -122,9 +155,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<PatchSapHanaSystemReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

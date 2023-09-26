@@ -101,44 +101,73 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> DiscoveryReportTablePolicyStatus? PolicyStatus
         // GraphQL -> policyStatus: DiscoveryReportTablePolicyStatus! (enum)
         if (this.PolicyStatus != null) {
-            s += ind + "policyStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "policyStatus\n" ;
+            } else {
+                s += ind + "policyStatus\n" ;
+            }
         }
         //      C# -> System.Int32? NumHighRiskLocations
         // GraphQL -> numHighRiskLocations: Int! (scalar)
         if (this.NumHighRiskLocations != null) {
-            s += ind + "numHighRiskLocations\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "numHighRiskLocations\n" ;
+            } else {
+                s += ind + "numHighRiskLocations\n" ;
+            }
         }
         //      C# -> System.Int32? NumObjects
         // GraphQL -> numObjects: Int! (scalar)
         if (this.NumObjects != null) {
-            s += ind + "numObjects\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "numObjects\n" ;
+            } else {
+                s += ind + "numObjects\n" ;
+            }
         }
         //      C# -> System.Int32? NumViolatedFiles
         // GraphQL -> numViolatedFiles: Int! (scalar)
         if (this.NumViolatedFiles != null) {
-            s += ind + "numViolatedFiles\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "numViolatedFiles\n" ;
+            } else {
+                s += ind + "numViolatedFiles\n" ;
+            }
         }
         //      C# -> System.String? PolicyId
         // GraphQL -> policyId: String! (scalar)
         if (this.PolicyId != null) {
-            s += ind + "policyId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "policyId\n" ;
+            } else {
+                s += ind + "policyId\n" ;
+            }
         }
         //      C# -> System.String? PolicyName
         // GraphQL -> policyName: String! (scalar)
         if (this.PolicyName != null) {
-            s += ind + "policyName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "policyName\n" ;
+            } else {
+                s += ind + "policyName\n" ;
+            }
         }
         //      C# -> System.Int32? Violations
         // GraphQL -> violations: Int! (scalar)
         if (this.Violations != null) {
-            s += ind + "violations\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "violations\n" ;
+            } else {
+                s += ind + "violations\n" ;
+            }
         }
         return s;
     }
@@ -149,45 +178,122 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> DiscoveryReportTablePolicyStatus? PolicyStatus
         // GraphQL -> policyStatus: DiscoveryReportTablePolicyStatus! (enum)
-        if (this.PolicyStatus == null && ec.Includes("policyStatus",true))
+        if (ec.Includes("policyStatus",true))
         {
-            this.PolicyStatus = new DiscoveryReportTablePolicyStatus();
+            if(this.PolicyStatus == null) {
+
+                this.PolicyStatus = new DiscoveryReportTablePolicyStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.PolicyStatus != null && ec.Excludes("policyStatus",true))
+        {
+            this.PolicyStatus = null;
         }
         //      C# -> System.Int32? NumHighRiskLocations
         // GraphQL -> numHighRiskLocations: Int! (scalar)
-        if (this.NumHighRiskLocations == null && ec.Includes("numHighRiskLocations",true))
+        if (ec.Includes("numHighRiskLocations",true))
         {
-            this.NumHighRiskLocations = Int32.MinValue;
+            if(this.NumHighRiskLocations == null) {
+
+                this.NumHighRiskLocations = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.NumHighRiskLocations != null && ec.Excludes("numHighRiskLocations",true))
+        {
+            this.NumHighRiskLocations = null;
         }
         //      C# -> System.Int32? NumObjects
         // GraphQL -> numObjects: Int! (scalar)
-        if (this.NumObjects == null && ec.Includes("numObjects",true))
+        if (ec.Includes("numObjects",true))
         {
-            this.NumObjects = Int32.MinValue;
+            if(this.NumObjects == null) {
+
+                this.NumObjects = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.NumObjects != null && ec.Excludes("numObjects",true))
+        {
+            this.NumObjects = null;
         }
         //      C# -> System.Int32? NumViolatedFiles
         // GraphQL -> numViolatedFiles: Int! (scalar)
-        if (this.NumViolatedFiles == null && ec.Includes("numViolatedFiles",true))
+        if (ec.Includes("numViolatedFiles",true))
         {
-            this.NumViolatedFiles = Int32.MinValue;
+            if(this.NumViolatedFiles == null) {
+
+                this.NumViolatedFiles = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.NumViolatedFiles != null && ec.Excludes("numViolatedFiles",true))
+        {
+            this.NumViolatedFiles = null;
         }
         //      C# -> System.String? PolicyId
         // GraphQL -> policyId: String! (scalar)
-        if (this.PolicyId == null && ec.Includes("policyId",true))
+        if (ec.Includes("policyId",true))
         {
-            this.PolicyId = "FETCH";
+            if(this.PolicyId == null) {
+
+                this.PolicyId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PolicyId != null && ec.Excludes("policyId",true))
+        {
+            this.PolicyId = null;
         }
         //      C# -> System.String? PolicyName
         // GraphQL -> policyName: String! (scalar)
-        if (this.PolicyName == null && ec.Includes("policyName",true))
+        if (ec.Includes("policyName",true))
         {
-            this.PolicyName = "FETCH";
+            if(this.PolicyName == null) {
+
+                this.PolicyName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PolicyName != null && ec.Excludes("policyName",true))
+        {
+            this.PolicyName = null;
         }
         //      C# -> System.Int32? Violations
         // GraphQL -> violations: Int! (scalar)
-        if (this.Violations == null && ec.Includes("violations",true))
+        if (ec.Includes("violations",true))
         {
-            this.Violations = Int32.MinValue;
+            if(this.Violations == null) {
+
+                this.Violations = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Violations != null && ec.Excludes("violations",true))
+        {
+            this.Violations = null;
         }
     }
 
@@ -214,9 +320,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SonarReportRow> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

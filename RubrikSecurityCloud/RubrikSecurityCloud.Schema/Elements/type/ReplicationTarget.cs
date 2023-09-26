@@ -83,34 +83,55 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.String? TargetClusterAddress
         // GraphQL -> targetClusterAddress: String (scalar)
         if (this.TargetClusterAddress != null) {
-            s += ind + "targetClusterAddress\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "targetClusterAddress\n" ;
+            } else {
+                s += ind + "targetClusterAddress\n" ;
+            }
         }
         //      C# -> System.String? TargetClusterName
         // GraphQL -> targetClusterName: String! (scalar)
         if (this.TargetClusterName != null) {
-            s += ind + "targetClusterName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "targetClusterName\n" ;
+            } else {
+                s += ind + "targetClusterName\n" ;
+            }
         }
         //      C# -> System.String? TargetClusterUuid
         // GraphQL -> targetClusterUuid: UUID! (scalar)
         if (this.TargetClusterUuid != null) {
-            s += ind + "targetClusterUuid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "targetClusterUuid\n" ;
+            } else {
+                s += ind + "targetClusterUuid\n" ;
+            }
         }
         //      C# -> System.Int64? TotalStorage
         // GraphQL -> totalStorage: Long (scalar)
         if (this.TotalStorage != null) {
-            s += ind + "totalStorage\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "totalStorage\n" ;
+            } else {
+                s += ind + "totalStorage\n" ;
+            }
         }
         return s;
     }
@@ -121,33 +142,88 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.String? TargetClusterAddress
         // GraphQL -> targetClusterAddress: String (scalar)
-        if (this.TargetClusterAddress == null && ec.Includes("targetClusterAddress",true))
+        if (ec.Includes("targetClusterAddress",true))
         {
-            this.TargetClusterAddress = "FETCH";
+            if(this.TargetClusterAddress == null) {
+
+                this.TargetClusterAddress = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TargetClusterAddress != null && ec.Excludes("targetClusterAddress",true))
+        {
+            this.TargetClusterAddress = null;
         }
         //      C# -> System.String? TargetClusterName
         // GraphQL -> targetClusterName: String! (scalar)
-        if (this.TargetClusterName == null && ec.Includes("targetClusterName",true))
+        if (ec.Includes("targetClusterName",true))
         {
-            this.TargetClusterName = "FETCH";
+            if(this.TargetClusterName == null) {
+
+                this.TargetClusterName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TargetClusterName != null && ec.Excludes("targetClusterName",true))
+        {
+            this.TargetClusterName = null;
         }
         //      C# -> System.String? TargetClusterUuid
         // GraphQL -> targetClusterUuid: UUID! (scalar)
-        if (this.TargetClusterUuid == null && ec.Includes("targetClusterUuid",true))
+        if (ec.Includes("targetClusterUuid",true))
         {
-            this.TargetClusterUuid = "FETCH";
+            if(this.TargetClusterUuid == null) {
+
+                this.TargetClusterUuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TargetClusterUuid != null && ec.Excludes("targetClusterUuid",true))
+        {
+            this.TargetClusterUuid = null;
         }
         //      C# -> System.Int64? TotalStorage
         // GraphQL -> totalStorage: Long (scalar)
-        if (this.TotalStorage == null && ec.Includes("totalStorage",true))
+        if (ec.Includes("totalStorage",true))
         {
-            this.TotalStorage = new System.Int64();
+            if(this.TotalStorage == null) {
+
+                this.TotalStorage = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalStorage != null && ec.Excludes("totalStorage",true))
+        {
+            this.TotalStorage = null;
         }
     }
 
@@ -174,9 +250,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ReplicationTarget> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

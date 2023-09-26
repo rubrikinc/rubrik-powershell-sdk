@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<System.String>? FailedWorkloadIds
         // GraphQL -> failedWorkloadIds: [UUID!]! (scalar)
         if (this.FailedWorkloadIds != null) {
-            s += ind + "failedWorkloadIds\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "failedWorkloadIds\n" ;
+            } else {
+                s += ind + "failedWorkloadIds\n" ;
+            }
         }
         //      C# -> List<System.String>? SuccessWorkloadIds
         // GraphQL -> successWorkloadIds: [UUID!]! (scalar)
         if (this.SuccessWorkloadIds != null) {
-            s += ind + "successWorkloadIds\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "successWorkloadIds\n" ;
+            } else {
+                s += ind + "successWorkloadIds\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<System.String>? FailedWorkloadIds
         // GraphQL -> failedWorkloadIds: [UUID!]! (scalar)
-        if (this.FailedWorkloadIds == null && ec.Includes("failedWorkloadIds",true))
+        if (ec.Includes("failedWorkloadIds",true))
         {
-            this.FailedWorkloadIds = new List<System.String>();
+            if(this.FailedWorkloadIds == null) {
+
+                this.FailedWorkloadIds = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.FailedWorkloadIds != null && ec.Excludes("failedWorkloadIds",true))
+        {
+            this.FailedWorkloadIds = null;
         }
         //      C# -> List<System.String>? SuccessWorkloadIds
         // GraphQL -> successWorkloadIds: [UUID!]! (scalar)
-        if (this.SuccessWorkloadIds == null && ec.Includes("successWorkloadIds",true))
+        if (ec.Includes("successWorkloadIds",true))
         {
-            this.SuccessWorkloadIds = new List<System.String>();
+            if(this.SuccessWorkloadIds == null) {
+
+                this.SuccessWorkloadIds = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SuccessWorkloadIds != null && ec.Excludes("successWorkloadIds",true))
+        {
+            this.SuccessWorkloadIds = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<EnableDisableAppConsistencyReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

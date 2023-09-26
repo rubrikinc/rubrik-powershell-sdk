@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> FailoverClusterConnectivityStatus? Connectivity
         // GraphQL -> connectivity: FailoverClusterConnectivityStatus! (enum)
         if (this.Connectivity != null) {
-            s += ind + "connectivity\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "connectivity\n" ;
+            } else {
+                s += ind + "connectivity\n" ;
+            }
         }
         //      C# -> DateTime? TimestampMillis
         // GraphQL -> timestampMillis: DateTime (scalar)
         if (this.TimestampMillis != null) {
-            s += ind + "timestampMillis\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "timestampMillis\n" ;
+            } else {
+                s += ind + "timestampMillis\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> FailoverClusterConnectivityStatus? Connectivity
         // GraphQL -> connectivity: FailoverClusterConnectivityStatus! (enum)
-        if (this.Connectivity == null && ec.Includes("connectivity",true))
+        if (ec.Includes("connectivity",true))
         {
-            this.Connectivity = new FailoverClusterConnectivityStatus();
+            if(this.Connectivity == null) {
+
+                this.Connectivity = new FailoverClusterConnectivityStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Connectivity != null && ec.Excludes("connectivity",true))
+        {
+            this.Connectivity = null;
         }
         //      C# -> DateTime? TimestampMillis
         // GraphQL -> timestampMillis: DateTime (scalar)
-        if (this.TimestampMillis == null && ec.Includes("timestampMillis",true))
+        if (ec.Includes("timestampMillis",true))
         {
-            this.TimestampMillis = new DateTime();
+            if(this.TimestampMillis == null) {
+
+                this.TimestampMillis = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TimestampMillis != null && ec.Excludes("timestampMillis",true))
+        {
+            this.TimestampMillis = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<FailoverClusterStatus> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

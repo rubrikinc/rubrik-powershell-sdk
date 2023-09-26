@@ -65,29 +65,42 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Boolean? ShouldDisconnectStandbyUsers
         // GraphQL -> shouldDisconnectStandbyUsers: Boolean (scalar)
         if (this.ShouldDisconnectStandbyUsers != null) {
-            s += ind + "shouldDisconnectStandbyUsers\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "shouldDisconnectStandbyUsers\n" ;
+            } else {
+                s += ind + "shouldDisconnectStandbyUsers\n" ;
+            }
         }
         //      C# -> MssqlLogShippingLinks? Links
         // GraphQL -> links: MssqlLogShippingLinks (type)
         if (this.Links != null) {
-            var fspec = this.Links.AsFieldSpec(indent+1);
+            var fspec = this.Links.AsFieldSpec(conf.Child("links"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "links {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "links {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> MssqlLogShippingSummaryV2? MssqlLogShippingSummaryV2
         // GraphQL -> mssqlLogShippingSummaryV2: MssqlLogShippingSummaryV2 (type)
         if (this.MssqlLogShippingSummaryV2 != null) {
-            var fspec = this.MssqlLogShippingSummaryV2.AsFieldSpec(indent+1);
+            var fspec = this.MssqlLogShippingSummaryV2.AsFieldSpec(conf.Child("mssqlLogShippingSummaryV2"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "mssqlLogShippingSummaryV2 {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "mssqlLogShippingSummaryV2 {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -99,23 +112,58 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Boolean? ShouldDisconnectStandbyUsers
         // GraphQL -> shouldDisconnectStandbyUsers: Boolean (scalar)
-        if (this.ShouldDisconnectStandbyUsers == null && ec.Includes("shouldDisconnectStandbyUsers",true))
+        if (ec.Includes("shouldDisconnectStandbyUsers",true))
         {
-            this.ShouldDisconnectStandbyUsers = true;
+            if(this.ShouldDisconnectStandbyUsers == null) {
+
+                this.ShouldDisconnectStandbyUsers = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShouldDisconnectStandbyUsers != null && ec.Excludes("shouldDisconnectStandbyUsers",true))
+        {
+            this.ShouldDisconnectStandbyUsers = null;
         }
         //      C# -> MssqlLogShippingLinks? Links
         // GraphQL -> links: MssqlLogShippingLinks (type)
-        if (this.Links == null && ec.Includes("links",false))
+        if (ec.Includes("links",false))
         {
-            this.Links = new MssqlLogShippingLinks();
-            this.Links.ApplyExploratoryFieldSpec(ec.NewChild("links"));
+            if(this.Links == null) {
+
+                this.Links = new MssqlLogShippingLinks();
+                this.Links.ApplyExploratoryFieldSpec(ec.NewChild("links"));
+
+            } else {
+
+                this.Links.ApplyExploratoryFieldSpec(ec.NewChild("links"));
+
+            }
+        }
+        else if (this.Links != null && ec.Excludes("links",false))
+        {
+            this.Links = null;
         }
         //      C# -> MssqlLogShippingSummaryV2? MssqlLogShippingSummaryV2
         // GraphQL -> mssqlLogShippingSummaryV2: MssqlLogShippingSummaryV2 (type)
-        if (this.MssqlLogShippingSummaryV2 == null && ec.Includes("mssqlLogShippingSummaryV2",false))
+        if (ec.Includes("mssqlLogShippingSummaryV2",false))
         {
-            this.MssqlLogShippingSummaryV2 = new MssqlLogShippingSummaryV2();
-            this.MssqlLogShippingSummaryV2.ApplyExploratoryFieldSpec(ec.NewChild("mssqlLogShippingSummaryV2"));
+            if(this.MssqlLogShippingSummaryV2 == null) {
+
+                this.MssqlLogShippingSummaryV2 = new MssqlLogShippingSummaryV2();
+                this.MssqlLogShippingSummaryV2.ApplyExploratoryFieldSpec(ec.NewChild("mssqlLogShippingSummaryV2"));
+
+            } else {
+
+                this.MssqlLogShippingSummaryV2.ApplyExploratoryFieldSpec(ec.NewChild("mssqlLogShippingSummaryV2"));
+
+            }
+        }
+        else if (this.MssqlLogShippingSummaryV2 != null && ec.Excludes("mssqlLogShippingSummaryV2",false))
+        {
+            this.MssqlLogShippingSummaryV2 = null;
         }
     }
 
@@ -142,9 +190,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<UpdateMssqlLogShippingConfigurationReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

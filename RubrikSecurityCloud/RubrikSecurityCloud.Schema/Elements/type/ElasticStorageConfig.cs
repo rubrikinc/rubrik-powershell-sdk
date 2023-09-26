@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Boolean? IsImmutable
         // GraphQL -> isImmutable: Boolean! (scalar)
         if (this.IsImmutable != null) {
-            s += ind + "isImmutable\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isImmutable\n" ;
+            } else {
+                s += ind + "isImmutable\n" ;
+            }
         }
         //      C# -> System.String? LocationId
         // GraphQL -> locationId: String! (scalar)
         if (this.LocationId != null) {
-            s += ind + "locationId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "locationId\n" ;
+            } else {
+                s += ind + "locationId\n" ;
+            }
         }
         //      C# -> System.String? LocationName
         // GraphQL -> locationName: String! (scalar)
         if (this.LocationName != null) {
-            s += ind + "locationName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "locationName\n" ;
+            } else {
+                s += ind + "locationName\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Boolean? IsImmutable
         // GraphQL -> isImmutable: Boolean! (scalar)
-        if (this.IsImmutable == null && ec.Includes("isImmutable",true))
+        if (ec.Includes("isImmutable",true))
         {
-            this.IsImmutable = true;
+            if(this.IsImmutable == null) {
+
+                this.IsImmutable = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsImmutable != null && ec.Excludes("isImmutable",true))
+        {
+            this.IsImmutable = null;
         }
         //      C# -> System.String? LocationId
         // GraphQL -> locationId: String! (scalar)
-        if (this.LocationId == null && ec.Includes("locationId",true))
+        if (ec.Includes("locationId",true))
         {
-            this.LocationId = "FETCH";
+            if(this.LocationId == null) {
+
+                this.LocationId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.LocationId != null && ec.Excludes("locationId",true))
+        {
+            this.LocationId = null;
         }
         //      C# -> System.String? LocationName
         // GraphQL -> locationName: String! (scalar)
-        if (this.LocationName == null && ec.Includes("locationName",true))
+        if (ec.Includes("locationName",true))
         {
-            this.LocationName = "FETCH";
+            if(this.LocationName == null) {
+
+                this.LocationName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.LocationName != null && ec.Excludes("locationName",true))
+        {
+            this.LocationName = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ElasticStorageConfig> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

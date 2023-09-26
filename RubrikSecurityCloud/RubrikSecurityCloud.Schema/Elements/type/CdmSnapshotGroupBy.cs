@@ -65,32 +65,45 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<CdmSnapshotGroupBy>? CdmSnapshotGroupByField
         // GraphQL -> cdmSnapshotGroupBy: [CdmSnapshotGroupBy!]! (type)
         if (this.CdmSnapshotGroupByField != null) {
-            var fspec = this.CdmSnapshotGroupByField.AsFieldSpec(indent+1);
+            var fspec = this.CdmSnapshotGroupByField.AsFieldSpec(conf.Child("cdmSnapshotGroupBy"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "cdmSnapshotGroupBy {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cdmSnapshotGroupBy {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> CdmSnapshotConnection? SnapshotConnection
         // GraphQL -> snapshotConnection: CdmSnapshotConnection! (type)
         if (this.SnapshotConnection != null) {
-            var fspec = this.SnapshotConnection.AsFieldSpec(indent+1);
+            var fspec = this.SnapshotConnection.AsFieldSpec(conf.Child("snapshotConnection"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "snapshotConnection {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "snapshotConnection {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> CdmSnapshotGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: CdmSnapshotGroupByInfo! (union)
         if (this.GroupByInfo != null) {
-            var fspec = this.GroupByInfo.AsFieldSpec(indent+1);
+            var fspec = this.GroupByInfo.AsFieldSpec(conf.Child("groupByInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -102,25 +115,65 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<CdmSnapshotGroupBy>? CdmSnapshotGroupByField
         // GraphQL -> cdmSnapshotGroupBy: [CdmSnapshotGroupBy!]! (type)
-        if (this.CdmSnapshotGroupByField == null && ec.Includes("cdmSnapshotGroupBy",false))
+        if (ec.Includes("cdmSnapshotGroupBy",false))
         {
-            this.CdmSnapshotGroupByField = new List<CdmSnapshotGroupBy>();
-            this.CdmSnapshotGroupByField.ApplyExploratoryFieldSpec(ec.NewChild("cdmSnapshotGroupBy"));
+            if(this.CdmSnapshotGroupByField == null) {
+
+                this.CdmSnapshotGroupByField = new List<CdmSnapshotGroupBy>();
+                this.CdmSnapshotGroupByField.ApplyExploratoryFieldSpec(ec.NewChild("cdmSnapshotGroupBy"));
+
+            } else {
+
+                this.CdmSnapshotGroupByField.ApplyExploratoryFieldSpec(ec.NewChild("cdmSnapshotGroupBy"));
+
+            }
+        }
+        else if (this.CdmSnapshotGroupByField != null && ec.Excludes("cdmSnapshotGroupBy",false))
+        {
+            this.CdmSnapshotGroupByField = null;
         }
         //      C# -> CdmSnapshotConnection? SnapshotConnection
         // GraphQL -> snapshotConnection: CdmSnapshotConnection! (type)
-        if (this.SnapshotConnection == null && ec.Includes("snapshotConnection",false))
+        if (ec.Includes("snapshotConnection",false))
         {
-            this.SnapshotConnection = new CdmSnapshotConnection();
-            this.SnapshotConnection.ApplyExploratoryFieldSpec(ec.NewChild("snapshotConnection"));
+            if(this.SnapshotConnection == null) {
+
+                this.SnapshotConnection = new CdmSnapshotConnection();
+                this.SnapshotConnection.ApplyExploratoryFieldSpec(ec.NewChild("snapshotConnection"));
+
+            } else {
+
+                this.SnapshotConnection.ApplyExploratoryFieldSpec(ec.NewChild("snapshotConnection"));
+
+            }
+        }
+        else if (this.SnapshotConnection != null && ec.Excludes("snapshotConnection",false))
+        {
+            this.SnapshotConnection = null;
         }
         //      C# -> CdmSnapshotGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: CdmSnapshotGroupByInfo! (union)
-        if (this.GroupByInfo == null && ec.Includes("groupByInfo",false))
+        if (ec.Includes("groupByInfo",false))
         {
-            var impls = new List<CdmSnapshotGroupByInfo>();
-            impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
-            this.GroupByInfo = (CdmSnapshotGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+            if(this.GroupByInfo == null) {
+
+                var impls = new List<CdmSnapshotGroupByInfo>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
+                this.GroupByInfo = (CdmSnapshotGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<CdmSnapshotGroupByInfo>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
+                this.GroupByInfo = (CdmSnapshotGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.GroupByInfo != null && ec.Excludes("groupByInfo",false))
+        {
+            this.GroupByInfo = null;
         }
     }
 
@@ -147,9 +200,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CdmSnapshotGroupBy> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -83,36 +83,57 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> RetentionUnit? RetentionUnit
         // GraphQL -> retentionUnit: RetentionUnit! (enum)
         if (this.RetentionUnit != null) {
-            s += ind + "retentionUnit\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "retentionUnit\n" ;
+            } else {
+                s += ind + "retentionUnit\n" ;
+            }
         }
         //      C# -> System.String? ReplicationTargetId
         // GraphQL -> replicationTargetId: String! (scalar)
         if (this.ReplicationTargetId != null) {
-            s += ind + "replicationTargetId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "replicationTargetId\n" ;
+            } else {
+                s += ind + "replicationTargetId\n" ;
+            }
         }
         //      C# -> System.String? ReplicationTargetName
         // GraphQL -> replicationTargetName: String! (scalar)
         if (this.ReplicationTargetName != null) {
-            s += ind + "replicationTargetName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "replicationTargetName\n" ;
+            } else {
+                s += ind + "replicationTargetName\n" ;
+            }
         }
         //      C# -> System.Int32? Retention
         // GraphQL -> retention: Int! (scalar)
         if (this.Retention != null) {
-            s += ind + "retention\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "retention\n" ;
+            } else {
+                s += ind + "retention\n" ;
+            }
         }
         //      C# -> Cluster? TargetCluster
         // GraphQL -> targetCluster: Cluster (type)
         if (this.TargetCluster != null) {
-            var fspec = this.TargetCluster.AsFieldSpec(indent+1);
+            var fspec = this.TargetCluster.AsFieldSpec(conf.Child("targetCluster"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "targetCluster {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "targetCluster {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -124,34 +145,90 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> RetentionUnit? RetentionUnit
         // GraphQL -> retentionUnit: RetentionUnit! (enum)
-        if (this.RetentionUnit == null && ec.Includes("retentionUnit",true))
+        if (ec.Includes("retentionUnit",true))
         {
-            this.RetentionUnit = new RetentionUnit();
+            if(this.RetentionUnit == null) {
+
+                this.RetentionUnit = new RetentionUnit();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RetentionUnit != null && ec.Excludes("retentionUnit",true))
+        {
+            this.RetentionUnit = null;
         }
         //      C# -> System.String? ReplicationTargetId
         // GraphQL -> replicationTargetId: String! (scalar)
-        if (this.ReplicationTargetId == null && ec.Includes("replicationTargetId",true))
+        if (ec.Includes("replicationTargetId",true))
         {
-            this.ReplicationTargetId = "FETCH";
+            if(this.ReplicationTargetId == null) {
+
+                this.ReplicationTargetId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ReplicationTargetId != null && ec.Excludes("replicationTargetId",true))
+        {
+            this.ReplicationTargetId = null;
         }
         //      C# -> System.String? ReplicationTargetName
         // GraphQL -> replicationTargetName: String! (scalar)
-        if (this.ReplicationTargetName == null && ec.Includes("replicationTargetName",true))
+        if (ec.Includes("replicationTargetName",true))
         {
-            this.ReplicationTargetName = "FETCH";
+            if(this.ReplicationTargetName == null) {
+
+                this.ReplicationTargetName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ReplicationTargetName != null && ec.Excludes("replicationTargetName",true))
+        {
+            this.ReplicationTargetName = null;
         }
         //      C# -> System.Int32? Retention
         // GraphQL -> retention: Int! (scalar)
-        if (this.Retention == null && ec.Includes("retention",true))
+        if (ec.Includes("retention",true))
         {
-            this.Retention = Int32.MinValue;
+            if(this.Retention == null) {
+
+                this.Retention = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Retention != null && ec.Excludes("retention",true))
+        {
+            this.Retention = null;
         }
         //      C# -> Cluster? TargetCluster
         // GraphQL -> targetCluster: Cluster (type)
-        if (this.TargetCluster == null && ec.Includes("targetCluster",false))
+        if (ec.Includes("targetCluster",false))
         {
-            this.TargetCluster = new Cluster();
-            this.TargetCluster.ApplyExploratoryFieldSpec(ec.NewChild("targetCluster"));
+            if(this.TargetCluster == null) {
+
+                this.TargetCluster = new Cluster();
+                this.TargetCluster.ApplyExploratoryFieldSpec(ec.NewChild("targetCluster"));
+
+            } else {
+
+                this.TargetCluster.ApplyExploratoryFieldSpec(ec.NewChild("targetCluster"));
+
+            }
+        }
+        else if (this.TargetCluster != null && ec.Excludes("targetCluster",false))
+        {
+            this.TargetCluster = null;
         }
     }
 
@@ -178,9 +255,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<UnidirectionalReplicationSpec> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

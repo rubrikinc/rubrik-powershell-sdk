@@ -110,57 +110,90 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> ArchivalGroupType? GroupType
         // GraphQL -> groupType: ArchivalGroupType! (enum)
         if (this.GroupType != null) {
-            s += ind + "groupType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "groupType\n" ;
+            } else {
+                s += ind + "groupType\n" ;
+            }
         }
         //      C# -> TargetType? TargetType
         // GraphQL -> targetType: TargetType! (enum)
         if (this.TargetType != null) {
-            s += ind + "targetType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "targetType\n" ;
+            } else {
+                s += ind + "targetType\n" ;
+            }
         }
         //      C# -> List<ArchivalGroupTieringStatus>? TieringStatus
         // GraphQL -> tieringStatus: [ArchivalGroupTieringStatus!] (enum)
         if (this.TieringStatus != null) {
-            s += ind + "tieringStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "tieringStatus\n" ;
+            } else {
+                s += ind + "tieringStatus\n" ;
+            }
         }
         //      C# -> TargetTemplate? TargetTemplate
         // GraphQL -> targetTemplate: TargetTemplate (interface)
         if (this.TargetTemplate != null) {
-                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.TargetTemplate).AsFieldSpec(indent+1);
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.TargetTemplate).AsFieldSpec(conf.Child("targetTemplate"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "targetTemplate {\n" + fspec + ind + "}\n";
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "targetTemplate {\n" + fspec + ind + "}\n";
+                }
             }
         }
         //      C# -> List<Target>? Targets
         // GraphQL -> targets: [Target!] (interface)
         if (this.Targets != null) {
-                var fspec = this.Targets.AsFieldSpec(indent+1);
+                var fspec = this.Targets.AsFieldSpec(conf.Child("targets"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "targets {\n" + fspec + ind + "}\n";
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "targets {\n" + fspec + ind + "}\n";
+                }
             }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> ArchivalGroupConnectionStatus? ConnectionStatus
         // GraphQL -> connectionStatus: ArchivalGroupConnectionStatus (type)
         if (this.ConnectionStatus != null) {
-            var fspec = this.ConnectionStatus.AsFieldSpec(indent+1);
+            var fspec = this.ConnectionStatus.AsFieldSpec(conf.Child("connectionStatus"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "connectionStatus {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "connectionStatus {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -172,55 +205,150 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> ArchivalGroupType? GroupType
         // GraphQL -> groupType: ArchivalGroupType! (enum)
-        if (this.GroupType == null && ec.Includes("groupType",true))
+        if (ec.Includes("groupType",true))
         {
-            this.GroupType = new ArchivalGroupType();
+            if(this.GroupType == null) {
+
+                this.GroupType = new ArchivalGroupType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.GroupType != null && ec.Excludes("groupType",true))
+        {
+            this.GroupType = null;
         }
         //      C# -> TargetType? TargetType
         // GraphQL -> targetType: TargetType! (enum)
-        if (this.TargetType == null && ec.Includes("targetType",true))
+        if (ec.Includes("targetType",true))
         {
-            this.TargetType = new TargetType();
+            if(this.TargetType == null) {
+
+                this.TargetType = new TargetType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TargetType != null && ec.Excludes("targetType",true))
+        {
+            this.TargetType = null;
         }
         //      C# -> List<ArchivalGroupTieringStatus>? TieringStatus
         // GraphQL -> tieringStatus: [ArchivalGroupTieringStatus!] (enum)
-        if (this.TieringStatus == null && ec.Includes("tieringStatus",true))
+        if (ec.Includes("tieringStatus",true))
         {
-            this.TieringStatus = new List<ArchivalGroupTieringStatus>();
+            if(this.TieringStatus == null) {
+
+                this.TieringStatus = new List<ArchivalGroupTieringStatus>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TieringStatus != null && ec.Excludes("tieringStatus",true))
+        {
+            this.TieringStatus = null;
         }
         //      C# -> TargetTemplate? TargetTemplate
         // GraphQL -> targetTemplate: TargetTemplate (interface)
-        if (this.TargetTemplate == null && ec.Includes("targetTemplate",false))
+        if (ec.Includes("targetTemplate",false))
         {
-            var impls = new List<TargetTemplate>();
-            impls.ApplyExploratoryFieldSpec(ec.NewChild("targetTemplate"));
-            this.TargetTemplate = (TargetTemplate)InterfaceHelper.MakeCompositeFromList(impls);
+            if(this.TargetTemplate == null) {
+
+                var impls = new List<TargetTemplate>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("targetTemplate"));
+                this.TargetTemplate = (TargetTemplate)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<TargetTemplate>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("targetTemplate"));
+                this.TargetTemplate = (TargetTemplate)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.TargetTemplate != null && ec.Excludes("targetTemplate",false))
+        {
+            this.TargetTemplate = null;
         }
         //      C# -> List<Target>? Targets
         // GraphQL -> targets: [Target!] (interface)
-        if (this.Targets == null && ec.Includes("targets",false))
+        if (ec.Includes("targets",false))
         {
-            this.Targets = new List<Target>();
-            this.Targets.ApplyExploratoryFieldSpec(ec.NewChild("targets"));
+            if(this.Targets == null) {
+
+                this.Targets = new List<Target>();
+                this.Targets.ApplyExploratoryFieldSpec(ec.NewChild("targets"));
+
+            } else {
+
+                this.Targets.ApplyExploratoryFieldSpec(ec.NewChild("targets"));
+
+            }
+        }
+        else if (this.Targets != null && ec.Excludes("targets",false))
+        {
+            this.Targets = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> ArchivalGroupConnectionStatus? ConnectionStatus
         // GraphQL -> connectionStatus: ArchivalGroupConnectionStatus (type)
-        if (this.ConnectionStatus == null && ec.Includes("connectionStatus",false))
+        if (ec.Includes("connectionStatus",false))
         {
-            this.ConnectionStatus = new ArchivalGroupConnectionStatus();
-            this.ConnectionStatus.ApplyExploratoryFieldSpec(ec.NewChild("connectionStatus"));
+            if(this.ConnectionStatus == null) {
+
+                this.ConnectionStatus = new ArchivalGroupConnectionStatus();
+                this.ConnectionStatus.ApplyExploratoryFieldSpec(ec.NewChild("connectionStatus"));
+
+            } else {
+
+                this.ConnectionStatus.ApplyExploratoryFieldSpec(ec.NewChild("connectionStatus"));
+
+            }
+        }
+        else if (this.ConnectionStatus != null && ec.Excludes("connectionStatus",false))
+        {
+            this.ConnectionStatus = null;
         }
     }
 
@@ -247,9 +375,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<TargetMapping> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

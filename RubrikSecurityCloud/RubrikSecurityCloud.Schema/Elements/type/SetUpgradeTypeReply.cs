@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Code
         // GraphQL -> code: String! (scalar)
         if (this.Code != null) {
-            s += ind + "code\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "code\n" ;
+            } else {
+                s += ind + "code\n" ;
+            }
         }
         //      C# -> System.String? Excepshuns
         // GraphQL -> excepshuns: String! (scalar)
         if (this.Excepshuns != null) {
-            s += ind + "excepshuns\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "excepshuns\n" ;
+            } else {
+                s += ind + "excepshuns\n" ;
+            }
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
         if (this.Message != null) {
-            s += ind + "message\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "message\n" ;
+            } else {
+                s += ind + "message\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Code
         // GraphQL -> code: String! (scalar)
-        if (this.Code == null && ec.Includes("code",true))
+        if (ec.Includes("code",true))
         {
-            this.Code = "FETCH";
+            if(this.Code == null) {
+
+                this.Code = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Code != null && ec.Excludes("code",true))
+        {
+            this.Code = null;
         }
         //      C# -> System.String? Excepshuns
         // GraphQL -> excepshuns: String! (scalar)
-        if (this.Excepshuns == null && ec.Includes("excepshuns",true))
+        if (ec.Includes("excepshuns",true))
         {
-            this.Excepshuns = "FETCH";
+            if(this.Excepshuns == null) {
+
+                this.Excepshuns = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Excepshuns != null && ec.Excludes("excepshuns",true))
+        {
+            this.Excepshuns = null;
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
-        if (this.Message == null && ec.Includes("message",true))
+        if (ec.Includes("message",true))
         {
-            this.Message = "FETCH";
+            if(this.Message == null) {
+
+                this.Message = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Message != null && ec.Excludes("message",true))
+        {
+            this.Message = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SetUpgradeTypeReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

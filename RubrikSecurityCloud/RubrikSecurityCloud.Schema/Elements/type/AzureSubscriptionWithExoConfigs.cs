@@ -119,68 +119,105 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? AzureSubscriptionNativeId
         // GraphQL -> azureSubscriptionNativeId: String! (scalar)
         if (this.AzureSubscriptionNativeId != null) {
-            s += ind + "azureSubscriptionNativeId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "azureSubscriptionNativeId\n" ;
+            } else {
+                s += ind + "azureSubscriptionNativeId\n" ;
+            }
         }
         //      C# -> System.String? AzureSubscriptionRubrikId
         // GraphQL -> azureSubscriptionRubrikId: String! (scalar)
         if (this.AzureSubscriptionRubrikId != null) {
-            s += ind + "azureSubscriptionRubrikId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "azureSubscriptionRubrikId\n" ;
+            } else {
+                s += ind + "azureSubscriptionRubrikId\n" ;
+            }
         }
         //      C# -> List<System.String>? MappedCloudAccountIds
         // GraphQL -> mappedCloudAccountIds: [UUID!]! (scalar)
         if (this.MappedCloudAccountIds != null) {
-            s += ind + "mappedCloudAccountIds\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "mappedCloudAccountIds\n" ;
+            } else {
+                s += ind + "mappedCloudAccountIds\n" ;
+            }
         }
         //      C# -> System.String? SubscriptionName
         // GraphQL -> subscriptionName: String! (scalar)
         if (this.SubscriptionName != null) {
-            s += ind + "subscriptionName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "subscriptionName\n" ;
+            } else {
+                s += ind + "subscriptionName\n" ;
+            }
         }
         //      C# -> List<AzureExocomputeConfigDetails>? ExocomputeConfigs
         // GraphQL -> exocomputeConfigs: [AzureExocomputeConfigDetails!]! (type)
         if (this.ExocomputeConfigs != null) {
-            var fspec = this.ExocomputeConfigs.AsFieldSpec(indent+1);
+            var fspec = this.ExocomputeConfigs.AsFieldSpec(conf.Child("exocomputeConfigs"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "exocomputeConfigs {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "exocomputeConfigs {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> AzureCloudAccountFeatureDetail? FeatureDetail
         // GraphQL -> featureDetail: AzureCloudAccountFeatureDetail! (type)
         if (this.FeatureDetail != null) {
-            var fspec = this.FeatureDetail.AsFieldSpec(indent+1);
+            var fspec = this.FeatureDetail.AsFieldSpec(conf.Child("featureDetail"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "featureDetail {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "featureDetail {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<CloudAccountDetails>? MappedCloudAccounts
         // GraphQL -> mappedCloudAccounts: [CloudAccountDetails!]! (type)
         if (this.MappedCloudAccounts != null) {
-            var fspec = this.MappedCloudAccounts.AsFieldSpec(indent+1);
+            var fspec = this.MappedCloudAccounts.AsFieldSpec(conf.Child("mappedCloudAccounts"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "mappedCloudAccounts {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "mappedCloudAccounts {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<AzureExocomputeConfigDetails>? MappedExocomputeConfigs
         // GraphQL -> mappedExocomputeConfigs: [AzureExocomputeConfigDetails!]! (type)
         if (this.MappedExocomputeConfigs != null) {
-            var fspec = this.MappedExocomputeConfigs.AsFieldSpec(indent+1);
+            var fspec = this.MappedExocomputeConfigs.AsFieldSpec(conf.Child("mappedExocomputeConfigs"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "mappedExocomputeConfigs {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "mappedExocomputeConfigs {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> AzureMappedExocomputeSubscription? MappedExocomputeSubscription
         // GraphQL -> mappedExocomputeSubscription: AzureMappedExocomputeSubscription (type)
         if (this.MappedExocomputeSubscription != null) {
-            var fspec = this.MappedExocomputeSubscription.AsFieldSpec(indent+1);
+            var fspec = this.MappedExocomputeSubscription.AsFieldSpec(conf.Child("mappedExocomputeSubscription"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "mappedExocomputeSubscription {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "mappedExocomputeSubscription {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -192,62 +229,166 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? AzureSubscriptionNativeId
         // GraphQL -> azureSubscriptionNativeId: String! (scalar)
-        if (this.AzureSubscriptionNativeId == null && ec.Includes("azureSubscriptionNativeId",true))
+        if (ec.Includes("azureSubscriptionNativeId",true))
         {
-            this.AzureSubscriptionNativeId = "FETCH";
+            if(this.AzureSubscriptionNativeId == null) {
+
+                this.AzureSubscriptionNativeId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AzureSubscriptionNativeId != null && ec.Excludes("azureSubscriptionNativeId",true))
+        {
+            this.AzureSubscriptionNativeId = null;
         }
         //      C# -> System.String? AzureSubscriptionRubrikId
         // GraphQL -> azureSubscriptionRubrikId: String! (scalar)
-        if (this.AzureSubscriptionRubrikId == null && ec.Includes("azureSubscriptionRubrikId",true))
+        if (ec.Includes("azureSubscriptionRubrikId",true))
         {
-            this.AzureSubscriptionRubrikId = "FETCH";
+            if(this.AzureSubscriptionRubrikId == null) {
+
+                this.AzureSubscriptionRubrikId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AzureSubscriptionRubrikId != null && ec.Excludes("azureSubscriptionRubrikId",true))
+        {
+            this.AzureSubscriptionRubrikId = null;
         }
         //      C# -> List<System.String>? MappedCloudAccountIds
         // GraphQL -> mappedCloudAccountIds: [UUID!]! (scalar)
-        if (this.MappedCloudAccountIds == null && ec.Includes("mappedCloudAccountIds",true))
+        if (ec.Includes("mappedCloudAccountIds",true))
         {
-            this.MappedCloudAccountIds = new List<System.String>();
+            if(this.MappedCloudAccountIds == null) {
+
+                this.MappedCloudAccountIds = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.MappedCloudAccountIds != null && ec.Excludes("mappedCloudAccountIds",true))
+        {
+            this.MappedCloudAccountIds = null;
         }
         //      C# -> System.String? SubscriptionName
         // GraphQL -> subscriptionName: String! (scalar)
-        if (this.SubscriptionName == null && ec.Includes("subscriptionName",true))
+        if (ec.Includes("subscriptionName",true))
         {
-            this.SubscriptionName = "FETCH";
+            if(this.SubscriptionName == null) {
+
+                this.SubscriptionName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SubscriptionName != null && ec.Excludes("subscriptionName",true))
+        {
+            this.SubscriptionName = null;
         }
         //      C# -> List<AzureExocomputeConfigDetails>? ExocomputeConfigs
         // GraphQL -> exocomputeConfigs: [AzureExocomputeConfigDetails!]! (type)
-        if (this.ExocomputeConfigs == null && ec.Includes("exocomputeConfigs",false))
+        if (ec.Includes("exocomputeConfigs",false))
         {
-            this.ExocomputeConfigs = new List<AzureExocomputeConfigDetails>();
-            this.ExocomputeConfigs.ApplyExploratoryFieldSpec(ec.NewChild("exocomputeConfigs"));
+            if(this.ExocomputeConfigs == null) {
+
+                this.ExocomputeConfigs = new List<AzureExocomputeConfigDetails>();
+                this.ExocomputeConfigs.ApplyExploratoryFieldSpec(ec.NewChild("exocomputeConfigs"));
+
+            } else {
+
+                this.ExocomputeConfigs.ApplyExploratoryFieldSpec(ec.NewChild("exocomputeConfigs"));
+
+            }
+        }
+        else if (this.ExocomputeConfigs != null && ec.Excludes("exocomputeConfigs",false))
+        {
+            this.ExocomputeConfigs = null;
         }
         //      C# -> AzureCloudAccountFeatureDetail? FeatureDetail
         // GraphQL -> featureDetail: AzureCloudAccountFeatureDetail! (type)
-        if (this.FeatureDetail == null && ec.Includes("featureDetail",false))
+        if (ec.Includes("featureDetail",false))
         {
-            this.FeatureDetail = new AzureCloudAccountFeatureDetail();
-            this.FeatureDetail.ApplyExploratoryFieldSpec(ec.NewChild("featureDetail"));
+            if(this.FeatureDetail == null) {
+
+                this.FeatureDetail = new AzureCloudAccountFeatureDetail();
+                this.FeatureDetail.ApplyExploratoryFieldSpec(ec.NewChild("featureDetail"));
+
+            } else {
+
+                this.FeatureDetail.ApplyExploratoryFieldSpec(ec.NewChild("featureDetail"));
+
+            }
+        }
+        else if (this.FeatureDetail != null && ec.Excludes("featureDetail",false))
+        {
+            this.FeatureDetail = null;
         }
         //      C# -> List<CloudAccountDetails>? MappedCloudAccounts
         // GraphQL -> mappedCloudAccounts: [CloudAccountDetails!]! (type)
-        if (this.MappedCloudAccounts == null && ec.Includes("mappedCloudAccounts",false))
+        if (ec.Includes("mappedCloudAccounts",false))
         {
-            this.MappedCloudAccounts = new List<CloudAccountDetails>();
-            this.MappedCloudAccounts.ApplyExploratoryFieldSpec(ec.NewChild("mappedCloudAccounts"));
+            if(this.MappedCloudAccounts == null) {
+
+                this.MappedCloudAccounts = new List<CloudAccountDetails>();
+                this.MappedCloudAccounts.ApplyExploratoryFieldSpec(ec.NewChild("mappedCloudAccounts"));
+
+            } else {
+
+                this.MappedCloudAccounts.ApplyExploratoryFieldSpec(ec.NewChild("mappedCloudAccounts"));
+
+            }
+        }
+        else if (this.MappedCloudAccounts != null && ec.Excludes("mappedCloudAccounts",false))
+        {
+            this.MappedCloudAccounts = null;
         }
         //      C# -> List<AzureExocomputeConfigDetails>? MappedExocomputeConfigs
         // GraphQL -> mappedExocomputeConfigs: [AzureExocomputeConfigDetails!]! (type)
-        if (this.MappedExocomputeConfigs == null && ec.Includes("mappedExocomputeConfigs",false))
+        if (ec.Includes("mappedExocomputeConfigs",false))
         {
-            this.MappedExocomputeConfigs = new List<AzureExocomputeConfigDetails>();
-            this.MappedExocomputeConfigs.ApplyExploratoryFieldSpec(ec.NewChild("mappedExocomputeConfigs"));
+            if(this.MappedExocomputeConfigs == null) {
+
+                this.MappedExocomputeConfigs = new List<AzureExocomputeConfigDetails>();
+                this.MappedExocomputeConfigs.ApplyExploratoryFieldSpec(ec.NewChild("mappedExocomputeConfigs"));
+
+            } else {
+
+                this.MappedExocomputeConfigs.ApplyExploratoryFieldSpec(ec.NewChild("mappedExocomputeConfigs"));
+
+            }
+        }
+        else if (this.MappedExocomputeConfigs != null && ec.Excludes("mappedExocomputeConfigs",false))
+        {
+            this.MappedExocomputeConfigs = null;
         }
         //      C# -> AzureMappedExocomputeSubscription? MappedExocomputeSubscription
         // GraphQL -> mappedExocomputeSubscription: AzureMappedExocomputeSubscription (type)
-        if (this.MappedExocomputeSubscription == null && ec.Includes("mappedExocomputeSubscription",false))
+        if (ec.Includes("mappedExocomputeSubscription",false))
         {
-            this.MappedExocomputeSubscription = new AzureMappedExocomputeSubscription();
-            this.MappedExocomputeSubscription.ApplyExploratoryFieldSpec(ec.NewChild("mappedExocomputeSubscription"));
+            if(this.MappedExocomputeSubscription == null) {
+
+                this.MappedExocomputeSubscription = new AzureMappedExocomputeSubscription();
+                this.MappedExocomputeSubscription.ApplyExploratoryFieldSpec(ec.NewChild("mappedExocomputeSubscription"));
+
+            } else {
+
+                this.MappedExocomputeSubscription.ApplyExploratoryFieldSpec(ec.NewChild("mappedExocomputeSubscription"));
+
+            }
+        }
+        else if (this.MappedExocomputeSubscription != null && ec.Excludes("mappedExocomputeSubscription",false))
+        {
+            this.MappedExocomputeSubscription = null;
         }
     }
 
@@ -274,9 +415,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AzureSubscriptionWithExoConfigs> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

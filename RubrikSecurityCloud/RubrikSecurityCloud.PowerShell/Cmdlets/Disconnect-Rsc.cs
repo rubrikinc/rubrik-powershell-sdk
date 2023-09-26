@@ -3,14 +3,14 @@ using System.Management.Automation;
 using System.Threading.Tasks;
 using RubrikSecurityCloud.PowerShell.Private;
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
+
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     [Cmdlet(VerbsCommunications.Disconnect, "Rsc")]
     public class Disconnect_Rsc : RscBasePSCmdlet
     {
-
-#pragma warning disable 1591 // ignore warning 'Missing XML comment'
-
         public Disconnect_Rsc() : base(retrieveConnection: true)
         {
         }

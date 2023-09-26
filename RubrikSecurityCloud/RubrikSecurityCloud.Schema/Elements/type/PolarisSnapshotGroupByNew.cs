@@ -56,24 +56,33 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> PolarisSnapshotConnection? PolarisSnapshotConnection
         // GraphQL -> polarisSnapshotConnection: PolarisSnapshotConnection! (type)
         if (this.PolarisSnapshotConnection != null) {
-            var fspec = this.PolarisSnapshotConnection.AsFieldSpec(indent+1);
+            var fspec = this.PolarisSnapshotConnection.AsFieldSpec(conf.Child("polarisSnapshotConnection"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "polarisSnapshotConnection {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "polarisSnapshotConnection {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> PolarisSnapshotGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: PolarisSnapshotGroupByInfo! (union)
         if (this.GroupByInfo != null) {
-            var fspec = this.GroupByInfo.AsFieldSpec(indent+1);
+            var fspec = this.GroupByInfo.AsFieldSpec(conf.Child("groupByInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -85,18 +94,46 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> PolarisSnapshotConnection? PolarisSnapshotConnection
         // GraphQL -> polarisSnapshotConnection: PolarisSnapshotConnection! (type)
-        if (this.PolarisSnapshotConnection == null && ec.Includes("polarisSnapshotConnection",false))
+        if (ec.Includes("polarisSnapshotConnection",false))
         {
-            this.PolarisSnapshotConnection = new PolarisSnapshotConnection();
-            this.PolarisSnapshotConnection.ApplyExploratoryFieldSpec(ec.NewChild("polarisSnapshotConnection"));
+            if(this.PolarisSnapshotConnection == null) {
+
+                this.PolarisSnapshotConnection = new PolarisSnapshotConnection();
+                this.PolarisSnapshotConnection.ApplyExploratoryFieldSpec(ec.NewChild("polarisSnapshotConnection"));
+
+            } else {
+
+                this.PolarisSnapshotConnection.ApplyExploratoryFieldSpec(ec.NewChild("polarisSnapshotConnection"));
+
+            }
+        }
+        else if (this.PolarisSnapshotConnection != null && ec.Excludes("polarisSnapshotConnection",false))
+        {
+            this.PolarisSnapshotConnection = null;
         }
         //      C# -> PolarisSnapshotGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: PolarisSnapshotGroupByInfo! (union)
-        if (this.GroupByInfo == null && ec.Includes("groupByInfo",false))
+        if (ec.Includes("groupByInfo",false))
         {
-            var impls = new List<PolarisSnapshotGroupByInfo>();
-            impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
-            this.GroupByInfo = (PolarisSnapshotGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+            if(this.GroupByInfo == null) {
+
+                var impls = new List<PolarisSnapshotGroupByInfo>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
+                this.GroupByInfo = (PolarisSnapshotGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<PolarisSnapshotGroupByInfo>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("groupByInfo"));
+                this.GroupByInfo = (PolarisSnapshotGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.GroupByInfo != null && ec.Excludes("groupByInfo",false))
+        {
+            this.GroupByInfo = null;
         }
     }
 
@@ -123,9 +160,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<PolarisSnapshotGroupByNew> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

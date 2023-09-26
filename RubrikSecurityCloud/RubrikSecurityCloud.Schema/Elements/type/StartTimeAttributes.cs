@@ -65,26 +65,39 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int32? Hour
         // GraphQL -> hour: Int! (scalar)
         if (this.Hour != null) {
-            s += ind + "hour\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hour\n" ;
+            } else {
+                s += ind + "hour\n" ;
+            }
         }
         //      C# -> System.Int32? Minute
         // GraphQL -> minute: Int! (scalar)
         if (this.Minute != null) {
-            s += ind + "minute\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "minute\n" ;
+            } else {
+                s += ind + "minute\n" ;
+            }
         }
         //      C# -> DayOfWeekOpt? DayOfWeek
         // GraphQL -> dayOfWeek: DayOfWeekOpt (type)
         if (this.DayOfWeek != null) {
-            var fspec = this.DayOfWeek.AsFieldSpec(indent+1);
+            var fspec = this.DayOfWeek.AsFieldSpec(conf.Child("dayOfWeek"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "dayOfWeek {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "dayOfWeek {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -96,22 +109,56 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int32? Hour
         // GraphQL -> hour: Int! (scalar)
-        if (this.Hour == null && ec.Includes("hour",true))
+        if (ec.Includes("hour",true))
         {
-            this.Hour = Int32.MinValue;
+            if(this.Hour == null) {
+
+                this.Hour = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Hour != null && ec.Excludes("hour",true))
+        {
+            this.Hour = null;
         }
         //      C# -> System.Int32? Minute
         // GraphQL -> minute: Int! (scalar)
-        if (this.Minute == null && ec.Includes("minute",true))
+        if (ec.Includes("minute",true))
         {
-            this.Minute = Int32.MinValue;
+            if(this.Minute == null) {
+
+                this.Minute = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Minute != null && ec.Excludes("minute",true))
+        {
+            this.Minute = null;
         }
         //      C# -> DayOfWeekOpt? DayOfWeek
         // GraphQL -> dayOfWeek: DayOfWeekOpt (type)
-        if (this.DayOfWeek == null && ec.Includes("dayOfWeek",false))
+        if (ec.Includes("dayOfWeek",false))
         {
-            this.DayOfWeek = new DayOfWeekOpt();
-            this.DayOfWeek.ApplyExploratoryFieldSpec(ec.NewChild("dayOfWeek"));
+            if(this.DayOfWeek == null) {
+
+                this.DayOfWeek = new DayOfWeekOpt();
+                this.DayOfWeek.ApplyExploratoryFieldSpec(ec.NewChild("dayOfWeek"));
+
+            } else {
+
+                this.DayOfWeek.ApplyExploratoryFieldSpec(ec.NewChild("dayOfWeek"));
+
+            }
+        }
+        else if (this.DayOfWeek != null && ec.Excludes("dayOfWeek",false))
+        {
+            this.DayOfWeek = null;
         }
     }
 
@@ -138,9 +185,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<StartTimeAttributes> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

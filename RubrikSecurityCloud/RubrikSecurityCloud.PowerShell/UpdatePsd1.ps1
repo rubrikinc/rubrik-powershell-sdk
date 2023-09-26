@@ -6,4 +6,4 @@ $typesToProcess = (Get-ChildItem -Path "$toolkitDir/Format" -Filter "*.ps1xml").
 $psdContent = $psdContent -Replace '(?s)(TypesToProcess\s*=\s*)@\([^\)]*\)', "`$1@($typesToProcess)"
 
 
-Set-Content -Path $psdFile -Value $psdContent
+Set-Content -Path $psdFile -Value $psdContent.Trim()

@@ -92,39 +92,64 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> AzureCloudType? CloudType
         // GraphQL -> cloudType: AzureCloudType! (enum)
         if (this.CloudType != null) {
-            s += ind + "cloudType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cloudType\n" ;
+            } else {
+                s += ind + "cloudType\n" ;
+            }
         }
         //      C# -> System.String? CustomerSubscriptionId
         // GraphQL -> customerSubscriptionId: String! (scalar)
         if (this.CustomerSubscriptionId != null) {
-            s += ind + "customerSubscriptionId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "customerSubscriptionId\n" ;
+            } else {
+                s += ind + "customerSubscriptionId\n" ;
+            }
         }
         //      C# -> System.String? CustomerTenantId
         // GraphQL -> customerTenantId: String! (scalar)
         if (this.CustomerTenantId != null) {
-            s += ind + "customerTenantId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "customerTenantId\n" ;
+            } else {
+                s += ind + "customerTenantId\n" ;
+            }
         }
         //      C# -> System.Boolean? IsAuthorized
         // GraphQL -> isAuthorized: Boolean! (scalar)
         if (this.IsAuthorized != null) {
-            s += ind + "isAuthorized\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isAuthorized\n" ;
+            } else {
+                s += ind + "isAuthorized\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.String? NativeId
         // GraphQL -> nativeId: String! (scalar)
         if (this.NativeId != null) {
-            s += ind + "nativeId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "nativeId\n" ;
+            } else {
+                s += ind + "nativeId\n" ;
+            }
         }
         return s;
     }
@@ -135,39 +160,105 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> AzureCloudType? CloudType
         // GraphQL -> cloudType: AzureCloudType! (enum)
-        if (this.CloudType == null && ec.Includes("cloudType",true))
+        if (ec.Includes("cloudType",true))
         {
-            this.CloudType = new AzureCloudType();
+            if(this.CloudType == null) {
+
+                this.CloudType = new AzureCloudType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CloudType != null && ec.Excludes("cloudType",true))
+        {
+            this.CloudType = null;
         }
         //      C# -> System.String? CustomerSubscriptionId
         // GraphQL -> customerSubscriptionId: String! (scalar)
-        if (this.CustomerSubscriptionId == null && ec.Includes("customerSubscriptionId",true))
+        if (ec.Includes("customerSubscriptionId",true))
         {
-            this.CustomerSubscriptionId = "FETCH";
+            if(this.CustomerSubscriptionId == null) {
+
+                this.CustomerSubscriptionId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CustomerSubscriptionId != null && ec.Excludes("customerSubscriptionId",true))
+        {
+            this.CustomerSubscriptionId = null;
         }
         //      C# -> System.String? CustomerTenantId
         // GraphQL -> customerTenantId: String! (scalar)
-        if (this.CustomerTenantId == null && ec.Includes("customerTenantId",true))
+        if (ec.Includes("customerTenantId",true))
         {
-            this.CustomerTenantId = "FETCH";
+            if(this.CustomerTenantId == null) {
+
+                this.CustomerTenantId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CustomerTenantId != null && ec.Excludes("customerTenantId",true))
+        {
+            this.CustomerTenantId = null;
         }
         //      C# -> System.Boolean? IsAuthorized
         // GraphQL -> isAuthorized: Boolean! (scalar)
-        if (this.IsAuthorized == null && ec.Includes("isAuthorized",true))
+        if (ec.Includes("isAuthorized",true))
         {
-            this.IsAuthorized = true;
+            if(this.IsAuthorized == null) {
+
+                this.IsAuthorized = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAuthorized != null && ec.Excludes("isAuthorized",true))
+        {
+            this.IsAuthorized = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.String? NativeId
         // GraphQL -> nativeId: String! (scalar)
-        if (this.NativeId == null && ec.Includes("nativeId",true))
+        if (ec.Includes("nativeId",true))
         {
-            this.NativeId = "FETCH";
+            if(this.NativeId == null) {
+
+                this.NativeId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NativeId != null && ec.Excludes("nativeId",true))
+        {
+            this.NativeId = null;
         }
     }
 
@@ -194,9 +285,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AzureCloudAccountSubscription> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

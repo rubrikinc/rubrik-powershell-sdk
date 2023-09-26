@@ -7,13 +7,13 @@ using System.Reflection;
 
 namespace RubrikSecurityCloud
 {
+    /// <summary>
+    ///  RscOp is a class that represents an API operation.
+    /// </summary>
     public class RscOp
     {
-        public delegate string StringGqlRootFieldNameLookupByRscOp(RscOp rscOp);
-        public static StringGqlRootFieldNameLookupByRscOp? GqlRootFieldLookup=null;
-
-        public delegate string ReturnTypeLookupByGqlRootField(string gqlRootField);
-        public static ReturnTypeLookupByGqlRootField? ReturnTypeLookup=null;
+        public delegate bool SchemaMeta_FillInRscOp(RscOp rscOp);
+        public static SchemaMeta_FillInRscOp? FillInRscOp = null;
 
         public string CmdletName { get; set; }
         public string CmdletSwitchName { get; set; }
@@ -30,14 +30,57 @@ namespace RubrikSecurityCloud
             this.CmdletSwitchName = cmdletSwitchName;
             this.GqlRootFieldName = gqlRootFieldName;
             this.GqlReturnTypeName = gqlReturnTypeName;
-            if (string.IsNullOrEmpty(this.GqlRootFieldName) && RscOp.GqlRootFieldLookup != null)
+        }
+
+        /// <summary>
+        /// Fill in the missing fields of this RscOp object
+        /// (if possible).
+        /// </summary>
+        public RscOp Finalize()
+        {
+            if (RscOp.FillInRscOp != null)
             {
-                this.GqlRootFieldName = RscOp.GqlRootFieldLookup(this);
+                RscOp.FillInRscOp(this);
             }
-            if(string.IsNullOrEmpty(this.GqlReturnTypeName) && RscOp.ReturnTypeLookup != null && !string.IsNullOrEmpty(this.GqlRootFieldName))
+            return this;
+        }
+
+        public string OpName()
+        {
+            return this.CmdletSwitchName;
+        }
+
+        public string OpKind()
+        {
+            if (string.IsNullOrEmpty(this.CmdletName))
             {
-                this.GqlReturnTypeName = RscOp.ReturnTypeLookup(this.GqlRootFieldName);
+                return "";
             }
+            if (this.CmdletName.Contains("Query"))
+            {
+                return "query";
+            }
+            if (this.CmdletName.Contains("Mutation"))
+            {
+                return "mutation";
+            }
+            return "";
+        }
+
+        public string DomainName()
+        {
+            var kind = this.OpKind();
+            if ( kind == "query" )
+            {
+                // assume CmdletName is like "New-RscQueryXxx"
+                return this.CmdletName.Replace("New-RscQuery", "");
+            }
+            if ( kind == "mutation" )
+            {
+                // assume CmdletName is like "New-RscMutationXxx"
+                return this.CmdletName.Replace("New-RscMutation", "");
+            }
+            return "";
         }
 
         public bool IsDetermined()
@@ -73,7 +116,7 @@ namespace RubrikSecurityCloud
             {
                 s += this.GqlRootFieldName;
             }
-            if(string.IsNullOrEmpty(this.GqlReturnTypeName)||
+            if (string.IsNullOrEmpty(this.GqlReturnTypeName) ||
                 this.GqlReturnTypeName.ToLower() == "unknown")
             {
                 s += " (Unknown)";

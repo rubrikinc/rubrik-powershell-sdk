@@ -65,29 +65,42 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Day
         // GraphQL -> day: String! (scalar)
         if (this.Day != null) {
-            s += ind + "day\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "day\n" ;
+            } else {
+                s += ind + "day\n" ;
+            }
         }
         //      C# -> List<ActivityResult>? ActivityResults
         // GraphQL -> activityResults: [ActivityResult!]! (type)
         if (this.ActivityResults != null) {
-            var fspec = this.ActivityResults.AsFieldSpec(indent+1);
+            var fspec = this.ActivityResults.AsFieldSpec(conf.Child("activityResults"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "activityResults {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "activityResults {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<FileAccessResult>? TopFiles
         // GraphQL -> topFiles: [FileAccessResult!]! (type)
         if (this.TopFiles != null) {
-            var fspec = this.TopFiles.AsFieldSpec(indent+1);
+            var fspec = this.TopFiles.AsFieldSpec(conf.Child("topFiles"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "topFiles {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "topFiles {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -99,23 +112,58 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Day
         // GraphQL -> day: String! (scalar)
-        if (this.Day == null && ec.Includes("day",true))
+        if (ec.Includes("day",true))
         {
-            this.Day = "FETCH";
+            if(this.Day == null) {
+
+                this.Day = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Day != null && ec.Excludes("day",true))
+        {
+            this.Day = null;
         }
         //      C# -> List<ActivityResult>? ActivityResults
         // GraphQL -> activityResults: [ActivityResult!]! (type)
-        if (this.ActivityResults == null && ec.Includes("activityResults",false))
+        if (ec.Includes("activityResults",false))
         {
-            this.ActivityResults = new List<ActivityResult>();
-            this.ActivityResults.ApplyExploratoryFieldSpec(ec.NewChild("activityResults"));
+            if(this.ActivityResults == null) {
+
+                this.ActivityResults = new List<ActivityResult>();
+                this.ActivityResults.ApplyExploratoryFieldSpec(ec.NewChild("activityResults"));
+
+            } else {
+
+                this.ActivityResults.ApplyExploratoryFieldSpec(ec.NewChild("activityResults"));
+
+            }
+        }
+        else if (this.ActivityResults != null && ec.Excludes("activityResults",false))
+        {
+            this.ActivityResults = null;
         }
         //      C# -> List<FileAccessResult>? TopFiles
         // GraphQL -> topFiles: [FileAccessResult!]! (type)
-        if (this.TopFiles == null && ec.Includes("topFiles",false))
+        if (ec.Includes("topFiles",false))
         {
-            this.TopFiles = new List<FileAccessResult>();
-            this.TopFiles.ApplyExploratoryFieldSpec(ec.NewChild("topFiles"));
+            if(this.TopFiles == null) {
+
+                this.TopFiles = new List<FileAccessResult>();
+                this.TopFiles.ApplyExploratoryFieldSpec(ec.NewChild("topFiles"));
+
+            } else {
+
+                this.TopFiles.ApplyExploratoryFieldSpec(ec.NewChild("topFiles"));
+
+            }
+        }
+        else if (this.TopFiles != null && ec.Excludes("topFiles",false))
+        {
+            this.TopFiles = null;
         }
     }
 
@@ -142,9 +190,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ActivityTimelineResult> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

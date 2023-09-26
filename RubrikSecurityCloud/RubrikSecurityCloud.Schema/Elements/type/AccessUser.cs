@@ -101,44 +101,73 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? ActivityDelta
         // GraphQL -> activityDelta: Long! (scalar)
         if (this.ActivityDelta != null) {
-            s += ind + "activityDelta\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "activityDelta\n" ;
+            } else {
+                s += ind + "activityDelta\n" ;
+            }
         }
         //      C# -> System.String? Email
         // GraphQL -> email: String! (scalar)
         if (this.Email != null) {
-            s += ind + "email\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "email\n" ;
+            } else {
+                s += ind + "email\n" ;
+            }
         }
         //      C# -> System.Int64? LastAccessTime
         // GraphQL -> lastAccessTime: Long! (scalar)
         if (this.LastAccessTime != null) {
-            s += ind + "lastAccessTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "lastAccessTime\n" ;
+            } else {
+                s += ind + "lastAccessTime\n" ;
+            }
         }
         //      C# -> System.Int64? NumActivities
         // GraphQL -> numActivities: Long! (scalar)
         if (this.NumActivities != null) {
-            s += ind + "numActivities\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "numActivities\n" ;
+            } else {
+                s += ind + "numActivities\n" ;
+            }
         }
         //      C# -> System.String? SubjectName
         // GraphQL -> subjectName: String! (scalar)
         if (this.SubjectName != null) {
-            s += ind + "subjectName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "subjectName\n" ;
+            } else {
+                s += ind + "subjectName\n" ;
+            }
         }
         //      C# -> System.String? UserSid
         // GraphQL -> userSid: String! (scalar)
         if (this.UserSid != null) {
-            s += ind + "userSid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "userSid\n" ;
+            } else {
+                s += ind + "userSid\n" ;
+            }
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
         if (this.Username != null) {
-            s += ind + "username\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "username\n" ;
+            } else {
+                s += ind + "username\n" ;
+            }
         }
         return s;
     }
@@ -149,45 +178,122 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? ActivityDelta
         // GraphQL -> activityDelta: Long! (scalar)
-        if (this.ActivityDelta == null && ec.Includes("activityDelta",true))
+        if (ec.Includes("activityDelta",true))
         {
-            this.ActivityDelta = new System.Int64();
+            if(this.ActivityDelta == null) {
+
+                this.ActivityDelta = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ActivityDelta != null && ec.Excludes("activityDelta",true))
+        {
+            this.ActivityDelta = null;
         }
         //      C# -> System.String? Email
         // GraphQL -> email: String! (scalar)
-        if (this.Email == null && ec.Includes("email",true))
+        if (ec.Includes("email",true))
         {
-            this.Email = "FETCH";
+            if(this.Email == null) {
+
+                this.Email = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Email != null && ec.Excludes("email",true))
+        {
+            this.Email = null;
         }
         //      C# -> System.Int64? LastAccessTime
         // GraphQL -> lastAccessTime: Long! (scalar)
-        if (this.LastAccessTime == null && ec.Includes("lastAccessTime",true))
+        if (ec.Includes("lastAccessTime",true))
         {
-            this.LastAccessTime = new System.Int64();
+            if(this.LastAccessTime == null) {
+
+                this.LastAccessTime = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastAccessTime != null && ec.Excludes("lastAccessTime",true))
+        {
+            this.LastAccessTime = null;
         }
         //      C# -> System.Int64? NumActivities
         // GraphQL -> numActivities: Long! (scalar)
-        if (this.NumActivities == null && ec.Includes("numActivities",true))
+        if (ec.Includes("numActivities",true))
         {
-            this.NumActivities = new System.Int64();
+            if(this.NumActivities == null) {
+
+                this.NumActivities = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.NumActivities != null && ec.Excludes("numActivities",true))
+        {
+            this.NumActivities = null;
         }
         //      C# -> System.String? SubjectName
         // GraphQL -> subjectName: String! (scalar)
-        if (this.SubjectName == null && ec.Includes("subjectName",true))
+        if (ec.Includes("subjectName",true))
         {
-            this.SubjectName = "FETCH";
+            if(this.SubjectName == null) {
+
+                this.SubjectName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SubjectName != null && ec.Excludes("subjectName",true))
+        {
+            this.SubjectName = null;
         }
         //      C# -> System.String? UserSid
         // GraphQL -> userSid: String! (scalar)
-        if (this.UserSid == null && ec.Includes("userSid",true))
+        if (ec.Includes("userSid",true))
         {
-            this.UserSid = "FETCH";
+            if(this.UserSid == null) {
+
+                this.UserSid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.UserSid != null && ec.Excludes("userSid",true))
+        {
+            this.UserSid = null;
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
-        if (this.Username == null && ec.Includes("username",true))
+        if (ec.Includes("username",true))
         {
-            this.Username = "FETCH";
+            if(this.Username == null) {
+
+                this.Username = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Username != null && ec.Excludes("username",true))
+        {
+            this.Username = null;
         }
     }
 
@@ -214,9 +320,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AccessUser> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

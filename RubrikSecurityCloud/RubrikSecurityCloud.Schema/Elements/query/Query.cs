@@ -257,7 +257,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\nfeatures: $features\n)";
             return "allCloudAccounts" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllCloudAccounts_ObjectFieldSpec(object fieldSpecObj)
@@ -288,7 +288,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nslaIds: $slaIds\n)";
             return "allSlaSummariesByIds" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllSlaSummariesByIds_ObjectFieldSpec(object fieldSpecObj)
@@ -319,7 +319,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\ncontextFilter: $contextFilter\n)";
             return "allTargets" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllTargets_ObjectFieldSpec(object fieldSpecObj)
@@ -350,7 +350,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nsnappableFid: $snappableFid\n)";
             return "cdmHierarchySnappableNew" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string CdmHierarchySnappableNew_ObjectFieldSpec(object fieldSpecObj)
@@ -385,7 +385,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfids: $fids\n)";
             return "cdmHierarchySnappablesNew" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string CdmHierarchySnappablesNew_ObjectFieldSpec(object fieldSpecObj)
@@ -416,7 +416,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ncloudAccountId: $cloudAccountId\n)";
             return "cloudAccount" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string CloudAccount_ObjectFieldSpec(object fieldSpecObj)
@@ -451,7 +451,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "hierarchyObject" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string HierarchyObject_ObjectFieldSpec(object fieldSpecObj)
@@ -486,7 +486,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfids: $fids\nfilter: $filter\n)";
             return "hierarchyObjects" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string HierarchyObjects_ObjectFieldSpec(object fieldSpecObj)
@@ -517,7 +517,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfids: $fids\n)";
             return "slaConflictObjects" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SlaConflictObjects_ObjectFieldSpec(object fieldSpecObj)
@@ -548,7 +548,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nid: $id\nshouldShowSyncStatus: $shouldShowSyncStatus\nshouldShowUpgradeInfo: $shouldShowUpgradeInfo\nshouldShowPausedClusters: $shouldShowPausedClusters\n)";
             return "slaDomain" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SlaDomain_ObjectFieldSpec(object fieldSpecObj)
@@ -583,7 +583,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "target" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string Target_ObjectFieldSpec(object fieldSpecObj)
@@ -2097,7 +2097,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "accountSettings" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AccountSettings_ObjectFieldSpec(object fieldSpecObj)
@@ -2128,7 +2128,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "activeCustomAnalyzers" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ActiveCustomAnalyzers_ObjectFieldSpec(object fieldSpecObj)
@@ -2159,7 +2159,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "activitySeries" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ActivitySeries_ObjectFieldSpec(object fieldSpecObj)
@@ -2190,7 +2190,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nfilters: $filters\n)";
             return "activitySeriesConnection" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ActivitySeriesConnection_ObjectFieldSpec(object fieldSpecObj)
@@ -2221,7 +2221,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "allAccountOwners" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllAccountOwners_ObjectFieldSpec(object fieldSpecObj)
@@ -2252,7 +2252,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nnameFilter: $nameFilter\ntypeFilter: $typeFilter\nstateFilter: $stateFilter\nstartDateArg: $startDateArg\nendDateArg: $endDateArg\n)";
             return "allAccountProducts" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllAccountProducts_ObjectFieldSpec(object fieldSpecObj)
@@ -2283,7 +2283,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ncloudVendor: $cloudVendor\nfeatures: $features\nexocomputeAccountIdsFilter: $exocomputeAccountIdsFilter\n)";
             return "allAccountsWithExocomputeMappings" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllAccountsWithExocomputeMappings_ObjectFieldSpec(object fieldSpecObj)
@@ -2314,7 +2314,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfids: $fids\n)";
             return "allAuthorizationsForObjects" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllAuthorizationsForObjects_ObjectFieldSpec(object fieldSpecObj)
@@ -2345,7 +2345,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "allAwsCdmVersions" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllAwsCdmVersions_ObjectFieldSpec(object fieldSpecObj)
@@ -2376,7 +2376,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nawsCloudAccountsArg: $awsCloudAccountsArg\n)";
             return "allAwsCloudAccountConfigs" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllAwsCloudAccountConfigs_ObjectFieldSpec(object fieldSpecObj)
@@ -2407,7 +2407,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nawsCloudAccountsArg: $awsCloudAccountsArg\n)";
             return "allAwsCloudAccountsWithFeatures" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllAwsCloudAccountsWithFeatures_ObjectFieldSpec(object fieldSpecObj)
@@ -2438,7 +2438,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\ncontextFilter: $contextFilter\n)";
             return "allAwsComputeSettings" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllAwsComputeSettings_ObjectFieldSpec(object fieldSpecObj)
@@ -2469,7 +2469,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nawsNativeAccountIdOrNamePrefix: $awsNativeAccountIdOrNamePrefix\n)";
             return "allAwsExocomputeConfigs" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllAwsExocomputeConfigs_ObjectFieldSpec(object fieldSpecObj)
@@ -2500,7 +2500,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "allAwsPermissionPolicies" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllAwsPermissionPolicies_ObjectFieldSpec(object fieldSpecObj)
@@ -2531,7 +2531,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "allAzureArmTemplatesByFeature" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllAzureArmTemplatesByFeature_ObjectFieldSpec(object fieldSpecObj)
@@ -2562,7 +2562,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ncdmVersionRequest: $cdmVersionRequest\n)";
             return "allAzureCdmVersions" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllAzureCdmVersions_ObjectFieldSpec(object fieldSpecObj)
@@ -2593,7 +2593,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nsessionId: $sessionId\nsubscriptionIds: $subscriptionIds\ncloudAccountAction: $cloudAccountAction\n)";
             return "allAzureCloudAccountMissingPermissions" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllAzureCloudAccountMissingPermissions_ObjectFieldSpec(object fieldSpecObj)
@@ -2624,7 +2624,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ncloudAccountId: $cloudAccountId\nregion: $region\n)";
             return "allAzureCloudAccountSubnetsByRegion" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllAzureCloudAccountSubnetsByRegion_ObjectFieldSpec(object fieldSpecObj)
@@ -2655,7 +2655,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfeature: $feature\nsubscriptionStatusFilters: $subscriptionStatusFilters\n)";
             return "allAzureCloudAccountSubscriptionsByFeature" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllAzureCloudAccountSubscriptionsByFeature_ObjectFieldSpec(object fieldSpecObj)
@@ -2686,7 +2686,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfeatures: $features\nfeature: $feature\nincludeSubscriptionDetails: $includeSubscriptionDetails\n)";
             return "allAzureCloudAccountTenants" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllAzureCloudAccountTenants_ObjectFieldSpec(object fieldSpecObj)
@@ -2717,7 +2717,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nazureSubscriptionRubrikId: $azureSubscriptionRubrikId\nregion: $region\n)";
             return "allAzureDiskEncryptionSetsByRegion" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllAzureDiskEncryptionSetsByRegion_ObjectFieldSpec(object fieldSpecObj)
@@ -2748,7 +2748,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nazureEncryptionKeysInput: $azureEncryptionKeysInput\n)";
             return "allAzureEncryptionKeys" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllAzureEncryptionKeys_ObjectFieldSpec(object fieldSpecObj)
@@ -2779,7 +2779,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nazureExocomputeSearchQuery: $azureExocomputeSearchQuery\ncloudAccountIDs: $cloudAccountIDs\n)";
             return "allAzureExocomputeConfigsInAccount" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllAzureExocomputeConfigsInAccount_ObjectFieldSpec(object fieldSpecObj)
@@ -2810,7 +2810,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nazureKeyVaultsInput: $azureKeyVaultsInput\n)";
             return "allAzureKeyVaultsByRegion" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllAzureKeyVaultsByRegion_ObjectFieldSpec(object fieldSpecObj)
@@ -2841,7 +2841,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nmanagedIdentitiesRequest: $managedIdentitiesRequest\n)";
             return "allAzureManagedIdentities" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllAzureManagedIdentities_ObjectFieldSpec(object fieldSpecObj)
@@ -2872,7 +2872,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nazureSubscriptionRubrikId: $azureSubscriptionRubrikId\nresourceGroupName: $resourceGroupName\nregion: $region\n)";
             return "allAzureNativeAvailabilitySetsByRegionFromAzure" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllAzureNativeAvailabilitySetsByRegionFromAzure_ObjectFieldSpec(object fieldSpecObj)
@@ -2903,7 +2903,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nazureSubscriptionRubrikId: $azureSubscriptionRubrikId\nregion: $region\n)";
             return "allAzureNativeExportCompatibleDiskTypesByRegionFromAzure" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllAzureNativeExportCompatibleDiskTypesByRegionFromAzure_ObjectFieldSpec(object fieldSpecObj)
@@ -2934,7 +2934,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nazureSubscriptionRubrikId: $azureSubscriptionRubrikId\nregion: $region\nvmSnapshotId: $vmSnapshotId\n)";
             return "allAzureNativeExportCompatibleVmSizesByRegionFromAzure" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllAzureNativeExportCompatibleVmSizesByRegionFromAzure_ObjectFieldSpec(object fieldSpecObj)
@@ -2965,7 +2965,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "allAzureNativeResourceGroupsInfoIfExist" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllAzureNativeResourceGroupsInfoIfExist_ObjectFieldSpec(object fieldSpecObj)
@@ -2996,7 +2996,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nazureSubscriptionRubrikId: $azureSubscriptionRubrikId\nregion: $region\n)";
             return "allAzureNativeSecurityGroupsByRegionFromAzure" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllAzureNativeSecurityGroupsByRegionFromAzure_ObjectFieldSpec(object fieldSpecObj)
@@ -3027,7 +3027,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nazureSubscriptionRubrikId: $azureSubscriptionRubrikId\n)";
             return "allAzureNativeStorageAccountsFromAzure" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllAzureNativeStorageAccountsFromAzure_ObjectFieldSpec(object fieldSpecObj)
@@ -3058,7 +3058,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nazureSubscriptionRubrikId: $azureSubscriptionRubrikId\nregion: $region\n)";
             return "allAzureNativeSubnetsByRegionFromAzure" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllAzureNativeSubnetsByRegionFromAzure_ObjectFieldSpec(object fieldSpecObj)
@@ -3089,7 +3089,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nazureSubscriptionRubrikId: $azureSubscriptionRubrikId\n)";
             return "allAzureNativeVirtualNetworks" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllAzureNativeVirtualNetworks_ObjectFieldSpec(object fieldSpecObj)
@@ -3120,7 +3120,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nsubscriptionId: $subscriptionId\nresourceGroupName: $resourceGroupName\nazureSqlDatabaseServerName: $azureSqlDatabaseServerName\nazureSqlDatabaseServerRubrikId: $azureSqlDatabaseServerRubrikId\n)";
             return "allAzureSqlDatabaseServerElasticPools" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllAzureSqlDatabaseServerElasticPools_ObjectFieldSpec(object fieldSpecObj)
@@ -3151,7 +3151,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfeatures: $features\nexocomputeSubscriptionIdsFilter: $exocomputeSubscriptionIdsFilter\n)";
             return "allAzureSubscriptionWithExocomputeMappings" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllAzureSubscriptionWithExocomputeMappings_ObjectFieldSpec(object fieldSpecObj)
@@ -3182,7 +3182,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nclusterUuids: $clusterUuids\n)";
             return "allCdmGuestCredentials" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllCdmGuestCredentials_ObjectFieldSpec(object fieldSpecObj)
@@ -3213,7 +3213,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "allCdmOvaDetails" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllCdmOvaDetails_ObjectFieldSpec(object fieldSpecObj)
@@ -3244,7 +3244,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nallCdpVmInfoSort: $allCdpVmInfoSort\nallCdpVmInfoFilter: $allCdpVmInfoFilter\n)";
             return "allCdpVmsInfos" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllCdpVmsInfos_ObjectFieldSpec(object fieldSpecObj)
@@ -3275,7 +3275,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ncloudVendor: $cloudVendor\nexocomputeAccountIdsFilter: $exocomputeAccountIdsFilter\n)";
             return "allCloudAccountExocomputeMappings" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllCloudAccountExocomputeMappings_ObjectFieldSpec(object fieldSpecObj)
@@ -3306,7 +3306,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "allCloudDirectShares" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllCloudDirectShares_ObjectFieldSpec(object fieldSpecObj)
@@ -3337,7 +3337,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "allCloudDirectSites" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllCloudDirectSites_ObjectFieldSpec(object fieldSpecObj)
@@ -3368,7 +3368,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\nsortOrder: $sortOrder\nsortBy: $sortBy\n)";
             return "allClusterConnection" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllClusterConnection_ObjectFieldSpec(object fieldSpecObj)
@@ -3399,7 +3399,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ncdmClusterUUID: $cdmClusterUUID\n)";
             return "allClusterGlobalSlas" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllClusterGlobalSlas_ObjectFieldSpec(object fieldSpecObj)
@@ -3430,7 +3430,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nclusterUuid: $clusterUuid\n)";
             return "allClusterReplicationTargets" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllClusterReplicationTargets_ObjectFieldSpec(object fieldSpecObj)
@@ -3461,7 +3461,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "allClusterWebCertsAndIpmis" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllClusterWebCertsAndIpmis_ObjectFieldSpec(object fieldSpecObj)
@@ -3492,7 +3492,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nclusterFilterArg: $clusterFilterArg\n)";
             return "allConnectedClusters" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllConnectedClusters_ObjectFieldSpec(object fieldSpecObj)
@@ -3523,7 +3523,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ncloudVendor: $cloudVendor\ncloudAccountIds: $cloudAccountIds\n)";
             return "allCurrentFeaturePermissionsForCloudAccounts" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllCurrentFeaturePermissionsForCloudAccounts_ObjectFieldSpec(object fieldSpecObj)
@@ -3554,7 +3554,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "allCurrentOrgIdentityProviders" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllCurrentOrgIdentityProviders_ObjectFieldSpec(object fieldSpecObj)
@@ -3585,7 +3585,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\ndbEngine: $dbEngine\ndbEngineVersion: $dbEngineVersion\nrdsType: $rdsType\n)";
             return "allDbParameterGroupsByRegionFromAws" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllDbParameterGroupsByRegionFromAws_ObjectFieldSpec(object fieldSpecObj)
@@ -3616,7 +3616,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\n)";
             return "allDbSubnetGroupsByRegionFromAws" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllDbSubnetGroupsByRegionFromAws_ObjectFieldSpec(object fieldSpecObj)
@@ -3647,7 +3647,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ncategories: $categories\n)";
             return "allDhrcActiveRecommendations" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllDhrcActiveRecommendations_ObjectFieldSpec(object fieldSpecObj)
@@ -3678,7 +3678,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ncategories: $categories\n)";
             return "allDhrcLatestMetrics" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllDhrcLatestMetrics_ObjectFieldSpec(object fieldSpecObj)
@@ -3709,7 +3709,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ncategories: $categories\nbeginTime: $beginTime\ntimespan: $timespan\n)";
             return "allDhrcScores" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllDhrcScores_ObjectFieldSpec(object fieldSpecObj)
@@ -3740,7 +3740,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nroleId: $roleId\n)";
             return "allEffectiveRbacPermissions" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllEffectiveRbacPermissions_ObjectFieldSpec(object fieldSpecObj)
@@ -3771,7 +3771,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "allEnabledFeaturesForAccount" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllEnabledFeaturesForAccount_ObjectFieldSpec(object fieldSpecObj)
@@ -3802,7 +3802,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "allEventDigests" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllEventDigests_ObjectFieldSpec(object fieldSpecObj)
@@ -3833,7 +3833,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfeature: $feature\n)";
             return "allFeaturePermissionsForGcpCloudAccount" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllFeaturePermissionsForGcpCloudAccount_ObjectFieldSpec(object fieldSpecObj)
@@ -3864,7 +3864,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nListFileActivitiesInput: $ListFileActivitiesInput\nFileActivitiesSort: $FileActivitiesSort\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "allFileActivities" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllFileActivities_ObjectFieldSpec(object fieldSpecObj)
@@ -3895,7 +3895,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nsessionId: $sessionId\nprojectIds: $projectIds\n)";
             return "allGcpCloudAccountMissingPermissionsForAddition" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllGcpCloudAccountMissingPermissionsForAddition_ObjectFieldSpec(object fieldSpecObj)
@@ -3926,7 +3926,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfeature: $feature\nprojectStatusFilters: $projectStatusFilters\nprojectSearchText: $projectSearchText\n)";
             return "allGcpCloudAccountProjectsByFeature" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllGcpCloudAccountProjectsByFeature_ObjectFieldSpec(object fieldSpecObj)
@@ -3957,7 +3957,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nsessionId: $sessionId\nfeatures: $features\ncheckPermissions: $checkPermissions\n)";
             return "allGcpCloudAccountProjectsForOauth" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllGcpCloudAccountProjectsForOauth_ObjectFieldSpec(object fieldSpecObj)
@@ -3988,7 +3988,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nprojectId: $projectId\nregionName: $regionName\n)";
             return "allGcpNativeAvailableKmsCryptoKeys" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllGcpNativeAvailableKmsCryptoKeys_ObjectFieldSpec(object fieldSpecObj)
@@ -4019,7 +4019,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nprojectId: $projectId\n)";
             return "allGcpNativeNetworks" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllGcpNativeNetworks_ObjectFieldSpec(object fieldSpecObj)
@@ -4050,7 +4050,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nprojectId: $projectId\n)";
             return "allGcpNativeProjectsWithAccessibleNetworks" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllGcpNativeProjectsWithAccessibleNetworks_ObjectFieldSpec(object fieldSpecObj)
@@ -4081,7 +4081,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nprojectId: $projectId\n)";
             return "allGcpNativeRegions" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllGcpNativeRegions_ObjectFieldSpec(object fieldSpecObj)
@@ -4112,7 +4112,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "allHostedAzureRegions" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllHostedAzureRegions_ObjectFieldSpec(object fieldSpecObj)
@@ -4143,7 +4143,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nintegrationTypes: $integrationTypes\nnameFilter: $nameFilter\n)";
             return "allIntegrations" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllIntegrations_ObjectFieldSpec(object fieldSpecObj)
@@ -4174,7 +4174,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nsnapshotId: $snapshotId\nsnappableId: $snappableId\n)";
             return "allK8sReplicaSnapshotInfos" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllK8sReplicaSnapshotInfos_ObjectFieldSpec(object fieldSpecObj)
@@ -4205,7 +4205,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\n)";
             return "allKmsEncryptionKeysByRegionFromAws" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllKmsEncryptionKeysByRegionFromAws_ObjectFieldSpec(object fieldSpecObj)
@@ -4236,7 +4236,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ncloudVendor: $cloudVendor\ncloudAccountIds: $cloudAccountIds\nfeatures: $features\n)";
             return "allLatestFeaturePermissionsForCloudAccounts" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllLatestFeaturePermissionsForCloudAccounts_ObjectFieldSpec(object fieldSpecObj)
@@ -4267,7 +4267,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "allLicensedProducts" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllLicensedProducts_ObjectFieldSpec(object fieldSpecObj)
@@ -4298,7 +4298,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "allMssqlDatabaseRestoreFiles" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllMssqlDatabaseRestoreFiles_ObjectFieldSpec(object fieldSpecObj)
@@ -4329,7 +4329,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nclusters: $clusters\n)";
             return "allNcdObjectsOverTimeData" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllNcdObjectsOverTimeData_ObjectFieldSpec(object fieldSpecObj)
@@ -4360,7 +4360,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nclusters: $clusters\n)";
             return "allNcdSlaComplianceData" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllNcdSlaComplianceData_ObjectFieldSpec(object fieldSpecObj)
@@ -4391,7 +4391,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nclusters: $clusters\n)";
             return "allNcdTaskData" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllNcdTaskData_ObjectFieldSpec(object fieldSpecObj)
@@ -4422,7 +4422,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nclusters: $clusters\n)";
             return "allNcdUsageOverTimeData" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllNcdUsageOverTimeData_ObjectFieldSpec(object fieldSpecObj)
@@ -4453,7 +4453,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "allNosqlStorageLocations" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllNosqlStorageLocations_ObjectFieldSpec(object fieldSpecObj)
@@ -4484,7 +4484,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\norgId: $orgId\nadGroupSearchFilter: $adGroupSearchFilter\n)";
             return "allO365AdGroups" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllO365AdGroups_ObjectFieldSpec(object fieldSpecObj)
@@ -4515,7 +4515,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "allO365OrgStatuses" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllO365OrgStatuses_ObjectFieldSpec(object fieldSpecObj)
@@ -4546,7 +4546,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "allO365SubscriptionsAppTypeCounts" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllO365SubscriptionsAppTypeCounts_ObjectFieldSpec(object fieldSpecObj)
@@ -4577,7 +4577,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nobjectIdsForHierarchyTypes: $objectIdsForHierarchyTypes\nallowedClusters: $allowedClusters\ntargetOrgId: $targetOrgId\n)";
             return "allObjectsAlreadyAssignedToOrgs" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllObjectsAlreadyAssignedToOrgs_ObjectFieldSpec(object fieldSpecObj)
@@ -4608,7 +4608,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\ndbEngine: $dbEngine\ndbEngineVersion: $dbEngineVersion\nmajorEngineVersion: $majorEngineVersion\n)";
             return "allOptionGroupsByRegionFromAws" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllOptionGroupsByRegionFromAws_ObjectFieldSpec(object fieldSpecObj)
@@ -4639,7 +4639,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\norgIds: $orgIds\n)";
             return "allOrgsByIds" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllOrgsByIds_ObjectFieldSpec(object fieldSpecObj)
@@ -4670,7 +4670,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nclusterFilter: $clusterFilter\npendingActionGroupTypeFilter: $pendingActionGroupTypeFilter\npendingActionSubGroupTypeFilter: $pendingActionSubGroupTypeFilter\nstatusFilter: $statusFilter\nobjectIds: $objectIds\nsortedOrder: $sortedOrder\nhistoryOnly: $historyOnly\nlimit: $limit\n)";
             return "allPendingActions" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllPendingActions_ObjectFieldSpec(object fieldSpecObj)
@@ -4701,7 +4701,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nsnapshotIds: $snapshotIds\n)";
             return "allQuarantinedDetailsForSnapshots" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllQuarantinedDetailsForSnapshots_ObjectFieldSpec(object fieldSpecObj)
@@ -4732,7 +4732,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nworkloadId: $workloadId\n)";
             return "allQuarantinedDetailsForWorkload" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllQuarantinedDetailsForWorkload_ObjectFieldSpec(object fieldSpecObj)
@@ -4763,7 +4763,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ncloudAccountId: $cloudAccountId\nazureSubscriptionNativeId: $azureSubscriptionNativeId\nfeature: $feature\n)";
             return "allResourceGroupsFromAzure" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllResourceGroupsFromAzure_ObjectFieldSpec(object fieldSpecObj)
@@ -4794,7 +4794,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\n)";
             return "allS3BucketsDetailsFromAws" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllS3BucketsDetailsFromAws_ObjectFieldSpec(object fieldSpecObj)
@@ -4825,7 +4825,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\norgId: $orgId\nsiteFids: $siteFids\n)";
             return "allSharepointSiteExclusions" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllSharepointSiteExclusions_ObjectFieldSpec(object fieldSpecObj)
@@ -4856,7 +4856,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nsnapshotId: $snapshotId\nsnappableId: $snappableId\nisReplica: $isReplica\n)";
             return "allSnapshotPvcs" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllSnapshotPvcs_ObjectFieldSpec(object fieldSpecObj)
@@ -4887,7 +4887,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nbeforeTime: $beforeTime\nafterTime: $afterTime\nsnappableIds: $snappableIds\nincludeLinked: $includeLinked\nignoreActiveWorkloadCheck: $ignoreActiveWorkloadCheck\nexcludeQuarantined: $excludeQuarantined\nexcludeAnomalous: $excludeAnomalous\n)";
             return "allSnapshotsClosestToPointInTime" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllSnapshotsClosestToPointInTime_ObjectFieldSpec(object fieldSpecObj)
@@ -4918,7 +4918,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "allStorageArrays" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllStorageArrays_ObjectFieldSpec(object fieldSpecObj)
@@ -4949,7 +4949,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\ncontextFilter: $contextFilter\nisRcsStatsRequired: $isRcsStatsRequired\n)";
             return "allTargetMappings" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllTargetMappings_ObjectFieldSpec(object fieldSpecObj)
@@ -4980,7 +4980,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ngetWhitelistedResults: $getWhitelistedResults\nlimit: $limit\nworkloadTypes: $workloadTypes\n)";
             return "allTopRiskPolicySummaries" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllTopRiskPolicySummaries_ObjectFieldSpec(object fieldSpecObj)
@@ -5011,7 +5011,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "allUsersOnAccount" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllUsersOnAccount_ObjectFieldSpec(object fieldSpecObj)
@@ -5042,7 +5042,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nemailFilter: $emailFilter\nroleIdsFilter: $roleIdsFilter\nlockoutStateFilter: $lockoutStateFilter\nhiddenStateFilter: $hiddenStateFilter\nshouldGetLocalUsersOnly: $shouldGetLocalUsersOnly\n)";
             return "allUsersOnAccountConnection" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllUsersOnAccountConnection_ObjectFieldSpec(object fieldSpecObj)
@@ -5073,7 +5073,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
             return "allValidReplicationTargets" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllValidReplicationTargets_ObjectFieldSpec(object fieldSpecObj)
@@ -5104,7 +5104,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nclusterUuids: $clusterUuids\n)";
             return "allVcenterHotAddProxyVms" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllVcenterHotAddProxyVms_ObjectFieldSpec(object fieldSpecObj)
@@ -5135,7 +5135,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "allVirtualMachineFiles" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllVirtualMachineFiles_ObjectFieldSpec(object fieldSpecObj)
@@ -5166,7 +5166,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\ninput: $input\n)";
             return "allVmRecoveryJobsInfo" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllVmRecoveryJobsInfo_ObjectFieldSpec(object fieldSpecObj)
@@ -5197,7 +5197,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nids: $ids\n)";
             return "allVmwareCdpStateInfos" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllVmwareCdpStateInfos_ObjectFieldSpec(object fieldSpecObj)
@@ -5228,7 +5228,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\n)";
             return "allVpcsByRegionFromAws" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllVpcsByRegionFromAws_ObjectFieldSpec(object fieldSpecObj)
@@ -5259,7 +5259,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\n)";
             return "allVpcsFromAws" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllVpcsFromAws_ObjectFieldSpec(object fieldSpecObj)
@@ -5290,7 +5290,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nname: $name\n)";
             return "allWebhooks" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AllWebhooks_ObjectFieldSpec(object fieldSpecObj)
@@ -5321,7 +5321,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "amiTypeForAwsNativeArchivedSnapshotExport" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AmiTypeForAwsNativeArchivedSnapshotExport_ObjectFieldSpec(object fieldSpecObj)
@@ -5352,7 +5352,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "analyzerGroups" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AnalyzerGroups_ObjectFieldSpec(object fieldSpecObj)
@@ -5383,7 +5383,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "analyzerUsages" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AnalyzerUsages_ObjectFieldSpec(object fieldSpecObj)
@@ -5414,7 +5414,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nclusterUuid: $clusterUuid\nsnapshotId: $snapshotId\nworkloadId: $workloadId\nanomalyId: $anomalyId\n)";
             return "anomalyResultOpt" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AnomalyResultOpt_ObjectFieldSpec(object fieldSpecObj)
@@ -5445,7 +5445,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nfilter: $filter\ntimezoneOffset: $timezoneOffset\n)";
             return "anomalyResults" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AnomalyResults_ObjectFieldSpec(object fieldSpecObj)
@@ -5476,7 +5476,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\ngroupBy: $groupBy\nfilter: $filter\ntimezoneOffset: $timezoneOffset\n)";
             return "anomalyResultsGrouped" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AnomalyResultsGrouped_ObjectFieldSpec(object fieldSpecObj)
@@ -5507,7 +5507,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "archivalStorageUsage" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ArchivalStorageUsage_ObjectFieldSpec(object fieldSpecObj)
@@ -5538,7 +5538,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "awsArtifactsToDelete" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AwsArtifactsToDelete_ObjectFieldSpec(object fieldSpecObj)
@@ -5569,7 +5569,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ncloudAccountUuid: $cloudAccountUuid\nfeature: $feature\nregion: $region\nvpcID: $vpcID\n)";
             return "awsCloudAccountListSecurityGroups" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AwsCloudAccountListSecurityGroups_ObjectFieldSpec(object fieldSpecObj)
@@ -5600,7 +5600,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ncloudAccountUuid: $cloudAccountUuid\nfeature: $feature\nregion: $region\nvpcID: $vpcID\n)";
             return "awsCloudAccountListSubnets" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AwsCloudAccountListSubnets_ObjectFieldSpec(object fieldSpecObj)
@@ -5631,7 +5631,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ncloudAccountUuid: $cloudAccountUuid\nfeature: $feature\nregion: $region\n)";
             return "awsCloudAccountListVpcs" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AwsCloudAccountListVpcs_ObjectFieldSpec(object fieldSpecObj)
@@ -5662,7 +5662,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ncloudAccountId: $cloudAccountId\nawsCloudAccountArg: $awsCloudAccountArg\n)";
             return "awsCloudAccountWithFeatures" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AwsCloudAccountWithFeatures_ObjectFieldSpec(object fieldSpecObj)
@@ -5693,7 +5693,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ncomputeSettingId: $computeSettingId\n)";
             return "awsComputeSettings" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AwsComputeSettings_ObjectFieldSpec(object fieldSpecObj)
@@ -5724,7 +5724,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nawsNativeAccountRubrikId: $awsNativeAccountRubrikId\nawsNativeProtectionFeature: $awsNativeProtectionFeature\n)";
             return "awsNativeAccount" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AwsNativeAccount_ObjectFieldSpec(object fieldSpecObj)
@@ -5755,7 +5755,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\naccountFilters: $accountFilters\nauthorizedOperationFilter: $authorizedOperationFilter\nawsNativeProtectionFeature: $awsNativeProtectionFeature\n)";
             return "awsNativeAccounts" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AwsNativeAccounts_ObjectFieldSpec(object fieldSpecObj)
@@ -5786,7 +5786,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nebsVolumeRubrikId: $ebsVolumeRubrikId\n)";
             return "awsNativeEbsVolume" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AwsNativeEbsVolume_ObjectFieldSpec(object fieldSpecObj)
@@ -5817,7 +5817,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nebsVolumeFilters: $ebsVolumeFilters\n)";
             return "awsNativeEbsVolumes" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AwsNativeEbsVolumes_ObjectFieldSpec(object fieldSpecObj)
@@ -5848,7 +5848,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nebsVolumeName: $ebsVolumeName\n)";
             return "awsNativeEbsVolumesByName" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AwsNativeEbsVolumesByName_ObjectFieldSpec(object fieldSpecObj)
@@ -5879,7 +5879,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nec2InstanceRubrikId: $ec2InstanceRubrikId\n)";
             return "awsNativeEc2Instance" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AwsNativeEc2Instance_ObjectFieldSpec(object fieldSpecObj)
@@ -5910,7 +5910,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\ndescendantTypeFilter: $descendantTypeFilter\nec2InstanceFilters: $ec2InstanceFilters\n)";
             return "awsNativeEc2Instances" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AwsNativeEc2Instances_ObjectFieldSpec(object fieldSpecObj)
@@ -5941,7 +5941,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nec2InstanceName: $ec2InstanceName\n)";
             return "awsNativeEc2InstancesByName" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AwsNativeEc2InstancesByName_ObjectFieldSpec(object fieldSpecObj)
@@ -5972,7 +5972,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nrdsInstanceRubrikId: $rdsInstanceRubrikId\nsnapshotId: $snapshotId\nisPointInTime: $isPointInTime\n)";
             return "awsNativeRdsExportDefaults" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AwsNativeRdsExportDefaults_ObjectFieldSpec(object fieldSpecObj)
@@ -6003,7 +6003,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nrdsInstanceRubrikId: $rdsInstanceRubrikId\n)";
             return "awsNativeRdsInstance" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AwsNativeRdsInstance_ObjectFieldSpec(object fieldSpecObj)
@@ -6034,7 +6034,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nrdsInstanceFilters: $rdsInstanceFilters\n)";
             return "awsNativeRdsInstances" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AwsNativeRdsInstances_ObjectFieldSpec(object fieldSpecObj)
@@ -6065,7 +6065,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\nrdsInstanceName: $rdsInstanceName\nrdsDatabaseRubrikId: $rdsDatabaseRubrikId\n)";
             return "awsNativeRdsPointInTimeRestoreWindow" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AwsNativeRdsPointInTimeRestoreWindow_ObjectFieldSpec(object fieldSpecObj)
@@ -6096,7 +6096,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "awsNativeRoot" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AwsNativeRoot_ObjectFieldSpec(object fieldSpecObj)
@@ -6127,7 +6127,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ns3BucketRubrikId: $s3BucketRubrikId\n)";
             return "awsNativeS3Bucket" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AwsNativeS3Bucket_ObjectFieldSpec(object fieldSpecObj)
@@ -6158,7 +6158,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "awsTrustPolicy" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AwsTrustPolicy_ObjectFieldSpec(object fieldSpecObj)
@@ -6189,7 +6189,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "azureAdDirectories" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureAdDirectories_ObjectFieldSpec(object fieldSpecObj)
@@ -6220,7 +6220,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nworkloadFid: $workloadFid\n)";
             return "azureAdDirectory" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureAdDirectory_ObjectFieldSpec(object fieldSpecObj)
@@ -6251,7 +6251,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortByOption: $sortByOption\nsortOrder: $sortOrder\ninput: $input\n)";
             return "azureAdObjectsByType" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureAdObjectsByType_ObjectFieldSpec(object fieldSpecObj)
@@ -6282,7 +6282,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfeature: $feature\n)";
             return "azureCloudAccountPermissionConfig" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureCloudAccountPermissionConfig_ObjectFieldSpec(object fieldSpecObj)
@@ -6313,7 +6313,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ncloudAccountId: $cloudAccountId\n)";
             return "azureCloudAccountSubscriptionWithFeatures" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureCloudAccountSubscriptionWithFeatures_ObjectFieldSpec(object fieldSpecObj)
@@ -6344,7 +6344,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ntenantId: $tenantId\nfeature: $feature\nsubscriptionStatusFilters: $subscriptionStatusFilters\nsubscriptionSearchText: $subscriptionSearchText\nsubscriptionIdsFilter: $subscriptionIdsFilter\n)";
             return "azureCloudAccountTenant" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureCloudAccountTenant_ObjectFieldSpec(object fieldSpecObj)
@@ -6375,7 +6375,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ntenantId: $tenantId\nfeature: $feature\nsubscriptionStatusFilters: $subscriptionStatusFilters\nsubscriptionSearchText: $subscriptionSearchText\nsubscriptionIdsFilter: $subscriptionIdsFilter\n)";
             return "azureCloudAccountTenantWithExoConfigs" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureCloudAccountTenantWithExoConfigs_ObjectFieldSpec(object fieldSpecObj)
@@ -6406,7 +6406,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nazureManagedDiskRubrikId: $azureManagedDiskRubrikId\n)";
             return "azureNativeManagedDisk" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureNativeManagedDisk_ObjectFieldSpec(object fieldSpecObj)
@@ -6437,7 +6437,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\ndiskFilters: $diskFilters\n)";
             return "azureNativeManagedDisks" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureNativeManagedDisks_ObjectFieldSpec(object fieldSpecObj)
@@ -6468,7 +6468,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nresourceGroupId: $resourceGroupId\n)";
             return "azureNativeResourceGroup" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureNativeResourceGroup_ObjectFieldSpec(object fieldSpecObj)
@@ -6499,7 +6499,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\ncommonResourceGroupFilters: $commonResourceGroupFilters\nprotectedObjectTypes: $protectedObjectTypes\nazureNativeProtectionFeatures: $azureNativeProtectionFeatures\n)";
             return "azureNativeResourceGroups" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureNativeResourceGroups_ObjectFieldSpec(object fieldSpecObj)
@@ -6530,7 +6530,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "azureNativeRoot" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureNativeRoot_ObjectFieldSpec(object fieldSpecObj)
@@ -6561,7 +6561,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nazureSubscriptionRubrikId: $azureSubscriptionRubrikId\n)";
             return "azureNativeSubscription" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureNativeSubscription_ObjectFieldSpec(object fieldSpecObj)
@@ -6592,7 +6592,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nsubscriptionFilters: $subscriptionFilters\nauthorizedOperationFilter: $authorizedOperationFilter\nworkloadHierarchy: $workloadHierarchy\nazureNativeProtectionFeature: $azureNativeProtectionFeature\n)";
             return "azureNativeSubscriptions" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureNativeSubscriptions_ObjectFieldSpec(object fieldSpecObj)
@@ -6623,7 +6623,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nazureVirtualMachineRubrikId: $azureVirtualMachineRubrikId\n)";
             return "azureNativeVirtualMachine" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureNativeVirtualMachine_ObjectFieldSpec(object fieldSpecObj)
@@ -6654,7 +6654,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\ndescendantTypeFilter: $descendantTypeFilter\nvirtualMachineFilters: $virtualMachineFilters\n)";
             return "azureNativeVirtualMachines" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureNativeVirtualMachines_ObjectFieldSpec(object fieldSpecObj)
@@ -6685,7 +6685,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ntenantId: $tenantId\nsubscriptionId: $subscriptionId\nresourceGroupName: $resourceGroupName\nvnet_name: $vnet_name\nsubnet_name: $subnet_name\n)";
             return "azureO365CheckNSGOutboundRules" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureO365CheckNsgOutboundRules_ObjectFieldSpec(object fieldSpecObj)
@@ -6716,7 +6716,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ntenantId: $tenantId\nsubscriptionId: $subscriptionId\nresourceGroupName: $resourceGroupName\nvnet_name: $vnet_name\nsubnet_name: $subnet_name\nstrict_addr_check: $strict_addr_check\n)";
             return "azureO365CheckNetworkSubnet" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureO365CheckNetworkSubnet_ObjectFieldSpec(object fieldSpecObj)
@@ -6747,7 +6747,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ntenantId: $tenantId\nsubscriptionId: $subscriptionId\ngroupName: $groupName\n)";
             return "azureO365CheckResourceGroupName" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureO365CheckResourceGroupName_ObjectFieldSpec(object fieldSpecObj)
@@ -6778,7 +6778,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ntenantId: $tenantId\nsubscriptionId: $subscriptionId\nstorage_account_name: $storage_account_name\ngroupName: $groupName\n)";
             return "azureO365CheckStorageAccountAccessibility" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureO365CheckStorageAccountAccessibility_ObjectFieldSpec(object fieldSpecObj)
@@ -6809,7 +6809,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ntenantId: $tenantId\nsubscriptionId: $subscriptionId\nstorage_account_name: $storage_account_name\n)";
             return "azureO365CheckStorageAccountName" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureO365CheckStorageAccountName_ObjectFieldSpec(object fieldSpecObj)
@@ -6840,7 +6840,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ntenantId: $tenantId\nsubscriptionId: $subscriptionId\nregionName: $regionName\n)";
             return "azureO365CheckSubscriptionQuota" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureO365CheckSubscriptionQuota_ObjectFieldSpec(object fieldSpecObj)
@@ -6871,7 +6871,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ntenantId: $tenantId\nsubscriptionId: $subscriptionId\ngroupName: $groupName\nvnet_name: $vnet_name\n)";
             return "azureO365CheckVirtualNetworkName" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureO365CheckVirtualNetworkName_ObjectFieldSpec(object fieldSpecObj)
@@ -6902,7 +6902,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\norgId: $orgId\nexocomputeClusterId: $exocomputeClusterId\n)";
             return "azureO365Exocompute" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureO365Exocompute_ObjectFieldSpec(object fieldSpecObj)
@@ -6933,7 +6933,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "azureO365GetAzureHostType" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureO365GetAzureHostType_ObjectFieldSpec(object fieldSpecObj)
@@ -6964,7 +6964,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ntenantId: $tenantId\nsubscriptionId: $subscriptionId\nresourceGroupName: $resourceGroupName\nvnet_name: $vnet_name\nsubnet_name: $subnet_name\nstrict_addr_check: $strict_addr_check\n)";
             return "azureO365GetNetworkSubnetUnusedAddr" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureO365GetNetworkSubnetUnusedAddr_ObjectFieldSpec(object fieldSpecObj)
@@ -6995,7 +6995,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ntenantId: $tenantId\nsubscriptionId: $subscriptionId\n)";
             return "azureO365ValidateUserRoles" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureO365ValidateUserRoles_ObjectFieldSpec(object fieldSpecObj)
@@ -7026,7 +7026,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ntenantId: $tenantId\nsubscriptionId: $subscriptionId\n)";
             return "azureRegions" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureRegions_ObjectFieldSpec(object fieldSpecObj)
@@ -7057,7 +7057,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ntenantId: $tenantId\nsubscriptionId: $subscriptionId\n)";
             return "azureResourceGroups" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureResourceGroups_ObjectFieldSpec(object fieldSpecObj)
@@ -7088,7 +7088,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nazureSqlDatabaseRubrikId: $azureSqlDatabaseRubrikId\n)";
             return "azureSqlDatabase" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureSqlDatabase_ObjectFieldSpec(object fieldSpecObj)
@@ -7119,7 +7119,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nsubscriptionId: $subscriptionId\nresourceGroupName: $resourceGroupName\nazureSqlDatabaseServerName: $azureSqlDatabaseServerName\nazureSqlDatabaseName: $azureSqlDatabaseName\n)";
             return "azureSqlDatabaseDbPointInTimeRestoreWindowFromAzure" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureSqlDatabaseDbPointInTimeRestoreWindowFromAzure_ObjectFieldSpec(object fieldSpecObj)
@@ -7150,7 +7150,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nazureSqlDatabaseServerRubrikId: $azureSqlDatabaseServerRubrikId\n)";
             return "azureSqlDatabaseServer" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureSqlDatabaseServer_ObjectFieldSpec(object fieldSpecObj)
@@ -7181,7 +7181,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nazureSqlDatabaseServerFilters: $azureSqlDatabaseServerFilters\n)";
             return "azureSqlDatabaseServers" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureSqlDatabaseServers_ObjectFieldSpec(object fieldSpecObj)
@@ -7212,7 +7212,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nazureSqlDatabaseFilters: $azureSqlDatabaseFilters\n)";
             return "azureSqlDatabases" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureSqlDatabases_ObjectFieldSpec(object fieldSpecObj)
@@ -7243,7 +7243,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nazureSqlManagedInstanceDatabaseRubrikId: $azureSqlManagedInstanceDatabaseRubrikId\n)";
             return "azureSqlManagedInstanceDatabase" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureSqlManagedInstanceDatabase_ObjectFieldSpec(object fieldSpecObj)
@@ -7274,7 +7274,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nazureSqlManagedInstanceDatabaseFilters: $azureSqlManagedInstanceDatabaseFilters\n)";
             return "azureSqlManagedInstanceDatabases" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureSqlManagedInstanceDatabases_ObjectFieldSpec(object fieldSpecObj)
@@ -7305,7 +7305,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nsubscriptionId: $subscriptionId\nresourceGroupName: $resourceGroupName\nazureSqlManagedInstanceName: $azureSqlManagedInstanceName\nazureSqlDatabaseName: $azureSqlDatabaseName\n)";
             return "azureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure_ObjectFieldSpec(object fieldSpecObj)
@@ -7336,7 +7336,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nazureSqlManagedInstanceServerRubrikId: $azureSqlManagedInstanceServerRubrikId\n)";
             return "azureSqlManagedInstanceServer" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureSqlManagedInstanceServer_ObjectFieldSpec(object fieldSpecObj)
@@ -7367,7 +7367,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nazureSqlManagedInstanceServerFilters: $azureSqlManagedInstanceServerFilters\n)";
             return "azureSqlManagedInstanceServers" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureSqlManagedInstanceServers_ObjectFieldSpec(object fieldSpecObj)
@@ -7398,7 +7398,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ntenantId: $tenantId\nsubscriptionId: $subscriptionId\nregionName: $regionName\n)";
             return "azureStorageAccounts" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureStorageAccounts_ObjectFieldSpec(object fieldSpecObj)
@@ -7429,7 +7429,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ntenantId: $tenantId\nsubscriptionId: $subscriptionId\nvNetId: $vNetId\n)";
             return "azureSubnets" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureSubnets_ObjectFieldSpec(object fieldSpecObj)
@@ -7460,7 +7460,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ntenantId: $tenantId\n)";
             return "azureSubscriptions" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureSubscriptions_ObjectFieldSpec(object fieldSpecObj)
@@ -7491,7 +7491,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ntenantId: $tenantId\nsubscriptionId: $subscriptionId\nregionName: $regionName\n)";
             return "azureVNets" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string AzureVnets_ObjectFieldSpec(object fieldSpecObj)
@@ -7522,7 +7522,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\nfolderId: $folderId\norgId: $orgId\ncalendarSearchFilter: $calendarSearchFilter\n)";
             return "browseCalendar" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string BrowseCalendar_ObjectFieldSpec(object fieldSpecObj)
@@ -7553,7 +7553,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\nfolderId: $folderId\norgId: $orgId\ncontactsSearchFilter: $contactsSearchFilter\n)";
             return "browseContacts" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string BrowseContacts_ObjectFieldSpec(object fieldSpecObj)
@@ -7584,7 +7584,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\nfolderId: $folderId\norgId: $orgId\n)";
             return "browseFolder" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string BrowseFolder_ObjectFieldSpec(object fieldSpecObj)
@@ -7615,7 +7615,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\nsnapshotFidOpt: $snapshotFidOpt\nexcludeArchived: $excludeArchived\norgId: $orgId\nchannelMembershipTypeFilter: $channelMembershipTypeFilter\nnameFilter: $nameFilter\n)";
             return "browseO365TeamConvChannels" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string BrowseO365TeamConvChannels_ObjectFieldSpec(object fieldSpecObj)
@@ -7646,7 +7646,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\nfolderId: $folderId\nonedriveSearchFilter: $onedriveSearchFilter\norgId: $orgId\n)";
             return "browseOnedrive" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string BrowseOnedrive_ObjectFieldSpec(object fieldSpecObj)
@@ -7677,7 +7677,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\nfolderId: $folderId\nsharepointDriveSearchFilter: $sharepointDriveSearchFilter\norgId: $orgId\nsiteChildId: $siteChildId\nsiteChildType: $siteChildType\n)";
             return "browseSharepointDrive" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string BrowseSharepointDrive_ObjectFieldSpec(object fieldSpecObj)
@@ -7708,7 +7708,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\nfolderId: $folderId\nsharepointDriveSearchFilter: $sharepointDriveSearchFilter\norgId: $orgId\nsiteChildId: $siteChildId\n)";
             return "browseSharepointList" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string BrowseSharepointList_ObjectFieldSpec(object fieldSpecObj)
@@ -7739,7 +7739,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\npath: $path\nsnapshotFid: $snapshotFid\nsearchPrefix: $searchPrefix\n)";
             return "browseSnapshotFileConnection" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string BrowseSnapshotFileConnection_ObjectFieldSpec(object fieldSpecObj)
@@ -7770,7 +7770,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\norgId: $orgId\nchannelMembershipTypeFilter: $channelMembershipTypeFilter\nnameFilter: $nameFilter\n)";
             return "browseTeamsChannels" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string BrowseTeamsChannels_ObjectFieldSpec(object fieldSpecObj)
@@ -7801,7 +7801,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\nfolderId: $folderId\nteamsDriveSearchFilter: $teamsDriveSearchFilter\norgId: $orgId\n)";
             return "browseTeamsDrive" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string BrowseTeamsDrive_ObjectFieldSpec(object fieldSpecObj)
@@ -7832,7 +7832,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "cassandraColumnFamilies" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string CassandraColumnFamilies_ObjectFieldSpec(object fieldSpecObj)
@@ -7863,7 +7863,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "cassandraColumnFamily" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string CassandraColumnFamily_ObjectFieldSpec(object fieldSpecObj)
@@ -7894,7 +7894,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "cassandraColumnFamilyRecoverableRange" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string CassandraColumnFamilyRecoverableRange_ObjectFieldSpec(object fieldSpecObj)
@@ -7925,7 +7925,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "cassandraColumnFamilySchema" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string CassandraColumnFamilySchema_ObjectFieldSpec(object fieldSpecObj)
@@ -7956,7 +7956,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "cassandraKeyspace" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string CassandraKeyspace_ObjectFieldSpec(object fieldSpecObj)
@@ -7987,7 +7987,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "cassandraKeyspaces" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string CassandraKeyspaces_ObjectFieldSpec(object fieldSpecObj)
@@ -8018,7 +8018,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "cassandraSource" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string CassandraSource_ObjectFieldSpec(object fieldSpecObj)
@@ -8049,7 +8049,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "cassandraSources" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string CassandraSources_ObjectFieldSpec(object fieldSpecObj)
@@ -8080,7 +8080,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nrootEnum: $rootEnum\n)";
             return "cdmInventorySubHierarchyRoot" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string CdmInventorySubHierarchyRoot_ObjectFieldSpec(object fieldSpecObj)
@@ -8111,7 +8111,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "cdmMssqlLogShippingTarget" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string CdmMssqlLogShippingTarget_ObjectFieldSpec(object fieldSpecObj)
@@ -8142,7 +8142,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nfilters: $filters\n)";
             return "cdmMssqlLogShippingTargets" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string CdmMssqlLogShippingTargets_ObjectFieldSpec(object fieldSpecObj)
@@ -8173,7 +8173,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfeatureToCdmVersion: $featureToCdmVersion\n)";
             return "cdmVersionCheck" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string CdmVersionCheck_ObjectFieldSpec(object fieldSpecObj)
@@ -8204,7 +8204,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "certificateSigningRequest" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string CertificateSigningRequest_ObjectFieldSpec(object fieldSpecObj)
@@ -8235,7 +8235,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nsearchTerm: $searchTerm\n)";
             return "certificateSigningRequests" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string CertificateSigningRequests_ObjectFieldSpec(object fieldSpecObj)
@@ -8266,7 +8266,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nsearchTerm: $searchTerm\n)";
             return "certificates" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string Certificates_ObjectFieldSpec(object fieldSpecObj)
@@ -8297,7 +8297,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "certificatesWithKey" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string CertificatesWithKey_ObjectFieldSpec(object fieldSpecObj)
@@ -8328,7 +8328,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ncloudAccountId: $cloudAccountId\nfeature: $feature\nunmappingValidationType: $unmappingValidationType\n)";
             return "checkAzurePersistentStorageSubscriptionCanUnmap" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string CheckAzurePersistentStorageSubscriptionCanUnmap_ObjectFieldSpec(object fieldSpecObj)
@@ -8359,7 +8359,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "checkCloudComputeConnectivityJobProgress" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string CheckCloudComputeConnectivityJobProgress_ObjectFieldSpec(object fieldSpecObj)
@@ -8390,7 +8390,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nruleName: $ruleName\nobjectType: $objectType\n)";
             return "checkCloudNativeLabelRuleNameUniqueness" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string CheckCloudNativeLabelRuleNameUniqueness_ObjectFieldSpec(object fieldSpecObj)
@@ -8421,7 +8421,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nruleName: $ruleName\nobjectType: $objectType\n)";
             return "checkCloudNativeTagRuleNameUniqueness" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string CheckCloudNativeTagRuleNameUniqueness_ObjectFieldSpec(object fieldSpecObj)
@@ -8452,7 +8452,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "cloudDirectNasExport" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string CloudDirectNasExport_ObjectFieldSpec(object fieldSpecObj)
@@ -8483,7 +8483,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "cloudDirectSystems" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string CloudDirectSystems_ObjectFieldSpec(object fieldSpecObj)
@@ -8514,7 +8514,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nworkloadId: $workloadId\nsnapshotIds: $snapshotIds\n)";
             return "cloudNativeCheckArchivedSnapshotsLocked" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string CloudNativeCheckArchivedSnapshotsLocked_ObjectFieldSpec(object fieldSpecObj)
@@ -8545,7 +8545,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ncloudVendor: $cloudVendor\ncloudAccountId: $cloudAccountId\n)";
             return "cloudNativeCustomerTags" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string CloudNativeCustomerTags_ObjectFieldSpec(object fieldSpecObj)
@@ -8576,7 +8576,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nobjectType: $objectType\nfilters: $filters\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
             return "cloudNativeLabelRules" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string CloudNativeLabelRules_ObjectFieldSpec(object fieldSpecObj)
@@ -8607,7 +8607,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "cloudNativeRbaInstallers" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string CloudNativeRbaInstallers_ObjectFieldSpec(object fieldSpecObj)
@@ -8638,7 +8638,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nsnapshotId: $snapshotId\n)";
             return "cloudNativeSnapshotDetailsForRecovery" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string CloudNativeSnapshotDetailsForRecovery_ObjectFieldSpec(object fieldSpecObj)
@@ -8669,7 +8669,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nsnapshotId: $snapshotId\n)";
             return "cloudNativeSnapshotTypeDetails" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string CloudNativeSnapshotTypeDetails_ObjectFieldSpec(object fieldSpecObj)
@@ -8700,7 +8700,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\npath: $path\nsnapshotFid: $snapshotFid\nsearchPrefix: $searchPrefix\n)";
             return "cloudNativeSnapshots" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string CloudNativeSnapshots_ObjectFieldSpec(object fieldSpecObj)
@@ -8731,7 +8731,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "cloudNativeSqlServerSetupScript" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string CloudNativeSqlServerSetupScript_ObjectFieldSpec(object fieldSpecObj)
@@ -8762,7 +8762,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nobjectType: $objectType\nfilters: $filters\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
             return "cloudNativeTagRules" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string CloudNativeTagRules_ObjectFieldSpec(object fieldSpecObj)
@@ -8793,7 +8793,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableId: $snappableId\nsearchQuery: $searchQuery\n)";
             return "cloudNativeWorkloadVersionedFiles" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string CloudNativeWorkloadVersionedFiles_ObjectFieldSpec(object fieldSpecObj)
@@ -8824,7 +8824,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nclusterUuid: $clusterUuid\n)";
             return "cluster" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string Cluster_ObjectFieldSpec(object fieldSpecObj)
@@ -8855,7 +8855,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "clusterCertificates" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ClusterCertificates_ObjectFieldSpec(object fieldSpecObj)
@@ -8886,7 +8886,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\nsortOrder: $sortOrder\nsortBy: $sortBy\n)";
             return "clusterConnection" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ClusterConnection_ObjectFieldSpec(object fieldSpecObj)
@@ -8917,7 +8917,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "clusterCsr" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ClusterCsr_ObjectFieldSpec(object fieldSpecObj)
@@ -8948,7 +8948,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "clusterDefaultGateway" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ClusterDefaultGateway_ObjectFieldSpec(object fieldSpecObj)
@@ -8979,7 +8979,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nclusterUuid: $clusterUuid\n)";
             return "clusterDns" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ClusterDns_ObjectFieldSpec(object fieldSpecObj)
@@ -9010,7 +9010,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "clusterFloatingIps" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ClusterFloatingIps_ObjectFieldSpec(object fieldSpecObj)
@@ -9041,7 +9041,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\ngroupBy: $groupBy\nfilter: $filter\ntimezoneOffset: $timezoneOffset\n)";
             return "clusterGroupByConnection" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ClusterGroupByConnection_ObjectFieldSpec(object fieldSpecObj)
@@ -9072,7 +9072,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "clusterIpmi" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ClusterIpmi_ObjectFieldSpec(object fieldSpecObj)
@@ -9103,7 +9103,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "clusterIpv6Mode" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ClusterIpv6Mode_ObjectFieldSpec(object fieldSpecObj)
@@ -9134,7 +9134,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "clusterNetworkInterfaces" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ClusterNetworkInterfaces_ObjectFieldSpec(object fieldSpecObj)
@@ -9165,7 +9165,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "clusterNodes" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ClusterNodes_ObjectFieldSpec(object fieldSpecObj)
@@ -9196,7 +9196,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "clusterNtpServers" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ClusterNtpServers_ObjectFieldSpec(object fieldSpecObj)
@@ -9227,7 +9227,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "clusterOperationJobProgress" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ClusterOperationJobProgress_ObjectFieldSpec(object fieldSpecObj)
@@ -9258,7 +9258,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nclusterUuid: $clusterUuid\n)";
             return "clusterProxy" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ClusterProxy_ObjectFieldSpec(object fieldSpecObj)
@@ -9289,7 +9289,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "clusterRegistrationProductInfo" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ClusterRegistrationProductInfo_ObjectFieldSpec(object fieldSpecObj)
@@ -9320,7 +9320,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nclusterUuid: $clusterUuid\nstatus: $status\n)";
             return "clusterReportMigrationCount" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ClusterReportMigrationCount_ObjectFieldSpec(object fieldSpecObj)
@@ -9351,7 +9351,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nclusterUuid: $clusterUuid\n)";
             return "clusterReportMigrationJobStatus" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ClusterReportMigrationJobStatus_ObjectFieldSpec(object fieldSpecObj)
@@ -9382,7 +9382,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nclusterUuid: $clusterUuid\nstatus: $status\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "clusterReportMigrationStatus" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ClusterReportMigrationStatus_ObjectFieldSpec(object fieldSpecObj)
@@ -9413,7 +9413,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "clusterSlaDomains" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ClusterSlaDomains_ObjectFieldSpec(object fieldSpecObj)
@@ -9444,7 +9444,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "clusterTypeList" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ClusterTypeList_ObjectFieldSpec(object fieldSpecObj)
@@ -9475,7 +9475,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "clusterVlans" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ClusterVlans_ObjectFieldSpec(object fieldSpecObj)
@@ -9506,7 +9506,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "clusterWebSignedCertificate" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ClusterWebSignedCertificate_ObjectFieldSpec(object fieldSpecObj)
@@ -9537,7 +9537,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nupgradeFilter: $upgradeFilter\nsortOrder: $sortOrder\nsortBy: $sortBy\n)";
             return "clusterWithUpgradesInfo" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ClusterWithUpgradesInfo_ObjectFieldSpec(object fieldSpecObj)
@@ -9568,7 +9568,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "computeClusterStatus" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ComputeClusterStatus_ObjectFieldSpec(object fieldSpecObj)
@@ -9599,7 +9599,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\norgId: $orgId\nwildcard: $wildcard\npdls: $pdls\n)";
             return "configuredGroupMembers" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ConfiguredGroupMembers_ObjectFieldSpec(object fieldSpecObj)
@@ -9630,7 +9630,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nrootOptionalFid: $rootOptionalFid\nslaIds: $slaIds\nfilter: $filter\ntypeFilter: $typeFilter\n)";
             return "countOfObjectsProtectedBySlas" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string CountOfObjectsProtectedBySlas_ObjectFieldSpec(object fieldSpecObj)
@@ -9661,7 +9661,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ncrawlId: $crawlId\n)";
             return "crawl" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string Crawl_ObjectFieldSpec(object fieldSpecObj)
@@ -9692,7 +9692,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "crawls" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string Crawls_ObjectFieldSpec(object fieldSpecObj)
@@ -9723,7 +9723,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "currentOrg" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string CurrentOrg_ObjectFieldSpec(object fieldSpecObj)
@@ -9754,7 +9754,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "currentUser" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string CurrentUser_ObjectFieldSpec(object fieldSpecObj)
@@ -9785,7 +9785,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "currentUserLoginContext" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string CurrentUserLoginContext_ObjectFieldSpec(object fieldSpecObj)
@@ -9816,7 +9816,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nanalyzerId: $analyzerId\n)";
             return "customAnalyzer" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string CustomAnalyzer_ObjectFieldSpec(object fieldSpecObj)
@@ -9847,7 +9847,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ngetWhitelistedResults: $getWhitelistedResults\n)";
             return "dashboardSummary" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string DashboardSummary_ObjectFieldSpec(object fieldSpecObj)
@@ -9878,7 +9878,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "databaseLogReportForCluster" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string DatabaseLogReportForCluster_ObjectFieldSpec(object fieldSpecObj)
@@ -9909,7 +9909,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "databaseLogReportingPropertiesForCluster" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string DatabaseLogReportingPropertiesForCluster_ObjectFieldSpec(object fieldSpecObj)
@@ -9940,7 +9940,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\nstdPath: $stdPath\nskipResolveSids: $skipResolveSids\nfilters: $filters\n)";
             return "datagovSecDesc" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string DatagovSecDesc_ObjectFieldSpec(object fieldSpecObj)
@@ -9971,7 +9971,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "db2Database" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string Db2Database_ObjectFieldSpec(object fieldSpecObj)
@@ -10002,7 +10002,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "db2Databases" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string Db2Databases_ObjectFieldSpec(object fieldSpecObj)
@@ -10033,7 +10033,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nid: $id\n)";
             return "db2Instance" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string Db2Instance_ObjectFieldSpec(object fieldSpecObj)
@@ -10064,7 +10064,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "db2Instances" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string Db2Instances_ObjectFieldSpec(object fieldSpecObj)
@@ -10095,7 +10095,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ndb2LogSnapshotFid: $db2LogSnapshotFid\n)";
             return "db2LogSnapshot" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string Db2LogSnapshot_ObjectFieldSpec(object fieldSpecObj)
@@ -10126,7 +10126,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nfilter: $filter\n)";
             return "db2LogSnapshots" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string Db2LogSnapshots_ObjectFieldSpec(object fieldSpecObj)
@@ -10157,7 +10157,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ndb2RecoverableRangeFid: $db2RecoverableRangeFid\n)";
             return "db2RecoverableRange" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string Db2RecoverableRange_ObjectFieldSpec(object fieldSpecObj)
@@ -10188,7 +10188,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nfilter: $filter\n)";
             return "db2RecoverableRanges" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string Db2RecoverableRanges_ObjectFieldSpec(object fieldSpecObj)
@@ -10219,7 +10219,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nworkloadFid: $workloadFid\nexportUrlSpecsEnc: $exportUrlSpecsEnc\n)";
             return "decryptExportUrl" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string DecryptExportUrl_ObjectFieldSpec(object fieldSpecObj)
@@ -10250,7 +10250,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nclusterUuid: $clusterUuid\nmanagedId: $managedId\nsnapshotId: $snapshotId\nbrowseDiffPath: $browseDiffPath\n)";
             return "diffFmd" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string DiffFmd_ObjectFieldSpec(object fieldSpecObj)
@@ -10281,7 +10281,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nid: $id\n)";
             return "discoverNodes" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string DiscoverNodes_ObjectFieldSpec(object fieldSpecObj)
@@ -10312,7 +10312,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nstartDay: $startDay\nendDay: $endDay\ntimezone: $timezone\ngetWhitelistedResults: $getWhitelistedResults\nworkloadTypes: $workloadTypes\nuseOptimisedDiscoveryTimeline: $useOptimisedDiscoveryTimeline\nsubscriptionIdsFilter: $subscriptionIdsFilter\n)";
             return "discoveryTimeline" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string DiscoveryTimeline_ObjectFieldSpec(object fieldSpecObj)
@@ -10343,7 +10343,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ndownloadFilter: $downloadFilter\n)";
             return "downloadCdmUpgradesPdf" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string DownloadCdmUpgradesPdf_ObjectFieldSpec(object fieldSpecObj)
@@ -10374,7 +10374,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nclusterUuid: $clusterUuid\n)";
             return "downloadPackageStatus" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string DownloadPackageStatus_ObjectFieldSpec(object fieldSpecObj)
@@ -10405,7 +10405,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "downloadedVersionList" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string DownloadedVersionList_ObjectFieldSpec(object fieldSpecObj)
@@ -10436,7 +10436,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "edgeWindowsToolLink" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string EdgeWindowsToolLink_ObjectFieldSpec(object fieldSpecObj)
@@ -10467,7 +10467,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "exchangeDag" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ExchangeDag_ObjectFieldSpec(object fieldSpecObj)
@@ -10498,7 +10498,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "exchangeDags" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ExchangeDags_ObjectFieldSpec(object fieldSpecObj)
@@ -10529,7 +10529,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "exchangeDatabase" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ExchangeDatabase_ObjectFieldSpec(object fieldSpecObj)
@@ -10560,7 +10560,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "exchangeDatabases" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ExchangeDatabases_ObjectFieldSpec(object fieldSpecObj)
@@ -10591,7 +10591,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nfilters: $filters\nsortBy: $sortBy\n)";
             return "exchangeLiveMounts" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ExchangeLiveMounts_ObjectFieldSpec(object fieldSpecObj)
@@ -10622,7 +10622,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "exchangeServer" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ExchangeServer_ObjectFieldSpec(object fieldSpecObj)
@@ -10653,7 +10653,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "exchangeServers" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ExchangeServers_ObjectFieldSpec(object fieldSpecObj)
@@ -10684,7 +10684,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "failoverClusterApp" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string FailoverClusterApp_ObjectFieldSpec(object fieldSpecObj)
@@ -10715,7 +10715,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\nhostFailoverClusterRoot: $hostFailoverClusterRoot\n)";
             return "failoverClusterApps" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string FailoverClusterApps_ObjectFieldSpec(object fieldSpecObj)
@@ -10746,7 +10746,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\ntypeFilter: $typeFilter\nfilter: $filter\nhostFailoverClusterRoot: $hostFailoverClusterRoot\n)";
             return "failoverClusterTopLevelDescendants" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string FailoverClusterTopLevelDescendants_ObjectFieldSpec(object fieldSpecObj)
@@ -10777,7 +10777,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "federatedLoginStatus" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string FederatedLoginStatus_ObjectFieldSpec(object fieldSpecObj)
@@ -10808,7 +10808,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "filesetRequestStatus" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string FilesetRequestStatus_ObjectFieldSpec(object fieldSpecObj)
@@ -10839,7 +10839,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nid: $id\nverbose: $verbose\n)";
             return "filesetSnapshot" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string FilesetSnapshot_ObjectFieldSpec(object fieldSpecObj)
@@ -10870,7 +10870,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nid: $id\nlimit: $limit\noffset: $offset\npath: $path\n)";
             return "filesetSnapshotFiles" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string FilesetSnapshotFiles_ObjectFieldSpec(object fieldSpecObj)
@@ -10901,7 +10901,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "filesetTemplate" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string FilesetTemplate_ObjectFieldSpec(object fieldSpecObj)
@@ -10932,7 +10932,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\nhostRoot: $hostRoot\n)";
             return "filesetTemplates" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string FilesetTemplates_ObjectFieldSpec(object fieldSpecObj)
@@ -10963,7 +10963,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "gcpNativeDisk" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string GcpNativeDisk_ObjectFieldSpec(object fieldSpecObj)
@@ -10994,7 +10994,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\ndiskFilters: $diskFilters\n)";
             return "gcpNativeDisks" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string GcpNativeDisks_ObjectFieldSpec(object fieldSpecObj)
@@ -11025,7 +11025,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "gcpNativeGceInstance" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string GcpNativeGceInstance_ObjectFieldSpec(object fieldSpecObj)
@@ -11056,7 +11056,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\ngceInstanceFilters: $gceInstanceFilters\n)";
             return "gcpNativeGceInstances" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string GcpNativeGceInstances_ObjectFieldSpec(object fieldSpecObj)
@@ -11087,7 +11087,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "gcpNativeProject" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string GcpNativeProject_ObjectFieldSpec(object fieldSpecObj)
@@ -11118,7 +11118,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nprojectFilters: $projectFilters\nauthorizedOperationFilter: $authorizedOperationFilter\nworkloadHierarchy: $workloadHierarchy\n)";
             return "gcpNativeProjects" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string GcpNativeProjects_ObjectFieldSpec(object fieldSpecObj)
@@ -11149,7 +11149,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nprojectId: $projectId\n)";
             return "gcpNativeStoredDiskLocations" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string GcpNativeStoredDiskLocations_ObjectFieldSpec(object fieldSpecObj)
@@ -11180,7 +11180,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "geoLocationList" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string GeoLocationList_ObjectFieldSpec(object fieldSpecObj)
@@ -11211,7 +11211,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nnameFilter: $nameFilter\n)";
             return "getAllRolesInOrgConnection" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string GetAllRolesInOrgConnection_ObjectFieldSpec(object fieldSpecObj)
@@ -11242,7 +11242,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nlistClusterUuid: $listClusterUuid\nfilterVersion: $filterVersion\nfetchLinks: $fetchLinks\nfilterUpgradeable: $filterUpgradeable\nshouldShowAll: $shouldShowAll\nfilterAfterSource: $filterAfterSource\nsortOrder: $sortOrder\n)";
             return "getCdmReleaseDetailsForClusterFromSupportPortal" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string GetCdmReleaseDetailsForClusterFromSupportPortal_ObjectFieldSpec(object fieldSpecObj)
@@ -11273,7 +11273,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nlistClusterUuid: $listClusterUuid\nfilterVersion: $filterVersion\nfetchLinks: $fetchLinks\nfilterUpgradeable: $filterUpgradeable\nshouldShowAll: $shouldShowAll\nfilterAfterSource: $filterAfterSource\nsortOrder: $sortOrder\n)";
             return "getCdmReleaseDetailsForVersionFromSupportPortal" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string GetCdmReleaseDetailsForVersionFromSupportPortal_ObjectFieldSpec(object fieldSpecObj)
@@ -11304,7 +11304,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nplatform: $platform\nnodeCount: $nodeCount\nsourceVersion: $sourceVersion\nfilterVersion: $filterVersion\nfetchLinks: $fetchLinks\nfilterUpgradeable: $filterUpgradeable\nshouldShowAll: $shouldShowAll\nfilterAfterSource: $filterAfterSource\nsortOrder: $sortOrder\n)";
             return "getCdmReleaseDetailsFromSupportPortal" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string GetCdmReleaseDetailsFromSupportPortal_ObjectFieldSpec(object fieldSpecObj)
@@ -11335,7 +11335,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "getGroupCountByCdmClusterStatus" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string GetGroupCountByCdmClusterStatus_ObjectFieldSpec(object fieldSpecObj)
@@ -11366,7 +11366,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "getGroupCountByPrechecksStatus" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string GetGroupCountByPrechecksStatus_ObjectFieldSpec(object fieldSpecObj)
@@ -11397,7 +11397,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "getGroupCountByUpgradeJobStatus" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string GetGroupCountByUpgradeJobStatus_ObjectFieldSpec(object fieldSpecObj)
@@ -11428,7 +11428,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "getGroupCountByVersionStatus" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string GetGroupCountByVersionStatus_ObjectFieldSpec(object fieldSpecObj)
@@ -11459,7 +11459,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ntaskchainId: $taskchainId\n)";
             return "getKorgTaskchainStatus" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string GetKorgTaskchainStatus_ObjectFieldSpec(object fieldSpecObj)
@@ -11490,7 +11490,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nroleId: $roleId\n)";
             return "getPermissions" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string GetPermissions_ObjectFieldSpec(object fieldSpecObj)
@@ -11521,7 +11521,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nroleIds: $roleIds\n)";
             return "getRolesByIds" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string GetRolesByIds_ObjectFieldSpec(object fieldSpecObj)
@@ -11552,7 +11552,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "getUserDownloads" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string GetUserDownloads_ObjectFieldSpec(object fieldSpecObj)
@@ -11583,7 +11583,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "globalFileSearch" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string GlobalFileSearch_ObjectFieldSpec(object fieldSpecObj)
@@ -11614,7 +11614,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "globalLockoutConfig" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string GlobalLockoutConfig_ObjectFieldSpec(object fieldSpecObj)
@@ -11645,7 +11645,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "globalMfaSetting" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string GlobalMfaSetting_ObjectFieldSpec(object fieldSpecObj)
@@ -11676,7 +11676,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "globalSearchResults" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string GlobalSearchResults_ObjectFieldSpec(object fieldSpecObj)
@@ -11707,7 +11707,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\ncontextFilter: $contextFilter\ncontextFilterInput: $contextFilterInput\nshouldShowSyncStatus: $shouldShowSyncStatus\nshouldShowProtectedObjectCount: $shouldShowProtectedObjectCount\nshouldShowUpgradeInfo: $shouldShowUpgradeInfo\nshowRemoteSlas: $showRemoteSlas\nshouldShowPausedClusters: $shouldShowPausedClusters\n)";
             return "globalSlaFilterConnection" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string GlobalSlaFilterConnection_ObjectFieldSpec(object fieldSpecObj)
@@ -11738,7 +11738,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\nSlaId: $SlaId\n)";
             return "globalSlaStatuses" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string GlobalSlaStatuses_ObjectFieldSpec(object fieldSpecObj)
@@ -11769,7 +11769,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\nsortBy: $sortBy\nshouldIncludeGroupsWithoutRole: $shouldIncludeGroupsWithoutRole\n)";
             return "groupsInCurrentAndDescendantOrganization" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string GroupsInCurrentAndDescendantOrganization_ObjectFieldSpec(object fieldSpecObj)
@@ -11800,7 +11800,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "guestCredentials" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string GuestCredentials_ObjectFieldSpec(object fieldSpecObj)
@@ -11831,7 +11831,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nfilter: $filter\nsortBy: $sortBy\n)";
             return "guestCredentialsV2" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string GuestCredentialsV2_ObjectFieldSpec(object fieldSpecObj)
@@ -11862,7 +11862,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\n)";
             return "helpContentSnippets" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string HelpContentSnippets_ObjectFieldSpec(object fieldSpecObj)
@@ -11893,7 +11893,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "hierarchySnappables" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string HierarchySnappables_ObjectFieldSpec(object fieldSpecObj)
@@ -11924,7 +11924,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nid: $id\n)";
             return "hostDiagnosis" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string HostDiagnosis_ObjectFieldSpec(object fieldSpecObj)
@@ -11955,7 +11955,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "hostFailoverCluster" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string HostFailoverCluster_ObjectFieldSpec(object fieldSpecObj)
@@ -11986,7 +11986,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\nhostFailoverClusterRoot: $hostFailoverClusterRoot\n)";
             return "hostFailoverClusters" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string HostFailoverClusters_ObjectFieldSpec(object fieldSpecObj)
@@ -12017,7 +12017,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "hostShare" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string HostShare_ObjectFieldSpec(object fieldSpecObj)
@@ -12048,7 +12048,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "hostShares" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string HostShares_ObjectFieldSpec(object fieldSpecObj)
@@ -12079,7 +12079,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "hypervCluster" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string HypervCluster_ObjectFieldSpec(object fieldSpecObj)
@@ -12110,7 +12110,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "hypervHostAsyncRequestStatus" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string HypervHostAsyncRequestStatus_ObjectFieldSpec(object fieldSpecObj)
@@ -12141,7 +12141,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nfilters: $filters\nsortBy: $sortBy\n)";
             return "hypervMounts" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string HypervMounts_ObjectFieldSpec(object fieldSpecObj)
@@ -12172,7 +12172,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "hypervScvmm" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string HypervScvmm_ObjectFieldSpec(object fieldSpecObj)
@@ -12203,7 +12203,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "hypervScvmmAsyncRequestStatus" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string HypervScvmmAsyncRequestStatus_ObjectFieldSpec(object fieldSpecObj)
@@ -12234,7 +12234,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "hypervScvmms" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string HypervScvmms_ObjectFieldSpec(object fieldSpecObj)
@@ -12265,7 +12265,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "hypervServer" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string HypervServer_ObjectFieldSpec(object fieldSpecObj)
@@ -12296,7 +12296,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "hypervServers" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string HypervServers_ObjectFieldSpec(object fieldSpecObj)
@@ -12327,7 +12327,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\ntypeFilter: $typeFilter\nfilter: $filter\n)";
             return "hypervTopLevelDescendants" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string HypervTopLevelDescendants_ObjectFieldSpec(object fieldSpecObj)
@@ -12358,7 +12358,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "hypervVirtualMachine" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string HypervVirtualMachine_ObjectFieldSpec(object fieldSpecObj)
@@ -12389,7 +12389,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "hypervVirtualMachineAsyncRequestStatus" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string HypervVirtualMachineAsyncRequestStatus_ObjectFieldSpec(object fieldSpecObj)
@@ -12420,7 +12420,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "hypervVirtualMachines" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string HypervVirtualMachines_ObjectFieldSpec(object fieldSpecObj)
@@ -12451,7 +12451,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "hypervVmDetail" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string HypervVmDetail_ObjectFieldSpec(object fieldSpecObj)
@@ -12482,7 +12482,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "installedVersionList" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string InstalledVersionList_ObjectFieldSpec(object fieldSpecObj)
@@ -12513,7 +12513,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nid: $id\n)";
             return "integration" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string Integration_ObjectFieldSpec(object fieldSpecObj)
@@ -12544,7 +12544,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "inventoryRoot" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string InventoryRoot_ObjectFieldSpec(object fieldSpecObj)
@@ -12575,7 +12575,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nrootEnum: $rootEnum\n)";
             return "inventorySubHierarchyRoot" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string InventorySubHierarchyRoot_ObjectFieldSpec(object fieldSpecObj)
@@ -12606,7 +12606,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nclusterUuid: $clusterUuid\nworkloadId: $workloadId\nsnapshotId: $snapshotId\n)";
             return "investigationCsvDownloadLink" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string InvestigationCsvDownloadLink_ObjectFieldSpec(object fieldSpecObj)
@@ -12637,7 +12637,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "ipWhitelist" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string IpWhitelist_ObjectFieldSpec(object fieldSpecObj)
@@ -12668,7 +12668,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nsnapshotId: $snapshotId\n)";
             return "isAwsNativeEbsVolumeSnapshotRestorable" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string IsAwsNativeEbsVolumeSnapshotRestorable_ObjectFieldSpec(object fieldSpecObj)
@@ -12699,7 +12699,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nsnapshotIds: $snapshotIds\n)";
             return "isCloudNativeFileRecoveryFeasible" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string IsCloudNativeFileRecoveryFeasible_ObjectFieldSpec(object fieldSpecObj)
@@ -12730,7 +12730,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "isLoggedIntoRubrikSupportPortal" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string IsLoggedIntoRubrikSupportPortal_ObjectFieldSpec(object fieldSpecObj)
@@ -12761,7 +12761,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nclusterUuid: $clusterUuid\n)";
             return "isUpgradeAvailable" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string IsUpgradeAvailable_ObjectFieldSpec(object fieldSpecObj)
@@ -12792,7 +12792,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nclusterUuid: $clusterUuid\n)";
             return "isUpgradeRecommended" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string IsUpgradeRecommended_ObjectFieldSpec(object fieldSpecObj)
@@ -12823,7 +12823,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nserviceTier: $serviceTier\nregion: $region\nsubscriptionId: $subscriptionId\n)";
             return "isZrsAvailableForLocation" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string IsZrsAvailableForLocation_ObjectFieldSpec(object fieldSpecObj)
@@ -12854,7 +12854,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nissueId: $issueId\n)";
             return "issue" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string Issue_ObjectFieldSpec(object fieldSpecObj)
@@ -12885,7 +12885,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nstatus: $status\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "issues" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string Issues_ObjectFieldSpec(object fieldSpecObj)
@@ -12916,7 +12916,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\napp: $app\nversion: $version\nretrieveLatestVersion: $retrieveLatestVersion\ntargetVersion: $targetVersion\nk8sClusterId: $k8sClusterId\n)";
             return "k8sAppManifest" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string K8sAppManifest_ObjectFieldSpec(object fieldSpecObj)
@@ -12947,7 +12947,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "k8sCluster" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string K8sCluster_ObjectFieldSpec(object fieldSpecObj)
@@ -12978,7 +12978,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "k8sClusters" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string K8sClusters_ObjectFieldSpec(object fieldSpecObj)
@@ -13009,7 +13009,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "k8sNamespace" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string K8sNamespace_ObjectFieldSpec(object fieldSpecObj)
@@ -13040,7 +13040,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\nk8sClusterId: $k8sClusterId\n)";
             return "k8sNamespaces" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string K8sNamespaces_ObjectFieldSpec(object fieldSpecObj)
@@ -13071,7 +13071,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nsnapshotId: $snapshotId\nnamespaceId: $namespaceId\nisReplica: $isReplica\n)";
             return "k8sSnapshotInfo" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string K8sSnapshotInfo_ObjectFieldSpec(object fieldSpecObj)
@@ -13102,7 +13102,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nid: $id\n)";
             return "knowledgeBaseArticle" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string KnowledgeBaseArticle_ObjectFieldSpec(object fieldSpecObj)
@@ -13133,7 +13133,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "lambdaSettings" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string LambdaSettings_ObjectFieldSpec(object fieldSpecObj)
@@ -13164,7 +13164,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nsearchText: $searchText\nroleIds: $roleIds\n)";
             return "ldapAuthorizedPrincipalConnection" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string LdapAuthorizedPrincipalConnection_ObjectFieldSpec(object fieldSpecObj)
@@ -13195,7 +13195,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\n)";
             return "ldapIntegrationConnection" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string LdapIntegrationConnection_ObjectFieldSpec(object fieldSpecObj)
@@ -13226,7 +13226,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nid: $id\nsearchText: $searchText\n)";
             return "ldapPrincipalConnection" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string LdapPrincipalConnection_ObjectFieldSpec(object fieldSpecObj)
@@ -13257,7 +13257,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\ninput: $input\n)";
             return "legalHoldSnapshotsForSnappable" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string LegalHoldSnapshotsForSnappable_ObjectFieldSpec(object fieldSpecObj)
@@ -13288,7 +13288,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "licensesForClusterProductSummary" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string LicensesForClusterProductSummary_ObjectFieldSpec(object fieldSpecObj)
@@ -13319,7 +13319,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "linuxFileset" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string LinuxFileset_ObjectFieldSpec(object fieldSpecObj)
@@ -13350,7 +13350,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\no365AppFilters: $o365AppFilters\no365AppSortByParam: $o365AppSortByParam\n)";
             return "listO365Apps" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ListO365Apps_ObjectFieldSpec(object fieldSpecObj)
@@ -13381,7 +13381,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "lockoutConfig" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string LockoutConfig_ObjectFieldSpec(object fieldSpecObj)
@@ -13412,7 +13412,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "lookupAccount" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string LookupAccount_ObjectFieldSpec(object fieldSpecObj)
@@ -13443,7 +13443,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\norgId: $orgId\n)";
             return "m365Regions" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string M365Regions_ObjectFieldSpec(object fieldSpecObj)
@@ -13474,7 +13474,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "managedVolume" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ManagedVolume_ObjectFieldSpec(object fieldSpecObj)
@@ -13505,7 +13505,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "managedVolumeInventoryStats" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ManagedVolumeInventoryStats_ObjectFieldSpec(object fieldSpecObj)
@@ -13536,7 +13536,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "managedVolumeLiveMounts" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ManagedVolumeLiveMounts_ObjectFieldSpec(object fieldSpecObj)
@@ -13567,7 +13567,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "managedVolumes" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ManagedVolumes_ObjectFieldSpec(object fieldSpecObj)
@@ -13598,7 +13598,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "mfaSetting" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string MfaSetting_ObjectFieldSpec(object fieldSpecObj)
@@ -13629,7 +13629,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfeatureListMinimumCdmVersion: $featureListMinimumCdmVersion\n)";
             return "minimumCdmVersionForFeatureSet" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string MinimumCdmVersionForFeatureSet_ObjectFieldSpec(object fieldSpecObj)
@@ -13660,7 +13660,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "mongoBulkRecoverableRanges" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string MongoBulkRecoverableRanges_ObjectFieldSpec(object fieldSpecObj)
@@ -13691,7 +13691,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "mongoCollection" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string MongoCollection_ObjectFieldSpec(object fieldSpecObj)
@@ -13722,7 +13722,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "mongoCollections" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string MongoCollections_ObjectFieldSpec(object fieldSpecObj)
@@ -13753,7 +13753,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "mongoDatabase" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string MongoDatabase_ObjectFieldSpec(object fieldSpecObj)
@@ -13784,7 +13784,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "mongoDatabases" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string MongoDatabases_ObjectFieldSpec(object fieldSpecObj)
@@ -13815,7 +13815,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "mongoRecoverableRanges" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string MongoRecoverableRanges_ObjectFieldSpec(object fieldSpecObj)
@@ -13846,7 +13846,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "mongoSource" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string MongoSource_ObjectFieldSpec(object fieldSpecObj)
@@ -13877,7 +13877,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "mongoSources" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string MongoSources_ObjectFieldSpec(object fieldSpecObj)
@@ -13908,7 +13908,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "mongodbBulkRecoverableRange" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string MongodbBulkRecoverableRange_ObjectFieldSpec(object fieldSpecObj)
@@ -13939,7 +13939,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "mongodbCollection" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string MongodbCollection_ObjectFieldSpec(object fieldSpecObj)
@@ -13970,7 +13970,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "mongodbCollectionRecoverableRange" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string MongodbCollectionRecoverableRange_ObjectFieldSpec(object fieldSpecObj)
@@ -14001,7 +14001,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "mongodbCollections" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string MongodbCollections_ObjectFieldSpec(object fieldSpecObj)
@@ -14032,7 +14032,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "mongodbDatabase" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string MongodbDatabase_ObjectFieldSpec(object fieldSpecObj)
@@ -14063,7 +14063,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "mongodbDatabases" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string MongodbDatabases_ObjectFieldSpec(object fieldSpecObj)
@@ -14094,7 +14094,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "mongodbSource" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string MongodbSource_ObjectFieldSpec(object fieldSpecObj)
@@ -14125,7 +14125,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "mongodbSources" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string MongodbSources_ObjectFieldSpec(object fieldSpecObj)
@@ -14156,7 +14156,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "mosaicBulkRecoveryRange" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string MosaicBulkRecoveryRange_ObjectFieldSpec(object fieldSpecObj)
@@ -14187,7 +14187,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "mosaicSnapshots" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string MosaicSnapshots_ObjectFieldSpec(object fieldSpecObj)
@@ -14218,7 +14218,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "mosaicStores" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string MosaicStores_ObjectFieldSpec(object fieldSpecObj)
@@ -14249,7 +14249,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "mosaicVersions" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string MosaicVersions_ObjectFieldSpec(object fieldSpecObj)
@@ -14280,7 +14280,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "mssqlAvailabilityGroup" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string MssqlAvailabilityGroup_ObjectFieldSpec(object fieldSpecObj)
@@ -14311,7 +14311,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "mssqlCompatibleInstances" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string MssqlCompatibleInstances_ObjectFieldSpec(object fieldSpecObj)
@@ -14342,7 +14342,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "mssqlDatabase" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string MssqlDatabase_ObjectFieldSpec(object fieldSpecObj)
@@ -14373,7 +14373,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nfilters: $filters\n)";
             return "mssqlDatabaseLiveMounts" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string MssqlDatabaseLiveMounts_ObjectFieldSpec(object fieldSpecObj)
@@ -14404,7 +14404,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "mssqlDatabaseMissedRecoverableRanges" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string MssqlDatabaseMissedRecoverableRanges_ObjectFieldSpec(object fieldSpecObj)
@@ -14435,7 +14435,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "mssqlDatabaseMissedSnapshots" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string MssqlDatabaseMissedSnapshots_ObjectFieldSpec(object fieldSpecObj)
@@ -14466,7 +14466,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "mssqlDatabaseRestoreEstimate" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string MssqlDatabaseRestoreEstimate_ObjectFieldSpec(object fieldSpecObj)
@@ -14497,7 +14497,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "mssqlDatabases" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string MssqlDatabases_ObjectFieldSpec(object fieldSpecObj)
@@ -14528,7 +14528,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "mssqlDefaultProperties" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string MssqlDefaultProperties_ObjectFieldSpec(object fieldSpecObj)
@@ -14559,7 +14559,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "mssqlInstance" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string MssqlInstance_ObjectFieldSpec(object fieldSpecObj)
@@ -14590,7 +14590,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "mssqlLogShippingTargets" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string MssqlLogShippingTargets_ObjectFieldSpec(object fieldSpecObj)
@@ -14621,7 +14621,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "mssqlRecoverableRanges" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string MssqlRecoverableRanges_ObjectFieldSpec(object fieldSpecObj)
@@ -14652,7 +14652,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\ntypeFilter: $typeFilter\nfilter: $filter\n)";
             return "mssqlTopLevelDescendants" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string MssqlTopLevelDescendants_ObjectFieldSpec(object fieldSpecObj)
@@ -14683,7 +14683,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "nasFileset" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string NasFileset_ObjectFieldSpec(object fieldSpecObj)
@@ -14714,7 +14714,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "nasNamespace" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string NasNamespace_ObjectFieldSpec(object fieldSpecObj)
@@ -14745,7 +14745,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "nasNamespaces" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string NasNamespaces_ObjectFieldSpec(object fieldSpecObj)
@@ -14776,7 +14776,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "nasShare" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string NasShare_ObjectFieldSpec(object fieldSpecObj)
@@ -14807,7 +14807,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "nasSystem" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string NasSystem_ObjectFieldSpec(object fieldSpecObj)
@@ -14838,7 +14838,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "nasSystems" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string NasSystems_ObjectFieldSpec(object fieldSpecObj)
@@ -14869,7 +14869,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\ntypeFilter: $typeFilter\nfilter: $filter\n)";
             return "nasTopLevelDescendants" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string NasTopLevelDescendants_ObjectFieldSpec(object fieldSpecObj)
@@ -14900,7 +14900,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "nasVolume" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string NasVolume_ObjectFieldSpec(object fieldSpecObj)
@@ -14931,7 +14931,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nclusters: $clusters\n)";
             return "ncdBackEndCapacity" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string NcdBackEndCapacity_ObjectFieldSpec(object fieldSpecObj)
@@ -14962,7 +14962,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nclusters: $clusters\n)";
             return "ncdFrontEndCapacity" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string NcdFrontEndCapacity_ObjectFieldSpec(object fieldSpecObj)
@@ -14993,7 +14993,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nclusters: $clusters\n)";
             return "ncdObjectProtectionStatus" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string NcdObjectProtectionStatus_ObjectFieldSpec(object fieldSpecObj)
@@ -15024,7 +15024,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "networkThrottle" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string NetworkThrottle_ObjectFieldSpec(object fieldSpecObj)
@@ -15055,7 +15055,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nfilter: $filter\ntimezoneOffset: $timezoneOffset\n)";
             return "nfAnomalyResults" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string NfAnomalyResults_ObjectFieldSpec(object fieldSpecObj)
@@ -15086,7 +15086,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\ngroupBy: $groupBy\nfilter: $filter\ntimezoneOffset: $timezoneOffset\n)";
             return "nfAnomalyResultsGrouped" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string NfAnomalyResultsGrouped_ObjectFieldSpec(object fieldSpecObj)
@@ -15117,7 +15117,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "nodeRemovalCancelPermission" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string NodeRemovalCancelPermission_ObjectFieldSpec(object fieldSpecObj)
@@ -15148,7 +15148,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "nodeToReplace" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string NodeToReplace_ObjectFieldSpec(object fieldSpecObj)
@@ -15179,7 +15179,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "nutanixBrowseSnapshot" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string NutanixBrowseSnapshot_ObjectFieldSpec(object fieldSpecObj)
@@ -15210,7 +15210,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "nutanixCategory" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string NutanixCategory_ObjectFieldSpec(object fieldSpecObj)
@@ -15241,7 +15241,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "nutanixCategoryValue" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string NutanixCategoryValue_ObjectFieldSpec(object fieldSpecObj)
@@ -15272,7 +15272,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "nutanixCluster" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string NutanixCluster_ObjectFieldSpec(object fieldSpecObj)
@@ -15303,7 +15303,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "nutanixClusterAsyncRequestStatus" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string NutanixClusterAsyncRequestStatus_ObjectFieldSpec(object fieldSpecObj)
@@ -15334,7 +15334,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "nutanixClusterContainers" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string NutanixClusterContainers_ObjectFieldSpec(object fieldSpecObj)
@@ -15365,7 +15365,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "nutanixClusterNetworks" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string NutanixClusterNetworks_ObjectFieldSpec(object fieldSpecObj)
@@ -15396,7 +15396,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "nutanixClusters" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string NutanixClusters_ObjectFieldSpec(object fieldSpecObj)
@@ -15427,7 +15427,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nfilters: $filters\nsortBy: $sortBy\n)";
             return "nutanixMounts" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string NutanixMounts_ObjectFieldSpec(object fieldSpecObj)
@@ -15458,7 +15458,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "nutanixPrismCentral" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string NutanixPrismCentral_ObjectFieldSpec(object fieldSpecObj)
@@ -15489,7 +15489,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "nutanixPrismCentrals" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string NutanixPrismCentrals_ObjectFieldSpec(object fieldSpecObj)
@@ -15520,7 +15520,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "nutanixSnapshotDetail" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string NutanixSnapshotDetail_ObjectFieldSpec(object fieldSpecObj)
@@ -15551,7 +15551,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\ntypeFilter: $typeFilter\nfilter: $filter\n)";
             return "nutanixTopLevelDescendants" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string NutanixTopLevelDescendants_ObjectFieldSpec(object fieldSpecObj)
@@ -15582,7 +15582,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "nutanixVm" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string NutanixVm_ObjectFieldSpec(object fieldSpecObj)
@@ -15613,7 +15613,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "nutanixVmAsyncRequestStatus" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string NutanixVmAsyncRequestStatus_ObjectFieldSpec(object fieldSpecObj)
@@ -15644,7 +15644,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "nutanixVmMissedSnapshots" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string NutanixVmMissedSnapshots_ObjectFieldSpec(object fieldSpecObj)
@@ -15675,7 +15675,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "nutanixVms" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string NutanixVms_ObjectFieldSpec(object fieldSpecObj)
@@ -15706,7 +15706,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nsnappableFid: $snappableFid\n)";
             return "o365Calendar" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string O365Calendar_ObjectFieldSpec(object fieldSpecObj)
@@ -15737,7 +15737,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\no365OrgId: $o365OrgId\nsnappableType: $snappableType\n)";
             return "o365Groups" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string O365Groups_ObjectFieldSpec(object fieldSpecObj)
@@ -15768,7 +15768,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "o365License" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string O365License_ObjectFieldSpec(object fieldSpecObj)
@@ -15799,7 +15799,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nsnappableFid: $snappableFid\n)";
             return "o365Mailbox" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string O365Mailbox_ObjectFieldSpec(object fieldSpecObj)
@@ -15830,7 +15830,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\no365OrgId: $o365OrgId\n)";
             return "o365Mailboxes" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string O365Mailboxes_ObjectFieldSpec(object fieldSpecObj)
@@ -15861,7 +15861,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nsnappableFid: $snappableFid\n)";
             return "o365ObjectAncestors" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string O365ObjectAncestors_ObjectFieldSpec(object fieldSpecObj)
@@ -15892,7 +15892,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nsnappableFid: $snappableFid\n)";
             return "o365Onedrive" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string O365Onedrive_ObjectFieldSpec(object fieldSpecObj)
@@ -15923,7 +15923,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\no365OrgId: $o365OrgId\n)";
             return "o365Onedrives" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string O365Onedrives_ObjectFieldSpec(object fieldSpecObj)
@@ -15954,7 +15954,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "o365Org" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string O365Org_ObjectFieldSpec(object fieldSpecObj)
@@ -15985,7 +15985,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\nsnappableType: $snappableType\n)";
             return "o365OrgAtSnappableLevel" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string O365OrgAtSnappableLevel_ObjectFieldSpec(object fieldSpecObj)
@@ -16016,7 +16016,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "o365OrgSummaries" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string O365OrgSummaries_ObjectFieldSpec(object fieldSpecObj)
@@ -16047,7 +16047,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\nworkloadHierarchy: $workloadHierarchy\n)";
             return "o365Orgs" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string O365Orgs_ObjectFieldSpec(object fieldSpecObj)
@@ -16078,7 +16078,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\norgId: $orgId\n)";
             return "o365ServiceAccount" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string O365ServiceAccount_ObjectFieldSpec(object fieldSpecObj)
@@ -16109,7 +16109,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\norgID: $orgID\n)";
             return "o365ServiceStatus" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string O365ServiceStatus_ObjectFieldSpec(object fieldSpecObj)
@@ -16140,7 +16140,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nsnappableFid: $snappableFid\n)";
             return "o365SharepointDrive" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string O365SharepointDrive_ObjectFieldSpec(object fieldSpecObj)
@@ -16171,7 +16171,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\no365OrgId: $o365OrgId\n)";
             return "o365SharepointDrives" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string O365SharepointDrives_ObjectFieldSpec(object fieldSpecObj)
@@ -16202,7 +16202,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nsnappableFid: $snappableFid\n)";
             return "o365SharepointList" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string O365SharepointList_ObjectFieldSpec(object fieldSpecObj)
@@ -16233,7 +16233,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\no365OrgId: $o365OrgId\n)";
             return "o365SharepointLists" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string O365SharepointLists_ObjectFieldSpec(object fieldSpecObj)
@@ -16264,7 +16264,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\nobjectTypeFilter: $objectTypeFilter\nincludeEntireHierarchy: $includeEntireHierarchy\nfid: $fid\n)";
             return "o365SharepointObjectList" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string O365SharepointObjectList_ObjectFieldSpec(object fieldSpecObj)
@@ -16295,7 +16295,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\nfid: $fid\n)";
             return "o365SharepointObjects" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string O365SharepointObjects_ObjectFieldSpec(object fieldSpecObj)
@@ -16326,7 +16326,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nsiteFid: $siteFid\n)";
             return "o365SharepointSite" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string O365SharepointSite_ObjectFieldSpec(object fieldSpecObj)
@@ -16357,7 +16357,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\no365OrgId: $o365OrgId\n)";
             return "o365SharepointSites" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string O365SharepointSites_ObjectFieldSpec(object fieldSpecObj)
@@ -16388,7 +16388,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nsnappableFid: $snappableFid\n)";
             return "o365Site" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string O365Site_ObjectFieldSpec(object fieldSpecObj)
@@ -16419,7 +16419,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\no365OrgId: $o365OrgId\nexcludeChildSites: $excludeChildSites\n)";
             return "o365Sites" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string O365Sites_ObjectFieldSpec(object fieldSpecObj)
@@ -16450,7 +16450,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\norgID: $orgID\n)";
             return "o365StorageStats" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string O365StorageStats_ObjectFieldSpec(object fieldSpecObj)
@@ -16481,7 +16481,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nsnappableFid: $snappableFid\n)";
             return "o365Team" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string O365Team_ObjectFieldSpec(object fieldSpecObj)
@@ -16512,7 +16512,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\nexcludeArchived: $excludeArchived\nchannelMembershipTypeFilter: $channelMembershipTypeFilter\nnameFilter: $nameFilter\n)";
             return "o365TeamChannels" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string O365TeamChannels_ObjectFieldSpec(object fieldSpecObj)
@@ -16543,7 +16543,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\no365OrgId: $o365OrgId\nnameFilter: $nameFilter\n)";
             return "o365TeamPostedBy" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string O365TeamPostedBy_ObjectFieldSpec(object fieldSpecObj)
@@ -16574,7 +16574,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\no365OrgId: $o365OrgId\n)";
             return "o365Teams" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string O365Teams_ObjectFieldSpec(object fieldSpecObj)
@@ -16605,7 +16605,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "o365User" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string O365User_ObjectFieldSpec(object fieldSpecObj)
@@ -16636,7 +16636,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\nfid: $fid\n)";
             return "o365UserObjects" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string O365UserObjects_ObjectFieldSpec(object fieldSpecObj)
@@ -16667,7 +16667,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nnumberOfEdges: $numberOfEdges\ncdmOvaLink: $cdmOvaLink\n)";
             return "oauthCodesForEdgeReg" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string OauthCodesForEdgeReg_ObjectFieldSpec(object fieldSpecObj)
@@ -16698,7 +16698,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfilter: $filter\nsort: $sort\nday: $day\ntimezone: $timezone\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "objectFiles" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ObjectFiles_ObjectFieldSpec(object fieldSpecObj)
@@ -16729,7 +16729,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "oracleAcoExampleDownloadLink" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string OracleAcoExampleDownloadLink_ObjectFieldSpec(object fieldSpecObj)
@@ -16760,7 +16760,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "oracleAcoParameters" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string OracleAcoParameters_ObjectFieldSpec(object fieldSpecObj)
@@ -16791,7 +16791,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "oracleDataGuardGroup" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string OracleDataGuardGroup_ObjectFieldSpec(object fieldSpecObj)
@@ -16822,7 +16822,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "oracleDatabase" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string OracleDatabase_ObjectFieldSpec(object fieldSpecObj)
@@ -16853,7 +16853,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "oracleDatabaseLogBackupConfig" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string OracleDatabaseLogBackupConfig_ObjectFieldSpec(object fieldSpecObj)
@@ -16884,7 +16884,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "oracleDatabases" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string OracleDatabases_ObjectFieldSpec(object fieldSpecObj)
@@ -16915,7 +16915,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "oracleHost" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string OracleHost_ObjectFieldSpec(object fieldSpecObj)
@@ -16946,7 +16946,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "oracleHostLogBackupConfig" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string OracleHostLogBackupConfig_ObjectFieldSpec(object fieldSpecObj)
@@ -16977,7 +16977,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nfilters: $filters\nsortBy: $sortBy\n)";
             return "oracleLiveMounts" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string OracleLiveMounts_ObjectFieldSpec(object fieldSpecObj)
@@ -17008,7 +17008,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "oracleMissedRecoverableRanges" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string OracleMissedRecoverableRanges_ObjectFieldSpec(object fieldSpecObj)
@@ -17039,7 +17039,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "oracleMissedSnapshots" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string OracleMissedSnapshots_ObjectFieldSpec(object fieldSpecObj)
@@ -17070,7 +17070,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "oraclePdbDetails" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string OraclePdbDetails_ObjectFieldSpec(object fieldSpecObj)
@@ -17101,7 +17101,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "oracleRac" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string OracleRac_ObjectFieldSpec(object fieldSpecObj)
@@ -17132,7 +17132,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "oracleRacLogBackupConfig" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string OracleRacLogBackupConfig_ObjectFieldSpec(object fieldSpecObj)
@@ -17163,7 +17163,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "oracleRecoverableRanges" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string OracleRecoverableRanges_ObjectFieldSpec(object fieldSpecObj)
@@ -17194,7 +17194,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\ntypeFilter: $typeFilter\nfilter: $filter\n)";
             return "oracleTopLevelDescendants" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string OracleTopLevelDescendants_ObjectFieldSpec(object fieldSpecObj)
@@ -17225,7 +17225,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\norgId: $orgId\n)";
             return "org" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string Org_ObjectFieldSpec(object fieldSpecObj)
@@ -17256,7 +17256,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "orgSecurityPolicy" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string OrgSecurityPolicy_ObjectFieldSpec(object fieldSpecObj)
@@ -17287,7 +17287,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nnameFilter: $nameFilter\nmfaEnforcedFilter: $mfaEnforcedFilter\n)";
             return "orgs" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string Orgs_ObjectFieldSpec(object fieldSpecObj)
@@ -17318,7 +17318,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\norgSearchFilter: $orgSearchFilter\n)";
             return "orgsForPrincipal" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string OrgsForPrincipal_ObjectFieldSpec(object fieldSpecObj)
@@ -17349,7 +17349,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nhistoryNumHours: $historyNumHours\n)";
             return "overallRansomwareInvestigationSummary" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string OverallRansomwareInvestigationSummary_ObjectFieldSpec(object fieldSpecObj)
@@ -17380,7 +17380,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "passwordComplexityPolicy" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string PasswordComplexityPolicy_ObjectFieldSpec(object fieldSpecObj)
@@ -17411,7 +17411,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\npendingActionId: $pendingActionId\n)";
             return "pendingAction" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string PendingAction_ObjectFieldSpec(object fieldSpecObj)
@@ -17442,7 +17442,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "pendingRansomwareInvestigationResultsCount" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string PendingRansomwareInvestigationResultsCount_ObjectFieldSpec(object fieldSpecObj)
@@ -17473,7 +17473,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\norgId: $orgId\n)";
             return "phoenixRolloutProgress" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string PhoenixRolloutProgress_ObjectFieldSpec(object fieldSpecObj)
@@ -17504,7 +17504,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "physicalHost" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string PhysicalHost_ObjectFieldSpec(object fieldSpecObj)
@@ -17535,7 +17535,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\nhostRoot: $hostRoot\nisBulkPolicyAssignmentFlow: $isBulkPolicyAssignmentFlow\n)";
             return "physicalHosts" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string PhysicalHosts_ObjectFieldSpec(object fieldSpecObj)
@@ -17566,7 +17566,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nbeginTime: $beginTime\nendTime: $endTime\n)";
             return "pipelineHealthForTimeRange" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string PipelineHealthForTimeRange_ObjectFieldSpec(object fieldSpecObj)
@@ -17597,7 +17597,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nrootEnum: $rootEnum\n)";
             return "polarisInventorySubHierarchyRoot" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string PolarisInventorySubHierarchyRoot_ObjectFieldSpec(object fieldSpecObj)
@@ -17628,7 +17628,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nsnapshotFid: $snapshotFid\n)";
             return "polarisSnapshot" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string PolarisSnapshot_ObjectFieldSpec(object fieldSpecObj)
@@ -17659,7 +17659,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\npolicyObjectFilter: $policyObjectFilter\nexcludeHierarchyObjectList: $excludeHierarchyObjectList\n)";
             return "policies" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string Policies_ObjectFieldSpec(object fieldSpecObj)
@@ -17690,7 +17690,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\npolicyId: $policyId\nworkloadTypes: $workloadTypes\nsortBy: $sortBy\nsortOrder: $sortOrder\nclusterIdsFilter: $clusterIdsFilter\nreplicationFilter: $replicationFilter\nsearchObjectName: $searchObjectName\nhierarchyAncestorIdFilter: $hierarchyAncestorIdFilter\npolicyAssignmentType: $policyAssignmentType\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "policy" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string Policy_ObjectFieldSpec(object fieldSpecObj)
@@ -17721,7 +17721,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "policyDetails" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string PolicyDetails_ObjectFieldSpec(object fieldSpecObj)
@@ -17752,7 +17752,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\nincludeWhitelistedResults: $includeWhitelistedResults\n)";
             return "policyObj" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string PolicyObj_ObjectFieldSpec(object fieldSpecObj)
@@ -17783,7 +17783,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nobjectIds: $objectIds\n)";
             return "policyObjectUsages" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string PolicyObjectUsages_ObjectFieldSpec(object fieldSpecObj)
@@ -17814,7 +17814,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nday: $day\ntimezone: $timezone\nworkloadTypes: $workloadTypes\nsortBy: $sortBy\nsortOrder: $sortOrder\nanalysisStatusesFilter: $analysisStatusesFilter\npolicyIdsFilter: $policyIdsFilter\nriskLevelsFilter: $riskLevelsFilter\nclusterIdsFilter: $clusterIdsFilter\nsearchObjectName: $searchObjectName\nsubscriptionIdsFilter: $subscriptionIdsFilter\nincludeWhitelistedResults: $includeWhitelistedResults\nsids: $sids\nuserAccessObjectsFilter: $userAccessObjectsFilter\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "policyObjs" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string PolicyObjs_ObjectFieldSpec(object fieldSpecObj)
@@ -17845,7 +17845,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nclusterUuid: $clusterUuid\n)";
             return "prechecksStatus" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string PrechecksStatus_ObjectFieldSpec(object fieldSpecObj)
@@ -17876,7 +17876,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nclusterUuid: $clusterUuid\n)";
             return "prechecksStatusWithNextJobInfo" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string PrechecksStatusWithNextJobInfo_ObjectFieldSpec(object fieldSpecObj)
@@ -17907,7 +17907,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "processedRansomwareInvestigationWorkloadCount" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ProcessedRansomwareInvestigationWorkloadCount_ObjectFieldSpec(object fieldSpecObj)
@@ -17938,7 +17938,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nid: $id\n)";
             return "productDocumentation" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ProductDocumentation_ObjectFieldSpec(object fieldSpecObj)
@@ -17969,7 +17969,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nrootOptionalFid: $rootOptionalFid\nslaIds: $slaIds\nfilter: $filter\nobjectTypeFilter: $objectTypeFilter\nsortBy: $sortBy\nsortOrder: $sortOrder\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "protectedObjectsConnection" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ProtectedObjectsConnection_ObjectFieldSpec(object fieldSpecObj)
@@ -18000,7 +18000,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "protectedRansomwareInvestigationWorkloadCount" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ProtectedRansomwareInvestigationWorkloadCount_ObjectFieldSpec(object fieldSpecObj)
@@ -18031,7 +18031,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nqueryDatastoreFreespaceThresholdsInput: $queryDatastoreFreespaceThresholdsInput\n)";
             return "queryDatastoreFreespaceThresholds" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string QueryDatastoreFreespaceThresholds_ObjectFieldSpec(object fieldSpecObj)
@@ -18062,7 +18062,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\nsortOrder: $sortOrder\nsortBy: $sortBy\n)";
             return "radarClusterConnection" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string RadarClusterConnection_ObjectFieldSpec(object fieldSpecObj)
@@ -18093,7 +18093,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nbeginTime: $beginTime\nendTime: $endTime\nreturnOnlyForAnomalousEntities: $returnOnlyForAnomalousEntities\n)";
             return "ransomwareDetectionWorkloadLocations" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string RansomwareDetectionWorkloadLocations_ObjectFieldSpec(object fieldSpecObj)
@@ -18124,7 +18124,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nstartDay: $startDay\nendDay: $endDay\ntimezone: $timezone\nobjectTypeFilter: $objectTypeFilter\nclusterUuidFilter: $clusterUuidFilter\nslaFidFilter: $slaFidFilter\nhideSuspiciousDataIfNonAnomalous: $hideSuspiciousDataIfNonAnomalous\n)";
             return "ransomwareInvestigationAnalysisSummary" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string RansomwareInvestigationAnalysisSummary_ObjectFieldSpec(object fieldSpecObj)
@@ -18155,7 +18155,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "ransomwareInvestigationEnablement" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string RansomwareInvestigationEnablement_ObjectFieldSpec(object fieldSpecObj)
@@ -18186,7 +18186,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nworkloadId: $workloadId\n)";
             return "ransomwareInvestigationWorkloadScannedCount" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string RansomwareInvestigationWorkloadScannedCount_ObjectFieldSpec(object fieldSpecObj)
@@ -18217,7 +18217,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nclusterUuid: $clusterUuid\nmanagedId: $managedId\nsnapshotId: $snapshotId\n)";
             return "ransomwareResult" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string RansomwareResult_ObjectFieldSpec(object fieldSpecObj)
@@ -18248,7 +18248,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nclusterUuid: $clusterUuid\nmanagedId: $managedId\nsnapshotId: $snapshotId\n)";
             return "ransomwareResultOpt" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string RansomwareResultOpt_ObjectFieldSpec(object fieldSpecObj)
@@ -18279,7 +18279,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nfilter: $filter\ntimezoneOffset: $timezoneOffset\n)";
             return "ransomwareResults" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string RansomwareResults_ObjectFieldSpec(object fieldSpecObj)
@@ -18310,7 +18310,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\ngroupBy: $groupBy\nfilter: $filter\ntimezoneOffset: $timezoneOffset\n)";
             return "ransomwareResultsGrouped" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string RansomwareResultsGrouped_ObjectFieldSpec(object fieldSpecObj)
@@ -18341,7 +18341,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nrcsAzureTargetConsumptionStatsRequest: $rcsAzureTargetConsumptionStatsRequest\n)";
             return "rcsArchivalLocationsConsumptionStats" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string RcsArchivalLocationsConsumptionStats_ObjectFieldSpec(object fieldSpecObj)
@@ -18372,7 +18372,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "rcvAccountEntitlement" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string RcvAccountEntitlement_ObjectFieldSpec(object fieldSpecObj)
@@ -18403,7 +18403,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\nrdsInstanceName: $rdsInstanceName\nrdsDatabaseRubrikId: $rdsDatabaseRubrikId\n)";
             return "rdsInstanceDetailsFromAws" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string RdsInstanceDetailsFromAws_ObjectFieldSpec(object fieldSpecObj)
@@ -18434,7 +18434,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "replicationIncomingStats" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ReplicationIncomingStats_ObjectFieldSpec(object fieldSpecObj)
@@ -18465,7 +18465,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "replicationOutgoingStats" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ReplicationOutgoingStats_ObjectFieldSpec(object fieldSpecObj)
@@ -18496,7 +18496,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "replicationPairs" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ReplicationPairs_ObjectFieldSpec(object fieldSpecObj)
@@ -18527,7 +18527,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\ndataView: $dataView\ncolumns: $columns\nfilters: $filters\ngroupBy: $groupBy\nsecondaryGroupBy: $secondaryGroupBy\naggregations: $aggregations\nsortBy: $sortBy\nsortOrder: $sortOrder\ntimezone: $timezone\n)";
             return "reportData" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ReportData_ObjectFieldSpec(object fieldSpecObj)
@@ -18558,7 +18558,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nnameFilter: $nameFilter\n)";
             return "roleTemplates" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string RoleTemplates_ObjectFieldSpec(object fieldSpecObj)
@@ -18589,7 +18589,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nbucketName: $bucketName\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\n)";
             return "s3BucketStateForRecovery" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string S3BucketStateForRecovery_ObjectFieldSpec(object fieldSpecObj)
@@ -18620,7 +18620,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "sapHanaDatabase" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SapHanaDatabase_ObjectFieldSpec(object fieldSpecObj)
@@ -18651,7 +18651,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "sapHanaDatabases" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SapHanaDatabases_ObjectFieldSpec(object fieldSpecObj)
@@ -18682,7 +18682,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "sapHanaLogSnapshot" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SapHanaLogSnapshot_ObjectFieldSpec(object fieldSpecObj)
@@ -18713,7 +18713,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nfilter: $filter\n)";
             return "sapHanaLogSnapshots" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SapHanaLogSnapshots_ObjectFieldSpec(object fieldSpecObj)
@@ -18744,7 +18744,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "sapHanaRecoverableRange" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SapHanaRecoverableRange_ObjectFieldSpec(object fieldSpecObj)
@@ -18775,7 +18775,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nfilter: $filter\n)";
             return "sapHanaRecoverableRanges" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SapHanaRecoverableRanges_ObjectFieldSpec(object fieldSpecObj)
@@ -18806,7 +18806,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "sapHanaSystem" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SapHanaSystem_ObjectFieldSpec(object fieldSpecObj)
@@ -18837,7 +18837,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "sapHanaSystems" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SapHanaSystems_ObjectFieldSpec(object fieldSpecObj)
@@ -18868,7 +18868,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nid: $id\n)";
             return "scheduledReport" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ScheduledReport_ObjectFieldSpec(object fieldSpecObj)
@@ -18899,7 +18899,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\n)";
             return "scheduledReports" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ScheduledReports_ObjectFieldSpec(object fieldSpecObj)
@@ -18930,7 +18930,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\ninput: $input\n)";
             return "searchAzureAdSnapshot" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SearchAzureAdSnapshot_ObjectFieldSpec(object fieldSpecObj)
@@ -18961,7 +18961,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nclusterUuid: $clusterUuid\nmanagedId: $managedId\nsnapshotId: $snapshotId\nsearchFolderPath: $searchFolderPath\nfilenamePrefix: $filenamePrefix\n)";
             return "searchFileByPrefix" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SearchFileByPrefix_ObjectFieldSpec(object fieldSpecObj)
@@ -18992,7 +18992,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nid: $id\npath: $path\n)";
             return "searchHost" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SearchHost_ObjectFieldSpec(object fieldSpecObj)
@@ -19023,7 +19023,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "searchNutanixVm" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SearchNutanixVm_ObjectFieldSpec(object fieldSpecObj)
@@ -19054,7 +19054,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nfilter: $filter\n)";
             return "searchSnappableConnection" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SearchSnappableConnection_ObjectFieldSpec(object fieldSpecObj)
@@ -19085,7 +19085,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\nsearchQuery: $searchQuery\n)";
             return "searchSnappableVersionedFiles" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SearchSnappableVersionedFiles_ObjectFieldSpec(object fieldSpecObj)
@@ -19116,7 +19116,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nsearchText: $searchText\nroleIds: $roleIds\n)";
             return "serviceAccounts" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ServiceAccounts_ObjectFieldSpec(object fieldSpecObj)
@@ -19147,7 +19147,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "shareFileset" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ShareFileset_ObjectFieldSpec(object fieldSpecObj)
@@ -19178,7 +19178,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsiteFid: $siteFid\nsnapshotFid: $snapshotFid\nnaturalId: $naturalId\nsharepointSiteSearchFilter: $sharepointSiteSearchFilter\norgId: $orgId\n)";
             return "sharepointSiteDescendants" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SharepointSiteDescendants_ObjectFieldSpec(object fieldSpecObj)
@@ -19209,7 +19209,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsiteFid: $siteFid\norgId: $orgId\nsharepointSiteSearchFilter: $sharepointSiteSearchFilter\n)";
             return "sharepointSiteSearch" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SharepointSiteSearch_ObjectFieldSpec(object fieldSpecObj)
@@ -19240,7 +19240,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nSlaId: $SlaId\nfilter: $filter\ntimezone: $timezone\n)";
             return "slaAuditDetail" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SlaAuditDetail_ObjectFieldSpec(object fieldSpecObj)
@@ -19271,7 +19271,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\ncontextFilter: $contextFilter\ncontextFilterInput: $contextFilterInput\nshouldShowSyncStatus: $shouldShowSyncStatus\nshouldShowProtectedObjectCount: $shouldShowProtectedObjectCount\nshouldShowUpgradeInfo: $shouldShowUpgradeInfo\nshowRemoteSlas: $showRemoteSlas\nshouldShowPausedClusters: $shouldShowPausedClusters\n)";
             return "slaDomains" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SlaDomains_ObjectFieldSpec(object fieldSpecObj)
@@ -19302,7 +19302,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "slaManagedVolume" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SlaManagedVolume_ObjectFieldSpec(object fieldSpecObj)
@@ -19333,7 +19333,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "slaManagedVolumes" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SlaManagedVolumes_ObjectFieldSpec(object fieldSpecObj)
@@ -19364,7 +19364,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "smbConfiguration" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SmbConfiguration_ObjectFieldSpec(object fieldSpecObj)
@@ -19395,7 +19395,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nfilters: $filters\nsortBy: $sortBy\n)";
             return "smbDomains" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SmbDomains_ObjectFieldSpec(object fieldSpecObj)
@@ -19426,7 +19426,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nfilter: $filter\n)";
             return "snappableConnection" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SnappableConnection_ObjectFieldSpec(object fieldSpecObj)
@@ -19457,7 +19457,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\norgId: $orgId\ncontactsSearchFilter: $contactsSearchFilter\n)";
             return "snappableContactSearch" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SnappableContactSearch_ObjectFieldSpec(object fieldSpecObj)
@@ -19488,7 +19488,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\norgId: $orgId\nsearchFilter: $searchFilter\n)";
             return "snappableEmailSearch" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SnappableEmailSearch_ObjectFieldSpec(object fieldSpecObj)
@@ -19519,7 +19519,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\norgId: $orgId\ncalendarSearchFilter: $calendarSearchFilter\n)";
             return "snappableEventSearch" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SnappableEventSearch_ObjectFieldSpec(object fieldSpecObj)
@@ -19550,7 +19550,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\ngroupBy: $groupBy\nfilter: $filter\ntimezoneOffset: $timezoneOffset\nrequestedAggregations: $requestedAggregations\n)";
             return "snappableGroupByConnection" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SnappableGroupByConnection_ObjectFieldSpec(object fieldSpecObj)
@@ -19581,7 +19581,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\norgId: $orgId\nonedriveSearchFilter: $onedriveSearchFilter\n)";
             return "snappableOnedriveSearch" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SnappableOnedriveSearch_ObjectFieldSpec(object fieldSpecObj)
@@ -19612,7 +19612,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\norgId: $orgId\nsharepointDriveSearchFilter: $sharepointDriveSearchFilter\nsiteChildId: $siteChildId\nsiteChildType: $siteChildType\n)";
             return "snappableSharepointDriveSearch" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SnappableSharepointDriveSearch_ObjectFieldSpec(object fieldSpecObj)
@@ -19643,7 +19643,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\norgId: $orgId\nsharepointDriveSearchFilter: $sharepointDriveSearchFilter\nsiteChildId: $siteChildId\n)";
             return "snappableSharepointListSearch" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SnappableSharepointListSearch_ObjectFieldSpec(object fieldSpecObj)
@@ -19674,7 +19674,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\norgId: $orgId\nsnapshotFidOpt: $snapshotFidOpt\nteamConvChannels: $teamConvChannels\nteamsConversationsSearchFilter: $teamsConversationsSearchFilter\n)";
             return "snappableTeamsConversationsSearch" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SnappableTeamsConversationsSearch_ObjectFieldSpec(object fieldSpecObj)
@@ -19705,7 +19705,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\norgId: $orgId\nchannelId: $channelId\nchannelFolderName: $channelFolderName\nteamsDriveSearchFilter: $teamsDriveSearchFilter\n)";
             return "snappableTeamsDriveSearch" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SnappableTeamsDriveSearch_ObjectFieldSpec(object fieldSpecObj)
@@ -19736,7 +19736,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\ninput: $input\n)";
             return "snappablesWithLegalHoldSnapshotsSummary" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SnappablesWithLegalHoldSnapshotsSummary_ObjectFieldSpec(object fieldSpecObj)
@@ -19767,7 +19767,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nsnapshotFid: $snapshotFid\nclusterUuid: $clusterUuid\n)";
             return "snapshot" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string Snapshot_ObjectFieldSpec(object fieldSpecObj)
@@ -19798,7 +19798,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\norgId: $orgId\nsearchFilter: $searchFilter\n)";
             return "snapshotEmailSearch" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SnapshotEmailSearch_ObjectFieldSpec(object fieldSpecObj)
@@ -19829,7 +19829,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\norgId: $orgId\ncalendarSearchFilter: $calendarSearchFilter\n)";
             return "snapshotEventSearch" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SnapshotEventSearch_ObjectFieldSpec(object fieldSpecObj)
@@ -19860,7 +19860,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\npath: $path\nsnapshotFid: $snapshotFid\nfilter: $filter\nsearchPrefix: $searchPrefix\nquarantineFilters: $quarantineFilters\nworkloadFieldsArg: $workloadFieldsArg\n)";
             return "snapshotFilesDelta" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SnapshotFilesDelta_ObjectFieldSpec(object fieldSpecObj)
@@ -19891,7 +19891,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\npath: $path\nsnapshotFid: $snapshotFid\nfilter: $filter\nsearchPrefix: $searchPrefix\nquarantineFilters: $quarantineFilters\nworkloadFieldsArg: $workloadFieldsArg\n)";
             return "snapshotFilesDeltaV2" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SnapshotFilesDeltaV2_ObjectFieldSpec(object fieldSpecObj)
@@ -19922,7 +19922,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nworkloadId: $workloadId\nsnapshotFilter: $snapshotFilter\nsortOrder: $sortOrder\nsortBy: $sortBy\ntimeRange: $timeRange\nignoreActiveWorkloadCheck: $ignoreActiveWorkloadCheck\n)";
             return "snapshotOfASnappableConnection" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SnapshotOfAsnappableConnection_ObjectFieldSpec(object fieldSpecObj)
@@ -19953,7 +19953,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsnappableIds: $snappableIds\nsnapshotFilter: $snapshotFilter\nsortOrder: $sortOrder\nsortBy: $sortBy\ntimeRange: $timeRange\nignoreActiveWorkloadCheck: $ignoreActiveWorkloadCheck\n)";
             return "snapshotOfSnappablesConnection" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SnapshotOfSnappablesConnection_ObjectFieldSpec(object fieldSpecObj)
@@ -19984,7 +19984,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\norgId: $orgId\nonedriveSearchFilter: $onedriveSearchFilter\n)";
             return "snapshotOnedriveSearch" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SnapshotOnedriveSearch_ObjectFieldSpec(object fieldSpecObj)
@@ -20015,7 +20015,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nsnappableFid: $snappableFid\nstartTimeMs: $startTimeMs\nendTimeMs: $endTimeMs\n)";
             return "snapshotResults" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SnapshotResults_ObjectFieldSpec(object fieldSpecObj)
@@ -20046,7 +20046,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\norgId: $orgId\nsharepointDriveSearchFilter: $sharepointDriveSearchFilter\n)";
             return "snapshotSharepointDriveSearch" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SnapshotSharepointDriveSearch_ObjectFieldSpec(object fieldSpecObj)
@@ -20077,7 +20077,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\ninput: $input\n)";
             return "snapshotsForUnmanagedObject" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SnapshotsForUnmanagedObject_ObjectFieldSpec(object fieldSpecObj)
@@ -20108,7 +20108,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "snmpConfigurations" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SnmpConfigurations_ObjectFieldSpec(object fieldSpecObj)
@@ -20139,7 +20139,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ngroupBy: $groupBy\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilters: $filters\nday: $day\ntimezone: $timezone\nworkloadTypes: $workloadTypes\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "sonarContentReport" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SonarContentReport_ObjectFieldSpec(object fieldSpecObj)
@@ -20170,7 +20170,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nsonarReportGroupBy: $sonarReportGroupBy\nfilter: $filter\ntimeFilter: $timeFilter\n)";
             return "sonarReport" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SonarReport_ObjectFieldSpec(object fieldSpecObj)
@@ -20201,7 +20201,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\nendTime: $endTime\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "sonarReportRow" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SonarReportRow_ObjectFieldSpec(object fieldSpecObj)
@@ -20232,7 +20232,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfilter: $filter\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "sonarUserGroups" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SonarUserGroups_ObjectFieldSpec(object fieldSpecObj)
@@ -20263,7 +20263,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nsort: $sort\nfilter: $filter\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "sonarUsers" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SonarUsers_ObjectFieldSpec(object fieldSpecObj)
@@ -20294,7 +20294,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "supportBundle" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SupportBundle_ObjectFieldSpec(object fieldSpecObj)
@@ -20325,7 +20325,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilters: $filters\n)";
             return "supportUserAccesses" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SupportUserAccesses_ObjectFieldSpec(object fieldSpecObj)
@@ -20356,7 +20356,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "syslogExportRules" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string SyslogExportRules_ObjectFieldSpec(object fieldSpecObj)
@@ -20387,7 +20387,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "tableFilters" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string TableFilters_ObjectFieldSpec(object fieldSpecObj)
@@ -20418,7 +20418,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ntargetMappingId: $targetMappingId\n)";
             return "targetMapping" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string TargetMapping_ObjectFieldSpec(object fieldSpecObj)
@@ -20449,7 +20449,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\ncontextFilter: $contextFilter\n)";
             return "targets" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string Targets_ObjectFieldSpec(object fieldSpecObj)
@@ -20480,7 +20480,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\nsortBy: $sortBy\nsortOrder: $sortOrder\ntimezoneOffset: $timezoneOffset\n)";
             return "taskDetailConnection" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string TaskDetailConnection_ObjectFieldSpec(object fieldSpecObj)
@@ -20511,7 +20511,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\ngroupBy: $groupBy\ntimezoneOffset: $timezoneOffset\n)";
             return "taskDetailGroupByConnection" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string TaskDetailGroupByConnection_ObjectFieldSpec(object fieldSpecObj)
@@ -20542,7 +20542,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nhuntId: $huntId\n)";
             return "threatHuntDetail" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ThreatHuntDetail_ObjectFieldSpec(object fieldSpecObj)
@@ -20573,7 +20573,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nhuntId: $huntId\nobjectId: $objectId\n)";
             return "threatHuntResult" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ThreatHuntResult_ObjectFieldSpec(object fieldSpecObj)
@@ -20604,7 +20604,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nhuntId: $huntId\n)";
             return "threatHuntSummary" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ThreatHuntSummary_ObjectFieldSpec(object fieldSpecObj)
@@ -20635,7 +20635,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nbeginTime: $beginTime\nendTime: $endTime\nclusterUuidFilter: $clusterUuidFilter\nstatusFilter: $statusFilter\nmatchesFoundFilter: $matchesFoundFilter\nquarantinedMatchesFilter: $quarantinedMatchesFilter\n)";
             return "threatHunts" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ThreatHunts_ObjectFieldSpec(object fieldSpecObj)
@@ -20666,7 +20666,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nuserId: $userId\n)";
             return "totpConfigStatus" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string TotpConfigStatus_ObjectFieldSpec(object fieldSpecObj)
@@ -20697,7 +20697,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "tunnelStatus" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string TunnelStatus_ObjectFieldSpec(object fieldSpecObj)
@@ -20728,7 +20728,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\ninput: $input\n)";
             return "unmanagedObjects" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string UnmanagedObjects_ObjectFieldSpec(object fieldSpecObj)
@@ -20759,7 +20759,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nclusterUuid: $clusterUuid\n)";
             return "upgradeStatus" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string UpgradeStatus_ObjectFieldSpec(object fieldSpecObj)
@@ -20790,7 +20790,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfilter: $filter\nsort: $sort\ntimeRange: $timeRange\nuserId: $userId\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "userActivities" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string UserActivities_ObjectFieldSpec(object fieldSpecObj)
@@ -20821,7 +20821,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nuserId: $userId\nstartDay: $startDay\ntimezone: $timezone\nuniqueActivities: $uniqueActivities\n)";
             return "userActivityTimeline" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string UserActivityTimeline_ObjectFieldSpec(object fieldSpecObj)
@@ -20852,7 +20852,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nuserId: $userId\nstartDay: $startDay\ntimezone: $timezone\nlimit: $limit\n)";
             return "userAnalyzerAccess" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string UserAnalyzerAccess_ObjectFieldSpec(object fieldSpecObj)
@@ -20883,7 +20883,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nfilters: $filters\n)";
             return "userAuditConnection" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string UserAuditConnection_ObjectFieldSpec(object fieldSpecObj)
@@ -20914,7 +20914,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nuserId: $userId\nstartDay: $startDay\ntimezone: $timezone\n)";
             return "userDetail" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string UserDetail_ObjectFieldSpec(object fieldSpecObj)
@@ -20945,7 +20945,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nuserId: $userId\nresource: $resource\nnativePath: $nativePath\nstartDay: $startDay\ntimezone: $timezone\ntimeGranularity: $timeGranularity\n)";
             return "userFileActivityTimeline" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string UserFileActivityTimeline_ObjectFieldSpec(object fieldSpecObj)
@@ -20976,7 +20976,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nroleIdsFilter: $roleIdsFilter\n)";
             return "userGroups" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string UserGroups_ObjectFieldSpec(object fieldSpecObj)
@@ -21007,7 +21007,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "userNotifications" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string UserNotifications_ObjectFieldSpec(object fieldSpecObj)
@@ -21038,7 +21038,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "userSessionManagementConfig" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string UserSessionManagementConfig_ObjectFieldSpec(object fieldSpecObj)
@@ -21069,7 +21069,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "";
             return "userSettings" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string UserSettings_ObjectFieldSpec(object fieldSpecObj)
@@ -21100,7 +21100,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nfilter: $filter\nshouldIncludeUserWithoutRole: $shouldIncludeUserWithoutRole\n)";
             return "usersInCurrentAndDescendantOrganization" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string UsersInCurrentAndDescendantOrganization_ObjectFieldSpec(object fieldSpecObj)
@@ -21131,7 +21131,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "vCenterAdvancedTagPreview" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string VcenterAdvancedTagPreview_ObjectFieldSpec(object fieldSpecObj)
@@ -21162,7 +21162,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "vCenterHotAddBandwidth" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string VcenterHotAddBandwidth_ObjectFieldSpec(object fieldSpecObj)
@@ -21193,7 +21193,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "vCenterHotAddNetwork" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string VcenterHotAddNetwork_ObjectFieldSpec(object fieldSpecObj)
@@ -21224,7 +21224,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "vCenterNetworks" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string VcenterNetworks_ObjectFieldSpec(object fieldSpecObj)
@@ -21255,7 +21255,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "vCenterPreAddInfo" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string VcenterPreAddInfo_ObjectFieldSpec(object fieldSpecObj)
@@ -21286,7 +21286,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "vSphereComputeCluster" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string VsphereComputeCluster_ObjectFieldSpec(object fieldSpecObj)
@@ -21317,7 +21317,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "vSphereComputeClusters" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string VsphereComputeClusters_ObjectFieldSpec(object fieldSpecObj)
@@ -21348,7 +21348,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "vSphereDatacenter" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string VsphereDatacenter_ObjectFieldSpec(object fieldSpecObj)
@@ -21379,7 +21379,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "vSphereDatastore" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string VsphereDatastore_ObjectFieldSpec(object fieldSpecObj)
@@ -21410,7 +21410,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "vSphereDatastoreCluster" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string VsphereDatastoreCluster_ObjectFieldSpec(object fieldSpecObj)
@@ -21441,7 +21441,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "vSphereDatastoreClusters" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string VsphereDatastoreClusters_ObjectFieldSpec(object fieldSpecObj)
@@ -21472,7 +21472,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "vSphereDatastoreConnection" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string VsphereDatastoreConnection_ObjectFieldSpec(object fieldSpecObj)
@@ -21503,7 +21503,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "vSphereFolder" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string VsphereFolder_ObjectFieldSpec(object fieldSpecObj)
@@ -21534,7 +21534,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "vSphereFolders" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string VsphereFolders_ObjectFieldSpec(object fieldSpecObj)
@@ -21565,7 +21565,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "vSphereHost" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string VsphereHost_ObjectFieldSpec(object fieldSpecObj)
@@ -21596,7 +21596,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "vSphereHostConnection" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string VsphereHostConnection_ObjectFieldSpec(object fieldSpecObj)
@@ -21627,7 +21627,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "vSphereHostDetails" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string VsphereHostDetails_ObjectFieldSpec(object fieldSpecObj)
@@ -21658,7 +21658,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfids: $fids\n)";
             return "vSphereHostsByFids" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string VsphereHostsByFids_ObjectFieldSpec(object fieldSpecObj)
@@ -21689,7 +21689,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nfilter: $filter\nsortBy: $sortBy\n)";
             return "vSphereLiveMounts" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string VsphereLiveMounts_ObjectFieldSpec(object fieldSpecObj)
@@ -21720,7 +21720,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "vSphereMount" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string VsphereMount_ObjectFieldSpec(object fieldSpecObj)
@@ -21751,7 +21751,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nfilter: $filter\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
             return "vSphereMountConnection" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string VsphereMountConnection_ObjectFieldSpec(object fieldSpecObj)
@@ -21782,7 +21782,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "vSphereNetwork" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string VsphereNetwork_ObjectFieldSpec(object fieldSpecObj)
@@ -21813,7 +21813,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "vSphereResourcePool" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string VsphereResourcePool_ObjectFieldSpec(object fieldSpecObj)
@@ -21844,7 +21844,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "vSphereRootRecoveryHierarchy" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string VsphereRootRecoveryHierarchy_ObjectFieldSpec(object fieldSpecObj)
@@ -21875,7 +21875,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "vSphereTag" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string VsphereTag_ObjectFieldSpec(object fieldSpecObj)
@@ -21906,7 +21906,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "vSphereTagCategory" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string VsphereTagCategory_ObjectFieldSpec(object fieldSpecObj)
@@ -21937,7 +21937,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\ntypeFilter: $typeFilter\nfilter: $filter\n)";
             return "vSphereTopLevelDescendantsConnection" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string VsphereTopLevelDescendantsConnection_ObjectFieldSpec(object fieldSpecObj)
@@ -21968,7 +21968,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "vSphereVCenter" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string VsphereVcenter_ObjectFieldSpec(object fieldSpecObj)
@@ -21999,7 +21999,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "vSphereVCenterConnection" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string VsphereVcenterConnection_ObjectFieldSpec(object fieldSpecObj)
@@ -22030,7 +22030,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nclusterUuid: $clusterUuid\nid: $id\n)";
             return "vSphereVMAsyncRequestStatus" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string VsphereVmAsyncRequestStatus_ObjectFieldSpec(object fieldSpecObj)
@@ -22061,7 +22061,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "vSphereVmNew" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string VsphereVmNew_ObjectFieldSpec(object fieldSpecObj)
@@ -22092,7 +22092,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "vSphereVmNewConnection" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string VsphereVmNewConnection_ObjectFieldSpec(object fieldSpecObj)
@@ -22123,7 +22123,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\nrdsClusterName: $rdsClusterName\n)";
             return "validateAwsNativeRdsClusterNameForExport" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ValidateAwsNativeRdsClusterNameForExport_ObjectFieldSpec(object fieldSpecObj)
@@ -22154,7 +22154,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\nrdsInstanceName: $rdsInstanceName\n)";
             return "validateAwsNativeRdsInstanceNameForExport" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ValidateAwsNativeRdsInstanceNameForExport_ObjectFieldSpec(object fieldSpecObj)
@@ -22185,7 +22185,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "validateAzureCloudAccountExocomputeConfigurations" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ValidateAzureCloudAccountExocomputeConfigurations_ObjectFieldSpec(object fieldSpecObj)
@@ -22216,7 +22216,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nazureSqlDatabaseName: $azureSqlDatabaseName\nazureSqlDatabaseServerRubrikId: $azureSqlDatabaseServerRubrikId\n)";
             return "validateAzureNativeSqlDatabaseDbNameForExport" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ValidateAzureNativeSqlDatabaseDbNameForExport_ObjectFieldSpec(object fieldSpecObj)
@@ -22247,7 +22247,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nazureSqlDatabaseName: $azureSqlDatabaseName\nazureSqlManagedInstanceServerRubrikId: $azureSqlManagedInstanceServerRubrikId\n)";
             return "validateAzureNativeSqlManagedInstanceDbNameForExport" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ValidateAzureNativeSqlManagedInstanceDbNameForExport_ObjectFieldSpec(object fieldSpecObj)
@@ -22278,7 +22278,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "validateClusterLicenseCapacity" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ValidateClusterLicenseCapacity_ObjectFieldSpec(object fieldSpecObj)
@@ -22309,7 +22309,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "validateOrgName" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string ValidateOrgName_ObjectFieldSpec(object fieldSpecObj)
@@ -22340,7 +22340,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "vappSnapshotInstantRecoveryOptions" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string VappSnapshotInstantRecoveryOptions_ObjectFieldSpec(object fieldSpecObj)
@@ -22371,7 +22371,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ninput: $input\n)";
             return "vappTemplateSnapshotExportOptions" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string VappTemplateSnapshotExportOptions_ObjectFieldSpec(object fieldSpecObj)
@@ -22402,7 +22402,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "vcdVappVms" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string VcdVappVms_ObjectFieldSpec(object fieldSpecObj)
@@ -22433,7 +22433,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\ncdmClusterUUID: $cdmClusterUUID\nincludeArchived: $includeArchived\n)";
             return "verifySlaWithReplicationToCluster" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string VerifySlaWithReplicationToCluster_ObjectFieldSpec(object fieldSpecObj)
@@ -22464,7 +22464,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nfilters: $filters\nsortBy: $sortBy\n)";
             return "volumeGroupMounts" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string VolumeGroupMounts_ObjectFieldSpec(object fieldSpecObj)
@@ -22495,7 +22495,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nsnappableFid: $snappableFid\nbeforeTime: $beforeTime\nafterTime: $afterTime\n)";
             return "vsphereVMMissedRecoverableRange" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string VsphereVmMissedRecoverableRange_ObjectFieldSpec(object fieldSpecObj)
@@ -22526,7 +22526,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nsnappableFid: $snappableFid\nbeforeTime: $beforeTime\nafterTime: $afterTime\n)";
             return "vsphereVMRecoverableRange" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string VsphereVmRecoverableRange_ObjectFieldSpec(object fieldSpecObj)
@@ -22557,7 +22557,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nrequestInfo: $requestInfo\n)";
             return "vsphereVMRecoverableRangeInBatch" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string VsphereVmRecoverableRangeInBatch_ObjectFieldSpec(object fieldSpecObj)
@@ -22588,7 +22588,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nids: $ids\n)";
             return "vsphereVmwareCdpLiveInfo" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string VsphereVmwareCdpLiveInfo_ObjectFieldSpec(object fieldSpecObj)
@@ -22619,7 +22619,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "windowsCluster" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string WindowsCluster_ObjectFieldSpec(object fieldSpecObj)
@@ -22650,7 +22650,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfid: $fid\n)";
             return "windowsFileset" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string WindowsFileset_ObjectFieldSpec(object fieldSpecObj)
@@ -22681,7 +22681,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nclusterUuid: $clusterUuid\nworkloadId: $workloadId\n)";
             return "workloadAlertSetting" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string WorkloadAlertSetting_ObjectFieldSpec(object fieldSpecObj)
@@ -22712,7 +22712,7 @@ namespace RubrikSecurityCloud.Types
         {
             string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nbeginTime: $beginTime\nendTime: $endTime\nworkloadNameSearch: $workloadNameSearch\nobjectTypeFilter: $objectTypeFilter\nclusterUuidFilter: $clusterUuidFilter\nslaFidFilter: $slaFidFilter\nencryptionFilter: $encryptionFilter\nseverityFilter: $severityFilter\nanalyzerGroupFilter: $analyzerGroupFilter\nsortBy: $sortBy\nsortOrder: $sortOrder\norderParentsFirst: $orderParentsFirst\nblueprintRecoveryTypes: $blueprintRecoveryTypes\nlocationsFilter: $locationsFilter\n)";
             return "workloadAnomalies" + args + "\n{\n" +
-                    fieldSpec.AsFieldSpec(1) +
+                    fieldSpec.AsFieldSpec() +
                     "}\n";
         }
         public static string WorkloadAnomalies_ObjectFieldSpec(object fieldSpecObj)

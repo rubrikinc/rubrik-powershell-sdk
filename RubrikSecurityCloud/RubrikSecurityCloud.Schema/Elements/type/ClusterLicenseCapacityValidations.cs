@@ -56,24 +56,33 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<ClusterLicenseInfo>? Errors
         // GraphQL -> errors: [ClusterLicenseInfo!]! (type)
         if (this.Errors != null) {
-            var fspec = this.Errors.AsFieldSpec(indent+1);
+            var fspec = this.Errors.AsFieldSpec(conf.Child("errors"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "errors {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "errors {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<ClusterLicenseInfo>? Warnings
         // GraphQL -> warnings: [ClusterLicenseInfo!]! (type)
         if (this.Warnings != null) {
-            var fspec = this.Warnings.AsFieldSpec(indent+1);
+            var fspec = this.Warnings.AsFieldSpec(conf.Child("warnings"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "warnings {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "warnings {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -85,17 +94,41 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<ClusterLicenseInfo>? Errors
         // GraphQL -> errors: [ClusterLicenseInfo!]! (type)
-        if (this.Errors == null && ec.Includes("errors",false))
+        if (ec.Includes("errors",false))
         {
-            this.Errors = new List<ClusterLicenseInfo>();
-            this.Errors.ApplyExploratoryFieldSpec(ec.NewChild("errors"));
+            if(this.Errors == null) {
+
+                this.Errors = new List<ClusterLicenseInfo>();
+                this.Errors.ApplyExploratoryFieldSpec(ec.NewChild("errors"));
+
+            } else {
+
+                this.Errors.ApplyExploratoryFieldSpec(ec.NewChild("errors"));
+
+            }
+        }
+        else if (this.Errors != null && ec.Excludes("errors",false))
+        {
+            this.Errors = null;
         }
         //      C# -> List<ClusterLicenseInfo>? Warnings
         // GraphQL -> warnings: [ClusterLicenseInfo!]! (type)
-        if (this.Warnings == null && ec.Includes("warnings",false))
+        if (ec.Includes("warnings",false))
         {
-            this.Warnings = new List<ClusterLicenseInfo>();
-            this.Warnings.ApplyExploratoryFieldSpec(ec.NewChild("warnings"));
+            if(this.Warnings == null) {
+
+                this.Warnings = new List<ClusterLicenseInfo>();
+                this.Warnings.ApplyExploratoryFieldSpec(ec.NewChild("warnings"));
+
+            } else {
+
+                this.Warnings.ApplyExploratoryFieldSpec(ec.NewChild("warnings"));
+
+            }
+        }
+        else if (this.Warnings != null && ec.Excludes("warnings",false))
+        {
+            this.Warnings = null;
         }
     }
 
@@ -122,9 +155,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ClusterLicenseCapacityValidations> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> MssqlRootPropertiesRootType? RootType
         // GraphQL -> rootType: MssqlRootPropertiesRootType! (enum)
         if (this.RootType != null) {
-            s += ind + "rootType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "rootType\n" ;
+            } else {
+                s += ind + "rootType\n" ;
+            }
         }
         //      C# -> System.String? RootId
         // GraphQL -> rootId: String (scalar)
         if (this.RootId != null) {
-            s += ind + "rootId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "rootId\n" ;
+            } else {
+                s += ind + "rootId\n" ;
+            }
         }
         //      C# -> System.String? RootName
         // GraphQL -> rootName: String! (scalar)
         if (this.RootName != null) {
-            s += ind + "rootName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "rootName\n" ;
+            } else {
+                s += ind + "rootName\n" ;
+            }
         }
         //      C# -> System.String? RootRole
         // GraphQL -> rootRole: String (scalar)
         if (this.RootRole != null) {
-            s += ind + "rootRole\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "rootRole\n" ;
+            } else {
+                s += ind + "rootRole\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> MssqlRootPropertiesRootType? RootType
         // GraphQL -> rootType: MssqlRootPropertiesRootType! (enum)
-        if (this.RootType == null && ec.Includes("rootType",true))
+        if (ec.Includes("rootType",true))
         {
-            this.RootType = new MssqlRootPropertiesRootType();
+            if(this.RootType == null) {
+
+                this.RootType = new MssqlRootPropertiesRootType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RootType != null && ec.Excludes("rootType",true))
+        {
+            this.RootType = null;
         }
         //      C# -> System.String? RootId
         // GraphQL -> rootId: String (scalar)
-        if (this.RootId == null && ec.Includes("rootId",true))
+        if (ec.Includes("rootId",true))
         {
-            this.RootId = "FETCH";
+            if(this.RootId == null) {
+
+                this.RootId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RootId != null && ec.Excludes("rootId",true))
+        {
+            this.RootId = null;
         }
         //      C# -> System.String? RootName
         // GraphQL -> rootName: String! (scalar)
-        if (this.RootName == null && ec.Includes("rootName",true))
+        if (ec.Includes("rootName",true))
         {
-            this.RootName = "FETCH";
+            if(this.RootName == null) {
+
+                this.RootName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RootName != null && ec.Excludes("rootName",true))
+        {
+            this.RootName = null;
         }
         //      C# -> System.String? RootRole
         // GraphQL -> rootRole: String (scalar)
-        if (this.RootRole == null && ec.Includes("rootRole",true))
+        if (ec.Includes("rootRole",true))
         {
-            this.RootRole = "FETCH";
+            if(this.RootRole == null) {
+
+                this.RootRole = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RootRole != null && ec.Excludes("rootRole",true))
+        {
+            this.RootRole = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<MssqlRootProperties> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

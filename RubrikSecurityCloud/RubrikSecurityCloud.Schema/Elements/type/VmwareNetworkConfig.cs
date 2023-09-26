@@ -47,16 +47,21 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<VmwareNetworkDeviceInfo>? Nics
         // GraphQL -> nics: [VmwareNetworkDeviceInfo!]! (type)
         if (this.Nics != null) {
-            var fspec = this.Nics.AsFieldSpec(indent+1);
+            var fspec = this.Nics.AsFieldSpec(conf.Child("nics"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "nics {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "nics {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -68,10 +73,22 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<VmwareNetworkDeviceInfo>? Nics
         // GraphQL -> nics: [VmwareNetworkDeviceInfo!]! (type)
-        if (this.Nics == null && ec.Includes("nics",false))
+        if (ec.Includes("nics",false))
         {
-            this.Nics = new List<VmwareNetworkDeviceInfo>();
-            this.Nics.ApplyExploratoryFieldSpec(ec.NewChild("nics"));
+            if(this.Nics == null) {
+
+                this.Nics = new List<VmwareNetworkDeviceInfo>();
+                this.Nics.ApplyExploratoryFieldSpec(ec.NewChild("nics"));
+
+            } else {
+
+                this.Nics.ApplyExploratoryFieldSpec(ec.NewChild("nics"));
+
+            }
+        }
+        else if (this.Nics != null && ec.Excludes("nics",false))
+        {
+            this.Nics = null;
         }
     }
 
@@ -98,9 +115,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<VmwareNetworkConfig> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -47,14 +47,19 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? DownloadLink
         // GraphQL -> downloadLink: String! (scalar)
         if (this.DownloadLink != null) {
-            s += ind + "downloadLink\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "downloadLink\n" ;
+            } else {
+                s += ind + "downloadLink\n" ;
+            }
         }
         return s;
     }
@@ -65,9 +70,20 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? DownloadLink
         // GraphQL -> downloadLink: String! (scalar)
-        if (this.DownloadLink == null && ec.Includes("downloadLink",true))
+        if (ec.Includes("downloadLink",true))
         {
-            this.DownloadLink = "FETCH";
+            if(this.DownloadLink == null) {
+
+                this.DownloadLink = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DownloadLink != null && ec.Excludes("downloadLink",true))
+        {
+            this.DownloadLink = null;
         }
     }
 
@@ -94,9 +110,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<DownloadCdmUpgradesPdfReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

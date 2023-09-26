@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<System.String>? Regions
         // GraphQL -> regions: [String!]! (scalar)
         if (this.Regions != null) {
-            s += ind + "regions\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "regions\n" ;
+            } else {
+                s += ind + "regions\n" ;
+            }
         }
         //      C# -> List<System.String>? Zones
         // GraphQL -> zones: [String!]! (scalar)
         if (this.Zones != null) {
-            s += ind + "zones\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "zones\n" ;
+            } else {
+                s += ind + "zones\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<System.String>? Regions
         // GraphQL -> regions: [String!]! (scalar)
-        if (this.Regions == null && ec.Includes("regions",true))
+        if (ec.Includes("regions",true))
         {
-            this.Regions = new List<System.String>();
+            if(this.Regions == null) {
+
+                this.Regions = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Regions != null && ec.Excludes("regions",true))
+        {
+            this.Regions = null;
         }
         //      C# -> List<System.String>? Zones
         // GraphQL -> zones: [String!]! (scalar)
-        if (this.Zones == null && ec.Includes("zones",true))
+        if (ec.Includes("zones",true))
         {
-            this.Zones = new List<System.String>();
+            if(this.Zones == null) {
+
+                this.Zones = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Zones != null && ec.Excludes("zones",true))
+        {
+            this.Zones = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ListStoredDiskLocationsReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

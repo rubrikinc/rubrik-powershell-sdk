@@ -209,109 +209,186 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> SnapshotCloudStorageTier? CloudStorageTier
         // GraphQL -> cloudStorageTier: SnapshotCloudStorageTier (enum)
         if (this.CloudStorageTier != null) {
-            s += ind + "cloudStorageTier\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cloudStorageTier\n" ;
+            } else {
+                s += ind + "cloudStorageTier\n" ;
+            }
         }
         //      C# -> List<System.String>? ArchivalLocationIds
         // GraphQL -> archivalLocationIds: [String!]! (scalar)
         if (this.ArchivalLocationIds != null) {
-            s += ind + "archivalLocationIds\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "archivalLocationIds\n" ;
+            } else {
+                s += ind + "archivalLocationIds\n" ;
+            }
         }
         //      C# -> System.Int64? CloudState
         // GraphQL -> cloudState: Long (scalar)
         if (this.CloudState != null) {
-            s += ind + "cloudState\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cloudState\n" ;
+            } else {
+                s += ind + "cloudState\n" ;
+            }
         }
         //      C# -> System.String? ConsistencyLevel
         // GraphQL -> consistencyLevel: String (scalar)
         if (this.ConsistencyLevel != null) {
-            s += ind + "consistencyLevel\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "consistencyLevel\n" ;
+            } else {
+                s += ind + "consistencyLevel\n" ;
+            }
         }
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime (scalar)
         if (this.Date != null) {
-            s += ind + "date\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "date\n" ;
+            } else {
+                s += ind + "date\n" ;
+            }
         }
         //      C# -> DateTime? ExpirationDate
         // GraphQL -> expirationDate: DateTime (scalar)
         if (this.ExpirationDate != null) {
-            s += ind + "expirationDate\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "expirationDate\n" ;
+            } else {
+                s += ind + "expirationDate\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.Int64? IndexState
         // GraphQL -> indexState: Long (scalar)
         if (this.IndexState != null) {
-            s += ind + "indexState\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "indexState\n" ;
+            } else {
+                s += ind + "indexState\n" ;
+            }
         }
         //      C# -> System.Boolean? IsCustomRetentionApplied
         // GraphQL -> isCustomRetentionApplied: Boolean (scalar)
         if (this.IsCustomRetentionApplied != null) {
-            s += ind + "isCustomRetentionApplied\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isCustomRetentionApplied\n" ;
+            } else {
+                s += ind + "isCustomRetentionApplied\n" ;
+            }
         }
         //      C# -> System.Boolean? IsOnDemandSnapshot
         // GraphQL -> isOnDemandSnapshot: Boolean! (scalar)
         if (this.IsOnDemandSnapshot != null) {
-            s += ind + "isOnDemandSnapshot\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isOnDemandSnapshot\n" ;
+            } else {
+                s += ind + "isOnDemandSnapshot\n" ;
+            }
         }
         //      C# -> System.Boolean? IsPlacedOnLegalHold
         // GraphQL -> isPlacedOnLegalHold: Boolean (scalar)
         if (this.IsPlacedOnLegalHold != null) {
-            s += ind + "isPlacedOnLegalHold\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isPlacedOnLegalHold\n" ;
+            } else {
+                s += ind + "isPlacedOnLegalHold\n" ;
+            }
         }
         //      C# -> System.Boolean? IsRetainedByRetentionLockSla
         // GraphQL -> isRetainedByRetentionLockSla: Boolean (scalar)
         if (this.IsRetainedByRetentionLockSla != null) {
-            s += ind + "isRetainedByRetentionLockSla\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isRetainedByRetentionLockSla\n" ;
+            } else {
+                s += ind + "isRetainedByRetentionLockSla\n" ;
+            }
         }
         //      C# -> System.String? ParentSnapshotId
         // GraphQL -> parentSnapshotId: String (scalar)
         if (this.ParentSnapshotId != null) {
-            s += ind + "parentSnapshotId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "parentSnapshotId\n" ;
+            } else {
+                s += ind + "parentSnapshotId\n" ;
+            }
         }
         //      C# -> List<System.String>? ReplicationLocationIds
         // GraphQL -> replicationLocationIds: [String!]! (scalar)
         if (this.ReplicationLocationIds != null) {
-            s += ind + "replicationLocationIds\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "replicationLocationIds\n" ;
+            } else {
+                s += ind + "replicationLocationIds\n" ;
+            }
         }
         //      C# -> System.String? SlaId
         // GraphQL -> slaId: String! (scalar)
         if (this.SlaId != null) {
-            s += ind + "slaId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "slaId\n" ;
+            } else {
+                s += ind + "slaId\n" ;
+            }
         }
         //      C# -> System.String? SlaName
         // GraphQL -> slaName: String! (scalar)
         if (this.SlaName != null) {
-            s += ind + "slaName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "slaName\n" ;
+            } else {
+                s += ind + "slaName\n" ;
+            }
         }
         //      C# -> System.String? SourceObjectType
         // GraphQL -> sourceObjectType: String (scalar)
         if (this.SourceObjectType != null) {
-            s += ind + "sourceObjectType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sourceObjectType\n" ;
+            } else {
+                s += ind + "sourceObjectType\n" ;
+            }
         }
         //      C# -> List<PerLocationCloudStorageTier>? CloudStorageTiers
         // GraphQL -> cloudStorageTiers: [PerLocationCloudStorageTier!]! (type)
         if (this.CloudStorageTiers != null) {
-            var fspec = this.CloudStorageTiers.AsFieldSpec(indent+1);
+            var fspec = this.CloudStorageTiers.AsFieldSpec(conf.Child("cloudStorageTiers"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "cloudStorageTiers {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cloudStorageTiers {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> SnapshotRetentionInfo? SnapshotRetentionInfo
         // GraphQL -> snapshotRetentionInfo: SnapshotRetentionInfo (type)
         if (this.SnapshotRetentionInfo != null) {
-            var fspec = this.SnapshotRetentionInfo.AsFieldSpec(indent+1);
+            var fspec = this.SnapshotRetentionInfo.AsFieldSpec(conf.Child("snapshotRetentionInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "snapshotRetentionInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "snapshotRetentionInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -323,119 +400,330 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> SnapshotCloudStorageTier? CloudStorageTier
         // GraphQL -> cloudStorageTier: SnapshotCloudStorageTier (enum)
-        if (this.CloudStorageTier == null && ec.Includes("cloudStorageTier",true))
+        if (ec.Includes("cloudStorageTier",true))
         {
-            this.CloudStorageTier = new SnapshotCloudStorageTier();
+            if(this.CloudStorageTier == null) {
+
+                this.CloudStorageTier = new SnapshotCloudStorageTier();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CloudStorageTier != null && ec.Excludes("cloudStorageTier",true))
+        {
+            this.CloudStorageTier = null;
         }
         //      C# -> List<System.String>? ArchivalLocationIds
         // GraphQL -> archivalLocationIds: [String!]! (scalar)
-        if (this.ArchivalLocationIds == null && ec.Includes("archivalLocationIds",true))
+        if (ec.Includes("archivalLocationIds",true))
         {
-            this.ArchivalLocationIds = new List<System.String>();
+            if(this.ArchivalLocationIds == null) {
+
+                this.ArchivalLocationIds = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ArchivalLocationIds != null && ec.Excludes("archivalLocationIds",true))
+        {
+            this.ArchivalLocationIds = null;
         }
         //      C# -> System.Int64? CloudState
         // GraphQL -> cloudState: Long (scalar)
-        if (this.CloudState == null && ec.Includes("cloudState",true))
+        if (ec.Includes("cloudState",true))
         {
-            this.CloudState = new System.Int64();
+            if(this.CloudState == null) {
+
+                this.CloudState = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CloudState != null && ec.Excludes("cloudState",true))
+        {
+            this.CloudState = null;
         }
         //      C# -> System.String? ConsistencyLevel
         // GraphQL -> consistencyLevel: String (scalar)
-        if (this.ConsistencyLevel == null && ec.Includes("consistencyLevel",true))
+        if (ec.Includes("consistencyLevel",true))
         {
-            this.ConsistencyLevel = "FETCH";
+            if(this.ConsistencyLevel == null) {
+
+                this.ConsistencyLevel = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ConsistencyLevel != null && ec.Excludes("consistencyLevel",true))
+        {
+            this.ConsistencyLevel = null;
         }
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime (scalar)
-        if (this.Date == null && ec.Includes("date",true))
+        if (ec.Includes("date",true))
         {
-            this.Date = new DateTime();
+            if(this.Date == null) {
+
+                this.Date = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Date != null && ec.Excludes("date",true))
+        {
+            this.Date = null;
         }
         //      C# -> DateTime? ExpirationDate
         // GraphQL -> expirationDate: DateTime (scalar)
-        if (this.ExpirationDate == null && ec.Includes("expirationDate",true))
+        if (ec.Includes("expirationDate",true))
         {
-            this.ExpirationDate = new DateTime();
+            if(this.ExpirationDate == null) {
+
+                this.ExpirationDate = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExpirationDate != null && ec.Excludes("expirationDate",true))
+        {
+            this.ExpirationDate = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.Int64? IndexState
         // GraphQL -> indexState: Long (scalar)
-        if (this.IndexState == null && ec.Includes("indexState",true))
+        if (ec.Includes("indexState",true))
         {
-            this.IndexState = new System.Int64();
+            if(this.IndexState == null) {
+
+                this.IndexState = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.IndexState != null && ec.Excludes("indexState",true))
+        {
+            this.IndexState = null;
         }
         //      C# -> System.Boolean? IsCustomRetentionApplied
         // GraphQL -> isCustomRetentionApplied: Boolean (scalar)
-        if (this.IsCustomRetentionApplied == null && ec.Includes("isCustomRetentionApplied",true))
+        if (ec.Includes("isCustomRetentionApplied",true))
         {
-            this.IsCustomRetentionApplied = true;
+            if(this.IsCustomRetentionApplied == null) {
+
+                this.IsCustomRetentionApplied = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsCustomRetentionApplied != null && ec.Excludes("isCustomRetentionApplied",true))
+        {
+            this.IsCustomRetentionApplied = null;
         }
         //      C# -> System.Boolean? IsOnDemandSnapshot
         // GraphQL -> isOnDemandSnapshot: Boolean! (scalar)
-        if (this.IsOnDemandSnapshot == null && ec.Includes("isOnDemandSnapshot",true))
+        if (ec.Includes("isOnDemandSnapshot",true))
         {
-            this.IsOnDemandSnapshot = true;
+            if(this.IsOnDemandSnapshot == null) {
+
+                this.IsOnDemandSnapshot = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsOnDemandSnapshot != null && ec.Excludes("isOnDemandSnapshot",true))
+        {
+            this.IsOnDemandSnapshot = null;
         }
         //      C# -> System.Boolean? IsPlacedOnLegalHold
         // GraphQL -> isPlacedOnLegalHold: Boolean (scalar)
-        if (this.IsPlacedOnLegalHold == null && ec.Includes("isPlacedOnLegalHold",true))
+        if (ec.Includes("isPlacedOnLegalHold",true))
         {
-            this.IsPlacedOnLegalHold = true;
+            if(this.IsPlacedOnLegalHold == null) {
+
+                this.IsPlacedOnLegalHold = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsPlacedOnLegalHold != null && ec.Excludes("isPlacedOnLegalHold",true))
+        {
+            this.IsPlacedOnLegalHold = null;
         }
         //      C# -> System.Boolean? IsRetainedByRetentionLockSla
         // GraphQL -> isRetainedByRetentionLockSla: Boolean (scalar)
-        if (this.IsRetainedByRetentionLockSla == null && ec.Includes("isRetainedByRetentionLockSla",true))
+        if (ec.Includes("isRetainedByRetentionLockSla",true))
         {
-            this.IsRetainedByRetentionLockSla = true;
+            if(this.IsRetainedByRetentionLockSla == null) {
+
+                this.IsRetainedByRetentionLockSla = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsRetainedByRetentionLockSla != null && ec.Excludes("isRetainedByRetentionLockSla",true))
+        {
+            this.IsRetainedByRetentionLockSla = null;
         }
         //      C# -> System.String? ParentSnapshotId
         // GraphQL -> parentSnapshotId: String (scalar)
-        if (this.ParentSnapshotId == null && ec.Includes("parentSnapshotId",true))
+        if (ec.Includes("parentSnapshotId",true))
         {
-            this.ParentSnapshotId = "FETCH";
+            if(this.ParentSnapshotId == null) {
+
+                this.ParentSnapshotId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ParentSnapshotId != null && ec.Excludes("parentSnapshotId",true))
+        {
+            this.ParentSnapshotId = null;
         }
         //      C# -> List<System.String>? ReplicationLocationIds
         // GraphQL -> replicationLocationIds: [String!]! (scalar)
-        if (this.ReplicationLocationIds == null && ec.Includes("replicationLocationIds",true))
+        if (ec.Includes("replicationLocationIds",true))
         {
-            this.ReplicationLocationIds = new List<System.String>();
+            if(this.ReplicationLocationIds == null) {
+
+                this.ReplicationLocationIds = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ReplicationLocationIds != null && ec.Excludes("replicationLocationIds",true))
+        {
+            this.ReplicationLocationIds = null;
         }
         //      C# -> System.String? SlaId
         // GraphQL -> slaId: String! (scalar)
-        if (this.SlaId == null && ec.Includes("slaId",true))
+        if (ec.Includes("slaId",true))
         {
-            this.SlaId = "FETCH";
+            if(this.SlaId == null) {
+
+                this.SlaId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SlaId != null && ec.Excludes("slaId",true))
+        {
+            this.SlaId = null;
         }
         //      C# -> System.String? SlaName
         // GraphQL -> slaName: String! (scalar)
-        if (this.SlaName == null && ec.Includes("slaName",true))
+        if (ec.Includes("slaName",true))
         {
-            this.SlaName = "FETCH";
+            if(this.SlaName == null) {
+
+                this.SlaName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SlaName != null && ec.Excludes("slaName",true))
+        {
+            this.SlaName = null;
         }
         //      C# -> System.String? SourceObjectType
         // GraphQL -> sourceObjectType: String (scalar)
-        if (this.SourceObjectType == null && ec.Includes("sourceObjectType",true))
+        if (ec.Includes("sourceObjectType",true))
         {
-            this.SourceObjectType = "FETCH";
+            if(this.SourceObjectType == null) {
+
+                this.SourceObjectType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SourceObjectType != null && ec.Excludes("sourceObjectType",true))
+        {
+            this.SourceObjectType = null;
         }
         //      C# -> List<PerLocationCloudStorageTier>? CloudStorageTiers
         // GraphQL -> cloudStorageTiers: [PerLocationCloudStorageTier!]! (type)
-        if (this.CloudStorageTiers == null && ec.Includes("cloudStorageTiers",false))
+        if (ec.Includes("cloudStorageTiers",false))
         {
-            this.CloudStorageTiers = new List<PerLocationCloudStorageTier>();
-            this.CloudStorageTiers.ApplyExploratoryFieldSpec(ec.NewChild("cloudStorageTiers"));
+            if(this.CloudStorageTiers == null) {
+
+                this.CloudStorageTiers = new List<PerLocationCloudStorageTier>();
+                this.CloudStorageTiers.ApplyExploratoryFieldSpec(ec.NewChild("cloudStorageTiers"));
+
+            } else {
+
+                this.CloudStorageTiers.ApplyExploratoryFieldSpec(ec.NewChild("cloudStorageTiers"));
+
+            }
+        }
+        else if (this.CloudStorageTiers != null && ec.Excludes("cloudStorageTiers",false))
+        {
+            this.CloudStorageTiers = null;
         }
         //      C# -> SnapshotRetentionInfo? SnapshotRetentionInfo
         // GraphQL -> snapshotRetentionInfo: SnapshotRetentionInfo (type)
-        if (this.SnapshotRetentionInfo == null && ec.Includes("snapshotRetentionInfo",false))
+        if (ec.Includes("snapshotRetentionInfo",false))
         {
-            this.SnapshotRetentionInfo = new SnapshotRetentionInfo();
-            this.SnapshotRetentionInfo.ApplyExploratoryFieldSpec(ec.NewChild("snapshotRetentionInfo"));
+            if(this.SnapshotRetentionInfo == null) {
+
+                this.SnapshotRetentionInfo = new SnapshotRetentionInfo();
+                this.SnapshotRetentionInfo.ApplyExploratoryFieldSpec(ec.NewChild("snapshotRetentionInfo"));
+
+            } else {
+
+                this.SnapshotRetentionInfo.ApplyExploratoryFieldSpec(ec.NewChild("snapshotRetentionInfo"));
+
+            }
+        }
+        else if (this.SnapshotRetentionInfo != null && ec.Excludes("snapshotRetentionInfo",false))
+        {
+            this.SnapshotRetentionInfo = null;
         }
     }
 
@@ -462,9 +750,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<BaseSnapshotSummary> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

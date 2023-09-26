@@ -56,24 +56,33 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<AnalyzerResult>? AnalyzerResults
         // GraphQL -> analyzerResults: [AnalyzerResult!]! (type)
         if (this.AnalyzerResults != null) {
-            var fspec = this.AnalyzerResults.AsFieldSpec(indent+1);
+            var fspec = this.AnalyzerResults.AsFieldSpec(conf.Child("analyzerResults"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "analyzerResults {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "analyzerResults {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<AnalyzerGroupResult>? PolicyResults
         // GraphQL -> policyResults: [AnalyzerGroupResult!]! (type)
         if (this.PolicyResults != null) {
-            var fspec = this.PolicyResults.AsFieldSpec(indent+1);
+            var fspec = this.PolicyResults.AsFieldSpec(conf.Child("policyResults"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "policyResults {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "policyResults {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -85,17 +94,41 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<AnalyzerResult>? AnalyzerResults
         // GraphQL -> analyzerResults: [AnalyzerResult!]! (type)
-        if (this.AnalyzerResults == null && ec.Includes("analyzerResults",false))
+        if (ec.Includes("analyzerResults",false))
         {
-            this.AnalyzerResults = new List<AnalyzerResult>();
-            this.AnalyzerResults.ApplyExploratoryFieldSpec(ec.NewChild("analyzerResults"));
+            if(this.AnalyzerResults == null) {
+
+                this.AnalyzerResults = new List<AnalyzerResult>();
+                this.AnalyzerResults.ApplyExploratoryFieldSpec(ec.NewChild("analyzerResults"));
+
+            } else {
+
+                this.AnalyzerResults.ApplyExploratoryFieldSpec(ec.NewChild("analyzerResults"));
+
+            }
+        }
+        else if (this.AnalyzerResults != null && ec.Excludes("analyzerResults",false))
+        {
+            this.AnalyzerResults = null;
         }
         //      C# -> List<AnalyzerGroupResult>? PolicyResults
         // GraphQL -> policyResults: [AnalyzerGroupResult!]! (type)
-        if (this.PolicyResults == null && ec.Includes("policyResults",false))
+        if (ec.Includes("policyResults",false))
         {
-            this.PolicyResults = new List<AnalyzerGroupResult>();
-            this.PolicyResults.ApplyExploratoryFieldSpec(ec.NewChild("policyResults"));
+            if(this.PolicyResults == null) {
+
+                this.PolicyResults = new List<AnalyzerGroupResult>();
+                this.PolicyResults.ApplyExploratoryFieldSpec(ec.NewChild("policyResults"));
+
+            } else {
+
+                this.PolicyResults.ApplyExploratoryFieldSpec(ec.NewChild("policyResults"));
+
+            }
+        }
+        else if (this.PolicyResults != null && ec.Excludes("policyResults",false))
+        {
+            this.PolicyResults = null;
         }
     }
 
@@ -122,9 +155,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<GetDashboardSummaryReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

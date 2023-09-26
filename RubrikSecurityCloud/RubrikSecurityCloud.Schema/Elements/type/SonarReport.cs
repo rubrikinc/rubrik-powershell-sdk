@@ -65,26 +65,39 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? Count
         // GraphQL -> count: Long! (scalar)
         if (this.Count != null) {
-            s += ind + "count\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "count\n" ;
+            } else {
+                s += ind + "count\n" ;
+            }
         }
         //      C# -> System.String? GroupByValue
         // GraphQL -> groupByValue: String! (scalar)
         if (this.GroupByValue != null) {
-            s += ind + "groupByValue\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "groupByValue\n" ;
+            } else {
+                s += ind + "groupByValue\n" ;
+            }
         }
         //      C# -> List<TimeSeriesResult>? TimeSeriesResults
         // GraphQL -> timeSeriesResults: [TimeSeriesResult!]! (type)
         if (this.TimeSeriesResults != null) {
-            var fspec = this.TimeSeriesResults.AsFieldSpec(indent+1);
+            var fspec = this.TimeSeriesResults.AsFieldSpec(conf.Child("timeSeriesResults"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "timeSeriesResults {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "timeSeriesResults {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -96,22 +109,56 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? Count
         // GraphQL -> count: Long! (scalar)
-        if (this.Count == null && ec.Includes("count",true))
+        if (ec.Includes("count",true))
         {
-            this.Count = new System.Int64();
+            if(this.Count == null) {
+
+                this.Count = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Count != null && ec.Excludes("count",true))
+        {
+            this.Count = null;
         }
         //      C# -> System.String? GroupByValue
         // GraphQL -> groupByValue: String! (scalar)
-        if (this.GroupByValue == null && ec.Includes("groupByValue",true))
+        if (ec.Includes("groupByValue",true))
         {
-            this.GroupByValue = "FETCH";
+            if(this.GroupByValue == null) {
+
+                this.GroupByValue = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.GroupByValue != null && ec.Excludes("groupByValue",true))
+        {
+            this.GroupByValue = null;
         }
         //      C# -> List<TimeSeriesResult>? TimeSeriesResults
         // GraphQL -> timeSeriesResults: [TimeSeriesResult!]! (type)
-        if (this.TimeSeriesResults == null && ec.Includes("timeSeriesResults",false))
+        if (ec.Includes("timeSeriesResults",false))
         {
-            this.TimeSeriesResults = new List<TimeSeriesResult>();
-            this.TimeSeriesResults.ApplyExploratoryFieldSpec(ec.NewChild("timeSeriesResults"));
+            if(this.TimeSeriesResults == null) {
+
+                this.TimeSeriesResults = new List<TimeSeriesResult>();
+                this.TimeSeriesResults.ApplyExploratoryFieldSpec(ec.NewChild("timeSeriesResults"));
+
+            } else {
+
+                this.TimeSeriesResults.ApplyExploratoryFieldSpec(ec.NewChild("timeSeriesResults"));
+
+            }
+        }
+        else if (this.TimeSeriesResults != null && ec.Excludes("timeSeriesResults",false))
+        {
+            this.TimeSeriesResults = null;
         }
     }
 
@@ -138,9 +185,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SonarReport> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

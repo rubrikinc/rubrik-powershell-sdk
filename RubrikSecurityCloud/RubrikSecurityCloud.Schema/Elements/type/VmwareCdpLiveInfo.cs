@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> DateTime? CurrentTime
         // GraphQL -> currentTime: DateTime (scalar)
         if (this.CurrentTime != null) {
-            s += ind + "currentTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "currentTime\n" ;
+            } else {
+                s += ind + "currentTime\n" ;
+            }
         }
         //      C# -> DateTime? LocalRecoveryPoint
         // GraphQL -> localRecoveryPoint: DateTime (scalar)
         if (this.LocalRecoveryPoint != null) {
-            s += ind + "localRecoveryPoint\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "localRecoveryPoint\n" ;
+            } else {
+                s += ind + "localRecoveryPoint\n" ;
+            }
         }
         //      C# -> DateTime? RemoteRecoveryPoint
         // GraphQL -> remoteRecoveryPoint: DateTime (scalar)
         if (this.RemoteRecoveryPoint != null) {
-            s += ind + "remoteRecoveryPoint\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "remoteRecoveryPoint\n" ;
+            } else {
+                s += ind + "remoteRecoveryPoint\n" ;
+            }
         }
         //      C# -> System.String? VmId
         // GraphQL -> vmId: String! (scalar)
         if (this.VmId != null) {
-            s += ind + "vmId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "vmId\n" ;
+            } else {
+                s += ind + "vmId\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> DateTime? CurrentTime
         // GraphQL -> currentTime: DateTime (scalar)
-        if (this.CurrentTime == null && ec.Includes("currentTime",true))
+        if (ec.Includes("currentTime",true))
         {
-            this.CurrentTime = new DateTime();
+            if(this.CurrentTime == null) {
+
+                this.CurrentTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CurrentTime != null && ec.Excludes("currentTime",true))
+        {
+            this.CurrentTime = null;
         }
         //      C# -> DateTime? LocalRecoveryPoint
         // GraphQL -> localRecoveryPoint: DateTime (scalar)
-        if (this.LocalRecoveryPoint == null && ec.Includes("localRecoveryPoint",true))
+        if (ec.Includes("localRecoveryPoint",true))
         {
-            this.LocalRecoveryPoint = new DateTime();
+            if(this.LocalRecoveryPoint == null) {
+
+                this.LocalRecoveryPoint = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LocalRecoveryPoint != null && ec.Excludes("localRecoveryPoint",true))
+        {
+            this.LocalRecoveryPoint = null;
         }
         //      C# -> DateTime? RemoteRecoveryPoint
         // GraphQL -> remoteRecoveryPoint: DateTime (scalar)
-        if (this.RemoteRecoveryPoint == null && ec.Includes("remoteRecoveryPoint",true))
+        if (ec.Includes("remoteRecoveryPoint",true))
         {
-            this.RemoteRecoveryPoint = new DateTime();
+            if(this.RemoteRecoveryPoint == null) {
+
+                this.RemoteRecoveryPoint = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RemoteRecoveryPoint != null && ec.Excludes("remoteRecoveryPoint",true))
+        {
+            this.RemoteRecoveryPoint = null;
         }
         //      C# -> System.String? VmId
         // GraphQL -> vmId: String! (scalar)
-        if (this.VmId == null && ec.Includes("vmId",true))
+        if (ec.Includes("vmId",true))
         {
-            this.VmId = "FETCH";
+            if(this.VmId == null) {
+
+                this.VmId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.VmId != null && ec.Excludes("vmId",true))
+        {
+            this.VmId = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<VmwareCdpLiveInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

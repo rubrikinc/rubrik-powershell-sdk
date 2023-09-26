@@ -47,16 +47,21 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<SapHanaLogBackup>? Backups
         // GraphQL -> backups: [SapHanaLogBackup!] (type)
         if (this.Backups != null) {
-            var fspec = this.Backups.AsFieldSpec(indent+1);
+            var fspec = this.Backups.AsFieldSpec(conf.Child("backups"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "backups {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "backups {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -68,10 +73,22 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<SapHanaLogBackup>? Backups
         // GraphQL -> backups: [SapHanaLogBackup!] (type)
-        if (this.Backups == null && ec.Includes("backups",false))
+        if (ec.Includes("backups",false))
         {
-            this.Backups = new List<SapHanaLogBackup>();
-            this.Backups.ApplyExploratoryFieldSpec(ec.NewChild("backups"));
+            if(this.Backups == null) {
+
+                this.Backups = new List<SapHanaLogBackup>();
+                this.Backups.ApplyExploratoryFieldSpec(ec.NewChild("backups"));
+
+            } else {
+
+                this.Backups.ApplyExploratoryFieldSpec(ec.NewChild("backups"));
+
+            }
+        }
+        else if (this.Backups != null && ec.Excludes("backups",false))
+        {
+            this.Backups = null;
         }
     }
 
@@ -98,9 +115,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SapHanaLogSnapshotAppMetadata> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

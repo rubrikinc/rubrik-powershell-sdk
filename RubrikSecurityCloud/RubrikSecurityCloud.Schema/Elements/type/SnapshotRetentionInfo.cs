@@ -74,40 +74,57 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<SnapshotLocationRetentionInfo>? ArchivalInfos
         // GraphQL -> archivalInfos: [SnapshotLocationRetentionInfo!]! (type)
         if (this.ArchivalInfos != null) {
-            var fspec = this.ArchivalInfos.AsFieldSpec(indent+1);
+            var fspec = this.ArchivalInfos.AsFieldSpec(conf.Child("archivalInfos"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "archivalInfos {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "archivalInfos {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<SnapshotLocationRetentionInfo>? CloudNativeLocationInfo
         // GraphQL -> cloudNativeLocationInfo: [SnapshotLocationRetentionInfo!]! (type)
         if (this.CloudNativeLocationInfo != null) {
-            var fspec = this.CloudNativeLocationInfo.AsFieldSpec(indent+1);
+            var fspec = this.CloudNativeLocationInfo.AsFieldSpec(conf.Child("cloudNativeLocationInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "cloudNativeLocationInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cloudNativeLocationInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> SnapshotLocationRetentionInfo? LocalInfo
         // GraphQL -> localInfo: SnapshotLocationRetentionInfo (type)
         if (this.LocalInfo != null) {
-            var fspec = this.LocalInfo.AsFieldSpec(indent+1);
+            var fspec = this.LocalInfo.AsFieldSpec(conf.Child("localInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "localInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "localInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<SnapshotLocationRetentionInfo>? ReplicationInfos
         // GraphQL -> replicationInfos: [SnapshotLocationRetentionInfo!]! (type)
         if (this.ReplicationInfos != null) {
-            var fspec = this.ReplicationInfos.AsFieldSpec(indent+1);
+            var fspec = this.ReplicationInfos.AsFieldSpec(conf.Child("replicationInfos"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "replicationInfos {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "replicationInfos {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -119,31 +136,79 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<SnapshotLocationRetentionInfo>? ArchivalInfos
         // GraphQL -> archivalInfos: [SnapshotLocationRetentionInfo!]! (type)
-        if (this.ArchivalInfos == null && ec.Includes("archivalInfos",false))
+        if (ec.Includes("archivalInfos",false))
         {
-            this.ArchivalInfos = new List<SnapshotLocationRetentionInfo>();
-            this.ArchivalInfos.ApplyExploratoryFieldSpec(ec.NewChild("archivalInfos"));
+            if(this.ArchivalInfos == null) {
+
+                this.ArchivalInfos = new List<SnapshotLocationRetentionInfo>();
+                this.ArchivalInfos.ApplyExploratoryFieldSpec(ec.NewChild("archivalInfos"));
+
+            } else {
+
+                this.ArchivalInfos.ApplyExploratoryFieldSpec(ec.NewChild("archivalInfos"));
+
+            }
+        }
+        else if (this.ArchivalInfos != null && ec.Excludes("archivalInfos",false))
+        {
+            this.ArchivalInfos = null;
         }
         //      C# -> List<SnapshotLocationRetentionInfo>? CloudNativeLocationInfo
         // GraphQL -> cloudNativeLocationInfo: [SnapshotLocationRetentionInfo!]! (type)
-        if (this.CloudNativeLocationInfo == null && ec.Includes("cloudNativeLocationInfo",false))
+        if (ec.Includes("cloudNativeLocationInfo",false))
         {
-            this.CloudNativeLocationInfo = new List<SnapshotLocationRetentionInfo>();
-            this.CloudNativeLocationInfo.ApplyExploratoryFieldSpec(ec.NewChild("cloudNativeLocationInfo"));
+            if(this.CloudNativeLocationInfo == null) {
+
+                this.CloudNativeLocationInfo = new List<SnapshotLocationRetentionInfo>();
+                this.CloudNativeLocationInfo.ApplyExploratoryFieldSpec(ec.NewChild("cloudNativeLocationInfo"));
+
+            } else {
+
+                this.CloudNativeLocationInfo.ApplyExploratoryFieldSpec(ec.NewChild("cloudNativeLocationInfo"));
+
+            }
+        }
+        else if (this.CloudNativeLocationInfo != null && ec.Excludes("cloudNativeLocationInfo",false))
+        {
+            this.CloudNativeLocationInfo = null;
         }
         //      C# -> SnapshotLocationRetentionInfo? LocalInfo
         // GraphQL -> localInfo: SnapshotLocationRetentionInfo (type)
-        if (this.LocalInfo == null && ec.Includes("localInfo",false))
+        if (ec.Includes("localInfo",false))
         {
-            this.LocalInfo = new SnapshotLocationRetentionInfo();
-            this.LocalInfo.ApplyExploratoryFieldSpec(ec.NewChild("localInfo"));
+            if(this.LocalInfo == null) {
+
+                this.LocalInfo = new SnapshotLocationRetentionInfo();
+                this.LocalInfo.ApplyExploratoryFieldSpec(ec.NewChild("localInfo"));
+
+            } else {
+
+                this.LocalInfo.ApplyExploratoryFieldSpec(ec.NewChild("localInfo"));
+
+            }
+        }
+        else if (this.LocalInfo != null && ec.Excludes("localInfo",false))
+        {
+            this.LocalInfo = null;
         }
         //      C# -> List<SnapshotLocationRetentionInfo>? ReplicationInfos
         // GraphQL -> replicationInfos: [SnapshotLocationRetentionInfo!]! (type)
-        if (this.ReplicationInfos == null && ec.Includes("replicationInfos",false))
+        if (ec.Includes("replicationInfos",false))
         {
-            this.ReplicationInfos = new List<SnapshotLocationRetentionInfo>();
-            this.ReplicationInfos.ApplyExploratoryFieldSpec(ec.NewChild("replicationInfos"));
+            if(this.ReplicationInfos == null) {
+
+                this.ReplicationInfos = new List<SnapshotLocationRetentionInfo>();
+                this.ReplicationInfos.ApplyExploratoryFieldSpec(ec.NewChild("replicationInfos"));
+
+            } else {
+
+                this.ReplicationInfos.ApplyExploratoryFieldSpec(ec.NewChild("replicationInfos"));
+
+            }
+        }
+        else if (this.ReplicationInfos != null && ec.Excludes("replicationInfos",false))
+        {
+            this.ReplicationInfos = null;
         }
     }
 
@@ -170,9 +235,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SnapshotRetentionInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

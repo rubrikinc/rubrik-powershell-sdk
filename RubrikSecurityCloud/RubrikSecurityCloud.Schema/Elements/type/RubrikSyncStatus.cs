@@ -128,59 +128,100 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> DateTime? ClusterSyncLastSuccessTime
         // GraphQL -> clusterSyncLastSuccessTime: DateTime (scalar)
         if (this.ClusterSyncLastSuccessTime != null) {
-            s += ind + "clusterSyncLastSuccessTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterSyncLastSuccessTime\n" ;
+            } else {
+                s += ind + "clusterSyncLastSuccessTime\n" ;
+            }
         }
         //      C# -> DateTime? EventsSyncLastSuccessTime
         // GraphQL -> eventsSyncLastSuccessTime: DateTime (scalar)
         if (this.EventsSyncLastSuccessTime != null) {
-            s += ind + "eventsSyncLastSuccessTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "eventsSyncLastSuccessTime\n" ;
+            } else {
+                s += ind + "eventsSyncLastSuccessTime\n" ;
+            }
         }
         //      C# -> System.Boolean? IsClusterSyncHealthy
         // GraphQL -> isClusterSyncHealthy: Boolean! (scalar)
         if (this.IsClusterSyncHealthy != null) {
-            s += ind + "isClusterSyncHealthy\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isClusterSyncHealthy\n" ;
+            } else {
+                s += ind + "isClusterSyncHealthy\n" ;
+            }
         }
         //      C# -> System.Boolean? IsEventsSyncHealthy
         // GraphQL -> isEventsSyncHealthy: Boolean! (scalar)
         if (this.IsEventsSyncHealthy != null) {
-            s += ind + "isEventsSyncHealthy\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isEventsSyncHealthy\n" ;
+            } else {
+                s += ind + "isEventsSyncHealthy\n" ;
+            }
         }
         //      C# -> System.Boolean? IsJobMonitoringSyncHealthy
         // GraphQL -> isJobMonitoringSyncHealthy: Boolean! (scalar)
         if (this.IsJobMonitoringSyncHealthy != null) {
-            s += ind + "isJobMonitoringSyncHealthy\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isJobMonitoringSyncHealthy\n" ;
+            } else {
+                s += ind + "isJobMonitoringSyncHealthy\n" ;
+            }
         }
         //      C# -> System.Boolean? IsMetadataSyncHealthy
         // GraphQL -> isMetadataSyncHealthy: Boolean! (scalar)
         if (this.IsMetadataSyncHealthy != null) {
-            s += ind + "isMetadataSyncHealthy\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isMetadataSyncHealthy\n" ;
+            } else {
+                s += ind + "isMetadataSyncHealthy\n" ;
+            }
         }
         //      C# -> System.Boolean? IsReportsSyncHealthy
         // GraphQL -> isReportsSyncHealthy: Boolean! (scalar)
         if (this.IsReportsSyncHealthy != null) {
-            s += ind + "isReportsSyncHealthy\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isReportsSyncHealthy\n" ;
+            } else {
+                s += ind + "isReportsSyncHealthy\n" ;
+            }
         }
         //      C# -> DateTime? JobMonitoringSyncLastSuccessTime
         // GraphQL -> jobMonitoringSyncLastSuccessTime: DateTime (scalar)
         if (this.JobMonitoringSyncLastSuccessTime != null) {
-            s += ind + "jobMonitoringSyncLastSuccessTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "jobMonitoringSyncLastSuccessTime\n" ;
+            } else {
+                s += ind + "jobMonitoringSyncLastSuccessTime\n" ;
+            }
         }
         //      C# -> DateTime? ObjectMetadataSyncLastSuccessTime
         // GraphQL -> objectMetadataSyncLastSuccessTime: DateTime (scalar)
         if (this.ObjectMetadataSyncLastSuccessTime != null) {
-            s += ind + "objectMetadataSyncLastSuccessTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "objectMetadataSyncLastSuccessTime\n" ;
+            } else {
+                s += ind + "objectMetadataSyncLastSuccessTime\n" ;
+            }
         }
         //      C# -> DateTime? ReportsSyncLastSuccessTime
         // GraphQL -> reportsSyncLastSuccessTime: DateTime (scalar)
         if (this.ReportsSyncLastSuccessTime != null) {
-            s += ind + "reportsSyncLastSuccessTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "reportsSyncLastSuccessTime\n" ;
+            } else {
+                s += ind + "reportsSyncLastSuccessTime\n" ;
+            }
         }
         return s;
     }
@@ -191,63 +232,173 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> DateTime? ClusterSyncLastSuccessTime
         // GraphQL -> clusterSyncLastSuccessTime: DateTime (scalar)
-        if (this.ClusterSyncLastSuccessTime == null && ec.Includes("clusterSyncLastSuccessTime",true))
+        if (ec.Includes("clusterSyncLastSuccessTime",true))
         {
-            this.ClusterSyncLastSuccessTime = new DateTime();
+            if(this.ClusterSyncLastSuccessTime == null) {
+
+                this.ClusterSyncLastSuccessTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterSyncLastSuccessTime != null && ec.Excludes("clusterSyncLastSuccessTime",true))
+        {
+            this.ClusterSyncLastSuccessTime = null;
         }
         //      C# -> DateTime? EventsSyncLastSuccessTime
         // GraphQL -> eventsSyncLastSuccessTime: DateTime (scalar)
-        if (this.EventsSyncLastSuccessTime == null && ec.Includes("eventsSyncLastSuccessTime",true))
+        if (ec.Includes("eventsSyncLastSuccessTime",true))
         {
-            this.EventsSyncLastSuccessTime = new DateTime();
+            if(this.EventsSyncLastSuccessTime == null) {
+
+                this.EventsSyncLastSuccessTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EventsSyncLastSuccessTime != null && ec.Excludes("eventsSyncLastSuccessTime",true))
+        {
+            this.EventsSyncLastSuccessTime = null;
         }
         //      C# -> System.Boolean? IsClusterSyncHealthy
         // GraphQL -> isClusterSyncHealthy: Boolean! (scalar)
-        if (this.IsClusterSyncHealthy == null && ec.Includes("isClusterSyncHealthy",true))
+        if (ec.Includes("isClusterSyncHealthy",true))
         {
-            this.IsClusterSyncHealthy = true;
+            if(this.IsClusterSyncHealthy == null) {
+
+                this.IsClusterSyncHealthy = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsClusterSyncHealthy != null && ec.Excludes("isClusterSyncHealthy",true))
+        {
+            this.IsClusterSyncHealthy = null;
         }
         //      C# -> System.Boolean? IsEventsSyncHealthy
         // GraphQL -> isEventsSyncHealthy: Boolean! (scalar)
-        if (this.IsEventsSyncHealthy == null && ec.Includes("isEventsSyncHealthy",true))
+        if (ec.Includes("isEventsSyncHealthy",true))
         {
-            this.IsEventsSyncHealthy = true;
+            if(this.IsEventsSyncHealthy == null) {
+
+                this.IsEventsSyncHealthy = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsEventsSyncHealthy != null && ec.Excludes("isEventsSyncHealthy",true))
+        {
+            this.IsEventsSyncHealthy = null;
         }
         //      C# -> System.Boolean? IsJobMonitoringSyncHealthy
         // GraphQL -> isJobMonitoringSyncHealthy: Boolean! (scalar)
-        if (this.IsJobMonitoringSyncHealthy == null && ec.Includes("isJobMonitoringSyncHealthy",true))
+        if (ec.Includes("isJobMonitoringSyncHealthy",true))
         {
-            this.IsJobMonitoringSyncHealthy = true;
+            if(this.IsJobMonitoringSyncHealthy == null) {
+
+                this.IsJobMonitoringSyncHealthy = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsJobMonitoringSyncHealthy != null && ec.Excludes("isJobMonitoringSyncHealthy",true))
+        {
+            this.IsJobMonitoringSyncHealthy = null;
         }
         //      C# -> System.Boolean? IsMetadataSyncHealthy
         // GraphQL -> isMetadataSyncHealthy: Boolean! (scalar)
-        if (this.IsMetadataSyncHealthy == null && ec.Includes("isMetadataSyncHealthy",true))
+        if (ec.Includes("isMetadataSyncHealthy",true))
         {
-            this.IsMetadataSyncHealthy = true;
+            if(this.IsMetadataSyncHealthy == null) {
+
+                this.IsMetadataSyncHealthy = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsMetadataSyncHealthy != null && ec.Excludes("isMetadataSyncHealthy",true))
+        {
+            this.IsMetadataSyncHealthy = null;
         }
         //      C# -> System.Boolean? IsReportsSyncHealthy
         // GraphQL -> isReportsSyncHealthy: Boolean! (scalar)
-        if (this.IsReportsSyncHealthy == null && ec.Includes("isReportsSyncHealthy",true))
+        if (ec.Includes("isReportsSyncHealthy",true))
         {
-            this.IsReportsSyncHealthy = true;
+            if(this.IsReportsSyncHealthy == null) {
+
+                this.IsReportsSyncHealthy = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsReportsSyncHealthy != null && ec.Excludes("isReportsSyncHealthy",true))
+        {
+            this.IsReportsSyncHealthy = null;
         }
         //      C# -> DateTime? JobMonitoringSyncLastSuccessTime
         // GraphQL -> jobMonitoringSyncLastSuccessTime: DateTime (scalar)
-        if (this.JobMonitoringSyncLastSuccessTime == null && ec.Includes("jobMonitoringSyncLastSuccessTime",true))
+        if (ec.Includes("jobMonitoringSyncLastSuccessTime",true))
         {
-            this.JobMonitoringSyncLastSuccessTime = new DateTime();
+            if(this.JobMonitoringSyncLastSuccessTime == null) {
+
+                this.JobMonitoringSyncLastSuccessTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.JobMonitoringSyncLastSuccessTime != null && ec.Excludes("jobMonitoringSyncLastSuccessTime",true))
+        {
+            this.JobMonitoringSyncLastSuccessTime = null;
         }
         //      C# -> DateTime? ObjectMetadataSyncLastSuccessTime
         // GraphQL -> objectMetadataSyncLastSuccessTime: DateTime (scalar)
-        if (this.ObjectMetadataSyncLastSuccessTime == null && ec.Includes("objectMetadataSyncLastSuccessTime",true))
+        if (ec.Includes("objectMetadataSyncLastSuccessTime",true))
         {
-            this.ObjectMetadataSyncLastSuccessTime = new DateTime();
+            if(this.ObjectMetadataSyncLastSuccessTime == null) {
+
+                this.ObjectMetadataSyncLastSuccessTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ObjectMetadataSyncLastSuccessTime != null && ec.Excludes("objectMetadataSyncLastSuccessTime",true))
+        {
+            this.ObjectMetadataSyncLastSuccessTime = null;
         }
         //      C# -> DateTime? ReportsSyncLastSuccessTime
         // GraphQL -> reportsSyncLastSuccessTime: DateTime (scalar)
-        if (this.ReportsSyncLastSuccessTime == null && ec.Includes("reportsSyncLastSuccessTime",true))
+        if (ec.Includes("reportsSyncLastSuccessTime",true))
         {
-            this.ReportsSyncLastSuccessTime = new DateTime();
+            if(this.ReportsSyncLastSuccessTime == null) {
+
+                this.ReportsSyncLastSuccessTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ReportsSyncLastSuccessTime != null && ec.Excludes("reportsSyncLastSuccessTime",true))
+        {
+            this.ReportsSyncLastSuccessTime = null;
         }
     }
 
@@ -274,9 +425,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<RubrikSyncStatus> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

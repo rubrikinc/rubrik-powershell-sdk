@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? FilePath
         // GraphQL -> filePath: String! (scalar)
         if (this.FilePath != null) {
-            s += ind + "filePath\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "filePath\n" ;
+            } else {
+                s += ind + "filePath\n" ;
+            }
         }
         //      C# -> System.Int64? FileSizeBytes
         // GraphQL -> fileSizeBytes: Long! (scalar)
         if (this.FileSizeBytes != null) {
-            s += ind + "fileSizeBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "fileSizeBytes\n" ;
+            } else {
+                s += ind + "fileSizeBytes\n" ;
+            }
         }
         //      C# -> DateTime? LastModified
         // GraphQL -> lastModified: DateTime (scalar)
         if (this.LastModified != null) {
-            s += ind + "lastModified\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "lastModified\n" ;
+            } else {
+                s += ind + "lastModified\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? FilePath
         // GraphQL -> filePath: String! (scalar)
-        if (this.FilePath == null && ec.Includes("filePath",true))
+        if (ec.Includes("filePath",true))
         {
-            this.FilePath = "FETCH";
+            if(this.FilePath == null) {
+
+                this.FilePath = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.FilePath != null && ec.Excludes("filePath",true))
+        {
+            this.FilePath = null;
         }
         //      C# -> System.Int64? FileSizeBytes
         // GraphQL -> fileSizeBytes: Long! (scalar)
-        if (this.FileSizeBytes == null && ec.Includes("fileSizeBytes",true))
+        if (ec.Includes("fileSizeBytes",true))
         {
-            this.FileSizeBytes = new System.Int64();
+            if(this.FileSizeBytes == null) {
+
+                this.FileSizeBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.FileSizeBytes != null && ec.Excludes("fileSizeBytes",true))
+        {
+            this.FileSizeBytes = null;
         }
         //      C# -> DateTime? LastModified
         // GraphQL -> lastModified: DateTime (scalar)
-        if (this.LastModified == null && ec.Includes("lastModified",true))
+        if (ec.Includes("lastModified",true))
         {
-            this.LastModified = new DateTime();
+            if(this.LastModified == null) {
+
+                this.LastModified = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastModified != null && ec.Excludes("lastModified",true))
+        {
+            this.LastModified = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SuspiciousFileInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

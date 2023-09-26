@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Ip
         // GraphQL -> ip: String! (scalar)
         if (this.Ip != null) {
-            s += ind + "ip\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "ip\n" ;
+            } else {
+                s += ind + "ip\n" ;
+            }
         }
         //      C# -> System.String? Node
         // GraphQL -> node: String! (scalar)
         if (this.Node != null) {
-            s += ind + "node\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "node\n" ;
+            } else {
+                s += ind + "node\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Ip
         // GraphQL -> ip: String! (scalar)
-        if (this.Ip == null && ec.Includes("ip",true))
+        if (ec.Includes("ip",true))
         {
-            this.Ip = "FETCH";
+            if(this.Ip == null) {
+
+                this.Ip = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Ip != null && ec.Excludes("ip",true))
+        {
+            this.Ip = null;
         }
         //      C# -> System.String? Node
         // GraphQL -> node: String! (scalar)
-        if (this.Node == null && ec.Includes("node",true))
+        if (ec.Includes("node",true))
         {
-            this.Node = "FETCH";
+            if(this.Node == null) {
+
+                this.Node = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Node != null && ec.Excludes("node",true))
+        {
+            this.Node = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<NodeIp> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

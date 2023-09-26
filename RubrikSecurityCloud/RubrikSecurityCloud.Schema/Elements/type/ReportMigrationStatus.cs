@@ -101,46 +101,75 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> ReportTemplate? ReportTemplate
         // GraphQL -> reportTemplate: ReportTemplate! (enum)
         if (this.ReportTemplate != null) {
-            s += ind + "reportTemplate\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "reportTemplate\n" ;
+            } else {
+                s += ind + "reportTemplate\n" ;
+            }
         }
         //      C# -> CdmReportMigrationStatus? Status
         // GraphQL -> status: CdmReportMigrationStatus! (enum)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         //      C# -> System.String? Details
         // GraphQL -> details: String! (scalar)
         if (this.Details != null) {
-            s += ind + "details\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "details\n" ;
+            } else {
+                s += ind + "details\n" ;
+            }
         }
         //      C# -> System.String? ReportId
         // GraphQL -> reportId: String! (scalar)
         if (this.ReportId != null) {
-            s += ind + "reportId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "reportId\n" ;
+            } else {
+                s += ind + "reportId\n" ;
+            }
         }
         //      C# -> System.String? ReportName
         // GraphQL -> reportName: String! (scalar)
         if (this.ReportName != null) {
-            s += ind + "reportName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "reportName\n" ;
+            } else {
+                s += ind + "reportName\n" ;
+            }
         }
         //      C# -> System.Int64? RscReportId
         // GraphQL -> rscReportId: Long! (scalar)
         if (this.RscReportId != null) {
-            s += ind + "rscReportId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "rscReportId\n" ;
+            } else {
+                s += ind + "rscReportId\n" ;
+            }
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster (type)
         if (this.Cluster != null) {
-            var fspec = this.Cluster.AsFieldSpec(indent+1);
+            var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -152,46 +181,124 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> ReportTemplate? ReportTemplate
         // GraphQL -> reportTemplate: ReportTemplate! (enum)
-        if (this.ReportTemplate == null && ec.Includes("reportTemplate",true))
+        if (ec.Includes("reportTemplate",true))
         {
-            this.ReportTemplate = new ReportTemplate();
+            if(this.ReportTemplate == null) {
+
+                this.ReportTemplate = new ReportTemplate();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ReportTemplate != null && ec.Excludes("reportTemplate",true))
+        {
+            this.ReportTemplate = null;
         }
         //      C# -> CdmReportMigrationStatus? Status
         // GraphQL -> status: CdmReportMigrationStatus! (enum)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = new CdmReportMigrationStatus();
+            if(this.Status == null) {
+
+                this.Status = new CdmReportMigrationStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
         //      C# -> System.String? Details
         // GraphQL -> details: String! (scalar)
-        if (this.Details == null && ec.Includes("details",true))
+        if (ec.Includes("details",true))
         {
-            this.Details = "FETCH";
+            if(this.Details == null) {
+
+                this.Details = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Details != null && ec.Excludes("details",true))
+        {
+            this.Details = null;
         }
         //      C# -> System.String? ReportId
         // GraphQL -> reportId: String! (scalar)
-        if (this.ReportId == null && ec.Includes("reportId",true))
+        if (ec.Includes("reportId",true))
         {
-            this.ReportId = "FETCH";
+            if(this.ReportId == null) {
+
+                this.ReportId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ReportId != null && ec.Excludes("reportId",true))
+        {
+            this.ReportId = null;
         }
         //      C# -> System.String? ReportName
         // GraphQL -> reportName: String! (scalar)
-        if (this.ReportName == null && ec.Includes("reportName",true))
+        if (ec.Includes("reportName",true))
         {
-            this.ReportName = "FETCH";
+            if(this.ReportName == null) {
+
+                this.ReportName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ReportName != null && ec.Excludes("reportName",true))
+        {
+            this.ReportName = null;
         }
         //      C# -> System.Int64? RscReportId
         // GraphQL -> rscReportId: Long! (scalar)
-        if (this.RscReportId == null && ec.Includes("rscReportId",true))
+        if (ec.Includes("rscReportId",true))
         {
-            this.RscReportId = new System.Int64();
+            if(this.RscReportId == null) {
+
+                this.RscReportId = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RscReportId != null && ec.Excludes("rscReportId",true))
+        {
+            this.RscReportId = null;
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster (type)
-        if (this.Cluster == null && ec.Includes("cluster",false))
+        if (ec.Includes("cluster",false))
         {
-            this.Cluster = new Cluster();
-            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+            if(this.Cluster == null) {
+
+                this.Cluster = new Cluster();
+                this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+
+            } else {
+
+                this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+
+            }
+        }
+        else if (this.Cluster != null && ec.Excludes("cluster",false))
+        {
+            this.Cluster = null;
         }
     }
 
@@ -218,9 +325,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ReportMigrationStatus> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

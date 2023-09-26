@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> SapHanaSystemAuthType? AuthType
         // GraphQL -> authType: SapHanaSystemAuthType! (enum)
         if (this.AuthType != null) {
-            s += ind + "authType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "authType\n" ;
+            } else {
+                s += ind + "authType\n" ;
+            }
         }
         //      C# -> System.String? HanaVersion
         // GraphQL -> hanaVersion: String! (scalar)
         if (this.HanaVersion != null) {
-            s += ind + "hanaVersion\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hanaVersion\n" ;
+            } else {
+                s += ind + "hanaVersion\n" ;
+            }
         }
         //      C# -> System.Boolean? IsDtEnabled
         // GraphQL -> isDtEnabled: Boolean! (scalar)
         if (this.IsDtEnabled != null) {
-            s += ind + "isDtEnabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isDtEnabled\n" ;
+            } else {
+                s += ind + "isDtEnabled\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> SapHanaSystemAuthType? AuthType
         // GraphQL -> authType: SapHanaSystemAuthType! (enum)
-        if (this.AuthType == null && ec.Includes("authType",true))
+        if (ec.Includes("authType",true))
         {
-            this.AuthType = new SapHanaSystemAuthType();
+            if(this.AuthType == null) {
+
+                this.AuthType = new SapHanaSystemAuthType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AuthType != null && ec.Excludes("authType",true))
+        {
+            this.AuthType = null;
         }
         //      C# -> System.String? HanaVersion
         // GraphQL -> hanaVersion: String! (scalar)
-        if (this.HanaVersion == null && ec.Includes("hanaVersion",true))
+        if (ec.Includes("hanaVersion",true))
         {
-            this.HanaVersion = "FETCH";
+            if(this.HanaVersion == null) {
+
+                this.HanaVersion = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.HanaVersion != null && ec.Excludes("hanaVersion",true))
+        {
+            this.HanaVersion = null;
         }
         //      C# -> System.Boolean? IsDtEnabled
         // GraphQL -> isDtEnabled: Boolean! (scalar)
-        if (this.IsDtEnabled == null && ec.Includes("isDtEnabled",true))
+        if (ec.Includes("isDtEnabled",true))
         {
-            this.IsDtEnabled = true;
+            if(this.IsDtEnabled == null) {
+
+                this.IsDtEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsDtEnabled != null && ec.Excludes("isDtEnabled",true))
+        {
+            this.IsDtEnabled = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SapHanaSystemInformation> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

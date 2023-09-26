@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<System.String>? ArchivalLocationType
         // GraphQL -> archivalLocationType: [String!]! (scalar)
         if (this.ArchivalLocationType != null) {
-            s += ind + "archivalLocationType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "archivalLocationType\n" ;
+            } else {
+                s += ind + "archivalLocationType\n" ;
+            }
         }
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime! (scalar)
         if (this.Date != null) {
-            s += ind + "date\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "date\n" ;
+            } else {
+                s += ind + "date\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<System.String>? ArchivalLocationType
         // GraphQL -> archivalLocationType: [String!]! (scalar)
-        if (this.ArchivalLocationType == null && ec.Includes("archivalLocationType",true))
+        if (ec.Includes("archivalLocationType",true))
         {
-            this.ArchivalLocationType = new List<System.String>();
+            if(this.ArchivalLocationType == null) {
+
+                this.ArchivalLocationType = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ArchivalLocationType != null && ec.Excludes("archivalLocationType",true))
+        {
+            this.ArchivalLocationType = null;
         }
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime! (scalar)
-        if (this.Date == null && ec.Includes("date",true))
+        if (ec.Includes("date",true))
         {
-            this.Date = new DateTime();
+            if(this.Date == null) {
+
+                this.Date = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Date != null && ec.Excludes("date",true))
+        {
+            this.Date = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<MissedSnapshotCommon> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

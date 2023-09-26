@@ -120,65 +120,102 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> InstanceTypeEnum? InstanceType
         // GraphQL -> instanceType: InstanceTypeEnum! (enum)
         if (this.InstanceType != null) {
-            s += ind + "instanceType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "instanceType\n" ;
+            } else {
+                s += ind + "instanceType\n" ;
+            }
         }
         //      C# -> TargetType? TargetType
         // GraphQL -> targetType: TargetType! (enum)
         if (this.TargetType != null) {
-            s += ind + "targetType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "targetType\n" ;
+            } else {
+                s += ind + "targetType\n" ;
+            }
         }
         //      C# -> CloudAccount? CloudAccount
         // GraphQL -> cloudAccount: CloudAccount! (interface)
         if (this.CloudAccount != null) {
-                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.CloudAccount).AsFieldSpec(indent+1);
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.CloudAccount).AsFieldSpec(conf.Child("cloudAccount"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "cloudAccount {\n" + fspec + ind + "}\n";
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cloudAccount {\n" + fspec + ind + "}\n";
+                }
             }
         }
         //      C# -> System.String? ContainerNamePrefix
         // GraphQL -> containerNamePrefix: String! (scalar)
         if (this.ContainerNamePrefix != null) {
-            s += ind + "containerNamePrefix\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "containerNamePrefix\n" ;
+            } else {
+                s += ind + "containerNamePrefix\n" ;
+            }
         }
         //      C# -> System.Boolean? IsConsolidationEnabled
         // GraphQL -> isConsolidationEnabled: Boolean! (scalar)
         if (this.IsConsolidationEnabled != null) {
-            s += ind + "isConsolidationEnabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isConsolidationEnabled\n" ;
+            } else {
+                s += ind + "isConsolidationEnabled\n" ;
+            }
         }
         //      C# -> System.String? StorageAccountName
         // GraphQL -> storageAccountName: String! (scalar)
         if (this.StorageAccountName != null) {
-            s += ind + "storageAccountName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "storageAccountName\n" ;
+            } else {
+                s += ind + "storageAccountName\n" ;
+            }
         }
         //      C# -> AzureCloudNativeTargetCompanion? CloudNativeCompanion
         // GraphQL -> cloudNativeCompanion: AzureCloudNativeTargetCompanion (type)
         if (this.CloudNativeCompanion != null) {
-            var fspec = this.CloudNativeCompanion.AsFieldSpec(indent+1);
+            var fspec = this.CloudNativeCompanion.AsFieldSpec(conf.Child("cloudNativeCompanion"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "cloudNativeCompanion {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cloudNativeCompanion {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> AzureComputeSettings? ComputeSettings
         // GraphQL -> computeSettings: AzureComputeSettings (type)
         if (this.ComputeSettings != null) {
-            var fspec = this.ComputeSettings.AsFieldSpec(indent+1);
+            var fspec = this.ComputeSettings.AsFieldSpec(conf.Child("computeSettings"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "computeSettings {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "computeSettings {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> ProxySettings? ProxySettings
         // GraphQL -> proxySettings: ProxySettings (type)
         if (this.ProxySettings != null) {
-            var fspec = this.ProxySettings.AsFieldSpec(indent+1);
+            var fspec = this.ProxySettings.AsFieldSpec(conf.Child("proxySettings"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "proxySettings {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "proxySettings {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -190,62 +227,169 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> InstanceTypeEnum? InstanceType
         // GraphQL -> instanceType: InstanceTypeEnum! (enum)
-        if (this.InstanceType == null && ec.Includes("instanceType",true))
+        if (ec.Includes("instanceType",true))
         {
-            this.InstanceType = new InstanceTypeEnum();
+            if(this.InstanceType == null) {
+
+                this.InstanceType = new InstanceTypeEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.InstanceType != null && ec.Excludes("instanceType",true))
+        {
+            this.InstanceType = null;
         }
         //      C# -> TargetType? TargetType
         // GraphQL -> targetType: TargetType! (enum)
-        if (this.TargetType == null && ec.Includes("targetType",true))
+        if (ec.Includes("targetType",true))
         {
-            this.TargetType = new TargetType();
+            if(this.TargetType == null) {
+
+                this.TargetType = new TargetType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TargetType != null && ec.Excludes("targetType",true))
+        {
+            this.TargetType = null;
         }
         //      C# -> CloudAccount? CloudAccount
         // GraphQL -> cloudAccount: CloudAccount! (interface)
-        if (this.CloudAccount == null && ec.Includes("cloudAccount",false))
+        if (ec.Includes("cloudAccount",false))
         {
-            var impls = new List<CloudAccount>();
-            impls.ApplyExploratoryFieldSpec(ec.NewChild("cloudAccount"));
-            this.CloudAccount = (CloudAccount)InterfaceHelper.MakeCompositeFromList(impls);
+            if(this.CloudAccount == null) {
+
+                var impls = new List<CloudAccount>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("cloudAccount"));
+                this.CloudAccount = (CloudAccount)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<CloudAccount>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("cloudAccount"));
+                this.CloudAccount = (CloudAccount)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.CloudAccount != null && ec.Excludes("cloudAccount",false))
+        {
+            this.CloudAccount = null;
         }
         //      C# -> System.String? ContainerNamePrefix
         // GraphQL -> containerNamePrefix: String! (scalar)
-        if (this.ContainerNamePrefix == null && ec.Includes("containerNamePrefix",true))
+        if (ec.Includes("containerNamePrefix",true))
         {
-            this.ContainerNamePrefix = "FETCH";
+            if(this.ContainerNamePrefix == null) {
+
+                this.ContainerNamePrefix = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ContainerNamePrefix != null && ec.Excludes("containerNamePrefix",true))
+        {
+            this.ContainerNamePrefix = null;
         }
         //      C# -> System.Boolean? IsConsolidationEnabled
         // GraphQL -> isConsolidationEnabled: Boolean! (scalar)
-        if (this.IsConsolidationEnabled == null && ec.Includes("isConsolidationEnabled",true))
+        if (ec.Includes("isConsolidationEnabled",true))
         {
-            this.IsConsolidationEnabled = true;
+            if(this.IsConsolidationEnabled == null) {
+
+                this.IsConsolidationEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsConsolidationEnabled != null && ec.Excludes("isConsolidationEnabled",true))
+        {
+            this.IsConsolidationEnabled = null;
         }
         //      C# -> System.String? StorageAccountName
         // GraphQL -> storageAccountName: String! (scalar)
-        if (this.StorageAccountName == null && ec.Includes("storageAccountName",true))
+        if (ec.Includes("storageAccountName",true))
         {
-            this.StorageAccountName = "FETCH";
+            if(this.StorageAccountName == null) {
+
+                this.StorageAccountName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.StorageAccountName != null && ec.Excludes("storageAccountName",true))
+        {
+            this.StorageAccountName = null;
         }
         //      C# -> AzureCloudNativeTargetCompanion? CloudNativeCompanion
         // GraphQL -> cloudNativeCompanion: AzureCloudNativeTargetCompanion (type)
-        if (this.CloudNativeCompanion == null && ec.Includes("cloudNativeCompanion",false))
+        if (ec.Includes("cloudNativeCompanion",false))
         {
-            this.CloudNativeCompanion = new AzureCloudNativeTargetCompanion();
-            this.CloudNativeCompanion.ApplyExploratoryFieldSpec(ec.NewChild("cloudNativeCompanion"));
+            if(this.CloudNativeCompanion == null) {
+
+                this.CloudNativeCompanion = new AzureCloudNativeTargetCompanion();
+                this.CloudNativeCompanion.ApplyExploratoryFieldSpec(ec.NewChild("cloudNativeCompanion"));
+
+            } else {
+
+                this.CloudNativeCompanion.ApplyExploratoryFieldSpec(ec.NewChild("cloudNativeCompanion"));
+
+            }
+        }
+        else if (this.CloudNativeCompanion != null && ec.Excludes("cloudNativeCompanion",false))
+        {
+            this.CloudNativeCompanion = null;
         }
         //      C# -> AzureComputeSettings? ComputeSettings
         // GraphQL -> computeSettings: AzureComputeSettings (type)
-        if (this.ComputeSettings == null && ec.Includes("computeSettings",false))
+        if (ec.Includes("computeSettings",false))
         {
-            this.ComputeSettings = new AzureComputeSettings();
-            this.ComputeSettings.ApplyExploratoryFieldSpec(ec.NewChild("computeSettings"));
+            if(this.ComputeSettings == null) {
+
+                this.ComputeSettings = new AzureComputeSettings();
+                this.ComputeSettings.ApplyExploratoryFieldSpec(ec.NewChild("computeSettings"));
+
+            } else {
+
+                this.ComputeSettings.ApplyExploratoryFieldSpec(ec.NewChild("computeSettings"));
+
+            }
+        }
+        else if (this.ComputeSettings != null && ec.Excludes("computeSettings",false))
+        {
+            this.ComputeSettings = null;
         }
         //      C# -> ProxySettings? ProxySettings
         // GraphQL -> proxySettings: ProxySettings (type)
-        if (this.ProxySettings == null && ec.Includes("proxySettings",false))
+        if (ec.Includes("proxySettings",false))
         {
-            this.ProxySettings = new ProxySettings();
-            this.ProxySettings.ApplyExploratoryFieldSpec(ec.NewChild("proxySettings"));
+            if(this.ProxySettings == null) {
+
+                this.ProxySettings = new ProxySettings();
+                this.ProxySettings.ApplyExploratoryFieldSpec(ec.NewChild("proxySettings"));
+
+            } else {
+
+                this.ProxySettings.ApplyExploratoryFieldSpec(ec.NewChild("proxySettings"));
+
+            }
+        }
+        else if (this.ProxySettings != null && ec.Excludes("proxySettings",false))
+        {
+            this.ProxySettings = null;
         }
     }
 
@@ -272,9 +416,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AzureTargetTemplate> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

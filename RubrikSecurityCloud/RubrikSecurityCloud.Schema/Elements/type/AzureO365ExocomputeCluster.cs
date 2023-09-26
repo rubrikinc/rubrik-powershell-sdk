@@ -290,160 +290,273 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> O365AzureCloudType? AzureCloudType
         // GraphQL -> azureCloudType: O365AzureCloudType! (enum)
         if (this.AzureCloudType != null) {
-            s += ind + "azureCloudType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "azureCloudType\n" ;
+            } else {
+                s += ind + "azureCloudType\n" ;
+            }
         }
         //      C# -> AzureHostType? HostType
         // GraphQL -> hostType: AzureHostType! (enum)
         if (this.HostType != null) {
-            s += ind + "hostType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostType\n" ;
+            } else {
+                s += ind + "hostType\n" ;
+            }
         }
         //      C# -> AzureHostType? KmsHostType
         // GraphQL -> kmsHostType: AzureHostType! (enum)
         if (this.KmsHostType != null) {
-            s += ind + "kmsHostType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "kmsHostType\n" ;
+            } else {
+                s += ind + "kmsHostType\n" ;
+            }
         }
         //      C# -> SaasFeature? SaasFeature
         // GraphQL -> saasFeature: SaasFeature! (enum)
         if (this.SaasFeature != null) {
-            s += ind + "saasFeature\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "saasFeature\n" ;
+            } else {
+                s += ind + "saasFeature\n" ;
+            }
         }
         //      C# -> System.String? AcrId
         // GraphQL -> acrId: String! (scalar)
         if (this.AcrId != null) {
-            s += ind + "acrId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "acrId\n" ;
+            } else {
+                s += ind + "acrId\n" ;
+            }
         }
         //      C# -> System.String? AksId
         // GraphQL -> aksId: String! (scalar)
         if (this.AksId != null) {
-            s += ind + "aksId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "aksId\n" ;
+            } else {
+                s += ind + "aksId\n" ;
+            }
         }
         //      C# -> System.String? AksVersion
         // GraphQL -> aksVersion: String! (scalar)
         if (this.AksVersion != null) {
-            s += ind + "aksVersion\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "aksVersion\n" ;
+            } else {
+                s += ind + "aksVersion\n" ;
+            }
         }
         //      C# -> System.String? AzureAppId
         // GraphQL -> azureAppId: String! (scalar)
         if (this.AzureAppId != null) {
-            s += ind + "azureAppId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "azureAppId\n" ;
+            } else {
+                s += ind + "azureAppId\n" ;
+            }
         }
         //      C# -> System.String? ColossusBackupStorageAccountId
         // GraphQL -> colossusBackupStorageAccountId: String! (scalar)
         if (this.ColossusBackupStorageAccountId != null) {
-            s += ind + "colossusBackupStorageAccountId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "colossusBackupStorageAccountId\n" ;
+            } else {
+                s += ind + "colossusBackupStorageAccountId\n" ;
+            }
         }
         //      C# -> System.String? GroupName
         // GraphQL -> groupName: String! (scalar)
         if (this.GroupName != null) {
-            s += ind + "groupName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "groupName\n" ;
+            } else {
+                s += ind + "groupName\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.Boolean? IsProvisioned
         // GraphQL -> isProvisioned: Boolean! (scalar)
         if (this.IsProvisioned != null) {
-            s += ind + "isProvisioned\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isProvisioned\n" ;
+            } else {
+                s += ind + "isProvisioned\n" ;
+            }
         }
         //      C# -> DateTime? KekBackupStartTime
         // GraphQL -> kekBackupStartTime: DateTime (scalar)
         if (this.KekBackupStartTime != null) {
-            s += ind + "kekBackupStartTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "kekBackupStartTime\n" ;
+            } else {
+                s += ind + "kekBackupStartTime\n" ;
+            }
         }
         //      C# -> System.String? KmsId
         // GraphQL -> kmsId: String! (scalar)
         if (this.KmsId != null) {
-            s += ind + "kmsId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "kmsId\n" ;
+            } else {
+                s += ind + "kmsId\n" ;
+            }
         }
         //      C# -> System.String? OrgId
         // GraphQL -> orgId: String! (scalar)
         if (this.OrgId != null) {
-            s += ind + "orgId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "orgId\n" ;
+            } else {
+                s += ind + "orgId\n" ;
+            }
         }
         //      C# -> System.String? OrgName
         // GraphQL -> orgName: String! (scalar)
         if (this.OrgName != null) {
-            s += ind + "orgName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "orgName\n" ;
+            } else {
+                s += ind + "orgName\n" ;
+            }
         }
         //      C# -> System.String? OrgStatus
         // GraphQL -> orgStatus: String! (scalar)
         if (this.OrgStatus != null) {
-            s += ind + "orgStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "orgStatus\n" ;
+            } else {
+                s += ind + "orgStatus\n" ;
+            }
         }
         //      C# -> System.String? OrgTenantId
         // GraphQL -> orgTenantId: String! (scalar)
         if (this.OrgTenantId != null) {
-            s += ind + "orgTenantId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "orgTenantId\n" ;
+            } else {
+                s += ind + "orgTenantId\n" ;
+            }
         }
         //      C# -> System.String? PolarisAccount
         // GraphQL -> polarisAccount: String! (scalar)
         if (this.PolarisAccount != null) {
-            s += ind + "polarisAccount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "polarisAccount\n" ;
+            } else {
+                s += ind + "polarisAccount\n" ;
+            }
         }
         //      C# -> System.String? RegionName
         // GraphQL -> regionName: String! (scalar)
         if (this.RegionName != null) {
-            s += ind + "regionName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "regionName\n" ;
+            } else {
+                s += ind + "regionName\n" ;
+            }
         }
         //      C# -> System.String? SetupConfiguration
         // GraphQL -> setupConfiguration: String! (scalar)
         if (this.SetupConfiguration != null) {
-            s += ind + "setupConfiguration\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "setupConfiguration\n" ;
+            } else {
+                s += ind + "setupConfiguration\n" ;
+            }
         }
         //      C# -> System.String? StorageId
         // GraphQL -> storageId: String! (scalar)
         if (this.StorageId != null) {
-            s += ind + "storageId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "storageId\n" ;
+            } else {
+                s += ind + "storageId\n" ;
+            }
         }
         //      C# -> System.String? SubscriptionId
         // GraphQL -> subscriptionId: String! (scalar)
         if (this.SubscriptionId != null) {
-            s += ind + "subscriptionId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "subscriptionId\n" ;
+            } else {
+                s += ind + "subscriptionId\n" ;
+            }
         }
         //      C# -> System.String? TenantId
         // GraphQL -> tenantId: String! (scalar)
         if (this.TenantId != null) {
-            s += ind + "tenantId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "tenantId\n" ;
+            } else {
+                s += ind + "tenantId\n" ;
+            }
         }
         //      C# -> ZeusDatabaseIds? DatabaseIds
         // GraphQL -> databaseIds: ZeusDatabaseIds (type)
         if (this.DatabaseIds != null) {
-            var fspec = this.DatabaseIds.AsFieldSpec(indent+1);
+            var fspec = this.DatabaseIds.AsFieldSpec(conf.Child("databaseIds"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "databaseIds {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "databaseIds {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> KmsSpec? KmsSpec
         // GraphQL -> kmsSpec: KmsSpec (type)
         if (this.KmsSpec != null) {
-            var fspec = this.KmsSpec.AsFieldSpec(indent+1);
+            var fspec = this.KmsSpec.AsFieldSpec(conf.Child("kmsSpec"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "kmsSpec {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "kmsSpec {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> ScaleRuntime? ScaleRuntime
         // GraphQL -> scaleRuntime: ScaleRuntime (type)
         if (this.ScaleRuntime != null) {
-            var fspec = this.ScaleRuntime.AsFieldSpec(indent+1);
+            var fspec = this.ScaleRuntime.AsFieldSpec(conf.Child("scaleRuntime"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "scaleRuntime {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "scaleRuntime {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> ExocomputeStorageAccountIds? StorageIds
         // GraphQL -> storageIds: ExocomputeStorageAccountIds (type)
         if (this.StorageIds != null) {
-            var fspec = this.StorageIds.AsFieldSpec(indent+1);
+            var fspec = this.StorageIds.AsFieldSpec(conf.Child("storageIds"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "storageIds {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "storageIds {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -455,175 +568,487 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> O365AzureCloudType? AzureCloudType
         // GraphQL -> azureCloudType: O365AzureCloudType! (enum)
-        if (this.AzureCloudType == null && ec.Includes("azureCloudType",true))
+        if (ec.Includes("azureCloudType",true))
         {
-            this.AzureCloudType = new O365AzureCloudType();
+            if(this.AzureCloudType == null) {
+
+                this.AzureCloudType = new O365AzureCloudType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AzureCloudType != null && ec.Excludes("azureCloudType",true))
+        {
+            this.AzureCloudType = null;
         }
         //      C# -> AzureHostType? HostType
         // GraphQL -> hostType: AzureHostType! (enum)
-        if (this.HostType == null && ec.Includes("hostType",true))
+        if (ec.Includes("hostType",true))
         {
-            this.HostType = new AzureHostType();
+            if(this.HostType == null) {
+
+                this.HostType = new AzureHostType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.HostType != null && ec.Excludes("hostType",true))
+        {
+            this.HostType = null;
         }
         //      C# -> AzureHostType? KmsHostType
         // GraphQL -> kmsHostType: AzureHostType! (enum)
-        if (this.KmsHostType == null && ec.Includes("kmsHostType",true))
+        if (ec.Includes("kmsHostType",true))
         {
-            this.KmsHostType = new AzureHostType();
+            if(this.KmsHostType == null) {
+
+                this.KmsHostType = new AzureHostType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.KmsHostType != null && ec.Excludes("kmsHostType",true))
+        {
+            this.KmsHostType = null;
         }
         //      C# -> SaasFeature? SaasFeature
         // GraphQL -> saasFeature: SaasFeature! (enum)
-        if (this.SaasFeature == null && ec.Includes("saasFeature",true))
+        if (ec.Includes("saasFeature",true))
         {
-            this.SaasFeature = new SaasFeature();
+            if(this.SaasFeature == null) {
+
+                this.SaasFeature = new SaasFeature();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SaasFeature != null && ec.Excludes("saasFeature",true))
+        {
+            this.SaasFeature = null;
         }
         //      C# -> System.String? AcrId
         // GraphQL -> acrId: String! (scalar)
-        if (this.AcrId == null && ec.Includes("acrId",true))
+        if (ec.Includes("acrId",true))
         {
-            this.AcrId = "FETCH";
+            if(this.AcrId == null) {
+
+                this.AcrId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AcrId != null && ec.Excludes("acrId",true))
+        {
+            this.AcrId = null;
         }
         //      C# -> System.String? AksId
         // GraphQL -> aksId: String! (scalar)
-        if (this.AksId == null && ec.Includes("aksId",true))
+        if (ec.Includes("aksId",true))
         {
-            this.AksId = "FETCH";
+            if(this.AksId == null) {
+
+                this.AksId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AksId != null && ec.Excludes("aksId",true))
+        {
+            this.AksId = null;
         }
         //      C# -> System.String? AksVersion
         // GraphQL -> aksVersion: String! (scalar)
-        if (this.AksVersion == null && ec.Includes("aksVersion",true))
+        if (ec.Includes("aksVersion",true))
         {
-            this.AksVersion = "FETCH";
+            if(this.AksVersion == null) {
+
+                this.AksVersion = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AksVersion != null && ec.Excludes("aksVersion",true))
+        {
+            this.AksVersion = null;
         }
         //      C# -> System.String? AzureAppId
         // GraphQL -> azureAppId: String! (scalar)
-        if (this.AzureAppId == null && ec.Includes("azureAppId",true))
+        if (ec.Includes("azureAppId",true))
         {
-            this.AzureAppId = "FETCH";
+            if(this.AzureAppId == null) {
+
+                this.AzureAppId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AzureAppId != null && ec.Excludes("azureAppId",true))
+        {
+            this.AzureAppId = null;
         }
         //      C# -> System.String? ColossusBackupStorageAccountId
         // GraphQL -> colossusBackupStorageAccountId: String! (scalar)
-        if (this.ColossusBackupStorageAccountId == null && ec.Includes("colossusBackupStorageAccountId",true))
+        if (ec.Includes("colossusBackupStorageAccountId",true))
         {
-            this.ColossusBackupStorageAccountId = "FETCH";
+            if(this.ColossusBackupStorageAccountId == null) {
+
+                this.ColossusBackupStorageAccountId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ColossusBackupStorageAccountId != null && ec.Excludes("colossusBackupStorageAccountId",true))
+        {
+            this.ColossusBackupStorageAccountId = null;
         }
         //      C# -> System.String? GroupName
         // GraphQL -> groupName: String! (scalar)
-        if (this.GroupName == null && ec.Includes("groupName",true))
+        if (ec.Includes("groupName",true))
         {
-            this.GroupName = "FETCH";
+            if(this.GroupName == null) {
+
+                this.GroupName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.GroupName != null && ec.Excludes("groupName",true))
+        {
+            this.GroupName = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.Boolean? IsProvisioned
         // GraphQL -> isProvisioned: Boolean! (scalar)
-        if (this.IsProvisioned == null && ec.Includes("isProvisioned",true))
+        if (ec.Includes("isProvisioned",true))
         {
-            this.IsProvisioned = true;
+            if(this.IsProvisioned == null) {
+
+                this.IsProvisioned = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsProvisioned != null && ec.Excludes("isProvisioned",true))
+        {
+            this.IsProvisioned = null;
         }
         //      C# -> DateTime? KekBackupStartTime
         // GraphQL -> kekBackupStartTime: DateTime (scalar)
-        if (this.KekBackupStartTime == null && ec.Includes("kekBackupStartTime",true))
+        if (ec.Includes("kekBackupStartTime",true))
         {
-            this.KekBackupStartTime = new DateTime();
+            if(this.KekBackupStartTime == null) {
+
+                this.KekBackupStartTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.KekBackupStartTime != null && ec.Excludes("kekBackupStartTime",true))
+        {
+            this.KekBackupStartTime = null;
         }
         //      C# -> System.String? KmsId
         // GraphQL -> kmsId: String! (scalar)
-        if (this.KmsId == null && ec.Includes("kmsId",true))
+        if (ec.Includes("kmsId",true))
         {
-            this.KmsId = "FETCH";
+            if(this.KmsId == null) {
+
+                this.KmsId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.KmsId != null && ec.Excludes("kmsId",true))
+        {
+            this.KmsId = null;
         }
         //      C# -> System.String? OrgId
         // GraphQL -> orgId: String! (scalar)
-        if (this.OrgId == null && ec.Includes("orgId",true))
+        if (ec.Includes("orgId",true))
         {
-            this.OrgId = "FETCH";
+            if(this.OrgId == null) {
+
+                this.OrgId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OrgId != null && ec.Excludes("orgId",true))
+        {
+            this.OrgId = null;
         }
         //      C# -> System.String? OrgName
         // GraphQL -> orgName: String! (scalar)
-        if (this.OrgName == null && ec.Includes("orgName",true))
+        if (ec.Includes("orgName",true))
         {
-            this.OrgName = "FETCH";
+            if(this.OrgName == null) {
+
+                this.OrgName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OrgName != null && ec.Excludes("orgName",true))
+        {
+            this.OrgName = null;
         }
         //      C# -> System.String? OrgStatus
         // GraphQL -> orgStatus: String! (scalar)
-        if (this.OrgStatus == null && ec.Includes("orgStatus",true))
+        if (ec.Includes("orgStatus",true))
         {
-            this.OrgStatus = "FETCH";
+            if(this.OrgStatus == null) {
+
+                this.OrgStatus = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OrgStatus != null && ec.Excludes("orgStatus",true))
+        {
+            this.OrgStatus = null;
         }
         //      C# -> System.String? OrgTenantId
         // GraphQL -> orgTenantId: String! (scalar)
-        if (this.OrgTenantId == null && ec.Includes("orgTenantId",true))
+        if (ec.Includes("orgTenantId",true))
         {
-            this.OrgTenantId = "FETCH";
+            if(this.OrgTenantId == null) {
+
+                this.OrgTenantId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OrgTenantId != null && ec.Excludes("orgTenantId",true))
+        {
+            this.OrgTenantId = null;
         }
         //      C# -> System.String? PolarisAccount
         // GraphQL -> polarisAccount: String! (scalar)
-        if (this.PolarisAccount == null && ec.Includes("polarisAccount",true))
+        if (ec.Includes("polarisAccount",true))
         {
-            this.PolarisAccount = "FETCH";
+            if(this.PolarisAccount == null) {
+
+                this.PolarisAccount = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PolarisAccount != null && ec.Excludes("polarisAccount",true))
+        {
+            this.PolarisAccount = null;
         }
         //      C# -> System.String? RegionName
         // GraphQL -> regionName: String! (scalar)
-        if (this.RegionName == null && ec.Includes("regionName",true))
+        if (ec.Includes("regionName",true))
         {
-            this.RegionName = "FETCH";
+            if(this.RegionName == null) {
+
+                this.RegionName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RegionName != null && ec.Excludes("regionName",true))
+        {
+            this.RegionName = null;
         }
         //      C# -> System.String? SetupConfiguration
         // GraphQL -> setupConfiguration: String! (scalar)
-        if (this.SetupConfiguration == null && ec.Includes("setupConfiguration",true))
+        if (ec.Includes("setupConfiguration",true))
         {
-            this.SetupConfiguration = "FETCH";
+            if(this.SetupConfiguration == null) {
+
+                this.SetupConfiguration = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SetupConfiguration != null && ec.Excludes("setupConfiguration",true))
+        {
+            this.SetupConfiguration = null;
         }
         //      C# -> System.String? StorageId
         // GraphQL -> storageId: String! (scalar)
-        if (this.StorageId == null && ec.Includes("storageId",true))
+        if (ec.Includes("storageId",true))
         {
-            this.StorageId = "FETCH";
+            if(this.StorageId == null) {
+
+                this.StorageId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.StorageId != null && ec.Excludes("storageId",true))
+        {
+            this.StorageId = null;
         }
         //      C# -> System.String? SubscriptionId
         // GraphQL -> subscriptionId: String! (scalar)
-        if (this.SubscriptionId == null && ec.Includes("subscriptionId",true))
+        if (ec.Includes("subscriptionId",true))
         {
-            this.SubscriptionId = "FETCH";
+            if(this.SubscriptionId == null) {
+
+                this.SubscriptionId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SubscriptionId != null && ec.Excludes("subscriptionId",true))
+        {
+            this.SubscriptionId = null;
         }
         //      C# -> System.String? TenantId
         // GraphQL -> tenantId: String! (scalar)
-        if (this.TenantId == null && ec.Includes("tenantId",true))
+        if (ec.Includes("tenantId",true))
         {
-            this.TenantId = "FETCH";
+            if(this.TenantId == null) {
+
+                this.TenantId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TenantId != null && ec.Excludes("tenantId",true))
+        {
+            this.TenantId = null;
         }
         //      C# -> ZeusDatabaseIds? DatabaseIds
         // GraphQL -> databaseIds: ZeusDatabaseIds (type)
-        if (this.DatabaseIds == null && ec.Includes("databaseIds",false))
+        if (ec.Includes("databaseIds",false))
         {
-            this.DatabaseIds = new ZeusDatabaseIds();
-            this.DatabaseIds.ApplyExploratoryFieldSpec(ec.NewChild("databaseIds"));
+            if(this.DatabaseIds == null) {
+
+                this.DatabaseIds = new ZeusDatabaseIds();
+                this.DatabaseIds.ApplyExploratoryFieldSpec(ec.NewChild("databaseIds"));
+
+            } else {
+
+                this.DatabaseIds.ApplyExploratoryFieldSpec(ec.NewChild("databaseIds"));
+
+            }
+        }
+        else if (this.DatabaseIds != null && ec.Excludes("databaseIds",false))
+        {
+            this.DatabaseIds = null;
         }
         //      C# -> KmsSpec? KmsSpec
         // GraphQL -> kmsSpec: KmsSpec (type)
-        if (this.KmsSpec == null && ec.Includes("kmsSpec",false))
+        if (ec.Includes("kmsSpec",false))
         {
-            this.KmsSpec = new KmsSpec();
-            this.KmsSpec.ApplyExploratoryFieldSpec(ec.NewChild("kmsSpec"));
+            if(this.KmsSpec == null) {
+
+                this.KmsSpec = new KmsSpec();
+                this.KmsSpec.ApplyExploratoryFieldSpec(ec.NewChild("kmsSpec"));
+
+            } else {
+
+                this.KmsSpec.ApplyExploratoryFieldSpec(ec.NewChild("kmsSpec"));
+
+            }
+        }
+        else if (this.KmsSpec != null && ec.Excludes("kmsSpec",false))
+        {
+            this.KmsSpec = null;
         }
         //      C# -> ScaleRuntime? ScaleRuntime
         // GraphQL -> scaleRuntime: ScaleRuntime (type)
-        if (this.ScaleRuntime == null && ec.Includes("scaleRuntime",false))
+        if (ec.Includes("scaleRuntime",false))
         {
-            this.ScaleRuntime = new ScaleRuntime();
-            this.ScaleRuntime.ApplyExploratoryFieldSpec(ec.NewChild("scaleRuntime"));
+            if(this.ScaleRuntime == null) {
+
+                this.ScaleRuntime = new ScaleRuntime();
+                this.ScaleRuntime.ApplyExploratoryFieldSpec(ec.NewChild("scaleRuntime"));
+
+            } else {
+
+                this.ScaleRuntime.ApplyExploratoryFieldSpec(ec.NewChild("scaleRuntime"));
+
+            }
+        }
+        else if (this.ScaleRuntime != null && ec.Excludes("scaleRuntime",false))
+        {
+            this.ScaleRuntime = null;
         }
         //      C# -> ExocomputeStorageAccountIds? StorageIds
         // GraphQL -> storageIds: ExocomputeStorageAccountIds (type)
-        if (this.StorageIds == null && ec.Includes("storageIds",false))
+        if (ec.Includes("storageIds",false))
         {
-            this.StorageIds = new ExocomputeStorageAccountIds();
-            this.StorageIds.ApplyExploratoryFieldSpec(ec.NewChild("storageIds"));
+            if(this.StorageIds == null) {
+
+                this.StorageIds = new ExocomputeStorageAccountIds();
+                this.StorageIds.ApplyExploratoryFieldSpec(ec.NewChild("storageIds"));
+
+            } else {
+
+                this.StorageIds.ApplyExploratoryFieldSpec(ec.NewChild("storageIds"));
+
+            }
+        }
+        else if (this.StorageIds != null && ec.Excludes("storageIds",false))
+        {
+            this.StorageIds = null;
         }
     }
 
@@ -650,9 +1075,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AzureO365ExocomputeCluster> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

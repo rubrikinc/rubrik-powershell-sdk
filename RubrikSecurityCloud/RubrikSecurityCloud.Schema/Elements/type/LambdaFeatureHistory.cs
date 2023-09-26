@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Boolean? WasRansomwareInvestigationEverEnabled
         // GraphQL -> wasRansomwareInvestigationEverEnabled: Boolean! (scalar)
         if (this.WasRansomwareInvestigationEverEnabled != null) {
-            s += ind + "wasRansomwareInvestigationEverEnabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "wasRansomwareInvestigationEverEnabled\n" ;
+            } else {
+                s += ind + "wasRansomwareInvestigationEverEnabled\n" ;
+            }
         }
         //      C# -> System.Boolean? WasSensitiveDataDiscoveryEverEnabled
         // GraphQL -> wasSensitiveDataDiscoveryEverEnabled: Boolean! (scalar)
         if (this.WasSensitiveDataDiscoveryEverEnabled != null) {
-            s += ind + "wasSensitiveDataDiscoveryEverEnabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "wasSensitiveDataDiscoveryEverEnabled\n" ;
+            } else {
+                s += ind + "wasSensitiveDataDiscoveryEverEnabled\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Boolean? WasRansomwareInvestigationEverEnabled
         // GraphQL -> wasRansomwareInvestigationEverEnabled: Boolean! (scalar)
-        if (this.WasRansomwareInvestigationEverEnabled == null && ec.Includes("wasRansomwareInvestigationEverEnabled",true))
+        if (ec.Includes("wasRansomwareInvestigationEverEnabled",true))
         {
-            this.WasRansomwareInvestigationEverEnabled = true;
+            if(this.WasRansomwareInvestigationEverEnabled == null) {
+
+                this.WasRansomwareInvestigationEverEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.WasRansomwareInvestigationEverEnabled != null && ec.Excludes("wasRansomwareInvestigationEverEnabled",true))
+        {
+            this.WasRansomwareInvestigationEverEnabled = null;
         }
         //      C# -> System.Boolean? WasSensitiveDataDiscoveryEverEnabled
         // GraphQL -> wasSensitiveDataDiscoveryEverEnabled: Boolean! (scalar)
-        if (this.WasSensitiveDataDiscoveryEverEnabled == null && ec.Includes("wasSensitiveDataDiscoveryEverEnabled",true))
+        if (ec.Includes("wasSensitiveDataDiscoveryEverEnabled",true))
         {
-            this.WasSensitiveDataDiscoveryEverEnabled = true;
+            if(this.WasSensitiveDataDiscoveryEverEnabled == null) {
+
+                this.WasSensitiveDataDiscoveryEverEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.WasSensitiveDataDiscoveryEverEnabled != null && ec.Excludes("wasSensitiveDataDiscoveryEverEnabled",true))
+        {
+            this.WasSensitiveDataDiscoveryEverEnabled = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<LambdaFeatureHistory> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

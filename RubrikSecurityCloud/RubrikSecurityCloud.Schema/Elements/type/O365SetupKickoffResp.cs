@@ -65,26 +65,39 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? AppClientId
         // GraphQL -> appClientId: String! (scalar)
         if (this.AppClientId != null) {
-            s += ind + "appClientId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "appClientId\n" ;
+            } else {
+                s += ind + "appClientId\n" ;
+            }
         }
         //      C# -> System.String? CsrfToken
         // GraphQL -> csrfToken: String! (scalar)
         if (this.CsrfToken != null) {
-            s += ind + "csrfToken\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "csrfToken\n" ;
+            } else {
+                s += ind + "csrfToken\n" ;
+            }
         }
         //      C# -> List<AppIdForType>? AppClientIdsPerType
         // GraphQL -> appClientIdsPerType: [AppIdForType!]! (type)
         if (this.AppClientIdsPerType != null) {
-            var fspec = this.AppClientIdsPerType.AsFieldSpec(indent+1);
+            var fspec = this.AppClientIdsPerType.AsFieldSpec(conf.Child("appClientIdsPerType"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "appClientIdsPerType {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "appClientIdsPerType {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -96,22 +109,56 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? AppClientId
         // GraphQL -> appClientId: String! (scalar)
-        if (this.AppClientId == null && ec.Includes("appClientId",true))
+        if (ec.Includes("appClientId",true))
         {
-            this.AppClientId = "FETCH";
+            if(this.AppClientId == null) {
+
+                this.AppClientId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AppClientId != null && ec.Excludes("appClientId",true))
+        {
+            this.AppClientId = null;
         }
         //      C# -> System.String? CsrfToken
         // GraphQL -> csrfToken: String! (scalar)
-        if (this.CsrfToken == null && ec.Includes("csrfToken",true))
+        if (ec.Includes("csrfToken",true))
         {
-            this.CsrfToken = "FETCH";
+            if(this.CsrfToken == null) {
+
+                this.CsrfToken = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CsrfToken != null && ec.Excludes("csrfToken",true))
+        {
+            this.CsrfToken = null;
         }
         //      C# -> List<AppIdForType>? AppClientIdsPerType
         // GraphQL -> appClientIdsPerType: [AppIdForType!]! (type)
-        if (this.AppClientIdsPerType == null && ec.Includes("appClientIdsPerType",false))
+        if (ec.Includes("appClientIdsPerType",false))
         {
-            this.AppClientIdsPerType = new List<AppIdForType>();
-            this.AppClientIdsPerType.ApplyExploratoryFieldSpec(ec.NewChild("appClientIdsPerType"));
+            if(this.AppClientIdsPerType == null) {
+
+                this.AppClientIdsPerType = new List<AppIdForType>();
+                this.AppClientIdsPerType.ApplyExploratoryFieldSpec(ec.NewChild("appClientIdsPerType"));
+
+            } else {
+
+                this.AppClientIdsPerType.ApplyExploratoryFieldSpec(ec.NewChild("appClientIdsPerType"));
+
+            }
+        }
+        else if (this.AppClientIdsPerType != null && ec.Excludes("appClientIdsPerType",false))
+        {
+            this.AppClientIdsPerType = null;
         }
     }
 
@@ -138,9 +185,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<O365SetupKickoffResp> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

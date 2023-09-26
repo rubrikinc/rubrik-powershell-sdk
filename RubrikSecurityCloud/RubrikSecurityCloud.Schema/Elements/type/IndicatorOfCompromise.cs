@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> IndicatorOfCompromiseKind? IocKind
         // GraphQL -> iocKind: IndicatorOfCompromiseKind! (enum)
         if (this.IocKind != null) {
-            s += ind + "iocKind\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "iocKind\n" ;
+            } else {
+                s += ind + "iocKind\n" ;
+            }
         }
         //      C# -> System.String? IocValue
         // GraphQL -> iocValue: String! (scalar)
         if (this.IocValue != null) {
-            s += ind + "iocValue\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "iocValue\n" ;
+            } else {
+                s += ind + "iocValue\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> IndicatorOfCompromiseKind? IocKind
         // GraphQL -> iocKind: IndicatorOfCompromiseKind! (enum)
-        if (this.IocKind == null && ec.Includes("iocKind",true))
+        if (ec.Includes("iocKind",true))
         {
-            this.IocKind = new IndicatorOfCompromiseKind();
+            if(this.IocKind == null) {
+
+                this.IocKind = new IndicatorOfCompromiseKind();
+
+            } else {
+
+
+            }
+        }
+        else if (this.IocKind != null && ec.Excludes("iocKind",true))
+        {
+            this.IocKind = null;
         }
         //      C# -> System.String? IocValue
         // GraphQL -> iocValue: String! (scalar)
-        if (this.IocValue == null && ec.Includes("iocValue",true))
+        if (ec.Includes("iocValue",true))
         {
-            this.IocValue = "FETCH";
+            if(this.IocValue == null) {
+
+                this.IocValue = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.IocValue != null && ec.Excludes("iocValue",true))
+        {
+            this.IocValue = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<IndicatorOfCompromise> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

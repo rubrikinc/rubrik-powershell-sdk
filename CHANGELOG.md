@@ -1,5 +1,30 @@
 # Changelog
 
+## Version 0.15
+
+New Features:
+
+- New cmdlet: `New-RscQueryManagedVolume` that covers the
+  `ManagedVolume` API domain.
+- More documentation in Get-Help for the RSC cmdlets.
+  
+Fixes:
+
+- Fixed bug with passing lists of enums. For example:
+
+```powershell
+New-RscQueryVsphere -TopLevelDescendantsList -Var @{typeFilter = @(
+  [RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]::WINDOWS_CLUSTER,
+  [RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]::PHYSICAL_HOST)}
+```
+
+Deprecations:
+
+Breaking Changes:
+
+- `-Patch` was replaced with `-AddField` and `-RemoveField`
+- Experimental New-RscQueryGql* cmdlets are removed
+
 ## Version 0.14
 
 New Features:
@@ -24,6 +49,8 @@ New Features:
 - _SDK Extensions_ are renamed to _SDK Toolkit_,
   and the layout under rubrik-security-cloud/Toolkit
   was reworked.
+
+- Experimental New-RscQueryGql* cmdlets are introduced
 
 Fixes:
 

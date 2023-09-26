@@ -83,39 +83,60 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> CloudProviderType? CloudType
         // GraphQL -> cloudType: CloudProviderType! (enum)
         if (this.CloudType != null) {
-            s += ind + "cloudType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cloudType\n" ;
+            } else {
+                s += ind + "cloudType\n" ;
+            }
         }
         //      C# -> FileRecoveryFeasibility? FileRecoveryFeasibility
         // GraphQL -> fileRecoveryFeasibility: FileRecoveryFeasibility! (enum)
         if (this.FileRecoveryFeasibility != null) {
-            s += ind + "fileRecoveryFeasibility\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "fileRecoveryFeasibility\n" ;
+            } else {
+                s += ind + "fileRecoveryFeasibility\n" ;
+            }
         }
         //      C# -> SnapshotType? SnapshotType
         // GraphQL -> snapshotType: SnapshotType! (enum)
         if (this.SnapshotType != null) {
-            s += ind + "snapshotType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotType\n" ;
+            } else {
+                s += ind + "snapshotType\n" ;
+            }
         }
         //      C# -> CloudNativeAccountIdWithName? CloudNativeAccountId
         // GraphQL -> cloudNativeAccountId: CloudNativeAccountIdWithName (type)
         if (this.CloudNativeAccountId != null) {
-            var fspec = this.CloudNativeAccountId.AsFieldSpec(indent+1);
+            var fspec = this.CloudNativeAccountId.AsFieldSpec(conf.Child("cloudNativeAccountId"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "cloudNativeAccountId {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cloudNativeAccountId {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> CloudNativeRegion? SnapshotRegion
         // GraphQL -> snapshotRegion: CloudNativeRegion! (type)
         if (this.SnapshotRegion != null) {
-            var fspec = this.SnapshotRegion.AsFieldSpec(indent+1);
+            var fspec = this.SnapshotRegion.AsFieldSpec(conf.Child("snapshotRegion"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "snapshotRegion {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "snapshotRegion {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -127,35 +148,92 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> CloudProviderType? CloudType
         // GraphQL -> cloudType: CloudProviderType! (enum)
-        if (this.CloudType == null && ec.Includes("cloudType",true))
+        if (ec.Includes("cloudType",true))
         {
-            this.CloudType = new CloudProviderType();
+            if(this.CloudType == null) {
+
+                this.CloudType = new CloudProviderType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CloudType != null && ec.Excludes("cloudType",true))
+        {
+            this.CloudType = null;
         }
         //      C# -> FileRecoveryFeasibility? FileRecoveryFeasibility
         // GraphQL -> fileRecoveryFeasibility: FileRecoveryFeasibility! (enum)
-        if (this.FileRecoveryFeasibility == null && ec.Includes("fileRecoveryFeasibility",true))
+        if (ec.Includes("fileRecoveryFeasibility",true))
         {
-            this.FileRecoveryFeasibility = new FileRecoveryFeasibility();
+            if(this.FileRecoveryFeasibility == null) {
+
+                this.FileRecoveryFeasibility = new FileRecoveryFeasibility();
+
+            } else {
+
+
+            }
+        }
+        else if (this.FileRecoveryFeasibility != null && ec.Excludes("fileRecoveryFeasibility",true))
+        {
+            this.FileRecoveryFeasibility = null;
         }
         //      C# -> SnapshotType? SnapshotType
         // GraphQL -> snapshotType: SnapshotType! (enum)
-        if (this.SnapshotType == null && ec.Includes("snapshotType",true))
+        if (ec.Includes("snapshotType",true))
         {
-            this.SnapshotType = new SnapshotType();
+            if(this.SnapshotType == null) {
+
+                this.SnapshotType = new SnapshotType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotType != null && ec.Excludes("snapshotType",true))
+        {
+            this.SnapshotType = null;
         }
         //      C# -> CloudNativeAccountIdWithName? CloudNativeAccountId
         // GraphQL -> cloudNativeAccountId: CloudNativeAccountIdWithName (type)
-        if (this.CloudNativeAccountId == null && ec.Includes("cloudNativeAccountId",false))
+        if (ec.Includes("cloudNativeAccountId",false))
         {
-            this.CloudNativeAccountId = new CloudNativeAccountIdWithName();
-            this.CloudNativeAccountId.ApplyExploratoryFieldSpec(ec.NewChild("cloudNativeAccountId"));
+            if(this.CloudNativeAccountId == null) {
+
+                this.CloudNativeAccountId = new CloudNativeAccountIdWithName();
+                this.CloudNativeAccountId.ApplyExploratoryFieldSpec(ec.NewChild("cloudNativeAccountId"));
+
+            } else {
+
+                this.CloudNativeAccountId.ApplyExploratoryFieldSpec(ec.NewChild("cloudNativeAccountId"));
+
+            }
+        }
+        else if (this.CloudNativeAccountId != null && ec.Excludes("cloudNativeAccountId",false))
+        {
+            this.CloudNativeAccountId = null;
         }
         //      C# -> CloudNativeRegion? SnapshotRegion
         // GraphQL -> snapshotRegion: CloudNativeRegion! (type)
-        if (this.SnapshotRegion == null && ec.Includes("snapshotRegion",false))
+        if (ec.Includes("snapshotRegion",false))
         {
-            this.SnapshotRegion = new CloudNativeRegion();
-            this.SnapshotRegion.ApplyExploratoryFieldSpec(ec.NewChild("snapshotRegion"));
+            if(this.SnapshotRegion == null) {
+
+                this.SnapshotRegion = new CloudNativeRegion();
+                this.SnapshotRegion.ApplyExploratoryFieldSpec(ec.NewChild("snapshotRegion"));
+
+            } else {
+
+                this.SnapshotRegion.ApplyExploratoryFieldSpec(ec.NewChild("snapshotRegion"));
+
+            }
+        }
+        else if (this.SnapshotRegion != null && ec.Excludes("snapshotRegion",false))
+        {
+            this.SnapshotRegion = null;
         }
     }
 
@@ -182,9 +260,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CloudNativeSnapshotDetailsForRecovery> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

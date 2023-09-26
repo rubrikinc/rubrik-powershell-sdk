@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? CdmVersion
         // GraphQL -> cdmVersion: String! (scalar)
         if (this.CdmVersion != null) {
-            s += ind + "cdmVersion\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cdmVersion\n" ;
+            } else {
+                s += ind + "cdmVersion\n" ;
+            }
         }
         //      C# -> System.String? OvaDownloadLink
         // GraphQL -> ovaDownloadLink: String! (scalar)
         if (this.OvaDownloadLink != null) {
-            s += ind + "ovaDownloadLink\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "ovaDownloadLink\n" ;
+            } else {
+                s += ind + "ovaDownloadLink\n" ;
+            }
         }
         //      C# -> System.String? OvaSize
         // GraphQL -> ovaSize: String! (scalar)
         if (this.OvaSize != null) {
-            s += ind + "ovaSize\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "ovaSize\n" ;
+            } else {
+                s += ind + "ovaSize\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? CdmVersion
         // GraphQL -> cdmVersion: String! (scalar)
-        if (this.CdmVersion == null && ec.Includes("cdmVersion",true))
+        if (ec.Includes("cdmVersion",true))
         {
-            this.CdmVersion = "FETCH";
+            if(this.CdmVersion == null) {
+
+                this.CdmVersion = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CdmVersion != null && ec.Excludes("cdmVersion",true))
+        {
+            this.CdmVersion = null;
         }
         //      C# -> System.String? OvaDownloadLink
         // GraphQL -> ovaDownloadLink: String! (scalar)
-        if (this.OvaDownloadLink == null && ec.Includes("ovaDownloadLink",true))
+        if (ec.Includes("ovaDownloadLink",true))
         {
-            this.OvaDownloadLink = "FETCH";
+            if(this.OvaDownloadLink == null) {
+
+                this.OvaDownloadLink = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OvaDownloadLink != null && ec.Excludes("ovaDownloadLink",true))
+        {
+            this.OvaDownloadLink = null;
         }
         //      C# -> System.String? OvaSize
         // GraphQL -> ovaSize: String! (scalar)
-        if (this.OvaSize == null && ec.Includes("ovaSize",true))
+        if (ec.Includes("ovaSize",true))
         {
-            this.OvaSize = "FETCH";
+            if(this.OvaSize == null) {
+
+                this.OvaSize = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OvaSize != null && ec.Excludes("ovaSize",true))
+        {
+            this.OvaSize = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CdmOvaDetail> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -128,59 +128,100 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? AnomalyEventCount
         // GraphQL -> anomalyEventCount: Long! (scalar)
         if (this.AnomalyEventCount != null) {
-            s += ind + "anomalyEventCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "anomalyEventCount\n" ;
+            } else {
+                s += ind + "anomalyEventCount\n" ;
+            }
         }
         //      C# -> System.Int64? CreatedDataBytes
         // GraphQL -> createdDataBytes: Long! (scalar)
         if (this.CreatedDataBytes != null) {
-            s += ind + "createdDataBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "createdDataBytes\n" ;
+            } else {
+                s += ind + "createdDataBytes\n" ;
+            }
         }
         //      C# -> System.Int64? CreatedFileCount
         // GraphQL -> createdFileCount: Long! (scalar)
         if (this.CreatedFileCount != null) {
-            s += ind + "createdFileCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "createdFileCount\n" ;
+            } else {
+                s += ind + "createdFileCount\n" ;
+            }
         }
         //      C# -> System.String? Day
         // GraphQL -> day: String! (scalar)
         if (this.Day != null) {
-            s += ind + "day\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "day\n" ;
+            } else {
+                s += ind + "day\n" ;
+            }
         }
         //      C# -> System.Int64? DeletedDataBytes
         // GraphQL -> deletedDataBytes: Long! (scalar)
         if (this.DeletedDataBytes != null) {
-            s += ind + "deletedDataBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "deletedDataBytes\n" ;
+            } else {
+                s += ind + "deletedDataBytes\n" ;
+            }
         }
         //      C# -> System.Int64? DeletedFileCount
         // GraphQL -> deletedFileCount: Long! (scalar)
         if (this.DeletedFileCount != null) {
-            s += ind + "deletedFileCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "deletedFileCount\n" ;
+            } else {
+                s += ind + "deletedFileCount\n" ;
+            }
         }
         //      C# -> System.Int64? ModifiedDataBytes
         // GraphQL -> modifiedDataBytes: Long! (scalar)
         if (this.ModifiedDataBytes != null) {
-            s += ind + "modifiedDataBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "modifiedDataBytes\n" ;
+            } else {
+                s += ind + "modifiedDataBytes\n" ;
+            }
         }
         //      C# -> System.Int64? ModifiedFileCount
         // GraphQL -> modifiedFileCount: Long! (scalar)
         if (this.ModifiedFileCount != null) {
-            s += ind + "modifiedFileCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "modifiedFileCount\n" ;
+            } else {
+                s += ind + "modifiedFileCount\n" ;
+            }
         }
         //      C# -> System.Int64? SuspiciousDataBytes
         // GraphQL -> suspiciousDataBytes: Long! (scalar)
         if (this.SuspiciousDataBytes != null) {
-            s += ind + "suspiciousDataBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "suspiciousDataBytes\n" ;
+            } else {
+                s += ind + "suspiciousDataBytes\n" ;
+            }
         }
         //      C# -> System.Int64? SuspiciousFileCount
         // GraphQL -> suspiciousFileCount: Long! (scalar)
         if (this.SuspiciousFileCount != null) {
-            s += ind + "suspiciousFileCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "suspiciousFileCount\n" ;
+            } else {
+                s += ind + "suspiciousFileCount\n" ;
+            }
         }
         return s;
     }
@@ -191,63 +232,173 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? AnomalyEventCount
         // GraphQL -> anomalyEventCount: Long! (scalar)
-        if (this.AnomalyEventCount == null && ec.Includes("anomalyEventCount",true))
+        if (ec.Includes("anomalyEventCount",true))
         {
-            this.AnomalyEventCount = new System.Int64();
+            if(this.AnomalyEventCount == null) {
+
+                this.AnomalyEventCount = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AnomalyEventCount != null && ec.Excludes("anomalyEventCount",true))
+        {
+            this.AnomalyEventCount = null;
         }
         //      C# -> System.Int64? CreatedDataBytes
         // GraphQL -> createdDataBytes: Long! (scalar)
-        if (this.CreatedDataBytes == null && ec.Includes("createdDataBytes",true))
+        if (ec.Includes("createdDataBytes",true))
         {
-            this.CreatedDataBytes = new System.Int64();
+            if(this.CreatedDataBytes == null) {
+
+                this.CreatedDataBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CreatedDataBytes != null && ec.Excludes("createdDataBytes",true))
+        {
+            this.CreatedDataBytes = null;
         }
         //      C# -> System.Int64? CreatedFileCount
         // GraphQL -> createdFileCount: Long! (scalar)
-        if (this.CreatedFileCount == null && ec.Includes("createdFileCount",true))
+        if (ec.Includes("createdFileCount",true))
         {
-            this.CreatedFileCount = new System.Int64();
+            if(this.CreatedFileCount == null) {
+
+                this.CreatedFileCount = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CreatedFileCount != null && ec.Excludes("createdFileCount",true))
+        {
+            this.CreatedFileCount = null;
         }
         //      C# -> System.String? Day
         // GraphQL -> day: String! (scalar)
-        if (this.Day == null && ec.Includes("day",true))
+        if (ec.Includes("day",true))
         {
-            this.Day = "FETCH";
+            if(this.Day == null) {
+
+                this.Day = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Day != null && ec.Excludes("day",true))
+        {
+            this.Day = null;
         }
         //      C# -> System.Int64? DeletedDataBytes
         // GraphQL -> deletedDataBytes: Long! (scalar)
-        if (this.DeletedDataBytes == null && ec.Includes("deletedDataBytes",true))
+        if (ec.Includes("deletedDataBytes",true))
         {
-            this.DeletedDataBytes = new System.Int64();
+            if(this.DeletedDataBytes == null) {
+
+                this.DeletedDataBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DeletedDataBytes != null && ec.Excludes("deletedDataBytes",true))
+        {
+            this.DeletedDataBytes = null;
         }
         //      C# -> System.Int64? DeletedFileCount
         // GraphQL -> deletedFileCount: Long! (scalar)
-        if (this.DeletedFileCount == null && ec.Includes("deletedFileCount",true))
+        if (ec.Includes("deletedFileCount",true))
         {
-            this.DeletedFileCount = new System.Int64();
+            if(this.DeletedFileCount == null) {
+
+                this.DeletedFileCount = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DeletedFileCount != null && ec.Excludes("deletedFileCount",true))
+        {
+            this.DeletedFileCount = null;
         }
         //      C# -> System.Int64? ModifiedDataBytes
         // GraphQL -> modifiedDataBytes: Long! (scalar)
-        if (this.ModifiedDataBytes == null && ec.Includes("modifiedDataBytes",true))
+        if (ec.Includes("modifiedDataBytes",true))
         {
-            this.ModifiedDataBytes = new System.Int64();
+            if(this.ModifiedDataBytes == null) {
+
+                this.ModifiedDataBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ModifiedDataBytes != null && ec.Excludes("modifiedDataBytes",true))
+        {
+            this.ModifiedDataBytes = null;
         }
         //      C# -> System.Int64? ModifiedFileCount
         // GraphQL -> modifiedFileCount: Long! (scalar)
-        if (this.ModifiedFileCount == null && ec.Includes("modifiedFileCount",true))
+        if (ec.Includes("modifiedFileCount",true))
         {
-            this.ModifiedFileCount = new System.Int64();
+            if(this.ModifiedFileCount == null) {
+
+                this.ModifiedFileCount = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ModifiedFileCount != null && ec.Excludes("modifiedFileCount",true))
+        {
+            this.ModifiedFileCount = null;
         }
         //      C# -> System.Int64? SuspiciousDataBytes
         // GraphQL -> suspiciousDataBytes: Long! (scalar)
-        if (this.SuspiciousDataBytes == null && ec.Includes("suspiciousDataBytes",true))
+        if (ec.Includes("suspiciousDataBytes",true))
         {
-            this.SuspiciousDataBytes = new System.Int64();
+            if(this.SuspiciousDataBytes == null) {
+
+                this.SuspiciousDataBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SuspiciousDataBytes != null && ec.Excludes("suspiciousDataBytes",true))
+        {
+            this.SuspiciousDataBytes = null;
         }
         //      C# -> System.Int64? SuspiciousFileCount
         // GraphQL -> suspiciousFileCount: Long! (scalar)
-        if (this.SuspiciousFileCount == null && ec.Includes("suspiciousFileCount",true))
+        if (ec.Includes("suspiciousFileCount",true))
         {
-            this.SuspiciousFileCount = new System.Int64();
+            if(this.SuspiciousFileCount == null) {
+
+                this.SuspiciousFileCount = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SuspiciousFileCount != null && ec.Excludes("suspiciousFileCount",true))
+        {
+            this.SuspiciousFileCount = null;
         }
     }
 
@@ -274,9 +425,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<DailyAnalysisDetails> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -57,21 +57,30 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: UUID! (scalar)
         if (this.SnapshotId != null) {
-            s += ind + "snapshotId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotId\n" ;
+            } else {
+                s += ind + "snapshotId\n" ;
+            }
         }
         //      C# -> BackupEventStatus? BackupEventStatus
         // GraphQL -> backupEventStatus: BackupEventStatus (type)
         if (this.BackupEventStatus != null) {
-            var fspec = this.BackupEventStatus.AsFieldSpec(indent+1);
+            var fspec = this.BackupEventStatus.AsFieldSpec(conf.Child("backupEventStatus"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "backupEventStatus {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "backupEventStatus {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -83,16 +92,39 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: UUID! (scalar)
-        if (this.SnapshotId == null && ec.Includes("snapshotId",true))
+        if (ec.Includes("snapshotId",true))
         {
-            this.SnapshotId = "FETCH";
+            if(this.SnapshotId == null) {
+
+                this.SnapshotId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotId != null && ec.Excludes("snapshotId",true))
+        {
+            this.SnapshotId = null;
         }
         //      C# -> BackupEventStatus? BackupEventStatus
         // GraphQL -> backupEventStatus: BackupEventStatus (type)
-        if (this.BackupEventStatus == null && ec.Includes("backupEventStatus",false))
+        if (ec.Includes("backupEventStatus",false))
         {
-            this.BackupEventStatus = new BackupEventStatus();
-            this.BackupEventStatus.ApplyExploratoryFieldSpec(ec.NewChild("backupEventStatus"));
+            if(this.BackupEventStatus == null) {
+
+                this.BackupEventStatus = new BackupEventStatus();
+                this.BackupEventStatus.ApplyExploratoryFieldSpec(ec.NewChild("backupEventStatus"));
+
+            } else {
+
+                this.BackupEventStatus.ApplyExploratoryFieldSpec(ec.NewChild("backupEventStatus"));
+
+            }
+        }
+        else if (this.BackupEventStatus != null && ec.Excludes("backupEventStatus",false))
+        {
+            this.BackupEventStatus = null;
         }
     }
 
@@ -119,9 +151,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<M365Snapshot> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

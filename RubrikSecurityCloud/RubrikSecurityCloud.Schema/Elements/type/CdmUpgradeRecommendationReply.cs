@@ -56,21 +56,30 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Boolean? IsRecommended
         // GraphQL -> isRecommended: Boolean! (scalar)
         if (this.IsRecommended != null) {
-            s += ind + "isRecommended\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isRecommended\n" ;
+            } else {
+                s += ind + "isRecommended\n" ;
+            }
         }
         //      C# -> StatusResponse? Status
         // GraphQL -> status: StatusResponse (type)
         if (this.Status != null) {
-            var fspec = this.Status.AsFieldSpec(indent+1);
+            var fspec = this.Status.AsFieldSpec(conf.Child("status"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "status {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "status {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -82,16 +91,39 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Boolean? IsRecommended
         // GraphQL -> isRecommended: Boolean! (scalar)
-        if (this.IsRecommended == null && ec.Includes("isRecommended",true))
+        if (ec.Includes("isRecommended",true))
         {
-            this.IsRecommended = true;
+            if(this.IsRecommended == null) {
+
+                this.IsRecommended = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsRecommended != null && ec.Excludes("isRecommended",true))
+        {
+            this.IsRecommended = null;
         }
         //      C# -> StatusResponse? Status
         // GraphQL -> status: StatusResponse (type)
-        if (this.Status == null && ec.Includes("status",false))
+        if (ec.Includes("status",false))
         {
-            this.Status = new StatusResponse();
-            this.Status.ApplyExploratoryFieldSpec(ec.NewChild("status"));
+            if(this.Status == null) {
+
+                this.Status = new StatusResponse();
+                this.Status.ApplyExploratoryFieldSpec(ec.NewChild("status"));
+
+            } else {
+
+                this.Status.ApplyExploratoryFieldSpec(ec.NewChild("status"));
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",false))
+        {
+            this.Status = null;
         }
     }
 
@@ -118,9 +150,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CdmUpgradeRecommendationReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

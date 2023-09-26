@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? HostMountPoint
         // GraphQL -> hostMountPoint: String (scalar)
         if (this.HostMountPoint != null) {
-            s += ind + "hostMountPoint\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hostMountPoint\n" ;
+            } else {
+                s += ind + "hostMountPoint\n" ;
+            }
         }
         //      C# -> System.String? IpAddress
         // GraphQL -> ipAddress: String! (scalar)
         if (this.IpAddress != null) {
-            s += ind + "ipAddress\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "ipAddress\n" ;
+            } else {
+                s += ind + "ipAddress\n" ;
+            }
         }
         //      C# -> System.String? MountPoint
         // GraphQL -> mountPoint: String! (scalar)
         if (this.MountPoint != null) {
-            s += ind + "mountPoint\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "mountPoint\n" ;
+            } else {
+                s += ind + "mountPoint\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? HostMountPoint
         // GraphQL -> hostMountPoint: String (scalar)
-        if (this.HostMountPoint == null && ec.Includes("hostMountPoint",true))
+        if (ec.Includes("hostMountPoint",true))
         {
-            this.HostMountPoint = "FETCH";
+            if(this.HostMountPoint == null) {
+
+                this.HostMountPoint = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.HostMountPoint != null && ec.Excludes("hostMountPoint",true))
+        {
+            this.HostMountPoint = null;
         }
         //      C# -> System.String? IpAddress
         // GraphQL -> ipAddress: String! (scalar)
-        if (this.IpAddress == null && ec.Includes("ipAddress",true))
+        if (ec.Includes("ipAddress",true))
         {
-            this.IpAddress = "FETCH";
+            if(this.IpAddress == null) {
+
+                this.IpAddress = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.IpAddress != null && ec.Excludes("ipAddress",true))
+        {
+            this.IpAddress = null;
         }
         //      C# -> System.String? MountPoint
         // GraphQL -> mountPoint: String! (scalar)
-        if (this.MountPoint == null && ec.Includes("mountPoint",true))
+        if (ec.Includes("mountPoint",true))
         {
-            this.MountPoint = "FETCH";
+            if(this.MountPoint == null) {
+
+                this.MountPoint = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.MountPoint != null && ec.Excludes("mountPoint",true))
+        {
+            this.MountPoint = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ManagedVolumeChannelConfig> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

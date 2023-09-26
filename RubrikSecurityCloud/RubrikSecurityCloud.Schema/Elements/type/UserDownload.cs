@@ -101,44 +101,73 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> DownloadIdentifierEnum? Identifier
         // GraphQL -> identifier: DownloadIdentifierEnum! (enum)
         if (this.Identifier != null) {
-            s += ind + "identifier\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "identifier\n" ;
+            } else {
+                s += ind + "identifier\n" ;
+            }
         }
         //      C# -> DownloadStatusEnum? Status
         // GraphQL -> status: DownloadStatusEnum! (enum)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         //      C# -> System.String? CompleteTime
         // GraphQL -> completeTime: String! (scalar)
         if (this.CompleteTime != null) {
-            s += ind + "completeTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "completeTime\n" ;
+            } else {
+                s += ind + "completeTime\n" ;
+            }
         }
         //      C# -> System.String? CreateTime
         // GraphQL -> createTime: String! (scalar)
         if (this.CreateTime != null) {
-            s += ind + "createTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "createTime\n" ;
+            } else {
+                s += ind + "createTime\n" ;
+            }
         }
         //      C# -> System.Int64? Id
         // GraphQL -> id: Long! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.Int32? Progress
         // GraphQL -> progress: Int! (scalar)
         if (this.Progress != null) {
-            s += ind + "progress\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "progress\n" ;
+            } else {
+                s += ind + "progress\n" ;
+            }
         }
         return s;
     }
@@ -149,45 +178,122 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> DownloadIdentifierEnum? Identifier
         // GraphQL -> identifier: DownloadIdentifierEnum! (enum)
-        if (this.Identifier == null && ec.Includes("identifier",true))
+        if (ec.Includes("identifier",true))
         {
-            this.Identifier = new DownloadIdentifierEnum();
+            if(this.Identifier == null) {
+
+                this.Identifier = new DownloadIdentifierEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Identifier != null && ec.Excludes("identifier",true))
+        {
+            this.Identifier = null;
         }
         //      C# -> DownloadStatusEnum? Status
         // GraphQL -> status: DownloadStatusEnum! (enum)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = new DownloadStatusEnum();
+            if(this.Status == null) {
+
+                this.Status = new DownloadStatusEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
         //      C# -> System.String? CompleteTime
         // GraphQL -> completeTime: String! (scalar)
-        if (this.CompleteTime == null && ec.Includes("completeTime",true))
+        if (ec.Includes("completeTime",true))
         {
-            this.CompleteTime = "FETCH";
+            if(this.CompleteTime == null) {
+
+                this.CompleteTime = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CompleteTime != null && ec.Excludes("completeTime",true))
+        {
+            this.CompleteTime = null;
         }
         //      C# -> System.String? CreateTime
         // GraphQL -> createTime: String! (scalar)
-        if (this.CreateTime == null && ec.Includes("createTime",true))
+        if (ec.Includes("createTime",true))
         {
-            this.CreateTime = "FETCH";
+            if(this.CreateTime == null) {
+
+                this.CreateTime = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CreateTime != null && ec.Excludes("createTime",true))
+        {
+            this.CreateTime = null;
         }
         //      C# -> System.Int64? Id
         // GraphQL -> id: Long! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = new System.Int64();
+            if(this.Id == null) {
+
+                this.Id = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.Int32? Progress
         // GraphQL -> progress: Int! (scalar)
-        if (this.Progress == null && ec.Includes("progress",true))
+        if (ec.Includes("progress",true))
         {
-            this.Progress = Int32.MinValue;
+            if(this.Progress == null) {
+
+                this.Progress = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Progress != null && ec.Excludes("progress",true))
+        {
+            this.Progress = null;
         }
     }
 
@@ -214,9 +320,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<UserDownload> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

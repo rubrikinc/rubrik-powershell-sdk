@@ -65,26 +65,39 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? BackupFileSizeInBytes
         // GraphQL -> backupFileSizeInBytes: Long! (scalar)
         if (this.BackupFileSizeInBytes != null) {
-            s += ind + "backupFileSizeInBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "backupFileSizeInBytes\n" ;
+            } else {
+                s += ind + "backupFileSizeInBytes\n" ;
+            }
         }
         //      C# -> System.String? DestinationPath
         // GraphQL -> destinationPath: String! (scalar)
         if (this.DestinationPath != null) {
-            s += ind + "destinationPath\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "destinationPath\n" ;
+            } else {
+                s += ind + "destinationPath\n" ;
+            }
         }
         //      C# -> Db2WorkloadDataBackupFile? Db2BackupFile
         // GraphQL -> db2BackupFile: Db2WorkloadDataBackupFile! (type)
         if (this.Db2BackupFile != null) {
-            var fspec = this.Db2BackupFile.AsFieldSpec(indent+1);
+            var fspec = this.Db2BackupFile.AsFieldSpec(conf.Child("db2BackupFile"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "db2BackupFile {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "db2BackupFile {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -96,22 +109,56 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? BackupFileSizeInBytes
         // GraphQL -> backupFileSizeInBytes: Long! (scalar)
-        if (this.BackupFileSizeInBytes == null && ec.Includes("backupFileSizeInBytes",true))
+        if (ec.Includes("backupFileSizeInBytes",true))
         {
-            this.BackupFileSizeInBytes = new System.Int64();
+            if(this.BackupFileSizeInBytes == null) {
+
+                this.BackupFileSizeInBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.BackupFileSizeInBytes != null && ec.Excludes("backupFileSizeInBytes",true))
+        {
+            this.BackupFileSizeInBytes = null;
         }
         //      C# -> System.String? DestinationPath
         // GraphQL -> destinationPath: String! (scalar)
-        if (this.DestinationPath == null && ec.Includes("destinationPath",true))
+        if (ec.Includes("destinationPath",true))
         {
-            this.DestinationPath = "FETCH";
+            if(this.DestinationPath == null) {
+
+                this.DestinationPath = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DestinationPath != null && ec.Excludes("destinationPath",true))
+        {
+            this.DestinationPath = null;
         }
         //      C# -> Db2WorkloadDataBackupFile? Db2BackupFile
         // GraphQL -> db2BackupFile: Db2WorkloadDataBackupFile! (type)
-        if (this.Db2BackupFile == null && ec.Includes("db2BackupFile",false))
+        if (ec.Includes("db2BackupFile",false))
         {
-            this.Db2BackupFile = new Db2WorkloadDataBackupFile();
-            this.Db2BackupFile.ApplyExploratoryFieldSpec(ec.NewChild("db2BackupFile"));
+            if(this.Db2BackupFile == null) {
+
+                this.Db2BackupFile = new Db2WorkloadDataBackupFile();
+                this.Db2BackupFile.ApplyExploratoryFieldSpec(ec.NewChild("db2BackupFile"));
+
+            } else {
+
+                this.Db2BackupFile.ApplyExploratoryFieldSpec(ec.NewChild("db2BackupFile"));
+
+            }
+        }
+        else if (this.Db2BackupFile != null && ec.Excludes("db2BackupFile",false))
+        {
+            this.Db2BackupFile = null;
         }
     }
 
@@ -138,9 +185,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<Db2DataBackupFile> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

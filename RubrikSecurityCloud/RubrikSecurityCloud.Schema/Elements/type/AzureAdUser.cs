@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? CreationType
         // GraphQL -> creationType: String! (scalar)
         if (this.CreationType != null) {
-            s += ind + "creationType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "creationType\n" ;
+            } else {
+                s += ind + "creationType\n" ;
+            }
         }
         //      C# -> System.String? DisplayName
         // GraphQL -> displayName: String! (scalar)
         if (this.DisplayName != null) {
-            s += ind + "displayName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "displayName\n" ;
+            } else {
+                s += ind + "displayName\n" ;
+            }
         }
         //      C# -> System.String? PrincipalUserName
         // GraphQL -> principalUserName: String! (scalar)
         if (this.PrincipalUserName != null) {
-            s += ind + "principalUserName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "principalUserName\n" ;
+            } else {
+                s += ind + "principalUserName\n" ;
+            }
         }
         //      C# -> System.String? UserType
         // GraphQL -> userType: String! (scalar)
         if (this.UserType != null) {
-            s += ind + "userType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "userType\n" ;
+            } else {
+                s += ind + "userType\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? CreationType
         // GraphQL -> creationType: String! (scalar)
-        if (this.CreationType == null && ec.Includes("creationType",true))
+        if (ec.Includes("creationType",true))
         {
-            this.CreationType = "FETCH";
+            if(this.CreationType == null) {
+
+                this.CreationType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CreationType != null && ec.Excludes("creationType",true))
+        {
+            this.CreationType = null;
         }
         //      C# -> System.String? DisplayName
         // GraphQL -> displayName: String! (scalar)
-        if (this.DisplayName == null && ec.Includes("displayName",true))
+        if (ec.Includes("displayName",true))
         {
-            this.DisplayName = "FETCH";
+            if(this.DisplayName == null) {
+
+                this.DisplayName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DisplayName != null && ec.Excludes("displayName",true))
+        {
+            this.DisplayName = null;
         }
         //      C# -> System.String? PrincipalUserName
         // GraphQL -> principalUserName: String! (scalar)
-        if (this.PrincipalUserName == null && ec.Includes("principalUserName",true))
+        if (ec.Includes("principalUserName",true))
         {
-            this.PrincipalUserName = "FETCH";
+            if(this.PrincipalUserName == null) {
+
+                this.PrincipalUserName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PrincipalUserName != null && ec.Excludes("principalUserName",true))
+        {
+            this.PrincipalUserName = null;
         }
         //      C# -> System.String? UserType
         // GraphQL -> userType: String! (scalar)
-        if (this.UserType == null && ec.Includes("userType",true))
+        if (ec.Includes("userType",true))
         {
-            this.UserType = "FETCH";
+            if(this.UserType == null) {
+
+                this.UserType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.UserType != null && ec.Excludes("userType",true))
+        {
+            this.UserType = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AzureAdUser> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

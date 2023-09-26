@@ -47,16 +47,21 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> ManagedVolumeSnapshotStats? Stats
         // GraphQL -> stats: ManagedVolumeSnapshotStats! (type)
         if (this.Stats != null) {
-            var fspec = this.Stats.AsFieldSpec(indent+1);
+            var fspec = this.Stats.AsFieldSpec(conf.Child("stats"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "stats {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "stats {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -68,10 +73,22 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> ManagedVolumeSnapshotStats? Stats
         // GraphQL -> stats: ManagedVolumeSnapshotStats! (type)
-        if (this.Stats == null && ec.Includes("stats",false))
+        if (ec.Includes("stats",false))
         {
-            this.Stats = new ManagedVolumeSnapshotStats();
-            this.Stats.ApplyExploratoryFieldSpec(ec.NewChild("stats"));
+            if(this.Stats == null) {
+
+                this.Stats = new ManagedVolumeSnapshotStats();
+                this.Stats.ApplyExploratoryFieldSpec(ec.NewChild("stats"));
+
+            } else {
+
+                this.Stats.ApplyExploratoryFieldSpec(ec.NewChild("stats"));
+
+            }
+        }
+        else if (this.Stats != null && ec.Excludes("stats",false))
+        {
+            this.Stats = null;
         }
     }
 
@@ -98,9 +115,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ManagedVolumeAppMetadata> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

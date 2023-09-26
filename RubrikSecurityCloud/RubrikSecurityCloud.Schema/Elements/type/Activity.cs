@@ -146,71 +146,120 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> ActivityObjectTypeEnum? ObjectType
         // GraphQL -> objectType: ActivityObjectTypeEnum! (enum)
         if (this.ObjectType != null) {
-            s += ind + "objectType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "objectType\n" ;
+            } else {
+                s += ind + "objectType\n" ;
+            }
         }
         //      C# -> ActivitySeverityEnum? Severity
         // GraphQL -> severity: ActivitySeverityEnum! (enum)
         if (this.Severity != null) {
-            s += ind + "severity\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "severity\n" ;
+            } else {
+                s += ind + "severity\n" ;
+            }
         }
         //      C# -> ActivityStatusEnum? Status
         // GraphQL -> status: ActivityStatusEnum! (enum)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         //      C# -> ActivityTypeEnum? Type
         // GraphQL -> type: ActivityTypeEnum! (enum)
         if (this.Type != null) {
-            s += ind + "type\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "type\n" ;
+            } else {
+                s += ind + "type\n" ;
+            }
         }
         //      C# -> System.String? ActivityInfo
         // GraphQL -> activityInfo: String (scalar)
         if (this.ActivityInfo != null) {
-            s += ind + "activityInfo\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "activityInfo\n" ;
+            } else {
+                s += ind + "activityInfo\n" ;
+            }
         }
         //      C# -> System.String? ClusterId
         // GraphQL -> clusterId: UUID! (scalar)
         if (this.ClusterId != null) {
-            s += ind + "clusterId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterId\n" ;
+            } else {
+                s += ind + "clusterId\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: ID! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
         if (this.Message != null) {
-            s += ind + "message\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "message\n" ;
+            } else {
+                s += ind + "message\n" ;
+            }
         }
         //      C# -> System.String? ObjectId
         // GraphQL -> objectId: String! (scalar)
         if (this.ObjectId != null) {
-            s += ind + "objectId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "objectId\n" ;
+            } else {
+                s += ind + "objectId\n" ;
+            }
         }
         //      C# -> System.String? Progress
         // GraphQL -> progress: String (scalar)
         if (this.Progress != null) {
-            s += ind + "progress\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "progress\n" ;
+            } else {
+                s += ind + "progress\n" ;
+            }
         }
         //      C# -> DateTime? Time
         // GraphQL -> time: DateTime! (scalar)
         if (this.Time != null) {
-            s += ind + "time\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "time\n" ;
+            } else {
+                s += ind + "time\n" ;
+            }
         }
         //      C# -> ActivitySeries? ActivitySeries
         // GraphQL -> activitySeries: ActivitySeries! (type)
         if (this.ActivitySeries != null) {
-            var fspec = this.ActivitySeries.AsFieldSpec(indent+1);
+            var fspec = this.ActivitySeries.AsFieldSpec(conf.Child("activitySeries"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "activitySeries {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "activitySeries {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -222,76 +271,209 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> ActivityObjectTypeEnum? ObjectType
         // GraphQL -> objectType: ActivityObjectTypeEnum! (enum)
-        if (this.ObjectType == null && ec.Includes("objectType",true))
+        if (ec.Includes("objectType",true))
         {
-            this.ObjectType = new ActivityObjectTypeEnum();
+            if(this.ObjectType == null) {
+
+                this.ObjectType = new ActivityObjectTypeEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ObjectType != null && ec.Excludes("objectType",true))
+        {
+            this.ObjectType = null;
         }
         //      C# -> ActivitySeverityEnum? Severity
         // GraphQL -> severity: ActivitySeverityEnum! (enum)
-        if (this.Severity == null && ec.Includes("severity",true))
+        if (ec.Includes("severity",true))
         {
-            this.Severity = new ActivitySeverityEnum();
+            if(this.Severity == null) {
+
+                this.Severity = new ActivitySeverityEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Severity != null && ec.Excludes("severity",true))
+        {
+            this.Severity = null;
         }
         //      C# -> ActivityStatusEnum? Status
         // GraphQL -> status: ActivityStatusEnum! (enum)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = new ActivityStatusEnum();
+            if(this.Status == null) {
+
+                this.Status = new ActivityStatusEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
         //      C# -> ActivityTypeEnum? Type
         // GraphQL -> type: ActivityTypeEnum! (enum)
-        if (this.Type == null && ec.Includes("type",true))
+        if (ec.Includes("type",true))
         {
-            this.Type = new ActivityTypeEnum();
+            if(this.Type == null) {
+
+                this.Type = new ActivityTypeEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Type != null && ec.Excludes("type",true))
+        {
+            this.Type = null;
         }
         //      C# -> System.String? ActivityInfo
         // GraphQL -> activityInfo: String (scalar)
-        if (this.ActivityInfo == null && ec.Includes("activityInfo",true))
+        if (ec.Includes("activityInfo",true))
         {
-            this.ActivityInfo = "FETCH";
+            if(this.ActivityInfo == null) {
+
+                this.ActivityInfo = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ActivityInfo != null && ec.Excludes("activityInfo",true))
+        {
+            this.ActivityInfo = null;
         }
         //      C# -> System.String? ClusterId
         // GraphQL -> clusterId: UUID! (scalar)
-        if (this.ClusterId == null && ec.Includes("clusterId",true))
+        if (ec.Includes("clusterId",true))
         {
-            this.ClusterId = "FETCH";
+            if(this.ClusterId == null) {
+
+                this.ClusterId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterId != null && ec.Excludes("clusterId",true))
+        {
+            this.ClusterId = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: ID! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
-        if (this.Message == null && ec.Includes("message",true))
+        if (ec.Includes("message",true))
         {
-            this.Message = "FETCH";
+            if(this.Message == null) {
+
+                this.Message = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Message != null && ec.Excludes("message",true))
+        {
+            this.Message = null;
         }
         //      C# -> System.String? ObjectId
         // GraphQL -> objectId: String! (scalar)
-        if (this.ObjectId == null && ec.Includes("objectId",true))
+        if (ec.Includes("objectId",true))
         {
-            this.ObjectId = "FETCH";
+            if(this.ObjectId == null) {
+
+                this.ObjectId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ObjectId != null && ec.Excludes("objectId",true))
+        {
+            this.ObjectId = null;
         }
         //      C# -> System.String? Progress
         // GraphQL -> progress: String (scalar)
-        if (this.Progress == null && ec.Includes("progress",true))
+        if (ec.Includes("progress",true))
         {
-            this.Progress = "FETCH";
+            if(this.Progress == null) {
+
+                this.Progress = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Progress != null && ec.Excludes("progress",true))
+        {
+            this.Progress = null;
         }
         //      C# -> DateTime? Time
         // GraphQL -> time: DateTime! (scalar)
-        if (this.Time == null && ec.Includes("time",true))
+        if (ec.Includes("time",true))
         {
-            this.Time = new DateTime();
+            if(this.Time == null) {
+
+                this.Time = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Time != null && ec.Excludes("time",true))
+        {
+            this.Time = null;
         }
         //      C# -> ActivitySeries? ActivitySeries
         // GraphQL -> activitySeries: ActivitySeries! (type)
-        if (this.ActivitySeries == null && ec.Includes("activitySeries",false))
+        if (ec.Includes("activitySeries",false))
         {
-            this.ActivitySeries = new ActivitySeries();
-            this.ActivitySeries.ApplyExploratoryFieldSpec(ec.NewChild("activitySeries"));
+            if(this.ActivitySeries == null) {
+
+                this.ActivitySeries = new ActivitySeries();
+                this.ActivitySeries.ApplyExploratoryFieldSpec(ec.NewChild("activitySeries"));
+
+            } else {
+
+                this.ActivitySeries.ApplyExploratoryFieldSpec(ec.NewChild("activitySeries"));
+
+            }
+        }
+        else if (this.ActivitySeries != null && ec.Excludes("activitySeries",false))
+        {
+            this.ActivitySeries = null;
         }
     }
 
@@ -318,9 +500,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<Activity> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

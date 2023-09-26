@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> K8sContentType? ManifestContentType
         // GraphQL -> manifestContentType: K8sContentType! (enum)
         if (this.ManifestContentType != null) {
-            s += ind + "manifestContentType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "manifestContentType\n" ;
+            } else {
+                s += ind + "manifestContentType\n" ;
+            }
         }
         //      C# -> System.String? Manifest
         // GraphQL -> manifest: String! (scalar)
         if (this.Manifest != null) {
-            s += ind + "manifest\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "manifest\n" ;
+            } else {
+                s += ind + "manifest\n" ;
+            }
         }
         //      C# -> System.String? ShaAlgorithm
         // GraphQL -> shaAlgorithm: String! (scalar)
         if (this.ShaAlgorithm != null) {
-            s += ind + "shaAlgorithm\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "shaAlgorithm\n" ;
+            } else {
+                s += ind + "shaAlgorithm\n" ;
+            }
         }
         //      C# -> System.String? ShaChecksum
         // GraphQL -> shaChecksum: String! (scalar)
         if (this.ShaChecksum != null) {
-            s += ind + "shaChecksum\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "shaChecksum\n" ;
+            } else {
+                s += ind + "shaChecksum\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> K8sContentType? ManifestContentType
         // GraphQL -> manifestContentType: K8sContentType! (enum)
-        if (this.ManifestContentType == null && ec.Includes("manifestContentType",true))
+        if (ec.Includes("manifestContentType",true))
         {
-            this.ManifestContentType = new K8sContentType();
+            if(this.ManifestContentType == null) {
+
+                this.ManifestContentType = new K8sContentType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ManifestContentType != null && ec.Excludes("manifestContentType",true))
+        {
+            this.ManifestContentType = null;
         }
         //      C# -> System.String? Manifest
         // GraphQL -> manifest: String! (scalar)
-        if (this.Manifest == null && ec.Includes("manifest",true))
+        if (ec.Includes("manifest",true))
         {
-            this.Manifest = "FETCH";
+            if(this.Manifest == null) {
+
+                this.Manifest = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Manifest != null && ec.Excludes("manifest",true))
+        {
+            this.Manifest = null;
         }
         //      C# -> System.String? ShaAlgorithm
         // GraphQL -> shaAlgorithm: String! (scalar)
-        if (this.ShaAlgorithm == null && ec.Includes("shaAlgorithm",true))
+        if (ec.Includes("shaAlgorithm",true))
         {
-            this.ShaAlgorithm = "FETCH";
+            if(this.ShaAlgorithm == null) {
+
+                this.ShaAlgorithm = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShaAlgorithm != null && ec.Excludes("shaAlgorithm",true))
+        {
+            this.ShaAlgorithm = null;
         }
         //      C# -> System.String? ShaChecksum
         // GraphQL -> shaChecksum: String! (scalar)
-        if (this.ShaChecksum == null && ec.Includes("shaChecksum",true))
+        if (ec.Includes("shaChecksum",true))
         {
-            this.ShaChecksum = "FETCH";
+            if(this.ShaChecksum == null) {
+
+                this.ShaChecksum = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShaChecksum != null && ec.Excludes("shaChecksum",true))
+        {
+            this.ShaChecksum = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AppManifestInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

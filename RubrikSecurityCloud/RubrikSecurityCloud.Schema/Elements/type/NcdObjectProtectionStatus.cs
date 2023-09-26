@@ -74,34 +74,51 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? AverageFileSize
         // GraphQL -> averageFileSize: Long! (scalar)
         if (this.AverageFileSize != null) {
-            s += ind + "averageFileSize\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "averageFileSize\n" ;
+            } else {
+                s += ind + "averageFileSize\n" ;
+            }
         }
         //      C# -> System.Int64? Throughput
         // GraphQL -> throughput: Long! (scalar)
         if (this.Throughput != null) {
-            s += ind + "throughput\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "throughput\n" ;
+            } else {
+                s += ind + "throughput\n" ;
+            }
         }
         //      C# -> NcdFilesObjectProtectionStatusData? Files
         // GraphQL -> files: NcdFilesObjectProtectionStatusData (type)
         if (this.Files != null) {
-            var fspec = this.Files.AsFieldSpec(indent+1);
+            var fspec = this.Files.AsFieldSpec(conf.Child("files"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "files {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "files {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> NcdSharesObjectProtectionStatusData? Shares
         // GraphQL -> shares: NcdSharesObjectProtectionStatusData (type)
         if (this.Shares != null) {
-            var fspec = this.Shares.AsFieldSpec(indent+1);
+            var fspec = this.Shares.AsFieldSpec(conf.Child("shares"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "shares {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "shares {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -113,29 +130,75 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? AverageFileSize
         // GraphQL -> averageFileSize: Long! (scalar)
-        if (this.AverageFileSize == null && ec.Includes("averageFileSize",true))
+        if (ec.Includes("averageFileSize",true))
         {
-            this.AverageFileSize = new System.Int64();
+            if(this.AverageFileSize == null) {
+
+                this.AverageFileSize = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AverageFileSize != null && ec.Excludes("averageFileSize",true))
+        {
+            this.AverageFileSize = null;
         }
         //      C# -> System.Int64? Throughput
         // GraphQL -> throughput: Long! (scalar)
-        if (this.Throughput == null && ec.Includes("throughput",true))
+        if (ec.Includes("throughput",true))
         {
-            this.Throughput = new System.Int64();
+            if(this.Throughput == null) {
+
+                this.Throughput = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Throughput != null && ec.Excludes("throughput",true))
+        {
+            this.Throughput = null;
         }
         //      C# -> NcdFilesObjectProtectionStatusData? Files
         // GraphQL -> files: NcdFilesObjectProtectionStatusData (type)
-        if (this.Files == null && ec.Includes("files",false))
+        if (ec.Includes("files",false))
         {
-            this.Files = new NcdFilesObjectProtectionStatusData();
-            this.Files.ApplyExploratoryFieldSpec(ec.NewChild("files"));
+            if(this.Files == null) {
+
+                this.Files = new NcdFilesObjectProtectionStatusData();
+                this.Files.ApplyExploratoryFieldSpec(ec.NewChild("files"));
+
+            } else {
+
+                this.Files.ApplyExploratoryFieldSpec(ec.NewChild("files"));
+
+            }
+        }
+        else if (this.Files != null && ec.Excludes("files",false))
+        {
+            this.Files = null;
         }
         //      C# -> NcdSharesObjectProtectionStatusData? Shares
         // GraphQL -> shares: NcdSharesObjectProtectionStatusData (type)
-        if (this.Shares == null && ec.Includes("shares",false))
+        if (ec.Includes("shares",false))
         {
-            this.Shares = new NcdSharesObjectProtectionStatusData();
-            this.Shares.ApplyExploratoryFieldSpec(ec.NewChild("shares"));
+            if(this.Shares == null) {
+
+                this.Shares = new NcdSharesObjectProtectionStatusData();
+                this.Shares.ApplyExploratoryFieldSpec(ec.NewChild("shares"));
+
+            } else {
+
+                this.Shares.ApplyExploratoryFieldSpec(ec.NewChild("shares"));
+
+            }
+        }
+        else if (this.Shares != null && ec.Excludes("shares",false))
+        {
+            this.Shares = null;
         }
     }
 
@@ -162,9 +225,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<NcdObjectProtectionStatus> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

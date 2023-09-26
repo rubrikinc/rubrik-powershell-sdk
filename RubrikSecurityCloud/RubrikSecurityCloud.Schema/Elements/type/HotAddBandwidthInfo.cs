@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int32? ExportLimit
         // GraphQL -> exportLimit: Int! (scalar)
         if (this.ExportLimit != null) {
-            s += ind + "exportLimit\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "exportLimit\n" ;
+            } else {
+                s += ind + "exportLimit\n" ;
+            }
         }
         //      C# -> System.Int32? IngestLimit
         // GraphQL -> ingestLimit: Int! (scalar)
         if (this.IngestLimit != null) {
-            s += ind + "ingestLimit\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "ingestLimit\n" ;
+            } else {
+                s += ind + "ingestLimit\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int32? ExportLimit
         // GraphQL -> exportLimit: Int! (scalar)
-        if (this.ExportLimit == null && ec.Includes("exportLimit",true))
+        if (ec.Includes("exportLimit",true))
         {
-            this.ExportLimit = Int32.MinValue;
+            if(this.ExportLimit == null) {
+
+                this.ExportLimit = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExportLimit != null && ec.Excludes("exportLimit",true))
+        {
+            this.ExportLimit = null;
         }
         //      C# -> System.Int32? IngestLimit
         // GraphQL -> ingestLimit: Int! (scalar)
-        if (this.IngestLimit == null && ec.Includes("ingestLimit",true))
+        if (ec.Includes("ingestLimit",true))
         {
-            this.IngestLimit = Int32.MinValue;
+            if(this.IngestLimit == null) {
+
+                this.IngestLimit = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IngestLimit != null && ec.Excludes("ingestLimit",true))
+        {
+            this.IngestLimit = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<HotAddBandwidthInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

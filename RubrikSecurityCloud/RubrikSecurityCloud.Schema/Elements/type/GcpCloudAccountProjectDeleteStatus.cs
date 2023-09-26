@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Error
         // GraphQL -> error: String! (scalar)
         if (this.Error != null) {
-            s += ind + "error\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "error\n" ;
+            } else {
+                s += ind + "error\n" ;
+            }
         }
         //      C# -> System.String? ProjectUuid
         // GraphQL -> projectUuid: String! (scalar)
         if (this.ProjectUuid != null) {
-            s += ind + "projectUuid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "projectUuid\n" ;
+            } else {
+                s += ind + "projectUuid\n" ;
+            }
         }
         //      C# -> System.Boolean? Success
         // GraphQL -> success: Boolean! (scalar)
         if (this.Success != null) {
-            s += ind + "success\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "success\n" ;
+            } else {
+                s += ind + "success\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Error
         // GraphQL -> error: String! (scalar)
-        if (this.Error == null && ec.Includes("error",true))
+        if (ec.Includes("error",true))
         {
-            this.Error = "FETCH";
+            if(this.Error == null) {
+
+                this.Error = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Error != null && ec.Excludes("error",true))
+        {
+            this.Error = null;
         }
         //      C# -> System.String? ProjectUuid
         // GraphQL -> projectUuid: String! (scalar)
-        if (this.ProjectUuid == null && ec.Includes("projectUuid",true))
+        if (ec.Includes("projectUuid",true))
         {
-            this.ProjectUuid = "FETCH";
+            if(this.ProjectUuid == null) {
+
+                this.ProjectUuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProjectUuid != null && ec.Excludes("projectUuid",true))
+        {
+            this.ProjectUuid = null;
         }
         //      C# -> System.Boolean? Success
         // GraphQL -> success: Boolean! (scalar)
-        if (this.Success == null && ec.Includes("success",true))
+        if (ec.Includes("success",true))
         {
-            this.Success = true;
+            if(this.Success == null) {
+
+                this.Success = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Success != null && ec.Excludes("success",true))
+        {
+            this.Success = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<GcpCloudAccountProjectDeleteStatus> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

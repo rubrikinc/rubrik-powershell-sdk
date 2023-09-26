@@ -9,6 +9,9 @@ using Newtonsoft.Json.Linq;
 using RubrikSecurityCloud.Types;
 using RubrikSecurityCloud.PowerShell.Private;
 
+// ignore warning 'Missing XML comment'
+#pragma warning disable 1591
+
 // namespace is RubrikSecurityCloud (and not private)
 // because this class is used by the public cmdlets
 // and is visible to the user
@@ -88,6 +91,9 @@ namespace RubrikSecurityCloud
         /// </param>
         /// <param name="ignoreRequired">
         /// if false, throw on missing required variables.
+        /// </param>
+        /// <param name="example">
+        /// An example of how the variables can be initialized.
         /// </param>
         /// <exception cref="ArgumentException"></exception>
         public void Set(
@@ -240,6 +246,10 @@ namespace RubrikSecurityCloud
             GetOverrideValueForVarDelegate getOverrideValueForVar = null,
             bool ignoreRequired = false)
         {
+            if (RubrikSecurityCloud.Config.IgnoreMissingRequiredVariables)
+            {
+                ignoreRequired = true;
+            }
 
             foreach (KeyValuePair<string, object> varDef in _varDefs)
             {
@@ -291,6 +301,10 @@ namespace RubrikSecurityCloud
                         else if (varType == "float" || varType == "double")
                         {
                             varValue = float.Parse(str);
+                        }
+                    } else if (varValue is int iVarValue ) {
+                        if ( varType == "string" ) {
+                            varValue = iVarValue.ToString();
                         }
                     }
                     this[varName] = varValue;

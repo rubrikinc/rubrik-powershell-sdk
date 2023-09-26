@@ -65,26 +65,39 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? ConfiguredSlaDomainId
         // GraphQL -> configuredSlaDomainId: String (scalar)
         if (this.ConfiguredSlaDomainId != null) {
-            s += ind + "configuredSlaDomainId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "configuredSlaDomainId\n" ;
+            } else {
+                s += ind + "configuredSlaDomainId\n" ;
+            }
         }
         //      C# -> List<System.String>? VirtualDiskIdsExcludedFromSnapshot
         // GraphQL -> virtualDiskIdsExcludedFromSnapshot: [String!]! (scalar)
         if (this.VirtualDiskIdsExcludedFromSnapshot != null) {
-            s += ind + "virtualDiskIdsExcludedFromSnapshot\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "virtualDiskIdsExcludedFromSnapshot\n" ;
+            } else {
+                s += ind + "virtualDiskIdsExcludedFromSnapshot\n" ;
+            }
         }
         //      C# -> CloudInstantiationSpec? CloudInstantiationSpec
         // GraphQL -> cloudInstantiationSpec: CloudInstantiationSpec (type)
         if (this.CloudInstantiationSpec != null) {
-            var fspec = this.CloudInstantiationSpec.AsFieldSpec(indent+1);
+            var fspec = this.CloudInstantiationSpec.AsFieldSpec(conf.Child("cloudInstantiationSpec"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "cloudInstantiationSpec {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cloudInstantiationSpec {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -96,22 +109,56 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? ConfiguredSlaDomainId
         // GraphQL -> configuredSlaDomainId: String (scalar)
-        if (this.ConfiguredSlaDomainId == null && ec.Includes("configuredSlaDomainId",true))
+        if (ec.Includes("configuredSlaDomainId",true))
         {
-            this.ConfiguredSlaDomainId = "FETCH";
+            if(this.ConfiguredSlaDomainId == null) {
+
+                this.ConfiguredSlaDomainId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ConfiguredSlaDomainId != null && ec.Excludes("configuredSlaDomainId",true))
+        {
+            this.ConfiguredSlaDomainId = null;
         }
         //      C# -> List<System.String>? VirtualDiskIdsExcludedFromSnapshot
         // GraphQL -> virtualDiskIdsExcludedFromSnapshot: [String!]! (scalar)
-        if (this.VirtualDiskIdsExcludedFromSnapshot == null && ec.Includes("virtualDiskIdsExcludedFromSnapshot",true))
+        if (ec.Includes("virtualDiskIdsExcludedFromSnapshot",true))
         {
-            this.VirtualDiskIdsExcludedFromSnapshot = new List<System.String>();
+            if(this.VirtualDiskIdsExcludedFromSnapshot == null) {
+
+                this.VirtualDiskIdsExcludedFromSnapshot = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.VirtualDiskIdsExcludedFromSnapshot != null && ec.Excludes("virtualDiskIdsExcludedFromSnapshot",true))
+        {
+            this.VirtualDiskIdsExcludedFromSnapshot = null;
         }
         //      C# -> CloudInstantiationSpec? CloudInstantiationSpec
         // GraphQL -> cloudInstantiationSpec: CloudInstantiationSpec (type)
-        if (this.CloudInstantiationSpec == null && ec.Includes("cloudInstantiationSpec",false))
+        if (ec.Includes("cloudInstantiationSpec",false))
         {
-            this.CloudInstantiationSpec = new CloudInstantiationSpec();
-            this.CloudInstantiationSpec.ApplyExploratoryFieldSpec(ec.NewChild("cloudInstantiationSpec"));
+            if(this.CloudInstantiationSpec == null) {
+
+                this.CloudInstantiationSpec = new CloudInstantiationSpec();
+                this.CloudInstantiationSpec.ApplyExploratoryFieldSpec(ec.NewChild("cloudInstantiationSpec"));
+
+            } else {
+
+                this.CloudInstantiationSpec.ApplyExploratoryFieldSpec(ec.NewChild("cloudInstantiationSpec"));
+
+            }
+        }
+        else if (this.CloudInstantiationSpec != null && ec.Excludes("cloudInstantiationSpec",false))
+        {
+            this.CloudInstantiationSpec = null;
         }
     }
 
@@ -138,9 +185,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<HypervVirtualMachineUpdate> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -56,21 +56,30 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Boolean? Enabled
         // GraphQL -> enabled: Boolean! (scalar)
         if (this.Enabled != null) {
-            s += ind + "enabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "enabled\n" ;
+            } else {
+                s += ind + "enabled\n" ;
+            }
         }
         //      C# -> CloudDirectCluster? Cluster
         // GraphQL -> cluster: CloudDirectCluster! (type)
         if (this.Cluster != null) {
-            var fspec = this.Cluster.AsFieldSpec(indent+1);
+            var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -82,16 +91,39 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Boolean? Enabled
         // GraphQL -> enabled: Boolean! (scalar)
-        if (this.Enabled == null && ec.Includes("enabled",true))
+        if (ec.Includes("enabled",true))
         {
-            this.Enabled = true;
+            if(this.Enabled == null) {
+
+                this.Enabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.Enabled != null && ec.Excludes("enabled",true))
+        {
+            this.Enabled = null;
         }
         //      C# -> CloudDirectCluster? Cluster
         // GraphQL -> cluster: CloudDirectCluster! (type)
-        if (this.Cluster == null && ec.Includes("cluster",false))
+        if (ec.Includes("cluster",false))
         {
-            this.Cluster = new CloudDirectCluster();
-            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+            if(this.Cluster == null) {
+
+                this.Cluster = new CloudDirectCluster();
+                this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+
+            } else {
+
+                this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+
+            }
+        }
+        else if (this.Cluster != null && ec.Excludes("cluster",false))
+        {
+            this.Cluster = null;
         }
     }
 
@@ -118,9 +150,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CloudDirectClusterRansomwareInvestigationEnablement> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

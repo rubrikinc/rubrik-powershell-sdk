@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> NameValidity? NameValidity
         // GraphQL -> nameValidity: NameValidity! (enum)
         if (this.NameValidity != null) {
-            s += ind + "nameValidity\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "nameValidity\n" ;
+            } else {
+                s += ind + "nameValidity\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.String? Url
         // GraphQL -> url: String! (scalar)
         if (this.Url != null) {
-            s += ind + "url\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "url\n" ;
+            } else {
+                s += ind + "url\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> NameValidity? NameValidity
         // GraphQL -> nameValidity: NameValidity! (enum)
-        if (this.NameValidity == null && ec.Includes("nameValidity",true))
+        if (ec.Includes("nameValidity",true))
         {
-            this.NameValidity = new NameValidity();
+            if(this.NameValidity == null) {
+
+                this.NameValidity = new NameValidity();
+
+            } else {
+
+
+            }
+        }
+        else if (this.NameValidity != null && ec.Excludes("nameValidity",true))
+        {
+            this.NameValidity = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.String? Url
         // GraphQL -> url: String! (scalar)
-        if (this.Url == null && ec.Includes("url",true))
+        if (ec.Includes("url",true))
         {
-            this.Url = "FETCH";
+            if(this.Url == null) {
+
+                this.Url = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Url != null && ec.Excludes("url",true))
+        {
+            this.Url = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ValidateOrgNameReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

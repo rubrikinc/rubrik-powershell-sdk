@@ -101,49 +101,78 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> CloudNativeLocTemplateType? CloudNativeLocTemplateType
         // GraphQL -> cloudNativeLocTemplateType: CloudNativeLocTemplateType! (enum)
         if (this.CloudNativeLocTemplateType != null) {
-            s += ind + "cloudNativeLocTemplateType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cloudNativeLocTemplateType\n" ;
+            } else {
+                s += ind + "cloudNativeLocTemplateType\n" ;
+            }
         }
         //      C# -> AzureRedundancy? Redundancy
         // GraphQL -> redundancy: AzureRedundancy! (enum)
         if (this.Redundancy != null) {
-            s += ind + "redundancy\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "redundancy\n" ;
+            } else {
+                s += ind + "redundancy\n" ;
+            }
         }
         //      C# -> AzureRegion? StorageAccountRegion
         // GraphQL -> storageAccountRegion: AzureRegion! (enum)
         if (this.StorageAccountRegion != null) {
-            s += ind + "storageAccountRegion\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "storageAccountRegion\n" ;
+            } else {
+                s += ind + "storageAccountRegion\n" ;
+            }
         }
         //      C# -> AzureStorageTier? StorageTier
         // GraphQL -> storageTier: AzureStorageTier! (enum)
         if (this.StorageTier != null) {
-            s += ind + "storageTier\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "storageTier\n" ;
+            } else {
+                s += ind + "storageTier\n" ;
+            }
         }
         //      C# -> System.String? SubscriptionNativeId
         // GraphQL -> subscriptionNativeId: String! (scalar)
         if (this.SubscriptionNativeId != null) {
-            s += ind + "subscriptionNativeId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "subscriptionNativeId\n" ;
+            } else {
+                s += ind + "subscriptionNativeId\n" ;
+            }
         }
         //      C# -> List<AzureCmk>? CmkInfo
         // GraphQL -> cmkInfo: [AzureCmk!]! (type)
         if (this.CmkInfo != null) {
-            var fspec = this.CmkInfo.AsFieldSpec(indent+1);
+            var fspec = this.CmkInfo.AsFieldSpec(conf.Child("cmkInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "cmkInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cmkInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<TagObject>? StorageAccountTags
         // GraphQL -> storageAccountTags: [TagObject!]! (type)
         if (this.StorageAccountTags != null) {
-            var fspec = this.StorageAccountTags.AsFieldSpec(indent+1);
+            var fspec = this.StorageAccountTags.AsFieldSpec(conf.Child("storageAccountTags"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "storageAccountTags {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "storageAccountTags {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -155,47 +184,126 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> CloudNativeLocTemplateType? CloudNativeLocTemplateType
         // GraphQL -> cloudNativeLocTemplateType: CloudNativeLocTemplateType! (enum)
-        if (this.CloudNativeLocTemplateType == null && ec.Includes("cloudNativeLocTemplateType",true))
+        if (ec.Includes("cloudNativeLocTemplateType",true))
         {
-            this.CloudNativeLocTemplateType = new CloudNativeLocTemplateType();
+            if(this.CloudNativeLocTemplateType == null) {
+
+                this.CloudNativeLocTemplateType = new CloudNativeLocTemplateType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CloudNativeLocTemplateType != null && ec.Excludes("cloudNativeLocTemplateType",true))
+        {
+            this.CloudNativeLocTemplateType = null;
         }
         //      C# -> AzureRedundancy? Redundancy
         // GraphQL -> redundancy: AzureRedundancy! (enum)
-        if (this.Redundancy == null && ec.Includes("redundancy",true))
+        if (ec.Includes("redundancy",true))
         {
-            this.Redundancy = new AzureRedundancy();
+            if(this.Redundancy == null) {
+
+                this.Redundancy = new AzureRedundancy();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Redundancy != null && ec.Excludes("redundancy",true))
+        {
+            this.Redundancy = null;
         }
         //      C# -> AzureRegion? StorageAccountRegion
         // GraphQL -> storageAccountRegion: AzureRegion! (enum)
-        if (this.StorageAccountRegion == null && ec.Includes("storageAccountRegion",true))
+        if (ec.Includes("storageAccountRegion",true))
         {
-            this.StorageAccountRegion = new AzureRegion();
+            if(this.StorageAccountRegion == null) {
+
+                this.StorageAccountRegion = new AzureRegion();
+
+            } else {
+
+
+            }
+        }
+        else if (this.StorageAccountRegion != null && ec.Excludes("storageAccountRegion",true))
+        {
+            this.StorageAccountRegion = null;
         }
         //      C# -> AzureStorageTier? StorageTier
         // GraphQL -> storageTier: AzureStorageTier! (enum)
-        if (this.StorageTier == null && ec.Includes("storageTier",true))
+        if (ec.Includes("storageTier",true))
         {
-            this.StorageTier = new AzureStorageTier();
+            if(this.StorageTier == null) {
+
+                this.StorageTier = new AzureStorageTier();
+
+            } else {
+
+
+            }
+        }
+        else if (this.StorageTier != null && ec.Excludes("storageTier",true))
+        {
+            this.StorageTier = null;
         }
         //      C# -> System.String? SubscriptionNativeId
         // GraphQL -> subscriptionNativeId: String! (scalar)
-        if (this.SubscriptionNativeId == null && ec.Includes("subscriptionNativeId",true))
+        if (ec.Includes("subscriptionNativeId",true))
         {
-            this.SubscriptionNativeId = "FETCH";
+            if(this.SubscriptionNativeId == null) {
+
+                this.SubscriptionNativeId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SubscriptionNativeId != null && ec.Excludes("subscriptionNativeId",true))
+        {
+            this.SubscriptionNativeId = null;
         }
         //      C# -> List<AzureCmk>? CmkInfo
         // GraphQL -> cmkInfo: [AzureCmk!]! (type)
-        if (this.CmkInfo == null && ec.Includes("cmkInfo",false))
+        if (ec.Includes("cmkInfo",false))
         {
-            this.CmkInfo = new List<AzureCmk>();
-            this.CmkInfo.ApplyExploratoryFieldSpec(ec.NewChild("cmkInfo"));
+            if(this.CmkInfo == null) {
+
+                this.CmkInfo = new List<AzureCmk>();
+                this.CmkInfo.ApplyExploratoryFieldSpec(ec.NewChild("cmkInfo"));
+
+            } else {
+
+                this.CmkInfo.ApplyExploratoryFieldSpec(ec.NewChild("cmkInfo"));
+
+            }
+        }
+        else if (this.CmkInfo != null && ec.Excludes("cmkInfo",false))
+        {
+            this.CmkInfo = null;
         }
         //      C# -> List<TagObject>? StorageAccountTags
         // GraphQL -> storageAccountTags: [TagObject!]! (type)
-        if (this.StorageAccountTags == null && ec.Includes("storageAccountTags",false))
+        if (ec.Includes("storageAccountTags",false))
         {
-            this.StorageAccountTags = new List<TagObject>();
-            this.StorageAccountTags.ApplyExploratoryFieldSpec(ec.NewChild("storageAccountTags"));
+            if(this.StorageAccountTags == null) {
+
+                this.StorageAccountTags = new List<TagObject>();
+                this.StorageAccountTags.ApplyExploratoryFieldSpec(ec.NewChild("storageAccountTags"));
+
+            } else {
+
+                this.StorageAccountTags.ApplyExploratoryFieldSpec(ec.NewChild("storageAccountTags"));
+
+            }
+        }
+        else if (this.StorageAccountTags != null && ec.Excludes("storageAccountTags",false))
+        {
+            this.StorageAccountTags = null;
         }
     }
 
@@ -222,9 +330,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AzureCloudNativeTargetCompanion> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

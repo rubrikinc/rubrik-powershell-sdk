@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? ColumnName
         // GraphQL -> columnName: String (scalar)
         if (this.ColumnName != null) {
-            s += ind + "columnName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "columnName\n" ;
+            } else {
+                s += ind + "columnName\n" ;
+            }
         }
         //      C# -> System.String? ColumnType
         // GraphQL -> columnType: String (scalar)
         if (this.ColumnType != null) {
-            s += ind + "columnType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "columnType\n" ;
+            } else {
+                s += ind + "columnType\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? ColumnName
         // GraphQL -> columnName: String (scalar)
-        if (this.ColumnName == null && ec.Includes("columnName",true))
+        if (ec.Includes("columnName",true))
         {
-            this.ColumnName = "FETCH";
+            if(this.ColumnName == null) {
+
+                this.ColumnName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ColumnName != null && ec.Excludes("columnName",true))
+        {
+            this.ColumnName = null;
         }
         //      C# -> System.String? ColumnType
         // GraphQL -> columnType: String (scalar)
-        if (this.ColumnType == null && ec.Includes("columnType",true))
+        if (ec.Includes("columnType",true))
         {
-            this.ColumnType = "FETCH";
+            if(this.ColumnType == null) {
+
+                this.ColumnType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ColumnType != null && ec.Excludes("columnType",true))
+        {
+            this.ColumnType = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CassandraColumnObject> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? EventSeriesId
         // GraphQL -> eventSeriesId: String! (scalar)
         if (this.EventSeriesId != null) {
-            s += ind + "eventSeriesId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "eventSeriesId\n" ;
+            } else {
+                s += ind + "eventSeriesId\n" ;
+            }
         }
         //      C# -> System.Boolean? IsCancelable
         // GraphQL -> isCancelable: Boolean! (scalar)
         if (this.IsCancelable != null) {
-            s += ind + "isCancelable\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isCancelable\n" ;
+            } else {
+                s += ind + "isCancelable\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? EventSeriesId
         // GraphQL -> eventSeriesId: String! (scalar)
-        if (this.EventSeriesId == null && ec.Includes("eventSeriesId",true))
+        if (ec.Includes("eventSeriesId",true))
         {
-            this.EventSeriesId = "FETCH";
+            if(this.EventSeriesId == null) {
+
+                this.EventSeriesId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.EventSeriesId != null && ec.Excludes("eventSeriesId",true))
+        {
+            this.EventSeriesId = null;
         }
         //      C# -> System.Boolean? IsCancelable
         // GraphQL -> isCancelable: Boolean! (scalar)
-        if (this.IsCancelable == null && ec.Includes("isCancelable",true))
+        if (ec.Includes("isCancelable",true))
         {
-            this.IsCancelable = true;
+            if(this.IsCancelable == null) {
+
+                this.IsCancelable = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsCancelable != null && ec.Excludes("isCancelable",true))
+        {
+            this.IsCancelable = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<NodeRemovalCancelPermissionReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -65,26 +65,39 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? NasIp
         // GraphQL -> nasIp: String (scalar)
         if (this.NasIp != null) {
-            s += ind + "nasIp\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "nasIp\n" ;
+            } else {
+                s += ind + "nasIp\n" ;
+            }
         }
         //      C# -> System.String? PowerStatus
         // GraphQL -> powerStatus: String (scalar)
         if (this.PowerStatus != null) {
-            s += ind + "powerStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "powerStatus\n" ;
+            } else {
+                s += ind + "powerStatus\n" ;
+            }
         }
         //      C# -> VmwareVmMountSummaryV1? VmwareVmMountSummaryV1
         // GraphQL -> vmwareVmMountSummaryV1: VmwareVmMountSummaryV1 (type)
         if (this.VmwareVmMountSummaryV1 != null) {
-            var fspec = this.VmwareVmMountSummaryV1.AsFieldSpec(indent+1);
+            var fspec = this.VmwareVmMountSummaryV1.AsFieldSpec(conf.Child("vmwareVmMountSummaryV1"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "vmwareVmMountSummaryV1 {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "vmwareVmMountSummaryV1 {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -96,22 +109,56 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? NasIp
         // GraphQL -> nasIp: String (scalar)
-        if (this.NasIp == null && ec.Includes("nasIp",true))
+        if (ec.Includes("nasIp",true))
         {
-            this.NasIp = "FETCH";
+            if(this.NasIp == null) {
+
+                this.NasIp = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NasIp != null && ec.Excludes("nasIp",true))
+        {
+            this.NasIp = null;
         }
         //      C# -> System.String? PowerStatus
         // GraphQL -> powerStatus: String (scalar)
-        if (this.PowerStatus == null && ec.Includes("powerStatus",true))
+        if (ec.Includes("powerStatus",true))
         {
-            this.PowerStatus = "FETCH";
+            if(this.PowerStatus == null) {
+
+                this.PowerStatus = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PowerStatus != null && ec.Excludes("powerStatus",true))
+        {
+            this.PowerStatus = null;
         }
         //      C# -> VmwareVmMountSummaryV1? VmwareVmMountSummaryV1
         // GraphQL -> vmwareVmMountSummaryV1: VmwareVmMountSummaryV1 (type)
-        if (this.VmwareVmMountSummaryV1 == null && ec.Includes("vmwareVmMountSummaryV1",false))
+        if (ec.Includes("vmwareVmMountSummaryV1",false))
         {
-            this.VmwareVmMountSummaryV1 = new VmwareVmMountSummaryV1();
-            this.VmwareVmMountSummaryV1.ApplyExploratoryFieldSpec(ec.NewChild("vmwareVmMountSummaryV1"));
+            if(this.VmwareVmMountSummaryV1 == null) {
+
+                this.VmwareVmMountSummaryV1 = new VmwareVmMountSummaryV1();
+                this.VmwareVmMountSummaryV1.ApplyExploratoryFieldSpec(ec.NewChild("vmwareVmMountSummaryV1"));
+
+            } else {
+
+                this.VmwareVmMountSummaryV1.ApplyExploratoryFieldSpec(ec.NewChild("vmwareVmMountSummaryV1"));
+
+            }
+        }
+        else if (this.VmwareVmMountSummaryV1 != null && ec.Excludes("vmwareVmMountSummaryV1",false))
+        {
+            this.VmwareVmMountSummaryV1 = null;
         }
     }
 
@@ -138,9 +185,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<VsphereVmPowerOnOffLiveMountReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

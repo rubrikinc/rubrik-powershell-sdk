@@ -65,26 +65,39 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? CdmOvaLink
         // GraphQL -> cdmOvaLink: String! (scalar)
         if (this.CdmOvaLink != null) {
-            s += ind + "cdmOvaLink\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cdmOvaLink\n" ;
+            } else {
+                s += ind + "cdmOvaLink\n" ;
+            }
         }
         //      C# -> System.String? WindowsToolLink
         // GraphQL -> windowsToolLink: String! (scalar)
         if (this.WindowsToolLink != null) {
-            s += ind + "windowsToolLink\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "windowsToolLink\n" ;
+            } else {
+                s += ind + "windowsToolLink\n" ;
+            }
         }
         //      C# -> List<OauthAccessToken>? RegistrationCodes
         // GraphQL -> registrationCodes: [OauthAccessToken!]! (type)
         if (this.RegistrationCodes != null) {
-            var fspec = this.RegistrationCodes.AsFieldSpec(indent+1);
+            var fspec = this.RegistrationCodes.AsFieldSpec(conf.Child("registrationCodes"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "registrationCodes {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "registrationCodes {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -96,22 +109,56 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? CdmOvaLink
         // GraphQL -> cdmOvaLink: String! (scalar)
-        if (this.CdmOvaLink == null && ec.Includes("cdmOvaLink",true))
+        if (ec.Includes("cdmOvaLink",true))
         {
-            this.CdmOvaLink = "FETCH";
+            if(this.CdmOvaLink == null) {
+
+                this.CdmOvaLink = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CdmOvaLink != null && ec.Excludes("cdmOvaLink",true))
+        {
+            this.CdmOvaLink = null;
         }
         //      C# -> System.String? WindowsToolLink
         // GraphQL -> windowsToolLink: String! (scalar)
-        if (this.WindowsToolLink == null && ec.Includes("windowsToolLink",true))
+        if (ec.Includes("windowsToolLink",true))
         {
-            this.WindowsToolLink = "FETCH";
+            if(this.WindowsToolLink == null) {
+
+                this.WindowsToolLink = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.WindowsToolLink != null && ec.Excludes("windowsToolLink",true))
+        {
+            this.WindowsToolLink = null;
         }
         //      C# -> List<OauthAccessToken>? RegistrationCodes
         // GraphQL -> registrationCodes: [OauthAccessToken!]! (type)
-        if (this.RegistrationCodes == null && ec.Includes("registrationCodes",false))
+        if (ec.Includes("registrationCodes",false))
         {
-            this.RegistrationCodes = new List<OauthAccessToken>();
-            this.RegistrationCodes.ApplyExploratoryFieldSpec(ec.NewChild("registrationCodes"));
+            if(this.RegistrationCodes == null) {
+
+                this.RegistrationCodes = new List<OauthAccessToken>();
+                this.RegistrationCodes.ApplyExploratoryFieldSpec(ec.NewChild("registrationCodes"));
+
+            } else {
+
+                this.RegistrationCodes.ApplyExploratoryFieldSpec(ec.NewChild("registrationCodes"));
+
+            }
+        }
+        else if (this.RegistrationCodes != null && ec.Excludes("registrationCodes",false))
+        {
+            this.RegistrationCodes = null;
         }
     }
 
@@ -138,9 +185,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<OauthCodesForEdgeRegReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

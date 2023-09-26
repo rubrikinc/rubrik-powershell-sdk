@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<System.String>? ActiveDirectoryGroups
         // GraphQL -> activeDirectoryGroups: [String!]! (scalar)
         if (this.ActiveDirectoryGroups != null) {
-            s += ind + "activeDirectoryGroups\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "activeDirectoryGroups\n" ;
+            } else {
+                s += ind + "activeDirectoryGroups\n" ;
+            }
         }
         //      C# -> System.String? DomainName
         // GraphQL -> domainName: String! (scalar)
         if (this.DomainName != null) {
-            s += ind + "domainName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "domainName\n" ;
+            } else {
+                s += ind + "domainName\n" ;
+            }
         }
         //      C# -> List<System.String>? ValidIps
         // GraphQL -> validIps: [String!]! (scalar)
         if (this.ValidIps != null) {
-            s += ind + "validIps\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "validIps\n" ;
+            } else {
+                s += ind + "validIps\n" ;
+            }
         }
         //      C# -> List<System.String>? ValidUsers
         // GraphQL -> validUsers: [String!]! (scalar)
         if (this.ValidUsers != null) {
-            s += ind + "validUsers\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "validUsers\n" ;
+            } else {
+                s += ind + "validUsers\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<System.String>? ActiveDirectoryGroups
         // GraphQL -> activeDirectoryGroups: [String!]! (scalar)
-        if (this.ActiveDirectoryGroups == null && ec.Includes("activeDirectoryGroups",true))
+        if (ec.Includes("activeDirectoryGroups",true))
         {
-            this.ActiveDirectoryGroups = new List<System.String>();
+            if(this.ActiveDirectoryGroups == null) {
+
+                this.ActiveDirectoryGroups = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ActiveDirectoryGroups != null && ec.Excludes("activeDirectoryGroups",true))
+        {
+            this.ActiveDirectoryGroups = null;
         }
         //      C# -> System.String? DomainName
         // GraphQL -> domainName: String! (scalar)
-        if (this.DomainName == null && ec.Includes("domainName",true))
+        if (ec.Includes("domainName",true))
         {
-            this.DomainName = "FETCH";
+            if(this.DomainName == null) {
+
+                this.DomainName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DomainName != null && ec.Excludes("domainName",true))
+        {
+            this.DomainName = null;
         }
         //      C# -> List<System.String>? ValidIps
         // GraphQL -> validIps: [String!]! (scalar)
-        if (this.ValidIps == null && ec.Includes("validIps",true))
+        if (ec.Includes("validIps",true))
         {
-            this.ValidIps = new List<System.String>();
+            if(this.ValidIps == null) {
+
+                this.ValidIps = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ValidIps != null && ec.Excludes("validIps",true))
+        {
+            this.ValidIps = null;
         }
         //      C# -> List<System.String>? ValidUsers
         // GraphQL -> validUsers: [String!]! (scalar)
-        if (this.ValidUsers == null && ec.Includes("validUsers",true))
+        if (ec.Includes("validUsers",true))
         {
-            this.ValidUsers = new List<System.String>();
+            if(this.ValidUsers == null) {
+
+                this.ValidUsers = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ValidUsers != null && ec.Excludes("validUsers",true))
+        {
+            this.ValidUsers = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ManagedVolumeSmbShare> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

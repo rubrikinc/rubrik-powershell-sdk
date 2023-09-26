@@ -74,29 +74,46 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<UserAuditTypeEnum>? AuditTypes
         // GraphQL -> auditTypes: [UserAuditTypeEnum!]! (enum)
         if (this.AuditTypes != null) {
-            s += ind + "auditTypes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "auditTypes\n" ;
+            } else {
+                s += ind + "auditTypes\n" ;
+            }
         }
         //      C# -> List<ActivityTypeEnum>? EventTypes
         // GraphQL -> eventTypes: [ActivityTypeEnum!]! (enum)
         if (this.EventTypes != null) {
-            s += ind + "eventTypes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "eventTypes\n" ;
+            } else {
+                s += ind + "eventTypes\n" ;
+            }
         }
         //      C# -> System.Boolean? IsSubscribedToAllAudits
         // GraphQL -> isSubscribedToAllAudits: Boolean! (scalar)
         if (this.IsSubscribedToAllAudits != null) {
-            s += ind + "isSubscribedToAllAudits\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isSubscribedToAllAudits\n" ;
+            } else {
+                s += ind + "isSubscribedToAllAudits\n" ;
+            }
         }
         //      C# -> System.Boolean? IsSubscribedToAllEvents
         // GraphQL -> isSubscribedToAllEvents: Boolean! (scalar)
         if (this.IsSubscribedToAllEvents != null) {
-            s += ind + "isSubscribedToAllEvents\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isSubscribedToAllEvents\n" ;
+            } else {
+                s += ind + "isSubscribedToAllEvents\n" ;
+            }
         }
         return s;
     }
@@ -107,27 +124,71 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<UserAuditTypeEnum>? AuditTypes
         // GraphQL -> auditTypes: [UserAuditTypeEnum!]! (enum)
-        if (this.AuditTypes == null && ec.Includes("auditTypes",true))
+        if (ec.Includes("auditTypes",true))
         {
-            this.AuditTypes = new List<UserAuditTypeEnum>();
+            if(this.AuditTypes == null) {
+
+                this.AuditTypes = new List<UserAuditTypeEnum>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AuditTypes != null && ec.Excludes("auditTypes",true))
+        {
+            this.AuditTypes = null;
         }
         //      C# -> List<ActivityTypeEnum>? EventTypes
         // GraphQL -> eventTypes: [ActivityTypeEnum!]! (enum)
-        if (this.EventTypes == null && ec.Includes("eventTypes",true))
+        if (ec.Includes("eventTypes",true))
         {
-            this.EventTypes = new List<ActivityTypeEnum>();
+            if(this.EventTypes == null) {
+
+                this.EventTypes = new List<ActivityTypeEnum>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EventTypes != null && ec.Excludes("eventTypes",true))
+        {
+            this.EventTypes = null;
         }
         //      C# -> System.Boolean? IsSubscribedToAllAudits
         // GraphQL -> isSubscribedToAllAudits: Boolean! (scalar)
-        if (this.IsSubscribedToAllAudits == null && ec.Includes("isSubscribedToAllAudits",true))
+        if (ec.Includes("isSubscribedToAllAudits",true))
         {
-            this.IsSubscribedToAllAudits = true;
+            if(this.IsSubscribedToAllAudits == null) {
+
+                this.IsSubscribedToAllAudits = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsSubscribedToAllAudits != null && ec.Excludes("isSubscribedToAllAudits",true))
+        {
+            this.IsSubscribedToAllAudits = null;
         }
         //      C# -> System.Boolean? IsSubscribedToAllEvents
         // GraphQL -> isSubscribedToAllEvents: Boolean! (scalar)
-        if (this.IsSubscribedToAllEvents == null && ec.Includes("isSubscribedToAllEvents",true))
+        if (ec.Includes("isSubscribedToAllEvents",true))
         {
-            this.IsSubscribedToAllEvents = true;
+            if(this.IsSubscribedToAllEvents == null) {
+
+                this.IsSubscribedToAllEvents = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsSubscribedToAllEvents != null && ec.Excludes("isSubscribedToAllEvents",true))
+        {
+            this.IsSubscribedToAllEvents = null;
         }
     }
 
@@ -154,9 +215,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SubscriptionType> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

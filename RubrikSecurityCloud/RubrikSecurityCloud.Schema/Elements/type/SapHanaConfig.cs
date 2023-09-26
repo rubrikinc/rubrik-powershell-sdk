@@ -65,32 +65,45 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> Duration? DifferentialFrequency
         // GraphQL -> differentialFrequency: Duration (type)
         if (this.DifferentialFrequency != null) {
-            var fspec = this.DifferentialFrequency.AsFieldSpec(indent+1);
+            var fspec = this.DifferentialFrequency.AsFieldSpec(conf.Child("differentialFrequency"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "differentialFrequency {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "differentialFrequency {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> Duration? IncrementalFrequency
         // GraphQL -> incrementalFrequency: Duration (type)
         if (this.IncrementalFrequency != null) {
-            var fspec = this.IncrementalFrequency.AsFieldSpec(indent+1);
+            var fspec = this.IncrementalFrequency.AsFieldSpec(conf.Child("incrementalFrequency"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "incrementalFrequency {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "incrementalFrequency {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> Duration? LogRetention
         // GraphQL -> logRetention: Duration (type)
         if (this.LogRetention != null) {
-            var fspec = this.LogRetention.AsFieldSpec(indent+1);
+            var fspec = this.LogRetention.AsFieldSpec(conf.Child("logRetention"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "logRetention {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "logRetention {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -102,24 +115,60 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> Duration? DifferentialFrequency
         // GraphQL -> differentialFrequency: Duration (type)
-        if (this.DifferentialFrequency == null && ec.Includes("differentialFrequency",false))
+        if (ec.Includes("differentialFrequency",false))
         {
-            this.DifferentialFrequency = new Duration();
-            this.DifferentialFrequency.ApplyExploratoryFieldSpec(ec.NewChild("differentialFrequency"));
+            if(this.DifferentialFrequency == null) {
+
+                this.DifferentialFrequency = new Duration();
+                this.DifferentialFrequency.ApplyExploratoryFieldSpec(ec.NewChild("differentialFrequency"));
+
+            } else {
+
+                this.DifferentialFrequency.ApplyExploratoryFieldSpec(ec.NewChild("differentialFrequency"));
+
+            }
+        }
+        else if (this.DifferentialFrequency != null && ec.Excludes("differentialFrequency",false))
+        {
+            this.DifferentialFrequency = null;
         }
         //      C# -> Duration? IncrementalFrequency
         // GraphQL -> incrementalFrequency: Duration (type)
-        if (this.IncrementalFrequency == null && ec.Includes("incrementalFrequency",false))
+        if (ec.Includes("incrementalFrequency",false))
         {
-            this.IncrementalFrequency = new Duration();
-            this.IncrementalFrequency.ApplyExploratoryFieldSpec(ec.NewChild("incrementalFrequency"));
+            if(this.IncrementalFrequency == null) {
+
+                this.IncrementalFrequency = new Duration();
+                this.IncrementalFrequency.ApplyExploratoryFieldSpec(ec.NewChild("incrementalFrequency"));
+
+            } else {
+
+                this.IncrementalFrequency.ApplyExploratoryFieldSpec(ec.NewChild("incrementalFrequency"));
+
+            }
+        }
+        else if (this.IncrementalFrequency != null && ec.Excludes("incrementalFrequency",false))
+        {
+            this.IncrementalFrequency = null;
         }
         //      C# -> Duration? LogRetention
         // GraphQL -> logRetention: Duration (type)
-        if (this.LogRetention == null && ec.Includes("logRetention",false))
+        if (ec.Includes("logRetention",false))
         {
-            this.LogRetention = new Duration();
-            this.LogRetention.ApplyExploratoryFieldSpec(ec.NewChild("logRetention"));
+            if(this.LogRetention == null) {
+
+                this.LogRetention = new Duration();
+                this.LogRetention.ApplyExploratoryFieldSpec(ec.NewChild("logRetention"));
+
+            } else {
+
+                this.LogRetention.ApplyExploratoryFieldSpec(ec.NewChild("logRetention"));
+
+            }
+        }
+        else if (this.LogRetention != null && ec.Excludes("logRetention",false))
+        {
+            this.LogRetention = null;
         }
     }
 
@@ -146,9 +195,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SapHanaConfig> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

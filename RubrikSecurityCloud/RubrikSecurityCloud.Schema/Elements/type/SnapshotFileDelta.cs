@@ -74,40 +74,57 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<SnapshotDelta>? ChildrenDeltas
         // GraphQL -> childrenDeltas: [SnapshotDelta!]! (type)
         if (this.ChildrenDeltas != null) {
-            var fspec = this.ChildrenDeltas.AsFieldSpec(indent+1);
+            var fspec = this.ChildrenDeltas.AsFieldSpec(conf.Child("childrenDeltas"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "childrenDeltas {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "childrenDeltas {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> SnapshotFile? File
         // GraphQL -> file: SnapshotFile! (type)
         if (this.File != null) {
-            var fspec = this.File.AsFieldSpec(indent+1);
+            var fspec = this.File.AsFieldSpec(conf.Child("file"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "file {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "file {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> QuarantineInfo? PreviousSnapshotQuarantineInfo
         // GraphQL -> previousSnapshotQuarantineInfo: QuarantineInfo (type)
         if (this.PreviousSnapshotQuarantineInfo != null) {
-            var fspec = this.PreviousSnapshotQuarantineInfo.AsFieldSpec(indent+1);
+            var fspec = this.PreviousSnapshotQuarantineInfo.AsFieldSpec(conf.Child("previousSnapshotQuarantineInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "previousSnapshotQuarantineInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "previousSnapshotQuarantineInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<SnapshotDelta>? SelfDeltas
         // GraphQL -> selfDeltas: [SnapshotDelta!]! (type)
         if (this.SelfDeltas != null) {
-            var fspec = this.SelfDeltas.AsFieldSpec(indent+1);
+            var fspec = this.SelfDeltas.AsFieldSpec(conf.Child("selfDeltas"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "selfDeltas {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "selfDeltas {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -119,31 +136,79 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<SnapshotDelta>? ChildrenDeltas
         // GraphQL -> childrenDeltas: [SnapshotDelta!]! (type)
-        if (this.ChildrenDeltas == null && ec.Includes("childrenDeltas",false))
+        if (ec.Includes("childrenDeltas",false))
         {
-            this.ChildrenDeltas = new List<SnapshotDelta>();
-            this.ChildrenDeltas.ApplyExploratoryFieldSpec(ec.NewChild("childrenDeltas"));
+            if(this.ChildrenDeltas == null) {
+
+                this.ChildrenDeltas = new List<SnapshotDelta>();
+                this.ChildrenDeltas.ApplyExploratoryFieldSpec(ec.NewChild("childrenDeltas"));
+
+            } else {
+
+                this.ChildrenDeltas.ApplyExploratoryFieldSpec(ec.NewChild("childrenDeltas"));
+
+            }
+        }
+        else if (this.ChildrenDeltas != null && ec.Excludes("childrenDeltas",false))
+        {
+            this.ChildrenDeltas = null;
         }
         //      C# -> SnapshotFile? File
         // GraphQL -> file: SnapshotFile! (type)
-        if (this.File == null && ec.Includes("file",false))
+        if (ec.Includes("file",false))
         {
-            this.File = new SnapshotFile();
-            this.File.ApplyExploratoryFieldSpec(ec.NewChild("file"));
+            if(this.File == null) {
+
+                this.File = new SnapshotFile();
+                this.File.ApplyExploratoryFieldSpec(ec.NewChild("file"));
+
+            } else {
+
+                this.File.ApplyExploratoryFieldSpec(ec.NewChild("file"));
+
+            }
+        }
+        else if (this.File != null && ec.Excludes("file",false))
+        {
+            this.File = null;
         }
         //      C# -> QuarantineInfo? PreviousSnapshotQuarantineInfo
         // GraphQL -> previousSnapshotQuarantineInfo: QuarantineInfo (type)
-        if (this.PreviousSnapshotQuarantineInfo == null && ec.Includes("previousSnapshotQuarantineInfo",false))
+        if (ec.Includes("previousSnapshotQuarantineInfo",false))
         {
-            this.PreviousSnapshotQuarantineInfo = new QuarantineInfo();
-            this.PreviousSnapshotQuarantineInfo.ApplyExploratoryFieldSpec(ec.NewChild("previousSnapshotQuarantineInfo"));
+            if(this.PreviousSnapshotQuarantineInfo == null) {
+
+                this.PreviousSnapshotQuarantineInfo = new QuarantineInfo();
+                this.PreviousSnapshotQuarantineInfo.ApplyExploratoryFieldSpec(ec.NewChild("previousSnapshotQuarantineInfo"));
+
+            } else {
+
+                this.PreviousSnapshotQuarantineInfo.ApplyExploratoryFieldSpec(ec.NewChild("previousSnapshotQuarantineInfo"));
+
+            }
+        }
+        else if (this.PreviousSnapshotQuarantineInfo != null && ec.Excludes("previousSnapshotQuarantineInfo",false))
+        {
+            this.PreviousSnapshotQuarantineInfo = null;
         }
         //      C# -> List<SnapshotDelta>? SelfDeltas
         // GraphQL -> selfDeltas: [SnapshotDelta!]! (type)
-        if (this.SelfDeltas == null && ec.Includes("selfDeltas",false))
+        if (ec.Includes("selfDeltas",false))
         {
-            this.SelfDeltas = new List<SnapshotDelta>();
-            this.SelfDeltas.ApplyExploratoryFieldSpec(ec.NewChild("selfDeltas"));
+            if(this.SelfDeltas == null) {
+
+                this.SelfDeltas = new List<SnapshotDelta>();
+                this.SelfDeltas.ApplyExploratoryFieldSpec(ec.NewChild("selfDeltas"));
+
+            } else {
+
+                this.SelfDeltas.ApplyExploratoryFieldSpec(ec.NewChild("selfDeltas"));
+
+            }
+        }
+        else if (this.SelfDeltas != null && ec.Excludes("selfDeltas",false))
+        {
+            this.SelfDeltas = null;
         }
     }
 
@@ -170,9 +235,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SnapshotFileDelta> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

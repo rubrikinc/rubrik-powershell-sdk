@@ -65,26 +65,39 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? RuEndTs
         // GraphQL -> ruEndTs: String! (scalar)
         if (this.RuEndTs != null) {
-            s += ind + "ruEndTs\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "ruEndTs\n" ;
+            } else {
+                s += ind + "ruEndTs\n" ;
+            }
         }
         //      C# -> System.String? RuStartTs
         // GraphQL -> ruStartTs: String! (scalar)
         if (this.RuStartTs != null) {
-            s += ind + "ruStartTs\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "ruStartTs\n" ;
+            } else {
+                s += ind + "ruStartTs\n" ;
+            }
         }
         //      C# -> CurrentStateInfo? CurrentStateInfo
         // GraphQL -> currentStateInfo: CurrentStateInfo (type)
         if (this.CurrentStateInfo != null) {
-            var fspec = this.CurrentStateInfo.AsFieldSpec(indent+1);
+            var fspec = this.CurrentStateInfo.AsFieldSpec(conf.Child("currentStateInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "currentStateInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "currentStateInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -96,22 +109,56 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? RuEndTs
         // GraphQL -> ruEndTs: String! (scalar)
-        if (this.RuEndTs == null && ec.Includes("ruEndTs",true))
+        if (ec.Includes("ruEndTs",true))
         {
-            this.RuEndTs = "FETCH";
+            if(this.RuEndTs == null) {
+
+                this.RuEndTs = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RuEndTs != null && ec.Excludes("ruEndTs",true))
+        {
+            this.RuEndTs = null;
         }
         //      C# -> System.String? RuStartTs
         // GraphQL -> ruStartTs: String! (scalar)
-        if (this.RuStartTs == null && ec.Includes("ruStartTs",true))
+        if (ec.Includes("ruStartTs",true))
         {
-            this.RuStartTs = "FETCH";
+            if(this.RuStartTs == null) {
+
+                this.RuStartTs = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RuStartTs != null && ec.Excludes("ruStartTs",true))
+        {
+            this.RuStartTs = null;
         }
         //      C# -> CurrentStateInfo? CurrentStateInfo
         // GraphQL -> currentStateInfo: CurrentStateInfo (type)
-        if (this.CurrentStateInfo == null && ec.Includes("currentStateInfo",false))
+        if (ec.Includes("currentStateInfo",false))
         {
-            this.CurrentStateInfo = new CurrentStateInfo();
-            this.CurrentStateInfo.ApplyExploratoryFieldSpec(ec.NewChild("currentStateInfo"));
+            if(this.CurrentStateInfo == null) {
+
+                this.CurrentStateInfo = new CurrentStateInfo();
+                this.CurrentStateInfo.ApplyExploratoryFieldSpec(ec.NewChild("currentStateInfo"));
+
+            } else {
+
+                this.CurrentStateInfo.ApplyExploratoryFieldSpec(ec.NewChild("currentStateInfo"));
+
+            }
+        }
+        else if (this.CurrentStateInfo != null && ec.Excludes("currentStateInfo",false))
+        {
+            this.CurrentStateInfo = null;
         }
     }
 
@@ -138,9 +185,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<RollingUpgradeNodeInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

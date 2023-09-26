@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Boolean? IsBlobImmutabilityEnabled
         // GraphQL -> isBlobImmutabilityEnabled: Boolean! (scalar)
         if (this.IsBlobImmutabilityEnabled != null) {
-            s += ind + "isBlobImmutabilityEnabled\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isBlobImmutabilityEnabled\n" ;
+            } else {
+                s += ind + "isBlobImmutabilityEnabled\n" ;
+            }
         }
         //      C# -> System.Int32? LockDurationDays
         // GraphQL -> lockDurationDays: Int! (scalar)
         if (this.LockDurationDays != null) {
-            s += ind + "lockDurationDays\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "lockDurationDays\n" ;
+            } else {
+                s += ind + "lockDurationDays\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Boolean? IsBlobImmutabilityEnabled
         // GraphQL -> isBlobImmutabilityEnabled: Boolean! (scalar)
-        if (this.IsBlobImmutabilityEnabled == null && ec.Includes("isBlobImmutabilityEnabled",true))
+        if (ec.Includes("isBlobImmutabilityEnabled",true))
         {
-            this.IsBlobImmutabilityEnabled = true;
+            if(this.IsBlobImmutabilityEnabled == null) {
+
+                this.IsBlobImmutabilityEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsBlobImmutabilityEnabled != null && ec.Excludes("isBlobImmutabilityEnabled",true))
+        {
+            this.IsBlobImmutabilityEnabled = null;
         }
         //      C# -> System.Int32? LockDurationDays
         // GraphQL -> lockDurationDays: Int! (scalar)
-        if (this.LockDurationDays == null && ec.Includes("lockDurationDays",true))
+        if (ec.Includes("lockDurationDays",true))
         {
-            this.LockDurationDays = Int32.MinValue;
+            if(this.LockDurationDays == null) {
+
+                this.LockDurationDays = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LockDurationDays != null && ec.Excludes("lockDurationDays",true))
+        {
+            this.LockDurationDays = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AzureImmutabilitySettingsType> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -407,225 +407,390 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? ArchiveStorage
         // GraphQL -> archiveStorage: Long (scalar)
         if (this.ArchiveStorage != null) {
-            s += ind + "archiveStorage\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "archiveStorage\n" ;
+            } else {
+                s += ind + "archiveStorage\n" ;
+            }
         }
         //      C# -> System.Boolean? IsLocal
         // GraphQL -> isLocal: Boolean (scalar)
         if (this.IsLocal != null) {
-            s += ind + "isLocal\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isLocal\n" ;
+            } else {
+                s += ind + "isLocal\n" ;
+            }
         }
         //      C# -> System.Boolean? IsStandby
         // GraphQL -> isStandby: Boolean (scalar)
         if (this.IsStandby != null) {
-            s += ind + "isStandby\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isStandby\n" ;
+            } else {
+                s += ind + "isStandby\n" ;
+            }
         }
         //      C# -> System.String? LatestRecoveryPointV50
         // GraphQL -> latestRecoveryPointV50: String (scalar)
         if (this.LatestRecoveryPointV50 != null) {
-            s += ind + "latestRecoveryPointV50\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "latestRecoveryPointV50\n" ;
+            } else {
+                s += ind + "latestRecoveryPointV50\n" ;
+            }
         }
         //      C# -> System.String? LatestRecoveryPointV51
         // GraphQL -> latestRecoveryPointV51: String (scalar)
         if (this.LatestRecoveryPointV51 != null) {
-            s += ind + "latestRecoveryPointV51\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "latestRecoveryPointV51\n" ;
+            } else {
+                s += ind + "latestRecoveryPointV51\n" ;
+            }
         }
         //      C# -> System.String? LatestRecoveryPointV52
         // GraphQL -> latestRecoveryPointV52: String (scalar)
         if (this.LatestRecoveryPointV52 != null) {
-            s += ind + "latestRecoveryPointV52\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "latestRecoveryPointV52\n" ;
+            } else {
+                s += ind + "latestRecoveryPointV52\n" ;
+            }
         }
         //      C# -> System.String? LatestRecoveryPointV53
         // GraphQL -> latestRecoveryPointV53: String (scalar)
         if (this.LatestRecoveryPointV53 != null) {
-            s += ind + "latestRecoveryPointV53\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "latestRecoveryPointV53\n" ;
+            } else {
+                s += ind + "latestRecoveryPointV53\n" ;
+            }
         }
         //      C# -> DateTime? LatestRecoveryPointV60
         // GraphQL -> latestRecoveryPointV60: DateTime (scalar)
         if (this.LatestRecoveryPointV60 != null) {
-            s += ind + "latestRecoveryPointV60\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "latestRecoveryPointV60\n" ;
+            } else {
+                s += ind + "latestRecoveryPointV60\n" ;
+            }
         }
         //      C# -> DateTime? LatestRecoveryPointV70
         // GraphQL -> latestRecoveryPointV70: DateTime (scalar)
         if (this.LatestRecoveryPointV70 != null) {
-            s += ind + "latestRecoveryPointV70\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "latestRecoveryPointV70\n" ;
+            } else {
+                s += ind + "latestRecoveryPointV70\n" ;
+            }
         }
         //      C# -> DateTime? LatestRecoveryPointV80
         // GraphQL -> latestRecoveryPointV80: DateTime (scalar)
         if (this.LatestRecoveryPointV80 != null) {
-            s += ind + "latestRecoveryPointV80\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "latestRecoveryPointV80\n" ;
+            } else {
+                s += ind + "latestRecoveryPointV80\n" ;
+            }
         }
         //      C# -> DateTime? LatestRecoveryPointV81
         // GraphQL -> latestRecoveryPointV81: DateTime (scalar)
         if (this.LatestRecoveryPointV81 != null) {
-            s += ind + "latestRecoveryPointV81\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "latestRecoveryPointV81\n" ;
+            } else {
+                s += ind + "latestRecoveryPointV81\n" ;
+            }
         }
         //      C# -> DateTime? LatestRecoveryPointV90
         // GraphQL -> latestRecoveryPointV90: DateTime (scalar)
         if (this.LatestRecoveryPointV90 != null) {
-            s += ind + "latestRecoveryPointV90\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "latestRecoveryPointV90\n" ;
+            } else {
+                s += ind + "latestRecoveryPointV90\n" ;
+            }
         }
         //      C# -> DateTime? LatestRecoveryPointV91
         // GraphQL -> latestRecoveryPointV91: DateTime (scalar)
         if (this.LatestRecoveryPointV91 != null) {
-            s += ind + "latestRecoveryPointV91\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "latestRecoveryPointV91\n" ;
+            } else {
+                s += ind + "latestRecoveryPointV91\n" ;
+            }
         }
         //      C# -> System.Int64? LocalStorage
         // GraphQL -> localStorage: Long (scalar)
         if (this.LocalStorage != null) {
-            s += ind + "localStorage\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "localStorage\n" ;
+            } else {
+                s += ind + "localStorage\n" ;
+            }
         }
         //      C# -> System.Int32? MaxDataStreams
         // GraphQL -> maxDataStreams: Int (scalar)
         if (this.MaxDataStreams != null) {
-            s += ind + "maxDataStreams\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "maxDataStreams\n" ;
+            } else {
+                s += ind + "maxDataStreams\n" ;
+            }
         }
         //      C# -> System.String? OldestRecoveryPointV50
         // GraphQL -> oldestRecoveryPointV50: String (scalar)
         if (this.OldestRecoveryPointV50 != null) {
-            s += ind + "oldestRecoveryPointV50\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "oldestRecoveryPointV50\n" ;
+            } else {
+                s += ind + "oldestRecoveryPointV50\n" ;
+            }
         }
         //      C# -> System.String? OldestRecoveryPointV51
         // GraphQL -> oldestRecoveryPointV51: String (scalar)
         if (this.OldestRecoveryPointV51 != null) {
-            s += ind + "oldestRecoveryPointV51\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "oldestRecoveryPointV51\n" ;
+            } else {
+                s += ind + "oldestRecoveryPointV51\n" ;
+            }
         }
         //      C# -> System.String? OldestRecoveryPointV52
         // GraphQL -> oldestRecoveryPointV52: String (scalar)
         if (this.OldestRecoveryPointV52 != null) {
-            s += ind + "oldestRecoveryPointV52\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "oldestRecoveryPointV52\n" ;
+            } else {
+                s += ind + "oldestRecoveryPointV52\n" ;
+            }
         }
         //      C# -> System.String? OldestRecoveryPointV53
         // GraphQL -> oldestRecoveryPointV53: String (scalar)
         if (this.OldestRecoveryPointV53 != null) {
-            s += ind + "oldestRecoveryPointV53\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "oldestRecoveryPointV53\n" ;
+            } else {
+                s += ind + "oldestRecoveryPointV53\n" ;
+            }
         }
         //      C# -> DateTime? OldestRecoveryPointV60
         // GraphQL -> oldestRecoveryPointV60: DateTime (scalar)
         if (this.OldestRecoveryPointV60 != null) {
-            s += ind + "oldestRecoveryPointV60\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "oldestRecoveryPointV60\n" ;
+            } else {
+                s += ind + "oldestRecoveryPointV60\n" ;
+            }
         }
         //      C# -> DateTime? OldestRecoveryPointV70
         // GraphQL -> oldestRecoveryPointV70: DateTime (scalar)
         if (this.OldestRecoveryPointV70 != null) {
-            s += ind + "oldestRecoveryPointV70\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "oldestRecoveryPointV70\n" ;
+            } else {
+                s += ind + "oldestRecoveryPointV70\n" ;
+            }
         }
         //      C# -> DateTime? OldestRecoveryPointV80
         // GraphQL -> oldestRecoveryPointV80: DateTime (scalar)
         if (this.OldestRecoveryPointV80 != null) {
-            s += ind + "oldestRecoveryPointV80\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "oldestRecoveryPointV80\n" ;
+            } else {
+                s += ind + "oldestRecoveryPointV80\n" ;
+            }
         }
         //      C# -> DateTime? OldestRecoveryPointV81
         // GraphQL -> oldestRecoveryPointV81: DateTime (scalar)
         if (this.OldestRecoveryPointV81 != null) {
-            s += ind + "oldestRecoveryPointV81\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "oldestRecoveryPointV81\n" ;
+            } else {
+                s += ind + "oldestRecoveryPointV81\n" ;
+            }
         }
         //      C# -> DateTime? OldestRecoveryPointV90
         // GraphQL -> oldestRecoveryPointV90: DateTime (scalar)
         if (this.OldestRecoveryPointV90 != null) {
-            s += ind + "oldestRecoveryPointV90\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "oldestRecoveryPointV90\n" ;
+            } else {
+                s += ind + "oldestRecoveryPointV90\n" ;
+            }
         }
         //      C# -> DateTime? OldestRecoveryPointV91
         // GraphQL -> oldestRecoveryPointV91: DateTime (scalar)
         if (this.OldestRecoveryPointV91 != null) {
-            s += ind + "oldestRecoveryPointV91\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "oldestRecoveryPointV91\n" ;
+            } else {
+                s += ind + "oldestRecoveryPointV91\n" ;
+            }
         }
         //      C# -> System.String? ProtectionDateV50
         // GraphQL -> protectionDateV50: String (scalar)
         if (this.ProtectionDateV50 != null) {
-            s += ind + "protectionDateV50\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "protectionDateV50\n" ;
+            } else {
+                s += ind + "protectionDateV50\n" ;
+            }
         }
         //      C# -> System.String? ProtectionDateV51
         // GraphQL -> protectionDateV51: String (scalar)
         if (this.ProtectionDateV51 != null) {
-            s += ind + "protectionDateV51\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "protectionDateV51\n" ;
+            } else {
+                s += ind + "protectionDateV51\n" ;
+            }
         }
         //      C# -> System.String? ProtectionDateV52
         // GraphQL -> protectionDateV52: String (scalar)
         if (this.ProtectionDateV52 != null) {
-            s += ind + "protectionDateV52\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "protectionDateV52\n" ;
+            } else {
+                s += ind + "protectionDateV52\n" ;
+            }
         }
         //      C# -> System.String? ProtectionDateV53
         // GraphQL -> protectionDateV53: String (scalar)
         if (this.ProtectionDateV53 != null) {
-            s += ind + "protectionDateV53\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "protectionDateV53\n" ;
+            } else {
+                s += ind + "protectionDateV53\n" ;
+            }
         }
         //      C# -> DateTime? ProtectionDateV60
         // GraphQL -> protectionDateV60: DateTime (scalar)
         if (this.ProtectionDateV60 != null) {
-            s += ind + "protectionDateV60\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "protectionDateV60\n" ;
+            } else {
+                s += ind + "protectionDateV60\n" ;
+            }
         }
         //      C# -> DateTime? ProtectionDateV70
         // GraphQL -> protectionDateV70: DateTime (scalar)
         if (this.ProtectionDateV70 != null) {
-            s += ind + "protectionDateV70\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "protectionDateV70\n" ;
+            } else {
+                s += ind + "protectionDateV70\n" ;
+            }
         }
         //      C# -> DateTime? ProtectionDateV80
         // GraphQL -> protectionDateV80: DateTime (scalar)
         if (this.ProtectionDateV80 != null) {
-            s += ind + "protectionDateV80\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "protectionDateV80\n" ;
+            } else {
+                s += ind + "protectionDateV80\n" ;
+            }
         }
         //      C# -> DateTime? ProtectionDateV81
         // GraphQL -> protectionDateV81: DateTime (scalar)
         if (this.ProtectionDateV81 != null) {
-            s += ind + "protectionDateV81\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "protectionDateV81\n" ;
+            } else {
+                s += ind + "protectionDateV81\n" ;
+            }
         }
         //      C# -> DateTime? ProtectionDateV90
         // GraphQL -> protectionDateV90: DateTime (scalar)
         if (this.ProtectionDateV90 != null) {
-            s += ind + "protectionDateV90\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "protectionDateV90\n" ;
+            } else {
+                s += ind + "protectionDateV90\n" ;
+            }
         }
         //      C# -> DateTime? ProtectionDateV91
         // GraphQL -> protectionDateV91: DateTime (scalar)
         if (this.ProtectionDateV91 != null) {
-            s += ind + "protectionDateV91\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "protectionDateV91\n" ;
+            } else {
+                s += ind + "protectionDateV91\n" ;
+            }
         }
         //      C# -> System.String? RecoveryForkGuid
         // GraphQL -> recoveryForkGuid: String (scalar)
         if (this.RecoveryForkGuid != null) {
-            s += ind + "recoveryForkGuid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "recoveryForkGuid\n" ;
+            } else {
+                s += ind + "recoveryForkGuid\n" ;
+            }
         }
         //      C# -> System.Int32? SnapshotCount
         // GraphQL -> snapshotCount: Int! (scalar)
         if (this.SnapshotCount != null) {
-            s += ind + "snapshotCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotCount\n" ;
+            } else {
+                s += ind + "snapshotCount\n" ;
+            }
         }
         //      C# -> BlackoutWindowResponseInfo? BlackoutWindowResponseInfo
         // GraphQL -> blackoutWindowResponseInfo: BlackoutWindowResponseInfo (type)
         if (this.BlackoutWindowResponseInfo != null) {
-            var fspec = this.BlackoutWindowResponseInfo.AsFieldSpec(indent+1);
+            var fspec = this.BlackoutWindowResponseInfo.AsFieldSpec(conf.Child("blackoutWindowResponseInfo"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "blackoutWindowResponseInfo {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "blackoutWindowResponseInfo {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> MssqlDbSummary? MssqlDbSummary
         // GraphQL -> mssqlDbSummary: MssqlDbSummary (type)
         if (this.MssqlDbSummary != null) {
-            var fspec = this.MssqlDbSummary.AsFieldSpec(indent+1);
+            var fspec = this.MssqlDbSummary.AsFieldSpec(conf.Child("mssqlDbSummary"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "mssqlDbSummary {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "mssqlDbSummary {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> MssqlScriptDetail? PostBackupScript
         // GraphQL -> postBackupScript: MssqlScriptDetail (type)
         if (this.PostBackupScript != null) {
-            var fspec = this.PostBackupScript.AsFieldSpec(indent+1);
+            var fspec = this.PostBackupScript.AsFieldSpec(conf.Child("postBackupScript"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "postBackupScript {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "postBackupScript {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> MssqlScriptDetail? PreBackupScript
         // GraphQL -> preBackupScript: MssqlScriptDetail (type)
         if (this.PreBackupScript != null) {
-            var fspec = this.PreBackupScript.AsFieldSpec(indent+1);
+            var fspec = this.PreBackupScript.AsFieldSpec(conf.Child("preBackupScript"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "preBackupScript {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "preBackupScript {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -637,253 +802,708 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? ArchiveStorage
         // GraphQL -> archiveStorage: Long (scalar)
-        if (this.ArchiveStorage == null && ec.Includes("archiveStorage",true))
+        if (ec.Includes("archiveStorage",true))
         {
-            this.ArchiveStorage = new System.Int64();
+            if(this.ArchiveStorage == null) {
+
+                this.ArchiveStorage = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ArchiveStorage != null && ec.Excludes("archiveStorage",true))
+        {
+            this.ArchiveStorage = null;
         }
         //      C# -> System.Boolean? IsLocal
         // GraphQL -> isLocal: Boolean (scalar)
-        if (this.IsLocal == null && ec.Includes("isLocal",true))
+        if (ec.Includes("isLocal",true))
         {
-            this.IsLocal = true;
+            if(this.IsLocal == null) {
+
+                this.IsLocal = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsLocal != null && ec.Excludes("isLocal",true))
+        {
+            this.IsLocal = null;
         }
         //      C# -> System.Boolean? IsStandby
         // GraphQL -> isStandby: Boolean (scalar)
-        if (this.IsStandby == null && ec.Includes("isStandby",true))
+        if (ec.Includes("isStandby",true))
         {
-            this.IsStandby = true;
+            if(this.IsStandby == null) {
+
+                this.IsStandby = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsStandby != null && ec.Excludes("isStandby",true))
+        {
+            this.IsStandby = null;
         }
         //      C# -> System.String? LatestRecoveryPointV50
         // GraphQL -> latestRecoveryPointV50: String (scalar)
-        if (this.LatestRecoveryPointV50 == null && ec.Includes("latestRecoveryPointV50",true))
+        if (ec.Includes("latestRecoveryPointV50",true))
         {
-            this.LatestRecoveryPointV50 = "FETCH";
+            if(this.LatestRecoveryPointV50 == null) {
+
+                this.LatestRecoveryPointV50 = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.LatestRecoveryPointV50 != null && ec.Excludes("latestRecoveryPointV50",true))
+        {
+            this.LatestRecoveryPointV50 = null;
         }
         //      C# -> System.String? LatestRecoveryPointV51
         // GraphQL -> latestRecoveryPointV51: String (scalar)
-        if (this.LatestRecoveryPointV51 == null && ec.Includes("latestRecoveryPointV51",true))
+        if (ec.Includes("latestRecoveryPointV51",true))
         {
-            this.LatestRecoveryPointV51 = "FETCH";
+            if(this.LatestRecoveryPointV51 == null) {
+
+                this.LatestRecoveryPointV51 = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.LatestRecoveryPointV51 != null && ec.Excludes("latestRecoveryPointV51",true))
+        {
+            this.LatestRecoveryPointV51 = null;
         }
         //      C# -> System.String? LatestRecoveryPointV52
         // GraphQL -> latestRecoveryPointV52: String (scalar)
-        if (this.LatestRecoveryPointV52 == null && ec.Includes("latestRecoveryPointV52",true))
+        if (ec.Includes("latestRecoveryPointV52",true))
         {
-            this.LatestRecoveryPointV52 = "FETCH";
+            if(this.LatestRecoveryPointV52 == null) {
+
+                this.LatestRecoveryPointV52 = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.LatestRecoveryPointV52 != null && ec.Excludes("latestRecoveryPointV52",true))
+        {
+            this.LatestRecoveryPointV52 = null;
         }
         //      C# -> System.String? LatestRecoveryPointV53
         // GraphQL -> latestRecoveryPointV53: String (scalar)
-        if (this.LatestRecoveryPointV53 == null && ec.Includes("latestRecoveryPointV53",true))
+        if (ec.Includes("latestRecoveryPointV53",true))
         {
-            this.LatestRecoveryPointV53 = "FETCH";
+            if(this.LatestRecoveryPointV53 == null) {
+
+                this.LatestRecoveryPointV53 = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.LatestRecoveryPointV53 != null && ec.Excludes("latestRecoveryPointV53",true))
+        {
+            this.LatestRecoveryPointV53 = null;
         }
         //      C# -> DateTime? LatestRecoveryPointV60
         // GraphQL -> latestRecoveryPointV60: DateTime (scalar)
-        if (this.LatestRecoveryPointV60 == null && ec.Includes("latestRecoveryPointV60",true))
+        if (ec.Includes("latestRecoveryPointV60",true))
         {
-            this.LatestRecoveryPointV60 = new DateTime();
+            if(this.LatestRecoveryPointV60 == null) {
+
+                this.LatestRecoveryPointV60 = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LatestRecoveryPointV60 != null && ec.Excludes("latestRecoveryPointV60",true))
+        {
+            this.LatestRecoveryPointV60 = null;
         }
         //      C# -> DateTime? LatestRecoveryPointV70
         // GraphQL -> latestRecoveryPointV70: DateTime (scalar)
-        if (this.LatestRecoveryPointV70 == null && ec.Includes("latestRecoveryPointV70",true))
+        if (ec.Includes("latestRecoveryPointV70",true))
         {
-            this.LatestRecoveryPointV70 = new DateTime();
+            if(this.LatestRecoveryPointV70 == null) {
+
+                this.LatestRecoveryPointV70 = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LatestRecoveryPointV70 != null && ec.Excludes("latestRecoveryPointV70",true))
+        {
+            this.LatestRecoveryPointV70 = null;
         }
         //      C# -> DateTime? LatestRecoveryPointV80
         // GraphQL -> latestRecoveryPointV80: DateTime (scalar)
-        if (this.LatestRecoveryPointV80 == null && ec.Includes("latestRecoveryPointV80",true))
+        if (ec.Includes("latestRecoveryPointV80",true))
         {
-            this.LatestRecoveryPointV80 = new DateTime();
+            if(this.LatestRecoveryPointV80 == null) {
+
+                this.LatestRecoveryPointV80 = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LatestRecoveryPointV80 != null && ec.Excludes("latestRecoveryPointV80",true))
+        {
+            this.LatestRecoveryPointV80 = null;
         }
         //      C# -> DateTime? LatestRecoveryPointV81
         // GraphQL -> latestRecoveryPointV81: DateTime (scalar)
-        if (this.LatestRecoveryPointV81 == null && ec.Includes("latestRecoveryPointV81",true))
+        if (ec.Includes("latestRecoveryPointV81",true))
         {
-            this.LatestRecoveryPointV81 = new DateTime();
+            if(this.LatestRecoveryPointV81 == null) {
+
+                this.LatestRecoveryPointV81 = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LatestRecoveryPointV81 != null && ec.Excludes("latestRecoveryPointV81",true))
+        {
+            this.LatestRecoveryPointV81 = null;
         }
         //      C# -> DateTime? LatestRecoveryPointV90
         // GraphQL -> latestRecoveryPointV90: DateTime (scalar)
-        if (this.LatestRecoveryPointV90 == null && ec.Includes("latestRecoveryPointV90",true))
+        if (ec.Includes("latestRecoveryPointV90",true))
         {
-            this.LatestRecoveryPointV90 = new DateTime();
+            if(this.LatestRecoveryPointV90 == null) {
+
+                this.LatestRecoveryPointV90 = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LatestRecoveryPointV90 != null && ec.Excludes("latestRecoveryPointV90",true))
+        {
+            this.LatestRecoveryPointV90 = null;
         }
         //      C# -> DateTime? LatestRecoveryPointV91
         // GraphQL -> latestRecoveryPointV91: DateTime (scalar)
-        if (this.LatestRecoveryPointV91 == null && ec.Includes("latestRecoveryPointV91",true))
+        if (ec.Includes("latestRecoveryPointV91",true))
         {
-            this.LatestRecoveryPointV91 = new DateTime();
+            if(this.LatestRecoveryPointV91 == null) {
+
+                this.LatestRecoveryPointV91 = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LatestRecoveryPointV91 != null && ec.Excludes("latestRecoveryPointV91",true))
+        {
+            this.LatestRecoveryPointV91 = null;
         }
         //      C# -> System.Int64? LocalStorage
         // GraphQL -> localStorage: Long (scalar)
-        if (this.LocalStorage == null && ec.Includes("localStorage",true))
+        if (ec.Includes("localStorage",true))
         {
-            this.LocalStorage = new System.Int64();
+            if(this.LocalStorage == null) {
+
+                this.LocalStorage = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LocalStorage != null && ec.Excludes("localStorage",true))
+        {
+            this.LocalStorage = null;
         }
         //      C# -> System.Int32? MaxDataStreams
         // GraphQL -> maxDataStreams: Int (scalar)
-        if (this.MaxDataStreams == null && ec.Includes("maxDataStreams",true))
+        if (ec.Includes("maxDataStreams",true))
         {
-            this.MaxDataStreams = Int32.MinValue;
+            if(this.MaxDataStreams == null) {
+
+                this.MaxDataStreams = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.MaxDataStreams != null && ec.Excludes("maxDataStreams",true))
+        {
+            this.MaxDataStreams = null;
         }
         //      C# -> System.String? OldestRecoveryPointV50
         // GraphQL -> oldestRecoveryPointV50: String (scalar)
-        if (this.OldestRecoveryPointV50 == null && ec.Includes("oldestRecoveryPointV50",true))
+        if (ec.Includes("oldestRecoveryPointV50",true))
         {
-            this.OldestRecoveryPointV50 = "FETCH";
+            if(this.OldestRecoveryPointV50 == null) {
+
+                this.OldestRecoveryPointV50 = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OldestRecoveryPointV50 != null && ec.Excludes("oldestRecoveryPointV50",true))
+        {
+            this.OldestRecoveryPointV50 = null;
         }
         //      C# -> System.String? OldestRecoveryPointV51
         // GraphQL -> oldestRecoveryPointV51: String (scalar)
-        if (this.OldestRecoveryPointV51 == null && ec.Includes("oldestRecoveryPointV51",true))
+        if (ec.Includes("oldestRecoveryPointV51",true))
         {
-            this.OldestRecoveryPointV51 = "FETCH";
+            if(this.OldestRecoveryPointV51 == null) {
+
+                this.OldestRecoveryPointV51 = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OldestRecoveryPointV51 != null && ec.Excludes("oldestRecoveryPointV51",true))
+        {
+            this.OldestRecoveryPointV51 = null;
         }
         //      C# -> System.String? OldestRecoveryPointV52
         // GraphQL -> oldestRecoveryPointV52: String (scalar)
-        if (this.OldestRecoveryPointV52 == null && ec.Includes("oldestRecoveryPointV52",true))
+        if (ec.Includes("oldestRecoveryPointV52",true))
         {
-            this.OldestRecoveryPointV52 = "FETCH";
+            if(this.OldestRecoveryPointV52 == null) {
+
+                this.OldestRecoveryPointV52 = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OldestRecoveryPointV52 != null && ec.Excludes("oldestRecoveryPointV52",true))
+        {
+            this.OldestRecoveryPointV52 = null;
         }
         //      C# -> System.String? OldestRecoveryPointV53
         // GraphQL -> oldestRecoveryPointV53: String (scalar)
-        if (this.OldestRecoveryPointV53 == null && ec.Includes("oldestRecoveryPointV53",true))
+        if (ec.Includes("oldestRecoveryPointV53",true))
         {
-            this.OldestRecoveryPointV53 = "FETCH";
+            if(this.OldestRecoveryPointV53 == null) {
+
+                this.OldestRecoveryPointV53 = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OldestRecoveryPointV53 != null && ec.Excludes("oldestRecoveryPointV53",true))
+        {
+            this.OldestRecoveryPointV53 = null;
         }
         //      C# -> DateTime? OldestRecoveryPointV60
         // GraphQL -> oldestRecoveryPointV60: DateTime (scalar)
-        if (this.OldestRecoveryPointV60 == null && ec.Includes("oldestRecoveryPointV60",true))
+        if (ec.Includes("oldestRecoveryPointV60",true))
         {
-            this.OldestRecoveryPointV60 = new DateTime();
+            if(this.OldestRecoveryPointV60 == null) {
+
+                this.OldestRecoveryPointV60 = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.OldestRecoveryPointV60 != null && ec.Excludes("oldestRecoveryPointV60",true))
+        {
+            this.OldestRecoveryPointV60 = null;
         }
         //      C# -> DateTime? OldestRecoveryPointV70
         // GraphQL -> oldestRecoveryPointV70: DateTime (scalar)
-        if (this.OldestRecoveryPointV70 == null && ec.Includes("oldestRecoveryPointV70",true))
+        if (ec.Includes("oldestRecoveryPointV70",true))
         {
-            this.OldestRecoveryPointV70 = new DateTime();
+            if(this.OldestRecoveryPointV70 == null) {
+
+                this.OldestRecoveryPointV70 = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.OldestRecoveryPointV70 != null && ec.Excludes("oldestRecoveryPointV70",true))
+        {
+            this.OldestRecoveryPointV70 = null;
         }
         //      C# -> DateTime? OldestRecoveryPointV80
         // GraphQL -> oldestRecoveryPointV80: DateTime (scalar)
-        if (this.OldestRecoveryPointV80 == null && ec.Includes("oldestRecoveryPointV80",true))
+        if (ec.Includes("oldestRecoveryPointV80",true))
         {
-            this.OldestRecoveryPointV80 = new DateTime();
+            if(this.OldestRecoveryPointV80 == null) {
+
+                this.OldestRecoveryPointV80 = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.OldestRecoveryPointV80 != null && ec.Excludes("oldestRecoveryPointV80",true))
+        {
+            this.OldestRecoveryPointV80 = null;
         }
         //      C# -> DateTime? OldestRecoveryPointV81
         // GraphQL -> oldestRecoveryPointV81: DateTime (scalar)
-        if (this.OldestRecoveryPointV81 == null && ec.Includes("oldestRecoveryPointV81",true))
+        if (ec.Includes("oldestRecoveryPointV81",true))
         {
-            this.OldestRecoveryPointV81 = new DateTime();
+            if(this.OldestRecoveryPointV81 == null) {
+
+                this.OldestRecoveryPointV81 = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.OldestRecoveryPointV81 != null && ec.Excludes("oldestRecoveryPointV81",true))
+        {
+            this.OldestRecoveryPointV81 = null;
         }
         //      C# -> DateTime? OldestRecoveryPointV90
         // GraphQL -> oldestRecoveryPointV90: DateTime (scalar)
-        if (this.OldestRecoveryPointV90 == null && ec.Includes("oldestRecoveryPointV90",true))
+        if (ec.Includes("oldestRecoveryPointV90",true))
         {
-            this.OldestRecoveryPointV90 = new DateTime();
+            if(this.OldestRecoveryPointV90 == null) {
+
+                this.OldestRecoveryPointV90 = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.OldestRecoveryPointV90 != null && ec.Excludes("oldestRecoveryPointV90",true))
+        {
+            this.OldestRecoveryPointV90 = null;
         }
         //      C# -> DateTime? OldestRecoveryPointV91
         // GraphQL -> oldestRecoveryPointV91: DateTime (scalar)
-        if (this.OldestRecoveryPointV91 == null && ec.Includes("oldestRecoveryPointV91",true))
+        if (ec.Includes("oldestRecoveryPointV91",true))
         {
-            this.OldestRecoveryPointV91 = new DateTime();
+            if(this.OldestRecoveryPointV91 == null) {
+
+                this.OldestRecoveryPointV91 = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.OldestRecoveryPointV91 != null && ec.Excludes("oldestRecoveryPointV91",true))
+        {
+            this.OldestRecoveryPointV91 = null;
         }
         //      C# -> System.String? ProtectionDateV50
         // GraphQL -> protectionDateV50: String (scalar)
-        if (this.ProtectionDateV50 == null && ec.Includes("protectionDateV50",true))
+        if (ec.Includes("protectionDateV50",true))
         {
-            this.ProtectionDateV50 = "FETCH";
+            if(this.ProtectionDateV50 == null) {
+
+                this.ProtectionDateV50 = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProtectionDateV50 != null && ec.Excludes("protectionDateV50",true))
+        {
+            this.ProtectionDateV50 = null;
         }
         //      C# -> System.String? ProtectionDateV51
         // GraphQL -> protectionDateV51: String (scalar)
-        if (this.ProtectionDateV51 == null && ec.Includes("protectionDateV51",true))
+        if (ec.Includes("protectionDateV51",true))
         {
-            this.ProtectionDateV51 = "FETCH";
+            if(this.ProtectionDateV51 == null) {
+
+                this.ProtectionDateV51 = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProtectionDateV51 != null && ec.Excludes("protectionDateV51",true))
+        {
+            this.ProtectionDateV51 = null;
         }
         //      C# -> System.String? ProtectionDateV52
         // GraphQL -> protectionDateV52: String (scalar)
-        if (this.ProtectionDateV52 == null && ec.Includes("protectionDateV52",true))
+        if (ec.Includes("protectionDateV52",true))
         {
-            this.ProtectionDateV52 = "FETCH";
+            if(this.ProtectionDateV52 == null) {
+
+                this.ProtectionDateV52 = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProtectionDateV52 != null && ec.Excludes("protectionDateV52",true))
+        {
+            this.ProtectionDateV52 = null;
         }
         //      C# -> System.String? ProtectionDateV53
         // GraphQL -> protectionDateV53: String (scalar)
-        if (this.ProtectionDateV53 == null && ec.Includes("protectionDateV53",true))
+        if (ec.Includes("protectionDateV53",true))
         {
-            this.ProtectionDateV53 = "FETCH";
+            if(this.ProtectionDateV53 == null) {
+
+                this.ProtectionDateV53 = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProtectionDateV53 != null && ec.Excludes("protectionDateV53",true))
+        {
+            this.ProtectionDateV53 = null;
         }
         //      C# -> DateTime? ProtectionDateV60
         // GraphQL -> protectionDateV60: DateTime (scalar)
-        if (this.ProtectionDateV60 == null && ec.Includes("protectionDateV60",true))
+        if (ec.Includes("protectionDateV60",true))
         {
-            this.ProtectionDateV60 = new DateTime();
+            if(this.ProtectionDateV60 == null) {
+
+                this.ProtectionDateV60 = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProtectionDateV60 != null && ec.Excludes("protectionDateV60",true))
+        {
+            this.ProtectionDateV60 = null;
         }
         //      C# -> DateTime? ProtectionDateV70
         // GraphQL -> protectionDateV70: DateTime (scalar)
-        if (this.ProtectionDateV70 == null && ec.Includes("protectionDateV70",true))
+        if (ec.Includes("protectionDateV70",true))
         {
-            this.ProtectionDateV70 = new DateTime();
+            if(this.ProtectionDateV70 == null) {
+
+                this.ProtectionDateV70 = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProtectionDateV70 != null && ec.Excludes("protectionDateV70",true))
+        {
+            this.ProtectionDateV70 = null;
         }
         //      C# -> DateTime? ProtectionDateV80
         // GraphQL -> protectionDateV80: DateTime (scalar)
-        if (this.ProtectionDateV80 == null && ec.Includes("protectionDateV80",true))
+        if (ec.Includes("protectionDateV80",true))
         {
-            this.ProtectionDateV80 = new DateTime();
+            if(this.ProtectionDateV80 == null) {
+
+                this.ProtectionDateV80 = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProtectionDateV80 != null && ec.Excludes("protectionDateV80",true))
+        {
+            this.ProtectionDateV80 = null;
         }
         //      C# -> DateTime? ProtectionDateV81
         // GraphQL -> protectionDateV81: DateTime (scalar)
-        if (this.ProtectionDateV81 == null && ec.Includes("protectionDateV81",true))
+        if (ec.Includes("protectionDateV81",true))
         {
-            this.ProtectionDateV81 = new DateTime();
+            if(this.ProtectionDateV81 == null) {
+
+                this.ProtectionDateV81 = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProtectionDateV81 != null && ec.Excludes("protectionDateV81",true))
+        {
+            this.ProtectionDateV81 = null;
         }
         //      C# -> DateTime? ProtectionDateV90
         // GraphQL -> protectionDateV90: DateTime (scalar)
-        if (this.ProtectionDateV90 == null && ec.Includes("protectionDateV90",true))
+        if (ec.Includes("protectionDateV90",true))
         {
-            this.ProtectionDateV90 = new DateTime();
+            if(this.ProtectionDateV90 == null) {
+
+                this.ProtectionDateV90 = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProtectionDateV90 != null && ec.Excludes("protectionDateV90",true))
+        {
+            this.ProtectionDateV90 = null;
         }
         //      C# -> DateTime? ProtectionDateV91
         // GraphQL -> protectionDateV91: DateTime (scalar)
-        if (this.ProtectionDateV91 == null && ec.Includes("protectionDateV91",true))
+        if (ec.Includes("protectionDateV91",true))
         {
-            this.ProtectionDateV91 = new DateTime();
+            if(this.ProtectionDateV91 == null) {
+
+                this.ProtectionDateV91 = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProtectionDateV91 != null && ec.Excludes("protectionDateV91",true))
+        {
+            this.ProtectionDateV91 = null;
         }
         //      C# -> System.String? RecoveryForkGuid
         // GraphQL -> recoveryForkGuid: String (scalar)
-        if (this.RecoveryForkGuid == null && ec.Includes("recoveryForkGuid",true))
+        if (ec.Includes("recoveryForkGuid",true))
         {
-            this.RecoveryForkGuid = "FETCH";
+            if(this.RecoveryForkGuid == null) {
+
+                this.RecoveryForkGuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RecoveryForkGuid != null && ec.Excludes("recoveryForkGuid",true))
+        {
+            this.RecoveryForkGuid = null;
         }
         //      C# -> System.Int32? SnapshotCount
         // GraphQL -> snapshotCount: Int! (scalar)
-        if (this.SnapshotCount == null && ec.Includes("snapshotCount",true))
+        if (ec.Includes("snapshotCount",true))
         {
-            this.SnapshotCount = Int32.MinValue;
+            if(this.SnapshotCount == null) {
+
+                this.SnapshotCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotCount != null && ec.Excludes("snapshotCount",true))
+        {
+            this.SnapshotCount = null;
         }
         //      C# -> BlackoutWindowResponseInfo? BlackoutWindowResponseInfo
         // GraphQL -> blackoutWindowResponseInfo: BlackoutWindowResponseInfo (type)
-        if (this.BlackoutWindowResponseInfo == null && ec.Includes("blackoutWindowResponseInfo",false))
+        if (ec.Includes("blackoutWindowResponseInfo",false))
         {
-            this.BlackoutWindowResponseInfo = new BlackoutWindowResponseInfo();
-            this.BlackoutWindowResponseInfo.ApplyExploratoryFieldSpec(ec.NewChild("blackoutWindowResponseInfo"));
+            if(this.BlackoutWindowResponseInfo == null) {
+
+                this.BlackoutWindowResponseInfo = new BlackoutWindowResponseInfo();
+                this.BlackoutWindowResponseInfo.ApplyExploratoryFieldSpec(ec.NewChild("blackoutWindowResponseInfo"));
+
+            } else {
+
+                this.BlackoutWindowResponseInfo.ApplyExploratoryFieldSpec(ec.NewChild("blackoutWindowResponseInfo"));
+
+            }
+        }
+        else if (this.BlackoutWindowResponseInfo != null && ec.Excludes("blackoutWindowResponseInfo",false))
+        {
+            this.BlackoutWindowResponseInfo = null;
         }
         //      C# -> MssqlDbSummary? MssqlDbSummary
         // GraphQL -> mssqlDbSummary: MssqlDbSummary (type)
-        if (this.MssqlDbSummary == null && ec.Includes("mssqlDbSummary",false))
+        if (ec.Includes("mssqlDbSummary",false))
         {
-            this.MssqlDbSummary = new MssqlDbSummary();
-            this.MssqlDbSummary.ApplyExploratoryFieldSpec(ec.NewChild("mssqlDbSummary"));
+            if(this.MssqlDbSummary == null) {
+
+                this.MssqlDbSummary = new MssqlDbSummary();
+                this.MssqlDbSummary.ApplyExploratoryFieldSpec(ec.NewChild("mssqlDbSummary"));
+
+            } else {
+
+                this.MssqlDbSummary.ApplyExploratoryFieldSpec(ec.NewChild("mssqlDbSummary"));
+
+            }
+        }
+        else if (this.MssqlDbSummary != null && ec.Excludes("mssqlDbSummary",false))
+        {
+            this.MssqlDbSummary = null;
         }
         //      C# -> MssqlScriptDetail? PostBackupScript
         // GraphQL -> postBackupScript: MssqlScriptDetail (type)
-        if (this.PostBackupScript == null && ec.Includes("postBackupScript",false))
+        if (ec.Includes("postBackupScript",false))
         {
-            this.PostBackupScript = new MssqlScriptDetail();
-            this.PostBackupScript.ApplyExploratoryFieldSpec(ec.NewChild("postBackupScript"));
+            if(this.PostBackupScript == null) {
+
+                this.PostBackupScript = new MssqlScriptDetail();
+                this.PostBackupScript.ApplyExploratoryFieldSpec(ec.NewChild("postBackupScript"));
+
+            } else {
+
+                this.PostBackupScript.ApplyExploratoryFieldSpec(ec.NewChild("postBackupScript"));
+
+            }
+        }
+        else if (this.PostBackupScript != null && ec.Excludes("postBackupScript",false))
+        {
+            this.PostBackupScript = null;
         }
         //      C# -> MssqlScriptDetail? PreBackupScript
         // GraphQL -> preBackupScript: MssqlScriptDetail (type)
-        if (this.PreBackupScript == null && ec.Includes("preBackupScript",false))
+        if (ec.Includes("preBackupScript",false))
         {
-            this.PreBackupScript = new MssqlScriptDetail();
-            this.PreBackupScript.ApplyExploratoryFieldSpec(ec.NewChild("preBackupScript"));
+            if(this.PreBackupScript == null) {
+
+                this.PreBackupScript = new MssqlScriptDetail();
+                this.PreBackupScript.ApplyExploratoryFieldSpec(ec.NewChild("preBackupScript"));
+
+            } else {
+
+                this.PreBackupScript.ApplyExploratoryFieldSpec(ec.NewChild("preBackupScript"));
+
+            }
+        }
+        else if (this.PreBackupScript != null && ec.Excludes("preBackupScript",false))
+        {
+            this.PreBackupScript = null;
         }
     }
 
@@ -910,9 +1530,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<MssqlDbDetail> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

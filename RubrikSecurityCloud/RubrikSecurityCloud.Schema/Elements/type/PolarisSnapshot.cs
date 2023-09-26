@@ -309,170 +309,291 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> SnapshotConsistencyLevel? ConsistencyLevel
         // GraphQL -> consistencyLevel: SnapshotConsistencyLevel! (enum)
         if (this.ConsistencyLevel != null) {
-            s += ind + "consistencyLevel\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "consistencyLevel\n" ;
+            } else {
+                s += ind + "consistencyLevel\n" ;
+            }
         }
         //      C# -> PolarisSpecificSnapshot? PolarisSpecificSnapshot
         // GraphQL -> polarisSpecificSnapshot: PolarisSpecificSnapshot (interface)
         if (this.PolarisSpecificSnapshot != null) {
-                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.PolarisSpecificSnapshot).AsFieldSpec(indent+1);
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.PolarisSpecificSnapshot).AsFieldSpec(conf.Child("polarisSpecificSnapshot"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "polarisSpecificSnapshot {\n" + fspec + ind + "}\n";
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "polarisSpecificSnapshot {\n" + fspec + ind + "}\n";
+                }
             }
         }
         //      C# -> SlaDomain? SlaDomain
         // GraphQL -> slaDomain: SlaDomain (interface)
         if (this.SlaDomain != null) {
-                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.SlaDomain).AsFieldSpec(indent+1);
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.SlaDomain).AsFieldSpec(conf.Child("slaDomain"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "slaDomain {\n" + fspec + ind + "}\n";
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "slaDomain {\n" + fspec + ind + "}\n";
+                }
             }
         }
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime! (scalar)
         if (this.Date != null) {
-            s += ind + "date\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "date\n" ;
+            } else {
+                s += ind + "date\n" ;
+            }
         }
         //      C# -> DateTime? ExpirationDate
         // GraphQL -> expirationDate: DateTime (scalar)
         if (this.ExpirationDate != null) {
-            s += ind + "expirationDate\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "expirationDate\n" ;
+            } else {
+                s += ind + "expirationDate\n" ;
+            }
         }
         //      C# -> System.Boolean? ExpiryHint
         // GraphQL -> expiryHint: Boolean! (scalar)
         if (this.ExpiryHint != null) {
-            s += ind + "expiryHint\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "expiryHint\n" ;
+            } else {
+                s += ind + "expiryHint\n" ;
+            }
         }
         //      C# -> System.Boolean? HasUnexpiredArchivedCopy
         // GraphQL -> hasUnexpiredArchivedCopy: Boolean! (scalar)
         if (this.HasUnexpiredArchivedCopy != null) {
-            s += ind + "hasUnexpiredArchivedCopy\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hasUnexpiredArchivedCopy\n" ;
+            } else {
+                s += ind + "hasUnexpiredArchivedCopy\n" ;
+            }
         }
         //      C# -> System.Boolean? HasUnexpiredReplica
         // GraphQL -> hasUnexpiredReplica: Boolean! (scalar)
         if (this.HasUnexpiredReplica != null) {
-            s += ind + "hasUnexpiredReplica\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "hasUnexpiredReplica\n" ;
+            } else {
+                s += ind + "hasUnexpiredReplica\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> DateTime? IndexTime
         // GraphQL -> indexTime: DateTime (scalar)
         if (this.IndexTime != null) {
-            s += ind + "indexTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "indexTime\n" ;
+            } else {
+                s += ind + "indexTime\n" ;
+            }
         }
         //      C# -> System.Int64? IndexingAttempts
         // GraphQL -> indexingAttempts: Long! (scalar)
         if (this.IndexingAttempts != null) {
-            s += ind + "indexingAttempts\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "indexingAttempts\n" ;
+            } else {
+                s += ind + "indexingAttempts\n" ;
+            }
         }
         //      C# -> System.Boolean? IsArchivalCopy
         // GraphQL -> isArchivalCopy: Boolean (scalar)
         if (this.IsArchivalCopy != null) {
-            s += ind + "isArchivalCopy\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isArchivalCopy\n" ;
+            } else {
+                s += ind + "isArchivalCopy\n" ;
+            }
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean! (scalar)
         if (this.IsArchived != null) {
-            s += ind + "isArchived\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isArchived\n" ;
+            } else {
+                s += ind + "isArchived\n" ;
+            }
         }
         //      C# -> System.Boolean? IsCorrupted
         // GraphQL -> isCorrupted: Boolean! (scalar)
         if (this.IsCorrupted != null) {
-            s += ind + "isCorrupted\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isCorrupted\n" ;
+            } else {
+                s += ind + "isCorrupted\n" ;
+            }
         }
         //      C# -> System.Boolean? IsDeletedFromSource
         // GraphQL -> isDeletedFromSource: Boolean! (scalar)
         if (this.IsDeletedFromSource != null) {
-            s += ind + "isDeletedFromSource\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isDeletedFromSource\n" ;
+            } else {
+                s += ind + "isDeletedFromSource\n" ;
+            }
         }
         //      C# -> System.Boolean? IsDownloadedSnapshot
         // GraphQL -> isDownloadedSnapshot: Boolean (scalar)
         if (this.IsDownloadedSnapshot != null) {
-            s += ind + "isDownloadedSnapshot\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isDownloadedSnapshot\n" ;
+            } else {
+                s += ind + "isDownloadedSnapshot\n" ;
+            }
         }
         //      C# -> System.Boolean? IsExpired
         // GraphQL -> isExpired: Boolean! (scalar)
         if (this.IsExpired != null) {
-            s += ind + "isExpired\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isExpired\n" ;
+            } else {
+                s += ind + "isExpired\n" ;
+            }
         }
         //      C# -> System.Boolean? IsIndexed
         // GraphQL -> isIndexed: Boolean! (scalar)
         if (this.IsIndexed != null) {
-            s += ind + "isIndexed\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isIndexed\n" ;
+            } else {
+                s += ind + "isIndexed\n" ;
+            }
         }
         //      C# -> System.Boolean? IsOnDemandSnapshot
         // GraphQL -> isOnDemandSnapshot: Boolean! (scalar)
         if (this.IsOnDemandSnapshot != null) {
-            s += ind + "isOnDemandSnapshot\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isOnDemandSnapshot\n" ;
+            } else {
+                s += ind + "isOnDemandSnapshot\n" ;
+            }
         }
         //      C# -> System.Boolean? IsQuarantined
         // GraphQL -> isQuarantined: Boolean! (scalar)
         if (this.IsQuarantined != null) {
-            s += ind + "isQuarantined\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isQuarantined\n" ;
+            } else {
+                s += ind + "isQuarantined\n" ;
+            }
         }
         //      C# -> System.Boolean? IsReplica
         // GraphQL -> isReplica: Boolean (scalar)
         if (this.IsReplica != null) {
-            s += ind + "isReplica\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isReplica\n" ;
+            } else {
+                s += ind + "isReplica\n" ;
+            }
         }
         //      C# -> System.Boolean? IsReplicated
         // GraphQL -> isReplicated: Boolean! (scalar)
         if (this.IsReplicated != null) {
-            s += ind + "isReplicated\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isReplicated\n" ;
+            } else {
+                s += ind + "isReplicated\n" ;
+            }
         }
         //      C# -> System.Boolean? IsUnindexable
         // GraphQL -> isUnindexable: Boolean! (scalar)
         if (this.IsUnindexable != null) {
-            s += ind + "isUnindexable\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isUnindexable\n" ;
+            } else {
+                s += ind + "isUnindexable\n" ;
+            }
         }
         //      C# -> System.String? ParentSnapshotId
         // GraphQL -> parentSnapshotId: String (scalar)
         if (this.ParentSnapshotId != null) {
-            s += ind + "parentSnapshotId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "parentSnapshotId\n" ;
+            } else {
+                s += ind + "parentSnapshotId\n" ;
+            }
         }
         //      C# -> System.Int32? SequenceNumber
         // GraphQL -> sequenceNumber: Int! (scalar)
         if (this.SequenceNumber != null) {
-            s += ind + "sequenceNumber\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sequenceNumber\n" ;
+            } else {
+                s += ind + "sequenceNumber\n" ;
+            }
         }
         //      C# -> System.String? SnappableId
         // GraphQL -> snappableId: String! (scalar)
         if (this.SnappableId != null) {
-            s += ind + "snappableId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snappableId\n" ;
+            } else {
+                s += ind + "snappableId\n" ;
+            }
         }
         //      C# -> System.Int32? UnexpiredArchivedSnapshotCount
         // GraphQL -> unexpiredArchivedSnapshotCount: Int! (scalar)
         if (this.UnexpiredArchivedSnapshotCount != null) {
-            s += ind + "unexpiredArchivedSnapshotCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "unexpiredArchivedSnapshotCount\n" ;
+            } else {
+                s += ind + "unexpiredArchivedSnapshotCount\n" ;
+            }
         }
         //      C# -> System.Int32? UnexpiredReplicaCount
         // GraphQL -> unexpiredReplicaCount: Int! (scalar)
         if (this.UnexpiredReplicaCount != null) {
-            s += ind + "unexpiredReplicaCount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "unexpiredReplicaCount\n" ;
+            } else {
+                s += ind + "unexpiredReplicaCount\n" ;
+            }
         }
         //      C# -> LatestUserNote? LatestUserNote
         // GraphQL -> latestUserNote: LatestUserNote (type)
         if (this.LatestUserNote != null) {
-            var fspec = this.LatestUserNote.AsFieldSpec(indent+1);
+            var fspec = this.LatestUserNote.AsFieldSpec(conf.Child("latestUserNote"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "latestUserNote {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "latestUserNote {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<DataLocation>? ReplicationLocations
         // GraphQL -> replicationLocations: [DataLocation!] (type)
         if (this.ReplicationLocations != null) {
-            var fspec = this.ReplicationLocations.AsFieldSpec(indent+1);
+            var fspec = this.ReplicationLocations.AsFieldSpec(conf.Child("replicationLocations"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "replicationLocations {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "replicationLocations {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -484,189 +605,531 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> SnapshotConsistencyLevel? ConsistencyLevel
         // GraphQL -> consistencyLevel: SnapshotConsistencyLevel! (enum)
-        if (this.ConsistencyLevel == null && ec.Includes("consistencyLevel",true))
+        if (ec.Includes("consistencyLevel",true))
         {
-            this.ConsistencyLevel = new SnapshotConsistencyLevel();
+            if(this.ConsistencyLevel == null) {
+
+                this.ConsistencyLevel = new SnapshotConsistencyLevel();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ConsistencyLevel != null && ec.Excludes("consistencyLevel",true))
+        {
+            this.ConsistencyLevel = null;
         }
         //      C# -> PolarisSpecificSnapshot? PolarisSpecificSnapshot
         // GraphQL -> polarisSpecificSnapshot: PolarisSpecificSnapshot (interface)
-        if (this.PolarisSpecificSnapshot == null && ec.Includes("polarisSpecificSnapshot",false))
+        if (ec.Includes("polarisSpecificSnapshot",false))
         {
-            var impls = new List<PolarisSpecificSnapshot>();
-            impls.ApplyExploratoryFieldSpec(ec.NewChild("polarisSpecificSnapshot"));
-            this.PolarisSpecificSnapshot = (PolarisSpecificSnapshot)InterfaceHelper.MakeCompositeFromList(impls);
+            if(this.PolarisSpecificSnapshot == null) {
+
+                var impls = new List<PolarisSpecificSnapshot>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("polarisSpecificSnapshot"));
+                this.PolarisSpecificSnapshot = (PolarisSpecificSnapshot)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<PolarisSpecificSnapshot>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("polarisSpecificSnapshot"));
+                this.PolarisSpecificSnapshot = (PolarisSpecificSnapshot)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.PolarisSpecificSnapshot != null && ec.Excludes("polarisSpecificSnapshot",false))
+        {
+            this.PolarisSpecificSnapshot = null;
         }
         //      C# -> SlaDomain? SlaDomain
         // GraphQL -> slaDomain: SlaDomain (interface)
-        if (this.SlaDomain == null && ec.Includes("slaDomain",false))
+        if (ec.Includes("slaDomain",false))
         {
-            var impls = new List<SlaDomain>();
-            impls.ApplyExploratoryFieldSpec(ec.NewChild("slaDomain"));
-            this.SlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+            if(this.SlaDomain == null) {
+
+                var impls = new List<SlaDomain>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("slaDomain"));
+                this.SlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<SlaDomain>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("slaDomain"));
+                this.SlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.SlaDomain != null && ec.Excludes("slaDomain",false))
+        {
+            this.SlaDomain = null;
         }
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime! (scalar)
-        if (this.Date == null && ec.Includes("date",true))
+        if (ec.Includes("date",true))
         {
-            this.Date = new DateTime();
+            if(this.Date == null) {
+
+                this.Date = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Date != null && ec.Excludes("date",true))
+        {
+            this.Date = null;
         }
         //      C# -> DateTime? ExpirationDate
         // GraphQL -> expirationDate: DateTime (scalar)
-        if (this.ExpirationDate == null && ec.Includes("expirationDate",true))
+        if (ec.Includes("expirationDate",true))
         {
-            this.ExpirationDate = new DateTime();
+            if(this.ExpirationDate == null) {
+
+                this.ExpirationDate = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExpirationDate != null && ec.Excludes("expirationDate",true))
+        {
+            this.ExpirationDate = null;
         }
         //      C# -> System.Boolean? ExpiryHint
         // GraphQL -> expiryHint: Boolean! (scalar)
-        if (this.ExpiryHint == null && ec.Includes("expiryHint",true))
+        if (ec.Includes("expiryHint",true))
         {
-            this.ExpiryHint = true;
+            if(this.ExpiryHint == null) {
+
+                this.ExpiryHint = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExpiryHint != null && ec.Excludes("expiryHint",true))
+        {
+            this.ExpiryHint = null;
         }
         //      C# -> System.Boolean? HasUnexpiredArchivedCopy
         // GraphQL -> hasUnexpiredArchivedCopy: Boolean! (scalar)
-        if (this.HasUnexpiredArchivedCopy == null && ec.Includes("hasUnexpiredArchivedCopy",true))
+        if (ec.Includes("hasUnexpiredArchivedCopy",true))
         {
-            this.HasUnexpiredArchivedCopy = true;
+            if(this.HasUnexpiredArchivedCopy == null) {
+
+                this.HasUnexpiredArchivedCopy = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.HasUnexpiredArchivedCopy != null && ec.Excludes("hasUnexpiredArchivedCopy",true))
+        {
+            this.HasUnexpiredArchivedCopy = null;
         }
         //      C# -> System.Boolean? HasUnexpiredReplica
         // GraphQL -> hasUnexpiredReplica: Boolean! (scalar)
-        if (this.HasUnexpiredReplica == null && ec.Includes("hasUnexpiredReplica",true))
+        if (ec.Includes("hasUnexpiredReplica",true))
         {
-            this.HasUnexpiredReplica = true;
+            if(this.HasUnexpiredReplica == null) {
+
+                this.HasUnexpiredReplica = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.HasUnexpiredReplica != null && ec.Excludes("hasUnexpiredReplica",true))
+        {
+            this.HasUnexpiredReplica = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> DateTime? IndexTime
         // GraphQL -> indexTime: DateTime (scalar)
-        if (this.IndexTime == null && ec.Includes("indexTime",true))
+        if (ec.Includes("indexTime",true))
         {
-            this.IndexTime = new DateTime();
+            if(this.IndexTime == null) {
+
+                this.IndexTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.IndexTime != null && ec.Excludes("indexTime",true))
+        {
+            this.IndexTime = null;
         }
         //      C# -> System.Int64? IndexingAttempts
         // GraphQL -> indexingAttempts: Long! (scalar)
-        if (this.IndexingAttempts == null && ec.Includes("indexingAttempts",true))
+        if (ec.Includes("indexingAttempts",true))
         {
-            this.IndexingAttempts = new System.Int64();
+            if(this.IndexingAttempts == null) {
+
+                this.IndexingAttempts = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.IndexingAttempts != null && ec.Excludes("indexingAttempts",true))
+        {
+            this.IndexingAttempts = null;
         }
         //      C# -> System.Boolean? IsArchivalCopy
         // GraphQL -> isArchivalCopy: Boolean (scalar)
-        if (this.IsArchivalCopy == null && ec.Includes("isArchivalCopy",true))
+        if (ec.Includes("isArchivalCopy",true))
         {
-            this.IsArchivalCopy = true;
+            if(this.IsArchivalCopy == null) {
+
+                this.IsArchivalCopy = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsArchivalCopy != null && ec.Excludes("isArchivalCopy",true))
+        {
+            this.IsArchivalCopy = null;
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean! (scalar)
-        if (this.IsArchived == null && ec.Includes("isArchived",true))
+        if (ec.Includes("isArchived",true))
         {
-            this.IsArchived = true;
+            if(this.IsArchived == null) {
+
+                this.IsArchived = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsArchived != null && ec.Excludes("isArchived",true))
+        {
+            this.IsArchived = null;
         }
         //      C# -> System.Boolean? IsCorrupted
         // GraphQL -> isCorrupted: Boolean! (scalar)
-        if (this.IsCorrupted == null && ec.Includes("isCorrupted",true))
+        if (ec.Includes("isCorrupted",true))
         {
-            this.IsCorrupted = true;
+            if(this.IsCorrupted == null) {
+
+                this.IsCorrupted = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsCorrupted != null && ec.Excludes("isCorrupted",true))
+        {
+            this.IsCorrupted = null;
         }
         //      C# -> System.Boolean? IsDeletedFromSource
         // GraphQL -> isDeletedFromSource: Boolean! (scalar)
-        if (this.IsDeletedFromSource == null && ec.Includes("isDeletedFromSource",true))
+        if (ec.Includes("isDeletedFromSource",true))
         {
-            this.IsDeletedFromSource = true;
+            if(this.IsDeletedFromSource == null) {
+
+                this.IsDeletedFromSource = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsDeletedFromSource != null && ec.Excludes("isDeletedFromSource",true))
+        {
+            this.IsDeletedFromSource = null;
         }
         //      C# -> System.Boolean? IsDownloadedSnapshot
         // GraphQL -> isDownloadedSnapshot: Boolean (scalar)
-        if (this.IsDownloadedSnapshot == null && ec.Includes("isDownloadedSnapshot",true))
+        if (ec.Includes("isDownloadedSnapshot",true))
         {
-            this.IsDownloadedSnapshot = true;
+            if(this.IsDownloadedSnapshot == null) {
+
+                this.IsDownloadedSnapshot = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsDownloadedSnapshot != null && ec.Excludes("isDownloadedSnapshot",true))
+        {
+            this.IsDownloadedSnapshot = null;
         }
         //      C# -> System.Boolean? IsExpired
         // GraphQL -> isExpired: Boolean! (scalar)
-        if (this.IsExpired == null && ec.Includes("isExpired",true))
+        if (ec.Includes("isExpired",true))
         {
-            this.IsExpired = true;
+            if(this.IsExpired == null) {
+
+                this.IsExpired = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsExpired != null && ec.Excludes("isExpired",true))
+        {
+            this.IsExpired = null;
         }
         //      C# -> System.Boolean? IsIndexed
         // GraphQL -> isIndexed: Boolean! (scalar)
-        if (this.IsIndexed == null && ec.Includes("isIndexed",true))
+        if (ec.Includes("isIndexed",true))
         {
-            this.IsIndexed = true;
+            if(this.IsIndexed == null) {
+
+                this.IsIndexed = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsIndexed != null && ec.Excludes("isIndexed",true))
+        {
+            this.IsIndexed = null;
         }
         //      C# -> System.Boolean? IsOnDemandSnapshot
         // GraphQL -> isOnDemandSnapshot: Boolean! (scalar)
-        if (this.IsOnDemandSnapshot == null && ec.Includes("isOnDemandSnapshot",true))
+        if (ec.Includes("isOnDemandSnapshot",true))
         {
-            this.IsOnDemandSnapshot = true;
+            if(this.IsOnDemandSnapshot == null) {
+
+                this.IsOnDemandSnapshot = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsOnDemandSnapshot != null && ec.Excludes("isOnDemandSnapshot",true))
+        {
+            this.IsOnDemandSnapshot = null;
         }
         //      C# -> System.Boolean? IsQuarantined
         // GraphQL -> isQuarantined: Boolean! (scalar)
-        if (this.IsQuarantined == null && ec.Includes("isQuarantined",true))
+        if (ec.Includes("isQuarantined",true))
         {
-            this.IsQuarantined = true;
+            if(this.IsQuarantined == null) {
+
+                this.IsQuarantined = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsQuarantined != null && ec.Excludes("isQuarantined",true))
+        {
+            this.IsQuarantined = null;
         }
         //      C# -> System.Boolean? IsReplica
         // GraphQL -> isReplica: Boolean (scalar)
-        if (this.IsReplica == null && ec.Includes("isReplica",true))
+        if (ec.Includes("isReplica",true))
         {
-            this.IsReplica = true;
+            if(this.IsReplica == null) {
+
+                this.IsReplica = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsReplica != null && ec.Excludes("isReplica",true))
+        {
+            this.IsReplica = null;
         }
         //      C# -> System.Boolean? IsReplicated
         // GraphQL -> isReplicated: Boolean! (scalar)
-        if (this.IsReplicated == null && ec.Includes("isReplicated",true))
+        if (ec.Includes("isReplicated",true))
         {
-            this.IsReplicated = true;
+            if(this.IsReplicated == null) {
+
+                this.IsReplicated = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsReplicated != null && ec.Excludes("isReplicated",true))
+        {
+            this.IsReplicated = null;
         }
         //      C# -> System.Boolean? IsUnindexable
         // GraphQL -> isUnindexable: Boolean! (scalar)
-        if (this.IsUnindexable == null && ec.Includes("isUnindexable",true))
+        if (ec.Includes("isUnindexable",true))
         {
-            this.IsUnindexable = true;
+            if(this.IsUnindexable == null) {
+
+                this.IsUnindexable = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsUnindexable != null && ec.Excludes("isUnindexable",true))
+        {
+            this.IsUnindexable = null;
         }
         //      C# -> System.String? ParentSnapshotId
         // GraphQL -> parentSnapshotId: String (scalar)
-        if (this.ParentSnapshotId == null && ec.Includes("parentSnapshotId",true))
+        if (ec.Includes("parentSnapshotId",true))
         {
-            this.ParentSnapshotId = "FETCH";
+            if(this.ParentSnapshotId == null) {
+
+                this.ParentSnapshotId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ParentSnapshotId != null && ec.Excludes("parentSnapshotId",true))
+        {
+            this.ParentSnapshotId = null;
         }
         //      C# -> System.Int32? SequenceNumber
         // GraphQL -> sequenceNumber: Int! (scalar)
-        if (this.SequenceNumber == null && ec.Includes("sequenceNumber",true))
+        if (ec.Includes("sequenceNumber",true))
         {
-            this.SequenceNumber = Int32.MinValue;
+            if(this.SequenceNumber == null) {
+
+                this.SequenceNumber = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.SequenceNumber != null && ec.Excludes("sequenceNumber",true))
+        {
+            this.SequenceNumber = null;
         }
         //      C# -> System.String? SnappableId
         // GraphQL -> snappableId: String! (scalar)
-        if (this.SnappableId == null && ec.Includes("snappableId",true))
+        if (ec.Includes("snappableId",true))
         {
-            this.SnappableId = "FETCH";
+            if(this.SnappableId == null) {
+
+                this.SnappableId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnappableId != null && ec.Excludes("snappableId",true))
+        {
+            this.SnappableId = null;
         }
         //      C# -> System.Int32? UnexpiredArchivedSnapshotCount
         // GraphQL -> unexpiredArchivedSnapshotCount: Int! (scalar)
-        if (this.UnexpiredArchivedSnapshotCount == null && ec.Includes("unexpiredArchivedSnapshotCount",true))
+        if (ec.Includes("unexpiredArchivedSnapshotCount",true))
         {
-            this.UnexpiredArchivedSnapshotCount = Int32.MinValue;
+            if(this.UnexpiredArchivedSnapshotCount == null) {
+
+                this.UnexpiredArchivedSnapshotCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.UnexpiredArchivedSnapshotCount != null && ec.Excludes("unexpiredArchivedSnapshotCount",true))
+        {
+            this.UnexpiredArchivedSnapshotCount = null;
         }
         //      C# -> System.Int32? UnexpiredReplicaCount
         // GraphQL -> unexpiredReplicaCount: Int! (scalar)
-        if (this.UnexpiredReplicaCount == null && ec.Includes("unexpiredReplicaCount",true))
+        if (ec.Includes("unexpiredReplicaCount",true))
         {
-            this.UnexpiredReplicaCount = Int32.MinValue;
+            if(this.UnexpiredReplicaCount == null) {
+
+                this.UnexpiredReplicaCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.UnexpiredReplicaCount != null && ec.Excludes("unexpiredReplicaCount",true))
+        {
+            this.UnexpiredReplicaCount = null;
         }
         //      C# -> LatestUserNote? LatestUserNote
         // GraphQL -> latestUserNote: LatestUserNote (type)
-        if (this.LatestUserNote == null && ec.Includes("latestUserNote",false))
+        if (ec.Includes("latestUserNote",false))
         {
-            this.LatestUserNote = new LatestUserNote();
-            this.LatestUserNote.ApplyExploratoryFieldSpec(ec.NewChild("latestUserNote"));
+            if(this.LatestUserNote == null) {
+
+                this.LatestUserNote = new LatestUserNote();
+                this.LatestUserNote.ApplyExploratoryFieldSpec(ec.NewChild("latestUserNote"));
+
+            } else {
+
+                this.LatestUserNote.ApplyExploratoryFieldSpec(ec.NewChild("latestUserNote"));
+
+            }
+        }
+        else if (this.LatestUserNote != null && ec.Excludes("latestUserNote",false))
+        {
+            this.LatestUserNote = null;
         }
         //      C# -> List<DataLocation>? ReplicationLocations
         // GraphQL -> replicationLocations: [DataLocation!] (type)
-        if (this.ReplicationLocations == null && ec.Includes("replicationLocations",false))
+        if (ec.Includes("replicationLocations",false))
         {
-            this.ReplicationLocations = new List<DataLocation>();
-            this.ReplicationLocations.ApplyExploratoryFieldSpec(ec.NewChild("replicationLocations"));
+            if(this.ReplicationLocations == null) {
+
+                this.ReplicationLocations = new List<DataLocation>();
+                this.ReplicationLocations.ApplyExploratoryFieldSpec(ec.NewChild("replicationLocations"));
+
+            } else {
+
+                this.ReplicationLocations.ApplyExploratoryFieldSpec(ec.NewChild("replicationLocations"));
+
+            }
+        }
+        else if (this.ReplicationLocations != null && ec.Excludes("replicationLocations",false))
+        {
+            this.ReplicationLocations = null;
         }
     }
 
@@ -693,9 +1156,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<PolarisSnapshot> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

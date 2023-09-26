@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? AzureSubscriptionNativeId
         // GraphQL -> azureSubscriptionNativeId: String! (scalar)
         if (this.AzureSubscriptionNativeId != null) {
-            s += ind + "azureSubscriptionNativeId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "azureSubscriptionNativeId\n" ;
+            } else {
+                s += ind + "azureSubscriptionNativeId\n" ;
+            }
         }
         //      C# -> System.String? Error
         // GraphQL -> error: String! (scalar)
         if (this.Error != null) {
-            s += ind + "error\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "error\n" ;
+            } else {
+                s += ind + "error\n" ;
+            }
         }
         //      C# -> System.Boolean? IsSuccess
         // GraphQL -> isSuccess: Boolean! (scalar)
         if (this.IsSuccess != null) {
-            s += ind + "isSuccess\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isSuccess\n" ;
+            } else {
+                s += ind + "isSuccess\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? AzureSubscriptionNativeId
         // GraphQL -> azureSubscriptionNativeId: String! (scalar)
-        if (this.AzureSubscriptionNativeId == null && ec.Includes("azureSubscriptionNativeId",true))
+        if (ec.Includes("azureSubscriptionNativeId",true))
         {
-            this.AzureSubscriptionNativeId = "FETCH";
+            if(this.AzureSubscriptionNativeId == null) {
+
+                this.AzureSubscriptionNativeId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AzureSubscriptionNativeId != null && ec.Excludes("azureSubscriptionNativeId",true))
+        {
+            this.AzureSubscriptionNativeId = null;
         }
         //      C# -> System.String? Error
         // GraphQL -> error: String! (scalar)
-        if (this.Error == null && ec.Includes("error",true))
+        if (ec.Includes("error",true))
         {
-            this.Error = "FETCH";
+            if(this.Error == null) {
+
+                this.Error = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Error != null && ec.Excludes("error",true))
+        {
+            this.Error = null;
         }
         //      C# -> System.Boolean? IsSuccess
         // GraphQL -> isSuccess: Boolean! (scalar)
-        if (this.IsSuccess == null && ec.Includes("isSuccess",true))
+        if (ec.Includes("isSuccess",true))
         {
-            this.IsSuccess = true;
+            if(this.IsSuccess == null) {
+
+                this.IsSuccess = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsSuccess != null && ec.Excludes("isSuccess",true))
+        {
+            this.IsSuccess = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<UpgradeAzureCloudAccountStatus> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -74,40 +74,57 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> Link? PrimaryDatabase
         // GraphQL -> primaryDatabase: Link (type)
         if (this.PrimaryDatabase != null) {
-            var fspec = this.PrimaryDatabase.AsFieldSpec(indent+1);
+            var fspec = this.PrimaryDatabase.AsFieldSpec(conf.Child("primaryDatabase"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "primaryDatabase {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "primaryDatabase {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> Link? SecondaryDatabase
         // GraphQL -> secondaryDatabase: Link (type)
         if (this.SecondaryDatabase != null) {
-            var fspec = this.SecondaryDatabase.AsFieldSpec(indent+1);
+            var fspec = this.SecondaryDatabase.AsFieldSpec(conf.Child("secondaryDatabase"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "secondaryDatabase {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "secondaryDatabase {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> Link? SecondaryInstance
         // GraphQL -> secondaryInstance: Link (type)
         if (this.SecondaryInstance != null) {
-            var fspec = this.SecondaryInstance.AsFieldSpec(indent+1);
+            var fspec = this.SecondaryInstance.AsFieldSpec(conf.Child("secondaryInstance"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "secondaryInstance {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "secondaryInstance {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> Link? SeedRequest
         // GraphQL -> seedRequest: Link (type)
         if (this.SeedRequest != null) {
-            var fspec = this.SeedRequest.AsFieldSpec(indent+1);
+            var fspec = this.SeedRequest.AsFieldSpec(conf.Child("seedRequest"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "seedRequest {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "seedRequest {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -119,31 +136,79 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> Link? PrimaryDatabase
         // GraphQL -> primaryDatabase: Link (type)
-        if (this.PrimaryDatabase == null && ec.Includes("primaryDatabase",false))
+        if (ec.Includes("primaryDatabase",false))
         {
-            this.PrimaryDatabase = new Link();
-            this.PrimaryDatabase.ApplyExploratoryFieldSpec(ec.NewChild("primaryDatabase"));
+            if(this.PrimaryDatabase == null) {
+
+                this.PrimaryDatabase = new Link();
+                this.PrimaryDatabase.ApplyExploratoryFieldSpec(ec.NewChild("primaryDatabase"));
+
+            } else {
+
+                this.PrimaryDatabase.ApplyExploratoryFieldSpec(ec.NewChild("primaryDatabase"));
+
+            }
+        }
+        else if (this.PrimaryDatabase != null && ec.Excludes("primaryDatabase",false))
+        {
+            this.PrimaryDatabase = null;
         }
         //      C# -> Link? SecondaryDatabase
         // GraphQL -> secondaryDatabase: Link (type)
-        if (this.SecondaryDatabase == null && ec.Includes("secondaryDatabase",false))
+        if (ec.Includes("secondaryDatabase",false))
         {
-            this.SecondaryDatabase = new Link();
-            this.SecondaryDatabase.ApplyExploratoryFieldSpec(ec.NewChild("secondaryDatabase"));
+            if(this.SecondaryDatabase == null) {
+
+                this.SecondaryDatabase = new Link();
+                this.SecondaryDatabase.ApplyExploratoryFieldSpec(ec.NewChild("secondaryDatabase"));
+
+            } else {
+
+                this.SecondaryDatabase.ApplyExploratoryFieldSpec(ec.NewChild("secondaryDatabase"));
+
+            }
+        }
+        else if (this.SecondaryDatabase != null && ec.Excludes("secondaryDatabase",false))
+        {
+            this.SecondaryDatabase = null;
         }
         //      C# -> Link? SecondaryInstance
         // GraphQL -> secondaryInstance: Link (type)
-        if (this.SecondaryInstance == null && ec.Includes("secondaryInstance",false))
+        if (ec.Includes("secondaryInstance",false))
         {
-            this.SecondaryInstance = new Link();
-            this.SecondaryInstance.ApplyExploratoryFieldSpec(ec.NewChild("secondaryInstance"));
+            if(this.SecondaryInstance == null) {
+
+                this.SecondaryInstance = new Link();
+                this.SecondaryInstance.ApplyExploratoryFieldSpec(ec.NewChild("secondaryInstance"));
+
+            } else {
+
+                this.SecondaryInstance.ApplyExploratoryFieldSpec(ec.NewChild("secondaryInstance"));
+
+            }
+        }
+        else if (this.SecondaryInstance != null && ec.Excludes("secondaryInstance",false))
+        {
+            this.SecondaryInstance = null;
         }
         //      C# -> Link? SeedRequest
         // GraphQL -> seedRequest: Link (type)
-        if (this.SeedRequest == null && ec.Includes("seedRequest",false))
+        if (ec.Includes("seedRequest",false))
         {
-            this.SeedRequest = new Link();
-            this.SeedRequest.ApplyExploratoryFieldSpec(ec.NewChild("seedRequest"));
+            if(this.SeedRequest == null) {
+
+                this.SeedRequest = new Link();
+                this.SeedRequest.ApplyExploratoryFieldSpec(ec.NewChild("seedRequest"));
+
+            } else {
+
+                this.SeedRequest.ApplyExploratoryFieldSpec(ec.NewChild("seedRequest"));
+
+            }
+        }
+        else if (this.SeedRequest != null && ec.Excludes("seedRequest",false))
+        {
+            this.SeedRequest = null;
         }
     }
 
@@ -170,9 +235,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<MssqlLogShippingLinks> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

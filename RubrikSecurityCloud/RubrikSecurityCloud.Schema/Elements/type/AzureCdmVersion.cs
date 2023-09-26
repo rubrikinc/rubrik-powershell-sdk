@@ -83,36 +83,57 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<AzureInstanceType>? SupportedInstanceTypes
         // GraphQL -> supportedInstanceTypes: [AzureInstanceType!]! (enum)
         if (this.SupportedInstanceTypes != null) {
-            s += ind + "supportedInstanceTypes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "supportedInstanceTypes\n" ;
+            } else {
+                s += ind + "supportedInstanceTypes\n" ;
+            }
         }
         //      C# -> System.String? CdmVersion
         // GraphQL -> cdmVersion: String! (scalar)
         if (this.CdmVersion != null) {
-            s += ind + "cdmVersion\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cdmVersion\n" ;
+            } else {
+                s += ind + "cdmVersion\n" ;
+            }
         }
         //      C# -> System.String? Sku
         // GraphQL -> sku: String! (scalar)
         if (this.Sku != null) {
-            s += ind + "sku\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "sku\n" ;
+            } else {
+                s += ind + "sku\n" ;
+            }
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String! (scalar)
         if (this.Version != null) {
-            s += ind + "version\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "version\n" ;
+            } else {
+                s += ind + "version\n" ;
+            }
         }
         //      C# -> List<AzureCdmVersionTag>? Tags
         // GraphQL -> tags: [AzureCdmVersionTag!]! (type)
         if (this.Tags != null) {
-            var fspec = this.Tags.AsFieldSpec(indent+1);
+            var fspec = this.Tags.AsFieldSpec(conf.Child("tags"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "tags {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "tags {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -124,34 +145,90 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<AzureInstanceType>? SupportedInstanceTypes
         // GraphQL -> supportedInstanceTypes: [AzureInstanceType!]! (enum)
-        if (this.SupportedInstanceTypes == null && ec.Includes("supportedInstanceTypes",true))
+        if (ec.Includes("supportedInstanceTypes",true))
         {
-            this.SupportedInstanceTypes = new List<AzureInstanceType>();
+            if(this.SupportedInstanceTypes == null) {
+
+                this.SupportedInstanceTypes = new List<AzureInstanceType>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SupportedInstanceTypes != null && ec.Excludes("supportedInstanceTypes",true))
+        {
+            this.SupportedInstanceTypes = null;
         }
         //      C# -> System.String? CdmVersion
         // GraphQL -> cdmVersion: String! (scalar)
-        if (this.CdmVersion == null && ec.Includes("cdmVersion",true))
+        if (ec.Includes("cdmVersion",true))
         {
-            this.CdmVersion = "FETCH";
+            if(this.CdmVersion == null) {
+
+                this.CdmVersion = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CdmVersion != null && ec.Excludes("cdmVersion",true))
+        {
+            this.CdmVersion = null;
         }
         //      C# -> System.String? Sku
         // GraphQL -> sku: String! (scalar)
-        if (this.Sku == null && ec.Includes("sku",true))
+        if (ec.Includes("sku",true))
         {
-            this.Sku = "FETCH";
+            if(this.Sku == null) {
+
+                this.Sku = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Sku != null && ec.Excludes("sku",true))
+        {
+            this.Sku = null;
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String! (scalar)
-        if (this.Version == null && ec.Includes("version",true))
+        if (ec.Includes("version",true))
         {
-            this.Version = "FETCH";
+            if(this.Version == null) {
+
+                this.Version = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Version != null && ec.Excludes("version",true))
+        {
+            this.Version = null;
         }
         //      C# -> List<AzureCdmVersionTag>? Tags
         // GraphQL -> tags: [AzureCdmVersionTag!]! (type)
-        if (this.Tags == null && ec.Includes("tags",false))
+        if (ec.Includes("tags",false))
         {
-            this.Tags = new List<AzureCdmVersionTag>();
-            this.Tags.ApplyExploratoryFieldSpec(ec.NewChild("tags"));
+            if(this.Tags == null) {
+
+                this.Tags = new List<AzureCdmVersionTag>();
+                this.Tags.ApplyExploratoryFieldSpec(ec.NewChild("tags"));
+
+            } else {
+
+                this.Tags.ApplyExploratoryFieldSpec(ec.NewChild("tags"));
+
+            }
+        }
+        else if (this.Tags != null && ec.Excludes("tags",false))
+        {
+            this.Tags = null;
         }
     }
 
@@ -178,9 +255,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AzureCdmVersion> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

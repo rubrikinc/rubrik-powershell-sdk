@@ -74,37 +74,54 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> InventorySubHierarchyRootEnum? RootEnum
         // GraphQL -> rootEnum: InventorySubHierarchyRootEnum! (enum)
         if (this.RootEnum != null) {
-            s += ind + "rootEnum\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "rootEnum\n" ;
+            } else {
+                s += ind + "rootEnum\n" ;
+            }
         }
         //      C# -> PolarisHierarchyObjectConnection? ChildConnection
         // GraphQL -> childConnection: PolarisHierarchyObjectConnection! (type)
         if (this.ChildConnection != null) {
-            var fspec = this.ChildConnection.AsFieldSpec(indent+1);
+            var fspec = this.ChildConnection.AsFieldSpec(conf.Child("childConnection"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "childConnection {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "childConnection {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> PolarisHierarchyObjectConnection? DescendantConnection
         // GraphQL -> descendantConnection: PolarisHierarchyObjectConnection! (type)
         if (this.DescendantConnection != null) {
-            var fspec = this.DescendantConnection.AsFieldSpec(indent+1);
+            var fspec = this.DescendantConnection.AsFieldSpec(conf.Child("descendantConnection"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "descendantConnection {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "descendantConnection {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> PolarisHierarchyObjectConnection? TopLevelDescendantConnection
         // GraphQL -> topLevelDescendantConnection: PolarisHierarchyObjectConnection! (type)
         if (this.TopLevelDescendantConnection != null) {
-            var fspec = this.TopLevelDescendantConnection.AsFieldSpec(indent+1);
+            var fspec = this.TopLevelDescendantConnection.AsFieldSpec(conf.Child("topLevelDescendantConnection"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "topLevelDescendantConnection {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "topLevelDescendantConnection {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -116,30 +133,77 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> InventorySubHierarchyRootEnum? RootEnum
         // GraphQL -> rootEnum: InventorySubHierarchyRootEnum! (enum)
-        if (this.RootEnum == null && ec.Includes("rootEnum",true))
+        if (ec.Includes("rootEnum",true))
         {
-            this.RootEnum = new InventorySubHierarchyRootEnum();
+            if(this.RootEnum == null) {
+
+                this.RootEnum = new InventorySubHierarchyRootEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RootEnum != null && ec.Excludes("rootEnum",true))
+        {
+            this.RootEnum = null;
         }
         //      C# -> PolarisHierarchyObjectConnection? ChildConnection
         // GraphQL -> childConnection: PolarisHierarchyObjectConnection! (type)
-        if (this.ChildConnection == null && ec.Includes("childConnection",false))
+        if (ec.Includes("childConnection",false))
         {
-            this.ChildConnection = new PolarisHierarchyObjectConnection();
-            this.ChildConnection.ApplyExploratoryFieldSpec(ec.NewChild("childConnection"));
+            if(this.ChildConnection == null) {
+
+                this.ChildConnection = new PolarisHierarchyObjectConnection();
+                this.ChildConnection.ApplyExploratoryFieldSpec(ec.NewChild("childConnection"));
+
+            } else {
+
+                this.ChildConnection.ApplyExploratoryFieldSpec(ec.NewChild("childConnection"));
+
+            }
+        }
+        else if (this.ChildConnection != null && ec.Excludes("childConnection",false))
+        {
+            this.ChildConnection = null;
         }
         //      C# -> PolarisHierarchyObjectConnection? DescendantConnection
         // GraphQL -> descendantConnection: PolarisHierarchyObjectConnection! (type)
-        if (this.DescendantConnection == null && ec.Includes("descendantConnection",false))
+        if (ec.Includes("descendantConnection",false))
         {
-            this.DescendantConnection = new PolarisHierarchyObjectConnection();
-            this.DescendantConnection.ApplyExploratoryFieldSpec(ec.NewChild("descendantConnection"));
+            if(this.DescendantConnection == null) {
+
+                this.DescendantConnection = new PolarisHierarchyObjectConnection();
+                this.DescendantConnection.ApplyExploratoryFieldSpec(ec.NewChild("descendantConnection"));
+
+            } else {
+
+                this.DescendantConnection.ApplyExploratoryFieldSpec(ec.NewChild("descendantConnection"));
+
+            }
+        }
+        else if (this.DescendantConnection != null && ec.Excludes("descendantConnection",false))
+        {
+            this.DescendantConnection = null;
         }
         //      C# -> PolarisHierarchyObjectConnection? TopLevelDescendantConnection
         // GraphQL -> topLevelDescendantConnection: PolarisHierarchyObjectConnection! (type)
-        if (this.TopLevelDescendantConnection == null && ec.Includes("topLevelDescendantConnection",false))
+        if (ec.Includes("topLevelDescendantConnection",false))
         {
-            this.TopLevelDescendantConnection = new PolarisHierarchyObjectConnection();
-            this.TopLevelDescendantConnection.ApplyExploratoryFieldSpec(ec.NewChild("topLevelDescendantConnection"));
+            if(this.TopLevelDescendantConnection == null) {
+
+                this.TopLevelDescendantConnection = new PolarisHierarchyObjectConnection();
+                this.TopLevelDescendantConnection.ApplyExploratoryFieldSpec(ec.NewChild("topLevelDescendantConnection"));
+
+            } else {
+
+                this.TopLevelDescendantConnection.ApplyExploratoryFieldSpec(ec.NewChild("topLevelDescendantConnection"));
+
+            }
+        }
+        else if (this.TopLevelDescendantConnection != null && ec.Excludes("topLevelDescendantConnection",false))
+        {
+            this.TopLevelDescendantConnection = null;
         }
     }
 
@@ -166,9 +230,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<PolarisInventorySubHierarchyRoot> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

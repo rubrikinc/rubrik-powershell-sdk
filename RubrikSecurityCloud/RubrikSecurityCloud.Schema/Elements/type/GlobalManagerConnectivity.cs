@@ -47,16 +47,21 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<GlobalManagerUrl>? Urls
         // GraphQL -> urls: [GlobalManagerUrl!]! (type)
         if (this.Urls != null) {
-            var fspec = this.Urls.AsFieldSpec(indent+1);
+            var fspec = this.Urls.AsFieldSpec(conf.Child("urls"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "urls {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "urls {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -68,10 +73,22 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<GlobalManagerUrl>? Urls
         // GraphQL -> urls: [GlobalManagerUrl!]! (type)
-        if (this.Urls == null && ec.Includes("urls",false))
+        if (ec.Includes("urls",false))
         {
-            this.Urls = new List<GlobalManagerUrl>();
-            this.Urls.ApplyExploratoryFieldSpec(ec.NewChild("urls"));
+            if(this.Urls == null) {
+
+                this.Urls = new List<GlobalManagerUrl>();
+                this.Urls.ApplyExploratoryFieldSpec(ec.NewChild("urls"));
+
+            } else {
+
+                this.Urls.ApplyExploratoryFieldSpec(ec.NewChild("urls"));
+
+            }
+        }
+        else if (this.Urls != null && ec.Excludes("urls",false))
+        {
+            this.Urls = null;
         }
     }
 
@@ -98,9 +115,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<GlobalManagerConnectivity> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

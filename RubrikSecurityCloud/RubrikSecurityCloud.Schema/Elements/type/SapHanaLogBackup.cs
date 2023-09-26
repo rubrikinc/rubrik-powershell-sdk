@@ -92,41 +92,66 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? BackupId
         // GraphQL -> backupId: Long (scalar)
         if (this.BackupId != null) {
-            s += ind + "backupId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "backupId\n" ;
+            } else {
+                s += ind + "backupId\n" ;
+            }
         }
         //      C# -> System.Int64? BytesTransferred
         // GraphQL -> bytesTransferred: Long (scalar)
         if (this.BytesTransferred != null) {
-            s += ind + "bytesTransferred\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "bytesTransferred\n" ;
+            } else {
+                s += ind + "bytesTransferred\n" ;
+            }
         }
         //      C# -> System.Boolean? DoesContainCatalogFile
         // GraphQL -> doesContainCatalogFile: Boolean (scalar)
         if (this.DoesContainCatalogFile != null) {
-            s += ind + "doesContainCatalogFile\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "doesContainCatalogFile\n" ;
+            } else {
+                s += ind + "doesContainCatalogFile\n" ;
+            }
         }
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime (scalar)
         if (this.EndTime != null) {
-            s += ind + "endTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "endTime\n" ;
+            } else {
+                s += ind + "endTime\n" ;
+            }
         }
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime (scalar)
         if (this.StartTime != null) {
-            s += ind + "startTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "startTime\n" ;
+            } else {
+                s += ind + "startTime\n" ;
+            }
         }
         //      C# -> List<SapHanaLogBackupFiles>? Files
         // GraphQL -> files: [SapHanaLogBackupFiles!] (type)
         if (this.Files != null) {
-            var fspec = this.Files.AsFieldSpec(indent+1);
+            var fspec = this.Files.AsFieldSpec(conf.Child("files"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "files {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "files {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -138,40 +163,107 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? BackupId
         // GraphQL -> backupId: Long (scalar)
-        if (this.BackupId == null && ec.Includes("backupId",true))
+        if (ec.Includes("backupId",true))
         {
-            this.BackupId = new System.Int64();
+            if(this.BackupId == null) {
+
+                this.BackupId = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.BackupId != null && ec.Excludes("backupId",true))
+        {
+            this.BackupId = null;
         }
         //      C# -> System.Int64? BytesTransferred
         // GraphQL -> bytesTransferred: Long (scalar)
-        if (this.BytesTransferred == null && ec.Includes("bytesTransferred",true))
+        if (ec.Includes("bytesTransferred",true))
         {
-            this.BytesTransferred = new System.Int64();
+            if(this.BytesTransferred == null) {
+
+                this.BytesTransferred = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.BytesTransferred != null && ec.Excludes("bytesTransferred",true))
+        {
+            this.BytesTransferred = null;
         }
         //      C# -> System.Boolean? DoesContainCatalogFile
         // GraphQL -> doesContainCatalogFile: Boolean (scalar)
-        if (this.DoesContainCatalogFile == null && ec.Includes("doesContainCatalogFile",true))
+        if (ec.Includes("doesContainCatalogFile",true))
         {
-            this.DoesContainCatalogFile = true;
+            if(this.DoesContainCatalogFile == null) {
+
+                this.DoesContainCatalogFile = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.DoesContainCatalogFile != null && ec.Excludes("doesContainCatalogFile",true))
+        {
+            this.DoesContainCatalogFile = null;
         }
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime (scalar)
-        if (this.EndTime == null && ec.Includes("endTime",true))
+        if (ec.Includes("endTime",true))
         {
-            this.EndTime = new DateTime();
+            if(this.EndTime == null) {
+
+                this.EndTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EndTime != null && ec.Excludes("endTime",true))
+        {
+            this.EndTime = null;
         }
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime (scalar)
-        if (this.StartTime == null && ec.Includes("startTime",true))
+        if (ec.Includes("startTime",true))
         {
-            this.StartTime = new DateTime();
+            if(this.StartTime == null) {
+
+                this.StartTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.StartTime != null && ec.Excludes("startTime",true))
+        {
+            this.StartTime = null;
         }
         //      C# -> List<SapHanaLogBackupFiles>? Files
         // GraphQL -> files: [SapHanaLogBackupFiles!] (type)
-        if (this.Files == null && ec.Includes("files",false))
+        if (ec.Includes("files",false))
         {
-            this.Files = new List<SapHanaLogBackupFiles>();
-            this.Files.ApplyExploratoryFieldSpec(ec.NewChild("files"));
+            if(this.Files == null) {
+
+                this.Files = new List<SapHanaLogBackupFiles>();
+                this.Files.ApplyExploratoryFieldSpec(ec.NewChild("files"));
+
+            } else {
+
+                this.Files.ApplyExploratoryFieldSpec(ec.NewChild("files"));
+
+            }
+        }
+        else if (this.Files != null && ec.Excludes("files",false))
+        {
+            this.Files = null;
         }
     }
 
@@ -198,9 +290,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<SapHanaLogBackup> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

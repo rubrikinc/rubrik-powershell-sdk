@@ -165,7 +165,12 @@ namespace RubrikSecurityCloud
             {
                 return url;
             }
-            var t = gqlType.Replace("!", "").Replace("[", "").Replace("]", "").ToLower();
+            
+            if (gqlType.StartsWith("List<"))
+            {
+                gqlType = gqlType.Substring(5, gqlType.Length - 6);
+            }
+            var t = gqlType.Replace("!", "").Replace("[", "").Replace("]", "").ToLower().Replace("system.","").Trim();
             if (t == "int" || t == "string" || t == "boolean" || t == "bool" || t == "float" || t == "double" || t == "id" || t == "datetime")
             {
                 return gqlType;

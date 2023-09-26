@@ -83,36 +83,57 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> DateTime? ExpirationTime
         // GraphQL -> expirationTime: DateTime (scalar)
         if (this.ExpirationTime != null) {
-            s += ind + "expirationTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "expirationTime\n" ;
+            } else {
+                s += ind + "expirationTime\n" ;
+            }
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean! (scalar)
         if (this.IsArchived != null) {
-            s += ind + "isArchived\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isArchived\n" ;
+            } else {
+                s += ind + "isArchived\n" ;
+            }
         }
         //      C# -> System.String? Namespace
         // GraphQL -> namespace: String! (scalar)
         if (this.Namespace != null) {
-            s += ind + "namespace\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "namespace\n" ;
+            } else {
+                s += ind + "namespace\n" ;
+            }
         }
         //      C# -> DateTime? SnapshotTime
         // GraphQL -> snapshotTime: DateTime! (scalar)
         if (this.SnapshotTime != null) {
-            s += ind + "snapshotTime\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotTime\n" ;
+            } else {
+                s += ind + "snapshotTime\n" ;
+            }
         }
         //      C# -> List<PvcInformation>? PvcList
         // GraphQL -> pvcList: [PvcInformation!]! (type)
         if (this.PvcList != null) {
-            var fspec = this.PvcList.AsFieldSpec(indent+1);
+            var fspec = this.PvcList.AsFieldSpec(conf.Child("pvcList"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "pvcList {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "pvcList {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -124,34 +145,90 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> DateTime? ExpirationTime
         // GraphQL -> expirationTime: DateTime (scalar)
-        if (this.ExpirationTime == null && ec.Includes("expirationTime",true))
+        if (ec.Includes("expirationTime",true))
         {
-            this.ExpirationTime = new DateTime();
+            if(this.ExpirationTime == null) {
+
+                this.ExpirationTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExpirationTime != null && ec.Excludes("expirationTime",true))
+        {
+            this.ExpirationTime = null;
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean! (scalar)
-        if (this.IsArchived == null && ec.Includes("isArchived",true))
+        if (ec.Includes("isArchived",true))
         {
-            this.IsArchived = true;
+            if(this.IsArchived == null) {
+
+                this.IsArchived = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsArchived != null && ec.Excludes("isArchived",true))
+        {
+            this.IsArchived = null;
         }
         //      C# -> System.String? Namespace
         // GraphQL -> namespace: String! (scalar)
-        if (this.Namespace == null && ec.Includes("namespace",true))
+        if (ec.Includes("namespace",true))
         {
-            this.Namespace = "FETCH";
+            if(this.Namespace == null) {
+
+                this.Namespace = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Namespace != null && ec.Excludes("namespace",true))
+        {
+            this.Namespace = null;
         }
         //      C# -> DateTime? SnapshotTime
         // GraphQL -> snapshotTime: DateTime! (scalar)
-        if (this.SnapshotTime == null && ec.Includes("snapshotTime",true))
+        if (ec.Includes("snapshotTime",true))
         {
-            this.SnapshotTime = new DateTime();
+            if(this.SnapshotTime == null) {
+
+                this.SnapshotTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotTime != null && ec.Excludes("snapshotTime",true))
+        {
+            this.SnapshotTime = null;
         }
         //      C# -> List<PvcInformation>? PvcList
         // GraphQL -> pvcList: [PvcInformation!]! (type)
-        if (this.PvcList == null && ec.Includes("pvcList",false))
+        if (ec.Includes("pvcList",false))
         {
-            this.PvcList = new List<PvcInformation>();
-            this.PvcList.ApplyExploratoryFieldSpec(ec.NewChild("pvcList"));
+            if(this.PvcList == null) {
+
+                this.PvcList = new List<PvcInformation>();
+                this.PvcList.ApplyExploratoryFieldSpec(ec.NewChild("pvcList"));
+
+            } else {
+
+                this.PvcList.ApplyExploratoryFieldSpec(ec.NewChild("pvcList"));
+
+            }
+        }
+        else if (this.PvcList != null && ec.Excludes("pvcList",false))
+        {
+            this.PvcList = null;
         }
     }
 
@@ -178,9 +255,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<K8sSnapshotInfo> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

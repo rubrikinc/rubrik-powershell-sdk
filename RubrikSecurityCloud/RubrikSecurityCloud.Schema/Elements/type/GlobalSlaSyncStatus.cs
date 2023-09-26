@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> SlaSyncStatus? SlaSyncStatus
         // GraphQL -> slaSyncStatus: SlaSyncStatus! (enum)
         if (this.SlaSyncStatus != null) {
-            s += ind + "slaSyncStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "slaSyncStatus\n" ;
+            } else {
+                s += ind + "slaSyncStatus\n" ;
+            }
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
         if (this.ClusterUuid != null) {
-            s += ind + "clusterUuid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterUuid\n" ;
+            } else {
+                s += ind + "clusterUuid\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> SlaSyncStatus? SlaSyncStatus
         // GraphQL -> slaSyncStatus: SlaSyncStatus! (enum)
-        if (this.SlaSyncStatus == null && ec.Includes("slaSyncStatus",true))
+        if (ec.Includes("slaSyncStatus",true))
         {
-            this.SlaSyncStatus = new SlaSyncStatus();
+            if(this.SlaSyncStatus == null) {
+
+                this.SlaSyncStatus = new SlaSyncStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SlaSyncStatus != null && ec.Excludes("slaSyncStatus",true))
+        {
+            this.SlaSyncStatus = null;
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
-        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
+        if (ec.Includes("clusterUuid",true))
         {
-            this.ClusterUuid = "FETCH";
+            if(this.ClusterUuid == null) {
+
+                this.ClusterUuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterUuid != null && ec.Excludes("clusterUuid",true))
+        {
+            this.ClusterUuid = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<GlobalSlaSyncStatus> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

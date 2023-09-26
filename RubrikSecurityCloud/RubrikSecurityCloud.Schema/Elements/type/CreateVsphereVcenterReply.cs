@@ -74,31 +74,48 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.Boolean? IsHotAddProxyEnabledForOnPremVcenter
         // GraphQL -> isHotAddProxyEnabledForOnPremVcenter: Boolean (scalar)
         if (this.IsHotAddProxyEnabledForOnPremVcenter != null) {
-            s += ind + "isHotAddProxyEnabledForOnPremVcenter\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isHotAddProxyEnabledForOnPremVcenter\n" ;
+            } else {
+                s += ind + "isHotAddProxyEnabledForOnPremVcenter\n" ;
+            }
         }
         //      C# -> System.Boolean? IsVmc
         // GraphQL -> isVmc: Boolean! (scalar)
         if (this.IsVmc != null) {
-            s += ind + "isVmc\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isVmc\n" ;
+            } else {
+                s += ind + "isVmc\n" ;
+            }
         }
         //      C# -> AsyncRequestStatus? AsyncRequestStatus
         // GraphQL -> asyncRequestStatus: AsyncRequestStatus (type)
         if (this.AsyncRequestStatus != null) {
-            var fspec = this.AsyncRequestStatus.AsFieldSpec(indent+1);
+            var fspec = this.AsyncRequestStatus.AsFieldSpec(conf.Child("asyncRequestStatus"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "asyncRequestStatus {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "asyncRequestStatus {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -110,28 +127,73 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.Boolean? IsHotAddProxyEnabledForOnPremVcenter
         // GraphQL -> isHotAddProxyEnabledForOnPremVcenter: Boolean (scalar)
-        if (this.IsHotAddProxyEnabledForOnPremVcenter == null && ec.Includes("isHotAddProxyEnabledForOnPremVcenter",true))
+        if (ec.Includes("isHotAddProxyEnabledForOnPremVcenter",true))
         {
-            this.IsHotAddProxyEnabledForOnPremVcenter = true;
+            if(this.IsHotAddProxyEnabledForOnPremVcenter == null) {
+
+                this.IsHotAddProxyEnabledForOnPremVcenter = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsHotAddProxyEnabledForOnPremVcenter != null && ec.Excludes("isHotAddProxyEnabledForOnPremVcenter",true))
+        {
+            this.IsHotAddProxyEnabledForOnPremVcenter = null;
         }
         //      C# -> System.Boolean? IsVmc
         // GraphQL -> isVmc: Boolean! (scalar)
-        if (this.IsVmc == null && ec.Includes("isVmc",true))
+        if (ec.Includes("isVmc",true))
         {
-            this.IsVmc = true;
+            if(this.IsVmc == null) {
+
+                this.IsVmc = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsVmc != null && ec.Excludes("isVmc",true))
+        {
+            this.IsVmc = null;
         }
         //      C# -> AsyncRequestStatus? AsyncRequestStatus
         // GraphQL -> asyncRequestStatus: AsyncRequestStatus (type)
-        if (this.AsyncRequestStatus == null && ec.Includes("asyncRequestStatus",false))
+        if (ec.Includes("asyncRequestStatus",false))
         {
-            this.AsyncRequestStatus = new AsyncRequestStatus();
-            this.AsyncRequestStatus.ApplyExploratoryFieldSpec(ec.NewChild("asyncRequestStatus"));
+            if(this.AsyncRequestStatus == null) {
+
+                this.AsyncRequestStatus = new AsyncRequestStatus();
+                this.AsyncRequestStatus.ApplyExploratoryFieldSpec(ec.NewChild("asyncRequestStatus"));
+
+            } else {
+
+                this.AsyncRequestStatus.ApplyExploratoryFieldSpec(ec.NewChild("asyncRequestStatus"));
+
+            }
+        }
+        else if (this.AsyncRequestStatus != null && ec.Excludes("asyncRequestStatus",false))
+        {
+            this.AsyncRequestStatus = null;
         }
     }
 
@@ -158,9 +220,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CreateVsphereVcenterReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -47,14 +47,19 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Boolean? IsIpv6Mode
         // GraphQL -> isIpv6Mode: Boolean! (scalar)
         if (this.IsIpv6Mode != null) {
-            s += ind + "isIpv6Mode\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isIpv6Mode\n" ;
+            } else {
+                s += ind + "isIpv6Mode\n" ;
+            }
         }
         return s;
     }
@@ -65,9 +70,20 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Boolean? IsIpv6Mode
         // GraphQL -> isIpv6Mode: Boolean! (scalar)
-        if (this.IsIpv6Mode == null && ec.Includes("isIpv6Mode",true))
+        if (ec.Includes("isIpv6Mode",true))
         {
-            this.IsIpv6Mode = true;
+            if(this.IsIpv6Mode == null) {
+
+                this.IsIpv6Mode = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsIpv6Mode != null && ec.Excludes("isIpv6Mode",true))
+        {
+            this.IsIpv6Mode = null;
         }
     }
 
@@ -94,9 +110,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ClusterIpv6ModeReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -48,14 +48,19 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? StringValue
         // GraphQL -> stringValue: String! (scalar)
         if (this.StringValue != null) {
-            s += ind + "stringValue\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "stringValue\n" ;
+            } else {
+                s += ind + "stringValue\n" ;
+            }
         }
         return s;
     }
@@ -66,9 +71,20 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? StringValue
         // GraphQL -> stringValue: String! (scalar)
-        if (this.StringValue == null && ec.Includes("stringValue",true))
+        if (ec.Includes("stringValue",true))
         {
-            this.StringValue = "FETCH";
+            if(this.StringValue == null) {
+
+                this.StringValue = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.StringValue != null && ec.Excludes("stringValue",true))
+        {
+            this.StringValue = null;
         }
     }
 
@@ -95,9 +111,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<Status> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

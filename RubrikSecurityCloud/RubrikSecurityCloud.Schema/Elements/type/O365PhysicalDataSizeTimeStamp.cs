@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int64? PhysicalDataSizeInBytes
         // GraphQL -> physicalDataSizeInBytes: Long! (scalar)
         if (this.PhysicalDataSizeInBytes != null) {
-            s += ind + "physicalDataSizeInBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "physicalDataSizeInBytes\n" ;
+            } else {
+                s += ind + "physicalDataSizeInBytes\n" ;
+            }
         }
         //      C# -> DateTime? Timestamp
         // GraphQL -> timestamp: DateTime (scalar)
         if (this.Timestamp != null) {
-            s += ind + "timestamp\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "timestamp\n" ;
+            } else {
+                s += ind + "timestamp\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Int64? PhysicalDataSizeInBytes
         // GraphQL -> physicalDataSizeInBytes: Long! (scalar)
-        if (this.PhysicalDataSizeInBytes == null && ec.Includes("physicalDataSizeInBytes",true))
+        if (ec.Includes("physicalDataSizeInBytes",true))
         {
-            this.PhysicalDataSizeInBytes = new System.Int64();
+            if(this.PhysicalDataSizeInBytes == null) {
+
+                this.PhysicalDataSizeInBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.PhysicalDataSizeInBytes != null && ec.Excludes("physicalDataSizeInBytes",true))
+        {
+            this.PhysicalDataSizeInBytes = null;
         }
         //      C# -> DateTime? Timestamp
         // GraphQL -> timestamp: DateTime (scalar)
-        if (this.Timestamp == null && ec.Includes("timestamp",true))
+        if (ec.Includes("timestamp",true))
         {
-            this.Timestamp = new DateTime();
+            if(this.Timestamp == null) {
+
+                this.Timestamp = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Timestamp != null && ec.Excludes("timestamp",true))
+        {
+            this.Timestamp = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<O365PhysicalDataSizeTimeStamp> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

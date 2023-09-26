@@ -195,10 +195,10 @@ namespace RubrikSecurityCloud.NetSDK.Client
 
         /// <summary>
         /// Send custom query to API server,
-        /// Data is returned as type Object
+        /// If the root field is identified in the schema,
+        /// the response is returned as a schema type object.
+        /// If not, it is returned as a JObject.
         /// </summary>
-        /// <param name="content"></param>
-        /// <returns></returns>
         public object InvokeRawQuery(
             string queryStr,
             Hashtable variables,
@@ -240,12 +240,18 @@ namespace RubrikSecurityCloud.NetSDK.Client
             // converting to pascal case
             queryName = StringUtils.StrictPascalCase(queryName);
 
+            string gqlReplyTypeStr="";
             MethodInfo methodInfo = queryType.GetMethod(queryName+ "_TypedFieldSpec");
-            ParameterInfo gqlReplyType = methodInfo.GetParameters()[0];
-            var gqlReplyTypeStr = gqlReplyType.ParameterType.ToString();
+            if ( methodInfo != null )
+            {
+                ParameterInfo gqlReplyType = methodInfo.GetParameters()[0];
+                gqlReplyTypeStr = gqlReplyType.ParameterType.ToString();
+            } else {
+                logger?.Debug("Root field " + queryName + " not found in " + queryType.ToString() + ". Will not cast server response to a specific type.");
+            }
 
             // removing the & at the end of the type
-            if(gqlReplyTypeStr.EndsWith("&")|| gqlReplyTypeStr.EndsWith("?"))
+            if (gqlReplyTypeStr.EndsWith("&")|| gqlReplyTypeStr.EndsWith("?"))
             {
                 gqlReplyTypeStr = gqlReplyTypeStr.Remove(gqlReplyTypeStr.Length - 1);
             }

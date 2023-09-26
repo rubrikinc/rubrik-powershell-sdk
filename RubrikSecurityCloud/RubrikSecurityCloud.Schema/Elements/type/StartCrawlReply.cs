@@ -47,14 +47,19 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? CrawlId
         // GraphQL -> crawlId: String! (scalar)
         if (this.CrawlId != null) {
-            s += ind + "crawlId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "crawlId\n" ;
+            } else {
+                s += ind + "crawlId\n" ;
+            }
         }
         return s;
     }
@@ -65,9 +70,20 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? CrawlId
         // GraphQL -> crawlId: String! (scalar)
-        if (this.CrawlId == null && ec.Includes("crawlId",true))
+        if (ec.Includes("crawlId",true))
         {
-            this.CrawlId = "FETCH";
+            if(this.CrawlId == null) {
+
+                this.CrawlId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CrawlId != null && ec.Excludes("crawlId",true))
+        {
+            this.CrawlId = null;
         }
     }
 
@@ -94,9 +110,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<StartCrawlReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -219,120 +219,201 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> InstanceTypeEnum? InstanceType
         // GraphQL -> instanceType: InstanceTypeEnum! (enum)
         if (this.InstanceType != null) {
-            s += ind + "instanceType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "instanceType\n" ;
+            } else {
+                s += ind + "instanceType\n" ;
+            }
         }
         //      C# -> ConnectionStatusType? LocationConnectionStatus
         // GraphQL -> locationConnectionStatus: ConnectionStatusType! (enum)
         if (this.LocationConnectionStatus != null) {
-            s += ind + "locationConnectionStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "locationConnectionStatus\n" ;
+            } else {
+                s += ind + "locationConnectionStatus\n" ;
+            }
         }
         //      C# -> LocationScope? LocationScope
         // GraphQL -> locationScope: LocationScope! (enum)
         if (this.LocationScope != null) {
-            s += ind + "locationScope\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "locationScope\n" ;
+            } else {
+                s += ind + "locationScope\n" ;
+            }
         }
         //      C# -> ReaderRetrievalMethod? ReaderRetrievalMethod
         // GraphQL -> readerRetrievalMethod: ReaderRetrievalMethod (enum)
         if (this.ReaderRetrievalMethod != null) {
-            s += ind + "readerRetrievalMethod\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "readerRetrievalMethod\n" ;
+            } else {
+                s += ind + "readerRetrievalMethod\n" ;
+            }
         }
         //      C# -> ArchivalLocationStatus? Status
         // GraphQL -> status: ArchivalLocationStatus! (enum)
         if (this.Status != null) {
-            s += ind + "status\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "status\n" ;
+            } else {
+                s += ind + "status\n" ;
+            }
         }
         //      C# -> TargetType? TargetType
         // GraphQL -> targetType: TargetType! (enum)
         if (this.TargetType != null) {
-            s += ind + "targetType\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "targetType\n" ;
+            } else {
+                s += ind + "targetType\n" ;
+            }
         }
         //      C# -> UpgradeStatus? UpgradeStatus
         // GraphQL -> upgradeStatus: UpgradeStatus! (enum)
         if (this.UpgradeStatus != null) {
-            s += ind + "upgradeStatus\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "upgradeStatus\n" ;
+            } else {
+                s += ind + "upgradeStatus\n" ;
+            }
         }
         //      C# -> System.String? ClusterName
         // GraphQL -> clusterName: String (scalar)
         if (this.ClusterName != null) {
-            s += ind + "clusterName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterName\n" ;
+            } else {
+                s += ind + "clusterName\n" ;
+            }
         }
         //      C# -> System.Int64? ConsumedBytes
         // GraphQL -> consumedBytes: Long (scalar)
         if (this.ConsumedBytes != null) {
-            s += ind + "consumedBytes\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "consumedBytes\n" ;
+            } else {
+                s += ind + "consumedBytes\n" ;
+            }
         }
         //      C# -> System.Int32? FailedTasks
         // GraphQL -> failedTasks: Int (scalar)
         if (this.FailedTasks != null) {
-            s += ind + "failedTasks\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "failedTasks\n" ;
+            } else {
+                s += ind + "failedTasks\n" ;
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
-            s += ind + "id\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
         }
         //      C# -> System.Boolean? IsActive
         // GraphQL -> isActive: Boolean! (scalar)
         if (this.IsActive != null) {
-            s += ind + "isActive\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isActive\n" ;
+            } else {
+                s += ind + "isActive\n" ;
+            }
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean! (scalar)
         if (this.IsArchived != null) {
-            s += ind + "isArchived\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isArchived\n" ;
+            } else {
+                s += ind + "isArchived\n" ;
+            }
         }
         //      C# -> System.Boolean? IsAzureTieringSupported
         // GraphQL -> isAzureTieringSupported: Boolean (scalar)
         if (this.IsAzureTieringSupported != null) {
-            s += ind + "isAzureTieringSupported\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isAzureTieringSupported\n" ;
+            } else {
+                s += ind + "isAzureTieringSupported\n" ;
+            }
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
-            s += ind + "name\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
         }
         //      C# -> System.Int32? RunningTasks
         // GraphQL -> runningTasks: Int (scalar)
         if (this.RunningTasks != null) {
-            s += ind + "runningTasks\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "runningTasks\n" ;
+            } else {
+                s += ind + "runningTasks\n" ;
+            }
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
         if (this.Cluster != null) {
-            var fspec = this.Cluster.AsFieldSpec(indent+1);
+            var fspec = this.Cluster.AsFieldSpec(conf.Child("cluster"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> AzureImmutabilitySettingsType? ImmutabilitySettings
         // GraphQL -> immutabilitySettings: AzureImmutabilitySettingsType (type)
         if (this.ImmutabilitySettings != null) {
-            var fspec = this.ImmutabilitySettings.AsFieldSpec(indent+1);
+            var fspec = this.ImmutabilitySettings.AsFieldSpec(conf.Child("immutabilitySettings"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "immutabilitySettings {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "immutabilitySettings {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> TargetMappingBasic? TargetMapping
         // GraphQL -> targetMapping: TargetMappingBasic (type)
         if (this.TargetMapping != null) {
-            var fspec = this.TargetMapping.AsFieldSpec(indent+1);
+            var fspec = this.TargetMapping.AsFieldSpec(conf.Child("targetMapping"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "targetMapping {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "targetMapping {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<TargetMappingBasic>? TargetMappingBasic
         // GraphQL -> targetMappingBasic: [TargetMappingBasic!] (type)
         if (this.TargetMappingBasic != null) {
-            var fspec = this.TargetMappingBasic.AsFieldSpec(indent+1);
+            var fspec = this.TargetMappingBasic.AsFieldSpec(conf.Child("targetMappingBasic"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "targetMappingBasic {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "targetMappingBasic {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -344,127 +425,351 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> InstanceTypeEnum? InstanceType
         // GraphQL -> instanceType: InstanceTypeEnum! (enum)
-        if (this.InstanceType == null && ec.Includes("instanceType",true))
+        if (ec.Includes("instanceType",true))
         {
-            this.InstanceType = new InstanceTypeEnum();
+            if(this.InstanceType == null) {
+
+                this.InstanceType = new InstanceTypeEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.InstanceType != null && ec.Excludes("instanceType",true))
+        {
+            this.InstanceType = null;
         }
         //      C# -> ConnectionStatusType? LocationConnectionStatus
         // GraphQL -> locationConnectionStatus: ConnectionStatusType! (enum)
-        if (this.LocationConnectionStatus == null && ec.Includes("locationConnectionStatus",true))
+        if (ec.Includes("locationConnectionStatus",true))
         {
-            this.LocationConnectionStatus = new ConnectionStatusType();
+            if(this.LocationConnectionStatus == null) {
+
+                this.LocationConnectionStatus = new ConnectionStatusType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LocationConnectionStatus != null && ec.Excludes("locationConnectionStatus",true))
+        {
+            this.LocationConnectionStatus = null;
         }
         //      C# -> LocationScope? LocationScope
         // GraphQL -> locationScope: LocationScope! (enum)
-        if (this.LocationScope == null && ec.Includes("locationScope",true))
+        if (ec.Includes("locationScope",true))
         {
-            this.LocationScope = new LocationScope();
+            if(this.LocationScope == null) {
+
+                this.LocationScope = new LocationScope();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LocationScope != null && ec.Excludes("locationScope",true))
+        {
+            this.LocationScope = null;
         }
         //      C# -> ReaderRetrievalMethod? ReaderRetrievalMethod
         // GraphQL -> readerRetrievalMethod: ReaderRetrievalMethod (enum)
-        if (this.ReaderRetrievalMethod == null && ec.Includes("readerRetrievalMethod",true))
+        if (ec.Includes("readerRetrievalMethod",true))
         {
-            this.ReaderRetrievalMethod = new ReaderRetrievalMethod();
+            if(this.ReaderRetrievalMethod == null) {
+
+                this.ReaderRetrievalMethod = new ReaderRetrievalMethod();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ReaderRetrievalMethod != null && ec.Excludes("readerRetrievalMethod",true))
+        {
+            this.ReaderRetrievalMethod = null;
         }
         //      C# -> ArchivalLocationStatus? Status
         // GraphQL -> status: ArchivalLocationStatus! (enum)
-        if (this.Status == null && ec.Includes("status",true))
+        if (ec.Includes("status",true))
         {
-            this.Status = new ArchivalLocationStatus();
+            if(this.Status == null) {
+
+                this.Status = new ArchivalLocationStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",true))
+        {
+            this.Status = null;
         }
         //      C# -> TargetType? TargetType
         // GraphQL -> targetType: TargetType! (enum)
-        if (this.TargetType == null && ec.Includes("targetType",true))
+        if (ec.Includes("targetType",true))
         {
-            this.TargetType = new TargetType();
+            if(this.TargetType == null) {
+
+                this.TargetType = new TargetType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TargetType != null && ec.Excludes("targetType",true))
+        {
+            this.TargetType = null;
         }
         //      C# -> UpgradeStatus? UpgradeStatus
         // GraphQL -> upgradeStatus: UpgradeStatus! (enum)
-        if (this.UpgradeStatus == null && ec.Includes("upgradeStatus",true))
+        if (ec.Includes("upgradeStatus",true))
         {
-            this.UpgradeStatus = new UpgradeStatus();
+            if(this.UpgradeStatus == null) {
+
+                this.UpgradeStatus = new UpgradeStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UpgradeStatus != null && ec.Excludes("upgradeStatus",true))
+        {
+            this.UpgradeStatus = null;
         }
         //      C# -> System.String? ClusterName
         // GraphQL -> clusterName: String (scalar)
-        if (this.ClusterName == null && ec.Includes("clusterName",true))
+        if (ec.Includes("clusterName",true))
         {
-            this.ClusterName = "FETCH";
+            if(this.ClusterName == null) {
+
+                this.ClusterName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterName != null && ec.Excludes("clusterName",true))
+        {
+            this.ClusterName = null;
         }
         //      C# -> System.Int64? ConsumedBytes
         // GraphQL -> consumedBytes: Long (scalar)
-        if (this.ConsumedBytes == null && ec.Includes("consumedBytes",true))
+        if (ec.Includes("consumedBytes",true))
         {
-            this.ConsumedBytes = new System.Int64();
+            if(this.ConsumedBytes == null) {
+
+                this.ConsumedBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ConsumedBytes != null && ec.Excludes("consumedBytes",true))
+        {
+            this.ConsumedBytes = null;
         }
         //      C# -> System.Int32? FailedTasks
         // GraphQL -> failedTasks: Int (scalar)
-        if (this.FailedTasks == null && ec.Includes("failedTasks",true))
+        if (ec.Includes("failedTasks",true))
         {
-            this.FailedTasks = Int32.MinValue;
+            if(this.FailedTasks == null) {
+
+                this.FailedTasks = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.FailedTasks != null && ec.Excludes("failedTasks",true))
+        {
+            this.FailedTasks = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
-        if (this.Id == null && ec.Includes("id",true))
+        if (ec.Includes("id",true))
         {
-            this.Id = "FETCH";
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.Boolean? IsActive
         // GraphQL -> isActive: Boolean! (scalar)
-        if (this.IsActive == null && ec.Includes("isActive",true))
+        if (ec.Includes("isActive",true))
         {
-            this.IsActive = true;
+            if(this.IsActive == null) {
+
+                this.IsActive = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsActive != null && ec.Excludes("isActive",true))
+        {
+            this.IsActive = null;
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean! (scalar)
-        if (this.IsArchived == null && ec.Includes("isArchived",true))
+        if (ec.Includes("isArchived",true))
         {
-            this.IsArchived = true;
+            if(this.IsArchived == null) {
+
+                this.IsArchived = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsArchived != null && ec.Excludes("isArchived",true))
+        {
+            this.IsArchived = null;
         }
         //      C# -> System.Boolean? IsAzureTieringSupported
         // GraphQL -> isAzureTieringSupported: Boolean (scalar)
-        if (this.IsAzureTieringSupported == null && ec.Includes("isAzureTieringSupported",true))
+        if (ec.Includes("isAzureTieringSupported",true))
         {
-            this.IsAzureTieringSupported = true;
+            if(this.IsAzureTieringSupported == null) {
+
+                this.IsAzureTieringSupported = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAzureTieringSupported != null && ec.Excludes("isAzureTieringSupported",true))
+        {
+            this.IsAzureTieringSupported = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
-        if (this.Name == null && ec.Includes("name",true))
+        if (ec.Includes("name",true))
         {
-            this.Name = "FETCH";
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> System.Int32? RunningTasks
         // GraphQL -> runningTasks: Int (scalar)
-        if (this.RunningTasks == null && ec.Includes("runningTasks",true))
+        if (ec.Includes("runningTasks",true))
         {
-            this.RunningTasks = Int32.MinValue;
+            if(this.RunningTasks == null) {
+
+                this.RunningTasks = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.RunningTasks != null && ec.Excludes("runningTasks",true))
+        {
+            this.RunningTasks = null;
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
-        if (this.Cluster == null && ec.Includes("cluster",false))
+        if (ec.Includes("cluster",false))
         {
-            this.Cluster = new Cluster();
-            this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+            if(this.Cluster == null) {
+
+                this.Cluster = new Cluster();
+                this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+
+            } else {
+
+                this.Cluster.ApplyExploratoryFieldSpec(ec.NewChild("cluster"));
+
+            }
+        }
+        else if (this.Cluster != null && ec.Excludes("cluster",false))
+        {
+            this.Cluster = null;
         }
         //      C# -> AzureImmutabilitySettingsType? ImmutabilitySettings
         // GraphQL -> immutabilitySettings: AzureImmutabilitySettingsType (type)
-        if (this.ImmutabilitySettings == null && ec.Includes("immutabilitySettings",false))
+        if (ec.Includes("immutabilitySettings",false))
         {
-            this.ImmutabilitySettings = new AzureImmutabilitySettingsType();
-            this.ImmutabilitySettings.ApplyExploratoryFieldSpec(ec.NewChild("immutabilitySettings"));
+            if(this.ImmutabilitySettings == null) {
+
+                this.ImmutabilitySettings = new AzureImmutabilitySettingsType();
+                this.ImmutabilitySettings.ApplyExploratoryFieldSpec(ec.NewChild("immutabilitySettings"));
+
+            } else {
+
+                this.ImmutabilitySettings.ApplyExploratoryFieldSpec(ec.NewChild("immutabilitySettings"));
+
+            }
+        }
+        else if (this.ImmutabilitySettings != null && ec.Excludes("immutabilitySettings",false))
+        {
+            this.ImmutabilitySettings = null;
         }
         //      C# -> TargetMappingBasic? TargetMapping
         // GraphQL -> targetMapping: TargetMappingBasic (type)
-        if (this.TargetMapping == null && ec.Includes("targetMapping",false))
+        if (ec.Includes("targetMapping",false))
         {
-            this.TargetMapping = new TargetMappingBasic();
-            this.TargetMapping.ApplyExploratoryFieldSpec(ec.NewChild("targetMapping"));
+            if(this.TargetMapping == null) {
+
+                this.TargetMapping = new TargetMappingBasic();
+                this.TargetMapping.ApplyExploratoryFieldSpec(ec.NewChild("targetMapping"));
+
+            } else {
+
+                this.TargetMapping.ApplyExploratoryFieldSpec(ec.NewChild("targetMapping"));
+
+            }
+        }
+        else if (this.TargetMapping != null && ec.Excludes("targetMapping",false))
+        {
+            this.TargetMapping = null;
         }
         //      C# -> List<TargetMappingBasic>? TargetMappingBasic
         // GraphQL -> targetMappingBasic: [TargetMappingBasic!] (type)
-        if (this.TargetMappingBasic == null && ec.Includes("targetMappingBasic",false))
+        if (ec.Includes("targetMappingBasic",false))
         {
-            this.TargetMappingBasic = new List<TargetMappingBasic>();
-            this.TargetMappingBasic.ApplyExploratoryFieldSpec(ec.NewChild("targetMappingBasic"));
+            if(this.TargetMappingBasic == null) {
+
+                this.TargetMappingBasic = new List<TargetMappingBasic>();
+                this.TargetMappingBasic.ApplyExploratoryFieldSpec(ec.NewChild("targetMappingBasic"));
+
+            } else {
+
+                this.TargetMappingBasic.ApplyExploratoryFieldSpec(ec.NewChild("targetMappingBasic"));
+
+            }
+        }
+        else if (this.TargetMappingBasic != null && ec.Excludes("targetMappingBasic",false))
+        {
+            this.TargetMappingBasic = null;
         }
     }
 
@@ -491,9 +796,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CdmManagedAzureTarget> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

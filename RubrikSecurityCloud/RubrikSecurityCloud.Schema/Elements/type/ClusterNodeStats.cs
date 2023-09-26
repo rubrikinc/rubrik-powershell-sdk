@@ -137,64 +137,109 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? ClusterId
         // GraphQL -> clusterId: UUID! (scalar)
         if (this.ClusterId != null) {
-            s += ind + "clusterId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterId\n" ;
+            } else {
+                s += ind + "clusterId\n" ;
+            }
         }
         //      C# -> System.Int64? CpuStat
         // GraphQL -> cpuStat: Long! (scalar)
         if (this.CpuStat != null) {
-            s += ind + "cpuStat\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "cpuStat\n" ;
+            } else {
+                s += ind + "cpuStat\n" ;
+            }
         }
         //      C# -> System.Int64? IopsReadsPerSecond
         // GraphQL -> iopsReadsPerSecond: Long! (scalar)
         if (this.IopsReadsPerSecond != null) {
-            s += ind + "iopsReadsPerSecond\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "iopsReadsPerSecond\n" ;
+            } else {
+                s += ind + "iopsReadsPerSecond\n" ;
+            }
         }
         //      C# -> System.Int64? IopsWritesPerSecond
         // GraphQL -> iopsWritesPerSecond: Long! (scalar)
         if (this.IopsWritesPerSecond != null) {
-            s += ind + "iopsWritesPerSecond\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "iopsWritesPerSecond\n" ;
+            } else {
+                s += ind + "iopsWritesPerSecond\n" ;
+            }
         }
         //      C# -> System.Int64? NetworkBytesReceived
         // GraphQL -> networkBytesReceived: Long! (scalar)
         if (this.NetworkBytesReceived != null) {
-            s += ind + "networkBytesReceived\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "networkBytesReceived\n" ;
+            } else {
+                s += ind + "networkBytesReceived\n" ;
+            }
         }
         //      C# -> System.Int64? NetworkBytesTransmitted
         // GraphQL -> networkBytesTransmitted: Long! (scalar)
         if (this.NetworkBytesTransmitted != null) {
-            s += ind + "networkBytesTransmitted\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "networkBytesTransmitted\n" ;
+            } else {
+                s += ind + "networkBytesTransmitted\n" ;
+            }
         }
         //      C# -> System.String? NodeId
         // GraphQL -> nodeId: String! (scalar)
         if (this.NodeId != null) {
-            s += ind + "nodeId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "nodeId\n" ;
+            } else {
+                s += ind + "nodeId\n" ;
+            }
         }
         //      C# -> System.Int64? ReadThroughputBytesPerSecond
         // GraphQL -> readThroughputBytesPerSecond: Long! (scalar)
         if (this.ReadThroughputBytesPerSecond != null) {
-            s += ind + "readThroughputBytesPerSecond\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "readThroughputBytesPerSecond\n" ;
+            } else {
+                s += ind + "readThroughputBytesPerSecond\n" ;
+            }
         }
         //      C# -> DateTime? Time
         // GraphQL -> time: DateTime! (scalar)
         if (this.Time != null) {
-            s += ind + "time\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "time\n" ;
+            } else {
+                s += ind + "time\n" ;
+            }
         }
         //      C# -> System.Int32? UsedMemoryStat
         // GraphQL -> usedMemoryStat: Int! (scalar)
         if (this.UsedMemoryStat != null) {
-            s += ind + "usedMemoryStat\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "usedMemoryStat\n" ;
+            } else {
+                s += ind + "usedMemoryStat\n" ;
+            }
         }
         //      C# -> System.Int64? WriteThroughputBytesPerSecond
         // GraphQL -> writeThroughputBytesPerSecond: Long! (scalar)
         if (this.WriteThroughputBytesPerSecond != null) {
-            s += ind + "writeThroughputBytesPerSecond\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "writeThroughputBytesPerSecond\n" ;
+            } else {
+                s += ind + "writeThroughputBytesPerSecond\n" ;
+            }
         }
         return s;
     }
@@ -205,69 +250,190 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? ClusterId
         // GraphQL -> clusterId: UUID! (scalar)
-        if (this.ClusterId == null && ec.Includes("clusterId",true))
+        if (ec.Includes("clusterId",true))
         {
-            this.ClusterId = "FETCH";
+            if(this.ClusterId == null) {
+
+                this.ClusterId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterId != null && ec.Excludes("clusterId",true))
+        {
+            this.ClusterId = null;
         }
         //      C# -> System.Int64? CpuStat
         // GraphQL -> cpuStat: Long! (scalar)
-        if (this.CpuStat == null && ec.Includes("cpuStat",true))
+        if (ec.Includes("cpuStat",true))
         {
-            this.CpuStat = new System.Int64();
+            if(this.CpuStat == null) {
+
+                this.CpuStat = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CpuStat != null && ec.Excludes("cpuStat",true))
+        {
+            this.CpuStat = null;
         }
         //      C# -> System.Int64? IopsReadsPerSecond
         // GraphQL -> iopsReadsPerSecond: Long! (scalar)
-        if (this.IopsReadsPerSecond == null && ec.Includes("iopsReadsPerSecond",true))
+        if (ec.Includes("iopsReadsPerSecond",true))
         {
-            this.IopsReadsPerSecond = new System.Int64();
+            if(this.IopsReadsPerSecond == null) {
+
+                this.IopsReadsPerSecond = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.IopsReadsPerSecond != null && ec.Excludes("iopsReadsPerSecond",true))
+        {
+            this.IopsReadsPerSecond = null;
         }
         //      C# -> System.Int64? IopsWritesPerSecond
         // GraphQL -> iopsWritesPerSecond: Long! (scalar)
-        if (this.IopsWritesPerSecond == null && ec.Includes("iopsWritesPerSecond",true))
+        if (ec.Includes("iopsWritesPerSecond",true))
         {
-            this.IopsWritesPerSecond = new System.Int64();
+            if(this.IopsWritesPerSecond == null) {
+
+                this.IopsWritesPerSecond = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.IopsWritesPerSecond != null && ec.Excludes("iopsWritesPerSecond",true))
+        {
+            this.IopsWritesPerSecond = null;
         }
         //      C# -> System.Int64? NetworkBytesReceived
         // GraphQL -> networkBytesReceived: Long! (scalar)
-        if (this.NetworkBytesReceived == null && ec.Includes("networkBytesReceived",true))
+        if (ec.Includes("networkBytesReceived",true))
         {
-            this.NetworkBytesReceived = new System.Int64();
+            if(this.NetworkBytesReceived == null) {
+
+                this.NetworkBytesReceived = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.NetworkBytesReceived != null && ec.Excludes("networkBytesReceived",true))
+        {
+            this.NetworkBytesReceived = null;
         }
         //      C# -> System.Int64? NetworkBytesTransmitted
         // GraphQL -> networkBytesTransmitted: Long! (scalar)
-        if (this.NetworkBytesTransmitted == null && ec.Includes("networkBytesTransmitted",true))
+        if (ec.Includes("networkBytesTransmitted",true))
         {
-            this.NetworkBytesTransmitted = new System.Int64();
+            if(this.NetworkBytesTransmitted == null) {
+
+                this.NetworkBytesTransmitted = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.NetworkBytesTransmitted != null && ec.Excludes("networkBytesTransmitted",true))
+        {
+            this.NetworkBytesTransmitted = null;
         }
         //      C# -> System.String? NodeId
         // GraphQL -> nodeId: String! (scalar)
-        if (this.NodeId == null && ec.Includes("nodeId",true))
+        if (ec.Includes("nodeId",true))
         {
-            this.NodeId = "FETCH";
+            if(this.NodeId == null) {
+
+                this.NodeId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NodeId != null && ec.Excludes("nodeId",true))
+        {
+            this.NodeId = null;
         }
         //      C# -> System.Int64? ReadThroughputBytesPerSecond
         // GraphQL -> readThroughputBytesPerSecond: Long! (scalar)
-        if (this.ReadThroughputBytesPerSecond == null && ec.Includes("readThroughputBytesPerSecond",true))
+        if (ec.Includes("readThroughputBytesPerSecond",true))
         {
-            this.ReadThroughputBytesPerSecond = new System.Int64();
+            if(this.ReadThroughputBytesPerSecond == null) {
+
+                this.ReadThroughputBytesPerSecond = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ReadThroughputBytesPerSecond != null && ec.Excludes("readThroughputBytesPerSecond",true))
+        {
+            this.ReadThroughputBytesPerSecond = null;
         }
         //      C# -> DateTime? Time
         // GraphQL -> time: DateTime! (scalar)
-        if (this.Time == null && ec.Includes("time",true))
+        if (ec.Includes("time",true))
         {
-            this.Time = new DateTime();
+            if(this.Time == null) {
+
+                this.Time = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Time != null && ec.Excludes("time",true))
+        {
+            this.Time = null;
         }
         //      C# -> System.Int32? UsedMemoryStat
         // GraphQL -> usedMemoryStat: Int! (scalar)
-        if (this.UsedMemoryStat == null && ec.Includes("usedMemoryStat",true))
+        if (ec.Includes("usedMemoryStat",true))
         {
-            this.UsedMemoryStat = Int32.MinValue;
+            if(this.UsedMemoryStat == null) {
+
+                this.UsedMemoryStat = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.UsedMemoryStat != null && ec.Excludes("usedMemoryStat",true))
+        {
+            this.UsedMemoryStat = null;
         }
         //      C# -> System.Int64? WriteThroughputBytesPerSecond
         // GraphQL -> writeThroughputBytesPerSecond: Long! (scalar)
-        if (this.WriteThroughputBytesPerSecond == null && ec.Includes("writeThroughputBytesPerSecond",true))
+        if (ec.Includes("writeThroughputBytesPerSecond",true))
         {
-            this.WriteThroughputBytesPerSecond = new System.Int64();
+            if(this.WriteThroughputBytesPerSecond == null) {
+
+                this.WriteThroughputBytesPerSecond = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.WriteThroughputBytesPerSecond != null && ec.Excludes("writeThroughputBytesPerSecond",true))
+        {
+            this.WriteThroughputBytesPerSecond = null;
         }
     }
 
@@ -294,9 +460,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ClusterNodeStats> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

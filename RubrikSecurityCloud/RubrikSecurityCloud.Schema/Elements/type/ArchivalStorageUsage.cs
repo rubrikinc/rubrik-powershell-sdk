@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> DateTime? LogTimestamp
         // GraphQL -> logTimestamp: DateTime! (scalar)
         if (this.LogTimestamp != null) {
-            s += ind + "logTimestamp\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "logTimestamp\n" ;
+            } else {
+                s += ind + "logTimestamp\n" ;
+            }
         }
         //      C# -> System.Int64? StorageUsage
         // GraphQL -> storageUsage: Long! (scalar)
         if (this.StorageUsage != null) {
-            s += ind + "storageUsage\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "storageUsage\n" ;
+            } else {
+                s += ind + "storageUsage\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> DateTime? LogTimestamp
         // GraphQL -> logTimestamp: DateTime! (scalar)
-        if (this.LogTimestamp == null && ec.Includes("logTimestamp",true))
+        if (ec.Includes("logTimestamp",true))
         {
-            this.LogTimestamp = new DateTime();
+            if(this.LogTimestamp == null) {
+
+                this.LogTimestamp = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LogTimestamp != null && ec.Excludes("logTimestamp",true))
+        {
+            this.LogTimestamp = null;
         }
         //      C# -> System.Int64? StorageUsage
         // GraphQL -> storageUsage: Long! (scalar)
-        if (this.StorageUsage == null && ec.Includes("storageUsage",true))
+        if (ec.Includes("storageUsage",true))
         {
-            this.StorageUsage = new System.Int64();
+            if(this.StorageUsage == null) {
+
+                this.StorageUsage = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.StorageUsage != null && ec.Excludes("storageUsage",true))
+        {
+            this.StorageUsage = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ArchivalStorageUsage> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

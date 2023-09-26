@@ -65,24 +65,37 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> AwsNativeRegionForReplication? Region
         // GraphQL -> region: AwsNativeRegionForReplication! (enum)
         if (this.Region != null) {
-            s += ind + "region\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "region\n" ;
+            } else {
+                s += ind + "region\n" ;
+            }
         }
         //      C# -> System.String? AccountId
         // GraphQL -> accountId: String! (scalar)
         if (this.AccountId != null) {
-            s += ind + "accountId\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "accountId\n" ;
+            } else {
+                s += ind + "accountId\n" ;
+            }
         }
         //      C# -> System.String? AccountName
         // GraphQL -> accountName: String! (scalar)
         if (this.AccountName != null) {
-            s += ind + "accountName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "accountName\n" ;
+            } else {
+                s += ind + "accountName\n" ;
+            }
         }
         return s;
     }
@@ -93,21 +106,54 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> AwsNativeRegionForReplication? Region
         // GraphQL -> region: AwsNativeRegionForReplication! (enum)
-        if (this.Region == null && ec.Includes("region",true))
+        if (ec.Includes("region",true))
         {
-            this.Region = new AwsNativeRegionForReplication();
+            if(this.Region == null) {
+
+                this.Region = new AwsNativeRegionForReplication();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Region != null && ec.Excludes("region",true))
+        {
+            this.Region = null;
         }
         //      C# -> System.String? AccountId
         // GraphQL -> accountId: String! (scalar)
-        if (this.AccountId == null && ec.Includes("accountId",true))
+        if (ec.Includes("accountId",true))
         {
-            this.AccountId = "FETCH";
+            if(this.AccountId == null) {
+
+                this.AccountId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AccountId != null && ec.Excludes("accountId",true))
+        {
+            this.AccountId = null;
         }
         //      C# -> System.String? AccountName
         // GraphQL -> accountName: String! (scalar)
-        if (this.AccountName == null && ec.Includes("accountName",true))
+        if (ec.Includes("accountName",true))
         {
-            this.AccountName = "FETCH";
+            if(this.AccountName == null) {
+
+                this.AccountName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AccountName != null && ec.Excludes("accountName",true))
+        {
+            this.AccountName = null;
         }
     }
 
@@ -134,9 +180,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<AwsReplicationTarget> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

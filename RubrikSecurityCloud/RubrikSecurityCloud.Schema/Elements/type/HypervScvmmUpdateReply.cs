@@ -56,24 +56,33 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> HypervScvmmSummary? HypervScvmmSummary
         // GraphQL -> hypervScvmmSummary: HypervScvmmSummary (type)
         if (this.HypervScvmmSummary != null) {
-            var fspec = this.HypervScvmmSummary.AsFieldSpec(indent+1);
+            var fspec = this.HypervScvmmSummary.AsFieldSpec(conf.Child("hypervScvmmSummary"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "hypervScvmmSummary {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "hypervScvmmSummary {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> HypervScvmmUpdate? HypervScvmmUpdate
         // GraphQL -> hypervScvmmUpdate: HypervScvmmUpdate (type)
         if (this.HypervScvmmUpdate != null) {
-            var fspec = this.HypervScvmmUpdate.AsFieldSpec(indent+1);
+            var fspec = this.HypervScvmmUpdate.AsFieldSpec(conf.Child("hypervScvmmUpdate"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "hypervScvmmUpdate {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "hypervScvmmUpdate {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -85,17 +94,41 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> HypervScvmmSummary? HypervScvmmSummary
         // GraphQL -> hypervScvmmSummary: HypervScvmmSummary (type)
-        if (this.HypervScvmmSummary == null && ec.Includes("hypervScvmmSummary",false))
+        if (ec.Includes("hypervScvmmSummary",false))
         {
-            this.HypervScvmmSummary = new HypervScvmmSummary();
-            this.HypervScvmmSummary.ApplyExploratoryFieldSpec(ec.NewChild("hypervScvmmSummary"));
+            if(this.HypervScvmmSummary == null) {
+
+                this.HypervScvmmSummary = new HypervScvmmSummary();
+                this.HypervScvmmSummary.ApplyExploratoryFieldSpec(ec.NewChild("hypervScvmmSummary"));
+
+            } else {
+
+                this.HypervScvmmSummary.ApplyExploratoryFieldSpec(ec.NewChild("hypervScvmmSummary"));
+
+            }
+        }
+        else if (this.HypervScvmmSummary != null && ec.Excludes("hypervScvmmSummary",false))
+        {
+            this.HypervScvmmSummary = null;
         }
         //      C# -> HypervScvmmUpdate? HypervScvmmUpdate
         // GraphQL -> hypervScvmmUpdate: HypervScvmmUpdate (type)
-        if (this.HypervScvmmUpdate == null && ec.Includes("hypervScvmmUpdate",false))
+        if (ec.Includes("hypervScvmmUpdate",false))
         {
-            this.HypervScvmmUpdate = new HypervScvmmUpdate();
-            this.HypervScvmmUpdate.ApplyExploratoryFieldSpec(ec.NewChild("hypervScvmmUpdate"));
+            if(this.HypervScvmmUpdate == null) {
+
+                this.HypervScvmmUpdate = new HypervScvmmUpdate();
+                this.HypervScvmmUpdate.ApplyExploratoryFieldSpec(ec.NewChild("hypervScvmmUpdate"));
+
+            } else {
+
+                this.HypervScvmmUpdate.ApplyExploratoryFieldSpec(ec.NewChild("hypervScvmmUpdate"));
+
+            }
+        }
+        else if (this.HypervScvmmUpdate != null && ec.Excludes("hypervScvmmUpdate",false))
+        {
+            this.HypervScvmmUpdate = null;
         }
     }
 
@@ -122,9 +155,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<HypervScvmmUpdateReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

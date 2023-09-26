@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Boolean? IsGlobalBlackoutActive
         // GraphQL -> isGlobalBlackoutActive: Boolean! (scalar)
         if (this.IsGlobalBlackoutActive != null) {
-            s += ind + "isGlobalBlackoutActive\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isGlobalBlackoutActive\n" ;
+            } else {
+                s += ind + "isGlobalBlackoutActive\n" ;
+            }
         }
         //      C# -> System.Boolean? IsSnappableBlackoutActive
         // GraphQL -> isSnappableBlackoutActive: Boolean (scalar)
         if (this.IsSnappableBlackoutActive != null) {
-            s += ind + "isSnappableBlackoutActive\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "isSnappableBlackoutActive\n" ;
+            } else {
+                s += ind + "isSnappableBlackoutActive\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.Boolean? IsGlobalBlackoutActive
         // GraphQL -> isGlobalBlackoutActive: Boolean! (scalar)
-        if (this.IsGlobalBlackoutActive == null && ec.Includes("isGlobalBlackoutActive",true))
+        if (ec.Includes("isGlobalBlackoutActive",true))
         {
-            this.IsGlobalBlackoutActive = true;
+            if(this.IsGlobalBlackoutActive == null) {
+
+                this.IsGlobalBlackoutActive = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsGlobalBlackoutActive != null && ec.Excludes("isGlobalBlackoutActive",true))
+        {
+            this.IsGlobalBlackoutActive = null;
         }
         //      C# -> System.Boolean? IsSnappableBlackoutActive
         // GraphQL -> isSnappableBlackoutActive: Boolean (scalar)
-        if (this.IsSnappableBlackoutActive == null && ec.Includes("isSnappableBlackoutActive",true))
+        if (ec.Includes("isSnappableBlackoutActive",true))
         {
-            this.IsSnappableBlackoutActive = true;
+            if(this.IsSnappableBlackoutActive == null) {
+
+                this.IsSnappableBlackoutActive = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsSnappableBlackoutActive != null && ec.Excludes("isSnappableBlackoutActive",true))
+        {
+            this.IsSnappableBlackoutActive = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<BlackoutWindowStatus> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

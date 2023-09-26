@@ -83,36 +83,57 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? ClusterName
         // GraphQL -> clusterName: String! (scalar)
         if (this.ClusterName != null) {
-            s += ind + "clusterName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterName\n" ;
+            } else {
+                s += ind + "clusterName\n" ;
+            }
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
         if (this.ClusterUuid != null) {
-            s += ind + "clusterUuid\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterUuid\n" ;
+            } else {
+                s += ind + "clusterUuid\n" ;
+            }
         }
         //      C# -> System.String? CustomerAccount
         // GraphQL -> customerAccount: String! (scalar)
         if (this.CustomerAccount != null) {
-            s += ind + "customerAccount\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "customerAccount\n" ;
+            } else {
+                s += ind + "customerAccount\n" ;
+            }
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String! (scalar)
         if (this.Version != null) {
-            s += ind + "version\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "version\n" ;
+            } else {
+                s += ind + "version\n" ;
+            }
         }
         //      C# -> JobMetadata? Metadata
         // GraphQL -> metadata: JobMetadata (type)
         if (this.Metadata != null) {
-            var fspec = this.Metadata.AsFieldSpec(indent+1);
+            var fspec = this.Metadata.AsFieldSpec(conf.Child("metadata"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "metadata {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "metadata {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -124,34 +145,90 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? ClusterName
         // GraphQL -> clusterName: String! (scalar)
-        if (this.ClusterName == null && ec.Includes("clusterName",true))
+        if (ec.Includes("clusterName",true))
         {
-            this.ClusterName = "FETCH";
+            if(this.ClusterName == null) {
+
+                this.ClusterName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterName != null && ec.Excludes("clusterName",true))
+        {
+            this.ClusterName = null;
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
-        if (this.ClusterUuid == null && ec.Includes("clusterUuid",true))
+        if (ec.Includes("clusterUuid",true))
         {
-            this.ClusterUuid = "FETCH";
+            if(this.ClusterUuid == null) {
+
+                this.ClusterUuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterUuid != null && ec.Excludes("clusterUuid",true))
+        {
+            this.ClusterUuid = null;
         }
         //      C# -> System.String? CustomerAccount
         // GraphQL -> customerAccount: String! (scalar)
-        if (this.CustomerAccount == null && ec.Includes("customerAccount",true))
+        if (ec.Includes("customerAccount",true))
         {
-            this.CustomerAccount = "FETCH";
+            if(this.CustomerAccount == null) {
+
+                this.CustomerAccount = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CustomerAccount != null && ec.Excludes("customerAccount",true))
+        {
+            this.CustomerAccount = null;
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String! (scalar)
-        if (this.Version == null && ec.Includes("version",true))
+        if (ec.Includes("version",true))
         {
-            this.Version = "FETCH";
+            if(this.Version == null) {
+
+                this.Version = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Version != null && ec.Excludes("version",true))
+        {
+            this.Version = null;
         }
         //      C# -> JobMetadata? Metadata
         // GraphQL -> metadata: JobMetadata (type)
-        if (this.Metadata == null && ec.Includes("metadata",false))
+        if (ec.Includes("metadata",false))
         {
-            this.Metadata = new JobMetadata();
-            this.Metadata.ApplyExploratoryFieldSpec(ec.NewChild("metadata"));
+            if(this.Metadata == null) {
+
+                this.Metadata = new JobMetadata();
+                this.Metadata.ApplyExploratoryFieldSpec(ec.NewChild("metadata"));
+
+            } else {
+
+                this.Metadata.ApplyExploratoryFieldSpec(ec.NewChild("metadata"));
+
+            }
+        }
+        else if (this.Metadata != null && ec.Excludes("metadata",false))
+        {
+            this.Metadata = null;
         }
     }
 
@@ -178,9 +255,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<JobReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

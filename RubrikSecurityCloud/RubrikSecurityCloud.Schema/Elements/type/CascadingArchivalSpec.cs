@@ -74,37 +74,54 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> List<RetentionUnit>? Frequency
         // GraphQL -> frequency: [RetentionUnit!]! (enum)
         if (this.Frequency != null) {
-            s += ind + "frequency\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "frequency\n" ;
+            } else {
+                s += ind + "frequency\n" ;
+            }
         }
         //      C# -> Target? ArchivalLocation
         // GraphQL -> archivalLocation: Target (interface)
         if (this.ArchivalLocation != null) {
-                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.ArchivalLocation).AsFieldSpec(indent+1);
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.ArchivalLocation).AsFieldSpec(conf.Child("archivalLocation"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "archivalLocation {\n" + fspec + ind + "}\n";
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "archivalLocation {\n" + fspec + ind + "}\n";
+                }
             }
         }
         //      C# -> Duration? ArchivalThreshold
         // GraphQL -> archivalThreshold: Duration (type)
         if (this.ArchivalThreshold != null) {
-            var fspec = this.ArchivalThreshold.AsFieldSpec(indent+1);
+            var fspec = this.ArchivalThreshold.AsFieldSpec(conf.Child("archivalThreshold"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "archivalThreshold {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "archivalThreshold {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> ArchivalTieringSpec? ArchivalTieringSpec
         // GraphQL -> archivalTieringSpec: ArchivalTieringSpec (type)
         if (this.ArchivalTieringSpec != null) {
-            var fspec = this.ArchivalTieringSpec.AsFieldSpec(indent+1);
+            var fspec = this.ArchivalTieringSpec.AsFieldSpec(conf.Child("archivalTieringSpec"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "archivalTieringSpec {\n" + fspec + ind + "}\n" ;
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "archivalTieringSpec {\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -116,31 +133,82 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> List<RetentionUnit>? Frequency
         // GraphQL -> frequency: [RetentionUnit!]! (enum)
-        if (this.Frequency == null && ec.Includes("frequency",true))
+        if (ec.Includes("frequency",true))
         {
-            this.Frequency = new List<RetentionUnit>();
+            if(this.Frequency == null) {
+
+                this.Frequency = new List<RetentionUnit>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Frequency != null && ec.Excludes("frequency",true))
+        {
+            this.Frequency = null;
         }
         //      C# -> Target? ArchivalLocation
         // GraphQL -> archivalLocation: Target (interface)
-        if (this.ArchivalLocation == null && ec.Includes("archivalLocation",false))
+        if (ec.Includes("archivalLocation",false))
         {
-            var impls = new List<Target>();
-            impls.ApplyExploratoryFieldSpec(ec.NewChild("archivalLocation"));
-            this.ArchivalLocation = (Target)InterfaceHelper.MakeCompositeFromList(impls);
+            if(this.ArchivalLocation == null) {
+
+                var impls = new List<Target>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("archivalLocation"));
+                this.ArchivalLocation = (Target)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<Target>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("archivalLocation"));
+                this.ArchivalLocation = (Target)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.ArchivalLocation != null && ec.Excludes("archivalLocation",false))
+        {
+            this.ArchivalLocation = null;
         }
         //      C# -> Duration? ArchivalThreshold
         // GraphQL -> archivalThreshold: Duration (type)
-        if (this.ArchivalThreshold == null && ec.Includes("archivalThreshold",false))
+        if (ec.Includes("archivalThreshold",false))
         {
-            this.ArchivalThreshold = new Duration();
-            this.ArchivalThreshold.ApplyExploratoryFieldSpec(ec.NewChild("archivalThreshold"));
+            if(this.ArchivalThreshold == null) {
+
+                this.ArchivalThreshold = new Duration();
+                this.ArchivalThreshold.ApplyExploratoryFieldSpec(ec.NewChild("archivalThreshold"));
+
+            } else {
+
+                this.ArchivalThreshold.ApplyExploratoryFieldSpec(ec.NewChild("archivalThreshold"));
+
+            }
+        }
+        else if (this.ArchivalThreshold != null && ec.Excludes("archivalThreshold",false))
+        {
+            this.ArchivalThreshold = null;
         }
         //      C# -> ArchivalTieringSpec? ArchivalTieringSpec
         // GraphQL -> archivalTieringSpec: ArchivalTieringSpec (type)
-        if (this.ArchivalTieringSpec == null && ec.Includes("archivalTieringSpec",false))
+        if (ec.Includes("archivalTieringSpec",false))
         {
-            this.ArchivalTieringSpec = new ArchivalTieringSpec();
-            this.ArchivalTieringSpec.ApplyExploratoryFieldSpec(ec.NewChild("archivalTieringSpec"));
+            if(this.ArchivalTieringSpec == null) {
+
+                this.ArchivalTieringSpec = new ArchivalTieringSpec();
+                this.ArchivalTieringSpec.ApplyExploratoryFieldSpec(ec.NewChild("archivalTieringSpec"));
+
+            } else {
+
+                this.ArchivalTieringSpec.ApplyExploratoryFieldSpec(ec.NewChild("archivalTieringSpec"));
+
+            }
+        }
+        else if (this.ArchivalTieringSpec != null && ec.Excludes("archivalTieringSpec",false))
+        {
+            this.ArchivalTieringSpec = null;
         }
     }
 
@@ -167,9 +235,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<CascadingArchivalSpec> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -56,19 +56,28 @@ namespace RubrikSecurityCloud.Types
         //[JsonIgnore]
     // AsFieldSpec returns a string that denotes what
     // fields are not null, recursively for non-scalar fields.
-    public override string AsFieldSpec(int indent=0)
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
     {
-        string ind = new string(' ', indent*2);
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? ErrorMessage
         // GraphQL -> errorMessage: String! (scalar)
         if (this.ErrorMessage != null) {
-            s += ind + "errorMessage\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "errorMessage\n" ;
+            } else {
+                s += ind + "errorMessage\n" ;
+            }
         }
         //      C# -> System.String? InputFieldName
         // GraphQL -> inputFieldName: String! (scalar)
         if (this.InputFieldName != null) {
-            s += ind + "inputFieldName\n" ;
+            if (conf.Flat) {
+                s += conf.Prefix + "inputFieldName\n" ;
+            } else {
+                s += ind + "inputFieldName\n" ;
+            }
         }
         return s;
     }
@@ -79,15 +88,37 @@ namespace RubrikSecurityCloud.Types
     {
         //      C# -> System.String? ErrorMessage
         // GraphQL -> errorMessage: String! (scalar)
-        if (this.ErrorMessage == null && ec.Includes("errorMessage",true))
+        if (ec.Includes("errorMessage",true))
         {
-            this.ErrorMessage = "FETCH";
+            if(this.ErrorMessage == null) {
+
+                this.ErrorMessage = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ErrorMessage != null && ec.Excludes("errorMessage",true))
+        {
+            this.ErrorMessage = null;
         }
         //      C# -> System.String? InputFieldName
         // GraphQL -> inputFieldName: String! (scalar)
-        if (this.InputFieldName == null && ec.Includes("inputFieldName",true))
+        if (ec.Includes("inputFieldName",true))
         {
-            this.InputFieldName = "FETCH";
+            if(this.InputFieldName == null) {
+
+                this.InputFieldName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.InputFieldName != null && ec.Excludes("inputFieldName",true))
+        {
+            this.InputFieldName = null;
         }
     }
 
@@ -114,9 +145,10 @@ namespace RubrikSecurityCloud.Types
         // as an inline fragment (... on)
         public static string AsFieldSpec(
             this List<ValidateAndSaveCustomerKmsInfoReply> list,
-            int indent=0)
+            FieldSpecConfig? conf=null)
         {
-            return list[0].AsFieldSpec(indent);
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child());
         }
 
         public static void ApplyExploratoryFieldSpec(
